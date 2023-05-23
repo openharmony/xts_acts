@@ -30,7 +30,7 @@ export default function imageGetImagePropertySecond() {
             ImageDescription: "A gray picture",
             Make: "HW",
             Model: "STK-LX1",
-            SensitivityType: "1",
+            SensitivityType: "Standard output sensitivity (SOS)",
             RecommendedExposureIndex: "200",
             ISOSpeedRatings: "200",
             ApertureValue: "1.69 EV (f/1.8)",
@@ -139,7 +139,7 @@ export default function imageGetImagePropertySecond() {
                 imageSourceApi.getImageProperty(key, property, (err, data) => {
                     if (err) {
                         expect(false).assertTrue();
-                        onsole.info(`${testNum} ${key} err: ` + err);
+                        console.info(`${testNum} ${key} err: ` + err);
                         done();
                     } else {
                         console.info(`${testNum} ${key} ` + data);

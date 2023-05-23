@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -22,7 +22,7 @@ export default function spanJsunit() {
   describe('spanTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/span',
+        uri: 'MainAbility/pages/span',
       }
       try {
         router.clear();
@@ -179,7 +179,7 @@ export default function spanJsunit() {
       console.info("[testSpan007] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testSpan007] textCase:" + obj);
-      expect(obj.$attrs.textCase).assertEqual('TextCase.Normal');
+      expect(obj.$attrs.textCase).assertEqual('TextCase.UpperCase');
       done();
     });
 
@@ -205,7 +205,7 @@ export default function spanJsunit() {
       console.info("[testSpan008] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testSpan008] fontColor:" + obj);
-      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000990');
       done();
     });
 
@@ -231,7 +231,7 @@ export default function spanJsunit() {
       console.info("[testSpan009] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testSpan009] fontColor:" + obj);
-      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
+      expect(obj.$attrs.fontColor).assertEqual('#FF000990');
       done();
     });
   })

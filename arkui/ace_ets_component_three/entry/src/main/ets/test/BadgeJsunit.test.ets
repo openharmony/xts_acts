@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -23,7 +23,7 @@ export default function badgeJsunit() {
     beforeEach(async function (done) {
       console.info("badge beforeEach start");
       let options = {
-        uri: 'pages/badge',
+        uri: 'MainAbility/pages/badge',
       }
       let result;
       try {
@@ -52,10 +52,37 @@ export default function badgeJsunit() {
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('badge');
       let obj = JSON.parse(strJson);
-      console.info("[testBadge01] component obj is: " + JSON.stringify(obj));
+      console.info("[testBadge01] component obj is: " + JSON.stringify(obj.$attrs.style) + "---" + obj.$attrs.style);
       let style = JSON.parse(obj.$attrs.style);
       expect(obj.$type).assertEqual('Badge');
       expect(style.fontSize).assertEqual('20.00fp');
+      done();
+    });
+
+     it('testBadge03', 0, async function (done) {
+      console.info('[testBadge03] START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "fontSizeValue": -1,
+          }
+        }
+        var innerEvent = {
+          eventId: 63,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testBadge03] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testBadge03] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      let strJsonNew = getInspectorByKey('badge');
+      let objNew = JSON.parse(strJsonNew);
+      let style = JSON.parse(objNew.$attrs.style);
+      console.info("[testBadge03] component objNew is: " + style + "--" + objNew.$attrs.style);
+      expect(style.fontSize).assertEqual('10.00vp');
       done();
     });
 
@@ -86,32 +113,6 @@ export default function badgeJsunit() {
       done();
     });
 
-    it('testBadge03', 0, async function (done) {
-      console.info('[testBadge03] START');
-      await Utils.sleep(1000);
-      try {
-        var eventData = {
-          data: {
-            "fontSizeValue": "-1",
-          }
-        }
-        var innerEvent = {
-          eventId: 63,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testBadge03] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[testBadge03] change component data error: " + err.message);
-      }
-      await Utils.sleep(2000);
-      let strJsonNew = getInspectorByKey('badge');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("[testBadge03] component objNew is: " + JSON.stringify(objNew));
-      let style = JSON.parse(objNew.$attrs.style);
-      expect(style.fontSize).assertEqual('-1.00fp');
-      done();
-    });
 
     it('testBadge04', 0, async function (done) {
       console.info('[testBadge04] START');

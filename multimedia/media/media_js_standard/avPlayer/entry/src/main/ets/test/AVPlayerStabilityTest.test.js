@@ -887,14 +887,14 @@ export default function AVPlayerStabilityTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 end')
         })
 
-        /* *
-           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100
-           * @tc.name      : 001.test create time (wait callback)
-           * @tc.desc      : Local Video test create time (wait callback)
-           * @tc.size      : MediumTest
-           * @tc.type      : Function test
-           * @tc.level     : Level3
-         */
+//        /* *
+//           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100
+//           * @tc.name      : 001.test create time (wait callback)
+//           * @tc.desc      : Local Video test create time (wait callback)
+//           * @tc.size      : MediumTest
+//           * @tc.type      : Function test
+//           * @tc.level     : Level3
+//         */
 //        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100', 0, async function (done) {
 //            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 start')
 //            AVPlayerTestBase.createTimeWithCallback(videos[0], avPlayer, done);

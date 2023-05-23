@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets'
 
@@ -23,7 +23,7 @@ export default function checkBoxGroupPartJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/checkBoxGroup',
+        uri: 'MainAbility/pages/checkBoxGroup',
       }
       try {
         router.clear();
@@ -51,6 +51,7 @@ export default function checkBoxGroupPartJsunit() {
       await Utils.sleep(2000);
       try {
         console.info("testcheckBoxGroupPart_0011 click result is: " + JSON.stringify(sendEventByKey('CheckboxGroup', 10, "")));
+        await Utils.sleep(2000);
         let strJson = getInspectorByKey('Checkbox2');
         console.info("[testcheckBoxGroupPart0011] component select strJson:" + strJson);
         let obj = JSON.parse(strJson);
@@ -69,20 +70,22 @@ export default function checkBoxGroupPartJsunit() {
       await Utils.sleep(2000);
       try {
         console.info("testcheckBoxGroup0001 click result is: " + JSON.stringify(sendEventByKey('CheckboxGroup', 10, "")));
+        await Utils.sleep(2000);
         var innerEvent = {
           eventId: 60301,
           priority: events_emitter.EventPriority.LOW
         }
         var callback = (eventData) => {
           console.info("testcheckBoxGroup0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(0);
-          done();
+          expect(eventData.data.STATUS).assertEqual(2);
+         
         }
         events_emitter.on(innerEvent, callback);
       } catch (err) {
         console.info("testcheckBoxGroup0001 on click err : " + JSON.stringify(err));
       }
       console.info('testcheckBoxGroup0001 END');
+      done();
     })
   })
 }

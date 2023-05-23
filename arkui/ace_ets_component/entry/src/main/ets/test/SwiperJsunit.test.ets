@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils.ets';
 import events_emitter from '@ohos.events.emitter';
@@ -22,7 +22,7 @@ export default function swiperJsunit() {
   describe('swiperTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/swiper',
+        uri: 'MainAbility/pages/swiper',
       }
       try {
         router.clear();
@@ -64,8 +64,9 @@ export default function swiperJsunit() {
       console.info("swiperTest_0200 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("swiperTest_0200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.indicator).assertEqual('true');
-      expect(obj.$attrs.loop).assertEqual('false');
+      let assertObjet = obj.$attrs.indicator;
+      expect(assertObjet).assertTrue();
+      expect(obj.$attrs.loop).assertFalse();
       console.info('swiperTest_0200 END');
       done();
     });
@@ -76,7 +77,7 @@ export default function swiperJsunit() {
       console.info("swiperTest_0300 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("swiperTest_0300 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.duration).assertEqual('1000.000000');
+      expect(obj.$attrs.duration).assertEqual('1000');
       expect(obj.$attrs.vertical).assertEqual('false');
       console.info('swiperTest_0300 END');
       done();
@@ -337,7 +338,8 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_1400 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.indicator).assertEqual('false');
+      let assertObjet = obj.$attrs.indicator;
+      expect(assertObjet).assertTrue();
       console.info('swiperTest_1400 END');
       done();
     });
@@ -363,7 +365,7 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_1500 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.duration).assertEqual('500.000000');
+      expect(objNew.$attrs.duration).assertEqual('500');
       console.info('swiperTest_1500 END');
       done();
     });
@@ -467,7 +469,7 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_1900 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.duration).assertEqual('0.000000');
+      expect(objNew.$attrs.duration).assertEqual('0');
       console.info('swiperTest_1900 END');
       done();
     });
@@ -493,7 +495,7 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_2000 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.duration).assertEqual('400.000000');
+      expect(objNew.$attrs.duration).assertEqual('400');
       console.info('swiperTest_2000 END');
       done();
     });

@@ -17,7 +17,7 @@ import router from '@system.router';
 import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
 
 
-describe('toolbarPropsJsTest', function () {
+describe('toolbarPropsJsTest3', function () {
 
     var name = 'animateMotion', nameA = 'AnimateMotion', labelName = 'animateMotion';
 

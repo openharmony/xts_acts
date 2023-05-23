@@ -40,7 +40,7 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0100
    * @tc.name fileio_mkdir_sync_rmdir_sync_001
    * @tc.desc Test mkdirSync() interfaces.
    * @tc.size MEDIUM
@@ -58,7 +58,7 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0200
    * @tc.name fileio_mkdir_sync_rmdir_sync_002
    * @tc.desc Test mkdirSync() interfaces.
    * @tc.size MEDIUM
@@ -76,9 +76,30 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0300
+   * @tc.name fileio_mkdir_sync_rmdir_sync_003
+   * @tc.desc Test mkdirSync() interfaces.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_mkdir_sync_rmdir_sync_003', 0, async function () {
+    let dpath = await nextFileName('fileio_mkdir_sync_rmdir_sync_003');
+
+    try {
+      fileio.mkdirSync(dpath, undefined);
+      fileio.rmdirSync(dpath);
+    } catch (e) {
+      console.log('fileio_mkdir_sync_rmdir_sync_003 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0000
    * @tc.name fileio_mkdir_async_rmdir_sync_000
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() and rmdirSync() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -98,9 +119,9 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0100
    * @tc.name fileio_mkdir_async_rmdir_sync_001
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() and rmdirSync() interfaces. Callback.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -121,9 +142,9 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0200
    * @tc.name fileio_mkdir_async_rmdir_sync_002
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() and rmdirSync() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -143,9 +164,9 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0030
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0300
    * @tc.name fileio_mkdir_async_rmdir_sync_003
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() and rmdirSync() interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -165,9 +186,9 @@ describe('fileio_mkdir_rmdir', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0040
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0400
    * @tc.name fileio_mkdir_async_rmdir_sync_004
-   * @tc.desc Test mkdirAsync() and interfaces.
+   * @tc.desc Test mkdir() and interfaces. Promise.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -178,25 +199,60 @@ describe('fileio_mkdir_rmdir', function () {
       expect(await fileio.mkdir(12) == null).assertTrue();
       expect(null).assertFail();
     } catch (e) {
+      console.log('fileio_mkdir_async_rmdir_sync_004 has failed for ' + e);
       done();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0050
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0500
    * @tc.name fileio_mkdir_async_rmdir_sync_005
-   * @tc.desc Test mkdirAsync()interfaces.
+   * @tc.desc Test mkdir() interfaces. Promise.
+   * Undefined option arguments, use default options.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
    * @tc.require
    */
   it('fileio_mkdir_async_rmdir_sync_005', 0, async function (done) {
+    let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_005');
+
     try {
-      expect(await fileio.mkdir('/').indexOf('<pending>') > -1).assertTrue();
-      expect(null).assertFail();
-    } catch (e) {
+      await fileio.mkdir(dpath, undefined);
+      fileio.rmdirSync(dpath);
       done();
+    } catch (e) {
+      console.log('fileio_mkdir_async_rmdir_sync_005 has failed for ' + e);
+      expect(false).assertTrue();
     }
   });
-});}
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0600
+   * @tc.name fileio_mkdir_async_rmdir_sync_006
+   * @tc.desc Test mkdir() interfaces. Callback.
+   * Undefined option arguments, use default options.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_mkdir_async_rmdir_sync_006', 0, async function (done) {
+    let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_006');
+
+    try {
+      fileio.mkdir(dpath, undefined, (err) => {
+        if (err) {
+          console.log('fileio_mkdir_async_rmdir_sync_006 error: ' + e);
+          expect(false).assertTrue();
+        }
+        fileio.rmdirSync(dpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileio_mkdir_async_rmdir_sync_006 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+});
+}

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function grid_rowOnBreakpointChangeJsunit() {
@@ -22,7 +22,7 @@ export default function grid_rowOnBreakpointChangeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/grid_row',
+        uri: 'MainAbility/pages/grid_row',
       }
       try {
         router.clear();

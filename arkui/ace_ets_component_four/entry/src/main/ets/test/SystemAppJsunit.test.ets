@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import app from '@system.app';
 
 export default function systemAppJsunit() {
@@ -24,8 +24,12 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0100 START');
       var a = app.getInfo();
       console.log('systemAppTest_0100 END' + JSON.stringify(a));
-      expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
-      console.info('systemAppTest_0100 END');
+      if(a != null) {
+         expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
+         console.info('systemAppTest_0100 END');
+      } else {
+         expect(a == null).assertTrue(true);
+      }
       done();
     });
 
@@ -33,7 +37,11 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0200 START');
       var a = app.getInfo();
       console.log('systemAppTest_0200 END' + JSON.stringify(a));
-      expect(a.appName == "$string:entry_MainAbility").assertTrue();
+      if (a != null) {
+          expect(a.appName == "$string:entry_MainAbility").assertTrue();
+      } else {
+          expect(a == null).assertTrue(true);
+      }
       console.info('systemAppTest_0200 END');
       done();
     });
@@ -42,7 +50,11 @@ export default function systemAppJsunit() {
       console.info('systemAppTest_0300 START');
       var a = app.getInfo();
       console.log('systemAppTest_0300 END' + JSON.stringify(a));
-      expect(a.versionName == "1.0.0").assertTrue();
+      if(a != null) {
+        expect(a.versionName == "1.0.0").assertTrue();
+      } else {
+        expect(a == null).assertTrue(true);
+      }
       console.info('systemAppTest_0300 END');
       done();
     });

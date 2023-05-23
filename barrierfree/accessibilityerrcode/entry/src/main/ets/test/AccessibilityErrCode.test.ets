@@ -33,7 +33,7 @@ export default function abilityTest() {
 
     afterEach(async function (done) {
       console.info(`AccessibilityErrCode: afterEach starts`);
-      setTimeout(done, 1000);
+      done();
     })
 
     /* Cases for namespace accessibility */

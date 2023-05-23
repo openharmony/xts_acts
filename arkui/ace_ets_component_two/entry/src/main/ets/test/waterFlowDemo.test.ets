@@ -24,7 +24,7 @@ export default function waterFlowDemoJsunit() {
     beforeAll(async function (done) {
       console.info("waterFlow beforeEach start");
       let options = {
-        uri: 'pages/WaterflowDemo',
+        uri: 'MainAbility/pages/WaterflowDemo',
       }
       try {
         router.clear();

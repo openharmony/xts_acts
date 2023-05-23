@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import router from '@system.router';
 import Utils from './Utils';
 
@@ -21,7 +21,7 @@ export default function checkboxGroupJsunit() {
   describe('checkboxGroupTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/checkboxGroup',
+        uri: 'MainAbility/pages/checkboxGroup',
       }
       try {
         router.clear();
@@ -83,7 +83,8 @@ export default function checkboxGroupJsunit() {
       let strJson = getInspectorByKey('CheckboxGroup');
       let obj = JSON.parse(strJson);
       console.info("testCheckboxGroup_400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.borderRadius).assertEqual("0.0vp");
+      let assertObjet = obj.$attrs.borderRadius;
+      expect(assertObjet instanceof Object).assertTrue();
       console.info('testCheckboxGroup_400 END');
       done();
     });

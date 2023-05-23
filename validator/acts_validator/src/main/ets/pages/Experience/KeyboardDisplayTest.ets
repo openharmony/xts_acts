@@ -29,6 +29,7 @@ struct CustomContainerUser {
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: string = '0';
+  scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
@@ -37,70 +38,71 @@ struct CustomContainerUser {
   @Builder specificNoParam() {
     Column() {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Column(){
-          Row(){
-            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
-              .fontColor(Color.White).fontSize('24fp')
-          }
-          Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入信息` + '\n' + '\n' +
-            '3.新建一条信息显示输入框'+ '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择完成时延>键盘按键弹出`+ '\n' + '\n' +
-            `5.点击输入框等待键盘弹出` + '\n' + '\n' + '6.待脚本执行结束回到Validator点击结束键' + '\n' + '\n'
-            + `7.若弹出键盘时延小于或等于1000ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
-              .fontColor(Color.White).fontSize('20fp')
-          }
-          Row(){
-            Column(){
-              Button(`开始`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(this.StartEnable)
-                .opacity(this.StartEnable? 1 : 0.4)
-                .onClick(async () => {
-                  this.StartEnable = !this.StartEnable;
-                  let bundleName=new String("com.ohos.mms").toString();
-                  let abilityName=new String("com.ohos.mms.MainAbility").toString();
-                  let str = {
-                    "bundleName": bundleName,
-                    "abilityName": abilityName,
-                  }
+        Scroll(this.scroller) {
+          Column(){
+            Row(){
+              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+                .fontColor(Color.White).fontSize('24fp')
+            }
+            Row(){
+              Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入信息` + '\n' + '\n' +
+              '3.新建一条信息显示输入框'+ '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择完成时延>键盘按键弹出`+ '\n' + '\n' +
+              `5.点击输入框等待键盘弹出` + '\n' + '\n' + '6.待脚本执行结束回到Validator点击结束键' + '\n' + '\n'
+              + `7.若弹出键盘时延小于或等于1000ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
+                .fontColor(Color.White).fontSize('20fp')
+            }
+            Row(){
+              Column(){
+                Button(`开始`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .enabled(this.StartEnable)
+                  .opacity(this.StartEnable? 1 : 0.4)
+                  .onClick(async () => {
+                    this.StartEnable = !this.StartEnable;
+                    let bundleName=new String("com.ohos.mms").toString();
+                    let abilityName=new String("com.ohos.mms.MainAbility").toString();
+                    let str = {
+                      "bundleName": bundleName,
+                      "abilityName": abilityName,
+                    }
 
-                  globalThis.abilityContext.startAbility(str, (err, data) => {
-                    if(err) {
-                      return;
+                    globalThis.abilityContext.startAbility(str, (err, data) => {
+                      if(err) {
+                        return;
+                      }
+                    })
+                  })
+              }
+              Column(){
+                Button(`结束`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .enabled(!this.StartEnable)
+                  .opacity(!this.StartEnable? 1 : 0.4)
+                  .onClick(() => {
+                    this.StartEnable = !this.StartEnable
+                    let fd = fileio.openSync(Xpath, 0o100 | 0o2002, 0o664);
+                    let buf = new ArrayBuffer(4096);
+                    fileio.readSync(fd,buf);
+                    let report = String.fromCharCode.apply(null,new Uint8Array(buf));
+                    let head = report.indexOf(":");
+                    this.time = report.substring(head+1);
+                    let time = parseFloat(this.time)
+                    if( 0 < time && time < 1000 ) {
+                      this.Vue = true;
                     }
                   })
-                })
+              }
             }
-            Column(){
-              Button(`结束`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(!this.StartEnable)
-                .opacity(!this.StartEnable? 1 : 0.4)
-                .onClick(() => {
-                  this.StartEnable = !this.StartEnable
-                  let fd = fileio.openSync(Xpath, 0o100 | 0o2002, 0o664);
-                  let buf = new ArrayBuffer(4096);
-                  fileio.readSync(fd,buf);
-                  let report = String.fromCharCode.apply(null,new Uint8Array(buf));
-                  let head = report.indexOf(":");
-                  this.time = report.substring(head+1);
-                  let time = parseFloat(this.time)
-                  if( 0 < time && time < 1000 ) {
-                    this.Vue = true;
-                  }
-                })
+            Row(){
+              Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `输入键盘弹出时延：` + this.time + 'ms' )
+                .fontColor(Color.White).fontSize('24fp')
             }
-          }
-          Row(){
-            Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `输入键盘弹出时延：` + this.time + 'ms' )
-              .fontColor(Color.White).fontSize('24fp')
           }
         }
-
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)

@@ -767,7 +767,7 @@ struct SliderTest {
               style: SliderStyle.InSet
             })
               .key('ArkUX_Stage_Slider_blockSize_1800')
-              .blockSize({ width: "20lsp", height: "20lsp" })
+              .blockSize({ width: "20lpx", height: "20lpx" })
           }
           ListItem() {
             Slider({

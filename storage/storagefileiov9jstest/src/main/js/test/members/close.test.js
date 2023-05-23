@@ -37,10 +37,10 @@ describe('fileIO_fs_close', function () {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       fileIO.closeSync(file.fd);
-      fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_close_sync_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 
@@ -64,6 +64,7 @@ describe('fileIO_fs_close', function () {
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_close_sync_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 
@@ -183,7 +184,6 @@ describe('fileIO_fs_close', function () {
           console.log('fileIO_test_close_async_000 error package: ' + JSON.stringify(err));
           expect(false).assertTrue();
         }
-        fileIO.closeSync(file);
         fileIO.unlinkSync(fpath);
         done();
       });
@@ -240,7 +240,6 @@ describe('fileIO_fs_close', function () {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       await fileIO.close(file.fd);
-      await fileIO.close(file);
       fileIO.unlinkSync(fpath);
       done();
     } catch (e) {

@@ -25,7 +25,7 @@ describe('AccessibleCaptionConfiguration', function () {
 
   afterEach(async function (done) {
     console.info(`AccessibleCaptionConfiguration: afterEach starts`);
-    setTimeout(done, 1000);
+    done();
   })
 
 

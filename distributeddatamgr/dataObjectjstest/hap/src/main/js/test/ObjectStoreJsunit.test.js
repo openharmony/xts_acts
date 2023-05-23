@@ -726,7 +726,7 @@ export default function objectStoreTest() {
             g_object.setSessionId("testSession001");
             expect("testSession001" == g_object.__sessionId).assertEqual(true);
     
-            g_object.save("local").then((ret) => {
+            await g_object.save("local").then((ret) => {
                 expect(ret.sessionId == "testSession001").assertEqual(true);
                 expect(ret.version == g_object.__version).assertEqual(true);
                 expect(ret.deviceId == "local").assertEqual(true);

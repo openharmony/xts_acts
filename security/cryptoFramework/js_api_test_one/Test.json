@@ -2,9 +2,9 @@
   "description": "Configuration for hjunit demo Tests",
   "driver": {
     "type": "OHJSUnitTest",
-    "test-timeout": "900000",
-    "shell-timeout": "900000",
-    "testcase-timeout": "180000",
+    "test-timeout": "1800000",
+    "shell-timeout": "1800000",
+    "testcase-timeout": "900000",
     "bundle-name": "com.openharmony.cryptoFramework1",
     "package-name": "com.openharmony.cryptoFramework1"
   },

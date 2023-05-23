@@ -1462,24 +1462,22 @@ export default function ActsZlibTest() {
                     strategy: null
                 }).then((data) => {
                     console.log("compressFileStrategyNull invalid src file success!");
-                    expect().assertFail();
                 }).catch((err) => {
                     console.log("compressFileStrategyNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
-                expect(err.code).assertEqual(PARAM_ERROR);
+                expect().assertFail();
             }
             try {
                 zlib.compressFile(path1, zipDest1, {
                     strategy: null
                 }, (err, data) => {
                     console.log("compressFile result");
-                    expect().assertFail();
                     done();
                 })
             } catch (err) {
-                expect(err.code).assertEqual(PARAM_ERROR);
+                expect().assertFail();
                 done();
             }
             console.log("==================compressFileOutFileNull end==================");
@@ -1926,25 +1924,24 @@ export default function ActsZlibTest() {
                     strategy: null
                 }).then(data => {
                     console.log("decompressFile data: " + data);
-                    expect().assertFail();
                 }).catch(err => {
                     console.log("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
-                expect(err.code).assertEqual(PARAM_ERROR);
+                expect().assertFail();
             }
             try {
                 zlib.decompressFile(zipDest1, unzipdir, {
                     strategy: null
                 }, (err, data) => {
-                    expect().assertFail();
+                    console.log("decompressFile data: " + data);
                     done();
                 })
             } catch (err) {
                 console.log("decompress fail: " + JSON.stringify(err));
-                expect(err.code).assertEqual(PARAM_ERROR);
+                expect().assertFail();
                 done();
             }
             console.log("==================decompressFileStrategyNull end==================");

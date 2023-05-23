@@ -17,7 +17,7 @@ import router from '@system.router';
 import {describe, beforeAll,afterAll, it, expect} from 'deccjsunit/index';
 
 
-describe('toolbarPropsJsTest', function () {
+describe('toolbarPropsJsTest5', function () {
 
     var name = 'toolbarItem', nameA = 'ToolbarItem', labelName = "toolbar-item";
 

@@ -53,7 +53,7 @@ struct ProgressScaleCount {
       Text('Ring Progress').fontSize(9).fontColor(0xCCCCCC).width('90%')
       Row({ space: 40 }) {
         Progress({ value: 10, type: ProgressType.Ring }).width(100)
-        Progress({ value: 20, total: 150, type: ProgressType.Ring })
+        Progress({ value: 20, total: 150, type: ProgressType.ScaleRing })
           .color(Color.Grey).value(50).width(100)
           .style({ strokeWidth: 20, scaleCount: 30, scaleWidth: 20 })
       }

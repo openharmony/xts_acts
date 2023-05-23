@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gestureSetDirectionJsunit() {
@@ -23,7 +23,7 @@ export default function gestureSetDirectionJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/gesture',
+        uri: 'MainAbility/pages/gesture',
       }
       try {
         router.clear();

@@ -11,7 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
+base_root = "../../../../../../../../"
+import("$base_root/test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsUserauthnopermissionTest") {
   hap_profile = "./src/main/config.json"

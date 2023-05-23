@@ -56,6 +56,8 @@ struct Index {
     @State webVisibility: Visibility = Visibility.Visible
     @State isProgressFinish:boolean=false
     @State isHttpErrorReceive:boolean=false
+    @State isLargeThan:boolean=false
+
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -414,7 +416,7 @@ struct Index {
                         case "emitOnHttpErrorReceive":{
                             this.isHttpErrorReceive=true
                             await Utils.sleep(1000)
-                            this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})
+                            this.controller.loadUrl({url:'http://1.1.1.123/index.html'})
                             break;
                         }
                         case "emitOnTitleReceive":{
@@ -651,7 +653,11 @@ struct Index {
                 if(this.isHttpErrorReceive){
                     console.info("isHttpErrorReceive==>")
                     this.httpErrorReceive = event.response.getResponseCode()
-                    Utils.emitEvent(this.httpErrorReceive,66)
+                    if(this.httpErrorReceive>400){
+                        this.isLargeThan=true
+                        Utils.emitEvent(this.isLargeThan,66)
+                    }
+                    this.isLargeThan=false
                     this.isHttpErrorReceive=false
                 }
             })

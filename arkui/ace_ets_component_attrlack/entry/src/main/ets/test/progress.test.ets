@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function progressScaleCountJsunit() {
@@ -22,7 +22,7 @@ export default function progressScaleCountJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/progress',
+        uri: 'MainAbility/pages/progress',
       }
       try {
         router.clear();
@@ -57,8 +57,9 @@ export default function progressScaleCountJsunit() {
       console.info("[testprogressScaleCount0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.style.scaleCount).assertEqual("15");
-      console.info("[testprogressScaleCount0001] style.scaleCount value :" + obj.$attrs.style.scaleCount);
+      console.info("[testprogressScaleCount0001] style.scaleCount value :" + obj.$attrs.style);
+      let jsonObject = JSON.parse(obj.$attrs.style);
+      expect(jsonObject.scaleCount).assertEqual("15");
       done();
     });
 
@@ -74,8 +75,9 @@ export default function progressScaleCountJsunit() {
       console.info("[testprogressScaleCount0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Progress');
-      expect(obj.$attrs.style.scaleWidth).assertEqual('5.00vp');
-      console.info("[testprogressScaleCount0002] style.scaleWidth value :" + obj.$attrs.style.scaleWidth);
+      console.info("[testprogressScaleCount0002] style.scaleWidth value :" + obj.$attrs.style);
+      let jsonObject = JSON.parse(obj.$attrs.style);
+      expect(jsonObject.scaleWidth).assertEqual('5.00vp');
       done();
     });
   })

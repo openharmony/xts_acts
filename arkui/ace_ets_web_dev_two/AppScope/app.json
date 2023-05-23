@@ -11,10 +11,10 @@
         "distributedNotificationEnabled": true,
         "keepAlive": true,
         "singleUser": true,
-        "minAPIVersion": 9,
-        "targetAPIVersion": 9,
+        "minAPIVersion": 10,
+        "targetAPIVersion": 10,
         "car": {
-            "apiCompatibleVersion": 9,
+            "apiCompatibleVersion": 10,
             "singleUser": false
         }
     }

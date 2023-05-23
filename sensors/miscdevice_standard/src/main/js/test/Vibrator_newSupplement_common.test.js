@@ -67,7 +67,7 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0290
      */
     it("VibratorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        vibrator.vibrate({
+        vibrator.startVibration({
             type: "time",
             duration: 1000
         }, {
@@ -93,7 +93,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "",
                 duration: 1000
             }, {
@@ -123,7 +123,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "",
                 count: 3,
@@ -155,7 +155,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate(null, null);
+            vibrator.startVibration(null, null);
         } catch (error) {
             console.info(error);
             expect(true).assertTrue();
@@ -169,7 +169,7 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0350
      */
     it("VibratorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        await vibrator.vibrate({
+        await vibrator.startVibration({
             type: "time",
             duration: 1000,
         }, {
@@ -189,7 +189,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            await vibrator.vibrate({
+            await vibrator.startVibration({
                 type: "",
                 duration: 1000
             }, {
@@ -215,7 +215,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "",
                 count: 3,
@@ -243,7 +243,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: 1,
                 count: 3,
             }, {
@@ -264,7 +264,7 @@ describe("VibratorJsTest_misc_3", function () {
     it("VibratorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "time",
                     duration: 100
                 }, {
@@ -283,7 +283,7 @@ describe("VibratorJsTest_misc_3", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "time",
                 duration: 100
             }, {
@@ -313,7 +313,7 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0500
      */
     it("VibratorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        vibrator.vibrate({
+        vibrator.startVibration({
             type: "time",
             duration: 1000
         }, {
@@ -340,7 +340,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "",
                 duration: 1000
             }, {
@@ -371,7 +371,7 @@ describe("VibratorJsTest_misc_3", function () {
      */
     it("VibratorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "",
                 count: 3,

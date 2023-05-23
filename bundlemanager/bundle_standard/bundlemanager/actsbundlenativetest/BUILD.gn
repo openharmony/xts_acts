@@ -32,7 +32,7 @@ ohos_js_hap_suite("ActsBundleNativeTest") {
 }
 
 ohos_prebuilt_shared_library("libcppsharedso") {
-  source = "//prebuilts/clang/ohos/linux-x86_64/libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so"
+  source = rebase_path(libcxx_ndk_shared_file)
 }
 
 ohos_js_assets("ace_third_ets_assets") {

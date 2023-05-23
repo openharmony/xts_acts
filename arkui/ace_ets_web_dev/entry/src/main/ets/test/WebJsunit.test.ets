@@ -449,7 +449,7 @@ export default function webJsunit() {
      */
     it('onHttpErrorReceive',0,async function(done){
       emitKey="emitOnTitleReceive";
-      Utils.registerEvent("onHttpErrorReceive",404,66,done);
+      Utils.registerEvent("onHttpErrorReceive",true,66,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*

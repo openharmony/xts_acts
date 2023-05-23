@@ -201,6 +201,22 @@ describe("BytraceTest", function () {
         console.info("------DFX_DFR_Bytrace_0500 end------");
         done();
     })
+    
+    it("DFX_DFR_Bytrace_0600", 0, async function (done) {
+        console.info("-------DFX_DFR_Bytrace_0600 start--------");
+        let flag = true;
+        try {
+            bytrace.startTrace("funcA", 111, undefined);
+            expect(flag).assertTrue();
+        } catch (err) {
+            flag = false;
+            console.info("DFX_DFR_Bytrace_0600 fail!");
+            console.info("DFX_DFR_Bytrace_0600 err = " + err);
+            expect(flag).assertTrue();
+        }
+        console.info("------DFX_DFR_Bytrace_0600 end------");
+        done();
+    })
 
 })
 }

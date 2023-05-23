@@ -19,5 +19,6 @@ group("inputmethod") {
     "InputMethodEngine:ActsInputMethodEngineTest",
     "InputMethodTest_Stage:ActsImeAbilityTest",
     "InputMethodTest_ets:ActsInputMethodEtsTest",
+    "InputMethodWindManage:ActsInputMethodWindManageTest",
   ]
 }

@@ -40,8 +40,8 @@ static napi_value GetFileList(napi_env env, napi_callback_info info)
     int count = OH_ResourceManager_GetRawFileCount(rawDir);
     std::vector<std::string> tempArray;
     for(int i = 0; i < count; i++) {
-        std::string filename = OH_ResourceManager_GetRawFileName(rawDir, i);
-        tempArray.emplace_back(filename);
+        std::string rawfilename = OH_ResourceManager_GetRawFileName(rawDir, i);
+        tempArray.emplace_back(rawfilename);
     }
 
     napi_value fileList;

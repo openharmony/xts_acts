@@ -204,5 +204,41 @@ export default function stageAppContextTest(abilityContext) {
             expect(result.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
             done();
         });
+        
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_1600
+         * @tc.name: getProcessRunningInformation test 1
+         * getProcessRunningInformation test
+         * @tc.desc: Function test
+         * @tc.level   3
+         */
+        it('SUB_AA_OpenHarmony_ApplicationContext_1600', 0, async function (done) {
+            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1600";
+            console.log(TAG + " --- start");
+            let context = globalThis.abilityStageContext.getApplicationContext();
+            context.getProcessRunningInformation().then((data) => {
+                console.log(TAG + " result = " + JSON.stringify(data));
+                expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
+            })
+            done();
+        });
+
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_1700
+         * @tc.name: getProcessRunningInformation test 2
+         * getProcessRunningInformation test
+         * @tc.desc: Function test
+         * @tc.level   3
+         */
+        it('SUB_AA_OpenHarmony_ApplicationContext_1700', 0, async function (done) {
+            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1700";
+            console.log(TAG + " --- start");
+            let context = globalThis.abilityStageContext.getApplicationContext();
+            context.getProcessRunningInformation((err, data) => {
+                console.log(TAG + " result = " + JSON.stringify(data));
+                expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
+            })
+            done();
+        });
     })
 }

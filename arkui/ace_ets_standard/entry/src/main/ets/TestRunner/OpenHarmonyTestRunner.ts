@@ -1,6 +1,5 @@
-// @ts-nocheck
-/**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,25 +20,25 @@ var abilityDelegatorArguments = undefined
 
 function translateParamsToString(parameters) {
     const keySet = new Set([
-        '-s class', '-s notClass', '-s suite', '-s itName',
+        '-s class', '-s notClass', '-s suite', '-s it',
         '-s level', '-s testType', '-s size', '-s timeout',
-        '-s package'
+        '-s dryRun'
     ])
     let targetParams = '';
     for (const key in parameters) {
         if (keySet.has(key)) {
-            targetParams += ' ' + key + ' ' + parameters[key]
+            targetParams = `${targetParams} ${key} ${parameters[key]}`
         }
     }
     return targetParams.trim()
 }
 
 async function onAbilityCreateCallback() {
-    console.log('onAbilityCreateCallback');
+    console.log("onAbilityCreateCallback");
 }
 
 async function addAbilityMonitorCallback(err: any) {
-    console.info('addAbilityMonitorCallback : ' + JSON.stringify(err))
+    console.info("addAbilityMonitorCallback : " + JSON.stringify(err))
 }
 
 export default class OpenHarmonyTestRunner implements TestRunner {
@@ -47,22 +46,26 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     }
 
     onPrepare() {
-        console.info('OpenHarmonyTestRunner OnPrepare')
+        console.info("OpenHarmonyTestRunner OnPrepare ")
     }
 
-    onRun() {
+    async onRun() {
         console.log('OpenHarmonyTestRunner onRun run')
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-
+        var testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
+        var cmd = 'aa start -d 0 -a com.open.harmony.myapplication.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
+        var debug = abilityDelegatorArguments.parameters["-D"]
+        if (debug == 'true')
+        {
+            cmd += ' -D'
+        }
         console.info('cmd : '+cmd)
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
@@ -70,9 +73,6 @@ export default class OpenHarmonyTestRunner implements TestRunner {
                 console.info('executeShellCommand : data : ' + d.stdResult);
                 console.info('executeShellCommand : data : ' + d.exitCode);
             })
-        console.info('OpenHarmonyTestRunner onRun call abilityDelegator.getAppContext')
-        var context = abilityDelegator.getAppContext()
-        console.info('getAppContext : ' + JSON.stringify(context))
         console.info('OpenHarmonyTestRunner onRun end')
     }
 };

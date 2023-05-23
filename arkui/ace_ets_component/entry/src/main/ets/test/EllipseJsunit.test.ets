@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
@@ -23,7 +23,7 @@ export default function ellipseJsunit() {
     beforeEach(async function (done) {
       console.info("ellipse beforeEach start");
       let options = {
-        uri: 'pages/ellipse',
+        uri: 'MainAbility/pages/ellipse',
       }
       try {
         router.clear();
@@ -183,7 +183,7 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse06] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.height).assertEqual('-40.00px');
+      expect(obj.$attrs.height).assertEqual('0.00px');
       console.info('testEllipse06 END');
       done();
     });
@@ -209,7 +209,7 @@ export default function ellipseJsunit() {
       let strJson = getInspectorByKey('ellipse');
       let obj = JSON.parse(strJson);
       console.info("[testEllipse07] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('-10.00px');
+      expect(obj.$attrs.width).assertEqual('0.00px');
       console.info('testEllipse07 END');
       done();
     });

@@ -15,7 +15,7 @@
 
 import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function commonColorModeJsunit() {
@@ -23,7 +23,7 @@ export default function commonColorModeJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/common',
+        uri: 'MainAbility/pages/common',
       }
       try {
         router.clear();
@@ -58,8 +58,9 @@ export default function commonColorModeJsunit() {
       console.info("[testCommonColorMode0011] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.backgroundBlurStyle).assertEqual(undefined);
       console.info("[testCommonColorMode0011] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
+      let testObject = obj.$attrs.backgroundBlurStyle;
+      expect(testObject instanceof Object).assertTrue();
       done();
     });
 
@@ -75,8 +76,9 @@ export default function commonColorModeJsunit() {
       console.info("[testCommonColorMode0012] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.backgroundBlurStyle).assertEqual(undefined);
       console.info("[testCommonColorMode0012] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
+      let testObject = obj.$attrs.backgroundBlurStyle;
+      expect(testObject instanceof Object).assertTrue();
       done();
     });
 
@@ -111,8 +113,8 @@ export default function commonColorModeJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       console.info("[testCommonOutset0001] borderImage value :" + obj.$attrs.borderImage);
-      expect(obj.$attrs.borderImage).assertEqual(undefined);
-      console.info("[testCommonOutset0001] borderImage value :" + obj.$attrs.borderImage);
+      let jsonObject = JSON.parse(obj.$attrs.borderImage);
+      expect(jsonObject.width).assertEqual("10.00px");
       done();
     });
 
@@ -128,8 +130,9 @@ export default function commonColorModeJsunit() {
       console.info("[testCommonRepeat0001] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.borderImage).assertEqual(undefined);
       console.info("[testCommonOutset0001] borderImage value :" + obj.$attrs.borderImage);
+      let jsonObject = JSON.parse(obj.$attrs.borderImage);
+      expect(jsonObject.width).assertEqual("10.00px");
       done();
     });
 
@@ -145,8 +148,9 @@ export default function commonColorModeJsunit() {
       console.info("[testCommonSpace0001] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.borderImage).assertEqual(undefined);
       console.info("[testCommonSpace0001] borderImage value :" + obj.$attrs.borderImage);
+      let jsonObject = JSON.parse(obj.$attrs.borderImage);
+      expect(jsonObject.width).assertEqual("10.00px");
       done();
     });
 
@@ -163,8 +167,8 @@ export default function commonColorModeJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       console.info("[testCommonSlice0001] borderImage value :" + obj.$attrs.borderImage);
-      expect(obj.$attrs.borderImage).assertEqual(undefined);
-      console.info("[testCommonSlice0001] borderImage value :" + obj.$attrs.borderImage);
+      let jsonObject = JSON.parse(obj.$attrs.borderImage);
+      expect(jsonObject.width).assertEqual("10.00px");
       done();
     });
 
@@ -184,13 +188,14 @@ export default function commonColorModeJsunit() {
         var callback = (eventData) => {
           console.info("testCommonArea0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(320);
-          done();
         }
-        console.info("testCommonArea0001 click result is: " + JSON.stringify(sendEventByKey('areaText', 10, "")));
         events_emitter.on(innerEvent, callback);
+        console.info("testCommonArea0001 click result is: " + JSON.stringify(sendEventByKey('areaText', 10, "")));
+        await Utils.sleep(2000);
       } catch (err) {
         console.info("testCommonArea0001 on click err : " + JSON.stringify(err));
       }
+      done();
     });
 
     /*
@@ -209,13 +214,15 @@ export default function commonColorModeJsunit() {
         var callback = (eventData) => {
           console.info("testCommonTouches0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(undefined);
-          done();
+
         }
-        console.info("testCommonTouches0001 click result is: " + JSON.stringify(sendEventByKey('touchesText', 10, "")));
         events_emitter.on(innerEvent, callback);
+        console.info("testCommonTouches0001 click result is: " + JSON.stringify(sendEventByKey('touchesText', 10, "")));
+        await Utils.sleep(2000);   
       } catch (err) {
         console.info("testCommonTouches0001 on click err : " + JSON.stringify(err));
       }
+      done();
     });
 
     /*
@@ -234,13 +241,14 @@ export default function commonColorModeJsunit() {
         var callback = (eventData) => {
           console.info("testCommonChangedTouches0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(undefined);
-          done();
         }
-        console.info("changedTouches0001 click is: " + JSON.stringify(sendEventByKey('changedTouchesText', 10, "")));
         events_emitter.on(innerEvent, callback);
+        console.info("changedTouches0001 click is: " + JSON.stringify(sendEventByKey('changedTouchesText', 10, "")));
+        await Utils.sleep(2000);  
       } catch (err) {
         console.info("testCommonChangedTouches0001 on click err : " + JSON.stringify(err));
       }
+      done();
     });
   })
 }

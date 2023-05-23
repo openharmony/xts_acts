@@ -67,7 +67,7 @@ describe("VibratorJsTest_misc_5", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0290
      */
     it("VibratorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        vibrator.vibrate({
+        vibrator.startVibration({
             type: "time",
             duration: 1000
         }, {
@@ -93,7 +93,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "",
                 duration: 1000
             }, {
@@ -122,7 +122,7 @@ describe("VibratorJsTest_misc_5", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0310
      */
     it("VibratorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
+        vibrator.startVibration({
             type: "preset",
             effectId: "haptic.clock.timer",
             count: 1,
@@ -149,7 +149,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "",
                 count: 3,
@@ -181,7 +181,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 3,
@@ -213,7 +213,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate(null, null);
+            vibrator.startVibration(null, null);
         } catch (error) {
             console.info(error);
             expect(true).assertTrue();
@@ -227,7 +227,7 @@ describe("VibratorJsTest_misc_5", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0350
      */
     it("VibratorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        await vibrator.vibrate({
+        await vibrator.startVibration({
             type: "time",
             duration: 1000,
         }, {
@@ -247,7 +247,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            await vibrator.vibrate({
+            await vibrator.startVibration({
                 type: "",
                 duration: 1000
             }, {
@@ -272,7 +272,7 @@ describe("VibratorJsTest_misc_5", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0370
      */
     it("VibratorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        await vibrator.vibrate({
+        await vibrator.startVibration({
             type: "preset",
             effectId: "haptic.clock.timer",
             count: 1,
@@ -293,7 +293,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "",
                 count: 3,
@@ -321,7 +321,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 3,
@@ -349,7 +349,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: 1,
                 count: 3,
             }, {
@@ -370,7 +370,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "time",
                     duration: 100
                 }, {
@@ -389,7 +389,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "time",
                 duration: 100
             }, {
@@ -421,7 +421,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest032", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "preset",
                     effectId: "haptic.clock.timer",
                     count: 1,
@@ -441,7 +441,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "time",
                 duration: 100
             }, {
@@ -473,7 +473,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest033", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "preset",
                     effectId: "haptic.clock.timer",
                     count: 3,
@@ -494,7 +494,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "time",
                 duration: 10000
             }, {
@@ -525,7 +525,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest034", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "preset",
                     effectId: "haptic.clock.timer",
                     count: 1,
@@ -545,7 +545,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 3,
@@ -578,7 +578,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest035", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "time",
                     duration: 3000,
                 }, {
@@ -597,7 +597,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 3,
@@ -630,7 +630,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest036", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "time",
                     duration: 3000,
                 }, {
@@ -649,7 +649,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 1,
@@ -682,7 +682,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest037", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "preset",
                     effectId: "haptic.clock.timer",
                     count: 3,
@@ -702,7 +702,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 3,
@@ -735,7 +735,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest038", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "preset",
                     effectId: "haptic.clock.timer",
                     count: 1,
@@ -755,7 +755,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 1,
@@ -788,7 +788,7 @@ describe("VibratorJsTest_misc_5", function () {
     it("VibratorJsTest039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function vibratePromise() {
             return new Promise((resolve, reject) => {
-                vibrator.vibrate({
+                vibrator.startVibration({
                     type: "preset",
                     effectId: "haptic.clock.timer",
                     count: 1,
@@ -808,7 +808,7 @@ describe("VibratorJsTest_misc_5", function () {
         }
 
         let promise = new Promise((resolve, reject) => {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "haptic.clock.timer",
                 count: 1,
@@ -838,7 +838,7 @@ describe("VibratorJsTest_misc_5", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0500
      */
     it("VibratorJsTest040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        vibrator.vibrate({
+        vibrator.startVibration({
             type: "time",
             duration: 1000
         }, {
@@ -865,7 +865,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "",
                 duration: 1000
             }, {
@@ -895,7 +895,7 @@ describe("VibratorJsTest_misc_5", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0520
      */
     it("VibratorJsTest042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
+        vibrator.startVibration({
             type: "preset",
             effectId: "haptic.clock.timer",
             count: 1,
@@ -923,7 +923,7 @@ describe("VibratorJsTest_misc_5", function () {
      */
     it("VibratorJsTest043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
-            vibrator.vibrate({
+            vibrator.startVibration({
                 type: "preset",
                 effectId: "",
                 count: 3,

@@ -14,7 +14,7 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName,
+  fileio, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
 } from '../../Common';
 
@@ -70,7 +70,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0100
    * @tc.name fileio_test_open_async_001
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -98,7 +98,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0020
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0200
    * @tc.name fileio_test_open_async_002
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -126,7 +126,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0030
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0300
    * @tc.name fileio_test_open_async_003
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -154,7 +154,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0040
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0400
    * @tc.name fileio_test_open_async_004
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -186,7 +186,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0050
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0500
    * @tc.name fileio_test_open_async_005
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -217,7 +217,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0060
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0600
    * @tc.name fileio_test_open_async_006
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -248,7 +248,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0070
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0700
    * @tc.name fileio_test_open_async_007
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -276,7 +276,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0080
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0800
    * @tc.name fileio_test_open_async_008
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -299,7 +299,7 @@ describe('fileio_open', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0090
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_0900
    * @tc.name fileio_test_open_async_009
    * @tc.desc Test openASync() interfaces.
    * @tc.size MEDIUM
@@ -330,6 +330,78 @@ describe('fileio_open', function () {
       });
     } catch (e) {
       expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1000
+   * @tc.name fileio_test_open_async_010
+   * @tc.desc Test open() interfaces.
+   * Use default: flag = O_RDONLY, mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_open_async_010', 3, async function (done) {
+    let fpath = await nextFileName('fileio_test_open_async_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileio.open(fpath, undefined, undefined, (err, fd) => {
+        if (err) {
+          console.log('fileio_test_open_async_010 error: ' + e);
+          expect(false).assertTrue();
+        }
+        expect(isIntNum(fd)).assertTrue();
+        let readLen = fileio.readSync(fd, new ArrayBuffer(4096));
+        expect(readLen == FILE_CONTENT.length).assertTrue();
+        fileio.write(fd, FILE_CONTENT, (err, bytesWritten) => {
+          if (err) {
+            fileio.closeSync(fd);
+            fileio.unlinkSync(fpath);
+            console.log('fileIO_test_open_async_010 error package: ' + err);
+            expect(err.message == 'Bad file descriptor').assertTrue();
+            done();
+          } else {
+            expect(false).assertTrue();
+          }
+        });
+      });
+    } catch (e) {
+      console.log('fileio_test_open_async_010 has failed for ' + e);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_ASYNC_1100
+   * @tc.name fileio_test_open_async_011
+   * @tc.desc Test open() interfaces.
+   * Use default: flag = O_RDONLY, mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_test_open_async_011', 3, async function (done) {
+    let fpath = await nextFileName('fileio_test_open_async_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let fd;
+
+    try {
+      fd = await fileio.open(fpath, undefined, undefined);
+      expect(isIntNum(fd)).assertTrue();
+      let readLen = fileio.readSync(fd, new ArrayBuffer(4096));
+      expect(readLen == FILE_CONTENT.length).assertTrue();
+      fileio.writeSync(fd, FILE_CONTENT);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      console.log('fileio_test_open_async_011 has failed for' + e);
+      expect(e.message == 'Bad file descriptor').assertTrue();
+      done();
     }
   });
 });

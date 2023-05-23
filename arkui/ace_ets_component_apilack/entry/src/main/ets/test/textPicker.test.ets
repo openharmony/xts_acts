@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textPickerDefaultPickerItemHeightJsunit() {
@@ -22,7 +22,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/textPicker',
+        uri: 'MainAbility/pages/textPicker',
       }
       try {
         router.clear();
@@ -176,7 +176,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0009] component padding strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.padding).assertEqual("0.00px");
+      expect(obj.$attrs.padding).assertEqual("0.00vp");
       console.info("[testtextPickerDefaultPickerItemHeight0009] padding value :" + obj.$attrs.padding);
       done();
     });

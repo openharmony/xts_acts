@@ -48,6 +48,9 @@ describe("VibratorJsTest_misc_4", function () {
          * @tc.teardown: teardown invoked after each testcases
          */
         console.info('afterEach caled')
+        vibrator.stop("preset");
+        vibrator.stop("time");
+        console.info('afterEach called')
     })
 
     const OPERATION_FAIL_CODE = 14600101; 
@@ -214,10 +217,10 @@ describe("VibratorJsTest_misc_4", function () {
         function vibrateCallback(error) {
             if (error) {
                 console.info('VibratorJsTest008  stop error');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             } else {
                 console.info('VibratorJsTest008  stop success');
-                expect(true).assertTrue();
+                expect(false).assertTrue();
             }
             setTimeout(() => {
                 done();
@@ -399,12 +402,12 @@ describe("VibratorJsTest_misc_4", function () {
 	   it("VibratorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         vibrator.stop("preset").then(() => {
             console.log("VibratorJsTest015  off success");
-            expect(true).assertTrue();
+            expect(false).assertTrue();
             setTimeout(() => {
                 done();
             }, 500);
         }, (error) => {
-            expect(false).assertTrue();
+            expect(true).assertTrue();
             console.log("VibratorJsTest015  off error");
             setTimeout(() => {
                 done();

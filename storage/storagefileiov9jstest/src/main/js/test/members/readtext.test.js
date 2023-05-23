@@ -119,7 +119,7 @@ describe('fileIO_fs_readtext', function () {
       expect(str == FILE_CONTENT.substring(1, FILE_CONTENT.length + 1)).assertTrue();
       fileIO.unlinkSync(fpath);
     } catch (e) {
-      console.log('fileIO_test_readtext_sync_002 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_readtext_sync_003 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
@@ -239,6 +239,58 @@ describe('fileIO_fs_readtext', function () {
       fileIO.unlinkSync(fpath);
       console.log('fileIO_test_readtext_sync_008 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_0900
+   * @tc.name fileIO_test_readtext_sync_009
+   * @tc.desc Test readtextSync() interfaces.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+  */
+  it('fileIO_test_readtext_sync_009', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_readtext_sync_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let str = fileIO.readTextSync(fpath, undefined);
+      expect(str == FILE_CONTENT).assertTrue();
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_readtext_sync_009 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_SYNC_1000
+   * @tc.name fileIO_test_readtext_sync_010
+   * @tc.desc Test readtextSync() interfaces.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+  */
+  it('fileIO_test_readtext_sync_010', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_readtext_sync_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let str = fileIO.readTextSync(fpath, {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      });
+      expect(str == FILE_CONTENT).assertTrue();
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_readtext_sync_010 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 
@@ -692,6 +744,124 @@ describe('fileIO_fs_readtext', function () {
       console.log('fileIO_test_readtext_async_015 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_1600
+   * @tc.name fileIO_test_readtext_async_016
+   * @tc.desc Test readtext() interfaces. Promise.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_readtext_async_016', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_readtext_async_016');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let str = await fileIO.readText(fpath, undefined);
+      expect(str == FILE_CONTENT).assertTrue();
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_readtext_async_016 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_1700
+   * @tc.name fileIO_test_readtext_async_017
+   * @tc.desc Test readtext() interfaces. Callback.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_readtext_async_017', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_readtext_async_017');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.readText(fpath, undefined, (err, str) => {
+        if (err) {
+          console.log('fileIO_test_readtext_async_017 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(str == FILE_CONTENT).assertTrue();
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_test_readtext_async_017 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_1800
+   * @tc.name fileIO_test_readtext_async_018
+   * @tc.desc Test readtext() interfaces. Promise.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_readtext_async_018', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_readtext_async_018');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let str = await fileIO.readText(fpath, {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      });
+      expect(str == FILE_CONTENT).assertTrue();
+      fileIO.unlinkSync(fpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_readtext_async_018 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_READ_TEXT_ASYNC_1900
+   * @tc.name fileIO_test_readtext_async_019
+   * @tc.desc Test readtext() interfaces. Callback.
+   * Use default option.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_readtext_async_019', 3, async function (done) {
+    let fpath = await nextFileName('fileIO_test_readtext_async_019');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.readText(fpath, {
+        offset: undefined,
+        length: undefined,
+        encoding: undefined
+      }, (err, str) => {
+        if (err) {
+          console.log('fileIO_test_readtext_async_019 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        expect(str == FILE_CONTENT).assertTrue();
+        fileIO.unlinkSync(fpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_test_readtext_async_019 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
     }
   });
 });

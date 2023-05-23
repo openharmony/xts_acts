@@ -23,7 +23,7 @@ export default function pageRouteTest() {
     beforeEach(async function (done) {
       console.info("pageRouteTest beforeEach start");
       let options = {
-        uri: 'pages/pageRoute',
+        uri: 'MainAbility/pages/pageRoute',
         }
       let result;
       try {
@@ -65,6 +65,7 @@ export default function pageRouteTest() {
         console.info("[testOnPageHide01] on events_emitter err : " + JSON.stringify(err));
       }
       console.info('[testOnPageHide01] testSendTouchEvent END');
+      done();
     });
   })
 }

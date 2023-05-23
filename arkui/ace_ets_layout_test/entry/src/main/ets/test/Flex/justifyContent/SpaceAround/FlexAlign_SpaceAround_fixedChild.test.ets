@@ -1,0 +1,136 @@
+/*
+ * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@system.router';
+import CommonFunc from '../../../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../../../MainAbility/common/MessageManager';
+
+export default function flexAlign_SpaceAround_fixedChild() {
+  describe('FlexAlign_SpaceAround_fixedChild', function () {
+    beforeEach(async function (done) {
+      console.info("FlexAlign_SpaceAround_fixedChild beforeEach called");
+      let options = {
+        uri: 'MainAbility/pages/Flex/justifyContent/SpaceAround/FlexAlign_SpaceAround_fixedChild',
+      }
+      try {
+        router.clear();
+        await CommonFunc.sleep(1000);
+        let pages = router.getState();
+        console.info("get FlexAlign_SpaceAround_fixedChild state pages:" + JSON.stringify(pages));
+        if (!("FlexAlign_SpaceAround_fixedChild" == pages.name)) {
+          console.info("get FlexAlign_SpaceAround_fixedChild state pages.name:" + JSON.stringify(pages.name));
+          let result = await router.push(options);
+          console.info("push FlexAlign_SpaceAround_fixedChild page result:" + JSON.stringify(result));
+        }
+      } catch (err) {
+        console.error("push FlexAlign_SpaceAround_fixedChild page error:" + JSON.stringify(err));
+      }
+      await CommonFunc.sleep(2000);
+      done()
+    });
+
+    afterEach(async function () {
+      await CommonFunc.sleep(1000);
+      console.info("FlexAlign_SpaceAround_fixedChild afterEach called");
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEAROUND_TEST_0100
+     * @tc.name      testAlignSpaceAroundRowNoWrapOutRange
+     * @tc.desc      The child component is fixed, and parent component is bound with width and height attributes,
+     *               the layout space of parent is insufficient to meet the spindle layout requirements of child
+     */
+    it('testAlignSpaceAroundRowNoWrapOutRange', 0, async function (done) {
+      console.info('new testAlignSpaceAroundRowNoWrapOutRange START');
+      globalThis.value.message.notify({name:'height', value:200})
+      globalThis.value.message.notify({name:'width', value:400})
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('FlexAlignSpaceAround1');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
+      let locationText1 = CommonFunc.getComponentRect('AlignSpaceAround1');
+      let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround2');
+      let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround3');
+      let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround1');
+      expect(locationText1.top).assertEqual(locationText2.top);
+      expect(locationText2.top).assertEqual(locationText3.top);
+      expect(locationText1.top).assertEqual(locationFlex.top);
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(vp2px(50));
+      expect(locationText1.left).assertEqual(locationFlex.left);
+      expect(locationText1.right).assertEqual(locationText2.left);
+      expect(locationText2.right).assertEqual(locationText3.left);
+      expect(locationText3.right).assertEqual(locationFlex.right);
+      expect(Math.round(locationText1.right - locationText1.left))
+        .assertEqual(Math.round(locationText2.right - locationText2.left));
+      expect(Math.round(locationText3.right - locationText3.left))
+        .assertEqual(Math.round(locationText2.right - locationText2.left));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(400/3)));
+      console.info('new testAlignSpaceAroundRowNoWrapOutRange END');
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_FLEX_JUSTIFYCONTENT_FLEXALIGN_SPACEAROUND_TEST_0200
+     * @tc.name      testAlignSpaceAroundRowNoWrapInRange
+     * @tc.desc      The child component is fixed, and parent component is bound with width and height attributes,
+     *               the layout space of parent meets the spindle layout requirements of child
+     */
+    it('testAlignSpaceAroundRowNoWrapInRange', 0, async function (done) {
+      console.info('new testAlignSpaceAroundRowNoWrapInRange START');
+      globalThis.value.message.notify({name:'height', value:200})
+      globalThis.value.message.notify({name:'width', value:500})
+      await CommonFunc.sleep(3000);
+      let strJson = getInspectorByKey('FlexAlignSpaceAround1');
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Flex');
+      expect(obj.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
+      expect(obj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
+      expect(obj.$attrs.constructor.justifyContent).assertEqual('FlexAlign.SpaceAround');
+      let locationText1 = CommonFunc.getComponentRect('AlignSpaceAround1');
+      let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround2');
+      let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround3');
+      let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround1');
+      expect(locationText1.top).assertEqual(locationText2.top);
+      expect(locationText2.top).assertEqual(locationText3.top);
+      expect(locationText1.top).assertEqual(locationFlex.top);
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(locationText1.right - locationText1.left))
+        .assertEqual(Math.round(locationText2.right - locationText2.left));
+      expect(Math.round(locationText3.right - locationText3.left))
+        .assertEqual(Math.round(locationText2.right - locationText2.left));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.left - locationText1.right))
+        .assertEqual(Math.round(locationText3.left - locationText2.right));
+      expect(Math.round(locationText2.left - locationText1.right)).assertEqual(Math.round(vp2px(50/3)));
+      expect(Math.round(locationText1.left - locationFlex.left))
+        .assertEqual(Math.round(locationFlex.right - locationText3.right));
+      expect(Math.round((locationText1.left - locationFlex.left)*10)/10).assertEqual(Math.round(vp2px(25/3)*10)/10);
+      expect(Math.round(locationText2.left - locationText1.right))
+        .assertEqual(Math.round(2*(locationFlex.right - locationText3.right)));
+      console.info('new testAlignSpaceAroundRowNoWrapInRange END');
+      done();
+    });
+  })
+}

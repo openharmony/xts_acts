@@ -18,7 +18,7 @@ import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 
 export default function flexMargin_AutoJsunit() {
-  describe('flexItemAlignAutoTest', function () {
+  describe('flexItemAlignAutoTest5', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexMargin',

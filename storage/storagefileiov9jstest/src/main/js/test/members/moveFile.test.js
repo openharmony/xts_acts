@@ -189,6 +189,36 @@ export default function fileIOMoveFile() {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_SYNC_0700
+   * @tc.name fileIO_test_moveFile_sync_007
+   * @tc.desc Test moveFileSync() interface.
+   * Undefined option arguments, use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveFile_sync_007', 3, async function () {
+    let dpath = await nextFileName('fileIO_test_moveFile_sync_007');
+    let fpath = dpath + '/file_015.txt';
+    let ddpath = dpath + '/dir_015';
+    let ffpath = ddpath + '/file_015.txt';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.moveFileSync(fpath, ffpath, undefined);
+      let stat = fileIO.statSync(ffpath);
+      expect(stat.size == FILE_CONTENT.length).assertTrue();
+      fileIO.rmdirSync(dpath);
+    } catch (e) {
+      console.log('fileIO_test_moveFile_sync_007 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_0000
    * @tc.name fileIO_test_moveFile_async_000
    * @tc.desc Test moveFile() interface. Promise.
@@ -532,5 +562,74 @@ export default function fileIOMoveFile() {
       expect(false).assertTrue();
     }
   });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_1100
+   * @tc.name fileIO_test_moveFile_async_011
+   * @tc.desc Test moveFile() interface. Promise.
+   * Undefined option arguments, use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveFile_async_011', 3, async function (done) {
+    let dpath = await nextFileName('fileIO_test_moveFile_async_011');
+    let fpath = dpath + '/file_016.txt';
+    let ddpath = dpath + '/dir_016';
+    let ffpath = ddpath + '/file_016.txt';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath, '')).assertTrue();
+
+    try {
+      await fileIO.moveFile(fpath, ffpath, undefined);
+      let stat = fileIO.statSync(ffpath);
+      expect(stat.size == FILE_CONTENT.length).assertTrue();
+      fileIO.rmdirSync(dpath);
+      done();
+    } catch (e) {
+      console.log('fileIO_test_moveFile_async_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
   });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEFILE_ASYNC_1200
+   * @tc.name fileIO_test_moveFile_async_012
+   * @tc.desc Test moveFile() interface. Callback.
+   * Undefined option arguments, use default mode = 0.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveFile_async_012', 3, async function (done) {
+    let dpath = await nextFileName('fileIO_test_moveFile_async_012');
+    let fpath = dpath + '/file_017.txt';
+    let ddpath = dpath + '/dir_017';
+    let ffpath = ddpath + '/file_017.txt';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath, '')).assertTrue();
+
+    try {
+      fileIO.moveFile(fpath, ffpath, undefined, (err) => {
+        if (err) {
+          console.log('fileIO_test_moveFile_async_012 error package: ' + JSON.stringify(err));
+          expect(false).assertTrue();
+        }
+        let stat = fileIO.statSync(ffpath);
+        expect(stat.size == FILE_CONTENT.length).assertTrue();
+        fileIO.rmdirSync(dpath);
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_test_moveFile_async_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+});
 }

@@ -60,6 +60,87 @@ void AddContextDeviceCPU(OH_AI_ContextHandle context) {
     OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
 }
 
+// add nnrt device info
+void AddContextDeviceNNRT(OH_AI_ContextHandle context) {
+    size_t num = 0;
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        return;
+    }
+
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+    std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
+
+    OH_AI_DeviceInfoHandle nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    ASSERT_NE(nnrt_device_info, nullptr);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id);
+    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
+
+    OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
+    printf("==========device_type:%d\n", device_type);
+    ASSERT_EQ(device_type, OH_AI_DEVICETYPE_NNRT);
+
+    OH_AI_DeviceInfoSetPerformanceMode(nnrt_device_info, OH_AI_PERFORMANCE_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPerformanceMode(nnrt_device_info), OH_AI_PERFORMANCE_MEDIUM);
+    OH_AI_DeviceInfoSetPriority(nnrt_device_info, OH_AI_PRIORITY_MEDIUM);
+    ASSERT_EQ(OH_AI_DeviceInfoGetPriority(nnrt_device_info), OH_AI_PRIORITY_MEDIUM);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
+// add nnrt device info by type
+void AddContextDeviceNNRTByType(OH_AI_ContextHandle context) {
+    size_t num = 0;
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        return;
+    }
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+    std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
+
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByType(type);
+    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
+    ASSERT_NE(nnrt_device_info, nullptr);
+
+    OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
+    printf("==========device_type:%d\n", device_type);
+    ASSERT_EQ(device_type, OH_AI_DEVICETYPE_NNRT);
+    ASSERT_EQ(OH_AI_DeviceInfoGetDeviceId(nnrt_device_info), id);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
+// add nnrt device info by name
+void AddContextDeviceNNRTByName(OH_AI_ContextHandle context) {
+    size_t num = 0;
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        return;
+    }
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    auto id = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+    std::cout << "NNRT device: id = " << id << ", name: " << name << ", type:" << type << std::endl;
+
+    auto nnrt_device_info = OH_AI_CreateNNRTDeviceInfoByName(name);
+    OH_AI_DestroyAllNNRTDeviceDescs(&desc);
+    ASSERT_NE(nnrt_device_info, nullptr);
+
+    OH_AI_DeviceType device_type = OH_AI_DeviceInfoGetDeviceType(nnrt_device_info);
+    printf("==========device_type:%d\n", device_type);
+    ASSERT_EQ(device_type, OH_AI_DEVICETYPE_NNRT);
+    ASSERT_EQ(OH_AI_DeviceInfoGetDeviceId(nnrt_device_info), id);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
 // fill data to inputs tensor
 void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_transpose) {
     for (size_t i = 0; i < inputs.handle_num; ++i) {
@@ -95,7 +176,7 @@ void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_t
 }
 
 // compare result after predict
-void CompareResult(OH_AI_TensorHandleArray outputs, string model_name) {
+void CompareResult(OH_AI_TensorHandleArray outputs, string model_name, float atol = 0.01, float rtol = 0.01) {
     printf("==========GetOutput==========\n");
     for (size_t i = 0; i < outputs.handle_num; ++i) {
         OH_AI_TensorHandle tensor = outputs.handle_list[i];
@@ -109,7 +190,7 @@ void CompareResult(OH_AI_TensorHandleArray outputs, string model_name) {
         printf("\n");
         printf("==========compFp32WithTData==========\n");
         string output_file = "/data/test/" + model_name + std::to_string(i) + ".output";
-        bool result = compFp32WithTData(output_data, output_file, 0.01, 0.01, false);
+        bool result = compFp32WithTData(output_data, output_file, atol, rtol, false);
         EXPECT_EQ(result, true);
     }
 }
@@ -1531,3 +1612,112 @@ HWTEST(MSLiteTest, OHOS_Compatible_0001, Function | MediumTest | Level1) {
     CompareResult(outputs, "ml_face_isface");
     OH_AI_ModelDestroy(&model);
 }
+
+// delegate异构：选取第一个NNRT设备
+HWTEST(MSLiteTest, OHOS_NNRT_0001, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ModelDestroy(&model);
+}
+
+// delegate异构：根据类型确定NNRT设备
+HWTEST(MSLiteTest, OHOS_NNRT_0002, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRTByType(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ModelDestroy(&model);
+}
+
+// delegate异构：根据名称确定NNRT设备
+HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRTByName(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ModelDestroy(&model);
+}
+
+// delegate异构：多输入单输出
+HWTEST(MSLiteTest, OHOS_NNRT_0004, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_headpose_pb2tflite.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_headpose_pb2tflite", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
+    OH_AI_ModelDestroy(&model);
+}
+

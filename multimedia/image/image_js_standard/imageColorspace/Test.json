@@ -29,16 +29,14 @@
             "type": "PushKit",
             "push": [
                 "./resource/image/colorspace.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files",
-                 "./resource/image/DisplayP3.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files"
+                "./resource/image/DisplayP3.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/colorspace.jpg",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Colorspace/haps/entry/files/DisplayP3.png"
-               
             ]
         }
     ]

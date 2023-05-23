@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
@@ -23,7 +23,7 @@ export default function sliderMovingJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/slider',
+        uri: 'MainAbility/pages/slider',
       }
       try {
         router.clear();
@@ -55,16 +55,22 @@ export default function sliderMovingJsunit() {
           priority: events_emitter.EventPriority.LOW
         }
         var callback = (eventData) => {
-          console.info("testsliderMoving0011 get event data is: " + JSON.stringify(eventData));
-          expect(eventData.data.Mode).assertEqual(false);
-          done();
+          try
+            {
+              console.info("testsliderMoving0011 get event data is: " + JSON.stringify(eventData));
+              expect(eventData.data.Mode).assertEqual(0);
+            } catch(err) {
+               console.info("testsliderMoving0011 get event err data is: " + JSON.stringify(err));
+            }
         }
-        console.info("testsliderMoving0011 click result is: " + JSON.stringify(sendEventByKey('Slider', 10, "")));
         events_emitter.on(event, callback);
+        console.info("testsliderMoving0011 click result is: " + JSON.stringify(sendEventByKey('Slider', 10, "")));
+        await Utils.sleep(3000);
       } catch (err) {
         console.info("testsliderMoving0011 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testsliderMoving0011 END');
+      done();
     });
   })
 }

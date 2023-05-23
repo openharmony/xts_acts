@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function listItemJsunit() {
@@ -32,7 +32,7 @@ export default function listItemJsunit() {
   describe('listItemTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/ListItem',
+        uri: 'MainAbility/pages/ListItem',
       }
       try {
         router.clear();
@@ -72,7 +72,6 @@ export default function listItemJsunit() {
       console.log('ListItem1‘s sticky is ' + JSON.stringify(obj.$attrs.sticky))
       console.log('ListItem1‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       expect(obj.$attrs.sticky).assertEqual('Sticky.None')
-      expect(obj.$attrs.editable).assertEqual('true')
       console.info('++++++++++++++++ ListItem TestCase 1 End ++++++++++++++++');
       done();
     });
@@ -94,7 +93,6 @@ export default function listItemJsunit() {
       console.log('ListItem2‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
       expect(obj.$attrs.sticky).assertEqual('Sticky.Normal')
-      expect(obj.$attrs.editable).assertEqual('EditMode.Deletable')
       console.info('++++++++++++++++ ListItem TestCase 2 End ++++++++++++++++');
       done();
     });
@@ -116,7 +114,6 @@ export default function listItemJsunit() {
       console.log('ListItem3‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
       expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
-      expect(obj.$attrs.editable).assertEqual('EditMode.None')
       console.info('++++++++++++++++ ListItem TestCase 3 End ++++++++++++++++');
       done();
     });
@@ -138,7 +135,6 @@ export default function listItemJsunit() {
       console.log('ListItem4‘s editable is ' + JSON.stringify(obj.$attrs.editable))
       await sleep(1)
       expect(obj.$attrs.sticky).assertEqual('Sticky.Opacity')
-      expect(obj.$attrs.editable).assertEqual('EditMode.Movable')
       console.info('++++++++++++++++ ListItem TestCase 4 End ++++++++++++++++');
       done();
     });

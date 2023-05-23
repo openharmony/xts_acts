@@ -15,7 +15,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function hoverEffectJsunit() {
@@ -23,7 +23,7 @@ export default function hoverEffectJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/hoverEffect',
+        uri: 'MainAbility/pages/hoverEffect',
       }
       try {
         router.clear();
@@ -58,7 +58,7 @@ export default function hoverEffectJsunit() {
       console.info("[testhoverEffect0001] component hoverEffect strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
+      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Auto');
       console.info("[testhoverEffect0001] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });
@@ -75,7 +75,7 @@ export default function hoverEffectJsunit() {
       console.info("[testhoverEffect0002] component hoverEffect strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
+      expect(obj.$attrs.hoverEffect).assertEqual('HoverEffect.Auto');
       console.info("[testhoverEffect0002] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });

@@ -17,5 +17,5 @@ import Test from './Test'
 
 export default function List() {
   LifeCycleTest()
-//  Test(context)
+  Test(globalThis.abilityContext)
 }

@@ -18,7 +18,7 @@ import {testVideoSeek} from '../../../../../VideoPlayerTestBase.js';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
-describe('VideoPlayerHLSTest', function () {
+describe('VideoPlayerHLSSeekTest', function () {
     const HTTP_PATH = 'http://123.57.24.33:8000/';
     const PLAY_TIME = 3000;
     const pagePath1 = 'pages/surfaceTest/surfaceTest';

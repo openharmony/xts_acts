@@ -28,7 +28,7 @@ export default function webViewStyleJsunit() {
     })
   }
 
-  describe('webViewStyleTest', function () {
+  describe('webViewStyleTest1', function () {
     beforeEach(async function (done) {
      console.info("webViewStyleTest beforeEach start");
       let options = {

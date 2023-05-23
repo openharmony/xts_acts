@@ -20,12 +20,12 @@ struct Second {
   private content: string = "Second Page"
 
   build() {
-    Flex({ direction: FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text(`${this.content}`)
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       Button() {
-        Text('back to index')
+        Text('secondPage_BackToIndex')
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
       }.type(ButtonType.Capsule)
@@ -39,5 +39,6 @@ struct Second {
     }
     .width('100%')
     .height('100%')
+    .backgroundColor('#ccc')
   }
 }

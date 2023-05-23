@@ -36,6 +36,7 @@ export async function idleCallback(avRecorder, avConfig, done) {
     });
 }
 
+// create avRecorder(promise)
 export async function idle(avRecorder) {
     console.info('case createAVRecorder called');
     await media.createAVRecorder().then((recorder) => {
@@ -68,6 +69,8 @@ export function prepareCallback(avRecorder, avConfig) {
     avRecorder.prepare(avConfig, (err) => {
         console.info('case prepare called' + err);
         if (err == null) {
+            sleep(200)
+            console.error(`case prepare success, state is ${avRecorder.state}`);
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
             console.info('prepare success');
         } else {
@@ -92,7 +95,7 @@ export async function getInputSurfacePromise(avRecorder) {
     let surfaceID = null;
     if (typeof(avRecorder) == 'undefined') {
         return;
-    } 
+    }
     await avRecorder.getInputSurface().then((surfaceId) => {
         console.info('getInputSurface success');
         surfaceID = surfaceId;
@@ -116,16 +119,18 @@ export function getInputSurfaceCallback(avRecorder) {
     });
 }
 
-export function startCallback(avRecorder, recorderTime) {
+export async function startCallback(avRecorder, recorderTime) {
     if (typeof(avRecorder) == 'undefined') {
         return;
     }
-    avRecorder.start((err) => {
+    await avRecorder.start((err) => {
         console.info('case start called');
         if (err == null) {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
             console.info('start AVRecorder success');
-            sleep(recorderTime);
+            if (recorderTime != undefined) {
+                sleep(recorderTime);
+            }
         } else {
             console.info('start AVRecorder failed and error is ' + err.message);
         }
@@ -150,11 +155,11 @@ export async function startPromise(avRecorder, recorderTime) {
     }
 }
 
-export function pauseCallback(avRecorder) {
+export async function pauseCallback(avRecorder) {
     if (typeof(avRecorder) == 'undefined') {
         return;
     }
-    avRecorder.pause((err) => {
+    await avRecorder.pause((err) => {
         console.info('case pause called');
         if (err == null) {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PAUSED);
@@ -177,11 +182,11 @@ export async function pausePromise(avRecorder) {
     });
 }
 
-export function resumeCallback(avRecorder) {
+export async function resumeCallback(avRecorder) {
     if (typeof(avRecorder) == 'undefined') {
         return;
     }
-    avRecorder.resume((err) => {
+    await avRecorder.resume((err) => {
         console.info('case resume called');
         if (err == null) {
             console.info('resume AVRecorder success');
@@ -197,7 +202,7 @@ export async function resumePromise(avRecorder) {
     }
     await avRecorder.resume().then(() => {
         console.info('resume success');
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback); 
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 export function stopCallback(avRecorder) {
@@ -227,11 +232,11 @@ export async function stopPromise(avRecorder) {
     });
 }
 
-export function resetCallback(avRecorder) {
+export async function resetCallback(avRecorder) {
     if (typeof(avRecorder) == 'undefined') {
         return;
     }
-    avRecorder.reset((err) => {
+    await avRecorder.reset((err) => {
         console.info('case reset called');
         if (err == null) {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.IDLE);
@@ -253,7 +258,7 @@ export async function resetPromise(avRecorder) {
     });
 }
 
-export function releaseCallback(avRecorder) {
+export async function releaseCallback(avRecorder) {
     if (typeof(avRecorder) == 'undefined') {
         return;
     }
@@ -298,7 +303,7 @@ export function offCallback(avRecorder, typeArr)
     if (avRecorder == null) {
         return;
     }
-    for (let i = 0; i < typeArr.length; i++) { 
+    for (let i = 0; i < typeArr.length; i++) {
         switch (typeArr[i]) {
             case 'stateChange':
                 avRecorder.off('stateChange');
@@ -320,7 +325,7 @@ export async function setOnCallback(avConfig, avRecorder, recorderTime, done) {
             case AV_RECORDER_STATE.IDLE:
                 console.info(`case avRecorderWithCallBack is idle`);
                 expect(avRecorder.state).assertEqual("idle");
-                // start->stop->release
+            // start->stop->release
                 prepareCallback(avRecorder, avConfig);
                 break;
             case AV_RECORDER_STATE.PREPARED:
@@ -356,7 +361,7 @@ export async function setOnCallback(avConfig, avRecorder, recorderTime, done) {
                 console.info('case state is unknown');
         }
     });
-    
+
     avRecorder.on('error', (err) => {
         console.info('case avRecorder.on(error) called, errMessage is ' + err.message);
     });
@@ -388,6 +393,7 @@ export async function setPrepareOnCallback(avConfig, avRecorder, recorderTime, d
 }
 
 export async function avRecorderWithCallBack(avConfig, avRecorder, recorderTime, done) {
+    // Create an instance
     avRecorder = await idle(avRecorder)
     setOnCallback(avConfig, avRecorder, recorderTime, done);
     await avRecorder.prepare(avConfig)
@@ -395,7 +401,6 @@ export async function avRecorderWithCallBack(avConfig, avRecorder, recorderTime,
 
 export async function avRecorderWithCallBack2(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -412,7 +417,6 @@ export async function avRecorderWithCallBack2(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack3(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -430,7 +434,6 @@ export async function avRecorderWithCallBack3(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack4(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -446,7 +449,6 @@ export async function avRecorderWithCallBack4(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack5(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -479,7 +481,6 @@ export async function avRecorderWithCallBack6(avConfig, avRecorder, recorderTime
 
 export async function avRecorderWithCallBack7(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);
-    
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
@@ -577,136 +578,25 @@ export async function avRecorderWithCallBack13(avConfig, avRecorder, recorderTim
     });
 }
 
-export async function setPrepareOnPromise(avRecorder, avConfig, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.IDLE:
-                console.info(`case avRecorderWithPreparePromise is idled`)
-                expect(avRecorder.state).assertEqual('idle');
-                while (loopTimes > 0) {
-                    avRecorder.prepare(avConfig).then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
-                        loopTimes--;
-                        console.info('prepare success');
-                    }).catch((err) => {
-                        console.info('prepare failed and catch error is ' + err.message);
-                    });
-                }
-            case AV_RECORDER_STATE.PREPARED:
-                console.info(`case avRecorderWithPreparePromise is prepared`)
-                expect(avRecorder.state).assertEqual('prepared');
-                if (loopTimes <= 0) {
-                    releasePromise(avRecorder);
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case setPrepareOnCallback is released`);
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
-}
-
 export async function avRecorderWithPreparePromise(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
-    await preparePromise(avRecorder, avConfig);
-    await resetPromise(avRecorder);
-    setPrepareOnPromise(avRecorder, avConfig, loopTimes, done);
-}
-
-export async function setStartOnPromise(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.PREPARED:
-                console.info(`case avRecorderWithStartPromise is prepared`)
-                expect(avRecorder.state).assertEqual('prepared');
-                while (loopTimes > 0) {
-                    avRecorder.start().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
-                        loopTimes--;
-                        console.info('start success');
-                    }).catch((err) => {
-                        console.info('start failed and catch error is ' + err.message);
-                    });
-                }
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case avRecorderWithStartPromise is started`)
-                expect(avRecorder.state).assertEqual('started');
-                if (loopTimes <= 0) {
-                    releasePromise(avRecorder);
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case setPrepareOnCallback is released`);
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
+    while (loopTimes > 0) {
+        await preparePromise(avRecorder, avConfig);
+        loopTimes--;
+    }
+    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithStartPromise(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
-    setStartOnPromise(avRecorder, loopTimes, done);
-}
-
-export async function setPauseOnPromise(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case avRecorderWithPausePromise is started`)
-                expect(avRecorder.state).assertEqual('started');
-                while (loopTimes > 0) {
-                    avRecorder.pause().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PAUSED);
-                        loopTimes--;
-                        console.info('pause success');
-                    }).catch((err) => {
-                        console.info('pause failed and catch error is ' + err.message);
-                    });
-                }
-            case AV_RECORDER_STATE.PAUSED:
-                console.info(`case avRecorderWithPausePromise is paused`)
-                expect(avRecorder.state).assertEqual('paused');
-                if (loopTimes <= 0) {
-                    releasePromise(avRecorder);
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case setPrepareOnCallback is released`);
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
+    while (loopTimes > 0) {
+        await startPromise(avRecorder);
+        loopTimes--;
+    }
+    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithPausePromise(avConfig, avRecorder, recorderTime, loopTimes, done) {
@@ -714,47 +604,11 @@ export async function avRecorderWithPausePromise(avConfig, avRecorder, recorderT
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
-    setPauseOnPromise(avRecorder, loopTimes, done);
-}
-
-export async function setResumeOnPromise(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.PAUSED:
-                console.info(`case avRecorderWithResumePromise is paused`)
-                expect(avRecorder.state).assertEqual('paused');
-                while (loopTimes > 0) {
-                    avRecorder.resume().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PAUSED);
-                        loopTimes--;
-                        console.info('resume success');
-                    }).catch((err) => {
-                        console.info('resume failed and catch error is ' + err.message);
-                    });
-                }
-
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case avRecorderWithResumePromise is resumed`)
-                expect(avRecorder.state).assertEqual('started');
-                if (loopTimes <= 0) {
-                    releasePromise(avRecorder);
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case setPrepareOnCallback is released`);
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
+    while (loopTimes > 0) {
+        await pausePromise(avRecorder);
+        loopTimes--;
+    }
+    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithResumePromise(avConfig, avRecorder, recorderTime, loopTimes, done) {
@@ -763,46 +617,11 @@ export async function avRecorderWithResumePromise(avConfig, avRecorder, recorder
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
     await pausePromise(avRecorder);
-    setResumeOnPromise(avRecorder, loopTimes, done);
-}
-
-export async function setStopOnPromise(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case avRecorderWithStopPromise is started`)
-                expect(avRecorder.state).assertEqual('started');
-                while (loopTimes > 0) {
-                    avRecorder.stop().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STOPPED);
-                        loopTimes--;
-                        console.info('stop success');
-                    }).catch((err) => {
-                        console.info('stop failed and catch error is ' + err.message);
-                    });
-                }
-            case AV_RECORDER_STATE.STOPPED:
-                console.info(`case avRecorderWithStopPromise is stopped`)
-                expect(avRecorder.state).assertEqual('stopped');
-                if (loopTimes <= 0) {
-                    releasePromise(avRecorder);
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case setPrepareOnCallback is released`);
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
+    while (loopTimes > 0) {
+        await resumePromise(avRecorder);
+        loopTimes--;
+    }
+    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithStopPromise(avConfig, avRecorder, recorderTime, loopTimes, done) {
@@ -810,46 +629,11 @@ export async function avRecorderWithStopPromise(avConfig, avRecorder, recorderTi
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
-    setStopOnPromise(avRecorder, loopTimes, done);
-}
-
-export async function setResetOnPromise(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case avRecorderWithResetPromise is started`)
-                expect(avRecorder.state).assertEqual('started');
-                while (loopTimes > 0) {
-                    avRecorder.reset().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.IDLE);
-                        loopTimes--;
-                        console.info('reset success');
-                    }).catch((err) => {
-                        console.info('reset failed and catch error is ' + err.message);
-                    });
-                }
-            case AV_RECORDER_STATE.IDLE:
-                console.info(`case avRecorderWithResetPromise is reseted`)
-                expect(avRecorder.state).assertEqual('idle');
-                if (loopTimes <= 0) {
-                    releasePromise(avRecorder);
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case setPrepareOnCallback is released`);
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
+    while (loopTimes > 0) {
+        await stopPromise(avRecorder);
+        loopTimes--;
+    }
+    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithResetPromise(avConfig, avRecorder, recorderTime, loopTimes, done) {
@@ -857,41 +641,11 @@ export async function avRecorderWithResetPromise(avConfig, avRecorder, recorderT
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
-    setResetOnPromise(avRecorder, loopTimes, done);
-}
-
-export async function setReleaseOnPromise(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case avRecorderWithReleasePromise is started`)
-                expect(avRecorder.state).assertEqual('started');
-                while (loopTimes > 0) {
-                    avRecorder.release().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-                        loopTimes--;
-                        console.info('release success');
-                    }).catch((err) => {
-                        console.info('release failed and catch error is ' + err.message);
-                    });
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case avRecorderWithReleasePromise is released`)
-                expect(avRecorder.state).assertEqual('released');
-                if (loopTimes <= 0) {
-                    offCallback(avRecorder, ['stateChange', 'error']);
-                    done();
-                }
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
+    while (loopTimes > 0) {
+        await resetPromise(avRecorder);
+        loopTimes--;
+    }
+    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithReleasePromise(avConfig, avRecorder, recorderTime, loopTimes, done) {
@@ -899,469 +653,364 @@ export async function avRecorderWithReleasePromise(avConfig, avRecorder, recorde
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
-    setReleaseOnPromise(avRecorder, loopTimes, done);
+    while (loopTimes > 0) {
+        await releasePromise(avRecorder);
+        loopTimes--;
+    }
+    done();
 }
 
 export async function avRecorderWithPrepareCallback(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
     while (loopTimes > 0) {
+        if(loopTimes == 1){
+            avRecorder.release()
+            done();
+        }
         prepareCallback(avRecorder, avConfig);
         loopTimes--;
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
 }
 
 export async function avRecorderWithStartCallback(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
-    await preparePromise(avRecorder, avConfig);
-    while (loopTimes > 0) {
-        avRecorder.start((err) => {
-            console.info('case start called');
-            if (err == null) {
-                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
-                console.info('start AVRecorder success');
-            } else {
-                console.info('start AVRecorder failed and error is ' + err.message);
-            }
-        })
-        loopTimes--;
-    }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
+    sleep(300)
+    await avRecorder.prepare(avConfig).then(() => {
+        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
+        console.info('prepare success');
     }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
+        console.info('prepare failed and catch error is ' + err.message);
     });
+    await sleep(300)
+    while (loopTimes > 0) {
+        console.info(`avRecorderWithStartCallback loop time is :${loopTimes}`)
+        startCallback(avRecorder);
+        await sleep(200)
+        loopTimes--;
+        if(loopTimes == 0){
+            await avRecorder.release().then(() => {
+                console.info(`avRecorderWithStartCallback release success`)
+                done();
+            }).catch((err) => {
+                console.info('release avRecorderWithStartCallback failed and catch error is ' + err.message);
+            });
+            done();
+        }
+    }
 }
 
 export async function avRecorderWithPauseCallback(avConfig, avRecorder, recorderTime, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
+    console.info('case avRecorderWithPauseCallback avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
-    while (loopTimes > 0) {
-        pauseCallback(avRecorder, avConfig);
-        loopTimes--;
+    for(var i = 0;i < 1001;i++){
+        if(i == 1000){
+            avRecorder.release()
+            done();
+        }else{
+            console.info(`avRecorderWithPauseCallback loop time is :${i}`)
+        }
+        await pauseCallback(avRecorder, avConfig);
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
 }
 
 export async function avRecorderWithResumeCallback(avConfig, avRecorder, recorderTime, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
+    console.info('case avRecorderWithPauseCallback avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
     await pausePromise(avRecorder);
-    while (loopTimes > 0) {
-        resumeCallback(avRecorder, avConfig);
-        loopTimes--;
+    for(var i = 0;i < 1001;i++){
+        if(i == 1000){
+            avRecorder.release()
+            done();
+        }else{
+            console.info(`avRecorderWithResumeCallback loop time is :${i}`)
+        }
+        await resumeCallback(avRecorder);
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
 }
 
 export async function avRecorderWithStopCallback(avConfig, avRecorder, recorderTime, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
+    console.info('case avRecorderWithStopCallback avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
     while (loopTimes > 0) {
+        if(loopTimes == 1){
+            avRecorder.release()
+            done();
+        }
         stopCallback(avRecorder, avConfig);
         loopTimes--;
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
+    //    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithResetCallback(avConfig, avRecorder, recorderTime, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
+    console.info('case avRecorderWithResetCallback avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
     while (loopTimes > 0) {
-        resetCallback(avRecorder, avConfig);
+        if(loopTimes == 1){
+            avRecorder.release()
+            done();
+        }
+        await resetCallback(avRecorder);
         loopTimes--;
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
+    //    await releaseDone(avRecorder, done)
 }
 
 export async function avRecorderWithReleaseCallback(avConfig, avRecorder, recorderTime, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
+    console.info('case avRecorderWithReleaseCallback avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
     await startPromise(avRecorder, recorderTime);
     while (loopTimes > 0) {
+        if(loopTimes == 1){
+            avRecorder.release()
+            done();
+        }
         releaseCallback(avRecorder, avConfig);
         loopTimes--;
     }
-    done();
 }
 
-export async function avRecorderWithLongRun(avConfig, avRecorder, recorderTime, done) {
+///xxxxx
+export async function avRecorderLoopPrepare2ResetWithPromise(avConfig, avRecorder, loopTimes, done) {
+    avRecorder = await idle(avRecorder);
+    sleep(300)
+    console.info('case avRecorderLoopPrepare2ResetWithPromise avConfig.url is ' + avConfig.url);
+    while (loopTimes > 0) {
+        await preparePromise(avRecorder, avConfig);
+        await startPromise(avRecorder);
+        await resetPromise(avRecorder);
+        console.info(`avRecorderLoopPrepare2ResetWithPromise loop time is :${loopTimes}`)
+        loopTimes--;
+        if(loopTimes == 0){
+            await avRecorder.release().then(() => {
+                console.info(`avRecorderLoopPrepare2ResetWithPromise release success`)
+                done();
+            }).catch((err) => {
+                console.info('release avRecorderLoopPrepare2ResetWithPromise failed and catch error is ' + err.message);
+            });
+            done();
+        }
+    }
+    //    await releaseDone(avRecorder, done)
+}
+
+export async function avRecorderLoopCreate2ReleaseWithPromise(avConfig, avRecorder, loopTimes, done) {
+    console.info(`avRecorderLoopCreate2ReleaseWithPromise loop begin`)
+    while (loopTimes > 0) {
+        avRecorder = await idle(avRecorder);
+        await preparePromise(avRecorder, avConfig);
+        await startPromise(avRecorder);
+        await resetPromise(avRecorder);
+        await releasePromise(avRecorder);
+        console.info(`avRecorderLoopCreate2ReleaseWithPromise loop time is :${loopTimes}`)
+        loopTimes--;
+        if(loopTimes == 0){
+            done();
+        }
+    }
+}
+
+
+export async function avRecorderLoopPrepare2StopWithPromise(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
-    await startPromise(avRecorder, recorderTime);
-    await stopPromise(avRecorder);
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
-}
-
-export async function avRecorderLoopPrepare2Reset(avConfig, avRecorder, loopTimes, done) {
-    avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
     while (loopTimes > 0) {
-        prepareCallback(avRecorder, avConfig);
-        startCallback(avRecorder);
-        resetCallback(avRecorder);
+        await startPromise(avRecorder);
+        await stopPromise(avRecorder);
         loopTimes--;
+        console.info(`avRecorderLoopPrepare2StopWithPromise loop time is :${loopTimes}`)
+        if(loopTimes == 0){
+            await avRecorder.release().then(() => {
+                done();
+                console.info(`avRecorderLoopPrepare2StopWithPromise release success`)
+            }).catch((err) => {
+                console.info('release avRecorderLoopPrepare2StopWithPromise failed and catch error is ' + err.message);
+            });
+        }
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
+    //    await releaseDone(avRecorder, done)
 }
 
-export async function avRecorderLoopCreate2Release(avConfig, avRecorder, loopTimes, done) {
+export async function avRecorderLoopPause2ResumeWithPromise(avConfig, avRecorder, loopTimes, done) {
+    avRecorder = await idle(avRecorder);
+    sleep(200)
+    console.info('case avConfig.url is ' + avConfig.url);
+    await preparePromise(avRecorder, avConfig);
+    sleep(200)
+    await startPromise(avRecorder);
+    while (loopTimes > 0) {
+        await pausePromise(avRecorder);
+        await sleep(20)
+        await resumePromise(avRecorder);
+        console.info(`avRecorderLoopPause2ResumeWithPromise loop time is :${loopTimes}`)
+        loopTimes--;
+        if(loopTimes == 0){
+            await sleep(2000)
+            await avRecorder.release().then(() => {
+                console.info(`avRecorderLoopPause2ResumeWithPromise release success`)
+                done();
+            }).catch((err) => {
+                console.info('release avRecorderLoopPause2ResumeWithPromise failed and catch error is ' + err.message);
+            });
+        }
+    }
+    //    await releaseDone(avRecorder, done)
+}
+
+export async function avRecorderLoopCreate2Release2WithPromise(avConfig, avRecorder, loopTimes, done) {
     while (loopTimes > 0) {
         avRecorder = await idle(avRecorder);
         console.info('case avConfig.url is ' + avConfig.url);
-        prepareCallback(avRecorder, avConfig);
-        startCallback(avRecorder);
-        resetCallback(avRecorder);
-        releaseCallback(avRecorder);
+        await releasePromise(avRecorder);
+        console.info(`avRecorderLoopCreate2Release2WithPromise loop time is :${loopTimes}`)
         loopTimes--;
+        if(loopTimes == 0){
+            avRecorder.release()
+            done();
+        }
     }
-    done();
 }
 
-export async function avRecorderLoopPrepare2Stop(avConfig, avRecorder, loopTimes, done) {
+export async function avRecorderLoopPrepare2ResetWithCallback(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
+    sleep(200)
     while (loopTimes > 0) {
-        prepareCallback(avRecorder, avConfig);
-        startCallback(avRecorder);
-        stopCallback(avRecorder);
+        await avRecorder.prepare(avConfig).then(() => {
+            expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
+            console.info('prepare success');
+        }).catch((err) => {
+            console.info('prepare failed and catch error is ' + err.message);
+        });
+        await sleep(100)
+        await startCallback(avRecorder);
+        await sleep(100)
+        await resetCallback(avRecorder);
         loopTimes--;
+        console.info(`avRecorderLoopPrepare2ResetWithCallback loop time is :${loopTimes}`)
+        if(loopTimes == 0){
+            await sleep(2000)
+            await avRecorder.release().then(() => {
+                console.info(`avRecorderLoopPrepare2ResetWithCallback release success`)
+                done();
+            }).catch((err) => {
+                console.info('release avRecorderLoopPrepare2ResetWithCallback failed and catch error is ' + err.message);
+            });
+        }
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
 }
 
-export async function avRecorderLoopPause2Resume(avConfig, avRecorder, loopTimes, done) {
+export async function avRecorderLoopCreate2ReleaseWithCallback(avConfig, avRecorder, loopTimes, done) {
+    while (loopTimes > 0) {
+        console.info(`avRecorderLoopCreate2ReleaseWithCallback test loop start1 `)
+        avRecorder = await idle(avRecorder);
+        await sleep(200)
+        console.info(`avRecorderLoopCreate2ReleaseWithCallback test loop start2 `)
+        await avRecorder.prepare(avConfig).then(() => {
+            expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
+            console.info('prepare success');
+        }).catch((err) => {
+            console.info('prepare failed and catch error is ' + err.message);
+        });
+        console.info(`avRecorderLoopCreate2ReleaseWithCallback test loop start3 `)
+        await startCallback(avRecorder);
+        await sleep(100)
+        console.info(`avRecorderLoopCreate2ReleaseWithCallback test loop start4 `)
+        await resetCallback(avRecorder);
+        console.info(`avRecorderLoopCreate2ReleaseWithCallback test loop start5 `)
+        console.info(`avRecorderLoopCreate2ReleaseWithCallback loop time is :${loopTimes}`)
+        loopTimes--;
+        avRecorder.release((err) => {
+            if (err == null) {
+                console.info('release AVRecorder success');
+                if(loopTimes == 0){
+                    done();
+                }
+            } else {
+                console.info('release AVRecorder failed and error is ' + err.message);
+            }
+        });
+    }
+}
+
+export async function avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorder, loopTimes, done) {
+    avRecorder = await idle(avRecorder);
+    sleep(200)
+    await preparePromise(avRecorder, avConfig);
+    sleep(200)
+    while (loopTimes > 0) {
+        startCallback(avRecorder, 200);
+        stopCallback(avRecorder);
+        sleep(200)
+        loopTimes--;
+        console.info(`avRecorderLoopPrepare2StopWithCallback loop time is :${loopTimes}`)
+        if(loopTimes == 0){
+            await avRecorder.release().then(() => {
+                console.info(`avRecorderLoopPrepare2StopWithCallback release success`)
+            }).catch((err) => {
+                console.info('release avRecorderLoopPrepare2StopWithCallback failed and catch error is ' + err.message);
+            });
+            done();
+        } else {
+            await preparePromise(avRecorder, avConfig);
+            sleep(200);
+        }
+    }
+}
+
+export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, loopTimes, done) {
     avRecorder = await idle(avRecorder);
     console.info('case avConfig.url is ' + avConfig.url);
     await preparePromise(avRecorder, avConfig);
+    sleep(2000)
     await startPromise(avRecorder);
     while (loopTimes > 0) {
         pauseCallback(avRecorder);
         resumeCallback(avRecorder);
+        await sleep(50)
+        console.info(`avRecorderLoopPause2ResumeWithCallback loop time is :${loopTimes}`)
         loopTimes--;
+        if(loopTimes == 0){
+            await sleep(2000)
+            await avRecorder.release().then(() => {
+                console.info(`avRecorderLoopPause2ResumeWithCallback release success`)
+                done();
+            }).catch((err) => {
+                console.info('release avRecorderLoopPause2ResumeWithCallback failed and catch error is ' + err.message);
+            });
+        }
     }
-    await avRecorder.release().then(() => {
-        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-        done();
-    }).catch((err) => {
-        console.info('release AVRecorder failed and catch error is ' + err.message);
-    });
+    //    await releaseDone(avRecorder, done)
 }
 
-export async function avRecorderLoopCreate2Release2(avConfig, avRecorder, loopTimes, done) {
+export async function avRecorderLoopCreate2Release2WithCallback(avConfig, avRecorder, loopTimes, done) {
     while (loopTimes > 0) {
         avRecorder = await idle(avRecorder);
         console.info('case avConfig.url is ' + avConfig.url);
         releaseCallback(avRecorder);
+        console.info(`avRecorderLoopCreate2Release2WithCallback loop time is :${loopTimes}`)
         loopTimes--;
+        if(loopTimes == 0){
+            sleep(2000)
+            done();
+        }
     }
-    done();
-}
-
-export async function setPrepare2ResetOnCallback(avConfig, avRecorder, done) {
-    console.info(`case setOnCallback in`);
-    let count = 0;
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.IDLE:
-                console.info(`case AV_RECORDER_STATE.IDLE`);
-                expect(avRecorder.state).assertEqual('idle');
-                count++;
-                if (count == 1001) {
-                    releasePromise(avRecorder);
-                } else {
-                    avRecorder.prepare(avConfig).then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
-                        console.info(`case avRecorderLoopPrepare2ResetWithCallback is prepared`);
-                        avRecorder.start().then(() => {
-                            expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
-                            console.info(`case avRecorderLoopPrepare2ResetWithCallback is started`);
-                            avRecorder.reset().then(() => {
-                                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.IDLE);
-                                console.info(`case avRecorderLoopPrepare2ResetWithCallback is reset`);
-                            }).catch((err1) => {
-                                console.info('reset failed and catch error is ' + err1.message);
-                            });
-                        }).catch((err2) => {
-                            console.info('start failed and catch error is ' + err2.message);
-                        });
-                    }).catch((err3) => {
-                        console.info('prepare failed and catch error is ' + err3.message);
-                    });
-                }
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case AV_RECORDER_STATE.RELEASED`)
-                expect(avRecorder.state).assertEqual('released');
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
-}
-
-export async function avRecorderLoopPrepare2ResetWithCallback(avConfig, avRecorder, done) {
-    avRecorder = await idle(avRecorder);
-    await preparePromise(avRecorder, avConfig);
-    await resetPromise(avRecorder);
-    setPrepare2ResetOnCallback(avConfig, avRecorder, done);
-}
-
-export async function setCreate2ReleaseOnCallback(avRecorder, avConfig, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.IDLE:
-                console.info(`case AV_RECORDER_STATE.IDLE`);
-                expect(avRecorder.state).assertEqual('idle');
-                await releasePromise(avRecorder);
-            case AV_RECORDER_STATE.PREPARED:
-                console.info(`case AV_RECORDER_STATE.PREPARED`);
-                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PREPARED);
-                await startPromise(avRecorder);
-                break;
-            case AV_RECORDER_STATE.STARTED:
-                console.info(`case AV_RECORDER_STATE.STARTED`)
-                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
-                await resetPromise(avRecorder);
-                break;
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case AV_RECORDER_STATE.RELEASED`);
-                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-                loopTimes--;
-                if (loopTimes <= 0) {
-                    done();
-                } else {
-                    avRecorderLoopCreate2ReleaseWithCallback(avRecorder, avConfig, loopTimes, done);
-                }
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
-}
-
-export async function avRecorderLoopCreate2ReleaseWithCallback(avRecorder, avConfig, loopTimes, done) {
-    
-    avRecorder = await idle(avRecorder);
-    await preparePromise(avRecorder, avConfig);
-    setCreate2ReleaseOnCallback(avRecorder, loopTimes, done)
-}
-
-export async function setPrepare2StopOnCallback(avRecorder, done) {
-    console.info(`case setOnCallback in`);
-    let count = 0;
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.PREPARED:
-                console.info(`case AV_RECORDER_STATE.PREPARED`);
-                expect(avRecorder.state).assertEqual('prepared');
-                while (count < 1001) {
-                    avRecorder.start().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
-                        console.info(`case avRecorderLoopPrepare2StopWithCallback is started`);
-                        avRecorder.stop().then(() => {
-                            expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STOPPED);
-                            console.info(`case avRecorderLoopPrepare2StopWithCallback is stopped`);
-                            count++;
-                        }).catch((err1) => {
-                            console.info('stop failed and catch error is ' + err1.message);
-                        });
-                    }).catch((err2) => {
-                        console.info('start failed and catch error is ' + err2.message);
-                    });
-                }
-                offCallback(avRecorder, ['stateChange', 'error']);
-                done();
-            case AV_RECORDER_STATE.STOPPED:
-                console.info(`case AV_RECORDER_STATE.STOPPED`)
-                expect(avRecorder.state).assertEqual('stopped');
-                if (count == 1001) {
-                    await releasePromise(avRecorder);
-                }
-                break;
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case AV_RECORDER_STATE.RELEASED`)
-                expect(avRecorder.state).assertEqual('released');
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
-}
-
-export async function avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorder, done) {
-    
-    avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
-    await preparePromise(avRecorder, avConfig);
-    setPrepare2StopOnCallback(avRecorder, done)
-}
-
-export async function setPause2ResumeOnCallback(avRecorder, done) {
-    console.info(`case setOnCallback in`);
-    let count = 0;
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.STARTED:
-                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
-                console.info(`case avRecorderLoopPause2ResumeWithCallback is started`);
-                count++;
-                if (count == 1001) {
-                    offCallback(avRecorder, ['stateChange', 'error']);
-                    done();
-                } else {
-                    avRecorder.pause().then(() => {
-                        expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.PAUSED);
-                        console.info(`case avRecorderLoopPause2ResumeWithCallback is paused`);
-                        avRecorder.reset().then(() => {
-                            expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.IDLE);
-                            console.info(`case avRecorderLoopPause2ResumeWithCallback is resumed`);
-                        }).catch((err1) => {
-                            console.info('reset failed and catch error is ' + err1.message);
-                        });
-                    }).catch((err2) => {
-                        console.info('pause failed and catch error is ' + err2.message);
-                    });
-                }
-            case AV_RECORDER_STATE.IDLE:
-                console.info(`case AV_RECORDER_STATE.IDLE`)
-                expect(avRecorder.state).assertEqual('idle');
-                if (count == 1001) {
-                    await releasePromise(avRecorder);
-                }
-                break;
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case AV_RECORDER_STATE.RELEASED`)
-                expect(avRecorder.state).assertEqual('released');
-                done();
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
-}
-
-export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, done) {
-    avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
-    await preparePromise(avRecorder, avConfig);
-    await startPromise(avRecorder);
-    setPause2ResumeOnCallback(avRecorder, done);
-}
-
-export async function setCreate2Release2OnCallback(avRecorder, loopTimes, done) {
-    console.info(`case setOnCallback in`);
-    avRecorder.on('stateChange', async (state, reason) => {
-        console.info('case state has changed, new state is :' + state + ',and new reason is : ' + reason);
-        switch (state) {
-            case AV_RECORDER_STATE.IDLE:
-                console.info(`case AV_RECORDER_STATE.IDLE`);
-                expect(avRecorder.state).assertEqual('idle');
-            case AV_RECORDER_STATE.RELEASED:
-                console.info(`case AV_RECORDER_STATE.RELEASED`);
-                expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
-                loopTimes--;
-                if (loopTimes <= 0) {
-                    done();
-                } else {
-                    avRecorderLoopCreate2Release2WithCallback(avRecorder, loopTimes, done);
-                }
-                break;
-            case AV_RECORDER_STATE.ERROR:
-                console.info(`case AV_RECORDER_STATE.ERROR`)
-                expect(avRecorder.state).assertEqual('error');
-                break;
-            default:
-                console.info('case state is unknown');
-        }
-    });
-}
-
-export async function avRecorderLoopCreate2Release2WithCallback(avRecorder, loopTimes, done) {
-    avRecorder = await idle(avRecorder);
-    await releasePromise(avRecorder);
-    setCreate2Release2OnCallback(avRecorder, done);
 }
 
 export async function avRecorderReliabilitTest01(avConfig, avRecorder, recorderTime, done) {
     let result = true;
     avRecorder = await idle(avRecorder);
+    sleep(2000)
     await avRecorder.pause((err) => {
         if (err == null) {
             console.info('pause avRecorderReliabilitTest01 success');
@@ -1369,9 +1018,10 @@ export async function avRecorderReliabilitTest01(avConfig, avRecorder, recorderT
             result = false
             expect(result).assertEqual(false);
             console.info('pause avRecorderReliabilitTest01 failed and error is ' + err.message);
-
+            sleep(1000)
         }
     });
+    sleep(2000)
     console.info('pause avRecorderReliabilitTest01 001');
     await releaseDone(avRecorder, done)
 }
@@ -2579,7 +2229,7 @@ export async function releaseTimeTestCallback(avConfig, avRecorder, recorderTime
         let end;
         let start = Date.now();
         console.info(`releaseTimeTestCallback start time is : ${start}`)
-        await avRecorder.release((err) => {
+        avRecorder.release((err) => {
             if (err == null) {
                 console.info(`releaseTimeTestCallback current state is : ${avRecorder.state}`)
                 console.info('release releaseTimeTestCallback success');

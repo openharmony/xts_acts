@@ -18,7 +18,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import Utils from './Utils.ets'
 
 export default function stackAlignContentJsunit() {
-  describe('stackAlignContentTest', function () {
+  describe('stackAlignContentTest1', function () {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {

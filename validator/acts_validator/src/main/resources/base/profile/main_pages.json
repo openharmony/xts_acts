@@ -39,8 +39,6 @@
     "pages/Audio/AudioOutputRoutingTypeC",
     "pages/Audio/AudioOutputRoutingBT",
     "pages/Player/Player_index",
-    "pages/Player/PlayAudio",
-    "pages/Player/PlayVideo",
     "pages/Experience/Experience_index",
     "pages/Experience/PhotoFps",
     "pages/Experience/DeskFps",
@@ -59,6 +57,10 @@
     "pages/Experience/StartBackgroundTask",
     "pages/Experience/StartNotification",
     "pages/Experience/ScrollPhotosList",
-    "pages/Experience/KeyboardInputTest"
+    "pages/Experience/KeyboardInputTest",
+    "pages/Player/PlayAudio",
+    "pages/Player/PlayVideo",
+    "pages/Player/PlayAudioList",
+    "pages/Player/PlayVideoList"
   ]
 }

@@ -17,7 +17,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiorenderer/haps/entry/files",
                 "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiorenderer/haps/entry"
             ],

@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function textMinFontSizeJsunit() {
@@ -22,7 +22,7 @@ export default function textMinFontSizeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/text',
+        uri: 'MainAbility/pages/text',
       }
       try {
         router.clear();
@@ -194,7 +194,7 @@ export default function textMinFontSizeJsunit() {
       console.info("[testtextMinFontSize0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center");
       console.info("[testtextMinFontSize0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
@@ -206,7 +206,7 @@ export default function textMinFontSizeJsunit() {
       console.info("[testtextMinFontSize0011] component minFontSize strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.minFontSize).assertEqual(undefined);
+      expect(obj.$attrs.minFontSize).assertEqual("50.00px");
       console.info("[testtextMinFontSize0011] minFontSize value :" + obj.$attrs.minFontSize);
       done();
     });
@@ -218,7 +218,7 @@ export default function textMinFontSizeJsunit() {
       console.info("[testtextCopyOptionText0001] component copyOption strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.copyOption).assertEqual(undefined);
+      expect(obj.$attrs.copyOption).assertEqual("CopyOptions.None");
       console.info("[testtextCopyOptionText0001] copyOption value :" + obj.$attrs.copyOption);
       done();
     });

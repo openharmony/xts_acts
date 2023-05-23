@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
@@ -23,7 +23,7 @@ export default function layoutConstraintsJsunit() {
     beforeEach(async function (done) {
       console.info("layoutConstraints beforeEach start");
       let options = {
-        uri: 'pages/layoutConstraints',
+        uri: 'MainAbility/pages/layoutConstraints',
       }
       try {
         router.clear();
@@ -116,7 +116,7 @@ export default function layoutConstraintsJsunit() {
       console.info("[testLayoutConstraints004] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testLayoutConstraints004] displayPriority: " + obj.$attrs.displayPriority);
-      expect(obj.$attrs.displayPriority).assertEqual(5);
+      expect(obj.$attrs.displayPriority).assertEqual(1);
       done();
     });
 
@@ -142,7 +142,7 @@ export default function layoutConstraintsJsunit() {
       console.info("[testLayoutConstraints005] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testLayoutConstraints005] aspectRatio: " + obj.$attrs.aspectRatio);
-      expect(obj.$attrs.aspectRatio).assertEqual(-4);
+      expect(obj.$attrs.aspectRatio).assertEqual(1);
       done();
     });
 

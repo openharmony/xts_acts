@@ -87,7 +87,7 @@ describe('fileio_open_close', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_0100
    * @tc.name fileio_open_sync_001
    * @tc.desc Test openSync() interface.
    * @tc.size MEDIUM
@@ -105,7 +105,37 @@ describe('fileio_open_close', function () {
       console.log('fileio_open_sync_001 has failed for ' + e);
     }
   });
-  
+
+  /**
+   * @tc.number SUB_DF_FILEIO_OPEN_SYNC_0200
+   * @tc.name fileio_open_sync_002
+   * @tc.desc Test openSync() interface.
+   * Use default: flag = O_RDONLY, mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileio_open_sync_002', 3, async function () {
+    let fpath = await nextFileName('fileio_open_sync_002');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let fd;
+
+    try {
+      fd = fileio.openSync(fpath, undefined, undefined);
+      expect(isIntNum(fd)).assertTrue();
+      let readLen = fileio.readSync(fd, new ArrayBuffer(4096));
+      expect(readLen == FILE_CONTENT.length).assertTrue();
+      fileio.writeSync(fd, FILE_CONTENT);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileio.closeSync(fd);
+      fileio.unlinkSync(fpath);
+      console.log('fileio_open_sync_002 has failed for ' + e);
+      expect(e.message == 'Bad file descriptor').assertTrue();
+    }
+  });
+
   /**
    * @tc.number SUB_DF_FILEIO_CLOSE_SYNC_0000
    * @tc.name fileio_close_sync_000

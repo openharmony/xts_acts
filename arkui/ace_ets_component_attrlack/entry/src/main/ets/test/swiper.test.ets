@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function swiperMaskJsunit() {
@@ -22,7 +22,7 @@ export default function swiperMaskJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/swiper',
+        uri: 'MainAbility/pages/swiper',
       }
       try {
         router.clear();
@@ -57,8 +57,9 @@ export default function swiperMaskJsunit() {
       console.info("[testswiperMask001] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.indicatorStyle.mask).assertEqual(undefined);
-      console.info("[testswiperMask001] indicatorStyle value :" + obj.$attrs.indicatorStyle.mask);
+      console.info("[testswiperMask001] indicatorStyle value :" + obj.$attrs.indicator);
+      let jsonObject = JSON.parse(obj.$attrs.indicator);
+      expect(jsonObject.mask).assertEqual('true');
       done();
     });
   })

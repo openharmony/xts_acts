@@ -73,7 +73,7 @@ describe('kvManagerCallbackTest', function () {
      * @tc.number SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0100
      * @tc.desc Test Js Api KVManager.GetKVStore() testcase 001
      * @tc.type: FUNC
-     * @tc.name Test Js Api KVManager.GetKVStore() testcase 00
+     * @tc.name Test Js Api KVManager.GetKVStore() testcase 001
      */
     it('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0100', 0, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0100');
@@ -108,14 +108,16 @@ describe('kvManagerCallbackTest', function () {
                 if (err == undefined) {
                     console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0200 getKVStore success');
                     expect(null).assertFail();
+                    done();
                 } else {
-                    expect((err.code == 401)).assertTrue();
-                    console.info('getKVStore fail' + `, error code is ${err.code}, message is ${err.message}`);
+                    console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0200 getKVStore err ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(null).assertFail();
+                    done();
                 }
-                done();
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0200 getKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -171,7 +173,7 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0400 getKVStore success');
-                expect(true).assertTrue();
+                expect((err == undefined) && (store != null)).assertTrue();
                 done();
             });
         } catch (e) {
@@ -201,7 +203,7 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0500 getKVStore success');
-                expect(true).assertTrue();
+                expect((err == undefined) && (store != null)).assertTrue();
                 done();
             });
         } catch (e) {
@@ -231,7 +233,7 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0600 getKVStore success');
-                expect(true).assertTrue();
+                expect((err == undefined) && (store != null)).assertTrue();
                 done();
             });
         } catch (e) {
@@ -261,7 +263,7 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo, function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_GETKVSTORE_0700 getKVStore success');
-                expect(true).assertTrue();
+                expect((err == undefined) && (store != null)).assertTrue();
                 done();
             });
         } catch (e) {
@@ -282,6 +284,7 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0100 getKVStore success');
+                expect((err == undefined) && (store != null)).assertTrue();
                 kvStore = store;
                 await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore, function (err, data) {
                     console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0100 closeKVStore success');
@@ -313,13 +316,16 @@ describe('kvManagerCallbackTest', function () {
                         if (err == undefined) {
                             console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0200 closeKVStore success');
                             expect(null).assertFail();
+                            done();
                         } else {
-                            console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0200 closeKVStore fail');
+                            console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0200 closeKVStore err ' + `, error code is ${err.code}, message is ${err.message}`);
+                            expect(null).assertFail();
+                            done();
                         }
-                        done();
                     });
                 } catch (e) {
                     console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0200 closeKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+                    expect(e.code == 401).assertTrue();
                     done();
                 }
             });
@@ -339,20 +345,23 @@ describe('kvManagerCallbackTest', function () {
     it('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300');
         try {
-            await kvManager.getKVStore(TEST_STORE_ID, options, async function (err) {
+            await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 getKVStore success');
                 try {
-                    await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, function (err) {
+                    await kvManager.closeKVStore(TEST_STORE_ID, function (err) {
                         if (err == undefined) {
                             console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 closeKVStore success');
-                            expect(true).assertTrue();
+                            expect(null).assertFail();
+                            done();
                         } else {
-                            console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 closeKVStore fail');
+                            console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 closeKVStore err  ' + `, error code is ${err.code}, message is ${err.message}`);
+                            expect(null).assertFail();
+                            done();
                         }
-                        done();
                     });
                 } catch (e) {
                     console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 closeKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+                    expect(e.code == 401).assertTrue();
                     done();
                 }
             });
@@ -374,20 +383,24 @@ describe('kvManagerCallbackTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
                 console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 getKVStore success');
+
                 kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, function (err, data) {
-                    if (err != undefined) {
-                        console.info(`Fail to close KVStore.code is ${err.code},message is ${err.message}`);
+                    if (err == undefined) {
+                        console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 closeKVStore success');
+                        expect(err == undefined).assertTrue();
+                        done();
+                    } else {
+                        console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0300 closeKVStore err  ' + `, error code is ${err.code}, message is ${err.message}`);
+                        expect(null).assertFail();
+                        done();
                     }
-                    expect(err == undefined).assertTrue();
-                    console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore1 done');
-                    done();
-                    console.info('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore redo.');
                 })
 
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_CLOSEKVSTORE_0400 closeKVStore twice e ' + `, error code is ${e.code}, message is ${e.message}`);
-            //                expect(null).assertFail();
+            expect(null).assertFail();
+            done();
         }
     })
 
@@ -408,13 +421,16 @@ describe('kvManagerCallbackTest', function () {
                         if (err == undefined) {
                             console.info('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0100 deleteKVStore success');
                             expect(null).assertFail();
+                            done();
                         } else {
                             console.info('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0100 deleteKVStore fail');
+                            expect(null).assertFail();
+                            done();
                         }
-                        done();
                     });
                 } catch (e) {
                     console.error('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0100 deleteKVStore e ' + `, error code is ${e.code}, message is ${e.message}`);
+                    expect(e.code == 401).assertTrue();
                     done();
                 }
             });
@@ -438,13 +454,16 @@ describe('kvManagerCallbackTest', function () {
                 if (err == undefined){
                     console.info('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0200 deleteKVStore success');
                     expect(null).assertFail();
+                    done();
                 } else {
-                    console.info('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0200 deleteKVStore fail');
+                    console.error('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0200 err ' + `, error code is ${err.code}, message is ${err.message}`);
+                    expect(err.code == 15100004).assertTrue();
+                    done();
                 }
-                done();
             });
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_DLETEKVSTORE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(null).assertFail();
             done();
         }
     })
@@ -462,6 +481,7 @@ describe('kvManagerCallbackTest', function () {
                 console.info('SUB_DDM_DKV_KVMANAGER_GETALLKVSTOREID_0100 getAllKVStoreId success');
                 console.info('SUB_DDM_DKV_KVMANAGER_GETALLKVSTOREID_0100 size = ' + data.length);
                 console.info('SUB_DDM_DKV_KVMANAGER_GETALLKVSTOREID_0100 err is: ' + err);
+                expect(err == undefined).assertTrue();
                 expect(0).assertEqual(data.length);
                 done();
             });
@@ -485,23 +505,18 @@ describe('kvManagerCallbackTest', function () {
                 console.info('SUB_DDM_DKV_KVMANAGER_PUT_0100 getKVStore success');
                 kvStore = store;
                     await kvStore.put(STORE_KEY, STORE_VALUE, function (err, data) {
-                        if (err != undefined){
-                            console.info('SUB_DDM_DKV_KVMANAGER_PUT_0100 put callback fail');
-                            expect(null).assertFail();
-                        } else {
-                            console.info('SUB_DDM_DKV_KVMANAGER_PUT_0100 put callback success');
-                            expect(true).assertTrue();
-                        }
+                        console.info('SUB_DDM_DKV_KVMANAGER_PUT_0100 put callback success');
+                        expect(err == undefined).assertTrue();
                         done();
                     });
                 });
-
         } catch (e) {
             console.error('SUB_DDM_DKV_KVMANAGER_PUT_0100 callback e ' + `, error code is ${e.code}, message is ${e.message}`);
             expect(null).assertFail();
             done();
         }
     })
+
 
     /**
      * @tc.number SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100
@@ -510,19 +525,21 @@ describe('kvManagerCallbackTest', function () {
      * @tc.name Test Js Api createKVManager() testcase 001
      */
     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100', 0, async function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100 start');
-        let kvManagerConfig = {
-            bundleName : [TEST_BUNDLE_NAME],
-            context: context
+        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100');
+        const config = {
+            bundleName: [TEST_BUNDLE_NAME],
+            context:context
         }
-        try{
-            factory.createKVManager(kvManagerConfig);
-            expect(false).assertTrue();
-        }catch(err){
-            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
-            expect(err.code).assertEqual("401");
+        try {
+            kvManager = factory.createKVManager(config);
+            console.info('Create kvManager success');
+            expect(null).assertFail();
+            done();
+        }catch (e) {
+            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0100 fail err' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
+            done();
         }
-        done();
     })
 
     /**
@@ -532,19 +549,22 @@ describe('kvManagerCallbackTest', function () {
      * @tc.name Test Js Api createKVManager() testcase 002
      */
     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200', 0, async function (done) {
-        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200 start ');
-        let kvManagerConfig = {
-            bundleName : TEST_BUNDLE_NAME,
-            context: "context"
+        console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200');
+        const config = {
+            bundleName: TEST_BUNDLE_NAME,
+            context:"context"
         }
-        try{
-            factory.createKVManager(kvManagerConfig);
-            expect(false).assertTrue();
-        }catch(err){
-            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
-            expect(err.code).assertEqual("401");
+        try {
+            kvManager = factory.createKVManager(config);
+            console.info('Create kvManager success');
+            expect(null).assertFail();
+            done();
+        }catch (e) {
+            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0200 fail err' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
+            done();
         }
-        done();
+
     })
 
     /**
@@ -555,14 +575,16 @@ describe('kvManagerCallbackTest', function () {
      */
     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300', 0, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300 start ');
-        try{
-            factory.createKVManager("kvManagerConfig");
-            expect(false).assertTrue();
-        }catch(err){
-            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
-            expect(err.code).assertEqual("401");
+        try {
+            kvManager = factory.createKVManager("kvManagerConfig");
+            console.info('Create kvManager success');
+            expect(null).assertFail();
+            done();
+        }catch (e) {
+            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300 fail err' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
+            done();
         }
-        done();
     })
 
     /**
@@ -573,14 +595,16 @@ describe('kvManagerCallbackTest', function () {
      */
     it('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0400', 0, async function (done) {
         console.info('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0400 start ');
-        try{
-            factory.createKVManager();
-            expect(false).assertTrue();
-        }catch(err){
-            console.info(`Create kvManager error: error code is ${err.code}, error message is ${err.message}`);
-            expect(err.code).assertEqual("401");
+        try {
+            kvManager = factory.createKVManager();
+            console.info('Create kvManager success');
+            expect(null).assertFail();
+            done();
+        }catch (e) {
+            console.error('SUB_DDM_DKV_KVMANAGER_CREATEKVMANAGER_0300 fail err' + `, error code is ${e.code}, message is ${e.message}`);
+            expect(e.code == 401).assertTrue();
+            done();
         }
-        done();
     })
 })
 }

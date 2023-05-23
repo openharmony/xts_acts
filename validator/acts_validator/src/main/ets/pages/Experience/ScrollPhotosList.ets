@@ -29,6 +29,7 @@ struct CustomContainerUser {
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State time: string = '0';
+  scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
@@ -37,70 +38,71 @@ struct CustomContainerUser {
   @Builder specificNoParam() {
     Column() {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Column(){
-          Row(){
-            Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
-              .fontColor(Color.White).fontSize('24fp')
-          }
-          Row(){
-            Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.在图库中预置500张图片`+ '\n' + '\n'
-            +`3.点击开始键进入图库`+ '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择响应时延>图库缩略列表滑动`+ '\n' + '\n' +
-            `5.滑动图库缩略列表等待响应` + '\n' + '\n' + '6.待脚本执行结束回到Validator点击结束键' + '\n' + '\n' +
-            `7.若滑动响应时延小于或等于150ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
-              .fontColor(Color.White).fontSize('20fp')
-          }
-          Row(){
-            Column(){
-              Button(`开始`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(this.StartEnable)
-                .opacity(this.StartEnable? 1 : 0.4)
-                .onClick(async () => {
-                  this.StartEnable = !this.StartEnable;
-                  let bundleName=new String("com.ohos.photos").toString();
-                  let abilityName=new String("com.ohos.photos.MainAbility").toString();
-                  let str = {
-                    "bundleName": bundleName,
-                    "abilityName": abilityName,
-                  }
+        Scroll(this.scroller) {
+          Column(){
+            Row(){
+              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+                .fontColor(Color.White).fontSize('24fp')
+            }
+            Row(){
+              Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.在图库中预置500张图片`+ '\n' + '\n'
+              +`3.点击开始键进入图库`+ '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择响应时延>图库缩略列表滑动`+ '\n' + '\n' +
+              `5.滑动图库缩略列表等待响应` + '\n' + '\n' + '6.待脚本执行结束回到Validator点击结束键' + '\n' + '\n' +
+              `7.若滑动响应时延小于或等于150ms则通过测试` + '\n' + '\n' + '\n' + '\n' )
+                .fontColor(Color.White).fontSize('20fp')
+            }
+            Row(){
+              Column(){
+                Button(`开始`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .enabled(this.StartEnable)
+                  .opacity(this.StartEnable? 1 : 0.4)
+                  .onClick(async () => {
+                    this.StartEnable = !this.StartEnable;
+                    let bundleName=new String("com.ohos.photos").toString();
+                    let abilityName=new String("com.ohos.photos.MainAbility").toString();
+                    let str = {
+                      "bundleName": bundleName,
+                      "abilityName": abilityName,
+                    }
 
-                  globalThis.abilityContext.startAbility(str, (err, data) => {
-                    if(err) {
-                      return;
+                    globalThis.abilityContext.startAbility(str, (err, data) => {
+                      if(err) {
+                        return;
+                      }
+                    })
+                  })
+              }
+              Column(){
+                Button(`结束`)
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .width('30%')
+                  .enabled(!this.StartEnable)
+                  .opacity(!this.StartEnable? 1 : 0.4)
+                  .onClick(() => {
+                    this.StartEnable = !this.StartEnable
+                    let fd = fileio.openSync(Xpath, 0o100 | 0o2002, 0o664);
+                    let buf = new ArrayBuffer(4096);
+                    fileio.readSync(fd,buf);
+                    let report = String.fromCharCode.apply(null,new Uint8Array(buf));
+                    let head = report.indexOf(":");
+                    this.time = report.substring(head+1);
+                    let time = parseFloat(this.time)
+                    if( 0 < time && time < 150 ) {
+                      this.Vue = true;
                     }
                   })
-                })
+              }
             }
-            Column(){
-              Button(`结束`)
-                .borderRadius(8)
-                .backgroundColor(0x317aff)
-                .width('30%')
-                .enabled(!this.StartEnable)
-                .opacity(!this.StartEnable? 1 : 0.4)
-                .onClick(() => {
-                  this.StartEnable = !this.StartEnable
-                  let fd = fileio.openSync(Xpath, 0o100 | 0o2002, 0o664);
-                  let buf = new ArrayBuffer(4096);
-                  fileio.readSync(fd,buf);
-                  let report = String.fromCharCode.apply(null,new Uint8Array(buf));
-                  let head = report.indexOf(":");
-                  this.time = report.substring(head+1);
-                  let time = parseFloat(this.time)
-                  if( 0 < time && time < 150 ) {
-                    this.Vue = true;
-                  }
-                })
+            Row(){
+              Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `滑动响应时延：` + this.time + 'ms' )
+                .fontColor(Color.White).fontSize('24fp')
             }
-          }
-          Row(){
-            Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `滑动响应时延：` + this.time + 'ms' )
-              .fontColor(Color.White).fontSize('24fp')
           }
         }
-
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)

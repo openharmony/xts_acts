@@ -164,17 +164,20 @@ export default function geolocationTest_geo5() {
             let reverseGeocodeRequest = { "latitude": 31.265496, "longitude": 121.62771, "maxItems": 5};
             await geolocationm.getAddressesFromLocation(reverseGeocodeRequest).then((data) => {
                 console.info('[lbs_js] getAddressesFromLocation21 promise: ' + JSON.stringify(data));
-                console.info('addressUrl: ' + JSON.stringify(data)[0].addressUrl
-                + JSON.stringify(data)[0].administrativeArea + JSON.stringify(data)[0].countryCode
-                + JSON.stringify(data)[0].countryName + JSON.stringify(data)[0].descriptions
-                + JSON.stringify(data)[0].descriptionsSize + data[0].latitude
-                + JSON.stringify(data)[0].locale + JSON.stringify(data)[0].locality
-                + JSON.stringify(data)[0].longitude + JSON.stringify(data)[0].phoneNumber
-                + JSON.stringify(data)[0].placeName
-                + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
-                + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
-                + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
-                + JSON.stringify(data)[0].isFromMock);
+                if(data!="")
+                {
+                    console.info('addressUrl: ' + JSON.stringify(data)[0].addressUrl
+                    + JSON.stringify(data)[0].administrativeArea + JSON.stringify(data)[0].countryCode
+                    + JSON.stringify(data)[0].countryName + JSON.stringify(data)[0].descriptions
+                    + JSON.stringify(data)[0].descriptionsSize + data[0].latitude
+                    + JSON.stringify(data)[0].locale + JSON.stringify(data)[0].locality
+                    + JSON.stringify(data)[0].longitude + JSON.stringify(data)[0].phoneNumber
+                    + JSON.stringify(data)[0].placeName
+                    + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
+                    + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
+                    + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
+                    + JSON.stringify(data)[0].isFromMock);
+                }
             }).catch(error => {
                 console.info("[lbs_js] getAddressesFromLocation21 promise then error." + JSON.stringify(error));
                 console.info('[lbs_js] not support now');

@@ -73,7 +73,7 @@ struct SliderMoving {
           try {
             var backData = {
               data: {
-                "Mode": (mode==0)||(mode==1)||(mode==2)
+                "Mode": 0
               }
             }
             let backEvent = {

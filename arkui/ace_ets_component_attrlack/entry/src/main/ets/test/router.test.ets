@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 import events_emitter from '@ohos.events.emitter';
 
@@ -23,7 +23,7 @@ export default function routerStandardJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/router',
+        uri: 'MainAbility/pages/router',
       }
       try {
         router.clear();
@@ -57,16 +57,18 @@ export default function routerStandardJsunit() {
         var callback1 = (eventData) => {
           console.info("testrouterStandard_0011 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.ArrayData).assertEqual("45");
-          done();
+        
         }
+        events_emitter.on(standardEvent, callback1);
         console.info("testrouterStandard_0011 click result1 is: " + JSON.stringify(sendEventByKey('StandardText', 10, "")));
         await Utils.sleep(2000);
         console.info("testrouterStandard_0011 click result2 is: " + JSON.stringify(sendEventByKey('DataText', 10, "")));
-        events_emitter.on(standardEvent, callback1);
+        await Utils.sleep(2000);  
       } catch (err) {
         console.info("testrouterStandard_0011 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testrouterStandard0011 END');
+      done();
     });
 
     it('testrouterSingle0001', 0, async function (done) {
@@ -80,16 +82,17 @@ export default function routerStandardJsunit() {
         var callback2 = (eventData) => {
           console.info("testrouterSingle_0001 get event data is: " + JSON.stringify(eventData));
           expect(eventData.data.ArrayData).assertEqual("46");
-          done();
         }
+        events_emitter.on(singleEvent, callback2);
         console.info("testrouterSingle_0001 click result1 is: " + JSON.stringify(sendEventByKey('SingleText', 10, "")));
         await Utils.sleep(2000);
         console.info("testrouterSingle_0001 click result2 is: " + JSON.stringify(sendEventByKey('SingleDataText', 10, "")));
-        events_emitter.on(singleEvent, callback2);
+        await Utils.sleep(2000);
       } catch (err) {
         console.info("testrouterSingle_0001 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testrouterSingle_0001 END');
+      done();
     });
   })
 }

@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@system.router';
 import CommonFunc from "../../../../MainAbility/common/Common";
 export default function flexVisibility_AutoJsunit() {
-  describe('flexItemAlignAutoTest', function () {
+  describe('flexItemAlignAutoTest8', function () {
     beforeEach(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Flex/alignItems/ItemAlign_Auto/FlexVisibility',

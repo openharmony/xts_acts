@@ -196,6 +196,22 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>inputMethodAbility_test_0106 event:' + data.event);
                     that.inputMethodAbility_test_106();
                     break;
+                case 110:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_onSelectByRange_0110 event:' + data.event);
+                    that.Sub_Misc_inputMethod_onSelectByRange_0110();
+                    break;
+                case 120:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_onSelectByMovement_0120 event:' + data.event);
+                    that.Sub_Misc_inputMethod_onSelectByMovement_0120();
+                    break;
+                case 130:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByRange_0130 event:' + data.event);
+                    that.Sub_Misc_inputMethod_offSelectByRange_0130();
+                    break;
+                case 140:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 event:' + data.event);
+                    that.Sub_Misc_inputMethod_offSelectByMovement_0140();
+                    break;
             }
         }
 
@@ -1299,4 +1315,178 @@ export class KeyboardDelegate {
             }
         });
     }
+
+    private  Sub_Misc_inputMethod_onSelectByRange_0110(): void {
+        let commonEventPublishData;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_onSelectByRange_0110 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_onSelectByRange_0110 success inputStart');
+                let commonEventPublishData;
+                let range = { start: 0, end: 10 };
+                inputMethodAbility.off('inputStart');
+
+                if (InputClient == null) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByRange_0110", commonEventPublishData, this.publishCallback);
+                } else {
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                    try {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_onSelectByRange_0110 selectByRange success');
+                        commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByRange_0110", commonEventPublishData, this.publishCallback);
+                        await InputClient.selectByRange(range);
+                    } catch (err) {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_onSelectByRange_0110 selectByRange catch err:' + JSON.stringify(err));
+                        commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByRange_0110", commonEventPublishData, this.publishCallback);
+
+                    }
+                }
+            });
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_onSelectByRange_0110 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByRange_0110", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private  Sub_Misc_inputMethod_onSelectByMovement_0120(): void {
+        let commonEventPublishData;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_onSelectByMovement_0120 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_onSelectByMovement_0120 success inputStart');
+                let commonEventPublishData;
+                let movement = { direction: inputMethodEngine.CURSOR_DOWN };
+                inputMethodAbility.off('inputStart');
+
+                if (InputClient == null) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByMovement_0120", commonEventPublishData, this.publishCallback);
+                } else {
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                    try {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_onSelectByMovement_0120 onSelectByMovement success');
+                        commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByMovement_0120", commonEventPublishData, this.publishCallback);
+                        await InputClient.selectByMovement(movement);
+                    } catch (err) {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_onSelectByMovement_0120 onSelectByMovement catch err:' + JSON.stringify(err));
+                        commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByMovement_0120", commonEventPublishData, this.publishCallback);
+
+                    }
+                }
+            });
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_onSelectByMovement_0120 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_onSelectByMovement_0120", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private  Sub_Misc_inputMethod_offSelectByRange_0130(): void {
+        let commonEventPublishData;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByRange_0130 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByRange_0130 success inputStart');
+                let commonEventPublishData;
+                let timeCount = 0;
+                let range = { start: 0, end: 10 };
+                inputMethodAbility.off('inputStart');
+
+                if (InputClient == null) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByRange_0130", commonEventPublishData, this.publishCallback);
+                } else {
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                    try {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange in');
+                        commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByRange_0130", commonEventPublishData, this.publishCallback);
+                        let t1 = setInterval(async () => {;
+                            await InputClient.selectByRange(range);
+                            timeCount += 1;
+                            console.info(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 this.softKeyboardPanel.hide setInterval timeCount: ' +  timeCount);
+                            if(timeCount === 2){
+                                clearInterval(t1);
+                            }
+                        },100);
+                    } catch (err) {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange catch err:' + JSON.stringify(err));
+                        commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByRange_0130", commonEventPublishData, this.publishCallback);
+
+                    }
+                }
+            });
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByRange_0130 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByRange_0130", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private  Sub_Misc_inputMethod_offSelectByMovement_0140(): void {
+        let commonEventPublishData;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByMovement_0140 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByMovement_0140 success inputStart');
+                let commonEventPublishData;
+                let timeCount = 0;
+                let movement = { direction: inputMethodEngine.CURSOR_DOWN };
+                inputMethodAbility.off('inputStart');
+
+                if (InputClient == null) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByMovement_0140", commonEventPublishData, this.publishCallback);
+                } else {
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                    try {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 offSelectByMovement in');
+                        commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByMovement_0140", commonEventPublishData, this.publishCallback);
+                        let t1 = setInterval(async () => {;
+                            await InputClient.selectByMovement(movement);
+                            timeCount += 1;
+                            console.info(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 this.softKeyboardPanel.hide setInterval timeCount: ' +  timeCount);
+                            if(timeCount === 2){
+                                clearInterval(t1);
+                            }
+                        },100);
+                    } catch (err) {
+                        console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 offSelectByMovement catch err:' + JSON.stringify(err));
+                        commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByMovement_0140", commonEventPublishData, this.publishCallback);
+
+                    }
+                }
+            });
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByMovement_0140 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByMovement_0140", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+
 }

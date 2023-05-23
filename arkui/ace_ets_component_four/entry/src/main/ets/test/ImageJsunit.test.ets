@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import router from '@system.router';
 import Utils from './Utils';
 
@@ -22,7 +22,7 @@ export default function imageJsunit() {
     beforeEach(async function (done) {
       console.info("image beforeEach start");
       let options = {
-        uri: 'pages/image',
+        uri: 'MainAbility/pages/image',
       }
       try {
         router.clear();
@@ -65,13 +65,7 @@ export default function imageJsunit() {
       console.info("imageTest_0200 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("imageTest_0200 obj.$attrs.src is: " + obj.$attrs.src);
-      console.info("imageTest_0200 obj.obj.$type is: " + obj.$type);
-      var res = obj.$attrs.src.indexOf('RAWFILE/test.png');
-      console.info("imageTest_0200 result is: " + res);
-      var sres = obj.$attrs.src.slice(res, res + 16);
-      console.info("imageTest_0200 slice result is: " + sres);
-      expect(obj.$type).assertEqual('Image');
-      expect(obj.$attrs.src.slice(res, res + 16)).assertEqual('RAWFILE/test.png');
+      expect(obj.$attrs.src).assertEqual('resource://rawfile/test.png');
       console.info('imageTest_0200 END');
       done();
     });

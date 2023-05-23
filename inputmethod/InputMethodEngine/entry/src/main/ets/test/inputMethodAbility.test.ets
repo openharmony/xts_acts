@@ -30,9 +30,18 @@ export default function inputMethodAbility() {
       extra:{}
     }
 
+    var inputServerCopy = {
+      packageName: '',
+      methodId: '',
+      name:'',
+      id:'',
+      extra:{}
+    }
+
     let display_info;
     let getFocusCmd = '';
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let inputMethodController = inputMethod.getController();
     async function runCmd(cmd){
       console.debug('====>runCmd info:' + cmd);
       await abilityDelegator.executeShellCommand(cmd);
@@ -67,6 +76,12 @@ export default function inputMethodAbility() {
       }catch(err){
         console.debug("====>beforeAll inputMethodStageJSUnit switchCurrentInputMethodSubtype failed");
       }
+      let inputCurrent = inputMethod.getCurrentInputMethod();
+      inputServerCopy.packageName = inputCurrent.packageName;
+      inputServerCopy.methodId = inputCurrent.methodId;
+      inputServerCopy.name = inputCurrent.packageName;
+      inputServerCopy.id = inputCurrent.methodId;
+      console.info("====>Sub_Misc_inputMethod_onImeChange_0010 restore to: " +  JSON.stringify(inputServerCopy));
     })
 
     afterAll(async (done) => {
@@ -2208,5 +2223,300 @@ export default function inputMethodAbility() {
       }
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
+
+    it('Sub_Misc_inputMethod_onSelectByRange_0110', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_onSelectByRange_0110"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber finish")
+      })
+
+      inputMethodController.on("selectByRange", async (range) => {
+        console.info('====>Sub_Misc_inputMethod_onSelectByRange_0110 onSelectByRange start');
+        inputMethodController.off("selectByRange");
+        try {
+          expect(range.start).assertEqual(0);
+          expect(range.end).assertEqual(10);
+          console.info('====>Sub_Misc_inputMethod_onSelectByRange_0110 Succeed onSelectByRange: ' + JSON.stringify(range));
+          done();
+        } catch (err) {
+          console.info('====>Sub_Misc_inputMethod_onSelectByRange_0110 selectByRange success');
+          done();
+        }
+      });
+
+      var commonEventPublishData = {
+        code:110
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('Sub_Misc_inputMethod_onSelectByMovement_0120', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_onSelectByMovement_0120"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber finish")
+      })
+
+      inputMethodController.on("selectByMovement", async (movement) => {
+        console.info('====>Sub_Misc_inputMethod_onSelectByMovement_0120 onSelectByMovement start');
+        inputMethodController.off("selectByMovement");
+        try {
+          expect(movement.direction).assertEqual(2);
+          console.info('====>Sub_Misc_inputMethod_onSelectByMovement_0120 Succeed onSelectByMovement: ' + JSON.stringify(movement));
+          done();
+        } catch (err) {
+          console.info('====>Sub_Misc_inputMethod_onSelectByMovement_0120 onSelectByMovement catch err: ' + JSON.stringify(err));
+          done();
+        }
+      });
+
+      var commonEventPublishData = {
+        code:120
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('Sub_Misc_inputMethod_offSelectByRange_0130', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_offSelectByRange_0130"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber finish")
+      })
+
+      let count = 0;
+      inputMethodController.on("selectByRange", async (movement) => {
+        console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange start');
+        inputMethodController.off("selectByRange");
+        count += 1;
+        console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 Succeed offSelectByRange: ' + JSON.stringify(movement));
+        console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 count: ' + count);
+      });
+
+      let t = setTimeout(() => {
+        try {
+          console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 setTimeout count: ' +  count);
+          expect(count).assertEqual(1);
+          clearTimeout(t);
+          done();
+          console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 Succeed offSelectByRange ');
+        } catch (err) {
+          console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange err: ' + JSON.stringify(err));
+          done();
+        }
+      },500);
+
+      var commonEventPublishData = {
+        code:130
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('Sub_Misc_inputMethod_offSelectByMovement_0140', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_offSelectByMovement_0140"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber finish")
+      })
+
+      let count = 0;
+      inputMethodController.on("selectByMovement", async (movement) => {
+        console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 offSelectByMovement start');
+        inputMethodController.off("selectByMovement");
+        count += 1;
+        console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 Succeed offSelectByMovement: ' + JSON.stringify(movement));
+        console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 count: ' + count);
+      });
+
+      let t = setTimeout(() => {
+        try {
+          console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 setTimeout count: ' +  count);
+          expect(count).assertEqual(1);
+          clearTimeout(t);
+          done();
+          console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 Succeed offSelectByMovement ');
+        } catch (err) {
+          console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 offSelectByMovement err: ' + JSON.stringify(err));
+          done();
+        }
+      },500);
+
+      var commonEventPublishData = {
+        code:140
+      }
+      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('Sub_Misc_inputMethod_onImeChange_0150', 0, async function (done) {
+      let inputMethodSetting = inputMethod.getSetting();
+      inputMethodSetting.on("imeChange", (inputMethodProperty, inputMethodSubtype) => {
+        inputMethodSetting.off("imeChange");
+        console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodProperty:" + JSON.stringify(inputMethodProperty));
+        console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodSubtype:" + JSON.stringify(inputMethodSubtype));
+        expect(typeof(inputMethodProperty) !== null).assertTrue();
+        expect(typeof(inputMethodSubtype) !== null).assertTrue();
+        done();
+      })
+      try {
+        await inputMethod.switchInputMethod(inputServer);
+        console.info("====>Sub_Misc_inputMethod_onImeChange_0150  switchInputMethod success" + JSON.stringify(inputServer));
+        await inputMethod.switchInputMethod(inputServerCopy);
+      } catch (err) {
+        console.info("====>Sub_Misc_inputMethod_onImeChange_0150 switchInputMethod fail" + JSON.stringify(err));
+      }
+    });
+
+    it('Sub_Misc_inputMethod_offImeChange_0160', 0, async function (done) {
+      let count = 0;
+      let inputMethodSetting = inputMethod.getSetting();
+      inputMethodSetting.on("imeChange", (inputMethodProperty, inputMethodSubtype) => {
+        inputMethodSetting.off("imeChange");
+        count += 1;
+        console.info("====>Sub_Misc_inputMethod_offImeChange_0160 count:" + count);
+      })
+
+      try {
+        await inputMethod.switchInputMethod(inputServer);
+        console.info('====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod');
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          await inputMethod.switchInputMethod(inputServerCopy);
+        },100);
+      } catch (err) {
+        console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));
+      }
+
+      let t = setTimeout(() => {
+        clearTimeout(t);
+        try {
+          console.info('====>Sub_Misc_inputMethod_offImeChange_0160 setTimeout count: ' +  count);
+          expect(count === 1).assertTrue();
+        } catch (err) {
+          console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));
+        }
+        done();
+      },500);
+    });
+
   });
 };

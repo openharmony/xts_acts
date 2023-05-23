@@ -143,7 +143,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("booleanValue", true);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0001 end   *************");
@@ -161,7 +161,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("byteValue", -128).or().equalTo("byteValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0002 end   *************");
@@ -179,7 +179,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("stringValue", "ABCDEFGHIJKLMN");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0003 end   *************");
@@ -197,7 +197,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("doubleValue", DOUBLE_MAX);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0004 end   *************");
@@ -215,7 +215,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("shortValue", -32768.0);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0005 end   *************");
@@ -234,6 +234,7 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(true).assertEqual(result.goToFirstRow());
             expect(2).assertEqual(result.getLong(0));
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0006 end   *************");
@@ -252,6 +253,7 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(true).assertEqual(result.goToFirstRow());
             expect(2).assertEqual(result.getLong(0))
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0007 end   *************");
@@ -270,7 +272,7 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(true).assertEqual(result.goToFirstRow());
             expect(1).assertEqual(result.getLong(0))
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testEqualTo0008 end   *************");
@@ -288,7 +290,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("booleanValue", true);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0001 end *************");
@@ -307,7 +309,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("byteValue", 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0002 end *************");
@@ -325,7 +327,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("stringValue", "ABCDEFGHIJKLMN");
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0003 end *************");
@@ -343,7 +345,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("doubleValue", DOUBLE_MAX);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0004 end *************");
@@ -361,7 +363,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("shortValue", -32768);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0005 end *************");
@@ -379,7 +381,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("integerValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0006 end *************");
@@ -397,7 +399,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("longValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0007 end *************");
@@ -415,7 +417,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.notEqualTo("floatValue", -0.123);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testNotEqualTo0008 end *************");
@@ -432,7 +434,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNull("primLongValue");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNull0001 end *************");
     })
@@ -448,7 +450,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNull("longValue");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNull0002 end *************");
     })
@@ -464,7 +466,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNull("stringValue");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNull0003 end *************");
     })
@@ -480,7 +482,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNull("stringValueX");
         let result = await rdbStore.query(predicates);
         expect(-1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNull0004 end *************");
     })
@@ -496,7 +498,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNotNull("primLongValue");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNotNull0001 end *************");
     })
@@ -512,7 +514,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNotNull("longValue");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNotNull0002 end *************");
     })
@@ -528,7 +530,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNotNull("stringValue");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNotNull0003 end *************");
     })
@@ -544,7 +546,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.isNotNull("stringValueX");
         let result = await rdbStore.query(predicates);
         expect(-1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testIsNotNull0004 end *************");
     })
@@ -561,7 +563,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("stringValue", "ABC");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0001 end *************");
@@ -579,7 +581,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("doubleValue", 0.0);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0002 end *************");
@@ -597,7 +599,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("integerValue", 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0003 end *************");
@@ -615,7 +617,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("longValue", 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0004 end *************");
@@ -633,7 +635,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("stringValue", "ZZZ");
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0005 end *************");
@@ -651,7 +653,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("doubleValue", 999.0);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0006 end *************");
@@ -669,7 +671,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("integerValue", -999);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0007 end *************");
@@ -687,7 +689,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThan("longValue", -999);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThan0008 end *************");
@@ -705,7 +707,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThanOrEqualTo("stringValue", "ABC");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThanOrEqualTo0001 end *************");
@@ -723,7 +725,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThanOrEqualTo("doubleValue", 0.0);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThanOrEqualTo0002 end *************");
@@ -741,7 +743,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThanOrEqualTo("integerValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThanOrEqualTo0003 end *************");
@@ -759,7 +761,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.greaterThanOrEqualTo("longValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testGreaterThanOrEqualTo0004 end *************");
@@ -777,7 +779,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("stringValue", "ABD");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0001 end *************");
@@ -795,7 +797,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("doubleValue", 0.0);
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0002 end *************");
@@ -813,7 +815,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("integerValue", 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0003 end *************");
@@ -831,7 +833,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("longValue", 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0004 end *************");
@@ -849,7 +851,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("stringValue", "ABD");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0005 end *************");
@@ -867,7 +869,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("doubleValue", 1.0);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0006 end *************");
@@ -885,7 +887,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("integerValue", -2147483648);
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0007 end *************");
@@ -903,7 +905,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThan("longValue", -9223372036854775808);
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThan0008 end *************");
@@ -921,7 +923,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThanOrEqualTo("stringValue", "ABD");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThanOrEqualTo0001 end *************");
@@ -939,7 +941,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThanOrEqualTo("doubleValue", 0.0);
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThanOrEqualTo0002 end *************");
@@ -957,7 +959,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThanOrEqualTo("integerValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThanOrEqualTo0003 end *************");
@@ -975,7 +977,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.lessThanOrEqualTo("longValue", 1);
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testLessThanOrEqualTo0004 end *************");
@@ -993,7 +995,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("stringValue", "ABB", "ABD");
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0001 end *************");
@@ -1011,7 +1013,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("doubleValue", 0.0, DOUBLE_MAX);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0002 end *************");
@@ -1029,7 +1031,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("integerValue", 0, 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0003 end *************");
@@ -1047,7 +1049,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("longValue", 0, 2);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0004 end *************");
@@ -1065,7 +1067,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("stringValue", "ABB", "ABB");
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0005 end *************");
@@ -1083,7 +1085,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("doubleValue", DOUBLE_MAX, DOUBLE_MAX);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0006 end *************");
@@ -1101,7 +1103,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("integerValue", 1, 0);
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0007 end *************");
@@ -1119,7 +1121,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.between("longValue", 2, -1);
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBetween0008 end *************");
@@ -1138,7 +1140,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testNotBetween0001 end *************");
@@ -1157,7 +1158,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(0).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testNotBetween0002 end *************");
@@ -1176,7 +1176,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testNotBetween0003 end *************");
@@ -1195,7 +1194,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testNotBetween0004 end *************");
@@ -1214,7 +1212,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testGlob0001 end *************");
@@ -1233,7 +1230,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testGlob0002 end *************");
@@ -1252,7 +1248,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testGlob0003 end *************");
@@ -1271,7 +1266,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testGlob0004 end *************");
@@ -1290,7 +1284,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testGlob0005 end *************");
@@ -1309,7 +1302,6 @@ describe('relationalStorePredicatesTest', function () {
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
             result.close();
-            result = null
         }
         done();
         console.info(TAG + "************* testGlob0006 end *************");
@@ -1326,7 +1318,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.contains("stringValue", "DEF");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testContains0001 end *************");
     })
@@ -1342,7 +1334,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.contains("stringValue", "DEFX");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testContains0002 end *************");
     })
@@ -1358,7 +1350,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.contains("characterValue", "中");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testContains0003 end *************");
     })
@@ -1374,7 +1366,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.contains("characterValue", "#");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testContains0004 end *************");
     })
@@ -1390,7 +1382,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.beginsWith("stringValue", "ABC");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testBeginsWith0001 end *************");
     })
@@ -1406,7 +1398,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.beginsWith("stringValue", "ABCX");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testBeginsWith0002 end *************");
     })
@@ -1422,7 +1414,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.beginsWith("characterValue", "中");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testBeginsWith0003 end *************");
     })
@@ -1438,7 +1430,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.beginsWith("characterValue", "#");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testBeginsWith0004 end *************");
     })
@@ -1454,7 +1446,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.endsWith("stringValue", "LMN");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testEndsWith0001 end *************");
     })
@@ -1470,7 +1462,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.endsWith("stringValue", "LMNX");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testEndsWith0002 end *************");
     })
@@ -1486,7 +1478,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.endsWith("characterValue", "中");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testEndsWith0003 end *************");
     })
@@ -1502,7 +1494,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.endsWith("characterValue", "#");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testEndsWith0004 end *************");
     })
@@ -1518,7 +1510,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "%LMN%");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLike0001 end *************");
     })
@@ -1534,7 +1526,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "%LMNX%");
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLike0002 end *************");
     })
@@ -1550,7 +1542,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("characterValue", "%中%");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLike0003 end *************");
     })
@@ -1566,7 +1558,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("characterValue", "%#%");
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLike0004 end *************");
     })
@@ -1588,7 +1580,7 @@ describe('relationalStorePredicatesTest', function () {
                 .endWrap();
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBeginWrap0001 end *************");
@@ -1609,7 +1601,7 @@ describe('relationalStorePredicatesTest', function () {
                 .endWrap();
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBeginWrap0002 end *************");
@@ -1630,7 +1622,7 @@ describe('relationalStorePredicatesTest', function () {
                 .endWrap();
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBeginWrap0003 end *************");
@@ -1650,7 +1642,7 @@ describe('relationalStorePredicatesTest', function () {
                 .endWrap();
             let result = await rdbStore.query(predicates);
             expect(-1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBeginWrap0004 end *************");
@@ -1670,7 +1662,7 @@ describe('relationalStorePredicatesTest', function () {
                 .equalTo("characterValue", '中');
             let result = await rdbStore.query(predicates);
             expect(-1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testBeginWrap0005 end *************");
@@ -1690,7 +1682,7 @@ describe('relationalStorePredicatesTest', function () {
                 .equalTo("integerValue", 1);
             let result = await rdbStore.query(predicates);
             expect(1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testAnd0001 end *************");
@@ -1713,7 +1705,7 @@ describe('relationalStorePredicatesTest', function () {
                 .endWrap();
             let result = await rdbStore.query(predicates);
             expect(2).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testAnd0002 end *************");
@@ -1774,7 +1766,7 @@ describe('relationalStorePredicatesTest', function () {
             expect(2).assertEqual(result.getLong(0));
             expect(true).assertEqual(result.goToNextRow())
             expect(1).assertEqual(result.getLong(0));
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testOrder0001 end *************");
@@ -1798,7 +1790,7 @@ describe('relationalStorePredicatesTest', function () {
             expect(2).assertEqual(result.getLong(0));
             expect(true).assertEqual(result.goToNextRow())
             expect(3).assertEqual(result.getLong(0));
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testOrder0002 end *************");
@@ -1816,7 +1808,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByDesc("integerValueX").distinct();
             let result = await rdbStore.query(predicates);
             expect(-1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testOrder0003 end *************");
@@ -1834,7 +1826,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").orderByAsc("integerValueX").distinct();
             let result = await rdbStore.query(predicates);
             expect(-1).assertEqual(result.rowCount);
-            result = null
+            result.close();
         }
         done();
         console.info(TAG + "************* testOrder0004 end *************");
@@ -1851,7 +1843,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(1);
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLimit0001 end *************");
     })
@@ -1867,7 +1859,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLimit0002 end *************");
     })
@@ -1883,7 +1875,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(100);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLimit0003 end *************");
     })
@@ -1899,7 +1891,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "中").limitAs(1);
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLimit0004 end *************");
     })
@@ -1915,7 +1907,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(0);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLimit0005 end *************");
     })
@@ -1931,7 +1923,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(-1);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testLimit0006 end *************");
     })
@@ -1947,7 +1939,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(1);
         let result = await rdbStore.query(predicates);
         expect(2).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testOffset0001 end *************");
     })
@@ -1963,7 +1955,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(0);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testOffset0002 end *************");
     })
@@ -1979,7 +1971,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(5);
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testOffset0003 end *************");
     })
@@ -1995,7 +1987,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(-1);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testOffset0004 end *************");
     })
@@ -2012,6 +2004,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.in("doubleValue", values);
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
+        result.close();
         done();
         console.info(TAG + "************* testIn0001 end *************");
     })
@@ -2028,6 +2021,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.in("doubleValue", values);
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
+        result.close();
         done();
         console.info(TAG + "************* testIn0002 end *************");
     })
@@ -2044,6 +2038,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.in("doubleValue", values);
         let result = await rdbStore.query(predicates);
         expect(1).assertEqual(result.rowCount);
+        result.close();
         done();
         console.info(TAG + "************* testIn0003 end *************");
     })
@@ -2060,6 +2055,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.in("doubleValue", values);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
+        result.close();
         done();
         console.info(TAG + "************* testIn0004 end *************");
     })
@@ -2125,6 +2121,7 @@ describe('relationalStorePredicatesTest', function () {
         let predicates = await new data_Rdb.RdbPredicates("AllDataType");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
+        result.close();
         done();
         console.info(TAG + "************* testCreate0001 end *************");
     })
@@ -2139,6 +2136,7 @@ describe('relationalStorePredicatesTest', function () {
         let predicates = await new data_Rdb.RdbPredicates("test");
         let result = await rdbStore.query(predicates);
         expect(-1).assertEqual(result.rowCount);
+        result.close();
         done();
         console.info(TAG + "************* testCreate0002 end *************");
     })
@@ -2154,7 +2152,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValue"]);
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testGroupBy0001 end *************");
     })
@@ -2170,7 +2168,7 @@ describe('relationalStorePredicatesTest', function () {
         predicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValueX"]);
         let result = await rdbStore.query(predicates);
         expect(-1).assertEqual(result.rowCount);
-        result = null
+        result.close();
         done();
         console.info(TAG + "************* testGroupBy0002 end *************");
     })
@@ -2188,6 +2186,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
+            result.close();
         }catch(err){
             errInfo = err
         }
@@ -2209,6 +2208,7 @@ describe('relationalStorePredicatesTest', function () {
             predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValueX"]);
             let result = await rdbStore.query(predicates);
             expect(3).assertEqual(result.rowCount);
+            result.close();
         }catch(err){
             errInfo = err
         }

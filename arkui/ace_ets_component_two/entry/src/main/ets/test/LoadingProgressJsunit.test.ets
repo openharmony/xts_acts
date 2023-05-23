@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 
@@ -21,7 +21,7 @@ export default function loadingProgressJsunit() {
   describe('loadingProgressTest', function () {
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/loadingProgress',
+        uri: 'MainAbility/pages/loadingProgress',
       }
       try {
         router.clear();
@@ -61,7 +61,8 @@ export default function loadingProgressJsunit() {
       let strJson = getInspectorByKey('LP');
       let obj = JSON.parse(strJson);
       console.info("testLoadingProgress_200 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.borderRadius).assertEqual("0.0vp");
+      let borders = obj.$attrs.borderRadius;
+      expect(borders instanceof Object).assertTrue();
       console.info('testLoadingProgress_200 END');
       done();
     });

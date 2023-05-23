@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function navigationJsunit() {
@@ -38,7 +38,7 @@ export default function navigationJsunit() {
       console.info('[navigationTest] before each called')
       await sleep(1)
       let options = {
-        uri: 'pages/Navigation',
+        uri: 'MainAbility/pages/Navigation',
       }
       try {
         router.clear();

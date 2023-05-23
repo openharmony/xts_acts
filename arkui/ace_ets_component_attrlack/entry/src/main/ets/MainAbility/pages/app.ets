@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import app from '@system.app';
+import appS from '@system.app';
 import events_emitter from '@ohos.events.emitter';
 
 import Log from '../common/Log.ets';
@@ -49,11 +49,11 @@ struct AppVersionCode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("versionCodeText")
         .onClick(()=>{
-          app.getInfo().versionCode = 1
           try {
+            let versionCode = appS.getInfo().versionCode;
             var backData = {
               data: {
-                "Code": app.getInfo().versionCode
+                "Code": appS.getInfo().versionCode
               }
             }
             let backEvent = {

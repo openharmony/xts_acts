@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -38,7 +38,7 @@ struct PositionExample {
           Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
         }
         .width('90%')
-        .direction(this.direction).key('direction')
+        .direction(this.direction).key('direction_2')
       }
     }
     .width('100%').margin({ top: 5 }).direction(Direction.Rtl)
@@ -47,13 +47,13 @@ struct PositionExample {
   onPageShow() {
     console.info('direction2 page show called');
     var stateChangeEvent = {
-      eventId: 82,
+      eventId: 1082,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
     var stateChangeEventOne = {
-      eventId: 83,
+      eventId: 1083,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)

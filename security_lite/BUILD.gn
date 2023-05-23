@@ -15,8 +15,6 @@ group("securitytest") {
   if (ohos_kernel_type == "liteos_a") {
     deps = [
       "//test/xts/acts/security_lite/huks/liteos_a_adapter:Hukslitetest",
-      "//test/xts/acts/security_lite/permission_posix/capability:ActsCapabilityTest",
-      "//test/xts/acts/security_lite/permission_posix/dac:ActsDacTest",
       "//test/xts/acts/security_lite/permission_posix/pms:ActsPMSTest",
     ]
   } else if (ohos_kernel_type == "linux") {

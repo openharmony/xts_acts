@@ -21,6 +21,8 @@ import web_webview from '@ohos.web.webview';
 import fileio from '@ohos.fileio';
 import prompt from '@system.prompt';
 let loadedUrl;
+
+
 @Entry
 @Component
 struct Index {
@@ -37,6 +39,11 @@ struct Index {
     @State mode: WebDarkMode = WebDarkMode.Off
     @State mode1: WebDarkMode = WebDarkMode.On
     @State mode2: WebDarkMode = WebDarkMode.Auto
+    @State enterPageEnd: boolean = false
+
+    
+    
+
     ports: web_webview.WebMessagePort[];
     testObj = {
         testOne: (data) => {
@@ -551,6 +558,34 @@ struct Index {
                             }                                                                                                                                     
                             break;
                         }
+                        case "emitSetHttpDnsSuccess":{ 
+                            try {
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SecureOnly, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                this.controller.loadUrl("https://www.example.com/");
+                                this.enterPageEnd=true
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitGetAccessibleGeolocation":{  
+                             try {
+                                web_webview.GeolocationPermissions.allowGeolocation("file:///") 
+                                web_webview.GeolocationPermissions.getAccessibleGeolocation("file:///",(error, result) => {
+                                if (error) {
+                                    console.log('getAccessibleGeolocation error: ' + JSON.stringify(error))
+                                    return;
+                                }
+                                if (result) {
+                                    console.log('getAccessibleGeolocationAsync result: ' + result);
+                                    Utils.emitEvent(result, 451);
+                                }
+                            });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                            }                                                                                                                                     
+                            break;
+                        }
                         default:
                             console.info("can not match case")
                     }
@@ -583,6 +618,13 @@ struct Index {
             })
             .onHttpErrorReceive((event) => {
                 event.response.setResponseIsReady(true)
+            })
+            .onPageEnd((event) => {
+                if(this.enterPageEnd){
+                    Utils.emitEvent(1,446)
+                    this.enterPageEnd=false
+                }
+                console.log('url:' + event.url)
             })
             .darkMode(this.mode)
             .forceDarkAccess(false)

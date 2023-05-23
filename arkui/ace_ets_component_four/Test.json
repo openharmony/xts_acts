@@ -1,11 +1,12 @@
 {
-    "description": "Configuration for aceceshi Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-	    "bundle-name": "com.open.harmony.acetestfour",
-        "package-name": "com.open.harmony.acetestfour",
-        "shell-timeout": "600000"
+	"bundle-name": "com.open.harmony.acetestfour",
+        "module-name": "phone",
+        "shell-timeout": "600000",
+        "testcase-timeout": "180000"
     },
     "kits": [
         {

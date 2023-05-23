@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-	    "bundle-name": "com.open.harmony.standardtest",
-        "package-name": "com.open.harmony.standardtest",
+	"bundle-name": "com.open.harmony.standardtest",
+        "module-name": "phone",
         "shell-timeout": "600000"
     },
     "kits": [

@@ -294,6 +294,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_DISCHARGING).assertEqual('usual.event.DISCHARGING')
       expect(commonEventManager.Support.COMMON_EVENT_CHARGING).assertEqual('usual.event.CHARGING')
       expect(commonEventManager.Support.COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED).assertEqual('usual.event.DEVICE_IDLE_MODE_CHANGED')
+      expect(commonEventManager.Support.COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED).assertEqual('usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED')
       expect(commonEventManager.Support.COMMON_EVENT_POWER_SAVE_MODE_CHANGED).assertEqual('usual.event.POWER_SAVE_MODE_CHANGED')
       expect(commonEventManager.Support.COMMON_EVENT_USER_ADDED).assertEqual('usual.event.USER_ADDED')
       expect(commonEventManager.Support.COMMON_EVENT_USER_REMOVED).assertEqual('usual.event.USER_REMOVED')
@@ -380,6 +381,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_USER_INFO_UPDATED).assertEqual('usual.event.USER_INFO_UPDATED')
       expect(commonEventManager.Support.COMMON_EVENT_HTTP_PROXY_CHANGE).assertEqual('usual.event.HTTP_PROXY_CHANGE')
       expect(commonEventManager.Support.COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED ).assertEqual('usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED')
+      expect(commonEventManager.Support.COMMON_EVENT_QUICK_FIX_REVOKE_RESULT ).assertEqual('usual.event.QUICK_FIX_REVOKE_RESULT')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2000 END`)
     })
 

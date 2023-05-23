@@ -15,7 +15,7 @@
 
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function gridMaxCountJsunit() {
@@ -23,7 +23,7 @@ export default function gridMaxCountJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/grid',
+        uri: 'MainAbility/pages/grid',
       }
       try {
         router.clear();
@@ -50,11 +50,10 @@ export default function gridMaxCountJsunit() {
       console.info('testcheckgridMaxCount testcheckgridMaxCount0001 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('maxCountTest');
-      console.info("[testcheckgridMaxCount0001] component selectedMaxcount strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid');
-      expect(obj.$attrs.maxCount).assertEqual("5");
       console.info("[testcheckgridMaxCount0001] selectedMaxCount value :" + obj.$attrs.maxCount);
+      expect(obj.$attrs.maxCount).assertEqual("5");
       done();
     });
   })

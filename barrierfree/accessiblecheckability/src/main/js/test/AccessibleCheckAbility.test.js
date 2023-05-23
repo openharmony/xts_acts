@@ -26,7 +26,7 @@ describe('AccessibleCheckAbility', function () {
 
     afterEach(async function (done) {
         console.info(`AccessibleAbilityList: afterEach starts`);
-        setTimeout(done, TIMEOUT);
+        done();
     })
 
 

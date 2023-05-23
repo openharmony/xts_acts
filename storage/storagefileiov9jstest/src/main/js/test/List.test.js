@@ -15,6 +15,7 @@
 
 import fileIOAccess from './members/access.test.js'
 import fileIOClose from './members/close.test.js'
+import fileIOCopyDir from './members/copyDir.test'
 import fileIOCopyfile from './members/copyFile.test.js'
 import fileIOCreateStream from './members/createStream.test.js'
 import fileIOFdatasync from './members/fdatasync.test.js'
@@ -46,6 +47,7 @@ import fileIORW from './members/filerw.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
+    fileIOCopyDir()
     fileIOCopyfile()
     fileIOCreateStream()
     fileIOFdatasync()

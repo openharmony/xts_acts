@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function lineNeJsunit() {
@@ -22,7 +22,7 @@ export default function lineNeJsunit() {
     beforeAll(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/line',
+        uri: 'MainAbility/pages/line',
       }
       try {
         router.clear();
@@ -56,7 +56,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line1');
       console.info("[testlineNe0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Line');
       expect(obj.$attrs.width).assertEqual("50.00vp");
       console.info("[testlineNe0001] width value :" + obj.$attrs.width);
       done();
@@ -73,7 +73,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line1');
       console.info("[testlineNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Line');
       expect(obj.$attrs.height).assertEqual("100.00vp");
       console.info("[testlineNe0002] height value :" + obj.$attrs.height);
       done();
@@ -90,7 +90,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line2');
       console.info("[testlineNe0005] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Line');
       expect(obj.$attrs.width).assertEqual("200.00vp");
       console.info("[testlineNe0005] width value :" + obj.$attrs.width);
       done();
@@ -107,7 +107,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line2');
       console.info("[testlineNe0006] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Line');
       expect(obj.$attrs.height).assertEqual("200.00vp");
       console.info("[testlineNe0006] height value :" + obj.$attrs.height);
       done();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
 export default function swiperJsunit() {
@@ -34,7 +34,7 @@ export default function swiperJsunit() {
       console.info('afterEach backToIndexPromise ...');
       setTimeout(() => {
         router.back({
-          uri: 'pages/index'
+          uri: 'MainAbility/pages/index'
         });
         resolve();
       }, 500);
@@ -56,7 +56,7 @@ export default function swiperJsunit() {
 
     beforeEach(async function (done) {
       let options = {
-        uri: 'pages/Swiper',
+        uri: 'MainAbility/pages/Swiper',
       }
       try {
         router.clear();
@@ -107,7 +107,7 @@ export default function swiperJsunit() {
       expect(obj.$attrs.indicator).assertEqual('true')
       expect(obj.$attrs.loop).assertEqual('false')
       expect(obj.$attrs.vertical).assertEqual('false')
-      expect(obj.$attrs.duration).assertEqual(1000.000000.toFixed(6))
+      expect(obj.$attrs.duration).assertEqual("1000")
       console.info('++++++++++++++++ Swiper TestCase 1 End +++++++++++++++++');
       done();
     });

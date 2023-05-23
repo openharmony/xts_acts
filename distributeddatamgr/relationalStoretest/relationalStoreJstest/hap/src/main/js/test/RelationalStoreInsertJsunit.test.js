@@ -120,7 +120,7 @@ describe('relationalStoreInsertTest', function () {
         } catch (e) {
             console.info("insert1 error " + e);
         }
-        resultSet = null
+        resultSet.close();
         done()
         console.info(TAG + "************* testRdbStoreInsert0001 end *************");
     })
@@ -263,6 +263,7 @@ describe('relationalStoreInsertTest', function () {
         } catch (e) {
             console.info("BatchInsert1 error " + e);
         }
+        resultSet.close();
         predicates = new data_Rdb.RdbPredicates("test1");
         predicates.equalTo("name", "lisi")
         resultSet = await rdbStore.query(predicates)
@@ -283,7 +284,7 @@ describe('relationalStoreInsertTest', function () {
         } catch (e) {
             console.info("BatchInsert1 error " + e);
         }
-        resultSet = null
+        resultSet.close();
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0001 end *************");
     })
@@ -332,6 +333,7 @@ describe('relationalStoreInsertTest', function () {
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+            resultSet.close();
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(2).assertEqual(id);
             expect("lisi").assertEqual(name)
@@ -343,11 +345,11 @@ describe('relationalStoreInsertTest', function () {
                 resultSet = await rdbStore.query(predicates).catch((err) =>{
                     expect(err != null).assertTrue();
                 })
+                resultSet.close();
             })
         } catch (e) {
             console.info("BatchInsert2 error " + e);
         }
-        resultSet = null
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0002 end *************");
     })
@@ -397,6 +399,7 @@ describe('relationalStoreInsertTest', function () {
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+            resultSet.close();
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(1).assertEqual(id);
             expect("zhangsan").assertEqual(name)
@@ -419,6 +422,7 @@ describe('relationalStoreInsertTest', function () {
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+            resultSet.close();
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(2).assertEqual(id);
             expect("lisi").assertEqual(name)
@@ -441,6 +445,7 @@ describe('relationalStoreInsertTest', function () {
                 const name = resultSet.getString(resultSet.getColumnIndex("name"))
                 const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                 const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                resultSet.close();
                 console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
                 expect(4).assertEqual(id);
                 expect("zhangmaowen").assertEqual(name)
@@ -452,7 +457,6 @@ describe('relationalStoreInsertTest', function () {
         } catch (e) {
             console.info("BatchInsert1 error " + e);
         }
-        resultSet = null
         done();
         console.info(TAG + "************* testRdbStorebatchInsertPromise0003 end *************");
     })
@@ -494,6 +498,7 @@ describe('relationalStoreInsertTest', function () {
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+            resultSet.close();
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(56).assertEqual(id);
             expect("zhangsan55").assertEqual(name)
@@ -505,7 +510,6 @@ describe('relationalStoreInsertTest', function () {
         } catch (e) {
             console.info("BatchInsert1 error " + e);
         }
-        resultSet = null;
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0004 end *************");
     })
@@ -565,7 +569,7 @@ describe('relationalStoreInsertTest', function () {
             } catch (e) {
                 console.info("BatchInsert1 error " + e);
             }
-            resultSet = null;
+            resultSet.close();
             done();
             console.info(TAG + "************* testRdbStorebatchInsertPromise0005 end *************");
         })
@@ -690,6 +694,7 @@ describe('relationalStoreInsertTest', function () {
                     } catch (e) {
                         console.info("BatchInsert1 error " + e);
                     }
+                    resultSet.close();
                     predicates = new data_Rdb.RdbPredicates("testcallback1");
                     predicates.equalTo("name", "lisi")
                     resultSet = await rdbStore.query(predicates)
@@ -710,10 +715,10 @@ describe('relationalStoreInsertTest', function () {
                     } catch (e) {
                         console.info("BatchInsert1 error " + e);
                     }
+                    resultSet.close();
                 }
                 done();
             })
-            resultSet = null
         })
         await sleep(2000)
         done()
@@ -764,6 +769,7 @@ describe('relationalStoreInsertTest', function () {
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
                         const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+                        resultSet.close();
                         console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
                         expect(2).assertEqual(id);
                         expect("lisi").assertEqual(name)
@@ -775,6 +781,7 @@ describe('relationalStoreInsertTest', function () {
                             resultSet = await rdbStore.query(predicates).catch((err) =>{
                                 expect(err != null).assertTrue();
                             })
+                            resultSet.close();
                         })
                     } catch (e) {
                         console.info("BatchInsert2 error " + e);
@@ -784,7 +791,6 @@ describe('relationalStoreInsertTest', function () {
             })
         })
         await sleep(2000)
-        resultSet = null
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0002 end *************");
     })
@@ -832,6 +838,7 @@ describe('relationalStoreInsertTest', function () {
                         const name = resultSet.getString(resultSet.getColumnIndex("name"))
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                        resultSet.close();
                         console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                         expect(1).assertEqual(id);
                         expect("zhangsan").assertEqual(name)
@@ -850,6 +857,7 @@ describe('relationalStoreInsertTest', function () {
                         const name = resultSet.getString(resultSet.getColumnIndex("name"))
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                        resultSet.close();
                         console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                         expect(2).assertEqual(id);
                         expect("lisi").assertEqual(name)
@@ -872,6 +880,7 @@ describe('relationalStoreInsertTest', function () {
                             const name = resultSet.getString(resultSet.getColumnIndex("name"))
                             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                            resultSet.close();
                             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                             expect(4).assertEqual(id);
                             expect("zhangmaowen").assertEqual(name)
@@ -888,7 +897,6 @@ describe('relationalStoreInsertTest', function () {
             })
         })
         await sleep(2000)
-        resultSet = null
         done();
         console.info(TAG + "************* testRdbStorebatchInsertCallback0003 end *************");
     })
@@ -928,6 +936,7 @@ describe('relationalStoreInsertTest', function () {
                         const name = resultSet.getString(resultSet.getColumnIndex("name"))
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                        resultSet.close();
                         console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                         expect(56).assertEqual(id);
                         expect("zhangsan55").assertEqual(name)
@@ -941,7 +950,6 @@ describe('relationalStoreInsertTest', function () {
             })
         })
         await sleep(2000)
-        resultSet = null;
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0004 end *************");
     })
@@ -1000,12 +1008,12 @@ describe('relationalStoreInsertTest', function () {
                     } catch (e) {
                         console.info("BatchInsert1 error " + e);
                     }
+                    resultSet.close();
                 }
                 done();
             })
         })
         await sleep(2000)
-        resultSet = null;
         done();
         console.info(TAG + "************* testRdbStorebatchInsertCallback0005 end *************");
     })
@@ -1226,8 +1234,7 @@ describe('relationalStoreInsertTest', function () {
         } catch (err) {
             console.log(TAG + " InsertWithConflictResolution0003 insert error" + err);
         }
-
-        resultSet = null
+        resultSet.close();
         done()
         console.log(TAG + " ************* InsertWithConflictResolution_0003 end  *************");
     })
@@ -1262,6 +1269,7 @@ describe('relationalStoreInsertTest', function () {
         } catch (err) {
             console.log(TAG + " InsertWithConflictResolution0004 insert error" + err);
         }
+        resultSet.close();
 
         {
             var u8 = new Uint8Array([4, 5, 6])
@@ -1295,8 +1303,7 @@ describe('relationalStoreInsertTest', function () {
         } catch (err) {
             console.log(TAG + " InsertWithConflictResolution0004 resultSet query error " + err);
         }
-
-        resultSet = null
+        resultSet.close();
         done()
         console.log(TAG + " ************* InsertWithConflictResolution_0004 end   *************");
     })

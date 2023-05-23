@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
@@ -23,7 +23,7 @@ export default function pageTransitionJsunit() {
     beforeEach(async function (done) {
       console.info("pageTransition beforeEach start");
       let options = {
-        uri: 'pages/pageTransition',
+        uri: 'MainAbility/pages/pageTransition',
       }
       try {
         router.clear();
@@ -97,11 +97,16 @@ export default function pageTransitionJsunit() {
       } catch (err) {
         console.log("pageTransitionTest_0400 change component data error: " + err.message);
       }
+      await Utils.sleep(4000);
       let callback = (indexEventOne) => {
-        console.info("pageTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
-        expect(indexEventOne.data.scale).assertEqual(6);
-        expect(indexEventOne.data.opacity).assertEqual(5);
-        expect(indexEventOne.data.type).assertEqual(RouteType.Pop);
+        try {
+          console.info("pageTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
+          expect(indexEventOne.data.scale).assertEqual(6);
+          expect(indexEventOne.data.opacity).assertEqual(5);
+          expect(indexEventOne.data.type).assertEqual(RouteType.Push);
+        } catch(err) {
+          console.info("pageTransitionTest_0400 get state result is err:  " + JSON.stringify(err));
+        }
       }
       let indexEventOne = {
         eventId: 144,

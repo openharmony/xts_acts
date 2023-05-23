@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import xml from '@ohos.xml'
+import util from '@ohos.util'
 export default function XmlSerializerXmlPullParserTest() {
 describe('XmlSerializerXmlPullParserTest', function () {
 
@@ -1046,13 +1047,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length);
-        var bufView = new Uint8Array(arrayBuffer);
-        var strLen = strXml.length;
-        for (var i = 0; i < strLen; ++i) {
-            bufView[i] = strXml.charCodeAt(i);
-        }
-        var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer, 'UTF-8');
         var str = '';
         function func2(name, value){
             str += name+':'+value;
@@ -1089,13 +1086,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length);
-        var bufView = new Uint8Array(arrayBuffer);
-        var strLen = strXml.length;
-        for (var i = 0; i < strLen; ++i) {
-            bufView[i] = strXml.charCodeAt(i);
-        }
-        var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         var str1 = '';
         function func1(name, value){
             str1 += name + value + ' ';
@@ -1123,13 +1116,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key + ' value:'+ value.getColumnNumber() + '  ';
@@ -1155,13 +1144,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key + ' value:'+ value.getDepth() + '  ';
@@ -1187,13 +1172,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:'+ key + ' value:' + value.getLineNumber() + '  ';
@@ -1219,13 +1200,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key + ' value:' + value.getName() + '  ';
@@ -1251,13 +1228,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key + ' value:'+ value.getNamespace() + '  ';
@@ -1283,13 +1256,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:'+key+' value:'+ value.getPrefix() + '  ';
@@ -1315,13 +1284,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key +' value:' + value.getText() + '  ';
@@ -1347,13 +1312,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key +' value:' + value.isEmptyElementTag() + '  ';
@@ -1380,13 +1341,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key +' value:' + value.isWhitespace() + '  ';
@@ -1413,13 +1370,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
         '    <todo>Work</todo>' +
         '    <todo>Play</todo>' +
         '</note>';
-        let arrayBuffer = new ArrayBuffer(strXml.length);
-        let bufView = new Uint8Array(arrayBuffer);
-        let strLen = strXml.length;
-        for (let tmp = 0; tmp < strLen; ++tmp) {
-          bufView[tmp] = strXml.charCodeAt(tmp);
-        }
-        let that = new xml.XmlPullParser(arrayBuffer);
+        let textEncoder = new util.TextEncoder();
+        let arrbuffer = textEncoder.encodeInto(strXml);
+        let that = new xml.XmlPullParser(arrbuffer.buffer);
         let str = "";
         function func(key, value){
           str += 'key:' + key +' value:' + value.getAttributeCount() + '  ';
@@ -1756,13 +1709,9 @@ describe('XmlSerializerXmlPullParserTest', function () {
                 '        </h:tr>' +
                 '    </h:table>' +
                 '</note>';
-            var arrayBuffer = new ArrayBuffer(strXml.length*2);
-            var bufView = new Uint8Array(arrayBuffer);
-            var strLen = strXml.length;
-            for (var i = 0; i < strLen; ++i) {
-                bufView[i] = strXml.charCodeAt(i);
-            }
-            var that = new xml.XmlPullParser(arrayBuffer, 'UTF-8');
+            let textEncoder = new util.TextEncoder();
+            let arrbuffer = textEncoder.encodeInto(strXml);
+            let that = new xml.XmlPullParser(arrbuffer.buffer, 'UTF-8');
             var str1 = '';
             function func1(name, value){
                 str1 += name+':'+value;

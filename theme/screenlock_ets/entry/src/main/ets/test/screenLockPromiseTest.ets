@@ -39,12 +39,11 @@ export default function ScreenLockPromiseTest(){
     it("SUB_MISC_THEME_screenLock_API_Promise_001", 0, async function (done) {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_001-------------------");
       try {
-        screenLock.isScreenLocked().then((data) => {
-          console.info("SUB_MISC_THEME_screenLock_API_Promise_001 isScreenLocked result is " + data);
-          expect(data == result).assertTrue()
-          console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_001-------------------");
+        let data = await screenLock.isScreenLocked();
+        console.info("SUB_MISC_THEME_screenLock_API_Promise_001 isScreenLocked result is " + data);
+        expect(data == result).assertTrue()
+        console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_001-------------------");
         done();
-        })
       } catch (error) {
         console.info("SUB_MISC_THEME_screenLock_API_Promise_001 test_setScreenLocked : error = " + error);
         expect().assertFail();
@@ -64,12 +63,11 @@ export default function ScreenLockPromiseTest(){
     it("SUB_MISC_THEME_screenLock_API_Promise_002", 0, async function (done) {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_002-------------------");
       try {
-        screenLock.isScreenLocked().then((data) => {
-          console.info("SUB_MISC_THEME_screenLock_API_Promise_002 isScreenLocked result is " + data);
-          expect(data == result).assertTrue();
-          console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_002-------------------");
+        let data = await screenLock.isScreenLocked();
+        console.info("SUB_MISC_THEME_screenLock_API_Promise_002 isScreenLocked result is " + data);
+        expect(data == result).assertTrue()
+        console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_002-------------------");
         done();
-        });
       } catch (error) {
         console.info("SUB_MISC_THEME_screenLock_API_Promise_002 test_setScreenLocked : error = " + error);
         expect().assertFail();
@@ -89,12 +87,11 @@ export default function ScreenLockPromiseTest(){
     it("SUB_MISC_THEME_screenLock_API_Promise_003", 0, async function (done) {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_003-------------------");
       try {
-        screenLock.isSecureMode().then((data) => {
-          console.info("SUB_MISC_THEME_screenLock_API_Promise_003 isScreenLocked result is " + data);
-          expect(data == false).assertTrue();
-          console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_003-------------------");
-          done();
-        });
+        let data = await screenLock.isSecureMode();
+        console.info("SUB_MISC_THEME_screenLock_API_Promise_003 isScreenLocked result is " + data);
+        expect(data == false).assertTrue()
+        console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_003-------------------");
+        done();
       } catch (error) {
         console.info("SUB_MISC_THEME_screenLock_API_Promise_003 isScreenLocked TRUE: error = " + error);
         expect().assertFail();
@@ -113,19 +110,15 @@ export default function ScreenLockPromiseTest(){
     it("SUB_MISC_THEME_screenLock_API_Promise_004", 0, async function (done) {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
       try {
-        screenLock.unlockScreen().then((data) => {
-              console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 success.");
-              console.info('====>-------------SUB_MISC_THEME_screenLock_API_Promise_004 end----------------------');
-              expect(true).assertTrue()
-              done();
-          }).catch( err => {
-              console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 failed because: " + JSON.stringify(err));
-              expect().assertFail();
-              done();
-          });
-        } catch (error) {
-          console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004: error = " + error);
-          expect().assertFail();
+        let data = await screenLock.unlockScreen();
+        console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004 success.");
+        expect(true).assertTrue()
+        console.info('====>-------------SUB_MISC_THEME_screenLock_API_Promise_004 end----------------------');
+        done();
+      } catch (error) {
+        console.info("====>SUB_MISC_THEME_screenLock_API_Promise_004: error = " + error);
+        expect().assertFail();
+        done();
       }
       console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_004-------------------");
     });

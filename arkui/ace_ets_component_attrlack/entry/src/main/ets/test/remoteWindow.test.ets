@@ -14,7 +14,7 @@
  */
 
 import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
 
 export default function remoteWindowJsunit() {
@@ -22,7 +22,7 @@ export default function remoteWindowJsunit() {
     beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'pages/remoteWindow',
+        uri: 'MainAbility/pages/remoteWindow',
       }
       try {
         router.clear();
@@ -193,7 +193,7 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0010] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Left');
+      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Center');
       console.info("[testRemoteWindow0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
