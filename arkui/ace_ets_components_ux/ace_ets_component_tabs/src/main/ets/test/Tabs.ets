@@ -195,12 +195,18 @@ export default function tabs() {
         console.log("[ArkUI_Tabs_Divider_0600] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultTabs');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_Divider_0600] defaultDivider:" + JSON.stringify(defaultObj.$attrs.divider));
+      let defaultDividerObject = defaultObj.$attrs.divider;
+      let defaultDividerColor = defaultDividerObject.color;
+
       let strJson = getInspectorByKey('tabsTest');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0600] divider:" + JSON.stringify(obj.$attrs.divider));
       let dividerObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("0.00px");
-      expect(dividerObject.color).assertEqual('#33182431');
+      expect(dividerObject.color).assertEqual(defaultDividerColor);
       expect(dividerObject.startMargin).assertEqual('0.00px');
       expect(dividerObject.endMargin).assertEqual('0.00px');
       done();
@@ -233,12 +239,18 @@ export default function tabs() {
         console.log("[ArkUI_Tabs_Divider_0700] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultTabs');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_Divider_0700] defaultDivider:" + JSON.stringify(defaultObj.$attrs.divider));
+      let defaultDividerObject = defaultObj.$attrs.divider;
+      let defaultDividerColor = defaultDividerObject.color;
+
       let strJson = getInspectorByKey('tabsTest');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0700] divider:" + JSON.stringify(obj.$attrs.divider));
       let dividerObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
-      expect(dividerObject.color).assertEqual('#33182431');
+      expect(dividerObject.color).assertEqual(defaultDividerColor);
       expect(dividerObject.startMargin).assertEqual("5.00px");
       expect(dividerObject.endMargin).assertEqual("5.00px");
       done();
@@ -513,6 +525,13 @@ export default function tabs() {
      */
     it('ArkUI_Tabs_LabelStyle_0100', 0, async function (done) {
       console.info("ArkUI_Tabs_LabelStyle_0100 start");
+
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" +  JSON.stringify(defaultObj.$attrs.tabBar.labelStyle));
+      let defaultLabelStyleObject = defaultObj.$attrs.tabBar.labelStyle;
+      let defaultFontSize = defaultLabelStyleObject.font.size;
+
       let strJson = getInspectorByKey('indicatorTest5');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" +  JSON.stringify(obj.$attrs.tabBar.labelStyle));
@@ -522,7 +541,7 @@ export default function tabs() {
       expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
-      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('16.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(defaultFontSize);
       expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Normal');
       expect(obj.$attrs.tabBar.labelStyle.font.family).assertEqual('HarmonyOS Sans');
       expect(obj.$attrs.tabBar.labelStyle.font.style).assertEqual('FontStyle.Normal');
@@ -616,6 +635,12 @@ export default function tabs() {
     it('ArkUI_Tabs_LabelStyle_0600', 0, async function (done) {
       console.info("ArkUI_Tabs_LabelStyle_0600 start");
 
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_LabelStyle_0600] default labelStyle:" +  JSON.stringify(defaultObj.$attrs.tabBar.labelStyle));
+      let defaultLabelStyleObject = defaultObj.$attrs.tabBar.labelStyle;
+      let defaultFontSize = defaultLabelStyleObject.font.size;
+
       let strJson = getInspectorByKey('indicatorTest6');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0600] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
@@ -624,7 +649,7 @@ export default function tabs() {
       expect(obj.$attrs.tabBar.labelStyle.minFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.maxFontSize).assertEqual('0.00vp');
       expect(obj.$attrs.tabBar.labelStyle.heightAdaptivePolicy).assertEqual('TextHeightAdaptivePolicy.MAX_LINES_FIRST');
-      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual('16.00fp');
+      expect(obj.$attrs.tabBar.labelStyle.font.size).assertEqual(defaultFontSize);
       expect(obj.$attrs.tabBar.labelStyle.font.weight).assertEqual('FontWeight.Normal');
       expect(obj.$attrs.tabBar.labelStyle.font.family).assertEqual('HarmonyOS Sans');
       expect(obj.$attrs.tabBar.labelStyle.font.style).assertEqual('FontStyle.Normal');
@@ -714,11 +739,18 @@ export default function tabs() {
      */
     it('ArkUI_Tabs_IndicatorColor_0100', 0, async function (done) {
       console.info("ArkUI_Tabs_IndicatorColor_0100 start");
+
+      await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0100] default indicator:" + defaultObj.$attrs.tabBar.indicator);
+      let defaultIndicatorColor = defaultObj.$attrs.tabBar.indicator.color;
+
       let strJson = getInspectorByKey('indicatorTest5');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0100] indicator:" + obj.$attrs.tabBar.indicator);
       let indicatorColor = obj.$attrs.tabBar.indicator.color;
-      expect(indicatorColor).assertEqual("#FF007DFF");
+      expect(indicatorColor).assertEqual(defaultIndicatorColor);
       done();
     });
 
@@ -806,11 +838,16 @@ export default function tabs() {
         console.log("[ArkUI_Tabs_IndicatorColor_0600] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_IndicatorColor_0600] default indicator:" + defaultObj.$attrs.tabBar.indicator);
+      let defaultIndicatorColor = defaultObj.$attrs.tabBar.indicator.color;
+
       let strJson = getInspectorByKey('indicatorTest1');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0600] indicator:" + obj.$attrs.tabBar.indicator);
       let indicatorColor = obj.$attrs.tabBar.indicator.color;
-      expect(indicatorColor).assertEqual("#FF007DFF");
+      expect(indicatorColor).assertEqual(defaultIndicatorColor);
       done();
     });
 
@@ -849,12 +886,12 @@ export default function tabs() {
       let indicatorHeight = obj.$attrs.tabBar.indicator.height;
       let indicatorWidth = obj.$attrs.tabBar.indicator.width;
       let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
+      let IndicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorColor).assertEqual("#FFFF0000");
       expect(indicatorHeight).assertEqual("5.00vp");
       expect(indicatorWidth).assertEqual("20.00vp");
       expect(indicatorBorderRadius).assertEqual("5.00vp");
-      expect(indicatorSpace).assertEqual("10.00vp");
+      expect(IndicatorMarginTop).assertEqual("10.00vp");
       done();
     });
 
@@ -865,11 +902,16 @@ export default function tabs() {
      */
     it('ArkUI_Tabs_IndicatorHeight_0100', 0, async function (done) {
       console.info("ArkUI_Tabs_IndicatorHeight_0100 start ")
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0100] default indicator:" + defaultObj.$attrs.tabBar.indicator);
+      let defaultIndicatorHeight = defaultObj.$attrs.tabBar.indicator.height;
+
       let strJson = getInspectorByKey('indicatorTest5');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0100] indicator:" + obj.$attrs.tabBar.indicator);
       let indicatorHeight = obj.$attrs.tabBar.indicator.height;
-      expect(indicatorHeight).assertEqual("2.00vp");
+      expect(indicatorHeight).assertEqual(defaultIndicatorHeight);
       done();
     });
 
@@ -942,11 +984,16 @@ export default function tabs() {
         console.log("[ArkUI_Tabs_IndicatorHeight_0500] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_IndicatorHeight_0500] default indicator:" + defaultObj.$attrs.tabBar.indicator);
+      let defaultIndicatorHeight = defaultObj.$attrs.tabBar.indicator.height;
+
       let strJson = getInspectorByKey('indicatorTest1');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0500] indicator:" + obj.$attrs.tabBar.indicator);
       let indicatorHeight = obj.$attrs.tabBar.indicator.height;
-      expect(indicatorHeight).assertEqual("2.00vp");
+      expect(indicatorHeight).assertEqual(defaultIndicatorHeight);
       done();
     });
 
@@ -1370,10 +1417,15 @@ export default function tabs() {
      */
     it('ArkUI_Tabs_SubTabBorderRadius_0100', 0, async function (done) {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0100 start");
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0100] default subTabBorderRadius:" + defaultObj.$attrs.tabBar.board.borderRadius);
+      let defaultSubTabBorderRadius = defaultObj.$attrs.tabBar.board.borderRadius;
+
       let strJson = getInspectorByKey('indicatorTest5');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0100] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
-      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("8.00vp");
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual(defaultSubTabBorderRadius);
       done();
     });
 
@@ -1443,10 +1495,15 @@ export default function tabs() {
         console.log("[ArkUI_Tabs_SubTabBorderRadius_0500] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_SubTabBorderRadius_0500] default subTabBorderRadius:" + defaultObj.$attrs.tabBar.board.borderRadius);
+      let defaultSubTabBorderRadius = defaultObj.$attrs.tabBar.board.borderRadius;
+
       let strJson = getInspectorByKey('indicatorTest1');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0500] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
-      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("8.00vp");
+      expect(obj.$attrs.tabBar.board.borderRadius).assertEqual(defaultSubTabBorderRadius);
       done();
     });
 
@@ -1617,72 +1674,77 @@ export default function tabs() {
     });
 
     /**
-     * @tc.number    ArkUI_Tabs_IndicatorSpace_0100
+     * @tc.number    ArkUI_Tabs_IndicatorMarginTop_0100
      * @tc.name      Tests the indicator.marginTop property of the tabs component
-     * @tc.desc      the default indicator.marginTop parameter is "0.00vp".
+     * @tc.desc      the default indicator.marginTop parameter is "8.00vp".
      */
-    it('ArkUI_Tabs_IndicatorSpace_0100', 0, async function (done) {
-      console.info("ArkUI_Tabs_IndicatorSpace_0100 start");
+    it('ArkUI_Tabs_IndicatorMarginTop_0100', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorMarginTop_0100 start");
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0100] default indicator:" + defaultObj.$attrs.tabBar.indicator);
+      let defaultIndicatorMarginTop = defaultObj.$attrs.tabBar.indicator.marginTop;
+
       let strJson = getInspectorByKey('indicatorTest4');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0100] indicatorSpace:" + obj.$attrs.tabBar.indicator);
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("8.00vp");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0100] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual(defaultIndicatorMarginTop);
       done();
     });
 
     /**
-     * @tc.number    ArkUI_Tabs_IndicatorWidth_0200
+     * @tc.number    ArkUI_Tabs_IndicatorMarginTop_0200
      * @tc.name      Tests the indicator.marginTop property of the tabs component
-     * @tc.desc      set indicator.width to number type.
+     * @tc.desc      set indicator.marginTop to number type.
      */
-    it('ArkUI_Tabs_IndicatorSpace_0200', 0, async function (done) {
-      console.info("ArkUI_Tabs_IndicatorSpace_0200 start");
+    it('ArkUI_Tabs_IndicatorMarginTop_0200', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorMarginTop_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0200] indicatorSpace:" + obj.$attrs.tabBar.indicator);
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("10.00vp");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0200] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual("10.00vp");
       done();
     });
 
     /**
-     * @tc.number    ArkUI_Tabs_IndicatorSpace_0300
+     * @tc.number    ArkUI_Tabs_IndicatorMarginTop_0300
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.width to string type.
      */
-    it('ArkUI_Tabs_IndicatorSpace_0300', 0, async function (done) {
-      console.info("ArkUI_Tabs_IndicatorSpace_0300 start");
+    it('ArkUI_Tabs_IndicatorMarginTop_0300', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorMarginTop_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0300] indicatorSpace:" + obj.$attrs.tabBar.indicator);
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("10.00vp");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0300] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual("10.00vp");
       done();
     });
 
     /**
-     * @tc.number    ArkUI_Tabs_IndicatorSpace_0400
+     * @tc.number    ArkUI_Tabs_IndicatorMarginTop_0400
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.width to Resource type.
      */
-    it('ArkUI_Tabs_IndicatorSpace_0400', 0, async function (done) {
-      console.info("ArkUI_Tabs_IndicatorSpace_0400 start");
+    it('ArkUI_Tabs_IndicatorMarginTop_0400', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorMarginTop_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0400] indicatorSpace:" + obj.$attrs.tabBar.indicator);
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("10.00vp");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0400] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual("10.00vp");
       done();
     });
 
     /**
-     * @tc.number    ArkUI_Tabs_IndicatorSpace_0500
+     * @tc.number    ArkUI_Tabs_IndicatorMarginTop_0500
      * @tc.name      Tests the indicator.marginTop property of the tabs component
-     * @tc.desc      set indicator.marginTop to abnormol value -1 then get the default value "0.00vp"
+     * @tc.desc      set indicator.marginTop to abnormol value -1 then get the default value "8.00vp"
      */
-    it('ArkUI_Tabs_IndicatorSpace_0500', 0, async function (done) {
-      console.info("ArkUI_Tabs_IndicatorSpace_0500 start");
+    it('ArkUI_Tabs_IndicatorMarginTop_0500', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorMarginTop_0500 start");
       
       try {
         var eventData = {
@@ -1695,27 +1757,32 @@ export default function tabs() {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[ArkUI_Tabs_IndicatorSpace_0500] start to publish emit");
+        console.info("[ArkUI_Tabs_IndicatorMarginTop_0500] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Tabs_IndicatorSpace_0500] change component data error: " + err.message);
+        console.log("[ArkUI_Tabs_IndicatorMarginTop_0500] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
+      let defaultStrJson = getInspectorByKey('defaultSubTab');
+      let defaultObj = JSON.parse(defaultStrJson);
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0500] default indicator:" + defaultObj.$attrs.tabBar.indicator);
+      let defaultIndicatorMarginTop = defaultObj.$attrs.tabBar.indicator.marginTop;
+
       let strJson = getInspectorByKey('indicatorTest1');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0500] indicatorSpace:" + obj.$attrs.tabBar.indicator);
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("8.00vp");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0500] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual(defaultIndicatorMarginTop);
       done();
     });
 
     /**
-     * @tc.number    ArkUI_Tabs_IndicatorSpace_0600
+     * @tc.number    ArkUI_Tabs_IndicatorMarginTop_0600
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorSpace_0600', 0, async function (done) {
-      console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
+    it('ArkUI_Tabs_IndicatorMarginTop_0600', 0, async function (done) {
+      console.info("ArkUI_Tabs_IndicatorMarginTop_0600 start");
       
       try {
         var eventData = {
@@ -1727,17 +1794,17 @@ export default function tabs() {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[ArkUI_Tabs_IndicatorSpace_0600] start to publish emit");
+        console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Tabs_IndicatorSpace_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Tabs_IndicatorMarginTop_0600] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
       let obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("10.00px");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual("10.00px");
 
       try {
         var eventData = {
@@ -1749,17 +1816,17 @@ export default function tabs() {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[ArkUI_Tabs_IndicatorSpace_0600] start to publish emit");
+        console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Tabs_IndicatorSpace_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Tabs_IndicatorMarginTop_0600] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
       strJson = getInspectorByKey('indicatorTest2');
       obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("10.00fp");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual("10.00fp");
 
       try {
         var eventData = {
@@ -1771,17 +1838,17 @@ export default function tabs() {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[ArkUI_Tabs_IndicatorSpace_0600] start to publish emit");
+        console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Tabs_IndicatorSpace_0600] change component data error: " + err.message);
+        console.log("[ArkUI_Tabs_IndicatorMarginTop_0600] change component data error: " + err.message);
       }
       await Utils.sleep(2000);
       strJson = getInspectorByKey('indicatorTest2');
       obj = JSON.parse(strJson);
-      console.info("[ArkUI_Tabs_IndicatorSpace_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      indicatorSpace = obj.$attrs.tabBar.indicator.marginTop;
-      expect(indicatorSpace).assertEqual("10.00lpx");
+      console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] indicator:" + obj.$attrs.tabBar.indicator);
+      indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      expect(indicatorMarginTop).assertEqual("10.00lpx");
       done();
     });
   })

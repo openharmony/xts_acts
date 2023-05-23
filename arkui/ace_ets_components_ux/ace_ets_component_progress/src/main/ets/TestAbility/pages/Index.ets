@@ -22,6 +22,7 @@ import testsuite from '../../test/List.test'
 @Component
 struct progressTest {
   @State progress: ProgressMask = new ProgressMask(10.0, 100.0, 0x01006CDE);
+  @State progress_default: ProgressMask = new ProgressMask(10.0, 100.0, $r('sys.color.ohos_id_color_mask_regular'));
   aboutToAppear(){
     var abilityDelegator: any
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -41,6 +42,13 @@ struct progressTest {
             Image($r('app.media.icon'))
               .key("ArkUX_Stage_Progress_updateColor")
               .mask(this.progress)
+              .backgroundColor(Color.Pink)
+              .width('500px').height('280px')
+          }
+          ListItem() {
+            Image($r('app.media.icon'))
+              .key("ArkUX_Stage_Progress_updateColor_default")
+              .mask(this.progress_default)
               .backgroundColor(Color.Pink)
               .width('500px').height('280px')
           }
@@ -190,100 +198,6 @@ struct progressTest {
                 })
                 .fontSize(10)
             }
-          }
-
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0100")
-              .borderColor(0x00ff00)
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0200")
-              .borderColor('#fffd0000')
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0300")
-              .borderColor("rgb(138,43,226)")
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0400")
-              .borderColor(Color.Pink)
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0500")
-              .borderColor($r("app.color.Progress_borderColor"))
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0600")
-              .borderColor("")
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0700")
-              .borderColor(null)
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0800")
-              .borderColor(undefined)
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_0900")
-              .borderColor("rgb(138,43,226)")
-              .borderColor("#FFFD0000")
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_1000")
-              .borderColor(Color.Pink)
-              .borderColor("")
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_1100")
-              .borderColor('bgr(138,43,226)')
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_1200")
-              .borderColor(0x00ff00)
-              .backgroundColor(Color.Pink)
-              .width('500px')
-              .height('50px')
-          }
-          ListItem() {
-            Progress({ value: 20, total: 150, type: ProgressType.Capsule })
-              .key("ArkUX_Stage_Progress_borderColor_1300")
-              .width('500px')
-              .height('50px')
           }
         }
       }

@@ -27,6 +27,10 @@ struct DatePickerExample {
     @State textStyle: PickerTextStyle = {color:Color.Red,font:{size:'10px',weight:FontWeight.Normal}}
     @State selectedTextStyle: PickerTextStyle = {color:Color.Blue,font:{size:'20px',weight:FontWeight.Bold}}
 
+    @State disappearTextStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_sub_title3"),weight:FontWeight.Lighter}}
+    @State textStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_sub_title2"),weight:FontWeight.Normal}}
+    @State selectedTextStyleDefault: PickerTextStyle ={color:$r("sys.color.ohos_id_color_text_primary_activated"),font:{size:$r("sys.float.ohos_id_text_size_headline8"),weight:FontWeight.Bold}}
+
     private stateChangCallBack = (eventData) => {
         console.info("select page state change called:" + JSON.stringify(eventData));
         if (eventData != null) {
@@ -70,6 +74,20 @@ struct DatePickerExample {
                 .textStyle(this.textStyle)
                 .selectedTextStyle(this.selectedTextStyle)
                 .key('datePicker')
+                .onChange((date: DatePickerResult) => {
+                     console.info( 'select current date is: ' + JSON.stringify(date))
+                })
+            
+             DatePicker({
+                start: new Date('1970-1-1'),
+                end: new Date('2100-1-1'),
+                selected: this.selectedDate
+            })
+                .lunar(true)
+                .disappearTextStyle(this.disappearTextStyleDefault)
+                .textStyle(this.textStyleDefault)
+                .selectedTextStyle(this.selectedTextStyleDefault)
+                .key('datePickerDefault')
                 .onChange((date: DatePickerResult) => {
                      console.info( 'select current date is: ' + JSON.stringify(date))
                 })
