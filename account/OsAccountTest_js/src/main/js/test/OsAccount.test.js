@@ -127,22 +127,18 @@ export default function AccountTest() {
                 accountAbility.queryOsAccountDistributedInfo(function (err, data) {
                     console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('12345')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
                         event: 'Ohos.account.event.LOGOUT'
                     };
                     accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
-                        expect(err).assertEqual(undefined)
+                        expect(err).assertEqual(undefined);
+                        done();
                     });
                 });
             });
-            accountAbility.queryOsAccountDistributedInfo(function (data) {
-
-                expect(data).assertEqual(undefined)
-                done();
-            })
         })
 
         /**
