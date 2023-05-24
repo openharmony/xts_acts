@@ -23,7 +23,7 @@ describe("SensorJsTest_sensor_29", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -31,7 +31,7 @@ describe("SensorJsTest_sensor_29", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -39,7 +39,7 @@ describe("SensorJsTest_sensor_29", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -47,7 +47,7 @@ describe("SensorJsTest_sensor_29", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
 	let GyroscopeId = 2
@@ -60,30 +60,36 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest001---------------');
 		try{
-		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {		
-				sensor.subscribeGyroscope({
-					interval: 'game',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest001 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeGyroscope_SensorJsTest001 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeGyroscope();
-					done();
-				}, 1000);
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest002 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'game',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest002 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeGyroscope_SensorJsTest002 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
+						done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
-            console.info('subscribeGyroscope_SensorJsTest001 Device does not support! ');
+            console.info('subscribeGyroscope_SensorJsTest002 Device does not support! ');
             done();
         }
-    })
+    })		
 	
    /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0020
@@ -91,32 +97,37 @@ describe("SensorJsTest_sensor_29", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeGyroscope_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeGyroscope_SensorJsTest002---------------');
 		try{
-		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {				
-				sensor.subscribeGyroscope({
-					interval: 'ui',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest002 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeGyroscope_SensorJsTest002 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeGyroscope();
-					done();
-				}, 1000);
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest002 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'ui',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest002 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeGyroscope_SensorJsTest002 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
+						done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeGyroscope_SensorJsTest002 Device does not support! ');
             done();
         }
-    })
+    })		
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0030
@@ -124,32 +135,37 @@ describe("SensorJsTest_sensor_29", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeGyroscope_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeGyroscope_SensorJsTest003---------------');
 		try{
-		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {			
-				sensor.subscribeGyroscope({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest003 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeGyroscope_SensorJsTest003 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeGyroscope();
-					done();
-				}, 1000);
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest003 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest003 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeGyroscope_SensorJsTest003 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
+						done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeGyroscope_SensorJsTest003 Device does not support! ');
             done();
         }
-    })
+    })		
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0040
@@ -157,46 +173,51 @@ describe("SensorJsTest_sensor_29", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeGyroscope_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeGyroscope_SensorJsTest004---------------');
 		try{
-		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {				
-				sensor.subscribeGyroscope({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest004 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeGyroscope_SensorJsTest004 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-
-				sensor.subscribeGyroscope({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest004_1 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeGyroscope_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-				   sensor.unsubscribeGyroscope();
-				   done();
-				}, 1000);
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest004 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest004 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeGyroscope_SensorJsTest004 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+	
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest004_1 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeGyroscope_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+					sensor.unsubscribeGyroscope();
+					done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeGyroscope_SensorJsTest004 Device does not support! ');
             done();
         }
-    })
+    })	
 
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0050
@@ -204,29 +225,34 @@ describe("SensorJsTest_sensor_29", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeGyroscope_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeGyroscope_SensorJsTest005---------------');
 		try{
-		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {				
-			sensor.subscribeGyroscope({
-				interval: 'xxx',
-				success: function (data) {
-					console.info("subscribeGyroscope_SensorJsTest005 success" + JSON.stringify(data));
-					expect(typeof (data.x)).assertEqual("number");
-					expect(typeof (data.y)).assertEqual("number");
-					expect(typeof (data.z)).assertEqual("number");
-				},
-				fail: function (data, code) {
-					console.log("subscribeGyroscope_SensorJsTest005 is failed, data: " + data + ", code: " + code);
-					expect(code).assertEqual(202);
-					done();
-				},
-			});
-		})
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest005 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'xxx',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest005 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeGyroscope_SensorJsTest005 is failed, data: " + data + ", code: " + code);
+							expect(code).assertEqual(202);
+							done();
+						},
+					});
+				}
+			})
 		} catch (error) {
             console.info('subscribeGyroscope_SensorJsTest005 Device does not support! ');
             done();
         }
-    })
+    })	
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0060
@@ -236,23 +262,33 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest006---------------');
 		try{
-		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {		
-				sensor.subscribeGyroscope({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest006 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest006 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest006 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+							done();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
 						done();
-					},
-				});
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeGyroscope_SensorJsTest006 Device does not support! ');
             done();
         }
-    })
+    })	
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0070
@@ -262,25 +298,296 @@ describe("SensorJsTest_sensor_29", function () {
     it("subscribeGyroscope_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeGyroscope_SensorJsTest007---------------');
 		try{
-		    sensor.getSingleSensor(GyroscopeId ,(error, data) => {	       
-			   sensor.subscribeGyroscope({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeGyroscope_SensorJsTest007 success" + JSON.stringify(data));
-						expect(typeof (data.x)).assertEqual("number");
-						expect(typeof (data.y)).assertEqual("number");
-						expect(typeof (data.z)).assertEqual("number");
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest008 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+							interval: 'normal',
+							success: function (data) {
+								console.info("subscribeGyroscope_SensorJsTest007 success" + JSON.stringify(data));
+								expect(typeof (data.x)).assertEqual("number");
+								expect(typeof (data.y)).assertEqual("number");
+								expect(typeof (data.z)).assertEqual("number");
+								done();
+							},
+							fail: function (data, code) {
+								console.log("subscribeGyroscope_SensorJsTest007 is failed, data: " + data + ", code: " + code);
+								expect(false).assertTrue();
+							},
+						});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
 						done();
-					},
-					fail: function (data, code) {
-						console.log("subscribeGyroscope_SensorJsTest007 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeGyroscope_SensorJsTest007 Device does not support! ');
             done();
         }
-    })		
+    })
+	
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0080
+     * @tc.name: subscribeGyroscope_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeGyroscope_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------subscribeGyroscope_SensorJsTest008---------------');
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest008 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'game',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest008 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest008 Device does not support! ');
+            done();
+        }
+    })
+
+   /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0090
+     * @tc.name: subscribeGyroscope_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeGyroscope_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest009 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'ui',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest009 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest009 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0100
+     * @tc.name: subscribeGyroscope_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeGyroscope_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeGyroscope_SensorJsTest010---------------------------');
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest010 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest010 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+						sensor.unsubscribeGyroscope();
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest010 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0110
+     * @tc.name: subscribeGyroscope_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeGyroscope_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeGyroscope_SensorJsTest011---------------------------');
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest011 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest011 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+			
+					sensor.subscribeGyroscope({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest011_1 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: null,
+					});
+					setTimeout(() => {
+					sensor.unsubscribeGyroscope();
+					done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest011 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0120
+     * @tc.name: subscribeGyroscope_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeGyroscope_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeGyroscope_SensorJsTest012---------------------------');		
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest012 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'xxx',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest012 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+					done();
+					}, 500);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest012 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0130
+     * @tc.name: subscribeGyroscope_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeGyroscope_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeGyroscope_SensorJsTest013---------------------------');
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest013 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'xxx',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest013 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: null,
+					});
+					setTimeout(() => {
+					sensor.unsubscribeGyroscope();
+					done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest013 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeGyroscope_JSTest_0140
+     * @tc.name: subscribeGyroscope_SensorJsTest014
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+	it("subscribeGyroscope_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeGyroscope_SensorJsTest014---------------------------');
+		try{
+		   sensor.getSingleSensor(GyroscopeId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeGyroscope_SensorJsTest014 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeGyroscope({
+						interval: 'game',
+						success: function (data) {
+							console.info("subscribeGyroscope_SensorJsTest014 success" + JSON.stringify(data));
+							expect(typeof (data.x)).assertEqual("number");
+							expect(typeof (data.y)).assertEqual("number");
+							expect(typeof (data.z)).assertEqual("number");
+						},
+						fail: null,
+					});
+					setTimeout(() => {
+					sensor.unsubscribeGyroscope();
+					done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeGyroscope_SensorJsTest014 Device does not support! ');
+            done();
+        }
+    })	
 })}

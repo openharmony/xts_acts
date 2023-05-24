@@ -23,7 +23,7 @@ describe("SensorJsTest_sensor_31", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -31,7 +31,7 @@ describe("SensorJsTest_sensor_31", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -39,7 +39,7 @@ describe("SensorJsTest_sensor_31", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -47,34 +47,40 @@ describe("SensorJsTest_sensor_31", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
 	let LightId = 5
+	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeLight_JSTest_0010
      * @tc.name: subscribeLight_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeLight_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('----------------------subscribeLight_SensorJsTest001---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {				
-				sensor.subscribeLight({
-					interval: 'game',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest001 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest001 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeLight();
-					done();
-				}, 1000);
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest001 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'game',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest001 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeLight_SensorJsTest001 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeLight();
+						done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest001 Device does not support! ');
@@ -88,24 +94,29 @@ describe("SensorJsTest_sensor_31", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeLight_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeLight_SensorJsTest002---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {				
-				sensor.subscribeLight({
-					interval: 'ui',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest002 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest002 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeLight();
-					done();
-				}, 1000);
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest002 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'ui',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest002 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeLight_SensorJsTest002 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeLight();
+						done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest002 Device does not support! ');
@@ -121,21 +132,28 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest003---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {				
-				sensor.subscribeLight({
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest003 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest003 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-					sensor.unsubscribeLight();
-					done();
-				}, 1000);
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest003 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest003 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeLight_SensorJsTest003 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+						sensor.unsubscribeLight();
+						done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest003 Device does not support! ');
@@ -149,42 +167,47 @@ describe("SensorJsTest_sensor_31", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeLight_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeLight_SensorJsTest004---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {	        
-				sensor.subscribeLight({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest004 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest004 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-
-				sensor.subscribeLight({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest004_1 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
-				setTimeout(() => {
-				   sensor.unsubscribeLight();
-				   done();
-				}, 1000);
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest004 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest004 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeLight_SensorJsTest004 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+	
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest004_1 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: function (data, code) {
+							console.log("subscribeLight_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
+							expect(false).assertTrue();
+						},
+					});
+					setTimeout(() => {
+					sensor.unsubscribeLight();
+					done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest004 Device does not support! ');
             done();
-        }
-    })
+        }	
+	})
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeLight_JSTest_0050
@@ -192,28 +215,33 @@ describe("SensorJsTest_sensor_31", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeLight_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeLight_SensorJsTest005---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {	      		
-				sensor.subscribeLight({
-					interval: 'xxx',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest005 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-						done();
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest005 is failed, data: " + data + ", code: " + code);
-						expect(code).assertEqual(202);
-						done();
-					},
-				});
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest005 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'xxx',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest005 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+							done();
+						},
+						fail: function (data, code) {
+							console.log("subscribeLight_SensorJsTest005 is failed, data: " + data + ", code: " + code);
+							expect(code).assertEqual(202);
+							done();
+						},
+					});
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest005 Device does not support! ');
             done();
-        }
-    })
+        }	
+	})
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeLight_JSTest_0060
@@ -221,49 +249,271 @@ describe("SensorJsTest_sensor_31", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
     it("subscribeLight_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeLight_SensorJsTest006---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {	    		
-				sensor.subscribeLight({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest006 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-						done();
-					},
-				});
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest006 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest006 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+							done();
+						},
+					});
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest006 Device does not support! ');
             done();
-        }
-    })
+        }	
+	})
 	
     /*
      * @tc.number:SUB_SensorsSystem_SubscribeLight_JSTest_0070
      * @tc.name: subscribeLight_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeLight_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+	it("subscribeLight_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest007---------------------------');
 		try{
-		   sensor.getSingleSensor(LightId ,(error, data) => {	          
-				sensor.subscribeLight({
-					interval: 'normal',
-					success: function (data) {
-						console.info("subscribeLight_SensorJsTest007 success" + JSON.stringify(data));
-						expect(typeof (data.intensity)).assertEqual("number");
-						done();
-					},
-					fail: function (data, code) {
-						console.log("subscribeLight_SensorJsTest007 is failed, data: " + data + ", code: " + code);
-						expect(false).assertTrue();
-					},
-				});
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest007 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'game',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest007 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: null,
+					});
+					setTimeout(() => {
+					sensor.unsubscribeLight();
+					done();
+					}, 1000);
+				}
 			})
 		} catch (error) {
             console.info('subscribeLight_SensorJsTest007 Device does not support! ');
             done();
         }
+    })	
+	
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeLight_JSTest_0080
+     * @tc.name: subscribeLight_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeLight_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------subscribeLight_SensorJsTest008---------------');
+		try{
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest008 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'game',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest008 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+						sensor.unsubscribeLight();
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeLight_SensorJsTest008 Device does not support! ');
+            done();
+        }
     })
+
+   /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0090
+     * @tc.name: subscribeLight_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeLight_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest009 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'ui',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest009 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+						sensor.unsubscribeLight();
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeLight_SensorJsTest009 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0100
+     * @tc.name: subscribeLight_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeLight_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeLight_SensorJsTest010---------------------------');
+		try{
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest010 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest010 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+						sensor.unsubscribeLight();
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeLight_SensorJsTest010 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0110
+     * @tc.name: subscribeLight_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeLight_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeLight_SensorJsTest011---------------------------');
+		try{
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest011 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest011 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+			
+					sensor.subscribeLight({
+						interval: 'normal',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest011_1 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: null,
+					});
+					setTimeout(() => {
+					sensor.unsubscribeLight();
+					done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeLight_SensorJsTest011 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0120
+     * @tc.name: subscribeLight_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeLight_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeLight_SensorJsTest012---------------------------');		
+		try{
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest012 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'xxx',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest012 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: undefined,
+					});
+					setTimeout(() => {
+					done();
+					}, 500);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeLight_SensorJsTest012 Device does not support! ');
+            done();
+        }
+    })	
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0130
+     * @tc.name: subscribeLight_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeLight_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeLight_SensorJsTest013---------------------------');
+		try{
+		   sensor.getSingleSensor(LightId ,(error, data) => {	
+				if (error) {
+					console.info('subscribeLight_SensorJsTest013 error');
+					expect(false).assertTrue();
+                    done();
+				} else {		   
+					sensor.subscribeLight({
+						interval: 'xxx',
+						success: function (data) {
+							console.info("subscribeLight_SensorJsTest013 success" + JSON.stringify(data));
+							expect(typeof (data.intensity)).assertEqual("number");
+						},
+						fail: null,
+					});
+					setTimeout(() => {
+					sensor.unsubscribeLight();
+					done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('subscribeLight_SensorJsTest013 Device does not support! ');
+            done();
+        }
+    })	
 })}
