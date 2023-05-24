@@ -143,6 +143,31 @@ export default async function SystemDisplayTest() {
         });
 
         /**
+         * @tc.number system_display_js_0203
+         * @tc.name set_value_success_value
+         * @tc.desc Check undefined as input of setValue
+         */
+        it('set_value_success_value', 0, async function (done) {
+            brightness.setKeepScreenOn({
+                keepScreenOn: true,
+                success: function () {
+                    console.log('undefined: original:handling set keep screen on success.');
+                    let value = brightness.getValue();
+                    brightness.setValue(undefined);
+                    expect(value == brightness.getValue()).assertTrue();
+                    done();
+                },
+                fail: function (data, code) {
+                    console.error('undefined: original:handling set keep screen on fail, code:' + code + ', data: ' + data);
+                    done();
+                },
+                complete: function () {
+                    console.error('undefined: original:handling set keep screen on complete.');
+                }
+            });
+        });
+
+        /**
          * @tc.number system_display_js_0300
          * @tc.name get_mode_success
          * @tc.desc Get mode success
