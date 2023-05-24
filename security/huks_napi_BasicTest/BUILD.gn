@@ -11,15 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//base/security/huks/build/config.gni")
-import("//base/security/huks/huks.gni")
-import("//test/xts/tools/build/suite.gni")
+base_root = "../../../../../"
+import("$base_root/base/security/huks/build/config.gni")
+import("$base_root/base/security/huks/huks.gni")
+import("$base_root/test/xts/tools/build/suite.gni")
 
 config("module_private_config") {
   visibility = [ ":*" ]
   include_dirs = [
-    "//commonlibrary/c_utils/base/include",
-    "//third_party/bounds_checking_function/include",
+    "$base_root/commonlibrary/c_utils/base/include",
+    "$base_root/third_party/bounds_checking_function/include",
     "include",
   ]
 }
@@ -74,9 +75,9 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
   }
 
   include_dirs = [
-    "//test/xts/acts/security/security_huks_basic/huks_napi_BasicTest/include",
+    "$base_root/test/xts/acts/security/security_huks_basic/huks_napi_BasicTest/include",
     "include",
-    "//base/security/huks/interfaces/kits/c/include",
+    "$base_root/base/security/huks/interfaces/kits/c/include",
     "commonlibrary/c_utils/base/include",
   ]
 
@@ -85,10 +86,10 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
     "huks:libhukssdk",
   ]
   deps = [
-    "//base/security/huks/frameworks/huks_standard/main:huks_standard_frameworks",
-    "//base/security/huks/frameworks/huks_standard/main/common:libhuks_common_standard_static",
-    "//base/security/huks/interfaces/kits/c:huks_ndk",
-    "//third_party/bounds_checking_function:libsec_static",
-    "//third_party/openssl:libcrypto_shared",
+    "$base_root/base/security/huks/frameworks/huks_standard/main:huks_standard_frameworks",
+    "$base_root/base/security/huks/frameworks/huks_standard/main/common:libhuks_common_standard_static",
+    "$base_root/base/security/huks/interfaces/kits/c:huks_ndk",
+    "$base_root/third_party/bounds_checking_function:libsec_static",
+    "$base_root/third_party/openssl:libcrypto_shared",
   ]
 }
