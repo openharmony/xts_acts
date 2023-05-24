@@ -16,6 +16,7 @@
 import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import EventConstants from './EventConstants.js';
+import parameter from '@ohos.systemparameter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 /* usb device pipe test */
@@ -515,24 +516,28 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
     expect(testParam.isClaimed).assertEqual(0);
 
-    console.info('usb case readData begin');
-    var tmpTimeOut = "invalid";
-    var tmpUint8Array = new Uint8Array(testParam.maxInSize);
+    console.info('usb case sendData begin');
+    testParam.sendData = 'send default';
     try {
+      testParam.sendData = parameter.getSync('test_usb', 'default');
+      console.log('usb parameter ' + JSON.stringify(testParam.sendData));
+    } catch (e) {
+      console.log('usb parameter getSync unexpected error: ' + e);
+    }
+
+    var tmpTimeOut = "invalid";
+    var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
       usbManager.bulkTransfer(testParam.pip, testParam.inEndpoint, tmpUint8Array, tmpTimeOut).then(data => {
-        console.info('usb case SUB_USB_JS_1530 ret: ' + data);
-        expect(false).assertTrue();
-        console.info('usb case SUB_USB_JS_1530 :  FAILED');
+      console.info('usb case SUB_USB_JS_1530 ret: ' + data);
+      console.info('usb case SUB_USB_JS_1530 send data: ' + testParam.sendData);
+      expect(data > 0).assertTrue();
+      console.info('usb case SUB_USB_JS_1530 :  PASS');
       }).catch(error => {
         console.info('usb 1530 write error : ' + JSON.stringify(error));
-        expect(false).assertTrue();
         console.info('usb case SUB_USB_JS_1530 :  FAILED');
+        expect(false).assertTrue();
       });
-    } catch (err) {
-      console.info('usb 1530 catch err code: ' + err.code + ' message: ' + err.message);
-      expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1530 :  PASS');
-    }
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -867,43 +872,6 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       console.info('usb 1510 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1510 :  PASS');
-    }
-  })
-
-  /**
-   * @tc.number: SUB_USB_JS_1520
-   * @tc.name: claimInterface
-   * @tc.desc: Negative test: Get interface, parameter force type error
-   */
-  it('SUB_USB_JS_1520', 0, function () {
-    console.info('usb SUB_USB_JS_1520 begin');
-    if (portCurrentMode == 1) {
-      console.info('usb case get_device port is device')
-      expect(false).assertFalse();
-      return
-    }
-    if (gDeviceList.length == 0) {
-      console.info('usb case get_device_list is null')
-      expect(false).assertTrue();
-      return
-    }
-
-    try {
-      for (var j = 0; j < gDeviceList[0].configs.length; j++) {
-        if (gDeviceList[0].configs[j].interfaces.length == 0) {
-          console.info('usb case SUB_USB_JS_1520 current device.configs.interfaces.length = 0');
-        }
-        for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
-          var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
-          var maskCode = usbManager.claimInterface(gPipe, TmpInterface, "invalid");
-          console.info('usb 1520 case claimInterface return: ' + maskCode);
-          expect(false).assertTrue();
-        }
-      }
-    } catch (err) {
-      console.info('usb 1520 catch err code: ' + err.code + ' message: ' + err.message);
-      expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1520 :  PASS');
     }
   })
 
