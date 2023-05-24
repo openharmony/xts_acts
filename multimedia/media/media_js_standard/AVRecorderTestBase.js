@@ -959,6 +959,20 @@ export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorde
     eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
 }
 
+export async function avRecorderLoopCreate2Release2WithCallback(avConfig, avRecorder, loopTimes, done) {
+    while (loopTimes > 0) {
+        avRecorder = await idle(avRecorder);
+        console.info('case avConfig.url is ' + avConfig.url);
+        releaseCallback(avRecorder);
+        console.info(`avRecorderLoopCreate2Release2WithCallback loop time is :${loopTimes}`)
+        loopTimes--;
+        if(loopTimes == 0){
+            sleep(2000)
+            done();
+        }
+    }
+}
+
 export async function avRecorderReliabilitTest01(avConfig, avRecorder, recorderTime, done) {
     let result = true;
     avRecorder = await idle(avRecorder);
