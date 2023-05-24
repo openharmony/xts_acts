@@ -33,6 +33,8 @@ ohos_js_hap_suite("ActsBundleNativeNinthApiTest") {
 
 ohos_prebuilt_shared_library("libcppsharedso") {
   source = rebase_path(libcxx_ndk_shared_file)
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 
 ohos_js_assets("ace_third_ets_assets") {
