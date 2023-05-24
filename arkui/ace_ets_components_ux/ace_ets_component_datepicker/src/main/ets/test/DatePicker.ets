@@ -805,9 +805,13 @@ export default function datepicker() {
         await Utils.sleep(2000);
         let strJson = getInspectorByKey('datePicker');
         let obj = JSON.parse(strJson);
+		
+	let strJsonDefault = getInspectorByKey('datePickerDefault');
+        let objDefault = JSON.parse(strJsonDefault);
+		
         console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0700] disappearColor:" + obj.$attrs.selectedTextStyle.color);
-        expect(obj.$attrs.selectedTextStyle.color).assertEqual('#FF007DFF');
-        expect(obj.$attrs.selectedTextStyle.font.size).assertEqual('20.00vp');
+        expect(obj.$attrs.selectedTextStyle.color).assertEqual(objDefault.$attrs.selectedTextStyle.color);
+        expect(obj.$attrs.selectedTextStyle.font.size).assertEqual(objDefault.$attrs.selectedTextStyle.font.size);
         expect(obj.$attrs.selectedTextStyle.font.weight).assertEqual('FontWeight.Lighter');
         done();
       });
