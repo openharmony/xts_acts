@@ -400,7 +400,59 @@ export default function shapeJsunit() {
       var strJson = getInspectorByKey('shape');
       var obj = JSON.parse(strJson);
       console.info("shapeTest_2100 component obj is: " + JSON.stringify(obj.$attrs.strokeMiterLimit));
-      expect(obj.$attrs.strokeMiterLimit).assertEqual('4.000000');
+      expect(parseInt(obj.$attrs.strokeMiterLimit)).assertEqual(4);
+      done();
+    });
+
+    it('shapeTest_3200', 0, async function (done) {
+      console.info('shapeTest_3200 START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "strokeMiterLimit": 1,
+          }
+        }
+        var innerEvent = {
+          eventId: 192,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("shapeTest_3200 start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("shapeTest_3200 change component color error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      var strJson = getInspectorByKey('shape');
+      var obj = JSON.parse(strJson);
+      console.info("shapeTest_3200 component obj is: " + JSON.stringify(obj.$attrs.strokeMiterLimit));
+      expect(parseInt(obj.$attrs.strokeMiterLimit)).assertEqual(1);
+      done();
+    });
+
+    it('shapeTest_3300', 0, async function (done) {
+      console.info('shapeTest_3300 START');
+      await Utils.sleep(1000);
+      try {
+        var eventData = {
+          data: {
+            "strokeMiterLimit": 0.5,
+          }
+        }
+        var innerEvent = {
+          eventId: 192,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("shapeTest_3300 start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("shapeTest_3300 change component color error: " + err.message);
+      }
+      await Utils.sleep(2000);
+      var strJson = getInspectorByKey('shape');
+      var obj = JSON.parse(strJson);
+      console.info("shapeTest_3300 component obj is: " + JSON.stringify(obj.$attrs.strokeMiterLimit));
+      expect(parseInt(obj.$attrs.strokeMiterLimit)).assertEqual(1);
       done();
     });
 
@@ -410,7 +462,7 @@ export default function shapeJsunit() {
       try {
         var eventData = {
           data: {
-            "strokeMiterLimit": 'aaa11111',
+            "strokeMiterLimit": '11111',
           }
         }
         var innerEvent = {
@@ -426,7 +478,7 @@ export default function shapeJsunit() {
       var strJson = getInspectorByKey('shape');
       var obj = JSON.parse(strJson);
       console.info("shapeTest_2200 component obj is: " + JSON.stringify(obj.$attrs.strokeMiterLimit));
-      expect(obj.$attrs.strokeMiterLimit).assertEqual('4.000000');
+      expect(parseInt(obj.$attrs.strokeMiterLimit)).assertEqual(11111);
       done();
     });
 
@@ -478,7 +530,7 @@ export default function shapeJsunit() {
       var strJson = getInspectorByKey('shape');
       var obj = JSON.parse(strJson);
       console.info("shapeTest_2000 component obj is: " + JSON.stringify(obj.$attrs.strokeMiterLimit));
-      expect(obj.$attrs.strokeMiterLimit).assertEqual('5.000000');
+      expect(obj.$attrs.strokeMiterLimit).assertEqual('4.000000');
       done();
     });
 

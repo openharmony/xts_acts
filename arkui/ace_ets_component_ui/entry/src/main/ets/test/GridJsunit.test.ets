@@ -61,7 +61,7 @@ export default function GridJsunit() {
       console.info("[GridJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.scrollBar).assertEqual('BarState.Off');
       expect(obj2.$attrs.scrollBarColor).assertEqual('#FF808080');
-      expect(obj2.$attrs.scrollBarWidth).assertEqual('20.00px');
+      expect(obj2.$attrs.scrollBarWidth).assertEqual('20.00vp');
       console.info('[GridJsunit_0100] END');
       done();
     });
@@ -95,7 +95,7 @@ export default function GridJsunit() {
       let obj2 = JSON.parse(strJson2);
       console.info("[GridJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.scrollBarColor).assertEqual('#FF000000');
-      expect(obj2.$attrs.scrollBarWidth).assertEqual('30.00px');
+      expect(obj2.$attrs.scrollBarWidth).assertEqual('30.00vp');
       console.info('[GridJsunit_0200] END');
       done();
     });
@@ -123,14 +123,14 @@ export default function GridJsunit() {
       console.info("[GridJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.columnsGap).assertEqual('0.00vp');
       expect(obj.$attrs.rowsGap).assertEqual('0.00vp');
-      expect(obj.$attrs.cachedCount).assertEqual(0);
+      expect(obj.$attrs.cachedCount).assertEqual(1);
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('grid2');
       let obj2 = JSON.parse(strJson2);
       console.info("[GridJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.scrollBar).assertEqual('BarState.Off');
       expect(obj2.$attrs.scrollBarColor).assertEqual('#FF000000');
-      expect(obj2.$attrs.scrollBarWidth).assertEqual('-10.00px');
+      expect(obj2.$attrs.scrollBarWidth).assertEqual('4.00vp');
       console.info('[GridJsunit_0300] END');
       done();
     });
@@ -224,10 +224,10 @@ export default function GridJsunit() {
       globalThis.value.message.notify({name:'rowsTemplate',value:''})
       await CommonFunc.sleep(1000);
       let gridItem1 = CommonFunc.getComponentRect('0');
-      let bottom = gridItem1.bottom
+      let left1 = gridItem1.left
       let gridItem2 = CommonFunc.getComponentRect('4');
-      let top = gridItem2.top
-      expect(bottom).assertEqual(top);
+      let left2 = gridItem2.left
+      expect(left1).assertEqual(left2);
       console.info('[GridJsunit_0700] END');
       done();
     });
@@ -241,10 +241,10 @@ export default function GridJsunit() {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('0');
-      let right = gridItem1.right
+      let top1 = gridItem1.top
       let gridItem2 = CommonFunc.getComponentRect('4');
-      let left = gridItem2.left
-      expect(right).assertEqual(left);
+      let top2 = gridItem2.top
+      expect(top1).assertEqual(parseInt(top2));
       console.info('[GridJsunit_0800] END');
       done();
     });

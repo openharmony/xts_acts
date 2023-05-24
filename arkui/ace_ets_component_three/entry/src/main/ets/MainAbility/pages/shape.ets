@@ -41,7 +41,7 @@ struct ShapeExample {
         this.strokeLineJoin = eventData.data.strokeLineJoin;
       }
       if (eventData.data.strokeMiterLimit != null) {
-        this.strokeMiterLimit = parseInt(eventData.data.strokeMiterLimit);
+        this.strokeMiterLimit = eventData.data.strokeMiterLimit;
       }
       if (eventData.data.strokeOpacity != null) {
         this.strokeOpacity = parseInt(eventData.data.strokeOpacity);
