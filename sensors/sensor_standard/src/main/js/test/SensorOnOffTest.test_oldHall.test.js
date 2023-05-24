@@ -18,13 +18,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 export default function SensorJsTest_sensor_7() {
 describe("SensorJsTest_sensor_7", function () {
     function callback(data) {
-        console.info("callback" + JSON.stringify(data));
+        console.info("old callback" + JSON.stringify(data));
         expect(typeof (data.status)).assertEqual("number");
 		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
-        console.info("callback2" + JSON.stringify(data));
+        console.info("old callback2" + JSON.stringify(data));
         expect(typeof (data.status)).assertEqual("number");
 		expect(typeof (data.timestamp)).assertEqual("number");
     }
@@ -34,7 +34,7 @@ describe("SensorJsTest_sensor_7", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -42,7 +42,7 @@ describe("SensorJsTest_sensor_7", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -50,7 +50,7 @@ describe("SensorJsTest_sensor_7", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -58,7 +58,7 @@ describe("SensorJsTest_sensor_7", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 	
     const PARAMETER_ERROR_CODE = 401
@@ -383,7 +383,6 @@ describe("SensorJsTest_sensor_7", function () {
 						} catch (error) {
 						console.info("Hall_SensorJsTest012 error:" + error);
 						}
-						console
 						console.info('----------------------Hall_SensorJsTest012 off end---------------------------');
 					}, 500);
 					setTimeout(() => {
@@ -426,4 +425,191 @@ describe("SensorJsTest_sensor_7", function () {
             done();
         }
     })
+	
+	/*
+     * @tc.number:SUB_SensorsSystem_HALL_JSTest_0140
+     * @tc.name: Hall_SensorJsTest014
+     * @tc.desc: Functional Use Cases
+     */
+    it("Hall_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------Hall_SensorJsTest014--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {
+				if (error) {
+					console.info('Hall_SensorJsTest014 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': undefined });
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': undefined });
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest014 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
+						} catch (error) {
+						console.info("Hall_SensorJsTest014 error:" + error);
+						expect(false).assertTrue();
+						}
+						console.info('----------------------Hall_SensorJsTest014 off end--------------');
+						done()
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest014 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_HALL_JSTest_0150
+     * @tc.name: Hall_SensorJsTest015
+     * @tc.desc: Illegal ID passed in
+     */
+    it("Hall_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {
+				if (error) {
+					console.info('Hall_SensorJsTest015 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, undefined);
+					try{
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': undefined });
+					} catch(error){
+						console.info('Hall_SensorJsTest015 Repeat subscription'+error);
+					}
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest015 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+						} catch (error) {
+						console.info("Hall_SensorJsTest015 error:" + error);
+						expect(false).assertTrue();
+						}
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest015 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_HALL_JSTest_0160
+     * @tc.name: Hall_SensorJsTest016
+     * @tc.desc: For normal scenarios
+     */
+    it("Hall_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------Hall_SensorJsTest016--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {
+				if (error) {
+					console.info('Hall_SensorJsTest016 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, null);
+					try{
+						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': null });
+						} catch(error){
+							console.info('Hall_SensorJsTest016 Repeat subscription'+error);
+						}
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest016 off in--------------');
+						try {
+							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+							} catch (error) {
+						console.info("Hall_SensorJsTest016 error:" + error);
+							expect(false).assertTrue();
+							}
+							done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('Hall_SensorJsTest016 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_HALL_JSTest_0170
+     * @tc.name: Hall_SensorJsTest017
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Hall_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+        console.info('---------Hall_SensorJsTest017--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {
+				if (error) {
+					console.info('Hall_SensorJsTest017 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': null });
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest017 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+						} catch (error) {
+						console.info("Hall_SensorJsTest017 error:" + error);
+						expect(false).assertTrue();
+						}
+						done();			
+					}, 500);
+				}		
+			})
+        } catch (error) {
+            console.info("Hall_SensorJsTest017 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }			
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_HALL_JSTest_0180
+     * @tc.name: Hall_SensorJsTest018
+     * @tc.desc: Once Normal Subscription Scenario Use Case
+     */
+    it("Hall_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_HALL,(error, data) => {
+				if (error) {
+					console.info('Hall_SensorJsTest018 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");		
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
+					try{
+						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback, { 'interval': 100000000 });
+						} catch(error){
+							console.info("Hall_SensorJsTest018 catch error:" + error);
+						}
+					setTimeout(() => {
+						console.info('----------------------Hall_SensorJsTest018 off in--------------');
+						try {
+							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL);
+							} catch (error) {
+						console.info("Hall_SensorJsTest018 error:" + error);
+							expect(false).assertTrue();
+							}
+						console.info('----------------------Hall_SensorJsTest018 off end--------------');
+							done()
+					}, 1000);
+				}
+			})
+        } catch (error) {
+            console.info("Hall_SensorJsTest018 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }				
+    })	
 })}

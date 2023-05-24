@@ -826,5 +826,229 @@ describe("SensorJsTest_sensor_57", function () {
             console.error('newPedometerDetection_SensorJsTest017 error:' + JSON.stringify(error));
             done();
         })
-    })		
+    })
+
+     /*
+     * @tc.number:SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0180
+     * @tc.name: newPedometerDetection_SensorJsTest018
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newPedometerDetection_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------newPedometerDetection_SensorJsTest018---------------------------');
+        let atManager = abilityAccessCtrl.createAtManager();
+        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_SYSTEM_FIXED)
+        .then(() => {
+            try {
+                sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
+                    if (error) {
+                        console.error('newPedometerDetection_SensorJsTest018 getSingleSensor fail:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                    try {
+                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback, { 'interval': undefined });
+                        setTimeout(() => {
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
+                            done();
+                        }, 4000);
+                    } catch (error) {
+                        console.error('newPedometerDetection_SensorJsTest018 On fail, errorCode:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.error('newPedometerDetection_SensorJsTest018 Sensor is not support');
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        })
+        .catch ((error) => {
+            console.error('newPedometerDetection_SensorJsTest018 error:' + JSON.stringify(error));
+            done();
+        })
+    })
+
+    /*
+     * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0190
+     * @tc.name: newPedometerDetection_SensorJsTest019
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newPedometerDetection_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newPedometerDetection_SensorJsTest019---------------------------');
+        let atManager = abilityAccessCtrl.createAtManager();
+        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_SYSTEM_FIXED)
+        .then(() => {
+            try {
+                sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
+                    if (error) {
+                        console.error('newPedometerDetection_SensorJsTest019 getSingleSensor fail:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                    try {
+                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback, { 'interval': undefined });
+                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback2, { 'interval': undefined });
+                        setTimeout(()=>{
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
+                            done();
+                        }, 4000);
+                    } catch (error) {
+                        console.error('newPedometerDetection_SensorJsTest019 On fail, errorCode:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.error('newPedometerDetection_SensorJsTest019 Sensor is not support');
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        })
+        .catch ((error) => {
+            console.error('newPedometerDetection_SensorJsTest019 error:' + JSON.stringify(error));
+            done();
+        })
+    })
+
+    /*
+     * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0200
+     * @tc.name: newPedometerDetection_SensorJsTest020
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newPedometerDetection_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newPedometerDetection_SensorJsTest020---------------------------');
+        let atManager = abilityAccessCtrl.createAtManager();
+        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_SYSTEM_FIXED)
+        .then(() => {
+            try {
+                sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
+                    if (error) {
+                        console.error('newPedometerDetection_SensorJsTest020 getSingleSensor fail:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                    try {
+                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback, { 'interval': null });
+                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback2, { 'interval': null });
+                        setTimeout(() => {
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION, callback);
+                        }, 4000);
+                        setTimeout(() => {
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION, callback2);
+                            done();
+                        }, 4000);
+                    } catch (error) {
+                        console.error('newPedometerDetection_SensorJsTest020 On fail, errorCode:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.error('newPedometerDetection_SensorJsTest020 Sensor is not support');
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        })
+        .catch ((error) => {
+            console.error('newPedometerDetection_SensorJsTest020 error:' + JSON.stringify(error));
+            done();
+        })
+    })
+
+    /*
+     * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0210
+     * @tc.name: newPedometerDetection_SensorJsTest021
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newPedometerDetection_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------newPedometerDetection_SensorJsTest021---------------------------');
+        let atManager = abilityAccessCtrl.createAtManager();
+        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_SYSTEM_FIXED)
+        .then(() => {
+            try {
+                sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
+                    if (error) {
+                        console.error('newPedometerDetection_SensorJsTest021 getSingleSensor fail:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                    try {
+                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback);
+                        try{
+						sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback, undefined);
+						} catch(error){
+							console.info('newPedometerDetection_SensorJsTest021 Repeat subscription'+error);
+						}
+                        setTimeout(() => {
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
+                            done();
+                        }, 4000);
+                    } catch (error) {
+                        console.error('newPedometerDetection_SensorJsTest021 On fail, errorCode:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.error('newPedometerDetection_SensorJsTest021 Sensor is not support');
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        })
+        .catch ((error) => {
+            console.error('newPedometerDetection_SensorJsTest021 error:' + JSON.stringify(error));
+            done();
+        })
+    })
+
+    /*
+     * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0220
+     * @tc.name: newPedometerDetection_SensorJsTest022
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("newPedometerDetection_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        let atManager = abilityAccessCtrl.createAtManager();
+        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+            PermissionFlag.PERMISSION_SYSTEM_FIXED)
+        .then(() => {
+            try {
+                sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
+                    if (error) {
+                        console.error('newPedometerDetection_SensorJsTest022 getSingleSensor fail:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                    try {
+						sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback);
+                        setTimeout(() => {
+							sensor.off(sensor.SensorId.PEDOMETER_DETECTION, null);							
+                            done();
+                        }, 4000);
+                    } catch (error) {
+                        console.error('newPedometerDetection_SensorJsTest022 catch error:' +JSON.stringify(error));
+                        expect(false).assertTrue();
+                        done();
+                    }
+                });
+            } catch (error) {
+                console.error('newPedometerDetection_SensorJsTest022 Sensor is not support'+error);
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done();
+            }
+        })
+        .catch ((error) => {
+            console.error('newPedometerDetection_SensorJsTest022 error:' + JSON.stringify(error));
+            done();
+        })
+    })	
 })}

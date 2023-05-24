@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 export default function SensorJsTest_sensor_9() {
 describe("SensorJsTest_sensor_9", function () {
     function callback(data) {
-        console.info("callback" + JSON.stringify(data));
+        console.info("old callback" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -26,7 +26,7 @@ describe("SensorJsTest_sensor_9", function () {
     }
 
     function callback2(data) {
-        console.info("callback2" + JSON.stringify(data));
+        console.info("old callback2" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -38,7 +38,7 @@ describe("SensorJsTest_sensor_9", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -46,7 +46,7 @@ describe("SensorJsTest_sensor_9", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -54,7 +54,7 @@ describe("SensorJsTest_sensor_9", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -62,7 +62,7 @@ describe("SensorJsTest_sensor_9", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 	
     const PARAMETER_ERROR_CODE = 401
@@ -393,7 +393,6 @@ describe("SensorJsTest_sensor_9", function () {
 						} catch (error) {
 						console.info("Gravity_SensorJsTest012 error:" + error);
 						}
-						console
 						console.info('----------------------Gravity_SensorJsTest012 off end---------------------------');
 					}, 500);
 					setTimeout(() => {
@@ -436,4 +435,191 @@ describe("SensorJsTest_sensor_9", function () {
             done();
         }
     })
+	
+	/*
+     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0140
+     * @tc.name: Gravity_SensorJsTest014
+     * @tc.desc: Functional Use Cases
+     */
+    it("Gravity_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------Gravity_SensorJsTest014--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY,(error, data) => {
+				if (error) {
+					console.info('Gravity_SensorJsTest014 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': undefined });
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2, { 'interval': undefined });
+					setTimeout(() => {
+						console.info('----------------------Gravity_SensorJsTest014 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback2);
+						} catch (error) {
+						console.info("Gravity_SensorJsTest014 error:" + error);
+						expect(false).assertTrue();
+						}
+						console.info('----------------------Gravity_SensorJsTest014 off end--------------');
+						done()
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('Gravity_SensorJsTest014 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0150
+     * @tc.name: Gravity_SensorJsTest015
+     * @tc.desc: Illegal ID passed in
+     */
+    it("Gravity_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY,(error, data) => {
+				if (error) {
+					console.info('Gravity_SensorJsTest015 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, undefined);
+					try{
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': undefined });
+					} catch(error){
+						console.info('Gravity_SensorJsTest015 Repeat subscription'+error);
+					}
+					setTimeout(() => {
+						console.info('----------------------Gravity_SensorJsTest015 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
+						} catch (error) {
+						console.info("Gravity_SensorJsTest015 error:" + error);
+						expect(false).assertTrue();
+						}
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('Gravity_SensorJsTest015 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0160
+     * @tc.name: Gravity_SensorJsTest016
+     * @tc.desc: For normal scenarios
+     */
+    it("Gravity_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------Gravity_SensorJsTest016--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY,(error, data) => {
+				if (error) {
+					console.info('Gravity_SensorJsTest016 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, null);
+					try{
+						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': null });
+						} catch(error){
+							console.info('Gravity_SensorJsTest016 Repeat subscription'+error);
+						}
+					setTimeout(() => {
+						console.info('----------------------Gravity_SensorJsTest016 off in--------------');
+						try {
+							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
+							} catch (error) {
+						console.info("Gravity_SensorJsTest016 error:" + error);
+							expect(false).assertTrue();
+							}
+							done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('Gravity_SensorJsTest016 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0170
+     * @tc.name: Gravity_SensorJsTest017
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("Gravity_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+        console.info('---------Gravity_SensorJsTest017--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY,(error, data) => {
+				if (error) {
+					console.info('Gravity_SensorJsTest017 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': null });
+					setTimeout(() => {
+						console.info('----------------------Gravity_SensorJsTest017 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
+						} catch (error) {
+						console.info("Gravity_SensorJsTest017 error:" + error);
+						expect(false).assertTrue();
+						}
+						done();			
+					}, 500);
+				}		
+			})
+        } catch (error) {
+            console.info("Gravity_SensorJsTest017 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }			
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_GRAVITY_JSTest_0180
+     * @tc.name: Gravity_SensorJsTest018
+     * @tc.desc: Once Normal Subscription Scenario Use Case
+     */
+    it("Gravity_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY,(error, data) => {
+				if (error) {
+					console.info('Gravity_SensorJsTest018 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");		
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': 100000000 });
+					try{
+						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback, { 'interval': 100000000 });
+						} catch(error){
+							console.info("Gravity_SensorJsTest018 catch error:" + error);
+						}
+					setTimeout(() => {
+						console.info('----------------------Gravity_SensorJsTest018 off in--------------');
+						try {
+							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY);
+							} catch (error) {
+						console.info("Gravity_SensorJsTest018 error:" + error);
+							expect(false).assertTrue();
+							}
+						console.info('----------------------Gravity_SensorJsTest018 off end--------------');
+							done()
+					}, 1000);
+				}
+			})
+        } catch (error) {
+            console.info("Gravity_SensorJsTest018 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }				
+    })	
 })}
