@@ -410,11 +410,11 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
             var localIdUndefined = undefined;
             try{
                 AccountManager.checkOsAccountVerified(localIdUndefined, ()=>{
-                    expect().assertFail();
+                    console.debug("====>ActsOsAccountCheckVerified_0800 end====");
                     done();
                 })
             }catch(err){
-                expect(err.code).assertEqual(ERR_PARAMETER_CHECK_FAILED);
+                expect().assertFail();
                 console.debug("====>ActsOsAccountCheckVerified_0700 end====");
                 done();
             }  
@@ -432,11 +432,11 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
             var localIdUndefined = undefined;
             try{
                 AccountManager.checkOsAccountVerified(localIdUndefined).then(()=>{
-                    expect().assertFail();
+                    console.debug("====>ActsOsAccountCheckVerified_0800 end====");
                     done();
                 })
             }catch(err){
-                expect(err.code).assertEqual(ERR_PARAMETER_CHECK_FAILED)
+                expect().assertFail();
                 console.debug("====>ActsOsAccountCheckVerified_0800 end====");
                 done();
             }   
