@@ -13,7 +13,7 @@
 
 import("//build/config/ohos/config.gni")
 import("//build/ohos.gni")
-import("//foundation/arkui/napi/napi.gni")
+import("./globalnapi.gni")
 
 config("config") {
   visibility = [ ":*" ]
@@ -33,19 +33,21 @@ ohos_shared_library("resmgrndk") {
   sources = [ "./napi/global_napi_test.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
-  include_dirs = [
-    "//base/global/resource_management/interfaces/native/resource/include",
-    "//test/xts/acts/arkui/ace_napi_test/entry/src/main/cpp",
-  ]
+  include_dirs = [ "${global_resmgr_path}/interfaces/native/resource/include" ]
   configs = [ ":config" ]
 
   deps = [
-    "//base/global/resource_management/frameworks/resmgr:librawfile",
-    "//base/global/resource_management/interfaces/native/resource:librawfile_ndk",
-    "//foundation/arkui/napi:ace_napi",
+    "${global_resmgr_path}/frameworks/resmgr:librawfile",
+    "${global_resmgr_path}/interfaces/native/resource:librawfile_ndk",
   ]
 
-  external_deps = [ "hiviewdfx_hilog_native:libhilog" ]
+  external_deps = [
+    "hiviewdfx_hilog_native:libhilog",
+    "napi:ace_napi",
+  ]
+
+  subsystem_name = "global"
+  part_name = "resource_management"
 
   output_extension = "so"
 }
