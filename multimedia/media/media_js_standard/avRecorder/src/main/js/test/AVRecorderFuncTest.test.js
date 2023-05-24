@@ -34,12 +34,16 @@ export default function avRecorderTest() {
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
 
+        const CREATE_EVENT = 'create';
         const PREPARE_EVENT = 'prepare';
         const STARTRECORDER_EVENT = 'start';
         const STOPRECORDER_EVENT = 'stop';
         const PAUSERECORDER_EVENT = 'pause';
         const RESUMERECORDER_EVENT = 'resume';
         const RELEASECORDER_EVENT = 'release';
+        const RELEASECORDER_TIMETEST_EVENT = 'release_time_test';
+        const START_TIMETEST_EVENT = 'start_time_test';
+        const END_TIMETEST_EVENT = 'end_time_test';
         const END_EVENT = 'end';
         const FAIL_EVENT = 'fail';
 
@@ -58,6 +62,8 @@ export default function avRecorderTest() {
             rotation : 0,
             location : { latitude : 30, longitude : 130 }
         }
+
+        let execTimes;
 
         beforeAll(async function () {
             console.info('beforeAll in1');
@@ -106,6 +112,21 @@ export default function avRecorderTest() {
                 eventEmitter.emit(steps[0], avRecorder, avConfig, recorderTime, steps, done);
             }
         }
+
+        eventEmitter.on(CREATE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            media.createAVRecorder((error, recorder) => {
+                console.info('case createAVRecorder called');
+                if (recorder != null) {
+                    avRecorder = recorder;
+                    expect(avRecorder.state).assertEqual('idle');
+                    console.info('createAVRecorder idleCallback success');
+                    toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                } else {
+                    console.info(`createAVRecorder idleCallback fail, error:${error}`);
+                }
+            });
+        });
 
         eventEmitter.on(PREPARE_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
             steps.shift();
@@ -229,6 +250,45 @@ export default function avRecorderTest() {
                     console.info('release AVRecorder failed and error is ' + err.message);
                 }
             })
+        });
+
+        eventEmitter.on(RELEASECORDER_TIMETEST_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+
+            let end;
+            let start = Date.now();
+            console.info(`releaseTimeTestCallback start time is : ${start}`)
+            avRecorder.release((err) => {
+                if (err == null) {
+                    console.info(`releaseTimeTestCallback current state is : ${avRecorder.state}`)
+                    console.info('release releaseTimeTestCallback success');
+                    end = Date.now()
+                    console.info(`releaseTimeTestCallback end time is : ${end}`)
+                    let execution = parseInt(end - start)
+                    console.info("releaseTimeTestCallback execution time  is :" + execution)
+
+                    execTimes.push(execution)
+
+                    toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+                } else {
+                    console.info('resume releaseTimeTestCallback failed and error is ' + err.message);
+                }
+            });
+        });
+
+        eventEmitter.on(START_TIMETEST_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            execTimes = new Array();
+            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
+        });
+
+        eventEmitter.on(END_TIMETEST_EVENT, (avRecorder, avConfig, recorderTime, steps, done) => {
+            steps.shift();
+            let length = execTimes.length;
+            let sum = execTimes.reduce(function (prev, curr) { return prev + curr; }, 0);
+            let avg = sum / length;
+            console.info("releaseTimeTestCallback avg time  is :" + avg)
+            toNextStep(avRecorder, avConfig, recorderTime, steps, done);
         });
 
         /* *
@@ -1974,7 +2034,29 @@ export default function avRecorderTest() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
-            avRecorderTestBase.releaseTimeTestCallback(avConfig, avRecorder, RECORDER_TIME, done);
+
+            let mySteps = new Array(START_TIMETEST_EVENT);
+
+            for (let i = 0; i < 10; i++) {
+                mySteps.push(
+                    // create
+                    CREATE_EVENT,
+                    // prepare
+                    PREPARE_EVENT,
+                    // start recorder
+                    STARTRECORDER_EVENT,
+                    // release time test
+                    RELEASECORDER_TIMETEST_EVENT,
+                )
+            }
+
+            mySteps.push(
+                END_TIMETEST_EVENT,
+                END_EVENT
+            );
+
+            eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
+
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_PERFORMANCE_CALLBACK_01_0900 end')
         })
 
