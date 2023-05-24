@@ -81,6 +81,6 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "hiviewdfx_hilog_native:libhilog",
   ]
 
-  part_name = "multimedia_player_framework"
+  part_name = "player_framework"
   subsystem_name = "multimedia"
 }
