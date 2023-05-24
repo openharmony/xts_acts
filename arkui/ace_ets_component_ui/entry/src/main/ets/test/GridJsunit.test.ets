@@ -143,12 +143,9 @@ export default function GridJsunit() {
       // Verify onScrollIndex event
       let grid2 = CommonFunc.getComponentRect('grid2');
       let top = grid2.top
-      let grid2b = CommonFunc.getComponentRect('grid2');
-      let bottom = grid2b.bottom
-      let grid2l = CommonFunc.getComponentRect('grid2');
-      let left = grid2l.left
-      let grid2r = CommonFunc.getComponentRect('grid2');
-      let right = grid2r.right
+      let bottom = grid2.bottom
+      let left = grid2.left
+      let right = grid2.right
       let driver = await UiDriver.create()
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
@@ -166,9 +163,10 @@ export default function GridJsunit() {
       let button = await driver.findComponent(BY.key('button'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let button1 = await driver.findComponent(BY.key('button'));
-      let text3 = await button1.getText();
-      expect(text3).assertEqual('clicked');
+      let strJson = getInspectorByKey('button');
+      let obj = JSON.parse(strJson);
+      console.info('[GridJsunit_0400] component obj is: ' + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('clicked');
       console.info('[GridJsunit_0400] END');
       done();
     });

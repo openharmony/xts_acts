@@ -120,32 +120,36 @@ export default function stepperJsunit() {
 
     it('stepperJsunit_0600', 0, async function (done) {
       console.info('stepperJsunit_0600 START');
-      // reset the component init status
-      globalThis.value.message.notify({name:'nextLabel',value:'下一步'});
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'prevLabel',value:'返回'});
-      await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'status',value:ItemState.Normal});
       // test the stepper onChange onNext onPrevious event
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
       let button = await driver.findComponent(BY.text('Next'));
       await button.click();
+      console.info('stepperJsunit_0600 button click succ');
+      await CommonFunc.sleep(1000);
+      // reset the component init status
+      globalThis.value.message.notify({name:'nextLabel',value:'下一步'});
+      await CommonFunc.sleep(1000);
+      globalThis.value.message.notify({name:'prevLabel',value:'返回'});
       await CommonFunc.sleep(1000);
       let button2 = await driver.findComponent(BY.text('下一步'));
       await button2.click();
+      console.info('stepperJsunit_0600 button2 click succ');
       await CommonFunc.sleep(1000);
-      let textThree = await driver.findComponent(BY.text('Page Three'));
-      let txt = await textThree.getText();
-      console.info('stepperJsunit_0700 component obj is: ' + txt);
-      expect(txt).assertEqual('Page Three');
+      let strJson = getInspectorByKey('pageThree');
+      let obj = JSON.parse(strJson);
+      console.info('stepperJsunit_0600 component obj is: ' + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('Page Three');
       // test the previous
       let button3 = await driver.findComponent(BY.text('返回'));
       await button3.click();
-      let textTwo = await driver.findComponent(BY.text('Page Two'));
-      let txtT = await textTwo.getText();
-      console.info('stepperJsunit_0600 component obj is: ' + txtT);
-      expect(txtT).assertEqual('Page Two');
+      await CommonFunc.sleep(1000);
+      console.info('stepperJsunit_0600 button3 click succ');
+      let strJson1 = getInspectorByKey('pageTwo');
+      let obj1 = JSON.parse(strJson1);
+      console.info('stepperJsunit_0600 component obj1 is: ' + obj1.$attrs.content);
+      expect(obj1.$attrs.content).assertEqual('Page Two');
       done();
     });
 
@@ -157,17 +161,20 @@ export default function stepperJsunit() {
       await CommonFunc.sleep(2000);
       let button2 = await driver.findComponent(BY.text('下一步'));
       await button2.click();
+      console.info('stepperJsunit_0700 button2 click succ');
       await CommonFunc.sleep(2000);
       let button3 = await driver.findComponent(BY.text('下一步'));
       await button3.click();
+      console.info('stepperJsunit_0700 button3 click succ');
       await CommonFunc.sleep(2000);
       let button4 = await driver.findComponent(BY.text('开始'));
       await button4.click();
+      console.info('stepperJsunit_0700 button4 click succ');
       await CommonFunc.sleep(2000);
-      let textTwo = await driver.findComponent(BY.text('Page Four'));
-      let txtT = await textTwo.getText();
-      console.info('stepperJsunit_0700 component obj is: ' + txtT);
-      expect(txtT).assertEqual('Page Four');
+      let strJson = getInspectorByKey('pageFour');
+      let obj = JSON.parse(strJson);
+      console.info('stepperJsunit_0700 component obj is: ' + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('Page Four');
       done();
     });
     
@@ -179,10 +186,10 @@ export default function stepperJsunit() {
       let button = await driver.findComponent(BY.text('返回'));
       await button.click();
       await CommonFunc.sleep(2000);
-      let textTwo = await driver.findComponent(BY.text('Page Three'));
-      let txtT = await textTwo.getText();
-      console.info('stepperJsunit_0800 component obj is: ' + txtT);
-      expect(txtT).assertEqual('Page Three');
+      let strJson = getInspectorByKey('pageThree');
+      let obj = JSON.parse(strJson);
+      console.info('stepperJsunit_0800 component obj is: ' + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('Page Three');
       done();
     });
   })
