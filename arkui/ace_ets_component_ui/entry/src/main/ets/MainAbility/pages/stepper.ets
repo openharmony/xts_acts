@@ -103,7 +103,7 @@ struct StepperExample {
       // 第三个步骤页
       StepperItem() {
         Column() {
-          Text('Page Three')
+          Text('Page Three').key('pageThree')
             .itemTextStyle()
           Button('change status:' + this.thirdState)
             .backgroundColor('#007dFF')
@@ -116,7 +116,7 @@ struct StepperExample {
       // 第四个步骤页
       StepperItem() {
         Column() {
-          Text('Page Four')
+          Text('Page Four').key('pageFour')
             .itemTextStyle()
         }.itemStyle()
       }
