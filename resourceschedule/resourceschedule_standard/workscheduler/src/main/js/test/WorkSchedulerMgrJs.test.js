@@ -1297,10 +1297,10 @@ export default function WorkSchedulerMgrApiTest() {
             try {
                 workScheduler.startWork(workInfo);
                 workScheduler.stopWork(workInfo, "true");
-            } catch (error) {
-                console.info("----------------error: " + error.code);
-                expect(error.code).assertEqual("401");
+                expect(workScheduler.stopWork(workInfo, "true")).assertNull();
                 done();
+            } catch (error) {
+                console.info("testStopWorkFun001 ----------------error: " + error.code);
             }
         })
     
@@ -1320,11 +1320,11 @@ export default function WorkSchedulerMgrApiTest() {
             };
             try {
                 workScheduler.startWork(workInfo);
-                workScheduler.stopWork(workInfo, 111);
-            } catch (error) {
-                console.info("----------------error: " + error.code);
-                expect(error.code).assertEqual("401");
+                workScheduler.stopWork(workInfo, undefined);
+                expect(workScheduler.stopWork(workInfo, undefined)).assertNull();
                 done();
+            } catch (error) {
+                console.info("testStopWorkFun002 ----------------error: " + error.code);
             };
         })
     
@@ -1345,10 +1345,10 @@ export default function WorkSchedulerMgrApiTest() {
             try {
                 workScheduler.startWork(workInfo);
                 workScheduler.stopWork(workInfo, null);
-            } catch (error) {
-                console.info("----------------error: " + error.code);
-                expect(error.code).assertEqual("401");
+                expect(workScheduler.stopWork(workInfo, null)).assertNull();
                 done();
+            } catch (error) {
+                console.info("testStopWorkFun003 ----------------error: " + error.code);
             }
         })
     
@@ -1369,10 +1369,10 @@ export default function WorkSchedulerMgrApiTest() {
             try {
                 workScheduler.startWork(workInfo);
                 workScheduler.stopWork(workInfo);
-            } catch (error) {
-                console.info("----------------error: " + error.code);
-                expect(error.code).assertEqual("401");
+                expect(workScheduler.stopWork(workInfo)).assertNull();
                 done();
+            } catch (error) {
+                console.info("testStopWorkFun004 ----------------error: " + error.code);
             }
         })
     

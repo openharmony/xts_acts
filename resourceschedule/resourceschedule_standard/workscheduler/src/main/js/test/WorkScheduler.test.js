@@ -227,10 +227,10 @@ describe("WorkSchedulerJsTest", function () {
         try {
             workScheduler.startWork(workInfo);
             workScheduler.stopWork(workInfo, 111);
-        } catch ( err) {
-            console.info("---------------- err: " +  err.code);
-            expect( err.code).assertEqual("401");
+            expect(workScheduler.stopWork(workInfo, 111)).assertNull();
             done();
+        } catch ( err) {
+            console.info("WorkSchedulerJsTest007 ---------------- err: " +  err.code);
         };
     })
 
