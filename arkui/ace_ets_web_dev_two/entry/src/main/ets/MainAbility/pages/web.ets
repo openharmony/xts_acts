@@ -12,12 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ import UIAbility from '@ohos.app.ability.UIAbility';
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../../test/List.test';
 import Utils from '../../test/Utils';
 import web_webview from '@ohos.web.webview';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want, launchParam) {
+        console.log("EntryAbility onCreate")
+        web_webview.WebviewController.initializeWebEngine()
+        globalThis.abilityWant = want
+        console.log("EntryAbility onCreate done")
+    }
+}
 
 let loadedUrl;
 @Entry
