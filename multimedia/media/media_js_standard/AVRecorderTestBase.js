@@ -949,14 +949,6 @@ export async function avRecorderLoopPrepare2StopWithCallback(avConfig, avRecorde
     eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
 }
 
-export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, done, eventEmitter, mySteps) {
-    avRecorder = await idle(avRecorder);
-    console.info('case avConfig.url is ' + avConfig.url);
-    await preparePromise(avRecorder, avConfig);
-    sleep(2000)
-    await startPromise(avRecorder);
-    eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
-}
 
 export async function avRecorderLoopPause2ResumeWithCallback(avConfig, avRecorder, done, eventEmitter, mySteps) {
     avRecorder = await idle(avRecorder);
