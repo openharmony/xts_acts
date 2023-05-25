@@ -609,28 +609,30 @@ export async function seekLoop(src, avPlayer, done) {
     }, (err) => {
         console.error('seekLoop play filed,error message is :' + err.message)
     })
-    if(avPlayer.state == AV_PLAYER_STATE.PLAYING){
-        console.info('seekLoop avPlayer from play to seek')
-        // play seek loop 1000 times
-        for(var loopTime = 0;loopTime < 1000; loopTime++){
-            avPlayer.seek(loopTime)
-            console.info(`case seekLoopWithCallback loopTime is ${loopTime}`);
-        }
-    }
+    await seekLoopWithCallback(avPlayer)
+    console.info('seekLoop avPlayer from play to seek')
+    // play seek loop 1000 times
     await avPlayer.stop().then(() => {
         console.info('seekLoopWithCallback avPlayer from play to stop')
-        avPlayer.release().then(() => {
-            console.info('seekLoopWithCallback avPlayer from stop to release')
-            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-            done();
-        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await avPlayer.release().then(() => {
+        console.info('seekLoopWithCallback avPlayer from stop to release')
+        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
+        done();
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 async function seekLoopWithCallback(avPlayer) {
-    avPlayer.on('seekDone', async (seekDoneTime) => {
-        console.info(`case seekDone called seekDoneTime is ${seekDoneTime}`);
-    });
+    for (let loopTime = 0; loopTime < 5000; loopTime += 5) {
+        await new Promise(resolve => {
+            avPlayer.on('seekDone', seekDoneTime => {
+                console.info(`case seekDone called seekDoneTime is ${seekDoneTime}`);
+                resolve();
+            });
+            avPlayer.seek(loopTime);
+            console.info(`case seekLoopWithCallback loopTime is ${loopTime}`);
+        });
+    }
 }
 
 export async function seekLoopWithoutCallback(src, avPlayer, done) {
