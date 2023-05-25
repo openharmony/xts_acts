@@ -22,7 +22,7 @@ struct Screen {
 
   build() {
     Column() {
-      Image($r('app.media.computer'))
+      Image($r('app.media.test'))
         .objectFit(ImageFit.Auto)
         .height(200)
         .width(200)
