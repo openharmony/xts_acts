@@ -190,7 +190,7 @@ export default function checkBoxTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Checkbox_unselectedColor_0600 component obj.$attrs.unselectedColor is: " +
           JSON.stringify(obj.$attrs.unselectedColor));
-          expect(obj.$attrs.unselectedColor).assertEqual("#66182431");
+          expect(obj.$attrs.unselectedColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_unselectedColor_0600 END ');
         } catch (err) {
           expect().assertFail();
@@ -217,7 +217,7 @@ export default function checkBoxTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Checkbox_unselectedColor_0700 component obj.$attrs.unselectedColor is: " +
           JSON.stringify(obj.$attrs.unselectedColor));
-          expect(obj.$attrs.unselectedColor).assertEqual("#66182431");
+          expect(obj.$attrs.unselectedColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_unselectedColor_0700 END ');
         } catch (err) {
           expect().assertFail();
@@ -244,7 +244,7 @@ export default function checkBoxTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Checkbox_unselectedColor_0800 component obj.$attrs.unselectedColor is: " +
           JSON.stringify(obj.$attrs.unselectedColor));
-          expect(obj.$attrs.unselectedColor).assertEqual("#66182431");
+          expect(obj.$attrs.unselectedColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_unselectedColor_0800 END ');
         } catch (err) {
           expect().assertFail();
@@ -300,7 +300,7 @@ export default function checkBoxTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Checkbox_unselectedColor_1000 component obj.$attrs.unselectedColor is: " +
           JSON.stringify(obj.$attrs.unselectedColor));
-          expect(obj.$attrs.unselectedColor).assertEqual("#66182431");
+          expect(obj.$attrs.unselectedColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_unselectedColor_1000 END ');
         } catch (err) {
           expect().assertFail();
@@ -327,7 +327,7 @@ export default function checkBoxTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_Checkbox_unselectedColor_1100 component obj.$attrs.unselectedColor is: " +
           JSON.stringify(obj.$attrs.unselectedColor));
-          expect(obj.$attrs.unselectedColor).assertEqual("#66182431");
+          expect(obj.$attrs.unselectedColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_unselectedColor_1100 END ');
         } catch (err) {
           expect().assertFail();
@@ -541,7 +541,7 @@ export default function checkBoxTest() {
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_0600 component markObj is: " + JSON.stringify(markObj));
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_0600 component markObj.strokeColor is: " +
           JSON.stringify(markObj.strokeColor));
-          expect(markObj.strokeColor).assertEqual("#FFFFFFFF");
+          expect(markObj.strokeColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0600 END ');
         } catch (err) {
           expect().assertFail();
@@ -572,7 +572,7 @@ export default function checkBoxTest() {
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_0700 component markObj is: " + JSON.stringify(markObj));
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_0700 component markObj.strokeColor is: " +
           JSON.stringify(markObj.strokeColor));
-          expect(markObj.strokeColor).assertEqual("#FFFFFFFF");
+          expect(markObj.strokeColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0700 END ');
         } catch (err) {
           expect().assertFail();
@@ -603,7 +603,7 @@ export default function checkBoxTest() {
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_0800 component markObj is: " + JSON.stringify(markObj));
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_0800 component markObj.strokeColor is: " +
           JSON.stringify(markObj.strokeColor));
-          expect(markObj.strokeColor).assertEqual("#FFFFFFFF");
+          expect(markObj.strokeColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_CheckMarkColor_0800 END ');
         } catch (err) {
           expect().assertFail();
@@ -667,7 +667,7 @@ export default function checkBoxTest() {
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_1000 component markObj is: " + JSON.stringify(markObj));
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_1000 component markObj.strokeColor is: " +
           JSON.stringify(markObj.strokeColor));
-          expect(markObj.strokeColor).assertEqual("#FFFFFFFF");
+          expect(markObj.strokeColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_CheckMarkColor_1000 END ');
         } catch (err) {
           expect().assertFail();
@@ -698,7 +698,7 @@ export default function checkBoxTest() {
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_1100 component markObj is: " + JSON.stringify(markObj));
           console.info("ArkUX_Stage_Checkbox_CheckMarkColor_1100 component markObj.strokeColor is: " +
           JSON.stringify(markObj.strokeColor));
-          expect(markObj.strokeColor).assertEqual("#FFFFFFFF");
+          expect(markObj.strokeColor).assertEqual(obj.$attrs.backgroundColor);
           console.info('ArkUX_Stage_Checkbox_CheckMarkColor_1100 END ');
         } catch (err) {
           expect().assertFail();

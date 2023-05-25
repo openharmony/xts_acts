@@ -370,6 +370,7 @@ struct badgeTest {
                 .width(200).height(50).backgroundColor(0x317aff)
             }
             .key("ArkUX_Stage_Badge_BorderColor_0600").height(20)
+            .backgroundColor($r("sys.color.ohos_id_color_badge_red"))
             .margin({
               top: 10
             })
@@ -387,6 +388,7 @@ struct badgeTest {
                 .width(200).height(50).backgroundColor(0x317aff)
             }
             .key("ArkUX_Stage_Badge_BorderColor_0700").height(20)
+            .backgroundColor($r("sys.color.ohos_id_color_badge_red"))
             .margin({
               top: 10
             })
@@ -404,6 +406,7 @@ struct badgeTest {
                 .width(200).height(50).backgroundColor(0x317aff)
             }
             .key("ArkUX_Stage_Badge_BorderColor_0800").height(20)
+            .backgroundColor($r("sys.color.ohos_id_color_badge_red"))
             .margin({
               top: 10
             })
@@ -439,6 +442,7 @@ struct badgeTest {
                 })
                 .width(200).height(50).backgroundColor(0x317aff)
             }
+            .backgroundColor($r("sys.color.ohos_id_color_badge_red"))
             .key("ArkUX_Stage_Badge_BorderColor_1000").height(20)
             .margin({
               top: 10
@@ -457,6 +461,7 @@ struct badgeTest {
                 })
                 .width(200).height(50).backgroundColor(0x317aff)
             }
+            .backgroundColor($r("sys.color.ohos_id_color_badge_red"))
             .key("ArkUX_Stage_Badge_BorderColor_1100").height(20)
             .margin({
               top: 10
@@ -705,6 +710,7 @@ struct badgeTest {
                 .width(200).height(50).backgroundColor(0x317aff)
             }
             .key("ArkUX_Stage_Badge_BorderWidth_1300").height(20)
+            .backgroundColor($r("sys.color.ohos_id_color_badge_red"))
             .margin({
               top: 10
             })
