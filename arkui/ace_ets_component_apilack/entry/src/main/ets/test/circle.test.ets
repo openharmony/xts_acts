@@ -16,6 +16,7 @@
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from './Utils.ets'
+import ohosrouter from '@ohos.router';
 
 export default function circleNewJsunit() {
   describe('circleNewTest', function () {
@@ -78,5 +79,102 @@ export default function circleNewJsunit() {
       console.info("[testcircleNew002] width value :" + obj.$attrs.width);
       done();
     });
+
+    /**
+     * @tc.number ACE_global_console_debug_0100
+     * @tc.name console::debug
+     * @tc.desc Test console debug printing
+     */
+    it("ACE_global_console_debug_0100", 0, async function (done) {
+      var casename = "ACE_global_003";
+      console.log("-----------------------ACE_global_console_debug Test is starting-----------------------");
+      try {
+        console.debug("ACE_global_console_debug test ok");
+        expect(true).assertTrue();
+      } catch (error) {
+        console.log(casename + "errorcode: " + casename);
+        expect().assertFail();
+        done();
+      }
+      console.log("-----------------------ACE_global_console_debug Test end-----------------------");
+      done();
+    }); 
+
+    /**
+     * @tc.number ACE_global_console_error_0100
+     * @tc.name console::error
+     * @tc.desc Test console error printing
+     */
+    it("ACE_global_console_error_0200", 0, async function (done) {
+      var casename = "ACE_global_004";
+      console.log("-----------------------ACE_global_console_error Test is starting-----------------------");
+      try {
+        console.error("ACE_global_console_warn test ok");
+        expect(true).assertTrue();
+      } catch (error) {
+        console.log(casename + "errorcode: " + casename);
+        expect().assertFail();
+        done();
+      }
+      console.log("-----------------------ACE_global_console_error Test end-----------------------");
+      done();
+    }); 
+   
+    /**
+     * @tc.number pushUrl_callback_0100 
+     * @tc.name ACE_pushUrl_callback_0100
+     * @tc.desc Test pushUrl 
+     */
+    it("ACE_pushUrl_callback_0100", 0, async function (done) {
+        console.info("-----------------------ACE_pushUrl_callback_0100 start-----------------------");
+        ohosrouter.pushUrl({
+            url: 'MainAbility/pages/common',
+            params: {
+                data1: 'message',
+                data2: {
+                    data3: [123, 456, 789]
+                }
+            }
+        }, (err) => {
+            if (err) {
+                console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                expect().assertFail();         
+            } else {
+                console.info('pushUrl success');
+                expect(true).assertTrue();
+            } 
+        })
+        console.info("-----------------------ACE_pushUrl_callback_0100 end-----------------------");
+        done();     
+    });
+
+     /**
+     * @tc.number pushUrl_promise_0200 
+     * @tc.name ACE_pushUrl_promise_0200
+     * @tc.desc Test pushUrl 
+     */
+    it("ACE_pushUrl_callback_0200", 0, async function (done) {
+        console.info("-----------------------ACE_pushUrl_promise_0200 start-----------------------");
+        ohosrouter.pushUrl({
+            url: 'MainAbility/pages/ellipse',
+            params: {
+                data1: 'message',
+                data2: {
+                    data3: [123, 456, 789]
+                }
+            }
+        }).then(() => {
+                expect(true).assertTrue();
+            })
+            .catch(err => {
+                console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+                expect().assertFail();      
+            })
+        console.info("-----------------------ACE_pushUrl_promise_0200 end-----------------------");
+        done();     
+    }); 
+   
+
+
   })
 }
