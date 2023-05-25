@@ -1575,7 +1575,7 @@ export default function window_test() {
                 wnd.moveTo(200, 200, (err) => {
                     if (err.code) {
                         console.log(msgStr + ' moveTo callback fail' + JSON.stringify(err.code));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     } else {
                         console.log(msgStr + ' moveTo callback success');
@@ -1602,7 +1602,7 @@ export default function window_test() {
                     done();
                 }, (err) => {
                     console.log(msgStr + ' wnd.moveTo failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1629,7 +1629,7 @@ export default function window_test() {
                     done();
                 }, (err) => {
                     console.log(msgStr + ' wnd.moveTo failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1656,7 +1656,7 @@ export default function window_test() {
                     done();
                 }, (err) => {
                     console.log(msgStr + ' wnd.moveTo failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1683,7 +1683,7 @@ export default function window_test() {
                         done();
                     }, (err) => {
                         console.log(msgStr + ' wnd.moveTo failed, err :' + JSON.stringify(err));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     })
                 }
@@ -1708,7 +1708,7 @@ export default function window_test() {
                 wnd.moveTo(-200, -200, (err) => {
                     if (err.code) {
                         console.log(msgStr + ' wnd.moveTo failed, err :' + JSON.stringify(err));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     } else {
                         console.log(msgStr + ' wnd.moveTo success');
@@ -1740,7 +1740,7 @@ export default function window_test() {
                     done();
                 }, (err) => {
                     console.log(msgStr + ' moveTo failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1767,12 +1767,12 @@ export default function window_test() {
                         done();
                     }, (err) => {
                         console.log(msgStr + ' create failed, err :' + JSON.stringify(err));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     })
                 }, (err) => {
                     console.log(msgStr + ' create failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1799,7 +1799,7 @@ export default function window_test() {
                     done();
                 }, (err) => {
                     console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1826,7 +1826,7 @@ export default function window_test() {
                     done();
                 }, (err) => {
                     console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err));
-                    expect(err.code).assertEqual(7);
+                    expect(err.code).assertEqual(6);
                     done();
                 })
             }, (err) => {
@@ -1908,7 +1908,7 @@ export default function window_test() {
                         done();
                     }, (err) => {
                         console.log(msgStr + ' wnd.resetSize failed, err :' + JSON.stringify(err));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     })
                 }
@@ -1933,7 +1933,7 @@ export default function window_test() {
                 wnd.resetSize(200, 200, (err) => {
                     if (err.code) {
                         console.log(msgStr + ' resetSize callback fail' + JSON.stringify(err.code));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     } else {
                         console.log(msgStr + ' resetSize callback success');
@@ -1966,7 +1966,7 @@ export default function window_test() {
                         done();
                     }, (err) => {
                         console.log(msgStr + ' resetSizeLoop resetSize failed, err :' + JSON.stringify(err));
-                        expect(err.code).assertEqual(7);
+                        expect(err.code).assertEqual(6);
                         done();
                     })
                 }
