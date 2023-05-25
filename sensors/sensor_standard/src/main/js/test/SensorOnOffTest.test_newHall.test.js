@@ -370,25 +370,13 @@ describe("SensorJsTest_sensor_45", function () {
      * @tc.name: newHall_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newHall_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newHall_SensorJsTest012--------------');
-		try{
-		   sensor.getSingleSensor(sensor.SensorId.HALL,(error, data) => {
-				if (error) {
-					console.info('newHall_SensorJsTest012 error');
-				} else {
-					expect(typeof(data)).assertEqual("object");
-					sensor.on(sensor.SensorId.HALL, callback);
-						setTimeout(()=>{
-							sensor.off(sensor.SensorId.HALL, 5);
-							done();
-						}, 500);
-				}
-			})
-		} catch (error) {
-            console.info('newHall_SensorJsTest012 Device does not support! ');
-            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+    it("newHall_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        try {
+            sensor.off(sensor.SensorId.HALL, 5);
+        } catch (error) {
+            console.info('newHall_SensorJsTest025 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
         }
     })

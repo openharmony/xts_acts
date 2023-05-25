@@ -696,7 +696,7 @@ describe("SensorJsTest_sensor_57", function () {
      * @tc.name: newPedometerDetection_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-     it("newPedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+     it("newPedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest015---------------------------');
         let atManager = abilityAccessCtrl.createAtManager();
         await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
@@ -710,19 +710,16 @@ describe("SensorJsTest_sensor_57", function () {
                         done();
                     }
                     try {
-                        sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback);
-                        setTimeout(() => {
-                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION, 5);
-                            done();
-                        }, 4000);
+                        sensor.off(sensor.SensorId.PEDOMETER_DETECTION,5);
                     } catch (error) {
-                        console.error('newPedometerDetection_SensorJsTest015 On fail, errorCode:' +JSON.stringify(error));
-                        expect(false).assertTrue();
+                        console.error('newPedometerDetection_SensorJsTest015 Off fail, errorCode:' +JSON.stringify(error));
+                        expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
+                        expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
                         done();
                     }
                 });
             } catch (error) {
-                console.error('newPedometerDetection_SensorJsTest015 Sensor is not support');
+                console.error('newPedometerDetection_SensorJsTest015 Sensor is not support'+error);
                 expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
