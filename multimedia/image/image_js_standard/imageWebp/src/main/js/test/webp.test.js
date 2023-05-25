@@ -21,6 +21,8 @@ import featureAbility from "@ohos.ability.featureAbility";
 export default function imageWebp() {
     describe("imageWebp", function () {
         let globalpixelmap;
+        let globalImagesource;
+        let globalPacker;
         let filePath;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
@@ -47,6 +49,22 @@ export default function imageWebp() {
                     console.info("globalpixelmap release fail");
                 }
             }
+            if (globalImagesource != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
+                }
+            }
+            if (globalPacker != undefined) {
+                console.info("globalPacker release start");
+                try {
+                    await globalPacker.release();
+                } catch (error) {
+                    console.info("globalPacker release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -62,6 +80,7 @@ export default function imageWebp() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi.createPixelMap(arg, (err, pixelmap) => {
                     if (pixelmap == undefined) {
                         expect(true).assertTrue();
@@ -83,6 +102,7 @@ export default function imageWebp() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi.createPixelMap(arg, (err, pixelmap) => {
                     if (err) {
                         console.info(`${testNum} - fail ${err}`);
@@ -116,6 +136,7 @@ export default function imageWebp() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi
                     .createPixelMap(arg)
                     .then((pixelmap) => {
@@ -138,6 +159,7 @@ export default function imageWebp() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi
                     .createPixelMap(arg)
                     .then((pixelmap) => {
@@ -224,6 +246,7 @@ export default function imageWebp() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         imagePackerApi
                             .packing(pixelmap, arg)
                             .then((data) => {
@@ -309,6 +332,7 @@ export default function imageWebp() {
                             expect(false).assertTrue();
                             done();
                         } else {
+                            globalPacker = imagePackerApi;
                             imagePackerApi.packing(pixelmap, arg, (err, data) => {
                                 console.info(`${testNum} success`);
                                 expect(data != undefined).assertTrue();
@@ -390,6 +414,7 @@ export default function imageWebp() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         imagePackerApi
                             .packing(pixelmap, arg)
                             .then((data) => {
@@ -469,6 +494,7 @@ export default function imageWebp() {
                             expect(false).assertTrue();
                             done();
                         } else {
+                            globalPacker = imagePackerApi;
                             imagePackerApi.packing(pixelmap, arg, (err, data) => {
                                 console.info(`${testNum} success`);
                                 expect(data == undefined).assertTrue();
@@ -505,6 +531,7 @@ export default function imageWebp() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     let decodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -554,6 +581,7 @@ export default function imageWebp() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     let decodingOptions = {
                         sampleSize: 1,
                         editable: true,
@@ -603,6 +631,7 @@ export default function imageWebp() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     imageSourceApi
                         .createPixelMap()
                         .then((pixelmap) => {
@@ -642,6 +671,7 @@ export default function imageWebp() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
                         expect(pixelmap != undefined).assertTrue();
