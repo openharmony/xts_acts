@@ -166,7 +166,7 @@ export default function GridJsunit() {
       let strJson = getInspectorByKey('button');
       let obj = JSON.parse(strJson);
       console.info('[GridJsunit_0400] component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('clicked');
+      expect(obj.$attrs.label).assertEqual('clicked');
       console.info('[GridJsunit_0400] END');
       done();
     });
@@ -239,10 +239,10 @@ export default function GridJsunit() {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('0');
-      let top1 = gridItem1.top
-      let gridItem2 = CommonFunc.getComponentRect('4');
-      let top2 = gridItem2.top
-      expect(top1).assertEqual(parseInt(top2));
+      let left1 = gridItem1.left
+      let gridItem2 = CommonFunc.getComponentRect('1');
+      let left2 = gridItem2.left
+      expect(parseInt(left1)).assertEqual(parseInt(left2));
       console.info('[GridJsunit_0800] END');
       done();
     });
