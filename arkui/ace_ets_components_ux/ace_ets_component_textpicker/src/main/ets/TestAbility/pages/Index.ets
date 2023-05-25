@@ -29,6 +29,9 @@ struct TextPickerExample {
     @State textStyle: PickerTextStyle = {color:Color.Red,font:{size:'10px',weight:FontWeight.Normal}}
     @State selectedTextStyle: PickerTextStyle = {color:Color.Blue,font:{size:'20px',weight:FontWeight.Bold}}
 
+    @State disappearTextStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_sub_title3"),weight:FontWeight.Lighter}}
+    @State textStyleDefault: PickerTextStyle = {color:$r("sys.color.ohos_id_color_text_primary"),font:{size:$r("sys.float.ohos_id_text_size_sub_title2"),weight:FontWeight.Normal}}
+    @State selectedTextStyleDefault: PickerTextStyle ={color:$r("sys.color.ohos_id_color_text_primary_activated"),font:{size:$r("sys.float.ohos_id_text_size_headline8"),weight:FontWeight.Bold}}
 
     private stateChangCallBack = (eventData) => {
         console.info("select page state change called:" + JSON.stringify(eventData));
@@ -68,6 +71,15 @@ struct TextPickerExample {
                 .textStyle(this.textStyle)
                 .selectedTextStyle(this.selectedTextStyle)
                 .key('textPicker')
+                .onChange((value: string, index: number) => {
+                    console.info('Picker item changed, value: ' + value + ', index: ' + index)
+                }) 
+            
+            TextPicker({range: this.multipleColumns,selected: this.select})
+                .disappearTextStyle(this.disappearTextStyleDefault)
+                .textStyle(this.textStyleDefault)
+                .selectedTextStyle(this.selectedTextStyleDefault)
+                .key('textPickerDefault')
                 .onChange((value: string, index: number) => {
                     console.info('Picker item changed, value: ' + value + ', index: ' + index)
                 }) 
