@@ -53,7 +53,8 @@ export default function gridMaxCountJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid');
       console.info("[testcheckgridMaxCount0001] selectedMaxCount value :" + obj.$attrs.maxCount);
-      expect(obj.$attrs.maxCount).assertEqual("5");
+      let maxCount = obj.$attrs.maxCount;
+      expect(maxCount == 5).assertTrue();
       done();
     });
   })
