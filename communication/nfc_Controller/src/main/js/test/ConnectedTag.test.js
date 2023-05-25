@@ -363,14 +363,14 @@ export default function ConnectedTagTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1200
+         * @tc.number SUB_Communication_NFC_nfcConnectedTag_js_1300
          * @tc.name Test write connectedTag
          * @tc.desc Write Content to Active Tags
          * @tc.size since 8
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcConnectedTag_js_1200', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcConnectedTag_js_1300', 0, async function (done) {
             var isAccessToken = canIUse("SystemCapability.Communication.ConnectedTag");
             console.info("testSysCaps01 test.syscap.param.001 : " + isAccessToken);
             if (!isAccessToken) {
@@ -396,5 +396,3 @@ export default function ConnectedTagTest() {
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
-
-

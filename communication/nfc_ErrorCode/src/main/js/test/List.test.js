@@ -14,11 +14,11 @@
  */
 
 
-import nfcIsoDepErrorTest from './error.IsoDepTag.js'
-import MifareClassicErrorTest from './error.MifareClassicTag.js'
-import UltralightTagErrorTest from './error.MifareUltralightTag.js'
-import nfcNDEFErrorTest from './error.NDEFTag.js'
-import nfcTagABFVErrorTest from './error.TagABFV.js'
+import nfcIsoDepErrorTest from './IsoDepTag.test.js'
+import MifareClassicErrorTest from './MifareClassicTag.test.js'
+import UltralightTagErrorTest from './MifareUltralightTag.test.js'
+import nfcNDEFErrorTest from './NDEFTag.test.js'
+import nfcTagABFVErrorTest from './TagABFV.test.js'
 import parameter from '@ohos.systemparameter';
 let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
 export default function testsuite() {

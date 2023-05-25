@@ -127,7 +127,3 @@ export default function nfcControllerTest() {
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
-
-
-
-

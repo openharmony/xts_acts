@@ -245,7 +245,7 @@ export default function nfcATagSessionTest() {
                     done();
                 }).catch((err)=> {
                     console.info("[NFC_test] tagsession7 nfcAtage sendData1 err: " + err);
-                    expect(3100201).assertEqual(error.code)
+                    expect().assertFail();
                     done();
                 });
                 sleep(3500);
@@ -316,14 +316,14 @@ export default function nfcATagSessionTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_nfcAtage_js_1000', 0, function ()  {
-            let settime;
+            let gettime;
             try {
-                settime = tag.getNfcATag(aTag).getTimeout();
-                console.info("[NFC_test] tagsession10 getSendDataTimeout:" + settime);
-                expect(settime).assertInstanceOf('Number')
+                gettime = tag.getNfcATag(aTag).getTimeout();
+                console.info("[NFC_test] tagsession10 getSendDataTimeout:" + gettime);
+                expect(gettime).assertInstanceOf('Number')
             } catch (error) {
                 console.info('[NFC_test] tagsession10 getSendDataTimeout error' + error)
-                expect(3100201).assertEqual(error.code)
+                expect().assertFail();
             }
         })
 
@@ -398,7 +398,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0500
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_1400
          * @tc.name testsetSendDataTimeout
          * @tc.desc Test setSendDataTimeout api.
          * @tc.size MEDIUM
@@ -451,16 +451,15 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0160
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_1600
          * @tc.name connect
          * @tc.desc Test connect api.
          * @tc.size MEDIUM
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0160', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_1600', 0, function ()  {
             if (getAtag != null && getAtag != undefined) {
-                let NfcConnect;
                 try {
                     getAtag.connect();
                     console.log("[NFC_test] tagsession16 NfcConnected pass");
