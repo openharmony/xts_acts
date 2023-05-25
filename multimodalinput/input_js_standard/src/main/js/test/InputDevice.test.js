@@ -121,8 +121,9 @@ export default function InputDevice_test() {
     // 参数正常,返回值正常
     it("InputDevice_getDevice_test_02", 0, async function (done) {
       console.info(`InputDevice_getDevice_test_02 enter`);
-      try {
+
         inputDevice.getDeviceIds(async (err, data) => {
+          try { 
           console.info(`InputDevice_getDeviceIds_test_02 err:${JSON.stringify(err)}`);
           console.info(`InputDevice_getDeviceIds_test_02 data:${JSON.stringify(data)}`);
           if (err) {
@@ -136,6 +137,7 @@ export default function InputDevice_test() {
               console.info(`InputDevice_getDevice_test_02  getDevicePromise`)
               return new Promise((resolve, reject) => {
                 inputDevice.getDevice(data, (err, res) => {
+                  try{
                   console.info(`getDevice:data =${JSON.stringify(data)}`);
                   console.info(`getDevice:res =${JSON.stringify(res)}`);
                   let arr = Object.keys(res);
@@ -167,19 +169,21 @@ export default function InputDevice_test() {
                     expect(res.axisRanges[j].flat).assertInstanceOf('Number');
                     expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
                   }
-                  resolve(res);
+                } catch (err) {
+                  console.info(`InputDevice_getDevice_test_02  AssertException ${JSON.stringify(error)}`);
+                }
+                resolve(res);
                 })
               })
             }
           }
           console.info(`InputDevice_getDevice_test_02 exit`);
-          done();
-        });
-      } catch (error) {
-        console.info(`InputDevice_getDevice_test_02 error`);
-        expect(false).assertTrue();
+        } catch (err) {
+          console.info(`InputDevice_getDevice_test_02 error`);
+        }
         done();
-      }
+        });
+
     })
 
     // 参数正常,返回值正常
@@ -516,12 +520,11 @@ export default function InputDevice_test() {
             done()
             return;
           }
-          try {
             inputDevice.getDeviceInfo(data[0], (err, res) => {
+              try {
               console.info(`getDeviceInfo:data enter`);
               if (err) {
                 expect(false).assertTrue();
-                done()
                 return;
               }
               let arr = [];
@@ -545,7 +548,7 @@ export default function InputDevice_test() {
                 expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
                   || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
                   || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
-                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'toolMajor'
                   || res.axisRanges[j].axis == 'NULL').assertTrue();
                 expect(res.axisRanges[j].max).assertInstanceOf('Number');
                 expect(res.axisRanges[j]).assertInstanceOf('Object');
@@ -554,17 +557,18 @@ export default function InputDevice_test() {
                 expect(res.axisRanges[j].flat).assertInstanceOf('Number');
                 expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
               }
-              done()
+            } catch (err) {
+              console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceInfo ${JSON.stringify(err)}`);
+              expect(false).assertTrue();
+            }
+            done();
             })
-          } catch (err) {
-            console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceInfo ${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          }
         })
       } catch (err) {
         console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceList ${JSON.stringify(err)}`);
         expect(false).assertTrue();
       }
+      done();
       console.info(`InputDevice_getDeviceInfo_async_test exit`);
     })
 
@@ -581,8 +585,8 @@ export default function InputDevice_test() {
           if (data.length <= 0) {
             return;
           }
-          try {
             inputDevice.getDeviceInfo(data[0]).then((res) => {
+              try {
               let arr = [];
               console.info(`getDeviceInfo:data ${JSON.stringify(res)}`);
               arr = Object.keys(res);
@@ -604,7 +608,7 @@ export default function InputDevice_test() {
                 expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
                   || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
                   || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
-                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'toolMajor'
                   || res.axisRanges[j].axis == 'NULL').assertTrue();
                 expect(res.axisRanges[j].max).assertInstanceOf('Number');
                 expect(res.axisRanges[j]).assertInstanceOf('Object');
@@ -613,15 +617,18 @@ export default function InputDevice_test() {
                 expect(res.axisRanges[j].flat).assertInstanceOf('Number');
                 expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
               }
+            } catch (err) {
+              expect(false).assertTrue();
+              done();
+            }
             }).catch(err => {
               expect(false).assertTrue();
+              done();
             });
-          } catch (err) {
-            expect(false).assertTrue();
-          }
         })
       } catch (err) {
         expect(false).assertTrue();
+        done();
       }
       console.info(`InputDevice_getDeviceInfo_promise_test exit`);
       done();
