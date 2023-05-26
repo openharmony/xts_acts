@@ -336,8 +336,8 @@ export default function PowerManagerRunningLockTest() {
                         expect(typeof error === "undefined").assertTrue();
                         expect(runninglock !== null).assertTrue();
                         console.info('Create_Running_Lock_Callback_JSTest0140 success');
+                        done();
                     });
-                done();
             } catch (e) {
                 console.info('Create_Running_Lock_Callback_JSTest0230 error:' + e);
                 expect().assertFail();
