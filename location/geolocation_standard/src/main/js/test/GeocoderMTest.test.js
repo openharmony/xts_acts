@@ -166,17 +166,25 @@ export default function geolocationTest_geo5() {
                 console.info('[lbs_js] getAddressesFromLocation21 promise: ' + JSON.stringify(data));
                 if(data!="")
                 {
-                    console.info('addressUrl: ' + JSON.stringify(data)[0].addressUrl
-                    + JSON.stringify(data)[0].administrativeArea + JSON.stringify(data)[0].countryCode
-                    + JSON.stringify(data)[0].countryName + JSON.stringify(data)[0].descriptions
-                    + JSON.stringify(data)[0].descriptionsSize + data[0].latitude
-                    + JSON.stringify(data)[0].locale + JSON.stringify(data)[0].locality
-                    + JSON.stringify(data)[0].longitude + JSON.stringify(data)[0].phoneNumber
-                    + JSON.stringify(data)[0].placeName
-                    + JSON.stringify(data)[0].postalCode + JSON.stringify(data)[0].premises
-                    + JSON.stringify(data)[0].roadName + JSON.stringify(data)[0].subAdministrativeArea
-                    + JSON.stringify(data)[0].subLocality + JSON.stringify(data)[0].subRoadName
-                    + JSON.stringify(data)[0].isFromMock);
+                    console.info('addressUrl: ' + JSON.stringify(data[0].addressUrl)
+                    +',administrativeArea: '+ JSON.stringify(data[0].administrativeArea)
+                    +',countryCode: '+ JSON.stringify(data[0].countryCode)
+                    +'countryName: '+ JSON.stringify(data[0].countryName )
+                    +',descriptions: '+ JSON.stringify(data[0].descriptions)
+                    +',descriptionsSize: '+JSON.stringify(data[0].descriptionsSize)
+                    +',latitude: '+ JSON.stringify(data[0].latitude)
+                    +',locale: '+ JSON.stringify(data[0].locale)
+                    +',locality:'+ JSON.stringify(data[0].locality)
+                    +',longitude:'+ JSON.stringify(data[0].longitude)
+                    +',phoneNumber: '+ JSON.stringify(data[0].phoneNumber)
+                    +',placeName:'+ JSON.stringify(data[0].placeName)
+                    + ',postalCode: '+JSON.stringify(data[0].postalCode)
+                    + ',premises:'+JSON.stringify(data[0].premises)
+                    + ',roadName:'+JSON.stringify(data[0].roadName)
+                    + ',subAdministrativeArea:'+JSON.stringify(data[0].subAdministrativeArea)
+                    + ',subLocality:'+JSON.stringify(data[0].subLocality )
+                    +',subRoadName:'+ JSON.stringify(data[0].subRoadName)
+                    + ',isFromMock:'+JSON.stringify(data[0].isFromMock));
                 }
             }).catch(error => {
                 console.info("[lbs_js] getAddressesFromLocation21 promise then error." + JSON.stringify(error));

@@ -19,7 +19,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
+                "settings put Secure high_accuracy_startup_comfirm 1",
                 "settings put SECURE location_mode 3"
             ]
         }

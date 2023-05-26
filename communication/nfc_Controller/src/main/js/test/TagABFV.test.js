@@ -24,26 +24,6 @@ function sleep(delay) { // delay x ms
     }
 }
 
-let NdefRecord = {
-    NFC_A : 1,
-    NFC_B : 2,
-    ISO_DEP	 : 3,
-    NFC_F : 4,
-    NFC_V : 5,
-    NDEF : 6,
-    MIFARE_CLASSIC : 8,
-    MIFARE_ULTRALIGHT : 9,
-    NDEF_FORMATABLE : 10,
-};
-
-let NfcForumType = {
-    NFC_FORUM_TYPE_1 : 1,
-    NFC_FORUM_TYPE_2 : 2,
-    NFC_FORUM_TYPE_3 : 3,
-    NFC_FORUM_TYPE_4 : 4,
-    MIFARE_CLASSIC : 101,
-};
-
 let aTag = {
     "uid": [0x01, 0x02, 0x03, 0x04],
     "technology": [1],
@@ -102,6 +82,76 @@ var Want = {
          NdefTagMode: 1}
     ]
 }
+
+let isoDepTaginfo = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [1, 3],
+    "extrasData": [
+        {
+            "Sak": 0x08, "Atqa": "B000",
+        },
+        {
+            "HistoricalBytes": "4D54000500308693695B", "HiLayerResponse": "",
+        },
+    ],
+    "tagRfDiscId": 1,
+};
+
+let NDEFTaginfo = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [1, 6],
+    "extrasData": [
+        {
+            "Sak": 0x08, "Atqa": "B000",
+        },
+        {
+            "NdefMsg": "D4010354787473", "NdefForumType": 1, "NdefTagLength":255, "NdefTagMode": 1,
+        },
+    ],
+    "tagRfDiscId": 1,
+};
+
+let mifareclassicTaginfo = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [1, 8],
+    "extrasData": [
+        {
+            "Sak": 0x08, "Atqa": "B000",
+        },
+        {
+            
+        },
+    ],
+    "tagRfDiscId": 1,
+};
+
+let mifareUltralightTaginfo = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [1, 9],
+    "extrasData": [
+        {
+            "Sak": 0x08, "Atqa": "B000",
+        },
+        {
+            "MifareUltralightC": "ture",
+        },
+    ],
+    "tagRfDiscId": 1,
+};
+
+let NdefFormatableTag = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [1, 7],
+    "extrasData": [
+        {
+            "Sak": 0x08, "Atqa": "B000",
+        },
+        {
+
+        },
+    ],
+    "tagRfDiscId": 1,
+};
 
 export default function nfcTagABFVTest() {
     describe('nfcTagABFVTest', function () {
@@ -519,8 +569,111 @@ export default function nfcTagABFVTest() {
             expect(NfcVTag instanceof Object).assertTrue();
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_1800
+         * @tc.name Test getIsoDep
+         * @tc.desc This interface is used to obtain the isodep tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_1800', 0, function ()  {
+            let IsoDepTag ;
+            try{
+                IsoDepTag = tag.getIsoDep(isoDepTaginfo);
+                console.info('[NFC_test] getIsoDep18 is--<-!!!->' + JSON.stringify(IsoDepTag));
+                expect(IsoDepTag != null).assertTrue();
+                expect(IsoDepTag instanceof Object).assertTrue();
+            }catch(error){
+                console.info('nfc getIsoDep is ->' + error)
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_1900
+         * @tc.name Test getNdef
+         * @tc.desc This interface is used to obtain the getNdef tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_1900', 0, function ()  {
+            let NdefTag ;
+            try {
+                NdefTag = tag.getNdef(NDEFTaginfo);
+                console.info('[NFC_test] getNdef19 is--<-!!!->' + JSON.stringify(NdefTag));
+                expect(NdefTag != null).assertTrue();
+                expect(NdefTag instanceof Object).assertTrue();
+            } catch (error) {
+                console.info('nfc TagTest getNdef error' + error)
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_2000
+         * @tc.name Test getMifareClassic
+         * @tc.desc This interface is used to obtain the getMifareClassic tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_2000', 0, function ()  {
+            let MifareClassicTag ;
+            try{
+                MifareClassicTag = tag.getMifareClassic(mifareclassicTaginfo);
+                console.info('[NFC_test] mifareClassic20 is--<-!!!->' + JSON.stringify(MifareClassicTag));
+                expect(MifareClassicTag != null).assertTrue();
+                expect(MifareClassicTag instanceof Object).assertTrue();
+            } catch (error) {
+                console.info('nfc mifareClassic20 error' + error)
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_2100
+         * @tc.name Test getMifareUltralight
+         * @tc.desc This interface is used to obtain the getMifareUltralight tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_2100', 0, function ()  {
+            let MifareUltralightTag ;
+            try {
+                MifareUltralightTag = tag.getMifareUltralight(mifareUltralightTaginfo);
+                console.info('[NFC_test] mifareUltralight21 is--<-!!!->' + JSON.stringify(MifareUltralightTag));
+                expect(MifareUltralightTag != null).assertTrue();
+                expect(MifareUltralightTag instanceof Object).assertTrue();
+            } catch (error) {
+                console.info('nfc mifareUltralight21 error' + error)
+                expect().assertFail();
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_2200
+         * @tc.name Test getNdefFormatable
+         * @tc.desc This interface is used to obtain the getNdefFormatable tag object.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_2200', 0, function ()  {
+            let NdefFormatable ;
+            try {
+                NdefFormatable = tag.getNdefFormatable(NdefFormatableTag);
+                console.info('[NFC_test] getNdefFormatable22 is--<-!!!->' + JSON.stringify(NdefFormatable));
+                expect(NdefFormatable != null).assertTrue();
+                expect(NdefFormatable instanceof Object).assertTrue();
+            } catch (error) {
+                console.info('nfc getNdefFormatable error' + error)
+                expect().assertFail();
+            }
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
-
-

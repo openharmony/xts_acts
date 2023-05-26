@@ -20,7 +20,6 @@
             "type": "ShellKit",
             "run-command": [
                 "svc nfc enable",
-                "hilog -Q pidoff",
                 "power-shell wakeup",
                 "power-shell setmode 602"
             ]
