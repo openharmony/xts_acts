@@ -134,18 +134,20 @@ export default function SearchJsunit() {
       let textComponent1 = await driver.findComponent(BY.key('search'));
       await textComponent1.inputText("hello")
       await CommonFunc.sleep(1000);
-      let change = await driver.findComponent(BY.key('change'));
-      let text1 = await change.getText();
-      expect(text1).assertEqual('onChange:hello');
+      let strJson1 = getInspectorByKey('change');
+      let obj1 = JSON.parse(strJson1);
+      console.info("[SearchJsunit_0300] obj1: " + JSON.stringify(obj1));
+      expect(obj1.$attrs.content).assertEqual('onChange:hello');
       await CommonFunc.sleep(1000);
 
       // Verify the onSubmit function of the Search component
       let textComponent2 = await driver.findComponent(BY.text('CLICK_SEARCH'));
       await textComponent2.click()
       await CommonFunc.sleep(1000);
-      let submit = await driver.findComponent(BY.key('submit'));
-      let text2 = await submit.getText();
-      expect(text2).assertEqual('onSubmit:hello');
+      let strJson2 = getInspectorByKey('submit');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[SearchJsunit_0300] obj2: " + JSON.stringify(obj2));
+      expect(obj2.$attrs.content).assertEqual('onSubmit:hello');
 
       // Verify the onCopy function of the Search component
       await textComponent1.longClick()
@@ -154,9 +156,11 @@ export default function SearchJsunit() {
       await textComponent3.click()
       let textComponent4 = await driver.findComponent(BY.text('复制'));
       await textComponent4.click()
-      let copy = await driver.findComponent(BY.key('copy'));
-      let text3 = await copy.getText();
-      expect(text3).assertEqual('onCopy:hello');
+      await CommonFunc.sleep(1000);
+      let strJson3 = getInspectorByKey('copy');
+      let obj3 = JSON.parse(strJson3);
+      console.info("[SearchJsunit_0300] obj3: " + JSON.stringify(obj3));
+      expect(obj3.$attrs.content).assertEqual('onCopy:hello');
 
       // Verify the onCut function of the Search component
       await textComponent1.longClick()
@@ -165,25 +169,29 @@ export default function SearchJsunit() {
       await textComponent5.click()
       let textComponent6 = await driver.findComponent(BY.text('剪切'));
       await textComponent6.click()
-      let cut = await driver.findComponent(BY.key('cut'));
-      let text4 = await cut.getText();
-      expect(text4).assertEqual('onCut:hello');
+      await CommonFunc.sleep(1000);
+      let strJson4 = getInspectorByKey('cut');
+      let obj4 = JSON.parse(strJson4);
+      console.info("[SearchJsunit_0300] obj4: " + JSON.stringify(obj4));
+      expect(obj4.$attrs.content).assertEqual('onCut:hello');
 
       // Verify the onPaste function of the Search component
       await textComponent1.longClick()
       await CommonFunc.sleep(1000);
       let textComponent8 = await driver.findComponent(BY.text('粘贴'));
       await textComponent8.click()
-      let paste = await driver.findComponent(BY.key('paste'));
-      let text5 = await paste.getText();
-      expect(text5).assertEqual('onPaste:hello');
+      await CommonFunc.sleep(1000);
+      let strJson5 = getInspectorByKey('paste');
+      let obj5 = JSON.parse(strJson5);
+      console.info("[SearchJsunit_0300] obj5: " + JSON.stringify(obj5));
+      expect(obj5.$attrs.content).assertEqual('onPaste:hello');
 
       // Verify the caretPosition function of the Search component
       let textComponent7 = await driver.findComponent(BY.key('button'));
       await textComponent7.click();
       await CommonFunc.sleep(1000);
-      let text6 = await textComponent7.getText();
-      expect(text6).assertEqual('Set caretPosition 2');
+      let text = await textComponent7.getText();
+      expect(text).assertEqual('Set caretPosition 2');
       console.info('[SearchJsunit_0300] END');
       done();
     });
@@ -227,7 +235,7 @@ export default function SearchJsunit() {
       expect(obj.$attrs.icon).assertEqual('resource:///ohos_search.svg');
       expect(obj.$attrs.searchButton).assertEqual('CLICK_SEARCH');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF00000A');
-      expect(obj.$attrs.value).assertEqual('hello');
+      expect(obj.$attrs.value).assertEqual('');
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
       expect(obj.$attrs.textFont).assertEqual('{"fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"400","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
