@@ -19,6 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function imageYuv() {
     describe("imageYuv", function () {
         let globalpixelmap;
+        let globalImagesource;
+        let globalPacker;
         const { NV21, NV12 } = image.PixelMapFormat;
         const WRONG_FORMAT = 10;
 
@@ -38,6 +40,22 @@ export default function imageYuv() {
                     await globalpixelmap.release();
                 } catch (error) {
                     console.info("globalpixelmap release fail");
+                }
+            }
+            if (globalImagesource != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
+                }
+            }
+            if (globalPacker != undefined) {
+                console.info("globalPacker release start");
+                try {
+                    await globalPacker.release();
+                } catch (error) {
+                    console.info("globalPacker release fail");
                 }
             }
             console.info("afterEach case");
@@ -77,6 +95,7 @@ export default function imageYuv() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSource;
                     imageSource
                         .createPixelMap()
                         .then((pixelmap) => {
@@ -121,6 +140,7 @@ export default function imageYuv() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSource;
                     imageSource
                         .createPixelMap()
                         .then((pixelmap) => {
@@ -149,6 +169,7 @@ export default function imageYuv() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSource;
                     imageSource.createPixelMap((err, pixelmap) => {
                         if (err != undefined || pixelmap == undefined) {
                             console.info(`${testNum} err2: ` + err);
@@ -187,6 +208,7 @@ export default function imageYuv() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSource;
                     imageSource.createPixelMap((err, pixelmap) => {
                         if (err != undefined || pixelmap == undefined) {
                             console.info(`${testNum} err: ` + err);
@@ -212,12 +234,14 @@ export default function imageYuv() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSource;
                 const imagePackerApi = image.createImagePacker();
                 if (imagePackerApi == undefined) {
                     console.info(`${testNum} create ImagePacker failed`);
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalPacker = imagePackerApi;
                     imagePackerApi
                         .packing(imageSource, arg)
                         .then((data) => {
@@ -251,12 +275,14 @@ export default function imageYuv() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSource;
                 const imagePackerApi = image.createImagePacker();
                 if (imagePackerApi == undefined) {
                     console.info(`${testNum} create ImagePacker failed`);
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalPacker = imagePackerApi;
                     imagePackerApi
                         .packing(imageSource, arg)
                         .then((data) => {
@@ -279,12 +305,14 @@ export default function imageYuv() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSource;
                 const imagePackerApi = image.createImagePacker();
                 if (imagePackerApi == undefined) {
                     console.info(`${testNum} create ImagePacker failed`);
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalPacker = imagePackerApi;
                     imagePackerApi.packing(imageSource, arg, (err, data) => {
                         if (err != undefined) {
                             expect(false).assertTrue();
@@ -315,12 +343,14 @@ export default function imageYuv() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSource;
                 const imagePackerApi = image.createImagePacker();
                 if (imagePackerApi == undefined) {
                     console.info(`${testNum} create ImagePacker failed`);
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalPacker = imagePackerApi;
                     imagePackerApi.packing(imageSource, arg, (err, data) => {
                         expect(err != undefined || data == undefined).assertTrue();
                         done();

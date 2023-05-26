@@ -20,6 +20,7 @@ import { testPng, testJpg } from '../../../../../image/src/main/js/test/testImg'
 export default function imagePixelMapFramework() {
     describe('imagePixelMapFramework', function () {
         let globalpixelmap;
+        let globalImagesource;
         beforeAll(async function () {
             console.info('beforeAll case');
         })
@@ -35,6 +36,14 @@ export default function imagePixelMapFramework() {
                     await globalpixelmap.release();
                 } catch (error) {
                     console.info("globalpixelmap release fail");
+                }
+            }
+            if (globalImagesource != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
                 }
             }
             console.info('afterEach case');
@@ -141,6 +150,7 @@ export default function imagePixelMapFramework() {
         async function checkAlphaPixelmap(done, logger, alphaPixelMap) {
             logger.log("AlphaPixelMap " + alphaPixelMap);
             if (alphaPixelMap != undefined) {
+                globalpixelmap = alphaPixelMap;
                 var imageInfo = await alphaPixelMap.getImageInfo();
                 logger.log("AlphaPixelMap pixelformat " + imageInfo.pixelFormat);
                 expect(imageInfo.pixelFormat == 6).assertTrue();
@@ -157,6 +167,7 @@ export default function imagePixelMapFramework() {
                 let imageSource = image.createImageSource(imageData);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {
@@ -193,6 +204,7 @@ export default function imagePixelMapFramework() {
                 let imageSource = image.createImageSource(imageData, sourceOptions);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap(decodingOptions);
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {
@@ -225,6 +237,7 @@ export default function imagePixelMapFramework() {
                 let imageSource = image.createImageSource(imageData, sourceOptions);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {
@@ -290,7 +303,7 @@ export default function imagePixelMapFramework() {
         async function opacityErr(done, testNum, param, type) {
             let logger = loger(testNum)
             try {
-                var pixelMap = await genPixelMap()
+                var pixelMap = await genPixelMap();
                 logger.log("pixelMap " + (pixelMap != undefined));
                 if (pixelMap != undefined) {
                     globalpixelmap = pixelMap;
@@ -327,6 +340,7 @@ export default function imagePixelMapFramework() {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {
@@ -363,6 +377,7 @@ export default function imagePixelMapFramework() {
                 let imageSource = image.createImageSource(imageData, sourceOptions);
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {
@@ -417,20 +432,22 @@ export default function imagePixelMapFramework() {
                 const imageSource = image.createImageSource(base64Image)
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
                     globalpixelmap = pixelMap;
                     logger.log("PixelMap " + (pixelMap != undefined));
                     expect(pixelMap != undefined).assertTrue();
+                    done();
                 } else {
                     logger.log("ImageSource undefined");
                     expect(false).assertTrue();
+                    done();
                 }
             } catch (error) {
                 logger.log('failed ' + error);
                 expect(false).assertTrue();
                 done();
             }
-            done();
         })
 
         /**
@@ -670,6 +687,7 @@ export default function imagePixelMapFramework() {
                 let imageSource = genPicSource();
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
                     logger.log("PixelMap " + pixelMap);
                     if (pixelMap != undefined) {

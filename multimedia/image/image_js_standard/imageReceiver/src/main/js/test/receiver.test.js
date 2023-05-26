@@ -18,6 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function ImageReceiver() {
     describe("ImageReceiver", function () {
         let globalreceiver;
+        let globalImg;
         const WIDTH = 8192;
         const HEIGHT = 8;
         const CAPACITY = 8;
@@ -35,6 +36,14 @@ export default function ImageReceiver() {
         });
 
         afterEach(async function () {
+            if (globalImg != undefined) {
+                console.info("globalImg release start");
+                try {
+                    await globalImg.release();
+                } catch (error) {
+                    console.info("globalImg release fail");
+                }
+            }
             if (globalreceiver != undefined) {
                 console.info("globalreceiver release start");
                 try {
@@ -98,6 +107,7 @@ export default function ImageReceiver() {
                             done();
                             return;
                         } else {
+                            globalImg = img;
                             expect(img.size.width == WIDTH).assertTrue();
                             expect(img.size.height == HEIGHT).assertTrue();
                             console.log(`${testNum} img.format: ${img.format}`)
@@ -150,6 +160,7 @@ export default function ImageReceiver() {
                             done();
                             return;
                         } else {
+                            globalImg = img;
                             expect(img.size.width == WIDTH).assertTrue();
                             expect(img.size.height == HEIGHT).assertTrue();
                             console.log(`${testNum} img.format: ${img.format}`)
@@ -202,6 +213,7 @@ export default function ImageReceiver() {
                         done();
                         return;
                     } else {
+                        globalImg = img;
                         expect(img.size.width == WIDTH).assertTrue();
                         expect(img.size.height == HEIGHT).assertTrue();
                         checkFormat(img.format);
@@ -261,6 +273,7 @@ export default function ImageReceiver() {
                         done();
                         return;
                     } else {
+                        globalImg = img;
                         expect(img.size.width == WIDTH).assertTrue();
                         expect(img.size.height == HEIGHT).assertTrue();
                         checkFormat(img.format);
@@ -731,6 +744,7 @@ export default function ImageReceiver() {
                 receiver
                     .readLatestImage()
                     .then((img) => {
+                        globalImg = img;
                         console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_PROMISE_0100 readLatestImage Success");
                         expect(img != undefined).assertTrue();
                         done();
@@ -772,6 +786,7 @@ export default function ImageReceiver() {
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver.readLatestImage((err, img) => {
+                    globalImg = img;
                     console.info(
                         "SUB_GRAPHIC_IMAGE_RECEIVER_READLATESTIMAGE_CALLBACK_0100 readLatestImage call back Success"
                     );
@@ -812,6 +827,7 @@ export default function ImageReceiver() {
                 receiver
                     .readNextImage()
                     .then((img) => {
+                        globalImg = img;
                         console.info("SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_PROMISE_0100 readNextImage Success");
                         expect(img != undefined).assertTrue();
                         done();
@@ -858,6 +874,7 @@ export default function ImageReceiver() {
                         done();
                         return;
                     } else {
+                        globalImg = img;
                         console.info(
                             "SUB_GRAPHIC_IMAGE_RECEIVER_READNEXTIMAGE_CALLBACK_0100 readNextImage call back Success"
                         );
@@ -1016,6 +1033,7 @@ export default function ImageReceiver() {
                         done();
                         return;
                     } else {
+                        globalImg = img;
                         expect(img.size.width == WIDTH).assertTrue();
                         expect(img.size.height == HEIGHT).assertTrue();
                         expect(img.format == RGBA).assertTrue();
@@ -1082,7 +1100,7 @@ export default function ImageReceiver() {
                     done();
                     return;
                 }
-
+                globalImg = img;
                 expect(img.size.width == WIDTH).assertTrue();
                 expect(img.size.height == HEIGHT).assertTrue();
                 expect(img.format == RGBA).assertTrue();

@@ -20,6 +20,8 @@ import featureAbility from "@ohos.ability.featureAbility";
 export default function imageRaw() {
     describe("imageRaw", function () {
         let globalpixelmap;
+        let globalImagesource;
+        let globalPacker;
         const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
         let filePath;
         let fdNumber;
@@ -62,6 +64,22 @@ export default function imageRaw() {
                     console.info("globalpixelmap release fail");
                 }
             }
+            if (globalImagesource != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
+                }
+            }
+            if (globalPacker != undefined) {
+                console.info("globalPacker release start");
+                try {
+                    await globalPacker.release();
+                } catch (error) {
+                    console.info("globalPacker release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -78,6 +96,7 @@ export default function imageRaw() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalPacker = imagePackerApi;
                     let packOptsFormat = `format:` + packOpts.format;
                     let packOptsQuality = `quality:` + packOpts.quality;
                     console.info(
@@ -134,6 +153,7 @@ export default function imageRaw() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     console.info(`${testNum} createPixelMapPromise create imagesource success`);
                     imageSourceApi
                         .createPixelMap(decodeOpts)
@@ -172,6 +192,7 @@ export default function imageRaw() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     console.info(`${testNum} createPixelMapPromise create imagesource success`);
                     imageSourceApi.createPixelMap(decodeOpts, (err, pixelmap) => {
                         if (pixelmap != undefined) {
@@ -203,6 +224,7 @@ export default function imageRaw() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     console.info(`${testNum} createPixelMapPromise create imagesource success`);
                     imageSourceApi.createPixelMap(decodeOpts, (err, pixelmap) => {
                         if (pixelmap == undefined) {
@@ -232,6 +254,7 @@ export default function imageRaw() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     console.info(`${testNum} createPixelMapPromise create imagesource success`);
                     imageSourceApi
                         .createPixelMap(decodeOpts)
