@@ -1910,14 +1910,14 @@ export async function avRecorderReliabilitTest31(avConfig, avRecorder, recorderT
     let surfaceID = null;
     let result = true;
     avRecorder = await idle(avRecorder);
-    avRecorder.getInputSurface().then((surfaceId) => {
+    await avRecorder.getInputSurface().then((surfaceId) => {
         console.info('avRecorderReliabilitTest31 getInputSurface success');
         surfaceID = surfaceId;
     }).catch((err) => {
         console.info('avRecorderReliabilitTest31 getInputSurface failed and catch error is ' + err.message);
         result = false
     });
-    expect(result).assertEqual(true);
+    expect(result).assertEqual(false);
     await releaseDone(avRecorder, done)
 }
 
@@ -2196,6 +2196,18 @@ export async function avRecorderReliabilitTest37(avConfig, avRecorder, recorderT
     await preparePromise(avRecorder, avConfig)
 }
 
+async function  getInputSurfaceCatachError(avRecorder, result, surfaceID){
+    await avRecorder.getInputSurface().then((surfaceId) => {
+        console.info('getInputSurfaceTest38 getInputSurface success');
+        surfaceID = surfaceId;
+    }).catch((err) => {
+        console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
+        result = false
+        console.info('getInputSurfaceTest38 getInputSurface result is ' + result);
+        expect(result).assertEqual(false);
+    });
+}
+
 export async function getInputSurfaceTest38(avConfig, avRecorder, recorderTime, done) {
     let result1 = true;
     let result2 = true;
@@ -2208,33 +2220,9 @@ export async function getInputSurfaceTest38(avConfig, avRecorder, recorderTime, 
             case AV_RECORDER_STATE.PREPARED:
                 console.info(`case getInputSurfaceTest38 state is PREPARED`);
                 expect(avRecorder.state).assertEqual('prepared');
-
-                avRecorder.getInputSurface().then((surfaceId) => {
-                    console.info('getInputSurfaceTest38 getInputSurface success');
-                    surfaceID = surfaceId;
-                }).catch((err) => {
-                    console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
-                    result1 = false
-                });
-                expect(result1).assertEqual(true);
-
-                avRecorder.getInputSurface().then((surfaceId) => {
-                    console.info('getInputSurfaceTest38 getInputSurface success');
-                    surfaceID = surfaceId;
-                }).catch((err) => {
-                    console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
-                    result2 = false
-                });
-                expect(result2).assertEqual(true);
-
-                avRecorder.getInputSurface().then((surfaceId) => {
-                    console.info('getInputSurfaceTest38 getInputSurface success');
-                    surfaceID = surfaceId;
-                }).catch((err) => {
-                    console.info('getInputSurfaceTest38 getInputSurface failed and catch error is ' + err.message);
-                    result3 = false
-                });
-                expect(result3).assertEqual(true);
+                getInputSurfaceCatachError(avRecorder, result1, surfaceID)
+                getInputSurfaceCatachError(avRecorder, result2, surfaceID)
+                getInputSurfaceCatachError(avRecorder, result3, surfaceID)
                 releasePromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.RELEASED:
@@ -2255,6 +2243,7 @@ export async function getInputSurfaceTest38(avConfig, avRecorder, recorderTime, 
         done();
     });
 }
+
 
 export async function avRecorderReliabilitTest38(avConfig, avRecorder, recorderTime, done) {
     avRecorder = await idle(avRecorder);

@@ -425,7 +425,6 @@ function setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done) {
                         console.info('playPauseLoopWithCallBack avPlayer from play to stop')
                         avPlayer.release().then(() => {
                             console.info('playPauseLoopWithCallBack avPlayer from stop to release')
-                            offCallback(avPlayer, ['stateChange', 'error']);
                             done();
                         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -556,7 +555,6 @@ async function playToCompletedLoop(src, avPlayer, done) {
                         console.info('playToCompletedLoop avPlayer from play to stop')
                         avPlayer.release().then(() => {
                             console.info('playToCompletedLoop avPlayer from stop to release')
-                            offCallback(avPlayer, ['stateChange', 'error']);
                             done();
                         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
                     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
@@ -611,29 +609,30 @@ export async function seekLoop(src, avPlayer, done) {
     }, (err) => {
         console.error('seekLoop play filed,error message is :' + err.message)
     })
-    if(avPlayer.state == AV_PLAYER_STATE.PLAYING){
-        console.info('seekLoop avPlayer from play to seek')
-        // play seek loop 1000 times
-        for(var loopTime = 0;loopTime < 1000; loopTime++){
-            avPlayer.seek(loopTime)
-            console.info(`case seekLoopWithCallback loopTime is ${loopTime}`);
-        }
-    }
+    await seekLoopWithCallback(avPlayer)
+    console.info('seekLoop avPlayer from play to seek')
+    // play seek loop 1000 times
     await avPlayer.stop().then(() => {
         console.info('seekLoopWithCallback avPlayer from play to stop')
-        offCallback(avPlayer, ['stateChange', 'seekDone']);
-        avPlayer.release().then(() => {
-            console.info('seekLoopWithCallback avPlayer from stop to release')
-            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-            done();
-        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await avPlayer.release().then(() => {
+        console.info('seekLoopWithCallback avPlayer from stop to release')
+        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
+        done();
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 async function seekLoopWithCallback(avPlayer) {
-    avPlayer.on('seekDone', async (seekDoneTime) => {
-        console.info(`case seekDone called seekDoneTime is ${seekDoneTime}`);
-    });
+    for (let loopTime = 0; loopTime < 5000; loopTime += 5) {
+        await new Promise(resolve => {
+            avPlayer.on('seekDone', seekDoneTime => {
+                console.info(`case seekDone called seekDoneTime is ${seekDoneTime}`);
+                resolve();
+            });
+            avPlayer.seek(loopTime);
+            console.info(`case seekLoopWithCallback loopTime is ${loopTime}`);
+        });
+    }
 }
 
 export async function seekLoopWithoutCallback(src, avPlayer, done) {
@@ -767,15 +766,12 @@ export async function createToReleaseLoop(src, avPlayer, done) {
         await avPlayer.release().then(() => {
             console.info('createToReleaseLoop avPlayer from stop to release')
             expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
+            if(i==999){
+                done();
+            }
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-
         console.info(`case createToReleaseLoop loop is ${i}`);
     }
-    await avPlayer.release().then(() => {
-        console.info('createToReleaseLoop avPlayer from stop to release')
-        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-        done();
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
 let createLoopTime = 0;
@@ -785,7 +781,7 @@ export async function createTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
     createStart = Date.now();
     console.info(`createTimeWithCallback createStart time is : ${createStart}`)
-    createTimeWithCallback(src, avPlayer, done)
+    createTimeCallback(src, avPlayer, done)
 }
 
 function createTimeCallback(src, avPlayer, done){
@@ -1778,7 +1774,6 @@ function setSpeedTimeCallback(avPlayer, done) {
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
                 if(loopTime == 10){
                     avPlayer.release().then(() => {
-                        offCallback(avPlayer, ['stateChange', 'error']);
                         console.info('setSpeedTimeCallback avPlayer is release')
                         expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
                         let avg = totalTime/10;
@@ -1889,7 +1884,6 @@ function setBitrateTimeCallback(avPlayer, done) {
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
                 if(loopTime == 10){
                     avPlayer.release().then(() => {
-                        offCallback(avPlayer, ['stateChange', 'error']);
                         console.info('setBitrateTimeCallback avPlayer is release')
                         expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
                         let avg = totalTime/10;
@@ -2001,7 +1995,6 @@ function setVolumeTimeCallback(avPlayer, done) {
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
                 if(loopTime == 10){
                     avPlayer.release().then(() => {
-                        offCallback(avPlayer, ['stateChange', 'error']);
                         console.info('setVolumeTimeCallback avPlayer is release')
                         expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
                         let avg = totalTime/10;
@@ -2058,7 +2051,6 @@ export async function firstFrameTime(src, avPlayer,  done) {
         console.info("firstFrameTime execution time  is :" + execution)
         sleep(100)
         avPlayer.release().then(() => {
-            offCallback(avPlayer, ['stateChange','startRenderFrame']);
             console.info('firstFrameTime avPlayer is release')
             expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
             avPlayer = null;
@@ -2122,6 +2114,13 @@ function setAVPlayerPlay(src, avPlayer, done) {
             case AV_PLAYER_STATE.PLAYING:
                 console.info('setAVPlayerPlay play state is PLAYING')
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
+                if(avPlayer.duration > 3000){
+                    mediaTestBase.msleepAsync(3000);
+                    avPlayer.seek(avPlayer.duration, media.SeekMode.SEEK_NEXT_SYNC)
+                }else{
+                    mediaTestBase.msleepAsync(500);
+                    avPlayer.seek(avPlayer.duration, media.SeekMode.SEEK_NEXT_SYNC)
+                }
                 break;
             case AV_PLAYER_STATE.COMPLETED:
                 expect(avPlayer.currentTime).assertEqual(avPlayer.duration);
@@ -2131,7 +2130,6 @@ function setAVPlayerPlay(src, avPlayer, done) {
                 break;
             case AV_PLAYER_STATE.RELEASED:
                 expect(avPlayer.state).assertEqual('released');
-                offCallback(avPlayer, ['stateChange', 'error']);
                 avPlayer = null;
                 done();
                 break;
