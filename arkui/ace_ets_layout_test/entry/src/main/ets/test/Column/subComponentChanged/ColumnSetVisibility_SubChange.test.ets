@@ -19,7 +19,7 @@ import CommonFunc from "../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function ColumnSetVisibility_SubChange() {
   describe('ColumnSetVisibilityTest', function () {
-    beforeEach(async function (done) {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetVisibility_SubChange',
       }
