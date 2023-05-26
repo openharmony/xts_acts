@@ -190,7 +190,7 @@ export default function ToggleJsunit() {
       console.info("[ToggleJsunit_0600] isOn: " + JSON.stringify(obj.$attrs.isOn));
       console.info("[ToggleJsunit_0600] selectedColor: " + JSON.stringify(obj.$attrs.selectedColor));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.type).assertEqual('ButtonType.Capsule');
+      expect(obj.$attrs.type).assertEqual('ToggleType.Switch');
       expect(obj.$attrs.isOn).assertEqual('false');
       expect(obj.$attrs.selectedColor).assertEqual('#FF00007B');
       let strJson1 = getInspectorByKey('toggleSwitch');

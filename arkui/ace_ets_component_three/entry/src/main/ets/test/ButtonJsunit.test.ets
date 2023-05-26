@@ -17,6 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function buttonJsunit() {
   describe('buttonTest', function () {
@@ -299,6 +300,9 @@ export default function buttonJsunit() {
     });
 
     it('testButton12', 0, async function (done) {
+      let driver = Driver.create();
+      let density = await driver.getDisplayDensity();
+      console.info("[testButton12] getDisplayDensity is: " + JSON.stringify(density));
       await Utils.sleep(1000);
       var callback = (eventData) => {
         console.info("[testButton12] get event state result is: " + JSON.stringify(eventData));
@@ -307,10 +311,17 @@ export default function buttonJsunit() {
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenY));
         console.info("[testButton12] get event state result is: " + Math.trunc(event.screenX));
         try {
-            expect(event.screenX).assertEqual(185)
-            expect(event.screenY).assertEqual(533)
-            expect(event.x).assertEqual(100)
-            expect(event.y).assertEqual(50)
+          if(density.x == 1080){
+            expect(Math.trunc(event.screenX)).assertEqual(185)
+            expect(Math.trunc(event.screenY)).assertEqual(533)
+            expect(Math.trunc(event.x)).assertEqual(100)
+            expect(Math.trunc(event.y)).assertEqual(50)
+          }else{
+            expect(Math.trunc(event.screenX)).assertEqual(185)
+            expect(Math.trunc(event.screenY)).assertEqual(523)
+            expect(Math.trunc(event.x)).assertEqual(100)
+            expect(Math.trunc(event.y)).assertEqual(50)
+          }
         } catch (err) {
             console.info("[testButton12_] expection err : " + JSON.stringify(err));
             expect().assertFail();
