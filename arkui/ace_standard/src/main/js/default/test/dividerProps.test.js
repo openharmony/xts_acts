@@ -137,32 +137,6 @@ describe('dividerPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testDividerStyleProp', 0, async function (done) {
-//        console.info('testDividerStyleProp START');
-//        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('divider')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[dividerProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[dividerProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[dividerProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testDividerRefProp
      * @tc.desc      ACE
      */
@@ -472,44 +446,6 @@ describe('dividerPropsJsTest', function () {
         console.info("[dividerProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testDividerIfPropFalse', 0, async function (done) {
-    //        console.info('testDividerIfPropFalse START');
-    //        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('divider')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDividerIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testDividerIfPropNone', 0, async function (done) {
-    //        console.info('testDividerIfPropNone START');
-    //        console.info("[dividerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[dividerProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[dividerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('divider')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

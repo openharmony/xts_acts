@@ -290,7 +290,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_01 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bufferData(gl.ARRAY_BUFFER, 1024, gl.INVALID_ENUM);
@@ -306,7 +306,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_02 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -339,7 +339,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_04 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -356,7 +356,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_1 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -373,7 +373,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_1_01 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -391,7 +391,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_1_02 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -408,7 +408,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_1_03 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -425,7 +425,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferData_1_03 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -442,7 +442,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferSubData.
 		 */
 		it('testBufferSubData', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferSubData test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -460,7 +460,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferSubData_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferSubData_1 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -478,7 +478,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferSubData.
 		 */
 		it('testBufferSubData_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferSubData_2 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -497,7 +497,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferSubData.
 		 */
 		it('testBufferSubData_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferSubData_3 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -515,7 +515,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test bufferSubData.
 		 */
 		it('testBufferSubData_4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBufferSubData_4 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -533,7 +533,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexImage2D test start ...66');
 			var texture = gl.createTexture();
 			gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -550,7 +550,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexImage2D_01 test start ...66');
 			var texture = gl.createTexture();
 			gl.bindTexture(gl.TEXTURE_3D, texture);
@@ -567,7 +567,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexImage2D_02 test start ...66');
 			var texture = gl.createTexture();
 			gl.bindTexture(gl.TEXTURE_3D, texture);
@@ -584,7 +584,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexImage2D_03 test start ...66');
 			var program = gl.createProgram();
 			gl.bindTexture(gl.TEXTURE_3D, program);
@@ -601,7 +601,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexImage2D_04 test start ...66');
 			var framebuffer = gl.createFramebuffer();
 			gl.bindTexture(gl.TEXTURE_3D, framebuffer);
@@ -618,7 +618,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test compressedTexSubImage2D.
 		 */
 		it('testCompressedTexSubImage2D_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexSubImage2D_1 test start ...66');
 			var texture = gl.createTexture();
 			gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -637,7 +637,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels test start ...66');
 			var pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
 			gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl
@@ -654,7 +654,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels_01 test start ...66');
 			var pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
 			gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.DST_COLOR,
@@ -671,7 +671,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels_02 test start ...66');
 			var pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
 			gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.DST_COLOR,
@@ -688,7 +688,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels_03 test start ...66');
 			var pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
 			gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, -1, gl.DST_COLOR, -2);
@@ -704,7 +704,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels_04 test start ...66');
 			var pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
 			gl.readPixels(-1, -1, gl.drawingBufferWidth, gl.drawingBufferHeight, -1, gl.CONSTANT_COLOR,
@@ -721,7 +721,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D test start ...66');
 			console.info('jsWebGL testTexImage2D test start ...' + JSON.stringify(gl));
 			const buffer = new ArrayBuffer(8);
@@ -739,7 +739,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_01 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -757,7 +757,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_02 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -774,7 +774,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_03 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -791,7 +791,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_04 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -808,7 +808,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D test start ...66');
 			console.info('jsWebGL testTexSubImage2D test start ...' + JSON.stringify(gl));
 			const buffer = new ArrayBuffer(16);
@@ -826,7 +826,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform1fv.
 		 */
 		it('testUniform1fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform1fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -846,7 +846,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform1fv.
 		 */
 		it('testUniform1fv_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform1fv_1 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position1");
@@ -864,7 +864,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform1fv.
 		 */
 		it('testUniform1fv_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform1fv_3 test start ...66');
 			const programobject = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programobject, "a_Position1");
@@ -883,7 +883,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform2fv.
 		 */
 		it('testUniform2fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform2fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "123");
@@ -901,7 +901,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform2fv.
 		 */
 		it('testUniform2fv_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform2fv_2 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "123");
@@ -919,7 +919,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform2fv.
 		 */
 		it('testUniform2fv_4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform2fv_4 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position1");
@@ -937,7 +937,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform3fv.
 		 */
 		it('testUniform3fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform3fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -955,7 +955,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform3fv.
 		 */
 		it('testUniform3fv_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform3fv_1 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -973,7 +973,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform3fv.
 		 */
 		it('testUniform3fv_4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform3fv_4 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -991,7 +991,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4fv.
 		 */
 		it('testUniform4fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1009,7 +1009,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4fv.
 		 */
 		it('testUniform4fv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4fv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1027,7 +1027,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4fv.
 		 */
 		it('testUniform4fv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4fv_04 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1045,7 +1045,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform1iv.
 		 */
 		it('testUniform1iv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform1iv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1063,7 +1063,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform1iv.
 		 */
 		it('testUniform1iv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform1iv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1081,7 +1081,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform2iv.
 		 */
 		it('testUniform2iv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform2iv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1099,7 +1099,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform2iv.
 		 */
 		it('testUniform2iv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform2iv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1117,7 +1117,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform2iv.
 		 */
 		it('testUniform2iv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform2iv_04 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1135,7 +1135,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform3iv.
 		 */
 		it('testUniform3iv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform3iv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1153,7 +1153,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform3iv.
 		 */
 		it('testUniform3iv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform3iv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1171,7 +1171,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform3iv.
 		 */
 		it('testUniform3iv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform3iv_04 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1189,7 +1189,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4iv.
 		 */
 		it('testUniform4iv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4iv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1207,7 +1207,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4iv.
 		 */
 		it('testUniform4iv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4iv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1225,7 +1225,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4iv.
 		 */
 		it('testUniform4iv_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4iv_02 test start ...66');
 			const buffer = gl.createBuffer();
 			const uniformlocationObj = gl.getUniformLocation(buffer, "a_Position");
@@ -1246,7 +1246,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniform4iv.
 		 */
 		it('testUniform4iv_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4iv_03 test start ...66');
 			const shader = gl.createShader(gl.FRAGMENT_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1264,7 +1264,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test Uniform4uiv.
 		 */
 		it('testUniform4iv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniform4iv_03 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1282,7 +1282,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix2fv.
 		 */
 		it('testUniformMatrix2fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix2fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1300,7 +1300,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix2fv.
 		 */
 		it('testUniformMatrix2fv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix2fv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1318,7 +1318,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix2fv.
 		 */
 		it('testUniformMatrix2fv_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix2fv_03 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1337,7 +1337,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix2fv.
 		 */
 		it('testUniformMatrix2fv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix2fv_04 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1355,7 +1355,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix3fv.
 		 */
 		it('testUniformMatrix3fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix3fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1373,7 +1373,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix3fv.
 		 */
 		it('testUniformMatrix3fv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix3fv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1391,7 +1391,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix3fv.
 		 */
 		it('testUniformMatrix3fv_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix3fv_02 test start ...66');
 			const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(fragmentShader, "a_Position");
@@ -1409,7 +1409,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix3fv.
 		 */
 		it('testUniformMatrix3fv_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix3fv_03 test start ...66');
 			const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(fragmentShader, "a_Position");
@@ -1427,7 +1427,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix3fv.
 		 */
 		it('testUniformMatrix3fv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix3fv_04 test start ...66');
 			var shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1445,7 +1445,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix4fv.
 		 */
 		it('testUniformMatrix4fv', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix4fv test start ...66');
 			const programObj = createProgram(gl);
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1464,7 +1464,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix4fv.
 		 */
 		it('testUniformMatrix4fv_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix4fv_01 test start ...66');
 			const programObj = gl.createProgram();
 			const uniformlocationObj = gl.getUniformLocation(programObj, "a_Position");
@@ -1483,7 +1483,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix4fv.
 		 */
 		it('testUniformMatrix4fv_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix4fv_02 test start ...66');
 			const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(fragmentShader, "a_Position");
@@ -1502,7 +1502,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix4fv.
 		 */
 		it('testUniformMatrix4fv_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix4fv_03 test start ...66');
 			var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(fragmentShader, "a_Position");
@@ -1521,7 +1521,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test uniformMatrix4fv.
 		 */
 		it('testUniformMatrix4fv_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testUniformMatrix4fv_04 test start ...66');
 			const shader = gl.createShader(gl.VERTEX_SHADER);
 			const uniformlocationObj = gl.getUniformLocation(shader, "a_Position");
@@ -1540,7 +1540,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData test start ...66');
 			console.info('jsWebGL testCopyBufferSubData test start ...' + JSON.stringify(gl));
 			const srcBuffer = gl.createBuffer();
@@ -1566,7 +1566,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_01 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -1592,7 +1592,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_02 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -1618,7 +1618,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_03 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -1643,7 +1643,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_04 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -1669,7 +1669,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -1689,7 +1689,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_01 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -1709,7 +1709,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_02 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -1729,7 +1729,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_03 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -1749,7 +1749,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_04 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -1772,7 +1772,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test blitFramebuffer.
 		 */
 		it('testBlitFramebuffer', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBlitFramebuffer test start ...66');
 			console.info('jsWebGL testBlitFramebuffer test start ...' + JSON.stringify(gl));
 			gl2.blitFramebuffer(0, 0, 400, 1080, 0, 0, 400, 1080, gl2.COLOR_BUFFER_BIT, gl2.NEAREST);
@@ -1788,7 +1788,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
 		it('testFramebufferTextureLayer', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testFramebufferTextureLayer test start ...66');
 			console.info('jsWebGL testFramebufferTextureLayer test start ...' + JSON.stringify(gl));
 			var texture = gl.createTexture();
@@ -1806,7 +1806,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer test start ...66');
 			console.info('jsWebGL testInvalidateFramebuffer test start ...' + JSON.stringify(gl));
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
@@ -1823,7 +1823,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateSubFramebuffer test start ...66');
 			console.info('jsWebGL testInvalidateSubFramebuffer test start ...' + JSON.stringify(gl));
 			gl2.invalidateSubFramebuffer(gl.READ_FRAMEBUFFER,

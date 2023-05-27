@@ -77,33 +77,7 @@
          await backToIndex()
          await sleep(1000)
      })
- 
-//     /**
-//      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-//      * @tc.name      testPickerViewStyleProp
-//      * @tc.desc      ACEs
-//      */
-//     it('testPickerViewStyleProp', 0, async function (done) {
-//         console.info('testPickerViewStyleProp START');
-//         console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//         let obj = JSON.parse(globalThis.value.styleProp);
-//         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-//         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//         expect(obj.$type).assertEqual('picker-view')
-//         expect(obj.$attrs.id).assertEqual('styleProp')
-//         expect(obj.$attrs.style).assertEqual(undefined)
-//         console.info("[pickerViewProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//         expect(obj.$styles.width).assertEqual(undefined);
-//         console.info("[pickerViewProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//         expect(obj.$styles.height).assertEqual(undefined);
-//         console.info("[pickerViewProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//         expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//         done();
-//     });
- 
+
      /**
       * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
       * @tc.name      testPickerViewRefProp

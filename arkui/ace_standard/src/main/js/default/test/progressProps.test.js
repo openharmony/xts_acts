@@ -137,32 +137,6 @@ describe('progressPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testProgressStyleProp
-     * @tc.desc      ACEs
-     */
-    //    it('testProgressStyleProp', 0, async function (done) {
-    //        console.info('testProgressStyleProp START');
-    //        console.info("[progressProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.styleProp);
-    //        console.info("[progressProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[progressProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('progress')
-    //        expect(obj.$attrs.id).assertEqual('styleProp')
-    //        expect(obj.$attrs.style).assertEqual(undefined)
-    //        console.info("[progressProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-    //
-    //        expect(obj.$styles.width).assertEqual(undefined);
-    //        console.info("[progressProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-    //        expect(obj.$styles.height).assertEqual(undefined);
-    //        console.info("[progressProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-    //        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testProgressRefProp
      * @tc.desc      ACE
      */
@@ -586,44 +560,6 @@ describe('progressPropsJsTest', function () {
         console.info("[progressProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testProgressIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testProgressIfPropFalse', 0, async function (done) {
-    //        console.info('testProgressIfPropFalse START');
-    //        console.info("[progressProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[progressProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[progressProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('progress')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testProgressIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testProgressIfPropNone', 0, async function (done) {
-    //        console.info('testProgressIfPropNone START');
-    //        console.info("[progressProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[progressProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[progressProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('progress')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

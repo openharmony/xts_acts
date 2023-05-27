@@ -136,32 +136,6 @@ describe('selectPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSelectStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testSelectStyleProp', 0, async function (done) {
-//        console.info('testSelectStyleProp START');
-//        console.info("[selectProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[selectProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[selectProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('select')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[selectProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[selectProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[selectProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSelectRefProp
      * @tc.desc      ACE
      */
@@ -585,44 +559,6 @@ describe('selectPropsJsTest', function () {
         console.info("[selectProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSelectIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testSelectIfPropFalse', 0, async function (done) {
-    //        console.info('testSelectIfPropFalse START');
-    //        console.info("[selectProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[selectProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[selectProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('select')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSelectIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testSelectIfPropNone', 0, async function (done) {
-    //        console.info('testSelectIfPropNone START');
-    //        console.info("[selectProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[selectProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[selectProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('select')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

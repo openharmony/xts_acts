@@ -565,44 +565,6 @@ describe('toolbarPropsJsTest7', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testDivIfPropFalse', 0, async function (done) {
-    //        console.info('testDivIfPropFalse START');
-    //        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('div')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testDivIfPropNone', 0, async function (done) {
-    //        console.info('testDivIfPropNone START');
-    //        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('div')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testToolbarShowPropTrue
      * @tc.desc      ACE
      */

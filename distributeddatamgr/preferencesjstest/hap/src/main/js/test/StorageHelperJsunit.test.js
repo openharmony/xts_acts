@@ -126,27 +126,6 @@ describe('storageHelperTest', function () {
     })
 
     /**
-     * @tc.name removeStorageFromCache callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0041
-     * @tc.desc removeStorageFromCache callback interface test
-     */
-//    it('testRemoveStorageFromCache003', 0, function (done) {
-//        let perf = storage.getStorageSync('/data/test_storage3');
-//        storage.removeStorageFromCache(perf, function (err) {
-//            if (err) {
-//                console.info("removeStorageFromCache callback interface test failed" + err);
-//                expect(null).assertFail();
-//                done();
-//                return
-//            }
-//            console.info("removeStorageFromCache callback interface test successfully.");
-//            expect(true).assertTrue();
-//            done();
-//        })
-//
-//    })
-
-    /**
      * @tc.name deleteStorageSync interface test
      * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_Helper_0050
      * @tc.desc deleteStorageSync interface test

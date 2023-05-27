@@ -563,44 +563,6 @@ describe('swiperPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSwiperIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testSwiperIfPropFalse', 0, async function (done) {
-    //        console.info('testSwiperIfPropFalse START');
-    //        console.info("[swiperProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[swiperProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[swiperProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('swiper')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSwiperIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testSwiperIfPropNone', 0, async function (done) {
-    //        console.info('testSwiperIfPropNone START');
-    //        console.info("[swiperProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[swiperProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[swiperProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('swiper')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSwiperShowPropTrue
      * @tc.desc      ACE
      */

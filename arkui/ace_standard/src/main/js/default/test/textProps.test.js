@@ -565,44 +565,6 @@ describe('textPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testTextIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testTextIfPropFalse', 0, async function (done) {
-    //        console.info('testTextIfPropFalse START');
-    //        console.info("[textProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[textProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[textProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('text')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testTextIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testTextIfPropNone', 0, async function (done) {
-    //        console.info('testTextIfPropNone START');
-    //        console.info("[textProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[textProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[textProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('text')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testTextPropsShowPropTrue
      * @tc.desc      ACE
      */

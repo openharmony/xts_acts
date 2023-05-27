@@ -290,7 +290,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_1_04 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -308,7 +308,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_1_05 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -326,7 +326,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_1_06', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_1_06 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -344,7 +344,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_1_07', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_1_07 test start ...66');
 			const buffer = new ArrayBuffer(8);
 			const z = new Uint8Array(buffer, 1, 4);
@@ -361,7 +361,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_1_01 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -380,7 +380,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_1_02 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -399,7 +399,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_1_03 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -418,7 +418,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_1_04 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -437,7 +437,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_1_05 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -456,7 +456,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_1_06', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_1_06 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -475,7 +475,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_1_02 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -500,7 +500,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_1_03 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -525,7 +525,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_1_04 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -550,7 +550,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_1_05 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -575,7 +575,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_1_06', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_1_06 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -600,7 +600,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test copyBufferSubData.
 		 */
 		it('testCopyBufferSubData_1_07', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCopyBufferSubData_1_07 test start ...66');
 			const srcBuffer = gl.createBuffer();
 			const dstBuffer = gl.createBuffer();
@@ -625,7 +625,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_1_02 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -645,7 +645,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_1_03 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -665,7 +665,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_1_04 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -685,7 +685,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_1_05 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -705,7 +705,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_1_06', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_1_06 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -725,7 +725,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getBufferSubData.
 		 */
 		it('testGetBufferSubData_1_07', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testGetBufferSubData_1_07 test start ...66');
 			var buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -745,7 +745,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
 		it('testFramebufferTextureLayer_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testFramebufferTextureLayer_1_01 test start ...66');
 			const texture = gl.createTexture();
 			gl.bindTexture(gl2.TEXTURE_2D_ARRAY, texture);
@@ -773,7 +773,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
 		it('testFramebufferTextureLayer_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testFramebufferTextureLayer_1_02 test start ...66');
 			const texture = gl.createTexture();
 			gl.bindTexture(gl2.TEXTURE_2D_ARRAY, texture);
@@ -801,7 +801,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
 		it('testFramebufferTextureLayer_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testFramebufferTextureLayer_1_03 test start ...66');
 			const texture = gl.createTexture();
 			gl.bindTexture(gl2.TEXTURE_2D_ARRAY, texture);
@@ -829,7 +829,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
 		it('testFramebufferTextureLayer_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testFramebufferTextureLayer_1_04 test start ...66');
 			const texture = gl.createTexture();
 			gl.bindTexture(gl2.TEXTURE_2D_ARRAY, texture);
@@ -857,7 +857,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
 		it('testFramebufferTextureLayer_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testFramebufferTextureLayer_1_05 test start ...66');
 			const texture = gl.createTexture();
 			gl.bindTexture(gl2.TEXTURE_2D_ARRAY, texture);
@@ -885,7 +885,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_01 test start ...66');
 			gl2.invalidateFramebuffer(gl.DRAW_FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1]);
@@ -901,7 +901,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_02 test start ...66');
 			gl2.invalidateFramebuffer(gl.FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1]);
@@ -917,7 +917,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_03 test start ...66');
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.DEPTH_ATTACHMENT]);
@@ -933,7 +933,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_04 test start ...66');
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.STENCIL_ATTACHMENT, gl.COLOR_ATTACHMENT1]);
@@ -949,7 +949,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_05 test start ...66');
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.DEPTH_STENCIL_ATTACHMENT, gl.COLOR_ATTACHMENT1]);
@@ -965,7 +965,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_06', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_06 test start ...66');
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.DEPTH_ATTACHMENT, gl.STENCIL_ATTACHMENT]);
@@ -981,7 +981,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
 		it('testInvalidateFramebuffer_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateFramebuffer_1_01 test start ...66');
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1]);
@@ -997,7 +997,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateSubFramebuffer_1_01 test start ...66');
 			gl2.invalidateSubFramebuffer(gl.FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1],
@@ -1014,7 +1014,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateSubFramebuffer_1_02 test start ...66');
 			gl2.invalidateSubFramebuffer(gl.DRAW_FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1],
@@ -1031,7 +1031,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateSubFramebuffer_1_03 test start ...66');
 			gl2.invalidateSubFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.DEPTH_ATTACHMENT, gl.COLOR_ATTACHMENT1],
@@ -1048,7 +1048,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateSubFramebuffer_1_04 test start ...66');
 			gl2.invalidateSubFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.STENCIL_ATTACHMENT],
@@ -1065,7 +1065,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testInvalidateSubFramebuffer_1_05 test start ...66');
 			gl2.invalidateSubFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.DEPTH_STENCIL_ATTACHMENT, gl.STENCIL_ATTACHMENT],
@@ -1083,7 +1083,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_01 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R8, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1098,7 +1098,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_02 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R8UI, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1113,7 +1113,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_03', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_03 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R8I, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1128,7 +1128,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_04 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R16UI, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1143,7 +1143,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_05', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_05 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R16I, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1158,7 +1158,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_06', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_06 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R32UI, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1173,7 +1173,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_07', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_07 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.R32I, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1189,7 +1189,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
 		it('testRenderbufferStorageMultisample_1_08', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testRenderbufferStorageMultisample_1_08 test start ...66');
 			gl2.renderbufferStorageMultisample(gl.RENDERBUFFER, 4, gl.RG8, 256, 256);
 			const renderbufferStorageMultisampleError = gl.getError();
@@ -1205,7 +1205,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texStorage2D.
 		 */
 		it('testTexStorage2D_1_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexStorage2D_1_01 test start ...66');
 			gl2.texStorage2D(gl.TEXTURE_CUBE_MAP, 1, gl.RGB8, 256, 256);
 			const texStorage2DError = gl.getError();
@@ -1220,7 +1220,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test bindBufferBase.
 		 */
 		it('testBindBufferBase_1_01', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testBindBufferBase_1_01 test start ...66');
 				let buffer = gl.createBuffer();
@@ -1228,7 +1228,7 @@ export default function webgl1Test_webgl10() {
 				const bindBufferBaseError = gl.getError();
 				console.info("bindBufferBaseError: " + bindBufferBaseError);
 				expect(bindBufferBaseError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("bindBufferBaseError has failed for " + e)
@@ -1242,7 +1242,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test bindBufferRange.
 		 */
 		it('bindBufferRange_1_01', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL bindBufferRange_1_01 test start ...66');
 				const buffer = gl.createBuffer();
@@ -1250,7 +1250,7 @@ export default function webgl1Test_webgl10() {
 				const bindBufferRangeError = gl.getError();
 				console.info("bindBufferRangeError: " + bindBufferRangeError);
 				expect(bindBufferRangeError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("bindBufferRange has failed for " + e)
@@ -1265,14 +1265,14 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib2f.
 		 */
 		it('testVertexAttrib2f2', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib2f test start ...66');
 				gl.vertexAttrib2f(1, 10.0, 10.0);
 				const vertexAttrib2fError = gl.getError();
 				console.info("vertexAttrib2fError: " + vertexAttrib2fError);
 				expect(vertexAttrib2fError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib2f has failed for " + e)
@@ -1286,7 +1286,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib3f.
 		 */
 		it('testVertexAttrib3f2', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testvertexAttrib3f test start ...66');
 				console.info('jsWebGL testvertexAttrib3f test start ...' + JSON.stringify(gl));
@@ -1294,7 +1294,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttrib3fError = gl.getError();
 				console.info("vertexAttrib3fError: " + vertexAttrib3fError);
 				expect(vertexAttrib3fError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib3f has failed for " + e)
@@ -1308,7 +1308,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib4f.
 		 */
 		it('testVertexAttrib4f2', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib4f test start ...66');
 				console.info('jsWebGL testVertexAttrib4f test start ...' + JSON.stringify(gl));
@@ -1316,7 +1316,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttrib4fError = gl.getError();
 				console.info("vertexAttrib4fError: " + vertexAttrib4fError);
 				expect(vertexAttrib4fError).assertEqual(gl.NO_ERROR);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testvertexAttrib4f has failed for " + e)
@@ -1330,7 +1330,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib1f.
 		 */
 		it('testVertexAttrib1f2', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib1f test start ...66');
 				console.info('jsWebGL testVertexAttrib1f test start ...' + JSON.stringify(gl));
@@ -1338,7 +1338,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttrib1fError = gl.getError();
 				console.info("vertexAttrib1fError: " + vertexAttrib1fError);
 				expect(vertexAttrib1fError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib1f has failed for " + e)
@@ -1352,14 +1352,14 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib2f.
 		 */
 		it('testVertexAttrib2f3', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib2f test start ...66');
 				gl.vertexAttrib2f(-1, 10.0, 10.0);
 				const vertexAttrib2fError = gl.getError();
 				console.info("vertexAttrib2fError: " + vertexAttrib2fError);
 				expect(vertexAttrib2fError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib2f has failed for " + e)
@@ -1373,7 +1373,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib3f.
 		 */
 		it('testVertexAttrib3f3', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testvertexAttrib3f test start ...66');
 				console.info('jsWebGL testvertexAttrib3f test start ...' + JSON.stringify(gl));
@@ -1381,7 +1381,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttrib3fError = gl.getError();
 				console.info("vertexAttrib3fError: " + vertexAttrib3fError);
 				expect(vertexAttrib3fError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib3f has failed for " + e)
@@ -1395,7 +1395,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttrib4f.
 		 */
 		it('testVertexAttrib4f22', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib4f test start ...66');
 				console.info('jsWebGL testVertexAttrib4f test start ...' + JSON.stringify(gl));
@@ -1403,7 +1403,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttrib4fError = gl.getError();
 				console.info("vertexAttrib4fError: " + vertexAttrib4fError);
 				expect(vertexAttrib4fError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testvertexAttrib4f has failed for " + e)
@@ -1417,7 +1417,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttribPointer.
 		 */
 		it('testVertexAttribPointer2', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttribPointer test start ...66');
 				console.info('jsWebGL testVertexAttribPointer test start ...' + JSON.stringify(gl));
@@ -1425,7 +1425,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttribPointerError = gl.getError();
 				console.info("vertexAttribPointerError: " + vertexAttribPointerError);
 				expect(vertexAttribPointerError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttribPointer has failed for " + e)
@@ -1439,7 +1439,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttribPointer.
 		 */
 		it('testVertexAttribPointer3', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttribPointer test start ...66');
 				console.info('jsWebGL testVertexAttribPointer test start ...' + JSON.stringify(gl));
@@ -1447,7 +1447,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttribPointerError = gl.getError();
 				console.info("vertexAttribPointerError: " + vertexAttribPointerError);
 				expect(vertexAttribPointerError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttribPointer has failed for " + e)
@@ -1461,7 +1461,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttribPointer.
 		 */
 		it('testVertexAttribPointer4', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttribPointer test start ...66');
 				console.info('jsWebGL testVertexAttribPointer test start ...' + JSON.stringify(gl));
@@ -1501,7 +1501,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttribPointerError = gl.getError();
 				console.info("vertexAttribPointerError: " + vertexAttribPointerError);
 				expect(vertexAttribPointerError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttribPointer has failed for " + e)
@@ -1515,7 +1515,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttribPointer.
 		 */
 		it('testVertexAttribPointer5', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttribPointer test start ...66');
 				console.info('jsWebGL testVertexAttribPointer test start ...' + JSON.stringify(gl));
@@ -1555,7 +1555,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttribPointerError = gl.getError();
 				console.info("vertexAttribPointerError: " + vertexAttribPointerError);
 				expect(vertexAttribPointerError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttribPointer has failed for " + e)
@@ -1569,7 +1569,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test vertexAttribPointer.
 		 */
 		it('testVertexAttribPointer6', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttribPointer test start ...66');
 				console.info('jsWebGL testVertexAttribPointer test start ...' + JSON.stringify(gl));
@@ -1608,7 +1608,7 @@ export default function webgl1Test_webgl10() {
 				const vertexAttribPointerError = gl.getError();
 				console.info("vertexAttribPointerError: " + vertexAttribPointerError);
 				expect(vertexAttribPointerError).assertEqual(gl.INVALID_VALUE);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttribPointer has failed for " + e)
@@ -1622,7 +1622,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage3D.
 		 */
 		it('testTexImage3D2', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D test start ...66');
 				console.info('jsWebGL testTexImage3D test start ...' + JSON.stringify(gl));
@@ -1630,7 +1630,7 @@ export default function webgl1Test_webgl10() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D has failed for " + e)
@@ -1644,7 +1644,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage3D.
 		 */
 		it('testTexImage3D3', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D test start ...66');
 				console.info('jsWebGL testTexImage3D test start ...' + JSON.stringify(gl));
@@ -1653,7 +1653,7 @@ export default function webgl1Test_webgl10() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(gl.INVALID_OPERATION);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D has failed for " + e)
@@ -1667,7 +1667,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texImage3D.
 		 */
 		it('testTexImage3D4', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D test start ...66');
 				console.info('jsWebGL testTexImage3D test start ...' + JSON.stringify(gl));
@@ -1675,7 +1675,7 @@ export default function webgl1Test_webgl10() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D has failed for " + e)
@@ -1689,7 +1689,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage3D_01.
 		 */
 		it('testTexSubImage3D_01', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexSubImage3D_01 test start ...66');
 				console.info('jsWebGL testTexSubImage3D_01 test start ...' + JSON.stringify(gl));
@@ -1698,7 +1698,7 @@ export default function webgl1Test_webgl10() {
 				const texSubImage3DError = gl.getError();
 				console.info("texSubImage3D_01Error: " + texSubImage3DError);
 				expect(texSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexSubImage3D_01 has failed for " + e)
@@ -1712,7 +1712,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage3D_02.
 		 */
 		it('testTexSubImage3D_02', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexSubImage3D_02 test start ...66');
 				console.info('jsWebGL testTexSubImage3D_02 test start ...' + JSON.stringify(gl));
@@ -1720,7 +1720,7 @@ export default function webgl1Test_webgl10() {
 				const texSubImage3DError = gl.getError();
 				console.info("texSubImage3D_02Error: " + texSubImage3DError);
 				expect(texSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexSubImage3D_02 has failed for " + e)
@@ -1734,7 +1734,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test texSubImage3D_03.
 		 */
 		it('testTexSubImage3D_03', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexSubImage3D_03 test start ...66');
 				console.info('jsWebGL testTexSubImage3D_03 test start ...' + JSON.stringify(gl));
@@ -1743,7 +1743,7 @@ export default function webgl1Test_webgl10() {
 				const texSubImage3DError = gl.getError();
 				console.info("texSubImage3D_03Error: " + texSubImage3DError);
 				expect(texSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexSubImage3D_03 has failed for " + e)
@@ -1757,7 +1757,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test compressedTexImage3D_01.
 		 */
 		it('testCompressedTexImage3D_01', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_01 test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_01 test start ...' + JSON.stringify(gl));
@@ -1766,7 +1766,7 @@ export default function webgl1Test_webgl10() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3D_01Error: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_01 has failed for " + e)
@@ -1780,7 +1780,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test compressedTexImage3D_02.
 		 */
 		it('testCompressedTexImage3D_02', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_02 test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_02 test start ...' + JSON.stringify(gl));
@@ -1789,7 +1789,7 @@ export default function webgl1Test_webgl10() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3D_02Error: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_02 has failed for " + e)
@@ -1803,7 +1803,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test compressedTexImage3D_03.
 		 */
 		it('testCompressedTexImage3D_03', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_03 test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_03 test start ...' + JSON.stringify(gl));
@@ -1812,7 +1812,7 @@ export default function webgl1Test_webgl10() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3D_03Error: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_03 has failed for " + e)
@@ -1826,7 +1826,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test compressedTexImage3D_04.
 		 */
 		it('testCompressedTexImage3D_04', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_04 test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_04 test start ...' + JSON.stringify(gl));
@@ -1835,7 +1835,7 @@ export default function webgl1Test_webgl10() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3D_04Error: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_04 has failed for " + e)
@@ -1849,7 +1849,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test compressedTexImage3D_05.
 		 */
 		it('testCompressedTexImage3D_05', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_05 test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_05 test start ...' + JSON.stringify(gl));
@@ -1858,7 +1858,7 @@ export default function webgl1Test_webgl10() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3D_05Error: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_05 has failed for " + e)
@@ -1872,7 +1872,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test compressedTexImage3D_06.
 		 */
 		it('testCompressedTexImage3D_06', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_06 test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_06 test start ...' + JSON.stringify(gl));
@@ -1881,7 +1881,7 @@ export default function webgl1Test_webgl10() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3D_06Error: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_06 has failed for " + e)
@@ -1896,7 +1896,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test frontFace.
 		 */
 		it('testFrontFace2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL frontFace test start ...' + JSON.stringify(gl));
 			gl.enable(gl.CULL_FACE);
 			gl.cullFace(gl.FRONT_AND_BACK);
@@ -1915,7 +1915,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test generateMipmap.
 		 */
 		it('testGenerateMipmap2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL generateMipmap test start ...' + JSON.stringify(gl));
 			gl.generateMipmap(gl2.TEXTURE_CUBE_MAP);
 			const error = gl.getError();
@@ -1930,7 +1930,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -1953,7 +1953,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -1976,7 +1976,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getShaderPrecisionFormat.
 		 */
 		it('testGetShaderPrecisionFormat1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getShaderPrecisionFormat test start ...' + JSON.stringify(gl));
 			const shaderPrecisionFormat = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_FLOAT);
 			console.info('shaderPrecisionFormat' + JSON.stringify(shaderPrecisionFormat));
@@ -1991,7 +1991,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getShaderPrecisionFormat.
 		 */
 		it('testGetShaderPrecisionFormat2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getShaderPrecisionFormat test start ...' + JSON.stringify(gl));
 			const shaderPrecisionFormat = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl
 				.HIGH_FLOAT);
@@ -2007,7 +2007,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getShaderPrecisionFormat.
 		 */
 		it('testGetShaderPrecisionFormat3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getShaderPrecisionFormat test start ...' + JSON.stringify(gl));
 			const shaderPrecisionFormat = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT);
 			console.info('shaderPrecisionFormat' + JSON.stringify(shaderPrecisionFormat));
@@ -2022,7 +2022,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getShaderPrecisionFormat.
 		 */
 		it('testGetShaderPrecisionFormat4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getShaderPrecisionFormat test start ...' + JSON.stringify(gl));
 			const shaderPrecisionFormat = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl
 				.MEDIUM_INT);
@@ -2038,7 +2038,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameter3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MAG_FILTER);
@@ -2053,7 +2053,7 @@ export default function webgl1Test_webgl10() {
 		 * @tc.desc Test getActiveUniformBlockParameter.
 		 */
 		it('testGetActiveUniformBlockParameter1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 getActiveUniformBlockParameter test start ...' + JSON.stringify(
 				gl2));
 			const program = globalFunction();

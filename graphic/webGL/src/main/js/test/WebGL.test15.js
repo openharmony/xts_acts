@@ -289,7 +289,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			const buffer = gl.getParameter(gl.ARRAY_BUFFER_BINDING);
 			console.info("buffer: " + buffer);
@@ -307,7 +307,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getVertexAttrib.
 		 */
 		it('testGetVertexAttribFirst', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
 			const vertexBuffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -331,7 +331,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test isRenderbuffer.
 		 */
 		it('testIsRenderbuffer_04', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testIsRenderbuffer_04 test start ...66');
 			var texture = gl.createTexture();
 			const isrenderbuffer = gl.isRenderbuffer(texture);
@@ -349,7 +349,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test getBufferParameter.
 		 */
 		it('testGetBufferParameter3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getBufferParameter test start ...' + JSON.stringify(gl));
 			const buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -366,7 +366,7 @@ export default function webgl1Test_webgl5() {
 		 * @tc.desc Test stencilMaskSeparate.
 		 */
 		it('testStencilMaskSeparate1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilMaskSeparate test start ...' + JSON.stringify(gl));
 			gl.stencilMaskSeparate(gl.BACK, 110101);
 			const stencilMaskSeparateParameter = gl.getParameter(gl.STENCIL_WRITEMASK);
@@ -524,7 +524,6 @@ export default function webgl1Test_webgl5() {
 			let errorCode = gl.getError();
 			console.info("webgltest endTransformFeedback getError: " + errorCode);
 			expect(errorCode).assertLarger(gl.NO_ERROR);
-			//deleteContext();
 			done();
 		});
 	})

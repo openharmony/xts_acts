@@ -290,7 +290,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test bindBuffer.
 		 */
 		it('webgl_test_bindBuffer_12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindBuffer");
 
 			var buffer = gl.createBuffer();
@@ -307,7 +307,7 @@ export default function webgl1Test_webgl7() {
 			console.info("isBufferValue: " + isBufferValue);
 			expect(isBufferValue).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -318,7 +318,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test bindFramebuffer.
 		 */
 		it('webgl_test_bindFramebuffer2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindFramebuffer");
 
 			var framebuffer = gl.createFramebuffer();
@@ -335,7 +335,7 @@ export default function webgl1Test_webgl7() {
 			isFrameBuffer2);
 			expect(isFrameBuffer2).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -346,7 +346,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test bindRenderbuffer.
 		 */
 		it('webgl_test_bindRenderbuffer2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindRenderbuffer");
 
 			var renderbuffer = gl.createRenderbuffer();
@@ -364,7 +364,7 @@ export default function webgl1Test_webgl7() {
 			isRenderBuffer1);
 			expect(isRenderBuffer1).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -375,7 +375,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test bindTexture.
 		 */
 		it('webgl_test_bindTexture2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindTexture");
 
 			var texture = gl.createTexture();
@@ -390,7 +390,7 @@ export default function webgl1Test_webgl7() {
 			console.info("createTexture --> bindTexture --> isTexture: " + isTexture1);
 			expect(isTexture1).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -401,7 +401,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blendColor.
 		 */
 		it('webgl_test_blendColor2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into blendColor");
 
 			gl.blendColor(0, 0.5, 0, 1);
@@ -417,7 +417,7 @@ export default function webgl1Test_webgl7() {
 			// 判断数据值是否正确
 			expect(blendColorValue.toString()).assertEqual(blendColorArr.toString());
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -428,7 +428,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blendColor.
 		 */
 		it('webgl_test_blendColor_12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into blendColor");
 
 			gl.blendColor(1, 1, 1, 0);
@@ -444,7 +444,7 @@ export default function webgl1Test_webgl7() {
 			// 判断数据值是否正确
 			expect(blendColorValue.toString()).assertEqual(blendColorArr.toString());
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -455,7 +455,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blendEquation.
 		 */
 		it('webgl_test_blendEquation2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into blendEquation");
 
 			gl.blendEquation(gl.FUNC_ADD);
@@ -464,7 +464,7 @@ export default function webgl1Test_webgl7() {
 			console.info("blendEquation --> getParameter: " + blendEquationValue);
 			expect(blendEquationValue).assertEqual(gl.FUNC_ADD);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -474,7 +474,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blendEquation.
 		 */
 		it('webgl_test_blendEquation_12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into blendEquation");
 
 			gl.blendEquation(gl.FUNC_ADD);
@@ -483,7 +483,7 @@ export default function webgl1Test_webgl7() {
 			console.info("blendEquation --> getParameter: " + blendEquationValue2);
 			expect(blendEquationValue2).assertEqual(gl.FUNC_ADD);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -493,7 +493,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blendEquationSeparate.
 		 */
 		it('webgl_test_blendEquationSeparate2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into blendEquationSeparate");
 			gl.blendEquationSeparate(gl.FUNC_ADD, gl.FUNC_SUBTRACT);
 
@@ -501,7 +501,7 @@ export default function webgl1Test_webgl7() {
 			console.info("blendEquation --> getParameter: " + blendEquationSeparateValue);
 			expect(blendEquationSeparateValue).assertEqual(gl.FUNC_ADD);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -511,14 +511,14 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clear.
 		 */
 		it('webgl_test_clear2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clear");
 			gl.clear(gl.COLOR_BUFFER_BIT);
 			var float32Array = new Float32Array([0, 0, 0, 0]);
 			const clearParameter = gl.getParameter(gl.COLOR_CLEAR_VALUE);
 			console.info("webgltest clear getParameter: " + clearParameter);
 			expect(typeof (clearParameter)).assertEqual(typeof (float32Array));
-			//deleteContext();
+			
 			done();
 		});
 
@@ -528,7 +528,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clearColor.
 		 */
 		it('webgl_test_clearColor2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clearColor");
 			gl.clearColor(1, 0.5, 0.5, -3);
 
@@ -538,7 +538,7 @@ export default function webgl1Test_webgl7() {
 
 			console.info("webgltest clearColor: " + clearColorParameter);
 			expect(clearColorParameter.toString()).assertEqual(float32ArrayValue.toString());
-			//deleteContext();
+			
 			done();
 		});
 
@@ -549,7 +549,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clearDepth.
 		 */
 		it('webgl_test_clearDepth2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clearDepth");
 
 			//用于设置深度缓冲区的深度清除值。
@@ -560,7 +560,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest clearDepth --> getParameter: " + clearDepthValue);
 
 			expect(clearDepthValue).assertEqual(0.5);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -571,7 +571,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clearDepth.
 		 */
 		it('webgl_test_clearDepth_22', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clearDepth");
 
 			//用于设置深度缓冲区的深度清除值。
@@ -582,7 +582,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest clearDepth --> getParameter: " + clearDepthValue);
 
 			expect(clearDepthValue).assertEqual(0);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -593,7 +593,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clearStencil.
 		 */
 		it('webgl_test_clearStencil2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clearStencil");
 
 			gl.clearStencil(-1);
@@ -602,7 +602,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest clearStencil --> getParameter: " + clearStencilValue);
 			expect(clearStencilValue).assertEqual(-1);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -612,7 +612,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clearStencil.
 		 */
 		it('webgl_test_clearStencil_12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clearStencil");
 
 			gl.clearStencil(-20);
@@ -621,7 +621,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest clearStencil --> getParameter: " + clearStencilValue);
 			expect(clearStencilValue).assertEqual(-20);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -631,7 +631,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test colorMask.
 		 */
 		it('webgl_test_colorMask_12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into colorMask");
 
 			gl.colorMask(false, false, false, false);
@@ -641,7 +641,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest colorMask --> getParameter: " + colorMaskValue);
 
 			expect(colorMaskValue.toString()).assertEqual('false,false,false,false');
-			//deleteContext();
+			
 			done();
 		});
 
@@ -651,13 +651,13 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test createProgram.
 		 */
 		it('webgl_test_createProgram2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into createProgram");
 			const program = gl.createProgram("error");
 			const isProgram = gl.isProgram(program);
 			console.info("webgltest createProgram isProgram: " + isProgram);
 			expect(isProgram).assertEqual(true);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -667,7 +667,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test createShader.
 		 */
 		it('webgl_test_createShader2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into createShader");
 
 			const shader = gl.createShader('VERTEX_SHADER');
@@ -675,7 +675,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest createShader isShader: " + isShader);
 			expect(isShader).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -686,7 +686,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test deleteFramebuffer.
 		 */
 		it('webgl_test_deleteFramebuffer2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into deleteFramebuffer");
 
 			var framebuffer = gl.createFramebuffer();
@@ -704,7 +704,7 @@ export default function webgl1Test_webgl7() {
 			isFramebuffer2);
 			expect(isFramebuffer2).assertEqual(true);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -715,7 +715,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test deleteRenderbuffer.
 		 */
 		it('webgl_test_deleteRenderbuffer2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into deleteRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -733,7 +733,7 @@ export default function webgl1Test_webgl7() {
 				isRenderbuffer2);
 			expect(isRenderbuffer2).assertEqual(true);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -743,7 +743,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test enableVertexAttribArray.
 		 */
 		it('webgl_test_enableVertexAttribArray2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into enableVertexAttribArray");
 			//顶点着色器程序
 			var VSHADER_SOURCE =
@@ -788,7 +788,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest enableVertexAttribArray getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -799,13 +799,13 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test finish.
 		 */
 		it('webgl_test_finish2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into finish");
 			gl.finish();
 			let errorCode = gl.getError();
 			console.info("webgltest finish getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -816,13 +816,13 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test flush.
 		 */
 		it('webgl_test_flush2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into flush");
 			gl.flush("error");
 			let errorCode = gl.getError();
 			console.info("webgltest flush getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -832,7 +832,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test createSampler.
 		 */
 		it('webgl_test_createSampler2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into createSampler");
 			const sampler = gl2.createSampler('error');
 			const isSampler1 = gl2.isSampler(sampler);
@@ -849,7 +849,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest createSampler bindSampler deleteSampler isSampler3: " + isSampler3);
 			expect(isSampler3).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -860,7 +860,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test deleteSampler.
 		 */
 		it('webgl_test_deleteSampler2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into deleteSampler");
 			const sampler = gl2.createSampler();
 			const isSampler1 = gl2.isSampler(sampler);
@@ -876,7 +876,7 @@ export default function webgl1Test_webgl7() {
 			const isSampler3 = gl2.isSampler(sampler);
 			console.info("webgltest createSampler bindSampler deleteSampler isSampler3: " + isSampler3);
 			expect(isSampler3).assertEqual(true);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -886,7 +886,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test bindSampler.
 		 */
 		it('webgl_test_bindSampler2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindSampler");
 			const sampler = gl2.createSampler();
 			const isSampler1 = gl2.isSampler(sampler);
@@ -902,7 +902,7 @@ export default function webgl1Test_webgl7() {
 			const isSampler3 = gl2.isSampler(sampler);
 			console.info("webgltest createSampler bindSampler deleteSampler isSampler3: " + isSampler3);
 			expect(isSampler3).assertEqual(false);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -912,7 +912,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test samplerParameterf.
 		 */
 		it('webgl_test_samplerParameterf2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into samplerParameterf");
 
 			let sampler = gl2.createSampler();
@@ -923,7 +923,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest samplerParameterf getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
 			gl2.deleteSampler(sampler);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -934,7 +934,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test getSamplerParameter.
 		 */
 		it('webgl_test_getSamplerParameter_12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into getSamplerParameter");
 
 			let sampler = gl2.createSampler();
@@ -943,7 +943,7 @@ export default function webgl1Test_webgl7() {
 
 			console.info("webgltest createSampler getSamplerParameter_1: " + samplerParameter);
 			expect(samplerParameter).assertEqual(undefined);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -954,7 +954,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test fenceSync.
 		 */
 		it('webgl_test_fenceSync2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into fenceSync");
 
 			let sync = gl2.fenceSync('0x9117', 0);
@@ -970,7 +970,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest fenceSync deleteSync isSync2: " + isSync2);
 			expect(isSync2).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -981,7 +981,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test isSync.
 		 */
 		it('webgl_test_isSync2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into isSync");
 			let sync = gl2.fenceSync(0x9117, 0);
 			let status = gl2.clientWaitSync(sync, 0, 0);
@@ -995,7 +995,7 @@ export default function webgl1Test_webgl7() {
 			const isSync2 = gl2.isSync('sync');
 			console.info("webgltest fenceSync deleteSync isSync2: " + isSync2);
 			expect(isSync2).assertEqual(false);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1006,7 +1006,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test deleteSync.
 		 */
 		it('webgl_test_deleteSync2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into deleteSync");
 			let sync = gl2.fenceSync(0x9117, 0);
 			let status = gl2.clientWaitSync(sync, 0, 0);
@@ -1020,7 +1020,7 @@ export default function webgl1Test_webgl7() {
 			const isSync2 = gl2.isSync(sync);
 			console.info("webgltest fenceSync deleteSync isSync2: " + isSync2);
 			expect(isSync2).assertEqual(true);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1031,7 +1031,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test clientWaitSync.
 		 */
 		it('webgl_test_clientWaitSync2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into clientWaitSync");
 			let sync = gl2.fenceSync(0x9117, 0);
 			let status = gl2.clientWaitSync('sync', 0, 0);
@@ -1044,7 +1044,7 @@ export default function webgl1Test_webgl7() {
 
 			expect(status).assertEqual(0);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1055,7 +1055,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test waitSync.
 		 */
 		it('webgl_test_waitSync2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into waitSync");
 
 			let sync = gl2.fenceSync(gl.SYNC_GPU_COMMANDS_COMPLETE, 0);
@@ -1064,7 +1064,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferTexture2D getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1075,7 +1075,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test createTransformFeedback.
 		 */
 		it('webgl_test_createTransformFeedback2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into createTransformFeedback");
 
 			const transformFeedback = gl2.createTransformFeedback();
@@ -1098,7 +1098,7 @@ export default function webgl1Test_webgl7() {
 			"deleteTransformFeedback isTransformFeedback3: " + isTransformFeedback3);
 			expect(isTransformFeedback3).assertEqual(false);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1109,7 +1109,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test isTransformFeedback.
 		 */
 		it('webgl_test_isTransformFeedback2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into isTransformFeedback");
 			let transformFeedback = gl2.createTransformFeedback();
 			const isTransformFeedback1 = gl2.isTransformFeedback(transformFeedback);
@@ -1130,7 +1130,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest createTransformFeedback bindTransformFeedback " +
 			"deleteTransformFeedback isTransformFeedback3: " + isTransformFeedback3);
 			expect(isTransformFeedback3).assertEqual(false);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1141,7 +1141,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test bindTransformFeedback.
 		 */
 		it('webgl_test_bindTransformFeedback2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindTransformFeedback");
 			let transformFeedback = gl2.createTransformFeedback();
 			const isTransformFeedback1 = gl2.isTransformFeedback(transformFeedback);
@@ -1161,7 +1161,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest createTransformFeedback bindTransformFeedback " +
 			"deleteTransformFeedback isTransformFeedback3: " + isTransformFeedback3);
 			expect(isTransformFeedback3).assertEqual(false);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1172,7 +1172,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test beginTransformFeedback.
 		 */
 		it('webgl_test_beginTransformFeedback2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into beginTransformFeedback");
 
 			let transformFeedback = gl2.createTransformFeedback();
@@ -1182,7 +1182,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferTexture2D getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1192,7 +1192,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test deleteTransformFeedback.
 		 */
 		it('webgl_test_deleteTransformFeedback2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into deleteTransformFeedback");
 			const transformFeedback = gl2.createTransformFeedback();
 
@@ -1209,7 +1209,7 @@ export default function webgl1Test_webgl7() {
 				"webgltest createTransformFeedback bindTransformFeedback deleteTransformFeedback " +
 				"isTransformFeedback3: " + isTransformFeedback3);
 			expect(isTransformFeedback3).assertEqual(true);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1220,7 +1220,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test useProgram.
 		 */
 		it('testUseProgramError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testUseProgram test start ...66');
 				console.info('jsWebGL testUseProgram test start ...' + JSON.stringify(gl));
@@ -1257,7 +1257,7 @@ export default function webgl1Test_webgl7() {
 				const useProgramError = gl.getError();
 				console.info("useProgramError: " + useProgramError);
 				expect(useProgramError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testUseProgram has failed for " + e)
@@ -1271,7 +1271,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test validateProgram.
 		 */
 		it('testValidateProgramError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testValidateProgram test start ...66');
 				console.info('jsWebGL testValidateProgram test start ...' + JSON.stringify(gl));
@@ -1280,7 +1280,7 @@ export default function webgl1Test_webgl7() {
 				const validateProgramError = gl.getError();
 				console.info("validateProgramError: " + validateProgramError);
 				expect(validateProgramError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testValidateProgram has failed for " + e)
@@ -1294,7 +1294,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib1f.
 		 */
 		it('testVertexAttrib1fError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib1f test start ...66');
 				console.info('jsWebGL testVertexAttrib1f test start ...' + JSON.stringify(gl));
@@ -1302,7 +1302,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib1fError = gl.getError();
 				console.info("vertexAttrib1fError: " + vertexAttrib1fError);
 				expect(vertexAttrib1fError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib1f has failed for " + e)
@@ -1316,14 +1316,14 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib2f.
 		 */
 		it('testVertexAttrib2fError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib2f test start ...66');
 				gl.vertexAttrib2f(false, 10.0);
 				const vertexAttrib2fError = gl.getError();
 				console.info("vertexAttrib2fError: " + vertexAttrib2fError);
 				expect(vertexAttrib2fError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib2f has failed for " + e)
@@ -1337,7 +1337,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib3f.
 		 */
 		it('testVertexAttrib3fError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testvertexAttrib3f test start ...66');
 				console.info('jsWebGL testvertexAttrib3f test start ...' + JSON.stringify(gl));
@@ -1345,7 +1345,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib3fError = gl.getError();
 				console.info("vertexAttrib3fError: " + vertexAttrib3fError);
 				expect(vertexAttrib3fError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib3f has failed for " + e)
@@ -1359,7 +1359,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib4f.
 		 */
 		it('testVertexAttrib4fError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib4f test start ...66');
 				console.info('jsWebGL testVertexAttrib4f test start ...' + JSON.stringify(gl));
@@ -1367,7 +1367,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib4fError = gl.getError();
 				console.info("vertexAttrib4fError: " + vertexAttrib4fError);
 				expect(vertexAttrib4fError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testvertexAttrib4f has failed for " + e)
@@ -1381,7 +1381,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib1fv.
 		 */
 		it('testVertexAttrib1fvError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib1fv test start ...66');
 				console.info('jsWebGL testVertexAttrib1fv test start ...' + JSON.stringify(gl));
@@ -1390,7 +1390,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib1fvError = gl.getError();
 				console.info("vertexAttrib1fvError: " + vertexAttrib1fvError);
 				expect(vertexAttrib1fvError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib1fv has failed for " + e)
@@ -1404,7 +1404,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib2fv.
 		 */
 		it('testVertexAttrib2fvError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib2fv test start ...66');
 				console.info('jsWebGL testVertexAttrib2fv test start ...' + JSON.stringify(gl));
@@ -1413,7 +1413,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib2fvError = gl.getError();
 				console.info("vertexAttrib2fvError: " + vertexAttrib2fvError);
 				expect(vertexAttrib2fvError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib2fv has failed for " + e)
@@ -1427,7 +1427,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib3fv.
 		 */
 		it('testVertexAttrib3fvError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib3fv test start ...66');
 				console.info('jsWebGL testVertexAttrib3fv test start ...' + JSON.stringify(gl));
@@ -1436,7 +1436,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib3fvError = gl.getError();
 				console.info("vertexAttrib3fvError: " + vertexAttrib3fvError);
 				expect(vertexAttrib3fvError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib3fv has failed for " + e)
@@ -1450,7 +1450,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttrib4fv.
 		 */
 		it('testVertexAttrib4fvError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttrib4fv test start ...66');
 				console.info('jsWebGL testVertexAttrib4fv test start ...' + JSON.stringify(gl));
@@ -1459,7 +1459,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttrib4fvError = gl.getError();
 				console.info("vertexAttrib4fvError: " + vertexAttrib4fvError);
 				expect(vertexAttrib4fvError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttrib4fv has failed for " + e)
@@ -1473,7 +1473,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttribPointer.
 		 */
 		it('testVertexAttribPointerError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testVertexAttribPointer test start ...66');
 				console.info('jsWebGL testVertexAttribPointer test start ...' + JSON.stringify(gl));
@@ -1481,7 +1481,7 @@ export default function webgl1Test_webgl7() {
 				const vertexAttribPointerError = gl.getError();
 				console.info("vertexAttribPointerError: " + vertexAttribPointerError);
 				expect(vertexAttribPointerError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testVertexAttribPointer has failed for " + e)
@@ -1495,7 +1495,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test viewport.
 		 */
 		it('testViewportError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testViewport test start ...66');
 				console.info('jsWebGL testViewport test start ...' + JSON.stringify(gl));
@@ -1503,7 +1503,7 @@ export default function webgl1Test_webgl7() {
 				const viewportError = gl.getError();
 				console.info("viewportError: " + viewportError);
 				expect(viewportError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testViewport has failed for " + e)
@@ -1517,7 +1517,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texStorage3D.
 		 */
 		it('testTexStorage3DError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexStorage3D test start ...66');
 				console.info('jsWebGL testTexStorage3D test start ...' + JSON.stringify(gl));
@@ -1525,7 +1525,7 @@ export default function webgl1Test_webgl7() {
 				const texStorage3DError = gl.getError();
 				console.info("texStorage3DError: " + texStorage3DError);
 				expect(texStorage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexStorage3D has failed for " + e)
@@ -1539,7 +1539,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texImage3D.
 		 */
 		it('testTexImage3DError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D test start ...66');
 				console.info('jsWebGL testTexImage3D test start ...' + JSON.stringify(gl));
@@ -1548,7 +1548,7 @@ export default function webgl1Test_webgl7() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D has failed for " + e)
@@ -1562,7 +1562,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texImage3D.
 		 */
 		it('testTexImage3D_01Error', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D_01Error test start ...66');
 				console.info('jsWebGL testTexImage3D_01Error test start ...' + JSON.stringify(gl));
@@ -1572,7 +1572,7 @@ export default function webgl1Test_webgl7() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D_01 has failed for " + e)
@@ -1586,7 +1586,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texImage3D.
 		 */
 		it('testTexImage3D_02Error', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D_02Error test start ...66');
 				console.info('jsWebGL testTexImage3D_02Error test start ...' + JSON.stringify(gl));
@@ -1596,7 +1596,7 @@ export default function webgl1Test_webgl7() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D_02 has failed for " + e)
@@ -1610,7 +1610,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texSubImage3D.
 		 */
 		it('testTexSubImage3D_01Error', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexSubImage3D_01Error test start ...66');
 				console.info('jsWebGL testTexSubImage3D_01Error test start ...' + JSON.stringify(gl));
@@ -1621,7 +1621,7 @@ export default function webgl1Test_webgl7() {
 				const texSubImage3DError = gl.getError();
 				console.info("texSubImage3DError: " + texSubImage3DError);
 				expect(texSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexSubImage3D_01 has failed for " + e)
@@ -1635,7 +1635,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texSubImage3D.
 		 */
 		it('testTexSubImage3DError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexSubImage3DError test start ...66');
 				console.info('jsWebGL testTexSubImage3DError test start ...' + JSON.stringify(gl));
@@ -1644,7 +1644,7 @@ export default function webgl1Test_webgl7() {
 				const texSubImage3DError = gl.getError();
 				console.info("texSubImage3DError: " + texSubImage3DError);
 				expect(texSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexSubImage3DError has failed for " + e)
@@ -1658,7 +1658,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test copyTexSubImage3D.
 		 */
 		it('testCopyTexSubImage3DError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCopyTexSubImage3DError test start ...66');
 				console.info('jsWebGL testCopyTexSubImage3DError test start ...' + JSON.stringify(gl));
@@ -1666,7 +1666,7 @@ export default function webgl1Test_webgl7() {
 				const copyTexSubImage3DError = gl.getError();
 				console.info("copyTexSubImage3DError: " + copyTexSubImage3DError);
 				expect(copyTexSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCopyTexSubImage3DError has failed for " + e)
@@ -1680,7 +1680,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexImage3D.
 		 */
 		it('testCompressedTexImage3D_01Error', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_01Error test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_01Error test start ...' + JSON.stringify(
@@ -1690,7 +1690,7 @@ export default function webgl1Test_webgl7() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3DError: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_01Error has failed for " + e)
@@ -1704,7 +1704,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexImage3D.
 		 */
 		it('testCompressedTexImage3D_02Error', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexImage3D_02Error test start ...66');
 				console.info('jsWebGL testCompressedTexImage3D_02Error test start ...' + JSON.stringify(
@@ -1714,7 +1714,7 @@ export default function webgl1Test_webgl7() {
 				const compressedTexImage3DError = gl.getError();
 				console.info("compressedTexImage3DError: " + compressedTexImage3DError);
 				expect(compressedTexImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexImage3D_02Error has failed for " + e)
@@ -1728,7 +1728,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexSubImage3D.
 		 */
 		it('testCompressedTexSubImage3DError', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexSubImage3DError test start ...66');
 				console.info('jsWebGL testCompressedTexSubImage3DError test start ...' + JSON.stringify(
@@ -1739,7 +1739,7 @@ export default function webgl1Test_webgl7() {
 				const compressedTexSubImage3DError = gl.getError();
 				console.info("compressedTexSubImage3DError: " + compressedTexSubImage3DError);
 				expect(compressedTexSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexSubImage3DError has failed for " + e)
@@ -1754,7 +1754,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexSubImage3D.
 		 */
 		it('testCompressedTexSubImage3D_01Error', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testCompressedTexSubImage3D_01Error test start ...66');
 				console.info('jsWebGL testCompressedTexSubImage3D_01Error test start ...' + JSON
@@ -1766,7 +1766,7 @@ export default function webgl1Test_webgl7() {
 				const compressedTexSubImage3DError = gl.getError();
 				console.info("testCompressedTexSubImage3D_01Error: " + compressedTexSubImage3DError);
 				expect(compressedTexSubImage3DError).assertEqual(0);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testCompressedTexSubImage3D_01Error has failed for " + e)
@@ -1781,7 +1781,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test getFragDataLocation.
 		 */
 		it('webgl_test_getFragDataLocationError', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into getFragDataLocation");
 
 			//顶点着色器程序
@@ -1820,7 +1820,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest webgl_test_getFragDataLocationError getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1830,7 +1830,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttribI4ui.
 		 */
 		it('webgl_test_vertexAttribI4uiError', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into vertexAttribI4ui");
 
 			const a = gl2.vertexAttribI4ui(false, 10, 11, 12, 13);
@@ -1838,7 +1838,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest vertexAttribI4ui getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1848,7 +1848,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test vertexAttribIPointer.
 		 */
 		it('webgl_test_vertexAttribIPointerError', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into vertexAttribIPointer");
 
 			const a = gl2.vertexAttribIPointer(false, 4, gl.UNSIGNED_BYTE, 20, 16);
@@ -1856,7 +1856,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest vertexAttribIPointer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1866,7 +1866,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test drawArraysInstanced.
 		 */
 		it('webgl_test_drawArraysInstancedError', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawArraysInstanced");
 
 			const a = gl2.drawArraysInstanced(gl.POINTS, false, 8, 4);
@@ -1874,7 +1874,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest drawArraysInstanced getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1884,7 +1884,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test drawElementsInstanced.
 		 */
 		it('webgl_test_drawElementsInstancedError', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawElementsInstanced");
 
 			const a = gl2.drawElementsInstanced(gl.POINTS, false, gl.UNSIGNED_SHORT, 0, 4);
@@ -1892,7 +1892,7 @@ export default function webgl1Test_webgl7() {
 			let errorCode = gl.getError();
 			console.info("webgltest drawElementsInstanced getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1902,7 +1902,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test drawRangeElements.
 		 */
 		it('webgl_test_drawRangeElementsError', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawRangeElements");
 
 			const a = gl2.drawRangeElements(gl.POINTS, false, 7, 8, gl.UNSIGNED_BYTE, 0);
@@ -1911,7 +1911,7 @@ export default function webgl1Test_webgl7() {
 			console.info("webgltest drawRangeElements getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
 
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1922,7 +1922,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D_0415', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexImage2D_0415 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -1942,7 +1942,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D_0416', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0415_02 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -1963,7 +1963,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexSubImage2D.
 		 */
 		it('testCompressedTexSubImage2D_0420', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexSubImage2D_0420 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -1986,7 +1986,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test compressedTexSubImage2D.
 		 */
 		it('testCompressedTexSubImage2D_0421', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testCompressedTexSubImage2D_0421 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -2009,7 +2009,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels_422', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels_422 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -2028,7 +2028,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test readPixels.
 		 */
 		it('testReadPixels_423', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testReadPixels_423 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -2047,7 +2047,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_0426', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_0426 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -2067,7 +2067,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D_0427', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexImage2D_0427 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -2087,7 +2087,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D test start ...66');
 			console.info('jsWebGL testTexSubImage2D test start ...' + JSON.stringify(gl));
 			const buf = new ArrayBuffer(8);
@@ -2106,7 +2106,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testTexSubImage2D_02 test start ...66');
 			const buf = new ArrayBuffer(8);
 			const view = new DataView(buf, 0);
@@ -2124,7 +2124,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blitFramebuffer.
 		 */
 		it('testBlitFramebuffer_01', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBlitFramebuffer_01 test start ...66');
 			gl2.blitFramebuffer(0, 0, 400, 1080, 0, 0, 400, 1080, gl.COLOR_BUFFER_BIT, gl
 				.NEAREST);
@@ -2143,7 +2143,7 @@ export default function webgl1Test_webgl7() {
 		 * @tc.desc Test blitFramebuffer.
 		 */
 		it('testBlitFramebuffer_02', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL testBlitFramebuffer_02 test start ...66');
 			gl2.blitFramebuffer(gl.NEAREST, 0, 400, gl.NEAREST, 0, 0, 400, 1080,
 				gl.COLOR_BUFFER_BIT, gl.NEAREST);

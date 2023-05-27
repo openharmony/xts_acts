@@ -563,44 +563,6 @@ describe('piecePropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPieceIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testPieceIfPropFalse', 0, async function (done) {
-    //        console.info('testPieceIfPropFalse START');
-    //        console.info("[pieceProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[pieceProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[pieceProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('piece')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPieceIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testPieceIfPropNone', 0, async function (done) {
-    //        console.info('testPieceIfPropNone START');
-    //        console.info("[pieceProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[pieceProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[pieceProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('piece')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testPieceShowPropTrue
      * @tc.desc      ACE
      */

@@ -157,45 +157,7 @@
          console.info("[pickerViewProps] get for value is: " + JSON.stringify(obj.$attrs.if));
          done();
      });
- 
-     /**
-      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-      * @tc.name      testPickerViewIfPropFalse
-      * @tc.desc      ACE
-      */
-     /* it('testPickerViewIfPropFalse', 0, async function (done) {
-         console.info('testPickerViewIfPropFalse START');
-         console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
-         let obj = JSON.parse(globalThis.value.ifPropFalse);
-         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-         expect(obj.$type).assertEqual('picker-view')
-         expect(obj.$attrs.id).assertEqual('ifPropFalse')
-         expect(obj.$attrs.if).assertEqual(false)
-         done();
-     }); */
-
-     /**
-      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-      * @tc.name      testPickerViewIfPropNone
-      * @tc.desc      ACE
-      */
-     /* it('testPickerViewIfPropNone', 0, async function (done) {
-         console.info('testPickerViewIfPropNone START');
-         console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-         let obj = JSON.parse(globalThis.value.ifPropNone);
-         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-         expect(obj.$type).assertEqual('picker-view')
-         expect(obj.$attrs.id).assertEqual('ifPropNone')
-         expect(obj.$attrs.if).assertEqual(false)
-         done();
-     }); */
- 
      /**
       * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
       * @tc.name      testPickerViewShowPropTrue
