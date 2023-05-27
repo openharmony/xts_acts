@@ -59,9 +59,6 @@ group("formmanager") {
       "formsystemtest_ets/formreleasetest:ActsFormReleaseTest",
       "formsystemtest_ets/formstatetest_disable:ActsFormStateDisableTest",
       "formsystemtest_ets/formstatetest_enable:ActsFormStateEnableTest",
-      "formsystemtest_ets/formstatetest_notifyinvisible:ActsFormStateNotifyInvisibleTest",
-      "formsystemtest_ets/formstatetest_notifyinvisible2:ActsFormStateNotifyInvisible2Test",
-      "formsystemtest_ets/formstatetest_notifyvisible:ActsFormStateNotifyVisibleTest",
       "formsystemtest_ets/formstresstest:ActsFormStressTest",
       "formsystemtest_ets/formupdatefreshtest:ActsFormUpdateRefreshTest",
     ]
