@@ -357,13 +357,13 @@ struct Index {
                         }
                       };
                       commonEvent.publish(this.formOnStateEvent, commonEventPublishData, this.publishOnStateCallBack);
-                    });        
+                    });
                     console.log("[FormComponent.host] notifyVisibleForm end");
                   } else if(this.stateForm == "invisible") {
                     console.log("[FormComponent.host] notifyInvisibleForm start");
                     formHost.notifyInvisibleForms(this.stateIds)
                     .then((data) => {
-                      console.info('[FormComponent.host] notifyInvisibleForm result:' + data);                      
+                      console.info('[FormComponent.host] notifyInvisibleForm result:' + data);
                       if(this.stateIds.length == 0) {
                         this.stateIds = ["-1"];
                       }
