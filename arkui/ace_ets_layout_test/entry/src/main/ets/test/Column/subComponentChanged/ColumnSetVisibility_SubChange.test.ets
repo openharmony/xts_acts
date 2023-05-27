@@ -28,7 +28,7 @@ export default function ColumnSetVisibility_SubChange() {
         await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get ColumnSetVisibility state success " + JSON.stringify(pages));
-        if (!("ColumnSetVisibility" == pages.name)) {
+        if (!("ColumnSetVisibility_SubChange" == pages.name)) {
           console.info("get ColumnSetVisibility state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push ColumnSetVisibility page success " + JSON.stringify(result));

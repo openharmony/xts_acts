@@ -107,32 +107,6 @@ export default function swiperJsunit() {
       done();
     });
 
-    it('swiperTest_0600', 0, async function (done) {
-      console.info('swiperTest_0600 START');
-      try {
-        let eventData = {
-          data: {
-            "index": "3"
-          }
-        }
-        let indexEvent = {
-          eventId: 207,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("swiperTest_0600 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("swiperTest_0600 change component data error: " + err.message);
-      }
-      await Utils.sleep(4000);
-      let strJsonNew = getInspectorByKey('swiper');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("swiperTest_0600 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.index).assertEqual('3');
-      console.info('swiperTest_0600 END');
-      done();
-    });
-
     it('swiperTest_0700', 0, async function (done) {
       console.info('swiperTest_0700 START');
       try {
@@ -156,6 +130,32 @@ export default function swiperJsunit() {
       console.info("swiperTest_0700 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.autoPlay).assertEqual('false');
       console.info('swiperTest_0700 END');
+      done();
+    });
+
+   it('swiperTest_0600', 0, async function (done) {
+      console.info('swiperTest_0600 START');
+      try {
+        let eventData = {
+          data: {
+            "index": "3"
+          }
+        }
+        let indexEvent = {
+          eventId: 207,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("swiperTest_0600 start to publish emit");
+        events_emitter.emit(indexEvent, eventData);
+      } catch (err) {
+        console.log("swiperTest_0600 change component data error: " + err.message);
+      }
+      await Utils.sleep(4000);
+      let strJsonNew = getInspectorByKey('swiper');
+      let objNew = JSON.parse(strJsonNew);
+      console.info("swiperTest_0600 component objNew is: " + JSON.stringify(objNew));
+      expect(objNew.$attrs.index).assertEqual('3');
+      console.info('swiperTest_0600 END');
       done();
     });
 

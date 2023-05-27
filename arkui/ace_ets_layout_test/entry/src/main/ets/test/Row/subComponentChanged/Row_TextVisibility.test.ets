@@ -27,7 +27,7 @@ export default function row_TextVisibilityTest() {
         router.clear();
         let pages = router.getState();
         console.info("get Row_TextVisibility state pages:" + JSON.stringify(pages));
-        if (!("Row_TextPosition" == pages.name)) {
+        if (!("Row_TextVisibility" == pages.name)) {
           console.info("get Row_TextPosition pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
