@@ -316,7 +316,6 @@ describe('threadWorkerTest', function () {
     })
 
     // check postMessage is ok
-    // main post {message:"hello world"} , will receive {message:"hello world worker"}
     /**
      * @tc.name: threadWorker_postMessage_test_003
      * @tc.desc: Sends a message to the worker thread.

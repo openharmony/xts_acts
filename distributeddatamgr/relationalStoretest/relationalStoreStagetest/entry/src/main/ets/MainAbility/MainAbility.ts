@@ -32,7 +32,6 @@ var seConnect = {
          proxy.sendRequest(1, data, reply, option)
              .then(function (result) {
                  if (result.errCode === 0) {
-                     // let msg = reply.readString();
                      let msg = result.reply.readInt();
                      console.log("[ttt] [DataShareTest] <<Consumer>> seConnect reply msg: " + msg);
                  } else {
@@ -61,8 +60,6 @@ let dseUri = ("datashare:///com.samples.datasharekvtest.DataShare");
 var dseConnect = {
     onConnect:function (elementName, proxy) {
         console.log("[ttt] [DataShareTest] <<Consumer>> dseConnect onConnect called.");
-        // console.log("[ttt] [DataShareTest] <<Consumer>> dseConnect onConnect elementName = " + elementName);
-        // console.log("[ttt] [DataShareTest] <<Consumer>> dseConnect onConnect proxy = " + proxy);
         dseProxy = proxy;
     },
     onDisconnect:function (elementName) {

@@ -33,33 +33,6 @@ export default class MainAbility extends Ability {
 
         // let array: Array<string> = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA", "ohos.permission.WRITE_MEDIA"];
         // //requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
-        // context.requestPermissionsFromUser(array).then(async function (data) {
-        //     console.log("data type:" + JSON.stringify(data));
-        //     console.log("data:" + data);
-        //     console.log("data permissions:" + data.permissions);
-        //     console.log("data result:" + data.authResults);
-        // }, (err) => {
-        //     console.error('Failed to start ability', err.code);
-        // });
-        // console.info("getPermission 1");
-        // await new Promise((res) => setTimeout(res, 200));
-
-
-        // let driver = Driver.create();
-        // console.info("getPermission 2");
-        // console.info(`driver is ${JSON.stringify(driver)}`);
-        // await new Promise((res) => setTimeout(res, 200));
-
-        // let button = await driver.findComponent(ON.text("允许"));
-
-        // while (button) {
-        //     console.info(`button is ${JSON.stringify(button)}`);
-        //     await new Promise((res) => setTimeout(res, 200));
-        //     await button.click();
-        //     button = await driver.findComponent(ON.text("允许"));
-        // }
-        // console.info("getPermission 3");
-
         console.log("[Demo] MainAbility onWindowStageCreate windowStage=" + windowStage)
         globalThis.windowStage = windowStage
         globalThis.abilityContext = this.context

@@ -136,32 +136,6 @@ describe('ratingPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testRatingStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testRatingStyleProp', 0, async function (done) {
-//        console.info('testRatingStyleProp START');
-//        console.info("[ratingProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[ratingProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[ratingProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('rating')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[ratingProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[ratingProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[ratingProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testRatingRefProp
      * @tc.desc      ACE
      */
@@ -585,44 +559,6 @@ describe('ratingPropsJsTest', function () {
         console.info("[ratingProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testRatingIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testRatingIfPropFalse', 0, async function (done) {
-    //        console.info('testRatingIfPropFalse START');
-    //        console.info("[ratingProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[ratingProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[ratingProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('rating')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testRatingIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testRatingIfPropNone', 0, async function (done) {
-    //        console.info('testRatingIfPropNone START');
-    //        console.info("[ratingProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[ratingProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[ratingProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('rating')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

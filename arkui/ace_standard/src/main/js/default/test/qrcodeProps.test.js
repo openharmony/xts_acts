@@ -139,33 +139,6 @@ describe('qrcodePropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testQrcodeStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testQrcodeStyleProp', 0, async function (done) {
-//        console.info('testQrcodeStyleProp START');
-//        console.info("[qrcodeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[qrcodeProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[qrcodeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('qrcode')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[qrcodeProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[qrcodeProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[qrcodeProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-        // expect(obj.$attrs.value).assertEqual('value')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testQrcodeRefProp
      * @tc.desc      ACE
      */
@@ -611,46 +584,6 @@ describe('qrcodePropsJsTest', function () {
         console.info("[qrcodeProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testQrcodeIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testQrcodeIfPropFalse', 0, async function (done) {
-    //        console.info('testQrcodeIfPropFalse START');
-    //        console.info("[qrcodeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[qrcodeProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[qrcodeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('qrcode')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-        // expect(obj.$attrs.value).assertEqual('value')
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testQrcodeIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testQrcodeIfPropNone', 0, async function (done) {
-    //        console.info('testQrcodeIfPropNone START');
-    //        console.info("[qrcodeProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[qrcodeProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[qrcodeProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('qrcode')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-        // expect(obj.$attrs.value).assertEqual('value')
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

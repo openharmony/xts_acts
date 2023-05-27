@@ -562,44 +562,6 @@ describe('refreshPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testRefreshIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testRefreshIfPropFalse', 0, async function (done) {
-    //        console.info('testRefreshIfPropFalse START');
-    //        console.info("[refreshProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[refreshProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[refreshProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('refresh')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testRefreshIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testRefreshIfPropNone', 0, async function (done) {
-    //        console.info('testRefreshIfPropNone START');
-    //        console.info("[refreshProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[refreshProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[refreshProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('refresh')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testRefreshShowPropTrue
      * @tc.desc      ACE
      */
