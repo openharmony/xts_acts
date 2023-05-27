@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
@@ -13,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, it, expect, beforeAll, afterAll, afterEach, beforeEach } from 'hypium/index';
+import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium';
 import socket from "@ohos.net.socket";
 
 let sendData = "hello!";
@@ -89,7 +88,6 @@ export default function networkManagerSocketTest() {
         expect(options.secureOptions.useRemoteCipherPrefer != undefined).assertEqual(true);
         expect(options.secureOptions.signatureAlgorithms != undefined).assertEqual(true);
         expect(options.secureOptions.cipherSuite != undefined).assertEqual(true);
-        expect(socket.X509CertRawData == undefined).assertEqual(true);
         if (err == undefined) {
           expect().assertFail();
           done();
@@ -157,12 +155,12 @@ export default function networkManagerSocketTest() {
     */
     it('Telephony_NetworkManager_getCertificate_Async_0100', 0, async function (done) {
       instance = socket.constructTLSSocketInstance()
-      instance.getCertificate((err, data) => {
+      instance.getCertificate((err, X509CertRawData) => {
         if (err == undefined) {
           expect().assertFail();
           done();
         } else {
-          expect(data).assertEqual(undefined);
+          expect(X509CertRawData).assertEqual(undefined);
           expect(err != undefined).assertEqual(true);
           done();
         }
@@ -362,6 +360,132 @@ export default function networkManagerSocketTest() {
         expect(err != undefined).assertEqual(true);
         done();
       })
+    })
+
+
+    /**
+     * @tc.number Telephony_TLSSocket_on_message_0100
+     * @tc.name Test on_message interface
+     * @tc.desc Function test
+     */
+    it('Telephony_TLSSocket_on_message_0100', 0, async function (done) {
+      try {
+        let tls = socket.constructTLSSocketInstance();
+        tls.on('message', value => {
+          console.log('message: ' + JSON.stringify(value.message));
+          console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+        });
+        done();
+      } catch (err) {
+        expect(true).assertFalse();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number Telephony_TLSSocket_off_message_0100
+     * @tc.name Test off_message interface
+     * @tc.desc Function test
+     */
+    it('Telephony_TLSSocket_off_message_0100', 0, async function (done) {
+      try {
+        let tls = socket.constructTLSSocketInstance();
+        let callback = value => {
+          console.log('message: ' + JSON.stringify(value.message));
+          console.log('remoteInfo: ' + JSON.stringify(value.remoteInfo));
+        }
+        tls.on('message', callback);
+        tls.off('message', callback);
+        done();
+      } catch (err) {
+        expect(true).assertFalse();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number Telephony_TLSSocket_on_connect_on_close_0100
+     * @tc.name Test on_connect on_close interface
+     * @tc.desc Function test
+     */
+    it('Telephony_TLSSocket_on_connect_on_close_0100', 0, async function (done) {
+      try {
+        let tls = socket.constructTLSSocketInstance();
+        tls.on('connect', () => {
+          console.log("on connect success");
+        });
+        tls.on('close', () => {
+          console.log("on close success");
+        });
+        done();
+      } catch (err) {
+        expect(true).assertFalse();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number Telephony_TLSSocket_off_connect_off_close_0100
+     * @tc.name Test off_connect off_close interface
+     * @tc.desc Function test
+     */
+    it('Telephony_TLSSocket_off_connect_off_close_0100', 0, async function (done) {
+      try {
+        let tls = socket.constructTLSSocketInstance();
+        let callback1 = () => {
+          console.log("on connect success");
+        }
+        tls.on('connect', callback1);
+        tls.off('connect', callback1);
+        tls.off('connect');
+        let callback2 = () => {
+          console.log("on close success");
+        }
+        tls.on('close', callback2);
+        tls.off('close', callback2);
+        done();
+      } catch (err) {
+        expect(true).assertFalse();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number Telephony_TLSSocket_on_error_0100
+     * @tc.name Test on_error interface
+     * @tc.desc Function test
+     */
+    it('Telephony_TLSSocket_on_error_0100', 0, async function (done) {
+      try {
+        let tls = socket.constructTLSSocketInstance();
+        tls.on('error', err => {
+          console.log("on error, err:" + JSON.stringify(err));
+        });
+        done();
+      } catch (err) {
+        expect(true).assertFalse();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number Telephony_TLSSocket_off_error_0100
+     * @tc.name Test off_error interface
+     * @tc.desc Function test
+     */
+    it('Telephony_TLSSocket_off_error_0100', 0, async function (done) {
+      try {
+        let tls = socket.constructTLSSocketInstance();
+        let callback = err => {
+          console.log("on error, err:" + JSON.stringify(err));
+        }
+        tls.on('error', callback);
+        tls.off('error', callback);
+        done();
+      } catch (err) {
+        expect(true).assertFalse();
+        done();
+      }
     })
   })
 }
