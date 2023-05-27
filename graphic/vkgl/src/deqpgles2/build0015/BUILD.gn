@@ -73,7 +73,7 @@ ohos_moduletest_suite("ActsDeqpgles2TestSuite0015") {
     "../functional/Deqpgles2render_struct_in_arrayTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles2func0015" ]
 

@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libdeqpgles2func0013") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Deqpgles2BaseFunc.cpp" ]
 
@@ -71,7 +73,7 @@ ohos_moduletest_suite("ActsDeqpgles2TestSuite0013") {
     "../functional/Deqpgles2texture_stencilTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles2func0013" ]
 
