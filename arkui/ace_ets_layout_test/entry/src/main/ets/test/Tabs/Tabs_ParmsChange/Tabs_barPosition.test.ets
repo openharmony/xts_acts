@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix } from '@ohos.uitest';
+  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
 export default function Tabs_barPosition() {
   describe('Tabs_barPosition', function () {
     beforeEach(async function (done) {

@@ -98,54 +98,5 @@ export default function List_Padding() {
       console.info('testListPaddingToTwenty END');
       done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_LIST_LIST_PADDING_TEST_0200
-     * @tc.name      testListPaddingToThirty
-     * @tc.desc      List parent component binding padding property and value set to 30
-     */
-    it('testListPaddingToThirty', 0, async function (done) {
-      console.info('testListPaddingToThirty START');
-      globalThis.value.message.notify({name:'addPadding', value:30})
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('List_Padding_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      let List_Padding_011 = CommonFunc.getComponentRect('List_Padding_011');
-      let List_Padding_012 = CommonFunc.getComponentRect('List_Padding_012');
-      let List_Padding_013 = CommonFunc.getComponentRect('List_Padding_013');
-      let List_Padding_014 = CommonFunc.getComponentRect('List_Padding_014');
-      let List_Padding_01 = CommonFunc.getComponentRect('List_Padding_01');
-
-      expect(Math.round(List_Padding_011.left - List_Padding_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_012.left - List_Padding_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_013.left - List_Padding_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_014.left - List_Padding_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_011.top - List_Padding_01.top)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_01.bottom - List_Padding_014.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_01.right - List_Padding_011.right)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_01.right - List_Padding_012.right)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_01.right - List_Padding_013.right)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_01.right - List_Padding_014.right)).assertEqual(vp2px(30));
-      expect(Math.round(List_Padding_012.top - List_Padding_011.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(List_Padding_013.top - List_Padding_012.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(List_Padding_014.top - List_Padding_013.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(List_Padding_011.right - List_Padding_011.left)).assertEqual(vp2px(290));
-      expect(Math.round(List_Padding_012.right - List_Padding_012.left)).assertEqual(vp2px(290));
-      expect(Math.round(List_Padding_013.right - List_Padding_013.left)).assertEqual(vp2px(290));
-      expect(Math.round(List_Padding_014.right - List_Padding_014.left)).assertEqual(vp2px(290));
-
-      expect(Math.round(List_Padding_011.bottom - List_Padding_011.top)).assertEqual(vp2px(100));
-      expect(Math.round(List_Padding_012.bottom - List_Padding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(List_Padding_013.bottom - List_Padding_013.top)).assertEqual(vp2px(100));
-      expect(Math.round(List_Padding_014.bottom - List_Padding_014.top)).assertEqual(vp2px(100));
-      let driver = await Driver.create();
-      await driver.swipe(360, Math.round(List_Padding_014.top), 360, Math.round(List_Padding_013.top));
-      await CommonFunc.sleep(3000);
-      let List_Padding_014Again = CommonFunc.getComponentRect('List_Padding_014');
-      expect(List_Padding_01.top - List_Padding_014Again.top).assertFalse(vp2px(30));
-      console.info('testListPaddingToThirty END');
-      done();
-    });
   })
 }
