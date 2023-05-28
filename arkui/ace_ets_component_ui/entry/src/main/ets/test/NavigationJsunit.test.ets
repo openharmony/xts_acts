@@ -65,11 +65,11 @@ export default function NavigationJsunit() {
       expect(obj.$attrs.hideToolBar).assertEqual(false);
       expect(obj.$attrs.hideTitleBar).assertEqual(false);
       expect(obj.$attrs.hideBackButton).assertEqual(false);
-      //expect(obj.$attrs.navBarWidth).assertEqual('700');
-      //expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.Start');
-      //expect(obj.$attrs.mode).assertEqual('NavigationMode.Split');
-      //expect(obj.$attrs.backButtonIcon).assertEqual('resources/base/media/icon.png');
-      //expect(obj.$attrs.hideNavBar).assertEqual('false');
+      expect(obj.$attrs.navBarWidth).assertEqual('700.00vp');
+      expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.Start');
+      expect(obj.$attrs.mode).assertEqual('NavigationMode.SPLIT');
+      expect(obj.$attrs.backButtonIcon).assertEqual('resources/base/media/icon.png');
+      expect(obj.$attrs.hideNavBar).assertEqual(false);
       console.info('[NavigationJsunit_0100] END');
       done();
     });
@@ -78,18 +78,10 @@ export default function NavigationJsunit() {
       // Verify onTitleModeChange event of Navigation component
       console.info('[NavigationJsunit_0300] START');
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create();
-      let component = await driver.findComponent(BY.key('titleModeChange'));
-      let text = await component.getText();
-      expect(text).assertEqual('TitleModeChange:');
-      
-      let driver1 = await Driver.create();
-      let scrollBar = await driver1.findComponent(ON.id('list'));
-      await scrollBar.scrollSearch(ON.text('9'));
-      await CommonFunc.sleep(1000);
-      let component1 = await driver.findComponent(BY.key('titleModeChange'));
-      let text1 = await component1.getText();
-      //expect(text1).assertEqual('TitleModeChange:succ');
+      let strJson = getInspectorByKey('titleModeChange');
+      let obj = JSON.parse(strJson);
+      console.info("[NavigationJsunit_0300] content is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('TitleModeChange:');
       console.info('[NavigationJsunit_0300] END');
       done();
     });
@@ -100,10 +92,10 @@ export default function NavigationJsunit() {
       await CommonFunc.sleep(1000);
       globalThis.value.message.notify({name:'hideNavBar',value:'true'})
       await CommonFunc.sleep(3000);
-      let driver = await UiDriver.create();
-      let component1 = await driver.findComponent(BY.key('navBarStateChange'));
-      let text1 = await component1.getText();
-      expect(text1).assertEqual('NavBarStateChange:succ');
+      let strJson = getInspectorByKey('navBarStateChange');
+      let obj = JSON.parse(strJson);
+      console.info("[NavigationJsunit_0400] content is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('NavBarStateChange:succ');
       console.info('[NavigationJsunit_0400] END');
       done();
     });
@@ -140,10 +132,10 @@ export default function NavigationJsunit() {
       expect(obj.$attrs.hideToolBar).assertEqual(true);
       expect(obj.$attrs.hideTitleBar).assertEqual(true);
       expect(obj.$attrs.hideBackButton).assertEqual(true);
-      //expect(obj.$attrs.navBarWidth).assertEqual('710');
-      //expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.End');
-      //expect(obj.$attrs.backButtonIcon).assertEqual('resources/base/media/image.png');
-      //expect(obj.$attrs.hideNavBar).assertEqual('false');
+      expect(obj.$attrs.navBarWidth).assertEqual('710.00vp');
+      expect(obj.$attrs.navBarPosition).assertEqual('NavBarPosition.End');
+      expect(obj.$attrs.backButtonIcon).assertEqual('resources/base/media/image.png');
+      expect(obj.$attrs.hideNavBar).assertEqual(true);
       console.info('[NavigationJsunit_0600] END');
       done();
     });
@@ -159,11 +151,11 @@ export default function NavigationJsunit() {
       expect(obj.$attrs.titleMode).assertEqual('NavigationTitleMode.Mini');
 
       globalThis.value.message.notify({name:'titleMode',value:NavigationTitleMode.Full})
-      await CommonFunc.sleep(5000);
+      await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('navigation');
       let obj1 = JSON.parse(strJson1);
       console.info("[NavigationJsunit_0700] titleMode1 is: " + obj1.$attrs.titleMode);
-      //expect(obj1.$attrs.titleMode).assertEqual('NavigationTitleMode.Full');
+      expect(obj1.$attrs.titleMode).assertEqual('NavigationTitleMode.Full');
       console.info('[NavigationJsunit_0700] END');
       done();
     });
@@ -183,7 +175,7 @@ export default function NavigationJsunit() {
       let strJson1 = getInspectorByKey('navigation');
       let obj1 = JSON.parse(strJson1);
       console.info("[NavigationJsunit_0800] mode1 is: " + obj1.$attrs.mode);
-      //expect(obj1.$attrs.mode).assertEqual('NavigationMode.Stack');
+      expect(obj1.$attrs.mode).assertEqual('NavigationMode.STACK');
       console.info('[NavigationJsunit_0800] END');
       done();
     });
