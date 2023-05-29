@@ -33,13 +33,14 @@ ohos_shared_library("bundlendk") {
   if (!(product_name == "m40")) {
     libs = [ rebase_path(libcxx_ndk_shared_file) ]
   }
-
-  include_dirs = [ "//test/xts/acts/bundlemanager/bundle_standard/bundlemanager/actsbundlenativetest/entry/src/main/cpp" ]
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
+  include_dirs = [ "./" ]
   configs = [ ":config" ]
 
   deps = [
-    "//foundation/arkui/napi:ace_napi",
-    "//foundation/bundlemanager/bundle_framework/interfaces/kits/native/bundle:bundle_ndk",
+    "../../../../../../../../../../../foundation/arkui/napi:ace_napi",
+    "../../../../../../../../../../../foundation/bundlemanager/bundle_framework/interfaces/kits/native/bundle:bundle_ndk",
   ]
 
   output_extension = "so"
