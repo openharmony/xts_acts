@@ -75,10 +75,7 @@ import swiperIndex from './Swiper/Swiper_ParmsChange/swiperIndex.test.ets';
 import swiperVertical from './Swiper/Swiper_ParmsChange/swiperVertical.test.ets';
 import swiperLoopTrue from './Swiper/Swiper_ParmsChange/swiperLoopTrue.test.ets';
 import swiperLoopFalse from './Swiper/Swiper_ParmsChange/swiperLoopFalse.test.ets';
-import swiperAutoPlay_1 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_1.test.ets';
-import swiperAutoPlay_2 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_2.test.ets';
-import swiperAutoPlay_3 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_3.test.ets';
-import swiperAutoPlay_4 from './Swiper/Swiper_ParmsChange/swiperAutoPlay_4.test.ets';
+
 import swiperItemSpace from './Swiper/Swiper_ParmsChange/swiperItemSpace.test.ets';
 import swiperPadding from './Swiper/Swiper_ParmsChange/swiperPadding.test.ets';
 import swiperMargin from './Swiper/Swiper_ParmsChange/swiperMargin.test.ets';
@@ -86,6 +83,7 @@ import swiperMarPad from './Swiper/Swiper_ParmsChange/swiperMarPad.test.ets';
 import swiperDisableSwipeTrue from './Swiper/Swiper_ParmsChange/swiperDisableSwipeTrue.test.ets';
 import swiperDisableSwipeFalse from './Swiper/Swiper_ParmsChange/swiperDisableSwipeFalse.test.ets';
 import swiperItemSize from './Swiper/Swiper_ItemChange/swiperItemSize.test.ets';
+import swiperItemSize2 from './Swiper/Swiper_ItemChange/swiperItemSize2.test.ets';
 import swiperItemPadding from './Swiper/Swiper_ItemChange/swiperItemPadding.test.ets';
 import swiperItemMargin from './Swiper/Swiper_ItemChange/swiperItemMargin.test.ets';
 import swiperItemPadMar from './Swiper/Swiper_ItemChange/swiperItemPadMar.test.ets';
@@ -149,7 +147,7 @@ import Grid_Col_Span_Default from './Grid/Grid_Col/Grid_Col_Span/Grid_Col_Span_D
  import Grid_Col_Offset_Default from './Grid/Grid_Col/Grid_Col_Offset/Grid_Col_Offset_Default.test.ets';
  import Grid_Col_Offset_Number from './Grid/Grid_Col/Grid_Col_Offset/Grid_Col_Offset_Number.test.ets';
  import Grid_Col_Offset_GridColColumnOption from './Grid/Grid_Col/Grid_Col_Offset/Grid_Col_Offset_GridColColumnOption.test.ets';
- 
+
  import Grid_Row_Columns from './Grid/Grid_Row/Grid_Row_Columns/Grid_Row_Columns.test.ets';
  import Grid_Row_Columns_Default from './Grid/Grid_Row/Grid_Row_Columns/Grid_Row_Columns_Default.test.ets';
  import Grid_Row_Columns_Option from './Grid/Grid_Row/Grid_Row_Columns/Grid_Row_Columns_Option.test.ets';
@@ -469,10 +467,7 @@ swiperIndex()
 swiperVertical()
 swiperLoopTrue()
 swiperLoopFalse()
-swiperAutoPlay_1()
-swiperAutoPlay_2()
-swiperAutoPlay_3()
-swiperAutoPlay_4()
+
 swiperItemSpace()
 swiperPadding()
 swiperMargin()
@@ -480,6 +475,7 @@ swiperMarPad()
 swiperDisableSwipeTrue()
 swiperDisableSwipeFalse()
 swiperItemSize()
+swiperItemSize2()
 swiperItemPadding()
 swiperItemMargin()
 swiperItemPadMar()
