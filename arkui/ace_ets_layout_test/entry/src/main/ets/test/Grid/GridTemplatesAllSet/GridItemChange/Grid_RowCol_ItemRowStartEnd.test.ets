@@ -214,7 +214,7 @@ export default function grid_RowCol_ItemRowStartEndTest() {
       expect(twelfthGridItem.bottom).assertEqual(gridContainer.bottom);
       expect(thirteenthGridItem.left).assertEqual(twelfthGridItem.right);
       expect(thirteenthGridItem.top).assertEqual(twelfthGridItem.top);
-      expect(Math.round((gridContainer.right - thirteenthGridItem.left)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
+      expect(Math.round((gridContainer.right - thirteenthGridItem.right)*10)/10).assertEqual(Math.round(vp2px(75)*10)/10);
       expect(thirteenthGridItem.bottom).assertEqual(gridContainer.bottom); // fourth row
       console.info('[testGridRowColItemRowStartToOneEndToThree] END');
       done();

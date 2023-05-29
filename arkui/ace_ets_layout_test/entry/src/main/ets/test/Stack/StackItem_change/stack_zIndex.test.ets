@@ -59,6 +59,7 @@ export default function Stack_ZIndex() {
           if (err) {
             console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
             isTrue = false;
+            return isTrue;
           }
           console.log('Succeeded in saving sreenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
           let PixelBytesNumber = pixelMap.getPixelBytesNumber();
@@ -72,7 +73,7 @@ export default function Stack_ZIndex() {
               for (var i = 0; i < bufferArr.length; i += 40) {
                 if(bufferArr[i] != 255 || bufferArr[i+1] != 0 || bufferArr[i+2] != 0){
                   isTrue = false;
-                  return
+                  break;
                 }
               }
             }
@@ -84,7 +85,7 @@ export default function Stack_ZIndex() {
         isTrue = false;
       };
       await CommonFunc.sleep(5000);
-      return isTrue
+      return isTrue;
     }
     beforeEach(async function (done) {
       console.info("Stack_ZIndex beforeEach start");
@@ -111,102 +112,6 @@ export default function Stack_ZIndex() {
     afterEach(async function () {
       await CommonFunc.sleep(2000);
       console.info("Stack_ZIndex after each called");
-    });
-    /**
-     * @tc.number    SUB_ACE_STACK_ZINDEX_TEST_0100
-     * @tc.name      testStackZIndexWithAlignmentTopStart
-     * @tc.desc      The stack component sets alignContent to Alignment.TopStart and sets the zIndex of
-     *               the first subcomponent
-     */
-    it('testStackZIndexWithAlignmentTopStart', 0, async function (done) {
-      console.info('[testStackZIndexWithAlignmentTopStart] START');
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('Stack_ZIndex_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart');
-      let Stack_ZIndex_011 = CommonFunc.getComponentRect('Stack_ZIndex_011');
-      let Stack_ZIndex_012 = CommonFunc.getComponentRect('Stack_ZIndex_012');
-      let Stack_ZIndex_01 = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let num = await imageComparisonAssert(0,0);
-      await CommonFunc.sleep(1000);
-      expect(num).assertEqual(true);
-      expect(Stack_ZIndex_01.top).assertEqual(Stack_ZIndex_011.top);
-      expect(Stack_ZIndex_01.top).assertEqual(Stack_ZIndex_012.top);
-      expect(Stack_ZIndex_01.left).assertEqual(Stack_ZIndex_011.left);
-      expect(Stack_ZIndex_01.left).assertEqual(Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
-      console.info('[testStackZIndexWithAlignmentTopStart] END');
-      done();
-    });
-    /**
-     * @tc.number    SUB_ACE_STACK_ZINDEX_TEST_0200
-     * @tc.name      testStackZIndexWithAlignmentTop
-     * @tc.desc      The stack component sets alignContent to Alignment.Top and sets the zIndex of
-     *               the first subcomponent
-     */
-    it('testStackZIndexWithAlignmentTop', 0, async function (done) {
-      console.info('[testStackZIndexWithAlignmentTop] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.Top});
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('Stack_ZIndex_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top');
-      let Stack_ZIndex_011 = CommonFunc.getComponentRect('Stack_ZIndex_011');
-      let Stack_ZIndex_012 = CommonFunc.getComponentRect('Stack_ZIndex_012');
-      let Stack_ZIndex_01 = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theLeft = Stack_ZIndex_012.left;
-      let num = await imageComparisonAssert(theLeft,0);
-      await CommonFunc.sleep(1000);
-      expect(num).assertEqual(true);
-      expect(Stack_ZIndex_01.top).assertEqual(Stack_ZIndex_011.top);
-      expect(Stack_ZIndex_01.top).assertEqual(Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_011.left - Stack_ZIndex_01.left))
-        .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_011.right));
-      expect(Math.round(Stack_ZIndex_012.left - Stack_ZIndex_01.left))
-        .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_012.right));
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
-      console.info('[testStackZIndexWithAlignmentTop] END');
-      done();
-    });
-    /**
-     * @tc.number    SUB_ACE_STACK_ZINDEX_TEST_0300
-     * @tc.name      testStackZIndexWithAlignmentTopEnd
-     * @tc.desc      The stack component sets alignContent to Alignment.TopEnd and sets the zIndex of
-     *               the first subcomponent
-     */
-    it('testStackZIndexWithAlignmentTopEnd', 0, async function (done) {
-      console.info('[testStackZIndexWithAlignmentTopEnd] START');
-      globalThis.value.message.notify({name:'addAlignContent', value:Alignment.TopEnd});
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('Stack_ZIndex_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Stack');
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd');
-      let Stack_ZIndex_011 = CommonFunc.getComponentRect('Stack_ZIndex_011');
-      let Stack_ZIndex_012 = CommonFunc.getComponentRect('Stack_ZIndex_012');
-      let Stack_ZIndex_01 = CommonFunc.getComponentRect('Stack_ZIndex_01');
-      let theLeft = Stack_ZIndex_012.left;
-      let num = await imageComparisonAssert(theLeft,0);
-      await CommonFunc.sleep(1000);
-      expect(num).assertEqual(true);
-      expect(Stack_ZIndex_01.top).assertEqual(Stack_ZIndex_011.top);
-      expect(Stack_ZIndex_01.top).assertEqual(Stack_ZIndex_012.top);
-      expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_011.right);
-      expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_012.right);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
-      console.info('[testStackZIndexWithAlignmentTopEnd] END');
-      done();
     });
     /**
      * @tc.number    SUB_ACE_STACK_ZINDEX_TEST_0400

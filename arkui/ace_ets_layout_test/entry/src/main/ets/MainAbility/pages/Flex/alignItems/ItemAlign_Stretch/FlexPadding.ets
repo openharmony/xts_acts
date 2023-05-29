@@ -20,7 +20,17 @@ struct FlexPadding_Stretch {
   messageManager:MessageManager = new MessageManager()
   private content: string = "FlexPadding_Stretch Page";
   onPageShow() {
-    console.info('FlexPadding_Stretch page show called');
+    console.info('FlexPadding_Stretch onPageShow');
+    globalThis.value = {
+      name:'messageManager',message:this.messageManager
+    }
+    let callback:Callback = (message:any) => {
+      console.log('message = ' + message.name + "--" + message.value);
+      if (message.name == 'padding') {
+        this.testPadding = message.value;
+      }
+    }
+    this.messageManager.registerCallback(callback);
   }
 
   onBuildDone() {

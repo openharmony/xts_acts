@@ -18,7 +18,7 @@ import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 export default function row_TextVisibilityTest() {
   describe('Row_TextVisibilityTest', function () {
-    beforeEach(async function (done) {
+    beforeAll(async function (done) {
       console.info("Row_TextVisibilityTest beforeEach start");
       let options = {
         url: 'MainAbility/pages/Row/subComponentChanged/Row_TextVisibility',
@@ -27,7 +27,7 @@ export default function row_TextVisibilityTest() {
         router.clear();
         let pages = router.getState();
         console.info("get Row_TextVisibility state pages:" + JSON.stringify(pages));
-        if (!("Row_TextPosition" == pages.name)) {
+        if (!("Row_TextVisibility" == pages.name)) {
           console.info("get Row_TextPosition pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
@@ -149,7 +149,7 @@ export default function row_TextVisibilityTest() {
         
         let secondTextStrJson = getInspectorByKey('Row_TextVisibility2');
         let secondTextObj = JSON.parse(secondTextStrJson);
-        expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.visible");
+        expect(secondTextObj.$attrs.visibility).assertEqual("Visibility.Visible");
         
         expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
         expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
