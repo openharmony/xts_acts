@@ -818,6 +818,44 @@ struct Index {
                             }                                                                      
                             break;
                         }
+                        case "emitWebMessExtSetError":{ 
+                            try {
+                                console.log("URL Error");
+                                throw new URIError("URI seq")
+                            }
+                            catch (e) {
+                                console.log("hwd URIError:"+(e instanceof  SyntaxError));
+                                console.log("hwd URIError:"+e.message);
+                                console.log("hwd URIError:"+e.name);
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    var message =new web_webview.WebMessageExt();
+                                    message.setType(web_webview.WebMessageType.ERROR)
+                                    this.message.setError(e);
+                                    this.nativePort.postMessageEventExt(message);
+                                    },2000)
+                                }
+                            }
+                            setTimeout(()=>{
+                                this.controller.runJavaScript("postErrorToHtml()",(error, result) => {
+                                console.log(`The emitWebMessExtSetError() return value is: ${result}`);
+                                Utils.emitEvent(result,515)
+                            })
+                            },3000)                                                               
+                            break;
+                        }
+                        case "emitWebMessExtGetError":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postErrorToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetError() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
                         
                         
 
@@ -992,6 +1030,10 @@ struct Index {
                          if(this.type == web_webview.WebMessageType.ARRAY_BUFFER){
                             this.msg1 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
                             Utils.emitEvent(this.msg1,514)
+                         } 
+                         if(this.type == web_webview.WebMessageType.ERROR){
+                            this.msg1 = "result type:" + typeof (result.getError());
+                            Utils.emitEvent(this.msg1,516)
                          } 
                      }
                      catch (resError) {

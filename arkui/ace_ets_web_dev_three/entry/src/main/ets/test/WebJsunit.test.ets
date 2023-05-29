@@ -581,8 +581,29 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('WebMessExtGetArrayBuffer',0,async function(done){
-      emitKey="emitWebMessExtGetArrayBuffer";
+      emitKey="emitWebMessExtSetError";
       Utils.registerEvent("WebMessExtGetArrayBuffer","result getArrayBuffer byteLength:8",514,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_054                                                                                                                                                 
+     *tc.name WebMessExtSetError                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetError',0,async function(done){
+      emitKey="emitWebMessExtGetError";
+      var result="Error:SyntaxError, msg:"
+      Utils.registerEvent("WebMessExtSetError",JSON.stringify(result),515,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_055                                                                                                                                                
+     *tc.name WebMessExtGetError                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetError',0,async function(done){
+      emitKey="emitWebMessExtGetError";
+      Utils.registerEvent("WebMessExtGetError","result type:object",516,done);
       sendEventByKey('webcomponent',10,'');
     })
   })

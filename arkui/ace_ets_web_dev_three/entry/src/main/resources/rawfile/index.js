@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021~2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -113,13 +113,16 @@ function postArrayBufferToApp() {
     }
 }
 function postErrorToApp() {
-    if (h5Port) {
-        console.log("In html send error message");
-        let err = {name:"cuowu",message:"cuowu"};
-        h5Port.postMessage(err);
-        console.log("In html send error message end");
-    } else {
-        console.error("In html h5port is null, please init first");
+    try {
+        throw new URIError("URI seq 0222")
+        }
+    catch (e){
+        console.log("hwd URIError:"+(e instanceof  SyntaxError));
+        console.log("hwd URIError:"+e.message);
+        console.log("hwd URIError:"+e.name);
+        if (h5Port) {
+            h5Port.postMessage(e);
+        }
     }
 }
 
