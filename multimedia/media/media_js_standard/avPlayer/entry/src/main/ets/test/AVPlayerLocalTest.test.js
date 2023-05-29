@@ -456,7 +456,7 @@ export default function AVPlayerLocalTest() {
                                         'track_index', 'track_type', 'width');
             let audioTrackKey = new Array('bitrate', 'channel_count', 'codec_mime', 'sample_rate',
                                         'track_index', 'track_type');
-            let videoTrackValue = new Array(1366541, 0, 60, 480, 0, 1, 720);
+            let videoTrackValue = new Array(1366541, 0, 6000, 480, 0, 1, 720);
             let audioTrackValue = new Array(129207, 2, 1, 44100, 1, 0);
             let descriptionKey = new Array(videoTrackKey, audioTrackKey);
             let descriptionValue = new Array(videoTrackValue, audioTrackValue);
@@ -491,7 +491,7 @@ export default function AVPlayerLocalTest() {
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_GETTRECKDESCRIPTION_0300', 0, async function (done) {
             let videoTrackKey = new Array('bitrate', 'codec_mime', 'frame_rate', 'height',
                                         'track_index', 'track_type', 'width');
-            let videoTrackValue = new Array(1506121, 0, 60, 480, 0, 1, 720);
+            let videoTrackValue = new Array(1506121, 0, 6000, 480, 0, 1, 720);
             let descriptionKey = new Array(videoTrackKey);
             let descriptionValue = new Array(videoTrackValue);
             testCheckTrackDescription(fileDescriptor3, avPlayer, descriptionKey, descriptionValue, done)
