@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libdeqpgles31func0020") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Deqpgles31BaseFunc.cpp" ]
 
@@ -94,7 +96,7 @@ ohos_moduletest_suite("ActsDeqpgles31TestSuite0020") {
     "../functional/Deqpgles31no_attachments_sizeTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles31func0020" ]
 

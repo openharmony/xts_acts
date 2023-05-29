@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libkhrglesextfunc0001") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../KhrglesextBaseFunc.cpp" ]
 
@@ -87,7 +89,7 @@ ohos_moduletest_suite("ActsKhrglesextTestSuite0001") {
     "../viewport_array/KhrglesextKHR-GLESEXT_viewport_arrayTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libkhrglesextfunc0001" ]
 

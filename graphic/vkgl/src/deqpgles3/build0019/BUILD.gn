@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libdeqpgles3func0019") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Deqpgles3BaseFunc.cpp" ]
 
@@ -221,7 +223,7 @@ ohos_moduletest_suite("ActsDeqpgles3TestSuite0019") {
     "../functional/Deqpgles3trunc_lowp_vertexTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles3func0019" ]
 

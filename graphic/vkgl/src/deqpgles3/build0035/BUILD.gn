@@ -27,6 +27,8 @@ config("deqp_platform_ohos_config") {
 
 ohos_static_library("libdeqpgles3func0035") {
   sources = common_src
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources += [ "../Deqpgles3BaseFunc.cpp" ]
 
   include_dirs = common_include
@@ -49,7 +51,7 @@ ohos_moduletest_suite("ActsDeqpgles3TestSuite0035") {
     "../functional/Deqpgles3single_basic_type_std140TestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles3func0035" ]
 

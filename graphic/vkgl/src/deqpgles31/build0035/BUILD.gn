@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libdeqpgles31func0035") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Deqpgles31BaseFunc.cpp" ]
 
@@ -56,7 +58,7 @@ ohos_moduletest_suite("ActsDeqpgles31TestSuite0035") {
     "../functional/Deqpgles31viewclass_astc_12x12_rgba_srgb8_alpha8_astc_12x12_khr_srgb8_alpha8_astc_12x12_khrTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles31func0035" ]
 

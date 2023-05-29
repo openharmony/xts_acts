@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libdeqpgles31func0022") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Deqpgles31BaseFunc.cpp" ]
 
@@ -206,7 +208,7 @@ ohos_moduletest_suite("ActsDeqpgles31TestSuite0022") {
     "../functional/Deqpgles31vertex_tess_geo_fragment_unnamed_blockTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libdeqpgles31func0022" ]
 
