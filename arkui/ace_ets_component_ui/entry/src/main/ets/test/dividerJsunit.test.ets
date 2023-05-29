@@ -50,7 +50,7 @@ export default function dividerJsunit() {
        let obj = JSON.parse(strJson);
        console.info("dividerJsunit_0100'] component obj is: " + JSON.stringify(obj));
        expect(obj.$attrs.vertical).assertEqual('false');
-       expect(obj.$attrs.strokeWidth).assertEqual('20.000000');
+       expect(obj.$attrs.strokeWidth).assertEqual('20.00vp');
        // to confirm
        //expect(obj.$attrs.lineCap).assertEqual('LineCapStyle.Butt');
        expect(obj.$attrs.lineCap).assertEqual('BUTT');
@@ -72,7 +72,7 @@ export default function dividerJsunit() {
       let strJson = getInspectorByKey('divider');
       let obj = JSON.parse(strJson);
       console.info("[dividerJsunit_0200'] component obj is: " + JSON.stringify(obj.$attrs.lineCap));
-      expect(obj.$attrs.strokeWidth).assertEqual('30.000000');
+      expect(obj.$attrs.strokeWidth).assertEqual('30.00vp');
       expect(obj.$attrs.lineCap).assertEqual('ROUND');
       expect(obj.$attrs.color).assertEqual('#FFFFFFFF');
       done();
@@ -105,7 +105,7 @@ export default function dividerJsunit() {
       // check the value of changed attribute
       let strJson = getInspectorByKey('divider');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.strokeWidth).assertEqual('-30.000000');
+      expect(obj.$attrs.strokeWidth).assertEqual('-30.00vp');
       expect(obj.$attrs.lineCap).assertEqual('BUTT');
       // to confirm
       expect(obj.$attrs.color).assertEqual('#33182431');
