@@ -706,6 +706,40 @@ export default function ActsDAGetSetTest() {
         })
 
         /**
+         * @tc.number     DistributedAccountEnum_0100
+         * @tc.name       Test distributedAccount.DistributedAccountStatus.NOT_LOGGED_IN.
+         * @tc.desc       Test distributedAccount Enum.
+         */
+        it('DistributedAccountEnum_0100', 0, async function (done) {
+            try {
+                expect(0).assertEqual(account.DistributedAccountStatus.NOT_LOGGED_IN)
+                console.debug("====>DistributedAccountEnum_0100 success:")
+                done()
+            } catch (err) {
+                console.debug("====>DistributedAccountEnum_0100 throw_err:" + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     DistributedAccountEnum_0200
+         * @tc.name       Test distributedAccount.DistributedAccountStatus.LOGGED_IN.
+         * @tc.desc       Test distributedAccount Enum.
+         */
+        it('DistributedAccountEnum_0200', 0, async function (done) {
+            try {
+                expect(1).assertEqual(account.DistributedAccountStatus.LOGGED_IN)
+                console.debug("====>DistributedAccountEnum_0200 success:")
+                done()
+            } catch (err) {
+                console.debug("====>DistributedAccountEnum_0200 throw_err:" + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
          * @tc.number     DistributedAccountOptionalParameter_0100
          * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
          * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
