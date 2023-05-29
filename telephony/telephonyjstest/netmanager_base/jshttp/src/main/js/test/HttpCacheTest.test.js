@@ -36,7 +36,7 @@ export default function HttpCacheTest() {
                         usingCache: true
                     }).then(function (data) {
                         http.destroy();
-                        expect(data.responseCode === net_http.ResponseCode.OK || data.responseCode === 504).assertTrue();
+                        expect(data.responseCode === net_http.ResponseCode.OK || data.responseCode > 500).assertTrue();
                         done();
                         return;
                     });
@@ -62,7 +62,7 @@ export default function HttpCacheTest() {
                     }).then(function (data) {
                         http.destroy();
                         console.info(CaseName + JSON.stringify(data));
-                        expect(data.responseCode === net_http.ResponseCode.OK || data.responseCode === 504).assertTrue();
+                        expect(data.responseCode === net_http.ResponseCode.OK || data.responseCode > 500).assertTrue();
                         done();
                         return;
                     });

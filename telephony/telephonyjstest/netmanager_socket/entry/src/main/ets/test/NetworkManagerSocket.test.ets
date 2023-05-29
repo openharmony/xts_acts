@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium';
-import socket from "@ohos.net.socket";
+import socket from '@ohos.net.socket';
 
 let sendData = "hello!";
 let instance = undefined;
