@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, done } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 import account from '@ohos.account.distributedAccount'
 const LOGININFO = {
@@ -83,10 +83,11 @@ export default function ActsDAGetSetTest() {
         */
         it('getOsAccountDistributedInfo_test001', 0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
-            accountAbility.getOsAccountDistributedInfo().then(function (data) {
+            accountAbility.getOsAccountDistributedInfo().then( (data) => {
                 console.debug('====>getOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                 expect(data.name).assertEqual('ohosAnonymousName')
                 expect(data.id).assertEqual('ohosAnonymousUid')
+                expect(data.status).assertEqual(0)
                 done();
             });
         })
@@ -98,12 +99,47 @@ export default function ActsDAGetSetTest() {
         */
         it('getOsAccountDistributedInfo_test002', 0, async function (done) {
             let accountAbility = account.getDistributedAccountAbility()
-            accountAbility.getOsAccountDistributedInfo(function (err, data) {
+            accountAbility.getOsAccountDistributedInfo((err, data) => {
                 console.debug('====>getOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
                 console.debug('====>getOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
                 expect(err).assertEqual(null)
                 expect(data.name).assertEqual('ohosAnonymousName')
                 expect(data.id).assertEqual('ohosAnonymousUid')
+                expect(data.status).assertEqual(0)
+                done();
+            });
+        })
+
+        /**
+         * @tc.number     getOsAccountDistributedInfoByLocalId_test001
+         * @tc.name       Test distributedAccount.getOsAccountDistributedInfo.
+         * @tc.desc       Test distributedAccount.getOsAccountDistributedInfo API functionality.
+         */
+        it('getOsAccountDistributedInfoByLocalId_test001', 0, async function (done) {
+            let accountAbility = account.getDistributedAccountAbility()
+            accountAbility.getOsAccountDistributedInfoByLocalId(100).then(function (data) {
+                console.debug('====>getOsAccountDistributedInfoByLocalId_test001 data:' + JSON.stringify(data))
+                expect(data.name).assertEqual('ohosAnonymousName')
+                expect(data.id).assertEqual('ohosAnonymousUid')
+                expect(data.status).assertEqual(0)
+                done();
+            });
+        })
+
+        /**
+         * @tc.number     getOsAccountDistributedInfoByLocalId_test002
+         * @tc.name       Test distributedAccount.getOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.getOsAccountDistributedInfo API functionality by callback.
+         */
+        it('getOsAccountDistributedInfoByLocalId_test002', 0, async function (done) {
+            let accountAbility = account.getDistributedAccountAbility()
+            accountAbility.getOsAccountDistributedInfoByLocalId(100, function (err, data) {
+                console.debug('====>getOsAccountDistributedInfoByLocalId_test002 err:' + JSON.stringify(err))
+                console.debug('====>getOsAccountDistributedInfoByLocalId_test002 data:' + JSON.stringify(data))
+                expect(err).assertEqual(null)
+                expect(data.name).assertEqual('ohosAnonymousName')
+                expect(data.id).assertEqual('ohosAnonymousUid')
+                expect(data.status).assertEqual(0)
                 done();
             });
         })
@@ -127,6 +163,7 @@ export default function ActsDAGetSetTest() {
                     console.debug('====>setOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -169,6 +206,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test002 get data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -225,6 +263,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -265,6 +304,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>updateOsAccountDistributedInfo_test005 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -305,6 +345,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test006 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -316,12 +357,11 @@ export default function ActsDAGetSetTest() {
                         expect(err).assertEqual(null)
                         done();
                     });
+                }).catch((err) => {
+                    console.debug("====>setOsAccountDistributedInfo_test006 update_err:" + JSON.stringify(err))
+                    expect().assertFail();
+                    done();
                 })
-                    .catch((err) => {
-                        console.debug("====>setOsAccountDistributedInfo_test006 update_err:" + JSON.stringify(err))
-                        expect().assertFail();
-                        done();
-                    })
             })
         })
 
@@ -347,6 +387,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test007 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -387,6 +428,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test008 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
                     expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
                         name: 'ZhangSan',
@@ -402,7 +444,7 @@ export default function ActsDAGetSetTest() {
                         done();
                     })
                 });
-            }).catch(() => {
+            }).catch((err) => {
                 console.debug("====>setOsAccountDistributedInfo_test008 throw_err:" + JSON.stringify(err))
                 expect().assertFail();
                 done();
@@ -456,7 +498,7 @@ export default function ActsDAGetSetTest() {
                 nickname:limitNickName,
                 avatar:'test'
             };
-            accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+            accountAbility.setOsAccountDistributedInfo(obj).then((err) => {
                 console.debug("====>setOsAccountDistributedInfo_test010 err:" + JSON.stringify(err))
                 expect().assertFail()
                 done();
@@ -512,7 +554,7 @@ export default function ActsDAGetSetTest() {
             };
             try{
                 await accountAbility.setOsAccountDistributedInfo(obj)
-                console.debug("====>setOsAccountDistributedInfo_test012 set_err:" + JSON.stringify(err))
+                console.debug("====>setOsAccountDistributedInfo_test012 set_err")
                 expect().assertFail()
                 done();
             }catch(err){
@@ -575,6 +617,568 @@ export default function ActsDAGetSetTest() {
                 expect(err.code).assertEqual(12300001)
                 done();
             }
+        })
+
+        /**
+         * @tc.number     setOsAccountDistributedInfoByLocalId_test0100
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
+         *                    setOsAccountDistributedInfoByLocalId callback
+         */
+        it('setOsAccountDistributedInfoByLocalId_test0100', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                status: 0
+            };
+            accountAbility.setOsAccountDistributedInfoByLocalId(100, obj, (err) => {
+                console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 set_err:" + JSON.stringify(err))
+                accountAbility.getOsAccountDistributedInfoByLocalId(100, async (err, data) =>{
+                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 get_err:" + JSON.stringify(err))
+                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF',
+                        status: 0
+                    };
+                    console.debug("====>start LOGOFF")
+                    try{
+                        await accountAbility.setOsAccountDistributedInfoByLocalId(100, obj)
+                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0100 end')
+                        done();
+                    }catch(err){
+                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0100 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    }
+                });
+            });
+        })
+
+        /**
+         * @tc.number     setOsAccountDistributedInfoByLocalId_test0200
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by promise.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by promise.
+         *                   setOsAccountDistributedInfoByLocalId promise
+         */
+        it('setOsAccountDistributedInfoByLocalId_test0200', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                status: 0
+            };
+            accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
+                accountAbility.getOsAccountDistributedInfoByLocalId(100, (err, data) => {
+                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 get_err:" + JSON.stringify(err))
+                    console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF',
+                        status: 0
+                    };
+                    console.debug("====>start LOGOFF")
+                    accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
+                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0200 end')
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>setOsAccountDistributedInfoByLocalId_test0200 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
+                });
+            }).catch((err) => {
+                console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 throw_err:" + JSON.stringify(err))
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number     DistributedAccountEnum_0100
+         * @tc.name       Test distributedAccount.DistributedAccountStatus.NOT_LOGGED_IN.
+         * @tc.desc       Test distributedAccount Enum.
+         */
+        it('DistributedAccountEnum_0100', 0, async function (done) {
+            try {
+                expect(0).assertEqual(account.DistributedAccountStatus.NOT_LOGGED_IN)
+                console.debug("====>DistributedAccountEnum_0100 success:")
+                done()
+            } catch (err) {
+                console.debug("====>DistributedAccountEnum_0100 throw_err:" + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     DistributedAccountEnum_0200
+         * @tc.name       Test distributedAccount.DistributedAccountStatus.LOGGED_IN.
+         * @tc.desc       Test distributedAccount Enum.
+         */
+        it('DistributedAccountEnum_0200', 0, async function (done) {
+            try {
+                expect(1).assertEqual(account.DistributedAccountStatus.LOGGED_IN)
+                console.debug("====>DistributedAccountEnum_0200 success:")
+                done()
+            } catch (err) {
+                console.debug("====>DistributedAccountEnum_0200 throw_err:" + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0100
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
+         *                    OptionalParameter
+         */
+        it('DistributedAccountOptionalParameter_0100', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:undefined,
+                nickname:undefined,
+                avatar:undefined,
+                status:undefined
+            };
+            accountAbility.setOsAccountDistributedInfo(obj, (err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0100 set_err:" + JSON.stringify(err))
+                accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
+                    console.debug("====>DistributedAccountOptionalParameter_0100 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0100 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    try{
+                        await accountAbility.setOsAccountDistributedInfo(obj)
+                        console.debug('====>DistributedAccountOptionalParameter_0100 end')
+                        done();
+                    }catch(err){
+                        console.debug('====>DistributedAccountOptionalParameter_0100 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    }
+                });
+            });
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0200
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by promise.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by promise.
+         *                   OptionalParameter
+         */
+        it('DistributedAccountOptionalParameter_0200', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:undefined,
+                nickname:undefined,
+                avatar:undefined,
+                status:undefined
+            };
+            accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+                accountAbility.getOsAccountDistributedInfo((err, data) => {
+                    console.debug("====>DistributedAccountOptionalParameter_0200 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0200 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF',
+                    };
+                    console.debug("====>start LOGOFF")
+                    accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+                        console.debug('====>DistributedAccountOptionalParameter_0200 end')
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>DistributedAccountOptionalParameter_0200 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
+                });
+            }).catch((err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0200 throw_err:" + JSON.stringify(err))
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0300
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
+         *                    OptionalParameter
+         */
+        it('DistributedAccountOptionalParameter_0300', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:null,
+                nickname:null,
+                avatar:null,
+                status:null
+            };
+            accountAbility.setOsAccountDistributedInfo(obj, (err) => {
+                console.debug("====>setOsAccountDistributedInfo_test017 set_err:" + JSON.stringify(err))
+                accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
+                    console.debug("====>DistributedAccountOptionalParameter_0300 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0300 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    try{
+                        await accountAbility.setOsAccountDistributedInfo(obj)
+                        console.debug('====>DistributedAccountOptionalParameter_0300 end')
+                        done();
+                    }catch(err){
+                        console.debug('====>DistributedAccountOptionalParameter_0300 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    }
+                });
+            });
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0400
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by promise.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by promise.
+         *                   OptionalParameter
+         */
+        it('DistributedAccountOptionalParameter_0400', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:null,
+                nickname:null,
+                avatar:null,
+                status:null
+            };
+            accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+                accountAbility.getOsAccountDistributedInfo((err, data) => {
+                    console.debug("====>DistributedAccountOptionalParameter_0400 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0400 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF',
+                    };
+                    console.debug("====>start LOGOFF")
+                    accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+                        console.debug('====>DistributedAccountOptionalParameter_0400 end')
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>DistributedAccountOptionalParameter_0400 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
+                });
+            }).catch((err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0400 throw_err:" + JSON.stringify(err))
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0500
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
+         *                    OptionalParameter
+         */
+        it('DistributedAccountOptionalParameter_0500', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN'
+            };
+            accountAbility.setOsAccountDistributedInfo(obj, (err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0500 set_err:" + JSON.stringify(err))
+                accountAbility.getOsAccountDistributedInfo(async (err, data) =>{
+                    console.debug("====>DistributedAccountOptionalParameter_0500 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0500 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    try{
+                        await accountAbility.setOsAccountDistributedInfo(obj)
+                        console.debug('====>DistributedAccountOptionalParameter_0500 end')
+                        done();
+                    }catch(err){
+                        console.debug('====>DistributedAccountOptionalParameter_0500 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    }
+                });
+            });
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0600
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by promise.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by promise.
+         *                   OptionalParameter
+         */
+        it('DistributedAccountOptionalParameter_0600', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN'
+            };
+            accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+                accountAbility.getOsAccountDistributedInfo((err, data) => {
+                    console.debug("====>DistributedAccountOptionalParameter_0600 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0600 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF',
+                    };
+                    console.debug("====>start LOGOFF")
+                    accountAbility.setOsAccountDistributedInfo(obj).then(() => {
+                        console.debug('====>DistributedAccountOptionalParameter_0600 end')
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>DistributedAccountOptionalParameter_0600 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
+                });
+            }).catch((err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0600 throw_err:" + JSON.stringify(err))
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0700
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
+         *                    setOsAccountDistributedInfoByLocalId callback null OptionParameter
+         */
+        it('DistributedAccountOptionalParameter_0700', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:null,
+                nickname:null,
+                avatar:null,
+                status:null
+            };
+            accountAbility.setOsAccountDistributedInfoByLocalId(100, obj, (err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0700 set_err:" + JSON.stringify(err))
+                accountAbility.getOsAccountDistributedInfoByLocalId(100, async (err, data) =>{
+                    console.debug("====>DistributedAccountOptionalParameter_0700 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0700 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    try{
+                        await accountAbility.setOsAccountDistributedInfoByLocalId(100, obj)
+                        console.debug('====>DistributedAccountOptionalParameter_0700 end')
+                        done();
+                    }catch(err){
+                        console.debug('====>DistributedAccountOptionalParameter_0700 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    }
+                });
+            });
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0800
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by promise.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by promise.
+         *                   setOsAccountDistributedInfoByLocalId promise null OptionParameter
+         */
+        it('DistributedAccountOptionalParameter_0800', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:null,
+                nickname:null,
+                avatar:null,
+                status:null
+            };
+            accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
+                accountAbility.getOsAccountDistributedInfoByLocalId(100, (err, data) => {
+                    console.debug("====>DistributedAccountOptionalParameter_0800 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0800 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
+                        console.debug('====>DistributedAccountOptionalParameter_0800 end')
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>DistributedAccountOptionalParameter_0800 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
+                });
+            }).catch((err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0800 throw_err:" + JSON.stringify(err))
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_0900
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by callback.
+         *                    setOsAccountDistributedInfoByLocalId callback undefined OptionParameter
+         */
+        it('DistributedAccountOptionalParameter_0900', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:undefined,
+                nickname:undefined,
+                avatar:undefined,
+                status:undefined
+            };
+            accountAbility.setOsAccountDistributedInfoByLocalId(100, obj, (err) => {
+                console.debug("====>DistributedAccountOptionalParameter_0900 set_err:" + JSON.stringify(err))
+                accountAbility.getOsAccountDistributedInfoByLocalId(100, async (err, data) =>{
+                    console.debug("====>DistributedAccountOptionalParameter_0900 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_0900 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    try{
+                        await accountAbility.setOsAccountDistributedInfoByLocalId(100, obj)
+                        console.debug('====>DistributedAccountOptionalParameter_0900 end')
+                        done();
+                    }catch(err){
+                        console.debug('====>DistributedAccountOptionalParameter_0900 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    }
+                });
+            });
+        })
+
+        /**
+         * @tc.number     DistributedAccountOptionalParameter_1000
+         * @tc.name       Test distributedAccount.setOsAccountDistributedInfo by promise.
+         * @tc.desc       Test distributedAccount.setOsAccountDistributedInfo API functionality by promise.
+         *                   setOsAccountDistributedInfoByLocalId promise undefined OptionParameter
+         */
+        it('DistributedAccountOptionalParameter_1000', 0, async function (done) {
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:undefined,
+                nickname:undefined,
+                avatar:undefined,
+                status:undefined
+            };
+            accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
+                accountAbility.getOsAccountDistributedInfoByLocalId(100, (err, data) => {
+                    console.debug("====>DistributedAccountOptionalParameter_1000 get_err:" + JSON.stringify(err))
+                    console.debug("====>DistributedAccountOptionalParameter_1000 get_data:" + JSON.stringify(data))
+                    expect(data.name).assertEqual('ZhangSan')
+                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.status).assertEqual(1)
+                    let obj = {
+                        id: '12345',
+                        name: 'ZhangSan',
+                        event: 'Ohos.account.event.LOGOFF'
+                    };
+                    console.debug("====>start LOGOFF")
+                    accountAbility.setOsAccountDistributedInfoByLocalId(100, obj).then(() => {
+                        console.debug('====>DistributedAccountOptionalParameter_1000 end')
+                        done();
+                    }).catch((err) => {
+                        console.debug('====>DistributedAccountOptionalParameter_1000 err:' + JSON.stringify(err))
+                        expect().assertFail();
+                        done();
+                    })
+                });
+            }).catch((err) => {
+                console.debug("====>DistributedAccountOptionalParameter_1000 throw_err:" + JSON.stringify(err))
+                expect().assertFail();
+                done();
+            })
         })
     })
 }
