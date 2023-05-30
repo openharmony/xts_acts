@@ -284,7 +284,7 @@ export function setAVPlayerFunCb(src, avPlayer, playTest, playTime, done) {
                 completedCnt++;
                 expect(avPlayer.currentTime).assertEqual(avPlayer.duration);
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.COMPLETED);
-                if (completedCnt == 1) {
+                if (completedCnt == 1 && seekDoneCnt[0] < 5) {
                     // step 9: completed -> play
                     avPlayer.play();
                 } else {
