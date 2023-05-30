@@ -107,6 +107,10 @@ export default function CallManageImsCall() {
                     done();
                     return;
                 }
+                expect(call.CallState.CALL_STATE_UNKNOWN).assertEqual(-1);
+                expect(call.CallState.CALL_STATE_IDLE).assertEqual(0);
+                expect(call.CallState.CALL_STATE_RINGING).assertEqual(1);
+                expect(call.CallState.CALL_STATE_OFFHOOK).assertEqual(2);
                 console.log("Telephony_CallManager_getCallState_Async_0100 : data =" + JSON.stringify(data));
                 done();
             });

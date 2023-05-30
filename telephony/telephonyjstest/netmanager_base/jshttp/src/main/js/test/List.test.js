@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import Telephony_NETSTACK_HTTPTest from './NetworkManagerHttp.test.js';
-import Http2Test from './Http2Test.js';
-import HttpCacheTest from './HttpCacheTest.js';
-import HttpRequest2JsunitTest from './HttpRequest2JsunitTest.js';
+import Http2Test from './Http2Test.test.js';
+import HttpCacheTest from './HttpCacheTest.test.js';
+import HttpRequest2JsunitTest from './HttpRequest2JsunitTest.test.js';
 
 export default function testsuite() {
     HttpCacheTest();
