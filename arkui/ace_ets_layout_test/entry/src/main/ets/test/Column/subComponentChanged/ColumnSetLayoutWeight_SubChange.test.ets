@@ -65,9 +65,9 @@ export default function ColumnSetLayoutWeight_SubChange() {
       expect(Math.round(setLayoutWeight3.top - setLayoutWeight2.bottom)).assertEqual(vp2px(30))
       expect(setLayoutWeight.bottom).assertEqual(setLayoutWeight3.bottom)
 
-      expect(Math.round(setLayoutWeight1.bottom - setLayoutWeight1.top)).assertEqual(vp2px(510/3))
-      expect(Math.round(setLayoutWeight2.bottom - setLayoutWeight2.top)).assertEqual(vp2px(340/3))
-      expect(Math.round(setLayoutWeight3.bottom - setLayoutWeight3.top)).assertEqual(vp2px(170/3))
+      expect(Math.round(setLayoutWeight1.bottom - setLayoutWeight1.top)).assertEqual(Math.round(vp2px(510/3)))
+      expect(Math.round(setLayoutWeight2.bottom - setLayoutWeight2.top)).assertEqual(Math.round(vp2px(340/3)))
+      expect(Math.round(setLayoutWeight3.bottom - setLayoutWeight3.top)).assertEqual(Math.round(vp2px(170/3)))
       console.info('new testColumnSetLayoutWeightWithRateThreeTwoOne END');
       done();
     });
