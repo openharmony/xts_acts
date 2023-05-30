@@ -732,6 +732,15 @@ struct SliderTest {
               value: this.inSetValueOne,
               min: 0,
               max: 100,
+              style: SliderStyle.OutSet
+            })
+              .key('ArkUX_Stage_Slider_blockSizeOutSet_1400')
+          }
+          ListItem() {
+            Slider({
+              value: this.inSetValueOne,
+              min: 0,
+              max: 100,
               style: SliderStyle.InSet
             })
               .key('ArkUX_Stage_Slider_blockSize_1500')
