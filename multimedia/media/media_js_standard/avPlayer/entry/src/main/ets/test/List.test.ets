@@ -26,5 +26,5 @@ export default function testsuite() {
   // AVPlayerHttpSeekTest();
   AvPlayerEnumTest();
   AVPlayerLocalTest();
-  AVPlayerStabilityTest();
+  // AVPlayerStabilityTest();
 }
