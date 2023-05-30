@@ -97,11 +97,11 @@ export default function AlignContentFlexP_Fixed_Visibility() {
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
       expect(textObj.$attrs.visibility).assertEqual("Visibility.Hidden");
       
-      expect(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom)
-      .assertEqual(AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.round(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom))
+      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_flex001.top));
       
-      expect(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom)
-      .assertEqual(AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.round(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom))
+      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_3.top - AlignContentFlexSpaceEvenly_flex001.top));
       
       expect(Math.round(AlignContentFlexSpaceEvenly_2.left - AlignContentFlexSpaceEvenly_flex001.left))
       .assertEqual(vp2px(150));

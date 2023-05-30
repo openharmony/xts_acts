@@ -111,9 +111,9 @@ export default function flexExceed_StretchJsunit() {
       expect(Math.round(textExceed01.bottom - textExceed01.top)).assertEqual(vp2px(140))
       expect(Math.round(textExceed02.bottom - textExceed02.top)).assertEqual(vp2px(140))
       expect(Math.round(textExceed03.bottom - textExceed03.top)).assertEqual(vp2px(140))
-      expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(vp2px(440/3))
+      expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchSetMarPadExceed END');
