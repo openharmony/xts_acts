@@ -131,7 +131,7 @@ export default function marqueeJsunit() {
       let strJson = getInspectorByKey('marquee');
       let obj = JSON.parse(strJson);
       // to confirm
-      expect(parseInt(obj.$attrs.step)).assertEqual(6);
+      expect(parseInt(obj.$attrs.step)).assertEqual(vp2px(6));
       done();
    });
   
