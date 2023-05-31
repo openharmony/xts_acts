@@ -16,13 +16,13 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "UDMFtest:UDMFtest",
       "dataObjectjstest/hap:dataObject_js_test",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",
       "kvStoretest:kvStoretest",
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",
-      "UDMFtest:UDMFtest",
     ]
   } else {
     deps = [
