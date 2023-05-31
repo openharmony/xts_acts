@@ -22,6 +22,7 @@ group("distributeddatamgr") {
       "kvStoretest:kvStoretest",
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",
+      "UDMFtest:UDMFtest",
     ]
   } else {
     deps = [
