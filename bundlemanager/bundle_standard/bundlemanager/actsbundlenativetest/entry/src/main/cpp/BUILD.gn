@@ -38,13 +38,9 @@ ohos_shared_library("bundlendk") {
   include_dirs = [ "./" ]
   configs = [ ":config" ]
 
-  external_deps = [
-    "napi:ace_napi"
-  ]
+  external_deps = [ "napi:ace_napi" ]
 
-  deps = [
-    "../../../../../../../../../../../foundation/bundlemanager/bundle_framework/interfaces/kits/native/bundle:bundle_ndk",
-  ]
+  deps = [ "../../../../../../../../../../../foundation/bundlemanager/bundle_framework/interfaces/kits/native/bundle:bundle_ndk" ]
 
   output_extension = "so"
 }
