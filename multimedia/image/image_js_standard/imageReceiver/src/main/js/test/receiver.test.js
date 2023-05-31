@@ -255,7 +255,6 @@ export default function ImageReceiver() {
                 done();
                 return;
             }
-            globalreceiver = receiver;
             var error = receiver.checkDeviceTest;
             if (DEVICE_CODE == error) {
                 expect(error == DEVICE_CODE).assertTrue();
