@@ -110,9 +110,9 @@ export default function flexTextMargin_StretchJsunit() {
       expect(Math.round(textMargin01.bottom - textMargin01.top)).assertEqual(vp2px(140))
       expect(Math.round(textMargin02.bottom - textMargin02.top)).assertEqual(vp2px(200))
       expect(Math.round(textMargin03.bottom - textMargin03.top)).assertEqual(vp2px(200))
-      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(vp2px(440/3))
+      expect(Math.round(textMargin01.right - textMargin01.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textMargin02.right - textMargin02.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textMargin03.right - textMargin03.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchSubSetMarginExceed END');

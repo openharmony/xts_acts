@@ -110,9 +110,9 @@ export default function flexPadding_StartJsunit() {
       expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50))
       expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100))
       expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(vp2px(440/3))
+      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Start')
       console.info('new testFlexItemAlignStartParentSetPaddingExceed END');

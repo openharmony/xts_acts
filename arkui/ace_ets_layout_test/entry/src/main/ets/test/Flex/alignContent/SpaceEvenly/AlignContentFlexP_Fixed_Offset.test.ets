@@ -102,8 +102,8 @@ export default function AlignContentFlexP_Fixed_Offset() {
       expect(Math.round(AlignContentFlexSpaceEvenly_2.left - AlignContentFlexSpaceEvenly_flex001.left))
       .assertEqual(vp2px(150));
       
-      expect(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom)
-      .assertEqual(vp2px(50/3));
+      expect(Math.round(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom))
+      .assertEqual(Math.round(vp2px(50/3)));
       
       expect(Math.round((AlignContentFlexSpaceEvenly_1.right - AlignContentFlexSpaceEvenly_2.left)*10)/10)
       .assertEqual(vp2px(15));
@@ -111,11 +111,11 @@ export default function AlignContentFlexP_Fixed_Offset() {
       expect(Math.round(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_2.top))
       .assertEqual(vp2px(30));
       
-      expect(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom)
-      .assertEqual(AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.round(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom))
+      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top));
       
-      expect(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom)
-      .assertEqual(AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.round(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom))
+      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_2.top - AlignContentFlexSpaceEvenly_flex001.top));
         
       console.info('testAlignContentSpaceEvenlyFlexPfixedOffset END');
       done();
