@@ -19,7 +19,7 @@ struct PageTwo {
 
   build() {
     Row(){
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
         Text(`${this.content}`)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
