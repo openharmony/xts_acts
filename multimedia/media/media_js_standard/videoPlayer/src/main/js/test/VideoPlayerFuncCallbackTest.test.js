@@ -44,7 +44,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     const SETSPEED_EVENT = 'speed';
     const SETLOOP_EVENT = 'loop';
     const WAIT_EVENT = 'wait';
-    const ERROR_EVENT = 'error';
+    const ERROR_EVENT = 'errorEvent';
     const END_EVENT = 'end';
     const DELTA_TIME = 1000;
     const NEXT_FRAME_TIME = 8333;
@@ -471,6 +471,9 @@ describe('VideoPlayerFuncCallbackTest', function () {
         });
     });
 
+    eventEmitter.on(ERROR_EVENT, (videoPlayer, steps, done) => {
+        console.info('case wait for error')
+    });
     /* *
         * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_CALLBACK_SETSOURCE_0100
         * @tc.name      : 001.test setSorce '' (callback)
