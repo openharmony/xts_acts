@@ -353,14 +353,14 @@ struct Index {
                             this.mixedSwitch=true
                             this.mixedMode=MixedMode.None
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            this.controller.loadUrl({url:"https://mixed-script.badssl.com/"})
                             break;
                         }
                         case "emitMixedModeAll":{
                             this.mixedAllSwitch=true
                             this.mixedMode=MixedMode.All
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            this.controller.loadUrl({url:"https://mixed-script.badssl.com/"})
                             break;
                         }
                         case "emitFileAccessTrue":{
