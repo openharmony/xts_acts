@@ -256,14 +256,14 @@ export default function ActsBaseCallManagerTest() {
         it('Telephony_CallManager_formatPhoneNumber_Async_0700', 0, async function (done) {
             call.formatPhoneNumber('2000000000', {
                 countryCode: ''
-            }, (err) => {
+            }, (err,data) => {
                 if (err) {
                     console.log(`Telephony_CallManager_formatPhoneNumber_Async_0700 finish err = ${err.message}`);
                     done();
                     return;
                 }
-                expect().assertFail();
-                console.log('Telephony_CallManager_formatPhoneNumber_Async_0700 fail');
+                console.log('Telephony_CallManager_formatPhoneNumber_Async_0700 success');
+                expect(data === '20 0000 0000').assertTrue();
                 done();
             });
         });
@@ -402,8 +402,8 @@ export default function ActsBaseCallManagerTest() {
                 var data = await call.formatPhoneNumber('20000000', {
                     countryCode: ''
                 });
-                expect().assertFail();
-                console.log('Telephony_CallManager_formatPhoneNumber_Promise_0700 fail');
+                console.log('Telephony_CallManager_formatPhoneNumber_Promise_0700 success');
+                expect(data === '2000 0000').assertTrue();
                 done();
                 return;
             } catch (err) {
