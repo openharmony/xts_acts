@@ -308,7 +308,7 @@ export default function cameraEnumTest() {
             expect(camera.CameraErrorCode.SESSION_NOT_RUNNING == 7400104).assertTrue();
             expect(camera.CameraErrorCode.SESSION_CONFIG_LOCKED == 7400105).assertTrue();
             expect(camera.CameraErrorCode.DEVICE_SETTING_LOCKED == 7400106).assertTrue();
-            expect(camera.CameraErrorCode.CONFILICT_CAMERA == 7400107).assertTrue();
+            expect(camera.CameraErrorCode.CONFLICT_CAMERA == 7400107).assertTrue();
             expect(camera.CameraErrorCode.DEVICE_DISABLED == 7400108).assertTrue();
             expect(camera.CameraErrorCode.SERVICE_FATAL_ERROR == 7400201).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100 ends here");
