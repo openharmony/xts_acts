@@ -142,9 +142,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.show', done);
       });
       console.log(msgStr + 'tempWnd.show success');
-      await tempWnd.setWindowMode(102).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.setWindowMode 102', done);
-      });
       await tempWnd.resize(200, 600).catch(async (err) => {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -205,9 +202,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.show', done);
       });
       console.log(msgStr + 'tempWnd.show success');
-      await tempWnd.setWindowMode(102).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.setWindowMode 102', done);
-      });
       await tempWnd.resize(200, 600).catch(async (err) => {
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect().assertFail();
@@ -352,10 +346,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         name: windowId, windowType: ohosWindow.WindowType.TYPE_DESKTOP, ctx: context
       };
       let tempWnd = null;
-//      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-//        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
-//      });
-//      expect(!!tempWnd).assertTrue();
       tempWnd = await windowStage.createSubWindow('window_off_keyboardHeightChange_Test_001').catch((err) => {
         unexpectedError(err, caseName, 'windowStage.createSubWindow', done);
       });
@@ -363,13 +353,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.loadContent', done);
       });
-//      await tempWnd.resize(800, 800).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
-//      });
-//      await tempWnd.moveWindowTo(100, 100).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
-//      });
-      await tempWnd.setWindowMode(ohosWindow.WindowMode.FULLSCREEN).catch((err) => {
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setWindowMode', done);
       });
       await tempWnd.showWindow().catch((err) => {
@@ -432,9 +416,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         name: windowId, windowType: ohosWindow.WindowType.TYPE_DESKTOP, ctx: context
       };
       let tempWnd = null;
-//      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-//        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
-//      });
       tempWnd = await windowStage.createSubWindow('window_off_keyboardHeightChange_Test_002').catch((err) => {
         unexpectedError(err, caseName, 'windowStage.createSubWindow', done);
       });
@@ -442,13 +423,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.loadContent', done);
       });
-//      await tempWnd.resize(800, 800).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
-//      });
-//      await tempWnd.moveWindowTo(100, 100).catch((err) => {
-//        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
-//      });
-      await tempWnd.setWindowMode(ohosWindow.WindowMode.FULLSCREEN).catch((err) => {
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setWindowMode', done);
       });
       await tempWnd.showWindow().catch((err) => {
