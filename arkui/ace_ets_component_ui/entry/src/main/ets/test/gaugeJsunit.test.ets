@@ -55,7 +55,7 @@ export default function gaugeJsunit() {
        console.info('gaugeJsunit_0100 component obj startAngle is:' + obj.$attrs.colors);
        expect(obj.$attrs.startAngle).assertEqual('0.00');
        expect(obj.$attrs.endAngle).assertEqual('0.00');
-       expect(obj.$attrs.strokeWidth).assertEqual('4.00vp');
+       expect(obj.$attrs.strokeWidth).assertEqual('0.00vp');
        expect(obj.$attrs.value).assertEqual('30.00');
        expect(obj.$attrs.min).assertEqual('0.00');
        expect(obj.$attrs.max).assertEqual('100.00');
@@ -128,7 +128,7 @@ export default function gaugeJsunit() {
       console.info('gaugeJsunit_0400 component obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.startAngle).assertEqual('-30.00');
       expect(obj.$attrs.endAngle).assertEqual('450.00');
-      expect(obj.$attrs.strokeWidth).assertEqual('4.00vp');
+      expect(obj.$attrs.strokeWidth).assertEqual('-30.00vp');
       let colors = obj.$attrs.colors;
       console.info('gaugeJsunit_0400 component obj is: ' + colors);
       expect(colors).assertEqual('[["#FF317AF6",0.300000011920929],["#FF5BA854",0.300000011920929],["#FFE08C3A",0.40000000596046448],["#FF9A554B",0.40000000596046448]]');
