@@ -17,7 +17,7 @@ import prompt from '@ohos.prompt';
 
 @Entry
 @Component
-struct Screen {
+struct PinchTest {
   @State  myscale: number = 1
 
   build() {

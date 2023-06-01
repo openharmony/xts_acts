@@ -113,7 +113,7 @@ struct ScrollExample {
               }
             })
             .onClick(() => {
-              router.push({ uri: 'pages/screen' })
+              router.push({ uri: 'pages/pinch' })
             })
             .gesture(
               LongPressGesture({ repeat: false })
