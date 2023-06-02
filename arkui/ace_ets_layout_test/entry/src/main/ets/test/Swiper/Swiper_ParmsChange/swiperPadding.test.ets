@@ -67,7 +67,9 @@ export default function swiperPadding() {
       expect(swiperPadding.bottom - swiperPadding01.bottom).assertEqual(vp2px(20))
       // Page turning.
       let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
+      await CommonFunc.sleep(500);
+      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
+      //await driver.swipe(250, 230, 200, 230);
       await CommonFunc.sleep(1000);
       swiperPadding = CommonFunc.getComponentRect('swiperPadding');
       swiperPadding01 = CommonFunc.getComponentRect('swiperPadding01');

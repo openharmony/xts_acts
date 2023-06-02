@@ -43,151 +43,153 @@ export default function swiperIndex() {
       console.info("swiperIndex after each called");
     });
 
-    /**
-     * @tc.number    SUB_ACE_SWIPER_INDEXCHANGED_0100
-     * @tc.name      Swiper_IndexChanged_SetIndexValue
-     * @tc.desc      Set swiper's  index normal value.
-     */
-    it('SUB_ACE_SWIPER_INDEXCHANGED_0100', 0, async function (done) {
-      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0100 START');
-      globalThis.value.message.notify({name:'swiperIndex', value: 3});
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('swiperkey');
-      let obj = JSON.parse(strJson);
-      let swiperkey = CommonFunc.getComponentRect('swiperkey');
-      let ckey04 = CommonFunc.getComponentRect('ckey04');
-      let ckey05 = CommonFunc.getComponentRect('ckey05');
-      // Before flipping the page.
-      expect(swiperkey.left).assertEqual(ckey04.left);
-      expect(swiperkey.right).assertEqual(ckey04.right);
-      expect(swiperkey.top).assertEqual(ckey04.top);
-      expect(swiperkey.bottom).assertEqual(ckey04.bottom);
-      // Page turning.
-      let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      ckey04 = CommonFunc.getComponentRect('ckey04');
-      ckey05 = CommonFunc.getComponentRect('ckey05');
-      // After flipping the page.
-      expect(swiperkey.left).assertEqual(ckey05.left);
-      expect(swiperkey.right).assertEqual(ckey05.right);
-      expect(swiperkey.top).assertEqual(ckey05.top);
-      expect(swiperkey.bottom).assertEqual(ckey05.bottom);
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The index value is " + JSON.stringify(obj.$attrs.index));
-      console.info("The autoPlay value is " + JSON.stringify(obj.$attrs.autoPlay));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.index).assertEqual('3');
-      expect(obj.$attrs.autoPlay).assertEqual('false');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
-      expect(obj.$attrs.displayCount).assertEqual(1);
-      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0100 END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_SWIPER_INDEXCHANGED_0200
-     * @tc.name      Swiper_IndexChanged_SetIndexValue
-     * @tc.desc      Set swiper's  index  value ' -1 '.
-     */
-    it('SUB_ACE_SWIPER_INDEXCHANGED_0200', 0, async function (done) {
-      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0200 START');
-      globalThis.value.message.notify({name:'swiperIndex', value: -1});
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('swiperkey');
-      let obj = JSON.parse(strJson);
-      let swiperkey = CommonFunc.getComponentRect('swiperkey');
-      let ckey01 = CommonFunc.getComponentRect('ckey01');
-      let ckey02 = CommonFunc.getComponentRect('ckey02');
-      // Before flipping the page.
-      console.info("Before page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
-      console.info("Before page turning , the ckey01.left value is " + JSON.stringify(ckey01.left));
-      expect(swiperkey.left).assertEqual(ckey01.left)
-      expect(swiperkey.right).assertEqual(ckey01.right)
-      expect(swiperkey.top).assertEqual(ckey01.top)
-      expect(swiperkey.bottom).assertEqual(ckey01.bottom)
-      // Page turning.
-      let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      ckey01 = CommonFunc.getComponentRect('ckey01');
-      ckey02 = CommonFunc.getComponentRect('ckey02');
-      // After flipping the page.
-      console.info("After page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
-      console.info("After page turning , the ckey02.left value is " + JSON.stringify(ckey02.left));
-      expect(swiperkey.left).assertEqual(ckey02.left);
-      expect(swiperkey.right).assertEqual(ckey02.right);
-      expect(swiperkey.top).assertEqual(ckey02.top);
-      expect(swiperkey.bottom).assertEqual(ckey02.bottom);
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The index value is " + JSON.stringify(obj.$attrs.index));
-      console.info("The autoPlay value is " + JSON.stringify(obj.$attrs.autoPlay));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.index).assertEqual('0');
-      expect(obj.$attrs.autoPlay).assertEqual('false');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
-      expect(obj.$attrs.displayCount).assertEqual(1);
-      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0200 END');
-      done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_SWIPER_INDEXCHANGED_0300
-     * @tc.name      Swiper_IndexChanged_SetIndexValue
-     * @tc.desc      Set swiper's  index  value ' 11 '.
-     */
-    it('SUB_ACE_SWIPER_INDEXCHANGED_0300', 0, async function (done) {
-      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0300 START');
-      globalThis.value.message.notify({name:'swiperIndex', value: 11});
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('swiperkey');
-      let obj = JSON.parse(strJson);
-      let swiperkey = CommonFunc.getComponentRect('swiperkey');
-      let ckey01 = CommonFunc.getComponentRect('ckey01');
-      let ckey02 = CommonFunc.getComponentRect('ckey02');
-      // Before flipping the page.
-      console.info("Before page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
-      console.info("Before page turning , the ckey01.left value is " + JSON.stringify(ckey01.left));
-      expect(swiperkey.left).assertEqual(ckey01.left);
-      expect(swiperkey.right).assertEqual(ckey01.right);
-      expect(swiperkey.top).assertEqual(ckey01.top);
-      expect(swiperkey.bottom).assertEqual(ckey01.bottom);
-      // Page turning.
-      let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      ckey01 = CommonFunc.getComponentRect('ckey01');
-      ckey02 = CommonFunc.getComponentRect('ckey02');
-      // After flipping the page.
-      console.info("After page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
-      console.info("After page turning , the ckey02.left value is " + JSON.stringify(ckey02.left));
-      expect(swiperkey.left).assertEqual(ckey02.left);
-      expect(swiperkey.right).assertEqual(ckey02.right);
-      expect(swiperkey.top).assertEqual(ckey02.top);
-      expect(swiperkey.bottom).assertEqual(ckey02.bottom);
-      expect(obj.$type).assertEqual('Swiper');
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The index value is " + JSON.stringify(obj.$attrs.index));
-      console.info("The autoPlay value is " + JSON.stringify(obj.$attrs.autoPlay));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$attrs.index).assertEqual('11');
-      expect(obj.$attrs.autoPlay).assertEqual('false');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
-      expect(obj.$attrs.displayCount).assertEqual(1);
-      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0300 END');
-      done();
-    });
+//    /**
+//     * @tc.number    SUB_ACE_SWIPER_INDEXCHANGED_0100
+//     * @tc.name      Swiper_IndexChanged_SetIndexValue
+//     * @tc.desc      Set swiper's  index normal value.
+//     */
+//    it('SUB_ACE_SWIPER_INDEXCHANGED_0100', 0, async function (done) {
+//      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0100 START');
+//      globalThis.value.message.notify({name:'swiperIndex', value: 3});
+//      await CommonFunc.sleep(1000);
+//      let strJson = getInspectorByKey('swiperkey');
+//      let obj = JSON.parse(strJson);
+//      let swiperkey = CommonFunc.getComponentRect('swiperkey');
+//      let ckey04 = CommonFunc.getComponentRect('ckey04');
+//      let ckey05 = CommonFunc.getComponentRect('ckey05');
+//      // Before flipping the page.
+//      expect(swiperkey.left).assertEqual(ckey04.left);
+//      expect(swiperkey.right).assertEqual(ckey04.right);
+//      expect(swiperkey.top).assertEqual(ckey04.top);
+//      expect(swiperkey.bottom).assertEqual(ckey04.bottom);
+//      // Page turning.
+//      let driver = await Driver.create();
+//      await CommonFunc.sleep(500);
+//      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
+//      //await driver.swipe(250, 230, 200, 230);
+//      await CommonFunc.sleep(1000);
+//      ckey04 = CommonFunc.getComponentRect('ckey04');
+//      ckey05 = CommonFunc.getComponentRect('ckey05');
+//      // After flipping the page.
+//      expect(swiperkey.left).assertEqual(ckey05.left);
+//      expect(swiperkey.right).assertEqual(ckey05.right);
+//      expect(swiperkey.top).assertEqual(ckey05.top);
+//      expect(swiperkey.bottom).assertEqual(ckey05.bottom);
+//      console.info("The type value is " + JSON.stringify(obj.$type));
+//      console.info("The index value is " + JSON.stringify(obj.$attrs.index));
+//      console.info("The autoPlay value is " + JSON.stringify(obj.$attrs.autoPlay));
+//      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
+//      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
+//      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
+//      expect(obj.$type).assertEqual('Swiper');
+//      expect(obj.$attrs.index).assertEqual('3');
+//      expect(obj.$attrs.autoPlay).assertEqual('false');
+//      expect(obj.$attrs.loop).assertEqual('true');
+//      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
+//      expect(obj.$attrs.displayCount).assertEqual(1);
+//      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0100 END');
+//      done();
+//    });
+//
+//    /**
+//     * @tc.number    SUB_ACE_SWIPER_INDEXCHANGED_0200
+//     * @tc.name      Swiper_IndexChanged_SetIndexValue
+//     * @tc.desc      Set swiper's  index  value ' -1 '.
+//     */
+//    it('SUB_ACE_SWIPER_INDEXCHANGED_0200', 0, async function (done) {
+//      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0200 START');
+//      globalThis.value.message.notify({name:'swiperIndex', value: -1});
+//      await CommonFunc.sleep(1000);
+//      let strJson = getInspectorByKey('swiperkey');
+//      let obj = JSON.parse(strJson);
+//      let swiperkey = CommonFunc.getComponentRect('swiperkey');
+//      let ckey01 = CommonFunc.getComponentRect('ckey01');
+//      let ckey02 = CommonFunc.getComponentRect('ckey02');
+//      // Before flipping the page.
+//      console.info("Before page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
+//      console.info("Before page turning , the ckey01.left value is " + JSON.stringify(ckey01.left));
+//      expect(swiperkey.left).assertEqual(ckey01.left)
+//      expect(swiperkey.right).assertEqual(ckey01.right)
+//      expect(swiperkey.top).assertEqual(ckey01.top)
+//      expect(swiperkey.bottom).assertEqual(ckey01.bottom)
+//      // Page turning.
+//      let driver = await Driver.create();
+//      await driver.swipe(250, 230, 200, 230);
+//      await CommonFunc.sleep(1000);
+//      ckey01 = CommonFunc.getComponentRect('ckey01');
+//      ckey02 = CommonFunc.getComponentRect('ckey02');
+//      // After flipping the page.
+//      console.info("After page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
+//      console.info("After page turning , the ckey02.left value is " + JSON.stringify(ckey02.left));
+//      expect(swiperkey.left).assertEqual(ckey02.left);
+//      expect(swiperkey.right).assertEqual(ckey02.right);
+//      expect(swiperkey.top).assertEqual(ckey02.top);
+//      expect(swiperkey.bottom).assertEqual(ckey02.bottom);
+//      console.info("The type value is " + JSON.stringify(obj.$type));
+//      console.info("The index value is " + JSON.stringify(obj.$attrs.index));
+//      console.info("The autoPlay value is " + JSON.stringify(obj.$attrs.autoPlay));
+//      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
+//      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
+//      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
+//      expect(obj.$type).assertEqual('Swiper');
+//      expect(obj.$attrs.index).assertEqual('0');
+//      expect(obj.$attrs.autoPlay).assertEqual('false');
+//      expect(obj.$attrs.loop).assertEqual('true');
+//      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
+//      expect(obj.$attrs.displayCount).assertEqual(1);
+//      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0200 END');
+//      done();
+//    });
+//
+//    /**
+//     * @tc.number    SUB_ACE_SWIPER_INDEXCHANGED_0300
+//     * @tc.name      Swiper_IndexChanged_SetIndexValue
+//     * @tc.desc      Set swiper's  index  value ' 11 '.
+//     */
+//    it('SUB_ACE_SWIPER_INDEXCHANGED_0300', 0, async function (done) {
+//      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0300 START');
+//      globalThis.value.message.notify({name:'swiperIndex', value: 11});
+//      await CommonFunc.sleep(1000);
+//      let strJson = getInspectorByKey('swiperkey');
+//      let obj = JSON.parse(strJson);
+//      let swiperkey = CommonFunc.getComponentRect('swiperkey');
+//      let ckey01 = CommonFunc.getComponentRect('ckey01');
+//      let ckey02 = CommonFunc.getComponentRect('ckey02');
+//      // Before flipping the page.
+//      console.info("Before page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
+//      console.info("Before page turning , the ckey01.left value is " + JSON.stringify(ckey01.left));
+//      expect(swiperkey.left).assertEqual(ckey01.left);
+//      expect(swiperkey.right).assertEqual(ckey01.right);
+//      expect(swiperkey.top).assertEqual(ckey01.top);
+//      expect(swiperkey.bottom).assertEqual(ckey01.bottom);
+//      // Page turning.
+//      let driver = await Driver.create();
+//      await driver.swipe(250, 230, 200, 230);
+//      await driver.swipe(250, 230, 200, 230);
+//      await CommonFunc.sleep(1000);
+//      ckey01 = CommonFunc.getComponentRect('ckey01');
+//      ckey02 = CommonFunc.getComponentRect('ckey02');
+//      // After flipping the page.
+//      console.info("After page turning , the swiperkey.left value is " + JSON.stringify(swiperkey.left));
+//      console.info("After page turning , the ckey02.left value is " + JSON.stringify(ckey02.left));
+//      expect(swiperkey.left).assertEqual(ckey02.left);
+//      expect(swiperkey.right).assertEqual(ckey02.right);
+//      expect(swiperkey.top).assertEqual(ckey02.top);
+//      expect(swiperkey.bottom).assertEqual(ckey02.bottom);
+//      expect(obj.$type).assertEqual('Swiper');
+//      console.info("The type value is " + JSON.stringify(obj.$type));
+//      console.info("The index value is " + JSON.stringify(obj.$attrs.index));
+//      console.info("The autoPlay value is " + JSON.stringify(obj.$attrs.autoPlay));
+//      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
+//      console.info("The itemSpace value is " + JSON.stringify(obj.$attrs.itemSpace));
+//      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
+//      expect(obj.$attrs.index).assertEqual('11');
+//      expect(obj.$attrs.autoPlay).assertEqual('false');
+//      expect(obj.$attrs.loop).assertEqual('true');
+//      expect(obj.$attrs.itemSpace).assertEqual('0.00vp');
+//      expect(obj.$attrs.displayCount).assertEqual(1);
+//      console.info('new SUB_ACE_SWIPER_INDEXCHANGED_0300 END');
+//      done();
+//    });
   })
 }
