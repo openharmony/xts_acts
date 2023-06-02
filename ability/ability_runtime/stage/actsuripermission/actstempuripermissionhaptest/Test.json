@@ -13,7 +13,6 @@
             "test-file-name": [
                 "ActsTempUriPermissionHapTest.hap",
                 "ActsAssistantHap.hap",
-                "ActsAssistantHap2.hap",
                 "ActsAssistantHap4.hap",
                 "ActsFaSupportUri.hap"
             ],

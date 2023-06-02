@@ -19,7 +19,6 @@ group("ActsUriPermission") {
     deps = [
       "actsassistanthap:ActsAssistantHap",
       "actsassistanthap:ActsAssistantHap4",
-      "actsassistanthap2:ActsAssistantHap2",
       "actsfasupporturi:ActsFaSupportUri",
       "actstempuripermissionhaptest:ActsTempUriPermissionHapTest",
     ]
