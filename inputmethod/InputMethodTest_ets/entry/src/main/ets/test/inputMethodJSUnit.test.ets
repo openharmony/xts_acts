@@ -194,5 +194,54 @@ export default function inputMethodJSUnit() {
         }
       });
     });
+
+    /*
+     * @tc.number  inputmethod_test_getInputMethods_003
+     * @tc.name    param enable :
+     *             if true, collect enabled input methods.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_getInputMethods_003', 0, async function (done) {
+      let inputMethodSetting = inputMethod.getInputMethodSetting();
+      console.info("====>inputmethod_test_getInputMethods_003 result:" + JSON.stringify(inputMethodSetting));
+      try {
+        let setting = await inputMethodSetting.getInputMethods(true);
+        console.info("inputmethod_test_getInputMethods_003 success because: " + setting);
+        expect(typeof(setting) === 'object').assertTrue();
+        done();
+        console.info("====>************* inputmethod_test_getInputMethods_003 Test end*************");
+        done();
+      } catch (err) {
+        console.info("inputmethod_test_getInputMethods_003 catch error: " + err);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  inputmethod_test_getInputMethods_004
+     * @tc.name    param enable :
+     *             if false, collect disabled input methods.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_getInputMethods_004', 0, async function (done) {
+      let inputMethodSetting = inputMethod.getInputMethodSetting();
+      console.info("====>inputmethod_test_getInputMethods_004 result:" + JSON.stringify(inputMethodSetting));
+      try {
+        let setting = await inputMethodSetting.getInputMethods(false);
+        console.info("inputmethod_test_getInputMethods_004 success because: " + setting);
+        expect(typeof(setting) === 'object').assertTrue();
+        done();
+        console.info("====>************* inputmethod_test_getInputMethods_004 Test end*************");
+        done();
+      } catch (err) {
+        console.info("inputmethod_test_getInputMethods_004 catch error: " + err);
+        expect().assertFail();
+        done();
+      }
+    });
+
   });
 };

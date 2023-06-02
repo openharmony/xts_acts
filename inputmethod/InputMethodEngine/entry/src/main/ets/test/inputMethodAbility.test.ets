@@ -42,6 +42,7 @@ export default function inputMethodAbility() {
     let getFocusCmd = '';
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
     let inputMethodController = inputMethod.getController();
+    let inputDemoService: subtype;
     async function runCmd(cmd){
       console.debug('====>runCmd info:' + cmd);
       await abilityDelegator.executeShellCommand(cmd);
@@ -276,6 +277,22 @@ export default function inputMethodAbility() {
       let keyType = inputMethodEngine.OPTION_NO_FULLSCREEN;
       console.info("====>inputMethodEngine_test_026 result:" + keyType);
       expect(keyType).assertEqual(10);
+      done();
+    });
+
+    it('Sub_Misc_inputMethodEngine_ExtendAction_0100', 0, async function (done) {
+      let select_all = inputMethodEngine.ExtendAction.SELECT_ALL;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 select_all:" + select_all);
+      expect(select_all).assertEqual(0);
+      let cut = inputMethodEngine.ExtendAction.CUT;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 cut:" + cut);
+      expect(cut).assertEqual(3);
+      let copy = inputMethodEngine.ExtendAction.COPY;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 copy:" + copy);
+      expect(copy).assertEqual(4);
+      let paste = inputMethodEngine.ExtendAction.PASTE;
+      console.info("====>Sub_Misc_inputMethodEngine_ExtendAction_0100 paste:" + paste);
+      expect(paste).assertEqual(5);
       done();
     });
 
@@ -2469,8 +2486,9 @@ export default function inputMethodAbility() {
 
     it('Sub_Misc_inputMethod_onImeChange_0150', 0, async function (done) {
       let inputMethodSetting = inputMethod.getSetting();
-      inputMethodSetting.on("imeChange", (inputMethodProperty, inputMethodSubtype) => {
+      inputMethodSetting.on("imeChange", async (inputMethodProperty, inputMethodSubtype) => {
         inputMethodSetting.off("imeChange");
+        await inputMethod.switchInputMethod(inputServerCopy);
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodProperty:" + JSON.stringify(inputMethodProperty));
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodSubtype:" + JSON.stringify(inputMethodSubtype));
         expect(typeof(inputMethodProperty) !== null).assertTrue();
@@ -2480,7 +2498,6 @@ export default function inputMethodAbility() {
       try {
         await inputMethod.switchInputMethod(inputServer);
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150  switchInputMethod success" + JSON.stringify(inputServer));
-        await inputMethod.switchInputMethod(inputServerCopy);
       } catch (err) {
         console.info("====>Sub_Misc_inputMethod_onImeChange_0150 switchInputMethod fail" + JSON.stringify(err));
       }
@@ -2517,6 +2534,61 @@ export default function inputMethodAbility() {
         done();
       },500);
     });
+
+    it('inputMethodAbility_test_091', 0, async function (done) {
+          let flag = true;
+          function unSubscriberCallback (err){
+            console.info("====>inputMethodAbility_test_091 unSubscriberCallback start");
+            if (err){
+              console.info("====>inputMethodAbility_test_091 unSubscriberCallback failed:" +
+              JSON.stringify(err));
+            } else {
+              console.info("====>inputMethodAbility_test_091 unSubscriberCallback finish");
+            }
+          }
+
+          function subscriberCallback (err, data){
+            console.info("====>inputMethodAbility_test_091 subscriberCallback data:" + JSON.stringify(data));
+            commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+            flag = false;
+          }
+
+          function publishCallback(err){
+            console.info("====>inputMethodAbility_test_091 publishCallback start");
+            if (err){
+              console.info("====>inputMethodAbility_test_091 publishCallback failed:" + JSON.stringify(err));
+            } else {
+              let t = setTimeout(async () => {
+                await inputMethod.switchInputMethod(inputServer);
+                console.info("====>inputMethodAbility_test_091 setTimeout first");
+                let t1 = setTimeout(async () => {
+                  done();
+                  console.info("====>inputMethodAbility_test_091 setTimeout second: " + flag);
+                  expect(flag).assertTrue();
+                  clearTimeout(t1);
+                  await inputMethod.switchCurrentInputMethodSubtype(inputDemoService);
+                },1000)
+                clearTimeout(t);
+              }, 1000)
+            }
+          }
+
+          var commonEventSubscribeInfo = {
+            events: ["inputMethodAbility_test_091"]
+          }
+          var subscriber;
+          commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+            subscriber = data;
+            console.info("====>inputMethodAbility_test_091 subscriber data:" + JSON.stringify(data));
+            commonEventManager.subscribe(subscriber, subscriberCallback);
+            console.info("====>inputMethodAbility_test_091 subscriber finish");
+          })
+
+          var commonEventPublishData = {
+            code: 91
+          }
+          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        });
 
   });
 };

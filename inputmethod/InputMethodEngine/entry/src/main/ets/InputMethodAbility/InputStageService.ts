@@ -25,5 +25,6 @@ export default class InputDemoService extends InputMethodExtensionAbility {
 
   onDestroy() {
     console.log("onDestroy inputStageService**");
+    this.keyboardDelegate.onDestroy();
   }
 }

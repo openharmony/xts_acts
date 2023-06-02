@@ -140,6 +140,30 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_onHide_0180 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_onHide_0180();
                     break;
+                case 190:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_offShow_0190 event:' + data.event);
+                    that.Sub_Misc_inputMethod_Panel_offShow_0190();
+                    break;
+                case 200:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_offHide_0200 event:' + data.event);
+                    that.Sub_Misc_inputMethod_Panel_offHide_0200();
+                    break;
+                case 201:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_onImeShow_0201 event:' + data.event);
+                    that.Sub_Misc_inputMethod_onImeShow_0201();
+                    break;
+                case 202:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_onImeHide_0202 event:' + data.event);
+                    that.Sub_Misc_inputMethod_onImeHide_0202();
+                    break;
+                case 203:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_offImeShow_0203 event:' + data.event);
+                    that.Sub_Misc_inputMethod_offImeShow_0203();
+                    break;
+                case 204:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_offImeHide_0204 event:' + data.event);
+                    that.Sub_Misc_inputMethod_offImeHide_0204();
+                    break;
                 case 210:
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_changeFlag_0210 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_changeFlag_0210();
@@ -787,6 +811,191 @@ export class KeyboardController {
             };
             console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_onHide_0180 catch error: ' + JSON.stringify(error));
             commoneventmanager.publish("Sub_Misc_inputMethod_Panel_onHide_0180", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private  Sub_Misc_inputMethod_Panel_offShow_0190(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        let count  = 0;
+        let timeCount  = 0;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                this.softKeyboardPanel.on("show", async (err, data) => {
+                    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 offShow if success: ' + JSON.stringify(err));
+                    this.softKeyboardPanel.off("show");
+                    count += 1;
+                    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 off Show count: ' + count);
+                });
+                let t1 = setInterval(async () => {
+                    await this.softKeyboardPanel.show();
+                    await this.softKeyboardPanel.hide();
+                    timeCount += 1;
+                    console.info(TAG + '====>this.softKeyboardPanel.show setInterval timeCount: ' +  timeCount);
+                    if(timeCount === 2){
+                        clearInterval(t1);
+                    }
+                },100);
+
+                let t2 = setTimeout(() => {
+                    console.info(TAG + '====>setTimeout count: ' +  count);
+                    if(count === 1){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                    commoneventmanager.publish("Sub_Misc_inputMethod_Panel_offShow_0190", commonEventPublishData, this.publishCallback);
+                    clearTimeout(t2);
+                },500);
+
+            }else{
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 this.softKeyboardPanel is null');
+                commoneventmanager.publish("Sub_Misc_inputMethod_Panel_offShow_0190", commonEventPublishData, this.publishCallback);
+            }
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offShow_0190 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_Panel_offShow_0190", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private Sub_Misc_inputMethod_Panel_offHide_0200(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        let count  = 0;
+        let timeCount  = 0;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                this.softKeyboardPanel.on("hide", async (err, data) => {
+                    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 offHide if success: ' + JSON.stringify(err));
+                    this.softKeyboardPanel.off("hide");
+                    count += 1;
+                    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 off hide count: ' + count);
+                });
+
+                let t1 = setInterval(async () => {;
+                    await this.softKeyboardPanel.show();
+                    await this.softKeyboardPanel.hide();
+                    timeCount += 1;
+                    console.info(TAG + '====>this.softKeyboardPanel.hide setInterval timeCount: ' +  timeCount);
+                    if(timeCount === 2){
+                        clearInterval(t1);
+                    }
+                },100);
+
+                let t2 = setTimeout(() => {
+                    console.info(TAG + '====>setTimeout count: ' +  count);
+                    if(count === 1){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                    commoneventmanager.publish("Sub_Misc_inputMethod_Panel_offHide_0200", commonEventPublishData, this.publishCallback);
+                    clearTimeout(t2);
+                },500);
+
+            }else{
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 this.softKeyboardPanel is null');
+                commoneventmanager.publish("Sub_Misc_inputMethod_Panel_offHide_0200", commonEventPublishData, this.publishCallback);
+            }
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_offHide_0200 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_Panel_offHide_0200", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private async Sub_Misc_inputMethod_onImeShow_0201(): Promise<void>  {
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeShow_0201 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
+                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
+                this.softKeyboardPanel.changeFlag(fla_fixed);
+                await this.softKeyboardPanel.hide();
+                console.info('====>Sub_Misc_inputMethod_onImeShow_0201 show panel');
+                await this.softKeyboardPanel.show();
+                console.info('====>Sub_Misc_inputMethod_onImeShow_0201 hide panel');
+                this.softKeyboardPanel.changeFlag(fla_floating);
+            }else{
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeShow_0201 this.softKeyboardPanel is null');
+            }
+        }catch(error){
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeShow_0201 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private async Sub_Misc_inputMethod_onImeHide_0202(): Promise<void>  {
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeHide_0202 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
+                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
+                this.softKeyboardPanel.changeFlag(fla_fixed);
+                await this.softKeyboardPanel.show();
+                console.info('====>Sub_Misc_inputMethod_onImeHide_0202 show panel');
+                await this.softKeyboardPanel.hide();
+                console.info('====>Sub_Misc_inputMethod_onImeHide_0202 hide panel');
+                this.softKeyboardPanel.changeFlag(fla_floating);
+            }else{
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeHide_0202 this.softKeyboardPanel is null');
+            }
+        }catch(error){
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeHide_0202 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private async Sub_Misc_inputMethod_offImeShow_0203(): Promise<void>  {
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeShow_0203 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
+                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
+                this.softKeyboardPanel.changeFlag(fla_fixed);
+                await this.softKeyboardPanel.hide();
+                console.info('====>Sub_Misc_inputMethod_offImeShow_0203 show panel');
+                await this.softKeyboardPanel.show();
+                console.info('====>Sub_Misc_inputMethod_offImeShow_0203 hide panel');
+                this.softKeyboardPanel.changeFlag(fla_floating);
+            }else{
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeShow_0203 this.softKeyboardPanel is null');
+            }
+        }catch(error){
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeShow_0203 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private async Sub_Misc_inputMethod_offImeHide_0204(): Promise<void>  {
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeHide_0204 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
+                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
+                this.softKeyboardPanel.changeFlag(fla_fixed);
+                await this.softKeyboardPanel.show();
+                console.info('====>Sub_Misc_inputMethod_offImeHide_0204 show panel');
+                await this.softKeyboardPanel.hide();
+                console.info('====>Sub_Misc_inputMethod_offImeHide_0204 hide panel');
+                this.softKeyboardPanel.changeFlag(fla_floating);
+            }else{
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeHide_0204 this.softKeyboardPanel is null');
+            }
+        }catch(error){
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeHide_0204 catch error: ' + JSON.stringify(error));
         }
     }
 
