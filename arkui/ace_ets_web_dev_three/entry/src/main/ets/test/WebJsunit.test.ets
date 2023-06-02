@@ -426,10 +426,185 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('GetAccessibleGeolocation',0,async function(done){
-      emitKey="emitGetAccessibleGeolocation";
+      emitKey="emitJsMessExtGetString";
       Utils.registerEvent("GetAccessibleGeolocation",true,451,done);
       sendEventByKey('webcomponent',10,'');
     })
-
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_039                                                                                                                                                           
+     *tc.name JsMessExtGetString                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('JsMessExtGetString',0,async function(done){
+      emitKey="emitJsMessExtGetNum";
+      Utils.registerEvent("JsMessExtGetString","result type:string",500,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_040                                                                                                                                                           
+     *tc.name JsMessExtGetNum                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('JsMessExtGetNum',0,async function(done){
+      emitKey="emitJsMessExtGetBoo";
+      Utils.registerEvent("JsMessExtGetNum","result type:number",501,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_041                                                                                                                                                          
+     *tc.name JsMessExtGetBoo                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('JsMessExtGetBoo',0,async function(done){
+      emitKey="emitJsMessExtGetArrayBuffer";
+      Utils.registerEvent("JsMessExtGetBoo","result type:boolean",502,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_042                                                                                                                                                          
+     *tc.name JsMessExtGetArrayBuffer                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('JsMessExtGetArrayBuffer',0,async function(done){
+      emitKey="emitJsMessExtGetArray";
+      Utils.registerEvent("JsMessExtGetArrayBuffer","result type:object",503,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_043                                                                                                                                                         
+     *tc.name JsMessExtGetArray                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('JsMessExtGetArray',0,async function(done){
+      emitKey="emitWebMessExtSetString";
+      Utils.registerEvent("JsMessExtGetArray","result type:object0",504,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_044                                                                                                                                                         
+     *tc.name WebMessExtSetString                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetString',0,async function(done){
+      emitKey="emitWebMessExtGetString";
+      var result="String:helloFromEts"
+      Utils.registerEvent("WebMessExtSetString",JSON.stringify(result),506,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_045                                                                                                                                                        
+     *tc.name WebMessExtGetString                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetString',0,async function(done){
+      emitKey="emitWebMessExtSetNumber";
+      Utils.registerEvent("WebMessExtGetString","result type:string",505,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_046                                                                                                                                                        
+     *tc.name WebMessExtSetNumber                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetNumber',0,async function(done){
+      emitKey="emitWebMessExtGetNumber";
+      var result="Number:1"
+      Utils.registerEvent("WebMessExtSetNumber",JSON.stringify(result),507,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_047                                                                                                                                                  
+     *tc.name WebMessExtGetNumber                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetNumber',0,async function(done){
+      emitKey="emitWebMessExtSetBoolean";
+      Utils.registerEvent("WebMessExtGetNumber","result type:number0",508,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_048                                                                                                                                                  
+     *tc.name WebMessExtSetBoolean                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetBoolean',0,async function(done){
+      emitKey="emitWebMessExtGetBoolean";
+      var result="Boolean:true"
+      Utils.registerEvent("WebMessExtSetBoolean",JSON.stringify(result),509,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_049                                                                                                                                                 
+     *tc.name WebMessExtGetBoolean                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetBoolean',0,async function(done){
+      emitKey="emitWebMessExtSetArray";
+      Utils.registerEvent("WebMessExtGetBoolean","result type:boolean",510,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_050                                                                                                                                                 
+     *tc.name WebMessExtSetArray                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetArray',0,async function(done){
+      emitKey="emitWebMessExtGetArray";
+      var result="Array len:1, value:apple"
+      Utils.registerEvent("WebMessExtSetArray",JSON.stringify(result),511,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_051                                                                                                                                                 
+     *tc.name WebMessExtGetArray                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetArray',0,async function(done){
+      emitKey="emitWebMessExtSetArrayBuffer";
+      Utils.registerEvent("WebMessExtGetArray","result type:object",512,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_052                                                                                                                                                 
+     *tc.name WebMessExtSetArrayBuffer                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetArrayBuffer',0,async function(done){
+      emitKey="emitWebMessExtGetArrayBuffer";
+      var result="ArrayBuffer:8"
+      Utils.registerEvent("WebMessExtSetArrayBuffer",JSON.stringify(result),513,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_053                                                                                                                                                 
+     *tc.name WebMessExtGetArrayBuffer                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetArrayBuffer',0,async function(done){
+      emitKey="emitWebMessExtSetError";
+      Utils.registerEvent("WebMessExtGetArrayBuffer","result getArrayBuffer byteLength:8",514,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_054                                                                                                                                                 
+     *tc.name WebMessExtSetError                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtSetError',0,async function(done){
+      emitKey="emitWebMessExtGetError";
+      var result="Error:SyntaxError, msg:"
+      Utils.registerEvent("WebMessExtSetError",JSON.stringify(result),515,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_055                                                                                                                                                
+     *tc.name WebMessExtGetError                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('WebMessExtGetError',0,async function(done){
+      emitKey="emitWebMessExtGetError";
+      Utils.registerEvent("WebMessExtGetError","result type:object",516,done);
+      sendEventByKey('webcomponent',10,'');
+    })
   })
 }
