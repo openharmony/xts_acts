@@ -64,7 +64,9 @@ export default function swiperItemSize() {
 
       // Flipping.
       let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
+      //await driver.swipe(250, 230, 200, 230);
+      await CommonFunc.sleep(500);
+      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
       await CommonFunc.sleep(1000);
       // After flipping the page.
       itemSizekey = CommonFunc.getComponentRect('itemSizekey');

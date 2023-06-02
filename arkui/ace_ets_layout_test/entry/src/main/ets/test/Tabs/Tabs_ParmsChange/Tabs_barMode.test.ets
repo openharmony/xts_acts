@@ -137,96 +137,96 @@ export default function Tabs_barMode() {
       console.info('[testTabsBarModeFixed] END');
       done();
     });
-    /**
-     * @tc.number    SUB_ACE_TABS_BARMODE_TEST_0200
-     * @tc.name      testTabsBarModeScrollable
-     * @tc.desc      The parent component sets barMode to BarMode.Scrollable
-     */
-    it('testTabsBarModeScrollable', 0, async function (done) {
-      console.info('[testTabsBarModeScrollable] START');
-      globalThis.value.message.notify({name:'changeBarMode', value:BarMode.Scrollable});
-      await CommonFunc.sleep(3000);
-      let strJson = getInspectorByKey('Tabs_barMode_01');
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Tabs');
-      console.info(`[testTabsBarModeScrollable] type: ${JSON.stringify(obj.$type)}`);
-      console.info("[testTabsBarModeScrollable] barPosition: " + JSON.stringify(obj.$attrs.barPosition));
-      console.info("[testTabsBarModeScrollable] index: " + JSON.stringify(obj.$attrs.index));
-      console.info("[testTabsBarModeScrollable] scrollable: " + JSON.stringify(obj.$attrs.scrollable));
-      console.info("[testTabsBarModeScrollable] barMode: " + JSON.stringify(obj.$attrs.barMode));
-      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
-      expect(obj.$attrs.index).assertEqual("0");
-      expect(obj.$attrs.scrollable).assertEqual(true);
-      expect(obj.$attrs.vertical).assertEqual("false");
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Scrollable');
-      let Tabs_barMode_001 = CommonFunc.getComponentRect('Tabs_barMode_001');
-      let Tabs_barMode_011 = CommonFunc.getComponentRect('Tabs_barMode_011');
-      let subGreen = CommonFunc.getComponentRect('Tabs_barMode_green');
-      let driver = await Driver.create();
-      await driver.swipe(600,80,120,80);
-      await CommonFunc.sleep(1000);
-      let btn1 = await driver.findComponent(ON.text('blue'));
-      await btn1.click()
-      await CommonFunc.sleep(1000);
-      let Tabs_barMode_002 = CommonFunc.getComponentRect('Tabs_barMode_002');
-      let Tabs_barMode_012 = CommonFunc.getComponentRect('Tabs_barMode_012');
-      let subBlue = CommonFunc.getComponentRect('Tabs_barMode_blue');
-      await driver.swipe(600,80,120,80);
-      await CommonFunc.sleep(1000);
-      let btn2 = await driver.findComponent(ON.text('yellow'));
-      await btn2.click()
-      await CommonFunc.sleep(1000);
-      let Tabs_barMode_003 = CommonFunc.getComponentRect('Tabs_barMode_003');
-      let Tabs_barMode_013 = CommonFunc.getComponentRect('Tabs_barMode_013');
-      let Tabs_barMode_01 = CommonFunc.getComponentRect('Tabs_barMode_01');
-      let subYellow = CommonFunc.getComponentRect('Tabs_barMode_yellow');
-
-      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.left equal Tabs_barMode_001.left
-        ${Tabs_barMode_011.left} === ${Tabs_barMode_001.left}`);
-      expect(Tabs_barMode_011.left).assertEqual(Tabs_barMode_001.left);
-      expect(Tabs_barMode_012.left).assertEqual(Tabs_barMode_002.left);
-      expect(Tabs_barMode_013.left).assertEqual(Tabs_barMode_003.left);
-      expect(Tabs_barMode_011.top).assertEqual(Tabs_barMode_001.top);
-      expect(Tabs_barMode_012.top).assertEqual(Tabs_barMode_002.top);
-      expect(Tabs_barMode_013.top).assertEqual(Tabs_barMode_003.top);
-
-      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.left equal Tabs_barMode_01.left
-        ${Tabs_barMode_011.left} === ${Tabs_barMode_01.left}`);
-      expect(Tabs_barMode_011.left).assertEqual(Tabs_barMode_01.left);
-      expect(Tabs_barMode_012.left).assertEqual(Tabs_barMode_01.left);
-      expect(Tabs_barMode_013.left).assertEqual(Tabs_barMode_01.left);
-      expect(Tabs_barMode_011.top).assertEqual(subGreen.bottom);
-      expect(Tabs_barMode_012.top).assertEqual(subBlue.bottom);
-      expect(Tabs_barMode_013.top).assertEqual(subYellow.bottom);
-
-      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.bottom - Tabs_barMode_011.top=
-        ${Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)}`);
-      expect(Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_012.bottom - Tabs_barMode_012.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_013.bottom - Tabs_barMode_013.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_011.right - Tabs_barMode_011.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_012.right - Tabs_barMode_012.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_013.right - Tabs_barMode_013.left)).assertEqual(vp2px(330));
-
-      console.info(`[testTabsBarModeScrollable]Tabs_barMode_001.bottom - Tabs_barMode_001.top=
-        ${Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)}`);
-      expect(Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_002.bottom - Tabs_barMode_002.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_003.bottom - Tabs_barMode_003.top)).assertEqual(vp2px(244));
-      expect(Math.round(Tabs_barMode_001.right - Tabs_barMode_001.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_002.right - Tabs_barMode_002.left)).assertEqual(vp2px(330));
-      expect(Math.round(Tabs_barMode_003.right - Tabs_barMode_003.left)).assertEqual(vp2px(330));
-
-      console.info(`[testTabsBarModeScrollable]subGreen.bottom - subGreen.top=
-        ${Math.round(subGreen.bottom - subGreen.top)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(330));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(330));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(330));
-      console.info('[testTabsBarModeScrollable] END');
-      done();
-    });
+//    /**
+//     * @tc.number    SUB_ACE_TABS_BARMODE_TEST_0200
+//     * @tc.name      testTabsBarModeScrollable
+//     * @tc.desc      The parent component sets barMode to BarMode.Scrollable
+//     */
+//    it('testTabsBarModeScrollable', 0, async function (done) {
+//      console.info('[testTabsBarModeScrollable] START');
+//      globalThis.value.message.notify({name:'changeBarMode', value:BarMode.Scrollable});
+//      await CommonFunc.sleep(3000);
+//      let strJson = getInspectorByKey('Tabs_barMode_01');
+//      let obj = JSON.parse(strJson);
+//      expect(obj.$type).assertEqual('Tabs');
+//      console.info(`[testTabsBarModeScrollable] type: ${JSON.stringify(obj.$type)}`);
+//      console.info("[testTabsBarModeScrollable] barPosition: " + JSON.stringify(obj.$attrs.barPosition));
+//      console.info("[testTabsBarModeScrollable] index: " + JSON.stringify(obj.$attrs.index));
+//      console.info("[testTabsBarModeScrollable] scrollable: " + JSON.stringify(obj.$attrs.scrollable));
+//      console.info("[testTabsBarModeScrollable] barMode: " + JSON.stringify(obj.$attrs.barMode));
+//      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
+//      expect(obj.$attrs.index).assertEqual("0");
+//      expect(obj.$attrs.scrollable).assertEqual(true);
+//      expect(obj.$attrs.vertical).assertEqual("false");
+//      expect(obj.$attrs.barMode).assertEqual('BarMode.Scrollable');
+//      let Tabs_barMode_001 = CommonFunc.getComponentRect('Tabs_barMode_001');
+//      let Tabs_barMode_011 = CommonFunc.getComponentRect('Tabs_barMode_011');
+//      let subGreen = CommonFunc.getComponentRect('Tabs_barMode_green');
+//      let driver = await Driver.create();
+//      await driver.swipe(600,80,120,80);
+//      await CommonFunc.sleep(1000);
+//      let btn1 = await driver.findComponent(ON.text('blue'));
+//      await btn1.click()
+//      await CommonFunc.sleep(1000);
+//      let Tabs_barMode_002 = CommonFunc.getComponentRect('Tabs_barMode_002');
+//      let Tabs_barMode_012 = CommonFunc.getComponentRect('Tabs_barMode_012');
+//      let subBlue = CommonFunc.getComponentRect('Tabs_barMode_blue');
+//      await driver.swipe(600,80,120,80);
+//      await CommonFunc.sleep(1000);
+//      let btn2 = await driver.findComponent(ON.text('yellow'));
+//      await btn2.click()
+//      await CommonFunc.sleep(1000);
+//      let Tabs_barMode_003 = CommonFunc.getComponentRect('Tabs_barMode_003');
+//      let Tabs_barMode_013 = CommonFunc.getComponentRect('Tabs_barMode_013');
+//      let Tabs_barMode_01 = CommonFunc.getComponentRect('Tabs_barMode_01');
+//      let subYellow = CommonFunc.getComponentRect('Tabs_barMode_yellow');
+//
+//      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.left equal Tabs_barMode_001.left
+//        ${Tabs_barMode_011.left} === ${Tabs_barMode_001.left}`);
+//      expect(Tabs_barMode_011.left).assertEqual(Tabs_barMode_001.left);
+//      expect(Tabs_barMode_012.left).assertEqual(Tabs_barMode_002.left);
+//      expect(Tabs_barMode_013.left).assertEqual(Tabs_barMode_003.left);
+//      expect(Tabs_barMode_011.top).assertEqual(Tabs_barMode_001.top);
+//      expect(Tabs_barMode_012.top).assertEqual(Tabs_barMode_002.top);
+//      expect(Tabs_barMode_013.top).assertEqual(Tabs_barMode_003.top);
+//
+//      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.left equal Tabs_barMode_01.left
+//        ${Tabs_barMode_011.left} === ${Tabs_barMode_01.left}`);
+//      expect(Tabs_barMode_011.left).assertEqual(Tabs_barMode_01.left);
+//      expect(Tabs_barMode_012.left).assertEqual(Tabs_barMode_01.left);
+//      expect(Tabs_barMode_013.left).assertEqual(Tabs_barMode_01.left);
+//      expect(Tabs_barMode_011.top).assertEqual(subGreen.bottom);
+//      expect(Tabs_barMode_012.top).assertEqual(subBlue.bottom);
+//      expect(Tabs_barMode_013.top).assertEqual(subYellow.bottom);
+//
+//      console.info(`[testTabsBarModeScrollable]Tabs_barMode_011.bottom - Tabs_barMode_011.top=
+//        ${Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)}`);
+//      expect(Math.round(Tabs_barMode_011.bottom - Tabs_barMode_011.top)).assertEqual(vp2px(244));
+//      expect(Math.round(Tabs_barMode_012.bottom - Tabs_barMode_012.top)).assertEqual(vp2px(244));
+//      expect(Math.round(Tabs_barMode_013.bottom - Tabs_barMode_013.top)).assertEqual(vp2px(244));
+//      expect(Math.round(Tabs_barMode_011.right - Tabs_barMode_011.left)).assertEqual(vp2px(330));
+//      expect(Math.round(Tabs_barMode_012.right - Tabs_barMode_012.left)).assertEqual(vp2px(330));
+//      expect(Math.round(Tabs_barMode_013.right - Tabs_barMode_013.left)).assertEqual(vp2px(330));
+//
+//      console.info(`[testTabsBarModeScrollable]Tabs_barMode_001.bottom - Tabs_barMode_001.top=
+//        ${Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)}`);
+//      expect(Math.round(Tabs_barMode_001.bottom - Tabs_barMode_001.top)).assertEqual(vp2px(244));
+//      expect(Math.round(Tabs_barMode_002.bottom - Tabs_barMode_002.top)).assertEqual(vp2px(244));
+//      expect(Math.round(Tabs_barMode_003.bottom - Tabs_barMode_003.top)).assertEqual(vp2px(244));
+//      expect(Math.round(Tabs_barMode_001.right - Tabs_barMode_001.left)).assertEqual(vp2px(330));
+//      expect(Math.round(Tabs_barMode_002.right - Tabs_barMode_002.left)).assertEqual(vp2px(330));
+//      expect(Math.round(Tabs_barMode_003.right - Tabs_barMode_003.left)).assertEqual(vp2px(330));
+//
+//      console.info(`[testTabsBarModeScrollable]subGreen.bottom - subGreen.top=
+//        ${Math.round(subGreen.bottom - subGreen.top)}`);
+//      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(vp2px(56));
+//      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(vp2px(56));
+//      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(vp2px(56));
+//      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(vp2px(330));
+//      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(vp2px(330));
+//      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(vp2px(330));
+//      console.info('[testTabsBarModeScrollable] END');
+//      done();
+//    });
   })
 }

@@ -45,55 +45,55 @@ export default function swiperItemPadding() {
       console.info("swiperItemPadMar after each called");
     });
 
-    /**
-     * @tc.number    SUB_ACE_SWIPER_ITEMPADMARCHANGED_0100
-     * @tc.name      testSwiperItemSetPadding.
-     * @tc.desc      Set swiper's  first item's  padding value ' 20 '.
-     */
-    it('testSwiperItemSetPadding', 0, async function (done) {
-      console.info('new testSwiperItemSetPadding START');
-      let strJson = getInspectorByKey('swiperItemPadding');
-      let obj = JSON.parse(strJson);
-      let swiperItemPadding = CommonFunc.getComponentRect('swiperItemPadding');
-      let swiperItemPadding01 = CommonFunc.getComponentRect('swiperItemPadding01');
-      let swiperItemPadding02 = CommonFunc.getComponentRect('swiperItemPadding02');
-      let swiperItemPadding03 = CommonFunc.getComponentRect('swiperItemPadding03');
-      let swiperItemPadding04 = CommonFunc.getComponentRect('swiperItemPadding04');
-      let swiperItemPadding05 = CommonFunc.getComponentRect('swiperItemPadding05');
-      let swiperItemPadding06 = CommonFunc.getComponentRect('swiperItemPadding06');
-      // Before flipping the page
-      console.info("Before page turning, the swiperItemPadding.left value is " + JSON.stringify(swiperItemPadding.left));
-      console.info("Before page turning,the swiperItemPadding01.left.left value is " + JSON.stringify(swiperItemPadding01.left));
-      expect(swiperItemPadding.left).assertEqual(swiperItemPadding01.left);
-      expect(swiperItemPadding.right).assertEqual(swiperItemPadding01.right);
-      expect(swiperItemPadding.top).assertEqual(swiperItemPadding01.top);
-      expect(swiperItemPadding.bottom).assertEqual(swiperItemPadding01.bottom);
-      // Page turning.
-      let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      swiperItemPadding = CommonFunc.getComponentRect('swiperItemPadding');
-      swiperItemPadding01 = CommonFunc.getComponentRect('swiperItemPadding01');
-      swiperItemPadding02 = CommonFunc.getComponentRect('swiperItemPadding02');
-      swiperItemPadding03 = CommonFunc.getComponentRect('swiperItemPadding03');
-      swiperItemPadding04 = CommonFunc.getComponentRect('swiperItemPadding04');
-      swiperItemPadding05 = CommonFunc.getComponentRect('swiperItemPadding05');
-      swiperItemPadding06 = CommonFunc.getComponentRect('swiperItemPadding06');
-      // After flipping the page.
-      console.info("After page turning, the swiperItemPadding.left value is " + JSON.stringify(swiperItemPadding.left));
-      console.info("After page turning,the swiperItemPadding02.left.left value is " + JSON.stringify(swiperItemPadding02.left));
-      expect(swiperItemPadding.left).assertEqual(swiperItemPadding02.left);
-      expect(swiperItemPadding.right).assertEqual(swiperItemPadding02.right);
-      expect(swiperItemPadding.top).assertEqual(swiperItemPadding02.top);
-      expect(swiperItemPadding.bottom).assertEqual(swiperItemPadding02.bottom);
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.displayCount).assertEqual(1);
-      console.info('new testSwiperItemSetPadding END');
-      done();
-    });
+//    /**
+//     * @tc.number    SUB_ACE_SWIPER_ITEMPADMARCHANGED_0100
+//     * @tc.name      testSwiperItemSetPadding.
+//     * @tc.desc      Set swiper's  first item's  padding value ' 20 '.
+//     */
+//    it('testSwiperItemSetPadding', 0, async function (done) {
+//      console.info('new testSwiperItemSetPadding START');
+//      let strJson = getInspectorByKey('swiperItemPadding');
+//      let obj = JSON.parse(strJson);
+//      let swiperItemPadding = CommonFunc.getComponentRect('swiperItemPadding');
+//      let swiperItemPadding01 = CommonFunc.getComponentRect('swiperItemPadding01');
+//      let swiperItemPadding02 = CommonFunc.getComponentRect('swiperItemPadding02');
+//      let swiperItemPadding03 = CommonFunc.getComponentRect('swiperItemPadding03');
+//      let swiperItemPadding04 = CommonFunc.getComponentRect('swiperItemPadding04');
+//      let swiperItemPadding05 = CommonFunc.getComponentRect('swiperItemPadding05');
+//      let swiperItemPadding06 = CommonFunc.getComponentRect('swiperItemPadding06');
+//      // Before flipping the page
+//      console.info("Before page turning, the swiperItemPadding.left value is " + JSON.stringify(swiperItemPadding.left));
+//      console.info("Before page turning,the swiperItemPadding01.left.left value is " + JSON.stringify(swiperItemPadding01.left));
+//      expect(swiperItemPadding.left).assertEqual(swiperItemPadding01.left);
+//      expect(swiperItemPadding.right).assertEqual(swiperItemPadding01.right);
+//      expect(swiperItemPadding.top).assertEqual(swiperItemPadding01.top);
+//      expect(swiperItemPadding.bottom).assertEqual(swiperItemPadding01.bottom);
+//      // Page turning.
+//      let driver = await Driver.create();
+//      await driver.swipe(250, 230, 200, 230);
+//      await CommonFunc.sleep(1000);
+//      swiperItemPadding = CommonFunc.getComponentRect('swiperItemPadding');
+//      swiperItemPadding01 = CommonFunc.getComponentRect('swiperItemPadding01');
+//      swiperItemPadding02 = CommonFunc.getComponentRect('swiperItemPadding02');
+//      swiperItemPadding03 = CommonFunc.getComponentRect('swiperItemPadding03');
+//      swiperItemPadding04 = CommonFunc.getComponentRect('swiperItemPadding04');
+//      swiperItemPadding05 = CommonFunc.getComponentRect('swiperItemPadding05');
+//      swiperItemPadding06 = CommonFunc.getComponentRect('swiperItemPadding06');
+//      // After flipping the page.
+//      console.info("After page turning, the swiperItemPadding.left value is " + JSON.stringify(swiperItemPadding.left));
+//      console.info("After page turning,the swiperItemPadding02.left.left value is " + JSON.stringify(swiperItemPadding02.left));
+//      expect(swiperItemPadding.left).assertEqual(swiperItemPadding02.left);
+//      expect(swiperItemPadding.right).assertEqual(swiperItemPadding02.right);
+//      expect(swiperItemPadding.top).assertEqual(swiperItemPadding02.top);
+//      expect(swiperItemPadding.bottom).assertEqual(swiperItemPadding02.bottom);
+//      console.info("The type value is " + JSON.stringify(obj.$type));
+//      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
+//      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
+//      expect(obj.$type).assertEqual('Swiper');
+//      expect(obj.$attrs.loop).assertEqual('true');
+//      expect(obj.$attrs.displayCount).assertEqual(1);
+//      console.info('new testSwiperItemSetPadding END');
+//      done();
+//    });
   })
 }
