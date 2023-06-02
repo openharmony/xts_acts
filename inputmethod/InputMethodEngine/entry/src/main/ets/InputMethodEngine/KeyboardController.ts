@@ -980,7 +980,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_077", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },500);
+        },1000);
     }
 
 }
