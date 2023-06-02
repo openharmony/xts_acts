@@ -321,5 +321,79 @@ export default function requestUploadJSUnit() {
         expect(true).assertFail(true);
       }
     });
+
+    /**
+     * @tc.number    : SUB_REQUEST_UPLOAD_API_0007
+     * @tc.name      : Use getEntries get the value by mixing the string key
+     * @tc.desc      : Mixed strings value can be obtained correctly
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_REQUEST_UPLOAD_API_0007', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0007 is starting-----------------------");
+      try {
+        console.info("====>SUB_REQUEST_UPLOAD_API_0007 UploadConfig = " + JSON.stringify(uploadConfig));
+        request.upload(uploadConfig).then((uploadTask) => {
+          console.info("====>SUB_REQUEST_UPLOAD_API_0007 uploadTask = " + uploadTask);
+          expect(true).assertEqual((uploadTask != undefined));
+          uploadTask.on('complete', (taskStates) => {
+            console.info("====>SUB_REQUEST_UPLOAD_API_0007 on_complete" );
+          });
+
+          uploadTask.off('complete', (taskStates) => {
+            console.info("====>SUB_REQUEST_UPLOAD_API_0007 off_complete");
+          });
+
+          uploadTask.remove().then((result)=>{
+            console.info("====>SUB_REQUEST_UPLOAD_API_0007 remove result = " + result);
+            expect(result).assertEqual(true);
+            console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0007 end-----------------------");
+            done();
+          });
+        });
+      } catch (e) {
+        console.error("====>SUB_REQUEST_UPLOAD_API_0007 error: " + JSON.stringify(e));
+        expect().assertFail();
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_REQUEST_UPLOAD_API_0008
+     * @tc.name      : Use getEntries get the value by mixing the string key
+     * @tc.desc      : Mixed strings value can be obtained correctly
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_REQUEST_UPLOAD_API_0008', 0, async function (done) {
+      console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0008 is starting-----------------------");
+      try {
+        console.info("====>SUB_REQUEST_UPLOAD_API_0008 UploadConfig = " + JSON.stringify(uploadConfig));
+        request.upload(uploadConfig).then((uploadTask) => {
+          console.info("====>SUB_REQUEST_UPLOAD_API_0008 uploadTask = " + uploadTask);
+          expect(true).assertEqual((uploadTask != undefined));
+          uploadTask.on('fail', (taskStates) => {
+            console.info("====>SUB_REQUEST_UPLOAD_API_0008 on_fail");
+          });
+
+          uploadTask.off('fail', (taskStates) => {
+            console.info("====>SUB_REQUEST_UPLOAD_API_0008 off_fail");
+          });
+
+          uploadTask.remove().then((result)=>{
+            console.info("====>SUB_REQUEST_UPLOAD_API_0008 remove result = " + result);
+            expect(result).assertEqual(true);
+            console.info("====>-----------------------SUB_REQUEST_UPLOAD_API_0008 end-----------------------");
+            done();
+          });
+        });
+      } catch (e) {
+        console.error("====>SUB_REQUEST_UPLOAD_API_0008 error: " + JSON.stringify(e));
+        expect().assertFail();
+      }
+    });
+
   })
 }
