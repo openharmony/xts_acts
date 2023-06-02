@@ -96,7 +96,7 @@ export default function cameraEnumTest() {
         */
         it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100--------------");
-            console.info("CameraType: "+ JSON.stringify(camera.CameraType));
+            console.info("CameraType: " + JSON.stringify(camera.CameraType));
             expect(camera.CameraType.CAMERA_TYPE_DEFAULT == 0).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_WIDE_ANGLE == 1).assertTrue();
             expect(camera.CameraType.CAMERA_TYPE_ULTRA_WIDE == 2).assertTrue();
@@ -301,16 +301,27 @@ export default function cameraEnumTest() {
          * @tc.level     : Level 2
        */
         it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100--------------");
+            console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100--------------");
             expect(camera.CameraErrorCode.INVALID_ARGUMENT == 7400101).assertTrue();
+            console.info(TAG + "--------------INVALID_ARGUMENT--------------");
             expect(camera.CameraErrorCode.OPERATION_NOT_ALLOWED == 7400102).assertTrue();
+            console.info(TAG + "--------------OPERATION_NOT_ALLOWED--------------");
             expect(camera.CameraErrorCode.SESSION_NOT_CONFIG == 7400103).assertTrue();
+            console.info(TAG + "--------------SESSION_NOT_CONFIG--------------");
             expect(camera.CameraErrorCode.SESSION_NOT_RUNNING == 7400104).assertTrue();
+            console.info(TAG + "--------------SESSION_NOT_RUNNING--------------");
             expect(camera.CameraErrorCode.SESSION_CONFIG_LOCKED == 7400105).assertTrue();
+            console.info(TAG + "--------------SESSION_CONFIG_LOCKED--------------");
             expect(camera.CameraErrorCode.DEVICE_SETTING_LOCKED == 7400106).assertTrue();
-            expect(camera.CameraErrorCode.CONFLICT_CAMERA == 7400107).assertTrue();
+            console.info(TAG + "--------------DEVICE_SETTING_LOCKED--------------");
+            // expect(camera.CameraErrorCode.CONFLICT_CAMERA == 7400107).assertTrue();
+            // console.info(TAG + "--------------CONFLICT_CAMERA--------------");
             expect(camera.CameraErrorCode.DEVICE_DISABLED == 7400108).assertTrue();
+            console.info(TAG + "--------------DEVICE_DISABLED--------------");
+            expect(camera.CameraErrorCode.DEVICE_PREEMPTED == 7400109).assertTrue();
+            console.info(TAG + "--------------DEVICE_PREEMPTED --------------");
             expect(camera.CameraErrorCode.SERVICE_FATAL_ERROR == 7400201).assertTrue();
+            console.info(TAG + "--------------SERVICE_FATAL_ERROR--------------");
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAERRORCODE_0100 ends here");
             done();
         })

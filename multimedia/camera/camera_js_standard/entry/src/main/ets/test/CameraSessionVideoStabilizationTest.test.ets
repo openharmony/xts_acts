@@ -53,7 +53,7 @@ let mVideoProfileCfg = {
     audioSampleRate: 48000,
     durationTime: 1000,
     fileFormat: 'mp4',
-    videoBitrate: 48000,
+    videoBitrate: 2000000,
     videoCodec: 'video/mp4v-es',
     videoFrameWidth: 640,
     videoFrameHeight: 480,
@@ -138,7 +138,7 @@ export default function cameraSessionVideoStabilizationTest() {
         console.log(TAG + 'Entering getVideoReceiveSurface')
         await getFd('CameraSessionVideoStabilization.mp4');
         mVideoConfig.url = mFdPath;
-        media.createVideoRecorder((err, recorder) => {
+        media.createAVRecorder((err, recorder) => {
             if (!err) {
                 console.info(TAG + 'Entering create video receiver')
                 mVideoRecorder = recorder

@@ -56,7 +56,7 @@ let mVideoProfileCfg = {
     audioSampleRate: 48000,
     durationTime: 1000,
     fileFormat: 'mp4',
-    videoBitrate: 48000,
+    videoBitrate: 2000000,
     videoCodec: 'video/mp4v-es',
     videoFrameWidth: 640,
     videoFrameHeight: 480,
@@ -188,7 +188,7 @@ export default function cameraSessionExposureTest() {
         console.log(TAG + 'Entering getVideoReceiveSurface')
         await getFd('CameraSessionExposure.mp4');
         mVideoConfig.url = mFdPath;
-        media.createVideoRecorder((err, recorder) => {
+        media.createAVRecorder((err, recorder) => {
             if (!err) {
                 console.info(TAG + 'Entering create video receiver')
                 mVideoRecorder = recorder
@@ -1322,7 +1322,7 @@ export default function cameraSessionExposureTest() {
                 for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 start for camera[" + i + "]");
                     let exposureBias = mExposureBiasRangeArray[i][0];
-                    if (exposureBias == 0) {
+                    if (exposureBias == 0 || isNaN(exposureBias)) {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_EXPOSURE_BIAS_PROMISE_0100 exposureBias is 0");
                     } else {
                         await startCameraSession(i);

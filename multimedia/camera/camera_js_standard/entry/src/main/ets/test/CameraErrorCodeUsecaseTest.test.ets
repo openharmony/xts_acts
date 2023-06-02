@@ -26,7 +26,7 @@ let videoProfile = {
     audioCodec: 'audio/mp4a-latm',
     audioSampleRate: 48000,
     fileFormat: 'mp4',
-    videoBitrate: 48000,
+    videoBitrate: 2000000,
     videoCodec: 'video/mp4v-es',
     videoFrameWidth: 640,
     videoFrameHeight: 480,
@@ -230,7 +230,7 @@ export default function CameraErrorCodeUsecaseTest() {
     async function getvideosurface() {
         await getFd('ErrorCodeCameraOutput.mp4');
         videoConfig.url = fdPath;
-        media.createVideoRecorder((err, recorder) => {
+        media.createAVRecorder((err, recorder) => {
           if (!err) {
             console.info(TAG + 'createVideoRecorder called')
             videoRecorder = recorder
@@ -334,7 +334,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 await releaseInput();
             }
             if (!isEmpty(mCameraSession)) {
-                releaseCameraSessionInstance();
+                await releaseCameraSessionInstance();
             }
         })
 
@@ -1712,6 +1712,10 @@ export default function CameraErrorCodeUsecaseTest() {
         */
         it('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100', 0, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_CAPTURESESSION_GETFOCUSPOINT_0100--------------");
+            if(mCameraSession){
+                mCameraSession.release();
+                mCameraSession = null;
+            }
             await createInput(0);
             createCameraSessionInstance();
             mCameraSession.addInput(mCameraInput);

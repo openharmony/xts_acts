@@ -40,7 +40,7 @@ let videoProfile = {
   audioCodec: 'audio/mp4a-latm',
   audioSampleRate: 48000,
   fileFormat: 'mp4',
-  videoBitrate: 48000,
+  videoBitrate: 2000000,
   videoCodec: 'video/mp4v-es',
   videoFrameWidth: 640,
   videoFrameHeight: 480,
@@ -96,10 +96,12 @@ export default function cameraJSUnitOutput() {
   async function getFd(pathName) {
     let displayName = pathName;
     const mediaTest = mediaLibrary.getMediaLibrary();
+    console.log(TAG + 'mediaTest: ' + JSON.stringify(mediaTest))
     let fileKeyObj = mediaLibrary.FileKey;
     let mediaType = mediaLibrary.MediaType.VIDEO;
     let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
     let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
+    console.log(TAG + 'dataUri id: ' + JSON.stringify(dataUri))
     if (dataUri != undefined) {
       let args = dataUri.id.toString();
       let fetchOp = {
@@ -109,6 +111,7 @@ export default function cameraJSUnitOutput() {
       let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
       fileAsset = await fetchFileResult.getAllObject();
       fdNumber = await fileAsset[0].open('Rw');
+      console.log(TAG + 'fdNumber id: ' + JSON.stringify(fdNumber))
       fdPath = "fd://" + fdNumber.toString();
     }
   }
@@ -127,8 +130,9 @@ export default function cameraJSUnitOutput() {
 
   async function getvideosurface() {
     await getFd('CameraOutput.mp4');
-      videoConfig.url = fdPath;
-    media.createVideoRecorder((err, recorder) => {
+    await sleep(2000);
+    videoConfig.url = fdPath;
+    media.createAVRecorder((err, recorder) => {
       if (!err) {
         console.info(TAG + 'createVideoRecorder called')
         videoRecorder = recorder
@@ -152,7 +156,7 @@ export default function cameraJSUnitOutput() {
         })
       }
       else {
-        console.info(TAG + 'createVideoRecorder FAILED')
+        console.info(TAG + 'createVideoRecorder FAILED ,Code' + err.code)
       }
     })
   }
@@ -195,6 +199,7 @@ export default function cameraJSUnitOutput() {
     beforeAll(async function () {
       await getImageReceiverSurfaceId();
       await getvideosurface();
+      sleep(2000);
       console.info('beforeAll case');
     })
 
