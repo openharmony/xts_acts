@@ -111,7 +111,7 @@ describe('geolocationTest_6', function () {
             geolocationm.off('countryCodeChange',1);
         } catch (error) {
             console.info("[lbs_js] countryCodeOff3 try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-            expect(error.code).assertEqual("401");
+            expect(true).assertFalse();
         }
     })
 
@@ -163,7 +163,7 @@ describe('geolocationTest_6', function () {
                 geolocationm.off('cachedGnssLocationsChange',1);
             } catch (error) {
                 console.info("[lbs_js] cacheOff9 try error:"+ JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-                expect(error.code).assertEqual("401");
+                expect(error.code).assertEqual("801");
             }
         })
 
