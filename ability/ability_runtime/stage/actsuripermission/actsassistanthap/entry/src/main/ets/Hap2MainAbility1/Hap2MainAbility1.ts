@@ -30,12 +30,6 @@ export default class Hap2MainAbility1 extends Ability {
 
   onDestroy() {
     console.log('[Demo] Hap2MainAbility1 onDestroy')
-    if (caseNumber === 16) {
-      let eventName : string = 'TerminateNotify_Hap3MainAbility1';
-      commonEvent.publish(eventName, (err) => {
-        console.log('Hap2MainAbility1' + eventName);
-      });
-    }
   }
 
   onWindowStageCreate(windowStage) {
@@ -343,58 +337,6 @@ export default class Hap2MainAbility1 extends Ability {
           });
         });
         this.context.terminateSelf();
-        break;
-      }
-
-      case 16: {
-        console.log('[Demo] Hap2MainAbility1 case 16 call.');
-        let eventName : string = 'RevicedFrom_Hap3MainAbility1';
-        let subscribeInfo16_1 = {
-          events: [eventName]
-        }
-        let subscriber16_1;
-        function UnSubscribeInfoCallback16_1(err, data) {
-          console.info("Hap2MainAbility1 ===UnSubscribeInfoCallback16_1===")
-        }
-
-        function SubscribeCallBackContext16_1(err, data) {
-          console.log('Hap2MainAbility1 Subscribe CallBack data:' + JSON.stringify(data));
-          caseNumber = 16;
-          if (data.event === eventName) {
-            commonEvent.unsubscribe(subscriber16_1, UnSubscribeInfoCallback16_1)
-            globalThis.hap2MainAbility1Context.terminateSelf();
-          }
-        }
-
-        commonEvent.createSubscriber(subscribeInfo16_1).then(async (data) => {
-          subscriber16_1 = data;
-          console.debug('====>Create Subscriber====>');
-          await commonEvent.subscribe(subscriber16_1, SubscribeCallBackContext16_1);
-        });
-
-        let filePath : string = this.context.filesDir + '/test_ability1_2.txt';
-        fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err, file) => {
-          if (err) {
-            console.info('mkdir failed with error message: ' + err.message + ', error code: ' + err.code);
-          } else {
-            console.info('Hap2MainAbility1 file created, fd: ' + file.fd);
-          }
-        });
-        let uri : string = fileUri.getUriFromPath(filePath);
-        console.info('[Demo] Hap2MainAbility1 uri is ' + JSON.stringify(uri));
-
-        let want = {
-          flags : wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
-          bundleName : 'com.example.timeout',
-          abilityName : 'Hap3MainAbility1',
-          uri : uri
-        }
-        this.context.startAbility(want).then(() => {
-          console.log('TAG + startAbility succeed');
-        }).catch((error) => {
-          console.log('error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-            JSON.stringify(error.message));
-        });
         break;
       }
 

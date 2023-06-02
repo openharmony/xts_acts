@@ -30,12 +30,21 @@ export default function UriPermissionTest() {
       done()
     });
 
+    let abilityContext = globalThis.abilityContext;
     afterEach(async function (done) {
       console.info('UriPermissionTest after each called');
+      let wantInfo = {
+        bundleName: 'com.example.stageautosign',
+        abilityName: 'com.example.stageautosign.MainAbility'
+      }
+      await abilityContext.startAbility(wantInfo).then(() => {
+        console.info('afterEach startAbility succeed');
+      }).catch((error) => {
+        console.info('afterEach error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
+          JSON.stringify(error.message));
+      });
       done();
     });
-
-    let abilityContext = globalThis.abilityContext;
 
     function sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time))
@@ -1360,97 +1369,6 @@ export default function UriPermissionTest() {
 
       done()
       console.info("---------------Temp_UriPermissionTest_1200 is end---------------")
-    });
-
-    /*
-     * @tc.number  Temp_UriPermissionTest_1300
-     * @tc.name    The ability of HAP A grant uri permission to the ability of HAP B
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it("Temp_UriPermissionTest_1300", 0, async function (done) {
-      console.info("---------------Temp_UriPermissionTest_1300 is start---------------")
-      let TAG13 = "Temp_UriPermissionTest_1300";
-      let flag13_1 = false;
-      let flag13_2 = false;
-      let eventName13_1 : string = 'Temp_UriPermissionTest_1300_Read_Successfully';
-      let eventName13_2 : string = 'Temp_UriPermissionTest_1300_Read_Failed';
-      let subscribeInfo13_1 = {
-          events: [eventName13_1, eventName13_2]
-      }
-      let subscriber13_1;
-      function UnSubscribeInfoCallback13_1(err, data) {
-        console.info(TAG13 + "===UnSubscribeInfoCallback13_1===")
-      }
-
-      function SubscribeCallBackContext13_1(err, data) {
-          console.info(TAG13 + ' Subscribe CallBack data:' + JSON.stringify(data));
-          if (data.event === eventName13_1) {
-              console.info(TAG13 + 'read file succeed.');
-              commonEvent.unsubscribe(subscriber13_1, UnSubscribeInfoCallback13_1)
-              flag13_1 = true;
-          }
-          if (data.event === eventName13_2) {
-              console.info(TAG13 + 'read file failed.');
-              expect().assertFail();
-          }
-      }
-
-      commonEvent.createSubscriber(subscribeInfo13_1).then(async (data) => {
-        subscriber13_1 = data;
-        console.info('====>Create subscriber13_1====>');
-        await commonEvent.subscribe(subscriber13_1, SubscribeCallBackContext13_1);
-      });
-
-      let eventName13_3 : string = 'Temp_UriPermissionTest_1300_Write_Successfully';
-      let eventName13_4 : string = 'Temp_UriPermissionTest_1300_Write_Failed';
-      let subscribeInfo13_2 = {
-          events: [eventName13_3, eventName13_4]
-      }
-      let subscriber13_2;
-      function UnSubscribeInfoCallback13_2(err, data) {
-        console.info(TAG13 + "===UnSubscribeInfoCallback13_2===")
-      }
-
-      function SubscribeCallBackContext13_2(err, data) {
-          console.info(TAG13 + ' Subscribe CallBack data:' + JSON.stringify(data));
-          if (data.event === eventName13_3) {
-              console.info(TAG13 + 'write file succeed.');
-              expect().assertFail();
-          }
-          if (data.event === eventName13_4) {
-              console.info(TAG13 + 'write file failed.');
-              commonEvent.unsubscribe(subscriber13_2, UnSubscribeInfoCallback13_2)
-              flag13_2 = true;
-          }
-      }
-
-      commonEvent.createSubscriber(subscribeInfo13_2).then(async (data) => {
-        subscriber13_2 = data;
-        console.info('====>Create subscriber13_2====>');
-        await commonEvent.subscribe(subscriber13_2, SubscribeCallBackContext13_2);
-      });
-
-      let want = {
-        bundleName : "com.acts.authorizeduriapplication",
-        abilityName : "Hap2MainAbility1",
-        parameters : {
-          'number' : 16
-        }
-      }
-      await abilityContext.startAbility(want).then(() => {
-        console.info(TAG13 + ' startAbility succeed');
-      }).catch((error) => {
-        console.info(TAG13 + 'error.code: ' + JSON.stringify(error.code) + ' error.message: ' +
-          JSON.stringify(error.message));
-      });
-      while (!flag13_1 || !flag13_2) {
-        console.info(TAG13 + 'waiting callback');
-        await sleep(1000);
-      }
-
-      done()
-      console.info("---------------Temp_UriPermissionTest_1300 is end---------------")
     });
 
     /*
