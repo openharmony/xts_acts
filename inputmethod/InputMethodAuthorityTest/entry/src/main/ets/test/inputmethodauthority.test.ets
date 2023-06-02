@@ -201,6 +201,7 @@ export default function inputMethodAuthorityJSUnit() {
         name:inputM.packageName,
         id:inputM.methodId,
         label: "",
+        labelId: 123,
         icon: "",
         iconId: 124,
         extra:{}
@@ -210,6 +211,7 @@ export default function inputMethodAuthorityJSUnit() {
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
         label: "",
+        labelId: 123,
         name: inputMS.name,
         mode: "lower",
         locale: "",
@@ -253,6 +255,7 @@ export default function inputMethodAuthorityJSUnit() {
         name:inputM.packageName,
         id:inputM.methodId,
         label: "",
+        labelId: 123,
         icon: "",
         iconId: 124,
         extra:{}
@@ -262,6 +265,7 @@ export default function inputMethodAuthorityJSUnit() {
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
         label: "",
+        labelId: 123,
         name: inputMS.name,
         mode: "lower",
         locale: "",
@@ -302,6 +306,7 @@ export default function inputMethodAuthorityJSUnit() {
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
         label: "",
+        labelId: 123,
         name: inputMS.name,
         mode: "lower",
         locale: "",
@@ -342,6 +347,7 @@ export default function inputMethodAuthorityJSUnit() {
       let inputMethodSubProperty : subtype = {
         id: inputMS.id,
         label: "",
+        labelId: 123,
         name: inputMS.name,
         mode: "lower",
         locale: "",

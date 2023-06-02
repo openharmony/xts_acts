@@ -35,22 +35,21 @@ export class KeyboardDelegate {
         this.mContext = context;
     }
 
+    private onInputStop() {
+        try{
+            this.mContext.destroy((err) => {
+                console.info(TAG + '====>inputMethodEngine destroy err:' + JSON.stringify(err));
+            })
+        }catch(err){
+            console.info(TAG + '====>inputMethodEngine destroy catch err:' + JSON.stringify(err));
+        }
+    }
+
     public onCreate(): void {
         this.initWindow();
         let that = this;
-        inputMethodAbility.on("inputStop", () => {
-            inputMethodAbility.off("inputStop", () => {
-                console.log('====>inputMethodEngine delete inputStop notification.');
-            });
-            try{
-                that.mContext.destroy((err) => {
-                    console.info(TAG + '====>inputMethodAbility destroy err:' + JSON.stringify(err));
-                })
-            }catch(err){
-                console.info(TAG + '====>inputMethodAbility destroy catch err:' + JSON.stringify(err));
-                console.info(TAG + '====>inputMethodAbility destroy catch err:' + err);
-            }
-        })
+        this.onInputStop = this.onInputStop.bind(this)
+        inputMethodAbility.on('inputStop', this.onInputStop)
 
         function subscriberCallback(err, data) {
             console.debug(TAG + '====>receive event err:' + JSON.stringify(err));
@@ -172,6 +171,10 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>inputMethodAbility_test_074 event:' + data.event);
                     that.inputMethodAbility_test_074();
                     break;
+                case 91:
+                    console.debug(TAG + '====>inputMethodAbility_test_091 event:' + data.event);
+                    that.inputMethodAbility_test_091();
+                    break;
                 case 101:
                     console.debug(TAG + '====>inputMethodAbility_test_0101 event:' + data.event);
                     that.inputMethodAbility_test_101();
@@ -255,16 +258,8 @@ export class KeyboardDelegate {
 
     public onDestroy(): void {
         console.debug(TAG + '====>onDestroy');
-        globalThis.textInputClient.getTextIndexAtCursor().then((index) => {
-            console.debug(TAG + '====>getTextIndexAtCursor index:' + index);
-            promptAction.showToast({ message: 'getTextIndexAtCursor success' + index, duration: 200, bottom: 500 });
-            var win = windowManager.findWindow(this.windowName);
-            win.destroyWindow();
-            this.mContext.terminateSelf();
-            return true;
-        }).catch((err) => {
-            promptAction.showToast({ message: 'getTextIndexAtCursor failed', duration: 200, bottom: 500 });
-        });
+        inputMethodAbility.off('inputStop', this.onInputStop)
+
     }
 
     private publishCallback(err): void {
@@ -273,6 +268,25 @@ export class KeyboardDelegate {
         } else {
             console.debug(TAG + '====>publish');
         }
+    }
+
+    public async offInputStop_test() {
+        console.info(TAG + '====>inputMethodAbility_test_091.offInputStop_test callback');
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        this.mContext.destroy((err) => {
+            console.info(TAG + '====>inputMethodAbility offInputStop_test destroy err: ' + JSON.stringify(err));
+            commoneventmanager.publish("inputMethodAbility_test_091", commonEventPublishData,() => {});
+        })
+    }
+
+    public inputMethodAbility_test_091(): void{
+        console.info(TAG + '====>inputMethodAbility_test_091 start');
+        this.offInputStop_test = this.offInputStop_test.bind(this);
+        inputMethodAbility.on("inputStop",this.offInputStop_test);
+        inputMethodAbility.off("inputStop",this.offInputStop_test);
+        console.info(TAG + '====>inputMethodAbility_test_091 end');
     }
 
     private inputMethodAbility_test_getInputMethodAbility_001(): void {

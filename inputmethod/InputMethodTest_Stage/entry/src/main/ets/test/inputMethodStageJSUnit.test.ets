@@ -425,5 +425,109 @@ export default function inputMethodStageJSUnit() {
       })
     });
 
+    it('Sub_Misc_inputMethod_TextInputType_0100', 0, async function (done) {
+      let none = inputMethod.TextInputType.NONE;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 none:" + none);
+      expect(none).assertEqual(-1);
+      let test = inputMethod.TextInputType.TEXT;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 test:" + test);
+      expect(test).assertEqual(0);
+      let nultiline = inputMethod.TextInputType.MULTILINE;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 nultiline:" + nultiline);
+      expect(nultiline).assertEqual(1);
+      let number = inputMethod.TextInputType.NUMBER;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 number:" + number);
+      expect(number).assertEqual(2);
+      let phone = inputMethod.TextInputType.PHONE;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 phone:" + phone);
+      expect(phone).assertEqual(3);
+      let datetime = inputMethod.TextInputType.DATETIME;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 datetime:" + datetime);
+      expect(datetime).assertEqual(4);
+      let email_addres = inputMethod.TextInputType.EMAIL_ADDRESS;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 email_addres:" + email_addres);
+      expect(email_addres).assertEqual(5);
+      let url = inputMethod.TextInputType.URL;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 url:" + url);
+      expect(url).assertEqual(6);
+      let visble_password = inputMethod.TextInputType.VISIBLE_PASSWORD;
+      console.info("====>Sub_Misc_inputMethod_TextInputType_0100 visble_password:" + visble_password);
+      expect(visble_password).assertEqual(7);
+      done();
+    });
+
+    it('Sub_Misc_inputMethod_EnterKeyType_0100', 0, async function (done) {
+      let unspecified = inputMethod.EnterKeyType.UNSPECIFIED;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 unspecified:" + unspecified);
+      expect(unspecified).assertEqual(0);
+      let none = inputMethod.EnterKeyType.NONE;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 none:" + none);
+      expect(none).assertEqual(1);
+      let go = inputMethod.EnterKeyType.GO;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 go:" + go);
+      expect(go).assertEqual(2);
+      let search = inputMethod.EnterKeyType.SEARCH;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 search:" + search);
+      expect(search).assertEqual(3);
+      let send = inputMethod.EnterKeyType.SEND;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 send:" + send);
+      expect(send).assertEqual(4);
+      let next = inputMethod.EnterKeyType.NEXT;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 next:" + next);
+      expect(next).assertEqual(5);
+      let done_ = inputMethod.EnterKeyType.DONE;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 done_:" + done_);
+      expect(done_).assertEqual(6);
+      let previous = inputMethod.EnterKeyType.PREVIOUS;
+      console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 previous:" + previous);
+      expect(previous).assertEqual(7);
+      done();
+    });
+
+    it('Sub_Misc_inputMethod_KeyboardStatus_0100', 0, async function (done) {
+      let none = inputMethod.KeyboardStatus.NONE;
+      console.info("====>Sub_Misc_inputMethod_KeyboardStatus_0100 none:" + none);
+      expect(none).assertEqual(0);
+      let hide = inputMethod.KeyboardStatus.HIDE;
+      console.info("====>Sub_Misc_inputMethod_KeyboardStatus_0100 hide:" + hide);
+      expect(hide).assertEqual(1);
+      let show = inputMethod.KeyboardStatus.SHOW;
+      console.info("====>Sub_Misc_inputMethod_KeyboardStatus_0100 show:" + show);
+      expect(show).assertEqual(2);
+      done();
+    });
+
+    it('Sub_Misc_inputMethod_ExtendAction_0100', 0, async function (done) {
+      let select_all = inputMethod.ExtendAction.SELECT_ALL;
+      console.info("====>Sub_Misc_inputMethod_ExtendAction_0100 select_all:" + select_all);
+      expect(select_all).assertEqual(0);
+      let cut = inputMethod.ExtendAction.CUT;
+      console.info("====>Sub_Misc_inputMethod_ExtendAction_0100 cut:" + cut);
+      expect(cut).assertEqual(3);
+      let copy = inputMethod.ExtendAction.COPY;
+      console.info("====>Sub_Misc_inputMethod_ExtendAction_0100 copy:" + copy);
+      expect(copy).assertEqual(4);
+      let paste = inputMethod.ExtendAction.PASTE;
+      console.info("====>Sub_Misc_inputMethod_ExtendAction_0100 paste:" + paste);
+      expect(paste).assertEqual(5);
+      done();
+    });
+
+    it('Sub_Misc_inputMethod_Direction_0100', 0, async function (done) {
+      let cursor_up = inputMethod.Direction.CURSOR_UP;
+      console.info("====>Sub_Misc_inputMethod_Direction_0100 cursor_up:" + cursor_up);
+      expect(cursor_up).assertEqual(1);
+      let cursor_down = inputMethod.Direction.CURSOR_DOWN;
+      console.info("====>Sub_Misc_inputMethod_Direction_0100 cursor_down:" + cursor_down);
+      expect(cursor_down).assertEqual(2);
+      let cursor_left = inputMethod.Direction.CURSOR_LEFT;
+      console.info("====>Sub_Misc_inputMethod_Direction_0100 cursor_left:" + cursor_left);
+      expect(cursor_left).assertEqual(3);
+      let cursor_right = inputMethod.Direction.CURSOR_RIGHT;
+      console.info("====>Sub_Misc_inputMethod_Direction_0100 cursor_right:" + cursor_right);
+      expect(cursor_right).assertEqual(4);
+      done();
+    });
+
   });
 };
