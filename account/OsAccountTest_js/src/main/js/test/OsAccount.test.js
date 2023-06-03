@@ -154,7 +154,7 @@ export default function AccountTest() {
             };
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -163,15 +163,12 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
                             expect(err).assertEqual(undefined)
+							done();
                         });
                     });
                 });
-                accountAbility.queryOsAccountDistributedInfo(function (data) {
-                    expect(data).assertEqual(undefined)
-                    done();
-                })
             } catch (err){
                 console.debug('====>account_updateOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
                 expect().assertFail()
@@ -195,7 +192,7 @@ export default function AccountTest() {
             };
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -204,8 +201,8 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
-                            expect(data).assertEqual(undefined)
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
                             done();
                         });
                     });
@@ -233,9 +230,9 @@ export default function AccountTest() {
                 scalableData:data
             };
             try {
-                accountAbility.updateOsAccountDistributedInfo(obj, function (result) {
+                accountAbility.updateOsAccountDistributedInfo(obj, async function (result) {
                     console.debug("====>account_updateOsAccountDistributedInfo_test003 update_err:" + JSON.stringify(result))
-                    accountAbility.queryOsAccountDistributedInfo(obj).then(function (data) {
+                    await accountAbility.queryOsAccountDistributedInfo(obj).then(function (data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test003 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual("ohosAnonymousName")
                         done();
@@ -265,7 +262,7 @@ export default function AccountTest() {
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function (err) {
                     console.debug("====>account_updateOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
                         console.debug("====>account_updateOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
@@ -275,7 +272,7 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOFF'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
                             expect(err).assertEqual(undefined)
                             done();
                         });
@@ -307,7 +304,7 @@ export default function AccountTest() {
             };
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test005 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -320,7 +317,7 @@ export default function AccountTest() {
                             avatar:undefined,
                             status:undefined
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
                             expect(err).assertEqual(undefined)
                             done()
                         });
@@ -352,7 +349,7 @@ export default function AccountTest() {
             };
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test006 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -361,7 +358,7 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
                             expect(data).assertEqual(undefined)
                             done();
                         });
@@ -393,7 +390,7 @@ export default function AccountTest() {
             };
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test007 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -402,7 +399,7 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
                             expect(err).assertEqual(undefined)
                             done()
                         });
@@ -434,7 +431,7 @@ export default function AccountTest() {
             };
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test008 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -443,7 +440,7 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
                             expect(data).assertEqual(undefined)
                             done();
                         });
@@ -471,7 +468,7 @@ export default function AccountTest() {
             };
             try {
                 await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test009 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -480,7 +477,7 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
                             expect(err).assertEqual(undefined)
                             done()
                         });
@@ -508,7 +505,7 @@ export default function AccountTest() {
             };
             try {
                 accountAbility.updateOsAccountDistributedInfo(obj, function () {
-                    accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test010 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
                         expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
@@ -517,7 +514,7 @@ export default function AccountTest() {
                             name: 'ZhangSan',
                             event: 'Ohos.account.event.LOGOUT'
                         };
-                        accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
                             expect(data).assertEqual(undefined)
                             done();
                         });
