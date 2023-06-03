@@ -2,16 +2,18 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
+        "test-timeout": "3000000",
         "bundle-name": "com.example.accounttstest",
         "module-name": "phone",
-        "shell-timeout": "180000",
-        "testcase-timeout": 70000
+        "shell-timeout": "3000000",
+        "testcase-timeout": 50000
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAccountTsTest.hap"
+                "ActsAccountTsTest.hap",
+                "ActsAccountOauthtoken.hap",
+                "ActsAccountAuthenticator.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
