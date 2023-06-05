@@ -314,7 +314,7 @@ export default function cameraEnumTest() {
             console.info(TAG + "--------------SESSION_CONFIG_LOCKED--------------");
             expect(camera.CameraErrorCode.DEVICE_SETTING_LOCKED == 7400106).assertTrue();
             console.info(TAG + "--------------DEVICE_SETTING_LOCKED--------------");
-            // expect(camera.CameraErrorCode.CONFLICT_CAMERA == 7400107).assertTrue();
+            expect(camera.CameraErrorCode.CONFLICT_CAMERA == 7400107).assertTrue();
             // console.info(TAG + "--------------CONFLICT_CAMERA--------------");
             expect(camera.CameraErrorCode.DEVICE_DISABLED == 7400108).assertTrue();
             console.info(TAG + "--------------DEVICE_DISABLED--------------");
