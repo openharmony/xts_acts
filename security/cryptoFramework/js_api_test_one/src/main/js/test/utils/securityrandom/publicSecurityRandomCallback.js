@@ -58,67 +58,6 @@ async function testSecurityRandomCallback(length) {
   });
 }
 
-async function testSecurityRandomLengthCallback(length) {
-  var rand;
-  return new Promise((resolve, reject) => {
-    rand = cryptoFramework.createRandom();
-    expect(rand != null).assertTrue();
-    if (length != null) {
-      rand.generateRandom(length, (err, randData) => {
-        if (err) {
-          console.error(
-            "[callback]generateRandom catch error:" +
-              err +
-              "[callback]: error code: " +
-              err.code
-          );
-          expect(err.code == 401).assertTrue();
-          resolve();
-        } else {
-          expect(randData != null).assertTrue();
-          reject();
-        }
-      });
-    } else {
-      try {
-        rand.generateRandom(length);
-        reject();
-      } catch (error) {
-        console.error(
-          "[callback]generateRandom catch err1:" +
-            error +
-            "[callback]: error code: " +
-            error.code
-        );
-        resolve();
-      }
-    }
-  });
-}
-
-async function testSecurityRandomCallbackSeed(data) {
-  var rand;
-  return new Promise((resolve, reject) => {
-    rand = cryptoFramework.createRandom();
-    expect(rand != null).assertTrue();
-    try {
-      rand.setSeed(data);
-      reject();
-    } catch (error) {
-      console.error(
-        "[callback]setSeed catch err:" +
-          error +
-          "[callback]: error code: " +
-          error.code
-      );
-      expect(error.code == 401).assertTrue();
-      resolve();
-    }
-  });
-}
-
 export {
   testSecurityRandomCallback,
-  testSecurityRandomLengthCallback,
-  testSecurityRandomCallbackSeed,
 };

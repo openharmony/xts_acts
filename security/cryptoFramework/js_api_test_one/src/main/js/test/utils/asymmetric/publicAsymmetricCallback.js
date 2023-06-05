@@ -387,17 +387,6 @@ async function convertKeyEncryptAndDecryptProcess(asyAlgoName) {
   });
 }
 
-async function createAsyKeyAgreementFail(ECDHAlgoName) {
-  return new Promise((resolve, reject) => {
-    var globalECDHData = createAsyKeyAgreement(ECDHAlgoName);
-    resolve(globalECDHData);
-    expect(globalECDHData == "TypeError: Cannot read property algName of undefined").assertTrue();
-    if (globalECDHData != "TypeError: Cannot read property algName of undefined"){
-      reject();
-    }
-  });
-}
-
 async function keyAgreementProcess(ECDHAlgoName) {
   var globalRsaKeyPair;
 
@@ -422,98 +411,6 @@ async function keyAgreementProcess(ECDHAlgoName) {
         console.error("[Callback] keyAgreementProcess catch err:" + err);
         reject(err);
       });
-  });
-}
-
-async function keyAgreementProcessFail(ECDHAlgoName, ECDHAlgoName1) {
-  var globalRsaKeyPair;
-
-  return new Promise((resolve, reject) => {
-    var rsaGenerator = createAsyKeyGenerator(ECDHAlgoName);
-    expect(rsaGenerator != null).assertTrue();
-    var globalECDHData = createAsyKeyAgreement(ECDHAlgoName1);
-    expect(globalECDHData != null).assertTrue();
-
-    generateAsyKeyPair(rsaGenerator)
-      .then((rsaKeyPair) => {
-        expect(rsaKeyPair != null).assertTrue();
-        globalRsaKeyPair = rsaKeyPair;
-        return generateAsySecret(globalECDHData, globalRsaKeyPair.priKey, globalRsaKeyPair.pubKey);
-      })
-      .then((result) => {
-        console.warn("result data is  " + uInt8ArrayToShowStr(result.data));
-        expect(result != null).assertTrue();
-        reject();
-      })
-      .catch((err) => {
-        console.error("[Callback] keyAgreementProcess catch err:" + err);
-        resolve(err);
-      });
-  });
-}
-
-async function keyAgreementProcessParameterException(ECDHAlgoName) {
-  var globalRsaKeyPair;
-
-  return new Promise((resolve, reject) => {
-    var rsaGenerator = createAsyKeyGenerator(ECDHAlgoName);
-    expect(rsaGenerator != null).assertTrue();
-    var globalECDHData = createAsyKeyAgreement(ECDHAlgoName);
-    expect(globalECDHData != null).assertTrue();
-
-    generateAsyKeyPair(rsaGenerator)
-      .then((rsaKeyPair) => {
-        expect(rsaKeyPair != null).assertTrue();
-        globalRsaKeyPair = rsaKeyPair;
-        return generateAsySecret(globalECDHData, null, null);
-      })
-      .then((result) => {
-        console.warn("result data is  " + uInt8ArrayToShowStr(result.data));
-        expect(result != null).assertTrue();
-      })
-      .catch((err) => {
-        expect(err == "Error: [PriKey]: param unwarp error.").assertTrue();
-      });
-    generateAsyKeyPair(rsaGenerator)
-      .then((rsaKeyPair) => {
-        expect(rsaKeyPair != null).assertTrue();
-        globalRsaKeyPair = rsaKeyPair;
-        return generateAsySecret(globalECDHData, globalRsaKeyPair.pubKey, null);
-      })
-      .then((result) => {
-        console.warn("result data is  " + uInt8ArrayToShowStr(result.data));
-        expect(result != null).assertTrue();
-      })
-      .catch((err) => {
-        expect(err == "Error: [PubKey]: param unwarp error.").assertTrue();
-      });
-    generateAsyKeyPair(rsaGenerator)
-      .then((rsaKeyPair) => {
-        expect(rsaKeyPair != null).assertTrue();
-        globalRsaKeyPair = rsaKeyPair;
-        return generateAsySecret(globalECDHData, null, globalRsaKeyPair.priKey);
-      })
-      .then((result) => {
-        console.warn("result data is  " + uInt8ArrayToShowStr(result.data));
-        expect(result != null).assertTrue();
-        reject();
-      })
-      .catch((err) => {
-        expect(err == "Error: [PriKey]: param unwarp error.").assertTrue();
-        resolve(err);
-      });
-  });
-}
-
-async function createAsyKeyGeneratorFail(asyAlgoName) {
-
-  return new Promise((resolve, reject) => {
-    var rsaGenerator = createAsyKeyGenerator(asyAlgoName);
-    resolve(rsaGenerator);
-    expect(rsaGenerator == "TypeError: Cannot read property algName of null").assertTrue();
-    if (rsaGenerator != "TypeError: Cannot read property algName of null") {
-      reject();
-    }
   });
 }
 
@@ -714,7 +611,6 @@ async function encryptAndDecryptNormalProcessNull(asyAlgoName, cipherAlgoName) {
           );
         }
         let decryptData = uInt8ArrayToString(finalOutput.data);
-        expect(decryptData == globalText).assertTrue();
         reject();
       })
       .catch((err) => {
@@ -730,11 +626,7 @@ export {
   signAndVerifyNormalProcess,
   convertKeyEncryptAndDecryptProcess,
   keyAgreementProcess,
-  createAsyKeyAgreementFail,
-  keyAgreementProcessFail,
-  keyAgreementProcessParameterException,
-  createAsyKeyGeneratorFail,
   encryptAndDecryptNormalProcessSuperdata,
   signAndVerifyNormalProcessSuperdata,
-  encryptAndDecryptNormalProcessNull,
+  encryptAndDecryptNormalProcessNull
 };

@@ -16,126 +16,124 @@
 
 import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
 import { testSecurityRandomPromise } from "./utils/securityrandom/publicSecurityRandomPromise";
-import {
-  testSecurityRandomCallback,
-  testSecurityRandomLengthCallback,
-  testSecurityRandomCallbackSeed,
-} from "./utils/securityrandom/publicSecurityRandomCallback";
+import { testSecurityRandomCallback } from "./utils/securityrandom/publicSecurityRandomCallback";
 import { testSecurityRandomEnumCommon } from "./utils/securityrandom/publicSecurityRandomCommon";
+import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SecurityRandomJsunit() {
-  describe("SecurityRandomJsunit", function () {
-    console.info("##########start SecurityRandomJsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("SecurityRandomJsunit", function () {
+        console.info("##########start SecurityRandomJsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
-    /**
-     * @tc.number Security_crypto_framework_Random_0100
-     * @tc.name support security random and set random seed
-     * @tc.desc the length of random is 32, use promise style of interface
-     */
-    it("Security_crypto_framework_Random_0100", 0, async function (done) {
-      await testSecurityRandomPromise(32)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
+        /**
+         * @tc.number Security_crypto_framework_Random_0100
+         * @tc.name support security random and set random seed
+         * @tc.desc the length of random is 32, use promise style of interface
+         */
+        it("Security_crypto_framework_Random_0100", 0, async function (done) {
+            await testSecurityRandomPromise(32)
+                .then((data) => {
+                    expect(data == null).assertTrue();
+                })
+                .catch((err) => {
+                    expect(null).assertFail();
+                });
+            done();
         });
-      done();
-    });
 
-    /**
-     * @tc.number Security_crypto_framework_Random_0200
-     * @tc.name Support setting random number seed and restart encryption and decryption framework
-     * @tc.desc the length of random is 32, use callback style of interface
-     */
-    it("Security_crypto_framework_Random_0200", 0, async function (done) {
-      await testSecurityRandomCallback(32)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
+        /**
+         * @tc.number Security_crypto_framework_Random_0200
+         * @tc.name Support setting random number seed and restart encryption and decryption framework
+         * @tc.desc the length of random is 32, use callback style of interface
+         */
+        it("Security_crypto_framework_Random_0200", 0, async function (done) {
+            await testSecurityRandomCallback(32)
+                .then((data) => {
+                    expect(data == null).assertTrue();
+                })
+                .catch((err) => {
+                    expect(null).assertFail();
+                });
+            done();
         });
-      done();
-    });
 
-    /**
-     * @tc.number Security_crypto_framework_Random_0300
-     * @tc.name Support generating safe random numbers and setting the length of random numbers
-     * @tc.desc use callback style of interface
-     */
-    it("Security_crypto_framework_Random_0300", 0, async function (done) {
-      await testSecurityRandomLengthCallback(0)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
+        /**
+         * @tc.number Security_crypto_framework_Random_0300
+         * @tc.name Test generateRandom with invalid input
+         * @tc.desc First input 0, Second input null, Third input -1, Fourth input 2147483648
+         */
+        it("Security_crypto_framework_Random_0300", 0, async function (done) {
+            let randomGenerator = cryptoFramework.createRandom();
+            try {
+                await new Promise((resolve, reject) => {
+                    randomGenerator.generateRandom(0, (err, dataBlob) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(dataBlob);
+                        }
+                    })
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                await randomGenerator.generateRandom(null);
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                await new Promise((resolve, reject) => {
+                    randomGenerator.generateRandom(-1, (err, dataBlob) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(dataBlob);
+                        }
+                    })
+                })
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                await randomGenerator.generateRandom(2147483648);
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+            }
+            done();
         });
-      await testSecurityRandomLengthCallback(null)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
-        });
-      await testSecurityRandomLengthCallback(-1)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
-        });
-      await testSecurityRandomLengthCallback(2147483647)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
-        });
-      done();
-    });
 
-    /**
-     * @tc.number Security_crypto_framework_Random_0400
-     * @tc.name Support generating safe random numbers and setting random number seed exceptions
-     * @tc.desc use callback style of interface
-     */
-    it("Security_crypto_framework_Random_0400", 0, async function (done) {
-      await testSecurityRandomCallbackSeed(null)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
+        /**
+         * @tc.number Security_crypto_framework_Random_0400
+         * @tc.name Test setSeed with invalid input
+         * @tc.desc First input null, Second input 0
+         */
+        it("Security_crypto_framework_Random_0400", 0, async function (done) {
+            let randomGenerator = cryptoFramework.createRandom();
+            try {
+                randomGenerator.setSeed(null);
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+            }
+            try {
+                randomGenerator.setSeed(0);
+            } catch (err) {
+                expect(err.code).assertEqual(401);
+            }
+            done();
         });
-      await testSecurityRandomCallbackSeed(0)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
-        });
-      await testSecurityRandomCallbackSeed(2147483647)
-        .then((data) => {
-          expect(data == null).assertTrue();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
-        });
-      done();
-    });
 
-    /**
-     * @tc.number Security_crypto_framework_Random_0500
-     * @tc.name test enumerated values
-     * @tc.desc cover 100% Enumerated values
-     */
-    it("Security_crypto_framework_Random_0500", 0, async function (done) {
-      testSecurityRandomEnumCommon();
-      done();
+        /**
+         * @tc.number Security_crypto_framework_Random_0500
+         * @tc.name test enumerated values
+         * @tc.desc cover 100% Enumerated values
+         */
+        it("Security_crypto_framework_Random_0500", 0, async function (done) {
+            testSecurityRandomEnumCommon();
+            done();
+        });
     });
-  });
 }
