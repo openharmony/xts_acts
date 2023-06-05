@@ -1,0 +1,21 @@
+{
+  "src": [
+    "TestAbility/pages/Index",
+    "TestAbility/pages/stageFont",
+    "TestAbility/pages/stageRouter",
+    "TestAbility/pages/pushUrl",
+    "TestAbility/pages/animateto",
+    "TestAbility/pages/stageActionSheet",
+    "TestAbility/pages/stageAlertDialog",
+    "TestAbility/pages/stageDatePickerDialog",
+    "TestAbility/pages/stageMediaquery",
+    "TestAbility/pages/stagePrompt",
+    "TestAbility/pages/stageTextPickerDialog",
+    "TestAbility/pages/stageTimePickerDialog",
+    "TestAbility/pages/bindPopupOffset",
+    "TestAbility/pages/animationCurve",
+    "TestAbility/pages/hover",
+    "TestAbility/pages/textObscured",
+    "TestAbility/pages/imageObscuredTest"
+  ]
+}
