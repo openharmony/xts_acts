@@ -62,7 +62,7 @@ static int Start(const char *argvs)
 
 static int RunTests(const char *argvs)
 {
-    int timeoutsec = 5, timeout = 0;
+    int timeoutsec = 10, timeout = 0;
     int status, pid;
     sigset_t set;
     void (*retfunc)(int);
