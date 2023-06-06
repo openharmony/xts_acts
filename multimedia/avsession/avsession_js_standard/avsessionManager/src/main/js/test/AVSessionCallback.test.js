@@ -59,12 +59,7 @@ export default function AVSessionCallback() {
                 expect(false).assertTrue();
             });
 
-            await avSession.createController(session.sessionId).then((data) => {
-                controller = data;
-            }).catch((err) => {
-                console.info(`TestLog: Controller created error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            controller = await session.getController();
         })
 
         afterEach(async function (done) {

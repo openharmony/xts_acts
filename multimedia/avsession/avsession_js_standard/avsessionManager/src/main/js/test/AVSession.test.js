@@ -1817,6 +1817,76 @@ export default function AVSession() {
         })
 
 
+                /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
+         * @tc.name      : OFFPLAY_0100
+         * @tc.desc      : Testing offPlay callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+                it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
+                    function callback1() {
+                        console.info('TestLog: Play command registration1 success');
+                        expect(false).assertTrue();
+                    }
+        
+                    function callback2() {
+                        console.info('TestLog: Play command registration2 success');
+                        expect(false).assertTrue();
+                    }
+        
+                    session.on('play', callback1);
+        
+                    session.on('play', callback2);
+        
+                    session.off('play');
+        
+                    await controller.sendControlCommand({ command: 'play' }).then(() => {
+                        console.info('TestLog: Controller send command successfully');
+                    }).catch((err) => {
+                        console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                        expect(true).assertTrue();
+                    });
+                    await sleep(500);
+                    done();
+                })
+        
+                /* *
+                 * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200
+                 * @tc.name      : OFFPLAY_0200
+                 * @tc.desc      : Testing offPlay callback
+                 * @tc.size      : MediumTest
+                 * @tc.type      : Function
+                 * @tc.level     : Level2
+                 */
+                it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', 0, async function (done) {
+                    function callback1() {
+                        console.info('TestLog: Play command registration1 success');
+                        expect(false).assertTrue();
+                    }
+        
+                    function callback2() {
+                        console.info('TestLog: Play command registration2 success');
+                        expect(true).assertTrue();
+                    }
+        
+                    session.on('play', callback1);
+        
+                    session.on('play', callback2);
+        
+                    session.off('play', callback1);
+        
+                    await controller.sendControlCommand({ command: 'play' }).then(() => {
+                        console.info('TestLog: Controller send command successfully');
+                    }).catch((err) => {
+                        console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    });
+                    await sleep(500);
+                    done();
+                })
+
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPAUSE_0100
