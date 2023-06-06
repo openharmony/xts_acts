@@ -357,7 +357,7 @@ export default function abilityTest() {
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('SendAccessibilityEvent_1100', 0, async function (done) {
+        it('SendAccessibilityEvent_1300', 0, async function (done) {
             console.info('SendAccessibilityEvent_1300');
             let eventType = 'select';
 
