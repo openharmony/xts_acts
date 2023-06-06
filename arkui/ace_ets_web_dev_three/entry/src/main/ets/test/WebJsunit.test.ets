@@ -602,8 +602,58 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('WebMessExtGetError',0,async function(done){
-      emitKey="emitWebMessExtGetError";
+      emitKey="emitGetAccessibleGeolocationPromise";
       Utils.registerEvent("WebMessExtGetError","result type:object",516,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_056                                                                                                                                                
+     *tc.name GetAccessibleGeolocationPromise                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetAccessibleGeolocationPromise',0,async function(done){
+      emitKey="emitSetHttpDnsSuccessAuto";
+      Utils.registerEvent("GetAccessibleGeolocationPromise",true,517,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_057                                                                                                                                                
+     *tc.name SetHttpDnsSuccessAuto                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('SetHttpDnsSuccessAuto',0,async function(done){
+      emitKey="emitSetHttpDnsSuccessOff";
+      Utils.registerEvent("SetHttpDnsSuccessAuto","Example Domain",518,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_058                                                                                                                                             
+     *tc.name SetHttpDnsSuccessOff                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('SetHttpDnsSuccessOff',0,async function(done){
+      emitKey="emitGetCertificateCallback";
+      Utils.registerEvent("SetHttpDnsSuccessOff","Example Domain",519,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_059                                                                                                                                             
+     *tc.name GetCertificateCallback                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetCertificateCallback',0,async function(done){
+      emitKey="emitGetStoredGeolocationPromise";
+      Utils.registerEvent("GetCertificateCallback",31,520,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_060                                                                                                                                                              
+     *tc.name GetStoredGeolocationPromise                                                                                                                                                                                                                
+     *tc.desic Save current page
+     */
+    it('GetStoredGeolocationPromise',0,async function(done){
+      emitKey="emitGetStoredGeolocationPromise";
+      Utils.registerEvent("GetStoredGeolocationPromise","file:///",521,done);
       sendEventByKey('webcomponent',10,'');
     })
   })

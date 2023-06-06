@@ -404,13 +404,13 @@ struct Index {
                             break;
                         }
                         case "emitOnErrorReceive":{
-                            this.controller.loadUrl({url:'http://192.168.5.40:9006/sso_web/html/H5/doctor/aboutUs.html'})
+                            this.controller.loadUrl({url:'http://bianixnbo.com'})
                             setTimeout(()=>{
-                                this.controller.loadUrl({url:'http://192.168.5.40:9006/sso_web/html/H5/doctor/aboutUs.html'})
+                                this.controller.loadUrl({url:'http://bianixnbo.com'})
                                 setTimeout(() => {
                                     Utils.emitEvent(this.errorReceive,65)
-                                },3000)
-                            },3000)
+                                },4000)
+                            },4000)
                             break;
                         }
                         case "emitOnHttpErrorReceive":{

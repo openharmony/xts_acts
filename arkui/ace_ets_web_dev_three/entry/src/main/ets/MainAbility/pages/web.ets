@@ -22,6 +22,25 @@ import fileio from '@ohos.fileio';
 import prompt from '@system.prompt';
 let loadedUrl;
 
+function Uint8ArrayToString(dataArray) {
+  var dataString = ''
+  for (var i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i])
+  }
+  return dataString
+}
+
+function ParseX509CertInfo(x509CertArray) {
+  let res: string = 'getCertificate success: len = ' + x509CertArray.length;
+  for (let i = 0; i < x509CertArray.length; i++) {
+    res += ', index = ' + i + ', issuer name = '
+    + Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
+    + Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
+    + x509CertArray[i].getNotBeforeTime()
+    + ', valid end = ' + x509CertArray[i].getNotAfterTime()
+  }
+  return res
+}
 
 @Entry
 @Component
@@ -49,6 +68,10 @@ struct Index {
     @State getArray:boolean =false
     @State msg1:string=""
     @State type:number=0
+    @State enterPageEndAuto: boolean =false
+    @State enterPageEndOff: boolean =false
+    @State outputStr: string = ''
+    
 
     
     
@@ -572,7 +595,7 @@ struct Index {
                         }
                         case "emitSetHttpDnsSuccess":{ 
                             try {
-                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SecureOnly, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SECURE_ONLY, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
                                 this.controller.loadUrl("https://www.example.com/");
                                 this.enterPageEnd=true
                             } catch(error) {
@@ -856,6 +879,75 @@ struct Index {
                             }                                                                      
                             break;
                         }
+                        case "emitGetAccessibleGeolocationPromise":{  
+                            try {
+                                web_webview.GeolocationPermissions.getAccessibleGeolocation("file:///")
+                                .then(result => {
+                                    console.log('getAccessibleGeolocationPromise result: ' + result);
+                                    Utils.emitEvent(result,517)
+                                }).catch(error => {
+                                console.log('getAccessibleGeolocationPromise error: ' + JSON.stringify(error));
+                                });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                                                                                     
+                            break;
+                        }
+                        case "emitSetHttpDnsSuccessAuto":{ 
+                            try {
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.AUTO, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                this.controller.loadUrl("https://www.example.com/");
+                                this.enterPageEndAuto=true
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitSetHttpDnsSuccessOff":{ 
+                            try {
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.OFF, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                this.controller.loadUrl("https://www.example.com/");
+                                this.enterPageEndOff=true
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitGetCertificateCallback":{ 
+                           try {
+                               this.controller.loadUrl("https://www.example.com/");
+                               console.info("jinru")
+                this.controller.getCertificate((error, x509CertArray) => {
+                  if (error) {
+                    this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+                  } else {
+                    this.outputStr = ParseX509CertInfo(x509CertArray);
+                    console.info("hahahha"+this.outputStr.length)
+                    console.info("hahahha"+this.outputStr)
+                    Utils.emitEvent(this.outputStr.length,520)
+                  }
+                })
+              } catch (error) {
+                this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+              }                                                                  
+                            break;
+                        }
+                        case "emitGetStoredGeolocationPromise":{  
+                             try {
+                                web_webview.GeolocationPermissions.allowGeolocation("file:///") 
+                                web_webview.GeolocationPermissions.getStoredGeolocation()
+                                .then(origins => {
+                                    let origins_str: string = origins.join();
+                                    console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                                    Utils.emitEvent(origins_str, 521);
+                                }).catch(error => {
+                                console.log('getStoredGeolocationPromise error: ' + JSON.stringify(error));
+                                });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                            }                                                                                                                                     
+                            break;
+                        }
                         
                         
 
@@ -897,6 +989,14 @@ struct Index {
                 if(this.enterPageEnd){
                     Utils.emitEvent(1,446)
                     this.enterPageEnd=false
+                }
+                if(this.enterPageEndAuto){
+                    Utils.emitEvent(this.controller.getTitle(),518)
+                    this.enterPageEndAuto=false
+                }
+                if(this.enterPageEndOff){
+                    Utils.emitEvent(this.controller.getTitle(),519)
+                    this.enterPageEndOff=false
                 }
                 if(this.getString){
                     try {
@@ -980,19 +1080,14 @@ struct Index {
                 }
                 if(this.getArray){
                     try {
-                        this.controller.runJavaScriptExt(
-                        'getArrayForJs()',
-                        (error, result) => {
-                        if (error) {
-                            console.info(`run JavaScript error: ` + JSON.stringify(error))
-                            return;
-                        }
-                            var type = result.getType()
-                            if(web_webview.JsMessageType.ARRAY== type){
-                            this.msg1 = "result type:" + typeof (result.getArray());
-                            Utils.emitEvent(this.msg1+web_webview.JsMessageType.NOT_SUPPORT,504)
-                            }
-                        });
+                        this.controller.runJavaScriptExt('getArrayForJs()')  
+                            .then((result) => {
+                                var type = result.getType()
+                                if(web_webview.JsMessageType.ARRAY== type){
+                                this.msg1 = "result type:" + typeof (result.getArray());
+                                Utils.emitEvent(this.msg1+web_webview.JsMessageType.NOT_SUPPORT,504)
+                                }
+                            })
                     console.info('urlgetstring: ', event.url);
                     } catch (error) {
                         console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
