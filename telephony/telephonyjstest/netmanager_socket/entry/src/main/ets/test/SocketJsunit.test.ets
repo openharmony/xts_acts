@@ -1489,7 +1489,7 @@ export default function socketJsunit() {
      * @tc.name      : connect
      * @tc.desc      : Sets up a connection to the specified IP address and port number.
      */
-    it('Telephony_Socket_TCPSocket_connect_0200', 0, function (done) {
+    it('Telephony_Socket_TCPSocket_connect_0400', 0, function (done) {
       if (!envReady) {
         console.info("The environment was not ready");
         done();
