@@ -439,7 +439,7 @@ export default function webJsunit() {
      */
     it('onErrorReceive',0,async function(done){
       emitKey="emitOnHttpErrorReceive";
-      Utils.registerEvent("onErrorReceive","http://192.168.5.40:9006/sso_web/html/H5/doctor/aboutUs.html",65,done);
+      Utils.registerEvent("onErrorReceive","http://bianixnbo.com/",65,done);
       sendEventByKey('webcomponent',10,'');
     })
     /*
