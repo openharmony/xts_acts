@@ -21,6 +21,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   module_out_path = module_output_path
   subsystem_name = "graphic"
   part_name = "graphic_standard"
+  comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
     "NativeBufferTest.cpp",
@@ -38,30 +39,30 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   ]
 
   include_dirs = [
-    "//foundation/graphic/graphic_2d/interfaces/inner_api/common",
-    "//foundation/graphic/graphic_2d/rosen/modules/composer/vsync/include",
-    "//foundation/graphic/graphic_2d/frameworks/surface/include",
-    "//foundation/communication/ipc/interfaces/innerkits/ipc_core/include",
-    "//drivers/peripheral/display/interfaces/include",
-    "//base/security/access_token/interfaces/innerkits/nativetoken/include",
-    "//base/security/access_token/interfaces/innerkits/accesstoken/include",
-    "//base/security/access_token/interfaces/innerkits/token_setproc/include",
+    "$comPath/rosen/modules/composer/vsync/include",
+    "$comPath/interfaces/inner_api/common",
+    "$comPath/frameworks/surface/include",
+    "../../../../../drivers/peripheral/display/interfaces/include",
+  ]
+
+  external_deps = [
+    "ipc:ipc_core", 
+    "hiviewdfx_hilog_native:libhilog",
+    "access_token:libaccesstoken_sdk",
+    "access_token:libnativetoken",
+    "access_token:libtoken_setproc",
+    "graphic_standard:libgraphic_utils",
+    "samgr:samgr_proxy"
   ]
 
   deps = [
-    "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
-    "//base/security/access_token/interfaces/innerkits/accesstoken:libaccesstoken_sdk",
-    "//base/security/access_token/interfaces/innerkits/nativetoken:libnativetoken",
-    "//base/security/access_token/interfaces/innerkits/token_setproc:libtoken_setproc",
-    "//foundation/graphic/graphic_2d:libnative_image",
-    "//foundation/graphic/graphic_2d:libsurface",
-    "//foundation/graphic/graphic_2d/frameworks/opengl_wrapper:EGL",
-    "//foundation/graphic/graphic_2d/frameworks/opengl_wrapper:GLESv3",
-    "//foundation/graphic/graphic_2d/rosen/modules/composer/native_vsync:libnative_vsync",
-    "//foundation/graphic/graphic_2d/rosen/modules/composer/vsync:libvsync",
-    "//foundation/graphic/graphic_2d/utils:buffer_handle",
-    "//foundation/graphic/graphic_2d/utils:libgraphic_utils",
-    "//foundation/systemabilitymgr/samgr/interfaces/innerkits/samgr_proxy:samgr_proxy",
+    "$comPath:libnative_image",
+    "$comPath:libsurface",
+    "$comPath/frameworks/opengl_wrapper:EGL",
+    "$comPath/frameworks/opengl_wrapper:GLESv3",
+    "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",
+    "$comPath/rosen/modules/composer/vsync:libvsync",
+    "$comPath/utils:buffer_handle",
     "//third_party/googletest:gmock_main",
     "//third_party/googletest:gtest_main",
   ]
