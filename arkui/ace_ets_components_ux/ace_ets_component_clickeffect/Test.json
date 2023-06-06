@@ -3,17 +3,18 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "com.example.slidertest",
+        "bundle-name": "com.example.clickeffecttest",
         "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 240000
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsAceSliderTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAceClickEffectTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
         },
         {
             "type": "ShellKit",
