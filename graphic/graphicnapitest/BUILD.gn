@@ -46,13 +46,13 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
   ]
 
   external_deps = [
-    "ipc:ipc_core", 
-    "hiviewdfx_hilog_native:libhilog",
     "access_token:libaccesstoken_sdk",
     "access_token:libnativetoken",
     "access_token:libtoken_setproc",
     "graphic_standard:libgraphic_utils",
-    "samgr:samgr_proxy"
+    "hiviewdfx_hilog_native:libhilog",
+    "ipc:ipc_core",
+    "samgr:samgr_proxy",
   ]
 
   deps = [

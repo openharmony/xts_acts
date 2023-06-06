@@ -44,12 +44,10 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
     "//third_party/googletest/googletest/include",
   ]
 
-  external_deps = [ 
+  external_deps = [
     "c_utils:utils",
+    "graphic_standard:2d_graphics",
     "hiviewdfx_hilog_native:libhilog",
-    "graphic_standard:2d_graphics"
   ]
-  deps = [
-    "//third_party/googletest:gtest_main",
-  ]
+  deps = [ "//third_party/googletest:gtest_main" ]
 }
