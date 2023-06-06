@@ -313,5 +313,38 @@ describe('relationalStoreTest', function () {
         console.info(TAG + "************* SUB_DDM_RelationalStore_Version_0020 end   *************");
     })
     
+
+        /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0010
+     * @tc.name Get relational store version test
+     * @tc.desc relational version
+     */	
+         it('SUB_DDM_RelationalStore_Different_Version_0010', 0, async function (done) {
+            console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 start *************");
+            const STORE_CONFIGS2 = {
+                name: "rdbstore.db",
+                securityLevel: data_Rdb.SecurityLevel.S2
+            };
+            let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+            console.info(`SUB_DDM_RelationalStore_Different_Version_0010 S1 Get RdbStore successfully.`);
+            try{
+                let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+                await promise.then(async (rdbStore) => {
+                  store = rdbStore;
+                  console.info(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore successfully.`);
+                  expect().assertFail();
+                }).catch((err) => {
+                  console.error(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                  expect(err.code).assertEqual(14800000);
+                })
+            }catch(error){
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+                expect().assertFail();
+            }
+            await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+            await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+            done();
+            console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 end   *************");
+        })
     console.info(TAG + "*************Unit Test End*************");
 })}
