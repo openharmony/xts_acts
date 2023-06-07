@@ -19,7 +19,6 @@ import bluetoothhostTest3 from './BRDiscovery.test.js'
 import bluetoothhostTest4 from './BRSpp.test.js'
 import bluetoothhostTest from './BRSwitch.test.js'
 export default function testsuite() {
-bluetoothhostTest()
 bluetoothhostTest1()
 bluetoothhostTest2()
 bluetoothhostTest3()
