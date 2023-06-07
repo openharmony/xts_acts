@@ -305,7 +305,7 @@ export class KeyboardController {
             } else {
                 let editorAttribyte = await InputClient.getEditorAttribute();
                 console.debug(TAG + '====>inputMethodEngine_test_029 editorAttribyte:' + JSON.stringify(editorAttribyte));
-                let value = await InputClient.sendKeyFunction(editorAttribyte.enterKeyType);
+                let value = await InputClient.sendKeyFunction(editorAttribyte.inputPattern);
                 console.debug(TAG + '====>inputMethodEngine_test_029 sendKeyFunction:' + JSON.stringify(value));
                 if (value){
                     commonEventPublishData = {
@@ -867,7 +867,8 @@ export class KeyboardController {
         inputKeyboardDelegate.on('keyDown', (keyEvent) => {
             inputKeyboardDelegate.off('keyDown');
             console.info(TAG + "====>inputKeyboardDelegate.on('keyDown') count: " + count);
-            if (keyEvent.keyCode === 2000){
+            console.info(TAG + "====>inputKeyboardDelegate.keyEvent.keyAction " + keyEvent.keyAction);
+            if (keyEvent.keyCode === 2000 && keyEvent.keyAction === 2){
                 count += 1;
             }
             return true;
@@ -875,7 +876,8 @@ export class KeyboardController {
         inputKeyboardDelegate.on('keyUp', (keyEvent) => {
             inputKeyboardDelegate.off('keyUp');
             console.info(TAG + "====>inputKeyboardDelegate.on('keyUp') count: " + count);
-            if (keyEvent.keyCode === 2000){
+            console.info(TAG + "====>inputKeyboardDelegate.keyEvent.keyAction " + keyEvent.keyAction);
+            if (keyEvent.keyCode === 2000 && keyEvent.keyAction === 3){
                 count += 1;
             }
             return true;

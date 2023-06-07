@@ -1878,5 +1878,6 @@ export default function inputMethodAbility() {
       }
       commonEventManager.publish('test', commonEventPublishData, publishCallback);
     });
+
   });
 };

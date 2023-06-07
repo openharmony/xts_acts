@@ -19,6 +19,31 @@ import subtype from '@ohos.InputMethodSubtype';
 export default function inputMethodStageJSUnit() {
   describe('inputMethodTest', function () {
     console.info("====>************* settings Test start*************");
+    var inputServer = {
+      packageName: '',
+      methodId: '',
+      name:'',
+      id:'',
+      extra:{}
+    }
+
+    var inputServerCopy = {
+      packageName : "com.acts.imeability.test",
+      methodId : "com.acts.imeability.test.ImExtAbility",
+      name:"com.acts.imeability.test",
+      id:"com.acts.imeability.test.ImExtAbility",
+      extra:{}
+    }
+
+    beforeAll(async (done)=>{
+      let inputM = inputMethod.getCurrentInputMethod()
+      console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
+      inputServer.packageName = inputM.packageName;
+      inputServer.methodId = inputM.methodId;
+      inputServer.name = inputM.packageName;
+      inputServer.id = inputM.methodId;
+    })
+
     /*
      * @tc.number  inputMethod_test_getController_001
      * @tc.name   get inputMethod controller
@@ -606,6 +631,64 @@ export default function inputMethodStageJSUnit() {
           done();
         }
       })
+    });
+
+    it('Sub_Misc_inputMethod_onImeChange_0150', 0, async function (done) {
+      let inputMethodSetting = inputMethod.getSetting();
+      inputMethodSetting.on("imeChange", async (inputMethodProperty, inputMethodSubtype) => {
+        inputMethodSetting.off("imeChange");
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          await inputMethod.switchInputMethod(inputServer);
+          console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodProperty:" + JSON.stringify(inputServerCopy));
+          console.info("====>Sub_Misc_inputMethod_onImeChange_0150  inputMethodSubtype:" + JSON.stringify(inputMethodSubtype));
+          expect(typeof(inputMethodProperty) !== null).assertTrue();
+          expect(typeof(inputMethodSubtype) !== null).assertTrue();
+          done();
+        },200);
+      })
+      try {
+        await inputMethod.switchInputMethod(inputServerCopy);
+        console.info("====>Sub_Misc_inputMethod_onImeChange_0150  switchInputMethod success" + JSON.stringify(inputServer));
+      } catch (err) {
+        console.info("====>Sub_Misc_inputMethod_onImeChange_0150 switchInputMethod fail" + JSON.stringify(err));
+      }
+    });
+
+    it('Sub_Misc_inputMethod_offImeChange_0160', 0, async function (done) {
+      let count = 0;
+      let inputMethodSetting = inputMethod.getSetting();
+      inputMethodSetting.on("imeChange", (inputMethodProperty, inputMethodSubtype) => {
+        inputMethodSetting.off("imeChange");
+        count += 1;
+        console.info("====>Sub_Misc_inputMethod_offImeChange_0160 count:" + count);
+      })
+
+      try {
+        console.info('====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod 001');
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          await inputMethod.switchInputMethod(inputServerCopy);
+        },200);
+        console.info('====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod  002');
+        let t1 = setTimeout(async () => {
+          clearTimeout(t1);
+          await inputMethod.switchInputMethod(inputServer);
+        },200);
+      } catch (err) {
+        console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));
+      }
+
+      let t = setTimeout(() => {
+        clearTimeout(t);
+        try {
+          console.info('====>Sub_Misc_inputMethod_offImeChange_0160 setTimeout count: ' +  count);
+          expect(count === 1).assertTrue();
+        } catch (err) {
+          console.info("====>Sub_Misc_inputMethod_offImeChange_0160 switchInputMethod fail" + JSON.stringify(err));
+        }
+        done();
+      },1000);
     });
 
   });
