@@ -1910,12 +1910,12 @@ describe('queryTest', function() {
     })
 
     /**
-     * @tc.number: SUB_DDM_DKV_QUERY_SETSUGGESTINDEX_PROMISE_0100
+     * @tc.number: SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0400
      * @tc.desc: Test Js Api Query.SetSuggestIndex() testcase 001
      * @tc.type: FUNC
      * @tc.name Test Js Api Query.SetSuggestIndex() testcase 001
      */
-    it('SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0300', 0, async function(done) {
+    it('SUB_DDM_DKV_QUERY_PREFIXKEY_PROMISE_0400', 0, async function(done) {
         var query = null;
         try {
             query = new ddm.Query();
