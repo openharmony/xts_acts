@@ -83,7 +83,7 @@ export default function SystemBatteryTest() {
          * @tc.name get_status_success_empty_test
          * @tc.desc Battery acquisition kit
          */
-        it('get_status_success_null_test', 0, function () {
+        it('get_status_success_empty_test', 0, function () {
             battery.getStatus({
                 fail: (data, code) => {
                     failFunc(data, code, successEmptyTest);
