@@ -141,7 +141,7 @@ describe('fileIO_fs_stream_flush', function () {
 
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_FLUSH_ASYNC_0100
-   * @tc.name fileIO_test_stream_flush_async_001
+   * @tc.name fileIO_test_stream_flush_async_002
    * @tc.desc Test the flush() interface of class Stream. Promise.
    * Refresh the file stream.
    * @tc.size MEDIUM
@@ -150,8 +150,8 @@ describe('fileIO_fs_stream_flush', function () {
    * @tc.require
    */
 
-  it('fileIO_test_stream_flush_sync_001', 0, async function (done) {
-    let fpath = await nextFileName('fileIO_test_stream_flush_sync_001');
+  it('fileIO_test_stream_flush_async_002', 0, async function (done) {
+    let fpath = await nextFileName('fileIO_test_stream_flush_async_002');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let sr = fileIO.createStreamSync(fpath, 'r+');
 
@@ -162,7 +162,7 @@ describe('fileIO_fs_stream_flush', function () {
     } catch (e) {
       sr.closeSync();
       fileIO.unlinkSync(fpath);
-      console.log('fileIO_test_stream_flush_sync_001 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_stream_flush_async_002 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
     }
