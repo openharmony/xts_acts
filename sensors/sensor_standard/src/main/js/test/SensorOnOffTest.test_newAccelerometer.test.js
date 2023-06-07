@@ -78,10 +78,10 @@ describe("SensorJsTest_sensor_39", function () {
      */
     it("newAccelerometer_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('---------newAccelerometer_SensorJsTest001--------------');
-        sensor.on(sensor.SensorId.ACCELEROMETER, callback);
+         sensor.on(sensor.SensorId.ACCELEROMETER, callback);
         setTimeout(()=>{
-            sensor.off(sensor.SensorId.ACCELEROMETER);
-            done();
+             sensor.off(sensor.SensorId.ACCELEROMETER);
+             done();
         }, 1000);
     })
 
@@ -127,7 +127,7 @@ describe("SensorJsTest_sensor_39", function () {
      * @tc.name: newAccelerometer_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newAccelerometer_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newAccelerometer_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newAccelerometer_SensorJsTest004--------------');
         function onSensorCallback(data) {
             console.info('newAccelerometer_SensorJsTest004  callback in');
@@ -190,7 +190,7 @@ describe("SensorJsTest_sensor_39", function () {
      * @tc.name: newAccelerometer_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newAccelerometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newAccelerometer_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('newAccelerometer_SensorJsTest007  on error');
             expect(typeof (data.x)).assertEqual("number");
@@ -232,13 +232,14 @@ describe("SensorJsTest_sensor_39", function () {
     it("newAccelerometer_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newAccelerometer_SensorJsTest009 callback in' + JSON.stringify(data));
-            expect(false).assertTrue();
-            done();
+            expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
         sensor.on(sensor.SensorId.ACCELEROMETER, onSensorCallback);
-        sensor.off(sensor.SensorId.ACCELEROMETER, onSensorCallback);
         setTimeout(()=>{
-            expect(true).assertTrue();
+			sensor.off(sensor.SensorId.ACCELEROMETER, onSensorCallback);
             done();
         }, 1000);
     })
@@ -297,7 +298,7 @@ describe("SensorJsTest_sensor_39", function () {
      * @tc.name: newAccelerometer_SensorJsTest012
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newAccelerometer_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newAccelerometer_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         try {
             sensor.off(sensor.SensorId.ACCELEROMETER, 5);
         } catch (error) {

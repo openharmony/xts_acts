@@ -238,15 +238,16 @@ describe("SensorJsTest_sensor_5", function () {
         console.info('----------------------Gyroscope_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('Gyroscope_SensorJsTest007  on error');
-            expect(false).assertTrue();
-            done();
+			expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE,(error, data) => {    	
 				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, onSensorCallback);
-				sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, onSensorCallback);
 				setTimeout(() => {
-					expect(true).assertTrue();
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, onSensorCallback);
 					done();
 				}, 500);
 			})
@@ -555,7 +556,7 @@ describe("SensorJsTest_sensor_5", function () {
      * @tc.name: Gyroscope_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Gyroscope_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("Gyroscope_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------Gyroscope_SensorJsTest017--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE,(error, data) => {

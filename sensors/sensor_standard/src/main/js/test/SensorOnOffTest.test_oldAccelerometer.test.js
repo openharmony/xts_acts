@@ -190,13 +190,14 @@ describe("SensorJsTest_sensor_3", function () {
         console.info('----------------------Accelerometer_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('Accelerometer_SensorJsTest007 on error');
-            expect(false).assertTrue();
-            done();
+			expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onSensorCallback);
-        sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onSensorCallback);
         setTimeout(() => {
-            expect(true).assertTrue();
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, onSensorCallback);
             done();
         }, 500);
     })

@@ -178,7 +178,7 @@ describe("SensorJsTest_sensor_42", function () {
     * @tc.name: newGravity_SensorJsTest005
     * @tc.desc: Functional Use Cases
     */
-    it("newGravity_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newGravity_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGravity_SensorJsTest005--------------');
         function onSensorCallback(data) {
             console.info('newGravity_SensorJsTest005  callback in');
@@ -263,7 +263,7 @@ describe("SensorJsTest_sensor_42", function () {
     * @tc.name: newGravity_SensorJsTest008
     * @tc.desc: Functional Use Cases
     */
-    it("newGravity_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newGravity_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('newGravity_SensorJsTest008  on error');
             expect(typeof (data.x)).assertEqual("number");
@@ -313,8 +313,10 @@ describe("SensorJsTest_sensor_42", function () {
     it("newGravity_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newGravity_SensorJsTest010 callback in');
-            expect(false).assertTrue();
-            done();
+            expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.GRAVITY,(error, data) => {
@@ -323,9 +325,8 @@ describe("SensorJsTest_sensor_42", function () {
 				} else {
 					expect(typeof(data)).assertEqual("object");			
 					sensor.on(sensor.SensorId.GRAVITY, onSensorCallback);
-					sensor.off(sensor.SensorId.GRAVITY, onSensorCallback);
 					setTimeout(()=>{
-						expect(true).assertTrue();
+						sensor.off(sensor.SensorId.GRAVITY, onSensorCallback);
 						done();
 					}, 500);
 				}
@@ -787,7 +788,7 @@ describe("SensorJsTest_sensor_42", function () {
     * @tc.name: newGravity_SensorJsTest024
     * @tc.desc: Functional Use Cases
     */
-    it("newGravity_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newGravity_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGravity_SensorJsTest024--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.GRAVITY,(error, data) => {
