@@ -727,8 +727,8 @@ describe('objectStoreTestV9', function () {
      * @tc.type: FUNC
      * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200
      */
-  it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100', 0, async function (done) {
-    console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100 start *************");
+  it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200', 0, async function (done) {
+    console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200 start *************");
     try {
         let  g_object;
         let abnValue = 0.02;
@@ -738,7 +738,7 @@ describe('objectStoreTestV9', function () {
     } catch (error) {
         console.info(error.code + error.message);
     }
-    console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100 end *************");
+    console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200 end *************");
     done();
    })
 console.info(TAG + "*************Unit Test End*************");
