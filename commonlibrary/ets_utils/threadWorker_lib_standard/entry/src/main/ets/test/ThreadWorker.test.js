@@ -2342,6 +2342,77 @@ describe('threadWorkerTest', function () {
         done();
     })
 
+    // Check the transmission types supported by Worker is ok.
+    /**
+     * @tc.name: threadWorker_support_types_test_008
+     * @tc.desc: Check the transmission types supported by Worker is ok.
+     */
+     it('threadWorker_support_types_test_008', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_026.js");
+        let flag = false;
+        let result;
+        let isTerminate = false;
+        class MyModel
+        {
+            name = "module";
+            Init() {
+                this.name = "Init";
+            }
+        }
+        let model = new MyModel()
+        ss.onmessage = function(d) {
+            result = d.data;
+            flag = true;
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage(model);
+        while (!flag) {
+            await promiseCase();
+        }
+        ss.terminate();
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(result).assertEqual("module");
+        done();
+    })
+
+    // Check the transmission types supported by Worker is ok.
+    /**
+     * @tc.name: threadWorker_support_types_test_009
+     * @tc.desc: Check the transmission types supported by Worker is ok.
+     */
+    it('threadWorker_support_types_test_009', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_027.js");
+        let result = "";
+        let isTerminate = false;
+        class MyModel
+        {
+            name = "module";
+            Init() {
+                this.name = "Init";
+            }
+        }
+        let model = new MyModel()
+
+        ss.onerror = function (e){
+            result = "unInit";
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage(model);
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(result).assertEqual("unInit");
+        done();
+    })
+
     // Check the postmessage of worker is ok.
     /**
      * @tc.name: threadWorker_worker_postmessage_test_001
