@@ -39,158 +39,151 @@ function completeFunc(tag) {
 }
 
 export default function SystemBatteryTest() {
-describe('SystemBatteryTest', function () {
-    console.log("*************System Battery Unit Test Begin*************");
+    describe('SystemBatteryTest', function () {
+        console.log("*************System Battery Unit Test Begin*************");
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0010
-     * @tc.name get_status_success_test
-     * @tc.desc Battery acquisition kit
-     */
-    const successTest = "get_status_success_test";
-    it(successTest, 0, function () {
-        battery.getStatus({
-            success: (data) => {
-                successFunc(data, successTest);
-            },
-            fail: (data, code) => {
-                failFunc(data, code, successTest);
-            },
-            complete: () => {
-                completeFunc(successTest);
-            }
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0010
+         * @tc.name get_status_success_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_success_test', 0, function () {
+            battery.getStatus({
+                success: (data) => {
+                    successFunc(data, successTest);
+                },
+                fail: (data, code) => {
+                    failFunc(data, code, successTest);
+                },
+                complete: () => {
+                    completeFunc(successTest);
+                }
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0020
-     * @tc.name get_status_success_null_test
-     * @tc.desc Battery acquisition kit
-     */
-    const successNullTest = "get_status_success_null_test";
-    it(successNullTest, 0, function () {
-        battery.getStatus({
-            success: null,
-            fail: (data, code) => {
-                failFunc(data, code, successNullTest);
-            },
-            complete: () => {
-                completeFunc(successNullTest);
-            }
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0020
+         * @tc.name get_status_success_null_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_success_null_test', 0, function () {
+            battery.getStatus({
+                success: null,
+                fail: (data, code) => {
+                    failFunc(data, code, successNullTest);
+                },
+                complete: () => {
+                    completeFunc(successNullTest);
+                }
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0030
-     * @tc.name get_status_success_empty_test
-     * @tc.desc Battery acquisition kit
-     */
-    const successEmptyTest = "get_status_success_null_test";
-    it(successEmptyTest, 0, function () {
-        battery.getStatus({
-            fail: (data, code) => {
-                failFunc(data, code, successEmptyTest);
-            },
-            complete: () => {
-                completeFunc(successEmptyTest);
-            }
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0030
+         * @tc.name get_status_success_empty_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_success_empty_test', 0, function () {
+            battery.getStatus({
+                fail: (data, code) => {
+                    failFunc(data, code, successEmptyTest);
+                },
+                complete: () => {
+                    completeFunc(successEmptyTest);
+                }
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0040
-     * @tc.name get_status_fail_null_test
-     * @tc.desc Battery acquisition kit
-     */
-    let failNullTest = "get_status_fail_null_test";
-    it(failNullTest, 0, function () {
-        battery.getStatus({
-            success: (data) => {
-                successFunc(data, failNullTest);
-            },
-            fail: null,
-            complete: () => {
-                completeFunc(failNullTest);
-            }
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0040
+         * @tc.name get_status_fail_null_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_fail_null_test', 0, function () {
+            battery.getStatus({
+                success: (data) => {
+                    successFunc(data, failNullTest);
+                },
+                fail: null,
+                complete: () => {
+                    completeFunc(failNullTest);
+                }
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0050
-     * @tc.name get_status_fail_empty_test
-     * @tc.desc Battery acquisition kit
-     */
-    let failEmptyTest = "get_status_fail_empty_test";
-    it(failEmptyTest, 0, function () {
-        battery.getStatus({
-            success: () => {
-                successFunc(data, failEmptyTest);
-            },
-            complete: () => {
-                completeFunc(failEmptyTest);
-            }
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0050
+         * @tc.name get_status_fail_empty_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_fail_empty_test', 0, function () {
+            battery.getStatus({
+                success: () => {
+                    successFunc(data, failEmptyTest);
+                },
+                complete: () => {
+                    completeFunc(failEmptyTest);
+                }
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0060
-     * @tc.name get_status_complete_null_test
-     * @tc.desc Battery acquisition kit
-     */
-    let completeNullTest = "get_status_complete_null_test";
-    it(completeNullTest, 0, function () {
-        battery.getStatus({
-            success: (data) => {
-                successFunc(data, completeNullTest);
-            },
-            fail: (data, code) => {
-                failFunc(data, code, completeNullTest);
-            },
-            complete: null
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0060
+         * @tc.name get_status_complete_null_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_complete_null_test', 0, function () {
+            battery.getStatus({
+                success: (data) => {
+                    successFunc(data, completeNullTest);
+                },
+                fail: (data, code) => {
+                    failFunc(data, code, completeNullTest);
+                },
+                complete: null
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0070
-     * @tc.name get_status_complete_empty_test
-     * @tc.desc Battery acquisition kit
-     */
-    let completeEmptyTest = "get_status_complete_empty_test";
-    it(completeEmptyTest, 0, function () {
-        battery.getStatus({
-            success: (data) => {
-                successFunc(data, completeEmptyTest);
-            },
-            fail: (data, code) => {
-                failFunc(data, code, completeEmptyTest);
-            }
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0070
+         * @tc.name get_status_complete_empty_test
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_complete_empty_test', 0, function () {
+            battery.getStatus({
+                success: (data) => {
+                    successFunc(data, completeEmptyTest);
+                },
+                fail: (data, code) => {
+                    failFunc(data, code, completeEmptyTest);
+                }
+            });
         });
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0080
-     * @tc.name get_status_all_null
-     * @tc.desc Battery acquisition kit
-     */
-    it('get_status_all_null', 0, function () {
-        let allNull = false;
-        battery.getStatus({
-            success: null,
-            fail: null,
-            complete: null,
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0080
+         * @tc.name get_status_all_null
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_all_null', 0, function () {
+            let allNull = false;
+            battery.getStatus({
+                success: null,
+                fail: null,
+                complete: null,
+            });
+            expect(!allNull).assertTrue();
         });
-        expect(!allNull).assertTrue();
-    });
 
-    /**
-     * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0090
-     * @tc.name get_status_all_empty
-     * @tc.desc Battery acquisition kit
-     */
-    it('get_status_all_empty', 0, function () {
-        let allNull = false;
-        battery.getStatus();
-        expect(!allNull).assertTrue();
-   });
-})
+        /**
+         * @tc.number SUB_PowerSystem_BatteryManager_JSTest_0090
+         * @tc.name get_status_all_empty
+         * @tc.desc Battery acquisition kit
+         */
+        it('get_status_all_empty', 0, function () {
+            let allNull = false;
+            battery.getStatus();
+            expect(!allNull).assertTrue();
+        });
+    })
 }
