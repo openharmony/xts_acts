@@ -232,15 +232,14 @@ describe("SensorJsTest_sensor_8", function () {
         console.info('----------------------Barometer_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('Barometer_SensorJsTest007  on error');
-            expect(false).assertTrue();
-            done();
+			expect(typeof (data.pressure)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER,(error, data) => {    	
 				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, onSensorCallback);
-				sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, onSensorCallback);
 				setTimeout(() => {
-					expect(true).assertTrue();
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, onSensorCallback);
 					done();
 				}, 500);
 			})
@@ -549,7 +548,7 @@ describe("SensorJsTest_sensor_8", function () {
      * @tc.name: Barometer_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Barometer_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("Barometer_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------Barometer_SensorJsTest017--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER,(error, data) => {

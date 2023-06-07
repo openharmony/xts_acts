@@ -238,15 +238,16 @@ describe("SensorJsTest_sensor_15", function () {
         console.info('----------------------MagneticField_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('MagneticField_SensorJsTest007  on error');
-            expect(false).assertTrue();
-            done();
+			expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {    	
 				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
-				sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
 				setTimeout(() => {
-					expect(true).assertTrue();
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, onSensorCallback);
 					done();
 				}, 500);
 			})
@@ -555,7 +556,7 @@ describe("SensorJsTest_sensor_15", function () {
      * @tc.name: MagneticField_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("MagneticField_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("MagneticField_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------MagneticField_SensorJsTest017--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD,(error, data) => {

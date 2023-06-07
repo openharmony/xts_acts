@@ -151,7 +151,7 @@ describe("SensorJsTest_sensor_45", function () {
      * @tc.name: newHall_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newHall_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newHall_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newHall_SensorJsTest004--------------');
         function onSensorCallback(data) {
             console.info('newHall_SensorJsTest004  callback in');
@@ -234,7 +234,7 @@ describe("SensorJsTest_sensor_45", function () {
      * @tc.name: newHall_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newHall_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newHall_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('newHall_SensorJsTest007  on error');
 			expect(typeof (data.status)).assertEqual("number");
@@ -282,8 +282,8 @@ describe("SensorJsTest_sensor_45", function () {
     it("newHall_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newHall_SensorJsTest009 callback in');
-            expect(false).assertTrue();
-            done();
+			expect(typeof (data.status)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.HALL,(error, data) => {
@@ -292,9 +292,8 @@ describe("SensorJsTest_sensor_45", function () {
 				} else {
 					expect(typeof(data)).assertEqual("object");			
 					sensor.on(sensor.SensorId.HALL, onSensorCallback);
-					sensor.off(sensor.SensorId.HALL, onSensorCallback);
 					setTimeout(()=>{
-						expect(true).assertTrue();
+						sensor.off(sensor.SensorId.HALL, onSensorCallback);
 						done();
 					}, 500);
 				}
@@ -758,7 +757,7 @@ describe("SensorJsTest_sensor_45", function () {
      * @tc.name: newHall_SensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newHall_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newHall_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newHall_SensorJsTest023--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.HALL,(error, data) => {

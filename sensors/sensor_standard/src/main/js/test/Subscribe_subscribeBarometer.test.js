@@ -87,7 +87,7 @@ describe("SensorJsTest_sensor_26", function () {
      * @tc.name: subscribeBarometer_SensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("subscribeBarometer_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest002---------------------------');
 		try{
 		   sensor.getSingleSensor(BarometerId ,(error, data) => {	        
@@ -127,7 +127,7 @@ describe("SensorJsTest_sensor_26", function () {
      * @tc.name: subscribeBarometer_SensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeBarometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("subscribeBarometer_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeBarometer_SensorJsTest003---------------------------');
 		try{
 		   sensor.getSingleSensor(BarometerId,(error, data) => {	       

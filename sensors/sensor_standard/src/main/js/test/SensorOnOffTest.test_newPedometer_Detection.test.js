@@ -35,7 +35,25 @@ const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 const PERMISSION_DENIED_MSG = 'Permission denied.'
 let tokenID = undefined
 let permissionNameUser = 'ohos.permission.ACTIVITY_MOTION'
-
+async function grantPerm(){
+    try {
+        let accountManager = osAccount.getAccountManager();
+        let userId = await accountManager.getOsAccountLocalIdFromProcess();
+        console.info("SensorJsTest_sensor_57 userId:"+userId)
+        console.info("============SensorJsTest_sensor_57 grant Permission start ============")
+        var appInfo = await bundle.getApplicationInfo('ohos.acts.sensors.sensor.function', 0, userId);
+        tokenID = appInfo.accessTokenId;
+        console.log('SensorJsTest_sensor_57 accessTokenId:' + appInfo.accessTokenId + ', name:' + appInfo.name +
+        ' ,bundleName:' + appInfo.process)
+        var atManager = abilityAccessCtrl.createAtManager();
+        var result = await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
+        PermissionFlag.PERMISSION_SYSTEM_FIXED)
+        console.info('SensorJsTest_sensor_57 successful. result: ' + JSON.stringify(result));
+        console.info("============SensorJsTest_sensor_57 grant Permission end ============")
+    } catch(error) {
+        console.error('SensorJsTest_sensor_57 exception in, msg:' + JSON.stringify(error))
+    }
+}
 describe("SensorJsTest_sensor_57", function () {
     function callback(data) {
         console.info('callback success' + JSON.stringify(data));
@@ -47,36 +65,34 @@ describe("SensorJsTest_sensor_57", function () {
         expect(typeof(data.scalar)).assertEqual('number');
     }
  
-    beforeAll(async function() {
+    beforeAll(async function(done) {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-         console.info('beforeAll called')
-         try {
-            let accountManager = osAccount.getAccountManager();
-            let userId = await accountManager.getOsAccountLocalIdFromProcess();
-            let appInfo = await bundle.getApplicationInfo('ohos.acts.sensors.sensor.function', 0, userId);
-            tokenID = appInfo.accessTokenId;
-            console.log('AccessTokenId accessTokenId:' + appInfo.accessTokenId + ', name:' + appInfo.name +
-                ' ,bundleName:' + appInfo.process)
-			console.info('successful. Data: ' + JSON.stringify(appInfo));
-         } catch(error) {
-            console.error('exception in, msg:' + JSON.stringify(error))
-         }
+        console.info('beforeAll called')
+        await grantPerm();
+        done();
     })
 
     afterAll(function() {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-         console.info('afterAll called')
+        console.info('afterAll called')
+        let atManager = abilityAccessCtrl.createAtManager();
+        atManager.revokeUserGrantedPermission(tokenID, permissionNameUser,
+        PermissionFlag.PERMISSION_SYSTEM_FIXED)
+            .catch((error) => {
+                console.info('SensorJsTest_sensor_57 error:' + JSON.stringify(error));
+                expect(error.code).assertEqual(ERR_NOT_HAVE_PERMISSION);
+            })
     })
 
     beforeEach(function() {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-         console.info('beforeEach called')
+        console.info('beforeEach called')
     })
 
     afterEach(function() {
@@ -84,13 +100,6 @@ describe("SensorJsTest_sensor_57", function () {
          * @tc.teardown: teardown invoked after each testcases
          */
         console.info('afterEach called')
-        let atManager = abilityAccessCtrl.createAtManager();
-        atManager.revokeUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .catch((error) => {
-            console.info('error:' + JSON.stringify(error));
-            expect(error.code).assertEqual(ERR_NOT_HAVE_PERMISSION);
-        })
     })
 
      /*
@@ -100,10 +109,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest001---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -130,11 +135,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest001 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0020
@@ -143,10 +143,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest002---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -170,11 +166,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest002 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0030
@@ -183,10 +174,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest003---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -213,11 +200,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest003 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0040
@@ -226,10 +208,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest004---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -256,11 +234,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest004 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0050
@@ -269,10 +242,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest005---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -296,11 +265,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest005 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0060
@@ -309,10 +273,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest006---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -335,11 +295,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest006 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0070
@@ -348,10 +303,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest007---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -379,11 +330,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest007 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0080
@@ -392,10 +338,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest008---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -426,11 +368,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest008 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0090
@@ -439,10 +376,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest009---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -470,11 +403,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest009 error:' + JSON.stringify(error));
-            done();
-        })
-    })
 
     /*
      * @tc.number: SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0100
@@ -491,7 +419,10 @@ describe("SensorJsTest_sensor_57", function () {
                     done();
                 }
                 try {
-                    sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback);					
+                    sensor.on(sensor.SensorId.PEDOMETER_DETECTION, callback);
+                    setTimeout(() => {
+                        done();
+                    }, 4000);
                 } catch (error) {
                     console.error('newPedometerDetection_SensorJsTest010 On fail, errorCode:' +JSON.stringify(error));
                     expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -516,10 +447,6 @@ describe("SensorJsTest_sensor_57", function () {
         console.info('--------newPedometerDetection_SensorJsTest011--------');
 		let errorMessage = ""
 		let errorMessages = "ReferenceError: xxx is not defined"
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -552,12 +479,8 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest011 error:' + JSON.stringify(error));
-            done();
-        })
-    })	
+    })
+
      /*
      * @tc.number:SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0120
      * @tc.name: newPedometerDetection_SensorJsTest012
@@ -565,10 +488,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newPedometerDetection_SensorJsTest012--------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -595,11 +514,6 @@ describe("SensorJsTest_sensor_57", function () {
                 done();
             }
         })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest012 error:' + JSON.stringify(error));
-            done();
-        })
-    })	
 	
      /*
      * @tc.number:SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0130
@@ -608,10 +522,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newPedometerDetection_SensorJsTest013--------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -637,12 +547,7 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest013 error:' + JSON.stringify(error));
-            done();
-        })
-    })	
+    })
 	
      /*
      * @tc.number:SUB_SensorsSystem_NEWPEDOMETER_DETECTION_JSTest_0140
@@ -651,10 +556,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newPedometerDetection_SensorJsTest014--------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -664,12 +565,12 @@ describe("SensorJsTest_sensor_57", function () {
                     }
                     try {
 						function onSensorCallback(data) {
-							console.info('newPedometerDetection_SensorJsTest014 on error');
+							console.info('newPedometerDetection_SensorJsTest014 callback:'+JSON.stringify(data));
 							expect(typeof(data.scalar)).assertEqual('number');
 						}						
                         sensor.on(sensor.SensorId.PEDOMETER_DETECTION, onSensorCallback, {'interval': 100000000});
-                        sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
 						setTimeout(() => {
+                            sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
                             done();
                         }, 4000);
                     } catch (error) {
@@ -684,11 +585,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest014 error:' + JSON.stringify(error));
-            done();
-        })
     })		
 	
      /*
@@ -698,10 +594,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
      it("newPedometerDetection_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest015---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -724,11 +616,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest015 error:' + JSON.stringify(error));
-            done();
-        })
     })
 
      /*
@@ -738,10 +625,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newPedometerDetection_SensorJsTest016--------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -777,11 +660,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest016 error:' + JSON.stringify(error));
-            done();
-        })
     })	
 
      /*
@@ -791,10 +669,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('--------newPedometerDetection_SensorJsTest017--------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -821,11 +695,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest017 error:' + JSON.stringify(error));
-            done();
-        })
     })
 
      /*
@@ -835,10 +704,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest018---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -864,11 +729,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest018 error:' + JSON.stringify(error));
-            done();
-        })
     })
 
     /*
@@ -878,10 +738,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest019---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -908,11 +764,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest019 error:' + JSON.stringify(error));
-            done();
-        })
     })
 
     /*
@@ -922,10 +773,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest020---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -955,11 +802,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest020 error:' + JSON.stringify(error));
-            done();
-        })
     })
 
     /*
@@ -969,10 +811,6 @@ describe("SensorJsTest_sensor_57", function () {
      */
     it("newPedometerDetection_SensorJsTest021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------newPedometerDetection_SensorJsTest021---------------------------');
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -1003,11 +841,6 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest021 error:' + JSON.stringify(error));
-            done();
-        })
     })
 
     /*
@@ -1016,10 +849,6 @@ describe("SensorJsTest_sensor_57", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
     it("newPedometerDetection_SensorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        let atManager = abilityAccessCtrl.createAtManager();
-        await atManager.grantUserGrantedPermission(tokenID, permissionNameUser,
-            PermissionFlag.PERMISSION_SYSTEM_FIXED)
-        .then(() => {
             try {
                 sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
                     if (error) {
@@ -1045,10 +874,5 @@ describe("SensorJsTest_sensor_57", function () {
                 expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
                 done();
             }
-        })
-        .catch ((error) => {
-            console.error('newPedometerDetection_SensorJsTest022 error:' + JSON.stringify(error));
-            done();
-        })
     })	
 })}

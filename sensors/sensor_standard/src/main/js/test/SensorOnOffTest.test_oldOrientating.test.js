@@ -238,15 +238,16 @@ describe("SensorJsTest_sensor_16", function () {
         console.info('----------------------Orientating_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('Orientating_SensorJsTest007  on error');
-            expect(false).assertTrue();
-            done();
+			expect(typeof(data.beta)).assertEqual("number");
+			expect(typeof(data.gamma)).assertEqual("number");
+			expect(typeof(data.alpha)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION,(error, data) => {    	
 				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback);
-				sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback);
 				setTimeout(() => {
-					expect(true).assertTrue();
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onSensorCallback);
 					done();
 				}, 500);
 			})
@@ -555,7 +556,7 @@ describe("SensorJsTest_sensor_16", function () {
      * @tc.name: Orientating_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("Orientating_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("Orientating_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------Orientating_SensorJsTest017--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION,(error, data) => {

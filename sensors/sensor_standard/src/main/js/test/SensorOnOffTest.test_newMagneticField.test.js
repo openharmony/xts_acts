@@ -178,7 +178,7 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.name: newMagneticField_SensorJsTest005
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newMagneticField_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newMagneticField_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newMagneticField_SensorJsTest005--------------');
         function onSensorCallback(data) {
             console.info('newMagneticField_SensorJsTest005  callback in');
@@ -263,7 +263,7 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.name: newMagneticField_SensorJsTest008
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newMagneticField_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newMagneticField_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('newMagneticField_SensorJsTest008  on error');
             expect(typeof (data.x)).assertEqual("number");
@@ -313,8 +313,10 @@ describe("SensorJsTest_sensor_37", function () {
     it("newMagneticField_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newMagneticField_SensorJsTest010 callback in');
-            expect(false).assertTrue();
-            done();
+            expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.MAGNETIC_FIELD,(error, data) => {
@@ -323,9 +325,8 @@ describe("SensorJsTest_sensor_37", function () {
 				} else {
 					expect(typeof(data)).assertEqual("object");			
 					sensor.on(sensor.SensorId.MAGNETIC_FIELD, onSensorCallback);
-					sensor.off(sensor.SensorId.MAGNETIC_FIELD, onSensorCallback);
 					setTimeout(()=>{
-						expect(true).assertTrue();
+						sensor.off(sensor.SensorId.MAGNETIC_FIELD, onSensorCallback);
 						done();
 					}, 500);
 				}
@@ -764,7 +765,7 @@ describe("SensorJsTest_sensor_37", function () {
      * @tc.name: newMagneticField_SensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newMagneticField_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newMagneticField_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newMagneticField_SensorJsTest023--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.MAGNETIC_FIELD,(error, data) => {

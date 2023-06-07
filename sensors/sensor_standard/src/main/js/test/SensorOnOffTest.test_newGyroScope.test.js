@@ -155,7 +155,7 @@ describe("SensorJsTest_sensor_43", function () {
      * @tc.name: newGyroScope_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newGyroScope_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newGyroScope_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGyroScope_SensorJsTest004--------------');
         function onSensorCallback(data) {
             console.info('newGyroScope_SensorJsTest004  callback in');
@@ -240,7 +240,7 @@ describe("SensorJsTest_sensor_43", function () {
      * @tc.name: newGyroScope_SensorJsTest007
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newGyroScope_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newGyroScope_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onceSensorCallback(data) {
             console.info('newGyroScope_SensorJsTest007  on error');
             expect(typeof (data.x)).assertEqual("number");
@@ -290,8 +290,10 @@ describe("SensorJsTest_sensor_43", function () {
     it("newGyroScope_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
             console.info('newGyroScope_SensorJsTest009 callback in');
-            expect(false).assertTrue();
-            done();
+            expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
@@ -300,9 +302,8 @@ describe("SensorJsTest_sensor_43", function () {
 				} else {
 					expect(typeof(data)).assertEqual("object");			
 					sensor.on(sensor.SensorId.GYROSCOPE, onSensorCallback);
-					sensor.off(sensor.SensorId.GYROSCOPE, onSensorCallback);
 					setTimeout(()=>{
-						expect(true).assertTrue();
+						sensor.off(sensor.SensorId.GYROSCOPE, onSensorCallback);
 						done();
 					}, 500);
 				}
@@ -778,7 +779,7 @@ describe("SensorJsTest_sensor_43", function () {
      * @tc.name: newGyroScope_SensorJsTest023
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newGyroScope_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("newGyroScope_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('---------newGyroScope_SensorJsTest023--------------');
 		try{
 		   sensor.getSingleSensor(sensor.SensorId.GYROSCOPE,(error, data) => {
