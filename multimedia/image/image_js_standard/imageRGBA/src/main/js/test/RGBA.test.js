@@ -163,7 +163,7 @@ describe("Image", function () {
     });
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0300
      * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: ALPHA_8,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -174,7 +174,7 @@ describe("Image", function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it("SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300", 0, async function (done) {
+    it("SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0300", 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: ALPHA_8, size: { height: 4, width: 6 } };
         image
@@ -186,7 +186,7 @@ describe("Image", function () {
                 done();
             })
             .catch((error) => {
-                console.log("SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300 err" + error);
+                console.log("SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0300 err" + error);
                 expect(false).assertTrue();
                 done();
             });
