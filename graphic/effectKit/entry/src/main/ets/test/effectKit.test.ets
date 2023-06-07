@@ -576,8 +576,8 @@ export default function effectKitTest() {
      * @tc.name       Test createColorPicker
      * @tc.desc       Create a color picker to get the main color.
      */
-    it('createColorPicker5', 0, function (done) {
-      let caseName = 'createColorPicker5'
+    it('createColorPicker6', 0, function (done) {
+      let caseName = 'createColorPicker6'
       let msgStr = 'jsunittest effectKitTest' + caseName + ' '
       console.log(msgStr + 'begin')
       console.info(msgStr + "Napi create ImageSource")
