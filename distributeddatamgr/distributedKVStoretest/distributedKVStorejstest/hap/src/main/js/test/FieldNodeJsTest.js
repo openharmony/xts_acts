@@ -153,19 +153,19 @@ describe('FieldNodeTest', function() {
     })
 
     /**
-     * @tc.name SUB_DDM_DKV_FIELDNODE_DEFAULT_0100
+     * @tc.name SUB_DDM_DKV_FIELDNODE_DEFAULT_0200
      * @tc.desc  Test Js Api FieldNode.nullable testcase 001
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_FIELDNODE_NULLABLE_0100
+     * @tc.number: SUB_DDM_DKV_FIELDNODE_DEFAULT_0200
      */
-     it('SUB_DDM_DKV_FIELDNODE_DEFAULT_0100', 0, async function(done) {
+     it('SUB_DDM_DKV_FIELDNODE_DEFAULT_0200', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
             node.nullable = false;
             console.info('nullable = ' + node.nullable);
             expect(node.nullable === false).assertTrue()
         } catch (e) {
-            console.info("SUB_DDM_DKV_FIELDNODE_DEFAULT_0100 fail on exception: " + e);
+            console.info("SUB_DDM_DKV_FIELDNODE_DEFAULT_0200 fail on exception: " + e);
         }
         done();
     })
