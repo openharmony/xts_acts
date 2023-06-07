@@ -1660,7 +1660,7 @@ describe('bluetoothBLETest4', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('COMMUNICATION_BLUETOOTH_BLE_WriteCharacteristic_1600', 0, function () {
+    it('COMMUNICATION_BLUETOOTH_BLE_WriteCharacteristic_1700', 0, function () {
         try {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
