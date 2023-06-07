@@ -4632,6 +4632,66 @@ describe('DecodeEncodeTest', function () {
     })
 
     /**
+     * @tc.name: testTextDecoderCreate008
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+     it('testTextDecoderCreate008', 0, function () {
+        var that = util.TextDecoder.create(undefined);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate009
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate009', 0, function () {
+        var that = util.TextDecoder.create('utf-8', undefined);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+/**
+     * @tc.name: testTextDecoderCreate0010
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate0010', 0, function () {
+        var that = util.TextDecoder.create(undefined, { ignoreBOM : true });
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate011
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate011', 0, function () {
+        var that = util.TextDecoder.create(null);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testTextDecoderCreate012
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate012', 0, function () {
+        var that = util.TextDecoder.create('utf-8', null);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+/**
+     * @tc.name: testTextDecoderCreate0013
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testTextDecoderCreate0013', 0, function () {
+        var that = util.TextDecoder.create(null, { ignoreBOM : true });
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
      * @tc.name: testTextDecoderCreateThrowError001
      * @tc.desc: The source encoding's name, lowercased.
      */

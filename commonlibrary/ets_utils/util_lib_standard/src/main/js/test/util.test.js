@@ -511,6 +511,65 @@ describe('TextEncoderTest', function () {
         expect(encodingStr).assertEqual('utf-16be')
     })
 
+    /**
+     * @tc.name: testencoding_textdecoder_006
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+     it('testencoding_textdecoder_006', 0, function () {
+        var that = new util.TextDecoder(undefined);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testencoding_textdecoder_007
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testencoding_textdecoder_007', 0, function () {
+        var that = new util.TextDecoder('utf-8', undefined);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testencoding_textdecoder_008
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testencoding_textdecoder_008', 0, function () {
+        var that = new util.TextDecoder(undefined, {ignoreBOM: true});
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testencoding_textdecoder_009
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testencoding_textdecoder_009', 0, function () {
+        var that = new util.TextDecoder(null);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testencoding_textdecoder_010
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testencoding_textdecoder_010', 0, function () {
+        var that = new util.TextDecoder('utf-8', null);
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
+
+    /**
+     * @tc.name: testencoding_textdecoder_011
+     * @tc.desc: The source encoding's name, lowercased.
+     */
+    it('testencoding_textdecoder_011', 0, function () {
+        var that = new util.TextDecoder(null, {ignoreBOM: true});
+        var encodingStr = that.encoding;
+        expect(encodingStr).assertEqual('utf-8');
+    })
 
     /**
      * @tc.name: testFatal001
@@ -826,6 +885,46 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testdecode_testdecode_009
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+     it('testdecode_testdecode_009', 0, function () {
+        var that = new  util.TextDecoder('utf-8', { ignoreBOM : true })
+        var arr = new Uint8Array(6)
+        arr[0] = 0xEF;
+        arr[1] = 0xBB;
+        arr[2] = 0xBF;
+        arr[3] = 0x61;
+        arr[4] = 0x62;
+        arr[5] = 0x63;
+        var retStr = that.decode(arr, undefined)
+        var BOM = '\uFEFF'
+        var rel = 'abc'
+        var res = BOM + rel
+        expect(retStr).assertEqual(res);
+    })
+
+    /**
+     * @tc.name: testdecode_testdecode_010
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('testdecode_testdecode_010', 0, function () {
+        var that = new  util.TextDecoder('utf-8', { ignoreBOM : true });
+        var arr = new Uint8Array(6);
+        arr[0] = 0xEF;
+        arr[1] = 0xBB;
+        arr[2] = 0xBF;
+        arr[3] = 0x61;
+        arr[4] = 0x62;
+        arr[5] = 0x63;
+        var retStr = that.decode(arr, null);
+        var BOM = '\uFEFF'
+        var rel = 'abc'
+        var res = BOM + rel
+        expect(retStr).assertEqual(res);
+    })
+
+    /**
      * @tc.name: decodeWithStream001
      * @tc.desc: Returns the result of running encoding's decoder.
      */
@@ -916,6 +1015,42 @@ describe('TextEncoderTest', function () {
         var retStr = that.decodeWithStream(arr);
         var rel = 'abc';
         expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: decodeWithStream006
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+     it('decodeWithStream006', 0, function () {
+        var that = new util.TextDecoder('utf-16le')
+        var arr = new Uint8Array(6)
+        arr[0] = 0x61;
+        arr[1] = 0x00;
+        arr[2] = 0x62;
+        arr[3] = 0x00;
+        arr[4] = 0x63;
+        arr[5] = 0x00;
+        var retStr = that.decodeWithStream(arr, undefined);
+        var rel = 'abc'
+        expect(retStr).assertEqual(rel);
+    })
+
+    /**
+     * @tc.name: decodeWithStream007
+     * @tc.desc: Returns the result of running encoding's decoder.
+     */
+    it('decodeWithStream007', 0, function () {
+        var that = new util.TextDecoder('utf-16le')
+        var arr = new Uint8Array(6)
+        arr[0] = 0x61;
+        arr[1] = 0x00;
+        arr[2] = 0x62;
+        arr[3] = 0x00;
+        arr[4] = 0x63;
+        arr[5] = 0x00;
+        var retStr = that.decodeWithStream(arr, null);
+        var rel = 'abc'
+        expect(retStr).assertEqual(rel);
     })
 
     /**
