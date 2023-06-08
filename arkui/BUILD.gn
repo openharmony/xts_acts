@@ -33,6 +33,8 @@ group("arkui") {
     "ace_ets_web_dev_four:ActsAceWebDevFourTest",
     "ace_ets_web_dev_three:ActsAceWebDevThreeTest",
     "ace_ets_web_dev_two:ActsAceWebDevTwoTest",
+    "ace_ets_web_dev_webController:ActsAceWebDevWebControllerTest",
+    "ace_ets_web_dev_webviewController:ActsAceWebDevWebViewControllerTest",
     "ace_ets_xcomponent:ActsAceXComponentEtsTest",
     "ace_js_attribute_api:ActsAceJsApiTest",
     "ace_napi_test:ActsAceNapiEtsTest",
