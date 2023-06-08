@@ -56,14 +56,12 @@ ohos_shared_library("nativerender") {
     "//third_party/EGL:libEGL_public_config",
     "//third_party/openGLES:libGLES_public_config",
   ]
-  external_deps = [
-    "napi:ace_napi",
-  ]
+  external_deps = [ "napi:ace_napi" ]
   deps = [
-    "$compath3/frameworks/hilog_ndk:hilog_ndk",
     "$comPath:ace_ndk",
     "$compath2:EGL",
     "$compath2:GLESv3",
+    "$compath3/frameworks/hilog_ndk:hilog_ndk",
   ]
 
   output_extension = "so"
