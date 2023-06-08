@@ -12,34 +12,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 
 export default function sidebarTypeTest() {
-  describe('ActsSidebarTypeTest', function () {
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(async function (done) {
+  describe('sidebarTypeTest', function () {
+    beforeEach(async function (done) {
       console.info("flex beforeEach start");
       let options = {
-        uri: 'testability/pages/Index',
+        uri: 'TestAbility/pages/sidebarType',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get Index state success " + JSON.stringify(pages));
-        if (!("Index" == pages.name)) {
-          console.info("get Index state success " + JSON.stringify(pages.name));
+        console.info("get sidebarType state success " + JSON.stringify(pages));
+        if (!("sidebarType" == pages.name)) {
+          console.info("get sidebarType state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          console.info("push Index page success " + JSON.stringify(result));
+          console.info("push sidebarType page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Index page error: " + err);
+        console.error("push sidebarType page error: " + err);
       }
       done()
-      // Presets an action, which is performed only once before all test cases of the test suite start.
-      // This API supports only one parameter: preset action function.
-    })
+    });
 
     it('ArkUX_SideBarContainer_1000', 0, async function (done) {
       console.info('ArkUX_SideBarContainer_1000 START');
