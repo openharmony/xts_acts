@@ -1245,6 +1245,27 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       }
     })
+    /**
+     * @tc.number SUB_WINDOW_GETUICONTEXT_JSAPI_001
+     * @tc.name Test getUIContext_Test_001
+     * @tc.desc Get the UIContext instance.
+     */
+    it('getUIContext_Test_001', 0, async function (done) {
+      let caseName = 'getUIContext_Test_001';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let uiContext=null;
+      console.log(msgStr + 'begin');
+      let mainWindow = null
+      mainWindow = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      expect(!!mainWindow).assertTrue();
+      // 获取UIContext实例。
+      uiContext = mainWindow.getUIContext();
+      expect(!!uiContext).assertTrue();
+      console.log(msgStr + 'after uiContext: '+JSON.stringify(uiContext));
+      done();
+    })
 
   })
 }
