@@ -2168,6 +2168,7 @@ export async function testAVPlayerFun(src, avPlayer, playTest, playTime, done) {
         if (typeof(video) != 'undefined') {
             console.info('case createAVPlayer success');
             avPlayer = video;
+            expect(avPlayer.state).assertEqual('idle');
         } else {
             console.error('case createAVPlayer failed');
             expect().assertFail();

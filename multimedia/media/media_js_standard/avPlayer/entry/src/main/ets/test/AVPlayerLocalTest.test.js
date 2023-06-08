@@ -138,6 +138,7 @@ export default function AVPlayerLocalTest() {
                 if (typeof (video) != 'undefined') {
                     console.info('case createAVPlayer success');
                     avPlayer = video;
+                    expect(avPlayer.state).assertEqual('idle');
                     setAVPlayerTrackCb(avPlayer, descriptionKey, descriptionValue, done)
                     setSource(avPlayer, src);
                 }
