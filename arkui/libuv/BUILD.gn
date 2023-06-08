@@ -21,6 +21,8 @@ ohos_static_library("libuvTestStatic") {
     "//third_party/libuv/src",
     "//third_party/libuv/src/unix",
   ]
+  part_name = "libuv"
+  subsystem_name = "thirdparty"
   sources = [
     "//third_party/libuv/test/blackhole-server.c",
     "//third_party/libuv/test/echo-server.c",
@@ -212,7 +214,7 @@ ohos_moduletest_suite("ActsLibuvTest") {
   sources = [ "src/ActsLibuvTest.cpp" ]
 
   include_dirs = [
-    "//test/xts/acts/arkui/libuv/src",
+    "../src",
     "//third_party/libuv/test",
     "//third_party/libuv/include",
     "//third_party/libuv/src",
