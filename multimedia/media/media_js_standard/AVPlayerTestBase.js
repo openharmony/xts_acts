@@ -2166,9 +2166,9 @@ export async function testAVPlayerFun(src, avPlayer, playTest, playTime, done) {
     console.info(`case media source: ${src}`)    
     await media.createAVPlayer().then((video) => {
         if (typeof(video) != 'undefined') {
+            expect(avPlayer.state).assertEqual('idle');
             console.info('case createAVPlayer success');
             avPlayer = video;
-            expect(avPlayer.state).assertEqual('idle');
         } else {
             console.error('case createAVPlayer failed');
             expect().assertFail();
