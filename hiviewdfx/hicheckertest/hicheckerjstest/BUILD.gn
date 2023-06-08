@@ -21,7 +21,7 @@ ohos_js_hap_suite("hicheckerjstest") {
 
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHicheckerTest"
-  part_name = "hichecker_js"
+  part_name = "hichecker"
   subsystem_name = "hiviewdfx"
 }
 ohos_js_assets("hichecker_js_assets") {
