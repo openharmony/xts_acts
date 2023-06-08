@@ -19,6 +19,7 @@ group("ans_standard") {
       "actsNotificationDistributedTest:ActsNotificationDistributedTest",
       "actsNotificationManagerSlotTest:ActsNotificationManagerSlotTest",
       "actsNotificationPublishTest:ActsNotificationPublishTest",
+      "actsNotificationRequestTest:ActsNotificationRequestTest",
       "actsNotificationSecondaryDirectory:ActsNotificationSecondaryDirectory",
       "actsNotificationShowTest:ActsNotificationShowTest",
       "actsNotificationSlotTest:ActsNotificationSlotTest",
