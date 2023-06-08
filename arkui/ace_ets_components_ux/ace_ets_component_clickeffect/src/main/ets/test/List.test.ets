@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import sliderTest from './SliderTest'
-import SliderTestSec from './SliderTestSec'
+import clickeffectTest from './clickeffect'
 
 export default function testsuite() {
-       sliderTest()
-       SliderTestSec()
+       clickeffectTest()
 }
