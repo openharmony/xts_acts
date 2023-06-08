@@ -27,7 +27,9 @@ import bindPopupOffsetTest from './bindPopupOffset.test';
 import animationCurveTest from './animationCurve.test';
 import hoverTest from './hover.test';
 import textObscuredTest from './textObscuredTest.test';
-import imageObscuredTest from './imageObscuredTest.test'
+import imageObscuredTest from './imageObscuredTest.test';
+import stageAnimatorTest from './stageAnimator.test';
+import navigationTypeTest from './navigationType.test'
 
 export default function testsuite() {
   stageFontTest()
@@ -45,4 +47,6 @@ export default function testsuite() {
   hoverTest()
   textObscuredTest()
   imageObscuredTest()
+  stageAnimatorTest()
+  navigationTypeTest()
 }
