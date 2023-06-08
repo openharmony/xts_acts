@@ -314,37 +314,389 @@ describe('relationalStoreTest', function () {
     })
     
 
-        /**
+    /**
      * @tc.number SUB_DDM_RelationalStore_Different_Version_0010
-     * @tc.name Get relational store version test
+     * @tc.name Get S1Store then Get S2Store
      * @tc.desc relational version
      */	
-         it('SUB_DDM_RelationalStore_Different_Version_0010', 0, async function (done) {
-            console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 start *************");
-            const STORE_CONFIGS2 = {
-                name: "rdbstore.db",
-                securityLevel: data_Rdb.SecurityLevel.S2
-            };
-            let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-            console.info(`SUB_DDM_RelationalStore_Different_Version_0010 S1 Get RdbStore successfully.`);
-            try{
-                let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS2);
-                await promise.then(async (rdbStore) => {
-                  store = rdbStore;
-                  console.info(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore successfully.`);
-                  expect().assertFail();
-                }).catch((err) => {
-                  console.error(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-                  expect(err.code).assertEqual(14800000);
-                })
-            }catch(error){
-                console.error(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+    it('SUB_DDM_RelationalStore_Different_Version_0010', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 start *************");
+        const STORE_CONFIGS2 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S2
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0010 S1 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore successfully.`);
                 expect().assertFail();
-            }
-            await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
-            await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0010 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 end   *************");
+    })
+    
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0020
+     * @tc.name Get S1Store then Get S3Store
+     * @tc.desc relational version
+     */	
+    it('SUB_DDM_RelationalStore_Different_Version_0020', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0020 start *************");
+        const STORE_CONFIGS3 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S3
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0020 S1 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS3);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0020 Get RdbStore successfully.`);
+                expect().assertFail();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0020 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0020 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0020 end   *************");
+    })
+
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0030
+     * @tc.name Get S1Store then Get S4Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Different_Version_0030', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0030 start *************");
+        const STORE_CONFIGS4 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S4
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0030 S1 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS4);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0030 Get RdbStore successfully.`);
+                expect().assertFail();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0030 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0030 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0030 end   *************");
+    })
+            
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0040
+     * @tc.name Get S2Store then Get S4Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Different_Version_0040', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0040 start *************");
+        const STORE_CONFIGS2 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S2
+        };
+        const STORE_CONFIGS4 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S4
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0040 S2 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS4);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0040 Get RdbStore successfully.`);
+                expect().assertFail();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0040 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0040 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0040 end   *************");
+    })
+
+                
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0050
+     * @tc.name Get S2Store then Get S3Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Different_Version_0050', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0050 start *************");
+        const STORE_CONFIGS2 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S2
+        };
+        const STORE_CONFIGS3 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S3
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0050 S2 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS3);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0050 Get RdbStore successfully.`);
+                expect().assertFail();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0050 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0050 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0050 end   *************");
+    })
+
+                    
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0060
+     * @tc.name Get S4Store then Get S1Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Different_Version_0060', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0060 start *************");
+        const STORE_CONFIGS4 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S4
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS4);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0060 S4 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIG);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0060 Get RdbStore successfully.`);
+                expect().assertFail();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0060 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0060 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0060 end   *************");
+    })
+
+                        
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Different_Version_0070
+     * @tc.name Get S3Store then Get S2Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Different_Version_0070', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0070 start *************");
+        const STORE_CONFIGS3 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S3
+        };
+        const STORE_CONFIGS2 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S2
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS3);
+        console.info(`SUB_DDM_RelationalStore_Different_Version_0070 S3 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Different_Version_0070 Get RdbStore successfully.`);
+                expect().assertFail();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Different_Version_0070 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect(err.code).assertEqual(14800000);
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Different_Version_0070 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+        }
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+        done();
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0070 end   *************");
+    })
+
+                            
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Same_Version_0010
+     * @tc.name Get S1Store then Get S1Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Same_Version_0010', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0010 start *************");
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+        console.info(`SUB_DDM_RelationalStore_Same_Version_0010 S1 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIG);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Same_Version_0010 Get RdbStore successfully.`);
+                expect(rdbStore != null).assertTrue();
+                await data_Rdb.deleteRdbStore(context, STORE_CONFIG.name);
+                console.error(`SUB_DDM_RelationalStore_Same_Version_0010 Get RdbStore  deleteRdbStore`);
+                done();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Same_Version_0010 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Same_Version_0010 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
             done();
-            console.info(TAG + "************* SUB_DDM_RelationalStore_Different_Version_0010 end   *************");
-        })
+        }
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0010 end   *************");
+    })
+
+                                
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Same_Version_0020
+     * @tc.name Get S2Store then Get S2Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Same_Version_0020', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0020 start *************");
+        const STORE_CONFIGS2 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S2
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+        console.info(`SUB_DDM_RelationalStore_Same_Version_0020 S2 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS2);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Same_Version_0020 Get RdbStore successfully.`);
+                expect(rdbStore != null).assertTrue();
+                await data_Rdb.deleteRdbStore(context, STORE_CONFIGS2.name);
+                console.error(`SUB_DDM_RelationalStore_Same_Version_0020 deleteRdbStore`);
+                done();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Same_Version_0020 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Same_Version_0020 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+            done();
+        }
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0020 end   *************");
+    })
+
+    
+                                
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Same_Version_0030
+     * @tc.name Get S3Store then Get S3Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Same_Version_0030', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0030 start *************");
+        const STORE_CONFIGS3 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S3
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS3);
+        console.info(`SUB_DDM_RelationalStore_Same_Version_0030 S3 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS3);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Same_Version_0030 Get RdbStore successfully.`);
+                expect(rdbStore != null).assertTrue();
+                await data_Rdb.deleteRdbStore(context, STORE_CONFIGS3.name);
+                done();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Same_Version_0030 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Same_Version_0030 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+            done();
+        }
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0030 end   *************");
+    })     
+                                
+    /**
+     * @tc.number SUB_DDM_RelationalStore_Same_Version_0040
+     * @tc.name Get S4Store then Get S4Store
+     * @tc.desc relational version
+     */	
+     it('SUB_DDM_RelationalStore_Same_Version_0040', 0, async function (done) {
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0040 start *************");
+        const STORE_CONFIGS4 = {
+            name: "rdbstore.db",
+            securityLevel: data_Rdb.SecurityLevel.S4
+        };
+        let store = await data_Rdb.getRdbStore(context, STORE_CONFIGS4);
+        console.info(`SUB_DDM_RelationalStore_Same_Version_0040 S4 Get RdbStore successfully.`);
+        try{
+            let promise = data_Rdb.getRdbStore(context, STORE_CONFIGS4);
+            await promise.then(async (rdbStore) => {
+                store = rdbStore;
+                console.info(`SUB_DDM_RelationalStore_Same_Version_0040 Get RdbStore successfully.`);
+                expect(rdbStore != null).assertTrue();
+                await data_Rdb.deleteRdbStore(context, STORE_CONFIGS4.name);
+                done();
+            }).catch((err) => {
+                console.error(`SUB_DDM_RelationalStore_Same_Version_0040 Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                expect().assertFail();
+                done();
+            })
+        }catch(error){
+            console.error(`SUB_DDM_RelationalStore_Same_Version_0040 Get RdbStore failed error, code is ${error.code},message is ${error.message}`);
+            expect().assertFail();
+            done();
+        }
+        console.info(TAG + "************* SUB_DDM_RelationalStore_Same_Version_0040 end   *************");
+    })
+
     console.info(TAG + "*************Unit Test End*************");
 })}
