@@ -240,6 +240,14 @@ export function setAVPlayerFunCb(src, avPlayer, playTest, playTime, done) {
             case AV_PLAYER_STATE.INITIALIZED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.INITIALIZED);
                 avPlayer.surfaceId = surfaceID;
+                try{
+                    avPlayer.audioRendererInfo = {
+                        content:audio.AudioRendererInfo.CONTENT_TYPE_MUSIC,
+                        usage:audio.AudioRendererInfo.STREAM_USAGE_MEDIA,
+                    }
+                }catch(e){
+                    console.error(`case stateChange error, e is ${e} ,message:${e.message}`);
+                }
                 // step 1, 13: initialized -> prepared
                 toPreparePromise(avPlayer, playTest);
                 break;
@@ -2168,6 +2176,7 @@ export async function testAVPlayerFun(src, avPlayer, playTest, playTime, done) {
         if (typeof(video) != 'undefined') {
             console.info('case createAVPlayer success');
             avPlayer = video;
+            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.IDLE);
         } else {
             console.error('case createAVPlayer failed');
             expect().assertFail();
