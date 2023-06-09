@@ -26,6 +26,7 @@ import {
     FILEKEY,
     checkAssetsCount,
     fetchOps,
+    fileFetchOption,
 } from "../../../../../../common";
 
 export default function mediafetchoptionsPromise(abilityContext) {
@@ -48,8 +49,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
         const serachUri = async (done, testNum, fetchOp, type) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
-                if (!checkAssetCountPass) return;
+                expect(fetchFileResult.getCount()).assertEqual(1);
                 let firstObject = await fetchFileResult.getFirstObject();
                 const id = firstObject.id;
                 const uri = firstObject.uri;
@@ -63,8 +63,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
                 };
 
                 const result = await media.getFileAssets(serchfetchOp);
-                checkAssetCountPass = await checkAssetsCount(done, testNum, result, 1);
-                if (!checkAssetCountPass) return;
+                expect(result.getCount()).assertEqual(1);
 
                 let asset = await result.getFirstObject();
                 expect(asset.uri).assertEqual(serachUri);
@@ -89,7 +88,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_001";
-            let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.jpg']);
             let type = "image";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -104,7 +103,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_002", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_002";
-            let currentFetchOp = fetchOps(testNum, "Audios/Static/", AUDIO_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.mp3']);
             let type = "audio";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -119,7 +118,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_003", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_003";
-            let currentFetchOp = fetchOps(testNum, "Videos/Static/", VIDEO_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.mp4']);
             let type = "video";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -134,7 +133,7 @@ export default function mediafetchoptionsPromise(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_004", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_PROMISE_004";
-            let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.dat']);
             let type = "file";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -152,11 +151,11 @@ export default function mediafetchoptionsPromise(abilityContext) {
             try {
                 const currentFetchOps = {
                     selections: FILEKEY.RELATIVE_PATH + "= ? AND " + FILEKEY.MEDIA_TYPE + "=?",
-                    selectionArgs: ["Pictures/Static/", IMAGE_TYPE.toString()],
+                    selectionArgs: ["Pictures/", IMAGE_TYPE.toString()],
                     networkId: "",
                 };
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
 
                 expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.close();
@@ -182,19 +181,11 @@ export default function mediafetchoptionsPromise(abilityContext) {
             try {
                 const currentFetchOps = {
                     selections: FILEKEY.RELATIVE_PATH + "= ? AND " + FILEKEY.MEDIA_TYPE + "=?",
-                    selectionArgs: ["Pictures/Static/", IMAGE_TYPE.toString()],
+                    selectionArgs: ["Pictures/", IMAGE_TYPE.toString()],
                     networkId: "93db533035b33a1ca118a2759c1fbb8654ce57061430effaf0b51bbe03388b8b",
                 };
-                try {
-                    const fetchFileResult = await media.getFileAssets(currentFetchOps);
-                    let count = await fetchFileResult.getCount();
-                    expect(count == 0).assertTrue();
-                    fetchFileResult.close();
-                    done();
-                } catch (err) {
-                    expect(false).assertTrue();
-                    done();
-                }
+                await media.getFileAssets(currentFetchOps);
+                done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
@@ -215,11 +206,11 @@ export default function mediafetchoptionsPromise(abilityContext) {
             try {
                 const currentFetchOps = {
                     selections: FILEKEY.RELATIVE_PATH + "= ? AND " + FILEKEY.MEDIA_TYPE + "=?",
-                    selectionArgs: ["Pictures/Static/", IMAGE_TYPE.toString()],
+                    selectionArgs: ["Pictures/", IMAGE_TYPE.toString()],
                     extendArgs: "",
                 };
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
 
                 expect(checkAssetCountPass).assertTrue();
                 fetchFileResult.close();

@@ -87,10 +87,10 @@ export default function getThumbnailPromise(abilityContext) {
                     size = { width: 256, height: 256 };
                     pixelmap = await asset.getThumbnail();
                 } else {
-                    if (size === undefined || size === null) {
-                        size = { width: 256, height: 256 };
-                    }
                     pixelmap = await asset.getThumbnail(size);
+                }
+                if (size === undefined || size === null) {
+                    size = { width: 256, height: 256 };
                 }
                 let info = await pixelmap.getImageInfo();
                 expect(info.size.width).assertEqual(size.width);
@@ -248,7 +248,7 @@ export default function getThumbnailPromise(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETTHUMBNAIL_PROMISE_001_08
          * @tc.name      : getThumbnail
-         * @tc.desc      : getThumbnail(image) by undefined size
+         * @tc.desc      : getThumbnail(image) by undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -263,7 +263,7 @@ export default function getThumbnailPromise(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETTHUMBNAIL_PROMISE_001_09
          * @tc.name      : getThumbnail
-         * @tc.desc      : getThumbnail(image) by null size
+         * @tc.desc      : getThumbnail(image) by null
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -334,7 +334,7 @@ export default function getThumbnailPromise(abilityContext) {
             let size = false;
             await testGetThumbnailError(done, testNum, dOp, size);
         });
-
+        
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETTHUMBNAIL_PROMISE_ERROR_001_08
          * @tc.name      : getThumbnail

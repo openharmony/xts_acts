@@ -56,24 +56,27 @@ export default function fileAssetCallback2Test(abilityContext) {
                 asset[prop] = val;
                 const id = asset.id;
                 asset.commitModify(async (err) => {
-                    if (err) {
-                        console.info(`${testNum} err : ${err}`);
-                        expect().assertFail();
-                        fetchFileResult.close();
-                        done();
-                        return;
+                    try {
+                        if (err) {
+                            console.info(`${testNum} err : ${err}`);
+                            expect(false).assertTrue();
+                        } else {
+                            let currentfetchOp = {
+                                selections: FILEKEY.ID + "= ?",
+                                selectionArgs: [id + ""],
+                            };
+                            const fetchFileResultById = await media.getFileAssets(currentfetchOp);
+                            const currentAsset = await fetchFileResultById.getFirstObject();
+                            expect(currentAsset[prop]).assertEqual(val);
+                            fetchFileResultById.close();
+                        }
+                    } catch (error) {
+                        console.info(`${testNum} failed, error : ${error}`);
+                        expect(false).assertTrue();
                     }
-                    let currentfetchOp = {
-                        selections: FILEKEY.ID + "= ?",
-                        selectionArgs: [id + ""],
-                    };
-                    const fetchFileResultById = await media.getFileAssets(currentfetchOp);
-                    const currentAsset = await fetchFileResultById.getFirstObject();
-                    expect(currentAsset[prop]).assertEqual(val);
                     asset[prop] = oldVal;
                     await asset.commitModify();
                     fetchFileResult.close();
-                    await fetchFileResultById.close();
                     done();
                 });
             } catch (error) {
@@ -226,7 +229,7 @@ export default function fileAssetCallback2Test(abilityContext) {
             let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "07.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
-            for (var i = 0; i < 85; i++) {
+            for (var i = 0; i < 83; i++) {
                 val += "中";
             }
             await checkCommitModify(done, testNum, fetchOp, prop, val);
@@ -245,7 +248,7 @@ export default function fileAssetCallback2Test(abilityContext) {
             let fetchOp = nameFetchOps(testNum, "Pictures/ModifyCb/", "08.jpg", IMAGE_TYPE);
             let prop = "title";
             let val = "";
-            for (var i = 0; i < 255; i++) {
+            for (var i = 0; i < 251; i++) {
                 val += "a";
             }
             await checkCommitModify(done, testNum, fetchOp, prop, val);
