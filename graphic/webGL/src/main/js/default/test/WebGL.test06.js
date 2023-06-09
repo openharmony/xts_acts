@@ -1454,14 +1454,14 @@ describe('webgl1Test_webgl6', function() {
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0546
-	 * @tc.name testCompressedTexImage3D_01
+	 * @tc.name testCompressedTexImage3D_01_1
 	 * @tc.desc Test compressedTexImage3D.
 	 */
-	it('testCompressedTexImage3D_01', 0, async function(done) {
+	it('testCompressedTexImage3D_01_1', 0, async function(done) {
 		//initContext();
 		try {
-			console.info('jsWebGL testCompressedTexImage3D_01 test start ...66');
-			console.info('jsWebGL testCompressedTexImage3D_01 test start ...' + JSON.stringify(gl));
+			console.info('jsWebGL testCompressedTexImage3D_01_1 test start ...66');
+			console.info('jsWebGL testCompressedTexImage3D_01_1 test start ...' + JSON.stringify(gl));
 			gl2.compressedTexImage3D(gl.TEXTURE_3D, 0, 0x83F0, 512, 512, 512, 0, gl2
 				.PIXEL_UNPACK_BUFFER, 0);
 			const compressedTexImage3DError = gl.getError();
@@ -1470,21 +1470,21 @@ describe('webgl1Test_webgl6', function() {
 			//deleteContext();
 			done();
 		} catch (e) {
-			console.log("testCompressedTexImage3D_01 has failed for " + e)
+			console.log("testCompressedTexImage3D_01_1 has failed for " + e)
 			expect(null).assertFail()
 		}
 	})
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0547
-	 * @tc.name testCompressedTexImage3D_02
+	 * @tc.name testCompressedTexImage3D_01_2
 	 * @tc.desc Test compressedTexImage3D.
 	 */
-	it('testCompressedTexImage3D_02', 0, async function(done) {
+	it('testCompressedTexImage3D_01_2', 0, async function(done) {
 		//initContext();
 		try {
-			console.info('jsWebGL testCompressedTexImage3D_02 test start ...66');
-			console.info('jsWebGL testCompressedTexImage3D_02 test start ...' + JSON.stringify(gl));
+			console.info('jsWebGL testCompressedTexImage3D_01_2 test start ...66');
+			console.info('jsWebGL testCompressedTexImage3D_01_2 test start ...' + JSON.stringify(gl));
 			const buffer = new ArrayBuffer(8);
 			gl2.compressedTexImage3D(gl.TEXTURE_3D, 0, 0x83F0, 512, 512, 512, 0, buffer, 0, 0);
 			const compressedTexImage3DError = gl.getError();
@@ -1493,7 +1493,7 @@ describe('webgl1Test_webgl6', function() {
 			//deleteContext();
 			done();
 		} catch (e) {
-			console.log("testCompressedTexImage3D_02 has failed for " + e)
+			console.log("testCompressedTexImage3D_01_2 has failed for " + e)
 			expect(null).assertFail()
 		}
 	})

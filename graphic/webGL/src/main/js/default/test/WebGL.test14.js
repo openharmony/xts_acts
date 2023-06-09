@@ -838,10 +838,10 @@ describe('webgl1Test_webgl14', function() {
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1328
-	 * @tc.name webgl_test_clearBufferfv_22
+	 * @tc.name webgl_test_clearBufferfv_22_1
 	 * @tc.desc Test clearBufferfv.
 	 */
-	it('webgl_test_clearBufferfv_22', 0, async function(done) {
+	it('webgl_test_clearBufferfv_22_1', 0, async function(done) {
 		//initContext();
 		console.info("webgltest into clearBufferfv");
 
@@ -899,10 +899,10 @@ describe('webgl1Test_webgl14', function() {
 
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1331
-	 * @tc.name webgl_test_clearBufferfv_22
+	 * @tc.name webgl_test_clearBufferfv_22_2
 	 * @tc.desc Test clearBufferfv.
 	 */
-	it('webgl_test_clearBufferfv_22', 0, async function(done) {
+	it('webgl_test_clearBufferfv_22_2', 0, async function(done) {
 		//initContext();
 		console.info("webgltest into clearBufferfv");
 
