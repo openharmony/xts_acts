@@ -19,6 +19,7 @@ import webViewOnErrorReceive03Jsunit from './WebViewOnErrorReceive03Jsunit.test'
 import webViewHasImageJsunit from './webViewHasImageJsunit.test'
 import webViewSrollToJsunit from './webViewSrollToJsunit.test'
 import webViewSrollByJsunit from './webViewSrollByJsunit.test'
+import WebViewWebStorageJsunit from './WebViewWebStorageJsunit.test'
 export default function testsuite() {
        webViewControllerJsunit()
        webViewOnWindowNewJsunit()
@@ -27,4 +28,5 @@ export default function testsuite() {
        webViewHasImageJsunit()
        webViewSrollToJsunit()
        webViewSrollByJsunit()
+       WebViewWebStorageJsunit()
 }

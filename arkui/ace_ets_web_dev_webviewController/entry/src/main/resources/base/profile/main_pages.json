@@ -6,6 +6,7 @@
         "MainAbility/pages/onErrorReceive03",
         "MainAbility/pages/webViewHasImage",
         "MainAbility/pages/webViewScrollTo",
-        "MainAbility/pages/webViewScrollBy"
+        "MainAbility/pages/webViewScrollBy",
+	"MainAbility/pages/webStorage"
     ]
 }
