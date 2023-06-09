@@ -977,12 +977,12 @@ export default function webgl1Test_webgl10() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0948
-		 * @tc.name testInvalidateFramebuffer_1_01
+		 * @tc.name testInvalidateFramebuffer_1_07
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
-		it('testInvalidateFramebuffer_1_01', 0, async function (done) {
+		it('testInvalidateFramebuffer_1_07', 0, async function (done) {
 			
-			console.info('jsWebGL testInvalidateFramebuffer_1_01 test start ...66');
+			console.info('jsWebGL testInvalidateFramebuffer_1_07 test start ...66');
 			gl2.invalidateFramebuffer(gl.READ_FRAMEBUFFER,
 				[gl.COLOR_ATTACHMENT0, gl.COLOR_ATTACHMENT1]);
 			const invalidateFramebufferError = gl.getError();
