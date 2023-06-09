@@ -2069,10 +2069,10 @@ export default function webgl1Test_webgl8() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0784
-		 * @tc.name webgl_test_framebufferTexture2D25
+		 * @tc.name webgl_test_framebufferTexture2D27
 		 * @tc.desc Test framebufferTexture2D.
 		 */
-		it('webgl_test_framebufferTexture2D25', 0, async function (done) {
+		it('webgl_test_framebufferTexture2D27', 0, async function (done) {
 			
 			console.info("webgltest into framebufferTexture2D");
 			const texture = gl.createTexture();

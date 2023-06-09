@@ -603,7 +603,7 @@ export default function webgl1Test_webgl13() {
 		 * @tc.name testTexImage2D_11_1
 		 * @tc.desc Test texImage2D.
 		 */
-		it('testTexImage2D_11_1', 0, async function (done) {
+		it('testTexImage2D_10_2', 0, async function (done) {
 			
 			console.info('jsWebGL testTexImage2D test start ...66');
 			console.info('jsWebGL testTexImage2D test start ...' + JSON.stringify(gl));

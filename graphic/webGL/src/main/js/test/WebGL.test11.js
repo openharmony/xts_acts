@@ -354,10 +354,10 @@ export default function webgl1Test_webgl11() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1005
-		 * @tc.name testBufferData__3
+		 * @tc.name testBufferData__5
 		 * @tc.desc Test bufferData.
 		 */
-		it('testBufferData__3', 0, async function (done) {
+		it('testBufferData__5', 0, async function (done) {
 			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			const buffer = gl.createBuffer();
