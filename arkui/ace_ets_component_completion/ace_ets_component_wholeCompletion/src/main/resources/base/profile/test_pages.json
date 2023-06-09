@@ -16,6 +16,8 @@
     "TestAbility/pages/animationCurve",
     "TestAbility/pages/hover",
     "TestAbility/pages/textObscured",
-    "TestAbility/pages/imageObscuredTest"
+    "TestAbility/pages/imageObscuredTest",
+    "TestAbility/pages/stageAnimator",
+    "TestAbility/pages/navigationType"
   ]
 }
