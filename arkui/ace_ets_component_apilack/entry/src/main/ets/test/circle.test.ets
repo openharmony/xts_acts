@@ -172,9 +172,62 @@ export default function circleNewJsunit() {
             })
         console.info("-----------------------ACE_pushUrl_promise_0200 end-----------------------");
         done();     
-    }); 
-   
+    });
 
+    /**
+     * @tc.number showAlertBeforeBackPage_0100
+     * @tc.name ACE_showAlertBeforeBackPage_0100
+     * @tc.desc Test showAlertBeforeBackPage
+     */
+    it("ACE_showAlertBeforeBackPage_0100", 0, async function (done) {
+      console.info("-----------------------ACE_showAlertBeforeBackPage_0100-----------------------");
+      try {
+         ohosrouter.showAlertBeforeBackPage({
+            message: 'Message Info'
+        });
+        expect(true).assertTrue();
+      } catch(error) {
+        console.error(`showAlertBeforeBackPage_0100 failed, code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number showAlertBeforeBackPage_0200
+     * @tc.name ACE_showAlertBeforeBackPage_0200
+     * @tc.desc Test showAlertBeforeBackPage
+     */
+    it("ACE_showAlertBeforeBackPage_0200", 0, async function (done) {
+      console.info("-----------------------ACE_showAlertBeforeBackPage_0200-----------------------");
+      try {
+        ohosrouter.showAlertBeforeBackPage({
+          message:undefined
+        });
+        expect(true).assertTrue();
+      } catch(error) {
+        console.error(`ACE_showAlertBeforeBackPage_0200, code is ${error.code}, message is ${error.message}`);
+        expect(error.code == 401).assertTrue();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number hideAlertBeforeBackPage_0100
+     * @tc.name ACE_hideAlertBeforeBackPage_0100
+     * @tc.desc Test hideAlertBeforeBackPage
+     */
+    it("ACE_hideAlertBeforeBackPage_0100", 0, async function (done) {
+      console.info("-----------------------ACE_showAlertBeforeBackPage_0200-----------------------");
+      try {
+        ohosrouter.hideAlertBeforeBackPage();
+        expect(true).assertTrue();
+      } catch(error) {
+        console.error(`ACE_showAlertBeforeBackPage_0200, code is ${error.code}, message is ${error.message}`);
+        expect().assertFail();
+      }
+      done();
+    });
 
   })
 }
