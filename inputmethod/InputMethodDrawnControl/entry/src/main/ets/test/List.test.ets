@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import inputMethodDrawnControl from './inputMethod_drawnControl.test'
 import inputMethod_attach from './inputMethod_attach.test'
 import inputMethod_showTextInput_hideTextInput_detach from './inputMethod_showTextInput_hideTextInput_detach.test'
 import inputMethod_updateAttribute from './inputMethod_updateAttribute.test'
@@ -20,6 +21,7 @@ import inputMethod_updateCursor from './inputMethod_updateCursor.test'
 import inputMethod_setCallingWindow from './inputMethod_setCallingWindow.test'
 
 export default function testsuite() {
+  inputMethodDrawnControl();
   inputMethod_attach();
   inputMethod_showTextInput_hideTextInput_detach();
   inputMethod_updateAttribute();
