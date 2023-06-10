@@ -31,6 +31,7 @@ import imageObscuredTest from './imageObscuredTest.test';
 import stageAnimatorTest from './stageAnimator.test';
 import navigationTypeTest from './navigationType.test';
 import textSpanFontTest from './textSpanFont.test';
+import gridScrollbarUpdateTest from './gridScrollbarUpdate.test';
 
 export default function testsuite() {
   stageFontTest()
@@ -51,4 +52,5 @@ export default function testsuite() {
   stageAnimatorTest()
   navigationTypeTest()
   textSpanFontTest()
+  gridScrollbarUpdateTest()
 }
