@@ -422,6 +422,15 @@ export default function Pointer_test() {
 
       console.info('Pointer_MIDDLE_BTN_NORTH_SOUTH_WEST_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST);
       expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST == 38).assertTrue();
+
+      console.info('Pointer_HORIZONTAL_TEXT_CURSOR_test = ' + pointer.PointerStyle.HORIZONTAL_TEXT_CURSOR);
+      expect(pointer.PointerStyle.HORIZONTAL_TEXT_CURSOR == 39).assertTrue();
+
+      console.info('Pointer_CURSOR_CROSS_test = ' + pointer.PointerStyle.CURSOR_CROSS);
+      expect(pointer.PointerStyle.CURSOR_CROSS == 40).assertTrue();
+
+      console.info('Pointer_CURSOR_CIRCLE_test = ' + pointer.PointerStyle.CURSOR_CIRCLE);
+      expect(pointer.PointerStyle.CURSOR_CIRCLE == 41).assertTrue();
     })
 
     /**
