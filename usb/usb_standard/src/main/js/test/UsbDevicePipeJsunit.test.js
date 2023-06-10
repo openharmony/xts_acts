@@ -231,7 +231,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_0641
    * @tc.name: bulkTransfer
-   * @tc.desc: Undefined
+   * @tc.desc: Undefined option arguments, use default options.
    */
   it('SUB_USB_JS_0641', 0, function () {
     console.info('usb SUB_USB_JS_0641 begin');
@@ -273,7 +273,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_0642
    * @tc.name: bulkTransfer
-   * @tc.desc: Null
+   * @tc.desc: Null option arguments, use default options.
    */
   it('SUB_USB_JS_0642', 0, function () {
     console.info('usb SUB_USB_JS_0642 begin');
@@ -315,7 +315,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_0643
    * @tc.name: bulkTransfer
-   * @tc.desc:
+   * @tc.desc: Ignore option arguments, use default options.
    */
   it('SUB_USB_JS_0643', 0, function () {
     console.info('usb SUB_USB_JS_0643 begin');
@@ -406,7 +406,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_1520
    * @tc.name: claimInterface
-   * @tc.desc: Negative test: Get interface, parameter force type error
+   * @tc.desc: Negative test: Get interface, parameter force type error, use default options
    */
   it('SUB_USB_JS_1520', 0, function () {
     console.info('usb SUB_USB_JS_1520 begin');
@@ -468,7 +468,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         //Attribute Prefabrication
         var interfaces = gDeviceList[0].configs[j].interfaces[k];
-        var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k], undefined)
+        var isClaim = usbManager.claimInterface(gPipe, interfaces, undefined)
         console.info('usb case 0421 claimInterface function return: ' + isClaim);
         expect(isClaim).assertEqual(0);
         if (isClaim == 0) {
@@ -486,7 +486,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.number: SUB_USB_JS_0422
    * @tc.name: claimInterface
    * @tc.desc: Test the claimInterface() interface.
-   * Undefined option arguments, use default options.
+   * Null option arguments, use default options.
    */
   it('SUB_USB_JS_0422', 0, function () {
     console.info('usb SUB_USB_JS_0422 begin');
@@ -514,7 +514,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         //Attribute Prefabrication
         var interfaces = gDeviceList[0].configs[j].interfaces[k];
-        var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k], null)
+        var isClaim = usbManager.claimInterface(gPipe, interfaces, null)
         console.info('usb case 0422 claimInterface function return: ' + isClaim);
         expect(isClaim).assertEqual(0);
         if (isClaim == 0) {
@@ -532,7 +532,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.number: SUB_USB_JS_0423
    * @tc.name: claimInterface
    * @tc.desc: Test the claimInterface() interface.
-   * Undefined option arguments, use default options.
+   * Ignore option arguments, use default options.
    */
   it('SUB_USB_JS_0423', 0, function () {
     console.info('usb SUB_USB_JS_0423 begin');
@@ -560,7 +560,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         //Attribute Prefabrication
         var interfaces = gDeviceList[0].configs[j].interfaces[k];
-        var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
+        var isClaim = usbManager.claimInterface(gPipe, interfaces)
         console.info('usb case 0423 claimInterface function return: ' + isClaim);
         expect(isClaim).assertEqual(0);
         if (isClaim == 0) {
@@ -837,7 +837,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.number: SUB_USB_JS_0553
    * @tc.name: controlTransfer
    * @tc.desc: Test the bulkTransfer interface
-   * Ignore option arguments.
+   * Ignore option arguments, use default options.
    */
   it('SUB_USB_JS_0553', 0, function () {
     console.info('usb SUB_USB_JS_0553 begin');
@@ -1183,7 +1183,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_1570
    * @tc.name: controlTransfer
-   * @tc.desc: Negative test: control transfer, parameter timeout type error
+   * @tc.desc: Negative test: control transfer, parameter timeout type error, use default options.
    */
   it('SUB_USB_JS_1570', 0, function () {
     console.info('usb SUB_USB_JS_1570 begin');
