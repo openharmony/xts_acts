@@ -515,7 +515,7 @@ describe('videoPropsJsTest', function () {
      * @tc.name      testVideoAutoplayPropTrue
      * @tc.desc      ACE
      */
-    it('testVideoAutoplayPropFalse', 0, async function (done) {
+    it('testVideoAutoplayPropTrue', 0, async function (done) {
         console.info('testVideoAutoplayPropTrue START');
         console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

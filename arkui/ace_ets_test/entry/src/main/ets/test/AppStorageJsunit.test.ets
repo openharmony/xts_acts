@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 
@@ -22,7 +21,7 @@ export default function appStorageJsunit() {
   function sleep(time) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve()
+        resolve('ok')
       }, time * 1000)
     }).then(() => {
       console.info(`sleep ${time} over...`)
@@ -44,7 +43,7 @@ export default function appStorageJsunit() {
           console.info("push AppStorage page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push AppStorage page error " + JSON.stringify(result));
+        console.error("push AppStorage page error " + JSON.stringify(err));
       }
       await sleep(2)
       done()
@@ -194,7 +193,7 @@ export default function appStorageJsunit() {
      * @tc.name      appStorageTest009
      * @tc.desc      aceEtsTest
      */
-    it('appStorageTest008', 0, async function (done) {
+    it('appStorageTest009', 0, async function (done) {
       console.info('AppStorageTest009 START');
       let strJson = getInspectorByKey('Button0_9');
       let obj = JSON.parse(strJson);

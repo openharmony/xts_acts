@@ -214,11 +214,11 @@ export default function stateManagementGetSharedJsunit() {
 
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0008
-     * @tc.name         test_setAndProp_0001
+     * @tc.name         test_setAndProp_0002
      * @tc.desc         bind localStorage
      */
-    it('test_setAndProp_0001', 0, async function (done) {
-      console.info('test_setAndProp_0001 START');
+    it('test_setAndProp_0002', 0, async function (done) {
+      console.info('test_setAndProp_0002 START');
       await Utils.sleep(2000);
       try {
         let storage = new LocalStorage()
@@ -227,7 +227,7 @@ export default function stateManagementGetSharedJsunit() {
         expect(size == 1).assertTrue();
         done();
       } catch (err) {
-        console.info("test_setAndProp_0001  err : " + JSON.stringify(err));
+        console.info("test_setAndProp_0002  err : " + JSON.stringify(err));
         expect().assertFail();
         done();
       }
