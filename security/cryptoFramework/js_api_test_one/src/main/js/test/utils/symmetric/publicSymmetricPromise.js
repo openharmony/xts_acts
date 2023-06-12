@@ -560,7 +560,6 @@ async function encryptAndDecryptNormalProcessSuperdata(
   for (i = 0; i < globalTextLen; i++) {
     globalText += t.charAt(Math.floor(Math.random() * n));
   }
-  console.warn("globalText1111111111111111111111111111111: " + globalText);
 
   return new Promise((resolve, reject) => {
     var symKeyGenerator = createSymKeyGenerator(symAlgoName);
