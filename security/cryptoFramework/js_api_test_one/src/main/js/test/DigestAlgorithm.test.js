@@ -204,16 +204,19 @@ export default function DigestAlgorithmJsunit() {
                         }
                     })
                 })
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
             try {
                 await mdGenerator.update(0);
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
             try {
                 await mdGenerator.digest();
+                expect(null).assertFail();
             } catch (err) {
                 console.error("err is " + err.code);
                 expect(err.code).assertEqual(401)
@@ -309,12 +312,14 @@ export default function DigestAlgorithmJsunit() {
         it("Security_crypto_framework_HMAC_0600", 0, async function (done) {
             try {
                 cryptoFramework.createMac("SHA5");
+                expect(null).assertFail();
             } catch (err) {
                 console.error("[Promise]: error code: " + err.code + ", message is: " + err.message);
                 expect(err.code).assertEqual(801);
             }
             try {
                 cryptoFramework.createMac(null);
+                expect(null).assertFail();
             } catch (err) {
                 console.error("[Promise]: error code: " + err.code + ", message is: " + err.message);
                 expect(err.code).assertEqual(401);
@@ -333,12 +338,14 @@ export default function DigestAlgorithmJsunit() {
             let key = globalsymKeyGenerator.generateKeyPair();
             try {
                 await globalHMAC.init(key);
+                expect(null).assertFail();
             } catch (err) {
                 console.error("[Promise]init(key): error code: " + err.code + ", message is: " + err.message);
                 expect(err.code).assertEqual(401);
             };
             try {
                 await globalHMAC.init(null);
+                expect(null).assertFail();
             } catch (err) {
                 console.error("[Promise]init(null): error code: " + err.code + ", message is: " + err.message);
                 expect(err.code).assertEqual(401);
@@ -358,6 +365,7 @@ export default function DigestAlgorithmJsunit() {
             await globalHMAC.init(key);
             try {
                await globalHMAC.update(null);
+               expect(null).assertFail();
             } catch (err) {
                 console.error("[Promise]init(null): error code: " + err.code + ", message is: " + err.message);
                 expect(err.code).assertEqual(401);

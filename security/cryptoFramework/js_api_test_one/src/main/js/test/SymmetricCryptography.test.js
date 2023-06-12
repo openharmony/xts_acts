@@ -647,13 +647,14 @@ export default function SymmetricCryptographyJsunit() {
                     cryptoFramework.createCipher("3DES192|null|PKCS7");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code).assertEqual(801)
+                    expect(err.code).assertEqual(801);
+                    expect(null).assertFail();
                 }
                 try {
                     cryptoFramework.createCipher("3DES192|DDD|PKCS7");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code).assertEqual(801)
+                    expect(err.code).assertEqual(801);
                 }
                 done();
             }
@@ -676,13 +677,13 @@ export default function SymmetricCryptographyJsunit() {
                     cryptoFramework.createCipher("3DES192|ECB|null");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code).assertEqual(801)
+                    expect(err.code).assertEqual(801);
                 }
                 try {
                     cryptoFramework.createCipher("3DES192|ECB|CCCCC");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code).assertEqual(801)
+                    expect(err.code).assertEqual(801);
                 }
                 done();
             }
@@ -735,6 +736,7 @@ export default function SymmetricCryptographyJsunit() {
                 await cipherGenerator.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, publicModule.genCcmParamsSpec());
                 try {
                     await cipherGenerator.update(null);
+                    expect(null).assertFail();
                 } catch (err) {
                     console.error("Security_crypto_framework_Symmetric_Encryption_AES_3000 catch error: " + err.code);
                     expect(err.code).assertEqual(401);

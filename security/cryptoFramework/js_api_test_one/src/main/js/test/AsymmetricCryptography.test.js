@@ -404,6 +404,7 @@ export default function AsymmetricCryptographyJsunit() {
                 let globalRsaKeyPair = rsaGenerator.generateKeyPair();
                 try {
                     await cipherGeneratorEncrypt.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, globalRsaKeyPair, null);
+                    expect(null).assertFail();
                 } catch (err) {
                     console.error("err is:" + err.code);
                     expect(err.code).assertEqual(401);
