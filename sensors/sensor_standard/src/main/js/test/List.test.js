@@ -16,6 +16,7 @@ import SystemParameterTest from './SensorOnOffTest.test.js'
 import SensorJsTest_sensor_2 from './SensorGeomagneticTest.test.js'
 import SensorJsTest_sensor_1 from './SensorGeneralalgorithm.test.js'
 import SensorJsTest_sensor_60 from './SensorOnOffTest.test_newSensorGeomagnetic.test.js'
+import SensorJsTest_sensor_38 from './SensorOnOffTest.test_newSensorGeomagneticOptions.test.js'
 import SensorJsTest_sensor_35 from './SensorOnOffTest.test_newGetSensorList.test.js'
 import SensorJsTest_sensor_36 from './SensorOnOffTest.test_newGetSingleSensor.test.js'
 import SensorJsTest_sensor_3 from './SensorOnOffTest.test_oldAccelerometer.test.js'
@@ -43,12 +44,15 @@ import SensorJsTest_sensor_8 from './SensorOnOffTest.test_oldBarometer.test.js'
 import SensorJsTest_sensor_26 from './Subscribe_subscribeBarometer.test.js'
 import SensorJsTest_sensor_57 from './SensorOnOffTest.test_newPedometer_Detection.test.js'
 import SensorJsTest_sensor_17 from './SensorOnOffTest.test_oldPedometer_Detection.test.js'
+import SensorJsTest_sensor_56 from './SensorOnOffTest.test_newPedometer.test.js'
+import SensorJsTest_sensor_18 from './SensorOnOffTest.test_oldPedometer.test.js'
 
 export default function testsuite() {
 		SystemParameterTest()
 		SensorJsTest_sensor_2()
 		SensorJsTest_sensor_1()
 		SensorJsTest_sensor_60()
+		SensorJsTest_sensor_38()
 		SensorJsTest_sensor_35()
 		SensorJsTest_sensor_36()
 		SensorJsTest_sensor_3()
@@ -76,4 +80,6 @@ export default function testsuite() {
 		SensorJsTest_sensor_26()
 		SensorJsTest_sensor_57()
 		SensorJsTest_sensor_17()
+		SensorJsTest_sensor_56()
+		SensorJsTest_sensor_18()
 }                    
