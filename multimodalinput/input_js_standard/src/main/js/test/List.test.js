@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,10 +14,12 @@
  */
 
 import InputDevice_test from './InputDevice.test.js'
+import MultimodalInput_IntentionCode_test from './MultimodalInput_IntentionCode.test.js'
 import MultimodalInput_KeyCode_test from './MultimodalInput_KeyCode.test.js'
 import Pointer_test from './Pointer.test.js'
 export default function testsuite() {
     InputDevice_test()
+    MultimodalInput_IntentionCode_test()
     MultimodalInput_KeyCode_test()
     Pointer_test()
 }
