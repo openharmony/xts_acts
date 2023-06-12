@@ -115,46 +115,29 @@ export default function listNewJsunit() {
     });
 
     /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0006
-     * @tc.name         testListNe0006
-     * @tc.desic         acelistNeEtsTest0006
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0005
+     * @tc.name         testListNe0005
+     * @tc.desic         acelistNeEtsTest0005
      */
-    it('testListNe0006', 0, async function (done) {
-      console.info('listNe testListNe0006 START');
+    it('testListNe0005', 0, async function (done) {
+      console.info('listNe testListNe0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
-      console.info("[testListNe0006] component lanes strJson:" + strJson);
+      console.info("[testListNe0005] component lanes strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
       expect(obj.$attrs.lanes).assertEqual(undefined);
-      console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
+      console.info("[testListNe0005] lanes value :" + obj.$attrs.lanes);
       done();
     });
 
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0006
      * @tc.name         testListNe0006
-     * @tc.desic         acelistNeEtsTest0006
+     * @tc.desic        acelistNeEtsTest0006
      */
     it('testListNe0006', 0, async function (done) {
       console.info('listNe testListNe0006 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('list1');
-      console.info("[testListNe0006] component lanes strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('List');
-      expect(obj.$attrs.lanes).assertEqual(undefined);
-      console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
-     * @tc.name         testListNe0007
-     * @tc.desic        acelistNeEtsTest0007
-     */
-    it('testListNe0007', 0, async function (done) {
-      console.info('listNe testListNe0007 START');
       var innerEvent = {
         eventId: 60216,
         priority: events_emitter.EventPriority.LOW
@@ -162,18 +145,18 @@ export default function listNewJsunit() {
       var callback = (eventData) => {
         try{
           console.info("callback success" );
-          console.info("testListNe0007 eventData.data.result result is: " + eventData.data.result);
+          console.info("testListNe0006 eventData.data.result result is: " + eventData.data.result);
           expect(eventData.data.result).assertEqual("success");
-          console.info("testListNe0007 end");
+          console.info("testListNe0006 end");
         }catch(err){
-          console.info("testListNe0007 on events_emitter err : " + JSON.stringify(err));
+          console.info("testListNe0006 on events_emitter err : " + JSON.stringify(err));
         }
       }
       try{
-        console.info("testListNe0007 click result is: " + JSON.stringify(sendEventByKey('onScrollBegin', 10, "")));
+        console.info("testListNe0006 click result is: " + JSON.stringify(sendEventByKey('onScrollBegin', 10, "")));
         events_emitter.on(innerEvent, callback);
       }catch(err){
-        console.info("testListNe0007 on events_emitter err : " + JSON.stringify(err));
+        console.info("testListNe0006 on events_emitter err : " + JSON.stringify(err));
       }
       done();
     });

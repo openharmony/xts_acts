@@ -194,7 +194,7 @@ export default function appStorageJsunit() {
      * @tc.name      appStorageTest009
      * @tc.desc      aceEtsTest
      */
-    it('appStorageTest008', 0, async function (done) {
+    it('appStorageTest009', 0, async function (done) {
       console.info('AppStorageTest009 START');
       let strJson = getInspectorByKey('Button0_9');
       let obj = JSON.parse(strJson);

@@ -81,7 +81,7 @@ export default function routerJsunit() {
     * @tc.name         tesRouter_002
     * @tc.desc         testRouterAPi
     */
-    it('testRouter_001', 0, async function (done) {
+    it('testRouter_002', 0, async function (done) {
       await Utils.sleep(2000);
       try {
         router.hideAlertBeforeBackPage();
@@ -92,7 +92,6 @@ export default function routerJsunit() {
         expect(error.code == 13004).assertTrue();
         done();
       }
-
     });
 
 
