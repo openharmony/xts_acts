@@ -69,10 +69,10 @@ export default function tabs() {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[ArkUI_Tabs_Divider_0100] start to publish emit");
+        console.info("start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[ArkUI_Tabs_Divider_0100] change component data error: " + err.message);
+        console.log("change component data error: " + err.message);
       }
       await Utils.sleep(2000);
       done();
@@ -277,7 +277,7 @@ export default function tabs() {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
-        console.info("[ArkUI_Tabs_Divider_0900] start to publish emit");
+        console.info("[ArkUI_Tabs_Divider_0800] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
         console.log("[ArkUI_Tabs_Divider_0800] change component data error: " + err.message);
