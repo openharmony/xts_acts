@@ -1227,7 +1227,7 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 to operate");
         let count = 0;
         photoOutput.on('captureStart', async (err, data) => {
-          if (err) {
+          if (!err) {
             expect(true).assertTrue();
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_START_0100 success");
             // count++;
@@ -1306,7 +1306,7 @@ export default function cameraJSUnitOutput() {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 to operate");
         let count = 0;
         photoOutput.on('captureEnd', async (err, data) => {
-          if (err) {
+          if (!err) {
             count++;
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100 success");
             console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CALLBACK_ON_CAPTURE_END_0100, captureId = " + data.captureId);
