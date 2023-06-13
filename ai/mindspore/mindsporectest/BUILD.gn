@@ -32,7 +32,7 @@ ohos_moduletest_suite("ActsMindSporeTest") {
   deps = [
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
-    "//third_party/mindspore/mindspore-src/source/mindspore/lite:mindspore_lib",
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite:mindspore_ndk",
   ]
 
   subsystem_name = "ai"
