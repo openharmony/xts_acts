@@ -544,7 +544,7 @@ describe('UrlFunTest', function () {
      * @tc.name: testParamsGet006
      * @tc.desc: get throw BusinessError: Parameter error.
      */
-    it('testParamsGet005', 0, function () {
+    it('testParamsGet006', 0, function () {
         try{
             let params = new Url.URLParams("key1=value1&key2=value2")
             params.append("jss","JL")
