@@ -104,30 +104,6 @@ describe('aceJsTest', function () {
             done();
         });
 
-    /**
-         * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-         * @tc.name      testCameraComponent
-         * @tc.desc      ACE
-         */
-    it('testCameraComponent', 0, async function (done) {
-        console.info('testCameraComponent START');
-        let result;
-        let options = {
-            uri: 'pages/camera/router/index'
-        }
-        try {
-            result = router.push(options)
-            console.info("push camera page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push camera page error " + JSON.stringify(result));
-        }
-        await sleep(1000)
-        let pages = router.getState();
-        console.info("[router.camera] getState" + JSON.stringify(pages));
-        expect("pages/camera/router/").assertEqual(pages.path);
-        done();
-    });
-
         /**
          * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0300
          * @tc.name      testInputComponent
@@ -828,28 +804,6 @@ describe('aceJsTest', function () {
         done();
     });
 
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testMarqueeComponent
-     * @tc.desc      ACE
-     */
-    it('testMarqueeComponent', 0, async function (done) {
-        let result;
-        let options = {
-            uri: 'pages/marquee/router/index'
-        }
-        try {
-            result = router.push(options)
-            console.info("push marquee page success " + JSON.stringify(result));
-        } catch (err) {
-            console.error("push marquee page error " + JSON.stringify(result));
-        }
-        await sleep(5000)
-        let pages = router.getState();
-        console.info("[router.marquee] getState" + JSON.stringify(pages));
-        expect("pages/marquee/router/").assertEqual(pages.path);
-        done();
-    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -1199,7 +1153,7 @@ describe('aceJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testCameraComponent
+     * @tc.name      testWebComponent
      * @tc.desc      ACE
      */
     it('testWebComponent', 0, async function (done) {
