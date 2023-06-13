@@ -648,7 +648,6 @@ export default function SymmetricCryptographyJsunit() {
                     expect(null).assertFail();
                 } catch (err) {
                     expect(err.code).assertEqual(801);
-                    expect(null).assertFail();
                 }
                 try {
                     cryptoFramework.createCipher("3DES192|DDD|PKCS7");

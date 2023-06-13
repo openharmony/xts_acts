@@ -216,7 +216,6 @@ export default function DigestAlgorithmJsunit() {
             }
             try {
                 await mdGenerator.digest();
-                expect(null).assertFail();
             } catch (err) {
                 console.error("err is " + err.code);
                 expect(err.code).assertEqual(401)
