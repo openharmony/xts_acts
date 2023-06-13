@@ -178,7 +178,7 @@ describe('VideoPlayerEnumTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_TYPE_0100', 0, async function (done) {
+    it('SUB_MEDIA_VIDEO_PLAYER_ENUM_MEDIA_SCALE_TYPE_00_0100', 0, async function (done) {
         expect(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT).assertEqual(0);
         expect(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP).assertEqual(1);
         done();
