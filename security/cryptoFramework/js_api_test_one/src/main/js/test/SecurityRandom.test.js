@@ -82,6 +82,7 @@ export default function SecurityRandomJsunit() {
             }
             try {
                 await randomGenerator.generateRandom(null);
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
@@ -100,6 +101,7 @@ export default function SecurityRandomJsunit() {
             }
             try {
                 await randomGenerator.generateRandom(2147483648);
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
@@ -115,11 +117,13 @@ export default function SecurityRandomJsunit() {
             let randomGenerator = cryptoFramework.createRandom();
             try {
                 randomGenerator.setSeed(null);
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
             try {
                 randomGenerator.setSeed(0);
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }

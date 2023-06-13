@@ -16,6 +16,8 @@
 import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
 import * as symPromise from "./utils/symmetric/publicSymmetricPromise";
 import * as symCallback from "./utils/symmetric/publicSymmetricCallback";
+import * as publicModule from  "./utils/common/publicDoString";
+import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SymmetricCryptographyJsunit() {
     describe("SymmetricCryptographyJsunit", function () {
@@ -382,34 +384,20 @@ export default function SymmetricCryptographyJsunit() {
             "Security_crypto_framework_Symmetric_Encryption_AES_1300",
             0,
             async function (done) {
-                await symPromise
-                    .createSymKeyGeneratorFail(
-                        "AES257",
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C generator fail.").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_1300 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
-                await symPromise
-                    .createSymKeyGeneratorFail(
-                        "AESNULL",
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C generator fail.").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_1300 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
+                try {
+                    cryptoFramework.createSymKeyGenerator("AES257");
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is :" + err.code);
+                    expect(err.code).assertEqual(801);
+                }
+                try {
+                    cryptoFramework.createSymKeyGenerator("AESNULL");
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is :" + err.code);
+                    expect(err.code).assertEqual(801);
+                }
                 done();
             }
         );
@@ -423,34 +411,20 @@ export default function SymmetricCryptographyJsunit() {
             "Security_crypto_framework_Symmetric_Encryption_AES_1400",
             0,
             async function (done) {
-                await symPromise
-                    .createSymCipherFail(
-                        "AES128|NULL|PKCS7",
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_1400 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
-                await symPromise
-                    .createSymCipherFail(
-                        "AES128|ADF|PKCS7",
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_1400 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
+                try {
+                    cryptoFramework.createCipher("AES128|NULL|PKCS7");
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is :" + err.code);
+                    expect(err.code).assertEqual(801);
+                }
+                try {
+                    cryptoFramework.createCipher("AES128|ADF|PKCS7");
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is :" + err.code);
+                    expect(err.code).assertEqual(801);
+                }
                 done();
             }
         );
@@ -464,34 +438,20 @@ export default function SymmetricCryptographyJsunit() {
             "Security_crypto_framework_Symmetric_Encryption_AES_1500",
             0,
             async function (done) {
-                await symPromise
-                    .createSymCipherFail(
-                        "AES128|GCM|NULL",
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_1500 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
-                await symPromise
-                    .createSymCipherFail(
-                        "AES128|GCM|CCCC",
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_1500 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
+                try {
+                    cryptoFramework.createCipher("AES128|GCM|NULL");
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is :" + err.code);
+                    expect(err.code).assertEqual(801);
+                }
+                try {
+                    cryptoFramework.createCipher("AES128|GCM|CCCC");
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is :" + err.code);
+                    expect(err.code).assertEqual(801);
+                }
                 done();
             }
         );
@@ -662,9 +622,9 @@ export default function SymmetricCryptographyJsunit() {
                     .catch((err) => {
                         console.error(
                             "Security_crypto_framework_Symmetric_Encryption_3DES_0600 catch error: " +
-                            err
+                            err.code
                         );
-                        expect(err == "Error: doFinal failed.").assertTrue();
+                        expect(err.code).assertEqual(17630001);
                     });
                 done();
             }
@@ -679,38 +639,22 @@ export default function SymmetricCryptographyJsunit() {
             "Security_crypto_framework_Symmetric_Encryption_3DES_0700",
             0,
             async function (done) {
-                await symPromise
-                    .encryptAndDecryptNormalProcess(
-                        "3DES192",
-                        "3DES192|null|PKCS7",
-                        "genIvParamsSpec"
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_3DES_0700 catch error: " +
-                            err
-                        );
-                        expect(null).assertTrue();
-                    });
-                await symPromise
-                    .encryptAndDecryptNormalProcess(
-                        "3DES192",
-                        "3DES192|DDD|PKCS7",
-                        "genIvParamsSpec"
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_3DES_0700 catch error: " +
-                            err
-                        );
-                        expect(null).assertTrue();
-                    });
+                try {
+                    let symKeyGenerator = cryptoFramework.createSymKeyGenerator("3DES192");
+                    expect(symKeyGenerator != null).assertTrue();
+                    let SymKey = await symKeyGenerator.generateSymKey();
+                    expect(SymKey != null).assertTrue();
+                    cryptoFramework.createCipher("3DES192|null|PKCS7");
+                    expect(null).assertFail();
+                } catch (err) {
+                    expect(err.code).assertEqual(801);
+                }
+                try {
+                    cryptoFramework.createCipher("3DES192|DDD|PKCS7");
+                    expect(null).assertFail();
+                } catch (err) {
+                    expect(err.code).assertEqual(801);
+                }
                 done();
             }
         );
@@ -724,38 +668,22 @@ export default function SymmetricCryptographyJsunit() {
             "Security_crypto_framework_Symmetric_Encryption_3DES_0800",
             0,
             async function (done) {
-                await symPromise
-                    .encryptAndDecryptNormalProcess(
-                        "3DES192",
-                        "3DES192|ECB|null",
-                        "genIvParamsSpec"
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_3DES_0800 catch error: " +
-                            err
-                        );
-                        expect(null).assertTrue();
-                    });
-                await symPromise
-                    .encryptAndDecryptNormalProcess(
-                        "3DES192",
-                        "3DES192|ECB|CCCCC",
-                        "genIvParamsSpec"
-                    )
-                    .then((data) => {
-                        expect(data == "Error: create C cipher fail!").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_3DES_0800 catch error: " +
-                            err
-                        );
-                        expect(null).assertTrue();
-                    });
+                try {
+                    let symKeyGenerator = cryptoFramework.createSymKeyGenerator("3DES192");
+                    expect(symKeyGenerator != null).assertTrue();
+                    let SymKey = await symKeyGenerator.generateSymKey();
+                    expect(SymKey != null).assertTrue();
+                    cryptoFramework.createCipher("3DES192|ECB|null");
+                    expect(null).assertFail();
+                } catch (err) {
+                    expect(err.code).assertEqual(801);
+                }
+                try {
+                    cryptoFramework.createCipher("3DES192|ECB|CCCCC");
+                    expect(null).assertFail();
+                } catch (err) {
+                    expect(err.code).assertEqual(801);
+                }
                 done();
             }
         );
@@ -798,22 +726,20 @@ export default function SymmetricCryptographyJsunit() {
             "Security_crypto_framework_Symmetric_Encryption_AES_3000",
             0,
             async function (done) {
-                await symPromise
-                    .encryptAndDecryptNormalProcessSpecialdata(
-                        "AES256",
-                        "AES256|CCM|PKCS7",
-                        "genCcmParamsSpec"
-                    )
-                    .then((data) => {
-                        expect(data == "TypeError: Cannot read property length of null").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_Symmetric_Encryption_AES_3000 catch error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
+                let symKeyGenerator = cryptoFramework.createSymKeyGenerator("AES256");
+                expect(symKeyGenerator != null).assertTrue();
+                let symKey = await symKeyGenerator.generateSymKey();
+                expect(symKey != null).assertTrue();
+                let cipherGenerator = cryptoFramework.createCipher("AES256|CCM|PKCS7");
+                expect(cipherGenerator != null).assertTrue();
+                await cipherGenerator.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, publicModule.genCcmParamsSpec());
+                try {
+                    await cipherGenerator.update(null);
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("Security_crypto_framework_Symmetric_Encryption_AES_3000 catch error: " + err.code);
+                    expect(err.code).assertEqual(401);
+                }
                 done();
             }
         );

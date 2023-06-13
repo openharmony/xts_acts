@@ -17,9 +17,6 @@ import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
 import {
     testHMACDigestPromise,
     testMDDigestPromise,
-    testHMACErrorAlgorithm,
-    testHMACDigestPromiseErrorKey,
-    testHMACDigestPromiseDatablobNull,
     testHMACDigestPromiseDatablobLong,
 } from "./utils/digestalgorithm/publicDigestPromise";
 import {
@@ -29,6 +26,11 @@ import {
     testMDErrorAlgorithmNull,
     testMDDigestCallbackLen,
 } from "./utils/digestalgorithm/publicDigestCallback";
+import {
+    stringTouInt8Array,
+    uInt8ArrayToShowStr,
+    uInt8ArrayToString,
+} from "./utils/common/publicDoString";
 
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
@@ -202,18 +204,21 @@ export default function DigestAlgorithmJsunit() {
                         }
                     })
                 })
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
             try {
                 await mdGenerator.update(0);
+                expect(null).assertFail();
             } catch (err) {
                 expect(err.code).assertEqual(401);
             }
             try {
                 await mdGenerator.digest();
             } catch (err) {
-                console.error("1111111 " + err.code);
+                console.error("err is " + err.code);
+                expect(err.code).assertEqual(401)
             }
             done();
         });
@@ -304,13 +309,20 @@ export default function DigestAlgorithmJsunit() {
          * @tc.desc Use the Promise Style of Interface
          */
         it("Security_crypto_framework_HMAC_0600", 0, async function (done) {
-            await testHMACErrorAlgorithm("SHA5", null)
-                .then((data) => {
-                    expect(data == null).assertTrue();
-                })
-                .catch((err) => {
-                    expect(null).assertFail();
-                });
+            try {
+                cryptoFramework.createMac("SHA5");
+                expect(null).assertFail();
+            } catch (err) {
+                console.error("[Promise]: error code: " + err.code + ", message is: " + err.message);
+                expect(err.code).assertEqual(801);
+            }
+            try {
+                cryptoFramework.createMac(null);
+                expect(null).assertFail();
+            } catch (err) {
+                console.error("[Promise]: error code: " + err.code + ", message is: " + err.message);
+                expect(err.code).assertEqual(401);
+            }
             done();
         });
 
@@ -320,13 +332,23 @@ export default function DigestAlgorithmJsunit() {
          * @tc.desc Use the Promise Style of Interface
          */
         it("Security_crypto_framework_HMAC_0700", 0, async function (done) {
-            await testHMACDigestPromiseErrorKey("SHA512", "RSA1024|PRIMES_2")
-                .then((data) => {
-                    expect(data == null).assertTrue();
-                })
-                .catch((err) => {
-                    expect(null).assertFail();
-                });
+            let globalHMAC = cryptoFramework.createMac("SHA512");
+            let globalsymKeyGenerator = cryptoFramework.createAsyKeyGenerator("RSA1024|PRIMES_2");
+            let key = globalsymKeyGenerator.generateKeyPair();
+            try {
+                await globalHMAC.init(key);
+                expect(null).assertFail();
+            } catch (err) {
+                console.error("[Promise]init(key): error code: " + err.code + ", message is: " + err.message);
+                expect(err.code).assertEqual(401);
+            };
+            try {
+                await globalHMAC.init(null);
+                expect(null).assertFail();
+            } catch (err) {
+                console.error("[Promise]init(null): error code: " + err.code + ", message is: " + err.message);
+                expect(err.code).assertEqual(401);
+            };
             done();
         });
 
@@ -336,13 +358,17 @@ export default function DigestAlgorithmJsunit() {
          * @tc.desc Use the Promise Style of Interface
          */
         it("Security_crypto_framework_HMAC_0800", 0, async function (done) {
-            await testHMACDigestPromiseDatablobNull("SHA512", "3DES192")
-                .then((data) => {
-                    expect(data == null).assertTrue();
-                })
-                .catch((err) => {
-                    expect(null).assertFail();
-                });
+            let globalHMAC = cryptoFramework.createMac("SHA512");
+            let globalsymKeyGenerator = cryptoFramework.createSymKeyGenerator("3DES192");
+            let key = await globalsymKeyGenerator.generateSymKey();
+            await globalHMAC.init(key);
+            try {
+               await globalHMAC.update(null);
+               expect(null).assertFail();
+            } catch (err) {
+                console.error("[Promise]init(null): error code: " + err.code + ", message is: " + err.message);
+                expect(err.code).assertEqual(401);
+            }
             done();
         });
 

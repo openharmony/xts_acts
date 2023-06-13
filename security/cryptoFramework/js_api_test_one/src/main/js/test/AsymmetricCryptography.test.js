@@ -16,6 +16,7 @@
 import { describe, beforeAll, afterEach, it, expect } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
+import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function AsymmetricCryptographyJsunit() {
     describe("AsymmetricCryptographyJsunit", function () {
@@ -398,21 +399,16 @@ export default function AsymmetricCryptographyJsunit() {
             "Security_crypto_framework_ASymmetric_Encryption_RSA_1400",
             0,
             async function (done) {
-                await asyCallback
-                    .encryptAndDecryptNormalProcessNull(
-                        "RSA4096",
-                        "RSA4096|PKCS1"
-                    )
-                    .then((data) => {
-                        expect(data == "Error: doFinal failed.").assertTrue();
-                    })
-                    .catch((err) => {
-                        console.error(
-                            "Security_crypto_framework_ASymmetric_Encryption_RSA_1400 catch  error: " +
-                            err
-                        );
-                        expect(null).assertFail();
-                    });
+                let rsaGenerator = cryptoFramework.createAsyKeyGenerator("RSA4096");
+                let cipherGeneratorEncrypt = cryptoFramework.createCipher("RSA4096|PKCS1");
+                let globalRsaKeyPair = rsaGenerator.generateKeyPair();
+                try {
+                    await cipherGeneratorEncrypt.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, globalRsaKeyPair, null);
+                    expect(null).assertFail();
+                } catch (err) {
+                    console.error("err is:" + err.code);
+                    expect(err.code).assertEqual(401);
+                }
                 done();
             }
         );
