@@ -321,8 +321,8 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_off_simStateChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_simStateChange_0100 Test start *************");
       try {
-        let callback = data => {
-          console.log("on simStateChange, data:" + JSON.stringify(data));
+        let callback = SimStateData => {
+          console.log("on simStateChange, data:" + JSON.stringify(SimStateData));
           expect(typeof SimStateData.reason === undefined).assertFalse();
           expect(typeof SimStateData.state === undefined).assertFalse();
           expect(typeof SimStateData.type === undefined).assertFalse();
