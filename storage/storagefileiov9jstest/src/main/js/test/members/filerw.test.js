@@ -40,15 +40,15 @@ export default function FileIOFilerw_test() {
                     if (promise) {
                         if (read) {
                             fileIO.read(file.fd, array, { length: bf, offset: offset }).then((readLen) => {
-                                console.log('fileIO_test_read_promise succeed' + readLen);
                             }).catch((e) => {
                                 console.log('fileIO_test_read_promise has failed for ' + e.message + ', code: ' + e.code);
+                                return -1;
                             });
                         } else {
                             fileIO.write(file.fd, array, { length: bf, offset: offset, encoding: 'utf-8' }).then((writeLen) => {
-                                console.log('fileIO_test_write_promise succeed' + writeLen);
                             }).catch((e) => {
                                 console.log('fileIO_test_write_promise has failed for ' + e.message + ', code: ' + e.code);
+                                return -1;
                             });
                         }
                     } else {
@@ -56,12 +56,14 @@ export default function FileIOFilerw_test() {
                             fileIO.read(file.fd, array, { length: bf, offset: offset }, (err, readLen) => {
                                 if (err) {
                                     console.log('fileIO_test_read_callback has failed for ' + err.message + ', code: ' + err.code);
+                                    return -1;
                                 }
                             });
                         } else {
                             fileIO.write(file.fd, array, { length: bf, offset: offset, encoding: 'utf-8' }, (err, writeLen) => {
                                 if (err) {
                                     console.log('fileIO_test_write_callback has failed for ' + err.message + ', code: ' + err.code);
+                                    return -1;
                                 }
                             });
                         }
