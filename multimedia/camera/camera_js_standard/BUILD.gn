@@ -23,7 +23,7 @@ ohos_js_hap_suite("camera_framework_ets_hap") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCameraStandardETSTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_camera_framework"
+  part_name = "camera_framework"
 }
 ohos_js_assets("camera_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
