@@ -46,6 +46,12 @@
             },
             {
                 "name": "ohos.permission.GET_NETWORK_INFO"
+            },
+            {
+                "name": "ohos.permission.APPROXIMATELY_LOCATION"
+            },
+            {
+                "name": "ohos.permission.LOCATION_IN_BACKGROUND"
             }
         ]
     }
