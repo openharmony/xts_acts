@@ -35,7 +35,8 @@ let module1FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2],
-    customizeData: {}
+    customizeData: {},
+    isDynamic: true
 }
 
 let module2FormInfo: formInfo.FormInfo = {
@@ -56,7 +57,8 @@ let module2FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2],
-    customizeData: {}
+    customizeData: {},
+    isDynamic: true
 }
 
 const ERR_ADD_INVALID_PARAM = 401;
