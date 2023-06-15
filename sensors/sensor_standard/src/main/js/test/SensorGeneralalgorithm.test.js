@@ -1095,11 +1095,147 @@ describe("SensorJsTest_sensor_1", function () {
                 done()
             });
     })
+	
+    /*
+    * @tc.name:SensorJsTest_111
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0440
+    */
+    it("SensorJsTest_111", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('SensorJsTest_111 start')
+        try {
+            sensor.getGeomagneticDip().then((data)=>{
+                console.info("SensorJsTest_111 data:" + data)
+                expect(false).assertfalse()
+                done()
+            }, (error)=>{
+				console.info("SensorJsTest_111 error:" + error)
+				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done()
+            })
+        } catch(error) {
+            console.info("SensorJsTest_111 catch error:" + error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        console.info("SensorJsTest_111 end")
+    })
 
+    /*
+    * @tc.name:SensorJsTest_112
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0450
+    */
+    it("SensorJsTest_112", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('SensorJsTest_112 start')
+        try {
+            sensor.getGeomagneticDip(-1).then((data)=>{
+                console.info("SensorJsTest_112 data:" + data)
+                expect(false).assertfalse()
+                done()
+            }, (error)=>{
+				console.info("SensorJsTest_112 error:" + error);
+				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done()
+            })
+        } catch(error) {
+            console.info("SensorJsTest_112 catch error:" + error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        console.info("SensorJsTest_112 end")
+    })
+	
+    /*
+    * @tc.name:SensorJsTest_113
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0460
+    */
+    it("SensorJsTest_113", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('SensorJsTest_113 start')
+        try {
+            sensor.getGeomagneticDip([1, 0, 0, 0, 1, 0, 0, 0, 1]).then((data)=>{
+                console.info("SensorJsTest_113 data:" + data)
+                expect(data).assertEqual(0);
+                done()
+            }, (error)=>{
+				console.info("SensorJsTest_113  error:" + error);
+				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done()
+            })
+        } catch(error) {
+            console.info("SensorJsTest_113 catch error:" + error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        console.info("SensorJsTest_113 end")
+    })
 
-})
+    /*
+    * @tc.name:SensorJsTest_114
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0470
+    */
+    it("SensorJsTest_114", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('SensorJsTest_114 start')
+		let inclinationMatrix = [
+			1, 0, 0, 1,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			1, 0, 0, 0
+		]		
+        try {
+            sensor.getGeomagneticDip(inclinationMatrix).then((data)=>{
+                console.info("SensorJsTest_114 data:" + data)
+                expect(data).assertEqual(0);
+                done()
+            }, (error)=>{
+				console.info("SensorJsTest_114  error:" + error);
+				expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+				expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+                done()
+            })
+        } catch(error) {
+            console.info("SensorJsTest_114 catch error:" + error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        console.info("SensorJsTest_114 end")
+    })
 
-
-
-
-}
+    /*
+    * @tc.name:SensorJsTest_115
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0460
+    */
+    it("SensorJsTest_115", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('SensorJsTest_115 start')
+        try {
+            sensor.getGeomagneticDip([1, 0, 0, 0, 1, 0, 0, 0, 1], (error, data) => {
+                if (error) {
+					console.info("SensorJsTest_115 error:" + error);
+					expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+					expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+					done()
+                } else {
+					console.info("SensorJsTest_115 data:" + data)
+					expect(data).assertEqual(0);
+					done()
+                }
+            })	
+        } catch(error) {
+            console.info("SensorJsTest_115 catch error:" + error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        console.info("SensorJsTest_115 end")
+    })
+})}

@@ -75,13 +75,12 @@ describe("SensorJsTest_sensor_38", function () {
     let timeMillis = [1580486400000, 1612108800000, 1643644800000, 1675180800000, 1706716800000]
 
     /*
-     * @tc.name:Sensor_GetGeomagneticField_058
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: I5SWJI
+     * @tc.name:SensorJsTest_001
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0470
      */
-    it("Sensor_GetGeomagneticInfo_058", 0, async function (done) {
-        console.info("---------------------------Sensor_GetGeomagneticInfo_058----------------------------------");
+    it("SensorJsTest_001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("---------------------------SensorJsTest_001----------------------------------");
         for (let i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticInfo({'latitude':80, 'longitude':0, 'altitude':0}, timeMillis[i], undefined).then((data) => {
                 console.info('Sensor_GetGeomagneticField_058 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
@@ -94,23 +93,22 @@ describe("SensorJsTest_sensor_38", function () {
                 expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][5]) < EPS).assertTrue()
                 expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][6]) < EPS).assertTrue()
             }).catch((error) => {
-                console.info("Sensor_GetGeomagneticInfo_058 promise::catch", error);
+                console.info("SensorJsTest_001 promise::catch", error);
             })
         }
         done()
     })
 
     /*
-     * @tc.name:Sensor_GetGeomagneticInfo_058
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: I5SWJI
+     * @tc.name:SensorJsTest_002
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0480
      */
-    it("Sensor_GetGeomagneticInfo_059", 0, async function (done) {
-        console.info("---------------------------Sensor_GetGeomagneticInfo_059----------------------------------");
+    it("SensorJsTest_002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("---------------------------SensorJsTest_002----------------------------------");
         for (let i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticInfo({'latitude':80, 'longitude':0, 'altitude':0}, timeMillis[i], null).then((data) => {
-                console.info('Sensor_GetGeomagneticInfo_059 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
+                console.info('SensorJsTest_002 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
                 + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity);
                 expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][0]) < EPS).assertTrue()
                 expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][1]) < EPS).assertTrue()
@@ -120,23 +118,22 @@ describe("SensorJsTest_sensor_38", function () {
                 expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][5]) < EPS).assertTrue()
                 expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][6]) < EPS).assertTrue()
             }).catch((error) => {
-                console.info("promise::catch", error);
+                console.info("SensorJsTest_002 promise::catch", error);
             })
         }
         done()
     })
 
     /*
-     * @tc.name:Sensor_GetGeomagneticInfo_060
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: I5SWJI
+     * @tc.name:SensorJsTest_003
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0490
      */
-    it("Sensor_GetGeomagneticInfo_060", 0, async function (done) {
-        console.info("---------------------------Sensor_GetGeomagneticInfo_060----------------------------------");
+    it("SensorJsTest_003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("---------------------------SensorJsTest_003----------------------------------");
         for (let i = 0; i < timeMillis.length; i++) {
             await sensor.getGeomagneticInfo({'latitude':80, 'longitude':0, 'altitude':0}, timeMillis[i], "abc").then((data) => {
-                console.info('Sensor_GetGeomagneticInfo_060 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
+                console.info('SensorJsTest_003 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
                 + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity);
                 expect(Math.abs(data.x - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][0]) < EPS).assertTrue()
                 expect(Math.abs(data.y - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][1]) < EPS).assertTrue()
@@ -146,7 +143,7 @@ describe("SensorJsTest_sensor_38", function () {
                 expect(Math.abs(data.levelIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][5]) < EPS).assertTrue()
                 expect(Math.abs(data.totalIntensity - GEOMAGNETIC_COMPONENT_YEAR_RESULT[i][6]) < EPS).assertTrue()
             }).catch((error) => {
-                console.info("promise::catch", error);
+                console.info("SensorJsTest_003 promise::catch", error);
             })
         }
         done()
@@ -217,14 +214,13 @@ describe("SensorJsTest_sensor_38", function () {
     ]
 
     /*
-    * tc.name: Sensor_CreateRotationMatrix_015
-    * tc.desc: Verification results of the incorrect parameters of test interface.
-    * tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_CreateRotationMatrix_015', 0, async function (done) {
+     * @tc.name:SensorJsTest_004
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0500
+     */
+    it("SensorJsTest_004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[0], geomagnetic[0], undefined).then((data) => {
-            console.info("Sensor_CreateRotationMatrix_015" + JSON.stringify(data))
+            console.info("SensorJsTest_004" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[0]))
             done()
         }, (error) => {
@@ -234,14 +230,13 @@ describe("SensorJsTest_sensor_38", function () {
     })
 
     /*
-    * tc.name: Sensor_CreateRotationMatrix_016
-    * tc.desc: Verification results of the incorrect parameters of test interface.
-    * tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_CreateRotationMatrix_016', 0, async function (done) {
+     * @tc.name:SensorJsTest_005
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0510
+     */
+    it("SensorJsTest_005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix(gravity[0], geomagnetic[0], null).then((data) => {
-            console.info("Sensor_CreateRotationMatrix_016" + JSON.stringify(data))
+            console.info("SensorJsTest_005" + JSON.stringify(data))
             expect(JSON.stringify(data)).assertEqual(JSON.stringify(SENSOR_DATA_MATRIX[0]))
             done()
         }, (error) => {
@@ -251,15 +246,14 @@ describe("SensorJsTest_sensor_38", function () {
     })
 
     /*
-    * tc.name: Sensor_CreateRotationMatrix_017
-    * tc.desc: Verification results of the incorrect parameters of test interface.
-    * tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_CreateRotationMatrix_017', 0, async function (done) {
+     * @tc.name:SensorJsTest_006
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0520
+     */
+    it("SensorJsTest_006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix([0, 0, 0], undefined).then((data) => {
             for(let i = 0; i < data.length; i++) {
-                console.info("Sensor_CreateRotationMatrix_017 [" + i + "] : " + data[i]);
+                console.info("SensorJsTest_006 [" + i + "] : " + data[i]);
                 expect(data[i]).assertEqual(createRotationMatrixResult[1][i])
             }
             done()
@@ -270,15 +264,14 @@ describe("SensorJsTest_sensor_38", function () {
     })
 
     /*
-    * tc.name: Sensor_CreateRotationMatrix_018
-    * tc.desc: Verification results of the incorrect parameters of test interface.
-    * tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_CreateRotationMatrix_018', 0, async function (done) {
+     * @tc.name:SensorJsTest_007
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0530
+     */
+    it("SensorJsTest_007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getRotationMatrix([0, 0, 0], null).then((data) => {
             for(let i = 0; i < data.length; i++) {
-                console.info("Sensor_CreateRotationMatrix_018 [" + i + "] : " + data[i]);
+                console.info("SensorJsTest_007 [" + i + "] : " + data[i]);
                 expect(data[i]).assertEqual(createRotationMatrixResult[1][i])
             }
             done()
@@ -288,18 +281,15 @@ describe("SensorJsTest_sensor_38", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: Sensor_GetDirection_011
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: I5SWJI
-     * @tc.author:
+    /*
+     * @tc.name:SensorJsTest_008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0540
      */
-    it('Sensor_GetDirection_011', 0, async function (done) {
+    it("SensorJsTest_008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getOrientation(rotationMatrix[0], undefined).then((data) => {
             for (let i = 0; i < data.length; i++) {
-                console.info("Sensor_GetDirection_011" + data[i])
+                console.info("SensorJsTest_008" + data[i])
                 expect(data[i]).assertEqual(GET_DIRECTION[0][i])
             }
             done()
@@ -309,18 +299,15 @@ describe("SensorJsTest_sensor_38", function () {
         })
     })
 
-    /**
-     * test
-     *
-     * @tc.name: Sensor_GetDirection_012
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: I5SWJI
-     * @tc.author:
+    /*
+     * @tc.name:SensorJsTest_009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0550
      */
-    it('Sensor_GetDirection_012', 0, async function (done) {
+    it("SensorJsTest_009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getOrientation(rotationMatrix[0], null).then((data) => {
             for (let i = 0; i < data.length; i++) {
-                console.info("Sensor_GetDirection_012" + data[i])
+                console.info("SensorJsTest_009" + data[i])
                 expect(data[i]).assertEqual(GET_DIRECTION[0][i])
             }
             done()
@@ -338,16 +325,15 @@ describe("SensorJsTest_sensor_38", function () {
         ];
 
     /*
-     * @tc.name:Sensor_GetAngleModify_017
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: I5SWJI
+     * @tc.name:SensorJsTest_010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0560
      */
-    it('Sensor_GetAngleModify_017', 0, async function (done) {
-        console.info('----------------------Sensor_GetAngleModify_017---------------------------');
+    it("SensorJsTest_010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------SensorJsTest_010---------------------------');
         sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], [2,2,2,2,2,2,2,2,2], undefined).then((data) => {
             for(let i = 0; i < data.length; i++) {
-                console.info("Sensor_GetAngleModify_017 [" + i + "] = " + data[i]);
+                console.info("SensorJsTest_010 [" + i + "] = " + data[i]);
                 expect(data[0]).assertEqual(ANGLECHANGE_9_RESULT[0][0]) && expect(Number.isNaN(data[1])).assertTrue() &&
                 expect(data[2]).assertEqual(ANGLECHANGE_9_RESULT[0][2]);
             }
@@ -359,16 +345,15 @@ describe("SensorJsTest_sensor_38", function () {
     })
 
     /*
-     * @tc.name:Sensor_GetAngleModify_018
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: I5SWJI
+     * @tc.name:SensorJsTest_011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0570
      */
-    it('Sensor_GetAngleModify_018', 0, async function (done) {
-        console.info('----------------------Sensor_GetAngleModify_018---------------------------');
+    it("SensorJsTest_011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------SensorJsTest_011---------------------------');
         sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], [2,2,2,2,2,2,2,2,2], null).then((data) => {
             for(let i = 0; i < data.length; i++) {
-                console.info("Sensor_GetAngleModify_018 [" + i + "] = " + data[i]);
+                console.info("SensorJsTest_011 [" + i + "] = " + data[i]);
                 expect(data[0]).assertEqual(ANGLECHANGE_9_RESULT[0][0]) && expect(Number.isNaN(data[1])).assertTrue() &&
                 expect(data[2]).assertEqual(ANGLECHANGE_9_RESULT[0][2]);
             }
@@ -380,16 +365,15 @@ describe("SensorJsTest_sensor_38", function () {
     })
 
     /*
-     * @tc.name:Sensor_GetAngleModify_019
-     * @tc.desc:verify app info is not null
-     * @tc.type: FUNC
-     * @tc.require: I5SWJI
+     * @tc.name:SensorJsTest_012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0580
      */
-    it('Sensor_GetAngleModify_019', 0, async function (done) {
-        console.info('----------------------Sensor_GetAngleModify_019---------------------------');
+    it("SensorJsTest_012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------SensorJsTest_012---------------------------');
         sensor.getAngleVariation([1,2,3,1,2,3,1,2,3], [2,2,2,2,2,2,2,2,2], null).then((data) => {
             for(let i = 0; i < data.length; i++) {
-                console.info("Sensor_GetAngleModify_019 [" + i + "] = " + data[i]);
+                console.info("SensorJsTest_012 [" + i + "] = " + data[i]);
                 expect(data[0]).assertEqual(ANGLECHANGE_9_RESULT[0][0]) && expect(Number.isNaN(data[1])).assertTrue() &&
                 expect(data[2]).assertEqual(ANGLECHANGE_9_RESULT[0][2]);
             }
@@ -409,16 +393,13 @@ describe("SensorJsTest_sensor_38", function () {
     ];
 
     /*
-     * test
-     *
-     * @tc.name: Sensor_CreateQuaternion_016
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: I5SWJI
-     * @tc.author:
+     * @tc.name:SensorJsTest_013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0590
      */
-    it('Sensor_CreateQuaternion_016', 0, async function (done) {
+    it("SensorJsTest_013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getQuaternion([0.52, -0.336, -0.251], undefined).then((data) => {
-            console.info('Sensor_CreateQuaternion_016');
+            console.info('SensorJsTest_013 data:' +data);
             for (let i = 0; i < data.length; i++) {
                 console.info("data[" + i + "]: " + data[i]);
                 expect(data[i]).assertEqual(result[0][i])
@@ -431,16 +412,13 @@ describe("SensorJsTest_sensor_38", function () {
     })
 
     /*
-     * test
-     *
-     * @tc.name: Sensor_CreateQuaternion_017
-     * @tc.desc: Verification results of the incorrect parameters of the test interface.
-     * @tc.require: I5SWJI
-     * @tc.author:
+     * @tc.name:SensorJsTest_014
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0600
      */
-    it('Sensor_CreateQuaternion_017', 0, async function (done) {
+    it("SensorJsTest_014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getQuaternion([0.52, -0.336, -0.251], null).then((data) => {
-            console.info('Sensor_CreateQuaternion_017');
+            console.info('SensorJsTest_014 data:'+data);
             for (let i = 0; i < data.length; i++) {
                 console.info("data[" + i + "]: " + data[i]);
                 expect(data[i]).assertEqual(result[0][i])
@@ -455,90 +433,85 @@ describe("SensorJsTest_sensor_38", function () {
     const getGeomagneticDipResult = [ 0.8760581016540527, 0.862170, -Infinity, 44330];
 
     /*
-    * @tc.name: Sensor_GetGeomagneticDip_008
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_GetGeomagneticDip_008', 0, async function (done) {
+     * @tc.name:SensorJsTest_015
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0610
+     */
+    it("SensorJsTest_015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getInclination([1, 2, 3, 4, 5, 6, 7, 8, 9], undefined).then((data) => {
-            console.info("Sensor_GetGeomagneticDip_008" + data)
+            console.info("SensorJsTest_015" + data)
             expect(data).assertEqual(getGeomagneticDipResult[0])
             done()
         }, (error) => {
-            console.info('Sensor_GetGeomagneticDip_008 failed');
+            console.info('SensorJsTest_015 failed');
             expect(false).assertTrue();
             done()
         });
     })
 
     /*
-    * @tc.name: Sensor_GetGeomagneticDip_009
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_GetGeomagneticDip_009', 0, async function (done) {
+     * @tc.name:SensorJsTest_016
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0620
+     */
+    it("SensorJsTest_016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getInclination([1, 2, 3, 4, 5, 6, 7, 8, 9], null).then((data) => {
-            console.info("Sensor_GetGeomagneticDip_009" + data)
+            console.info("SensorJsTest_016" + data)
             expect(data).assertEqual(getGeomagneticDipResult[0])
             done()
         }, (error) => {
-            console.info('Sensor_GetGeomagneticDip_009 failed');
+            console.info('SensorJsTest_016 failed');
             expect(false).assertTrue();
             done()
         });
     })
 	
     /*
-    * @tc.name: Sensor_GetAltitude_009
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_GetAltitude_009', 0, async function (done) {
+     * @tc.name:SensorJsTest_017
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0630
+     */
+    it("SensorJsTest_017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getDeviceAltitude(0, 100, undefined).then((data) => {
-            console.info("Sensor_GetAltitude_009" + data)
+            console.info("SensorJsTest_017 data:" + data)
             expect(data).assertEqual(getGeomagneticDipResult[2])
             done()
         }, (error) => {
-            console.info('Sensor_GetAltitude_009 failed');
+            console.info(' SensorJsTest_017 failed');
             expect(false).assertTrue();
             done()
         });
     })
 
     /*
-    * @tc.name: Sensor_GetAltitude_010
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_GetAltitude_010', 0, async function (done) {
+     * @tc.name:SensorJsTest_018
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0640
+     */
+    it("SensorJsTest_018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getDeviceAltitude(0, 100, null).then((data) => {
-            console.info("Sensor_GetAltitude_010" + data)
+            console.info("SensorJsTest_018" + data)
             expect(data).assertEqual(getGeomagneticDipResult[2])
             done()
         }, (error) => {
-            console.info('Sensor_GetAltitude_010 failed');
+            console.info('SensorJsTest_018 failed');
             expect(false).assertTrue();
             done()
         });
     })
 
     /*
-    * @tc.name: Sensor_GetAltitude_011
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it('Sensor_GetAltitude_011', 0, async function (done) {
+     * @tc.name:SensorJsTest_019
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0650
+     */
+    it("SensorJsTest_019", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.getDeviceAltitude(0, 100, "abc").then((data) => {
-            console.info("Sensor_GetAltitude_011" + data)
+            console.info("SensorJsTest_019" + data)
             expect(data).assertEqual(getGeomagneticDipResult[2])
             done()
         }, (error) => {
-            console.info('Sensor_GetAltitude_011 failed');
+            console.info('SensorJsTest_019 failed');
             expect(false).assertTrue();
             done()
         });
@@ -552,65 +525,97 @@ describe("SensorJsTest_sensor_38", function () {
      [Infinity, -Infinity, Infinity, Infinity, -Infinity, Infinity, Infinity, -Infinity, Infinity]]
 
     /*
-    * @tc.name: Sensor_TransformCoordinateSystem_011
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it("Sensor_TransformCoordinateSystem_011", 0, async function (done) {
-        console.info("---------------------------Sensor_TransformCoordinateSystem_011----------------------------------");
+     * @tc.name:SensorJsTest_020
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0660
+     */
+    it("SensorJsTest_020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("---------------------------SensorJsTest_020----------------------------------");
         sensor.transformRotationMatrix([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {'x':1, 'y':2}, undefined).then((data) => {
             for (let i = 0; i < data.length; i++) {
-                console.info("Sensor_TransformCoordinateSystem_011 data[ " + i + "] = " + data[i]);
+                console.info("SensorJsTest_020 data[ " + i + "] = " + data[i]);
                 expect(data[i]).assertEqual(transformCoordinateSystemResult[0][i]);
             }
             done()
         }, (error) => {
-            console.info('Sensor_TransformCoordinateSystem_011 failed');
+            console.info('SensorJsTest_020 failed');
             expect(false).assertTrue();
             done()
         });
     })
-
+	
     /*
-    * @tc.name: Sensor_TransformCoordinateSystem_012
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it("Sensor_TransformCoordinateSystem_012", 0, async function (done) {
-        console.info("---------------------------Sensor_TransformCoordinateSystem_012----------------------------------");
+     * @tc.name:SensorJsTest_021
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0670
+     */
+    it("SensorJsTest_021", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("---------------------------SensorJsTest_021----------------------------------");
         sensor.transformRotationMatrix([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {'x':1, 'y':2}, null).then((data) => {
             for (let i = 0; i < data.length; i++) {
-                console.info("Sensor_TransformCoordinateSystem_012 data[ " + i + "] = " + data[i]);
+                console.info("SensorJsTest_021 data[ " + i + "] = " + data[i]);
                 expect(data[i]).assertEqual(transformCoordinateSystemResult[0][i]);
             }
             done()
         }, (error) => {
-            console.info('Sensor_TransformCoordinateSystem_012 failed');
+            console.info('SensorJsTest_021 failed');
             expect(false).assertTrue();
             done()
         });
     })
 
     /*
-    * @tc.name: Sensor_TransformCoordinateSystem_013
-    * @tc.desc: Verification results of the incorrect parameters of test interface.
-    * @tc.require: I5SWJI
-    * @tc.author:
-    */
-    it("Sensor_TransformCoordinateSystem_013", 0, async function (done) {
-        console.info("---------------------------Sensor_TransformCoordinateSystem_013----------------------------------");
+     * @tc.name:SensorJsTest_022
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0680
+     */
+    it("SensorJsTest_022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info("---------------------------SensorJsTest_022----------------------------------");
         sensor.transformRotationMatrix([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], {'x':1, 'y':2}, "abc").then((data) => {
             for (let i = 0; i < data.length; i++) {
-                console.info("Sensor_TransformCoordinateSystem_013 data[ " + i + "] = " + data[i]);
+                console.info("SensorJsTest_022 data[ " + i + "] = " + data[i]);
                 expect(data[i]).assertEqual(transformCoordinateSystemResult[0][i]);
             }
             done()
         }, (error) => {
-            console.info('Sensor_TransformCoordinateSystem_013 failed');
+            console.info('SensorJsTest_022 failed');
             expect(false).assertTrue();
             done()
         });
     })
+	
+    /*
+    * @tc.name:SensorJsTest_023
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0690
+    */
+    it("SensorJsTest_023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('SensorJsTest_023 start')
+		let inclinationMatrix = [
+			1, 0, 0, 1,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			1, 0, 0, 0
+		]		
+        try {
+            sensor.getGeomagneticDip(inclinationMatrix, (error, data) => {
+                if (error) {
+					console.info("SensorJsTest_023 error:" + error);
+					expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+					expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+					done()
+                } else {
+					console.info("SensorJsTest_023 data:" + data)
+					expect(data).assertEqual(0);
+					done()
+                }
+            })	
+        } catch(error) {
+            console.info("SensorJsTest_023 catch error:" + error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }	
+        console.info("SensorJsTest_023 end")
+    })		
 })}
