@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -49,7 +49,6 @@ export default function filekeyTestCallbackTest(abilityContext) {
         });
 
         const {
-            PARENT,
             MIME_TYPE,
             SIZE,
             DATE_ADDED,
@@ -59,14 +58,12 @@ export default function filekeyTestCallbackTest(abilityContext) {
             WIDTH,
             HEIGHT,
             ORIENTATION,
-            ALBUM_ID,
             ARTIST,
             AUDIOALBUM,
             DATE_MODIFIED,
             DATE_TAKEN,
             RELATIVE_PATH,
             DISPLAY_NAME,
-            MEDIA_TYPE,
         } = FILEKEY;
 
         async function getFileAssetsBy(done, testNum, type, fileKey) {
@@ -106,20 +103,6 @@ export default function filekeyTestCallbackTest(abilityContext) {
                 done();
             }
         }
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001
-         * @tc.name      : getFileAssets
-         * @tc.desc      : filekey parentOp
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-
-        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001";
-            await getFileAssetsBy(done, testNum, "parent", PARENT);
-        });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_002

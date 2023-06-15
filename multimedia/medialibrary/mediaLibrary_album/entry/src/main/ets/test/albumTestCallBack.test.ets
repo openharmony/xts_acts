@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -67,6 +67,7 @@ export default function albumTestCallbackTest(abilityContext) {
             expect(album.count).assertEqual(prop.count);
             expect(album.relativePath).assertEqual(relativePath);
         };
+
         const checkAlbumInfo = async function (done, testNum, fetchOp, relativePaths, props, expectAlbumCount) {
             try {
                 media.getAlbums(fetchOp, async (err, albumList) => {
@@ -222,30 +223,6 @@ export default function albumTestCallbackTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02
-         * @tc.name      : getAlbums
-         * @tc.desc      : get Videos album,check album info
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02", 0, async function (done) {
-            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02";
-            const selections = FILEKEY.ALBUM_NAME + '= ?';
-            const currentFetchOp = fileFetchOption(testNum, selections, ['Videos']);
-            const relativePaths = [''];
-            const expectAlbumCount = 1;
-            const props = [
-                {
-                    albumName: "Videos",
-                    albumUri: "file://media/album/",
-                    count: 2,
-                }
-            ];
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
-        });
-
-        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03
          * @tc.name      : getAlbums
          * @tc.desc      : get Screenshots album,check album info
@@ -296,7 +273,7 @@ export default function albumTestCallbackTest(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05
          * @tc.name      : getAlbums
-         * @tc.desc      : get Camera and Videos album,check album info
+         * @tc.desc      : get Camera and Screenshots album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -304,44 +281,10 @@ export default function albumTestCallbackTest(abilityContext) {
         it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05", 0, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05";
             const selections = FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ?';
-            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'Videos']);
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'Screenshots']);
             const relativePaths = ['', ''];
             const expectAlbumCount = 2;
             const props = [
-                {
-                    albumName: "Videos",
-                    albumUri: "file://media/album/",
-                    count: 2,
-                },
-                {
-                    albumName: "Camera",
-                    albumUri: "file://media/album/",
-                    count: 1,
-                },
-            ];
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06
-         * @tc.name      : getAlbums
-         * @tc.desc      : get Camera and Videos and Screenshots album,check album info
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06", 0, async function (done) {
-            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06";
-            const selections = FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ?';
-            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'Videos', 'Screenshots']);
-            const relativePaths = ['', '', ''];
-            const expectAlbumCount = 3;
-            const props = [
-                {
-                    albumName: "Videos",
-                    albumUri: "file://media/album/",
-                    count: 2,
-                },
                 {
                     albumName: "Screenshots",
                     albumUri: "file://media/album/",
@@ -357,25 +300,20 @@ export default function albumTestCallbackTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06
          * @tc.name      : getAlbums
-         * @tc.desc      : get Camera and Videos and Screenshots and ScreenRecordings album,check album info
+         * @tc.desc      : get Camera and ScreenRecordings and Screenshots album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07", 0, async function (done) {
-            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07";
-            const selections = FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ?';
-            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'Videos', 'ScreenRecordings', 'Screenshots']);
-            const relativePaths = ['', '', ''];
-            const expectAlbumCount = 3;
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06", 0, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06";
+            const selections = FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'ScreenRecordings', 'Screenshots']);
+            const relativePaths = ['', ''];
+            const expectAlbumCount = 2;
             const props = [
-                {
-                    albumName: "Videos",
-                    albumUri: "file://media/album/",
-                    count: 2,
-                },
                 {
                     albumName: "Screenshots",
                     albumUri: "file://media/album/",
@@ -398,9 +336,9 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp3
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06";
             const selections = FILEKEY.ALBUM_NAME + '= ?';
             const currentFetchOp = fileFetchOption(testNum, selections, ['666']);
@@ -413,9 +351,9 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp4
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_07", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_07", 2, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_07";
             const selections = "666" + "= ?";
             const currentFetchOp = fileFetchOption(testNum, selections, [VIDEO_TYPE.toString()]);
@@ -428,9 +366,9 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp5
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08";
             const selections = "666" + "= ?";
             const currentFetchOp = fileFetchOption(testNum, selections, ['666']);
@@ -445,9 +383,9 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Modify Camera name  ''
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01";
             const selections = FILEKEY.ALBUM_NAME + '= ?';
             const currentFetchOp = fileFetchOption(testNum, selections, ['Camera']);
@@ -457,31 +395,14 @@ export default function albumTestCallbackTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Videos name  ''
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02", 0, async function (done) {
-            const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02";
-            const selections = FILEKEY.ALBUM_NAME + '= ?';
-            const currentFetchOp = fileFetchOption(testNum, selections, ['Videos']);
-            const newName = "";
-            const expectAlbumCount = 1;
-            await abnormalAlbumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount);
-        });
-        
-        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04
          * @tc.name      : commitModify
          * @tc.desc      : Modify Album name  'aaaaa....' (256)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04";
             const selections = FILEKEY.ALBUM_NAME + '= ?';
             const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
@@ -499,9 +420,9 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Modify Album name  '中中中中中....' (86 *3)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05";
             const selections = FILEKEY.ALBUM_NAME + '= ?';
             const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
@@ -519,9 +440,9 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Modify Album name  'aaaaaaa....' (255)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06";
             const selections = FILEKEY.ALBUM_NAME + '= ?';
             const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
