@@ -174,6 +174,7 @@ int32_t MockIDevice::ReleaseBuffer(const SharedBuffer &buffer)
     std::lock_guard<std::mutex> lock(m_mtx);
     auto ash = m_ashmems[buffer.fd];
     ash->UnmapAshmem();
+    ash->CloseAshmem();
     return HDF_SUCCESS;
 }
 
