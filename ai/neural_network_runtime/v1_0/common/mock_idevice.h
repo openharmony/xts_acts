@@ -111,6 +111,9 @@ public:
     std::vector<std::vector<int32_t>>& outputsDims, std::vector<bool>& isOutputBufferEnough) override;
     int32_t GetVersion(uint32_t &majorVersion, uint32_t &minorVersion) override;
     MockIPreparedModel() = default;
+    virtual ~MockIPreparedModel();
+private:
+    std::unordered_map<int, sptr<Ashmem>> m_ashmems;
 };
 
 } // namespace V1_0

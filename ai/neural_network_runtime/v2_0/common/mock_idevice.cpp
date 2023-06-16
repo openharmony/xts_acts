@@ -42,6 +42,14 @@ MockIDevice::~MockIDevice()
     }
 }
 
+MockIPreparedModel::~MockIPreparedModel()
+{
+    for (auto ash : m_ashmems) {
+        ash.second->UnmapAshmem();
+        ash.second->CloseAshmem();
+    }
+}
+
 MockIDevice *MockIDevice::GetInstance()
 {
     static MockIDevice iDevice;
@@ -148,6 +156,11 @@ int32_t MockIDevice::IsModelCacheSupported(bool& isSupported)
 int32_t MockIDevice::AllocateBuffer(uint32_t length, SharedBuffer &buffer)
 {
     std::lock_guard<std::mutex> lock(m_mtx);
+    for(auto ash:m_ashmems){
+        if(ash.second->GetAshmemSize() <= 0){
+            ash.second->CloseAshmem();
+        }
+    }
     sptr<Ashmem> ashptr = Ashmem::CreateAshmem("allocateBuffer", length);
     if (ashptr == nullptr) {
         LOGE("[NNRtTest] Create shared memory failed.");
@@ -238,6 +251,8 @@ int32_t MockIPreparedModel::ExportModelCache(std::vector<SharedBuffer>& modelCac
         LOGE("[NNRtTest] Map fd to write cache failed.");
         return HDF_FAILURE;
     }
+    int fd = cache->GetAshmemFd();
+    m_ashmems[fd] = cache;
     
     ret = cache->WriteToAshmem(buffer, size, 0);
     cache->UnmapAshmem();
