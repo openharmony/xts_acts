@@ -115,6 +115,9 @@ public:
     int32_t GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims, std::vector<std::vector<uint32_t>>& maxInputDims) override;
     int32_t GetVersion(uint32_t &majorVersion, uint32_t &minorVersion) override;
     MockIPreparedModel() = default;
+    virtual ~MockIPreparedModel();
+private:
+    std::unordered_map<int, sptr<Ashmem>> m_ashmems;
 };
 
 } // namespace V2_0
