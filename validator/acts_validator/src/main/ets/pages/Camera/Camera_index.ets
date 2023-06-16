@@ -191,7 +191,7 @@ struct IndexPage {
           .onClick(() => {
             this.ReadTextParseXml();
             AlertDialog.show({
-              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/report1/CameraTest.xml -本地路径'",
+              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Camera/CameraTest.xml -本地路径'",
               confirm:{
                 value:'OK',
                 action:()=>{
@@ -294,7 +294,7 @@ struct IndexPage {
         serializer.setAttributes("name", String(title[i]));
         serializer.setAttributes("status", "run");
         serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "Camera");
+        serializer.setAttributes("classname", "ActsCameraTest");
         serializer.setAttributes("result", String(result[i]));
         serializer.setAttributes("level", "*");
         serializer.setAttributes("message", "*");
