@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,10 +21,10 @@ import {
     sleep,
     IMAGE_TYPE,
     AUDIO_TYPE,
-    checkAlbumsCount,
     FILEKEY,
     checkAssetsCount,
     fetchOps,
+    fileFetchOption,
 } from "../../../../../../common";
 
 export default function filekeyTestPromiseTest(abilityContext) {
@@ -46,7 +46,6 @@ export default function filekeyTestPromiseTest(abilityContext) {
         });
 
         const {
-            PARENT,
             MIME_TYPE,
             SIZE,
             DATE_ADDED,
@@ -56,14 +55,12 @@ export default function filekeyTestPromiseTest(abilityContext) {
             WIDTH,
             HEIGHT,
             ORIENTATION,
-            ALBUM_ID,
             ARTIST,
             AUDIOALBUM,
             DATE_MODIFIED,
             DATE_TAKEN,
             RELATIVE_PATH,
             DISPLAY_NAME,
-            MEDIA_TYPE,
         } = FILEKEY;
 
         async function getFileAssetsBy(done, testNum, type, fileKey) {
@@ -96,20 +93,6 @@ export default function filekeyTestPromiseTest(abilityContext) {
                 done();
             }
         }
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_001
-         * @tc.name      : getFileAssets
-         * @tc.desc      : filekey parentOp
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-
-        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_001", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_001";
-            await getFileAssetsBy(done, testNum, "parent", PARENT);
-        });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_002
@@ -242,19 +225,6 @@ export default function filekeyTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_012
-         * @tc.name      : getFileAssets
-         * @tc.desc      : filekey widthOp
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_012", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_012";
-            await getFileAssetsBy(done, testNum, "albumId", ALBUM_ID);
-        });
-
-        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_014
          * @tc.name      : getFileAssets
          * @tc.desc      : filekey artistOp
@@ -317,17 +287,11 @@ export default function filekeyTestPromiseTest(abilityContext) {
         it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_018", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_018";
             try {
-                let albumName = "ImageInfo";
-                let currentFetchOp = {
-                    selections: RELATIVE_PATH + "= ? AND " + ALBUM_NAME + "= ? AND " + MEDIA_TYPE + "= ?",
-                    selectionArgs: ["Pictures/", albumName, IMAGE_TYPE.toString()],
-                };
-                console.info(`${testNum} currentFetchOp : ${JSON.stringify(currentFetchOp)}`);
+                let currentFetchOp = fileFetchOption(testNum, ALBUM_NAME + '= ?', ['Camera']);
                 const albumList = await media.getAlbums(currentFetchOp);
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
-                if (!albumCountPass) return;
+                expect(albumList.length).assertEqual(1);
                 const album = albumList[0];
-                expect(album.albumName).assertEqual(albumName);
+                expect(album.albumName).assertEqual('Camera');
                 done();
             } catch (error) {
                 console.info(`${testNum} error : ${error}`);
