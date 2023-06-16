@@ -24,7 +24,6 @@ import {
     fetchOps,
     getPermission,
     albumFetchOps,
-    fileIdFetchOps,
     checkPresetsAssets,
 } from "../../../../../../common";
 
@@ -215,8 +214,8 @@ export default function trashCallback(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_TRASH_CALLBACK_01_002", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_TRASH_CALLBACK_01_002";
-            let assetOps = fetchOps(testNum, "Videos/", VIDEO_TYPE);
-            let albumOps = albumFetchOps(testNum, "Videos");
+            let assetOps = fetchOps(testNum, "Videos/ScreenRecordings/", VIDEO_TYPE);
+            let albumOps = albumFetchOps(testNum, "ScreenRecordings");
             let noAlbum = false;
             await setTrash(done, testNum, assetOps, albumOps, noAlbum);
         });
@@ -354,8 +353,8 @@ export default function trashCallback(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_TRASH_RECOVERY_CALLBACK_03_002", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_TRASH_RECOVERY_CALLBACK_03_002";
-            let assetOps = fetchOps(testNum, "Videos/", VIDEO_TYPE);
-            let albumOps = albumFetchOps(testNum, "Videos");
+            let assetOps = fetchOps(testNum, "Videos/ScreenRecordings/", VIDEO_TYPE);
+            let albumOps = albumFetchOps(testNum, "ScreenRecordings");
             let noAlbum = false;
             await recovery(done, testNum, assetOps, albumOps, noAlbum);
         });

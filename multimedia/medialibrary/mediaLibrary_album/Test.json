@@ -44,7 +44,6 @@
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/01.mp4",
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/Screenshots/01.jpg",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/ScreenRecordings/01.mp4",
-
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -Q pidoff",

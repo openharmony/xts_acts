@@ -42,7 +42,6 @@
                 "cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/01.mp3",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/01.mp4",
                 "cp /storage/media/100/local/temp/01.dat /storage/media/100/local/files/Documents/01.dat",
-
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -Q pidoff",

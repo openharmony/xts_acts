@@ -334,7 +334,7 @@ export default function getThumbnailPromise(abilityContext) {
             let size = false;
             await testGetThumbnailError(done, testNum, dOp, size);
         });
-        
+
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETTHUMBNAIL_PROMISE_ERROR_001_08
          * @tc.name      : getThumbnail
