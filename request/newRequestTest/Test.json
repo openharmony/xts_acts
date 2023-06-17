@@ -3,14 +3,16 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.acts.inputmethodauthority.test",
+        "bundle-name": "com.acts.newRequest.test",
         "module-name": "entry_test",
-        "shell-timeout": "600000"
+        "shell-timeout": "180000",
+        "testcase-timeout": 15000
     },
     "kits": [
         {
             "type": "ShellKit",
             "run-command": [
+                "pidof download_server | xargs kill -9",
                 "power-shell wakeup",
                 "power-shell setmode 602",
                 "uinput -T -m 300 720 300 360 200",
@@ -19,7 +21,7 @@
         },
         {
         "test-file-name": [
-            "ActsInputMethodAuthorityTest.hap"
+            "ActsRequestNewTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

@@ -3,9 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.acts.inputmethodauthority.test",
+        "bundle-name": "com.acts.newRequestAuthority.test",
         "module-name": "entry_test",
-        "shell-timeout": "600000"
+        "shell-timeout": "180000",
+        "testcase-timeout": 15000
     },
     "kits": [
         {
@@ -19,7 +20,7 @@
         },
         {
         "test-file-name": [
-            "ActsInputMethodAuthorityTest.hap"
+            "ActsRequestAuthorityTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

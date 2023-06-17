@@ -96,6 +96,10 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_setUiContentPromise_0060();
                     break;
+                case 70:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 event:' + data.event);
+                    that.Sub_Misc_inputMethod_Panel_setUiContentCallback_0070();
+                    break;
                 case 80:
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_setUiContentPromise_0080();
@@ -431,6 +435,43 @@ export class KeyboardController {
             };
             console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 catch error: ' + JSON.stringify(error));
             commoneventmanager.publish("Sub_Misc_inputMethod_Panel_setUiContentPromise_0060", commonEventPublishData, this.publishCallback);
+        }
+    }
+
+    private Sub_Misc_inputMethod_Panel_setUiContentCallback_0070(): void {
+        let commonEventPublishData;
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                this.softKeyboardPanel.setUiContent("pages/Index", this.storage, async (err, data) => {
+                    console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 setUiContent');
+                    if (err) {
+                        commonEventPublishData = {
+                            data: "FAILED"
+                        };
+                        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 setUiContent error: ' + JSON.stringify(err));
+                        commoneventmanager.publish("Sub_Misc_inputMethod_Panel_setUiContentCallback_0070", commonEventPublishData, this.publishCallback);
+                    }else{
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                        console.info('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 Succeed setUiContent: ' + JSON.stringify(data));
+                    }
+                    commoneventmanager.publish("Sub_Misc_inputMethod_Panel_setUiContentCallback_0070", commonEventPublishData, this.publishCallback);
+                })
+            }else{
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 this.softKeyboardPanel is null');
+                commoneventmanager.publish("Sub_Misc_inputMethod_Panel_setUiContentCallback_0070", commonEventPublishData, this.publishCallback);
+            }
+        }catch(error){
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_Panel_setUiContentCallback_0070", commonEventPublishData, this.publishCallback);
         }
     }
 
