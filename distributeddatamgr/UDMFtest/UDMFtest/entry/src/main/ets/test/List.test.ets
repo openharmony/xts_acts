@@ -15,6 +15,10 @@
  
 
 import UDMFApiTest from './UDMF.test.ets'
+import UDMFApiCallback from './UDMFApiCallback.test'
+import UDMFApiPromise from './UDMFApiPromise.test'
 export default function testsuite() {
   UDMFApiTest()
+  UDMFApiCallback()
+  UDMFApiPromise()
 }
