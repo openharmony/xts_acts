@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import huks from "@ohos.security.huks";
-import { describe, it, expect } from "@ohos/hypium";
+import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import Data from '../../../../../../utils/data.json';
 import {
     stringToUint8Array,
@@ -56,7 +56,7 @@ let handle;
 let IV = '0000000000000000';
 let IVErr = '00000000000000000000000000000000000000000000000000000000000000000000';
 let AAD = '0000000000000000';
-let NONCE = '00000000000';
+let NONCE = '000000000000';
 let AEAD = '0000000000000000';
 let useSoftware = true;
 
@@ -239,7 +239,7 @@ async function publicExportFunc(srcKeyAlies, HuksOptions) {
 export default function SecurityHuksRSASignExtendJsunit() {
     describe('SecurityHuksRSASignExtendJsunit', function () {
         beforeAll(async function (done) {
-            useSoftware = checkSoftware();
+            useSoftware = await checkSoftware();
             done();
         })
 
