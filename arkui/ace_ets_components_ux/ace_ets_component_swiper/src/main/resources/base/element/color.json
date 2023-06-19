@@ -11,6 +11,10 @@
     {
       "name": "font_color_test",
       "value": "#FFFF0000"
+    },
+    {
+      "name": "swiper_BackgroundColor_test",
+      "value": "#FFFF0000"
     }
   ]
 }
