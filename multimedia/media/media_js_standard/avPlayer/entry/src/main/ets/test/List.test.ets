@@ -12,12 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AVPlayerAudioEffectModeTest from './AVPlayerAudioEffectModeTest.test.js'
 import AVPlayerHlsFuncTest from './AVPlayerHlsFuncTest.test.js'
 import AVPlayerHttpCompatibilityTest from './AVPlayerHttpCompatibilityTest.test.ets'
 import AVPlayerHttpSeekTest from './AVPlayerHttpSeekTest.test.ets'
 import AVPlayerLocalTest from './AVPlayerLocalTest.test.js'
 import AVPlayerStabilityTest from './AVPlayerStabilityTest.test.js'
 import AvPlayerEnumTest from './AvPlayerEnumTest.test.js'
+import AVPlayerMultiTrackTest from './AVPlayerMultiTrackTest.test.js'
 
 
 export default function testsuite() {
@@ -26,5 +28,7 @@ export default function testsuite() {
   // AVPlayerHttpSeekTest();
   AvPlayerEnumTest();
   AVPlayerLocalTest();
+  AVPlayerAudioEffectModeTest();
+  AVPlayerMultiTrackTest();
   // AVPlayerStabilityTest();
 }
