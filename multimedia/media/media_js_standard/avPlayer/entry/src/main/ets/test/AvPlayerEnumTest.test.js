@@ -101,6 +101,19 @@ export default function AvPlayerEnumTest() {
             expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_DEFAULT).assertEqual(0);
             done();
         })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0500
+            * @tc.name      : AVPlayer
+            * @tc.desc      : AVPlayer Enumeration test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0500', 0, async function (done) {
+            expect(media.MediaDescriptionKey.MD_KEY_LANGUAGE).assertEqual("language");
+            done();
+        })
     })
 }
 
