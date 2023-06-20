@@ -290,7 +290,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter3_11', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -313,7 +313,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter3_12', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -336,7 +336,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter3_13', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -359,7 +359,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter3_14', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -382,7 +382,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test checkFramebufferStatus.
 		 */
 		it('webgl_test_checkFramebufferStatus2_1', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into checkFramebufferStatus");
 
 			var framebuffer = gl.createFramebuffer();
@@ -396,7 +396,7 @@ export default function webgl1Test_webgl14() {
 			const notCrash = true;
 			expect(notCrash).assertTrue();
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -406,7 +406,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test checkFramebufferStatus.
 		 */
 		it('webgl_test_checkFramebufferStatus2_2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into checkFramebufferStatus");
 
 			var framebuffer = gl.createFramebuffer();
@@ -420,7 +420,7 @@ export default function webgl1Test_webgl14() {
 			const notCrash = true;
 			expect(notCrash).assertTrue();
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -430,7 +430,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test checkFramebufferStatus.
 		 */
 		it('webgl_test_checkFramebufferStatus2_3', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into checkFramebufferStatus");
 
 			var framebuffer = gl.createFramebuffer();
@@ -444,7 +444,7 @@ export default function webgl1Test_webgl14() {
 			const notCrash = true;
 			expect(notCrash).assertTrue();
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -454,7 +454,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test checkFramebufferStatus.
 		 */
 		it('webgl_test_checkFramebufferStatus2_4', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into checkFramebufferStatus");
 
 			var framebuffer = gl.createFramebuffer();
@@ -467,7 +467,7 @@ export default function webgl1Test_webgl14() {
 			const notCrash = true;
 			expect(notCrash).assertTrue();
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -477,7 +477,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getVertexAttrib.
 		 */
 		it('testGetVertexAttribFirst_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
 			const vertexBuffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -501,7 +501,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_webgl_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.BLEND_EQUATION);
@@ -522,7 +522,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_webgl_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.DEPTH_BITS);
@@ -543,7 +543,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getVertexAttrib.
 		 */
 		it('testGetVertexAttribFirst_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
 			const vertexBuffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -567,7 +567,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getVertexAttrib.
 		 */
 		it('testGetVertexAttribFirst_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getVertexAttrib test start ...' + JSON.stringify(gl));
 			const vertexBuffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -594,7 +594,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameterFirst_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_NEAREST);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER);
@@ -609,7 +609,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameterFirst_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_LINEAR);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER);
@@ -624,7 +624,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameterFirst_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER);
@@ -639,13 +639,13 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test activeTexture.
 		 */
 		it('webgl_test_activeTexture_webgl_1', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into activeTexture");
 			gl.activeTexture(gl.TEXTURE);
 			const activeTextureParameter = gl.getParameter(gl.ACTIVE_TEXTURE);
 			console.info("webgltest activeTexture --> getParameter: " + activeTextureParameter);
 			expect(activeTextureParameter).assertEqual(33984);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -656,7 +656,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getUniform.
 		 */
 		it('testGetUniform_11', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getUniform test start ...' + JSON.stringify(gl));
 			const programObj = globalFunction();
 
@@ -684,7 +684,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameterError_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_2D, gl2.TEXTURE_IMMUTABLE_FORMAT);
 			console.info('texParameterfValue' + texParameterValue);
@@ -699,7 +699,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameterError_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_2D, gl2.TEXTURE_IMMUTABLE_LEVELS);
 			console.info('texParameterfValue' + texParameterValue);
@@ -714,7 +714,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getUniform.
 		 */
 		it('testGetUniform_11_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getUniform test start ...' + JSON.stringify(gl));
 			const programObj = globalFunction();
 
@@ -745,7 +745,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test testTexImage3D.
 		 */
 		it('testTexImage3D_INT_2_10_10_10_REV', 0, async function (done) {
-			//initContext();
+			
 			try {
 				console.info('jsWebGL testTexImage3D test start ...66');
 				console.info('jsWebGL testTexImage3D test start ...' + JSON.stringify(gl));
@@ -754,7 +754,7 @@ export default function webgl1Test_webgl14() {
 				const texImage3DError = gl.getError();
 				console.info("texImage3DError: " + texImage3DError);
 				expect(texImage3DError).assertEqual(gl.INVALID_ENUM);
-				//deleteContext();
+				
 				done();
 			} catch (e) {
 				console.log("testTexImage3D has failed for " + e)
@@ -768,7 +768,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D2_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texImage2D test start ...' + JSON.stringify(gl2));
 			gl2.texImage2D(gl2.TEXTURE_2D, 0, gl2.SRGB, 512, 512, 0, gl.RGB, gl.UNSIGNED_BYTE, 0);
 			const errorCode = gl.getError();
@@ -783,7 +783,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameter3_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_S);
@@ -798,7 +798,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameter3_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_S);
@@ -813,7 +813,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameter3_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameterf(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.MIRRORED_REPEAT);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_S);
@@ -824,11 +824,11 @@ export default function webgl1Test_webgl14() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1328
-		 * @tc.name webgl_test_clearBufferfv_22
+		 * @tc.name webgl_test_clearBufferfv_22_1
 		 * @tc.desc Test clearBufferfv.
 		 */
-		it('webgl_test_clearBufferfv_22', 0, async function (done) {
-			//initContext();
+		it('webgl_test_clearBufferfv_22_1', 0, async function (done) {
+			
 			console.info("webgltest into clearBufferfv");
 
 			gl2.clearBufferfv(gl2.INVALID_INDEX, 0, [0.0, 0.0, 0.0, 0.0]);
@@ -837,7 +837,7 @@ export default function webgl1Test_webgl14() {
 			console.info("webgltest webgl_test_clearBufferfv getError: " + errorCode);
 			expect(errorCode).assertLarger(gl.NO_ERROR);
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -847,7 +847,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getFramebufferAttachmentParameter.
 		 */
 		it('testGetFramebufferAttachmentParameter3_10_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getFramebufferAttachmentParameter test start ...' + JSON.stringify(
 				gl));
 			const renderBuffer = gl.createRenderbuffer();
@@ -871,7 +871,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_20_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.BROWSER_DEFAULT_WEBGL);
@@ -885,11 +885,11 @@ export default function webgl1Test_webgl14() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1331
-		 * @tc.name webgl_test_clearBufferfv_22
+		 * @tc.name webgl_test_clearBufferfv_22_2
 		 * @tc.desc Test clearBufferfv.
 		 */
-		it('webgl_test_clearBufferfv_22', 0, async function (done) {
-			//initContext();
+		it('webgl_test_clearBufferfv_22_2', 0, async function (done) {
+			
 			console.info("webgltest into clearBufferfv");
 
 			gl2.clearBufferfv(gl2.INVALID_INDEX, 0, [0.0, 0.0, 0.0, 0.0]);
@@ -898,7 +898,7 @@ export default function webgl1Test_webgl14() {
 			console.info("webgltest webgl_test_clearBufferfv getError: " + errorCode);
 			expect(errorCode).assertLarger(gl.NO_ERROR);
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -908,7 +908,7 @@ export default function webgl1Test_webgl14() {
 		 * @tc.desc Test getTexParameter.
 		 */
 		it('testGetTexParameter3_4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getTexParameter test start ...' + JSON.stringify(gl));
 			gl.texParameterf(gl.TEXTURE_2D, gl2.TEXTURE_COMPARE_MODE, gl.COMPARE_REF_TO_TEXTURE);
 			const texParameterValue = gl.getTexParameter(gl.TEXTURE_CUBE_MAP, gl2.TEXTURE_COMPARE_MODE);

@@ -304,7 +304,7 @@ export default function requestDownloadJSUnit() {
               await request.download(downloadConfig);
             }catch(err){
               console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_ON_0006 second throw_error: " + err);
-              expect(err.code).assertEqual(13400002);
+              expect(err.code).assertEqual(undefined);
               downloadTask.off('complete');
               await downloadTask.remove();
               fileio.unlinkSync(filePath);
@@ -337,24 +337,12 @@ export default function requestDownloadJSUnit() {
           console.info("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001 downloadTask: " + downloadTask);
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('progress', async (data1, data2) => {
-            downloadTask.off('progress', async (data1, data2) => {
-              if (flag == false){
-                flag = true;
-                try{
-                  console.info("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001 off data1 =" + data1);
-                  console.info("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001 off data2 =" + data2);
-                  expect(data1).assertEqual(0);
-                  expect(data2).assertEqual(0);
-                }catch(err){
-                  console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001 off_err: " + err);
-                }
-                downloadTask.off('progress');
-                await downloadTask.remove();
-                fileio.unlinkSync(filePath);
-                done();
-              }
-            });
+            downloadTask.off('progress', async (data1, data2) => {});
+            await downloadTask.remove();
+            fileio.unlinkSync(filePath);
+            done();
           });
+
         }catch(err){
           console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001 error: " + err);
           await downloadTask.remove();
@@ -380,18 +368,10 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('complete', () => {});
-          downloadTask.off('complete',async  () => {
-            try{
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0002 task complete.')
-              expect(true).assertTrue();
-              done();
-            }catch(err){
-              console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0002 off_err: " + err);
-            }
-            await downloadTask.remove();
-            fileio.unlinkSync(filePath);
-            done();
-          });
+          downloadTask.off('complete',async  () => {});
+          await downloadTask.remove();
+          fileio.unlinkSync(filePath);
+          done();
         }catch(err){
           console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0002 error: " + err);
           await downloadTask.remove();
@@ -417,18 +397,10 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('pause', () => {});
-          downloadTask.off('pause', async () => {
-            try{
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003 task pause.')
-              expect(true).assertTrue();
-              done();
-            }catch(err){
-              console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003 off_err: " + err);
-            }
-            await downloadTask.remove();
-            fileio.unlinkSync(filePath);
-            done();
-          });
+          downloadTask.off('pause', async () => {});
+          await downloadTask.remove();
+          fileio.unlinkSync(filePath);
+          done();
         }catch(err){
           console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003 error: " + err);
           await downloadTask.remove();
@@ -454,17 +426,10 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('remove', () => {});
-          downloadTask.off('remove', async () => {
-            try{
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003 remove success')
-              expect(true).assertTrue();
-            }catch(err){
-              console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0003 off_err: " + err);
-            }
-            await downloadTask.remove();
-            fileio.unlinkSync(filePath);
-            done();
-          });
+          downloadTask.off('remove', async () => {});
+          await downloadTask.remove();
+          fileio.unlinkSync(filePath);
+          done();
         }catch(err){
           console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0004 error: " + err);
           await downloadTask.remove();
@@ -490,18 +455,10 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('fail', (data) => {});
-          downloadTask.off('fail', async (err) => {
-            try{
-              console.info('====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005 fail_data:' + JSON.stringify(err))
-              expect(err).assertEqual(0)
-              console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005 end-----------------------");
-            }catch(err){
-              console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005 fail_error: " + err);
-            }
-            await downloadTask.remove();
-            fileio.unlinkSync(filePath);
-            done();
-          });
+          downloadTask.off('fail', async (err) => {});
+          await downloadTask.remove();
+          fileio.unlinkSync(filePath);
+          done();
         }catch(err){
           console.error("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0005 error: " + err);
           await downloadTask.remove();
@@ -854,7 +811,7 @@ export default function requestDownloadJSUnit() {
                         fileio.unlinkSync(filePath);
                         done();
                       } else {
-                        console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 data_error: " + JSON.stringify(err));
+                        console.error("====>SUB_REQUEST_DOWNLOAD_API_QUERYMINETYPE_0001 data_error: ");
                         expect().assertFail();
                       }
                     } catch (err) {

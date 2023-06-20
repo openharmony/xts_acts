@@ -147,7 +147,7 @@ struct NavigationPage {
     Column() {
       Navigation() {
         TextInput({ placeholder: 'search...' })
-          .width(336)
+          .width('90%')
           .height(40)
           .backgroundColor('#FFFFFF')
           .margin({ top: 8, left: 12 })
@@ -156,6 +156,7 @@ struct NavigationPage {
           ForEach(this.arr, (item) => {
             ListItem() {
               Text('' + item)
+                .width('90%')
                 .height(72)
                 .backgroundColor('#FFFFFF')
                 .borderRadius(24)

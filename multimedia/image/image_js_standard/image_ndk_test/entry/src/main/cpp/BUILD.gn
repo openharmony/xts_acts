@@ -34,13 +34,16 @@ ohos_shared_library("imagePixelmap") {
   if (use_musl) {
     libs = [ rebase_path(libcxx_ndk_shared_file) ]
   }
-  include_dirs = [ "//test/xts/acts/multimedia/image/image_js_standard/image_ndk_test/entry/src/main/cpp" ]
+  include_dirs = [ "../cpp" ]
   configs = [ ":config" ]
 
-  deps = [
-    "//foundation/arkui/napi:ace_napi",
-    "//foundation/multimedia/image_framework/frameworks/kits/js/common/pixelmap_ndk:pixelmap_ndk",
+  deps = []
+  external_deps = [
+    "multimedia_image_framework:pixelmap_ndk",
+    "napi:ace_napi",
   ]
 
   output_extension = "so"
+  subsystem_name = "multimedia"
+  part_name = "multimedia_image_framework"
 }

@@ -290,7 +290,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferDataFirst', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			const buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -307,7 +307,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData__2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			const buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -324,7 +324,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData__3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			const buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -341,7 +341,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferData__4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			const buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -354,11 +354,11 @@ export default function webgl1Test_webgl11() {
 
 		/**
 		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1005
-		 * @tc.name testBufferData__3
+		 * @tc.name testBufferData__5
 		 * @tc.desc Test bufferData.
 		 */
-		it('testBufferData__3', 0, async function (done) {
-			//initContext();
+		it('testBufferData__5', 0, async function (done) {
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			const buffer = gl.createBuffer();
 			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -375,7 +375,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferSubData__1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			gl2.bufferSubData(gl2.ELEMENT_ARRAY_BUFFER, 512, new ArrayBuffer(8));
 			const errorCode = gl.getError();
@@ -390,7 +390,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferSubData__2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			gl2.bufferSubData(gl.ARRAY_BUFFER, 512, new ArrayBuffer(8));
 			const errorCode = gl.getError();
@@ -405,7 +405,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bufferData.
 		 */
 		it('testBufferSubData__3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 bufferData test start ...' + JSON.stringify(gl2));
 			gl2.bufferSubData(gl.COPY_WRITE_BUFFER, 512, new ArrayBuffer(8));
 			const errorCode = gl.getError();
@@ -420,7 +420,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D__1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
 			var view = new DataView(buffer, 0);
@@ -438,7 +438,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D__2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
 			var view = new DataView(buffer, 0);
@@ -456,7 +456,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test texImage2D.
 		 */
 		it('testTexImage2D__3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
 			var view = new DataView(buffer, 0);
@@ -474,7 +474,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D__1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texSubImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
 			var view = new DataView(buffer, 0);
@@ -493,7 +493,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texSubImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
 			var view = new DataView(buffer, 0);
@@ -512,7 +512,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test texSubImage2D.
 		 */
 		it('testTexSubImage2D_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 texSubImage2D test start ...' + JSON.stringify(gl2));
 			var buffer = new ArrayBuffer(8);
 			var view = new DataView(buffer, 0);
@@ -531,7 +531,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D__1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 compressedTexImage2D test start ...' + JSON.stringify(gl2));
 			gl2.compressedTexImage2D(gl2.TEXTURE_CUBE_MAP_POSITIVE_X, 0, 0x83F3, 512, 512, 0, gl
 				.PIXEL_UNPACK_BUFFER, 0);
@@ -547,7 +547,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D__2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 compressedTexImage2D test start ...' + JSON.stringify(gl2));
 			gl2.compressedTexImage2D(gl2.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, 0x83F3, 512, 512, 0, gl
 				.PIXEL_UNPACK_BUFFER, 0);
@@ -563,7 +563,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test compressedTexImage2D.
 		 */
 		it('testCompressedTexImage2D__3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 compressedTexImage2D test start ...' + JSON.stringify(gl2));
 			gl2.compressedTexImage2D(gl2.TEXTURE_CUBE_MAP_POSITIVE_Z, 0, 0x83F3, 512, 512, 0, gl
 				.PIXEL_UNPACK_BUFFER, 0);
@@ -579,7 +579,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test compressedTexSubImage2D.
 		 */
 		it('testCompressedTexSubImage2D__1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 compressedTexSubImage2D test start ...' + JSON.stringify(gl2));
 			gl2.compressedTexSubImage2D(gl2.TEXTURE_CUBE_MAP_POSITIVE_X, 0, 256, 256, 512, 512, 0x83F3,
 			gl.PIXEL_UNPACK_BUFFER, 0);
@@ -595,7 +595,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test compressedTexSubImage2D.
 		 */
 		it('testCompressedTexSubImage2D__2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 compressedTexSubImage2D test start ...' + JSON.stringify(gl2));
 			gl2.compressedTexSubImage2D(gl2.TEXTURE_CUBE_MAP_POSITIVE_Y, 0, 256, 256, 512, 512, 0x83F3,
 			gl.PIXEL_UNPACK_BUFFER, 0);
@@ -611,7 +611,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test compressedTexSubImage2D.
 		 */
 		it('testCompressedTexSubImage2D__3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL2 compressedTexSubImage2D test start ...' + JSON.stringify(gl2));
 			gl2.compressedTexSubImage2D(gl2.TEXTURE_CUBE_MAP_POSITIVE_Z, 0, 256, 256, 512, 512, 0x83F3,
 			gl.PIXEL_UNPACK_BUFFER, 0);
@@ -627,7 +627,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test hint.
 		 */
 		it('testHint1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL hint test start ...' + JSON.stringify(gl));
 			gl.hint(gl.GENERATE_MIPMAP_HINT, gl.NICEST);
 			gl.generateMipmap(gl2.TEXTURE_2D);
@@ -643,7 +643,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test hint.
 		 */
 		it('testHint2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL hint test start ...' + JSON.stringify(gl));
 			gl.hint(gl.GENERATE_MIPMAP_HINT, gl.DONT_CARE);
 			gl.generateMipmap(gl2.TEXTURE_2D);
@@ -659,7 +659,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test isEnabled.
 		 */
 		it('testIsEnabled1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL isEnabled test start ...' + JSON.stringify(gl));
 
 			gl.enable(gl.CULL_FACE);
@@ -683,7 +683,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test isEnabled.
 		 */
 		it('testIsEnabled2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL isEnabled test start ...' + JSON.stringify(gl));
 
 			gl.enable(gl.BLEND);
@@ -707,7 +707,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test isEnabled.
 		 */
 		it('testIsEnabled3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL isEnabled test start ...' + JSON.stringify(gl));
 
 			gl.enable(gl.POLYGON_OFFSET_FILL);
@@ -731,7 +731,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test isEnabled.
 		 */
 		it('testIsEnabled4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL isEnabled test start ...' + JSON.stringify(gl));
 
 			gl.enable(gl.SAMPLE_COVERAGE);
@@ -755,7 +755,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test renderbufferStorage.
 		 */
 		it('testRenderbufferStorage1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL renderbufferStorage test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -774,7 +774,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test renderbufferStorage.
 		 */
 		it('testRenderbufferStorage2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL renderbufferStorage test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -793,7 +793,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test renderbufferStorage.
 		 */
 		it('testRenderbufferStorage3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL renderbufferStorage test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -810,7 +810,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test stencilFunc.
 		 */
 		it('testStencilFunc1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilFunc test start ...' + JSON.stringify(gl));
 			gl.enable(gl.STENCIL_TEST);
 			gl.stencilFunc(gl.NEVER, 0, 0b1110011);
@@ -826,7 +826,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test stencilFunc.
 		 */
 		it('testStencilFunc2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilFunc test start ...' + JSON.stringify(gl));
 			gl.enable(gl.STENCIL_TEST);
 			gl.stencilFunc(gl.EQUAL, 0, 0b1110011);
@@ -842,7 +842,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test stencilFunc.
 		 */
 		it('testStencilFunc3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilFunc test start ...' + JSON.stringify(gl));
 			gl.enable(gl.STENCIL_TEST);
 			gl.stencilFunc(gl.GREATER, 0, 0b1110011);
@@ -858,7 +858,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test stencilFuncSeparate.
 		 */
 		it('testStencilFuncSeparate1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilFuncSeparate test start ...' + JSON.stringify(gl));
 			gl.enable(gl.STENCIL_TEST);
 			gl.stencilFuncSeparate(gl.BACK, gl.EQUAL, 0.2, 1110011);
@@ -875,7 +875,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test stencilFuncSeparate.
 		 */
 		it('testStencilFuncSeparate2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilFuncSeparate test start ...' + JSON.stringify(gl));
 			gl.enable(gl.STENCIL_TEST);
 			gl.stencilFuncSeparate(gl.FRONT_AND_BACK, gl.LEQUAL, 0.2, 1110011);
@@ -892,7 +892,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test stencilMaskSeparate.
 		 */
 		it('testStencilMaskSeparate2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL stencilMaskSeparate test start ...' + JSON.stringify(gl));
 			gl.stencilMaskSeparate(gl.FRONT_AND_BACK, 110101);
 			const stencilMaskSeparateParameter = gl.getParameter(gl.STENCIL_WRITEMASK);
@@ -912,7 +912,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bindFramebuffer.
 		 */
 		it('webgl_test_bindFramebuffer_1', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindFramebuffer");
 
 			var framebuffer = gl.createFramebuffer();
@@ -935,7 +935,7 @@ export default function webgl1Test_webgl11() {
 			} else {
 			    expect(isFrameBuffer2).assertEqual(false);
 			}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -945,7 +945,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test bindFramebuffer.
 		 */
 		it('webgl_test_bindFramebuffer_2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into bindFramebuffer");
 
 			var framebuffer = gl.createFramebuffer();
@@ -968,7 +968,7 @@ export default function webgl1Test_webgl11() {
 			} else {
 			    expect(isFrameBuffer2).assertEqual(false);
 			}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -978,7 +978,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -995,7 +995,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -1012,7 +1012,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -1029,7 +1029,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -1046,7 +1046,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_5', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -1062,7 +1062,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_6', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl2.RENDERBUFFER, renderBuffer);
@@ -1078,7 +1078,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getRenderbufferParameter.
 		 */
 		it('testGetRenderbufferParameter_7', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getRenderbufferParameter test start ...' + JSON.stringify(gl));
 			const renderBuffer = gl.createRenderbuffer();
 			gl.bindRenderbuffer(gl.RENDERBUFFER, renderBuffer);
@@ -1096,14 +1096,14 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test copyTexSubImage2D.
 		 */
 		it('webgl_test_copyTexSubImage2D1', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into copyTexSubImage2D");
 
 			gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_X, 0, 0, 0, 0, 0, 16, 16);
 			let errorCode = gl.getError();
 			console.info("webgltest copyTexSubImage2D getError: " + errorCode);
 			expect(errorCode).assertLarger(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1113,14 +1113,14 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test copyTexSubImage2D.
 		 */
 		it('webgl_test_copyTexSubImage2D2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into copyTexSubImage2D");
 			gl.copyTexSubImage2D(gl.TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, 0, 0, 0, 0, 16, 16);
 			let errorCode = gl.getError();
 			console.info("webgltest copyTexSubImage2D getError: " + errorCode);
 			expect(errorCode).assertLarger(gl.NO_ERROR);
 			for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1131,7 +1131,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test drawElements.
 		 */
 		it('webgl_test_drawElements_3', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawElements");
 
 			gl.drawElements(gl.LINE_STRIP, 8, gl.UNSIGNED_BYTE, 0);
@@ -1139,7 +1139,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest drawElements getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1149,7 +1149,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test drawElements.
 		 */
 		it('webgl_test_drawElements_4', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawElements");
 
 			gl.drawElements(gl.POINTS, 8, gl.UNSIGNED_INT, 0);
@@ -1157,7 +1157,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest drawElements getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1167,7 +1167,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test drawElements.
 		 */
 		it('webgl_test_drawElements_5', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawElements");
 
 			gl.drawElements(gl.LINE_LOOP, 8, gl.UNSIGNED_INT, 0);
@@ -1175,7 +1175,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest drawElements getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1185,7 +1185,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test drawElements.
 		 */
 		it('webgl_test_drawElements_6', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into drawElements");
 
 			gl.drawElements(gl.LINES, 8, gl.UNSIGNED_INT, 0);
@@ -1193,7 +1193,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest drawElements getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.INVALID_FRAMEBUFFER_OPERATION);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1203,7 +1203,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer1', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1213,7 +1213,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1223,7 +1223,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer2', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1233,7 +1233,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1243,7 +1243,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer3', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1253,7 +1253,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1263,7 +1263,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer4', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1273,7 +1273,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1283,7 +1283,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer5', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1293,7 +1293,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1303,7 +1303,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer6', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1313,7 +1313,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1323,7 +1323,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer7', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1333,7 +1333,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1343,7 +1343,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer8', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1353,7 +1353,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1363,7 +1363,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer9', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1373,7 +1373,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1383,7 +1383,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer10', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1393,7 +1393,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1403,7 +1403,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer11', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1413,7 +1413,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1423,7 +1423,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer12', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1432,7 +1432,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1442,7 +1442,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer13', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1452,7 +1452,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1462,7 +1462,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer14', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1472,7 +1472,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1482,7 +1482,7 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
 		it('webgl_test_framebufferRenderbuffer15', 0, async function (done) {
-			//initContext();
+			
 			console.info("webgltest into framebufferRenderbuffer");
 
 			const renderbuffer = gl.createRenderbuffer();
@@ -1492,7 +1492,7 @@ export default function webgl1Test_webgl11() {
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
 			expect(errorCode).assertEqual(gl.NO_ERROR);
-			//deleteContext();
+			
 			done();
 		});
 
@@ -1502,11 +1502,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_1', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.BLEND_DST_ALPHA);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1520,11 +1520,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_2', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1538,11 +1538,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_3', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.BLUE_BITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1559,11 +1559,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_4', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.ALPHA_BITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1580,11 +1580,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_5', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.COMPRESSED_TEXTURE_FORMATS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1598,11 +1598,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_6', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.ELEMENT_ARRAY_BUFFER_BINDING);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1616,11 +1616,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_7', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.FRONT_FACE);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1634,11 +1634,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_8', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.GREEN_BITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1655,11 +1655,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_9', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.IMPLEMENTATION_COLOR_READ_FORMAT);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1674,11 +1674,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_10', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.IMPLEMENTATION_COLOR_READ_TYPE);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1693,11 +1693,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_11', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1711,11 +1711,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_12', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_CUBE_MAP_TEXTURE_SIZE);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1729,11 +1729,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_13', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1747,11 +1747,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_14', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_RENDERBUFFER_SIZE);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1765,11 +1765,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_15', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1783,11 +1783,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_16', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_TEXTURE_SIZE);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1801,11 +1801,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_17', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_VARYING_VECTORS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1819,11 +1819,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_18', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1837,11 +1837,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_19', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1855,11 +1855,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_20', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1873,11 +1873,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_21', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.POLYGON_OFFSET_FACTOR);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1891,11 +1891,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_22', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.POLYGON_OFFSET_UNITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1909,11 +1909,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_23', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.RED_BITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1930,11 +1930,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_24', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.RENDERER);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1948,11 +1948,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_25', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.SAMPLE_BUFFERS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1969,11 +1969,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_26', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_FAIL);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -1987,11 +1987,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_27', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_FUNC);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2005,11 +2005,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_28', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_PASS_DEPTH_FAIL);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2023,11 +2023,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_29', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_PASS_DEPTH_PASS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2041,11 +2041,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_30', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_REF);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2060,11 +2060,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_31', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_VALUE_MASK);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2078,11 +2078,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_32', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BACK_WRITEMASK);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2097,11 +2097,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_33', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_BITS);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);
@@ -2118,11 +2118,11 @@ export default function webgl1Test_webgl11() {
 		 * @tc.desc Test getParameter.
 		 */
 		it('testGetParameter_34', 0, async function (done) {
-			//initContext();
+			
 			console.info('jsWebGL getParameter test start ...' + JSON.stringify(gl));
 			gl.activeTexture(gl.TEXTURE0);
 			var textureParameter = gl.getParameter(gl.STENCIL_PASS_DEPTH_FAIL);
-			// returns "33984" (0x84C0, gl.TEXTURE0 enum value)
+			
 			console.info("activeTexture --> getParameter: " + textureParameter);
 			let errorCode = gl.getError();
 			console.info("webgltest framebufferRenderbuffer getError: " + errorCode);

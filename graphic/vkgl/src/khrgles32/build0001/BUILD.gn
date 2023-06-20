@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libkhrgles32func0001") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Khrgles32BaseFunc.cpp" ]
 
@@ -86,7 +88,7 @@ ohos_moduletest_suite("ActsKhrgles32TestSuite0001") {
     "../shaders/Khrgles32shaders_shader_integer_mixTestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libkhrgles32func0001" ]
 

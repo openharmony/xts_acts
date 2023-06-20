@@ -120,42 +120,6 @@ describe('resMgrTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_0620
-    * @tc.name    test getString method with resource param in callback mode
-    * @tc.desc    get the string in callback mode
-    */
-    it('getStringValue_test_001', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringValue({ bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000008}, (err, value) => {
-                expect(value !== null).assertTrue();
-                console.log('getStringValue_test_001 ' + value);
-                done();
-            })
-        })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_0640
-    * @tc.name    test getString method with resource param in promise mode
-    * @tc.desc    get the string in promise mode
-    */
-    it('getStringValue_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            console.info(`getStringValue_test_002 ${JSON.stringify(mgr)}`)
-            mgr.getStringValue({ bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000008}).then(value => {
-                console.info(`getStringValue_test_002 promise ${JSON.stringify(error)}`)
-                expect(value !== null).assertTrue();
-                console.log('getStringValue_test_002 ' + value);
-            })
-        })
-        done();
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_0500
     * @tc.name    test getString method in callback mode
     * @tc.desc    get the string in callback mode
@@ -462,40 +426,6 @@ describe('resMgrTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_0820
-    * @tc.name    test getStringArray method with resource param in callback mode
-    * @tc.desc    get the string array in callback mode
-    */
-    it('getStringArrayValue_test_001', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getStringArrayValue({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x0100000a}, (err, value) => {
-                expect(value !== null).assertTrue();
-                console.log('getStringArrayValue_test_001 ' + value);
-                done();
-            })
-        })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_0840
-    * @tc.name    test getStringArray method with resource param in promise mode
-    * @tc.desc    get the string array in promise mode
-    */
-    it('getStringArrayValue_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-             mgr.getStringArrayValue({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x0100000a}).then(value => {
-                expect(value !== null).assertTrue();
-                console.log('getStringArrayValue_test_002 ' + value);
-            })
-        })
-        done();
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_0700
     * @tc.name    test getStringArray method in callback mode
     * @tc.desc    get the string array in callback mode
@@ -571,40 +501,6 @@ describe('resMgrTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1020
-    * @tc.name    test getMedia method with resource param in callback mode
-    * @tc.desc    get the media in callback mode
-    */
-    it('getMediaContent_test_001', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000017}, (err, value) => {
-                expect(value !== null).assertTrue();
-                console.log('getMediaContent_test_001 ' + value);
-                done();
-            })
-        })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1040
-    * @tc.name    test getMedia method with resource param in promise mode
-    * @tc.desc    get the media in promise mode
-    */
-    it('getMediaContent_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContent({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000017}).then(value => {
-                expect(value !== null).assertTrue();
-                console.log('getMediaContent_test_002 ' + value);
-            })
-        })
-        done();
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_0900
     * @tc.name    test getMedia method in callback mode
     * @tc.desc    get the media in callback mode
@@ -662,40 +558,6 @@ describe('resMgrTest', function () {
                 done();
             })
         })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1220
-    * @tc.name    test getMediaBase64 method with resource param in callback mode
-    * @tc.desc    get the media base64 in callback mode
-    */
-    it('getMediaContentBase64_test_001', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000017}, (err, value) => {
-                expect(value !== null).assertTrue();
-                console.log('getMediaContentBase64_test_001 ' + value);
-                done();
-            })
-        })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1240
-    * @tc.name    test getMediaBase64 method with resource param in promise mode
-    * @tc.desc    get the media base64 in promise mode
-    */
-    it('getMediaContentBase64_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getMediaContentBase64({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000017}).then(value => {
-                expect(value !== null).assertTrue();
-                console.log('getMediaContentBase64_test_002 ' + value);
-            })
-        })
-        done();
     })
 
     /* *
@@ -1049,40 +911,6 @@ describe('resMgrTest', function () {
                 done();
             })
         })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1820
-    * @tc.name    test getPluralString method with resource param in callback mode
-    * @tc.desc    get the plural string in callback mode
-    */
-    it('getPluralStringValue_test_001', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000012}, 1, (error, value) => {
-                expect(value !== null).assertTrue();
-                console.log('getPluralStringValue_test_001 ' + value);
-                done();
-            })
-        })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_1840
-    * @tc.name    test getPluralString method with resource param in promise mode
-    * @tc.desc    get the plural string in promise mode
-    */
-    it('getPluralStringValue_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            mgr.getPluralStringValue({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000012}, 1).then(value => {
-                expect(value !== null).assertTrue();
-                console.log('getPluralStringValue_test_002 ' + value);
-            })
-        })
-        done();
     })
 
     /* *
@@ -1566,22 +1394,6 @@ describe('resMgrTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_3450
-    * @tc.name    test getStringSync method with resource param
-    * @tc.desc    get the string in sync mode
-    */
-    it('getStringSync_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getStringSync({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000008});
-            expect(value !== null).assertTrue();
-            console.log('getStringSync_test_002 ' + value);
-        })
-        done();
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_3500
     * @tc.name    test getStringByNameSync method
     * @tc.desc    get the string in sync mode
@@ -1633,22 +1445,6 @@ describe('resMgrTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_3650
-    * @tc.name    test getBoolean method with resource param
-    * @tc.desc    get the boolean value
-    */
-    it('getBoolean_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getBoolean({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x0100000c});
-            console.log('getBoolean_test_002 ' + value);
-            expect(value !== null).assertTrue();
-            done();
-        })
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_3700
     * @tc.name    test getBooleanByName method
     * @tc.desc    get the boolean value
@@ -1679,22 +1475,6 @@ describe('resMgrTest', function () {
     })
 
     /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_3850
-    * @tc.name    test getNumber method with interger resource param
-    * @tc.desc    get the interger value
-    */
-    it('getinteger_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000000});
-            console.log('getinteger_test_002 ' + value);
-            expect(value !== null).assertTrue();
-            done();
-        })
-    })
-
-    /* *
     * @tc.number  SUB_GLOBAL_RESMGR_JS_3900
     * @tc.name    test getNumberByName with interger
     * @tc.desc    get the interger value
@@ -1718,22 +1498,6 @@ describe('resMgrTest', function () {
             let value = mgr.getNumber(0x01000015);
             console.log('getfloat_test_001 ' + value);
             expect(value > 0).assertTrue();
-            done();
-        })
-    })
-
-    /* *
-    * @tc.number  SUB_GLOBAL_RESMGR_JS_4050
-    * @tc.name    test getNumber with float resource param
-    * @tc.desc    get the float value
-    */
-    it('getfloat_test_002', 0, async function (done) {
-        resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber({bundleName:"ohos.resmgr.test",
-                moduleName:"entry",
-                id:0x01000015});
-            console.log('getfloat_test_002 ' + value);
-            expect(value !== null).assertTrue();
             done();
         })
     })
@@ -2199,23 +1963,280 @@ describe('resMgrTest', function () {
     })
 
     /**
-     * @tc.number SUB_GLOBAL_RESMGR_DRAWABLE_JS_2100
-     * @tc.name getDrawableDescriptor with resource object
-     * @tc.desc test the getDrawableDescriptor method
+     * @tc.number SUB_GLOBAL_RESMGR_RAWFILELIST_JS_0100
+     * @tc.name getRawFileList with callback method
+     * @tc.desc test the getRawFileList method
      */
-    it('getDrawableDescriptor_test_2100', 0, async function (done) {
+    it('getRawFileList_test_0100', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let out = true;
-            let value = mgr.getDrawableDescriptor(
-                    { bundleName:"ohos.intl.test", moduleName:"entry", id:0x01000018});
-            console.log('getDrawableDescriptor_test_2100 ' + value);
-            if(value == null){
-                out = false;
+            try{
+                mgr.getRawFileList("", (err, value) => {
+                    if(err){
+                        console.log('getRawFileList_test_0100 err.code' + err.code);
+                        console.log('getRawFileList_test_0100 err.message' + err.message);
+                        done();
+                    }else{
+                        expect(value !== null).assertTrue();
+                        console.log('getRawFileList_test_0100 ' + value);
+                        done();
+                    }
+                })
+            }catch(e){
+                console.log('getRawFileList_test_0100 e.code' + e.code);
+                console.log('getRawFileList_test_0100 e.message' + e.message);
             }
-            console.log('getDrawableDescriptor_test_2100 ' + out);
-            expect(out).assertFalse();
         })
-        done();
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_RAWFILELIST_JS_0110
+     * @tc.name getRawFileList with callback method
+     * @tc.desc test the getRawFileList method
+     */
+    it('getRawFileList_test_0110', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.getRawFileList("bb", (err, value) => {
+                    if(err){
+                        console.log('getRawFileList_test_0110 err.code' + err.code);
+                        console.log('getRawFileList_test_0110 err.message' + err.message);
+                        expect(err.code == 9001005).assertTrue();
+                    }else{
+                        expect(value !== null).assertTrue();
+                        console.log('getRawFileList_test_0110 ' + value);
+                    }
+                    done();
+                })
+            }catch(e){
+                console.log('getRawFileList_test_0110 e.code' + e.code);
+                console.log('getRawFileList_test_0110 e.message' + e.message);
+                done();
+            }
+        })
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_RAWFILELIST_JS_0120
+     * @tc.name getRawFileList with callback method
+     * @tc.desc test the getRawFileList method
+     */
+    it('getRawFileList_test_0120', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.getRawFileList(12345, (err, value) => {
+                    if(err){
+                        console.log('getRawFileList_test_0120 err.code' + err.code);
+                        console.log('getRawFileList_test_0120 err.message' + err.message);
+                    }else{
+                        expect(value !== null).assertTrue();
+                        console.log('getRawFileList_test_0120 ' + value);
+                    }
+                    done();
+                })
+            }catch(e){
+                console.log('getRawFileList_test_0120 e.code' + e.code);
+                console.log('getRawFileList_test_0120 e.message' + e.message);
+                expect(e.code == 401).assertTrue();
+                done();
+            }
+        })
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_RAWFILELIST_JS_0200
+     * @tc.name getRawFileList with promise method
+     * @tc.desc test the getRawFileList method
+     */
+    it('getRawFileList_test_0200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.getRawFileList("").then(value => {
+                    expect(value !== null).assertTrue();
+                    console.log('getRawFileList_test_0200 ' + value);
+                    done();
+                }).catch(error => {
+                    console.log('getRawFileList_test_0200 error.code' + error.code);
+                    console.log('getRawFileList_test_0200 error.message' + error.message);
+                    done();
+                })
+            } catch (err){
+                console.log('getRawFileList_test_0200 err.code' + err.code);
+                console.log('getRawFileList_test_0200 err.message' + err.message);
+                done();
+            }
+        })
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_RAWFILELIST_JS_0210
+     * @tc.name getRawFileList with promise method
+     * @tc.desc test the getRawFileList method
+     */
+    it('getRawFileList_test_0210', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.getRawFileList("bb").then(value => {
+                    expect(value !== null).assertTrue();
+                    console.log('getRawFileList_test_0210 ' + value);
+                    done();
+                }).catch(error => {
+                    console.log('getRawFileList_test_0210 error.code' + error.code);
+                    console.log('getRawFileList_test_0210 error.message' + error.message);
+                    expect(error.code == 9001005).assertTrue();
+                    done();
+                })
+            } catch (err){
+                console.log('getRawFileList_test_0210 err.code' + err.code);
+                console.log('getRawFileList_test_0210 err.message' + err.message);
+                done();
+            }
+        })
+    })
+
+    /**
+     * @tc.number SUB_GLOBAL_RESMGR_RAWFILELIST_JS_0220
+     * @tc.name getRawFileList with promise method
+     * @tc.desc test the getRawFileList method
+     */
+    it('getRawFileList_test_0220', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.getRawFileList(12345).then(value => {
+                    expect(value !== null).assertTrue();
+                    console.log('getRawFileList_test_0220 ' + value);
+                    done();
+                }).catch(error => {
+                    console.log('getRawFileList_test_0220 error.code' + error.code);
+                    console.log('getRawFileList_test_0220 error.message' + error.message);
+                    done();
+                })
+            } catch (err){
+                console.log('getRawFileList_test_0220 err.code' + err.code);
+                console.log('getRawFileList_test_0220 err.message' + err.message);
+                expect(err.code == 401).assertTrue();
+                done();
+            }
+        })
+    })
+
+    /**
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0100
+    * @tc.name    test getMediaByName method in callback mode with density
+    * @tc.desc    get the media in callback mode
+    */
+    it('getMediaByName_test_0100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaByName('icon', 0 , (err, value) => {
+                console.log('getMediaByName_test_0100 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0200
+    * @tc.name    test getMediaByName method in promise mode with density
+    * @tc.desc    get the media in promise mode
+    */
+    it('getMediaByName_test_0200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaByName('icon', 0).then(value => {
+                console.log('getMediaByName_test_0200 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0300
+    * @tc.name    test getMediaBase64ByName method in callback mode with density
+    * @tc.desc    get the media in callback mode
+    */
+    it('getMediaBase64ByName_test_0100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaBase64ByName('icon', 0 , (err, value) => {
+                console.log('getMediaBase64ByName_test_0100 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0400
+    * @tc.name    test getMediaBase64ByName method in promise mode with density
+    * @tc.desc    get the media in promise mode
+    */
+    it('getMediaBase64ByName_test_0200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaBase64ByName('icon', 0).then(value => {
+                console.log('getMediaBase64ByName_test_0200 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0500
+    * @tc.name    test getMediaContent method in callback mode with density
+    * @tc.desc    get the media in callback mode
+    */
+    it('getMediaContent_test_0100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaContent(0x01000017, 0 , (err, value) => {
+                console.log('getMediaContent_test_0100 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0600
+    * @tc.name    test getMediaContent method in promise mode with density
+    * @tc.desc    get the media in promise mode
+    */
+    it('getMediaContent_test_0200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaContent(0x01000017, 0).then(value => {
+                console.log('getMediaContent_test_0200 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0700
+    * @tc.name    test getMediaContentBase64 method in callback mode with density
+    * @tc.desc    get the media in callback mode
+    */
+    it('getMediaContentBase64_test_0100', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaContentBase64(0x01000017, 0 , (err, value) => {
+                console.log('getMediaContentBase64_test_0100 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_DENSITY_JS_0800
+    * @tc.name    test getMediaContentBase64 method in promise mode with density
+    * @tc.desc    get the media in promise mode
+    */
+    it('getMediaContentBase64_test_0200', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            mgr.getMediaContentBase64(0x01000017, 0).then(value => {
+                console.log('getMediaContentBase64_test_0200 ' + value);
+                expect(value.length > 0).assertTrue();
+                done();
+            })
+        })
     })
 
     console.log('*************end ResmgrTest*************');

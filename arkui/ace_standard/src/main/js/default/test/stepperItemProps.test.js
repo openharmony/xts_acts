@@ -137,32 +137,6 @@ describe('stepperItemPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testStepperStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testDivStyleProp', 0, async function (done) {
-//        console.info('testDivStyleProp START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[divProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[divProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[divProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testStepperItemRefProp
      * @tc.desc      ACE
      */
@@ -586,44 +560,6 @@ describe('stepperItemPropsJsTest', function () {
         console.info("[stepperItemProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testStepperIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testDivIfPropFalse', 0, async function (done) {
-    //        console.info('testDivIfPropFalse START');
-    //        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('div')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testDivIfPropNone', 0, async function (done) {
-    //        console.info('testDivIfPropNone START');
-    //        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('div')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

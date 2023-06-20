@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,6 +27,8 @@ import {
     checkAssetsCount,
     fetchOps,
     getPermission,
+    fileFetchOption,
+    FILEKEY,
 } from "../../../../../../common";
 
 export default function mediafetchoptionsCallback(abilityContext) {
@@ -50,12 +52,9 @@ export default function mediafetchoptionsCallback(abilityContext) {
         const serachUri = async (done, testNum, fetchOp, type) => {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
-                if (!checkAssetCountPass) {
-                    fetchFileResult.close();
-                    return;
-                }
+                expect(fetchFileResult.getCount()).assertEqual(1);
                 let firstObject = await fetchFileResult.getFirstObject();
+                fetchFileResult.close();
                 const id = firstObject.id;
                 const uri = firstObject.uri;
                 const serachUri = `file://media/${type}/${id}`;
@@ -68,21 +67,21 @@ export default function mediafetchoptionsCallback(abilityContext) {
                 };
 
                 media.getFileAssets(serchfetchOp, async (err, result) => {
-                    if (err) {
-                        console.info(`${testNum}, err: ${err}`);
+                    try {
+                        if (err) {
+                            console.info(`${testNum}, err: ${err}`);
+                            expect(false).assertTrue();
+                        } else {
+                            expect(result.getCount()).assertEqual(1);
+                            let asset = await result.getFirstObject();
+                            expect(asset.uri).assertEqual(serachUri);
+                            expect(asset.id).assertEqual(id);
+                            result.close();
+                        }
+                    } catch (error) {
+                        console.info(`${testNum} error: ${error}`);
                         expect(false).assertTrue();
-                        fetchFileResult.close();
-                        await result.close();
-                        done();
-                        return;
                     }
-                    checkAssetCountPass = await checkAssetsCount(done, testNum, result, 1);
-                    if (!checkAssetCountPass) return;
-                    let asset = await result.getFirstObject();
-                    expect(asset.uri).assertEqual(serachUri);
-                    expect(asset.id).assertEqual(id);
-                    fetchFileResult.close();
-                    await result.close();
                     done();
                 });
             } catch (error) {
@@ -101,7 +100,7 @@ export default function mediafetchoptionsCallback(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_001", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_001";
-            let currentFetchOp = fetchOps(testNum, "Pictures/Static/", IMAGE_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.jpg']);
             let type = "image";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -116,7 +115,7 @@ export default function mediafetchoptionsCallback(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_002", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_002";
-            let currentFetchOp = fetchOps(testNum, "Audios/Static/", AUDIO_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.mp3']);
             let type = "audio";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -131,7 +130,7 @@ export default function mediafetchoptionsCallback(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_003", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_003";
-            let currentFetchOp = fetchOps(testNum, "Videos/Static/", VIDEO_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.mp4']);
             let type = "video";
             await serachUri(done, testNum, currentFetchOp, type);
         });
@@ -146,7 +145,7 @@ export default function mediafetchoptionsCallback(abilityContext) {
          */
         it("SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_004", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_ASSET_URI_CALLBACK_004";
-            let currentFetchOp = fetchOps(testNum, "Documents/Static/", FILE_TYPE);
+            let currentFetchOp = fileFetchOption(testNum, FILEKEY.DISPLAY_NAME + "=?", ['01.dat']);
             let type = "file";
             await serachUri(done, testNum, currentFetchOp, type);
         });

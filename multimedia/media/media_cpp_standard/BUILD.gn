@@ -29,14 +29,14 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "include",
     "audioDecEncNdk/include",
     "videoDecEncNdk/include",
-    "//foundation/multimedia/audio_framework/interfaces/inner_api/native/audiocommon/include",
-    "//foundation/graphic/graphic_2d/frameworks/surface/include",
-    "//foundation/graphic/graphic_2d/interfaces/inner_api/surface",
-    "//foundation/graphic/graphic_2d/interfaces/inner_api/common",
-    "//foundation//window/window_manager/interfaces/innerkits/wm",
-    "//graphic/graphic_2d/interfaces/kits/surface",
-    "//graphic/graphic_2d/interfaces/inner_api/surface",
-    "//base/startup/init/interfaces/kits/syscap/include",
+    "../../../../../../foundation/multimedia/audio_framework/interfaces/inner_api/native/audiocommon/include",
+    "../../../../../../foundation/graphic/graphic_2d/frameworks/surface/include",
+    "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/surface",
+    "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/common",
+    "../../../../../../foundation/window/window_manager/interfaces/innerkits/wm",
+    "../../../../../../foundation/graphic/graphic_2d/interfaces/kits/surface",
+    "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/surface",
+    "../../../../../../base/startup/init/interfaces/kits/syscap/include",
     "$MEDIA_ROOT_DIR/interfaces/inner_api/native",
     "$MEDIA_ROOT_DIR/interfaces/kits/c",
     "$MEDIA_ROOT_DIR/frameworks/native/capi/common",
@@ -70,17 +70,17 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_core",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_vdec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_venc",
-    "//base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
-    "//foundation/graphic/graphic_2d:libsurface",
-    "//foundation/graphic/graphic_2d/frameworks/surface:surface",
-    "//foundation/graphic/graphic_2d/rosen/modules/render_service_client:librender_service_client",
-    "//foundation/window/window_manager/wm:libwm",
+    "../../../../../../base/startup/init/interfaces/kits/syscap:deviceinfo_ndk",
+    "../../../../../../foundation/graphic/graphic_2d:libsurface",
+    "../../../../../../foundation/graphic/graphic_2d/frameworks/surface:surface",
+    "../../../../../../foundation/graphic/graphic_2d/rosen/modules/render_service_client:librender_service_client",
+    "../../../../../../foundation/window/window_manager/wm:libwm",
   ]
   external_deps = [
     "c_utils:utils",
     "hiviewdfx_hilog_native:libhilog",
   ]
 
-  part_name = "multimedia_player_framework"
+  part_name = "player_framework"
   subsystem_name = "multimedia"
 }

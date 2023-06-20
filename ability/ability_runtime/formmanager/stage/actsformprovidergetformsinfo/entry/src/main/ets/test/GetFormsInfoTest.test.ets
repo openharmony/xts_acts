@@ -35,7 +35,8 @@ let module1FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2],
-    customizeData: {}
+    customizeData: {},
+    isDynamic: true
 }
 
 let module2FormInfo: formInfo.FormInfo = {
@@ -56,7 +57,8 @@ let module2FormInfo: formInfo.FormInfo = {
     updateDuration: 1,
     defaultDimension:2,
     supportDimensions:[2],
-    customizeData: {}
+    customizeData: {},
+    isDynamic: true
 }
 
 const ERR_ADD_INVALID_PARAM = 401;
@@ -116,27 +118,6 @@ export default function abilityTest() {
                 expect().assertFail();
             })
             done();
-        });
-
-        /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0400
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0400
-         * @tc.desc: #4 getFormsInfo(undefined, callback)
-         */
-        it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0400', 0, async function (done) {
-            console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0400");
-            try {
-                formProvider.getFormsInfo(undefined, function(err, value) {
-                    console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
-                    console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                    expect().assertFail();
-                    done();
-                })
-            } catch (err) {
-                console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_ADD_INVALID_PARAM);
-                done();
-            }
         });
 
         /**

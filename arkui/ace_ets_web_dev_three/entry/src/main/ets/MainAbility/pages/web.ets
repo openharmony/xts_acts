@@ -22,6 +22,25 @@ import fileio from '@ohos.fileio';
 import prompt from '@system.prompt';
 let loadedUrl;
 
+function Uint8ArrayToString(dataArray) {
+  var dataString = ''
+  for (var i = 0; i < dataArray.length; i++) {
+    dataString += String.fromCharCode(dataArray[i])
+  }
+  return dataString
+}
+
+function ParseX509CertInfo(x509CertArray) {
+  let res: string = 'getCertificate success: len = ' + x509CertArray.length;
+  for (let i = 0; i < x509CertArray.length; i++) {
+    res += ', index = ' + i + ', issuer name = '
+    + Uint8ArrayToString(x509CertArray[i].getIssuerName().data) + ', subject name = '
+    + Uint8ArrayToString(x509CertArray[i].getSubjectName().data) + ', valid start = '
+    + x509CertArray[i].getNotBeforeTime()
+    + ', valid end = ' + x509CertArray[i].getNotAfterTime()
+  }
+  return res
+}
 
 @Entry
 @Component
@@ -33,6 +52,8 @@ struct Index {
     scheme2: web_webview.WebCustomScheme = {schemeName: "name2", isSupportCORS: true, isSupportFetch: true}
     scheme3: web_webview.WebCustomScheme = {schemeName: "name3", isSupportCORS: true, isSupportFetch: true}
     responseweb: WebResourceResponse = new WebResourceResponse()
+
+
     @State str:string="emitLoadUrl"
     @State text:boolean=false
     @State num:number=0
@@ -40,11 +61,25 @@ struct Index {
     @State mode1: WebDarkMode = WebDarkMode.On
     @State mode2: WebDarkMode = WebDarkMode.Auto
     @State enterPageEnd: boolean = false
+    @State getString:boolean =false
+    @State getNum:boolean =false
+    @State getBoo:boolean =false
+    @State getArrayBuffer:boolean =false
+    @State getArray:boolean =false
+    @State msg1:string=""
+    @State type:number=0
+    @State enterPageEndAuto: boolean =false
+    @State enterPageEndOff: boolean =false
+    @State outputStr: string = ''
+    
 
     
     
-
-    ports: web_webview.WebMessagePort[];
+    message: web_webview.WebMessageExt = new web_webview.WebMessageExt();
+    ports: web_webview.WebMessagePort[] = null;
+    nativePort: web_webview.WebMessagePort = null;
+    @State webMessResult:string =""
+    
     testObj = {
         testOne: (data) => {
             Utils.emitEvent(data,13)
@@ -560,7 +595,7 @@ struct Index {
                         }
                         case "emitSetHttpDnsSuccess":{ 
                             try {
-                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SecureOnly, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SECURE_ONLY, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
                                 this.controller.loadUrl("https://www.example.com/");
                                 this.enterPageEnd=true
                             } catch(error) {
@@ -586,6 +621,337 @@ struct Index {
                             }                                                                                                                                     
                             break;
                         }
+                        case "emitJsMessExtGetString":{ 
+                            try {
+                                this.getString = true;
+                                this.controller.loadUrl("resource://rawfile/index.html")
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitJsMessExtGetNum":{ 
+                            try {
+                                this.getNum = true;
+                                this.controller.loadUrl("resource://rawfile/index.html")
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitJsMessExtGetBoo":{ 
+                            try {
+                                this.getBoo = true;
+                                this.controller.loadUrl("resource://rawfile/index.html")
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitJsMessExtGetArrayBuffer":{ 
+                            try {
+                                this.getArrayBuffer = true;
+                                this.controller.loadUrl("resource://rawfile/index.html")
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitJsMessExtGetArray":{ 
+                            try {
+                                this.getArray = true;
+                                this.controller.loadUrl("resource://rawfile/index.html")
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitWebMessExtSetString":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                console.log("In eTS side send true start");
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    this.message.setType(1);
+                                    this.message.setString("helloFromEts");
+                                    this.nativePort.postMessageEventExt(this.message);
+                                    },2000)
+                                }
+                                setTimeout(()=>{
+                                    this.controller.runJavaScript("postStringToHtml()",(error, result) => {
+                                    console.log(`The emitWebMessExtSetString() return value is: ${result}`);
+                                    this.webMessResult = result
+                                    Utils.emitEvent(this.webMessResult,506)
+                                })
+                                },3000)
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtGetString":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postStringToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetString() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtSetNumber":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                console.log("In eTS side send true start");
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    this.message.setNumber(1);
+                                    this.nativePort.postMessageEventExt(this.message);
+                                    },2000)
+                                }
+                                setTimeout(()=>{
+                                    this.controller.runJavaScript("postNumberToHtml()",(error, result) => {
+                                    console.log(`The emitWebMessExtSetNumber() return value is: ${result}`);
+                                    Utils.emitEvent(result,507)
+                                })
+                                },3000)
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtGetNumber":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postNumberToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetNumber() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtSetBoolean":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                console.log("In eTS side send true start");
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    this.message.setBoolean(true);
+                                    this.nativePort.postMessageEventExt(this.message);
+                                    },2000)
+                                }
+                                setTimeout(()=>{
+                                    this.controller.runJavaScript("postBooleanToHtml()",(error, result) => {
+                                    console.log(`The emitWebMessExtSetBoolean() return value is: ${result}`);
+                                    Utils.emitEvent(result,509)
+                                })
+                                },3000)
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtGetBoolean":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postBooleanToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetBoolean() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtSetArray":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                console.log("In eTS side send true start");
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    const fruits = [];
+                                    fruits.push("apple");
+                                    this.message.setArray(fruits);
+                                    this.nativePort.postMessageEventExt(this.message);
+                                    },2000)
+                                }
+                                setTimeout(()=>{
+                                    this.controller.runJavaScript("postArrayToHtml()",(error, result) => {
+                                    console.log(`The emitWebMessExtSetArray() return value is: ${result}`);
+                                    Utils.emitEvent(result,511)
+                                })
+                                },3000)
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtGetArray":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postArrayToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetArray() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtSetArrayBuffer":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                console.log("In eTS side send true start");
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    let buffer = new ArrayBuffer(8);
+                                    this.message.setArrayBuffer(buffer);
+                                    this.nativePort.postMessageEventExt(this.message);
+                                    },2000)
+                                }
+                                setTimeout(()=>{
+                                    this.controller.runJavaScript("postArrayBufferToHtml()",(error, result) => {
+                                    console.log(`The emitWebMessExtSetArrayBuffer() return value is: ${result}`);
+                                    Utils.emitEvent(result,513)
+                                })
+                                },3000)
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtGetArrayBuffer":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postArrayBufferToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetArrayBuffer() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitWebMessExtSetError":{ 
+                            try {
+                                console.log("URL Error");
+                                throw new URIError("URI seq")
+                            }
+                            catch (e) {
+                                console.log("hwd URIError:"+(e instanceof  SyntaxError));
+                                console.log("hwd URIError:"+e.message);
+                                console.log("hwd URIError:"+e.name);
+                                if (this.nativePort) {
+                                    setTimeout(()=>{
+                                    var message =new web_webview.WebMessageExt();
+                                    message.setType(web_webview.WebMessageType.ERROR)
+                                    this.message.setError(e);
+                                    this.nativePort.postMessageEventExt(message);
+                                    },2000)
+                                }
+                            }
+                            setTimeout(()=>{
+                                this.controller.runJavaScript("postErrorToHtml()",(error, result) => {
+                                console.log(`The emitWebMessExtSetError() return value is: ${result}`);
+                                Utils.emitEvent(result,515)
+                            })
+                            },3000)                                                               
+                            break;
+                        }
+                        case "emitWebMessExtGetError":{ 
+                            try {
+                                this.controller.loadUrl($rawfile('webMessageExt.html'));
+                                this.controller.runJavaScript("postErrorToApp()",(error, result) => {
+                                    console.log(`The emitWebMessExtGetError() return value is: ${result}`);
+                                })
+                            }
+                            catch (error) {
+                                console.log("In eTS side send message catch error:" + error.code + ", msg:" + error.message);
+                            }                                                                      
+                            break;
+                        }
+                        case "emitGetAccessibleGeolocationPromise":{  
+                            try {
+                                web_webview.GeolocationPermissions.getAccessibleGeolocation("file:///")
+                                .then(result => {
+                                    console.log('getAccessibleGeolocationPromise result: ' + result);
+                                    Utils.emitEvent(result,517)
+                                }).catch(error => {
+                                console.log('getAccessibleGeolocationPromise error: ' + JSON.stringify(error));
+                                });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                                                                                     
+                            break;
+                        }
+                        case "emitSetHttpDnsSuccessAuto":{ 
+                            try {
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.AUTO, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                this.controller.loadUrl("https://www.example.com/");
+                                this.enterPageEndAuto=true
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitSetHttpDnsSuccessOff":{ 
+                            try {
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.OFF, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                this.controller.loadUrl("https://www.example.com/");
+                                this.enterPageEndOff=true
+                            } catch(error) {
+                                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                            }                                                                               
+                            break;
+                        }
+                        case "emitGetCertificateCallback":{ 
+                           try {
+                               this.controller.loadUrl("https://www.example.com/");
+                               console.info("jinru")
+                this.controller.getCertificate((error, x509CertArray) => {
+                  if (error) {
+                    this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+                  } else {
+                    this.outputStr = ParseX509CertInfo(x509CertArray);
+                    console.info("hahahha"+this.outputStr.length)
+                    console.info("hahahha"+this.outputStr)
+                    Utils.emitEvent(this.outputStr.length,520)
+                  }
+                })
+              } catch (error) {
+                this.outputStr = 'getCertificate failed: ' + error.code + ", errMsg: " + error.message;
+              }                                                                  
+                            break;
+                        }
+                        case "emitGetStoredGeolocationPromise":{  
+                             try {
+                                web_webview.GeolocationPermissions.allowGeolocation("file:///") 
+                                web_webview.GeolocationPermissions.getStoredGeolocation()
+                                .then(origins => {
+                                    let origins_str: string = origins.join();
+                                    console.log('getStoredGeolocationPromise origins: ' + origins_str);
+                                    Utils.emitEvent(origins_str, 521);
+                                }).catch(error => {
+                                console.log('getStoredGeolocationPromise error: ' + JSON.stringify(error));
+                                });
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                            }                                                                                                                                     
+                            break;
+                        }
+                        
+                        
+
+
                         default:
                             console.info("can not match case")
                     }
@@ -624,6 +990,152 @@ struct Index {
                     Utils.emitEvent(1,446)
                     this.enterPageEnd=false
                 }
+                if(this.enterPageEndAuto){
+                    Utils.emitEvent(this.controller.getTitle(),518)
+                    this.enterPageEndAuto=false
+                }
+                if(this.enterPageEndOff){
+                    Utils.emitEvent(this.controller.getTitle(),519)
+                    this.enterPageEndOff=false
+                }
+                if(this.getString){
+                    try {
+                        this.controller.runJavaScriptExt(
+                        'getStringForJs()',
+                        (error, result) => {
+                        if (error) {
+                            console.info(`run JavaScript error: ` + JSON.stringify(error))
+                            return;
+                        }
+                            var type = result.getType()
+                            if(web_webview.JsMessageType.STRING == type){
+                            this.msg1 = "result type:" + typeof (result.getString());
+                            Utils.emitEvent(this.msg1,500)
+                            }
+                        });
+                    console.info('urlgetstring: ', event.url);
+                    } catch (error) {
+                        console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    }
+                }
+                if(this.getNum){
+                    try {
+                        this.controller.runJavaScriptExt(
+                        'getNumForJs()',
+                        (error, result) => {
+                        if (error) {
+                            console.info(`run JavaScript error: ` + JSON.stringify(error))
+                            return;
+                        }
+                            var type = result.getType()
+                            if(web_webview.JsMessageType.NUMBER == type){
+                            this.msg1 = "result type:" + typeof (result.getNumber());
+                            Utils.emitEvent(this.msg1,501)
+                            }
+                        });
+                    console.info('urlgetstring: ', event.url);
+                    } catch (error) {
+                        console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    }
+                }
+                if(this.getBoo){
+                    try {
+                        this.controller.runJavaScriptExt(
+                        'getBooForJs()',
+                        (error, result) => {
+                        if (error) {
+                            console.info(`run JavaScript error: ` + JSON.stringify(error))
+                            return;
+                        }
+                            var type = result.getType()
+                            if(web_webview.JsMessageType.BOOLEAN == type){
+                            this.msg1 = "result type:" + typeof (result.getBoolean());
+                            Utils.emitEvent(this.msg1,502)
+                            }
+                        });
+                    console.info('urlgetstring: ', event.url);
+                    } catch (error) {
+                        console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    }
+                }
+                if(this.getArrayBuffer){
+                    try {
+                        this.controller.runJavaScriptExt(
+                        'getArrayBufferForJs()',
+                        (error, result) => {
+                        if (error) {
+                            console.info(`run JavaScript error: ` + JSON.stringify(error))
+                            return;
+                        }
+                            var type = result.getType()
+                            if(web_webview.JsMessageType.ARRAY_BUFFER== type){
+                            this.msg1 = "result type:" + typeof (result.getArrayBuffer());
+                            Utils.emitEvent(this.msg1,503)
+                            }
+                        });
+                    console.info('urlgetstring: ', event.url);
+                    } catch (error) {
+                        console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    }
+                }
+                if(this.getArray){
+                    try {
+                        this.controller.runJavaScriptExt('getArrayForJs()')  
+                            .then((result) => {
+                                var type = result.getType()
+                                if(web_webview.JsMessageType.ARRAY== type){
+                                this.msg1 = "result type:" + typeof (result.getArray());
+                                Utils.emitEvent(this.msg1+web_webview.JsMessageType.NOT_SUPPORT,504)
+                                }
+                            })
+                    console.info('urlgetstring: ', event.url);
+                    } catch (error) {
+                        console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                    }
+                }
+                this.getString=false
+                this.getNum=false
+                this.getBoo=false
+                this.getArrayBuffer=false
+                this.getArray=false
+
+                this.ports = this.controller.createWebMessagePorts(true);
+                    this.controller.postMessage("init_web_messageport", [this.ports[1]], "*");
+                    this.nativePort = this.ports[0];
+                    this.nativePort.onMessageEventExt((result) => {
+                     console.log("In eTS side got message");
+                     try {
+                         this.type =result.getType();
+                         if(this.type == web_webview.WebMessageType.STRING){
+                            this.msg1 = "result type:" + typeof (result.getString());
+                            Utils.emitEvent(this.msg1,505)
+                         }    
+                         if(this.type == web_webview.WebMessageType.NUMBER){
+                            this.msg1 = "result type:" + typeof (result.getNumber());
+                            Utils.emitEvent(this.msg1+web_webview.WebMessageType.NOT_SUPPORT,508)
+                         }   
+                         if(this.type == web_webview.WebMessageType.BOOLEAN){
+                            this.msg1 = "result type:" + typeof (result.getBoolean());
+                            Utils.emitEvent(this.msg1,510)
+                         }
+                         if(this.type == web_webview.WebMessageType.ARRAY){
+                            this.msg1 = "result type:" + typeof (result.getArray());
+                            Utils.emitEvent(this.msg1,512)
+                         } 
+                         if(this.type == web_webview.WebMessageType.ARRAY_BUFFER){
+                            this.msg1 = "result getArrayBuffer byteLength:" + ((result.getArrayBuffer().byteLength));
+                            Utils.emitEvent(this.msg1,514)
+                         } 
+                         if(this.type == web_webview.WebMessageType.ERROR){
+                            this.msg1 = "result type:" + typeof (result.getError());
+                            Utils.emitEvent(this.msg1,516)
+                         } 
+                     }
+                     catch (resError) {
+                        console.log(`log error code: ${resError.code}, Message: ${resError.message}`);
+                    }
+                    })
+
                 console.log('url:' + event.url)
             })
             .darkMode(this.mode)

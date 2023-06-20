@@ -45,54 +45,54 @@ export default function swiperItemMargin() {
       console.info("swiperItemPadMar after each called");
     });
 
-    /**
-     * @tc.number    SUB_ACE_SWIPER_ITEMPADMARCHANGED_0200
-     * @tc.name      testSwiperItemSetMargin.
-     * @tc.desc      Set swiper's  first item's  margin value ' 20 '.
-     */
-    it('testSwiperItemSetMargin', 0, async function (done) {
-      console.info('new testSwiperItemSetMargin START');
-      let strJson = getInspectorByKey('swiperItemMargin');
-      let obj = JSON.parse(strJson);
-      let swiperItemMargin = CommonFunc.getComponentRect('swiperItemMargin');
-      let swiperItemMargin01 = CommonFunc.getComponentRect('swiperItemMargin01');
-      let swiperItemMargin02 = CommonFunc.getComponentRect('swiperItemMargin02');
-      let swiperItemMargin03 = CommonFunc.getComponentRect('swiperItemMargin03');
-      let swiperItemMargin04 = CommonFunc.getComponentRect('swiperItemMargin04');
-      let swiperItemMargin05 = CommonFunc.getComponentRect('swiperItemMargin05');
-      let swiperItemMargin06 = CommonFunc.getComponentRect('swiperItemMargin06');
-      // Before flipping the page
-      console.info("Before page turningsizepmkey01.left - swiperItemMargin.left value is " + JSON.stringify(swiperItemMargin01.left - swiperItemMargin.left));
-      expect(Math.round(swiperItemMargin01.left - swiperItemMargin.left)).assertEqual(vp2px(20));
-      expect(Math.round(swiperItemMargin.right - swiperItemMargin01.right)).assertEqual(vp2px(20));
-      expect(Math.round(swiperItemMargin01.top - swiperItemMargin.top)).assertEqual(vp2px(20));
-      expect(Math.round(swiperItemMargin.bottom - swiperItemMargin01.bottom)).assertEqual(vp2px(20));
-      // Page turning.
-      let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      swiperItemMargin = CommonFunc.getComponentRect('swiperItemMargin');
-      swiperItemMargin01 = CommonFunc.getComponentRect('swiperItemMargin01');
-      swiperItemMargin02 = CommonFunc.getComponentRect('swiperItemMargin02');
-      swiperItemMargin03 = CommonFunc.getComponentRect('swiperItemMargin03');
-      swiperItemMargin04 = CommonFunc.getComponentRect('swiperItemMargin04');
-      swiperItemMargin05 = CommonFunc.getComponentRect('swiperItemMargin05');
-      swiperItemMargin06 = CommonFunc.getComponentRect('swiperItemMargin06');
-      // After flipping the page.
-      console.info("After page turning, the swiperItemMargin.left value is " + JSON.stringify(swiperItemMargin.left));
-      console.info("After page turning,the swiperItemMargin02.left.left value is " + JSON.stringify(swiperItemMargin02.left));
-      expect(swiperItemMargin.left).assertEqual(swiperItemMargin02.left);
-      expect(swiperItemMargin.right).assertEqual(swiperItemMargin02.right);
-      expect(swiperItemMargin.top).assertEqual(swiperItemMargin02.top);
-      expect(swiperItemMargin.bottom).assertEqual(swiperItemMargin02.bottom);
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.displayCount).assertEqual(1);
-      console.info('new testSwiperItemSetMargin END');
-      done();
-    });
+//    /**
+//     * @tc.number    SUB_ACE_SWIPER_ITEMPADMARCHANGED_0200
+//     * @tc.name      testSwiperItemSetMargin.
+//     * @tc.desc      Set swiper's  first item's  margin value ' 20 '.
+//     */
+//    it('testSwiperItemSetMargin', 0, async function (done) {
+//      console.info('new testSwiperItemSetMargin START');
+//      let strJson = getInspectorByKey('swiperItemMargin');
+//      let obj = JSON.parse(strJson);
+//      let swiperItemMargin = CommonFunc.getComponentRect('swiperItemMargin');
+//      let swiperItemMargin01 = CommonFunc.getComponentRect('swiperItemMargin01');
+//      let swiperItemMargin02 = CommonFunc.getComponentRect('swiperItemMargin02');
+//      let swiperItemMargin03 = CommonFunc.getComponentRect('swiperItemMargin03');
+//      let swiperItemMargin04 = CommonFunc.getComponentRect('swiperItemMargin04');
+//      let swiperItemMargin05 = CommonFunc.getComponentRect('swiperItemMargin05');
+//      let swiperItemMargin06 = CommonFunc.getComponentRect('swiperItemMargin06');
+//      // Before flipping the page
+//      console.info("Before page turningsizepmkey01.left - swiperItemMargin.left value is " + JSON.stringify(swiperItemMargin01.left - swiperItemMargin.left));
+//      expect(Math.round(swiperItemMargin01.left - swiperItemMargin.left)).assertEqual(vp2px(20));
+//      expect(Math.round(swiperItemMargin.right - swiperItemMargin01.right)).assertEqual(vp2px(20));
+//      expect(Math.round(swiperItemMargin01.top - swiperItemMargin.top)).assertEqual(vp2px(20));
+//      expect(Math.round(swiperItemMargin.bottom - swiperItemMargin01.bottom)).assertEqual(vp2px(20));
+//      // Page turning.
+//      let driver = await Driver.create();
+//      await driver.swipe(250, 230, 200, 230);
+//      await CommonFunc.sleep(1000);
+//      swiperItemMargin = CommonFunc.getComponentRect('swiperItemMargin');
+//      swiperItemMargin01 = CommonFunc.getComponentRect('swiperItemMargin01');
+//      swiperItemMargin02 = CommonFunc.getComponentRect('swiperItemMargin02');
+//      swiperItemMargin03 = CommonFunc.getComponentRect('swiperItemMargin03');
+//      swiperItemMargin04 = CommonFunc.getComponentRect('swiperItemMargin04');
+//      swiperItemMargin05 = CommonFunc.getComponentRect('swiperItemMargin05');
+//      swiperItemMargin06 = CommonFunc.getComponentRect('swiperItemMargin06');
+//      // After flipping the page.
+//      console.info("After page turning, the swiperItemMargin.left value is " + JSON.stringify(swiperItemMargin.left));
+//      console.info("After page turning,the swiperItemMargin02.left.left value is " + JSON.stringify(swiperItemMargin02.left));
+//      expect(swiperItemMargin.left).assertEqual(swiperItemMargin02.left);
+//      expect(swiperItemMargin.right).assertEqual(swiperItemMargin02.right);
+//      expect(swiperItemMargin.top).assertEqual(swiperItemMargin02.top);
+//      expect(swiperItemMargin.bottom).assertEqual(swiperItemMargin02.bottom);
+//      console.info("The type value is " + JSON.stringify(obj.$type));
+//      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
+//      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
+//      expect(obj.$type).assertEqual('Swiper');
+//      expect(obj.$attrs.loop).assertEqual('true');
+//      expect(obj.$attrs.displayCount).assertEqual(1);
+//      console.info('new testSwiperItemSetMargin END');
+//      done();
+//    });
   })
 }

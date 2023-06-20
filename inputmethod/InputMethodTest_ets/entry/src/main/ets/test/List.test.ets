@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import inputMethodJSUnit from './inputMethodJSUnit';
-import inputMethodNormalJSUnit from './inputMethodNormalJSUnit';
+import inputMethodJSUnit from './inputMethodJSUnit.test';
+import inputMethodNormalJSUnit from './inputMethodNormalJSUnit.test';
 
 export default function testsuite() {
   inputMethodJSUnit();

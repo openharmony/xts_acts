@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,21 +18,19 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
     VIDEO_TYPE,
-    AUDIO_TYPE,
     FILEKEY,
     idFetchOps,
-    albumFetchOps,
-    albumTwoTypesFetchOps,
-    albumThreeTypesFetchOps,
+    fileFetchOption,
     checkAlbumsCount,
+    getPermission,
 } from "../../../../../../common";
 
 export default function albumTestCallbackTest(abilityContext) {
     describe("albumTestCallbackTest", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            await getPermission(null, abilityContext);
             console.info("beforeAll case");
         });
         beforeEach(function () {
@@ -56,12 +54,7 @@ export default function albumTestCallbackTest(abilityContext) {
                 album.coverUri: ${album.coverUri}`);
         }
 
-        const props = {
-            albumName: "Static",
-            albumUri: "file://media/album/",
-            count: 5,
-        };
-        const checkProps = async function (done, testNum, album, relativePaths) {
+        const checkProps = async function (done, testNum, album, relativePath, prop) {
             printAlbumMessage(testNum, album);
             if (album.albumId == undefined || album.coverUri == undefined) {
                 console.info(`${testNum}, album.albumId or album.coverUri is undefined`);
@@ -69,46 +62,46 @@ export default function albumTestCallbackTest(abilityContext) {
                 done();
                 return;
             }
-            expect(album.albumName).assertEqual(props.albumName);
-            expect(album.albumUri).assertEqual(props.albumUri + album.albumId);
-            expect(album.count).assertEqual(props.count);
-            if (Array.isArray(relativePaths)) {
-                let i = relativePaths.indexOf(album.relativePath);
-                if (i > -1) {
-                    relativePaths.splice(i, 1);
-                } else {
-                    expect(false).assertTrue();
-                    done();
-                }
-            } else {
-                expect(album.relativePath).assertEqual(relativePaths);
-            }
+            expect(album.albumName).assertEqual(prop.albumName);
+            expect(album.albumUri).assertEqual(prop.albumUri + album.albumId);
+            expect(album.count).assertEqual(prop.count);
+            expect(album.relativePath).assertEqual(relativePath);
         };
-        const checkAlbumInfo = async function (done, testNum, fetchOp, relativePaths, expectAlbumCount) {
+
+        const checkAlbumInfo = async function (done, testNum, fetchOp, relativePaths, props, expectAlbumCount) {
             try {
                 media.getAlbums(fetchOp, async (err, albumList) => {
-                    if (err) {
-                        console.info(`${testNum}, err: ${err}`);
-                        expect(false).assertTrue();
-                        done();
-                        return;
-                    }
-                    const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                    if (!albumCountPass) return;
-                    if (expectAlbumCount == 1) {
-                        const album = albumList[0];
-                        checkProps(done, testNum, album, relativePaths);
-                        done();
-                    } else {
-                        let count = 0;
-                        for (const album of albumList) {
-                            checkProps(done, testNum, album, relativePaths);
-                            count++;
+                    try {
+                        if (err) {
+                            console.info(`${testNum}, err: ${err}`);
+                            expect(false).assertTrue();
+                            done();
+                            return;
                         }
-                        expect(count).assertEqual(expectAlbumCount);
-                        expect(relativePaths.length).assertEqual(0);
-                        done();
+                        const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                        if (!albumCountPass) {
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        if (expectAlbumCount == 1) {
+                            const album = albumList[0];
+                            checkProps(done, testNum, album, relativePaths[0], props[0]);
+                            done();
+                        } else {
+                            let count = 0;
+                            for (let i = 0; i < expectAlbumCount; i++) {
+                                checkProps(done, testNum, albumList[i], relativePaths[i], props[i]);
+                                count++;
+                            }
+                            console.info(`${testNum}, count: ${count}, relativePaths: ${relativePaths.length}`);
+                            expect(count).assertEqual(expectAlbumCount);
+                            expect(relativePaths.length).assertEqual(expectAlbumCount);
+                        }
+                    } catch (err) {
+                        console.info(`${testNum}, failed: ${err}`);
                     }
+                    done();
                 });
             } catch (error) {
                 console.info(`${testNum}, failed: ${error}`);
@@ -140,7 +133,11 @@ export default function albumTestCallbackTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                if (!albumCountPass) {
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                }
                 const album = albumList[0];
                 album.albumName = newName;
                 album.commitModify(async (error) => {
@@ -165,19 +162,32 @@ export default function albumTestCallbackTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                if (!albumCountPass) {
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                }
                 const album = albumList[0];
                 const albumId = album.albumId;
                 console.info(`${testNum}, album.albumName(old): ${album.albumName}`);
                 const oldAlbumName = album.albumName;
                 album.albumName = newName;
-                album.commitModify(async () => {
-                    let currentfetchOp = idFetchOps(testNum, albumId);
-                    const newAlbumList = await media.getAlbums(currentfetchOp);
-                    console.info(`${testNum}, album.albumName(new): ${newAlbumList[0].albumName}`);
-                    expect(newAlbumList[0].albumName).assertEqual(newName);
-                    album.albumName = oldAlbumName;
-                    await album.commitModify();
+                album.commitModify(async (err) => {
+                    try {
+                        if (err) {
+                            console.info(`${testNum}, commitModify failed: ${err}`);
+                            expect(false).assertTrue();
+                            done();
+                            return;
+                        }
+                        let currentfetchOp = idFetchOps(testNum, albumId);
+                        const newAlbumList = await media.getAlbums(currentfetchOp);
+                        console.info(`${testNum}, album.albumName(new): ${newAlbumList[0].albumName}`);
+                        expect(newAlbumList[0].albumName).assertEqual(oldAlbumName);
+                        done();
+                    } catch (err) {
+                        console.info(`${testNum}, error: ${err}`);
+                    }
                     done();
                 });
             } catch (error) {
@@ -191,137 +201,131 @@ export default function albumTestCallbackTest(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01
          * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by allTypeInfofetchOp, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
+         * @tc.desc      : get Camera album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01";
-            let currentFetchOp = albumFetchOps(testNum, "Pictures/", "Static", IMAGE_TYPE);
-            let relativePaths = "Pictures/";
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by imageAlbumInfofetchOp, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_02";
-            let currentFetchOp = albumFetchOps(testNum, "Videos/", "Static", VIDEO_TYPE);
-            let relativePaths = "Videos/";
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_01";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera']);
+            const relativePaths = [''];
+            const expectAlbumCount = 1;
+            const props = [
+                {
+                    albumName: "Camera",
+                    albumUri: "file://media/album/",
+                    count: 1,
+                }
+            ];
+            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
         });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03
          * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by videoAlbumInfofetchOp, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName)
+         * @tc.desc      : get Screenshots album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03";
-            let currentFetchOp = albumFetchOps(testNum, "Audios/", "Static", AUDIO_TYPE);
-            let relativePaths = "Audios/";
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_03";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
+            const relativePaths = [''];
+            const expectAlbumCount = 1;
+            const props = [
+                {
+                    albumName: "Screenshots",
+                    albumUri: "file://media/album/",
+                    count: 2,
+                }
+            ];
+            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
         });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_04
          * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by image 、Video types, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
-         *                 check media types (imageType, videoType)
+         * @tc.desc      : get ScreenRecordings album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_04", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_04";
-            let currentFetchOp = albumTwoTypesFetchOps(testNum, ["Pictures/", "Videos/"], "Static", [
-                IMAGE_TYPE,
-                VIDEO_TYPE,
-            ]);
-            let relativePaths = ["Pictures/", "Videos/"];
-            let expectAlbumCount = 2;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_04";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['ScreenRecordings']);
+            const relativePaths = [''];
+            const expectAlbumCount = 1;
+            const props = [
+                {
+                    albumName: "Screenshots",
+                    albumUri: "file://media/album/",
+                    count: 2,
+                }
+            ];
+            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
         });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05
          * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by imageAndVideoAlbumInfofetchOp, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
-         *                 check media types (imageType, audioType)
+         * @tc.desc      : get Camera and Screenshots album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05";
-            let currentFetchOp = albumTwoTypesFetchOps(testNum, ["Pictures/", "Audios/"], "Static", [
-                IMAGE_TYPE,
-                AUDIO_TYPE,
-            ]);
-            let relativePaths = ["Pictures/", "Audios/"];
-            let expectAlbumCount = 2;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_05";
+            const selections = FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'Screenshots']);
+            const relativePaths = ['', ''];
+            const expectAlbumCount = 2;
+            const props = [
+                {
+                    albumName: "Screenshots",
+                    albumUri: "file://media/album/",
+                    count: 2,
+                },
+                {
+                    albumName: "Camera",
+                    albumUri: "file://media/album/",
+                    count: 1,
+                },
+            ];
+            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
         });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06
          * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by imageAndAudioAlbumInfofetchOp, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
-         *                 check media types (imageType, audioType)
+         * @tc.desc      : get Camera and ScreenRecordings and Screenshots album,check album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06";
-            let currentFetchOp = albumTwoTypesFetchOps(testNum, ["Videos/", "Audios/"], "Static", [
-                VIDEO_TYPE,
-                AUDIO_TYPE,
-            ]);
-            let relativePaths = ["Videos/", "Audios/"];
-            let expectAlbumCount = 2;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07
-         * @tc.name      : getAlbums
-         * @tc.desc      : Get Album by videoAndAudioAlbumInfofetchOp, print all album info,
-         *                 print all asset info, check asset info (mediaType, albumId, albumUri, albumName),
-         *                 check media types (imageType, audioType)
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_07";
-            let currentFetchOp = albumThreeTypesFetchOps(testNum, ["Pictures/", "Videos/", "Audios/"], "Static", [
-                IMAGE_TYPE,
-                VIDEO_TYPE,
-                AUDIO_TYPE,
-            ]);
-            let relativePaths = ["Pictures/", "Videos/", "Audios/"];
-            let expectAlbumCount = 3;
-            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, expectAlbumCount);
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUM_CALLBACK_001_06";
+            const selections = FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ? or ' + FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera', 'ScreenRecordings', 'Screenshots']);
+            const relativePaths = ['', ''];
+            const expectAlbumCount = 2;
+            const props = [
+                {
+                    albumName: "Screenshots",
+                    albumUri: "file://media/album/",
+                    count: 2,
+                },
+                {
+                    albumName: "Camera",
+                    albumUri: "file://media/album/",
+                    count: 1,
+                },
+            ];
+            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths, props, expectAlbumCount);
         });
         // ------------------------------ 001 test end -------------------------
 
@@ -332,16 +336,13 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp3
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06", 0, async function (done) {
-            let fileHasArgsfetchOp = {
-                selections: FILEKEY.MEDIA_TYPE + " = ?",
-                selectionArgs: ["666"],
-            };
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06";
-
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp);
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06", 2, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_06";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['666']);
+            await abnormalAlbumCount(done, testNum, currentFetchOp);
         });
 
         /**
@@ -350,16 +351,13 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp4
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_07", 0, async function (done) {
-            let fileHasArgsfetchOp = {
-                selections: "666" + "= ?",
-                selectionArgs: [VIDEO_TYPE.toString()],
-            };
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_07", 2, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_07";
-
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp);
+            const selections = "666" + "= ?";
+            const currentFetchOp = fileFetchOption(testNum, selections, [VIDEO_TYPE.toString()]);
+            await abnormalAlbumCount(done, testNum, currentFetchOp);
         });
 
         /**
@@ -368,15 +366,13 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Get Album Assets by fileHasArgsfetchOp5
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08", 0, async function (done) {
-            let fileHasArgsfetchOp = {
-                selections: "666" + "= ?",
-                selectionArgs: ["666"],
-            };
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08";
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp);
+        it("SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08", 2, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_CALLBACK_002_08";
+            const selections = "666" + "= ?";
+            const currentFetchOp = fileFetchOption(testNum, selections, ['666']);
+            await abnormalAlbumCount(done, testNum, currentFetchOp);
         });
         // ------------------------------ 002 test end -------------------------
 
@@ -384,53 +380,17 @@ export default function albumTestCallbackTest(abilityContext) {
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01
          * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name to 'hello'
+         * @tc.desc      : Modify Camera name  ''
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01", 0, async function (done) {
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01", 2, async function (done) {
             const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_01";
-            try {
-                let currentFetchOp = albumFetchOps(testNum, "Pictures/", "DynamicCb1", IMAGE_TYPE);
-                const albumList = await media.getAlbums(currentFetchOp);
-                const expectAlbumCount = 1;
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
-                const album = albumList[0];
-                const albumId = album.albumId;
-                console.info(`${testNum}, album.albumName(old): ${album.albumName}`);
-                const newName = "albumName" + new Date().getTime();
-                album.albumName = newName;
-                album.commitModify(async () => {
-                    let currentfetchOp = idFetchOps(testNum, albumId);
-                    const newAlbumList = await media.getAlbums(currentfetchOp);
-                    console.info(`${testNum}, album.albumName(new): ${newAlbumList[0].albumName}`);
-                    expect(newAlbumList[0].albumName).assertEqual(newName);
-                    album.albumName = "DynamicCb1";
-                    await album.commitModify();
-                    done();
-                });
-            } catch (error) {
-                console.info(`${testNum}, failed error: ${error}`);
-                expect(false).assertTrue();
-                done();
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02
-         * @tc.name      : commitModify
-         * @tc.desc      : Modify Album name  ''
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_02";
-            let currentFetchOp = albumFetchOps(testNum, "Pictures/", "DynamicCb2", IMAGE_TYPE);
-            let newName = "";
-            let expectAlbumCount = 1;
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Camera']);
+            const newName = "";
+            const expectAlbumCount = 1;
             await abnormalAlbumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount);
         });
 
@@ -440,16 +400,17 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Modify Album name  'aaaaa....' (256)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04";
-            let currentFetchOp = albumFetchOps(testNum, "Pictures/", "DynamicCb3", IMAGE_TYPE);
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04", 2, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_04";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
             let newName = "";
             for (var i = 0; i < 256; i++) {
                 newName += "a";
             }
-            let expectAlbumCount = 1;
+            const expectAlbumCount = 1;
             await abnormalAlbumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount);
         });
 
@@ -459,16 +420,17 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Modify Album name  '中中中中中....' (86 *3)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05";
-            let currentFetchOp = albumFetchOps(testNum, "Pictures/", "DynamicCb4", IMAGE_TYPE);
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05", 2, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_05";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
             let newName = "";
             for (var i = 0; i < 86; i++) {
                 newName += "中";
             }
-            let expectAlbumCount = 1;
+            const expectAlbumCount = 1;
             await abnormalAlbumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount);
         });
 
@@ -478,16 +440,17 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.desc      : Modify Album name  'aaaaaaa....' (255)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06";
-            let currentFetchOp = albumFetchOps(testNum, "Pictures/", "DynamicCb5", IMAGE_TYPE);
+        it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06", 2, async function (done) {
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_06";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
             let newName = "";
             for (var i = 0; i < 255; i++) {
                 newName += "a";
             }
-            let expectAlbumCount = 1;
+            const expectAlbumCount = 1;
             await albumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount);
         });
 
@@ -500,13 +463,14 @@ export default function albumTestCallbackTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it("SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_07", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_07";
-            let currentFetchOp = albumFetchOps(testNum, "Pictures/", "DynamicCb6", IMAGE_TYPE);
+            const testNum = "SUB_MEDIA_MEDIALIBRARY_MODIFYALBUM_CALLBACK_003_07";
+            const selections = FILEKEY.ALBUM_NAME + '= ?';
+            const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
             let newName = "";
             for (var i = 0; i < 85; i++) {
                 newName += "中";
             }
-            let expectAlbumCount = 1;
+            const expectAlbumCount = 1;
             await albumCommitModify(done, testNum, currentFetchOp, newName, expectAlbumCount);
         });
         // ------------------------------ 003 test end -------------------------

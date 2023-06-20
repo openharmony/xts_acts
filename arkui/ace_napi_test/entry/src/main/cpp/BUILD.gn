@@ -30,15 +30,17 @@ config("public_config") {
 }
 
 ohos_shared_library("napitest") {
+  subsystem_name = "arkui"
+  part_name = "napi"
   sources = [ "./napi/napi_test.cpp" ]
   if (!(product_name == "m40")) {
     libs = [ rebase_path(libcxx_ndk_shared_file) ]
   }
 
-  include_dirs = [ "//test/xts/acts/arkui/ace_napi_test/entry/src/main/cpp" ]
+  include_dirs = [ "../cpp" ]
   configs = [ ":config" ]
 
-  deps = [ "//foundation/arkui/napi:ace_napi" ]
+  external_deps = [ "napi:ace_napi" ]
 
   output_extension = "so"
 }

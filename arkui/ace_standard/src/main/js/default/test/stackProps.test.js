@@ -562,44 +562,6 @@ describe('stackPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testStackIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testStackIfPropFalse', 0, async function (done) {
-    //        console.info('testStackIfPropFalse START');
-    //        console.info("[stackProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[stackProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[stackProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('stack')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testStackIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testStackIfPropNone', 0, async function (done) {
-    //        console.info('testStackIfPropNone START');
-    //        console.info("[stackProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[stackProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[stackProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('stack')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testStackShowPropTrue
      * @tc.desc      ACE
      */

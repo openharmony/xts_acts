@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, done } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 import account from '@ohos.account.distributedAccount'
 const LOGININFO = {
@@ -39,26 +39,33 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality by callback.
         */
         it('ActsDistributedAccountDeviceId_0100', 0, async function(done){
-            console.log("====>test query distribtued id start");
-            const distributedId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5'; //'12345'sha256的值
-            const accountAbility = account.getDistributedAccountAbility();
-            accountAbility.updateOsAccountDistributedInfo(LOGININFO, (err)=>{
-                console.log("====>update distributedInfo err:" + JSON.stringify(err));
-                accountAbility.queryOsAccountDistributedInfo((err, distributedInfo)=>{
-                    console.log("====>query distributedInfo err:" + JSON.stringify(err));
-                    console.log("====>query distributedInfo:" + JSON.stringify(distributedInfo));
-                    expect(distributedInfo.name).assertEqual('ZhangSan');
-                    expect(distributedInfo.id).assertEqual(distributedId);
-                    console.debug('success')
-                    accountAbility.updateOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
-                        console.debug('====>ActsDistributedAccountDeviceId_0100 logout_result:'+ JSON.stringify(err))
-                        expect(err).assertEqual(undefined)
-                        console.log("====>test query distribtued id end");
-                        done();
+            console.debug('====>ActsDistributedAccountDeviceId_0100 start====')
+            try {
+                console.log("====>test query distribtued id start");
+                const distributedId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5'; //'12345'sha256的值
+                const accountAbility = account.getDistributedAccountAbility();
+                accountAbility.updateOsAccountDistributedInfo(LOGININFO, (err)=>{
+                    console.log("====>update distributedInfo err:" + JSON.stringify(err));
+                    accountAbility.queryOsAccountDistributedInfo((err, distributedInfo)=>{
+                        console.log("====>query distributedInfo err:" + JSON.stringify(err));
+                        console.log("====>query distributedInfo:" + JSON.stringify(distributedInfo));
+                        expect(distributedInfo.name).assertEqual('ZhangSan');
+                        expect(distributedInfo.id).assertEqual(distributedId);
+                        console.debug('success')
+                        accountAbility.updateOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
+                            console.debug('====>ActsDistributedAccountDeviceId_0100 logout_result:'+ JSON.stringify(err))
+                            expect(err).assertEqual(undefined)
+                            console.log("====>test query distribtued id end");
+                            done();
+                        })
                     })
-
                 })
-            })
+            } catch (err){
+                console.debug('====>ActsDistributedAccountDeviceId_0100 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+
         })
 
         /**
@@ -67,14 +74,21 @@ export default function AccountTest() {
         * @tc.desc      Test distributedAccount.getDistributedAccountAbility API functionality.
         */
         it('account_getDistributedAccountAbility_test', 0, async function (done) {
-            var ret = false;
-            const accountAbility = account.getDistributedAccountAbility()
-            console.debug("====>account_getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
-            if(accountAbility !== null){
-                ret = true;
+            console.debug('====>account_getDistributedAccountAbility_test start====')
+            try {
+                var ret = false;
+                const accountAbility = account.getDistributedAccountAbility()
+                console.debug("====>account_getDistributedAccountAbility_test result:" + JSON.stringify(accountAbility))
+                if(accountAbility !== null){
+                    ret = true;
+                }
+                expect(ret).assertTrue()
+                done();
+            } catch (err){
+                console.debug('====>ActsDistributedAccountDeviceId_0100 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
             }
-            expect(ret).assertTrue()
-            done();
         })
 
         /**
@@ -83,13 +97,20 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality.
         */
         it('account_queryOsAccountDistributedInfo_test001', 0, async function (done) {
-            let accountAbility = account.getDistributedAccountAbility()
-            accountAbility.queryOsAccountDistributedInfo().then(function (data) {
-                console.debug('====>account_queryOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
-                expect(data.name).assertEqual('ohosAnonymousName')
-                expect(data.id).assertEqual('ohosAnonymousUid')
-                done();
-            });
+            console.debug('====>account_queryOsAccountDistributedInfo_test001 start====')
+            try {
+                let accountAbility = account.getDistributedAccountAbility()
+                accountAbility.queryOsAccountDistributedInfo().then(function (data) {
+                    console.debug('====>account_queryOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
+                    expect(data.name).assertEqual('ohosAnonymousName')
+                    expect(data.id).assertEqual('ohosAnonymousUid')
+                    done();
+                });
+            } catch (err){
+                console.debug('====>account_queryOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
         })
 
         /**
@@ -98,15 +119,22 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.queryOsAccountDistributedInfo API functionality by callback.
         */
         it('account_queryOsAccountDistributedInfo_test002', 0, async function (done) {
-            let accountAbility = account.getDistributedAccountAbility()
-            accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+            console.debug('====>account_queryOsAccountDistributedInfo_test002 start')
+            try {
+                let accountAbility = account.getDistributedAccountAbility()
+                accountAbility.queryOsAccountDistributedInfo(function (err, data) {
+                    console.debug('====>account_queryOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
+                    console.debug('====>account_queryOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
+                    expect(err).assertEqual(undefined)
+                    expect(data.name).assertEqual('ohosAnonymousName')
+                    expect(data.id).assertEqual('ohosAnonymousUid')
+                    done();
+                });
+            } catch (err){
                 console.debug('====>account_queryOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
-                console.debug('====>account_queryOsAccountDistributedInfo_test002 data:' + JSON.stringify(data))
-                expect(err).assertEqual(undefined)
-                expect(data.name).assertEqual('ohosAnonymousName')
-                expect(data.id).assertEqual('ohosAnonymousUid')
-                done();
-            });
+                expect().assertFail()
+                done()
+            }
         })
 
         /**
@@ -115,6 +143,7 @@ export default function AccountTest() {
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
         */
         it('account_updateOsAccountDistributedInfo_test001', 0, async function (done) {
+            console.debug('====>account_updateOsAccountDistributedInfo_test001 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
             let obj = {
@@ -123,34 +152,37 @@ export default function AccountTest() {
                 event: 'Ohos.account.event.LOGIN',
                 scalableData:data
             };
-            accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
-                accountAbility.queryOsAccountDistributedInfo(function (err, data) {
-                    console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
-                    expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('12345')
-                    let obj = {
-                        id: '12345',
-                        name: 'ZhangSan',
-                        event: 'Ohos.account.event.LOGOUT'
-                    };
-                    accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
-                        expect(err).assertEqual(undefined)
+            try {
+                await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
+							done();
+                        });
                     });
                 });
-            });
-            accountAbility.queryOsAccountDistributedInfo(function (data) {
-
-                expect(data).assertEqual(undefined)
-                done();
-            })
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test001 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
         })
 
         /**
-        * @tc.number     SUB_Account_distributedAccount_JS_API_0200
+        * @tc.number     SUB_Account_distributedAccount_JS_API_0500
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
         it('account_updateOsAccountDistributedInfo_test002', 0,  async function (done)  {
+            console.debug('====>account_updateOsAccountDistributedInfo_test002 start====')
             var accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -158,30 +190,37 @@ export default function AccountTest() {
                 event: 'Ohos.account.event.LOGIN',
                 scalableData:{}
             };
-            accountAbility.updateOsAccountDistributedInfo(obj, function () {
-                accountAbility.queryOsAccountDistributedInfo(function (err, data) {
-                    console.debug("====>account_updateOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
-                    expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
-                    let obj = {
-                        id: '12345',
-                        name: 'ZhangSan',
-                        event: 'Ohos.account.event.LOGOUT'
-                    };
-                    accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
-                        expect(data).assertEqual(undefined)
-                        done();
+            try {
+                accountAbility.updateOsAccountDistributedInfo(obj, function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug("====>account_updateOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
+                            done();
+                        });
                     });
                 });
-            });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test002 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
         })
 
         /**
-        * @tc.number     SUB_Account_distributedAccount_JS_API_0300
+        * @tc.number     SUB_Account_distributedAccount_JS_API_0600
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
         it('account_updateOsAccountDistributedInfo_test003', 0, async function (done) {
+            console.debug('====>account_updateOsAccountDistributedInfo_test003 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
             let obj = {
@@ -190,22 +229,29 @@ export default function AccountTest() {
                 event: 'Ohos.account.event.TOKEN_INVALID',
                 scalableData:data
             };
-            accountAbility.updateOsAccountDistributedInfo(obj, function (result) {
-                console.debug("====>account_updateOsAccountDistributedInfo_test003 update_err:" + JSON.stringify(result))
-                accountAbility.queryOsAccountDistributedInfo(obj).then(function (data) {
-                    console.debug("====>account_updateOsAccountDistributedInfo_test003 data:" + JSON.stringify(data))
-                    expect(data.name).assertEqual("ohosAnonymousName")
-                    done();
-                })
-            });
+            try {
+                accountAbility.updateOsAccountDistributedInfo(obj, async function (result) {
+                    console.debug("====>account_updateOsAccountDistributedInfo_test003 update_err:" + JSON.stringify(result))
+                    await accountAbility.queryOsAccountDistributedInfo(obj).then(function (data) {
+                        console.debug("====>account_updateOsAccountDistributedInfo_test003 data:" + JSON.stringify(data))
+                        expect(data.name).assertEqual("ohosAnonymousName")
+                        done();
+                    })
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test003 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
         })
 
         /**
-        * @tc.number     SUB_Account_distributedAccount_JS_API_0500
+        * @tc.number     SUB_Account_distributedAccount_JS_API_0700
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
         it('account_updateOsAccountDistributedInfo_test004', 0, async function (done) {
+            console.debug('====>account_updateOsAccountDistributedInfo_test004 start====')
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -213,24 +259,272 @@ export default function AccountTest() {
                 event: 'Ohos.account.event.LOGIN',
                 scalableData:{}
             };
-            accountAbility.updateOsAccountDistributedInfo(obj, function (err) {
-                console.debug("====>account_updateOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
-                accountAbility.queryOsAccountDistributedInfo(function (err, data) {
-                    console.debug("====>account_updateOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
-                    console.debug("====>account_updateOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
-                    expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
-                    let obj = {
-                        id: '12345',
-                        name: 'ZhangSan',
-                        event: 'Ohos.account.event.LOGOFF'
-                    };
-                    accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
-                        expect(err).assertEqual(undefined)
-                        done();
+            try {
+                accountAbility.updateOsAccountDistributedInfo(obj, function (err) {
+                    console.debug("====>account_updateOsAccountDistributedInfo_test004 update_err:" + JSON.stringify(err))
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug("====>account_updateOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
+                        console.debug("====>account_updateOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOFF'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
+                            done();
+                        });
                     });
                 });
-            });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test004 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     SUB_Account_distributedAccount_JS_API_0800
+         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
+         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
+         */
+        it('account_updateOsAccountDistributedInfo_test005', 0, async function (done) {
+            console.debug('====>account_updateOsAccountDistributedInfo_test005 start====')
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:undefined,
+                nickname:undefined,
+                avatar:undefined,
+                status:undefined
+            };
+            try {
+                await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug('====>account_updateOsAccountDistributedInfo_test005 data:' + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT',
+                            scalableData:undefined,
+                            nickname:undefined,
+                            avatar:undefined,
+                            status:undefined
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
+                            done()
+                        });
+                    });
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test005 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     SUB_Account_distributedAccount_JS_API_0900
+         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
+         */
+        it('account_updateOsAccountDistributedInfo_test006', 0,  async function (done)  {
+            console.debug('====>account_updateOsAccountDistributedInfo_test006 start====')
+            var accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:undefined,
+                nickname:undefined,
+                avatar:undefined,
+                status:undefined
+            };
+            try {
+                accountAbility.updateOsAccountDistributedInfo(obj, function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug("====>account_updateOsAccountDistributedInfo_test006 data:" + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
+                            expect(data).assertEqual(undefined)
+                            done();
+                        });
+                    });
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test006 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     SUB_Account_distributedAccount_JS_API_1000
+         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
+         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
+         */
+        it('account_updateOsAccountDistributedInfo_test007', 0, async function (done) {
+            console.debug('====>account_updateOsAccountDistributedInfo_test007 start====')
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:null,
+                nickname:null,
+                avatar:null,
+                status:null
+            };
+            try {
+                await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug('====>account_updateOsAccountDistributedInfo_test007 data:' + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
+                            done()
+                        });
+                    });
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test007 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     SUB_Account_distributedAccount_JS_API_1100
+         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
+         */
+        it('account_updateOsAccountDistributedInfo_test008', 0,  async function (done)  {
+            console.debug('====>account_updateOsAccountDistributedInfo_test008 start====')
+            var accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN',
+                scalableData:null,
+                nickname:null,
+                avatar:null,
+                status:null
+            };
+            try {
+                accountAbility.updateOsAccountDistributedInfo(obj, function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug("====>account_updateOsAccountDistributedInfo_test008 data:" + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
+                            expect(data).assertEqual(undefined)
+                            done();
+                        });
+                    });
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test008 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     SUB_Account_distributedAccount_JS_API_1200
+         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo.
+         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality.
+         */
+        it('account_updateOsAccountDistributedInfo_test009', 0, async function (done) {
+            console.debug('====>account_updateOsAccountDistributedInfo_test009 start====')
+            const accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN'
+            };
+            try {
+                await accountAbility.updateOsAccountDistributedInfo(obj).then(function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug('====>account_updateOsAccountDistributedInfo_test009 data:' + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
+                            expect(err).assertEqual(undefined)
+                            done()
+                        });
+                    });
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test009 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
+        })
+
+        /**
+         * @tc.number     SUB_Account_distributedAccount_JS_API_1300
+         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
+         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
+         */
+        it('account_updateOsAccountDistributedInfo_test010', 0,  async function (done)  {
+            console.debug('====>account_updateOsAccountDistributedInfo_test010 start====')
+            var accountAbility = account.getDistributedAccountAbility()
+            let obj = {
+                id: '12345',
+                name: 'ZhangSan',
+                event: 'Ohos.account.event.LOGIN'
+            };
+            try {
+                accountAbility.updateOsAccountDistributedInfo(obj, function () {
+                    accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
+                        console.debug("====>account_updateOsAccountDistributedInfo_test010 data:" + JSON.stringify(data))
+                        expect(data.name).assertEqual('ZhangSan')
+                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        let obj = {
+                            id: '12345',
+                            name: 'ZhangSan',
+                            event: 'Ohos.account.event.LOGOUT'
+                        };
+                        await accountAbility.updateOsAccountDistributedInfo(obj).then(function (data) {
+                            expect(data).assertEqual(undefined)
+                            done();
+                        });
+                    });
+                });
+            } catch (err){
+                console.debug('====>account_updateOsAccountDistributedInfo_test010 err:' + JSON.stringify(err))
+                expect().assertFail()
+                done()
+            }
         })
     })
 }

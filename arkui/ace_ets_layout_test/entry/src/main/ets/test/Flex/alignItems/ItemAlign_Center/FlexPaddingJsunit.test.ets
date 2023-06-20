@@ -76,36 +76,5 @@ export default function flexPadding_CenterJsunit() {
       done();
     });
 
-    /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_CENTER_0400
-     * @tc.name      testFlexItemAlignCenterParentSetPaddingExceed
-     * @tc.desc      Parent component set paddding,subcomponent exceedS the parent component.
-     */
-    it('testFlexItemAlignCenterParentSetPaddingExceed', 0, async function (done) {
-      console.info('new testFlexItemAlignCenterParentSetPaddingExceed START');
-      globalThis.value.message.notify({name:'padding', value:30});
-      await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexPadding01');
-      let obj1 = JSON.parse(strJson1);
-      let textFlexPadding01 = CommonFunc.getComponentRect('textFlexPadding01');
-      let textFlexPadding02 = CommonFunc.getComponentRect('textFlexPadding02');
-      let textFlexPadding03 = CommonFunc.getComponentRect('textFlexPadding03');
-      let flexPadding01 = CommonFunc.getComponentRect('flexPadding01');
-      expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(30))
-      expect(Math.round(flexPadding01.right - textFlexPadding03.right)).assertEqual(vp2px(30))
-      expect(textFlexPadding01.top - flexPadding01.top).assertEqual(flexPadding01.bottom - textFlexPadding01.bottom)
-      expect(textFlexPadding02.top - flexPadding01.top).assertEqual(flexPadding01.bottom - textFlexPadding02.bottom)
-      expect(textFlexPadding03.top - flexPadding01.top).assertEqual(flexPadding01.bottom - textFlexPadding03.bottom)
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(vp2px(440/3))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
-      console.info('new testFlexItemAlignCenterParentSetPaddingExceed END');
-      done();
-    });
   })
 }

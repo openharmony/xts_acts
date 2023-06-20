@@ -20,6 +20,9 @@ import fileio from "@ohos.fileio";
 
 export default function imagePacking() {
     describe("imagePacking", function () {
+        let globalpixelmap;
+        let globalPacker;
+        let globalImagesource;
         let filePath;
         let fdNumber;
         async function getFd(fileName) {
@@ -52,7 +55,31 @@ export default function imagePacking() {
             console.info("beforeEach case");
         });
 
-        afterEach(function () {
+        afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info("globalpixelmap release fail");
+                }
+            }
+            if (globalImagesource != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
+                }
+            }
+            if (globalPacker != undefined) {
+                console.info("globalPacker release start");
+                try {
+                    await globalPacker.release();
+                } catch (error) {
+                    console.info("globalPacker release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -76,12 +103,14 @@ export default function imagePacking() {
                         console.info(`${testNum} create pixelmap fail`);
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
                             console.info(`${testNum} create imagepacker fail`);
                             done();
                         } else {
+                            globalPacker = imagePackerApi;
                             imagePackerApi
                                 .packing(pixelmap, arg)
                                 .then((data) => {
@@ -125,12 +154,14 @@ export default function imagePacking() {
                         console.info(`${testNum} create pixelmap fail`);
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
                             console.info(`${testNum} create imagepacker fail`);
                             done();
                         } else {
+                            globalPacker = imagePackerApi;
                             imagePackerApi.packing(pixelmap, arg, (err, data) => {
                                 if (err != undefined) {
                                     console.info(`${testNum} packing failerr: ${err}`);
@@ -171,11 +202,13 @@ export default function imagePacking() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
                             done();
                         } else {
+                            globalPacker = imagePackerApi;
                             imagePackerApi.packing(pixelmap, arg, (err, data) => {
                                 expect(err != undefined).assertTrue();
                                 done();
@@ -204,11 +237,13 @@ export default function imagePacking() {
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalpixelmap = pixelmap;
                         const imagePackerApi = image.createImagePacker();
                         if (imagePackerApi == undefined) {
                             expect(false).assertTrue();
                             done();
                         } else {
+                            globalPacker = imagePackerApi;
                             imagePackerApi
                                 .packing(pixelmap, arg)
                                 .then((data) => {
@@ -550,12 +585,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 99 };
                         imagePackerApi
                             .packing(imageSourceApi, packOpts)
@@ -598,12 +635,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 1 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             console.info(
@@ -641,12 +680,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/gif", quality: 98 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 success");
@@ -683,12 +724,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 101 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 success");
@@ -725,12 +768,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer success");
                         expect(true).assertTrue();
                         done();
@@ -764,12 +809,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg" };
                         imagePackerApi
                             .packing(imageSourceApi, packOpts)
@@ -813,12 +860,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { quality: 50 };
                         imagePackerApi
                             .packing(imageSourceApi, packOpts)
@@ -863,12 +912,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 100 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             if (err) {
@@ -916,12 +967,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: 0 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 success");
@@ -957,12 +1010,14 @@ export default function imagePacking() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalImagesource = imageSourceApi;
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
                         console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image packer failed");
                         expect(false).assertTrue();
                         done();
                     } else {
+                        globalPacker = imagePackerApi;
                         let packOpts = { format: "image/jpeg", quality: -1 };
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             console.info("SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 success");
@@ -995,6 +1050,7 @@ export default function imagePacking() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalPacker = imagePackerApi;
                 imagePackerApi
                     .release()
                     .then(() => {
@@ -1027,6 +1083,7 @@ export default function imagePacking() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalPacker = imagePackerApi;
                 imagePackerApi.release(() => {
                     console.info("SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 success");
                     expect(true).assertTrue();

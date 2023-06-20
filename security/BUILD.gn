@@ -22,6 +22,7 @@ group("security") {
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "certificate_framework/js_api_test_one:ActsCertificateFrameworkJSNormalTest",
       "cipher/datacipher:datacipher",
+      "cryptoFramework/js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
       "cryptoFramework/js_api_test_one:ActsCryptoFrameworkJSNormalTest",
       "huks_napi_BasicTest:ActsHuksNAPITest",
       "security_huks_basic",

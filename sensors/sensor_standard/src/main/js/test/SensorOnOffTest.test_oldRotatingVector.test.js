@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 export default function SensorJsTest_sensor_20() {
 describe("SensorJsTest_sensor_20", function () {
     function callback(data) {
-        console.info("callback" + JSON.stringify(data));
+        console.info("old callback" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -27,7 +27,7 @@ describe("SensorJsTest_sensor_20", function () {
     }
 
     function callback2(data) {
-        console.info("callback2" + JSON.stringify(data));
+        console.info("old callback2" + JSON.stringify(data));
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
@@ -40,7 +40,7 @@ describe("SensorJsTest_sensor_20", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -48,7 +48,7 @@ describe("SensorJsTest_sensor_20", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -56,7 +56,7 @@ describe("SensorJsTest_sensor_20", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -64,7 +64,7 @@ describe("SensorJsTest_sensor_20", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
     const PARAMETER_ERROR_CODE = 401
@@ -240,15 +240,16 @@ describe("SensorJsTest_sensor_20", function () {
         console.info('----------------------RotatingVector_SensorJsTest007---------------------------');
         function onSensorCallback(data) {
             console.info('RotatingVector_SensorJsTest007  on error');
-            expect(false).assertTrue();
-            done();
+			expect(typeof (data.x)).assertEqual("number");
+			expect(typeof (data.y)).assertEqual("number");
+			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.timestamp)).assertEqual("number");
         }
 		try{
 		    sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {    	
 				sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onSensorCallback);
-				sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onSensorCallback);
 				setTimeout(() => {
-					expect(true).assertTrue();
+					sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onSensorCallback);
 					done();
 				}, 500);
 			})
@@ -395,7 +396,6 @@ describe("SensorJsTest_sensor_20", function () {
 						} catch (error) {
 						console.info("RotatingVector_SensorJsTest012 error:" + error);
 						}
-						console
 						console.info('----------------------RotatingVector_SensorJsTest012 off end---------------------------');
 					}, 500);
 					setTimeout(() => {
@@ -438,4 +438,191 @@ describe("SensorJsTest_sensor_20", function () {
             done();
         }
     })
+	
+	/*
+     * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0140
+     * @tc.name: RotatingVector_SensorJsTest014
+     * @tc.desc: Functional Use Cases
+     */
+    it("RotatingVector_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------RotatingVector_SensorJsTest014--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
+				if (error) {
+					console.info('RotatingVector_SensorJsTest014 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': undefined });
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2, { 'interval': undefined });
+					setTimeout(() => {
+						console.info('----------------------RotatingVector_SensorJsTest014 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
+						} catch (error) {
+						console.info("RotatingVector_SensorJsTest014 error:" + error);
+						expect(false).assertTrue();
+						}
+						console.info('----------------------RotatingVector_SensorJsTest014 off end--------------');
+						done()
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('RotatingVector_SensorJsTest014 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0150
+     * @tc.name: RotatingVector_SensorJsTest015
+     * @tc.desc: Illegal ID passed in
+     */
+    it("RotatingVector_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
+				if (error) {
+					console.info('RotatingVector_SensorJsTest015 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, undefined);
+					try{
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': undefined });
+					} catch(error){
+						console.info('RotatingVector_SensorJsTest015 Repeat subscription'+error);
+					}
+					setTimeout(() => {
+						console.info('----------------------RotatingVector_SensorJsTest015 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
+						} catch (error) {
+						console.info("RotatingVector_SensorJsTest015 error:" + error);
+						expect(false).assertTrue();
+						}
+						done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('RotatingVector_SensorJsTest015 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0160
+     * @tc.name: RotatingVector_SensorJsTest016
+     * @tc.desc: For normal scenarios
+     */
+    it("RotatingVector_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------RotatingVector_SensorJsTest016--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
+				if (error) {
+					console.info('RotatingVector_SensorJsTest016 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");        
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, null);
+					try{
+						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': null });
+						} catch(error){
+							console.info('RotatingVector_SensorJsTest016 Repeat subscription'+error);
+						}
+					setTimeout(() => {
+						console.info('----------------------RotatingVector_SensorJsTest016 off in--------------');
+						try {
+							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
+							} catch (error) {
+						console.info("RotatingVector_SensorJsTest016 error:" + error);
+							expect(false).assertTrue();
+							}
+							done();
+					}, 1000);
+				}
+			})
+		} catch (error) {
+            console.info('RotatingVector_SensorJsTest016 Device does not support! ');
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0170
+     * @tc.name: RotatingVector_SensorJsTest017
+     * @tc.desc:Verification results of the incorrect parameters of the test interface
+     */
+    it("RotatingVector_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------RotatingVector_SensorJsTest017--------------');
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
+				if (error) {
+					console.info('RotatingVector_SensorJsTest017 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': null });
+					setTimeout(() => {
+						console.info('----------------------RotatingVector_SensorJsTest017 off in--------------');
+						try {
+						sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
+						} catch (error) {
+						console.info("RotatingVector_SensorJsTest017 error:" + error);
+						expect(false).assertTrue();
+						}
+						done();			
+					}, 500);
+				}		
+			})
+        } catch (error) {
+            console.info("RotatingVector_SensorJsTest017 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }			
+    })
+
+	/*
+     * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0180
+     * @tc.name: RotatingVector_SensorJsTest018
+     * @tc.desc: Once Normal Subscription Scenario Use Case
+     */
+    it("RotatingVector_SensorJsTest018", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+		try{
+		   sensor.getSingleSensor(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR,(error, data) => {
+				if (error) {
+					console.info('RotatingVector_SensorJsTest018 error');
+				} else {
+					expect(typeof(data)).assertEqual("object");		
+					sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
+					try{
+						sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback, { 'interval': 100000000 });
+						} catch(error){
+							console.info("RotatingVector_SensorJsTest018 catch error:" + error);
+						}
+					setTimeout(() => {
+						console.info('----------------------RotatingVector_SensorJsTest018 off in--------------');
+						try {
+							sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR);
+							} catch (error) {
+						console.info("RotatingVector_SensorJsTest018 error:" + error);
+							expect(false).assertTrue();
+							}
+						console.info('----------------------RotatingVector_SensorJsTest018 off end--------------');
+							done()
+					}, 1000);
+				}
+			})
+        } catch (error) {
+            console.info("RotatingVector_SensorJsTest018 Device does not support! ");
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }				
+    })	
 })}

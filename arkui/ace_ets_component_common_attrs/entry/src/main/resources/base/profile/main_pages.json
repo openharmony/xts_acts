@@ -1,0 +1,24 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/position/PositionPage",
+    "MainAbility/pages/markAnchor/MarkAnchorPage",
+    "MainAbility/pages/offset/OffsetPage",
+    "MainAbility/pages/alignRules/AlignRulesPage",
+    "MainAbility/pages/width/WidthPage",
+    "MainAbility/pages/height/HeightPage",
+    "MainAbility/pages/size/SizePage",
+    "MainAbility/pages/margin/MarginPage",
+    "MainAbility/pages/margin/MarginPageLength",
+    "MainAbility/pages/margin/MarginPageString",
+    "MainAbility/pages/constraintSize/ConstraintSizePage",
+    "MainAbility/pages/layoutWeight/LayoutWeightPage",
+    "MainAbility/pages/layoutWeight/LayoutWeightPageFlex",
+    "MainAbility/pages/layoutWeight/LayoutWeightPageRow",
+    "MainAbility/pages/padding/PaddingBasePage",
+    "MainAbility/pages/padding/PaddingContainerPage",
+    "MainAbility/pages/padding/PaddingContainerPageLength",
+    "MainAbility/pages/padding/PaddingBasePageLength",
+    "MainAbility/pages/default/DefaultPage"
+  ]
+}

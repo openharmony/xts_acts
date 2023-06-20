@@ -353,14 +353,14 @@ struct Index {
                             this.mixedSwitch=true
                             this.mixedMode=MixedMode.None
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            this.controller.loadUrl({url:"https://mixed-script.badssl.com/"})
                             break;
                         }
                         case "emitMixedModeAll":{
                             this.mixedAllSwitch=true
                             this.mixedMode=MixedMode.All
                             await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            this.controller.loadUrl({url:"https://mixed-script.badssl.com/"})
                             break;
                         }
                         case "emitFileAccessTrue":{
@@ -404,13 +404,13 @@ struct Index {
                             break;
                         }
                         case "emitOnErrorReceive":{
-                            this.controller.loadUrl({url:'http://192.168.5.40:9006/sso_web/html/H5/doctor/aboutUs.html'})
+                            this.controller.loadUrl({url:'http://bianixnbo.com'})
                             setTimeout(()=>{
-                                this.controller.loadUrl({url:'http://192.168.5.40:9006/sso_web/html/H5/doctor/aboutUs.html'})
+                                this.controller.loadUrl({url:'http://bianixnbo.com'})
                                 setTimeout(() => {
                                     Utils.emitEvent(this.errorReceive,65)
-                                },3000)
-                            },3000)
+                                },4000)
+                            },4000)
                             break;
                         }
                         case "emitOnHttpErrorReceive":{

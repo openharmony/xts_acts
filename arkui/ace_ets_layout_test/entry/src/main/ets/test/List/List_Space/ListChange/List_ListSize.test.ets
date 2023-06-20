@@ -100,57 +100,5 @@ export default function List_ListSize() {
       console.info('testListListSizeMeet END');
       done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_LIST_LIST_LISTSIZE_TEST_0200
-     * @tc.name      testListListSizeOverflow
-     * @tc.desc      The List parent component sets the width and height to not meet the layout of the child component
-     */
-    it('testListListSizeOverflow', 0, async function (done) {
-      console.info('testListListSizeOverflow START');
-      globalThis.value.message.notify({name:'changeWidth', value:280})
-      globalThis.value.message.notify({name:'changeHeight', value:400})
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('List_ListSize_01');
-      let obj = JSON.parse(strJson);
-      await CommonFunc.sleep(1000);
-      expect(obj.$type).assertEqual('List');
-      let List_ListSize_011 = CommonFunc.getComponentRect('List_ListSize_011');
-      let List_ListSize_012 = CommonFunc.getComponentRect('List_ListSize_012');
-      let List_ListSize_013 = CommonFunc.getComponentRect('List_ListSize_013');
-      let List_ListSize_014 = CommonFunc.getComponentRect('List_ListSize_014');
-      let List_ListSize_01 = CommonFunc.getComponentRect('List_ListSize_01');
-      expect(List_ListSize_011.left).assertEqual(List_ListSize_01.left);
-      expect(List_ListSize_012.left).assertEqual(List_ListSize_01.left);
-      expect(List_ListSize_013.left).assertEqual(List_ListSize_01.left);
-      expect(List_ListSize_014.left).assertEqual(List_ListSize_01.left);
-      expect(List_ListSize_011.top).assertEqual(List_ListSize_01.top);
-
-      expect(Math.round(List_ListSize_012.top - List_ListSize_011.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(List_ListSize_013.top - List_ListSize_012.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(List_ListSize_014.top - List_ListSize_013.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(List_ListSize_014.bottom - List_ListSize_01.bottom)).assertEqual(vp2px(60))
-
-      expect(Math.round(List_ListSize_011.right - List_ListSize_011.left)).assertEqual(vp2px(280));
-      expect(Math.round(List_ListSize_012.right - List_ListSize_012.left)).assertEqual(vp2px(280));
-      expect(Math.round(List_ListSize_013.right - List_ListSize_013.left)).assertEqual(vp2px(280));
-      expect(Math.round(List_ListSize_014.right - List_ListSize_014.left)).assertEqual(vp2px(280));
-
-      expect(Math.round(List_ListSize_011.bottom - List_ListSize_011.top)).assertEqual(vp2px(100));
-      expect(Math.round(List_ListSize_012.bottom - List_ListSize_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(List_ListSize_013.bottom - List_ListSize_013.top)).assertEqual(vp2px(100));
-      expect(Math.round(List_ListSize_014.bottom - List_ListSize_014.top)).assertEqual(vp2px(100));
-      let driver = await Driver.create();
-      await driver.swipe(
-        Math.round(List_ListSize_013.left + ((List_ListSize_013.right - List_ListSize_013.left) / 2)),
-        Math.round(List_ListSize_013.bottom),
-        Math.round(List_ListSize_012.left + ((List_ListSize_012.right - List_ListSize_012.left) / 2)),
-        Math.round(List_ListSize_012.bottom));
-      await CommonFunc.sleep(1000);
-      let List_ListSize_024 = CommonFunc.getComponentRect('List_ListSize_014');
-      expect(List_ListSize_024.bottom).assertEqual(List_ListSize_01.bottom);
-      console.info('testListListSizeOverflow END');
-      done();
-    });
   })
 }

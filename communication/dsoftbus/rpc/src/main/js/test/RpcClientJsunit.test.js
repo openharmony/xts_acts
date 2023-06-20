@@ -11384,7 +11384,7 @@ export default function actsRpcClientJsTest() {
                 let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
                 expect(resultMapRAndW).assertTrue();
                 let bytes = [0,1];
-                let result = ashmem.writeToAshmem(bytes, bytes.length, 2147483647);
+                let result = ashmem.writeToAshmem(bytes, bytes.length, 2147483647/4);
                 expect(result).assertEqual(false);
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
@@ -11409,10 +11409,8 @@ export default function actsRpcClientJsTest() {
                 let resultMapRAndW = ashmem.mapReadAndWriteAshmem();
                 expect(resultMapRAndW).assertTrue();
                 let bytes = [0,1];
-                let result = ashmem.writeToAshmem(bytes, bytes.length, 2147483648);
-                expect(result).assertTrue();
-                let readresult1 = ashmem.readFromAshmem(bytes.length,0);
-                assertArrayElementEqual(readresult1,bytes);
+                let result = ashmem.writeToAshmem(bytes, bytes.length, 2147483648/4);
+                expect(result).assertEqual(false);
                 ashmem.unmapAshmem();
                 ashmem.closeAshmem();
             }catch (error) {

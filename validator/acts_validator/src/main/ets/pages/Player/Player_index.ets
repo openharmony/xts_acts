@@ -317,7 +317,7 @@ struct IndexPage {
         serializer.setAttributes("name", String(title[i]));
         serializer.setAttributes("status", "run");
         serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "Player");
+        serializer.setAttributes("classname", "ActsPlayerTest");
         serializer.setAttributes("result", String(result[i]));
         serializer.setAttributes("level", "*");
         serializer.setAttributes("message", "*");

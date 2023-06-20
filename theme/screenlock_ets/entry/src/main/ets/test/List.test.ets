@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import screenLockJSUnit from './screenLockTest';
-import ScreenLockPromiseTest from './screenLockPromiseTest';
+import screenLockJSUnit from './screenLockTest.test';
+import ScreenLockPromiseTest from './screenLockPromiseTest.test';
 
 export default function testsuite() {
   screenLockJSUnit();

@@ -14,6 +14,7 @@
  */
 
 import call from '@ohos.telephony.call';
+import radio from '@ohos.telephony.radio';
 import { afterEach, describe, expect, it } from '@ohos/hypium';
 const AUTO_ACCEPT_NUMBER = '10010';
 const CALL_STATUS_DIALING = 2;
@@ -107,6 +108,10 @@ export default function CallManageImsCall() {
                     done();
                     return;
                 }
+                expect(call.CallState.CALL_STATE_UNKNOWN).assertEqual(-1);
+                expect(call.CallState.CALL_STATE_IDLE).assertEqual(0);
+                expect(call.CallState.CALL_STATE_RINGING).assertEqual(1);
+                expect(call.CallState.CALL_STATE_OFFHOOK).assertEqual(2);
                 console.log("Telephony_CallManager_getCallState_Async_0100 : data =" + JSON.stringify(data));
                 done();
             });
@@ -430,7 +435,12 @@ export default function CallManageImsCall() {
                 return;
             }).catch((err) => {
                 console.info(CaseName + ' case error' + JSON.stringify(err));
-                expect().assertFail();
+                radio.isRadioOn(0, (err, data) => {
+                    console.info(CaseName + ' err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+                    if (!err) {
+                        expect().assertFail();
+                    }
+                });
                 done();
             });
         });

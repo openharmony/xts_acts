@@ -137,32 +137,6 @@ describe('videoPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testDivStyleProp', 0, async function (done) {
-//        console.info('testDivStyleProp START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[divProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[divProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[divProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testVideoRefProp
      * @tc.desc      ACE
      */
@@ -318,159 +292,6 @@ describe('videoPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivClickEffectPropSmall
-     * @tc.desc      ACE
-     */
-//    it('testVideoClickEffectPropSmall', 0, async function (done) {
-//        console.info('testVideoClickEffectPropSmall START');
-//        console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.clickEffectPropSmall);
-//        console.info("[videoProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[videoProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('video')
-//        expect(obj.$attrs.id).assertEqual('clickEffectPropSmall')
-//        expect(obj.$attrs.clickEffect).assertEqual('spring-small')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivClickEffectPropMedium
-     * @tc.desc      ACE
-     */
-//    it('testDivClickEffectPropMedium', 0, async function (done) {
-//        console.info('testDivClickEffectPropMedium START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.clickEffectPropMedium);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('clickEffectPropMedium')
-//        expect(obj.$attrs.clickEffect).assertEqual('spring-medium')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivClickEffectPropLarge
-     * @tc.desc      ACE
-     */
-//    it('testDivClickEffectPropLarge', 0, async function (done) {
-//        console.info('testDivClickEffectPropLarge START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.clickEffectPropLarge);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('clickEffectPropLarge')
-//        expect(obj.$attrs.clickEffect).assertEqual('spring-large')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivClickEffectPropNone
-     * @tc.desc      ACE
-     */
-//    it('testDivClickEffectPropNone', 0, async function (done) {
-//        console.info('testDivClickEffectPropNone START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.clickEffectPropNone);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('clickEffectPropNone')
-//        expect(obj.$attrs.clickEffect).assertEqual(undefined)
-//        console.info("[divProps] get clickEffect value is: " + JSON.stringify(obj.$attrs.clickEffect));
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivDirPropRtl
-     * @tc.desc      ACE
-     */
-//    it('testDivDirPropRtl', 0, async function (done) {
-//        console.info('testDivDirPropRtl START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.dirPropRtl);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('dirPropRtl')
-//        expect(obj.$attrs.dir).assertEqual('rtl')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivDirPropLtr
-     * @tc.desc      ACE
-     */
-//    it('testDivDirPropLtr', 0, async function (done) {
-//        console.info('testDivDirPropLtr START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.dirPropLtr);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('dirPropLtr')
-//        expect(obj.$attrs.dir).assertEqual('ltr')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivDirPropAuto
-     * @tc.desc      ACE
-     */
-//    it('testDivDirPropAuto', 0, async function (done) {
-//        console.info('testDivDirPropAuto START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.dirPropAuto);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('dirPropAuto')
-//        expect(obj.$attrs.dir).assertEqual('auto')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivDirPropNone
-     * @tc.desc      ACE
-     */
-//    it('testDivDirPropNone', 0, async function (done) {
-//        console.info('testDivDirPropNone START');
-//        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.dirPropNone);
-//        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('div')
-//        expect(obj.$attrs.id).assertEqual('dirPropNone')
-//        expect(obj.$attrs.dir).assertEqual('auto')
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testVideoForPropNull
      * @tc.desc      ACE
      */
@@ -548,44 +369,6 @@ describe('videoPropsJsTest', function () {
         console.info("[videoProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testDivIfPropFalse', 0, async function (done) {
-    //        console.info('testDivIfPropFalse START');
-    //        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('div')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testDivIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testDivIfPropNone', 0, async function (done) {
-    //        console.info('testDivIfPropNone START');
-    //        console.info("[divProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[divProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[divProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('div')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
@@ -732,7 +515,7 @@ describe('videoPropsJsTest', function () {
      * @tc.name      testVideoAutoplayPropTrue
      * @tc.desc      ACE
      */
-    it('testVideoAutoplayPropFalse', 0, async function (done) {
+    it('testVideoAutoplayPropTrue', 0, async function (done) {
         console.info('testVideoAutoplayPropTrue START');
         console.info("[videoProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 

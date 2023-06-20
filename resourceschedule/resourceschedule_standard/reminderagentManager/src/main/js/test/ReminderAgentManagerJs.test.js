@@ -56,6 +56,34 @@ export default function ReminderAgentManagerTest() {
 
         console.info('start################################start');
 
+      /**
+       * @tc.number    
+       * @tc.name      reminderRequestAttribute_0001
+       * @tc.desc      test ReminderRequest Attribute tapDismissed and autoDeletedTime
+       */
+        it("reminderRequestAttribute_0001", 0, async function (done) {
+            console.info('----------------------reminderRequestAttribute_0001---------------------------');
+            let timer = {
+                reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
+                triggerTimeInSeconds: 10,
+                tapDismissed: true,
+                autoDeletedTime: 20000000000
+            }
+            try {
+                reminderAgent.publishReminder(timer, (err, reminderId) => {
+                    if (err) {
+                        console.info('reminderRequestAttribute_0001 callback err.code is :' + err.code);
+                    } else {
+                        console.info('reminderRequestAttribute_0001 callback reminderId = ' + reminderId);
+                        expect(reminderId).assertLarger(0);
+                        done();
+                    }
+                })
+            } catch (error) {
+                console.log("reminderRequestAttribute_0001 publishReminder error.code:" + error.code);
+            }
+        })
+
     /*
      * @tc.name: testReminderHelper001
      * @tc.desc: test spent time by publishReminder with timer (callback)

@@ -99,24 +99,7 @@ export default function SubscribaleAbstractJsunit() {
       console.info('[stateManagement_IPropertySubscriber_0100] END');
       done();
     });
-
-    /**
-    * @tc.number  stateManagement_IPropertySubscriber_0100
-    * @tc.name    stateManagement IPropertySubscriber   validation
-    * @tc.desc    Function test
-    */
-    it('stateManagement_IPropertySubscriber_0100', 0, function (done) {
-      done();
-      return;
-      console.info('[stateManagement_IPropertySubscriber_0100] Start');
-      let iPropertySubscriber =new IPropertySubscriber();
-      let id = iPropertySubscriber.id();
-      let aboutToBeDeleted = iPropertySubscriber.aboutToBeDeleted();
-      expect(true).assertTrue();
-      console.info('[stateManagement_IPropertySubscriber_0100] END');
-      done();
-    });
-
+    
     /**
     * @tc.number  stateManagement_SyncedPropertyOneWay_0100
     * @tc.name    stateManagement stateManagement_SyncedPropertyOneWay_0100   validation

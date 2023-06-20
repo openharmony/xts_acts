@@ -32,7 +32,7 @@ struct OnWindowNew {
   @State userAgent:string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) CHrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   @State javaScriptAccess:boolean=true;
   @State fileAccess:boolean=true;
-  @State domStorageAccess:boolean=false;
+  @State domStorageAccess:boolean=true;
   @State imageAccess:boolean=true;
   @State onlineImageAccess:boolean=true;
   @State databaseAccess:boolean=true;
@@ -150,6 +150,26 @@ struct OnWindowNew {
                 Utils.emitEvent(testTitle, 7114)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              break;
+            }
+            case "emitGetOriginsPromiseLoadLocalHtml01": {
+              let length = -1;
+              try {
+                this.controller.loadUrl($rawfile('getOrigins.html'));
+                web_webview.WebStorage.getOrigins()
+                  .then(origins => {
+                    console.log(`getOrigins call`);
+                    if (origins) {
+                      length = origins.length;
+                      console.log(`length is: ${length}`);
+                    }
+                    console.log(`getOrigins call end`);
+                    Utils.emitEvent(length, 7166);
+                  })
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                Utils.emitEvent(length, 7166);
               }
               break;
             }

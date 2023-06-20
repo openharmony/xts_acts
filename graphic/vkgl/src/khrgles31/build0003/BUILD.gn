@@ -26,6 +26,8 @@ config("deqp_platform_ohos_config") {
 }
 
 ohos_static_library("libkhrgles31func0003") {
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
   sources = common_src
   sources += [ "../Khrgles31BaseFunc.cpp" ]
 
@@ -145,7 +147,7 @@ ohos_moduletest_suite("ActsKhrgles31TestSuite0003") {
     "../core/Khrgles31teximage3d_r8TestCase.cpp",
   ]
 
-  include_dirs = [ "//test/xts/acts/graphic/vkgl/src" ]
+  include_dirs = [ "../../../src" ]
 
   deps = [ ":libkhrgles31func0003" ]
 

@@ -56,7 +56,7 @@ export default function polyLineNeJsunit() {
       let strJson = getInspectorByKey('Polyline');
       console.info("[testpolyLineNe0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Polyline');
       expect(obj.$attrs.width).assertEqual("100.00px");
       console.info("[testpolyLineNe0001] width value :" + obj.$attrs.width);
       done();
@@ -73,7 +73,7 @@ export default function polyLineNeJsunit() {
       let strJson = getInspectorByKey('Polyline');
       console.info("[testpolyLineNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Shape');
+      expect(obj.$type).assertEqual('Polyline');
       expect(obj.$attrs.height).assertEqual("100.00px");
       console.info("[testpolyLineNe0002] height value :" + obj.$attrs.height);
       done();

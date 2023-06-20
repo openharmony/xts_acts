@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import sliderTest from './SliderTest'
+import SliderTestSec from './SliderTestSec'
 
 export default function testsuite() {
        sliderTest()
+       SliderTestSec()
 }

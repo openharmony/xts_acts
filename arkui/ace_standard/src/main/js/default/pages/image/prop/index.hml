@@ -127,7 +127,7 @@
              dir="ltr">
         </image>
         <image id="dirPropNone"
-             dir="">
+             dir="auto">
         </image>
 
         <text class="sub-title">
@@ -160,7 +160,7 @@
              show="false">
         </image>
         <image id="showPropNone"
-             show="">
+             show="true">
         </image>
     </div>
 

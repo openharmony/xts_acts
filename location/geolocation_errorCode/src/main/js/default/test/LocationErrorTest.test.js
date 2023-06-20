@@ -157,10 +157,10 @@ describe('geolocationTest_LocErr', function () {
                 console.info("[wifi_test] getCurrentLocation2 promise:" + JSON.stringify(result));
             } catch(error) {
                 console.info('[lbs_js] getCurrentLocation2 promise try err:' + JSON.stringify(error) +"code"+ error.code +"mes"+ error.message);
-                expect(error.code).assertEqual("401");
+                expect(error.code).assertEqual(3301200);
             }
         })();
-        await sleep(600);
+        await sleep(4000);
         done();
     })
 

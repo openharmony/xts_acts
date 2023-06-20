@@ -38,6 +38,6 @@ ohos_moduletest_suite("ActsHiAppEventCPPTest") {
     "//third_party/googletest:gtest_main",
   ]
   configs = [ ":hilogtest_config" ]
-  part_name = "hisysevent_native"
+  part_name = "hiappevent"
   subsystem_name = "hiviewdfx"
 }

@@ -1,0 +1,477 @@
+/*
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import UDMF from '@ohos.data.UDMF';
+
+export default function UDMFApiTest() {
+  describe('UDMFApiTest', function () {
+    console.info('start################################start');
+
+    let text = new UDMF.Text();
+    text.details = {
+      title:"标题",
+      content:"内容"
+    };
+
+    let plainText = new UDMF.PlainText();
+    plainText.details = {
+      title:"标题",
+      content:"内容"
+    };
+    plainText.textContent = "textContent";
+    plainText.abstract = "abstract";
+
+    let link = new UDMF.Hyperlink();
+    link.details = {
+      title:"标题",
+      content:"内容"
+    };
+    link.url = "url";
+    link.description = "description";
+
+    let html = new UDMF.HTML();
+    html.details = {
+      title:"标题",
+      content:"内容"
+    };
+    html.htmlContent = "htmlContent";
+    html.plainContent = "plainContent";
+
+    let file = new UDMF.File();
+    file.details = {
+      title:"标题",
+      content:"内容"
+    };
+    file.uri = "uri";
+
+    let folder = new UDMF.Folder();
+    folder.details = {
+      title:"标题",
+      content:"内容"
+    };
+    folder.folderUri = "folderUri";
+
+    let image = new UDMF.Image();
+    image.details = {
+      title:"标题",
+      content:"内容"
+    };
+    image.imageUri = "imageUri";
+
+    let video = new UDMF.Video();
+    video.details = {
+      title:"标题",
+      content:"内容"
+    };
+    video.videoUri = "videoUri";
+
+    let arrayBuf = new ArrayBuffer(2 * 3 * 4);
+    let u8Array = new Uint8Array(arrayBuf);
+
+    let systemDefinedRecord = new UDMF.SystemDefinedRecord();
+    systemDefinedRecord.details = {
+      title:"标题",
+      version:1,
+      content:u8Array
+    };
+
+    let systemDefinedForm = new UDMF.SystemDefinedForm();
+    systemDefinedForm.details = {
+      title:"标题",
+      version:1,
+      content:u8Array
+    };
+    systemDefinedForm.formId = 123456;
+    systemDefinedForm.formName = 'formName';
+    systemDefinedForm.bundleName = 'bundleName';
+    systemDefinedForm.abilityName = 'abilityName';
+    systemDefinedForm.module = 'module';
+
+    let systemDefinedAppItem = new UDMF.SystemDefinedAppItem();
+    systemDefinedAppItem.details = {
+      title:"标题",
+      version:1,
+      content:u8Array
+    };
+    systemDefinedAppItem.appId = 'appId';
+    systemDefinedAppItem.appName = 'appName';
+    systemDefinedAppItem.appIconId = 'appIconId';
+    systemDefinedAppItem.appLabelId = 'appLabelId';
+    systemDefinedAppItem.bundleName = 'bundleName';
+    systemDefinedAppItem.abilityName = 'abilityName';
+
+    let systemDefinedPixelMap = new UDMF.SystemDefinedPixelMap();
+    systemDefinedPixelMap.details = {
+      title:"标题",
+      version:1,
+      content:u8Array
+    };
+    systemDefinedPixelMap.rawData = u8Array;
+
+    let applicationDefinedRecord = new UDMF.ApplicationDefinedRecord();
+    applicationDefinedRecord.applicationDefinedType = 'applicationDefinedType';
+    applicationDefinedRecord.rawData = u8Array;
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API001
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a text record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API001',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API001 start');
+      let unifiedData = new UDMF.UnifiedData(text);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.Text>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      console.info("SUB_DistributedData_Udmf_API001 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API002
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a plaintext record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API002',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API002 start');
+      let unifiedData = new UDMF.UnifiedData(plainText);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.PlainText>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      expect(record.textContent).assertEqual('textContent');
+      expect(record.abstract).assertEqual('abstract');
+      console.info("SUB_DistributedData_Udmf_API002 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API003
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a hyperlink record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API003',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API003 start');
+      let unifiedData = new UDMF.UnifiedData(link);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.Hyperlink>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      expect(record.url).assertEqual('url');
+      expect(record.description).assertEqual('description');
+      console.info("SUB_DistributedData_Udmf_API003 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API004
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a html record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API004',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API004 start');
+      let unifiedData = new UDMF.UnifiedData(html);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.HTML>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      expect(record.htmlContent).assertEqual('htmlContent');
+      expect(record.plainContent).assertEqual('plainContent');
+      console.info("SUB_DistributedData_Udmf_API004 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API005
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a file record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API005',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API005 start');
+      let unifiedData = new UDMF.UnifiedData(file);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.File>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      console.info("SUB_DistributedData_Udmf_API005 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API006
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a folder record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API006',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API006 start');
+      let unifiedData = new UDMF.UnifiedData(folder);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.Folder>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      console.info("SUB_DistributedData_Udmf_API006 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API007
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a image record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API007',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API007 start');
+      let unifiedData = new UDMF.UnifiedData(image);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.Image>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      console.info("SUB_DistributedData_Udmf_API007 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API008
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a video record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API008',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API008 start');
+      let unifiedData = new UDMF.UnifiedData(video);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.Video>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      console.info("SUB_DistributedData_Udmf_API008 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API009
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedrecord record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API009',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API009 start');
+      let unifiedData = new UDMF.UnifiedData(systemDefinedRecord);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.SystemDefinedRecord>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.version).assertEqual(1);
+      for(var i = 0; i<u8Array.length; i++){
+        expect(record.details.content[i]).assertEqual(u8Array[i]);
+      }
+      console.info("SUB_DistributedData_Udmf_API009 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API010
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedform record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API010',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API010 start');
+      let unifiedData = new UDMF.UnifiedData(systemDefinedForm);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.SystemDefinedForm>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.version).assertEqual(1);
+      for(var i = 0; i<u8Array.length; i++){
+        expect(record.details.content[i]).assertEqual(u8Array[i]);
+      }
+      expect(record.formId).assertEqual(123456);
+      expect(record.formName).assertEqual('formName');
+      expect(record.bundleName).assertEqual('bundleName');
+      expect(record.abilityName).assertEqual('abilityName');
+      expect(record.module).assertEqual('module');
+      console.info("SUB_DistributedData_Udmf_API010 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API011
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedappitem record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API011',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API011 start');
+      let unifiedData = new UDMF.UnifiedData(systemDefinedAppItem);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.SystemDefinedAppItem>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.version).assertEqual(1);
+      for(var i = 0; i<u8Array.length; i++){
+        expect(record.details.content[i]).assertEqual(u8Array[i]);
+      }
+      expect(record.appId).assertEqual('appId');
+      expect(record.appName).assertEqual('appName');
+      expect(record.appIconId).assertEqual('appIconId');
+      expect(record.appLabelId).assertEqual('appLabelId');
+      expect(record.bundleName).assertEqual('bundleName');
+      expect(record.abilityName).assertEqual('abilityName');
+      console.info("SUB_DistributedData_Udmf_API011 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API012
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a systemdefinedpixelmap record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API012',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API012 start');
+      let unifiedData = new UDMF.UnifiedData(systemDefinedPixelMap);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.SystemDefinedPixelMap>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.version).assertEqual(1);
+      for(var i = 0; i<u8Array.length; i++){
+        expect(record.details.content[i]).assertEqual(u8Array[i]);
+      }
+      for(var i = 0; i<u8Array.length; i++){
+        expect(record.rawData[i]).assertEqual(u8Array[i]);
+      }
+      console.info("SUB_DistributedData_Udmf_API012 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API013
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a applicationdefinedrecord record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API013',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API013 start');
+      let unifiedData = new UDMF.UnifiedData(applicationDefinedRecord);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.ApplicationDefinedRecord>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.applicationDefinedType).assertEqual('applicationDefinedType');
+      for(var i = 0; i<u8Array.length; i++){
+        expect(record.rawData[i]).assertEqual(u8Array[i]);
+      }
+      console.info("SUB_DistributedData_Udmf_API013 end");
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API014
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a recordgroup.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API014',0, async function (done) {
+      console.info('SUB_DistributedData_Udmf_API014 start');
+      let unifiedData = new UDMF.UnifiedData(text);
+      unifiedData.addRecord(plainText);
+      unifiedData.addRecord(link);
+      unifiedData.addRecord(html);
+      unifiedData.addRecord(file);
+      unifiedData.addRecord(folder);
+      unifiedData.addRecord(image);
+      unifiedData.addRecord(video);
+      unifiedData.addRecord(systemDefinedRecord);
+      unifiedData.addRecord(systemDefinedForm);
+      unifiedData.addRecord(systemDefinedAppItem);
+      unifiedData.addRecord(systemDefinedPixelMap);
+      unifiedData.addRecord(applicationDefinedRecord);
+      let records = unifiedData.getRecords();
+      let record1 = <UDMF.Text>(records[0]);
+      let record2 = <UDMF.PlainText>(records[1]);
+      let record3 = <UDMF.Hyperlink>(records[2]);
+      let record4 = <UDMF.HTML>(records[3]);
+      let record5 = <UDMF.File>(records[4]);
+      let record6 = <UDMF.Folder>(records[5]);
+      let record7 = <UDMF.Image>(records[6]);
+      let record8 = <UDMF.Video>(records[7]);
+      let record9 = <UDMF.SystemDefinedRecord>(records[8]);
+      let record10 = <UDMF.SystemDefinedForm>(records[9]);
+      let record11 = <UDMF.SystemDefinedAppItem>(records[10]);
+      let record12 = <UDMF.SystemDefinedPixelMap>(records[11]);
+      let record13 = <UDMF.ApplicationDefinedRecord>(records[12]);
+      expect(records.length).assertEqual(13);
+      expect(record1.getType()).assertEqual(UDMF.UnifiedDataType.TEXT);
+      expect(record2.getType()).assertEqual(UDMF.UnifiedDataType.PLAIN_TEXT);
+      expect(record3.getType()).assertEqual(UDMF.UnifiedDataType.HYPERLINK);
+      expect(record4.getType()).assertEqual(UDMF.UnifiedDataType.HTML);
+      expect(record5.getType()).assertEqual(UDMF.UnifiedDataType.FILE);
+      expect(record6.getType()).assertEqual(UDMF.UnifiedDataType.FOLDER);
+      expect(record7.getType()).assertEqual(UDMF.UnifiedDataType.IMAGE);
+      expect(record8.getType()).assertEqual(UDMF.UnifiedDataType.VIDEO);
+      expect(record9.getType()).assertEqual(UDMF.UnifiedDataType.SYSTEM_DEFINED_RECORD);
+      expect(record10.getType()).assertEqual(UDMF.UnifiedDataType.SYSTEM_DEFINED_FORM);
+      expect(record11.getType()).assertEqual(UDMF.UnifiedDataType.SYSTEM_DEFINED_APP_ITEM);
+      expect(record12.getType()).assertEqual(UDMF.UnifiedDataType.SYSTEM_DEFINED_PIXEL_MAP);
+      expect(record13.getType()).assertEqual(UDMF.UnifiedDataType.APPLICATION_DEFINED_RECORD);
+      console.info("SUB_DistributedData_Udmf_API014 end");
+      done();
+    })
+  })
+}

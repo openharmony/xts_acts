@@ -803,20 +803,6 @@ export default function AVPlayerStabilityTest() {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0200 end')
         })
 
-//        /* *
-//           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300
-//           * @tc.name      : 001.test complete->play->seek duration (1000 times)
-//           * @tc.desc      : Local Video complete->play->seek duration (1000 times)
-//           * @tc.size      : MediumTest
-//           * @tc.type      : Function test
-//           * @tc.level     : Level3
-//         */
-//        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300', 0, async function (done) {
-//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 start')
-//            AVPlayerTestBase.playToCompleted(videos[0], avPlayer, done);
-//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0300 end')
-//        })
-
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0400
            * @tc.name      : 001.test play->seek (1000 times wait callBack)
@@ -886,20 +872,6 @@ export default function AVPlayerStabilityTest() {
             AVPlayerTestBase.createToReleaseLoop(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 end')
         })
-
-//        /* *
-//           * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100
-//           * @tc.name      : 001.test create time (wait callback)
-//           * @tc.desc      : Local Video test create time (wait callback)
-//           * @tc.size      : MediumTest
-//           * @tc.type      : Function test
-//           * @tc.level     : Level3
-//         */
-//        it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100', 0, async function (done) {
-//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 start')
-//            AVPlayerTestBase.createTimeWithCallback(videos[0], avPlayer, done);
-//            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0100 end')
-//        })
 
         /* *
            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVPLAYER_PERFORMANCE_01_0110

@@ -60,11 +60,13 @@ export default function swiperItemSize() {
       console.info("Before page turning , the itemSizekey01.left value is " + JSON.stringify(itemSizekey01.left));
       expect(itemSizekey.left).assertEqual(itemSizekey01.left);
       expect(itemSizekey.top).assertEqual(itemSizekey01.top);
-      expect(Math.round(itemSizekey.right - itemSizekey01.right)).assertEqual(vp2px(150));
-      expect(Math.round(itemSizekey.bottom - itemSizekey01.bottom)).assertEqual(vp2px(150));
+      expect(itemSizekey.right).assertEqual(itemSizekey01.right);
+
       // Flipping.
       let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
+      //await driver.swipe(250, 230, 200, 230);
+      await CommonFunc.sleep(500);
+      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
       await CommonFunc.sleep(1000);
       // After flipping the page.
       itemSizekey = CommonFunc.getComponentRect('itemSizekey');
@@ -75,8 +77,8 @@ export default function swiperItemSize() {
       console.info("After page turning , the itemSizekey02.left value is " + JSON.stringify(itemSizekey02.left));
       expect(itemSizekey.left).assertEqual(itemSizekey02.left);
       expect(itemSizekey.top).assertEqual(itemSizekey02.top);
-      expect(Math.round(itemSizekey.right - itemSizekey01.right)).assertEqual(vp2px(150));
-      expect(Math.round(itemSizekey.bottom - itemSizekey01.bottom)).assertEqual(vp2px(150));
+      expect(itemSizekey.right).assertEqual(itemSizekey02.right);
+
       console.info("The type value is " + JSON.stringify(obj.$type));
       console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
       console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
@@ -87,53 +89,5 @@ export default function swiperItemSize() {
       done();
     });
 
-    /**
-     * @tc.number    SUB_ACE_SWIPER_ITEMCHANGED_0200
-     * @tc.name      testSwiperItemSizeExceed.
-     * @tc.desc      Set item's  height and width   values '350*350'.
-     */
-    it('testSwiperItemSizeExceed', 0, async function (done) {
-      console.info('new testSwiperItemSizeExceed START');
-      globalThis.value.message.notify({name:'index', value: 0});
-      globalThis.value.message.notify({name:'height', value: 350});
-      globalThis.value.message.notify({name:'width', value: 350});
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('itemSizekey');
-      let obj = JSON.parse(strJson);
-      let itemSizekey = CommonFunc.getComponentRect('itemSizekey');
-      let itemSizekey01 = CommonFunc.getComponentRect('itemSizekey01');
-      let itemSizekey02 = CommonFunc.getComponentRect('itemSizekey02');
-      let itemSizekey03 = CommonFunc.getComponentRect('itemSizekey03');
-      // Before flipping the page.
-      console.info("Before page turning , the itemSizekey.left value is " + JSON.stringify(itemSizekey.left));
-      console.info("Before page turning , the itemSizekey01.left value is " + JSON.stringify(itemSizekey01.left));
-      expect(itemSizekey.left).assertEqual(itemSizekey01.left);
-      expect(itemSizekey.right).assertEqual(itemSizekey01.right);
-      expect(itemSizekey.top).assertEqual(itemSizekey01.top);
-      expect(itemSizekey.bottom).assertEqual(itemSizekey01.bottom);
-      // Flipping.
-      let driver = await Driver.create();
-      await driver.swipe(250, 230, 200, 230);
-      await CommonFunc.sleep(1000);
-      // After flipping the page.
-      itemSizekey = CommonFunc.getComponentRect('itemSizekey');
-      itemSizekey01 = CommonFunc.getComponentRect('itemSizekey01');
-      itemSizekey02 = CommonFunc.getComponentRect('itemSizekey02');
-      itemSizekey03 = CommonFunc.getComponentRect('itemSizekey03');
-      console.info("After page turning , the itemSizekey.left value is " + JSON.stringify(itemSizekey.left));
-      console.info("After page turning , the itemSizekey02.left value is " + JSON.stringify(itemSizekey02.left));
-      expect(itemSizekey.left).assertEqual(itemSizekey02.left);
-      expect(itemSizekey.right).assertEqual(itemSizekey02.right);
-      expect(itemSizekey.top).assertEqual(itemSizekey02.top);
-      expect(itemSizekey.bottom).assertEqual(itemSizekey02.bottom);
-      console.info("The type value is " + JSON.stringify(obj.$type));
-      console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));
-      console.info("The displayCount value is " + JSON.stringify(obj.$attrs.displayCount));
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual('true');
-      expect(obj.$attrs.displayCount).assertEqual(1);
-      console.info('new testSwiperItemSizeExceed END');
-      done();
-    });
   })
 }

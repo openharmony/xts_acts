@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import systemTimeJsunit from './systemTimeTest';
+import systemTimeJsunit from './systemTimeTest.test';
 import systemTimeNoPermissionTest from './timeNoPermission.test'
 
 export default function testsuite() {

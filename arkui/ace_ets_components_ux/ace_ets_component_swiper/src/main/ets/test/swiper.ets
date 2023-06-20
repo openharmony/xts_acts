@@ -1060,7 +1060,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedFontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedFontColor_0500 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontColor).assertEqual("#FF182431");
+          expect(obj2.selectedFontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_SelectedFontColor_0500 END ');
           done();
         } catch (err) {
@@ -1090,7 +1090,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedFontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedFontColor_0600 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontColor).assertEqual("#FF182431");
+          expect(obj2.selectedFontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_SelectedFontColor_0600 END ');
           done();
         } catch (err) {
@@ -1151,7 +1151,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedFontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedFontColor_0800 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontColor).assertEqual("#FF182431");
+          expect(obj2.selectedFontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_SelectedFontColor_0800 END ');
           done();
         } catch (err) {
@@ -1181,7 +1181,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedFontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedFontColor_0900 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontColor).assertEqual("#FF182431");
+          expect(obj2.selectedFontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_SelectedFontColor_0900 END ');
           done();
         } catch (err) {
@@ -1274,7 +1274,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedFontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedFontColor_1200 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontColor).assertEqual("#FF182431");
+          expect(obj2.selectedFontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_SelectedFontColor_1200 END ');
           done();
         } catch (err) {
@@ -1424,7 +1424,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.fontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_FontColor_0500 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontColor).assertEqual("#FF182431");
+          expect(obj2.fontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_FontColor_0500 END ');
           done();
         } catch (err) {
@@ -1454,7 +1454,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.fontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_FontColor_0600 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontColor).assertEqual("#FF182431");
+          expect(obj2.fontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_FontColor_0600 END ');
           done();
         } catch (err) {
@@ -1515,7 +1515,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.fontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_FontColor_0800 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontColor).assertEqual("#FF182431");
+          expect(obj2.fontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_FontColor_0800 END ');
           done();
         } catch (err) {
@@ -1545,7 +1545,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.fontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_FontColor_0900 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontColor).assertEqual("#FF182431");
+          expect(obj2.fontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_FontColor_0900 END ');
           done();
         } catch (err) {
@@ -1638,7 +1638,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.fontColor));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_FontColor_1200 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontColor).assertEqual("#FF182431");
+          expect(obj2.fontColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_Swiper_FontColor_1200 END ');
           done();
         } catch (err) {

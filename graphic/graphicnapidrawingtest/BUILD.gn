@@ -21,6 +21,7 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
   module_out_path = module_output_path
   subsystem_name = "graphic"
   part_name = "graphic_standard"
+  comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
     "NativeDrawingBitmapTest.cpp",
@@ -39,16 +40,14 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
   ]
 
   include_dirs = [
-    "//foundation/graphic/graphic_2d/rosen/modules/2d_engine",
-    "//foundation/graphic/graphic_2d/rosen/modules/2d_graphics/include",
-    "//foundation/graphic/graphic_2d/rosen/modules/2d_graphics/src",
+    "$comPath/rosen/modules/2d_engine",
     "//third_party/googletest/googletest/include",
   ]
 
-  external_deps = [ "c_utils:utils" ]
-  deps = [
-    "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
-    "//foundation/graphic/graphic_2d/rosen/modules/2d_graphics:2d_graphics",
-    "//third_party/googletest:gtest_main",
+  external_deps = [
+    "c_utils:utils",
+    "graphic_standard:2d_graphics",
+    "hiviewdfx_hilog_native:libhilog",
   ]
+  deps = [ "//third_party/googletest:gtest_main" ]
 }

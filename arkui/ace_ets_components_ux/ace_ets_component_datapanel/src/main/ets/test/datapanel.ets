@@ -1596,7 +1596,7 @@ export default function datapanelTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_TrackBackgroundColor_0700 component obj.$attrs.trackBackgroundColor is:" +
           JSON.stringify(obj.$attrs.trackBackgroundColor));
-          expect(obj.$attrs.trackBackgroundColor).assertEqual('#08182431');
+          expect(obj.$attrs.trackBackgroundColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_DataPanel_TrackBackgroundColor_0700 END ');
           done();
         } catch (err) {
@@ -1624,7 +1624,7 @@ export default function datapanelTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_TrackBackgroundColor_0800 component obj.$attrs.trackBackgroundColor is:" +
           JSON.stringify(obj.$attrs.trackBackgroundColor));
-          expect(obj.$attrs.trackBackgroundColor).assertEqual('#08182431');
+          expect(obj.$attrs.trackBackgroundColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_DataPanel_TrackBackgroundColor_0800 END ');
           done();
         } catch (err) {
@@ -1652,7 +1652,7 @@ export default function datapanelTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_TrackBackgroundColor_0900 component obj.$attrs.trackBackgroundColor is:" +
           JSON.stringify(obj.$attrs.trackBackgroundColor));
-          expect(obj.$attrs.trackBackgroundColor).assertEqual('#08182431');
+          expect(obj.$attrs.trackBackgroundColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_DataPanel_TrackBackgroundColor_0900 END ');
           done();
         } catch (err) {
@@ -1681,7 +1681,7 @@ export default function datapanelTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_TrackBackgroundColor_1000 component obj.$attrs.trackBackgroundColor is:" +
           JSON.stringify(obj.$attrs.trackBackgroundColor));
-          expect(obj.$attrs.trackBackgroundColor).assertEqual('#08182431');
+          expect(obj.$attrs.trackBackgroundColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_DataPanel_TrackBackgroundColor_1000 END ');
           done();
         } catch (err) {
@@ -1709,7 +1709,7 @@ export default function datapanelTest() {
           JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_TrackBackgroundColor_1100 component obj.$attrs.trackBackgroundColor is:" +
           JSON.stringify(obj.$attrs.trackBackgroundColor));
-          expect(obj.$attrs.trackBackgroundColor).assertEqual('#08182431');
+          expect(obj.$attrs.trackBackgroundColor).assertEqual(obj.$attrs.borderColor);
           console.info('ArkUX_Stage_DataPanel_TrackBackgroundColor_1100 END ');
           done();
         } catch (err) {
@@ -1928,7 +1928,7 @@ export default function datapanelTest() {
           console.info("ArkUX_Stage_DataPanel_TrackShadow_0200 component obj.$attrs is: " + JSON.stringify(obj.$attrs));
           console.info("ArkUX_Stage_DataPanel_TrackShadow_0200 component obj.$attrs.trackShadow is: " +
           JSON.stringify(obj.$attrs.trackShadow));
-          expect(obj.$attrs.trackShadow.radius).assertEqual("-1.000000");
+          expect(obj.$attrs.trackShadow.radius).assertEqual("5.000000");
           console.info('ArkUX_Stage_DataPanel_TrackShadow_0200 END ');
           done();
         } catch (err) {
@@ -2455,201 +2455,6 @@ export default function datapanelTest() {
     });
 
     /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2000
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors : ''
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_2000', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_2000 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_2000');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2000 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2000 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2000 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2000 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2000 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2000 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2100
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors : null
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_2100', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_2100 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_2100');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2100 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2100 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2100 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2100 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2100 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2100 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2200
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors : undefined
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_2200', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_2200 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_2200');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2200 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2200 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2200 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2200 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2200 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2200 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
      * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2300
      * @tc.name Tests the trackShadow property of the DataPanel component
      * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors:
@@ -2830,201 +2635,6 @@ export default function datapanelTest() {
     });
 
     /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2700
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors : ''
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_2700', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_2700 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_2700');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2700 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2700 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2700 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2700 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2700 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2700 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2800
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors : null
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_2800', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_2800 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_2800');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2800 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2800 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2800 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2800 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2800 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2800 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_2800
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors : undefined
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_2900', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_2900 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_2900');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2900 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2900 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2900 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_2900 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2900 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_2900 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
      * @tc.number ArkUX_Stage_DataPanel_TrackShadow_3000
      * @tc.name Tests the trackShadow property of the DataPanel component
      * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors:
@@ -3168,201 +2778,6 @@ export default function datapanelTest() {
         } catch (err) {
           expect().assertFail();
           console.info('ArkUX_Stage_DataPanel_TrackShadow_3300 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_3400
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors: ''
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_3400', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_3400 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_3400');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3400 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3400 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3400 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3400 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3400 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3400 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_3500
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors:  null
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_3500', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_3500 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_3500');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3500 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3500 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3500 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3500 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3500 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3500 ERR  ' + JSON.stringify(err));
-          done();
-        }
-      }, 500)
-    });
-
-    /**
-     * @tc.number ArkUX_Stage_DataPanel_TrackShadow_3600
-     * @tc.name Tests the trackShadow property of the DataPanel component
-     * @tc.desc DataPanel common components, set trackShadow property parameter to trackShadow.colors: undefined
-     */
-    it('ArkUX_Stage_DataPanel_TrackShadow_3600', 0, async function (done) {
-      console.info('ArkUX_Stage_DataPanel_TrackShadow_3600 START');
-      setTimeout(() => {
-        try {
-          let strJson = getInspectorByKey('ArkUX_Stage_DataPanel_TrackShadow_3600');
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3600 strJson  :' + JSON.stringify(strJson));
-          let obj = JSON.parse(strJson);
-          let trackShadow = obj.$attrs.trackShadow;
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3600 component obj is: " + JSON.stringify(obj));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3600 component obj.$attrs is: " +
-          JSON.stringify(obj.$attrs));
-          console.info("ArkUX_Stage_DataPanel_TrackShadow_3600 component obj.$attrs.trackShadow is: " +
-          JSON.stringify(obj.$attrs.trackShadow));
-          hilog.info(0x0000, 'testTag', '%{public}s', JSON.stringify(obj.$attrs.trackShadow.colors));
-          expect(obj.$attrs.trackShadow.colors[0][0].color).assertEqual("#FFF7CE00");
-          expect(obj.$attrs.trackShadow.colors[0][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[0][1].color).assertEqual("#FFF99B11");
-          expect(obj.$attrs.trackShadow.colors[0][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[1][0].color).assertEqual("#FFF76223");
-          expect(obj.$attrs.trackShadow.colors[1][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[1][1].color).assertEqual("#FFF2400A");
-          expect(obj.$attrs.trackShadow.colors[1][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[2][0].color).assertEqual("#FFF772AC");
-          expect(obj.$attrs.trackShadow.colors[2][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[2][1].color).assertEqual("#FFE65392");
-          expect(obj.$attrs.trackShadow.colors[2][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[3][0].color).assertEqual("#FFA575EB");
-          expect(obj.$attrs.trackShadow.colors[3][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[3][1].color).assertEqual("#FFA12DF7");
-          expect(obj.$attrs.trackShadow.colors[3][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[4][0].color).assertEqual("#FF7B79F7");
-          expect(obj.$attrs.trackShadow.colors[4][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[4][1].color).assertEqual("#FF4B48F7");
-          expect(obj.$attrs.trackShadow.colors[4][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[5][0].color).assertEqual("#FF4B8AF3");
-          expect(obj.$attrs.trackShadow.colors[5][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[5][1].color).assertEqual("#FF007DFF");
-          expect(obj.$attrs.trackShadow.colors[5][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[6][0].color).assertEqual("#FF73C1E6");
-          expect(obj.$attrs.trackShadow.colors[6][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[6][1].color).assertEqual("#FF4FB4E3");
-          expect(obj.$attrs.trackShadow.colors[6][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[7][0].color).assertEqual("#FFA5D61D");
-          expect(obj.$attrs.trackShadow.colors[7][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[7][1].color).assertEqual("#FF69D14F");
-          expect(obj.$attrs.trackShadow.colors[7][1].offset).assertEqual("1.000000");
-          expect(obj.$attrs.trackShadow.colors[8][0].color).assertEqual("#FFA2A2B0");
-          expect(obj.$attrs.trackShadow.colors[8][0].offset).assertEqual("0.000000");
-          expect(obj.$attrs.trackShadow.colors[8][1].color).assertEqual("#FF8E8E93");
-          expect(obj.$attrs.trackShadow.colors[8][1].offset).assertEqual("1.000000");
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3600 END ');
-          done();
-        } catch (err) {
-          expect().assertFail();
-          console.info('ArkUX_Stage_DataPanel_TrackShadow_3600 ERR  ' + JSON.stringify(err));
           done();
         }
       }, 500)

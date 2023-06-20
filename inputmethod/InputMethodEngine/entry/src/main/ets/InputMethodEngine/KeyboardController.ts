@@ -294,18 +294,18 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_029(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_029 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_029", commonEventPublishData, this.publishCallback);
             } else {
-                let editorAttribyte = await InputClient.getEditorAttribute();
+                let editorAttribyte = await TextInputClient.getEditorAttribute();
                 console.debug(TAG + '====>inputMethodEngine_test_029 editorAttribyte:' + JSON.stringify(editorAttribyte));
-                let value = await InputClient.sendKeyFunction(editorAttribyte.enterKeyType);
+                let value = await TextInputClient.sendKeyFunction(editorAttribyte.inputPattern);
                 console.debug(TAG + '====>inputMethodEngine_test_029 sendKeyFunction:' + JSON.stringify(value));
                 if (value){
                     commonEventPublishData = {
@@ -323,16 +323,16 @@ export class KeyboardController {
 
     private inputMethodEngine_test_030(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_030 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_030", commonEventPublishData, this.publishCallback);
             } else {
-                InputClient.deleteForward(1, (err, value) => {
+                TextInputClient.deleteForward(1, (err, value) => {
                     if (err){
                         console.debug(TAG + '====>inputMethodEngine_test_030 deleteForward err:' + JSON.stringify(err));
                         commonEventPublishData = {
@@ -357,16 +357,16 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_031(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_031 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_031", commonEventPublishData, this.publishCallback);
             } else {
-                let value = await InputClient.deleteForward(1);
+                let value = await TextInputClient.deleteForward(1);
                 console.debug(TAG + '====>inputMethodEngine_test_031 deleteForward:' + JSON.stringify(value));
                 if (typeof(value) === 'boolean'){
                     commonEventPublishData = {
@@ -384,16 +384,16 @@ export class KeyboardController {
 
     private inputMethodEngine_test_032(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_032 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_032", commonEventPublishData, this.publishCallback);
             } else {
-                InputClient.deleteBackward(1, (err, value) => {
+                TextInputClient.deleteBackward(1, (err, value) => {
                     if (err){
                         console.debug(TAG + '====>inputMethodEngine_test_032 deleteBackward err:' + JSON.stringify(err));
                         commonEventPublishData = {
@@ -418,16 +418,16 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_033(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_033 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_033", commonEventPublishData, this.publishCallback);
             } else {
-                let value = await InputClient.deleteBackward(1);
+                let value = await TextInputClient.deleteBackward(1);
                 console.debug(TAG + '====>inputMethodEngine_test_033 deleteBackward:' + JSON.stringify(value));
                 if (value){
                     commonEventPublishData = {
@@ -445,16 +445,16 @@ export class KeyboardController {
 
     private inputMethodEngine_test_034(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_034 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_034", commonEventPublishData, this.publishCallback);
             } else {
-                InputClient.insertText('test', (err, value) => {
+                TextInputClient.insertText('test', (err, value) => {
                     if (err){
                         console.debug(TAG + '====>inputMethodEngine_test_034 insertText err:' + JSON.stringify(err));
                         commonEventPublishData = {
@@ -479,16 +479,16 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_035(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_035 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_035", commonEventPublishData, this.publishCallback);
             } else {
-                let value = await InputClient.insertText('test');
+                let value = await TextInputClient.insertText('test');
                 console.debug(TAG + '====>inputMethodEngine_test_035 insertText:' + JSON.stringify(value));
                 if (value){
                     commonEventPublishData = {
@@ -506,16 +506,16 @@ export class KeyboardController {
 
     private inputMethodEngine_test_036(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_036 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_036", commonEventPublishData, this.publishCallback);
             } else {
-                InputClient.getForward(1, (err, value) => {
+                TextInputClient.getForward(1, (err, value) => {
                     if (err){
                         console.debug(TAG + '====>inputMethodEngine_test_036 getForward err:' + JSON.stringify(err));
                         commonEventPublishData = {
@@ -540,16 +540,16 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_037(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_037 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_037", commonEventPublishData, this.publishCallback);
             } else {
-                let value = await InputClient.getForward(1);
+                let value = await TextInputClient.getForward(1);
                 console.debug(TAG + '====>inputMethodEngine_test_037 getForward:' + JSON.stringify(value));
                 if (value){
                     commonEventPublishData = {
@@ -567,16 +567,16 @@ export class KeyboardController {
 
     private inputMethodEngine_test_038(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_038 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_038", commonEventPublishData, this.publishCallback);
             } else {
-                InputClient.getEditorAttribute((err, value) => {
+                TextInputClient.getEditorAttribute((err, value) => {
                     if (err){
                         console.debug(TAG + '====>inputMethodEngine_test_038 getEditorAttribute err:' + JSON.stringify(err));
                         commonEventPublishData = {
@@ -601,16 +601,16 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_039(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_039 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_039", commonEventPublishData, this.publishCallback);
             } else {
-                let value = await InputClient.getEditorAttribute();
+                let value = await TextInputClient.getEditorAttribute();
                 console.debug(TAG + '====>inputMethodEngine_test_039 getEditorAttribute:' + JSON.stringify(value));
                 if (value){
                     commonEventPublishData = {
@@ -628,17 +628,17 @@ export class KeyboardController {
 
     private inputMethodEngine_test_040(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_040 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_040", commonEventPublishData, this.publishCallback);
             } else {
                 try{
-                    KeyboardDelegate.hideKeyboard((err, value) => {
+                    keyboardController.hideKeyboard((err, value) => {
                         if (err){
                             console.debug(TAG + '====>inputMethodEngine_test_040 hideKeyboard:' + JSON.stringify(err));
                             commonEventPublishData = {
@@ -663,17 +663,17 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_041(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_041 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_041", commonEventPublishData, this.publishCallback);
             } else {
                 try{
-                    await KeyboardDelegate.hideKeyboard();
+                    await keyboardController.hideKeyboard();
                     console.debug(TAG + '====>inputMethodEngine_test_041 hideKeyboard success');
                     commonEventPublishData = {
                         data: "SUCCESS"
@@ -691,16 +691,16 @@ export class KeyboardController {
 
     private inputMethodEngine_test_042(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_042 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_042", commonEventPublishData, this.publishCallback);
             } else {
-                InputClient.getBackward(1, (err, value) => {
+                TextInputClient.getBackward(1, (err, value) => {
                     if (err){
                         console.debug(TAG + '====>inputMethodEngine_test_042 getBackward err:' + JSON.stringify(err));
                         commonEventPublishData = {
@@ -719,16 +719,16 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_043(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_043 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_043", commonEventPublishData, this.publishCallback);
             } else {
-                let value = await InputClient.getBackward(1);
+                let value = await TextInputClient.getBackward(1);
                 console.debug(TAG + '====>inputMethodEngine_test_043 getBackward:' + JSON.stringify(value));
                 commonEventPublishData = {
                     data: "SUCCESS"
@@ -740,17 +740,17 @@ export class KeyboardController {
 
     private inputMethodEngine_test_049(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_049 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_049", commonEventPublishData, this.publishCallback);
             } else {
                 try{
-                    KeyboardDelegate.hide((err, value) => {
+                    keyboardController.hide((err, value) => {
                         if (err){
                             console.debug(TAG + '====>inputMethodEngine_test_049 hide:' + JSON.stringify(err));
                             commonEventPublishData = {
@@ -775,17 +775,17 @@ export class KeyboardController {
     }
     private inputMethodEngine_test_050(): void{
         console.debug(TAG + '====>receive inputMethodEngine_test_050 data');
-        inputMethodEngine.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+        inputMethodEngine.on('inputStart', async(keyboardController, TextInputClient) =>{
             inputMethodEngine.off('inputStart');
             let commonEventPublishData;
-            if (InputClient == null) {
+            if (TextInputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
                 };
                 commoneventmanager.publish("inputMethodEngine_test_050", commonEventPublishData, this.publishCallback);
             } else {
                 try{
-                    await KeyboardDelegate.hide();
+                    await keyboardController.hide();
                     console.debug(TAG + '====>inputMethodEngine_test_050 hideKeyboard success');
                     commonEventPublishData = {
                         data: "SUCCESS"
@@ -812,12 +812,12 @@ export class KeyboardController {
             inputMethodEngine.off("keyboardHide");
             console.info(TAG + '====>inputMethodEngine.off("keyboardHide") count: ' + count);
         });
-        inputMethodEngine.on('inputStart', (KeyboardDelegate, InputClient) => {
+        inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) => {
             inputMethodEngine.off('inputStart');
             console.info(TAG + '====>inputMethodEngine_test_071 inputMethodEngine.on("inputStart")');
             let t = setInterval(async () => {
-                await KeyboardDelegate.hideKeyboard();
-                console.info(TAG + '====>KeyboardDelegate.hideKeyboard count: ' +  count);
+                await keyboardController.hideKeyboard();
+                console.info(TAG + '====>keyboardController.hideKeyboard count: ' +  count);
                 if(count === 1){
                     clearInterval(t);
                 }
@@ -867,7 +867,8 @@ export class KeyboardController {
         inputKeyboardDelegate.on('keyDown', (keyEvent) => {
             inputKeyboardDelegate.off('keyDown');
             console.info(TAG + "====>inputKeyboardDelegate.on('keyDown') count: " + count);
-            if (keyEvent.keyCode === 2000){
+            console.info(TAG + "====>inputKeyboardDelegate.keyEvent.keyAction " + keyEvent.keyAction);
+            if (keyEvent.keyCode === 2000 && keyEvent.keyAction === 2){
                 count += 1;
             }
             return true;
@@ -875,7 +876,8 @@ export class KeyboardController {
         inputKeyboardDelegate.on('keyUp', (keyEvent) => {
             inputKeyboardDelegate.off('keyUp');
             console.info(TAG + "====>inputKeyboardDelegate.on('keyUp') count: " + count);
-            if (keyEvent.keyCode === 2000){
+            console.info(TAG + "====>inputKeyboardDelegate.keyEvent.keyAction " + keyEvent.keyAction);
+            if (keyEvent.keyCode === 2000 && keyEvent.keyAction === 3){
                 count += 1;
             }
             return true;
@@ -903,12 +905,12 @@ export class KeyboardController {
             count += 1;
             console.info(TAG + '====>inputMethodEngine_test_074 x,y,z: ' + x + "---" + y + "---" + h);
         });
-        inputMethodEngine.on('inputStart', (KeyboardDelegate, InputClient) => {
+        inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) => {
             inputMethodEngine.off('inputStart');
             console.info(TAG + '====>inputMethodEngine_test_074 inputMethodEngine.on("inputStart")');
             let t = setInterval(async () => {
-                await InputClient.insertText("ttt");
-                console.info(TAG + '====>KeyboardDelegate.insertText count: ' +  count);
+                await TextInputClient.insertText("ttt");
+                console.info(TAG + '====>keyboardController.insertText count: ' +  count);
                 if(count === 2){
                     clearInterval(t);
                 }
@@ -959,12 +961,12 @@ export class KeyboardController {
             count += 1;
             console.info(TAG + '====>inputMethodEngine_test_077 text: ' + text);
         });
-        inputMethodEngine.on('inputStart', (KeyboardDelegate, InputClient) => {
+        inputMethodEngine.on('inputStart', (keyboardController, TextInputClient) => {
             inputMethodEngine.off('inputStart');
             console.info(TAG + '====>inputMethodEngine_test_077 inputMethodEngine.on("inputStart")');
             let t = setInterval(async () => {
-                await InputClient.insertText("tttt");
-                console.info(TAG + '====>KeyboardDelegate.insertText count: ' +  count);
+                await TextInputClient.insertText("tttt");
+                console.info(TAG + '====>keyboardController.insertText count: ' +  count);
                 if(count === 2){
                     clearInterval(t);
                 }
@@ -978,7 +980,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_077", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },500);
+        },1000);
     }
 
 }

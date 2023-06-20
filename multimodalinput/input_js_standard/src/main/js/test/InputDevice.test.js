@@ -121,8 +121,9 @@ export default function InputDevice_test() {
 // 参数正常,返回值正常
 it("InputDevice_getDevice_test_02", 0, async function (done) {
   console.info(`InputDevice_getDevice_test_02 enter`);
-  try {
+
     inputDevice.getDeviceIds(async (err, data) => {
+      try {
       console.info(`InputDevice_getDeviceIds_test_02 err:${JSON.stringify(err)}`);
       console.info(`InputDevice_getDeviceIds_test_02 data:${JSON.stringify(data)}`);
       if (err) {
@@ -177,13 +178,12 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
         }
       }
       console.info(`InputDevice_getDevice_test_02 exit`);
-      done();
-    });
-  } catch (error) {
-    console.info(`InputDevice_getDevice_test_02 error`);
-    expect(false).assertTrue();
+    } catch (error) {
+      console.info(`InputDevice_getDevice_test_02 error`);
+      expect(false).assertTrue();
+    }
     done();
-  }
+    });
 })
 
     // 参数正常,返回值正常
@@ -517,15 +517,13 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
           expect(data).assertInstanceOf('Array');
           console.info(`getDeviceInfo:data assertInstanceOf Array end ${data.length}`);
           if (data.length <= 0) {
-            done()
             return;
           }
-          try {
             inputDevice.getDeviceInfo(data[0], (err, res) => {
+            try {
               console.info(`getDeviceInfo:data enter`);
               if (err) {
                 expect(false).assertTrue();
-                done()
                 return;
               }
               let arr = [];
@@ -546,10 +544,10 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
                 expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
                   || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
                   || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
-                expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
+                expect(res.axisRanges[j].axis == 'touchmajor' || res.axisRanges[j].axis == 'touchminor'
                   || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
                   || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
-                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+                  || res.axisRanges[j].axis == 'toolminor' || res.axisRanges[j].axis == 'toolmajor'
                   || res.axisRanges[j].axis == 'NULL').assertTrue();
                 expect(res.axisRanges[j].max).assertInstanceOf('Number');
                 expect(res.axisRanges[j]).assertInstanceOf('Object');
@@ -558,17 +556,17 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
                 expect(res.axisRanges[j].flat).assertInstanceOf('Number');
                 expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
               }
-              done()
-            })
-          } catch (err) {
-            console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceInfo ${JSON.stringify(err)}`);
-            expect(false).assertTrue();
-          }
+            } catch (err) {
+              console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceInfo ${JSON.stringify(err)}`);
+            }
+            done()
+          })
         })
       } catch (err) {
         console.info(`InputDevice_getDeviceInfo_test_01 inputDevice.getDeviceList ${JSON.stringify(err)}`);
         expect(false).assertTrue();
       }
+      done()
       console.info(`InputDevice_getDeviceInfo_async_test exit`);
     })
 
@@ -580,13 +578,12 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     it("InputDevice_getDeviceInfo_test_02", 0, async function (done) {
       console.info(`InputDevice_getDeviceInfo_promise_test enter`);
       try {
-        inputDevice.getDeviceList().then((data) => {
+        await inputDevice.getDeviceList().then((data) => {
           expect(data).assertInstanceOf('Array');
           if (data.length <= 0) {
             return;
           }
-          try {
-            inputDevice.getDeviceInfo(data[0]).then((res) => {
+              inputDevice.getDeviceInfo(data[0]).then((res) => {
               let arr = [];
               console.info(`getDeviceInfo:data ${JSON.stringify(res)}`);
               arr = Object.keys(res);
@@ -605,10 +602,10 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
                 expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
                   || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
                   || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
-                expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
+                expect(res.axisRanges[j].axis == 'touchmajor' || res.axisRanges[j].axis == 'touchminor'
                   || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
                   || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
-                  || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+                  || res.axisRanges[j].axis == 'toolminor' || res.axisRanges[j].axis == 'toolmajor'
                   || res.axisRanges[j].axis == 'NULL').assertTrue();
                 expect(res.axisRanges[j].max).assertInstanceOf('Number');
                 expect(res.axisRanges[j]).assertInstanceOf('Object');
@@ -617,13 +614,11 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
                 expect(res.axisRanges[j].flat).assertInstanceOf('Number');
                 expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
               }
-            }).catch(err => {
-              expect(false).assertTrue();
-            });
-          } catch (err) {
+          }).catch(err => {
             expect(false).assertTrue();
-          }
-        })
+            done();
+      });
+      })
       } catch (err) {
         expect(false).assertTrue();
       }

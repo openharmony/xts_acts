@@ -316,7 +316,6 @@ describe('threadWorkerTest', function () {
     })
 
     // check postMessage is ok
-    // main post {message:"hello world"} , will receive {message:"hello world worker"}
     /**
      * @tc.name: threadWorker_postMessage_test_003
      * @tc.desc: Sends a message to the worker thread.
@@ -1543,10 +1542,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_003
+     * @tc.name: threadWorker_removeListener_test_004
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_003', 0, async function (done) {
+     it('threadWorker_removeListener_test_004', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1573,10 +1572,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_004
+     * @tc.name: threadWorker_removeListener_test_005
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_004', 0, async function (done) {
+     it('threadWorker_removeListener_test_005', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1603,10 +1602,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_005
+     * @tc.name: threadWorker_removeListener_test_006
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_005', 0, async function (done) {
+     it('threadWorker_removeListener_test_006', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1633,10 +1632,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_006
+     * @tc.name: threadWorker_removeListener_test_007
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_006', 0, async function (done) {
+     it('threadWorker_removeListener_test_007', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -2340,6 +2339,77 @@ describe('threadWorkerTest', function () {
             }
         }
         expect(flag).assertTrue();
+        done();
+    })
+
+    // Check the transmission types supported by Worker is ok.
+    /**
+     * @tc.name: threadWorker_support_types_test_008
+     * @tc.desc: Check the transmission types supported by Worker is ok.
+     */
+     it('threadWorker_support_types_test_008', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_026.js");
+        let flag = false;
+        let result;
+        let isTerminate = false;
+        class MyModel
+        {
+            name = "module";
+            Init() {
+                this.name = "Init";
+            }
+        }
+        let model = new MyModel()
+        ss.onmessage = function(d) {
+            result = d.data;
+            flag = true;
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage(model);
+        while (!flag) {
+            await promiseCase();
+        }
+        ss.terminate();
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(result).assertEqual("module");
+        done();
+    })
+
+    // Check the transmission types supported by Worker is ok.
+    /**
+     * @tc.name: threadWorker_support_types_test_009
+     * @tc.desc: Check the transmission types supported by Worker is ok.
+     */
+    it('threadWorker_support_types_test_009', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_027.js");
+        let result = "";
+        let isTerminate = false;
+        class MyModel
+        {
+            name = "module";
+            Init() {
+                this.name = "Init";
+            }
+        }
+        let model = new MyModel()
+
+        ss.onerror = function (e){
+            result = "unInit";
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage(model);
+        while (!isTerminate) {
+            await promiseCase();
+        }
+
+        expect(result).assertEqual("unInit");
         done();
     })
 

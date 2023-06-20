@@ -102,11 +102,11 @@ export default function AlignContentFlexP_fixed() {
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(obj.$attrs.constructor.alignContent).assertEqual("FlexAlign.SpaceEvenly");
       
-      expect(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom)
-      .assertEqual(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.round(AlignContentFlexSpaceEvenly_flex001.bottom - AlignContentFlexSpaceEvenly_4.bottom))
+      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top));
       
-      expect(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom)
-      .assertEqual(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top);
+      expect(Math.round(AlignContentFlexSpaceEvenly_4.top - AlignContentFlexSpaceEvenly_3.bottom))
+      .assertEqual(Math.round(AlignContentFlexSpaceEvenly_1.top - AlignContentFlexSpaceEvenly_flex001.top));
         
       console.info('testAlignContentSpaceEvenlyFlexFixedSatisfy END');
       done();

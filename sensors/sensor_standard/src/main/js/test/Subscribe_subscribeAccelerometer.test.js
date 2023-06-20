@@ -23,7 +23,7 @@ describe("SensorJsTest_sensor_25", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -31,7 +31,7 @@ describe("SensorJsTest_sensor_25", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -39,7 +39,7 @@ describe("SensorJsTest_sensor_25", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -47,7 +47,7 @@ describe("SensorJsTest_sensor_25", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
     /*
@@ -252,4 +252,171 @@ describe("SensorJsTest_sensor_25", function () {
            done();
         }, 1000);
     })
+	
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0080
+     * @tc.name: subscribeAccelerometer_SensorJsTest008
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeAccelerometer_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest008---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'game',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest008 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: undefined,
+        });
+        setTimeout(() => {
+            sensor.unsubscribeAccelerometer();
+            done();
+        }, 1000);
+    })
+
+   /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0090
+     * @tc.name: subscribeAccelerometer_SensorJsTest009
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeAccelerometer_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest009---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'ui',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest009 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: undefined,
+        });
+        setTimeout(() => {
+            sensor.unsubscribeAccelerometer();
+            done();
+        }, 1000);
+    })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0100
+     * @tc.name: subscribeAccelerometer_SensorJsTest010
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeAccelerometer_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest010---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'normal',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest010 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: undefined,
+        });
+        setTimeout(() => {
+            sensor.unsubscribeAccelerometer();
+            done();
+        }, 1000);
+    })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0110
+     * @tc.name: subscribeAccelerometer_SensorJsTest011
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeAccelerometer_SensorJsTest011", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest011---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'normal',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest011 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: undefined,
+        });
+
+        sensor.subscribeAccelerometer({
+            interval: 'normal',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest011_1 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: null,
+        });
+        setTimeout(() => {
+           sensor.unsubscribeAccelerometer();
+           done();
+        }, 1000);
+    })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0120
+     * @tc.name: subscribeAccelerometer_SensorJsTest012
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeAccelerometer_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest012---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'xxx',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest012 success" + JSON.stringify(data));
+				expect(false).assertTrue();
+            },
+            fail: undefined,
+        });
+        setTimeout(() => {
+           done();
+        }, 500);		
+    })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0130
+     * @tc.name: subscribeAccelerometer_SensorJsTest013
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+    it("subscribeAccelerometer_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest013---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'xxx',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest013 success" + JSON.stringify(data));
+				expect(false).assertTrue();
+            },
+			fail: null,
+        });
+		setTimeout(() => {
+           sensor.unsubscribeAccelerometer();
+           done();
+        }, 1000);
+    })
+
+    /*
+     * @tc.number:SUB_SensorsSystem_SubscribeAccelerometer_JSTest_0140
+     * @tc.name: subscribeAccelerometer_SensorJsTest014
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     */
+	it("subscribeAccelerometer_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('----------------------subscribeAccelerometer_SensorJsTest014---------------------------');
+        sensor.subscribeAccelerometer({
+            interval: 'game',
+            success: function (data) {
+                console.info("subscribeAccelerometer_SensorJsTest014 success" + JSON.stringify(data));
+                expect(typeof (data.x)).assertEqual("number");
+                expect(typeof (data.y)).assertEqual("number");
+                expect(typeof (data.z)).assertEqual("number");
+            },
+            fail: null,
+        });
+        setTimeout(() => {
+           sensor.unsubscribeAccelerometer();
+           done();
+        }, 1000);
+    })	
 })}

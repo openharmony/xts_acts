@@ -70,9 +70,9 @@ export default function flexPadding_StretchJsunit() {
       expect(flexPadding01.right).assertLarger(textFlexPadding03.right)
       expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(10))
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(180))
+      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(180))
+      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(180))
 
       expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(150))
       expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(150))
@@ -105,16 +105,16 @@ export default function flexPadding_StretchJsunit() {
 
       expect(textFlexPadding01.bottom).assertEqual(textFlexPadding02.bottom)
       expect(textFlexPadding02.bottom).assertEqual(textFlexPadding03.bottom)
-      expect(Math.round(flexPadding01.bottom - textFlexPadding01.bottom)).assertEqual(vp2px(20))
+      expect(Math.round(flexPadding01.bottom - textFlexPadding01.bottom)).assertEqual(vp2px(30))
       expect(Math.round(textFlexPadding01.left - flexPadding01.left)).assertEqual(vp2px(30))
       expect(textFlexPadding03.right).assertLess(flexPadding01.right)
 
-      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(vp2px(440/3))
-      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(vp2px(440/3))
+      expect(Math.round(textFlexPadding01.bottom - textFlexPadding01.top)).assertEqual(vp2px(140))
+      expect(Math.round(textFlexPadding02.bottom - textFlexPadding02.top)).assertEqual(vp2px(140))
+      expect(Math.round(textFlexPadding03.bottom - textFlexPadding03.top)).assertEqual(vp2px(140))
+      expect(Math.round(textFlexPadding01.right - textFlexPadding01.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textFlexPadding02.right - textFlexPadding02.left)).assertEqual(Math.round(vp2px(440/3)))
+      expect(Math.round(textFlexPadding03.right - textFlexPadding03.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Stretch')
       console.info('new testFlexItemAlignStretchParentSetPaddingExceed END');

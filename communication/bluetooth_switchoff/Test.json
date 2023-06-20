@@ -19,7 +19,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -Q pidoff",
                 "svc bluetooth disable"
             ]
         }

@@ -136,32 +136,6 @@ describe('sliderPropsJsTest', function () {
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSliderStyleProp
-     * @tc.desc      ACEs
-     */
-//    it('testSliderStyleProp', 0, async function (done) {
-//        console.info('testSliderStyleProp START');
-//        console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-//
-//        let obj = JSON.parse(globalThis.value.styleProp);
-//        console.info("[sliderProps] get inspector value is: " + JSON.stringify(obj));
-//        console.info("[sliderProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-//
-//        expect(obj.$type).assertEqual('slider')
-//        expect(obj.$attrs.id).assertEqual('styleProp')
-//        expect(obj.$attrs.style).assertEqual(undefined)
-//        console.info("[sliderProps] get style value is: " + JSON.stringify(obj.$attrs.style));
-//
-//        expect(obj.$styles.width).assertEqual(undefined);
-//        console.info("[sliderProps] get style width value is: " + JSON.stringify(obj.$styles.width));
-//        expect(obj.$styles.height).assertEqual(undefined);
-//        console.info("[sliderProps] get style height value is: " + JSON.stringify(obj.$styles.height));
-//        expect(obj.$styles.get('background-color')).assertEqual(undefined);
-//        done();
-//    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
      * @tc.name      testSliderRefProp
      * @tc.desc      ACE
      */
@@ -585,44 +559,6 @@ describe('sliderPropsJsTest', function () {
         console.info("[sliderProps] get for value is: " + JSON.stringify(obj.$attrs.if));
         done();
     });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSliderIfPropFalse
-     * @tc.desc      ACE
-     */
-    //    it('testSliderIfPropFalse', 0, async function (done) {
-    //        console.info('testSliderIfPropFalse START');
-    //        console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropFalse);
-    //        console.info("[sliderProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[sliderProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('slider')
-    //        expect(obj.$attrs.id).assertEqual('ifPropFalse')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testSliderIfPropNone
-     * @tc.desc      ACE
-     */
-    //    it('testSliderIfPropNone', 0, async function (done) {
-    //        console.info('testSliderIfPropNone START');
-    //        console.info("[sliderProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-    //
-    //        let obj = JSON.parse(globalThis.value.ifPropNone);
-    //        console.info("[sliderProps] get inspector value is: " + JSON.stringify(obj));
-    //        console.info("[sliderProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-    //
-    //        expect(obj.$type).assertEqual('slider')
-    //        expect(obj.$attrs.id).assertEqual('ifPropNone')
-    //        expect(obj.$attrs.if).assertEqual(false)
-    //        done();
-    //    });
 
     /**
      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100

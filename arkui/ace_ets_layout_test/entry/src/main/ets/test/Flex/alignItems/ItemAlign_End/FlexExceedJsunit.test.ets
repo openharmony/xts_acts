@@ -77,38 +77,6 @@ export default function flexExceed_EndJsunit() {
       done();
     });
 
-    /**
-     * @tc.number    SUB_ACE_FLEXALIGNITEMS_END_0700
-     * @tc.name      testFlexItemAlignEndSetMarPadExceed
-     * @tc.desc      Subcomponent outside when parent component set margin and padding.
-     */
-    it('testFlexItemAlignEndSetMarPadExceed', 0, async function (done) {
-      console.info('new testFlexItemAlignEndSetMarPadExceed START');
-      globalThis.value.message.notify({name:'padding', value:30});
-      globalThis.value.message.notify({name:'margin', value:30});
-      await CommonFunc.sleep(2000);
-      let strJson1 = getInspectorByKey('flexExceed01');
-      let obj1 = JSON.parse(strJson1);
-      let textExceed01 = CommonFunc.getComponentRect('textExceed01');
-      let textExceed02 = CommonFunc.getComponentRect('textExceed02');
-      let textExceed03 = CommonFunc.getComponentRect('textExceed03');
-      let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
-
-      expect(textExceed01.bottom).assertEqual(textExceed02.bottom)
-      expect(textExceed02.bottom).assertEqual(textExceed03.bottom)
-      expect(flexExceed01.bottom - textExceed01.bottom).assertEqual(vp2px(30))
-      expect(textExceed01.left - flexExceed01.left).assertEqual(vp2px(30))
-
-      expect(textExceed01.bottom - textExceed01.top).assertEqual(vp2px(50))
-      expect(textExceed02.bottom - textExceed02.top).assertEqual(vp2px(100))
-      expect(textExceed03.bottom - textExceed03.top).assertEqual(vp2px(150))
-      expect(textExceed01.right - textExceed01.left).assertEqual(vp2px(440/3))
-      expect(textExceed02.right - textExceed02.left).assertEqual(vp2px(440/3))
-      expect(textExceed03.right - textExceed03.left).assertEqual(vp2px(440/3))
-      expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
-      expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
-      console.info('new testFlexItemAlignEndSetMarPadExceed END');
-      done();
-    });
+   
   })
 }

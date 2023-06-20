@@ -29,6 +29,7 @@ struct SliderExample {
   @State inSetValueTwo: number = 40
   @State vOutSetValueOne: number = 40
   @State vInSetValueOne: number = 40
+  @State vInSetValueOne1: number = 40
   @State vOutSetValueTwo: number = 40
   @State vInSetValueTwo: number = 40
   @State blockColor: string = "#191970"
@@ -232,7 +233,7 @@ struct SliderExample {
 
             Slider().showTips(true)
               .onChange((value: number, mode: SliderChangeMode) => {
-                this.vInSetValueOne = value
+                this.vInSetValueOne1 = value
                 this.modeT = mode.toString()
                 console.info('value:' + value + 'm`ode:' + mode.toString())
               }).key('sliderConstructor2')

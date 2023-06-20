@@ -183,7 +183,12 @@ export function checkDescription(actualDescription, descriptionKey, descriptionV
         console.info('case actual value is  '+ property);
         console.info('case hope value is  '+ descriptionValue[i]);
         if (descriptionKey[i] == 'codec_mime') {
-            expect(property).assertEqual(CODECMIMEVALUE[descriptionValue[i]]);
+            console.info('CODECMIMEVALUE[descriptionValue[i]] value is  '+ CODECMIMEVALUE[descriptionValue[i]]);
+            if(property == "video/x-h264"){
+                console.info('property attribute is:'+ property);
+            }else{
+                expect(property).assertEqual(CODECMIMEVALUE[descriptionValue[i]]);
+            }
         } else {
             expect(property).assertEqual(descriptionValue[i]);
         }

@@ -19,7 +19,7 @@ import CommonFunc from "../../../MainAbility/common/Common";
 import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function ColumnSetVisibility_SubChange() {
   describe('ColumnSetVisibilityTest', function () {
-    beforeEach(async function (done) {
+    beforeAll(async function (done) {
       let options = {
         uri: 'MainAbility/pages/Column/subcomponentChanged/ColumnSetVisibility_SubChange',
       }
@@ -28,7 +28,7 @@ export default function ColumnSetVisibility_SubChange() {
         await CommonFunc.sleep(1000);
         let pages = router.getState();
         console.info("get ColumnSetVisibility state success " + JSON.stringify(pages));
-        if (!("ColumnSetVisibility" == pages.name)) {
+        if (!("ColumnSetVisibility_SubChange" == pages.name)) {
           console.info("get ColumnSetVisibility state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push ColumnSetVisibility page success " + JSON.stringify(result));

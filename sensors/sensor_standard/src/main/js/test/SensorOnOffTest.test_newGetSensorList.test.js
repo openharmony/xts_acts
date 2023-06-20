@@ -23,7 +23,7 @@ describe("SensorJsTest_sensor_35", function () {
         /*
          * @tc.setup: setup invoked before all testcases
          */
-        console.info('beforeAll caled')
+        console.info('beforeAll called')
     })
 
     afterAll(function () {
@@ -31,7 +31,7 @@ describe("SensorJsTest_sensor_35", function () {
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
-        console.info('afterAll caled')
+        console.info('afterAll called')
     })
 
     beforeEach(function () {
@@ -39,7 +39,7 @@ describe("SensorJsTest_sensor_35", function () {
         /*
          * @tc.setup: setup invoked before each testcases
          */
-        console.info('beforeEach caled')
+        console.info('beforeEach called')
     })
 
     afterEach(function () {
@@ -47,7 +47,7 @@ describe("SensorJsTest_sensor_35", function () {
         /*
          * @tc.teardown: teardown invoked after each testcases
          */
-        console.info('afterEach caled')
+        console.info('afterEach called')
     })
 
     let errMessage;
@@ -63,7 +63,6 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
 	it("getSensorLists_SensorJsTest001",TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info("---------------------------getSensorLists_SensorJsTest001----------------------------------");
         sensor.getSensorList().then((data) => {
 		for (let i = 0; i < data.length; i++) {
             console.info("getSensorLists_SensorJsTest001 " + JSON.stringify(data[i]));
@@ -81,7 +80,6 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
 	it("getSensorLists_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-    console.info("---------------------------getSensorLists_SensorJsTest002----------------------------------");
     sensor.getSensorList((error, data) => {
         if (error) {
             console.info('getSensorLists_SensorJsTest002 error');
@@ -101,9 +99,8 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
     it("getSensorLists_SensorJsTest003", 0, async function (done) {
-        console.info("---------------------------getSensorLists_SensorJsTest003----------------------------------");
         sensor.getSensorList(null).then(data => {
-            console.info("---------------------------getSensorLists_SensorJsTest003 callback in-----------" + data.length);
+            console.info("--getSensorLists_SensorJsTest003 callback in--" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest003 " + JSON.stringify(data[i]));
             }
@@ -122,9 +119,8 @@ describe("SensorJsTest_sensor_35", function () {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
 it("getSensorLists_SensorJsTest004", 0, async function (done) {
-    console.info("---------------------------getSensorLists_SensorJsTest004----------------------------------");
     sensor.getSensorList(errMessage).then(data => {
-        console.info("---------------------------getSensorLists_SensorJsTest004 callback in-----------" + data.length);
+        console.info("--getSensorLists_SensorJsTest004 callback in--" + data.length);
         for (let i = 0; i < data.length; i++) {
             console.info("getSensorLists_SensorJsTest004 " + JSON.stringify(data[i]));
         }
@@ -143,9 +139,8 @@ it("getSensorLists_SensorJsTest004", 0, async function (done) {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
 it("getSensorLists_SensorJsTest005", 0, async function (done) {
-    console.info("---------------------------getSensorLists_SensorJsTest005----------------------------------");
     sensor.getSensorList('xxx').then(data => {
-        console.info("---------------------------getSensorLists_SensorJsTest005 callback in-----------" + data.length);
+        console.info("--getSensorLists_SensorJsTest005 callback in--" + data.length);
         for (let i = 0; i < data.length; i++) {
             console.info("getSensorLists_SensorJsTest005 " + JSON.stringify(data[i]));
         }
@@ -164,16 +159,15 @@ it("getSensorLists_SensorJsTest005", 0, async function (done) {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
     it("getSensorLists_SensorJsTest006", 0, async function (done) {
-        console.info("---------------------------getSensorLists_SensorJsTest006----------------------------------");
         sensor.getSensorList(invild).then(data => {
-            console.info("---------------------------getSensorLists_SensorJsTest006 callback in-----------" + data.length);
+            console.info("--getSensorLists_SensorJsTest006 callback in--" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest006 " + JSON.stringify(data[i]));
             }
             expect(true).assertTrue();
             done();
         }, (error) => {
-            console.info('getSensorLists_SensorJsTest006 failed');
+            console.info('getSensorLists_SensorJsTest006 failed'+error);
             expect(false).assertTrue();
             done();
         });
@@ -185,7 +179,6 @@ it("getSensorLists_SensorJsTest005", 0, async function (done) {
      * @tc.desc: Verification results of the incorrect parameters of the test interface.
      */
     it("getSensorLists_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info("---------------------------getSensorLists_SensorJsTest007----------------------------------");
         try {
             sensor.getSensorList(invild).then(data => {
                 console.info("getSensorLists_SensorJsTest007 " + JSON.stringify(data));
@@ -203,4 +196,44 @@ it("getSensorLists_SensorJsTest005", 0, async function (done) {
             done();
         }
 	})
+	
+	/**
+     * @tc.number:SUB_SensorsSystem_GetSensorLists_JSTest_0080
+     * @tc.name: getSensorLists_SensorJsTest008
+     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     */
+    it("getSensorLists_SensorJsTest008", 0, async function (done) {
+        sensor.getSensorList(undefined).then((data) => {
+            console.info("--getSensorLists_SensorJsTest008 callback in--" + data.length);
+            for (let i = 0; i < data.length; i++) {
+                console.info("getSensorLists_SensorJsTest008 " + JSON.stringify(data[i]));
+            }
+            expect(true).assertTrue();
+            done();
+        }, (error) => {
+            console.info('getSensorLists_SensorJsTest008 failed');
+            expect(false).assertTrue();
+            done();
+        });
+    })
+
+	/**
+     * @tc.number:SUB_SensorsSystem_GetSensorLists_JSTest_0090
+     * @tc.name: getSensorLists_SensorJsTest009
+     * @tc.desc: Verification results of the incorrect parameters of the test interface.
+     */
+    it("getSensorLists_SensorJsTest009", 0, async function (done) {
+        sensor.getSensorList(null).then((data) => {
+            console.info("----------getSensorLists_SensorJsTest009 callback in-----" + data.length);
+            for (let i = 0; i < data.length; i++) {
+                console.info("getSensorLists_SensorJsTest009 " + JSON.stringify(data[i]));
+            }
+            expect(true).assertTrue();
+            done();
+        }, (error) => {
+            console.info('getSensorLists_SensorJsTest009 failed');
+            expect(false).assertTrue();
+            done();
+        });
+    })	
 })}

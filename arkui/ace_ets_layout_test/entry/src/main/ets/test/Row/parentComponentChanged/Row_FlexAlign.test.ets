@@ -83,9 +83,9 @@ export default function Row_FlexAlign() {
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.Start");
       
       expect(Text1.left).assertEqual(Row.left);
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
+      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
+      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
+      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
       
       expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
       expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
@@ -127,10 +127,10 @@ export default function Row_FlexAlign() {
       
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.Center");
       
-      expect(Text1.left - Row.left).assertEqual(Row.right - Text3.right);
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
+      expect(Math.round(Text1.left - Row.left)).assertEqual(Math.round(Row.right - Text3.right));
+      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
+      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
+      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
       expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
       expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
 
@@ -171,9 +171,9 @@ export default function Row_FlexAlign() {
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.End");
       
       expect(Text3.right).assertEqual(Row.right);
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
+      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
+      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
+      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
       expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(10));
       expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(10));
       expect(Text1.left).assertLarger(Row.left);
@@ -218,9 +218,9 @@ export default function Row_FlexAlign() {
       expect(Text3.right).assertEqual(Row.right);
       expect(Math.round((Text2.left - Text1.right)*10)/10).assertEqual(vp2px(25));
       expect(Math.round((Text3.left - Text2.right)*10)/10).assertEqual(vp2px(25));
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
+      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
+      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
+      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
 
       console.info('testRowJustifyContentFlexAlignSpaceBetween END');
       done();
@@ -259,14 +259,14 @@ export default function Row_FlexAlign() {
       
       expect(obj.$attrs.justifyContent).assertEqual("FlexAlign.SpaceAround");
       
-      expect(Text1.left - Row.left).assertEqual(Row.right - Text3.right);
+      expect(Math.round(Text1.left - Row.left)).assertEqual(Math.round(Row.right - Text3.right));
       expect(Math.round((Text1.left - Row.left)*10)/10).assertEqual(Math.round(vp2px(50/6)*10)/10);
-      expect(Math.round(Text2.left - Text1.right)).assertEqual(vp2px(50/3));
-      expect(Math.round(Text3.left - Text2.right)).assertEqual(vp2px(50/3));
+      expect(Math.round(Text2.left - Text1.right)).assertEqual(Math.round(vp2px(50/3)));
+      expect(Math.round(Text3.left - Text2.right)).assertEqual(Math.round(vp2px(50/3)));
 
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
+      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
+      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
+      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
 
       console.info('testRowJustifyContentFlexAlignSpaceAround END');
       done();
@@ -309,9 +309,9 @@ export default function Row_FlexAlign() {
       expect(Math.round((Text2.left - Text1.right)*100)/100).assertEqual(Math.round(vp2px(50/4)*100)/100);
       expect(Math.round((Text3.left - Text2.right)*100)/100).assertEqual(Math.round(vp2px(50/4)*100)/100);
 
-      expect(Text1.top - Row.top).assertEqual(Row.bottom - Text1.bottom);
-      expect(Text2.top - Row.top).assertEqual(Row.bottom - Text2.bottom);
-      expect(Text3.top - Row.top).assertEqual(Row.bottom - Text3.bottom);
+      expect(Math.round(Text1.top - Row.top)).assertEqual(Math.round(Row.bottom - Text1.bottom));
+      expect(Math.round(Text2.top - Row.top)).assertEqual(Math.round(Row.bottom - Text2.bottom));
+      expect(Math.round(Text3.top - Row.top)).assertEqual(Math.round(Row.bottom - Text3.bottom));
 
       console.info('testRowJustifyContentFlexAlignSpaceEvenly END');
       done();

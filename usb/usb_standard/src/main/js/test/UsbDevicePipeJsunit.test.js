@@ -17,7 +17,7 @@ import usbManager from '@ohos.usbManager';
 import CheckEmptyUtils from './CheckEmptyUtils.js';
 import EventConstants from './EventConstants.js';
 import parameter from '@ohos.systemparameter';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 /* usb device pipe test */
 export default function UsbDevicePipeJsFunctionsTest() {
@@ -229,6 +229,132 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   })
 
   /**
+   * @tc.number: SUB_USB_JS_0641
+   * @tc.name: bulkTransfer
+   * @tc.desc: Undefined option arguments, use default options.
+   */
+  it('SUB_USB_JS_0641', 0, function () {
+    console.info('usb SUB_USB_JS_0641 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
+    expect(testParam.isClaimed).assertEqual(0);
+
+    testParam.sendData = 'send default';
+    try {
+      testParam.sendData = parameter.getSync('test_usb', 'default');
+      console.log('usb 0641 parameter ' + JSON.stringify(testParam.sendData));
+    } catch (e) {
+      console.log('usb 0641 parameter getSync unexpected error: ' + e);
+    }
+
+    var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, undefined).then(data => {
+      console.info('usb case SUB_USB_JS_0641 ret: ' + data);
+      console.info('usb case SUB_USB_JS_0641 send data: ' + testParam.sendData);
+      expect(data > 0).assertTrue();
+      console.info('usb case SUB_USB_JS_0641 :  PASS');
+    }).catch(error => {
+      console.info('usb 0641 write error : ' + JSON.stringify(error));
+      expect(false).assertTrue();
+    });
+    CheckEmptyUtils.sleep(3000);
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0642
+   * @tc.name: bulkTransfer
+   * @tc.desc: Null option arguments, use default options.
+   */
+  it('SUB_USB_JS_0642', 0, function () {
+    console.info('usb SUB_USB_JS_0642 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
+    expect(testParam.isClaimed).assertEqual(0);
+
+    testParam.sendData = 'send default';
+    try {
+      testParam.sendData = parameter.getSync('test_usb', 'default');
+      console.log('usb 0642 parameter ' + JSON.stringify(testParam.sendData));
+    } catch (e) {
+      console.log('usb 0642 parameter getSync unexpected error: ' + e);
+    }
+
+    var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array, null).then(data => {
+      console.info('usb case SUB_USB_JS_0642 ret: ' + data);
+      console.info('usb case SUB_USB_JS_0642 send data: ' + testParam.sendData);
+      expect(data > 0).assertTrue();
+      console.info('usb case SUB_USB_JS_0642 :  PASS');
+    }).catch(error => {
+      console.info('usb 0642 write error : ' + JSON.stringify(error));
+      expect(false).assertTrue();
+    });
+    CheckEmptyUtils.sleep(3000);
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0643
+   * @tc.name: bulkTransfer
+   * @tc.desc: Ignore option arguments, use default options.
+   */
+  it('SUB_USB_JS_0643', 0, function () {
+    console.info('usb SUB_USB_JS_0643 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    testParam.isClaimed = usbManager.claimInterface(testParam.pip, testParam.interface, true);
+    expect(testParam.isClaimed).assertEqual(0);
+
+    testParam.sendData = 'send default';
+    try {
+      testParam.sendData = parameter.getSync('test_usb', 'default');
+      console.log('usb 0643 parameter ' + JSON.stringify(testParam.sendData));
+    } catch (e) {
+      console.log('usb 0643 parameter getSync unexpected error: ' + e);
+    }
+
+    var tmpUint8Array = CheckEmptyUtils.str2ab(testParam.sendData);
+    usbManager.bulkTransfer(testParam.pip, testParam.outEndpoint, tmpUint8Array).then(data => {
+      console.info('usb case SUB_USB_JS_0643 ret: ' + data);
+      console.info('usb case SUB_USB_JS_0643 send data: ' + testParam.sendData);
+      expect(data > 0).assertTrue();
+      console.info('usb case SUB_USB_JS_0643 :  PASS');
+    }).catch(error => {
+      console.info('usb 0643 write error : ' + JSON.stringify(error));
+      expect(false).assertTrue();
+    });
+    CheckEmptyUtils.sleep(3000);
+  })
+
+  /**
    * @tc.number: SUB_USB_JS_0420
    * @tc.name: claimInterface
    * @tc.desc: Positive test: Get interface, and release
@@ -259,9 +385,9 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
         //Attribute Prefabrication
         var interfaces = gDeviceList[0].configs[j].interfaces[k];
-		    interfaces.id = 1;
-		    interfaces.name = '';
-		    interfaces.alternateSetting = 0;
+        interfaces.id = 1;
+        interfaces.name = '';
+        interfaces.alternateSetting = 0;
         var isClaim = usbManager.claimInterface(gPipe, gDeviceList[0].configs[j].interfaces[k], true)
         console.info('usb case claimInterface function return: ' + isClaim);
         expect(isClaim).assertEqual(0);
@@ -275,6 +401,177 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     console.info('usb SUB_USB_JS_0420 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_1520
+   * @tc.name: claimInterface
+   * @tc.desc: Negative test: Get interface, parameter force type error, use default options
+   */
+  it('SUB_USB_JS_1520', 0, function () {
+    console.info('usb SUB_USB_JS_1520 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+
+    for (var j = 0; j < gDeviceList[0].configs.length; j++) {
+      if (gDeviceList[0].configs[j].interfaces.length == 0) {
+        console.info('usb case SUB_USB_JS_1520 current device.configs.interfaces.length = 0');
+      }
+      for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
+        var TmpInterface = gDeviceList[0].configs[j].interfaces[k];
+        console.info("usb case 1520 claimInterface TmpInterface.id return:" + TmpInterface.id);
+        console.info("usb case 1520 claimInterface TmpInterface return:" + JSON.stringify(TmpInterface));
+        var maskCode = usbManager.claimInterface(gPipe, TmpInterface, "invalid");
+        console.info('usb 1520 case claimInterface return: ' + maskCode);
+        expect(maskCode).assertEqual(0);
+      }
+    }
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0421
+   * @tc.name: claimInterface
+   * @tc.desc: Test the claimInterface() interface.
+   * Undefined option arguments, use default options.
+   */
+  it('SUB_USB_JS_0421', 0, function () {
+    console.info('usb SUB_USB_JS_0421 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 0421 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case 0421 get_device_list is null')
+      expect(gDeviceList.length).assertEqual(-1);
+      return
+    }
+
+    if (gDeviceList[0].configs.length == 0) {
+      console.info('usb case 0421 current device.configs.length = 0');
+      expect(false).assertTrue();
+      return
+    }
+
+    for (var j = 0; j < gDeviceList[0].configs.length; j++) {
+      if (gDeviceList[0].configs[j].interfaces.length == 0) {
+        console.info('usb case 0421 current device.configs.interfaces.length = 0');
+      }
+      for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
+        //Attribute Prefabrication
+        var interfaces = gDeviceList[0].configs[j].interfaces[k];
+        var isClaim = usbManager.claimInterface(gPipe, interfaces, undefined)
+        console.info('usb case 0421 claimInterface function return: ' + isClaim);
+        expect(isClaim).assertEqual(0);
+        if (isClaim == 0) {
+          isClaim = usbManager.releaseInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
+          console.info('usb case 0421 releaseInterface function return: ' + isClaim);
+          expect(isClaim).assertEqual(0);
+          gPipe = usbManager.connectDevice(gDeviceList[0])
+        }
+      }
+    }
+    console.info('usb SUB_USB_JS_0421 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0422
+   * @tc.name: claimInterface
+   * @tc.desc: Test the claimInterface() interface.
+   * Null option arguments, use default options.
+   */
+  it('SUB_USB_JS_0422', 0, function () {
+    console.info('usb SUB_USB_JS_0422 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 0422 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case 0422 get_device_list is null')
+      expect(gDeviceList.length).assertEqual(-1);
+      return
+    }
+
+    if (gDeviceList[0].configs.length == 0) {
+      console.info('usb case 0422 current device.configs.length = 0');
+      expect(false).assertTrue();
+      return
+    }
+
+    for (var j = 0; j < gDeviceList[0].configs.length; j++) {
+      if (gDeviceList[0].configs[j].interfaces.length == 0) {
+        console.info('usb case 0422 current device.configs.interfaces.length = 0');
+      }
+      for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
+        //Attribute Prefabrication
+        var interfaces = gDeviceList[0].configs[j].interfaces[k];
+        var isClaim = usbManager.claimInterface(gPipe, interfaces, null)
+        console.info('usb case 0422 claimInterface function return: ' + isClaim);
+        expect(isClaim).assertEqual(0);
+        if (isClaim == 0) {
+          isClaim = usbManager.releaseInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
+          console.info('usb case 0422 releaseInterface function return: ' + isClaim);
+          expect(isClaim).assertEqual(0);
+          gPipe = usbManager.connectDevice(gDeviceList[0])
+        }
+      }
+    }
+    console.info('usb SUB_USB_JS_0422 :  PASS');
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0423
+   * @tc.name: claimInterface
+   * @tc.desc: Test the claimInterface() interface.
+   * Ignore option arguments, use default options.
+   */
+  it('SUB_USB_JS_0423', 0, function () {
+    console.info('usb SUB_USB_JS_0423 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 0423 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case 0423 get_device_list is null')
+      expect(gDeviceList.length).assertEqual(-1);
+      return
+    }
+
+    if (gDeviceList[0].configs.length == 0) {
+      console.info('usb case 0423 current device.configs.length = 0');
+      expect(false).assertTrue();
+      return
+    }
+
+    for (var j = 0; j < gDeviceList[0].configs.length; j++) {
+      if (gDeviceList[0].configs[j].interfaces.length == 0) {
+        console.info('usb case 0423 current device.configs.interfaces.length = 0');
+      }
+      for (var k = 0; k < gDeviceList[0].configs[j].interfaces.length; k++) {
+        //Attribute Prefabrication
+        var interfaces = gDeviceList[0].configs[j].interfaces[k];
+        var isClaim = usbManager.claimInterface(gPipe, interfaces)
+        console.info('usb case 0423 claimInterface function return: ' + isClaim);
+        expect(isClaim).assertEqual(0);
+        if (isClaim == 0) {
+          isClaim = usbManager.releaseInterface(gPipe, gDeviceList[0].configs[j].interfaces[k])
+          console.info('usb case 0423 releaseInterface function return: ' + isClaim);
+          expect(isClaim).assertEqual(0);
+          gPipe = usbManager.connectDevice(gDeviceList[0])
+        }
+      }
+    }
+    console.info('usb SUB_USB_JS_0423 :  PASS');
   })
 
   function getTransferParam(iCmd, iReqTarType, iReqType, iValue, iIndex) {
@@ -429,7 +726,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       expect(data >= 0).assertTrue();
       console.info('usb' + caseName + ':  PASS');
     }).catch(error => {
-      console.info('usb controlTransfer error : ' + JSON.stringify(error));
+      console.info('usb ' + caseName + ' controlTransfer error : ' + JSON.stringify(error));
       console.info('usb' + caseName + ':  FAILED');
       expect(false).assertTrue();
     });
@@ -484,6 +781,91 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
       | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0550 GetStatus')
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0551
+   * @tc.name: controlTransfer
+   * @tc.desc: Test the bulkTransfer interface
+   * Undefined option arguments, use default options.
+   */
+  it('SUB_USB_JS_0551', 0, function () {
+    console.info('usb SUB_USB_JS_0551 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 0551 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
+    callControlTransfer(testParam.pip, controlParam, undefined, 'SUB_USB_JS_0551 GetStatus')
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0552
+   * @tc.name: controlTransfer
+   * @tc.desc: Test the bulkTransfer interface
+   * Null option arguments, use default options.
+   */
+  it('SUB_USB_JS_0552', 0, function () {
+    console.info('usb SUB_USB_JS_0552 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 0552 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
+    callControlTransfer(testParam.pip, controlParam, null, 'SUB_USB_JS_0552 GetStatus')
+  })
+
+  /**
+   * @tc.number: SUB_USB_JS_0553
+   * @tc.name: controlTransfer
+   * @tc.desc: Test the bulkTransfer interface
+   * Ignore option arguments, use default options.
+   */
+  it('SUB_USB_JS_0553', 0, function () {
+    console.info('usb SUB_USB_JS_0553 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case 0553 get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+
+    var controlParam = getTransferParam(0, usbManager.USB_REQUEST_TARGET_DEVICE,
+      (usbManager.USB_REQUEST_DIR_FROM_DEVICE) | (usbManager.USB_REQUEST_TYPE_STANDARD << 5)
+      | (usbManager.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0);
+    usbManager.controlTransfer(testParam.pip, controlParam).then(data => {
+      console.info('usb controlTransfer ret data : ' + data + ' ' + 'SUB_USB_JS_0553 GetStatus');
+      console.info('usb controlTransfer controlParam.data buffer : ' + controlParam.data + ' ' + 'SUB_USB_JS_0553 GetStatus');
+      expect(data >= 0).assertTrue();
+      console.info('usb' + 'SUB_USB_JS_0553 GetStatus' + ':  PASS');
+    }).catch(error => {
+      console.info('usb 0553 controlTransfer error : ' + JSON.stringify(error));
+      console.info('usb' + 'SUB_USB_JS_0553 GetStatus' + ':  FAILED');
+      expect(false).assertTrue();
+    });
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -743,7 +1125,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    * @tc.name: controlTransfer
    * @tc.desc: Negative test: control transfer, parameter pipe type error
    */
-   it('SUB_USB_JS_1440', 0, function () {
+  it('SUB_USB_JS_1440', 0, function () {
     console.info('usb SUB_USB_JS_1440 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -801,7 +1183,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number: SUB_USB_JS_1570
    * @tc.name: controlTransfer
-   * @tc.desc: Negative test: control transfer, parameter timeout type error
+   * @tc.desc: Negative test: control transfer, parameter timeout type error, use default options.
    */
   it('SUB_USB_JS_1570', 0, function () {
     console.info('usb SUB_USB_JS_1570 begin');
@@ -819,13 +1201,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     var controlParam = getTransferParam(255, usbManager.USB_REQUEST_TARGET_OTHER,
       (usbManager.USB_REQUEST_DIR_TO_DEVICE) | (usbManager.USB_REQUEST_TYPE_CLASS << 5)
       | (usbManager.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0);
-    try {
-      callControlTransferEx(testParam.pip, controlParam, timeout, 'SUB_USB_JS_1570 ClearFeature');
-    } catch (err) {
-      console.info('usb 1570 catch err code: ' + err.code + ' message: ' + err.message);
-      expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1570 :  PASS');
-    }
+    callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_1570 ClearFeature');
   })
 })
 }
