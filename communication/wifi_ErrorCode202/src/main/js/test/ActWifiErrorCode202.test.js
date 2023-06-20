@@ -447,10 +447,10 @@ export default function actsWifiErrorCode202Test() {
         it('SUB_Communication_WiFi_XTS_ErrorCode_0096', 0, async function (done) {
             try {
                 let hotSpotConfig = {
-                    "ssid": "HotspotTest",
-                    "band": 2,
-                    "preSharedKey": null,
-                    "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_OPEN,
+                    "ssid": "test202",
+                    "band": 1,
+                    "preSharedKey": "12345678",
+                    "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
                     "maxConn": 8,
                 };
                 let setHotspotConfig = wifiMg.setHotspotConfig(hotSpotConfig);
