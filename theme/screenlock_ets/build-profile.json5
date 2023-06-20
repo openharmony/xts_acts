@@ -1,0 +1,40 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "signature/auto_ohos_default_screenlock_ets_com.acts.theme.screenlocktest.cer",
+          "storePassword": "0000001AC5B5996A831B62A440AD04505F31666E875CE4D3EF3E2D19709A2EE5C770C386FFFB1B2DCC0F",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A1860A84496A78822C258EAE852EC15702B91488A75B1E9A96C920DF0938861B9832F29474E62",
+          "profile": "signature/auto_ohos_default_screenlock_ets_com.acts.theme.screenlocktest.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "signature/auto_ohos_default_screenlock_ets_com.acts.theme.screenlocktest.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 10,
+    "compatibleSdkVersion": 10,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

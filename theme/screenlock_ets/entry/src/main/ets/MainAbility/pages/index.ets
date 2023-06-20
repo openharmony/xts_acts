@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 @Entry
 @Component
-struct MyComponent {
-  aboutToAppear() {
-  }
+struct Index {
+  @State message: string = 'Hello World'
 
 
   build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('SCREENLOCK ETS TEST')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
     }
-    .width('100%')
     .height('100%')
   }
 }
