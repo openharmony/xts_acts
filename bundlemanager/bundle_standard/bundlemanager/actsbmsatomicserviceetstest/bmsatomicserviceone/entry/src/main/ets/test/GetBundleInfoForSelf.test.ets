@@ -742,6 +742,7 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(2);
         expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
+        expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
         expect(data.reqPermissionDetails[0].reasonId).assertLarger(0);
         expect(data.reqPermissionDetails[0].usedScene.abilities.length).assertEqual(1);
@@ -749,6 +750,7 @@ export default function getBundleInfoForSelf() {
         expect(data.reqPermissionDetails[0].usedScene.when).assertEqual("always");
         expect(data.permissionGrantStates[0]).assertEqual(bundle.PermissionGrantState.PERMISSION_GRANTED);
         expect(data.reqPermissionDetails[1].name).assertEqual("ohos.permission.READ_CALENDAR");
+        expect(data.reqPermissionDetails[1].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[1].reason).assertEqual("$string:permission_reason");
         expect(data.reqPermissionDetails[1].reasonId).assertLarger(0);
         expect(data.reqPermissionDetails[1].usedScene.abilities.length).assertEqual(1);
@@ -778,6 +780,7 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo).assertEqual(null);
         expect(data.reqPermissionDetails.length).assertEqual(2);
         expect(data.reqPermissionDetails[0].name).assertEqual("ohos.permission.GET_BUNDLE_INFO");
+        expect(data.reqPermissionDetails[0].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[0].reason).assertEqual("$string:permission_reason");
         expect(data.reqPermissionDetails[0].reasonId).assertLarger(0);
         expect(data.reqPermissionDetails[0].usedScene.abilities.length).assertEqual(1);
@@ -785,6 +788,7 @@ export default function getBundleInfoForSelf() {
         expect(data.reqPermissionDetails[0].usedScene.when).assertEqual("always");
         expect(data.permissionGrantStates[0]).assertEqual(bundle.PermissionGrantState.PERMISSION_GRANTED);
         expect(data.reqPermissionDetails[1].name).assertEqual("ohos.permission.READ_CALENDAR");
+        expect(data.reqPermissionDetails[1].moduleName).assertEqual("testModule");
         expect(data.reqPermissionDetails[1].reason).assertEqual("$string:permission_reason");
         expect(data.reqPermissionDetails[1].reasonId).assertLarger(0);
         expect(data.reqPermissionDetails[1].usedScene.abilities.length).assertEqual(1);
