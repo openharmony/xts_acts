@@ -9,14 +9,6 @@
     },
     "kits": [
         {
-            "test-file-name": [
-                "ActsUiTest.hap",
-                "ActsUiTestScene.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
-        },
-        {
             "type": "ShellKit",
             "run-command": [
                 "param set persist.ace.testmode.enabled 1",
@@ -30,6 +22,14 @@
                 "param set persist.sys.suspend_manager_enabled 1",
                 "reboot"
             ]
+        },
+        {
+            "test-file-name": [
+                "ActsUiTest.hap",
+                "ActsUiTestScene.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
         }
     ]
 }
