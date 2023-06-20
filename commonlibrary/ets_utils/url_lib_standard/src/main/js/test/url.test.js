@@ -214,10 +214,10 @@ describe('UrlFunTest', function () {
     it('testNewURLParams001', 0, function () {
         let params = new Url.URLParams(undefined);
         let result = params.toString();
-        expect(result).assertEqual('undefined=undefined');
+        expect(result).assertEqual('');
         let params1 = new Url.URLParams(null);
         let result1 = params1.toString();
-        expect(result1).assertEqual('undefined=undefined');
+        expect(result1).assertEqual('');
     })
     
     /**
@@ -1227,10 +1227,10 @@ describe('UrlFunTest', function () {
     it('testNewURLSearchParams', 0, function () {
         let params = new Url.URLSearchParams(undefined);
         let result = params.toString()
-        expect(result).assertEqual('undefined=undefined')
+        expect(result).assertEqual('')
         let params1 = new Url.URLSearchParams(null);
         let result2 = params1.toString()
-        expect(result2).assertEqual('undefined=undefined')
+        expect(result2).assertEqual('')
     })
 
     /**
