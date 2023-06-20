@@ -12,15 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
-import hilog from '@ohos.hilog';
-import testsuite from '../../test/List.test'
-
 @Entry
 @Component
-struct Index {
+struct sidebarType {
   @State strokeWidthStr: string = '10px'
   @State dividerColorStr: string  = '#000000'
   @State startMarginStr: string = '5px'
@@ -52,15 +46,6 @@ struct Index {
         this.dividerColor = eventData.data.dividerColor;
       }
     }
-  }
-  aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   normalIcon : Resource = $r("app.media.icon")
