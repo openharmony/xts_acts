@@ -1,0 +1,23 @@
+import hilog from '@ohos.hilog';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../test/List.test';
+
+export default {
+  onCreate() {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
+    var abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    var abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
+    //Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    abilityDelegatorArguments.parameters['-s timeout'] = 300000
+    setTimeout(()=>{
+      Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    },3000)
+  },
+  onDestroy() {
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
+  },
+}
