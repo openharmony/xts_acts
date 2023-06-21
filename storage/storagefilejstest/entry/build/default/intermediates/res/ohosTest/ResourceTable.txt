@@ -1,7 +1,0 @@
-string MainAbility_desc 0x02000000
-string MainAbility_label 0x02000001
-string TestAbility_desc 0x02000002
-string TestAbility_label 0x02000003
-string app_name 0x02000004
-string mainability_description 0x02000005
-media icon 0x02000006
