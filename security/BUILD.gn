@@ -20,6 +20,7 @@ group("security") {
   if (is_standard_system) {
     deps = [
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
+      "certificate_framework/js_api_test_oh40:ActsCertFrameworkTwoJSNormalTest",
       "certificate_framework/js_api_test_one:ActsCertificateFrameworkJSNormalTest",
       "cipher/datacipher:datacipher",
       "cryptoFramework/js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
