@@ -1,0 +1,465 @@
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility';
+import * as env from './Const.ets';
+
+export default function audioRendererTest() {
+  describe('getCurrentOutputDevices', function () {
+    let TagFrmwkRender = "audioRendererEnhanceTest";
+    let audioRen;
+    console.info(`${TagFrmwkRender}: Create AudioManger Object JS Framework`);
+    beforeAll(function () {
+      console.info(`${TagFrmwkRender}: beforeAll: Prerequisites at the test suite level`);
+    })
+    beforeEach(async function () {
+      console.info(`${TagFrmwkRender}: beforeEach: Prerequisites at the test case level`);
+      await sleep(1000);
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_SPEECH,
+        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        rendererFlags: 0
+      }
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      try{
+        await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+          audioRen = data;
+          console.info('audioRendererEnhanceTest: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+          console.info('audioRendererEnhanceTest: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+        }).catch((err) => {
+          console.info('audioRendererEnhanceTest: AudioRender Created : ERROR : ' + err.message);
+        });
+      }catch (error){
+        console.info('audioRendererEnhanceTest: AudioRender Created : catch ERROR : ' + error.code + error.message);
+      }
+    })
+    afterEach(async function () {
+      console.info(`${TagFrmwkRender}: afterEach: Test case-level clearance conditions`);
+      sleep(2000);
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+    })
+    afterAll(async function () {
+      console.info(`${TagFrmwkRender}: afterAll: Test suite-level cleanup condition`);
+    })
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    let filePath;
+    async function renderPlay() {
+      let bufferSize
+      try {
+        bufferSize = await audioRen.getBufferSize()
+        console.info( `audioRenderer getBufferSize success,bufferSize:${bufferSize} \n`);
+        await audioRen.start();
+        console.info(`audioRenderer start success\n`);
+      } catch (err) {
+        console.info(`audioRenderer start : Error: ${JSON.stringify(err)}\n`);
+        return;
+      }
+
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        console.error('#####app file: '+ data);
+        filePath = data;
+        console.error('#####app filePath: '+ filePath);
+      }).catch((Error) => {
+        console.error('####app file err: ' + Error.message);
+      })
+
+      let path = filePath + '/StarWars10s-1C-8000-2SW.wav';
+      console.info(`path:${path}\n`);
+      try {
+        let len;
+        try {
+          let stat = await fs.stat(path);
+          console.info(`stat:${JSON.stringify(stat)}\n`);
+          console.info(`size:${stat.size}\n`);
+          len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
+        }catch (error) {
+          console.info(`#######audioRenderer stat : Error: ${JSON.stringify(error)}\n`);
+        }
+
+        let file = await fs.open(path, 0o0);
+        console.info(`fd:${file.fd}\n`);
+
+        let buf = new ArrayBuffer(bufferSize);
+        console.info(`audioRenderer write start.......... \n`);
+        for (let i = 0; i < len; i++) {
+          let options = {
+            offset: i * bufferSize,
+            length: bufferSize
+          }
+          let readsize = await fs.read(file.fd, buf, options);
+          let writeSize = await audioRen.write(buf);
+        }
+        console.info(`audioRenderer write end............ \n`);
+      } catch (err) {
+        console.info(`audioRenderer write : Error: ${JSON.stringify(err)}\n`);
+      }
+    }
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0100
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "struct" - promise
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0100', 0, async function (done) {
+      try{
+        await audioRen.getCurrentOutputDevices().then((data) => {
+          console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, name:${data.name}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+          try {
+            if(data.sampleRates == 44100 && data.channelCounts == 2){
+              expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
+              expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
+              expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+              expect(data.channelMasks).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+            }
+          } catch (error){
+            console.log('${TagFrmwkRender}: ######assertion failure');
+          }
+          done();
+        }).catch ((error)=>{
+          console.log("${TagFrmwkRender}: ####getCurrentOutputDevices : error = " + error);
+          expect(false).assertTrue();
+          done();
+        });
+      }catch(error){
+        console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0100: catch error = " + error);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0200
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "struct" - promise
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0200', 0, async function (done) {
+      try{
+        await renderPlay();
+        await audioRen.getCurrentOutputDevices().then((data) => {
+          console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+          expect(true).assertTrue();
+        }).catch ((error)=>{
+          console.log("${TagFrmwkRender}: ####getCurrentOutputDevices : error = " + error);
+          expect(false).assertTrue();
+          done();
+        });
+      }catch(error){
+        console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0200: catch error = " + error);
+        expect(false).assertTrue();
+        done();
+      }
+      await audioRen.drain().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer drained : SUCCESS`);
+      }).catch((err) => {
+        console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
+      });
+      await audioRen.stop().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+      });
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0300
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "struct" - promise
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0300', 0, async function (done) {
+      try{
+        await audioRen.getCurrentOutputDevices().then((data) => {
+          console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+          expect(true).assertTrue();
+          done();
+        }).catch ((error)=>{
+          console.log("${TagFrmwkRender}: ####getCurrentOutputDevices : error = " + error);
+          expect(false).assertTrue();
+          done();
+        });
+      }catch(error){
+        console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0300: catch error = " + error);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0400
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "unit_32" - promise
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "unit_32" - promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0400', 0, async function (done) {
+      let StreamType;
+      try{
+        for (StreamType in audio.StreamUsage) {
+          let audioRender;
+          let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+          }
+          let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: StreamType,
+            rendererFlags: 0
+          }
+          let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+          }
+
+          try {
+            await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+              audioRender = data;
+              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
+              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} STREAM_USAGE_MEDIA SUCCESS data value: ` + JSON.stringify(data));
+            }).catch((err) => {
+              console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
+            });
+          } catch (error) {
+            console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
+          }
+
+          await audioRender.getCurrentOutputDevices().then((data) => {
+            console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+            expect(true).assertTrue();
+          }).catch ((error)=>{
+            console.info(`${TagFrmwkRender}: #####getCurrentOutputDevices:Stream Type: ${StreamType} ERROR : code: ${error.code}, mesage: ${error.message}`);
+            expect(false).assertTrue();
+            done();
+          });
+
+          sleep(1000);
+          await audioRender.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+          }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+          });
+        }
+        done();
+      }catch (error){
+        console.info(`${TagFrmwkRender}: #####SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_PROMISE_0400: Stream ERROR : code: ${error.code}, mesage: ${error.message}`);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0100
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "struct" - callback
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0100', 0, async function (done) {
+      try {
+        await audioRen.getCurrentOutputDevices((err,data) => {
+          if (err) {
+            console.info(`${TagFrmwkRender}: ####getCurrentOutputDevices : ERROR : code: ${err.code}, mesage: ${err.message}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+            try {
+              if(data.sampleRates == 44100 && data.channelCounts == 2){
+                expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
+                expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
+                expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+                expect(data.channelMasks).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+              }
+            } catch (error){
+              console.log('${TagFrmwkRender}: ######assertion failure');
+            }
+          }
+        });
+      }catch (error){
+        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0100: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+      };
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0200
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "struct" - callback
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0200', 0, async function (done) {
+      try {
+        await renderPlay();
+        await audioRen.getCurrentOutputDevices((err,data) => {
+          if (err) {
+            console.info(`${TagFrmwkRender}: ####getCurrentOutputDevices : ERROR : code: ${err.code}, mesage: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.info(`${TagFrmwkRender}: ####getCurrentOutputDevices :deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+            expect(true).assertTrue();
+          }
+        });
+      }catch (error){
+        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0200: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      };
+      await audioRen.drain().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer drained : SUCCESS`);
+      }).catch((err) => {
+        console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
+      });
+      await audioRen.stop().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+      });
+      done();
+
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0300
+     * @tc.name      : AudioRenderer -getCurrentOutputDevices "struct" - callback
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "struct" - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0300', 0, async function (done) {
+      let CallBack:any = (error,data) => {
+        if (error) {
+          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
+          expect(false).assertTrue();
+          done();
+        }else{
+          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
+          console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
+          expect(true).assertTrue();
+          done();
+        }
+      };
+      try{
+        audioRen.getCurrentOutputDevices(CallBack);
+      }catch(error){
+        console.log(`${TagFrmwkRender}: ####getCurrentOutputDevices: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      };
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0400
+     * @tc.name      : AudioRenderer - getCurrentOutputDevices "uint_32" - callback
+     * @tc.desc      : AudioRenderer - getCurrentOutputDevices "uint_32" - callback
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETCURRENTOUTPUTDEVICES_CALLBACK_0400', 0, async function (done) {
+      let StreamType;
+      let CallBack:any = (error,data) => {
+        if (error) {
+          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
+          expect(false).assertTrue();
+          done();
+        }else{
+          console.log(`${TagFrmwkRender}: ####CallBack:StreamType:${StreamType} execution success, data: ${JSON.stringify(data)}`);
+          expect(true).assertTrue();
+        }
+      };
+
+      try{
+        for (StreamType in audio.StreamUsage) {
+          let audioRender;
+          let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+          }
+          let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: StreamType,
+            rendererFlags: 0
+          }
+          let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+          }
+
+          try {
+            await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+              audioRender = data;
+              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
+              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} STREAM_USAGE_MEDIA SUCCESS data value: ` + JSON.stringify(data));
+            }).catch((err) => {
+              console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
+            });
+          } catch (error) {
+            console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
+          }
+          audioRen.getCurrentOutputDevices(CallBack);
+          sleep(1000);
+          await audioRender.release().then(() => {
+            console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+          }).catch((err) => {
+            console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+          });
+        }
+        done();
+
+      }catch(error){
+        console.log(`${TagFrmwkRender}: ####getCurrentOutputDevices: catch error, error: [${error.code}, ${error.message}]`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+
+  })
+}
