@@ -13,23 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("storagefileiov9_js_test") {
-  hap_profile = "./src/main/config.json"
-  deps = [
-    ":storagefileiov9_js_assets",
-    ":storagefileiov9_js_resources",
-  ]
-  certificate_profile = "./signature/openharmony_sx.p7b"
+ohos_js_app_suite("storagefileiov9_js_test") {
+  test_hap = true
+  testonly = true
   hap_name = "ActsStorageFileIoV9JSTest"
   subsystem_name = "filemanagement"
   part_name = "file_api"
-}
-ohos_js_assets("storagefileiov9_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
-}
-ohos_resources("storagefileiov9_js_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+
 }

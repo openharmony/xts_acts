@@ -1,0 +1,40 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "signature/auto_ohos_default_storagesecuritylabeljstest_ohos.acts.storage.securitylabel.cer",
+          "storePassword": "0000001A675FF935151A4617678F8803C4404AA8E71054A9D0B4C0A7BE9934CF226F81302C58A8EFB4F9",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001AFBF4548F37DBF29A2337CDB9AA8AC84B0543B076E63026B2BDD7DED6118A63397CED9CF93FAD",
+          "profile": "signature/auto_ohos_default_storagesecuritylabeljstest_ohos.acts.storage.securitylabel.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "signature/auto_ohos_default_storagesecuritylabeljstest_ohos.acts.storage.securitylabel.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 10,
+    "compatibleSdkVersion": 10,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

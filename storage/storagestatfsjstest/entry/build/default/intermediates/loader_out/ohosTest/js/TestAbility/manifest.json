@@ -1,0 +1,1 @@
+{"appID":"ohos.acts.storage.statfs","versionName":"1.0.0","versionCode":1000000,"minPlatformVersion":10,"appName":".TestAbility","deviceType":["tablet","default"],"window":{"autoDesignWidth":false,"designWidth":720},"pages":["pages/index/index"]}
