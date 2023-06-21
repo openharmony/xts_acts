@@ -162,7 +162,8 @@ napi_value ImagePixelMapNDKTest::CreatePixelMap(napi_env env, napi_callback_info
     if (!parseCreateOptions(env, argValue[NUM_1], &createOps)) {
         return udfVar;
     }
-    int32_t res = OH_PixelMap_CreatePixelMap(env, createOps, buffer, bufferSize, &pixelmap);
+    int32_t res = OH_PixelMap_CreatePixelMap(env, createOps,
+        static_cast<uint8_t*>(buffer), bufferSize, &pixelmap);
     if (res != OHOS_IMAGE_RESULT_SUCCESS || pixelmap == nullptr) {
         return udfVar;
     }
@@ -587,7 +588,7 @@ napi_value ImagePixelMapNDKTest::AccessPixels(napi_env env, napi_callback_info i
         return result;
     }
 
-    void* pixelAddr = nullptr;
+    uint8_t* pixelAddr = nullptr;
     int32_t res = OH_PixelMap_AccessPixels(native, &pixelAddr);
     if (res != OHOS_IMAGE_RESULT_SUCCESS || pixelAddr == nullptr) {
         return result;
