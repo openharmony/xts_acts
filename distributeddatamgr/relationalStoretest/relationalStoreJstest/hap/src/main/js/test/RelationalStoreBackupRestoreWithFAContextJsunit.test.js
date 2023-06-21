@@ -386,8 +386,23 @@ describe('relationalStoreBackupRestorePromiseTest', function () {
          it('RdbBackupRestoreTest_0120', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreTest_0120 start *************")
             await RdbStore.backup(DATABASE_BACKUP_NAME)
-            await BackupTest(DATABASE_BACKUP_NAME)
-            done();
+            await RdbStore.backup(DATABASE_BACKUP_NAME).then(()=>{
+                console.info(TAG + `Backup success.`);
+                RdbStore.restore(DATABASE_BACKUP_NAME, function(err) {
+                    if (err) {
+                        console.error(TAG + `Restore failed, code is ${err.code},message is ${err.message}`);
+                        expect(err !== undefined).assertFail();
+                        done();
+                    }
+                    console.info(TAG + `Restore success.`);
+                    expect(err === undefined).assertTrue();
+                    done();
+                })
+            }).catch((err)=>{
+                console.error(TAG + `Backup failed, code is ${err.code},message is ${err.message}`);
+                expect(err !== undefined).assertFail();
+                done();
+            });
             console.info(TAG + "************* RdbBackupRestoreTest_0120 end *************")
         })
 
