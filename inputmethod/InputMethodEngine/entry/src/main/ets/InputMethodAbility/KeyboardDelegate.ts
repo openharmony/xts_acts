@@ -1170,7 +1170,7 @@ export class KeyboardDelegate {
         inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
             inputMethodAbility.off('inputStart');
             let commonEventPublishData;
-            let range = { start: 0, end: 1 };
+            let range = { start: 1, end: 0 };
             if (InputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"

@@ -394,6 +394,58 @@ export default function inputMethodWindManageAbility() {
       commonEventManager.publish("test", commonEventPublishData, publishCallback);
     });
 
+    it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async function (done) {
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback start");
+        if (err) {
+          console.error("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback failed: " + JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 unSubscriberCallback finsh");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscriberCallback data: " + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 end<====");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 end<====" + JSON.stringify(err));
+            clearTimeout(t)
+            done();
+          }
+        }, 500)
+      }
+
+      async function publishCallback(err) {
+        if (err) {
+          console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 end<====" + JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 success ====" );
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_Panel_setUiContentCallback_0070"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then(function (data) {
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe data: " + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe finish====");
+      })
+
+      var commonEventPublishData = {
+        code: 70
+      }
+      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+    });
+
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async function (done) {
       function unSubscriberCallback(err) {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 unSubscriberCallback start");

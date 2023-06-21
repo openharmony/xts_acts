@@ -17,5 +17,7 @@ group("request") {
   deps = [
     "RequestTest_Stage:ActsRequestStageTest",
     "RequestTest_ets:ActsRequestETSApiTest",
+    "newRequestAuthorityTest:ActsRequestAuthorityTest",
+    "newRequestTest:ActsRequestNewTest",
   ]
 }
