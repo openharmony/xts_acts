@@ -776,7 +776,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0100, Function |
             ASSERT_NE(nullptr, inputMemory);
             ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetInputWithMemory(executor, inputIndex, &operand, inputMemory));
 
-            ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, (void *)operandTem.data, operandTem.length));
+            ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, static_cast<void*>(operandTem.data), operandTem.length));
 
         } else if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
                    graphArgs.outputIndices.end()) {
@@ -815,7 +815,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0200, Function |
             OH_NN_Memory *inputMemory = OH_NNExecutor_AllocateInputMemory(executor, inputIndex, operandTem.length);
             ASSERT_NE(nullptr, inputMemory);
             ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetInputWithMemory(executor, inputIndex, &operand, inputMemory));
-            ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, (void *)operandTem.data, operandTem.length));
+            ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, static_cast<void*>(operandTem.data), operandTem.length));
         }
     }
     ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNExecutor_Run(executor));
@@ -847,7 +847,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0300, Function |
         auto outputIndex = graphArgs.inputIndices.size() + j;
         // check memory output
         EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)),
-        (float*) addModel.expectValue));
+        static_cast<float*>(addModel.expectValue)));
         OH_NNExecutor_DestroyOutputMemory(executor, j, &OHNNMemory[outputIndex]);
         ASSERT_EQ(OHNNMemory[outputIndex], nullptr);
     }
@@ -891,7 +891,7 @@ HWTEST_F(MemoryTest, SUB_AI_NNRt_Func_North_Executor_Memory_Run_0400, Function |
         auto outputIndex = graphArgs.inputIndices.size() + j;
         // check memory output
         EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(OHNNMemory[outputIndex]->data)),
-        (float*) avgModel.expectValue));
+        static_cast<float*>(avgModel.expectValue)));
         OH_NNExecutor_DestroyOutputMemory(executor, j, &OHNNMemory[outputIndex]);
         ASSERT_EQ(OHNNMemory[outputIndex], nullptr);
     }

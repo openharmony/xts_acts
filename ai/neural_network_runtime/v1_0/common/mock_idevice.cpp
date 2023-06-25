@@ -34,6 +34,11 @@ sptr<INnrtDevice> INnrtDevice::Get(const std::string &serviceName, bool isStub)
     return mockIDevice;
 }
 
+MockIDevice::MockIDevice()
+{
+    m_bufferFd = 0; 
+}
+
 MockIDevice::~MockIDevice()
 {
     for (auto ash : m_ashmems) {

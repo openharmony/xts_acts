@@ -68,7 +68,7 @@ public:
     }
 
 protected:
-    OHNNCompileParam compileParam;
+    OHNNCompileParam m_compileParam;
     AddModel addModel;
     OHNNGraphArgs graphArgs = addModel.graphArgs;
 };
@@ -835,8 +835,8 @@ HWTEST_F(CompileTest, SUB_AI_NNR_Func_North_Compilation_Combine_0100, Function |
     OH_NNCompilation *compilation2 = OH_NNCompilation_Construct(model2);
     ASSERT_NE(nullptr, compilation2);
 
-    std::thread th1(CompileModel, compilation1, compileParam);
-    std::thread th2(CompileModel, compilation2, compileParam);
+    std::thread th1(CompileModel, compilation1, m_compileParam);
+    std::thread th2(CompileModel, compilation2, m_compileParam);
     th1.join();
     th2.join();
     Free(model1, compilation1);

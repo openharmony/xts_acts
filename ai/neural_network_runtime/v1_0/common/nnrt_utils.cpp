@@ -278,7 +278,7 @@ int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, 
                 LOGE("[NNRtTest] OH_NNExecutor_SetInputWithMemory failed! ret=%d\n", ret);
                 return ret;
             }
-            memcpy_s(inputMemory->data, operandTem.length, (void *) operandTem.data, operandTem.length);
+            memcpy_s(inputMemory->data, operandTem.length, static_cast<void*>(operandTem.data), operandTem.length);
             OHNNMemory[inputIndex] = inputMemory;
             inputIndex += 1;
         } else if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
