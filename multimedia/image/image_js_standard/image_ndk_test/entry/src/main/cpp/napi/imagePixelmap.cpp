@@ -45,7 +45,7 @@ static napi_value TestAccessPixels(napi_env env, napi_callback_info info)
 
     napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr);
 
-    uint8_t* addrPtr = nullptr;
+    void* addrPtr = nullptr;
     OH_AccessPixels(env, argValue[0], &addrPtr);
     return result;
 }
