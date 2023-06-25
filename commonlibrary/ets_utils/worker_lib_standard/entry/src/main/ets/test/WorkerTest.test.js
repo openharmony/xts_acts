@@ -464,6 +464,29 @@ describe('WorkerTest', function () {
         done()
     })
 
+    // check worker terminate is ok
+    /**
+     * @tc.name: worker_terminate_test_004
+     * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
+     * @tc.author: hanyuqing
+     */
+    it('worker_terminate_test_004', 0, async function (done) {
+        let ss = new worker.Worker("entry/ets/workers/worker_002.js")
+        let res = 0
+        let flag = false
+        ss.onexit = function () {
+            flag = true
+            res++
+        }
+        for (let i = 0; i < 10; i++) {
+            ss.terminate();
+        }
+        while (!flag) {
+            await promiseCase()
+        }
+        expect(res).assertEqual(1)
+        done()
+    })
     // check worker on function is ok
     /**
      * @tc.name: worker_on_test_001
