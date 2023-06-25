@@ -21,7 +21,7 @@ struct GridRow_onBreakpoint {
 
   build() {
     Column() {
-      Text(this.textBreakpoint).fontSize(9).fontColor(0xCCCCCC).key('textBreakpointChange')
+      Text(this.textBreakpoint).fontSize(9).fontColor(0xCCCCCC).key('GridRowText')
       GridRow({
         columns: { xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6},
         gutter: {
