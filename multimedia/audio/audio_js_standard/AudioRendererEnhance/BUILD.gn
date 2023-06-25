@@ -17,8 +17,8 @@ ohos_js_hap_suite("audio_render_enhance_ets_hap") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":audio_render_enhance_ets_assets",
-    ":audio_render_enhance_ets_test_assets",
     ":audio_render_enhance_ets_resources",
+    ":audio_render_enhance_ets_test_assets",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
