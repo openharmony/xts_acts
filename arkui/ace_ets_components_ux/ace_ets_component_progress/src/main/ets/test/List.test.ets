@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import progressTest from './progress'
+import progressSecTest from './progressSec'
 
 export default function testsuite() {
        progressTest()
+       progressSecTest()
 }
