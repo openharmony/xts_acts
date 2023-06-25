@@ -415,11 +415,15 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          */
         it('RdbBackupRestoreCallbackTest_1200', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1200 start *************")
-            RdbStore.backup(DATABASE_BACKUP_NAME, (err, data) => {
-                if(err != null){
-                    expect(false).assertTrue()
+            await RdbStore.backup(DATABASE_BACKUP_NAME);
+            await RdbStore.backup(DATABASE_BACKUP_NAME, function(err) {
+                if(err){
+                    console.error(TAG + `Restore failed, code is ${err.code},message is ${err.message}`);
+                    expect(err !== undefined).assertFail();
+                    done();
                 }
-                BackupCallbackTest(DATABASE_BACKUP_NAME)
+                console.info(TAG + `Restore success.`);
+                expect(err === undefined).assertTrue();
                 done();
             })
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1200 end *************")
