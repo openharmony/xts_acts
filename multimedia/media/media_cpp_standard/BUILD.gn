@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 module_output_path = "acts/ActsAvcodecNdkTest"
-MEDIA_ROOT_DIR = "//foundation/multimedia/player_framework/"
+MEDIA_ROOT_DIR = "//foundation/multimedia/av_codec/"
 
 ohos_moduletest_suite("ActsAvcodecNdkTest") {
   module_out_path = module_output_path
@@ -39,9 +39,6 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "../../../../../../base/startup/init/interfaces/kits/syscap/include",
     "$MEDIA_ROOT_DIR/interfaces/inner_api/native",
     "$MEDIA_ROOT_DIR/interfaces/kits/c",
-    "$MEDIA_ROOT_DIR/frameworks/native/capi/common",
-    "$MEDIA_ROOT_DIR/interfaces/kits/c",
-    "$MEDIA_ROOT_DIR/interfaces/inner_api/native",
   ]
 
   cflags = [
@@ -63,7 +60,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
   ]
 
   deps = [
-    "$MEDIA_ROOT_DIR/interfaces/inner_api/native:media_client",
+    "$MEDIA_ROOT_DIR/interfaces/inner_api/native:av_codec_client",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_adec",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_aenc",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
@@ -81,6 +78,6 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "hiviewdfx_hilog_native:libhilog",
   ]
 
-  part_name = "player_framework"
+  part_name = "av_codec"
   subsystem_name = "multimedia"
 }

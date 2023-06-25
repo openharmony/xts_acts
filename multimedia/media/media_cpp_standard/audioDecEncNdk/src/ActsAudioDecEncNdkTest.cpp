@@ -26,7 +26,7 @@
 using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
-using namespace OHOS::Media;
+using namespace OHOS::MediaAVCodec;
 
 namespace {
 class ActsAudioDecEncNdkTest : public testing::Test {
