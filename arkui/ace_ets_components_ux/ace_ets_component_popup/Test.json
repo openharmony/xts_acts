@@ -3,14 +3,14 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "com.example.aceselecttest",
+        "bundle-name": "com.example.popuptest",
         "module-name": "entry_test",
         "shell-timeout": "600000",
-        "testcase-timeout": 90000
+        "testcase-timeout": 240000
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceSelectTest.hap"
+            "ActsAcePopupTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true

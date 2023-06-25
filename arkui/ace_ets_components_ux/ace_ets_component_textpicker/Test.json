@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "bundle-name": "com.example.acetextpickertest",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
     },

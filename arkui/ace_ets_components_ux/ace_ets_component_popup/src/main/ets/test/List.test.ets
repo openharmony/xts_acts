@@ -12,12 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import textpicker from './TextPicker'
-import TextPickerSec from './TextPickerSec'
-import textpickermultiTest from './TextPickerMulti'
+import abilityTest from './popup'
 
 export default function testsuite() {
-       textpicker()
-       TextPickerSec()
-       textpickermultiTest()
+       abilityTest()
 }
