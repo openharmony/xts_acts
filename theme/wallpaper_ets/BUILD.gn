@@ -20,4 +20,5 @@ ohos_js_app_suite("ActsWallpaperETSApiTest") {
   test_hap = true
   subsystem_name = "theme"
   part_name = "wallpaper_mgr"
+  certificate_profile = "./signature/openharmony_sx.p7b"
 }
