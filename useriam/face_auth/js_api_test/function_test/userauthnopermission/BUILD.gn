@@ -19,4 +19,5 @@ ohos_js_app_suite("ActsUserauthnopermissionTest") {
   testonly = true
   subsystem_name = "useriam"
   part_name = "face_auth"
+  certificate_profile = "./signature/openharmony_sx.p7b"
 }

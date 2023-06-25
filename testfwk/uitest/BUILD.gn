@@ -19,4 +19,5 @@ ohos_js_app_suite("ActsUiTest") {
   testonly = true
   part_name = "arkxtest"
   subsystem_name = "testfwk"
+  certificate_profile = "./signature/auto_ohos_default_com.uitest.test.p7b"
 }
