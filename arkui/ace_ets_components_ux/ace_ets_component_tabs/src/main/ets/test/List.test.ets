@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import tabs from './Tabs'
+import tabsSec from './TabsSec'
 
 export default function testsuite() {
        tabs()
+       tabsSec()
 }
