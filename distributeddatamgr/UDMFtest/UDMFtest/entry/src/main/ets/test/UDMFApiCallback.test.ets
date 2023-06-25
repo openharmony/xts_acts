@@ -24,7 +24,7 @@ export default function UDMFApiCallback() {
     beforeEach(async function () {
       console.info(TAG + "beforeEach")
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       await UDMF.deleteData(options).then((data) => {
         let size = data.length;
@@ -53,15 +53,15 @@ export default function UDMFApiCallback() {
             expect(err === undefined).assertFail();
             done();
           } else {
-            console.error(TAG, `Failed to insertData0100 code is ${err.code},message is ${err.message} `);
-            expect(err.code).assertEqual('401');
+            console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+            expect(err !== null).assertFail();
             done();
           }
         })
       }
       catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
+        console.error(TAG, `Failed to insertData0100 code is ${error.code},message is ${error.message} `);
+        expect(error.code).assertEqual('401');
         done();
       }
     })
@@ -85,15 +85,15 @@ export default function UDMFApiCallback() {
             expect(err === undefined).assertFail();
             done();
           } else {
-            console.error(TAG, `Failed to insertData0200 code is ${err.code},message is ${err.message} `);
-            expect(err.code).assertEqual('401');
+            console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+            expect(err !== null).assertFail();
             done();
           }
         })
       }
       catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
+        console.error(TAG, `Failed to insertData0200 code is ${error.code},message is ${error.message} `);
+        expect(error.code).assertEqual('401');
         done();
       }
     })
@@ -117,15 +117,15 @@ export default function UDMFApiCallback() {
             expect(err === undefined).assertFail();
             done();
           } else {
-            console.error(TAG, `Failed to insertData0300 code is ${err.code},message is ${err.message} `);
-            expect(err.code).assertEqual('401');
+            console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+            expect(err !== null).assertFail();
             done();
           }
         })
       }
       catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
+        console.error(TAG, `Failed to insertData0300 code is ${error.code},message is ${error.message} `);
+        expect(error.code).assertEqual('401');
         done();
       }
     })
@@ -150,15 +150,15 @@ export default function UDMFApiCallback() {
             expect(err === undefined).assertFail();
             done();
           } else {
-            console.error(TAG, `Failed to insertData0400 code is ${err.code},message is ${err.message} `);
-            expect(err.code).assertEqual('401');
+            console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+            expect(err !== null).assertFail();
             done();
           }
         })
       }
       catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
+        console.error(TAG, `Failed to insertData0400 code is ${error.code},message is ${error.message} `);
+        expect(error.code).assertEqual('401');
         done();
       }
     })
@@ -182,15 +182,15 @@ export default function UDMFApiCallback() {
             expect(err === undefined).assertFail();
             done();
           } else {
-            console.error(TAG, `Failed to insertData0500 code is ${err.code},message is ${err.message} `);
-            expect(err.code).assertEqual('401');
+            console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+            expect(err !== null).assertFail();
             done();
           }
         })
       }
       catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
+        console.error(TAG, `Failed to insertData0500 code is ${error.code},message is ${error.message} `);
+        expect(error.code).assertEqual('401');
         done();
       }
     })
@@ -202,7 +202,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_InsertData_Callback_0600', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       }
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -232,29 +232,29 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_UpdateData_Callback_0100', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       }
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new UDMF.UnifiedData(plainText);
       try{
         UDMF.insertData(options, unifiedData, function (e, data) {
-            if (e !== undefined) {
-              console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
-              return;
+          if (e !== undefined) {
+            console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
+          UDMF.updateData({key: data}, unifiedData, function (err, ret) {
+            if (err === undefined) {
+              console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
+              expect(err === undefined).assertTrue()
+              done();
+            } else {
+              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
             }
-            console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-            UDMF.updateData({key: data}, unifiedData, function (err, ret) {
-              if (err === undefined) {
-                console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
-                expect(err === undefined).assertTrue()
-                done();
-              } else {
-                console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
-                expect(err !== null).assertFail();
-                done();
-              }
-            });
+          });
         });
       }catch(error){
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
@@ -270,32 +270,38 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_UpdateData_Callback_0200', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       }
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new UDMF.UnifiedData(plainText);
       try {
         UDMF.insertData(options, unifiedData, function (e, data) {
-            if (e !== undefined) {
-              console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
-              return;
-            }
-            console.info(TAG + `insertData0200 success; data = ${data}, options = ${options}`);
+          if (e !== undefined) {
+            console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info(TAG + `insertData0200 success; data = ${data}, options = ${options}`);
+          try{
             UDMF.updateData({key: undefined}, unifiedData, function (err, ret) {
               if (err === undefined) {
                 console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
                 expect(err !== null).assertFail()
                 done();
               } else {
-                console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
-                expect(err.code).assertEqual('401');
+                console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+                expect(err !== null).assertFail();
                 done();
               }
             });
+          }catch(errInfo){
+            console.info(`UpdateData failed. code is ${errInfo.code},message is ${errInfo.message} `);
+            expect(errInfo.code).assertEqual('401');
+            done();
+          }
         });
       } catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
+        console.info(`UpdateData1 failed. code is ${error.code},message is ${error.message} `);
         expect(error !== null).assertFail();
         done();
       }
@@ -308,18 +314,19 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_UpdateData_Callback_0300', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       }
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new UDMF.UnifiedData(plainText);
       try {
         UDMF.insertData(options, unifiedData, function (e, data) {
-            if (e !== undefined) {
-              console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
-              return;
-            }
-            console.info(TAG + `insertData0300 success; data = ${data}, options = ${options}`);
+          if (e !== undefined) {
+            console.info(TAG, ` Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info(TAG + `insertData0300 success; data = ${data}, options = ${options}`);
+          try{
             UDMF.updateData({key: null}, unifiedData, function (err, ret) {
               if (err === undefined) {
                 console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
@@ -327,10 +334,16 @@ export default function UDMFApiCallback() {
                 done();
               } else {
                 console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
-                expect(err.code).assertEqual('401');
+                expect(err !== null).assertFail()
                 done();
               }
             });
+          }catch(errInfo){
+            console.info(`UpdateData failed. code is ${errInfo.code},message is ${errInfo.message} `);
+            expect(errInfo.code).assertEqual('401');
+            done();
+          }
+
         });
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
@@ -344,45 +357,10 @@ export default function UDMFApiCallback() {
      * @tc.name UDMF insertData callback interface test
      * @tc.desc UDMF insertData callback interface test.
      */
+
     it('SUB_DDM_UDMF_UpdateData_Callback_0400', 0, function (done) {
       let options = {
-        intention: undefined
-      }
-      let plainText = new UDMF.PlainText();
-      plainText.textContent = "hello world!";
-      let unifiedData = new UDMF.UnifiedData(plainText);
-      try {
-        UDMF.insertData(options, unifiedData, function (e, data) {
-          if (e !== undefined) {
-            console.info(TAG + `insertData0400 fail, code is ${e.code},message is ${e.message}`);
-          }
-          UDMF.updateData({key: data}, unifiedData, function (err, ret) {
-            if (err === undefined) {
-              console.info(TAG + `updateData success; data = ${ret}, options = ${options}`);
-              expect(err !== null).assertFail()
-              done();
-            } else {
-              console.info(`UpdateData failed. code is ${err.code},message is ${err.message} `);
-              expect(err.code).assertEqual('401');
-              done();
-            }
-          });
-        });
-      } catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number SUB_DDM_UDMF_UpdateData_Callback_0500
-     * @tc.name UDMF updateData callback interface test
-     * @tc.desc UDMF updateData callback interface test.
-     */
-    it('SUB_DDM_UDMF_UpdateData_Callback_0500', 0, function (done) {
-      let options = {
-        intention: UDMF.Intention.SUPER_HUB,
+        intention: UDMF.Intention.DATA_HUB,
         key: undefined
       }
       let plainText = new UDMF.PlainText();
@@ -421,40 +399,40 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_QueryData_Callback_0100', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new UDMF.UnifiedData(plainText);
       try {
         UDMF.insertData(options, unifiedData, function (e, data) {
-            if (e !== undefined) {
-              console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
-              return;
-            }
-            console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-            UDMF.queryData(options, function (err, ret) {
-              if (err === undefined) {
-                let size = ret.length;
-                console.info(TAG, ` data.size = ${size}`);
-                for (var i = 0; i < size; i++) {
-                  let records = ret[i].getRecords();
-                  let size = records.length;
-                  for (var j = 0; j < size; j++) {
-                    if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
-                      let text = <UDMF.PlainText> (records[j]);
-                      console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
-                    }
+          if (e !== undefined) {
+            console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
+          UDMF.queryData(options, function (err, ret) {
+            if (err === undefined) {
+              let size = ret.length;
+              console.info(TAG, ` data.size = ${size}`);
+              for (var i = 0; i < size; i++) {
+                let records = ret[i].getRecords();
+                let size = records.length;
+                for (var j = 0; j < size; j++) {
+                  if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
+                    let text = <UDMF.PlainText> (records[j]);
+                    console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
-                expect(size).assertEqual(1);
-                done();
-              } else {
-                console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
-                expect(err !== null).assertFail();
-                done();
               }
-            });
+              expect(size).assertEqual(1);
+              done();
+            } else {
+              console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
+            }
+          });
         });
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
@@ -470,40 +448,40 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_QueryData_Callback_0200', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
       let unifiedData = new UDMF.UnifiedData(plainText);
       try {
         UDMF.insertData(options, unifiedData, function (e, data) {
-            if (e !== undefined) {
-              console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
-              return;
-            }
-            console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
-            UDMF.queryData({key: data}, function (err, ret) {
-              if (err === undefined) {
-                let size = ret.length;
-                console.info(TAG, ` data.size = ${size}`);
-                for (var i = 0; i < size; i++) {
-                  let records = ret[i].getRecords();
-                  let size = records.length;
-                  for (var j = 0; j < size; j++) {
-                    if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
-                      let text = <UDMF.PlainText> (records[j]);
-                      console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
-                    }
+          if (e !== undefined) {
+            console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info(TAG + `insertData0100 success; data = ${data}, options = ${options}`);
+          UDMF.queryData({key: data}, function (err, ret) {
+            if (err === undefined) {
+              let size = ret.length;
+              console.info(TAG, ` data.size = ${size}`);
+              for (var i = 0; i < size; i++) {
+                let records = ret[i].getRecords();
+                let size = records.length;
+                for (var j = 0; j < size; j++) {
+                  if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
+                    let text = <UDMF.PlainText> (records[j]);
+                    console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
                   }
                 }
-                expect(size).assertEqual(1);
-                done();
-              } else {
-                console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
-                expect(err !== null).assertFail();
-                done();
               }
-            });
+              expect(size).assertEqual(1);
+              done();
+            } else {
+              console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
+              expect(err !== null).assertFail();
+              done();
+            }
+          });
         });
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
@@ -519,60 +497,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_QueryData_Callback_0300', 0, function (done) {
       let options1 = {
-        intention: UDMF.Intention.SUPER_HUB
-      };
-      let plainText = new UDMF.PlainText();
-      plainText.textContent = "hello world!";
-      let unifiedData = new UDMF.UnifiedData(plainText);
-      try {
-        UDMF.insertData(options1, unifiedData, function (e, data) {
-            if (e !== undefined) {
-              console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
-              return;
-            }
-            console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
-            let options2 = {
-              intention: UDMF.Intention.SUPER_HUB,
-              key: data
-            };
-            UDMF.queryData(options2, function (err, ret) {
-              if (err === undefined) {
-                let size = ret.length;
-                console.info(TAG, ` data.size = ${size}`);
-                for (var i = 0; i < size; i++) {
-                  let records = ret[i].getRecords();
-                  let size = records.length;
-                  for (var j = 0; j < size; j++) {
-                    if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
-                      let text = <UDMF.PlainText> (records[j]);
-                      console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
-                    }
-                  }
-                }
-                expect(size).assertEqual(1);
-                done();
-              } else {
-                console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
-                expect(err !== null).assertFail();
-                done();
-              }
-            });
-        });
-      } catch (error) {
-        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
-        expect(error !== null).assertFail();
-        done();
-      }
-    })
-
-    /**
-     * @tc.number SUB_DDM_UDMF_QueryData_Callback_0400
-     * @tc.name UDMF queryData callback interface test
-     * @tc.desc UDMF queryData callback interface test.
-     */
-    it('SUB_DDM_UDMF_QueryData_Callback_0400', 0, function (done) {
-      let options1 = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -583,10 +508,10 @@ export default function UDMFApiCallback() {
             console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
             return;
           }
-          console.info(TAG + `insertData0400 success; data = ${data}, options = ${options1}`);
+          console.info(TAG + `insertData0100 success; data = ${data}, options = ${options1}`);
           let options2 = {
-            intention: UDMF.Intention.SUPER_HUB,
-            key: 'data'
+            intention: UDMF.Intention.DATA_HUB,
+            key: data
           };
           UDMF.queryData(options2, function (err, ret) {
             if (err === undefined) {
@@ -602,14 +527,73 @@ export default function UDMFApiCallback() {
                   }
                 }
               }
-              expect(err === undefined).assertFail();
+              expect(size).assertEqual(1);
               done();
             } else {
               console.info(`Failed to queryData. code is ${err.code},message is ${err.message} `);
-              expect(err.code).assertEqual('401');
+              expect(err !== null).assertFail();
               done();
             }
           });
+        });
+      } catch (error) {
+        console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
+        expect(error !== null).assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DDM_UDMF_QueryData_Callback_0400
+     * @tc.name UDMF queryData callback interface test
+     * @tc.desc UDMF queryData callback interface test.
+     */
+    it('SUB_DDM_UDMF_QueryData_Callback_0400', 0, function (done) {
+      let options1 = {
+        intention: UDMF.Intention.DATA_HUB
+      };
+      let plainText = new UDMF.PlainText();
+      plainText.textContent = "hello world!";
+      let unifiedData = new UDMF.UnifiedData(plainText);
+      try {
+        UDMF.insertData(options1, unifiedData, function (e, data) {
+          if (e !== undefined) {
+            console.info(`Failed to insertData. code is ${e.code},message is ${e.message} `);
+            return;
+          }
+          console.info(TAG + `insertData0400 success; data = ${data}, options = ${options1}`);
+          let options2 = {
+            intention: UDMF.Intention.DATA_HUB,
+            key: 'data'
+          };
+          try{
+            UDMF.queryData(options2, function (err, ret) {
+              if (err === undefined) {
+                let size = ret.length;
+                console.info(TAG, ` data.size = ${size}`);
+                for (var i = 0; i < size; i++) {
+                  let records = ret[i].getRecords();
+                  let size = records.length;
+                  for (var j = 0; j < size; j++) {
+                    if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
+                      let text = <UDMF.PlainText> (records[j]);
+                      console.info(TAG, ` queryData.result = ${i + 1}.${text.textContent}`);
+                    }
+                  }
+                }
+                expect(err === undefined).assertFail();
+                done();
+              } else {
+                console.info(`Failed to queryData code is ${err.code},message is ${err.message} `);
+                expect(err.code === 401).assertFail();
+                done();
+              }
+            });
+          }catch(errorInfo){
+            console.info(`Failed to queryData. code is ${errorInfo.code},message is ${errorInfo.message} `);
+            expect(errorInfo.code).assertEqual('401');
+            done();
+          }
         });
       } catch (error) {
         console.error(TAG, `Failed, code is ${error.code},message is ${error.message} `);
@@ -625,7 +609,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_QueryData_Callback_0500', 0, function (done) {
       let options1 = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -638,7 +622,7 @@ export default function UDMFApiCallback() {
           }
           console.info(TAG + `insertData0500 success; data = ${data}, options = ${options1}`);
           let options2 = {
-            intention: UDMF.Intention.SUPER_HUB,
+            intention: UDMF.Intention.DATA_HUB,
             key: undefined
           };
           UDMF.queryData(options2, function (err, ret) {
@@ -678,7 +662,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_DeleteData_Callback_0100', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -734,7 +718,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_DeleteData_Callback_0200', 0, function (done) {
       let options = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -790,7 +774,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_DeleteData_Callback_0300', 0, function (done) {
       let options1 = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -809,7 +793,7 @@ export default function UDMFApiCallback() {
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
             let options2 = {
-              intention: UDMF.Intention.SUPER_HUB,
+              intention: UDMF.Intention.DATA_HUB,
               key: data
             };
             UDMF.deleteData(options2, function (err, row) {
@@ -850,7 +834,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_DeleteData_Callback_0400', 0, function (done) {
       let options1 = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -869,31 +853,38 @@ export default function UDMFApiCallback() {
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
             let options2 = {
-              intention: UDMF.Intention.SUPER_HUB,
+              intention: UDMF.Intention.DATA_HUB,
               key: 'data'
             };
-            UDMF.deleteData(options2, function (err, row) {
-              if (err == undefined) {
-                let size = row.length;
-                console.info(TAG, ` deleteData size = ${size}`);
-                for (var i = 0; i < size; i++) {
-                  let records = row[i].getRecords();
-                  let size = records.length;
-                  for (var j = 0; j < size; j++) {
-                    if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
-                      let text = <UDMF.PlainText> (records[j]);
-                      console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
+            try{
+              UDMF.deleteData(options2, function (err, row) {
+                if (err == undefined) {
+                  let size = row.length;
+                  console.info(TAG, ` deleteData size = ${size}`);
+                  for (var i = 0; i < size; i++) {
+                    let records = row[i].getRecords();
+                    let size = records.length;
+                    for (var j = 0; j < size; j++) {
+                      if (records[j].getType() == UDMF.UnifiedDataType.PLAIN_TEXT) {
+                        let text = <UDMF.PlainText> (records[j]);
+                        console.info(TAG, ` deleteData.result = ${i + 1}.${text.textContent}`);
+                      }
                     }
                   }
+                  expect(err !== null).assertFail();
+                  done();
+                } else {
+                  console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
+                  expect(err.code === 401).assertFail();
+                  done();
                 }
-                expect(err !== null).assertFail();
-                done();
-              } else {
-                console.info(`Failed to deleteData. code is ${err.code},message is ${err.message} `);
-                expect(err.code).assertEqual('401');
-                done();
-              }
-            });
+              });
+            }catch(error){
+              console.info(`Failed to deleteData. code is ${error.code},message is ${error.message} `);
+              expect(error.code).assertEqual('401');
+              done();
+            }
+
           });
         });
       } catch (error) {
@@ -910,7 +901,7 @@ export default function UDMFApiCallback() {
      */
     it('SUB_DDM_UDMF_DeleteData_Callback_0300', 0, function (done) {
       let options1 = {
-        intention: UDMF.Intention.SUPER_HUB
+        intention: UDMF.Intention.DATA_HUB
       };
       let plainText = new UDMF.PlainText();
       plainText.textContent = "hello world!";
@@ -929,7 +920,7 @@ export default function UDMFApiCallback() {
             }
             console.info(TAG, ` queryData size = ${ret.length}`);
             let options2 = {
-              intention: UDMF.Intention.SUPER_HUB,
+              intention: UDMF.Intention.DATA_HUB,
               key: undefined
             };
             UDMF.deleteData(options2, function (err, row) {

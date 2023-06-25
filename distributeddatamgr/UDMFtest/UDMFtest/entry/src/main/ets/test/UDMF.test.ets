@@ -132,6 +132,11 @@ export default function UDMFApiTest() {
     applicationDefinedRecord.applicationDefinedType = 'applicationDefinedType';
     applicationDefinedRecord.rawData = u8Array;
 
+      let summary = new UDMF.Summary;
+      let records1 = summary.summary;
+      console.info("ttt " + records1);
+      let records2 = summary.totalSize;
+
     /**
      * @tc.number    SUB_DistributedData_Udmf_API001
      * @tc.name      CreateData
