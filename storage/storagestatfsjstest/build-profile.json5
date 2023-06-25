@@ -15,18 +15,6 @@
 {
   "app": {
     "signingConfigs": [
-      {
-        "name": "default",
-        "material": {
-          "certpath": "signature/auto_ohos_default_storagestatfsjstest_ohos.acts.storage.statfs.cer",
-          "storePassword": "0000001A0F1B96E9B6228F7B6C4484730A6BC589EDDF98B55B96A435457A8CA65BDFE530596240B93FD0",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001AE8F1EF37058048F5F3E8C6D5CE0154F940CFB4983FDBF8C595AF832660D08DAA8C0C8F4C78AC",
-          "profile": "signature/auto_ohos_default_storagestatfsjstest_ohos.acts.storage.statfs.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "signature/auto_ohos_default_storagestatfsjstest_ohos.acts.storage.statfs.p12"
-        }
-      }
     ],
     "compileSdkVersion": 10,
     "compatibleSdkVersion": 10,
