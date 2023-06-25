@@ -33,7 +33,7 @@
 #include "ndktest_log.h"
 
 namespace OHOS {
-namespace MediaAVCodec {
+namespace Media {
 class ADecEncSignal {
 public:
     std::mutex inMutexDec_;

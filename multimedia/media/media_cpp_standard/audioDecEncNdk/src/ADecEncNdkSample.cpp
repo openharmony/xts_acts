@@ -19,7 +19,7 @@
 #include "native_avcodec_base.h"
 
 using namespace OHOS;
-using namespace OHOS::MediaAVCodec;
+using namespace OHOS::Media;
 using namespace std;
 
 namespace {

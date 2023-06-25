@@ -35,7 +35,7 @@
 #include "native_avcodec_videoencoder.h"
 
 namespace OHOS {
-namespace MediaAVCodec {
+namespace Media {
 class VDecEncSignal {
 public:
     std::mutex inMutexDec_;
