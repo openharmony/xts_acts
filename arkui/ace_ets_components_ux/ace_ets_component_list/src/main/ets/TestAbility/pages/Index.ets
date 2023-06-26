@@ -35,6 +35,120 @@ struct Index {
     Row() {
       Column() {
         List({ space: "4vp", initialIndex: 0 ,scroller: this.scrollerForList }) {
+          ListItemGroup(){}
+          .key("nurmal")
+          .margin({left:$r('sys.float.ohos_id_card_margin_start'),right:$r('sys.float.ohos_id_card_margin_end')})
+          ListItemGroup({style: ListItemGroupStyle.CARD}) {
+            ListItem({style: ListItemStyle.CARD}) {
+              Text("ListItemGroupStyle.CARD与ListItemStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ArkUXII_List_style_0100")
+        
+            ListItem({style: ListItemStyle.NONE}) {
+              Text("ListItemGroupStyle.CARD与ListItemStyle.NONE")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ArkUXII_List_style_0300")
+
+            ListItem({style: null}) {
+              Text("ListItemGroupStyle.CARD与null")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ArkUXII_List_style_0400")
+
+            ListItem({style: undefined}) {
+              Text("ListItemGroupStyle.CARD与undefined")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ArkUXII_List_style_0500")
+
+            ListItem({style: ""}) {
+              Text("ListItemGroupStyle.CARD与\"\"")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ArkUXII_List_style_0600")
+
+            ListItem() {
+              Text("ListItemGroupStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ArkUXII_List_style_0700")
+          }
+          .key("ListItemGroup")
+          ListItemGroup({style: ListItemGroupStyle.NONE}) {
+            ListItem({style: ListItemStyle.CARD}) {
+              Text("ListItemGroupStyle.NONE与ListItemStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .key("ArkUXII_List_style_0800")
+
+          ListItemGroup({style: null}) {
+            ListItem({style: ListItemStyle.CARD}) {
+              Text("null与ListItemStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .key("ArkUXII_List_style_0900")
+
+          ListItemGroup({style: undefined}) {
+            ListItem({style: ListItemStyle.CARD}) {
+              Text("undefined与ListItemStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .key("ArkUXII_List_style_1000")
+
+          ListItemGroup({style: ""}) {
+            ListItem({style: ListItemStyle.CARD}) {
+              Text("\"\"与ListItemStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .key("ArkUXII_List_style_1100")
+
+          ListItemGroup() {
+            ListItem({style: ListItemStyle.CARD}) {
+              Text("ListItemStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .key("ArkUXII_List_style_1200")
+
+          ListItemGroup({style: "",style:ListItemGroupStyle.CARD}) {
+            ListItem({style: "",style: ListItemStyle.CARD}) {
+              Text("\"\"之后再ListItemStyle.CARD与\"\"之后再ListItemGroupStyle.CARD")
+                .fontSize(10)
+                .width('100%')
+                .textAlign(TextAlign.Center)
+            }
+            .key("ListItem_ArkUXII_List_style_0200")
+          }
+          .key("ArkUXII_List_style_0200")
+
           ListItem(){
              Button("scrollTo自定义弹簧曲线测试(Curves.springCurve(7, 1, 227, 33))")
               .key("scrollerForList")
