@@ -100,17 +100,17 @@ export default function relationalStoreAssetResultSetTest() {
                 "data2": asset2,
                 "data3": assets1,
             }
-            await rdbStore.insert("test", valuesBucket)
+            await rdbStore.insert("test", valuesBucket);
             valuesBucket = {
                 "data1": asset2,
                 "data2": asset3,
                 "data3": assets2,
             }
-            await rdbStore.insert("test", valuesBucket)
+            await rdbStore.insert("test", valuesBucket);
             valuesBucket = {
                 "data1": asset1,
             }
-            await rdbStore.insert("test", valuesBucket)
+            await rdbStore.insert("test", valuesBucket);
             console.log(TAG + "createTest data end");
         }
     
@@ -119,7 +119,7 @@ export default function relationalStoreAssetResultSetTest() {
             let valuesBucket = {
                 "data1": asset4,
             }
-            await rdbStore.insert("test", valuesBucket)
+            await rdbStore.insert("test", valuesBucket);
             console.log(TAG + "createErrorTest data end");
         }
     
@@ -134,7 +134,7 @@ export default function relationalStoreAssetResultSetTest() {
             let predicates = await new data_relationalStore.RdbPredicates("test")
             let resultSet = await rdbStore.query(predicates)
             try {
-                expect(true).assertEqual(resultSet.goToFirstRow())
+                expect(true).assertEqual(resultSet.goToFirstRow());
                 const id = resultSet.getLong(resultSet.getColumnIndex("id"))
                 const data1 = resultSet.getAsset(resultSet.getColumnIndex("data1"))
                 console.log(TAG + "id=" + id + ", data1=" + data1);
