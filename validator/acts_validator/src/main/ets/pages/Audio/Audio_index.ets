@@ -293,7 +293,7 @@ struct IndexPage {
         serializer.setAttributes("name", String(title[i]));
         serializer.setAttributes("status", "run");
         serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "Audio");
+        serializer.setAttributes("classname", "ActsAudioTest");
         serializer.setAttributes("result", String(result[i]));
         serializer.setAttributes("level", "*");
         serializer.setAttributes("message", "*");

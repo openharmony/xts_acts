@@ -1103,6 +1103,19 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testencoding_textencoder_005
+     * @tc.desc: The TextEncoder construction parameter is undefined or null.
+     */
+    it('testencoding_textencoder_005', 0, function () {
+        let encode1 = new util.TextEncoder(undefined)
+        let str1 = encode1.encoding
+        expect(str1).assertEqual('utf-8')
+        let encode2 = new util.TextEncoder(null)
+        let str2 = encode2.encoding
+        expect(str2).assertEqual('utf-8')
+    })
+
+    /**
      * @tc.name: testEncode001
      * @tc.desc: Returns the result of encoder.
      */
@@ -1312,6 +1325,18 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: testEncode016
+     * @tc.desc: The encode parameter is undefined or null.
+     */
+    it('testEncode016', 0, function () {
+        let that = new util.TextEncoder()
+        let result1 = that.encode(undefined)
+        expect(result1).assertEqual(undefined)
+        let result2 = that.encode(null)
+        expect(result2).assertEqual(undefined)
+    })
+
+    /**
      * @tc.name: testEncodeInto001
      * @tc.desc: encode string, write the result to dest array.
      */
@@ -1421,6 +1446,18 @@ describe('TextEncoderTest', function () {
         result = that.encodeInto('\uD800A\uDF06A楼HiA', dest)
         expect(result.read).assertEqual(0)
         expect(result.written).assertEqual(0)
+    })
+
+    /**
+     * @tc.name: testEncodeInto001
+     * @tc.desc: The encodeInto parameter is undefined or null
+     */
+    it('testEncodeInto009', 0, function () {
+        let that = new util.TextEncoder()
+        let result1 = that.encodeInto(undefined)
+        expect(result1).assertEqual(undefined)
+        let result2 = that.encodeInto(null)
+        expect(result2).assertEqual(undefined)
     })
 })
 
@@ -2217,11 +2254,11 @@ describe('Base64Test', function () {
 
     //base64 EncodeAsync test
     /**
-     * @tc.name: test_encodeSync_base64_001
+     * @tc.name: test_encodeAsync_base64_001
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
        allocated u8 array using the Base64 encoding scheme.
      */
-    it('test_encodeSync_base64_001', 0, async function () {
+    it('test_encodeAsync_base64_001', 0, async function () {
         var that = await new util.Base64();
         var array = new Uint8Array([115,49,51]);
         var rarray = new Uint8Array([99,122,69,122]);
@@ -2233,11 +2270,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: test_encodeSync_base64_002
+     * @tc.name: test_encodeAsync_base64_002
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
        allocated u8 array using the Base64 encoding scheme.
      */
-    it('test_encodeSync_base64_002', 0, async function () {
+    it('test_encodeAsync_base64_002', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
         var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
@@ -2249,11 +2286,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: test_encodeSync_base64_003
+     * @tc.name: test_encodeAsync_base64_003
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
        array using the Base64 encoding scheme.
      */
-    it('test_encodeSync_base64_003', 0, async function () {
+    it('test_encodeAsync_base64_003', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,
         78,111,100,101,46,106,115]);
@@ -2267,11 +2304,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: test_encodeSync_base64_004
+     * @tc.name: test_encodeAsync_base64_004
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
        array using the Base64 encoding scheme.
      */
-    it('test_encodeSync_base64_004', 0, async function () {
+    it('test_encodeAsync_base64_004', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([168, 174, 155, 255]);
         var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
@@ -2283,11 +2320,11 @@ describe('Base64Test', function () {
     })
 
     /**
-     * @tc.name: test_encodeSync_base64_005
+     * @tc.name: test_encodeAsync_base64_005
      * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
        array using the Base64 encoding scheme.
      */
-    it('test_encodeSync_base64_005', 0, async function () {
+    it('test_encodeAsync_base64_005', 0, async function () {
         var that = new util.Base64()
         var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
         var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
@@ -5223,22 +5260,12 @@ describe('TypesTest', function() {
     })
 
     /**
-     * @tc.name: testIsBigUint64Array002
-     * @tc.desc: Check whether the entered value is of biguint64array array array type.
-     */
-     it('testIsBigUint64Array002', 0, function() {
-        var proc = new util.types();
-        var result = proc.isBigUint64Array(new Float64Array([]));
-        expect(result).assertEqual(false);
-    })
-
-    /**
      * @tc.name: testIsBigUint64Array003
      * @tc.desc: Check whether the entered value is of biguint64array array array type.
      */
      it('testIsBigUint64Array003', 0, function() {
         var proc = new util.types();
-        var result = proc.isBigUint64Array(new Uint8Array([]));
+        var result = proc.isBigUint64Array(new Float64Array([]));
         expect(result).assertEqual(false);
     })
 
@@ -5248,7 +5275,7 @@ describe('TypesTest', function() {
      */
      it('testIsBigUint64Array004', 0, function() {
         var proc = new util.types();
-        var result = proc.isBigUint64Array(new BigInt64Array([]));
+        var result = proc.isBigUint64Array(new Uint8Array([]));
         expect(result).assertEqual(false);
     })
 
@@ -5257,6 +5284,16 @@ describe('TypesTest', function() {
      * @tc.desc: Check whether the entered value is of biguint64array array array type.
      */
      it('testIsBigUint64Array005', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigUint64Array(new BigInt64Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigUint64Array006
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     */
+     it('testIsBigUint64Array006', 0, function() {
         var proc = new util.types();
         var result = proc.isBigUint64Array(new Int8Array([]));
         expect(result).assertEqual(false);

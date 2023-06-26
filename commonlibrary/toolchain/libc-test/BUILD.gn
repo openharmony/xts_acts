@@ -19,10 +19,8 @@ import("//test/xts/tools/build/suite.gni")
 config("module_private_config") {
   visibility = [ ":*" ]
   include_dirs = [
-    "//commonlibrary/c_utils/base/include",
     "//third_party/bounds_checking_function/include",
     "//third_party/musl/porting/linux/user/include",
-    "//test/xts/acts/security_lite/huks/common/include",
   ]
 }
 
@@ -39,7 +37,6 @@ ohos_moduletest_suite("ActsToolChainTest") {
   ]
 
   include_dirs = [
-    "//commonlibrary/c_utils/base/include",
     "//third_party/bounds_checking_function/include",
     "//third_party/musl/porting/linux/user/include/",
     "//third_party/musl/porting/linux/user/src/sched",

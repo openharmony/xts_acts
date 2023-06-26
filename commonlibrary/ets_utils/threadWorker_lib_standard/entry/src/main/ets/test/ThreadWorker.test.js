@@ -126,24 +126,24 @@ describe('threadWorkerTest', function () {
      */
     it('threadWorker_constructor_test_005', 0, async function (done) {
         var ss = []
+        let flag = 0
         try {
             let a = 0
             while (a <= 8) {
                 ss[a] = new worker.ThreadWorker("entry/ets/workers/newworker.js")
+                ss[a].onexit = function() {
+                    flag += 1
+                }
                 a += 1
             }
         } catch (error) {
             expect(error.name == "BusinessError").assertTrue()
             let msg = "Worker initialization failure, the number of workers exceeds the maximum."
             expect(error.message).assertEqual(msg)
-            let b = 7
-            let flag = 0
-            while (b >= 0) {
-                ss[b].onexit = function () {
-                    flag += 1
-                }
+            let b = 0
+            while (b < 8) {
                 ss[b].terminate()
-                b -= 1
+                b += 1
             }
             while (flag != 8) {
                 await promiseCase()
@@ -591,6 +591,30 @@ describe('threadWorkerTest', function () {
             done()
         }
     })
+
+        // check worker terminate is ok
+        /**
+         * @tc.name: threadWorker_terminate_test_004
+         * @tc.desc: Terminates the worker thread to stop the worker from receiving messages.
+         */
+        it('threadWorker_terminate_test_004', 0, async function (done) {
+            let ss = new worker.ThreadWorker("entry/ets/workers/newworker_002.js")
+            let res = 0
+            let flag = false
+
+            ss.onexit = function () {
+                flag = true
+                res++
+            }
+            for (let i = 0; i < 10; i++) {
+                ss.terminate();
+            }
+            while (!flag) {
+                await promiseCase()
+            }
+            expect(res).assertEqual(1)
+            done()
+        })
 
     // check worker on function is ok
     /**
@@ -1542,10 +1566,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_003
+     * @tc.name: threadWorker_removeListener_test_004
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_003', 0, async function (done) {
+     it('threadWorker_removeListener_test_004', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1572,10 +1596,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_004
+     * @tc.name: threadWorker_removeListener_test_005
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_004', 0, async function (done) {
+     it('threadWorker_removeListener_test_005', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1602,10 +1626,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_005
+     * @tc.name: threadWorker_removeListener_test_006
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_005', 0, async function (done) {
+     it('threadWorker_removeListener_test_006', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0
@@ -1632,10 +1656,10 @@ describe('threadWorkerTest', function () {
 
     // check worker removeAllListener function is ok
     /**
-     * @tc.name: threadWorker_removeListener_test_006
+     * @tc.name: threadWorker_removeListener_test_007
      * @tc.desc: Removes an event defined for the worker when throw error.
      */
-     it('threadWorker_removeListener_test_006', 0, async function (done) {
+     it('threadWorker_removeListener_test_007', 0, async function (done) {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker.js")
 
         let zhangSanTimes = 0

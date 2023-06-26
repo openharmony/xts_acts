@@ -18,6 +18,8 @@
     "TestAbility/pages/textObscured",
     "TestAbility/pages/imageObscuredTest",
     "TestAbility/pages/stageAnimator",
-    "TestAbility/pages/navigationType"
+    "TestAbility/pages/textSpanFont",
+    "TestAbility/pages/gridScrollBar",
+    "TestAbility/pages/sidebarType"
   ]
 }

@@ -205,19 +205,19 @@ struct SwiperExample {
     }
       Column() {
         Swiper(this.swiperController) {
-            ForEach(this.colorList,  (item,index) => {
-              Text("第"+(item.cardId).toString()+"页")
-                .width('90%')
-                .height(160)
-                .backgroundColor(item.color)
-                .textAlign(TextAlign.Center)
-                .fontSize(30)
-            })
+          LazyForEach(this.data, (item: string) => {
+            Text(item)
+              .width('90%')
+              .height(160)
+              .backgroundColor(0xAFEEEE)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+          }, item => item)
         }
         .key("SwiperD")
         .foregroundColor($r("sys.color.ohos_id_color_primary"))
         .index(0) 
-        .indicator(this.indicator)
+        .indicator(this.indicator) //是否启用导航点指示器。
         .cachedCount(1) 
         .loop(false) 
         .duration(1000) 
@@ -225,26 +225,50 @@ struct SwiperExample {
         .onChange((index: number) => {
           console.info(index.toString())
         })
+        .displayArrow(this.arrowStyle) 
+      }
+      Column() {
+        Swiper(this.swiperController) {
+          LazyForEach(this.data, (item: string) => {
+            Text(item)
+              .width('90%')
+              .height(160)
+              .backgroundColor(0xAFEEEE)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+          }, item => item)
+        }
+        .key("SwiperE")
+        .foregroundColor($r("sys.color.ohos_id_color_primary"))
+        .index(0) 
+        .indicator(this.indicator) 
+        .cachedCount(1) 
+        .loop(false) 
+        .duration(1000) 
+        .vertical(false)
+        .onChange((index: number) => {
+          console.info(index.toString())
+        })
         .displayArrow(true) 
       }
       Column() {
         Swiper(this.swiperController) {
-             ForEach(this.colorList,  (item,index) => {
-              Text("第"+(item.cardId).toString()+"页")
-                .width('90%')
-                .height(160)
-                .backgroundColor(item.color)
-                .textAlign(TextAlign.Center)
-                .fontSize(30)
-            })
+          LazyForEach(this.data, (item: string) => {
+            Text(item)
+              .width('90%')
+              .height(160)
+              .backgroundColor(0xAFEEEE)
+              .textAlign(TextAlign.Center)
+              .fontSize(30)
+          }, item => item)
         }
-        .key("SwiperE")
-        .index(0) 
-        .indicator(this.indicator)
+        .key("SwiperF")
+        .index(0)
+        .indicator(this.indicator) 
         .cachedCount(1)
         .loop(false) 
         .duration(1000) 
-        .vertical(false)
+        .vertical(false) 
         .onChange((index: number) => {
           console.info(index.toString())
         })

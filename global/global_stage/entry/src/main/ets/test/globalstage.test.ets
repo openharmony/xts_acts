@@ -218,7 +218,7 @@ export default function globalStageTest() {
         it('getMediaContent_stage_test_0100', 0, async function (done) {
             globalThis.yq.resourceManager.getMediaContent({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}, (err, value) => {
+            id:0x01000012}, (err, value) => {
             expect(value.length == 6790).assertTrue();
             console.log('getMediaContent_stage_test_0100 ' + value.length);
             done();
@@ -236,7 +236,7 @@ export default function globalStageTest() {
         it('getMediaContent_stage_test_0200', 0, async function (done) {
             globalThis.yq.resourceManager.getMediaContent({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}).then(value => {
+            id:0x01000012}).then(value => {
             expect(value.length == 6790).assertTrue();
             console.log('getMediaContent_stage_test_0200 ' + value.length);
             done();
@@ -254,7 +254,7 @@ export default function globalStageTest() {
         it('getMediaContent_stage_test_0300', 0, async function (done) {
         globalThis.yq.resourceManager.getMediaContent({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}, 0 , (err, value) => {
+            id:0x01000012}, 0 , (err, value) => {
             expect(value.length == 6790).assertTrue();
             console.log('getMediaContent_stage_test_0300 ' + value.length);
             done();
@@ -272,7 +272,7 @@ export default function globalStageTest() {
         it('getMediaContent_stage_test_0400', 0, async function (done) {
         globalThis.yq.resourceManager.getMediaContent({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}, 0).then(value => {
+            id:0x01000012}, 0).then(value => {
             expect(value.length == 6790).assertTrue();
             console.log('getMediaContent_stage_test_0400 ' + value.length);
             done();
@@ -290,7 +290,7 @@ export default function globalStageTest() {
         it('getMediaContentBase64_stage_test_0100', 0, async function (done) {
         globalThis.yq.resourceManager.getMediaContentBase64({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}, (err, value) => {
+            id:0x01000012}, (err, value) => {
             expect(value.length == 9078).assertTrue();
             console.log('getMediaContentBase64_stage_test_0100 ' + value.length);
             done();
@@ -308,7 +308,7 @@ export default function globalStageTest() {
         it('getMediaContentBase64_stage_test_0200', 0, async function (done) {
         globalThis.yq.resourceManager.getMediaContentBase64({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}).then(value => {
+            id:0x01000012}).then(value => {
             expect(value.length == 9078).assertTrue();
             console.log('getMediaContentBase64_stage_test_0200 ' + value.length);
             done();
@@ -326,7 +326,7 @@ export default function globalStageTest() {
         it('getMediaContentBase64_stage_test_0300', 0, async function (done) {
         globalThis.yq.resourceManager.getMediaContentBase64({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}, 0 , (err, value) => {
+            id:0x01000012}, 0 , (err, value) => {
             expect(value.length == 9078).assertTrue();
             console.log('getMediaContentBase64_stage_test_0300 ' + value.length);
             done();
@@ -344,7 +344,7 @@ export default function globalStageTest() {
         it('getMediaContentBase64_stage_test_0400', 0, async function (done) {
         globalThis.yq.resourceManager.getMediaContentBase64({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000011}, 0).then(value => {
+            id:0x01000012}, 0).then(value => {
             expect(value.length == 9078).assertTrue();
             console.log('getMediaContentBase64_stage_test_0400 ' + value.length);
             done();
@@ -362,7 +362,7 @@ export default function globalStageTest() {
         it('getPluralStringValue_stage_test_0100', 0, async function (done) {
             globalThis.yq.resourceManager.getPluralStringValue({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000010}, 2, (error, value) => {
+            id:0x01000011}, 2, (error, value) => {
             expect(value !== null).assertTrue();
             console.log('getPluralStringValue_stage_test_0100 ' + value);
             expect(value).assertEqual('2 apples');
@@ -381,7 +381,7 @@ export default function globalStageTest() {
         it('getPluralStringValue_stage_test_0200', 0, async function (done) {
             globalThis.yq.resourceManager.getPluralStringValue({bundleName:"ohos.acts.globalstage",
             moduleName:"phone",
-            id:0x01000010}, 2).then(value => {
+            id:0x01000011}, 2).then(value => {
             expect(value !== null).assertTrue();
             console.log('getPluralStringValue_stage_test_0200 ' + value);
             expect(value).assertEqual('2 apples');
@@ -434,13 +434,60 @@ export default function globalStageTest() {
         it('getDrawableDescriptor_stage_test_0100', 0, async function (done) {
             let out = true;
             let value = globalThis.yq.resourceManager.getDrawableDescriptor(
-            { bundleName:"ohos.acts.globalstage", moduleName:"phone", id:0x01000011});
+            { bundleName:"ohos.acts.globalstage", moduleName:"phone", id:0x01000012});
             console.log('getDrawableDescriptor_stage_test_0100 ' + value);
             if(value == null){
             out = false;
             }
             console.log('getDrawableDescriptor_test_2100 ' + out);
             expect(out).assertTrue();
+            done();
+        })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_GETCOLOR_STAGE_JS_0100
+        * @tc.name    test getColor method with resource param in callback mode
+        * @tc.desc    get the color in callback mode
+        */
+        it('getColor_test_0100', 0, async function (done) {
+            globalThis.yq.resourceManager.getColor({ bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x01000010}, (err, value) => {
+            expect(value !== null).assertTrue();
+            console.log('getColor_test_0100 ' + value);
+            expect(value).assertEqual(4294967295);
+            done();
+        })
+        })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_GETCOLOR_STAGE_JS_0200
+        * @tc.name    test getColor method with resource param in promise mode
+        * @tc.desc    get the color in promise mode
+        */
+        it('getColor_test_0200', 0, async function (done) {
+            globalThis.yq.resourceManager.getColor({ bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x01000010}).then(value => {
+            expect(value !== null).assertTrue();
+            console.log('getColor_test_0200 ' + value);
+            expect(value).assertEqual(4294967295);
+            done();
+        })
+        })
+
+        /* *
+        * @tc.number  SUB_GLOBAL_GETCOLORSYNC_STAGE_JS_0100
+        * @tc.name    test getColorSync method with resource param in promise mode
+        * @tc.desc    get the sync color in promise mode
+        */
+        it('getColorSync_test_0100', 0, async function (done) {
+            let value = globalThis.yq.resourceManager.getColorSync({ bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x01000010});
+            expect(value !== null).assertTrue();
+            console.log('getColorSync_test_0100 ' + value);
+            expect(value).assertEqual(4294967295);
             done();
         })
 

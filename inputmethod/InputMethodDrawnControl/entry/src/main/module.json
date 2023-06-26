@@ -36,6 +36,16 @@
                 ]
             }
         ],
+        "extensionAbilities": [
+        {
+          "description": "inputPanelTest",
+          "icon": "$media:icon",
+          "name": "inputMethodWindService",
+          "srcEntrance": "./ets/InputMethodDrawnControl/InputMethodControlService.ts",
+          "type": "inputMethod",
+          "visible":true
+        }
+      ],
         "requestPermissions": [
             {
               "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",

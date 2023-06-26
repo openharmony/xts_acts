@@ -133,7 +133,7 @@ export default function progressJsunit() {
      * @tc.name      testGetProgressAttr050
      * @tc.desc      aceEtsTest
      */
-    it('testGetProgressAttr020', 0, async function (done) {
+    it('testGetProgressAttr050', 0, async function (done) {
       console.info('testGetProgressAttr5 START');
       let strJson = getInspectorByKey('progress5');
       let obj = JSON.parse(strJson);

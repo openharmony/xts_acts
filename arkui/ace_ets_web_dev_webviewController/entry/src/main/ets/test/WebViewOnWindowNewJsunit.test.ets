@@ -148,8 +148,20 @@ export default function webViewOnWindowNewJsunit() {
     *tc.desc test api blockNetWork set to false by load online website
     */
    it('testBlockNetWorkFalse',0,async function(done){
-      let title = "www.weibo.com";
+     emitKey="emitGetOriginsPromiseLoadLocalHtml01";
+     let title = "www.weibo.com";
       Utils.registerEvent("testBlockNetWorkFalse", title, 7114, done);
+      sendEventByKey('onWindowNew', 10, '');
+    })
+    /*
+    *tc.number SUB_ACE_BASIC_ETS_API_GETORIGINS_0100
+    *tc.name testGetOriginsPromiseLoadLocalHtml01
+    *tc.desc test api GetOrigins promise mode by load loacal html
+    */
+     it('testGetOriginsPromiseLoadLocalHtml01', 0, async function(done){
+      emitKey = 'emitGetOriginsPromiseLoadLocalHtml01';
+      let length = 1;
+      Utils.registerEvent("testGetOriginsPromiseLoadLocalHtml01", length, 7166, done);
       sendEventByKey('onWindowNew', 10, '');
     })
   })

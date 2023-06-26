@@ -25,7 +25,7 @@ ohos_js_hap_suite("ActsHiAppeventTest") {
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHiAppeventTest"
-  part_name = "hiappevent_js"
+  part_name = "hiappevent"
   subsystem_name = "hiviewdfx"
 }
 ohos_js_assets("hiappevent_js_assets") {

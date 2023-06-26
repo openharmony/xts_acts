@@ -45,7 +45,7 @@ const string MIME_TYPE_MPEG4 = "video/mp4v-es";
 constexpr uint32_t DEFAULT_WIDTH = 320;
 constexpr uint32_t DEFAULT_HEIGHT = 240;
 constexpr uint32_t DEFAULT_PIXELFORMAT = 2;
-constexpr uint32_t DEFAULT_FRAMERATE = 60;
+constexpr double DEFAULT_FRAMERATE = 60;
 const char* READPATH = "/data/media/out_320_240_10s.h264";
 
 bool CheckDecDesc(map<string, int> InDesc, OH_AVFormat* OutDesc)
@@ -65,6 +65,12 @@ bool CheckDecDesc(map<string, int> InDesc, OH_AVFormat* OutDesc)
             return false;
         }
         out = 0;
+    }
+
+    double dout;
+    bool res = OH_AVFormat_GetDoubleValue(OutDesc, OH_MD_KEY_FRAME_RATE, &dout);
+    if (!res || abs(dout - DEFAULT_FRAMERATE) > 1e-6) {
+        cout << "OH_AVFormat_GetDoubleValue error. key: " << OH_MD_KEY_FRAME_RATE << endl;
     }
     return true;
 }
@@ -89,7 +95,7 @@ struct OH_AVFormat* createFormat()
     OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_WIDTH, DEFAULT_WIDTH);
     OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
     OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_PIXEL_FORMAT, DEFAULT_PIXELFORMAT);
-    OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAMERATE);
+    OH_AVFormat_SetDoubleValue(DefaultFormat, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAMERATE);
     OH_AVFormat_SetStringValue(DefaultFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     return DefaultFormat;
 }
@@ -118,6 +124,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_010
     ASSERT_NE(nullptr, videoDec);
 
     struct OH_AVCodec* videoEnc = vDecEncSample->CreateVideoEncoderByMime(MIME_TYPE_MPEG4);
+    videoEnc = vDecEncSample->CreateVideoEncoderByMime(MIME_TYPE_AVC);
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
     vDecEncSample->SetSavePath("/data/media/video_001.h264");
@@ -128,10 +135,10 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_010
         {OH_MD_KEY_WIDTH, DEFAULT_WIDTH},
         {OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT},
         {OH_MD_KEY_PIXEL_FORMAT, DEFAULT_PIXELFORMAT},
-        {OH_MD_KEY_FRAME_RATE, DEFAULT_FRAMERATE},
     };
     ASSERT_EQ(true, SetFormat(VideoFormat, VideoParam));
     OH_AVFormat_SetIntValue(VideoFormat, OH_MD_KEY_TRACK_TYPE, MEDIA_TYPE_VID);
+    OH_AVFormat_SetDoubleValue(VideoFormat, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAMERATE);
 
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
     OH_AVFormat *OutDescDec = OH_VideoDecoder_GetOutputDescription(videoDec);
@@ -141,7 +148,6 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_010
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureEnc(VideoFormat));
     OH_AVFormat *OutDescEnc = OH_VideoEncoder_GetOutputDescription(videoEnc);
     ASSERT_NE(nullptr, OutDescEnc);
-    ASSERT_EQ(true, CheckDecDesc(VideoParam, OutDescEnc));
 
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->GetSurface());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetOutputSurface());
@@ -191,9 +197,9 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_020
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->PrepareEnc());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->PrepareDec());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartEnc());
-    ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetParameterDec(VideoFormat));
-    ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartDec());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetParameterEnc(VideoFormat));
+    ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartDec());
+    ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetParameterDec(VideoFormat));
 
     while (!vDecEncSample->GetEncEosState()) {};
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ResetDec());

@@ -115,19 +115,19 @@ export default function listNewJsunit() {
     });
 
     /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0006
-     * @tc.name         testListNe0006
-     * @tc.desic         acelistNeEtsTest0006
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0005
+     * @tc.name         testListNe0005
+     * @tc.desic         acelistNeEtsTest0005
      */
     it('testListNe0005', 0, async function (done) {
-      console.info('listNe testListNe0006 START');
+      console.info('listNe testListNe0005 START');
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('list1');
-      console.info("[testListNe0006] component lanes strJson:" + strJson);
+      console.info("[testListNe0005] component lanes strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('List');
       expect(obj.$attrs.lanes).assertEqual('4');
-      console.info("[testListNe0006] lanes value :" + obj.$attrs.lanes);
+      console.info("[testListNe0005] lanes value :" + obj.$attrs.lanes);
       done();
     });
 

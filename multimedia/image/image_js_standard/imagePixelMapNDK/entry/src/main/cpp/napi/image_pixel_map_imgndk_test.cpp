@@ -564,7 +564,7 @@ napi_value ImagePixelMapNDKTest::GetImageInfo(napi_env env, napi_callback_info i
         return result;
     }
 
-    struct OhosPixelMapInfo pixelmapInfo;
+    OhosPixelMapInfo pixelmapInfo;
     int32_t res = OH_PixelMap_GetImageInfo(native, &pixelmapInfo);
     if (res != OHOS_IMAGE_RESULT_SUCCESS) {
         return result;

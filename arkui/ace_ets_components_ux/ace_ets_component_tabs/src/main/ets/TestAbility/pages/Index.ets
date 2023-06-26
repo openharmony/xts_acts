@@ -33,7 +33,7 @@ struct TabsExample {
     @State nullFlag: boolean = false
 
     @State strokeWidthNum: number = 10
-    @State dividerColorNum: number = 0xFFFF0000
+    @State dividerColorNum: number = 0xFF0000
     @State startMarginNum: number = 5
     @State endMarginNum: number = 5
 
@@ -235,7 +235,7 @@ struct TabsExample {
                     Column().width('100%').height('100%').backgroundColor(Color.Yellow)
                 }.tabBar(SubTabBarStyle.of('pink')
                 .indicator({
-                    color: 0xFFFF0000, //下划线颜色
+                    color: 0xFF0000,
                 })
                 .selectedMode(this.selfSelectedMode)
                 .board({ borderRadius: this.selfSubTabBorderRadius })

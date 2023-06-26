@@ -45,26 +45,6 @@ export default function ObserverJsunit() {
     })
 
     /*
-     * @tc.number    : Telephony_observer_observer_on_networkStateChange_0100
-     * @tc.name      : on_networkStateChange
-     * @tc.desc      : call the on method of networkStateChange
-     */
-    it('Telephony_observer_observer_on_networkStateChange_0100', 0, async function (done) {
-      console.log("************* Telephony_observer_observer_on_networkStateChange_0100 Test start *************");
-      try {
-        observer.on('networkStateChange', NetworkState => {
-          console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
-          expect(typeof NetworkState === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_observer_observer_on_networkStateChange_0100 Test end *************");
-    })
-
-    /*
      * @tc.number    : Telephony_observer_observer_on_networkStateChange_0200
      * @tc.name      : on_networkStateChange
      * @tc.desc      : call the on method of networkStateChange
@@ -72,17 +52,20 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_on_networkStateChange_0200', 0, async function (done) {
       console.log("************* Telephony_observer_observer_on_networkStateChange_0200 Test start *************");
       try {
-        observer.on('networkStateChange', {
-          slotId: 0
-        }, NetworkState => {
+        let callback = NetworkState => {
           console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
           expect(typeof NetworkState === undefined).assertFalse();
-        });
+        }
+        observer.on('networkStateChange', {
+          slotId: 0
+        }, callback);
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
+      observer.off('networkStateChange');
+
       console.log("************* Telephony_observer_observer_on_networkStateChange_0200 Test end *************");
     })
 
@@ -110,25 +93,7 @@ export default function ObserverJsunit() {
       console.log("************* Telephony_observer_observer_off_networkStateChange_0100 Test end *************");
     })
 
-    /*
-     * @tc.number    : Telephony_observer_observer_on_signalInfoChange_0100
-     * @tc.name      : on_signalInfoChange
-     * @tc.desc      : call the on method of signalInfoChange
-     */
-    it('Telephony_observer_observer_on_signalInfoChange_0100', 0, async function (done) {
-      console.log("************* Telephony_observer_observer_on_signalInfoChange_0100 Test start *************");
-      try {
-        observer.on('signalInfoChange', SignalInformation => {
-          console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
-          expect(typeof SignalInformation === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_observer_observer_on_signalInfoChange_0100 Test end *************");
-    })
+
 
     /*
      * @tc.number    : Telephony_observer_observer_on_signalInfoChange_0200
@@ -138,17 +103,19 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_on_signalInfoChange_0200', 0, async function (done) {
       console.log("************* Telephony_observer_observer_on_signalInfoChange_0200 Test start *************");
       try {
-        observer.on('signalInfoChange', {
-          slotId: 0
-        }, SignalInformation => {
+        let callback = SignalInformation => {
           console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
           expect(typeof SignalInformation === undefined).assertFalse();
-        });
+        }
+        observer.on('signalInfoChange', {
+          slotId: 0
+        }, callback);
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
+      observer.off('signalInfoChange');
       console.log("************* Telephony_observer_observer_on_signalInfoChange_0200 Test end *************");
     })
 
@@ -177,26 +144,7 @@ export default function ObserverJsunit() {
     })
 
 
-    /*
-     * @tc.number    : Telephony_observer_observer_on_cellularDataConnectionStateChange_0100
-     * @tc.name      : on_cellularDataConnectionStateChange
-     * @tc.desc      : call the on method of cellularDataConnectionStateChange
-     */
-    it('Telephony_observer_observer_on_cellularDataConnectionStateChange_0100', 0, async function (done) {
-      console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0100 Test start *************");
-      try {
-        observer.on('cellularDataConnectionStateChange', value => {
-          console.log("on cellularDataConnectionStateChange, state:" + value.state + ", network:" + value.network);
-          expect(typeof value.state === undefined).assertFalse();
-          expect(typeof value.network === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0100 Test end *************");
-    })
+
 
     /*
      * @tc.number    : Telephony_observer_observer_on_cellularDataConnectionStateChange_0200
@@ -206,18 +154,20 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_on_cellularDataConnectionStateChange_0200', 0, async function (done) {
       console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0200 Test start *************");
       try {
-        observer.on('cellularDataConnectionStateChange', {
-          slotId: 0
-        }, value => {
+        let callback = value => {
           console.log("on cellularDataConnectionStateChange, state:" + value.state + ", network:" + value.network);
           expect(typeof value.state === undefined).assertFalse();
           expect(typeof value.network === undefined).assertFalse();
-        });
+        }
+        observer.on('cellularDataConnectionStateChange', {
+          slotId: 0
+        }, callback);
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
+        observer.off('cellularDataConnectionStateChange');
       console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0200 Test end *************");
     })
 
@@ -245,26 +195,6 @@ export default function ObserverJsunit() {
     })
 
     /*
-     * @tc.number    : Telephony_observer_observer_on_cellularDataFlowChange_0100
-     * @tc.name      : on_cellularDataFlowChange
-     * @tc.desc      : call the on method of cellularDataFlowChange
-     */
-    it('Telephony_observer_observer_on_cellularDataFlowChange_0100', 0, async function (done) {
-      console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0100 Test start *************");
-      try {
-        observer.on('cellularDataFlowChange', DataFlowType => {
-          console.log("on networkStateChange, DataFlowType:" + JSON.stringify(DataFlowType));
-          expect(typeof DataFlowType === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0100 Test end *************");
-    })
-
-    /*
      * @tc.number    : Telephony_observer_observer_on_cellularDataFlowChange_0200
      * @tc.name      : on_cellularDataFlowChange
      * @tc.desc      : call the on method of cellularDataFlowChange
@@ -272,17 +202,19 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_on_cellularDataFlowChange_0200', 0, async function (done) {
       console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0200 Test start *************");
       try {
-        observer.on('cellularDataFlowChange', {
-          slotId: 0
-        }, DataFlowType => {
+		let callback = DataFlowType => {
           console.log("on networkStateChange, DataFlowType:" + JSON.stringify(DataFlowType));
           expect(typeof DataFlowType === undefined).assertFalse();
-        });
+        }
+        observer.on('cellularDataFlowChange', {
+          slotId: 0
+        }, callback);
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
+        observer.off('cellularDataFlowChange');
       console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0200 Test end *************")
     })
 
@@ -310,26 +242,6 @@ export default function ObserverJsunit() {
     })
 
     /*
-     * @tc.number    : Telephony_observer_observer_on_callStateChange_0100
-     * @tc.name      : on_callStateChange
-     * @tc.desc      : call the on method of callStateChange
-     */
-    it('Telephony_observer_observer_on_callStateChange_0100', 0, async function (done) {
-      console.log("************* Telephony_observer_observer_on_callStateChange_0100 Test start *************");
-      try {
-        observer.on('callStateChange', value => {
-          console.log("on callStateChange, state:" + value.state + ", number:" + value.number);
-          expect(typeof value.state === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_observer_observer_on_callStateChange_0100 Test end *************");
-    })
-
-    /*
      * @tc.number    : Telephony_observer_observer_on_callStateChange_0200
      * @tc.name      : on_callStateChange
      * @tc.desc      : call the on method of callStateChange
@@ -337,17 +249,19 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_on_callStateChange_0200', 0, async function (done) {
       console.log("************* Telephony_observer_observer_on_callStateChange_0200 Test start *************");
       try {
-        observer.on('callStateChange', {
-          slotId: 0
-        }, value => {
+		let callback = value => {
           console.log("on callStateChange, state:" + value.state + ", number:" + value.number);
           expect(typeof value.state === undefined).assertFalse();
-        });
+        }
+        observer.on('callStateChange', {
+          slotId: 0
+        }, callback);
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
+        observer.off('callStateChange');
       console.log("************* Telephony_observer_observer_on_callStateChange_0200 Test end *************");
     })
 
@@ -374,25 +288,6 @@ export default function ObserverJsunit() {
       console.log("************* Telephony_observer_observer_off_callStateChange_0100 Test end *************");
     })
 
-    /*
-     * @tc.number    : Telephony_observer_observer_on_simStateChange_0100
-     * @tc.name      : on_simStateChange
-     * @tc.desc      : call the on method of simStateChange
-     */
-    it('Telephony_observer_observer_on_simStateChange_0100', 0, async function (done) {
-      console.log("************* Telephony_observer_observer_on_simStateChange_0100 Test start *************");
-      try {
-        observer.on('simStateChange', SimStateData => {
-          console.log("on simStateChange, SimStateData:" + JSON.stringify(SimStateData));
-          expect(typeof SimStateData === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_observer_observer_on_simStateChange_0100 Test end *************");
-    })
 
     /*
      * @tc.number    : Telephony_observer_observer_on_simStateChange_0200
@@ -402,17 +297,19 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_on_simStateChange_0200', 0, async function (done) {
       console.log("************* Telephony_observer_observer_on_simStateChange_0200 Test start *************");
       try {
-        observer.on('simStateChange', {
-          slotId: 0
-        }, SimStateData => {
+		let callback = SimStateData => {
           console.log("on simStateChange, SimStateData:" + JSON.stringify(SimStateData));
           expect(typeof SimStateData === undefined).assertFalse();
-        });
+        }
+        observer.on('simStateChange', {
+          slotId: 0
+        }, callback);
         done();
       } catch (error) {
         expect(false).assertTrue();
         done();
       }
+        observer.off('simStateChange');
       console.log("************* Telephony_observer_observer_on_simStateChange_0200 Test end *************")
     })
 
@@ -424,8 +321,11 @@ export default function ObserverJsunit() {
     it('Telephony_observer_observer_off_simStateChange_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_off_simStateChange_0100 Test start *************");
       try {
-        let callback = data => {
-          console.log("on simStateChange, data:" + JSON.stringify(data));
+        let callback = SimStateData => {
+          console.log("on simStateChange, data:" + JSON.stringify(SimStateData));
+          expect(typeof SimStateData.reason === undefined).assertFalse();
+          expect(typeof SimStateData.state === undefined).assertFalse();
+          expect(typeof SimStateData.type === undefined).assertFalse();
         }
         observer.on('simStateChange', callback);
         // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -592,28 +492,6 @@ export default function ObserverJsunit() {
       expect(12).assertEqual(observer.LockReason.SIM_SIM_PUK);
       done();
       console.log("************* Telephony_observer_LockReason_SIM_SIM_PUK_0100 Test end *************");
-    })
-
-    /*
-     * @tc.number    : Telephony_Observer_SimStateData_Reason
-     * @tc.name      : on_simStateChange
-     * @tc.desc      : call the on method of simStateChange
-     */
-    it('Telephony_Observer_SimStateData_Reason', 0, async function (done) {
-      console.log("************* Telephony_Observer_SimStateData_Reason Test start *************");
-      try {
-        observer.on('simStateChange', SimStateData => {
-          console.log("on simStateChange, SimStateData:" + JSON.stringify(SimStateData));
-          expect(typeof SimStateData.reason === undefined).assertFalse();
-          expect(typeof SimStateData.state === undefined).assertFalse();
-          expect(typeof SimStateData.type === undefined).assertFalse();
-        });
-        done();
-      } catch (error) {
-        expect(false).assertTrue();
-        done();
-      }
-      console.log("************* Telephony_Observer_SimStateData_Reason Test end *************");
     })
 
     console.log("************* Observer Test end *************");

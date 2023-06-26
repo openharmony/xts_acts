@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsCertificateFrameworkJSNormalTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCertificateFrameworkJSNormalTest"
   subsystem_name = "security"
-  part_name = "crypto_framework"
+  part_name = "certificate_framework"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true

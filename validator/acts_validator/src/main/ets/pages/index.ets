@@ -484,7 +484,7 @@ struct IndexPage {
       serializer.setAttributes("name", String(title1[i]));
       serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "ArkUI");
+      serializer.setAttributes("classname", "ActsArkUITest");
       serializer.setAttributes("result", String(result1[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -509,7 +509,7 @@ struct IndexPage {
       serializer.setAttributes("name", String(title2[i]));
       serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "Audio");
+      serializer.setAttributes("classname", "ActsAudioTest");
       serializer.setAttributes("result", String(result2[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -534,7 +534,7 @@ struct IndexPage {
       serializer.setAttributes("name", String(title3[i]));
       serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "Camera");
+      serializer.setAttributes("classname", "ActsCameraTest");
       serializer.setAttributes("result", String(result3[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -559,7 +559,7 @@ struct IndexPage {
       serializer.setAttributes("name", String(title4[i]));
       serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "Player");
+      serializer.setAttributes("classname", "ActsPlayerTest");
       serializer.setAttributes("result", String(result4[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");
@@ -584,7 +584,7 @@ struct IndexPage {
       serializer.setAttributes("name", String(title5[i]));
       serializer.setAttributes("status", "run");
       serializer.setAttributes("time", "*");
-      serializer.setAttributes("classname", "Experience");
+      serializer.setAttributes("classname", "ActsExperienceTest");
       serializer.setAttributes("result", String(result5[i]));
       serializer.setAttributes("level", "*");
       serializer.setAttributes("message", "*");

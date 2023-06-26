@@ -68,17 +68,14 @@ async function checkSoftware() {
       HuksSignVerifyDSA.HuksTagDSADigestSHA256
     )
   };
-  try {
-    let res = await huks.generateKeyItem(dsaAlies, dsaOption);
-    if (res == null) {
-      await huks.deleteKeyItem(dsaAlies, dsaOption);
-      console.error("This device uses software");
-      return true;
-    } else {
-      console.error("This device does not use software");
-      return false;
-    }
-  } catch (e) {
+  let res = await huks.generateKey(dsaAlies, dsaOption);
+  console.log(`test generate:${JSON.stringify(res)}`);
+  if (res.errorCode == 0) {
+    await huks.deleteKey(dsaAlies, dsaOption);
+    console.error("This device uses software");
+    return true;
+  } else {
+    console.error("This device does not use software");
     return false;
   }
 }

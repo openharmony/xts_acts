@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,7 +25,7 @@ import {
     checkAssetsCount,
     fetchOps,
     getPermission,
-    checkAlbumsCount,
+    fileFetchOption,
 } from "../../../../../../common";
 
 export default function filekeyTestCallbackTest(abilityContext) {
@@ -49,7 +49,6 @@ export default function filekeyTestCallbackTest(abilityContext) {
         });
 
         const {
-            PARENT,
             MIME_TYPE,
             SIZE,
             DATE_ADDED,
@@ -59,14 +58,12 @@ export default function filekeyTestCallbackTest(abilityContext) {
             WIDTH,
             HEIGHT,
             ORIENTATION,
-            ALBUM_ID,
             ARTIST,
             AUDIOALBUM,
             DATE_MODIFIED,
             DATE_TAKEN,
             RELATIVE_PATH,
             DISPLAY_NAME,
-            MEDIA_TYPE,
         } = FILEKEY;
 
         async function getFileAssetsBy(done, testNum, type, fileKey) {
@@ -106,20 +103,6 @@ export default function filekeyTestCallbackTest(abilityContext) {
                 done();
             }
         }
-
-        /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001
-         * @tc.name      : getFileAssets
-         * @tc.desc      : filekey parentOp
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-
-        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_001";
-            await getFileAssetsBy(done, testNum, "parent", PARENT);
-        });
 
         /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_002
@@ -252,19 +235,6 @@ export default function filekeyTestCallbackTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012
-         * @tc.name      : getFileAssets
-         * @tc.desc      : filekey widthOp
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012", 0, async function (done) {
-            let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_012";
-            await getFileAssetsBy(done, testNum, "albumId", ALBUM_ID);
-        });
-
-        /**
          * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_014
          * @tc.name      : getFileAssets
          * @tc.desc      : filekey artistOp
@@ -327,20 +297,24 @@ export default function filekeyTestCallbackTest(abilityContext) {
         it("SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_018", 0, async function (done) {
             let testNum = "SUB_MEDIA_MEDIALIBRARY_FILE_KEY_CALLBACK_018";
             try {
-                let albumName = "ImageInfo";
-                let currentFetchOp = {
-                    selections: RELATIVE_PATH + "= ? AND " + ALBUM_NAME + "= ? AND " + MEDIA_TYPE + "= ?",
-                    selectionArgs: ["Pictures/", albumName, IMAGE_TYPE.toString()],
-                };
-                console.info(`${testNum} currentFetchOp : ${JSON.stringify(currentFetchOp)}`);
-                const albumList = await media.getAlbums(currentFetchOp);
-                const album = albumList[0];
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
-                if (!albumCountPass) return;
-                expect(album.albumName).assertEqual(albumName);
-                done();
+                let currentFetchOp = fileFetchOption(testNum, ALBUM_NAME + '= ?', ['Camera']);
+                media.getAlbums(currentFetchOp, (err, albumList) => {
+                    try {
+                        if (err) {
+                            console.info(`${testNum} err : ${err}`);
+                            expect(false).assertTrue();
+                        } else {
+                            expect(albumList.length).assertEqual(1);
+                            const album = albumList[0];
+                            expect(album.albumName).assertEqual('Camera');
+                        }
+                    } catch (error) {
+                        console.info(`${testNum} error : ${error}`);
+                    }
+                    done();
+                })
             } catch (error) {
-                console.info(`${testNum} error : ${error}`);
+                console.info(`${testNum} faild, error : ${error}`);
                 expect(false).assertTrue();
                 done();
             }

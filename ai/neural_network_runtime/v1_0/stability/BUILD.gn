@@ -46,8 +46,8 @@ ohos_moduletest_suite("ActsAiNnrtStabilityV1_0Test") {
     "drivers_interface_nnrt:libnnrt_proxy_1.0",
     "hdf_core:libhdf_utils",
     "hdf_core:libhdi",
-    "hilog_native:libhilog",
-    "hitrace_native:libhitracechain",
+    "hilog:libhilog",
+    "hitrace:libhitracechain",
     "ipc:ipc_single",
     "mindspore:mindir",
   ]

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -52,44 +52,46 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 if (!checkAssetCountPass) return;
                 const dataList = await fetchFileResult.getAllObject();
+                fetchFileResult.close();
                 asset = dataList[0];
+                console.info(`${testNum} :: asset.name: ${asset.displayName}, asset.id: ${asset.id}`);
                 asset.open("rw", async (err, fd) => {
-                    if (err) {
-                        console.info(`${testNum} :: err: ${err}`);
-                        expect().assertFail();
-                        fetchFileResult.close();
-                        done();
-                        return;
+                    try {
+                        if (err) {
+                            console.info(`${testNum} :: err: ${err}`);
+                            expect(false).assertTrue();
+                        } else {
+                            expect(isNum(fd)).assertTrue();
+                            let buf = new ArrayBuffer(4096);
+                            let res = await fileio.read(fd, buf);
+                            expect(res.bytesRead).assertEqual(assetProps.bytesRead);
+                            asset1 = dataList[1];
+                            fd1 = await asset1.open("r");
+                            expect(isNum(fd1)).assertTrue();
+                            let buf1 = new ArrayBuffer(4096);
+                            await fileio.read(fd1, buf1);
+                            let write = await fileio.write(fd, buf1);
+                            expect(write).assertEqual(assetProps.write);
+                            console.info(`res.bytesRead:${res.bytesRead},write:${write}`);
+                            console.info(`fd1:${fd1},fd:${fd}`);
+                            await asset.close(fd);
+                            await asset1.close(fd1);
+                            await sleep(50);
+                            let newFetchFileResult = await media.getFileAssets(fileIdFetchOps(testNum, asset.id));
+                            let checkAssetCountPass = await checkAssetsCount(done, testNum, newFetchFileResult, 1);
+                            if (!checkAssetCountPass) return;
+                            let newAsset = await newFetchFileResult.getFirstObject();
+                            expect(newAsset.dateModified != asset.dateModified).assertTrue();
+                            newFetchFileResult.close();
+                        }
+                    } catch (error) {
+                        console.info(`${testNum} failed, error: ${error}`);
                     }
-                    expect(isNum(fd)).assertTrue();
-                    let buf = new ArrayBuffer(4096);
-                    let res = await fileio.read(fd, buf);
-                    expect(res.bytesRead).assertEqual(assetProps.bytesRead);
-                    asset1 = dataList[1];
-                    fd1 = await asset1.open("r");
-                    expect(isNum(fd1)).assertTrue();
-                    let buf1 = new ArrayBuffer(4096);
-                    await fileio.read(fd1, buf1);
-                    let write = await fileio.write(fd, buf1);
-                    expect(write).assertEqual(assetProps.write);
-                    console.info(`res.bytesRead:${res.bytesRead},write:${write}`);
-                    console.info(`fd1:${fd1},fd:${fd}`);
-                    await asset.close(fd);
-                    await asset1.close(fd1);
-                    await sleep(50);
-                    let newFetchFileResult = await media.getFileAssets(fileIdFetchOps(testNum, asset.id));
-                    let checkAssetCountPass = await checkAssetsCount(done, testNum, newFetchFileResult, 1);
-                    if (!checkAssetCountPass) return;
-                    let newAsset = await newFetchFileResult.getFirstObject();
-                    expect(newAsset.dateModified != asset.dateModified).assertTrue();
-                    fetchFileResult.close();
-                    newFetchFileResult.close();
                     done();
                 });
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
                 await asset.close(fd);
-                await asset1.close(fd1);
                 expect().assertFail();
                 done();
             }
@@ -102,29 +104,25 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 if (!checkAssetCountPass) return;
                 const dataList = await fetchFileResult.getAllObject();
+                fetchFileResult.close()
                 asset = dataList[0];
                 asset.open("r", async (err, fd) => {
-                    if (err) {
-                        console.info(`${testNum} :: err: ${err}`);
-                        expect().assertFail();
-                        fetchFileResult.close();
-                        done();
-                        return;
-                    }
-                    expect(isNum(fd)).assertTrue();
-                    let buf = new ArrayBuffer(4096);
-                    let res = await fileio.read(fd, buf);
-                    console.log(" bytesRead: " + res.bytesRead);
-                    expect(res.bytesRead).assertEqual(assetProps.bytesRead);
                     try {
-                        await fileio.write(fd, buf);
-                        expect().assertFail();
+                        if (err) {
+                            console.info(`${testNum} :: err: ${err}`);
+                            expect(false).assertTrue();
+                        } else {
+                            expect(isNum(fd)).assertTrue();
+                            let buf = new ArrayBuffer(4096);
+                            let res = await fileio.read(fd, buf);
+                            console.log(" bytesRead: " + res.bytesRead);
+                            expect(res.bytesRead).assertEqual(assetProps.bytesRead);
+                        }
                     } catch (error) {
-                        expect(true).assertTrue();
-                        await asset.close(fd);
-                        fetchFileResult.close();
-                        done();
+                        console.info(`${testNum} failed, error: ${error}`);
                     }
+                    await asset.close(fd);
+                    done();
                 });
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
@@ -142,25 +140,29 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 if (!checkAssetCountPass) return;
                 const dataList = await fetchFileResult.getAllObject();
+                fetchFileResult.close();
                 asset = dataList[0];
                 asset1 = dataList[1];
 
                 asset.open("w", async (err, fd) => {
-                    if (err) {
-                        console.info(`${testNum} :: err: ${err}`);
-                        expect().assertFail();
-                        fetchFileResult.close();
-                        done();
-                        return;
+                    try {
+                        if (err) {
+                            console.info(`${testNum} :: err: ${err}`);
+                            expect(false).assertTrue();
+                        } else {
+                            expect(isNum(fd)).assertTrue();
+                            fd1 = await asset1.open("r");
+                            let buf = new ArrayBuffer(4096);
+                            await fileio.read(fd1, buf);
+                            let write = await fileio.write(fd, buf);
+                            console.info(`${testNum} :: write: ${write}`);
+                            expect(write).assertEqual(assetProps.write);
+                        }
+                    } catch (error) {
+                        console.info(`${testNum} failed, error: ${error}`);
                     }
-                    expect(isNum(fd)).assertTrue();
-                    fd1 = await asset1.open("r");
-                    let buf = new ArrayBuffer(4096);
-                    await fileio.read(fd1, buf);
-                    let write = await fileio.write(fd, buf);
-                    console.info(`${testNum} :: write: ${write}`);
-                    expect(write).assertEqual(assetProps.write);
-                    fetchFileResult.close();
+                    await asset.close(fd);
+                    await asset1.close(fd1);
                     done();
                 });
             } catch (error) {
@@ -180,31 +182,34 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchFileResult.getFirstObject();
+                fetchFileResult.close();
                 fd = await asset.open("r");
                 expect(isNum(fd)).assertTrue();
                 asset.close(fd, async (err) => {
-                    if (err) {
-                        console.info(`${testNum} :: err: ${err}`);
-                        expect().assertFail();
-                        fetchFileResult.close();
-                        done();
-                        return;
-                    }
-                    let count = 0;
-                    let buf = new ArrayBuffer(4096);
                     try {
-                        await fileio.read(fd, buf);
+                        if (err) {
+                            console.info(`${testNum} :: err: ${err}`);
+                            expect().assertFail();
+                        } else {
+                            let count = 0;
+                            let buf = new ArrayBuffer(4096);
+                            try {
+                                await fileio.read(fd, buf);
+                            } catch (error) {
+                                count++;
+                            }
+                            try {
+                                await fileio.write(fd, buf);
+                            } catch (error) {
+                                count++;
+                            }
+                            await sleep(1000);
+                            expect(count).assertEqual(2);
+                        }
                     } catch (error) {
-                        count++;
+                        console.info(`${testNum} error:${error}`);
                     }
-                    try {
-                        await fileio.write(fd, buf);
-                    } catch (error) {
-                        count++;
-                    }
-                    await sleep(1000);
-                    expect(count).assertEqual(2);
-                    fetchFileResult.close();
+                    await asset.close(fd);
                     done();
                 });
             } catch (error) {

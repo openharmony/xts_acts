@@ -310,7 +310,7 @@ struct IndexPage {
         serializer.setAttributes("name", String(title[i]));
         serializer.setAttributes("status", "run");
         serializer.setAttributes("time", "*");
-        serializer.setAttributes("classname", "ArkUI");
+        serializer.setAttributes("classname", "ActsArkUITest");
         serializer.setAttributes("result", String(result[i]));
         serializer.setAttributes("level", "*");
         serializer.setAttributes("message", "*");

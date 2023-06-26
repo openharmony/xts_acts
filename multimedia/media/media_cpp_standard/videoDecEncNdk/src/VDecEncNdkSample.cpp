@@ -567,26 +567,11 @@ int32_t VDecEncNdkSample::SetParameterEnc(struct OH_AVFormat *format)
     return OH_VideoEncoder_SetParameter(venc_, format);
 }
 
-struct VEncObject : public OH_AVCodec {
-    explicit VEncObject(const std::shared_ptr<AVCodecVideoEncoder> &encoder)
-        : OH_AVCodec(AVMagic::MEDIA_MAGIC_VIDEO_ENCODER), videoEncoder_(encoder) {}
-    ~VEncObject() = default;
-
-    const std::shared_ptr<AVCodecVideoEncoder> videoEncoder_;
-};
 
 int32_t VDecEncNdkSample::GetSurface()
 {
     return OH_VideoEncoder_GetSurface(venc_, &nativeWindow_);
 }
-
-struct VDecObject : public OH_AVCodec {
-    explicit VDecObject(const std::shared_ptr<AVCodecVideoDecoder> &decoder)
-        : OH_AVCodec(AVMagic::MEDIA_MAGIC_VIDEO_DECODER), videoDecoder_(decoder) {}
-    ~VDecObject() = default;
-
-    const std::shared_ptr<AVCodecVideoDecoder> videoDecoder_;
-};
 
 int32_t VDecEncNdkSample::SetOutputSurface()
 {

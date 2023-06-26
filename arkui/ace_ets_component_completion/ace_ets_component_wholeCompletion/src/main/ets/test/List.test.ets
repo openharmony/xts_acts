@@ -29,7 +29,9 @@ import hoverTest from './hover.test';
 import textObscuredTest from './textObscuredTest.test';
 import imageObscuredTest from './imageObscuredTest.test';
 import stageAnimatorTest from './stageAnimator.test';
-import navigationTypeTest from './navigationType.test'
+import textSpanFontTest from './textSpanFont.test';
+import gridScrollbarUpdateTest from './gridScrollbarUpdate.test';
+import sidebarTypeTest from './sidebarType.test';
 
 export default function testsuite() {
   stageFontTest()
@@ -48,5 +50,7 @@ export default function testsuite() {
   textObscuredTest()
   imageObscuredTest()
   stageAnimatorTest()
-  navigationTypeTest()
+  textSpanFontTest()
+  gridScrollbarUpdateTest()
+  sidebarTypeTest()
 }

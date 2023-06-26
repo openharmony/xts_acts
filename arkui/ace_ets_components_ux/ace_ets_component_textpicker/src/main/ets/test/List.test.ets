@@ -13,8 +13,11 @@
  * limitations under the License.
  */
 import textpicker from './TextPicker'
+import TextPickerSec from './TextPickerSec'
+import textpickermultiTest from './TextPickerMulti'
 
 export default function testsuite() {
        textpicker()
-
+       TextPickerSec()
+       textpickermultiTest()
 }

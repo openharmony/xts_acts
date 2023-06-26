@@ -14,6 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import taskpool from '@ohos.taskpool'
+import worker from '@ohos.worker'
 export default function TaskPoolTest() {
 describe('ActsAbilityTest', function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -1516,5 +1517,78 @@ describe('ActsAbilityTest', function () {
         }
         done();
     })
+
+    /**
+     * @tc.number    : TaskPoolTestClass061
+     * @tc.name      : Sync Function Cancel task
+     * @tc.desc      : Test Simultaneous use taskpool and worker
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass061', 0, async function (done) {
+        function testTaskPool() {
+            function addition(arg) {
+              "use concurrent"
+              return arg + 1;
+            }
+            function additionDelay(arg) {
+              "use concurrent"
+              var start = new Date().getTime();
+              while (new Date().getTime() - start < 3000) {
+                continue;
+              }
+              return arg + 1;
+            }
+
+            try {
+              var task1 = new taskpool.Task(additionDelay, 100);
+              var task2 = new taskpool.Task(additionDelay, 200);
+              var task3 = new taskpool.Task(addition, 300);
+
+              taskpool.execute(task1)
+              taskpool.execute(task2)
+              taskpool.execute(task3)
+
+              var start = new Date().getTime();
+              while (new Date().getTime() - start < 1000) {
+                continue;
+              }
+              for (let i = 1; i <= 10; i++) {
+                taskpool.cancel(task1);
+              }
+            }
+            catch (e) {
+              console.info("taskpoolXTS061 catch error: " + e);
+            }
+        }
+        function promiseCase() {
+            let p = new Promise(function (resolve, reject) {
+              setTimeout(function () {
+                resolve(0)
+              }, 100)
+            }).then(undefined, (error) => {
+            })
+            return p
+          }
+
+        let ss = new worker.ThreadWorker("entry/ets/workers/worker.js")
+        let res = 0
+        let flag = false
+        ss.onexit = function () {
+          flag = true
+          res++
+        }
+        testTaskPool();
+        for (let i = 0; i < 10; i++) {
+          ss.terminate();
+        }
+        while (!flag) {
+          await promiseCase()
+        }
+        expect(res).assertEqual(1)
+        done();
+    })
+
 })
 }

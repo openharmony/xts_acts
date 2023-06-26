@@ -28,11 +28,11 @@ struct bindPopupOffset {
   @State customPopup02: boolean = false
   @State customPopup03: boolean = false
   @State customPopup04: boolean = false
-  @State offset: any = { x: 10, y:10 }
-  @State offset10: any = { x:-10, y:-10}
-  @State offset00: any = { x: 0, y:0 }
-  @State offset050: any = { x: 0, y:50 }
-  @State offsetnull: any = null
+  @State offset: Object = { x: 10, y:10 }
+  @State offset10: Object = { x:-10, y:-10}
+  @State offset00: Object = { x: 0, y:0 }
+  @State offset050: Object = { x: 0, y:50 }
+  @State offsetnull: Object = null
 
   @Builder popupBuilder() {
     Row({ space: 2 }) {

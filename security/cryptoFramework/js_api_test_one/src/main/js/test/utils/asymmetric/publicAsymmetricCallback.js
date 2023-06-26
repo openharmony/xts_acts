@@ -551,82 +551,11 @@ async function signAndVerifyNormalProcessSuperdata(asyAlgoName, signVerifyAlgoNa
   });
 }
 
-async function encryptAndDecryptNormalProcessNull(asyAlgoName, cipherAlgoName) {
-  var globalCipherText;
-  var globalRsaKeyPair;
-  var encryptMode = cryptoFramework.CryptoMode.ENCRYPT_MODE;
-  var decryptMode = cryptoFramework.CryptoMode.DECRYPT_MODE;
-
-  return new Promise((resolve, reject) => {
-    var rsaGenerator = createAsyKeyGenerator(asyAlgoName);
-    expect(rsaGenerator != null).assertTrue();
-    var cipherGeneratorEncrypt = createAsyCipher(cipherAlgoName);
-    expect(cipherGeneratorEncrypt != null).assertTrue();
-    var cipherGeneratorDecrypt = createAsyCipher(cipherAlgoName);
-    expect(cipherGeneratorDecrypt != null).assertTrue();
-
-    generateAsyKeyPair(rsaGenerator)
-      .then((rsaKeyPair) => {
-        expect(rsaKeyPair != null).assertTrue();
-        globalRsaKeyPair = rsaKeyPair;
-        return initCipher(
-          cipherGeneratorEncrypt,
-          encryptMode,
-          globalRsaKeyPair.pubKey,
-          null
-        );
-      })
-      .then((initData) => {
-        expect(initData === "init success").assertTrue();
-        return doFinalCipher(cipherGeneratorEncrypt, encryptMode, null);
-      })
-      .then((finalOutput) => {
-        expect(finalOutput != null).assertTrue();
-        globalCipherText = finalOutput;
-        console.log(
-          "cipherOutput: " + uInt8ArrayToShowStr(globalCipherText.data)
-        );
-        return initCipher(
-          cipherGeneratorDecrypt,
-          decryptMode,
-          globalRsaKeyPair.priKey,
-          null
-        );
-      })
-      .then((initData) => {
-        expect(initData === "init success").assertTrue();
-        return doFinalCipher(
-          cipherGeneratorDecrypt,
-          decryptMode,
-          globalCipherText
-        );
-      })
-      .then((finalOutput) => {
-        if (finalOutput == null) {
-          console.error("[Callback]decrypt doFinal out is null");
-        } else {
-          console.log(
-            "[Callback]decrypt doFinal out hex: " +
-            uInt8ArrayToShowStr(finalOutput.data)
-          );
-        }
-        let decryptData = uInt8ArrayToString(finalOutput.data);
-        reject();
-      })
-      .catch((err) => {
-        console.error(
-          "[Callback] encryptAndDecryptNormalProcess catch err:" + err
-        );
-        resolve(err);
-      });
-  });
-}
 export {
   encryptAndDecryptNormalProcess,
   signAndVerifyNormalProcess,
   convertKeyEncryptAndDecryptProcess,
   keyAgreementProcess,
   encryptAndDecryptNormalProcessSuperdata,
-  signAndVerifyNormalProcessSuperdata,
-  encryptAndDecryptNormalProcessNull
+  signAndVerifyNormalProcessSuperdata
 };

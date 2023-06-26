@@ -215,6 +215,14 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 event:' + data.event);
                     that.Sub_Misc_inputMethod_offSelectByMovement_0140();
                     break;
+                case 170:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0170 event:' + data.event);
+                    that.Sub_Misc_inputMethod_sendExtendAction_0170();
+                    break;
+                case 180:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0180 event:' + data.event);
+                    that.Sub_Misc_inputMethod_sendExtendAction_0180();
+                    break;
             }
         }
 
@@ -1162,7 +1170,7 @@ export class KeyboardDelegate {
         inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
             inputMethodAbility.off('inputStart');
             let commonEventPublishData;
-            let range = { start: 0, end: 1 };
+            let range = { start: 1, end: 0 };
             if (InputClient == null) {
                 commonEventPublishData = {
                     data: "FAILED"
@@ -1500,6 +1508,71 @@ export class KeyboardDelegate {
             console.info(TAG + '====>receive Sub_Misc_inputMethod_offSelectByMovement_0140 catch error: ' + JSON.stringify(error));
             commoneventmanager.publish("Sub_Misc_inputMethod_offSelectByMovement_0140", commonEventPublishData, this.publishCallback);
         }
+    }
+
+    private Sub_Misc_inputMethod_sendExtendAction_0170(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_sendExtendAction_0170 data');
+        inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData;
+            if (InputClient == null) {
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                commoneventmanager.publish("Sub_Misc_inputMethod_sendExtendAction_0170", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY, (err,) => {
+                        if (err) {
+                            console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0170 sendExtendAction err:' + JSON.stringify(err));
+                            commonEventPublishData = {
+                                data: "FAILED"
+                            };
+                        } else {
+                            console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0170 sendExtendAction success' );
+                            commonEventPublishData = {
+                                data: "SUCCESS"
+                            };
+                        }
+                        commoneventmanager.publish("Sub_Misc_inputMethod_sendExtendAction_0170", commonEventPublishData, this.publishCallback);
+                    });
+                } catch (err) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0170 getTextIndexAtCursor throw_err:');
+                    commoneventmanager.publish("Sub_Misc_inputMethod_sendExtendAction_0170", commonEventPublishData, this.publishCallback);
+                }
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_sendExtendAction_0180(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_sendExtendAction_0180 data');
+        inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData;
+            if (InputClient == null) {
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                commoneventmanager.publish("Sub_Misc_inputMethod_sendExtendAction_0180", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    await InputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY);
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0180 sendExtendAction success:');
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0180 sendExtendAction catch err:');
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_sendExtendAction_0180", commonEventPublishData, this.publishCallback);
+            }
+        });
     }
 
 
