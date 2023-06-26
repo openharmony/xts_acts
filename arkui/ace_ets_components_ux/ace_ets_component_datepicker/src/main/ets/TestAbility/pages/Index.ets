@@ -91,6 +91,28 @@ struct DatePickerExample {
                 .onChange((date: DatePickerResult) => {
                      console.info( 'select current date is: ' + JSON.stringify(date))
                 })
+            
+            Button('Dialog')
+            .fontColor('black')
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+            .margin(10)
+            .backgroundColor('#0D9FFB')
+            .width('40%')
+            .height(40)
+            .key("Dialog")
+            .onClick(() => {
+              DatePickerDialog.show({
+                start: new Date('1970-1-1'),
+                end: new Date('2100-1-1'),
+                selected: this.selectedDate,
+                lunar:true,
+                showTime:true,
+                disappearTextStyle:this.disappearTextStyle,
+                textStyle: this.textStyle,
+                selectedTextStyle: this.selectedTextStyle,
+              })
+            })          
         }
     }
 }

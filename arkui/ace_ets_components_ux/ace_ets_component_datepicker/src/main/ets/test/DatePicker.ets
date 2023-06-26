@@ -484,7 +484,7 @@ export default function datepicker() {
             eventId: 185,
             priority: events_emitter.EventPriority.LOW
           }
-          console.info("[ArkUI_Stage_timepicker_textStyle_0600] start to publish emit");
+          console.info("[ArkUI_Stage_datepicker_textStyle_0600] start to publish emit");
           events_emitter.emit(innerEvent, eventData);
         } catch (err) {
           console.log("[ArkUI_Stage_datePicker_textStyle_0600] change component data error: " + err.message);
@@ -809,7 +809,7 @@ export default function datepicker() {
 	let strJsonDefault = getInspectorByKey('datePickerDefault');
         let objDefault = JSON.parse(strJsonDefault);
 		
-        console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0700] disappearColor:" + obj.$attrs.selectedTextStyle.color);
+        console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0700] disappearColor:" + obj.$attrs.selectedTextStyle.color);
         expect(obj.$attrs.selectedTextStyle.color).assertEqual(objDefault.$attrs.selectedTextStyle.color);
         expect(obj.$attrs.selectedTextStyle.font.size).assertEqual(objDefault.$attrs.selectedTextStyle.font.size);
         expect(obj.$attrs.selectedTextStyle.font.weight).assertEqual('FontWeight.Lighter');
@@ -817,11 +817,11 @@ export default function datepicker() {
       });
 
           /*
-     * @tc.number       ArkUI_Stage_timepicker_selectedTextStyle_0800
+     * @tc.number       ArkUI_Stage_datepicker_selectedTextStyle_0800
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-      it('ArkUI_Stage_timepicker_selectedTextStyle_0800', 0, async function (done) { 
+      it('ArkUI_Stage_datepicker_selectedTextStyle_0800', 0, async function (done) { 
         let value = {color:'rgb(138,43,226)',font:{size:'20vp',weight:900}} 
         try {
           var eventData = {
@@ -833,10 +833,10 @@ export default function datepicker() {
             eventId: 185,
             priority: events_emitter.EventPriority.LOW
           }
-          console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0800] start to publish emit");
+          console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0800] start to publish emit");
           events_emitter.emit(innerEvent, eventData);
         } catch (err) {
-          console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0800] change component data error: " + err.message);
+          console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0800] change component data error: " + err.message);
         }
         await Utils.sleep(3000);
         let strJson = getInspectorByKey('datePicker');
@@ -848,11 +848,11 @@ export default function datepicker() {
       });
 	  
 	 /*
-     * @tc.number       ArkUI_Stage_timepicker_selectedTextStyle_0900
+     * @tc.number       ArkUI_Stage_datepicker_selectedTextStyle_0900
      * @tc.name         Tests the selectedTextStyle property of the picker component
      * @tc.desc         set selectedTextStyle then get the value
      */
-	  it('ArkUI_Stage_timepicker_selectedTextStyle_0900', 0, async function (done) { 
+	  it('ArkUI_Stage_datepicker_selectedTextStyle_0900', 0, async function (done) { 
         let value = {color:'rgb(138,43,226)',font:{size:'15lpx',weight:90}} 
         try {
           var eventData = {
@@ -864,10 +864,10 @@ export default function datepicker() {
             eventId: 185,
             priority: events_emitter.EventPriority.LOW
           }
-          console.info("[ArkUI_Stage_timepicker_selectedTextStyle_0900] start to publish emit");
+          console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0900] start to publish emit");
           events_emitter.emit(innerEvent, eventData);
         } catch (err) {
-          console.log("[ArkUI_Stage_timepicker_selectedTextStyle_0900] change component data error: " + err.message);
+          console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0900] change component data error: " + err.message);
         }
         await Utils.sleep(3000);
         let strJson = getInspectorByKey('datePicker');
@@ -875,6 +875,58 @@ export default function datepicker() {
         expect(obj.$attrs.selectedTextStyle.color).assertEqual('#FF8A2BE2');
         expect(obj.$attrs.selectedTextStyle.font.size).assertEqual('15.00lpx');
         expect(obj.$attrs.selectedTextStyle.font.weight).assertEqual('FontWeight.Normal');
+        done();
+      });
+
+    /*
+     * @tc.number       ArkUI_Stage_datepicker_selectedTextStyle_0900
+     * @tc.name         Tests the selectedTextStyle property of the picker component
+     * @tc.desc         set selectedTextStyle then get the value
+     */
+	  it('ArkUI_Stage_datepicker_selectedTextStyle_0900', 0, async function (done) { 
+        let value = {color:'rgb(138,43,226)',font:{size:'15lpx',weight:90}} 
+        try {
+          var eventData = {
+            data: {
+              "selectedTextStyle": JSON.stringify(value)
+            }
+          }
+          var innerEvent = {
+            eventId: 185,
+            priority: events_emitter.EventPriority.LOW
+          }
+          console.info("[ArkUI_Stage_datepicker_selectedTextStyle_0900] start to publish emit");
+          events_emitter.emit(innerEvent, eventData);
+        } catch (err) {
+          console.log("[ArkUI_Stage_datepicker_selectedTextStyle_0900] change component data error: " + err.message);
+        }
+        await Utils.sleep(3000);
+        let strJson = getInspectorByKey('datePicker');
+        let obj = JSON.parse(strJson);
+        expect(obj.$attrs.selectedTextStyle.color).assertEqual('#FF8A2BE2');
+        expect(obj.$attrs.selectedTextStyle.font.size).assertEqual('15.00lpx');
+        expect(obj.$attrs.selectedTextStyle.font.weight).assertEqual('FontWeight.Normal');
+        done();
+      });
+
+    /*
+     * @tc.number       ArkUI_Stage_datepicker_Dialog_0100
+     * @tc.name         Tests the property of the Dialog
+     * @tc.desc         get the property of the Dialog
+     */
+	  it('ArkUI_Stage_datepicker_dialog_0100', 0, async function (done) { 
+      console.info('testDialog START');
+      await Utils.sleep(3000);
+        try {
+          var innerEvent = {
+            eventId: 185,
+            priority: events_emitter.EventPriority.LOW
+          }
+          console.info("[ArkUI_Stage_datepicker_dialog_0100] start to publish emit");
+          events_emitter.emit(innerEvent, eventData);
+        } catch (err) {
+          console.log("[ArkUI_Stage_datepicker_dialog_0100] change component data error: " + err.message);
+        }
         done();
       });
         
