@@ -112,7 +112,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentTop END');
       done();
     });
@@ -148,7 +148,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentEnd END');
       done();
     });
@@ -184,7 +184,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentStart END');
       done();
     });
@@ -220,7 +220,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentCenter END');
       done();
     });
@@ -256,7 +256,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentEnd END');
       done();
     });
@@ -292,7 +292,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentBottomStart END');
       done();
     });
@@ -328,7 +328,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentBottom END');
       done();
     });
@@ -364,7 +364,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignTopStartAlignmentBottomEnd END');
       done();
     });
@@ -400,7 +400,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
       expect(obj.$type).assertEqual('Stack')
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentTopStart END');
       done();
     });
@@ -472,7 +472,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentTopEnd END');
       done();
     });
@@ -508,7 +508,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentStart END');
       done();
     });
@@ -544,7 +544,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentCenter END');
       done();
     });
@@ -580,7 +580,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentEnd END');
       done();
     });
@@ -616,7 +616,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentBottomStart END');
       done();
     });
@@ -652,7 +652,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentBottom END');
       done();
     });
@@ -688,7 +688,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Top")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignTopAlignmentBottomEnd END');
       done();
     });
@@ -724,7 +724,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentTopStart END');
       done();
     });
@@ -760,7 +760,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentTop END');
       done();
     });
@@ -832,7 +832,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentStart END');
       done();
     });
@@ -868,7 +868,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentCenter END');
       done();
     });
@@ -904,7 +904,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentEnd END');
       done();
     });
@@ -940,7 +940,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentBottomStart END');
       done();
     });
@@ -976,7 +976,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentBottom END');
       done();
     });
@@ -1012,7 +1012,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.TopEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignTopEndAlignmentBottomEnd END');
       done();
     });
@@ -1048,7 +1048,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentTopStart END');
       done();
     });
@@ -1084,7 +1084,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentTop END');
       done();
     });
@@ -1120,7 +1120,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentTopEnd END');
       done();
     });
@@ -1192,7 +1192,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentCenter END');
       done();
     });
@@ -1228,7 +1228,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentEnd END');
       done();
     });
@@ -1264,7 +1264,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentBottomStart END');
       done();
     });
@@ -1300,7 +1300,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentBottom END');
       done();
     });
@@ -1336,7 +1336,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Start")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignStartAlignmentBottomEnd END');
       done();
     });
@@ -1372,7 +1372,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentTopStart END');
       done();
     });
@@ -1408,7 +1408,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentTop END');
       done();
     });
@@ -1443,7 +1443,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentTopEnd END');
       done();
     });
@@ -1479,7 +1479,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentStart END');
       done();
     });
@@ -1551,7 +1551,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentEnd END');
       done();
     });
@@ -1587,7 +1587,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentBottomStart END');
       done();
     });
@@ -1623,7 +1623,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentBottom END');
       done();
     });
@@ -1659,7 +1659,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Center")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignCenterAlignmentBottomEnd END');
       done();
     });
@@ -1695,7 +1695,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentTopStart END');
       done();
     });
@@ -1731,7 +1731,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentTop END');
       done();
     });
@@ -1767,7 +1767,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentTopEnd END');
       done();
     });
@@ -1803,7 +1803,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentStart END');
       done();
     });
@@ -1839,7 +1839,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentCenter END');
       done();
     });
@@ -1911,7 +1911,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentBottomStart END');
       done();
     });
@@ -1947,7 +1947,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentBottom END');
       done();
     });
@@ -1983,7 +1983,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.End")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignEndAlignmentBottomEnd END');
       done();
     });
@@ -2019,7 +2019,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentTopStart END');
       done();
     });
@@ -2055,7 +2055,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentTop END');
       done();
     });
@@ -2091,7 +2091,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentTopEnd END');
       done();
     });
@@ -2127,7 +2127,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentStart END');
       done();
     });
@@ -2163,7 +2163,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentCenter END');
       done();
     });
@@ -2199,7 +2199,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentEnd END');
       done();
     });
@@ -2271,7 +2271,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentBottom END');
       done();
     });
@@ -2307,7 +2307,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomStart")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignBottomStartAlignmentBottomEnd END');
       done();
     });
@@ -2343,7 +2343,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentTopStart END');
       done();
     });
@@ -2379,7 +2379,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentTop END');
       done();
     });
@@ -2415,7 +2415,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentTopEnd END');
       done();
     });
@@ -2451,7 +2451,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentStart END');
       done();
     });
@@ -2487,7 +2487,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentCenter END');
       done();
     });
@@ -2523,7 +2523,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentEnd END');
       done();
     });
@@ -2559,7 +2559,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentBottomStart END');
       done();
     });
@@ -2631,7 +2631,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.Bottom")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignBottomAlignmentBottomEnd END');
       done();
     });
@@ -2667,7 +2667,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentTopStart END');
       done();
     });
@@ -2703,7 +2703,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentTop END');
       done();
     });
@@ -2739,7 +2739,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentTopEnd END');
       done();
     });
@@ -2775,7 +2775,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentStart END');
       done();
     });
@@ -2811,7 +2811,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentCenter END');
       done();
     });
@@ -2847,7 +2847,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentEnd END');
       done();
     });
@@ -2883,7 +2883,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentBottomStart END');
       done();
     });
@@ -2919,7 +2919,7 @@ export default function stackAlignChange() {
       expect(Math.round(stackTopStartKey02.bottom - stackTopStartKey02.top)).assertEqual(vp2px(100))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.align).assertEqual("Alignment.BottomEnd")
-      expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
+      expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignBottomEndAlignmentBottom END');
       done();
     });

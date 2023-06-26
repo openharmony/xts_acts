@@ -14,7 +14,6 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import router from '@ohos.router';
 import CommonFunc from '../../../../MainAbility/common/Common';
 export default function GridRow_onBreakpoint() {
@@ -51,8 +50,8 @@ export default function GridRow_onBreakpoint() {
      * @tc.name      testOnBreakChange
      * @tc.desc      Trigger event printing xxl
      */
-    it('SUB_ACE_GridRowOnBreakPointChange_0100', 0, async function (done) {
-      console.info('SUB_ACE_GridRowOnBreakPointChange_0100 START');
+    it('SUB_ACE_GridRow_onBreakPointChange_0100', 0, async function (done) {
+      console.info('SUB_ACE_GridRow_onBreakPointChange_0100 START');
       await CommonFunc.sleep(2000)
 
       let Breakpoint_1 = CommonFunc.getComponentRect('GridRow_onBreakpoint001');
@@ -65,11 +64,10 @@ export default function GridRow_onBreakpoint() {
       let seventhBreakpoint = CommonFunc.getComponentRect('GridRow_onBreakpoint_6');
       let gridRowBreakpointJson = getInspectorByKey('GridRow_onBreakpoint001');
       let gridRow = JSON.parse(gridRowBreakpointJson);
-      let driver = await UiDriver.create()
-      let textComponent2 = await driver.findComponent(BY.key('textBreakpointChange'));
-      let text2 = await textComponent2.getText();
+      let textComponent2 = getInspectorByKey('GridRowText');
+      let text2 = JSON.parse(textComponent2);
       expect(gridRow.$type).assertEqual('GridRow');
-      expect(text2).assertEqual('xxl');
+      expect(text2.$attrs.content).assertEqual('xxl');
 
       expect(firstBreakpoint.top).assertEqual(Breakpoint_1.top);
       expect(secondBreakpoint.top).assertEqual(secondBreakpoint.top);
@@ -81,7 +79,7 @@ export default function GridRow_onBreakpoint() {
       expect(Math.round(fourthBreakpoint.left - thirdBreakpoint.right)).assertEqual(vp2px(30));
       expect(Math.round(seventhBreakpoint.top - firstBreakpoint.bottom)).assertEqual(vp2px(30));
 
-      console.info('SUB_ACE_GridRowOnBreakPointChange_0100 END');
+      console.info('SUB_ACE_GridRow_onBreakPointChange_0100 END');
       done();
     });
 
