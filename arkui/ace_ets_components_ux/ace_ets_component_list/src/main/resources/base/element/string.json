@@ -25,12 +25,8 @@
       "value": "5px"
     },
     {
-      "name": "textInput_Size_test",
-      "value": "4px"
-    },
-    {
-      "name": "TextInput_ShowError_test",
-      "value": "string"
+      "name": "badge_Size_test",
+      "value": "7vp"
     }
   ]
 }
