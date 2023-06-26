@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import select from './Select'
+import selectmenuTest from './SelectMenu'
 
 export default function testsuite() {
        select()
+       selectmenuTest()
 }

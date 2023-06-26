@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import swiperTest from './swiper'
+import swiperSecTest from './swipersec'
 
 export default function testsuite() {
        swiperTest()
+       swiperSecTest()
 }
