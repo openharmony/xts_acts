@@ -78,6 +78,13 @@ export default function UDMFApiTest() {
     };
     video.videoUri = "videoUri";
 
+    let Audio = new UDMF.Audio();
+    Audio.details = {
+      title:"标题",
+      content:"内容"
+    };
+    Audio.audioUri = "audioUri";
+
     let arrayBuf = new ArrayBuffer(2 * 3 * 4);
     let u8Array = new Uint8Array(arrayBuf);
 
@@ -124,6 +131,11 @@ export default function UDMFApiTest() {
     let applicationDefinedRecord = new UDMF.ApplicationDefinedRecord();
     applicationDefinedRecord.applicationDefinedType = 'applicationDefinedType';
     applicationDefinedRecord.rawData = u8Array;
+
+      let summary = new UDMF.Summary;
+      let records1 = summary.summary;
+      console.info("ttt " + records1);
+      let records2 = summary.totalSize;
 
     /**
      * @tc.number    SUB_DistributedData_Udmf_API001
@@ -473,5 +485,26 @@ export default function UDMFApiTest() {
       console.info("SUB_DistributedData_Udmf_API014 end");
       done();
     })
+
+    /**
+     * @tc.number    SUB_DistributedData_Udmf_API015
+     * @tc.name      CreateData
+     * @tc.desc      Test UDMF creating a unifieddata with a Audio record.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_Udmf_API015',0, function (done) {
+      console.info('SUB_DistributedData_Udmf_API008 start');
+      let unifiedData = new UDMF.UnifiedData(Audio);
+      let records = unifiedData.getRecords();
+      let record = <UDMF.Audio>(records[0]);
+      expect(records.length).assertEqual(1);
+      expect(record.details.title).assertEqual('标题');
+      expect(record.details.content).assertEqual('内容');
+      console.info("SUB_DistributedData_Udmf_API008 end");
+      done();
+    })
+
   })
 }

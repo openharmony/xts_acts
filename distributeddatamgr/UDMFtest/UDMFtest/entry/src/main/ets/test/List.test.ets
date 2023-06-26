@@ -13,8 +13,11 @@
  * limitations under the License.
  */
  
-
-import UDMFApiTest from './UDMF.test.ets'
+import UDMFApiCallback from './UDMFApiCallback.test'
+import UDMFApiPromise from './UDMFApiPromise.test'
+import UDMFApiTest from './UDMF.test'
 export default function testsuite() {
+  UDMFApiCallback()
+  UDMFApiPromise()
   UDMFApiTest()
 }
