@@ -18,6 +18,7 @@ import fileIOClose from './members/close.test.js'
 import fileIOCopyDir from './members/copyDir.test'
 import fileIOCopyfile from './members/copyFile.test.js'
 import fileIOCreateStream from './members/createStream.test.js'
+import fileIODup from './members/dup.test.js'
 import fileIOFdatasync from './members/fdatasync.test.js'
 import fileIOFdOpenStream from './members/fdopenStream.test.js'
 import fileIOFileLock from './members/fileLock.test.js'
@@ -50,6 +51,7 @@ export default function testsuite() {
     fileIOCopyDir()
     fileIOCopyfile()
     fileIOCreateStream()
+    fileIODup()
     fileIOFdatasync()
     fileIOFdOpenStream()
     fileIOFileLock()
