@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "60000",
         "bundle-name": "com.example.actssubscribertestorder",
-        "package-name": "com.example.actssubscribertestorder"
+        "package-name": "com.example.actssubscribertestorder_test"
     },
     "kits": [
         {

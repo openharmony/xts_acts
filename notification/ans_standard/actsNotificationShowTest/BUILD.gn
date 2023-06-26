@@ -12,23 +12,11 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNotificationShowTest") {
-  hap_profile = "./src/main/config.json"
-  deps = [
-    ":hjs_demo_js_assets",
-    ":hjs_demo_resources",
-  ]
-  certificate_profile = "./signature/openharmony_sx.p7b"
+ohos_js_app_suite("ActsNotificationShowTest") {
+  test_hap = true
+  testonly = true
   hap_name = "ActsNotificationShowTest"
   subsystem_name = "notification"
   part_name = "distributed_notification_service"
-}
-ohos_js_assets("hjs_demo_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
-}
-ohos_resources("hjs_demo_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+  certificate_profile = "./signature/openharmony_sx.p7b"
 }
