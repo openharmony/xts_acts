@@ -631,7 +631,7 @@ export default function buttonTest() {
           let labelStyle = JSON.parse(obj.$attrs.labelStyle)
           console.info("ArkUX_Stage_Button_LabelStyle_2100 component obj.$attrs.labelStyle is: " +
                        JSON.stringify(labelStyle));
-          expect(labelStyle.overflow).assertEqual("TextOverflow.Clip");
+          expect(labelStyle.overflow).assertEqual("TextOverflow.Ellipsis");
           console.info('ArkUX_Stage_Button_LabelStyle_2100 END ');
         } catch(err) {
           expect().assertFail()
