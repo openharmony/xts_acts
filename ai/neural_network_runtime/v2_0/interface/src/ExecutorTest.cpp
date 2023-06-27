@@ -1240,7 +1240,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_Combine_0400, Function | 
 
             ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_SetInputWithMemory(executor, inputIndex, &operand, inputMemory));
 
-            ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, (void *)operandTem.data, operandTem.length));
+            ASSERT_EQ(EOK, memcpy_s(inputMemory->data, operandTem.length, static_cast<void*>(operandTem.data), operandTem.length));
             OHNNMemory[inputIndex] = inputMemory;
             inputIndex += 1;
         } else if (std::find(graphArgs.outputIndices.begin(), graphArgs.outputIndices.end(), i) !=
@@ -1310,7 +1310,7 @@ HWTEST_F(ExecutorTest, SUB_AI_NNRt_Func_North_Executor_Combine_0500, Function | 
     ASSERT_EQ(OH_NN_SUCCESS, OH_NNExecutor_Run(executor));
     // check result
     EXPECT_TRUE(CheckOutput(static_cast<float*>(const_cast<void*>(outputMemory->data)),
-        (float*) addModel.expectValue));
+        static_cast<float*>(addModel.expectValue)));
 
     OH_NNExecutor_DestroyOutputMemory(executor, 0, &outputMemory);
     ASSERT_EQ(outputMemory, nullptr);

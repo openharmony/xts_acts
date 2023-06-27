@@ -42,6 +42,11 @@ MockIDevice::~MockIDevice()
     }
 }
 
+MockIDevice::MockIDevice()
+{
+    m_bufferFd = 0; 
+}
+
 MockIPreparedModel::~MockIPreparedModel()
 {
     for (auto ash : m_ashmems) {

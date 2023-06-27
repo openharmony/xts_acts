@@ -67,7 +67,7 @@ struct OHNNCompileParam {
     bool enableFp16 = false;
 };
 
-int BuildSingleOpGraph(OH_NNModel *modelptr, const OHNNGraphArgs &args);
+int BuildSingleOpGraph(OH_NNModel *model, const OHNNGraphArgs &graphArgs);
 
 int ExecutorWithMemory(OH_NNExecutor *executor, const OHNNGraphArgs &graphArgs, OH_NN_Memory *OHNNMemory[],
     float* expect);

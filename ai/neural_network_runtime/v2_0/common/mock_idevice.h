@@ -92,7 +92,7 @@ public:
 
     static MockIDevice *GetInstance();
 
-    MockIDevice() = default;
+    MockIDevice();
     virtual ~MockIDevice();
 
 private:
