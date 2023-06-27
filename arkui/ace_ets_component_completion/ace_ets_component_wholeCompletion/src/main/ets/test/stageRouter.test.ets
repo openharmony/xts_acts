@@ -364,6 +364,218 @@ export default function stageRouterTest() {
       done();
     });
 
+    it('testrouterstage0016', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0016 START');
+      let result;
+      try {
+        result = router.pushNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        })
+          .then(() => {})
+          .catch(err => {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        expect(typeof(result)).assertEqual('object');
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0016 END');
+      done();
+    });
+
+    it('testrouterstage0017', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0017 START');
+      let result;
+      try {
+        result = router.pushNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, (err) => {
+          if (err) {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('replaceUrl success');
+        });
+        expect(result).assertUndefined();
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0017 END');
+      done();
+    });
+
+    it('testrouterstage0018', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0018 START');
+      let result;
+      try {
+        result = router.pushNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, router.RouterMode.Standard)
+          .then(() => {})
+          .catch(err => {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        expect(typeof(result)).assertEqual('object');
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0018 END');
+      done();
+    });
+
+    it('testrouterstage0019', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0019 START');
+      let result;
+      try {
+        result = router.pushNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, router.RouterMode.Standard, (err) => {
+          if (err) {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('replaceUrl success');
+        });
+        expect(result).assertUndefined();
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0019 END');
+      done();
+    });
+
+    it('testrouterstage0020', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0020 START');
+      let result;
+      try {
+        result = router.replaceNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message'
+          }
+        })
+          .then(() => {})
+          .catch(err => {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        expect(typeof(result)).assertEqual('object');
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0020 END');
+      done();
+    });
+
+    it('testrouterstage0021', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0021 START');
+      let result;
+      try {
+        result = router.replaceNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message'
+          }
+        }, (err) => {
+          if (err) {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('replaceUrl success');
+        });
+        expect(result).assertUndefined();
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0021 END');
+      done();
+    });
+
+    it('testrouterstage0022', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0022 START');
+      let result;
+      try {
+        result = router.replaceNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message'
+          }
+        }, router.RouterMode.Standard)
+          .then(() => {})
+          .catch(err => {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+          })
+        expect(typeof(result)).assertEqual('object');
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0022 END');
+      done();
+    });
+
+    it('testrouterstage0023', 0, async function (done) {
+      let router = globalThis.uiContent.getRouter();
+      console.info('testrouterstage0023 START');
+      let result;
+      try {
+        result = router.replaceNamedRoute({
+          name: 'pushUrl',
+          params: {
+            data1: 'message'
+          }
+        }, router.RouterMode.Standard, (err) => {
+          if (err) {
+            console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          console.info('replaceUrl success');
+        });
+        expect(result).assertUndefined();
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testrouterstage0023 END');
+      done();
+    });
+
 
   })
 }
