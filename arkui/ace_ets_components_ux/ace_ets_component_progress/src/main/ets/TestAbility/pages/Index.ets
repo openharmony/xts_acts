@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
+//@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -25,19 +25,18 @@ struct progressTest {
   @State progress_default: ProgressMask = new ProgressMask(10.0, 100.0, $r('sys.color.ohos_id_color_mask_regular'));
   aboutToAppear(){
     var abilityDelegator: any
-      abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-      var abilityDelegatorArguments: any
-      abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-      hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
-      hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
-      Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    var abilityDelegatorArguments: any
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   build() {
     Row() {
       Column() {
         List({ space: 0, initialIndex: 0 }) {
-
           ListItem() {
             Image($r('app.media.icon'))
               .key("ArkUX_Stage_Progress_updateColor")
@@ -195,6 +194,98 @@ struct progressTest {
                 .onClick((event: ClickEvent) => {
                   console.info('ArkUX_Stage_Progress_updateColor_Button_1600 onClick');
                   this.progress.updateColor(0x00ff00);
+                })
+                .fontSize(10)
+              Button("updateProgress_0100")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0100")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0100 onClick');
+                  this.progress.updateProgress(0);
+                })
+                .fontSize(10)
+              Button("updateProgress_0200")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0200")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0200 onClick');
+                  this.progress.updateProgress(5);
+                })
+                .fontSize(10)
+            }
+          }
+          ListItem() {
+            Row() {
+              Button("updateProgress_0300")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0300")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0300 onClick');
+                  this.progress.updateProgress("6");
+                })
+                .fontSize(10)
+              Button("updateProgress_0400")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0400")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0400 onClick');
+                  this.progress.updateProgress("");
+                })
+                .fontSize(10)
+              Button("updateProgress_0500")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0500")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0500 onClick');
+                  this.progress.updateProgress(null);
+                })
+                .fontSize(10)
+            }
+          }
+          ListItem() {
+            Row() {
+              Button("updateProgress_0600")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0600")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0600 onClick');
+                  this.progress.updateProgress(undefined);
+                })
+                .fontSize(10)
+              Button("updateProgress_0700")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0700")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0700 onClick');
+                  this.progress.updateProgress(-2);
+                })
+                .fontSize(10)
+              Button("updateProgress_0800")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0800")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0800 onClick');
+                  this.progress.updateProgress("10%");
+                })
+                .fontSize(10)
+            }
+          }
+          ListItem() {
+            Row() {
+              Button("updateProgress_0900")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_0900")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_0900 onClick');
+                  this.progress.updateProgress(9);
+                  this.progress.updateProgress(1);
+                })
+                .fontSize(10)
+              Button("updateProgress_1000")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_1000")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_1000 onClick');
+                  this.progress.updateProgress(4);
+                  this.progress.updateProgress(null);
+                })
+                .fontSize(10)
+              Button("updateProgress_1100")
+                .key("ArkUX_Stage_Progress_updateProgress_Button_1100")
+                .onClick((event: ClickEvent) => {
+                  console.info('ArkUX_Stage_Progress_updateProgress_Button_1100 onClick');
+                  this.progress.updateProgress(-2);
+                  this.progress.updateProgress(5);
                 })
                 .fontSize(10)
             }
