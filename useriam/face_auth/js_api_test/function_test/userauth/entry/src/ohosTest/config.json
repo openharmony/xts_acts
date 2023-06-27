@@ -1,0 +1,95 @@
+{
+	"app":{
+		"bundleName":"com.example.myapplication101",
+		"vendor":"example",
+		"version":{
+			"code":12,
+			"name":"1.0.0"
+		}
+	},
+	"deviceConfig":{
+		
+	},
+	"module":{
+		"package":"com.example.myapplication101_test",
+		"name":".entry_test",
+		"mainAbility":".TestAbility",
+		"deviceType": [
+			"tablet",
+			"default",
+			"tv",
+			"wearable"
+		],
+		"testRunner":{
+			"name":"OpenHarmonyTestRunner",
+			"srcPath":"TestRunner"
+		},
+		"distro":{
+			"deliveryWithInstall":true,
+			"installationFree":false,
+			"moduleName":"entry_test",
+			"moduleType":"feature"
+		},
+		"abilities":[
+			{
+				"description":"$string:TestAbility_desc",
+				"formsEnabled":false,
+				"icon":"$media:icon",
+				"label":"$string:TestAbility_label",
+				"launchType":"standard",
+				"name":".TestAbility",
+				"orientation":"unspecified",
+				"skills":[
+					{
+						"actions":[
+							"action.system.home"
+						],
+						"entities":[
+							"entity.system.home"
+						]
+					}
+				],
+				"srcLanguage":"js",
+				"srcPath":"TestAbility",
+				"type":"page",
+				"visible":true
+			}
+		],
+		"reqPermissions": [
+			{
+				"reason": "reason_manage_face",
+				"usedScene": {
+					"ability": [
+						"com.myface.Ability",
+						"com.myface.AbilityBackground"
+					],
+					"when": "always"
+				},
+				"name": "ohos.permission.MANAGE_FACE"
+			},
+			{
+				"reason": "reason_access_biometric",
+				"usedScene": {
+					"ability": [
+						"com.mybiometric.Ability",
+						"com.mybiometric.AbilityBackground"
+					],
+					"when": "always"
+				},
+				"name": "ohos.permission.ACCESS_BIOMETRIC"
+			}
+		],
+		"js":[
+			{
+				"name":".TestAbility",
+				"pages":[
+					"pages/index/index"
+				],
+				"window":{
+					"autoDesignWidth":false,
+					"designWidth":720
+				}
+			}
+		]
+	}
+}
