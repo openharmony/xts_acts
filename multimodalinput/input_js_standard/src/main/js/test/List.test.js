@@ -14,11 +14,13 @@
  */
 
 import InputDevice_test from './InputDevice.test.js'
+import MultimodalInput_GestureEvent_test from './MultimodalInput_GestureEvent.test.js'
 import MultimodalInput_IntentionCode_test from './MultimodalInput_IntentionCode.test.js'
 import MultimodalInput_KeyCode_test from './MultimodalInput_KeyCode.test.js'
 import Pointer_test from './Pointer.test.js'
 export default function testsuite() {
     InputDevice_test()
+    MultimodalInput_GestureEvent_test()
     MultimodalInput_IntentionCode_test()
     MultimodalInput_KeyCode_test()
     Pointer_test()
