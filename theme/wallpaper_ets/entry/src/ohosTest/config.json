@@ -11,9 +11,9 @@
 		
 	},
 	"module":{
-		"package":"com.acts.theme.wallpapertest",
-		"name":".entry",
-		"mainAbility":".MainAbility",
+		"package":"com.acts.theme.wallpapertest_test",
+		"name":".entry_test",
+		"mainAbility":".TestAbility",
 		"deviceType":[
 			"tablet",
 			"default"
@@ -21,17 +21,17 @@
 		"distro":{
 			"deliveryWithInstall":true,
 			"installationFree":false,
-			"moduleName":"entry",
-			"moduleType":"entry"
+			"moduleName":"entry_test",
+			"moduleType":"feature"
 		},
 		"abilities":[
 			{
-				"description":"$string:description_mainability",
+				"description":"$string:TestAbility_desc",
 				"formsEnabled":false,
 				"icon":"$media:icon",
-				"label":"$string:entry_MainAbility",
+				"label":"$string:TestAbility_label",
 				"launchType":"standard",
-				"name":".MainAbility",
+				"name":".TestAbility",
 				"orientation":"unspecified",
 				"skills":[
 					{
@@ -44,7 +44,7 @@
 					}
 				],
 				"srcLanguage":"ets",
-				"srcPath":"MainAbility",
+				"srcPath":"TestAbility",
 				"type":"page",
 				"visible":true
 			}
@@ -55,7 +55,7 @@
 					"syntax":"ets",
 					"type":"pageAbility"
 				},
-				"name":".MainAbility",
+				"name":".TestAbility",
 				"pages":[
 					"pages/index"
 				],
