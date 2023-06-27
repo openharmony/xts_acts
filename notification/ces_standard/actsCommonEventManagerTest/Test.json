@@ -5,7 +5,7 @@
         "test-timeout": "260000",
         "shell-timeout": "260000",
         "bundle-name": "com.example.actscommoneventmanager",
-        "package-name": "com.example.actscommoneventmanager_test"
+        "package-name": "com.example.actscommoneventmanager"
     },
     "kits": [
         {
