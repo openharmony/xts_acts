@@ -5,7 +5,7 @@
         "test-timeout": "60000",
         "shell-timeout": "60000",
         "bundle-name": "ohos.acts.storage.fileuri",
-        "package-name": "ohos.acts.storage.fileuri_test"
+        "package-name": "ohos.acts.storage.fileuri"
     },
     "kits": [
         {
