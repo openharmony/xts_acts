@@ -186,5 +186,16 @@ describe('PowerManagerPowerTest', function () {
         console.info('suspend success done');
         done();
     })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0094
+     * @tc.name power_Device_IsStandby_JSTest094
+     * @tc.desc Device isStandby interface verification
+     */
+    it('power_Device_IsStandby_JSTest094', 0, function () {
+        let isStandby = power.isStandby();
+        console.info('power_Device_IsStandby_JSTest094 ' + isStandby);
+        expect(isStandby).assertFalse();
+    })
 })
 }
