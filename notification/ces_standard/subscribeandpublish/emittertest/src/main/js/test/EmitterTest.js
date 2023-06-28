@@ -59,15 +59,21 @@ export default function EmitterTest() {
       console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0100 START`)
       innerEvent.eventId = 1
       innerEvent.priority = emitter.EventPriority.IDLE
-
       eventData.data.id = 0
       eventData.data.content = 'message_0'
 
       emitter.on(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
+      emitter.off(1)
+
+      innerEvent.priority = emitter.EventPriority.HIGH
+      innerEvent.eventId = 1
       eventData.data.id = 1
       eventData.data.content = 'message_1'
+
+      emitter.on(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
+      emitter.off(1)
       console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0100 END`)
       done()
     })
@@ -87,6 +93,7 @@ export default function EmitterTest() {
 
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
+      emitter.off(2)
       console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0200 END`)
       done()
     })
@@ -106,6 +113,7 @@ export default function EmitterTest() {
 
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
+      emitter.off(3)
       console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0300 END`)
       done()
     })
@@ -125,6 +133,7 @@ export default function EmitterTest() {
 
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
+      emitter.off(4)
       console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0400 END`)
       done()
     })
