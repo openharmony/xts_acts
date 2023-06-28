@@ -1,5 +1,6 @@
+// @ts-nocheck
 /**
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,20 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 @Entry
 @Component
-struct Index {
-  @State message: string = 'Hello World'
+struct MyComponent {
+  aboutToAppear() {
+  }
+
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    Flex({
+      direction: FlexDirection.Column,
+      alignItems: ItemAlign.Center,
+      justifyContent: FlexAlign.Center
+    }) {
+      Text('WALLPAPER ETS TEST')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
     }
+    .width('100%')
     .height('100%')
   }
 }
+
