@@ -243,8 +243,8 @@ export default function relationalStoreAssetResultSetTest() {
                 const data2 = resultSet.getAsset(resultSet.getColumnIndex("data2"))
                 expect(null).assertFail();
             } catch (e) {
-                console.log(TAG + "testGetAsset0003 throw error: " + e);
-                expect(true).assetTrue();
+                console.log(TAG + "testGetAsset0003 throw error: " + e.code);
+                expect(e.code == 14800000).assertTrue();
             } finally {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -277,7 +277,7 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(null).assertFail();
             } catch (e) {
                 console.log(TAG + "testGetAsset0004 throw error: " + e);
-                expect(true).assetTrue();
+                expect(e.code == 14800000).assertTrue();
             } finally {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -310,7 +310,7 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(null).assertFail();
             } catch (e) {
                 console.log(TAG + "testGetAsset0005 throw error: " + e);
-                expect(true).assetTrue();
+                expect(e.code == 14800000).assertTrue();
             } finally {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -343,7 +343,7 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(null).assertFail();
             } catch (e) {
                 console.log(TAG + "testGetAsset0006 throw error: " + e);
-                expect(true).assetTrue();
+                expect(e.code == 14800000).assertTrue();
             } finally {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -639,7 +639,7 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(null).assertFail();
             } catch (e) {
                 console.log(TAG + "testGetAssets0003 throw error" + e);
-                expect(true).assetTrue();
+                expect(e.code == 14800000).assertTrue();
             } finally {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
