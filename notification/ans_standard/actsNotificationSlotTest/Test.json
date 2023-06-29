@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.example.actsnotificationslot",
-        "package-name": "com.example.actsnotificationslot"
+        "package-name": "com.example.actsnotificationslot_test"
     },
     "kits": [
         {
