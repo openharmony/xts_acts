@@ -25,7 +25,6 @@ static napi_value CreateAudioCapture(napi_env env, napi_callback_info info)
     OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_Create(&builder, type);
     OH_AudioStreamBuilder_Destroy(builder);
-    // int result = 5;
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;
