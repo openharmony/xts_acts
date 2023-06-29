@@ -1753,16 +1753,16 @@ export default function DeviceInfoTest() {
         it('device_info_test_0669', 0, function () {
             console.info('device_info_test_0669 start');
 
-            let osReleaseTypeInfo = deviceinfo.osReleaseType;
-            console.info('the value of the deviceinfo distributionOSReleaseType is :' + osReleaseTypeInfo);
+            let distributionOSReleaseTypeInfo = deviceinfo.distributionOSReleaseType;
+            console.info('the value of the deviceinfo distributiondistributionOSReleaseType is :' + distributionOSReleaseTypeInfo);
 
-            expect(osReleaseTypeInfo).assertInstanceOf('String');
-            if (osReleaseTypeInfo != "" && osReleaseTypeInfo != null && osReleaseTypeInfo != undefined) {
+            expect(distributionOSReleaseTypeInfo).assertInstanceOf('String');
+            if (distributionOSReleaseTypeInfo != "" && distributionOSReleaseTypeInfo != null && distributionOSReleaseTypeInfo != undefined) {
                 let str = /[\w-\.\(\)]/g;
-                let arr = osReleaseTypeInfo.match(str);
+                let arr = distributionOSReleaseTypeInfo.match(str);
                 let bufferstr = arr.join('');
                 console.info('the value of the bufferstr is :' + bufferstr);
-                expect(osReleaseTypeInfo).assertEqual(bufferstr);
+                expect(distributionOSReleaseTypeInfo).assertEqual(bufferstr);
             } else {
                 console.info('the return value is null or incorrect.');
                 expect().assertFail();
