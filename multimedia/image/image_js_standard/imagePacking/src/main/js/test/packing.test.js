@@ -336,7 +336,7 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500", 0, async function (done) {
-            let packOpts = { format: "image/png", quality: 99 };
+            let packOpts = { format: "image/txt", quality: 99 };
             packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500", 2, packOpts);
         });
 
@@ -411,7 +411,7 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000", 0, async function (done) {
-            let packOpts = { format: "image/png", quality: 99 };
+            let packOpts = { format: "image/txt", quality: 99 };
             packingPromiseFail(done, "SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000", 5, packOpts);
         });
 
@@ -486,7 +486,7 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500", 0, async function (done) {
-            let packOpts = { format: "image/png", quality: 99 };
+            let packOpts = { format: "image/txt", quality: 99 };
             packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500", 2, packOpts);
         });
 
@@ -561,7 +561,7 @@ export default function imagePacking() {
          * @tc.level     : level 0
          */
         it("SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000", 0, async function (done) {
-            let packOpts = { format: "image/png", quality: 99 };
+            let packOpts = { format: "image/txt", quality: 99 };
             packingCbFail(done, "SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000", 5, packOpts);
         });
 
