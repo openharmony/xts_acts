@@ -1,0 +1,10 @@
+import("//build/ohos_var.gni")
+
+group("arkcompiler") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      "esmodule:esmodule",
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+import("//build/ohos_var.gni")
+
+group("esmodule") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      "esmodule_entry:ActsEsmoduleEntryTest",
+      "esmodule_ohostest:ActsEsmoduleOhostestTest"
+    ]
+  }
+}
