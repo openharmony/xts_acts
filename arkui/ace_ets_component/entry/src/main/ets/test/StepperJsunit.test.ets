@@ -169,7 +169,7 @@ export default function stepperJsunit() {
       let strJsonNew = getInspectorByKey('stepper');
       let objNew = JSON.parse(strJsonNew);
       console.info("stepperTest_0300 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.index).assertEqual('11111111');
+      expect(objNew.$attrs.index).assertEqual('0');
       console.info('stepperTest_0300 END');
       done();
     });

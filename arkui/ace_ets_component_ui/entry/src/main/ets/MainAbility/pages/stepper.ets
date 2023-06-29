@@ -75,7 +75,7 @@ struct StepperExample {
       StepperItem() {
         Column() {
           Text('Page One')
-            .itemTextStyle()
+            .itemTextStyle().key('pageOne')
           Button('change status:' + this.firstState)
             .backgroundColor('#007dFF')
             .onClick(() => {
