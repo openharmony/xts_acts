@@ -15,6 +15,7 @@
 
 #include "common/native_common.h"
 #include "napi/native_api.h"
+#include "securec.h"
 #include <stdint.h>
 #include <string>
 #include <stdio.h>
@@ -27,6 +28,7 @@
 static napi_ref test_reference = NULL;
 const int TAG_NUMBER = 666;
 const int NUMBER_FIVE = 5;
+static int g_delCount = 0;
 
 static void add_returned_status(napi_env env,
                                 const char* key,
@@ -2197,10 +2199,445 @@ static napi_value ThreadSafeTest(napi_env env, napi_callback_info info) {
     return _value;
 }
 
+static void NoopDeleter(napi_env env, void* data, void* finalizeHint)
+{
+    (void)finalizeHint;
+    g_delCount++;
+}
+
+static const char TEST_STR[] =
+    "Where there is a will, there is a way.";
+
+static void DelTest(napi_env env, void* data, void* finalizeHint)
+{
+    (void)finalizeHint;
+    free(data);
+    g_delCount++;
+}
+
+static napi_value CreateBuffer(napi_env env, napi_callback_info info)
+{
+    const unsigned int bufferSize = sizeof(TEST_STR);
+    char* copyPtr;
+    napi_value napiBuffer;
+    napi_status status = napi_create_buffer(env, bufferSize, (void**)(&copyPtr), &napiBuffer);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create buffer");
+        return nullptr;
+    }
+    NAPI_ASSERT(env, copyPtr, "Unable to duplicate static text for CreateBuffer.");
+    int ret = memcpy_s(copyPtr, bufferSize, TEST_STR, strlen(TEST_STR) + 1);
+    NAPI_ASSERT(env, ret == 0, "memcpy_s failed");
+    return napiBuffer;
+}
+
+static napi_value CreateExternalBuffer(napi_env env, napi_callback_info info)
+{
+    char* copyPtr = strdup(TEST_STR);
+    napi_value napiBuffer;
+    const unsigned int bufferSize = sizeof(TEST_STR);
+
+    NAPI_ASSERT(env, copyPtr, "Unable to duplicate static text for CreateExternalBuffer.");
+    NAPI_CALL(env,
+              napi_create_external_buffer(env,
+                                          bufferSize,
+                                          copyPtr,
+                                          DelTest,
+                                          nullptr /* finalizeHint */,
+                                          &napiBuffer));
+    return napiBuffer;
+}
+
+static napi_value BufferCopy(napi_env env, napi_callback_info info)
+{
+    const unsigned int bufferSize = sizeof(TEST_STR);
+    napi_value napiBuffer;
+    void* dataPtr = nullptr;
+    napi_status status = napi_create_buffer_copy(env, bufferSize, TEST_STR, &dataPtr, &napiBuffer);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create buffer");
+        return nullptr;
+    }
+    return napiBuffer;
+}
+
+static napi_value IsBuffer(napi_env env, napi_callback_info info)
+{
+    napi_value args[1];
+    size_t argc = 1;
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    NAPI_ASSERT(env, argc == 1, "The number of arguments provided is incorrect.");
+    napi_value napiBuffer = args[0];
+    bool result;
+    napi_status status = napi_is_buffer(env, napiBuffer, &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "The parameter instance is not of type buffer.");
+    }
+    napi_value returnValue;
+    NAPI_CALL(env, napi_get_boolean(env, result, &returnValue));
+    return returnValue;
+}
+
+static napi_value GetBufferInfo(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    const unsigned int bufferSize = sizeof(TEST_STR);
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    NAPI_ASSERT(env, argc == 1, "Incorrect number of parameters.");
+    napi_value napiBuffer = args[0];
+    char *bufferData;
+    napi_value returnValue;
+    size_t bufferLength;
+    if (napi_get_buffer_info(env, napiBuffer, (void**)(&bufferData), &bufferLength) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get buffer info.");
+        return nullptr;
+    }
+    NAPI_CALL(env, napi_get_boolean(env,
+                                    !strcmp(bufferData, TEST_STR) && bufferLength == bufferSize,
+                                    &returnValue));
+    return returnValue;
+}
+
+static napi_value StaticBuffer(napi_env env, napi_callback_info info)
+{
+    napi_value napiBuffer;
+    const unsigned int bufferSize = sizeof(TEST_STR);
+    NAPI_CALL(env,
+              napi_create_external_buffer(env,
+                                          bufferSize,
+                                          (void*)TEST_STR,
+                                          NoopDeleter,
+                                          nullptr /* finalizeHint */,
+                                          &napiBuffer));
+    return napiBuffer;
+}
+
+static napi_value GetSymbolNames(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    if (argc < 1) {
+        napi_throw_error(env, nullptr, "Wrong number of arguments");
+        return nullptr;
+    }
+    napi_valuetype valueType0;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valueType0));
+    if (valueType0 != napi_object) {
+        napi_throw_error(env, nullptr, "Wrong type of arguments. Expects an object as first argument.");
+        return nullptr;
+    }
+    napi_value output;
+    NAPI_CALL(env,
+              napi_get_all_property_names(env,
+                                          args[0],
+                                          napi_key_include_prototypes,
+                                          napi_key_skip_strings,
+                                          napi_key_numbers_to_strings,
+                                          &output));
+    return output;
+}
+
+static napi_value GetEnumerableWritableNames(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    if (argc < 1) {
+        napi_throw_error(env, nullptr, "Wrong number of arguments");
+        return nullptr;
+    }
+    napi_valuetype valueType0;
+    if (napi_typeof(env, args[0], &valueType0) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get argument type");
+        return nullptr;
+    }
+    if (valueType0 != napi_object) {
+        napi_throw_error(env, nullptr, "Wrong type of arguments. Expects an object as first argument.");
+        return nullptr;
+    }
+    napi_value output;
+    NAPI_CALL(env,
+              napi_get_all_property_names(env,
+                                          args[0],
+                                          napi_key_include_prototypes,
+                                          static_cast<napi_key_filter>(napi_key_writable | napi_key_enumerable),
+                                          napi_key_numbers_to_strings,
+                                          &output));
+    return output;
+}
+
+static napi_value GetOwnWritableNames(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    if (argc < 1) {
+        napi_throw_error(env, nullptr, "Wrong number of arguments");
+        return nullptr;
+    }
+    napi_valuetype valueType0;
+    if (napi_typeof(env, args[0], &valueType0) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get argument type");
+        return nullptr;
+    }
+    if (valueType0 != napi_object) {
+        napi_throw_error(env, nullptr, "Wrong type of arguments. Expects an object as first argument.");
+        return nullptr;
+    }
+    napi_value output;
+    NAPI_CALL(env,
+              napi_get_all_property_names(env,
+                                          args[0],
+                                          napi_key_own_only,
+                                          napi_key_writable,
+                                          napi_key_numbers_to_strings,
+                                          &output));
+    return output;
+}
+
+static napi_value GetEnumerableConfigurableNames(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    if (argc < 1) {
+        napi_throw_error(env, nullptr, "Wrong number of arguments");
+        return nullptr;
+    }
+    napi_valuetype valueType0;
+    if (napi_typeof(env, args[0], &valueType0) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get argument type");
+        return nullptr;
+    }
+    if (valueType0 != napi_object) {
+        napi_throw_error(env, nullptr, "Wrong type of arguments. Expects an object as first argument.");
+        return nullptr;
+    }
+    napi_value output;
+    NAPI_CALL(env,
+              napi_get_all_property_names(env,
+                                          args[0],
+                                          napi_key_include_prototypes,
+                                          static_cast<napi_key_filter>(napi_key_enumerable | napi_key_configurable),
+                                          napi_key_numbers_to_strings,
+                                          &output));
+    return output;
+}
+
+static napi_value GetOwnConfigurableNames(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to parse arguments");
+        return nullptr;
+    }
+    if (argc < 1) {
+        napi_throw_error(env, nullptr, "Wrong number of arguments");
+        return nullptr;
+    }
+    napi_valuetype valueType0;
+    if (napi_typeof(env, args[0], &valueType0) != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get argument type");
+        return nullptr;
+    }
+    if (valueType0 != napi_object) {
+        napi_throw_error(env, nullptr, "Wrong type of arguments. Expects an object as first argument.");
+        return nullptr;
+    }
+    napi_value output;
+    NAPI_CALL(env,
+              napi_get_all_property_names(env,
+                                          args[0],
+                                          napi_key_own_only,
+                                          napi_key_configurable,
+                                          napi_key_numbers_to_strings,
+                                          &output));
+    return output;
+}
+
+static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
+{
+    napi_value returnValue, props;
+    NAPI_CALL(env, napi_create_object(env, &returnValue));
+    add_returned_status(env,
+                        "envIsNull",
+                        returnValue,
+                        "Invalid argument",
+                        napi_invalid_arg,
+                        napi_get_all_property_names(nullptr,
+                                                    returnValue,
+                                                    napi_key_own_only,
+                                                    napi_key_writable,
+                                                    napi_key_keep_numbers,
+                                                    &props));
+    napi_get_all_property_names(env,
+                                nullptr,
+                                napi_key_own_only,
+                                napi_key_writable,
+                                napi_key_keep_numbers,
+                                &props);
+    add_last_status(env, "objectIsNull", returnValue);
+    napi_get_all_property_names(env,
+                                returnValue,
+                                napi_key_own_only,
+                                napi_key_writable,
+                                napi_key_keep_numbers,
+                                nullptr);
+    add_last_status(env, "valueIsNull", returnValue);
+    return returnValue;
+}
+
+static napi_value FreezeTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    // Check if argument is an object
+    napi_value objectConstructor;
+    napi_status status = napi_get_named_property(env, args[0], "Object", &objectConstructor);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Argument must be an object");
+    }
+    // Freeze the object
+    napi_value object = args[0];
+    NAPI_CALL(env, napi_object_freeze(env, object));
+    return object;
+}
+
+static napi_value SealTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    // Check if argument is an object
+    napi_value objectConstructor;
+    napi_status status = napi_get_named_property(env, args[0], "Object", &objectConstructor);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Argument must be an object");
+    }
+    // Seal the object
+    napi_value object = args[0];
+    NAPI_CALL(env, napi_object_seal(env, object));
+
+    return object;
+}
+
+void FinalizeCallback(napi_env env, void* finalizeData, void* finalizeHint)
+{
+    free(finalizeData);
+}
+
+static napi_value External(napi_env env, napi_callback_info info)
+{
+    const uint8_t parraySize  = 3;
+    void* externalData = malloc(parraySize  * sizeof(int8_t));
+
+    //Sets the three elements of the array that are used to create an ArrayBuffer object
+    ((int8_t*)externalData)[0] = 0; // 0 means that the first value of the created array is 0
+    ((int8_t*)externalData)[1] = 1; // 1 means that the second value of the created array is 1
+    ((int8_t*)externalData)[2] = 2; // 2 means that the third value of the created array is 2
+
+    napi_value outputBuffer;
+    napi_status status = napi_create_external_arraybuffer(env,
+                                                          externalData,
+                                                          parraySize  * sizeof(int8_t),
+                                                          FinalizeCallback,
+                                                          nullptr,  // finalizeHint
+                                                          &outputBuffer);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create external arraybuffer");
+        return nullptr;
+    }
+    napi_value outputArray;
+    status = napi_create_typedarray(env,
+                                    napi_int8_array,
+                                    parraySize,
+                                    outputBuffer,
+                                    0,
+                                    &outputArray);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create typedarray");
+        return nullptr;
+    }
+    return outputArray;
+}
+
+static napi_value DetachTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    NAPI_ASSERT(env, argc == 1, "The number of arguments provided is incorrect.");
+    void* data;
+    size_t length;
+    napi_typedarray_type type;
+    napi_value arrayBuffer;
+    NAPI_CALL(env, napi_get_typedarray_info(env, args[0], &type, &length, &data, &arrayBuffer, nullptr));
+
+    NAPI_CALL(env, napi_detach_arraybuffer(env, arrayBuffer));
+    return nullptr;
+}
+
+napi_value IsDetachedTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    if (status != napi_ok || argc != 1) {
+        napi_throw_error(env, nullptr, "Wrong number of arguments.");
+        return nullptr;
+    }
+    bool isArraybuffer;
+    status = napi_is_arraybuffer(env, args[0], &isArraybuffer);
+    if (status != napi_ok || !isArraybuffer) {
+        napi_throw_error(env, nullptr, "Wrong type of arguments. Expects an array buffer as first argument.");
+        return nullptr;
+    }
+    bool isDetached;
+    status = napi_is_detached_arraybuffer(env, args[0], &isDetached);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to check if array buffer is detached.");
+        return nullptr;
+    }
+    napi_value result;
+    status = napi_get_boolean(env, isDetached, &result);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to create boolean result.");
+        return nullptr;
+    }
+    return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
 {
+    napi_value theValue;
+    NAPI_CALL(env, napi_create_string_utf8(env, TEST_STR, sizeof(TEST_STR), &theValue));
+    NAPI_CALL(env, napi_set_named_property(env, exports, "testStr", theValue));
     napi_property_descriptor properties[] = {
         DECLARE_NAPI_FUNCTION("getLastErrorInfo", getLastErrorInfo),
         DECLARE_NAPI_FUNCTION("cleanUpErrorInfo", cleanUpErrorInfo),
@@ -2298,6 +2735,23 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("getGlobal", getGlobal),
         DECLARE_NAPI_FUNCTION("callFunction", callFunction),
         DECLARE_NAPI_FUNCTION("ThreadSafeTest", ThreadSafeTest),
+        DECLARE_NAPI_FUNCTION("CreateBuffer", CreateBuffer),
+        DECLARE_NAPI_FUNCTION("CreateExternalBuffer", CreateExternalBuffer),
+        DECLARE_NAPI_FUNCTION("BufferCopy", BufferCopy),
+        DECLARE_NAPI_FUNCTION("IsBuffer", IsBuffer),
+        DECLARE_NAPI_FUNCTION("GetBufferInfo", GetBufferInfo),
+        DECLARE_NAPI_FUNCTION("GetAllPropertyNames", GetAllPropertyNames),
+        DECLARE_NAPI_FUNCTION("GetSymbolNames", GetSymbolNames),
+        DECLARE_NAPI_FUNCTION("GetEnumerableWritableNames", GetEnumerableWritableNames),
+        DECLARE_NAPI_FUNCTION("GetOwnWritableNames", GetOwnWritableNames),
+        DECLARE_NAPI_FUNCTION("GetEnumerableConfigurableNames", GetEnumerableConfigurableNames),
+        DECLARE_NAPI_FUNCTION("GetOwnConfigurableNames", GetOwnConfigurableNames),
+        DECLARE_NAPI_FUNCTION("FreezeTest", FreezeTest),
+        DECLARE_NAPI_FUNCTION("SealTest", SealTest),
+        DECLARE_NAPI_FUNCTION("StaticBuffer", StaticBuffer),
+        DECLARE_NAPI_FUNCTION("External", External),
+        DECLARE_NAPI_FUNCTION("DetachTest", DetachTest),
+        DECLARE_NAPI_FUNCTION("IsDetachedTest", IsDetachedTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
