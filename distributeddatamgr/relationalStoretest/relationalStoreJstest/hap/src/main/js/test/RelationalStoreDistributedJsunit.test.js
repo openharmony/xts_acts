@@ -418,7 +418,249 @@ describe('relationalStoreDistributedTest', function () {
         }
         expect(errInfo.code).assertEqual("401")
         done();
+     })
+    
+    /**
+         * @tc.name sync test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_016
+         * @tc.desc sync test
+         */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_016', 0, function (done) {
+        let predicates = new data_Rdb.RdbPredicates("employee")
+        predicates = predicates.inDevices("12345678abcd");
+        console.info(TAG + `SYNC_MODE_TIME_FIRST = ` + data_Rdb.SyncMode.SYNC_MODE_TIME_FIRST);
+        expect(data_Rdb.SyncMode.SYNC_MODE_TIME_FIRST).assertEqual(4);
+        console.info(TAG + "DATA_CHANGE = " + data_Rdb.ChangeType.DATA_CHANGE);
+        expect(data_Rdb.ChangeType.DATA_CHANGE).assertEqual(0);
+        console.info(TAG + "ASSET_CHANGE = " + data_Rdb.ChangeType.ASSET_CHANGE);
+        expect(data_Rdb.ChangeType.ASSET_CHANGE).assertEqual(1);
+        try{
+            rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_TIME_FIRST, predicates, function (err, result) {
+                if (err) {
+                    console.error(TAG + `Sync failed, code is ${err.code},message is ${err.message}`);
+                    expect(err === null).assertFail();
+                }
+                console.info(TAG + `Sync done.` + result);
+                expect(result !== null).assertFail();
+            })
+        }catch(error){
+            console.error(TAG + `failed, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('401');
+            done();
+        }
     })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_016
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_017', 0, function (done) {
+        let predicates = new data_Rdb.RdbPredicates("employee")
+        predicates = predicates.inDevices("12345678abcd");
+        console.info(TAG + `SYNC_MODE_NATIVE_FIRST = ` + data_Rdb.SyncMode.SYNC_MODE_NATIVE_FIRST);
+        expect(data_Rdb.SyncMode.SYNC_MODE_NATIVE_FIRST).assertEqual(5);
+        try{
+            rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_NATIVE_FIRST, predicates, function (err, result) {
+                if (err) {
+                    console.error(TAG + `Sync failed, code is ${err.code},message is ${err.message}`);
+                    expect(err === null).assertFail();
+                }
+                console.info(TAG + `Sync done.` + result);
+                expect(result !== null).assertFail();
+            })
+        }catch(error){
+            console.error(TAG + `failed, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('401');
+            done();
+        }
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_018
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_018', 0, function (done) {
+        let predicates = new data_Rdb.RdbPredicates("employee")
+        predicates = predicates.inDevices("12345678abcd");
+        console.info(TAG + `SYNC_MODE_CLOUD_FIRST = ` + data_Rdb.SyncMode.SYNC_MODE_CLOUD_FIRST);
+        expect(data_Rdb.SyncMode.SYNC_MODE_CLOUD_FIRST).assertEqual(6);
+        try{
+            rdbStore.sync(data_Rdb.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, function (err, result) {
+                if (err) {
+                    console.error(TAG + `Sync failed, code is ${err.code},message is ${err.message}`);
+                    expect(err === null).assertFail();
+                }
+                console.info(TAG + `Sync done.` + result);
+                expect(result !== null).assertFail();
+            })
+        }catch(error){
+            console.error(TAG + `failed, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('401');
+            done();
+        }
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_019
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_019', 0, function (done) {
+        try{
+            rdbStore.on("dataChange", data_Rdb.SubscribeType.SUBSCRIBE_TYPE_CLOUD, function (devices) {
+                console.info(TAG + devices + " dataChange");
+                expect(devices).assertEqual(null);
+            });
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_020
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_020', 0, function (done) {
+        try{
+            rdbStore.on('dataChange', data_Rdb.SubscribeType.SUBSCRIBE_TYPE_CLOUD_DETAILS, function (table) {
+                console.info(TAG + table + " dataChange");
+                expect(table).assertEqual(null);
+            });
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_021
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_021', 0, function (done) {
+        try{
+            rdbStore.on('dataChange', data_Rdb.SubscribeType.SUBSCRIBE_TYPE_CLOUD_DETAILS, function (type) {
+                console.info(TAG + type + " dataChange");
+                expect(type).assertEqual(null);
+            });
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_022
+     * @tc.desc sync test
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_022', 0, function (done) {
+        function Observer(inserted) {
+            console.info(TAG + inserted + " dataChange");
+            expect(inserted).assertEqual(null);
+        }
+        try{
+            rdbStore.on('dataChange', data_Rdb.SubscribeType.SUBSCRIBE_TYPE_CLOUD_DETAILS, Observer);
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_023
+     * @tc.desc sync test
+     */
+
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_023', 0, function (done) {
+        try{
+            rdbStore.on('dataChange', data_Rdb.SubscribeType.SUBSCRIBE_TYPE_CLOUD_DETAILS, function (updated) {
+                console.info(TAG + updated + " dataChange");
+                expect(updated).assertEqual(null);
+            });
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+    })
+
+    /**
+     * @tc.name sync test
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_024
+     * @tc.desc sync test
+     */
+
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_024', 0, function (done) {
+        try{
+            rdbStore.on('dataChange', data_Rdb.SubscribeType.SUBSCRIBE_TYPE_CLOUD_DETAILS, function (deleted) {
+                console.info(TAG + deleted + " dataChange");
+                expect(deleted).assertEqual(null);
+            });
+        }catch(err){
+            console.info(TAG + "on dataChange " + err);
+            expect(err !== null).assertFalse();
+        }
+        done();
+    })
+
+    /**
+     * @tc.name set distributed table using two table name
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_025
+     * @tc.desc set distributed table type DISTRIBUTED_DEVICE
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_025', 0, async function (done) {
+        try {
+            await rdbStore.setDistributedTables(['employee'], data_Rdb.DistributedType.DISTRIBUTED_DEVICE, function (err){
+                if (err) {
+                    console.error(TAG + `SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                console.info(TAG + `SetDistributedTables successfully.`);
+                expect(err == undefined).assertTrue();
+                done();
+            })
+        } catch (err) {
+            console.info(TAG + "set employee to be distributed table failed");
+            expect(null).assertFail();
+            done()
+        }
+    })
+
+    /**
+     * @tc.name set distributed table using two table name
+     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_026
+     * @tc.desc set distributed table type DISTRIBUTED_CLOUD
+     */
+    it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_026', 0, async function (done) {
+        try {
+            await rdbStore.setDistributedTables(['employee'], data_Rdb.DistributedType.DISTRIBUTED_CLOUD, function (err){
+                if (err) {
+                    console.error(TAG + `SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                console.info(TAG + `SetDistributedTables successfully.`);
+                expect(err == undefined).assertTrue();
+                done();
+            })
+        } catch (err) {
+            console.info(TAG + "set employee and product to be distributed table failed");
+            expect(null).assertFail();
+            done()
+        }
+    })
+
 	
     console.info(TAG + "*************Unit Test End*************");
 })
