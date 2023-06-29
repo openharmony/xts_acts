@@ -18,23 +18,8 @@
 
 #include <gtest/gtest.h>
 #include "Deqpgles31BaseFunc.h"
+#include "testsuitehead.h"
 
-namespace OHOS {
-    class ActsDeqpgles310010TestSuite : public testing::Test {
-    public:
-        static time_t startTime;
-        static time_t endTime;
-        static FuncRunResult runResult;
-    protected:
-        // Preset action of the test suite, which is executed before the first test case
-        static void SetUpTestCase(void);
-        // Test suite cleanup action, which is executed after the last test case
-        static void TearDownTestCase(void);
-        // Preset action of the test case
-        virtual void SetUp(void);
-        // Cleanup action of the test case
-        virtual void TearDown(void);
-    };
-} // namespace OHOS
+SHRINK_SUITETEST_HEAD(ActsDeqpgles310010TestSuite)
 
 #endif // DEQPGLES31_TESTCASE_H
