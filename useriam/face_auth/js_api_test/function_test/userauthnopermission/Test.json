@@ -5,7 +5,7 @@
         "test-timeout": "600000",
         "shell-timeout": "600000",
         "bundle-name": "com.example.myapplication101",
-        "package-name": "com.example.myapplication101_test"
+        "package-name": "com.example.myapplication101"
     },
     "kits": [
         {

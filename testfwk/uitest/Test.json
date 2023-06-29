@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "1800000",
         "bundle-name": "com.uitest.acts",
-        "package-name": "com.uitest.acts_test",
+        "package-name": "com.uitest.acts",
         "shell-timeout": "180000"
     },
     "kits": [

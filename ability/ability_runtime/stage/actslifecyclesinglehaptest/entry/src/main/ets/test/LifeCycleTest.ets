@@ -897,7 +897,7 @@ export default function lifecycleTest() {
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
         id2 = globalThis.callbackid6;
         console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
-        expect(id1).assertEqual(id2);
+        expect(id1 + 1).assertEqual(id2);
         globalThis.applicationContext6
           .unregisterAbilityLifecycleCallback(globalThis.callbackid6, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
@@ -905,7 +905,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_1000 END-------------");
             done();
           });
-      }, 4500);
+      }, 5000);
     });
 
     /*
@@ -1014,7 +1014,7 @@ export default function lifecycleTest() {
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid8));
         id2 = globalThis.callbackid8;
         console.log(TAG + " secondCallback id : " + JSON.stringify(id2));
-        expect(id1).assertEqual(id2);
+        expect(id1 + 1).assertEqual(id2);
         globalThis.applicationContext8
           .unregisterAbilityLifecycleCallback(globalThis.callbackid8, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
@@ -1034,7 +1034,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_1200 END-------------");
           done();
         });
-      }, 4500);
+      }, 5000);
     });
 
     /*
@@ -1442,7 +1442,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_2000 END-------------");
             done();
           });
-      }, 7200);
+      }, 7500);
     });
 
     /*

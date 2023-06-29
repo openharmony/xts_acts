@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
 	    "bundle-name": "com.acts.theme.screenlocktest",
-        "package-name": "com.acts.theme.screenlocktest_test",
+        "package-name": "com.acts.theme.screenlocktest",
         "shell-timeout": "600000"
     },
     "kits": [
