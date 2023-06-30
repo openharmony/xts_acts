@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.example.actsnotificationwantagent",
-        "package-name": "com.example.actsnotificationwantagent_test"
+        "package-name": "com.example.actsnotificationwantagent"
     },
     "kits": [
         {
