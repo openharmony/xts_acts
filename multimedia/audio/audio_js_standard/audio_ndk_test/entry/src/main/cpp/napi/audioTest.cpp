@@ -55,7 +55,7 @@ static napi_value AudioCaptureGenerate(napi_env env, napi_callback_info info)
 static napi_value AudioCaptureGenerateErr(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder *builder;
-    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RERNDERER;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStreamBuilder_Create(&builder, type);
 
     OH_AudioCapturer *audioCapturer;
@@ -313,7 +313,7 @@ static napi_value AudioCaptureGetCapturerInfo(napi_env env, napi_callback_info i
 OH_AudioStreamBuilder *CreateRenderBuilder()
 {
     OH_AudioStreamBuilder *builder;
-    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RERNDERER;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
     OH_AudioStreamBuilder_Create(&builder, type);
     return builder;
 }
