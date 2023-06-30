@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.example.accessibleregisterstate",
-        "package-name": "com.example.accessibleregisterstate_test"
+        "package-name": "com.example.accessibleregisterstate"
     },
     "kits": [
         {
