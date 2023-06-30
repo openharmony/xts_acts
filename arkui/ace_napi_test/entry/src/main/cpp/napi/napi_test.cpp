@@ -1999,12 +1999,9 @@ static napi_value napiCancelAsyncWork(napi_env env, napi_callback_info info)
     napi_value resourceName = nullptr;
     napi_create_string_utf8(env, "AsyncWorkTest", NAPI_AUTO_LENGTH, &resourceName);
     napi_create_async_work(env, nullptr, resourceName, [](napi_env value, void* data) {},
-                           [](napi_env env, napi_status status, void* data) {
-                           napi_async_work workData = (napi_async_work)data;
-                           napi_delete_async_work(env, workData);
-                           }, work, &work);
-    napi_queue_async_work(env, work);
+                           [](napi_env env, napi_status status, void* data) {}, nullptr, &work);
     NAPI_CALL(env, napi_cancel_async_work(env, work));
+    napi_delete_async_work(env, work);
     napi_value value;
     NAPI_CALL(env, napi_create_int32(env, 0, &value));
     
