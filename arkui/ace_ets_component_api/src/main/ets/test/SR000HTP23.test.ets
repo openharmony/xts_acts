@@ -67,32 +67,25 @@ export default function SR000HTP23Test() {
       console.info(`${SUITE} ${CASE} START`);
 
       let baseKey = 'MyList1_ListItem0'
-      setTimeout(async () => {
-        try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-          expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-//          expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.None");
+      let strJson = getInspectorByKey(baseKey);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
+//      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.None");
 
-          let rectCenter = getRectCenterVp(obj.$rect)
-          let driver = Driver.create()
-          await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
+      let rectCenter = getRectCenterVp(obj.$rect)
+      let driver = Driver.create()
+      await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
 
-          let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-          let objButtonDel = JSON.parse(strJsonButtonDel);
-          expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-          let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-          let objButtonSet = JSON.parse(strJsonButtonSet);
-          expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
+      let objButtonDel = JSON.parse(strJsonButtonDel);
+      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
+      let objButtonSet = JSON.parse(strJsonButtonSet);
+      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
 
-          console.info(`${SUITE} ${CASE} END`);
-        } catch (err) {
-          expect().assertFail();
-          console.info(`${SUITE} ${CASE} ERROR:` + JSON.stringify(err));
-        }
-        done();
-      }, 500)
+      console.info(`${SUITE} ${CASE} END`);
+      done();
     });
 
     /*
@@ -105,32 +98,25 @@ export default function SR000HTP23Test() {
       console.info(`${SUITE} ${CASE} START`);
 
       let baseKey = 'MyList2_ListItem0'
-      setTimeout(async () => {
-        try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-          expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-//          expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.None");
+      let strJson = getInspectorByKey(baseKey);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
+//      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.None");
 
-          let rectCenter = getRectCenterVp(obj.$rect)
-          let driver = Driver.create()
-          await driver.swipe(rectCenter[0], rectCenter[1], 600, rectCenter[1])
+      let rectCenter = getRectCenterVp(obj.$rect)
+      let driver = Driver.create()
+      await driver.swipe(rectCenter[0], rectCenter[1], 600, rectCenter[1])
 
-          let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-          let objButtonDel = JSON.parse(strJsonButtonDel);
-          expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-          let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-          let objButtonSet = JSON.parse(strJsonButtonSet);
-          expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
+      let objButtonDel = JSON.parse(strJsonButtonDel);
+      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
+      let objButtonSet = JSON.parse(strJsonButtonSet);
+      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
 
-          console.info(`${SUITE} ${CASE} END`);
-        } catch (err) {
-          expect().assertFail();
-          console.info(`${SUITE} ${CASE} ERROR:` + JSON.stringify(err));
-        }
-        done();
-      }, 500)
+      console.info(`${SUITE} ${CASE} END`);
+      done();
     });
 
     /*
@@ -143,32 +129,25 @@ export default function SR000HTP23Test() {
       console.info(`${SUITE} ${CASE} START`);
 
       let baseKey = 'MyList3_ListItem0'
-      setTimeout(async () => {
-        try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-          expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-          expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.Spring");
+      let strJson = getInspectorByKey(baseKey);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
+      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.Spring");
 
-          let rectCenter = getRectCenterVp(obj.$rect)
-          let driver = Driver.create()
-          await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
+      let rectCenter = getRectCenterVp(obj.$rect)
+      let driver = Driver.create()
+      await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
 
-          let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-          let objButtonDel = JSON.parse(strJsonButtonDel);
-          expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-          let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-          let objButtonSet = JSON.parse(strJsonButtonSet);
-          expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
+      let objButtonDel = JSON.parse(strJsonButtonDel);
+      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
+      let objButtonSet = JSON.parse(strJsonButtonSet);
+      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
 
-          console.info(`${SUITE} ${CASE} END`);
-        } catch (err) {
-          expect().assertFail();
-          console.info(`${SUITE} ${CASE} ERROR:` + JSON.stringify(err));
-        }
-        done();
-      }, 500)
+      console.info(`${SUITE} ${CASE} END`);
+      done();
     });
 
     /*
@@ -181,32 +160,25 @@ export default function SR000HTP23Test() {
       console.info(`${SUITE} ${CASE} START`);
 
       let baseKey = 'MyList4_ListItem0'
-      setTimeout(async () => {
-        try {
-          let strJson = getInspectorByKey(baseKey);
-          let obj = JSON.parse(strJson);
-          expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-          expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-          expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.Spring");
+      let strJson = getInspectorByKey(baseKey);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
+      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
+      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.Spring");
 
-          let rectCenter = getRectCenterVp(obj.$rect)
-          let driver = Driver.create()
-          await driver.swipe(0, rectCenter[1], rectCenter[0], rectCenter[1])
+      let rectCenter = getRectCenterVp(obj.$rect)
+      let driver = Driver.create()
+      await driver.swipe(0, rectCenter[1], rectCenter[0], rectCenter[1])
 
-          let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-          let objButtonDel = JSON.parse(strJsonButtonDel);
-          expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-          let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-          let objButtonSet = JSON.parse(strJsonButtonSet);
-          expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
+      let objButtonDel = JSON.parse(strJsonButtonDel);
+      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
+      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
+      let objButtonSet = JSON.parse(strJsonButtonSet);
+      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
 
-          console.info(`${SUITE} ${CASE} END`);
-        } catch (err) {
-          expect().assertFail();
-          console.info(`${SUITE} ${CASE} ERROR:` + JSON.stringify(err));
-        }
-        done();
-      }, 500)
+      console.info(`${SUITE} ${CASE} END`);
+      done();
     });
 
     /*
