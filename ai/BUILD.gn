@@ -18,6 +18,9 @@ group("ai") {
     "neural_network_runtime/v2_0:neural_network_runtime",
   ]
   if (is_standard_system) {
-    deps += [ "mindspore:ActsMindSporeTest" ]
+    deps += [
+      "mindspore/mindsporectest:ActsMindSporeTest",
+      "mindspore/mindsporejstest:ActsMindsporeJSTest",
+    ]
   }
 }
