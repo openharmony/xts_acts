@@ -15,30 +15,28 @@
 
 let base64Image = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCADiAdgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9EKKKK/xjP6oCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q=='
 let scale2x1 = new Uint8Array([
-    0,  0,  0,  4,  0,  0,  0,  5,  0,  0,  0,  7,  0,  0,  0,  9,  0,  0,  0, 11,  1,  0,  0, 13,  1,  0,  0, 15,  1,  1,  1, 17,
-    1,  1,  1, 19,  1,  1,  1, 21,  1,  1,  1, 23,  2,  2,  2, 24,  3,  3,  3, 28,  3,  3,  3, 29,  3,  3,  3, 31,  4,  4,  4, 33,
-    4,  4,  4, 35,  5,  5,  5, 37,  5,  5,  5, 39,  6,  6,  6, 41,  6,  6,  6, 43,  7,  7,  7, 45,  8,  8,  7, 47,  9,  9,  8, 48,
-    10, 10, 10, 52, 10, 10, 10, 53, 11, 11, 11, 55, 12, 12, 12, 57, 13, 13, 12, 59, 14, 14, 13, 61, 15, 15, 14, 63, 16, 16, 15, 65,
-    17, 17, 16, 67, 18, 18, 17, 69, 19, 19, 18, 71, 20, 20, 19, 72, 22, 22, 22, 76, 22, 22, 22, 77, 24, 23, 23, 79, 25, 24, 24, 81,
-    26, 26, 26, 83, 27, 27, 27, 85, 29, 29, 28, 87, 30, 30, 29, 89, 32, 31, 31, 91, 33, 32, 32, 93, 35, 34, 34, 95, 36, 35, 35, 96 
+    0,  0,  0,  4,  0,  0,  0,  4,  0,  0,  0,  8,  0,  0,  0,  8,  1,  0,  0, 12,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 16,  1,  1,  1, 20,  1,  1,  1, 20,  2,  2,  2, 24,  2,  2,  2, 24, 
+    3,  3,  3, 28,  3,  3,  3, 28,  4,  4,  4, 32,  4,  4,  4, 32,  5,  5,  5, 36,  5,  5,  5, 36,  6,  6,  6, 40,  6,  6,  6, 40,  7,  7,  7, 44,  7,  7,  7, 44,  9,  9,  8, 48,  9,  9,  8, 48, 
+    10, 10, 10, 52, 10, 10, 10, 52, 12, 12, 12, 56, 12, 12, 12, 56, 14, 14, 13, 60, 14, 14, 13, 60, 16, 16, 15, 64, 16, 16, 15, 64, 18, 18, 17, 68, 18, 18, 17, 68, 20, 20, 19, 72, 20, 20, 19, 72, 
+    22, 22, 22, 76, 22, 22, 22, 76, 25, 24, 24, 80, 25, 24, 24, 80, 27, 27, 27, 84, 27, 27, 27, 84, 30, 30, 29, 88, 30, 30, 29, 88, 33, 32, 32, 92, 33, 32, 32, 92, 36, 35, 35, 96, 36, 35, 35, 96
 ])
 let scale1x4 = new Uint8Array([
-0,  0,  0,  4,  0,  0,  0,  8,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 20,  2,  2,  2, 24, 
-0,  0,  0,  4,  0,  0,  0,  8,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 20,  2,  2,  2, 24, 
-0,  0,  0,  7,  0,  0,  0, 11,  1,  0,  0, 15,  1,  1,  1, 19,  1,  1,  1, 23,  2,  2,  2, 27, 
-1,  1,  1, 13,  1,  1,  1, 17,  2,  1,  1, 21,  2,  2,  2, 25,  3,  3,  3, 29,  4,  4,  4, 33, 
-1,  1,  1, 19,  2,  2,  2, 23,  3,  3,  3, 27,  4,  4,  4, 31,  4,  4,  4, 35,  6,  6,  5, 39, 
-2,  2,  2, 25,  3,  3,  3, 29,  4,  4,  4, 33,  5,  5,  5, 37,  6,  6,  6, 41,  8,  8,  7, 45, 
-3,  3,  3, 31,  5,  5,  5, 35,  6,  6,  6, 39,  7,  7,  7, 43,  8,  8,  8, 47, 10, 10,  9, 51, 
-5,  5,  5, 37,  7,  7,  7, 41,  8,  8,  8, 45,  9,  9,  9, 49, 11, 11, 10, 53, 13, 13, 12, 57, 
-7,  7,  7, 43,  9,  9,  9, 47, 10, 10, 10, 51, 12, 12, 11, 55, 13, 13, 13, 59, 15, 15, 14, 63, 
-9,  9,  9, 49, 11, 11, 11, 53, 12, 12, 12, 57, 14, 14, 13, 61, 16, 16, 15, 65, 18, 18, 17, 69, 
-11, 11, 11, 55, 13, 13, 13, 59, 15, 15, 14, 63, 17, 17, 16, 67, 19, 19, 18, 71, 22, 21, 21, 75, 
-14, 14, 14, 61, 16, 16, 16, 65, 18, 18, 18, 69, 21, 21, 20, 73, 23, 23, 22, 77, 26, 25, 25, 81, 
-17, 17, 17, 67, 20, 19, 19, 71, 22, 22, 21, 75, 24, 24, 23, 79, 27, 26, 26, 83, 30, 29, 29, 87, 
-20, 20, 20, 73, 23, 22, 22, 77, 25, 25, 25, 81, 28, 28, 27, 85, 31, 30, 30, 89, 34, 33, 33, 93, 
-22, 22, 22, 76, 25, 24, 24, 80, 27, 27, 27, 84, 30, 30, 29, 88, 33, 32, 32, 92, 36, 35, 35, 96, 
-22, 22, 22, 76, 25, 24, 24, 80, 27, 27, 27, 84, 30, 30, 29, 88, 33, 32, 32, 92, 36, 35, 35, 96,
+	0,  0,  0,  4,  0,  0,  0,  8,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 20,  2,  2,  2, 24, 
+	0,  0,  0,  4,  0,  0,  0,  8,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 20,  2,  2,  2, 24, 
+	0,  0,  0,  4,  0,  0,  0,  8,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 20,  2,  2,  2, 24, 
+	0,  0,  0,  4,  0,  0,  0,  8,  1,  0,  0, 12,  1,  1,  1, 16,  1,  1,  1, 20,  2,  2,  2, 24, 
+	3,  3,  3, 28,  4,  4,  4, 32,  5,  5,  5, 36,  6,  6,  6, 40,  7,  7,  7, 44,  9,  9,  8, 48, 
+	3,  3,  3, 28,  4,  4,  4, 32,  5,  5,  5, 36,  6,  6,  6, 40,  7,  7,  7, 44,  9,  9,  8, 48, 
+	3,  3,  3, 28,  4,  4,  4, 32,  5,  5,  5, 36,  6,  6,  6, 40,  7,  7,  7, 44,  9,  9,  8, 48, 
+	3,  3,  3, 28,  4,  4,  4, 32,  5,  5,  5, 36,  6,  6,  6, 40,  7,  7,  7, 44,  9,  9,  8, 48, 
+	10, 10, 10, 52, 12, 12, 12, 56, 14, 14, 13, 60, 16, 16, 15, 64, 18, 18, 17, 68, 20, 20, 19, 72, 
+	10, 10, 10, 52, 12, 12, 12, 56, 14, 14, 13, 60, 16, 16, 15, 64, 18, 18, 17, 68, 20, 20, 19, 72, 
+	10, 10, 10, 52, 12, 12, 12, 56, 14, 14, 13, 60, 16, 16, 15, 64, 18, 18, 17, 68, 20, 20, 19, 72, 
+	10, 10, 10, 52, 12, 12, 12, 56, 14, 14, 13, 60, 16, 16, 15, 64, 18, 18, 17, 68, 20, 20, 19, 72, 
+	22, 22, 22, 76, 25, 24, 24, 80, 27, 27, 27, 84, 30, 30, 29, 88, 33, 32, 32, 92, 36, 35, 35, 96, 
+	22, 22, 22, 76, 25, 24, 24, 80, 27, 27, 27, 84, 30, 30, 29, 88, 33, 32, 32, 92, 36, 35, 35, 96, 
+	22, 22, 22, 76, 25, 24, 24, 80, 27, 27, 27, 84, 30, 30, 29, 88, 33, 32, 32, 92, 36, 35, 35, 96, 
+	22, 22, 22, 76, 25, 24, 24, 80, 27, 27, 27, 84, 30, 30, 29, 88, 33, 32, 32, 92, 36, 35, 35, 96,
 ])
 let translate3x1 = new Uint8Array([
  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 
