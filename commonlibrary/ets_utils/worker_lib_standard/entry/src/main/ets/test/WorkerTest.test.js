@@ -1446,7 +1446,7 @@ describe('WorkerTest', function () {
         let ss = new worker.Worker("entry/ets/workers/worker_016.js");
         let array = []
         for (let i = 0; i < 10; i++) {
-            array[i] = CreateArray(i, 62);
+            array[i] = CreateArray(i, 65);
         }
 
         let res = 0;
@@ -1472,7 +1472,7 @@ describe('WorkerTest', function () {
         while (!isTerminate) {
             await promiseCase();
         }
-        expect(res).assertEqual(620)
+        expect(res).assertEqual(650)
 
         done();
     })
