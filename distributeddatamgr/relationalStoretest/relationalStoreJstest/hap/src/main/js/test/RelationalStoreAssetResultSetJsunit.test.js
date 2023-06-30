@@ -138,6 +138,7 @@ export default function relationalStoreAssetResultSetTest() {
             await rdbStore.insert("test", valuesBucket);
             valuesBucket = {
                 "data1": asset1,
+                "data3": new Array()
             }
             await rdbStore.insert("test", valuesBucket);
             console.log(TAG + "createTest data end");
@@ -241,17 +242,17 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex("id"))
                 const data2 = resultSet.getAsset(resultSet.getColumnIndex("data2"))
-                expect(null).assertFail();
-            } catch (e) {
-                console.log(TAG + "testGetAsset0003 throw error: " + e.code);
-                expect(e.code == 14800000).assertTrue();
-            } finally {
+                console.log(TAG + "id=" + id + ", data2=" + data2);
+                expect(data2).assertEqual(null);
+
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
-                resultSet = null
-                done();
-                console.log(TAG + "************* testGetAsset0003 end *************");
+            } catch (e) {
+                expect(null).assertFail();
             }
+            resultSet = null
+            done();
+            console.log(TAG + "************* testGetAsset0003 end *************");
         })
 
         /**
@@ -636,19 +637,19 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex("id"))
                 const data3 = resultSet.getAssets(resultSet.getColumnIndex("data3"))
-                expect(null).assertFail();
-            } catch (e) {
-                console.log(TAG + "testGetAssets0003 throw error" + e);
-                expect(e.code == 14800000).assertTrue();
-            } finally {
+                console.log(TAG + "id=" + id + ", data3=" + data3);
+                expect(data3.length).assertEqual(0);
+
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
-                resultSet = null
-                done();
-                console.log(TAG + "************* testGetAssets0003 end *************");
+            } catch (e) {
+                expect(null).assertFail();
             }
+            resultSet = null
+            done();
+            console.log(TAG + "************* testGetAssets0003 end *************");
         })
+
         console.info(TAG + "*************Unit Test End*************")
     })
 }
-
