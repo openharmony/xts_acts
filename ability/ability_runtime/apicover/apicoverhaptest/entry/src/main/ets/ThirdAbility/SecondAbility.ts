@@ -14,13 +14,13 @@
  */
 import Ability from '@ohos.app.ability.UIAbility'
 import commonEvent from '@ohos.commonEvent';
+import wantConstant from '@ohos.app.ability.wantConstant'
 export default class SecondAbility extends Ability {
 
     onCreate(want, launchParam) {
         console.log("[Demo] SecondAbility onCreate")
         globalThis.abilityWant = want;
         globalThis.applicationContext = this.context.getApplicationContext();
-        globalThis.SecondLaunchParm = launchParam;
     }
 
     onDestroy() {
@@ -31,7 +31,7 @@ export default class SecondAbility extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] SecondAbility onWindowStageCreate")
         globalThis.abilityContext = this.context;
-        windowStage.setUIContent(this.context, "SecondAbility/pages/MainAbility_pages", null)
+        windowStage.setUIContent(this.context, "ThirdAbility/pages/MainAbility_pages", null)
     }
 
     onWindowStageDestroy() {
@@ -55,5 +55,13 @@ export default class SecondAbility extends Ability {
     onBackground() {
         // Ability has back to background
         console.log("[Demo] SecondAbility onBackground")
+    }
+    onDump(Param){
+        return null;
+    }
+    onShare(wantParam){
+        wantParam[wantConstant.Params.CONTENT_TITLE_KEY] = {title:"baidu"},
+        wantParam[wantConstant.Params.SHARE_ABSTRACT_KEY] = {Abstract:"share data"},
+        wantParam[wantConstant.Params.SHARE_URL_KEY] = {uri:"www.baidu.com"} 
     }
 };
