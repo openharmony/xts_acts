@@ -94,10 +94,9 @@ describe('relationalStoreDistributedTest', function () {
         console.info(TAG + 'beforeEach')
         rdbStore = await data_Rdb.getRdbStore(context, config);
         console.info(TAG + "create RelationalStore store success")
-        await executeSql1()
-        await executeSql2()
-        await executeSql3()
-
+        await executeSql1();
+        await executeSql2();
+        await executeSql3();
     })
 
     afterEach(async function () {
