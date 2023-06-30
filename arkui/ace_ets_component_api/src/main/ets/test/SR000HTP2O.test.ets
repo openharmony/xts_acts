@@ -62,7 +62,6 @@ export default function SR000HTP2OTest() {
       console.info(`${SUITE} ${CASE} START`)
       let strJson = getInspectorByKey('SR000HTP2O_Navigation1')
       let obj = JSON.parse(strJson);
-      sleep(2)
       expect(obj.$type).assertEqual('Navigation')
       console.info(`${SUITE} ${CASE} END`)
       done()
