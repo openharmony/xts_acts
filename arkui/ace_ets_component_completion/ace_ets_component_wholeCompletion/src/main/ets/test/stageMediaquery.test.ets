@@ -224,5 +224,37 @@ export default function stageMediaquery() {
       console.info('testmediaQueryOff0012 END');
       done();
     });
+
+    it('testmediaQueryOff0013', 0, async function (done) {
+      let mediaQuery = globalThis.uiContent.getMediaquery();
+      console.info('testmediaQueryOff0013 START');
+      let result;
+      try {
+        result = mediaQuery.matchMediaSync('(orientation: landscape)')
+        expect(typeof(result)).assertEqual('object');
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testmediaQueryOff0013 END');
+      done();
+    });
+
+    it('testRunScopedTask0010', 0, async function (done) {
+      let uiContent = globalThis.uiContent
+      console.info('testRunScopedTask0010 START');
+      let result;
+      try {
+        result = uiContent.runScopedTask(()=>{
+          console.info("success")
+        });
+        expect(result).assertUndefined();
+        console.info("push button page success " + JSON.stringify(result));
+      } catch (err) {
+        console.error("push button page error " + JSON.stringify(result));
+      }
+      console.info('testRunScopedTask0010 END');
+      done();
+    });
   })
 }

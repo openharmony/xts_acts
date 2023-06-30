@@ -280,6 +280,7 @@ struct textTest {
             .height(20)
             .maxLines(1)
             .textOverflow({ overflow: TextOverflow.Clip })
+            .textAlign(TextAlign.JUSTIFY)
             .fontSize(15)
         }
 
@@ -294,6 +295,7 @@ struct textTest {
             .key('ArkUX_Stage_Text_TextAlign_0200')
             .height(20)
             .textAlign(TextAlign.Start)
+            .textOverflow({ overflow: TextOverflow.MARQUEE })
         }
 
         ListItem() {
