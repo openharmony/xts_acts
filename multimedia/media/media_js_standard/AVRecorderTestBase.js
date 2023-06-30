@@ -284,7 +284,7 @@ export async function releasePromise(avRecorder) {
     });
 }
 
-async function releaseDone(avRecorder, done){
+export async function releaseDone(avRecorder, done){
     await avRecorder.release().then(() => {
         console.info('releaseDone avRecorder.state is ' + avRecorder.state);
         expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.RELEASED);
