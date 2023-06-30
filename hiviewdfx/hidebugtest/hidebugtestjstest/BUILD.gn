@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsHiDebugTest") {
   #ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHiDebugTest"
-  part_name = "profiler"
+  part_name = "hiprofiler"
   subsystem_name = "developtools"
 }
 ohos_js_assets("hidebug_js_assets") {
