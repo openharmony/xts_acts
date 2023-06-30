@@ -14,7 +14,7 @@ import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
 group("toolchain") {
-  if (!(product_name == "m40")) {
+  if (is_opensource == true) {
     testonly = true
     deps = [ "//third_party/musl:libctest" ]
     if (is_standard_system) {
