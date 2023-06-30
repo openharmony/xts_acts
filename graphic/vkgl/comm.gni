@@ -109,6 +109,7 @@ common_src = [
   "//third_party/vk-gl-cts/framework/platform/ohos/tcuOhosPlatform.cpp",
   "logdefine.cpp",
   "../../ActsApp.cpp",
+  "../../ActsApp.cpp",
 ]
 
 import("//third_party/vk-gl-cts/vk_gl_cts.gni")
