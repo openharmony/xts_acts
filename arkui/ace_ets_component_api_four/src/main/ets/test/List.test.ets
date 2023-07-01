@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import SR000HV334Test from './SR000HV334.test'
-import SR000HRF74Test from './SR000HRF74.test'
+import ListScrollTest from './ListScroll.test'
+import CustomDialogMaskTest from './CustomDialogMask.test'
 
 export default function testsuite() {
-  SR000HRF74Test()
-  SR000HV334Test()
+  CustomDialogMaskTest()
+  ListScrollTest()
 }

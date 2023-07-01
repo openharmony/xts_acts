@@ -1,17 +1,17 @@
 {
   "src": [
     "TestAbility/pages/Index",
-    "TestAbility/pages/SR000HTP23",
-    "TestAbility/pages/SR000HTP2C",
-    "TestAbility/pages/SR000HTP2G",
-    "TestAbility/pages/SR000HTP2K",
-    "TestAbility/pages/SR000HTP2O",
-    "TestAbility/pages/SR000HR4C4",
-    "TestAbility/pages/SR000HUES3",
-    "TestAbility/pages/SR000HUESC",
-    "TestAbility/pages/SR000HUESL",
-    "TestAbility/pages/SR000HUET2",
-    "TestAbility/pages/SR000HUESG_SI",
-    "TestAbility/pages/SR000HUES7"
+    "TestAbility/pages/ListDelete",
+    "TestAbility/pages/ListRebound",
+    "TestAbility/pages/TextAreaCallback",
+    "TestAbility/pages/BindMenu",
+    "TestAbility/pages/NavigationParam",
+    "TestAbility/pages/ImageText",
+    "TestAbility/pages/CanvasColor",
+    "TestAbility/pages/OffScreenCanvas",
+    "TestAbility/pages/CanvasAPIUnit",
+    "TestAbility/pages/CanvasAPICanvasRender",
+    "TestAbility/pages/CanvasAPI",
+    "TestAbility/pages/CanvasShader"
   ]
 }

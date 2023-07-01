@@ -1,7 +1,7 @@
 {
   "src": [
     "TestAbility/pages/Index",
-    "TestAbility/pages/SR000HV334",
-    "TestAbility/pages/SR000HRF74"
+    "TestAbility/pages/ListScroll",
+    "TestAbility/pages/CustomDialogMask"
   ]
 }
