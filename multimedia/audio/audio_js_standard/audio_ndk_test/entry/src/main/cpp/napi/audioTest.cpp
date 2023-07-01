@@ -597,6 +597,181 @@ static napi_value AudioRenderGetRendererInfo(napi_env env, napi_callback_info in
     napi_create_int32(env, result, &res);
     return res;
 }
+// OH_AudioStreamBuilder_SetSamplingRate_001
+
+static napi_value AudioStreamBuilderSetSamplingRate(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    int32_t samplingRate = 48000;
+    OH_AudioStreamBuilder_SetSamplingRate(builder, samplingRate);
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetChannelCount_001
+static napi_value AudioStreamBuilderSetChannelCount(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    int32_t channelCount = 1;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetChannelCount(builder, channelCount);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetSampleFormat
+
+static napi_value AudioStreamBuilderSetSampleFormat(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioStream_SampleFormat format = AUDIOSTREAM_SAMPLE_U8;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetSampleFormat(builder, format);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetEncodingType
+
+static napi_value AudioStreamBuilderSetEncodingType(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioStream_EncodingType encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetEncodingType(builder, encodingType);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetLatencyMode
+
+static napi_value AudioStreamBuilderSetLatencyMode(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+
+    OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_NORMAL;
+    OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
+
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetRendererInfo
+
+static napi_value AudioStreamBuilderSetRendererInfo(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioStream_Usage usage = AUDIOSTREAM_USAGE_MEDIA;
+    OH_AudioStream_Content content = AUDIOSTREAM_CONTENT_TYPE_MOVIE;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererInfo(builder, usage, content);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetCapturerInfo
+
+static napi_value AudioStreamBuilderSetCapturerInfo(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioStream_SourceType sourceType = AUDIOSTREAM_SOURCE_TYPE_MIC;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerInfo(builder, sourceType);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetRendererCallback
+static int32_t AudioRendererOnWriteData(OH_AudioRenderer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return 0;
+}
+static napi_value AudioStreamBuilderSetRendererCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_Callbacks callbacks;
+    callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnWriteData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, NULL);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioStreamBuilder_SetCapturerCallback
+static int32_t AudioCapturerOnReadData(
+    OH_AudioCapturer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return 0;
+}
+static napi_value AudioStreamBuilderSetCapturerCallback(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+
+    OH_AudioCapturer_Callbacks callbacks;
+    callbacks.OH_AudioCapturer_OnReadData = AudioCapturerOnReadData;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, NULL);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioCapturer_GetChannelCount
+static napi_value AudioCaptureGetChannelCount(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateCapturerBuilder();
+    OH_AudioCapturer *audioCapturer;
+    OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
+
+    int32_t ChannelCount;
+    OH_AudioStream_Result result = OH_AudioCapturer_GetChannelCount(audioCapturer, &ChannelCount);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+// OH_AudioRenderer_GetChannelCount
+static napi_value AudioRenderGetChannelCount(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder *builder = CreateRenderBuilder();
+
+    OH_AudioRenderer *audioRenderer;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+
+    int32_t ChannelCount;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetChannelCount(audioRenderer, &ChannelCount);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -640,6 +815,18 @@ static napi_value Init(napi_env env, napi_value exports)
         {"audioRenderGetSampleFormat", nullptr, AudioRenderGetSampleFormat, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRenderGetEncodingType", nullptr, AudioRenderGetEncodingType, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioRenderGetRendererInfo", nullptr, AudioRenderGetRendererInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetSamplingRate", nullptr, AudioStreamBuilderSetSamplingRate, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetChannelCount", nullptr, AudioStreamBuilderSetChannelCount, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetSampleFormat", nullptr, AudioStreamBuilderSetSampleFormat, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetEncodingType", nullptr, AudioStreamBuilderSetEncodingType, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetLatencyMode", nullptr, AudioStreamBuilderSetLatencyMode, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetRendererInfo", nullptr, AudioStreamBuilderSetRendererInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetCapturerInfo", nullptr, AudioStreamBuilderSetCapturerInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetRendererCallback", nullptr, AudioStreamBuilderSetRendererCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetCapturerCallback", nullptr, AudioStreamBuilderSetCapturerCallback, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioCaptureGetChannelCount", nullptr, AudioCaptureGetChannelCount, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioRenderGetChannelCount", nullptr, AudioRenderGetChannelCount, nullptr, nullptr, nullptr, napi_default, nullptr},
+
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
