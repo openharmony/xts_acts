@@ -17,7 +17,7 @@ import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
   WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
-export default function Scroll_ScrollFrictionTest() {
+export default function scroll_ScrollFrictionTest() {
   describe('Scroll_ScrollFrictionTest', function () {
     beforeEach(async function (done) {
       console.info("Scroll_ScrollFrictionTest beforeEach start");

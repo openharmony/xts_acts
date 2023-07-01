@@ -369,7 +369,7 @@ import Row_Size from './Row/parentComponentChanged/Row_Size.test';
 import Row_VerticalAlign from './Row/parentComponentChanged/Row_VerticalAlign.test';
 import list_ListFrictionTest from './List/List_attribute/List_ListFriction.test';
 import grid_GridFrictionTest from './Grid/Grid_attribute/Grid_GridFriction.test';
-import waterflow_WaterFlowFrictionTest from './WaterFlow/WaterFlow_attribute/WaterFlow_WaterFlowFriction.test';
+import waterFlow_WaterFlowFrictionTest from './WaterFlow/WaterFlow_attribute/WaterFlow_WaterFlowFriction.test';
 import scroll_ScrollFrictionTest from './Scroll/Scroll_attribute/Scroll_ScrollFriction.test';
 
 import AlignContentFlex_Start from './Flex/alignContent/Start/AlignContentFlex_Start.test.ets';

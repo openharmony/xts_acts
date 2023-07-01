@@ -17,7 +17,7 @@ import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
   WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
-export default function WaterFlow_WaterFlowFrictionTest() {
+export default function waterFlow_WaterFlowFrictionTest() {
   describe('WaterFlow_WaterFlowFrictionTest', function () {
     beforeEach(async function (done) {
       console.info("WaterFlow_WaterFlowFrictionTest beforeEach start");
