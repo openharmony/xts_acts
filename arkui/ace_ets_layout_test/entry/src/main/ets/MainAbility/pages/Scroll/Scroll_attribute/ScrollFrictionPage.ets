@@ -66,7 +66,7 @@ struct ScrollFrictionPage {
         console.info('Scroll Stop')
       })
       .friction(this.friction)
-      .key(Scroll_ScrollFriction)
+      .key('Scroll_ScrollFriction')
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }
 }

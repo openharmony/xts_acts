@@ -26,6 +26,7 @@ struct WaterFlowFrictionPage {
   datasource: WaterFlowDataSource = new WaterFlowDataSource()
   private itemWidthArray: number[] = []
   private itemHeightArray: number[] = []
+  @State friction:number = 1000
 
   messageManager:MessageManager = new MessageManager();
   onPageShow() {
@@ -42,13 +43,11 @@ struct WaterFlowFrictionPage {
     this.messageManager.registerCallback(callback);
   }
 
-  // 计算flow item宽/高  
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize)
     return (ret > this.minSize ? ret : this.minSize)
   }
 
-  // 保存flow item宽/高   
   getItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize())
@@ -110,7 +109,7 @@ struct WaterFlowFrictionPage {
       .height('80%')
       .layoutDirection(FlexDirection.Column)
       .friction(this.friction)
-      .key(WaterFlow_WaterFlowFriction)
+      .key('WaterFlow_WaterFlowFriction')
     }
   }
 }

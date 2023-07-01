@@ -69,7 +69,7 @@ struct GridFrictionPage {
           this.scroller.scrollPage({ next: true })
         })
       .friction(this.friction)
-      .key(Grid_GridFriction)
+      .key('Grid_GridFriction')
     }.width('100%').margin({ top: 5 })
   }
 }

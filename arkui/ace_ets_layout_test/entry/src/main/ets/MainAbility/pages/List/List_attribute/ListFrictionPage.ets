@@ -57,7 +57,7 @@ struct ListFrictionPage {
       })
       .width('90%')
       .friction(this.friction)
-      .key(List_ListFriction)
+      .key('List_ListFriction')
     }
     .width('100%')
     .height('100%')
