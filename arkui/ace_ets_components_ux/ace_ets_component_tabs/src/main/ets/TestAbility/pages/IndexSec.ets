@@ -172,6 +172,10 @@ struct TabsExampleSec {
             .barBackgroundColor(this.barBackgroundColorString)
             .key('BarBackgroundColorString')
 
+            Button("ResourceColor")
+              .fontSize(40)
+              .backgroundColor($r("sys.color.ohos_toggle_bg"))
+              .key("ResourceColor")
             Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
                 TabContent() {
                     Column(){
