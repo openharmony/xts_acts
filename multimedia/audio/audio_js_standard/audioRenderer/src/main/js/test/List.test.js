@@ -15,4 +15,4 @@
 
 require('./AudioRenderer.test.js')
 require('./AudioRenderInterrupt.test.js')
-
+require('./AudioEffect.test.js')
