@@ -63,7 +63,7 @@ export default function list_ListFrictionTest() {
     /**
      * @tc.number    SUB_ACE_LIST_LISTFRICTION_002
      * @tc.name      testListFriction
-     * @tc.desc      set friction to 100
+     * @tc.desc      set friction to 10
      */
     it('testListFriction', 0, async function (done) {
       console.info('[testListFriction] START');

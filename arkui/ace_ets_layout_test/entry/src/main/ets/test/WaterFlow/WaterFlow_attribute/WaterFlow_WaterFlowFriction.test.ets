@@ -52,10 +52,10 @@ export default function Waterflow_WaterflowFrictionTest() {
     it('testWaterflowFriction', 0, async function (done) {
       console.info('[testWaterflowFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
-      let listContainerStrJson = getInspectorByKey('Waterflow_WaterflowFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('Waterflow');
-      expect(listContainerObj.$friction).assertEqual(0.6);
+      let scrollContainerStrJson = getInspectorByKey('Waterflow_WaterflowFriction');
+      let scrollContainerObj = JSON.parse(scrollContainerStrJson);
+      expect(scrollContainerObj.$type).assertEqual('Waterflow');
+      expect(scrollContainerObj.$friction).assertEqual(0.6);
       console.info('[testWaterflowFriction] END');
       done();
     });
@@ -63,15 +63,15 @@ export default function Waterflow_WaterflowFrictionTest() {
     /**
      * @tc.number    SUB_ACE_WATERFLOW_WATERFLOWFRICTION_002
      * @tc.name      testWaterflowFriction
-     * @tc.desc      set friction to 100
+     * @tc.desc      set friction to 10
      */
     it('testWaterflowFriction', 0, async function (done) {
       console.info('[testWaterflowFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
-      let listContainerStrJson = getInspectorByKey('Waterflow_WaterflowFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('Waterflow');
-      expect(listContainerObj.$friction).assertEqual(10);
+      let scrollContainerStrJson = getInspectorByKey('Waterflow_WaterflowFriction');
+      let scrollContainerObj = JSON.parse(scrollContainerStrJson);
+      expect(scrollContainerObj.$type).assertEqual('Waterflow');
+      expect(scrollContainerObj.$friction).assertEqual(10);
       console.info('[testWaterflowFriction] END');
       done();
     });

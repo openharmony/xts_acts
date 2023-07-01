@@ -368,9 +368,9 @@ import Row_Padding from './Row/parentComponentChanged/Row_Padding.test';
 import Row_Size from './Row/parentComponentChanged/Row_Size.test';
 import Row_VerticalAlign from './Row/parentComponentChanged/Row_VerticalAlign.test';
 import list_ListFrictionTest from './List/List_attribute/List_ListFriction.test';
-import grid_GridFrictionTest from './List/List_attribute/Grid_GridFriction.test';
-import waterflow_WaterFlowFrictionTest from './List/List_attribute/Waterflow_WaterFlowFriction.test';
-import scroll_ScrollFrictionTest from './List/List_attribute/Scroll_ScrollFriction.test';
+import grid_GridFrictionTest from './Grid/Grid_attribute/Grid_GridFriction.test';
+import waterflow_WaterFlowFrictionTest from './WaterFlow/WaterFlow_attribute/Waterflow_WaterFlowFriction.test';
+import scroll_ScrollFrictionTest from './Scroll/Scroll_attribute/Scroll_ScrollFriction.test';
 
 import AlignContentFlex_Start from './Flex/alignContent/Start/AlignContentFlex_Start.test.ets';
 import AlignContent_FlexAlign_Start_Margin from './Flex/alignContent/Start/AlignContent_FlexAlign_Start_Margin.test.ets';

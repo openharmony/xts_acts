@@ -52,10 +52,10 @@ export default function Grid_GridFrictionTest() {
     it('testGridFriction', 0, async function (done) {
       console.info('[testGridFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
-      let listContainerStrJson = getInspectorByKey('Grid_GridFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('Grid');
-      expect(listContainerObj.$friction).assertEqual(0.6);
+      let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
+      let gridContainerObj = JSON.parse(gridContainerStrJson);
+      expect(gridContainerObj.$type).assertEqual('Grid');
+      expect(gridContainerObj.$friction).assertEqual(0.6);
       console.info('[testGridFriction] END');
       done();
     });
@@ -63,15 +63,15 @@ export default function Grid_GridFrictionTest() {
     /**
      * @tc.number    SUB_ACE_GRID_GRIDFRICTION_002
      * @tc.name      testGridFriction
-     * @tc.desc      set friction to 100
+     * @tc.desc      set friction to 10
      */
     it('testGridFriction', 0, async function (done) {
       console.info('[testGridFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
-      let listContainerStrJson = getInspectorByKey('Grid_GridFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('Grid');
-      expect(listContainerObj.$friction).assertEqual(10);
+      let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
+      let gridContainerObj = JSON.parse(gridContainerStrJson);
+      expect(gridContainerObj.$type).assertEqual('Grid');
+      expect(gridContainerObj.$friction).assertEqual(10);
       console.info('[testGridFriction] END');
       done();
     });

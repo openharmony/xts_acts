@@ -52,10 +52,10 @@ export default function Scroll_ScrollFrictionTest() {
     it('testScrollFriction', 0, async function (done) {
       console.info('[testScrollFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
-      let listContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('Scroll');
-      expect(listContainerObj.$friction).assertEqual(0.6);
+      let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
+      let scrollContainerObj = JSON.parse(scrollContainerStrJson);
+      expect(scrollContainerObj.$type).assertEqual('Scroll');
+      expect(scrollContainerObj.$friction).assertEqual(0.6);
       console.info('[testScrollFriction] END');
       done();
     });
@@ -63,15 +63,15 @@ export default function Scroll_ScrollFrictionTest() {
     /**
      * @tc.number    SUB_ACE_SCROLL_SCROLLFRICTION_002
      * @tc.name      testScrollFriction
-     * @tc.desc      set friction to 100
+     * @tc.desc      set friction to 10
      */
     it('testScrollFriction', 0, async function (done) {
       console.info('[testScrollFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
-      let listContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
-      let listContainerObj = JSON.parse(listContainerStrJson);
-      expect(listContainerObj.$type).assertEqual('Scroll');
-      expect(listContainerObj.$friction).assertEqual(10);
+      let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
+      let scrollContainerObj = JSON.parse(scrollContainerStrJson);
+      expect(scrollContainerObj.$type).assertEqual('Scroll');
+      expect(scrollContainerObj.$friction).assertEqual(10);
       console.info('[testScrollFriction] END');
       done();
     });
