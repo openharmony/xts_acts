@@ -145,6 +145,7 @@ struct SliderExample {
                             fontColor: $r('sys.color.ohos_id_color_text_primary_activated')
                         }
                     )
+                    .fontColor($r('sys.color.ohos_id_color_text_primary'))
                     .key('searchTestDefaultValue')
 
                 Search({ value: '', placeholder: 'Type to search...' })
@@ -245,6 +246,39 @@ struct SliderExample {
                     .textFont(this.textFont)
                     .fontColor(this.textColorResource)
                     .key('searchTestResource')
+
+                Search({ value: '', placeholder: 'Type to search...' })
+                    .width(300)
+                    .height(40)
+                    .margin(5)
+                    .caretStyle({
+                        width: this.caretWidthResource,
+                        color: $r('sys.color.ohos_id_color_connected')
+                    })
+                    .searchIcon({
+                        size: this.leftSearchIconSizeResource,
+                        color: $r('sys.color.ohos_id_color_connected'),
+                        src: this.searchSrcPathResource
+                    })
+                    .cancelButton({
+                        style: this.rightButtonStyleParam,
+                        icon: {
+                            size: this.rightCancelIconSizeResource,
+                            color: $r('sys.color.ohos_id_color_connected'),
+                            src: this.rightIconSrcPathResource
+                        }
+                    })
+                    .searchButton(
+                        'Search',
+                            {
+                                fontSize: this.searchButtonFontSizeResource,
+                                fontColor: $r('sys.color.ohos_id_color_connected')
+                            }
+                    )
+                    .placeholderFont(this.placeholderFont)
+                    .textFont(this.textFont)
+                    .fontColor($r('sys.color.ohos_id_color_connected'))
+                    .key('searchTestResource2')
 
                 Search({ value: '', placeholder: 'Type to search...' })
                     .width(300)
