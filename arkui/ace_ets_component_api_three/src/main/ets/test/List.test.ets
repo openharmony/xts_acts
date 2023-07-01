@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import SR000HTP1UTest from './SR000HTP1U.test'
-import SR000HTP21Test from './SR000HTP21.test'
+import CounterEnableTest from './CounterEnable.test'
+import TextAreaSelectTest from './TextAreaSelect.test'
 
 export default function testsuite() {
-  SR000HTP1UTest()
-  SR000HTP21Test()
+  CounterEnableTest()
+  TextAreaSelectTest()
 }

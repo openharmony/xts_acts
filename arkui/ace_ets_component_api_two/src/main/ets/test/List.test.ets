@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import SR000HQURKTest from './SR000HQURK.test'
+import ShortcutKeyTest from './ShortcutKey.test'
 
 export default function testsuite() {
-  SR000HQURKTest()
+  ShortcutKeyTest()
 }

@@ -1,7 +1,7 @@
 {
   "src": [
     "TestAbility/pages/Index",
-    "TestAbility/pages/SR000HTP1U",
-    "TestAbility/pages/SR000HTP21"
+    "TestAbility/pages/CounterEnable",
+    "TestAbility/pages/TextAreaSelect"
   ]
 }
