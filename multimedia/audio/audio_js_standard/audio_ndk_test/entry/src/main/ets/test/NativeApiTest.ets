@@ -610,5 +610,159 @@ export default function nativeApiImageJsunit() {
             expect(a).assertEqual(0)
             done()
         })
+        /* *
+           * @tc.number    : TC_040
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_040', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetSamplingRate();
+            console.info("TC_040-------------audioStreamBuilderSetSamplingRate:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_041
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_041', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetChannelCount();
+            console.info("TC_041-------------audioStreamBuilderSetChannelCount:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_042
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_042', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetSampleFormat();
+            console.info("TC_042-------------audioStreamBuilderSetSampleFormat:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_043
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_043', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetEncodingType();
+            console.info("TC_043-------------audioStreamBuilderSetEncodingType:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_044
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_044', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetLatencyMode();
+            console.info("TC_044-------------audioStreamBuilderSetLatencyMode:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_045
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_045', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetRendererInfo();
+            console.info("TC_045-------------audioStreamBuilderSetRendererInfo:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_046
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_046', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetCapturerInfo();
+            console.info("TC_046-------------audioStreamBuilderSetCapturerInfo:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_047
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_047', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetRendererCallback();
+            console.info("TC_047-------------audioStreamBuilderSetRendererCallback:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_048
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_048', 0, async function (done) {
+            let a = myaudioNdk.audioStreamBuilderSetCapturerCallback();
+            console.info("TC_048-------------audioStreamBuilderSetCapturerCallback:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_049
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_049', 0, async function (done) {
+            let a = myaudioNdk.audioCaptureGetChannelCount();
+            console.info("TC_049-------------audioCaptureGetChannelCount:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
+        /* *
+           * @tc.number    : TC_050
+           * @tc.name      : Test OH_GetImageInfo, OH_AccessPixels, OH_UnAccessPixels
+           * @tc.desc      :
+           * @tc.size      :
+           * @tc.type      : Functional
+           * @tc.level     : FWK Layer
+       */
+        it('TC_050', 0, async function (done) {
+            let a = myaudioNdk.audioRenderGetChannelCount();
+            console.info("TC_050-------------audioRenderGetChannelCount:" + a);
+            expect(a).assertEqual(0)
+            done()
+        })
     })
 }
