@@ -41,7 +41,7 @@ export default function avVideoRecorderTestThree() {
             audioSampleRate : 48000,
             fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4
             videoBitrate : 100000, // 视频比特率
-            videoCodec : media.CodecMimeType.VIDEO_MPEG4, // 视频文件编码格式，支持mpeg4和avc两种格式
+            videoCodec : media.CodecMimeType.VIDEO_MPEG4,
             videoFrameWidth : 640,  // 视频分辨率的宽
             videoFrameHeight : 480, // 视频分辨率的高
             videoFrameRate : 30 // 视频帧率
