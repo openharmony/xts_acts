@@ -26,7 +26,9 @@ export default function InputDevice_test() {
       PARAMETER_TYPE_MSG: `Parameter error. The type of type must be string.`,
       PARAMETER_DEVICEID_TYPE_MSG: `Parameter error. The type of deviceId must be number.`,
       PARAMETER_LISTENER_TYPE_MSG: `Parameter error. The type of listener must be function.`,
-      PARAMETER_CALLBACK_TYPE_MSG: `Parameter error. The type of callback must be function.`
+      PARAMETER_CALLBACK_TYPE_MSG: `Parameter error. The type of callback must be function.`,
+      PARAMETER_DELAY_TYPE_MSG: `Parameter error. The type of delay must be number.`,
+      PARAMETER_RATE_TYPE_MSG: `Parameter error. The type of rate must be number.`
     }
 
     // 参数正确,返回一个数组
@@ -285,6 +287,82 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
         expect(false).assertTrue();
         done();
       }
+    })
+
+    it('InputDevice_setKeyboardRepeatDelay_test_01', 0, async function (done) {
+      console.info(`InputDevice_setKeyboardRepeatDelay_test_01 enter`);
+      try {
+        inputDevice.setKeyboardRepeatDelay(500, (error) => {
+          if (error) {
+            console.info(`InputDevice_setKeyboardRepeatDelay_test_01 failed, error=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`InputDevice_setKeyboardRepeatDelay_test_01 success`);
+            expect(true).assertTrue();
+          }
+        });
+      } catch (error) {
+        console.info(`InputDevice_setKeyboardRepeatDelay_test_01 error`);
+        expect(false).assertTrue();
+      }
+      console.info(`InputDevice_setKeyboardRepeatDelay_test_01 exit`);
+      done();
+    })
+
+    it('InputDevice_setKeyboardRepeatDelay_test_02', 0, async function (done) {
+      console.info(`InputDevice_setKeyboardRepeatDelay_test_02 enter`);
+      try {
+        inputDevice.setKeyboardRepeatDelay(500).then(() => {
+          console.info(`InputDevice_setKeyboardRepeatDelay_test_02 success`);
+          expect(true).assertTrue();
+        }).catch((error) => {
+          console.info(`InputDevice_setKeyboardRepeatDelay_test_02 failed, error=${JSON.stringify(error)}`);
+          expect(false).assertTrue();
+        });
+      } catch (error) {
+        console.info(`InputDevice_setKeyboardRepeatDelay_test_02 error`);
+        expect(false).assertTrue();
+      }
+      console.info(`InputDevice_setKeyboardRepeatDelay_test_02 exit`);
+      done();
+    })
+
+    it('InputDevice_setKeyboardRepeatRate_test_01', 0, async function (done) {
+      console.info(`InputDevice_setKeyboardRepeatRate_test_01 enter`);
+      try {
+        inputDevice.setKeyboardRepeatRate(60, (error) => {
+          if (error) {
+            console.info(`InputDevice_setKeyboardRepeatRate_test_01 failed, error=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`InputDevice_setKeyboardRepeatRate_test_01 success`);
+            expect(true).assertTrue();
+          }
+        });
+      } catch (error) {
+        console.info(`InputDevice_setKeyboardRepeatRate_test_01 error`);
+        expect(false).assertTrue();
+      }
+      console.info(`InputDevice_setKeyboardRepeatRate_test_01 exit`);
+      done();
+    })
+
+    it('InputDevice_setKeyboardRepeatRate_test_02', 0, async function (done) {
+      console.info(`InputDevice_setKeyboardRepeatRate_test_02 enter`);
+      try {
+        inputDevice.setKeyboardRepeatRate(60).then(() => {
+          console.info(`InputDevice_setKeyboardRepeatRate_test_02 success`);
+          expect(true).assertTrue();
+        }).catch((error) => {
+          console.info(`InputDevice_setKeyboardRepeatRate_test_02 failed, error=${JSON.stringify(error)}`);
+          expect(false).assertTrue();
+        });
+      } catch (error) {
+        console.info(`InputDevice_setKeyboardRepeatRate_test_02 error`);
+        expect(false).assertTrue();
+      }
+      console.info(`InputDevice_setKeyboardRepeatRate_test_02 exit`);
+      done();
     })
 
     /**
@@ -847,6 +925,94 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
         expect(error.message).assertEqual(errMsg.PARAMETER_LISTENER_TYPE_MSG);
       }
       console.info(`InputDevice_Off_Exception_test exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0240
+     * @tc.name MultimodalInputDevice_SetKeyboardRepeatDelay_Exception_test_01
+     * @tc.desc inputdevice interface setKeyboardRepeatDelay exception test
+     */
+    it('InputDevice_SetKeyboardRepeatDelay_Exception_test_01', 0, async function (done) {
+      console.info(`InputDevice_SetKeyboardRepeatDelay_Exception_test_01 enter`);
+      try {
+        inputDevice.setKeyboardRepeatDelay();
+      } catch (error) {
+        console.info(`SetKeyboardRepeatDelay_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+      console.info(`InputDevice_SetKeyboardRepeatDelay_Exception_test_01 exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0250
+     * @tc.name MultimodalInputDevice_SetKeyboardRepeatDelay_Exception_test_02
+     * @tc.desc inputdevice interface setKeyboardRepeatDelay exception test
+     */
+    it('InputDevice_SetKeyboardRepeatDelay_Exception_test_02', 0, async function (done) {
+      console.info(`InputDevice_SetKeyboardRepeatDelay_Exception_test_02 enter`);
+      try {
+        inputDevice.setKeyboardRepeatDelay(`delay`, (error) => {
+          if (error) {
+            console.info(`SetKeyboardRepeatDelay_Exception_Test_002 failed, err=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`SetKeyboardRepeatDelay_Exception_Test_002 success`);
+            expect(true).assertTrue();
+          }
+        });
+      } catch (error) {
+        console.info(`SetKeyboardRepeatDelay_Exception_Test_002: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_DELAY_TYPE_MSG);
+      }
+      console.info(`InputDevice_SetKeyboardRepeatDelay_Exception_test_02 exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0260
+     * @tc.name MultimodalInputDevice_SetKeyboardRepeatRate_Exception_test_01
+     * @tc.desc inputdevice interface setKeyboardRepeatRate exception test
+     */
+    it('InputDevice_SetKeyboardRepeatRate_Exception_test_01', 0, async function (done) {
+      console.info(`InputDevice_SetKeyboardRepeatRate_Exception_test_01 enter`);
+      try {
+        inputDevice.setKeyboardRepeatRate();
+      } catch (error) {
+        console.info(`SetKeyboardRepeatRate_Exception_Test_001: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+      console.info(`InputDevice_SetKeyboardRepeatRate_Exception_test_01 exit`);
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0270
+     * @tc.name MultimodalInputDevice_SetKeyboardRepeatRate_Exception_test_02
+     * @tc.desc inputdevice interface setKeyboardRepeatRate exception test
+     */
+    it('InputDevice_SetKeyboardRepeatRate_Exception_test_02', 0, async function (done) {
+      console.info(`InputDevice_SetKeyboardRepeatRate_Exception_test_02 enter`);
+      try {
+        inputDevice.setKeyboardRepeatRate(`rate`, (error) => {
+          if (error) {
+            console.info(`SetKeyboardRepeatRate_Exception_Test_002 failed, err=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`SetKeyboardRepeatRate_Exception_Test_002 success`);
+            expect(true).assertTrue();
+          }
+        });
+      } catch (error) {
+        console.info(`SetKeyboardRepeatRate_Exception_Test_002: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_RATE_TYPE_MSG);
+      }
+      console.info(`InputDevice_SetKeyboardRepeatRate_Exception_test_02 exit`);
       done();
     })
   })
