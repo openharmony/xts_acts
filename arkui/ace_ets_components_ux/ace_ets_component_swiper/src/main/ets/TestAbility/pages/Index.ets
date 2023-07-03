@@ -1932,6 +1932,62 @@ struct SwiperTest {
               console.info(index.toString())
             })
           }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .key("ArkUX_Stage_Swiper_Indicator_0100")
+            .indicator(Indicator.digit().top(1))
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .key("ArkUX_Stage_Swiper_Indicator_0200")
+            .indicator(Indicator.digit().bottom(1))
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .key("ArkUX_Stage_Swiper_Indicator_0300")
+            .indicator(Indicator.digit().left(1))
+          }
+          ListItem() {
+            Swiper(this.swiperController) {
+              LazyForEach(this.data, (item: string) => {
+                Text(item)
+                  .width('90%')
+                  .height(160)
+                  .backgroundColor(0xAFEEEE)
+                  .textAlign(TextAlign.Center)
+                  .fontSize(30)
+              }, item => item)
+            }
+            .key("ArkUX_Stage_Swiper_Indicator_0400")
+            .indicator(Indicator.digit().right(1))
+          }
         }
       }
       .width('100%')
