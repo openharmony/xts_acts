@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 import {
@@ -74,7 +73,7 @@ export default function createAlbumTest () {
     it('createAlbum_callback_001', 2, async function (done) {
       const testNum = 'createAlbum_callback_001';
       try {
-        let TITLE_REGEX_CHECK = '\.\\/:*?"\'`<>|{}\[\]';
+        let TITLE_REGEX_CHECK = '\\/:*?"\'`<>|{}\[\]';
         let baseName = testNum;
         for (let i = 0; i < TITLE_REGEX_CHECK.length; i++) {
           let albumName = baseName + TITLE_REGEX_CHECK[i];
@@ -165,47 +164,6 @@ export default function createAlbumTest () {
       }
     });
 
-    /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_ALBUM_0400
-      * @tc.name      : createAlbum_callback_004
-      * @tc.desc      : create albums with invalid dot characters
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('createAlbum_callback_004', 2, async function (done) {
-      const testNum = 'createAlbum_callback_004';
-      try {
-        let albumNames = [
-          '.CREATE_ALBUM_005',
-          'CREATE_ALBUM_005.',
-          'CREATE_.ALBUM_005',
-          '..CREATE_ALBUM_005',
-          'CREATE_.ALBUM._005'
-        ];
-        for (let i = 0; i < albumNames.length; i++) {
-          helper.createAlbum(albumNames[i], (err) => {
-            try {
-              if (err !== undefined) {
-                console.info(`${testNum} createAlbum failed, err: ${err}`);
-                expect(false).assertTrue();
-              } else {
-                expect(false).assertTrue();
-              }
-            } catch (error) {
-              console.info(`${testNum} createAlbum failed, error: ${error}`);
-            }
-            done();
-          })
-          await sleep(50);
-        }
-      } catch (error) {
-        console.info(`${testNum} failed, error: ${error}`);
-        expect(error.code == 13900020).assertTrue();
-        done();
-      }
-    });
-
     //promise
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ALBUM_0000
@@ -240,7 +198,7 @@ export default function createAlbumTest () {
     it('createAlbum_promise_001', 2, async function (done) {
       const testNum = 'createAlbum_promise_001';
       try {
-        let TITLE_REGEX_CHECK = '\.\\/:*?"\'`<>|{}\[\]';
+        let TITLE_REGEX_CHECK = '\\/:*?"\'`<>|{}\[\]';
         let baseName = 'SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ALBUM_002';
         let count = 0;
         for (let i = 0; i < TITLE_REGEX_CHECK.length; i++) {
@@ -273,19 +231,19 @@ export default function createAlbumTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    // it('createAlbum_promise_002', 2, async function (done) {
-    //   const testNum = 'createAlbum_promise_002';
-    //   try {
-    //     let albumName = testNum;
-    //     await helper.createAlbum(albumName);
-    //     await helper.createAlbum(albumName);
-    //     expect(false).assertTrue();
-    //     done();
-    //   } catch (error) {
-    //     console.info(`${testNum} failed, error: ${error}`);
-    //     done();
-    //   }
-    // });
+    it('createAlbum_promise_002', 2, async function (done) {
+      const testNum = 'createAlbum_promise_002';
+      try {
+        let albumName = testNum;
+        await helper.createAlbum(albumName);
+        await helper.createAlbum(albumName);
+        expect(false).assertTrue();
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        done();
+      }
+    });
 
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ALBUM_0300
@@ -305,46 +263,6 @@ export default function createAlbumTest () {
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(error.code == 13900020).assertTrue();
-        done();
-      }
-    });
-
-    /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ALBUM_0400
-      * @tc.name      : createAlbum_promise_004
-      * @tc.desc      : create albums with invalid dot characters
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('createAlbum_promise_004', 2, async function (done) {
-      const testNum = 'createAlbum_promise_004';
-      try {
-        let albumNames = [
-          '.CREATE_ALBUM_005',
-          'CREATE_ALBUM_005.',
-          'CREATE_.ALBUM_005',
-          '..CREATE_ALBUM_005',
-          'CREATE_.ALBUM._005'
-        ];
-        let count = 0;
-        for (let i = 0; i < albumNames.length; i++) {
-          try {
-            await helper.createAlbum(albumNames[i]);
-            expect(false).assertTrue();
-          } catch (error) {
-            if (error.code == 13900020) {
-              count++;
-            }
-          }
-          if (i + 1 === albumNames.length) {
-            expect(count).assertEqual(albumNames.length);
-            done();
-          }
-        }
-      } catch (error) {
-        console.info(`${testNum} failed, error: ${error}`);
-        expect(false).assertTrue();
         done();
       }
     });

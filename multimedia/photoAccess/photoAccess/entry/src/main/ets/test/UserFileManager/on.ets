@@ -160,7 +160,7 @@ export default function onTest () {
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_ADD_ASSET);
           expect(changeData.uris[0]).assertEqual(album.albumUri);
-          expect(changeData.suburis[0]).assertEqual(asset.uri);
+          expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
         await album.addAssets([asset]);
         await sleep(1000);
@@ -197,7 +197,7 @@ export default function onTest () {
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
           expect(changeData.uris[0]).assertEqual(album.albumUri);
-          expect(changeData.suburis[0]).assertEqual(asset.uri);
+          expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
         await album.removeAssets([asset]);
         await sleep(1000);

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import fileio from "@ohos.fileio";
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
@@ -268,6 +267,8 @@ export default function publicApiTestWithSystemApiTest () {
       const testNum = 'off_000';
       try {
         const createAsset = await helper.createAsset(testNum + '.jpg');
+        let fd = await createAsset.open('rw');
+        await createAsset.close(fd);
         let count = 0;
         await sleep(500);
         helper.on(createAsset.uri, false, async (changeData) => {
@@ -276,7 +277,7 @@ export default function publicApiTestWithSystemApiTest () {
         });
         helper.off(createAsset.uri);
         await sleep(100);
-        let fd = await createAsset.getReadOnlyFd();
+        fd = await createAsset.getReadOnlyFd();
         await createAsset.close(fd);
         await sleep(1000);
         expect(count).assertEqual(0);
@@ -632,6 +633,8 @@ export default function publicApiTestWithSystemApiTest () {
       const testNum = 'on_callback_000';
       try {
         const createAsset = await helper.createAsset(testNum + '.jpg');
+        let fd = await createAsset.open('rw');
+        await createAsset.close(fd);
         let count = 0;
         await sleep(500);
         helper.on(createAsset.uri, false, async (changeData) => {
@@ -642,7 +645,7 @@ export default function publicApiTestWithSystemApiTest () {
           expect(changeData.uris[0]).assertEqual(createAsset.uri);
         });
         await sleep(100);
-        let fd = await createAsset.getReadOnlyFd();
+        fd = await createAsset.getReadOnlyFd();
         await createAsset.close(fd);
         await sleep(1000);
         expect(count).assertEqual(0);
@@ -826,7 +829,7 @@ export default function publicApiTestWithSystemApiTest () {
           console.info(`on_callback_006 changeData: ${JSON.stringify(changeData)}`);
           helper.off(trashAlbum.albumUri);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
-          expect(changeData.suburis[0]).assertEqual(trashFileAsset.uri);
+          expect(changeData.extraUris[0]).assertEqual(trashFileAsset.uri);
         });
         await trashAlbum.deleteAssets([trashFileAsset]);
         await sleep(1000);
@@ -974,7 +977,7 @@ export default function publicApiTestWithSystemApiTest () {
               console.info(`on_callback_013_7 changeData: ${JSON.stringify(changeData)}`);
               expect(changeData.uris[0]).assertEqual(trashAlbumUri);
               expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
-              expect(changeData.suburis[0]).assertEqual(trashFileAssetUri);
+              expect(changeData.extraUris[0]).assertEqual(trashFileAssetUri);
               break;
             default:
               break;
