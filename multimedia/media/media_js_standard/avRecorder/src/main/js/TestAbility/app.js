@@ -19,6 +19,7 @@ import testsuite from '../test/List.test'
 
 export default {
     onCreate() {
+        globalThis.contextVideo = this.context;
         console.info('TestApplication onCreate')
         var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
