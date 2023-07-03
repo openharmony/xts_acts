@@ -17,6 +17,7 @@ group("netmanager_base") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actshttpscertificatetest:ActsHttpsCertificateTest",
       "dns:ActsDNSTest",
       "jshttp:ActsJSHTTPTest",
       "network_nopermission:ActsNetworkNopermissionTest",

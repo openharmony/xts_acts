@@ -1,0 +1,33 @@
+{
+    "description": "Function test of Https Certificate Test",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "900000",
+        "bundle-name": "com.ohos.actshttpscertificatetest",
+        "package-name": "com.ohos.actshttpscertificatetest",
+        "shell-timeout": "900000",
+        "testcase-timeout": "30000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "$module.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type" : "ShellKit",
+            "run-command" : [
+                "mkdir /etc/ssl/test",
+                "mv /etc/ssl/certs/cacert.pem /etc/ssl/test/cacert.pem"
+            ]
+        },
+        {
+            "type" : "ShellKit",
+            "teardown-command" : [
+                "mv /etc/ssl/test/cacert.pem /etc/ssl/certs/cacert.pem"
+            ]
+        }
+    ]
+}
