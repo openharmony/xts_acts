@@ -226,7 +226,7 @@ export default function stageMediaquery() {
     });
 
     it('testmediaQueryOff0013', 0, async function (done) {
-      let mediaQuery = globalThis.uiContent.getMediaquery();
+      let mediaQuery = globalThis.uiContent.getMediaQuery();
       console.info('testmediaQueryOff0013 START');
       let result;
       try {
