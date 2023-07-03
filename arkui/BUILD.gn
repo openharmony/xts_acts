@@ -16,6 +16,7 @@ group("arkui") {
   deps = [
     "ace_ets_component:ActsAceEtsComponentTest",
     "ace_ets_component_api:ActsAceComponentApi03Test",
+    "ace_ets_component_api_five:ActsAceComponentApi06Test",
     "ace_ets_component_api_four:ActsAceComponentApi05Test",
     "ace_ets_component_api_three:ActsAceComponentApi04Test",
     "ace_ets_component_api_two:ActsAceComponentApi02Test",
