@@ -41,6 +41,8 @@ public:
     static napi_value JsImageSize(napi_env env, napi_callback_info info);
     static napi_value JsImageFormat(napi_env env, napi_callback_info info);
     static napi_value JsImageGetComponent(napi_env env, napi_callback_info info);
+    static napi_value JsReceiverRelease(napi_env env, napi_callback_info info);
+    static napi_value JsImageRelease(napi_env env, napi_callback_info info);
     
 private:
     static uint32_t sOnEvnentCount;
