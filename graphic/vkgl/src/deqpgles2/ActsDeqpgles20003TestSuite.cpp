@@ -26,35 +26,4 @@ namespace OHOS {
     time_t ActsDeqpgles20003TestSuite::startTime;
     time_t ActsDeqpgles20003TestSuite::endTime;
     FuncRunResult ActsDeqpgles20003TestSuite::runResult;
-
-    // Preset action of the test suite, which is executed before the first test case
-    void ActsDeqpgles20003TestSuite::SetUpTestCase(void)
-    {
-        time(&startTime);
-        RegistPackage();
-        runResult.numPassed = 0;
-        runResult.numFailed = 0;
-        runResult.numNotSupported = 0;
-        runResult.numWarnings = 0;
-        runResult.numWaived = 0;
-    }
-    // Test suite cleanup action, which is executed after the last test case
-    void ActsDeqpgles20003TestSuite::TearDownTestCase(void)
-    {
-        time(&endTime);
-        printf("Test run totals --- Passed[%d]\n", runResult.numPassed);
-        printf("Test run totals --- Failed[%d]\n", runResult.numFailed);
-        printf("Test run totals --- Notsupport[%d]\n", runResult.numNotSupported);
-        printf("Test run totals --- Warnings[%d]\n", runResult.numWarnings);
-        printf("Test run totals --- Waved[%d]\n", runResult.numWaived);
-        cout << "testmain end --- COST TIME ["<< (endTime-startTime) << "]" << std::endl;;
-    }
-    // Preset action of the test case
-    void ActsDeqpgles20003TestSuite::SetUp(void)
-    {
-    }
-    // Cleanup action of the test case
-    void ActsDeqpgles20003TestSuite::TearDown(void)
-    {
-    }
 }

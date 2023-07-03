@@ -18,7 +18,9 @@
 #include <ctime>
 #include "Khrgles3BaseFunc.h"
 #include "ActsKhrgles3TestSuite.h"
+#include "testsuitehead.h"
 
+SHRINK_SUITETEST_HEAD(ActsKhrgles20001TestSuite)
 namespace OHOS {
     using namespace std;
     using namespace testing::ext;
@@ -27,34 +29,4 @@ namespace OHOS {
     time_t ActsKhrgles3TestSuite::endTime;
     FuncRunResult ActsKhrgles3TestSuite::runResult;
 
-    // Preset action of the test suite, which is executed before the first test case
-    void ActsKhrgles3TestSuite::SetUpTestCase(void)
-    {
-        time(&startTime);
-        RegistPackage();
-        runResult.numPassed = 0;
-        runResult.numFailed = 0;
-        runResult.numNotSupported = 0;
-        runResult.numWarnings = 0;
-        runResult.numWaived = 0;
-    }
-    // Test suite cleanup action, which is executed after the last test case
-    void ActsKhrgles3TestSuite::TearDownTestCase(void)
-    {
-        time(&endTime);
-        printf("Test run totals --- Passed[%d]\n", runResult.numPassed);
-        printf("Test run totals --- Failed[%d]\n", runResult.numFailed);
-        printf("Test run totals --- Notsupport[%d]\n", runResult.numNotSupported);
-        printf("Test run totals --- Warnings[%d]\n", runResult.numWarnings);
-        printf("Test run totals --- Waved[%d]\n", runResult.numWaived);
-        cout << "testmain end --- COST TIME ["<< (endTime-startTime) << "]" << std::endl;;
-    }
-    // Preset action of the test case
-    void ActsKhrgles3TestSuite::SetUp(void)
-    {
-    }
-    // Cleanup action of the test case
-    void ActsKhrgles3TestSuite::TearDown(void)
-    {
-    }
 }
