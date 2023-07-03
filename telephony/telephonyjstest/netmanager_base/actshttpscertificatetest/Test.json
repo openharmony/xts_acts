@@ -19,14 +19,15 @@
         {
             "type" : "ShellKit",
             "run-command" : [
-                "mkdir /etc/ssl/test",
-                "mv /etc/ssl/certs/cacert.pem /etc/ssl/test/cacert.pem"
+                "mount -o rw,remount /",
+                "mkdir /etc/ssl/certs/test",
+                "mv /etc/ssl/certs/cacert.pem /etc/ssl/certs/test/cacert.pem"
             ]
         },
         {
             "type" : "ShellKit",
             "teardown-command" : [
-                "mv /etc/ssl/test/cacert.pem /etc/ssl/certs/cacert.pem"
+                "mv /etc/ssl/certs/test/cacert.pem /etc/ssl/certs/cacert.pem"
             ]
         }
     ]
