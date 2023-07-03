@@ -74,6 +74,10 @@
                 "reason": "use ohos.permission.MICROPHONE"
             },
             {
+                "name": "ohos.permission.CAMERA",
+                "reason": "use ohos.permission.CAMERA"
+            },
+            {
                 "name": "ohos.permission.MEDIA_LOCATION",
                 "reason": "use ohos.permission.MEDIA_LOCATION"
             },
