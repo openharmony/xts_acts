@@ -67,7 +67,7 @@
     }
     ],
     "reqPermissions": [
-	    {
+	  {
         "name" : "ohos.permission.INTERNET",
         "reason" : "need use ohos.permission.INTERNET"
       }
