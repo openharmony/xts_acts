@@ -2146,7 +2146,7 @@ describe('threadWorkerTest', function () {
         let ss = new worker.ThreadWorker("entry/ets/workers/newworker_016.js");
         let array = []
         for (let i = 0; i < 10; i++) {
-            array[i] = CreateArray(i, 62);
+            array[i] = CreateArray(i, 65);
         }
 
         let res = 0;
@@ -2172,7 +2172,7 @@ describe('threadWorkerTest', function () {
         while (!isTerminate) {
             await promiseCase();
         }
-        expect(res).assertEqual(620)
+        expect(res).assertEqual(650)
 
         done();
     })

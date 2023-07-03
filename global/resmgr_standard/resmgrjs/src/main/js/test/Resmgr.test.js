@@ -1495,7 +1495,7 @@ describe('resMgrTest', function () {
     */
     it('getfloat_test_001', 0, async function (done) {
         resmgr.getResourceManager((error, mgr) => {
-            let value = mgr.getNumber(0x01000015);
+            let value = mgr.getNumber(0x0100001a);
             console.log('getfloat_test_001 ' + value);
             expect(value > 0).assertTrue();
             done();

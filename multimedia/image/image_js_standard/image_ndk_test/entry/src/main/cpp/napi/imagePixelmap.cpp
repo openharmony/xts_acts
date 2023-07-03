@@ -29,8 +29,8 @@ static napi_value TestGetImageInfo(napi_env env, napi_callback_info info)
 
     napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr);
     
-    OhosPixelMapInfo pixelMapInfo;
-    OH_GetImageInfo(env, argValue[0], &pixelMapInfo);
+    OHOS::Media::OhosPixelMapInfo pixelMapInfo;
+    OHOS::Media::OH_GetImageInfo(env, argValue[0], &pixelMapInfo);
     return result;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestAccessPixels(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr);
 
     void* addrPtr = nullptr;
-    OH_AccessPixels(env, argValue[0], &addrPtr);
+    OHOS::Media::OH_AccessPixels(env, argValue[0], &addrPtr);
     return result;
 }
 
@@ -61,7 +61,7 @@ static napi_value TestUnAccessPixels(napi_env env, napi_callback_info info)
 
     napi_get_cb_info(env, info, &argCount, argValue, &thisVar, nullptr);
 
-    OH_UnAccessPixels(env, argValue[0]);
+    OHOS::Media::OH_UnAccessPixels(env, argValue[0]);
     return result;
 }
 

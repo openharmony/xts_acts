@@ -36,7 +36,7 @@ const asset1 = {
     modifyTime: "modifyTime1",
     size: "size1",
     path: "path1",
-    status: 1,
+    status: data_relationalStore.AssetStatus.ASSET_NORMAL,
 }
 const asset2 = {
     name: "name2",
@@ -45,7 +45,7 @@ const asset2 = {
     modifyTime: "modifyTime2",
     size: "size2",
     path: "path2",
-    status: 2,
+    status: data_relationalStore.AssetStatus.ASSET_INSERT,
 }
 const asset3 = {
     name: "name3",
@@ -54,7 +54,7 @@ const asset3 = {
     modifyTime: "modifyTime3",
     size: "size3",
     path: "path3",
-    status: 3,
+    status: data_relationalStore.AssetStatus.ASSET_UPDATE,
 }
 const asset4 = {
     name: "name4",
@@ -64,6 +64,35 @@ const asset4 = {
     size: "size4",
     path: "path4",
 }
+const asset5 = {
+    name: "name5",
+    uri: "uri5",
+    createTime: "createTime5",
+    modifyTime: "modifyTime5",
+    size: "size5",
+    path: "path5",
+    status: data_relationalStore.AssetStatus.ASSET_DELETE,
+}
+const asset6 = {
+    name: "name6",
+    uri: "uri6",
+    createTime: "createTime6",
+    modifyTime: "modifyTime6",
+    size: "size6",
+    path: "path6",
+    status: data_relationalStore.AssetStatus.ASSET_ABNORMAL,
+}
+const asset7 = {
+    name: "name7",
+    uri: "uri7",
+    createTime: "createTime7",
+    modifyTime: "modifyTime7",
+    size: "size7",
+    path: "path7",
+    status: data_relationalStore.AssetStatus.ASSET_DOWNLOADING,
+}
+
+
 var rdbStore = undefined;
 
 export default function relationalStoreAssetResultSetTest() {
@@ -109,18 +138,19 @@ export default function relationalStoreAssetResultSetTest() {
             await rdbStore.insert("test", valuesBucket);
             valuesBucket = {
                 "data1": asset1,
+                "data3": new Array()
             }
             await rdbStore.insert("test", valuesBucket);
             console.log(TAG + "createTest data end");
         }
     
-        async function createErrorTest() {
-            console.log(TAG + "createErrorTest data start");
+        async function createStatusTest() {
+            console.log(TAG + "createStatusTest data start");
             let valuesBucket = {
                 "data1": asset4,
             }
             await rdbStore.insert("test", valuesBucket);
-            console.log(TAG + "createErrorTest data end");
+            console.log(TAG + "createStatusTest data end");
         }
     
         /**
@@ -144,8 +174,7 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime1").assertEqual(data1.modifyTime);
                 expect("size1").assertEqual(data1.size);
                 expect("path1").assertEqual(data1.path);
-                expect(1).assertEqual(data1.status);
-    
+
                 const data2 = resultSet.getAsset(resultSet.getColumnIndex("data2"))
                 console.log(TAG + "id=" + id + ", data2=" + data2);
                 expect("name2").assertEqual(data2.name);
@@ -154,7 +183,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime2").assertEqual(data2.modifyTime);
                 expect("size2").assertEqual(data2.size);
                 expect("path2").assertEqual(data2.path);
-                expect(1).assertEqual(data2.status);
     
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -169,7 +197,7 @@ export default function relationalStoreAssetResultSetTest() {
         /**
          * @tc.name resultSet getAsset normal test
          * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0020
-         * @tc.desc resultSet getAsset normal test
+         * @tc.desc resultSet getAsset insert test
          */
         it('testGetAsset0002', 0, async function (done) {
             await createTest();
@@ -188,8 +216,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime2").assertEqual(data1.modifyTime);
                 expect("size2").assertEqual(data1.size);
                 expect("path2").assertEqual(data1.path);
-                expect(1).assertEqual(data1.status);
-    
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
             } catch (e) {
@@ -216,16 +242,115 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex("id"))
                 const data2 = resultSet.getAsset(resultSet.getColumnIndex("data2"))
+                console.log(TAG + "id=" + id + ", data2=" + data2);
+                expect(data2).assertEqual(null);
+
+                resultSet.close();
+                expect(true).assertEqual(resultSet.isClosed)
+            } catch (e) {
+                expect(null).assertFail();
+            }
+            resultSet = null
+            done();
+            console.log(TAG + "************* testGetAsset0003 end *************");
+        })
+
+        /**
+         * @tc.name resultSet getAsset normal test
+         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0040
+         * @tc.desc resultSet getAsset delete test
+         */
+        it('testGetAsset0004', 0, async function (done) {
+            console.log(TAG + "************* testGetAsset0004 start *************");
+            let assets5 = [asset5];
+            const valuesBucket = {
+                "data3": assets5,
+            }
+            await rdbStore.insert("test", valuesBucket);
+            let predicates = await new data_relationalStore.RdbPredicates("test")
+            let resultSet = await rdbStore.query(predicates)
+            var id;
+            try {
+                expect(true).assertEqual(resultSet.goToFirstRow())
+                id = resultSet.getLong(resultSet.getColumnIndex("id"))
+                const data5 = resultSet.getAsset(resultSet.getColumnIndex("data3"))
+                expect(1).assertEqual(data5.length);
                 expect(null).assertFail();
             } catch (e) {
-                console.log(TAG + "testGetAsset0003 throw error: " + e);
-                expect(true).assetTrue();
+                console.log(TAG + "testGetAsset0004 throw error: " + e);
+                expect(e.code == 14800000).assertTrue();
             } finally {
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
                 resultSet = null
                 done();
-                console.log(TAG + "************* testGetAsset0003 end *************");
+                console.log(TAG + "************* testGetAsset0004 end *************");
+            }
+        })
+        
+        /**
+         * @tc.name resultSet getAsset normal test
+         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0050
+         * @tc.desc resultSet getAsset ABNORMAL test
+         */
+         it('testGetAsset0005', 0, async function (done) {
+            console.log(TAG + "************* testGetAsset0005 start *************");
+            let assets6 = [asset6];
+            const valuesBucket = {
+                "data3": assets6,
+            }
+            await rdbStore.insert("test", valuesBucket);
+            let predicates = await new data_relationalStore.RdbPredicates("test")
+            let resultSet = await rdbStore.query(predicates)
+            var id;
+            try {
+                expect(true).assertEqual(resultSet.goToFirstRow())
+                id = resultSet.getLong(resultSet.getColumnIndex("id"))
+                const data6 = resultSet.getAsset(resultSet.getColumnIndex("data3"))
+                expect(1).assertEqual(data6.length);
+                expect(null).assertFail();
+            } catch (e) {
+                console.log(TAG + "testGetAsset0005 throw error: " + e);
+                expect(e.code == 14800000).assertTrue();
+            } finally {
+                resultSet.close();
+                expect(true).assertEqual(resultSet.isClosed)
+                resultSet = null
+                done();
+                console.log(TAG + "************* testGetAsset0005 end *************");
+            }
+        })
+                
+        /**
+         * @tc.name resultSet getAsset normal test
+         * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0060
+         * @tc.desc resultSet getAsset DOWNLOADING test
+         */
+         it('testGetAsset0006', 0, async function (done) {
+            console.log(TAG + "************* testGetAsset0006 start *************");
+            let assets7 = [asset7];
+            const valuesBucket = {
+                "data3": assets7,
+            }
+            await rdbStore.insert("test", valuesBucket);
+            let predicates = await new data_relationalStore.RdbPredicates("test")
+            let resultSet = await rdbStore.query(predicates)
+            var id;
+            try {
+                expect(true).assertEqual(resultSet.goToFirstRow())
+                id = resultSet.getLong(resultSet.getColumnIndex("id"))
+                const data7 = resultSet.getAsset(resultSet.getColumnIndex("data3"))
+                expect(1).assertEqual(data7.length);
+                expect(null).assertFail();
+            } catch (e) {
+                console.log(TAG + "testGetAsset0006 throw error: " + e);
+                expect(e.code == 14800000).assertTrue();
+            } finally {
+                resultSet.close();
+                expect(true).assertEqual(resultSet.isClosed)
+                resultSet = null
+                done();
+                console.log(TAG + "************* testGetAsset0006 end *************");
             }
         })
     
@@ -236,6 +361,7 @@ export default function relationalStoreAssetResultSetTest() {
          */
         it('testAssetNoStatus0010', 0, async function (done) {
             console.log(TAG + "************* testAssetNoStatus0010 start *************");
+            await createStatusTest();
             let predicates = await new data_relationalStore.RdbPredicates("test")
             let resultSet = await rdbStore.query(predicates)
             try {
@@ -249,7 +375,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime4").assertEqual(data1.modifyTime);
                 expect("size4").assertEqual(data1.size);
                 expect("path4").assertEqual(data1.path);
-                expect(0).assertEqual(data1.status);
     
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -295,7 +420,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime4").assertEqual(data1.modifyTime);
                 expect("size4").assertEqual(data1.size);
                 expect("path4").assertEqual(data1.path);
-                expect(0).assertEqual(data1.status);
     
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -341,7 +465,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime4").assertEqual(data1.modifyTime);
                 expect("size4").assertEqual(data1.size);
                 expect("path4").assertEqual(data1.path);
-                expect(0).assertEqual(data1.status);
     
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -436,7 +559,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime1").assertEqual(asset.modifyTime);
                 expect("size1").assertEqual(asset.size);
                 expect("path1").assertEqual(asset.path);
-                expect(1).assertEqual(asset.status);
     
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -472,7 +594,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime1").assertEqual(asset.modifyTime);
                 expect("size1").assertEqual(asset.size);
                 expect("path1").assertEqual(asset.path);
-                expect(1).assertEqual(asset.status);
     
                 asset = data3[1];
                 expect("name2").assertEqual(asset.name);
@@ -481,8 +602,7 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime2").assertEqual(asset.modifyTime);
                 expect("size2").assertEqual(asset.size);
                 expect("path2").assertEqual(asset.path);
-                expect(1).assertEqual(asset.status);
-    
+
                 asset = data3[2];
                 expect("name3").assertEqual(asset.name);
                 expect("uri3").assertEqual(asset.uri);
@@ -490,7 +610,6 @@ export default function relationalStoreAssetResultSetTest() {
                 expect("modifyTime3").assertEqual(asset.modifyTime);
                 expect("size3").assertEqual(asset.size);
                 expect("path3").assertEqual(asset.path);
-                expect(3).assertEqual(asset.status);
     
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
@@ -518,19 +637,19 @@ export default function relationalStoreAssetResultSetTest() {
                 expect(true).assertEqual(resultSet.goToNextRow())
                 const id = resultSet.getLong(resultSet.getColumnIndex("id"))
                 const data3 = resultSet.getAssets(resultSet.getColumnIndex("data3"))
-                expect(null).assertFail();
-            } catch (e) {
-                console.log(TAG + "testGetAssets0003 throw error" + e);
-                expect(true).assetTrue();
-            } finally {
+                console.log(TAG + "id=" + id + ", data3=" + data3);
+                expect(data3.length).assertEqual(0);
+
                 resultSet.close();
                 expect(true).assertEqual(resultSet.isClosed)
-                resultSet = null
-                done();
-                console.log(TAG + "************* testGetAssets0003 end *************");
+            } catch (e) {
+                expect(null).assertFail();
             }
+            resultSet = null
+            done();
+            console.log(TAG + "************* testGetAssets0003 end *************");
         })
+
         console.info(TAG + "*************Unit Test End*************")
     })
 }
-

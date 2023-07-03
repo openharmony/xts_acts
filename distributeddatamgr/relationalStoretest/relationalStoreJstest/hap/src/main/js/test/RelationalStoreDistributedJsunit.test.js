@@ -63,6 +63,21 @@ try {
     expect(null).assertFail()
 }
 }
+async function executeSql3() {
+    let sqlStatement = "CREATE TABLE IF NOT EXISTS test (" +
+    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+    "name TEXT NOT NULL," +
+    "price REAL," +
+    "vendor INTEGER," +
+    "describe TEXT)"
+    try {
+        await rdbStore.executeSql(sqlStatement, null)
+        console.info(TAG + "create table product success")
+    } catch (err) {
+        console.info(TAG + "create table product failed")
+        expect(null).assertFail()
+    }
+}
 
 function storeObserver(devices) {
     console.info(TAG + devices + " dataChange");
@@ -73,23 +88,24 @@ export default function relationalStoreDistributedTest() {
 describe('relationalStoreDistributedTest', function () {
     beforeAll(async function () {
         console.info(TAG + 'beforeAll')
-        rdbStore = await data_Rdb.getRdbStore(context, config);
-        console.info(TAG + "create RelationalStore store success")
-        await executeSql1()
-        await executeSql2()
     })
 
     beforeEach(async function () {
         console.info(TAG + 'beforeEach')
+        rdbStore = await data_Rdb.getRdbStore(context, config);
+        console.info(TAG + "create RelationalStore store success")
+        await executeSql1();
+        await executeSql2();
+        await executeSql3();
     })
 
     afterEach(async function () {
         console.info(TAG + 'afterEach')
+        await data_Rdb.deleteRdbStore(context, STORE_NAME);
     })
 
     afterAll(async function () {
         console.info(TAG + 'afterAll')
-        await data_Rdb.deleteRdbStore(context, STORE_NAME);
     })
 
     console.info(TAG + "*************Unit Test Begin*************");
@@ -181,15 +197,20 @@ describe('relationalStoreDistributedTest', function () {
      */
     it('testRdbStoreDistributed0006', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed006 start *************");
-        const record = {
+        const record1 = {
+            "name": "Jim",
+            "age": 20,
+        }
+        const record2 = {
             "name": "Jim",
             "age": 30,
         }
+        await rdbStore.insert("employee", record1);
         try {
             let predicate = new data_Rdb.RdbPredicates("employee");
             predicate.equalTo("id", 1);
             try {
-                let rowId = await rdbStore.update(record, predicate);
+                let rowId = await rdbStore.update(record2, predicate);
                 console.info(TAG + "update one record success " + rowId)
                 expect(1).assertEqual(rowId)
             } catch (err) {
@@ -211,6 +232,11 @@ describe('relationalStoreDistributedTest', function () {
      */
     it('testRdbStoreDistributed0007', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0007 start *************");
+        const record1 = {
+            "name": "Jim",
+            "age": 30,
+        }
+        await rdbStore.insert("employee", record1);
         try {
             let predicates = new data_Rdb.RdbPredicates("employee")
             let resultSet = await rdbStore.query(predicates)
@@ -245,6 +271,11 @@ describe('relationalStoreDistributedTest', function () {
      */
     it('testRdbStoreDistributed0008', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0008 start *************");
+        const record1 = {
+            "name": "Jim",
+            "age": 20,
+        }
+        await rdbStore.insert("employee", record1);
         let predicates = new data_Rdb.RdbPredicates("employee")
         try {
             let number = await rdbStore.delete(predicates)
@@ -644,7 +675,7 @@ describe('relationalStoreDistributedTest', function () {
      */
     it('SUB_DDM_AppDataFWK_JSRelationalStore_Distributed_026', 0, async function (done) {
         try {
-            await rdbStore.setDistributedTables(['employee'], data_Rdb.DistributedType.DISTRIBUTED_CLOUD, function (err){
+            await rdbStore.setDistributedTables(['test'], data_Rdb.DistributedType.DISTRIBUTED_CLOUD, function (err){
                 if (err) {
                     console.error(TAG + `SetDistributedTables failed, code is ${err.code},message is ${err.message}`);
                     expect(null).assertFail();

@@ -187,6 +187,7 @@ export default function ApiCoverTest() {
       }).finally(() => {
         globalThis.UpdateConfiguration_0200_resolve = null;
         globalThis.UpdateConfiguration_0200_reject = null;
+        expect(globalThis.UpdateConfiguration_0200).assertEqual('zh-Hans')
         console.info("SUB_AA_UpdateConfiguration_0200 ----> set promise to null after all");
         done();
       });

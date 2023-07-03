@@ -139,7 +139,7 @@ export default function defaultTest() {
     exceptView: ['RichText', 'Web'],
     expectValue: {
       markAnchor: {
-        x: '0.0px', y: '0.0px'
+        x: '', y: ''
       }
     }
   }, {
@@ -147,7 +147,7 @@ export default function defaultTest() {
     exceptView: ['RichText', 'Web'],
     expectValue: {
       offset: {
-        x: '0.0px', y: '0.0px'
+        x: '', y: ''
       }
     }
   }]

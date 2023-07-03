@@ -20,6 +20,7 @@ export default class SecondAbility extends Ability {
         console.log("[Demo] SecondAbility onCreate")
         globalThis.abilityWant = want;
         globalThis.applicationContext = this.context.getApplicationContext();
+        globalThis.SecondLaunchParm = launchParam;
     }
 
     onDestroy() {

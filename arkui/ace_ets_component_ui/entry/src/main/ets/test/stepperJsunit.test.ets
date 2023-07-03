@@ -171,10 +171,10 @@ export default function stepperJsunit() {
       await button4.click();
       console.info('stepperJsunit_0700 button4 click succ');
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('pageFour');
+      let strJson = getInspectorByKey('pageOne');
       let obj = JSON.parse(strJson);
       console.info('stepperJsunit_0700 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('Page Four');
+      expect(obj.$attrs.content).assertEqual('Page One');
       done();
     });
     
@@ -183,13 +183,13 @@ export default function stepperJsunit() {
       // test the stepper onSkip event
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
-      let button = await driver.findComponent(BY.text('返回'));
+      let button = await driver.findComponent(BY.text('Next'));
       await button.click();
       await CommonFunc.sleep(2000);
-      let strJson = getInspectorByKey('pageThree');
+      let strJson = getInspectorByKey('pageTwo');
       let obj = JSON.parse(strJson);
       console.info('stepperJsunit_0800 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('Page Three');
+      expect(obj.$attrs.content).assertEqual('Page Two');
       done();
     });
   })

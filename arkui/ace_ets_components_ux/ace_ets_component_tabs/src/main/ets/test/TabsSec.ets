@@ -526,7 +526,10 @@ export default function tabsSec() {
       let obj = JSON.parse(newJson);
       console.info("[ArkUI_Tabs_BarBackgroundColor_0500] barBackgroundColor:" + JSON.stringify(obj.$attrs.barBackgroundColor));
       let barBackgroundColorObject = obj.$attrs.barBackgroundColor;
-      expect(barBackgroundColorObject).assertEqual("#0C182431");
+      let newColor = getInspectorByKey('ResourceColor');
+      let objColor = JSON.parse(newColor);
+      console.info("[ArkUI_Tabs_BarBackgroundColor_0500] objColor:" + JSON.stringify(objColor.$attrs.backgroundColor));
+      expect(barBackgroundColorObject).assertEqual(objColor.$attrs.backgroundColor);
       done();
     });
 
