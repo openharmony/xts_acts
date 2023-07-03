@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -307,23 +307,6 @@ export default function createAssetTest () {
 			await createAssetAbnormalCallback2(done, testNum, displayName, createOption);
     });
 
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_ASSET_1000
-     * @tc.name      : createAsset_callback_010
-     * @tc.desc      : createAsset abnormal param
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    // it('createAsset_callback_010', 2, async function (done) {
-		// 	const testNum = 'createAsset_callback_010';
-    //   const displayName = testNum + '.jpg';
-		// 	const createOption: photoAccessHelper.PhotoCreateOptions = {
-    //     subtype: undefined,
-    //   };
-		// 	await createAssetAbnormalCallback2(done, testNum, displayName, createOption);
-    // });
-    
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ASSET_0000
@@ -472,23 +455,6 @@ export default function createAssetTest () {
 			await createAssetAbnormalPromise2(done, testNum, displayName, createOption);
     });
 
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ASSET_1000
-     * @tc.name      : createAsset_promise_010
-     * @tc.desc      : createAsset abnormal param
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    // it('createAsset_promise_010', 2, async function (done) {
-		// 	const testNum = 'createAsset_promise_010';
-    //   const displayName = testNum + '.jpg';
-		// 	const createOption: photoAccessHelper.PhotoCreateOptions = {
-    //     subtype: undefined,
-    //   };
-		// 	await createAssetAbnormalPromise2(done, testNum, displayName, createOption);
-    // });
-
     //video
     //callback
     /**
@@ -578,23 +544,6 @@ export default function createAssetTest () {
       await createAssetAbnormalCallback2(done, testNum, displayName, createOption);
     });
 
-    /**
-    * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_ASSET_1700
-    * @tc.name      : createAsset_callback_017
-    * @tc.desc      : createAsset abnormal param
-    * @tc.size      : MEDIUM
-    * @tc.type      : Function
-    * @tc.level     : Level 2
-    */
-    // it('createAsset_callback_017', 2, async function (done) {
-    //   const testNum = 'createAsset_callback_017';
-    //   const displayName = testNum + '.mp4';
-    //   const createOption: photoAccessHelper.PhotoCreateOptions = {
-    //     subtype: undefined,
-    //   };
-    //   await createAssetAbnormalCallback2(done, testNum, displayName, createOption);
-    // });
-
     //promise
     /**
     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ASSET_1100
@@ -682,22 +631,5 @@ export default function createAssetTest () {
       };
       await createAssetAbnormalPromise2(done, testNum, displayName, createOption);
     });
-
-    /**
-    * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_ASSET_1700
-    * @tc.name      : createAsset_promise_017
-    * @tc.desc      : createAsset abnormal param
-    * @tc.size      : MEDIUM
-    * @tc.type      : Function
-    * @tc.level     : Level 2
-    */
-    // it('createAsset_promise_017', 2, async function (done) {
-    //   const testNum = 'createAsset_promise_017';
-    //   const displayName = testNum + '.mp4';
-    //   const createOption: photoAccessHelper.PhotoCreateOptions = {
-    //     subtype: undefined,
-    //   };
-    //   await createAssetAbnormalPromise2(done, testNum, displayName, createOption);
-    // });
   })
 }

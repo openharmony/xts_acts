@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-
+// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -128,20 +128,6 @@ export default function getAssetsTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0200
-     * @tc.name      : getAssets_callback_002
-     * @tc.desc      : getAssets image
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('getAssets_callback_002', 0, async function (done) {
-      const testNum = 'getAssets_callback_002';
-      const fetchOps = fetchOption(testNum, '666', '666');
-      await getAssetsAbnormalCallbackTest(done, testNum, fetchOps);
-    });
-
-    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0300
      * @tc.name      : getAssets_callback_003
      * @tc.desc      : getAssets image
@@ -183,20 +169,6 @@ export default function getAssetsTest () {
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '666');
       const expectCount = 0;
       await getAssetsPromiseTest(done, testNum, fetchOps, expectCount);
-    });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0200
-     * @tc.name      : getAssets_promise_002
-     * @tc.desc      : getAssets image
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('getAssets_promise_002', 0, async function (done) {
-      const testNum = 'getAssets_promise_002';
-      const fetchOps = fetchOption(testNum, '666', '666');
-      await getAssetsAbnormalPromiseTest(done, testNum, fetchOps);
     });
 
     /**

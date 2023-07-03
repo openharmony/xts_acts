@@ -94,11 +94,7 @@ export async function getPermission(name = 'ohos.acts.multimedia.photoaccess') :
     const permissions = [
       'ohos.permission.MEDIA_LOCATION',
       'ohos.permission.READ_IMAGEVIDEO',
-      'ohos.permission.READ_AUDIO',
-      'ohos.permission.READ_DOCUMENT',
       'ohos.permission.WRITE_IMAGEVIDEO',
-      'ohos.permission.WRITE_AUDIO',
-      'ohos.permission.WRITE_DOCUMENT',
     ];
 
     const atManager = abilityAccessCtrl.createAtManager();

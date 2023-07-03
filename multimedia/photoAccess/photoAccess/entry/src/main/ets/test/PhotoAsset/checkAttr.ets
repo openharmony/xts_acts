@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+// @ts-nocheck
 import { describe, it, expect } from 'deccjsunit/index'
 import {
   photoKeys,

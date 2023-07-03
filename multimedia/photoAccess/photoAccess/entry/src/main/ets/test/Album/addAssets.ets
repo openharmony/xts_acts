@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-
+// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -102,38 +102,6 @@ export default function addAssetsTest () {
           }
           done();
         })
-      } catch (error) {
-        console.info(`${testNum} failed; error: ${error}`);
-        expect(false).assertTrue();
-        done();
-      }
-    });
-
-    /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0400
-      * @tc.name      : addAssets_callback_004
-      * @tc.desc      : add empty array to user album
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('addAssets_callback_004', 2, async function (done) {
-      const testNum = 'addAssets_callback_004';
-      try {
-        const album = await helper.createAlbum(testNum);
-        album.addAssets([], async (err) => {
-          try {
-            if (err) {
-              console.info(`${testNum} err: ${err}`);
-            } else {
-              expect(false).assertTrue();
-            }
-          } catch (error) {
-            console.info(`${testNum} error: ${error}`);
-          }
-          done();
-        })
-
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();

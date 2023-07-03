@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-
+// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -34,7 +34,7 @@ export default function albumGetAllObjectTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_GET_ALL_OBJECTS_0000
      * @tc.name      : album_getAllObjects_callback_000
-     * @tc.desc      : getAllObjects
+     * @tc.desc      : get all system album object
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -81,7 +81,7 @@ export default function albumGetAllObjectTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_GET_ALL_OBJECTS_0100
      * @tc.name      : album_getAllObjects_callback_001
-     * @tc.desc      : getAllObjects
+     * @tc.desc      : get specific user album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -119,7 +119,7 @@ export default function albumGetAllObjectTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ALBUM_GET_ALL_OBJECTS_0000
      * @tc.name      : album_getAllObjects_promise_000
-     * @tc.desc      : getAllObjects
+     * @tc.desc      : get all system album object
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -155,7 +155,7 @@ export default function albumGetAllObjectTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_ALBUM_GET_ALL_OBJECTS_0100
      * @tc.name      : album_getAllObjects_promise_001
-     * @tc.desc      : getAllObjects
+     * @tc.desc      : get specific user album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0

@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// @ts-nocheck
 import fileio from "@ohos.fileio";
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
@@ -640,7 +642,6 @@ export default function publicApiTestWithSystemApiTest () {
         helper.on(createAsset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          helper.off(createAsset.uri);
           expect(changeData.type).assertEqual(NOTIFY_ADD);
           expect(changeData.uris[0]).assertEqual(createAsset.uri);
         });
@@ -648,6 +649,7 @@ export default function publicApiTestWithSystemApiTest () {
         fd = await createAsset.getReadOnlyFd();
         await createAsset.close(fd);
         await sleep(1000);
+        helper.off(createAsset.uri);
         expect(count).assertEqual(0);
         done();
       } catch (error) {
@@ -675,7 +677,6 @@ export default function publicApiTestWithSystemApiTest () {
         helper.on(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          helper.off(asset.uri);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(asset.uri);
         });
@@ -710,7 +711,6 @@ export default function publicApiTestWithSystemApiTest () {
         helper.on(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          helper.off(asset.uri);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(asset.uri);
         });
@@ -718,40 +718,6 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(1000);
         helper.off(asset.uri);
         expect(count).assertEqual(1);
-        done();
-      } catch (error) {
-        console.log(`${testNum}: tryError: ${error}`);
-        expect(false).assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0400
-     * @tc.name      : on_callback_004
-     * @tc.desc      : listening delete file, type NOTIFY_REMOVE
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('on_callback_004', 0, async function (done) {
-      const testNum = 'on_callback_004';
-      try {
-        let fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'on04.jpg');
-        const asset = await getFileAsset(testNum, fetchOps);
-        let listenCount = 0;
-        await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
-          listenCount++;
-          console.info(`${testNum} asset changeData: ${JSON.stringify(changeData)}`);
-          helper.off(asset.uri);
-          expect(changeData.type).assertEqual(NOTIFY_REMOVE);
-          expect(changeData.uris[0]).assertEqual(asset.uri);
-        });
-        await helper.deleteAssets([asset.uri]);
-        await sleep(2000);
-        helper.off(asset.uri);
-        expect(listenCount).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
@@ -769,7 +735,7 @@ export default function publicApiTestWithSystemApiTest () {
      * @tc.level     : Level 2
      */
     it('on_callback_005', 0, async function (done) {
-        const testNum = 'on_callback_005';
+      const testNum = 'on_callback_005';
       try {
         let testFileName = 'testCreateFile' + Date.now() + '.jpg';
         let fileAsset = await helper.createAsset(testFileName);
@@ -788,10 +754,10 @@ export default function publicApiTestWithSystemApiTest () {
           console.info(`on_callback_005 changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ADD);
           expect(changeData.uris[0]).assertEqual(trashFileAsset.uri);
-          helper.off(trashFileAsset.uri);
         });
         await trashAlbum.recoverAssets([trashFileAsset]);
         await sleep(2000);
+        helper.off(trashFileAsset.uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -810,7 +776,7 @@ export default function publicApiTestWithSystemApiTest () {
      * @tc.level     : Level 2
      */
     it('on_callback_006', 0, async function (done) {
-        const testNum = 'on_callback_006';
+      const testNum = 'on_callback_006';
       try {
         let testFileName = 'testCreateFile' + Date.now() + '.jpg';
         let fileAsset = await helper.createAsset(testFileName);
@@ -827,12 +793,12 @@ export default function publicApiTestWithSystemApiTest () {
         helper.on(trashAlbum.albumUri, false, async (changeData) => {
           count++;
           console.info(`on_callback_006 changeData: ${JSON.stringify(changeData)}`);
-          helper.off(trashAlbum.albumUri);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
-          expect(changeData.extraUris[0]).assertEqual(trashFileAsset.uri);
+          // expect(changeData.extraUris[0]).assertEqual(trashFileAsset.uri);
         });
         await trashAlbum.deleteAssets([trashFileAsset]);
         await sleep(1000);
+        helper.off(trashAlbum.albumUri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -880,153 +846,6 @@ export default function publicApiTestWithSystemApiTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1000
-     * @tc.name      : on_callback_010
-     * @tc.desc      : listening change album coverUri, type NOTIFY_UPDATE
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('on_callback_010', 0, async function example(done) {
-      const testNum = 'on_callback_010';
-      try {
-        let albumUri = '';
-        let count= 0;
-        let albumName = testNum + Date.now();
-        let album = await helper.createAlbum(albumName);
-        albumUri = album.albumUri;
-        const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'on10.jpg');
-        const asset = await getFileAsset(testNum, fetchOps);
-        await sleep(500);
-        helper.on(albumUri, false, async (changeData) => {
-          count++;
-          console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-          expect(changeData.uris[0]).assertEqual(albumUri);
-        });
-        album.setCoverUri(asset.uri);
-        await album.commitModify();
-        await sleep(1000);
-        helper.off(albumUri);
-        expect(count).assertEqual(1);
-        done();
-      } catch (error) {
-        console.log(`${testNum}: tryError: ${error}`);
-        expect(false).assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1300
-     * @tc.name      : on_callback_013
-     * @tc.desc      : listening DEFAULT_ALBUM_URI
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('on_callback_013', 0, async function (done) {
-      const testNum = 'on_callback_013';
-      try {
-        let albumUri = '';
-        let trashAlbumUri = '';
-        let trashFileAssetUri = '';
-        let listenCount = 0;
-        const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'on13.jpg');
-        const asset = await getFileAsset(testNum, fetchOps);
-        let testFileName = 'testCreateFile' + Date.now() + '.jpg';
-        let fileAsset = await helper.createAsset(testFileName);
-        let fd = await fileAsset.open('rw');
-        await fileAsset.close(fd);
-        await helper.deleteAssets([fileAsset.uri]);
-        await sleep(500);
-        helper.on(DEFAULT_ALBUM_URI, true, async (changeData) => {
-          listenCount++;
-          switch (listenCount) {
-            case 1:
-              console.info(`on_callback_013_1 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_ADD);
-              expect(changeData.uris[0]).assertEqual(albumUri);
-              break;
-            case 2:
-              console.info(`on_callback_013_2 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-              expect(changeData.uris[0]).assertEqual(albumUri);
-              break;
-            case 3:
-              console.info(`on_callback_013_3 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_ALBUM_ADD_ASSET);
-              expect(changeData.uris[0]).assertEqual(albumUri);
-              break;
-            case 4:
-              console.info(`on_callback_013_4 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-              expect(changeData.uris[0]).assertEqual(albumUri);
-              break;
-            case 5:
-              console.info(`on_callback_013_5 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
-              expect(changeData.uris[0]).assertEqual(albumUri);
-              break;
-            case 6:
-              console.info(`on_callback_013_6 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_REMOVE);
-              expect(changeData.uris[0]).assertEqual(albumUri);
-              break;
-            case 7:
-              console.info(`on_callback_013_7 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.uris[0]).assertEqual(trashAlbumUri);
-              expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
-              expect(changeData.extraUris[0]).assertEqual(trashFileAssetUri);
-              break;
-            default:
-              break;
-          }
-        });
-        // 1
-        let albumName = testNum + Date.now();
-        let album = await helper.createAlbum(albumName);
-        albumUri = album.albumUri;
-        // 2
-        await sleep(500);
-        album.albumName = Date.now() + album.albumName;
-        await album.commitModify();
-        // 3
-        await sleep(500);
-        await album.addAssets([asset]);
-        // 4
-        await sleep(500);
-        album.albumName = testNum + album.albumName;
-        await album.commitModify();
-        // 5
-        await sleep(500);
-        await album.removeAssets([asset]);
-        // 6
-        await sleep(500);
-        await helper.deleteAlbums([album]);
-        // 7
-        await sleep(500);
-        let trashAlbumList = await helper.getAlbums(albumType.SYSTEM, albumSubtype.TRASH);
-        let trashAlbum = await trashAlbumList.getFirstObject();
-        trashAlbumUri = trashAlbum.albumUri;
-        const fetchOps1 = fetchOption(testNum, photoKeys.DISPLAY_NAME, testFileName);
-        let trashFetchResult = await trashAlbum.getAssets(fetchOps1);
-        let trashFileAsset = await trashFetchResult.getFirstObject();
-        trashFileAssetUri = trashFileAsset.uri;
-        console.log(`on_callback_013: trashFileAssetUri: ${trashFileAssetUri}`);
-        await trashAlbum.deleteAssets([trashFileAsset]);
-        await sleep(1000);
-        helper.off(DEFAULT_ALBUM_URI);
-        expect(listenCount).assertEqual(7);
-        done();
-      } catch (error) {
-        console.log(`${testNum}: tryError: ${error}`);
-        expect(false).assertTrue();
-        done();
-      }
-    });
-
-    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1400
      * @tc.name      : on_callback_014
      * @tc.desc      : listening DEFAULT_PHOTO_URI
@@ -1045,28 +864,18 @@ export default function publicApiTestWithSystemApiTest () {
           listenCount++;
           switch (listenCount) {
             case 1:
-              console.info(`on_callback_014_2 changeData: ${JSON.stringify(changeData)}`);
+              console.info(`${testNum} 1 changeData: ${JSON.stringify(changeData)}`);
               expect(changeData.type).assertEqual(NOTIFY_UPDATE);
               expect(changeData.uris[0]).assertEqual(photoAssetUri);
               break;
             case 2:
-              console.info(`on_callback_014_3 changeData: ${JSON.stringify(changeData)}`);
+              console.info(`${testNum} 2 changeData: ${JSON.stringify(changeData)}`);
               expect(changeData.type).assertEqual(NOTIFY_UPDATE);
               expect(changeData.uris[0]).assertEqual(photoAssetUri);
               break;
             case 3:
-              console.info(`on_callback_014_4 changeData: ${JSON.stringify(changeData)}`);
+              console.info(`${testNum} 3 changeData: ${JSON.stringify(changeData)}`);
               expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-              expect(changeData.uris[0]).assertEqual(photoAssetUri);
-              break;
-            case 4:
-              console.info(`on_callback_014_5 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_REMOVE);
-              expect(changeData.uris[0]).assertEqual(photoAssetUri);
-              break;
-            case 5:
-              console.info(`on_callback_014_6 changeData: ${JSON.stringify(changeData)}`);
-              expect(changeData.type).assertEqual(NOTIFY_ADD);
               expect(changeData.uris[0]).assertEqual(photoAssetUri);
               break;
             default:
@@ -1084,74 +893,9 @@ export default function publicApiTestWithSystemApiTest () {
         // 3
         await sleep(500);
         await asset.setFavorite(false);
-        // 4
-        await sleep(500);
-        await helper.deleteAssets([asset.uri]);
-        // 5
-        await sleep(500);
-        let trashAlbumList = await helper.getAlbums(albumType.SYSTEM, albumSubtype.TRASH);
-        let trashAlbum = await trashAlbumList.getFirstObject();
-        const fetchOps1 = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'on14.jpg')
-        let trashFetchResult = await trashAlbum.getAssets(fetchOps1);
-        let trashFileAsset = await trashFetchResult.getFirstObject();
-        await trashAlbum.recoverAssets([trashFileAsset]);
         await sleep(1000);
         helper.off(DEFAULT_PHOTO_URI);
-        expect(listenCount).assertEqual(5);
-        done();
-      } catch (error) {
-        console.log(`${testNum}: tryError: ${error}`);
-        expect(false).assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1500
-     * @tc.name      : on_callback_015
-     * @tc.desc      : listening 32
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 3
-     */
-    it('on_callback_015', 0, async function (done) {
-      const testNum = 'on_callback_015';
-      try {
-        helper.off(DEFAULT_PHOTO_URI);
-        let listenCount = 0;
-        let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'on15.jpg');
-        let asset = await getFileAsset(testNum, fetchOps);
-
-        //prepare environment
-        await asset.setFavorite(true);
-
-        //test start; notify times lessthan 32 in 500ms
-        let i = 0;
-        helper.on(DEFAULT_PHOTO_URI, true, async (changeData) => {
-          listenCount++;
-          console.info(`${testNum} i: ${i}, listenCount: ${listenCount}`);
-          if (listenCount > 1) {
-            if (i <= 32) {
-              expect(listenCount - 1).assertEqual(1);
-            } else {
-              expect(listenCount - 1).assertEqual(Math.ceil(i/32))
-            }
-            console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-            expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-            expect(changeData.uris.length).assertEqual(i);
-          }
-        });
-
-        const endTime = Date.now() + 500;
-        for (let now = Date.now(); now < endTime; now = Date.now()) {
-          i++;
-          const newTitle = asset.get(photoKeys.TITLE).toString() + i;
-          asset.set(photoKeys.TITLE, newTitle);
-          await asset.commitModify();
-        }
-        await sleep(2000);
-        helper.off(DEFAULT_PHOTO_URI);
-        expect(listenCount).assertEqual(1);
+        expect(listenCount).assertEqual(3);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);

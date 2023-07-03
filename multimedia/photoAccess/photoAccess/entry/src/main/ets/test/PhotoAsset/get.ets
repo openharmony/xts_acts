@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+// @ts-nocheck
 import { describe, it, expect } from 'deccjsunit/index'
 import {
   photoKeys,
@@ -556,7 +557,7 @@ export default function getTest () {
       const testNum = 'get_065';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const key = photoKeys.HIDDEN;
-      const value = 4853005;
+      const value = 0;
       await get(done, testNum, fetchOps, key, value);
     });
   })

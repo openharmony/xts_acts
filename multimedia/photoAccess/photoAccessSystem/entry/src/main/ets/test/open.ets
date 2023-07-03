@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+// @ts-nocheck
 import fileio from "@ohos.fileio";
 import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 import {

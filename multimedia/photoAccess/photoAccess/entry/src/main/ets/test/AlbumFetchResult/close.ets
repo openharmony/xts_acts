@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-
+// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -31,7 +31,7 @@ export default function albumCloseTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ALBUM_CLOSE_0000
      * @tc.name      : album_close_000
-     * @tc.desc      : close
+     * @tc.desc      : close system album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -49,50 +49,58 @@ export default function albumCloseTest () {
           fetchResult = await helper.getAlbums(albumType.SYSTEM, subTypes[i]);
           expect(fetchResult.getCount()).assertEqual(1);
           fetchResult.close();
+          let testCount = 0;
           let count = 0;
           try {
+            testCount++;
             fetchResult.getCount();
           } catch (error) {
             console.info(`${testNum} getCount failed; error: ${error}`);
             count++;
           }
           try {
+            testCount++;
             await fetchResult.getFirstObject();
           } catch (error) {
             console.info(`${testNum} getFirstObject failed; error: ${error}`);
             count++;
           }
           try {
+            testCount++;
             await fetchResult.getNextObject();
           } catch (error) {
             console.info(`${testNum} getNextObject failed; error: ${error}`);
             count++;
           }
           try {
+            testCount++;
             await fetchResult.getLastObject();
           } catch (error) {
             console.info(`${testNum} getLastObject failed; error: ${error}`);
             count++;
           }
           try {
+            testCount++;
             await fetchResult.getObjectByPosition(0);
           } catch (error) {
             console.info(`${testNum} getObjectByPosition failed; error: ${error}`);
             count++;
           }
           try {
+            testCount++;
             await fetchResult.getAllObjects();
           } catch (error) {
             console.info(`${testNum} getAllObjects failed; error: ${error}`);
             count++;
           }
           try {
+            testCount++;
             fetchResult.isAfterLast();
           } catch (error) {
             console.info(`${testNum} isAfterLast failed; error: ${error}`);
             count++;
           }
-          expect(count).assertEqual(7);
+          expect(count).assertEqual(testCount);
           passCount++;
           if (i + 1 === subTypes.length) {
             expect(passCount).assertEqual(subTypes.length);
@@ -109,7 +117,7 @@ export default function albumCloseTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_ALBUM_CLOSE_0100
      * @tc.name      : album_close_001
-     * @tc.desc      : close
+     * @tc.desc      : close user album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -122,50 +130,58 @@ export default function albumCloseTest () {
         const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps);
         expect(fetchResult.getCount()).assertEqual(1);
         fetchResult.close();
+        let testCount = 0;
         let count = 0;
         try {
+          testCount++;
           fetchResult.getCount();
         } catch (error) {
           console.info(`${testNum} getCount failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getFirstObject();
         } catch (error) {
           console.info(`${testNum} getFirstObject failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getNextObject();
         } catch (error) {
           console.info(`${testNum} getNextObject failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getLastObject();
         } catch (error) {
           console.info(`${testNum} getLastObject failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getObjectByPosition(0);
         } catch (error) {
           console.info(`${testNum} getObjectByPosition failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getAllObjects();
         } catch (error) {
           console.info(`${testNum} getAllObjects failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           fetchResult.isAfterLast();
         } catch (error) {
           console.info(`${testNum} isAfterLast failed; error: ${error}`);
           count++;
         }
-        expect(count).assertEqual(7);
+        expect(count).assertEqual(testCount);
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);

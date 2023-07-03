@@ -118,7 +118,6 @@
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro06.mp4",
                 "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro07.mp4",
                 "chmod -R 777 /storage/media/100/local/files/*",
-                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -p off",
                 "hilog -Q pidoff",
                 "hilog -Q domainoff",

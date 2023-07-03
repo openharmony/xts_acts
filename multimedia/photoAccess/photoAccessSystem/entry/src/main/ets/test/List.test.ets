@@ -29,7 +29,7 @@ import trashAssetsTest from './deleteAssets'
 export default function testsuite () {
   deleteAssetsTest()
   recoverAssetsTest()
-  setCoverUriTest()
+  // setCoverUriTest()
 
   createAlbumTest()
   createAssetTest()

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-
+// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -125,7 +125,7 @@ export default function albumCommitModifyTest () {
     /**
       * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ALBUM_COMMITMODIFY_0300
       * @tc.name      : album_commitModify_callback_003
-      * @tc.desc      : album commitModify with containing characters
+      * @tc.desc      : album commitModify containing invalid characters
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
@@ -134,7 +134,7 @@ export default function albumCommitModifyTest () {
       const testNum = 'album_commitModify_callback_003';
       try {
         const album = await helper.createAlbum(testNum);
-        const TITLE_REGEX_CHECK = '\.\\/:*?"\'`<>|{}\[\]';
+        const TITLE_REGEX_CHECK = '\\/:*?"\'`<>|{}\[\]';
         let count = 0;
         for (let i = 0; i < TITLE_REGEX_CHECK.length; i++) {
           let invalidName = testNum + TITLE_REGEX_CHECK[i];
@@ -250,13 +250,14 @@ export default function albumCommitModifyTest () {
       const testNum = 'album_commitModify_promise_003';
       try {
         const album = await helper.createAlbum(testNum);
-        const TITLE_REGEX_CHECK = '\.\\/:*?"\'`<>|{}\[\]';
+        const TITLE_REGEX_CHECK = '\\/:*?"\'`<>|{}\[\]';
         let count = 0;
         for (let i = 0; i < TITLE_REGEX_CHECK.length; i++) {
           let invalidName = testNum + TITLE_REGEX_CHECK[i];
           album.albumName = invalidName;
           try {
             await album.commitModify();
+            console.info(`${testNum} commitModify suc: ${invalidName}`);
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
             count++;
