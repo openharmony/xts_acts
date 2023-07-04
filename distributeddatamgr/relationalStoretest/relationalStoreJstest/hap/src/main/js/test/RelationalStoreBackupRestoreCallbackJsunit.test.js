@@ -399,11 +399,28 @@ export default function relationalStoreBackupRestoreCallbackTest() {
         it('RdbBackupRestoreCallbackTest_1100', 0, async function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1100 start *************")
             RdbStore.backup(DATABASE_BACKUP_NAME, (err, data) => {
-                if(err != null){
-                    expect(false).assertTrue()
+                if (err != null) {
+                    console.info(`[ttt] backup fail, sode is ${err.code},message is ${err.message}`)
+                    expect(err != null).assertFalse();
+                    done();
                 }
-                ReStoreCallbackTest()
-                done();
+                try {
+                    RdbStore.restore((err, data) => {
+                        if (err === undefined) {
+                            console.info(TAG + `restore success`);
+                            expect(err === undefined).assertFail();
+                            done();
+                        } else {
+                            console.error(TAG, `Failed, code is ${err.code},message is ${err.message} `);
+                            expect(err !== null).assertFail();
+                            done();
+                        }
+                    })
+                } catch (errInfo) {
+                    console.info(`[ttt] restore error, code is ${errInfo.code},message is ${errInfo.message}`)
+                    expect(errInfo.code).assertEqual('401');
+                    done();
+                }
             })
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1100 end *************")
         })
@@ -434,23 +451,41 @@ export default function relationalStoreBackupRestoreCallbackTest() {
          * @tc.number SUB_DDM_RelationalStore_JS_RdbBackupRestoreCallbackTest_1300
          * @tc.desc RelationalStore restore function test
          */
-        it('RdbBackupRestoreCallbackTest_1300', 0, async function (done) {
+        it('RdbBackupRestoreCallbackTest_1300', 0, function (done) {
             console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 start *************")
-            RdbStore.backup(DATABASE_BACKUP_NAME, (err, data) => {
-                if(err != null){
-                    expect(false).assertTrue()
-                }else{
-                    RdbStore.restore(DATABASE_BACKUP_NAME, (err, data) => {
-                        if(err != null){
-                            expect(false).assertTrue()
-                        }else{
-                            ReStoreCallbackTest(DATABASE_BACKUP_NAME)
+            try {
+                RdbStore.backup(DATABASE_BACKUP_NAME, (e) => {
+                    console.info(TAG, `backup success`)
+                    if (e != null) {
+                        console.info(`[ttt] backup fail, sode is ${e.code},message is ${e.message}`)
+                        expect(e != null).assertFalse();
+                        done();
+                    }
+                    RdbStore.restore(DATABASE_BACKUP_NAME, function (err) {
+                        if (err) {
+                            console.error(`Restore failed, code is ${err.code},message is ${err.message}`);
+                            expect(err != null).assertFail();
                         }
+                        console.info(`Restore1 success.`);
+                        RdbStore.restore(DATABASE_BACKUP_NAME, function (error) {
+                            if (error !== undefined) {
+                                console.error(`Restore failed, code is ${error.code},message is ${error.message}`);
+                                expect(error.code === 14800011).assertTrue();
+                                done();
+                                //                        return;
+                            } else {
+                                console.info(`Restore2 success.`);
+                                expect(error !== undefined).assertFail();
+                                done();
+                            }
+                        })
                     })
-                }
-            done();
-            console.info(TAG + "************* RdbBackupRestoreCallbackTest_1300 end *************")
-            })
+                })
+            } catch (errInfo) {
+                console.info(`[ttt] fail, code is ${errInfo.code},message is ${errInfo.message}`)
+                expect(errInfo !== undefined).assertFail();
+                done();
+            }
         })
         console.info(TAG + "*************Unit Test End*************")
     })
