@@ -2336,5 +2336,123 @@ export default function swiperTest() {
         }
       }, 500)
     });
+
+     /**
+     * @tc.number    ArkUX_Stage_Swiper_Indicator_0100
+     * @tc.name      Tests the digitFont property of the swiper component
+     * @tc.desc      Set the Indicator property parameter to top(1)
+     */
+     it('ArkUX_Stage_Swiper_Indicator_0100', 0, async function (done) {
+      console.info('ArkUX_Stage_Swiper_Indicator_0100 START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Swiper_Indicator_0100');
+          console.info('ArkUX_Stage_Swiper_Indicator_0100 START  :' + JSON.stringify(strJson));
+          let obj = JSON.parse(strJson);
+          console.info("ArkUX_Stage_Swiper_Indicator_0100 component obj is: " + JSON.stringify(obj));
+          console.info("ArkUX_Stage_Swiper_Indicator_0100 component obj.$attrs is: " +
+          JSON.stringify(obj.$attrs));
+          let obj2 = JSON.parse(obj.$attrs.indicator);
+          console.info("ArkUX_Stage_Swiper_Indicator_0100 component obj2 is: " + JSON.stringify(obj2));
+          expect(parseFloat(obj2.top)).assertEqual(1);
+          console.info("ArkUX_Stage_Swiper_Indicator_0100 component obj2.indicator.top is: " +
+          JSON.stringify(obj2.top));
+          expect(obj2.top.substr(obj2.top.length-2, 2)).assertEqual("vp");
+          console.info('ArkUX_Stage_Swiper_Indicator_0100 END ');
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Swiper_Indicator_0100 ERR  ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    });
+
+     /**
+     * @tc.number    ArkUX_Stage_Swiper_Indicator_0200
+     * @tc.name      Tests the digitFont property of the swiper component
+     * @tc.desc      Set the Indicator property parameter to bottom(1)
+     */
+     it('ArkUX_Stage_Swiper_Indicator_0200', 0, async function (done) {
+      console.info('ArkUX_Stage_Swiper_Indicator_0200 START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Swiper_Indicator_0200');
+          console.info('ArkUX_Stage_Swiper_Indicator_0200 START  :' + JSON.stringify(strJson));
+          let obj = JSON.parse(strJson);
+          console.info("ArkUX_Stage_Swiper_Indicator_0200 component obj is: " + JSON.stringify(obj));
+          console.info("ArkUX_Stage_Swiper_Indicator_0200 component obj.$attrs is: " +
+          JSON.stringify(obj.$attrs));
+          let obj2 = JSON.parse(obj.$attrs.indicator);
+          console.info("ArkUX_Stage_Swiper_Indicator_0200 component obj2 is: " + JSON.stringify(obj2));
+          expect(parseFloat(obj2.bottom)).assertEqual(1);
+          expect(obj2.bottom.substr(obj2.bottom.length-2, 2)).assertEqual("vp");
+          console.info('ArkUX_Stage_Swiper_Indicator_0200 END ');
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Swiper_Indicator_0200 ERR  ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    });
+
+     /**
+     * @tc.number    ArkUX_Stage_Swiper_Indicator_0300
+     * @tc.name      Tests the digitFont property of the swiper component
+     * @tc.desc      Set the Indicator property parameter to left(1)
+     */
+     it('ArkUX_Stage_Swiper_Indicator_0300', 0, async function (done) {
+      console.info('ArkUX_Stage_Swiper_Indicator_0300 START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Swiper_Indicator_0300');
+          console.info('ArkUX_Stage_Swiper_Indicator_0300 START  :' + JSON.stringify(strJson));
+          let obj = JSON.parse(strJson);
+          console.info("ArkUX_Stage_Swiper_Indicator_0300 component obj is: " + JSON.stringify(obj));
+          console.info("ArkUX_Stage_Swiper_Indicator_0300 component obj.$attrs is: " +
+          JSON.stringify(obj.$attrs));
+          let obj2 = JSON.parse(obj.$attrs.indicator);
+          console.info("ArkUX_Stage_Swiper_Indicator_0300 component obj2 is: " + JSON.stringify(obj2));
+          expect(parseFloat(obj2.left)).assertEqual(1);
+          expect(obj2.left.substr(obj2.left.length-2, 2)).assertEqual("vp");
+          console.info('ArkUX_Stage_Swiper_Indicator_0300 END ');
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Swiper_Indicator_0300 ERR  ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    });
+
+     /**
+     * @tc.number    ArkUX_Stage_Swiper_Indicator_0400
+     * @tc.name      Tests the digitFont property of the swiper component
+     * @tc.desc      Set the Indicator property parameter to right(1)
+     */
+     it('ArkUX_Stage_Swiper_Indicator_0400', 0, async function (done) {
+      console.info('ArkUX_Stage_Swiper_Indicator_0400 START');
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_Swiper_Indicator_0400');
+          console.info('ArkUX_Stage_Swiper_Indicator_0400 START  :' + JSON.stringify(strJson));
+          let obj = JSON.parse(strJson);
+          console.info("ArkUX_Stage_Swiper_Indicator_0400 component obj is: " + JSON.stringify(obj));
+          console.info("ArkUX_Stage_Swiper_Indicator_0400 component obj.$attrs is: " +
+          JSON.stringify(obj.$attrs));
+          let obj2 = JSON.parse(obj.$attrs.indicator);
+          console.info("ArkUX_Stage_Swiper_Indicator_0400 component obj2 is: " + JSON.stringify(obj2));
+          expect(parseFloat(obj2.right)).assertEqual(1);
+          expect(obj2.right.substr(obj2.right.length-2, 2)).assertEqual("vp");
+          console.info('ArkUX_Stage_Swiper_Indicator_0400 END ');
+          done();
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_Swiper_Indicator_0400 ERR  ' + JSON.stringify(err));
+          done();
+        }
+      }, 500)
+    });
   })
 }
