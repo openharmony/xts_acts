@@ -249,6 +249,7 @@
         "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemRowStartEnd",
         "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemVisibility",
         "MainAbility/pages/Grid/GridTemplatesAllSet/GridTemplateChange/Grid_RowCol_TemplateChange",
+        "MainAbility/pages/List/List_attribute/ListFrictionPage",
         "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex1",
         "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex2",
         "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex3",
@@ -397,6 +398,7 @@
         "MainAbility/pages/Grid/Grid_Row/onBreakpointChange/onBreakpointChange",
         "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_Row",
         "MainAbility/pages/Grid/Grid_Row/Grid_Row_Direction/Grid_Row_Direction_RowReverse",
+        "MainAbility/pages/Grid/Grid_attribute/GridFrictionPage",
         "MainAbility/pages/Tabs/tabs_index/Tabs_index",
         "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemPadMar",
         "MainAbility/pages/Tabs/Tabs_ItemsChange/Tabs_itemSize",
@@ -405,6 +407,8 @@
         "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_barWidHei",
         "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_PadMar",
         "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_scrollable",
-        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_WidHei"
+        "MainAbility/pages/Tabs/Tabs_ParmsChange/Tabs_WidHei",
+        "MainAbility/pages/Scroll/Scroll_attribute/ScrollFrictionPage",
+        "MainAbility/pages/WaterFlow/WaterFlow_attribute/WaterFlowFrictionPage"
     ]
 }
