@@ -14,6 +14,7 @@
  */
 
 import image from '@ohos.multimedia.image'
+import rpc from '@ohos.rpc'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { testPng, testJpg } from './testImg'
@@ -25,6 +26,39 @@ export default function imageJsTest() {
         let filePath;
         let fdNumber;
         let globalpixelmap;
+        class MySequence1 {
+            pixel_map;
+            constructor(pixelmap) {
+              this.pixel_map = pixelmap;
+            }
+            marshalling(messageSequence) {
+              this.pixel_map.marshalling(messageSequence);
+              return true;
+            }
+            async unmarshalling(messageSequence) {
+              await image.unmarshalling(messageSequence).then(async (pixelMap) => {
+                this.pixel_map = pixelMap;
+              })
+              return true;
+            }
+          }
+          
+          class MySequence2 {
+            pixel_map;
+            constructor(pixelmap) {
+                this.pixel_map = pixelmap;
+            }
+            marshalling(messageSequence) {
+                this.pixel_map.marshalling(messageSequence);
+                return true;
+            }
+            async unmarshalling(messageSequence) {
+              await image.unmarshalling(messageSequence).then(async(pixelMap) => {
+                this.pixel_map = pixelMap;
+              })
+              return true;
+            }
+        }
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -3001,6 +3035,54 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 })
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100
+         * @tc.name      : marshalling and unmarshalling pixelmap-promise (editable: false, 
+         *                 pixelFormat: RGB_565, size: { height: 4, width: 6 }, bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.marshalling pixelmap into the messageSequence
+         *                 5.unmarshalling pixelmap from the messageSequence
+         *                 6.return pixelmap not empty
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = 0x80;
+            }
+            let opts = {
+                editable: true,
+                pixelFormat: image.PixelMapFormat.RGB_565,
+                size: { height: 4, width: 6 },
+                alphaType: 1
+            }
+            let pixelMap;
+            await image.createPixelMap(color, opts).then((pixelmap) => {
+                pixelMap = pixelmap;
+                console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100 editable: ' + pixelmap.isEditable);
+            })
+            let parcelable = new MySequence1(pixelMap);
+            let data = rpc.MessageSequence.create();
+            data.writeParcelable(parcelable);
+            let pixel_map = undefined;
+            let ret = new MySequence2(pixel_map);
+            await data.readParcelable(ret);
+            if (ret.pixel_map == undefined) {
+                console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100 unmarshalling pixelmap failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                expect(ret.pixel_map.isEditable == opts.editable).assertTrue();
+                console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100 success');
+                done();
+            }
         })
     })
 }
