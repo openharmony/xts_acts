@@ -14,7 +14,7 @@
  */
 import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
-import bundle from "@ohos.bundle";
+import bundleManager from '@ohos.bundle.bundleManager';
 import uitest from "@ohos.UiTest";
 const presetsCount = {
     ActsMediaLibraryAlbumTest: { albumsCount: 15, assetsCount: 27 },
@@ -238,36 +238,39 @@ const getPermission = async function (name, context) {
     if (!name) {
         name = "ohos.acts.multimedia.mediaLibrary";
     }
-    console.info("getPermission start", name);
 
-    let permissions = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA", "ohos.permission.WRITE_MEDIA"];
-
-    let atManager = abilityAccessCtrl.createAtManager();
     try {
-        atManager.requestPermissionsFromUser(context, permissions, (err, data) => {
-            console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
-        });
-    } catch (err) {
-        console.log(`get permission catch err -> ${JSON.stringify(err)}`);
-    }
-    await sleep(1000);
-    let driver = uitest.Driver.create();
-    
-    await sleep(2000);
-    let button = await driver.findComponent(uitest.ON.text("允许"));
-    await button.click();
-    await sleep(2000);
+        console.info('getPermission start', name);
+        let permissionState = new Map();
+        const permissions = [
+            'ohos.permission.MEDIA_LOCATION',
+            'ohos.permission.READ_MEDIA',
+            'ohos.permission.WRITE_MEDIA',
+        ];
 
-    let appInfo = await bundle.getApplicationInfo(name, 0, 100);
-    let tokenID = appInfo.accessTokenId;
-    
-    let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
-    let isGranted2 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
-    let isGranted3 = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_MEDIA");
-    if (!(isGranted1 == 0 && isGranted2 == 0 && isGranted3 == 0)) {
-        console.info("getPermission failed");
+        const atManager = abilityAccessCtrl.createAtManager();
+        const appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
+        const userId = 100;
+        const appInfo = await bundleManager.getApplicationInfo(name, appFlags, userId);
+        const tokenID = appInfo.accessTokenId;
+        for (const permission of permissions) {
+            console.info('getPermission permission: ' + permission);
+            try {
+                await atManager.grantUserGrantedPermission(tokenID, permission, 1);
+            } catch (error) {
+                console.info(`getPermission ${permission} failed`);
+            }
+            permissionState.set(permission, await atManager.verifyAccessToken(tokenID, permission));
+        }
+        permissionState.forEach((value, key, map) => {
+            if (value !== 0) {
+                console.info(`getPermission failed; permission: ${key}, state: ${value}`);
+            }
+        });
+        console.info('getPermission end');
+    } catch (error) {
+        console.info(`getPermission failed, error: ${error}`);
     }
-    console.info("getPermission end");
 };
 
 const MODIFY_ERROR_CODE_01 = "-1000";

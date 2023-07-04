@@ -16,41 +16,41 @@ import image from "@ohos.multimedia.image";
 import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
-import bundle from "@ohos.bundle";
-import uitest from "@ohos.UiTest";
-
-import { sleep } from "../../../../../../common";
+import bundleManager from '@ohos.bundle.bundleManager';
 
 export default function getExifLocation(abilityContext) {
     describe("getExifLocation", function () {
         beforeAll(async function () {
             console.info("beforeAll case");
-            let atManager = abilityAccessCtrl.createAtManager();
-
-            let permissions = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA"];
             try {
-                atManager.requestPermissionsFromUser(abilityContext, permissions, (err, data) => {
-                    console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
+                let permissionState = new Map();
+                const permissions = [
+                    'ohos.permission.MEDIA_LOCATION',
+                    'ohos.permission.READ_MEDIA',
+                ];
+
+                const atManager = abilityAccessCtrl.createAtManager();
+                const appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
+                const userId = 100;
+                const appInfo = await bundleManager.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', appFlags, userId);
+                const tokenID = appInfo.accessTokenId;
+                for (const permission of permissions) {
+                    console.info('getPermission permission: ' + permission);
+                    try {
+                        await atManager.grantUserGrantedPermission(tokenID, permission, 1);
+                    } catch (error) {
+                        console.info(`getPermission ${permission} failed`);
+                    }
+                    permissionState.set(permission, await atManager.verifyAccessToken(tokenID, permission));
+                }
+                permissionState.forEach((value, key, map) => {
+                    if (value !== 0) {
+                        console.info(`getPermission failed; permission: ${key}, state: ${value}`);
+                    }
                 });
-            } catch (err) {
-                console.log(`get permission catch err -> ${JSON.stringify(err)}`);
-            }
-            await sleep(1000);
-
-            let driver = uitest.Driver.create();
-            await sleep(2000);
-
-            let button = await driver.findComponent(uitest.ON.text("允许"));
-            await button.click();
-            await sleep(2000);
-
-            let appInfo = await bundle.getApplicationInfo("ohos.acts.multimedia.mediaLibrary", 0, 100);
-            let tokenID = appInfo.accessTokenId;
-            
-            let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
-            let isGranted2 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
-            if (!(isGranted1 == 0 && isGranted2 == 0)) {
-                console.info("getpermission failed");
+                console.info('getPermission end');
+            } catch (error) {
+                console.info(`getPermission failed, error: ${error}`);
             }
         });
         beforeEach(function () {
