@@ -765,7 +765,7 @@ RelativeContainer_AnchorPoint_Position()
   Row_VerticalAlign();
   list_ListFrictionTest();
   grid_GridFrictionTest();
-  waterflow_WaterFlowFrictionTest();
+  waterFlow_WaterFlowFrictionTest();
   scroll_ScrollFrictionTest();
   AlignContentFlex_Start();
   AlignContent_FlexAlign_Start_Margin();
