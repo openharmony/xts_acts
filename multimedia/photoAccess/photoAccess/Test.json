@@ -1,0 +1,140 @@
+{
+    "description": "Configuration for photoAccess Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "180000",
+        "bundle-name": "ohos.acts.multimedia.photoaccess",
+        "module-name": "phone",
+        "shell-timeout": "600000",
+        "testcase-timeout": 70000
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "pre-push": [],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "scanner",
+                "sleep 5",
+                "mkdir /storage/media/100/local/temp",
+                "param set persist.ace.testmode.enabled 1"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/01.jpg",
+                "./resource/medialibrary/01.mp4 ->/storage/media/100/local/temp/01.mp4"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir /storage/media/100/local/files/Pictures/Screenshots",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/01.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/01.mp4",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/albumGetAssetsCb01.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/albumGetAssetsCb01.mp4",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/albumGetAssetsPro01.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/albumGetAssetsPro01.mp4",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addCb01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addCb02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addCb03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addCb04.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/addCb01.mp4",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addPro01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addPro02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addPro03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addPro04.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/addPro01.mp4",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removeCb01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removeCb02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removeCb03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removeCb04.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/removeCb01.mp4",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removePro01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removePro02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removePro03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removePro04.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/removePro01.mp4",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off04.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off10.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off11.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off12.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off13.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off14.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/off15.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/offCb01.jpg",
+
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on04.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on10.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on11.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on12.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on13.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on14.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on15.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/on16.jpg",
+           
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb04.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb05.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb06.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyCb07.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb01.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb02.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb03.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb04.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb05.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb06.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyCb07.mp4",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro01.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro02.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro03.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro04.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro05.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro06.jpg",
+                "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/modifyPro07.jpg",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro01.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro02.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro03.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro04.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro05.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro06.mp4",
+                "cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/modifyPro07.mp4",
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "hilog -p off",
+                "hilog -Q pidoff",
+                "hilog -Q domainoff",
+                "hilog -b D -D 0xD002B70",
+                "scanner",
+                "sleep 5"
+            ],
+            "teardown-command": [
+                "power-shell setmode 600"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsPhotoAccessTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

@@ -1,0 +1,355 @@
+/*
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// @ts-nocheck
+import fileio from "@ohos.fileio";
+import { describe, beforeAll, it, expect } from 'deccjsunit/index'
+import {
+  photoKeys,
+  photoFetchOption,
+  getFileAsset,
+  getPermission,
+} from '../../../../../../common'
+
+export default function openTest() {
+  describe('openTest', function () {
+    beforeAll(async function () {
+      console.info('beforeAll case')
+      await getPermission()
+    })
+
+    async function rwOpenCallback(done, testNum, fetchOp, assetBytes) {
+      try {
+        const asset = await getFileAsset(testNum, fetchOp);
+        asset.open('rw', async (err, fd) => {
+          try {
+            if (err) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
+            } else {
+              console.info(`${testNum} fd: ${fd}`);
+              let buf = new ArrayBuffer(4096);
+              let res = await fileio.read(fd, buf);
+              expect(res.bytesRead).assertEqual(assetBytes);
+
+              let write = await fileio.write(fd, testNum);
+              expect(write).assertEqual(testNum.length);
+              let newAsset = await getFileAsset(testNum, fetchOp);
+              // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+          }
+          await asset.close(fd);
+          done();
+        });
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    };
+
+    async function rOpenCallback(done, testNum, fetchOp, assetBytes) {
+      try {
+        const asset = await getFileAsset(testNum, fetchOp);
+        asset.open('r', async (err, fd) => {
+          try {
+            if (err) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
+            } else {
+              console.info(`${testNum} fd: ${fd}`);
+              let buf = new ArrayBuffer(4096);
+              let res = await fileio.read(fd, buf);
+              expect(res.bytesRead).assertEqual(assetBytes);
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+          }
+          await asset.close(fd);
+          done();
+        });
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    };
+
+    async function wOpenCallback(done, testNum, fetchOp) {
+      try {
+        const asset = await getFileAsset(testNum, fetchOp);
+        asset.open('w', async (err, fd) => {
+          try {
+            if (err) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
+            } else {
+              let write = await fileio.write(fd, testNum);
+              expect(write).assertEqual(testNum.length);
+              await asset.close(fd);
+              let newAsset = await getFileAsset(testNum, fetchOp);
+              // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+            await asset.close(fd);
+          }
+          done();
+        });
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    };
+
+    async function rwOpenPromise(done, testNum, fetchOp, assetBytes) {
+      const asset = await getFileAsset(testNum, fetchOp);
+      let fd;
+      try {
+        fd = await asset.open('rw');
+        console.info(`${testNum} fd: ${fd}`);
+        let buf = new ArrayBuffer(4096);
+        let res = await fileio.read(fd, buf);
+        expect(res.bytesRead).assertEqual(assetBytes);
+
+        let write = await fileio.write(fd, testNum);
+        expect(write).assertEqual(testNum.length);
+        let newAsset = await getFileAsset(testNum, fetchOp);
+        // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
+        await asset.close(fd);
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        await asset.close(fd);
+        expect(false).assertTrue();
+        done();
+      }
+    };
+
+    async function rOpenPromise(done, testNum, fetchOp, assetBytes) {
+      try {
+        const asset = await getFileAsset(testNum, fetchOp);
+        const fd = await asset.open('r');
+        console.info(`${testNum} fd: ${fd}`);
+        let buf = new ArrayBuffer(4096);
+        let res = await fileio.read(fd, buf);
+        expect(res.bytesRead).assertEqual(assetBytes);
+        await asset.close(fd);
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    };
+
+    async function wOpenPromise(done, testNum, fetchOp) {
+      try {
+        const asset = await getFileAsset(testNum, fetchOp);
+        const fd = await asset.open('w');
+        let write = await fileio.write(fd, testNum);
+        expect(write).assertEqual(testNum.length);
+
+        let newAsset = await getFileAsset(testNum, fetchOp);
+        // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
+        await asset.close(fd);
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    };
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_CALLBACK_0000
+     * @tc.name      : open_callback_000
+     * @tc.desc      : open image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_callback_000', 0, async function (done) {
+      const testNum = 'open_callback_000';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openCb01.jpg');
+      const bytesRead = 4096;
+      await rwOpenCallback(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_CALLBACK_0100
+     * @tc.name      : open_callback_001
+     * @tc.desc      : open image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_callback_001', 0, async function (done) {
+      const testNum = 'open_callback_001';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openCb02.jpg');
+      const bytesRead = 4096;
+      await rOpenCallback(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_CALLBACK_0200
+     * @tc.name      : open_callback_002
+     * @tc.desc      : open image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_callback_002', 0, async function (done) {
+      const testNum = 'open_callback_002';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openCb03.jpg');
+      await wOpenCallback(done, testNum, fetchOps);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_CALLBACK_0300
+     * @tc.name      : open_callback_003
+     * @tc.desc      : open video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_callback_003', 0, async function (done) {
+      const testNum = 'open_callback_003';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openCb01.mp4');
+      const bytesRead = 4096;
+      await rwOpenCallback(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_CALLBACK_0400
+     * @tc.name      : open_callback_004
+     * @tc.desc      : open video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_callback_004', 0, async function (done) {
+      const testNum = 'open_callback_004';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openCb02.mp4');
+      const bytesRead = 4096;
+      await rOpenCallback(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_CALLBACK_0500
+     * @tc.name      : open_callback_005
+     * @tc.desc      : open video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_callback_005', 0, async function (done) {
+      const testNum = 'open_callback_005';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openCb03.mp4');
+      await wOpenCallback(done, testNum, fetchOps);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_PROMISE_0000
+     * @tc.name      : open_promise_000
+     * @tc.desc      : open image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_promise_000', 0, async function (done) {
+      const testNum = 'open_promise_000';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openPro01.jpg');
+      const bytesRead = 4096;
+      await rwOpenPromise(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_PROMISE_0100
+     * @tc.name      : open_promise_001
+     * @tc.desc      : open image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_promise_001', 0, async function (done) {
+      const testNum = 'open_promise_001';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openPro02.jpg');
+      const bytesRead = 4096;
+      await rOpenPromise(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_PROMISE_0200
+     * @tc.name      : open_promise_002
+     * @tc.desc      : open image asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_promise_002', 0, async function (done) {
+      const testNum = 'open_promise_002';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openPro03.jpg');
+      await wOpenPromise(done, testNum, fetchOps);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_PROMISE_0300
+     * @tc.name      : open_promise_003
+     * @tc.desc      : open video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_promise_003', 0, async function (done) {
+      const testNum = 'open_promise_003';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openPro01.mp4');
+      const bytesRead = 4096;
+      await rwOpenPromise(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_PROMISE_0400
+     * @tc.name      : open_promise_004
+     * @tc.desc      : open video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_promise_004', 0, async function (done) {
+      const testNum = 'open_promise_004';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openPro02.mp4');
+      const bytesRead = 4096;
+      await rOpenPromise(done, testNum, fetchOps, bytesRead);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_FILE_ASSET_OPEN_PROMISE_0500
+     * @tc.name      : open_promise_005
+     * @tc.desc      : open video asset
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('open_promise_005', 0, async function (done) {
+      const testNum = 'open_promise_005';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'openPro03.mp4');
+      await wOpenPromise(done, testNum, fetchOps);
+    });
+  })
+}
