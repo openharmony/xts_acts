@@ -70,7 +70,7 @@ export default function avRecorderTest() {
             let permissionNames = [permissionName1, permissionName2, permissionName3, permissionName4];
             await mediaTestBase.getPermission(permissionNames);
             await mediaTestBase.msleepAsync(2000);
-            await mediaTestBase.driveFn(2)
+            await mediaTestBase.driveFn(3)
             console.info('beforeAll out');
         })
 
