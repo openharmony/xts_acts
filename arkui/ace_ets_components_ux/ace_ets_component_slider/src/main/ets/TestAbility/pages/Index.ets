@@ -37,12 +37,12 @@ struct SliderTest {
   Ellipse = new Ellipse({ width: '280px', height: '280px' }).fill('#FFFF0000')
   Path = new Path({ width: '280px', height: '280px' }).fill('#FFFF0000')
   Rect = new Rect({ width: '280px', height: '280px' }).fill('#FFFF0000')
-  private sliderImage: SliderBlockStyle = { type: 1, image: $r('app.media.icon') }
-  private sliderShapeCircle: SliderBlockStyle = { type: 2, shape: this.circle }
-  private sliderShapeEllipse: SliderBlockStyle = { type: 2, shape: this.Ellipse }
-  private sliderShapePath: SliderBlockStyle = { type: 2, shape: this.Path }
-  private sliderShapeRect: SliderBlockStyle = { type: 2, shape: this.Rect }
-  private sliderDefault: SliderBlockStyle = { type: 0 }
+  private sliderImage: SliderBlockStyle = { type: SliderBlockType.IMAGE, image: $r('app.media.icon') }
+  private sliderShapeCircle: SliderBlockStyle = { type: SliderBlockType.SHAPE, shape: this.circle }
+  private sliderShapeEllipse: SliderBlockStyle = { type: SliderBlockType.SHAPE, shape: this.Ellipse }
+  private sliderShapePath: SliderBlockStyle = { type: SliderBlockType.SHAPE, shape: this.Path }
+  private sliderShapeRect: SliderBlockStyle = { type: SliderBlockType.SHAPE, shape: this.Rect }
+  private sliderDefault: SliderBlockStyle = { type: SliderBlockType.DEFAULT }
   build() {
     Row() {
       Column() {
