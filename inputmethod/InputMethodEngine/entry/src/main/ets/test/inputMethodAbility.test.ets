@@ -455,12 +455,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_028 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_028 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 28
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 28
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_029', 0, async function (done) {
@@ -510,12 +510,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_029 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_029 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 29
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 29
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback)
+      })
     });
 
     it('inputMethodAbility_test_030', 0, async function (done) {
@@ -565,12 +565,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_030 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_030 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 30
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 30
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_031', 0, async function (done) {
@@ -620,12 +620,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_031 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_031 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 31
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 31
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_032', 0, async function (done) {
@@ -675,12 +675,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_032 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_032 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 32
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 32
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_033', 0, async function (done) {
@@ -730,12 +730,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_033 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_033 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 33
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 33
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_034', 0, async function (done) {
@@ -785,12 +785,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_034 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_034 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 34
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 34
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_035', 0, async function (done) {
@@ -840,12 +840,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_035 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_035 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 35
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 35
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_036', 0, async function (done) {
@@ -895,12 +895,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_036 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_036 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 36
-      };
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);;
+        var commonEventPublishData = {
+          code: 36
+        };
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_037', 0, async function (done) {
@@ -950,12 +950,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_037 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_037 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 37
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 37
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_038', 0, async function (done) {
@@ -1005,12 +1005,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_038 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_038 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 38
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 38
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_039', 0, async function (done) {
@@ -1060,12 +1060,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_039 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_039 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 39
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 39
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_040', 0, async function (done) {
@@ -1115,12 +1115,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_040 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_040 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 40
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 40
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_041', 0, async function (done) {
@@ -1170,12 +1170,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_041 subscriber data:" + JSON.stringify(data))
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_041 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 41
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 41
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_042', 0, async function (done) {
@@ -1225,12 +1225,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_042 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_042 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 42
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 42
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_043', 0, async function (done) {
@@ -1280,12 +1280,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_043 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_043 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 43
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 43
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_044', 0, async function (done) {
@@ -1342,12 +1342,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_045 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_045 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 45
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 45
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_046', 0, async function (done) {
@@ -1397,12 +1397,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_046 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_046 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 46
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 46
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_047', 0, async function (done) {
@@ -1452,12 +1452,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_047 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_047 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 47
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 47
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_048', 0, async function (done) {
@@ -1507,12 +1507,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_048 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_048 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 48
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 48
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_049', 0, async function (done) {
@@ -1562,12 +1562,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_049 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_049 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 49
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 49
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_050', 0, async function (done) {
@@ -1617,12 +1617,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_050 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_050 subscriber finish")
-      })
 
-      var commonEventPublishData = {
-        code: 50
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 50
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_070', 0, async function (done) {
@@ -1671,13 +1671,13 @@ export default function inputMethodAbility() {
         subscriber = data;
         console.info("====>inputMethodAbility_test_070 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_070 subscriber finish")
-      })
+        console.info("====>inputMethodAbility_test_070 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 70
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 70
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_071', 0, async function (done) {
@@ -1726,13 +1726,13 @@ export default function inputMethodAbility() {
         subscriber = data;
         console.info("====>inputMethodAbility_test_071 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_071 subscriber finish")
-      })
+        console.info("====>inputMethodAbility_test_071 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 71
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 71
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_072', 0, async function (done) {
@@ -1781,13 +1781,13 @@ export default function inputMethodAbility() {
         subscriber = data;
         console.info("====>inputMethodAbility_test_072 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_072 subscriber finish")
-      })
+        console.info("====>inputMethodAbility_test_072 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 72
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 72
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_073', 0, async function (done) {
@@ -1840,13 +1840,13 @@ export default function inputMethodAbility() {
         subscriber = data;
         console.info("====>inputMethodAbility_test_073 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodAbility_test_073 subscriber finish")
-      })
+        console.info("====>inputMethodAbility_test_073 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 73
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 73
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_074', 0, async function (done) {
@@ -1903,12 +1903,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_074 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_074 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 74
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 74
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_101', 0, async function (done) {
@@ -1958,12 +1958,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_101 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_101 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 101
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 101
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_102', 0, async function (done) {
@@ -2013,12 +2013,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_102 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_102 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 102
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 102
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_103', 0, async function (done) {
@@ -2068,12 +2068,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_103 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_103 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 103
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 103
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_104', 0, async function (done) {
@@ -2123,12 +2123,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_104 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_104 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 104
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 104
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_105', 0, async function (done) {
@@ -2178,12 +2178,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_105 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_105 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 105
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 105
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodAbility_test_106', 0, async function (done) {
@@ -2233,12 +2233,12 @@ export default function inputMethodAbility() {
         console.info("====>inputMethodAbility_test_106 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>inputMethodAbility_test_106 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 106
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 106
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_onSelectByRange_0110', 0, async function (done) {
@@ -2267,17 +2267,6 @@ export default function inputMethodAbility() {
         }
       }
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_onSelectByRange_0110"]
-      }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber finish")
-      })
-
       inputMethodController.on("selectByRange", async (range) => {
         console.info('====>Sub_Misc_inputMethod_onSelectByRange_0110 onSelectByRange start');
         inputMethodController.off("selectByRange");
@@ -2292,10 +2281,21 @@ export default function inputMethodAbility() {
         }
       });
 
-      var commonEventPublishData = {
-        code:110
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_onSelectByRange_0110"]
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_onSelectByRange_0110 subscriber finish");
+
+        var commonEventPublishData = {
+          code:110
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_onSelectByMovement_0120', 0, async function (done) {
@@ -2324,17 +2324,6 @@ export default function inputMethodAbility() {
         }
       }
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_onSelectByMovement_0120"]
-      }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber finish")
-      })
-
       inputMethodController.on("selectByMovement", async (movement) => {
         console.info('====>Sub_Misc_inputMethod_onSelectByMovement_0120 onSelectByMovement start');
         inputMethodController.off("selectByMovement");
@@ -2348,10 +2337,21 @@ export default function inputMethodAbility() {
         }
       });
 
-      var commonEventPublishData = {
-        code:120
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_onSelectByMovement_0120"]
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_onSelectByMovement_0120 subscriber finish");
+
+        var commonEventPublishData = {
+          code:120
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_offSelectByRange_0130', 0, async function (done) {
@@ -2380,17 +2380,6 @@ export default function inputMethodAbility() {
         }
       }
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_offSelectByRange_0130"]
-      }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber finish")
-      })
-
       let count = 0;
       inputMethodController.on("selectByRange", async (movement) => {
         console.info('====>Sub_Misc_inputMethod_offSelectByRange_0130 offSelectByRange start');
@@ -2413,10 +2402,21 @@ export default function inputMethodAbility() {
         }
       },500);
 
-      var commonEventPublishData = {
-        code:130
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_offSelectByRange_0130"]
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_offSelectByRange_0130 subscriber finish");
+
+        var commonEventPublishData = {
+          code:130
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_offSelectByMovement_0140', 0, async function (done) {
@@ -2445,17 +2445,6 @@ export default function inputMethodAbility() {
         }
       }
 
-      var commonEventSubscribeInfo = {
-        events: ["Sub_Misc_inputMethod_offSelectByMovement_0140"]
-      }
-      var subscriber;
-      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
-        subscriber = data;
-        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber data:" + JSON.stringify(data));
-        commonEventManager.subscribe(subscriber, subscriberCallback);
-        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber finish")
-      })
-
       let count = 0;
       inputMethodController.on("selectByMovement", async (movement) => {
         console.info('====>Sub_Misc_inputMethod_offSelectByMovement_0140 offSelectByMovement start');
@@ -2478,10 +2467,21 @@ export default function inputMethodAbility() {
         }
       },500);
 
-      var commonEventPublishData = {
-        code:140
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_offSelectByMovement_0140"]
       }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_offSelectByMovement_0140 subscriber finish");
+
+        var commonEventPublishData = {
+          code:140
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_onImeChange_0150', 0, async function (done) {
@@ -2586,12 +2586,12 @@ export default function inputMethodAbility() {
             console.info("====>inputMethodAbility_test_091 subscriber data:" + JSON.stringify(data));
             commonEventManager.subscribe(subscriber, subscriberCallback);
             console.info("====>inputMethodAbility_test_091 subscriber finish");
-          })
 
-          var commonEventPublishData = {
-            code: 91
-          }
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+            var commonEventPublishData = {
+              code: 91
+            }
+            commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          })
         });
 
     it('Sub_Misc_inputMethod_sendExtendAction_0170', 0, async function (done) {
@@ -2641,12 +2641,12 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0170 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 170
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 170
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_sendExtendAction_0180', 0, async function (done) {
@@ -2696,12 +2696,12 @@ export default function inputMethodAbility() {
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriber data:" + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_sendExtendAction_0180 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 180
-      }
-      commonEventManager.publish('test', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 180
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
     });
 
   });

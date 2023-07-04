@@ -87,6 +87,35 @@ export default function requestDownloadJSUnit() {
     })
 
     /**
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_broken_0010
+     * @tc.name      T download task
+     * @tc.desc      Test requestUploadTest API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MISC_REQUEST_DOWNLOAD_broken_0010', 0, async function (done) {
+      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_broken_0010 is starting-----------------------");
+      try {
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Broken.OTHERS: " + request.agent.Broken.OTHERS);
+        expect(request.agent.Broken.OTHERS).assertEqual(255);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Broken.DISCONNECTED: " + request.agent.Broken.DISCONNECTED);
+        expect(request.agent.Broken.DISCONNECTED).assertEqual(0);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Broken.TIMEOUT: " + request.agent.Broken.TIMEOUT);
+        expect(request.agent.Broken.TIMEOUT).assertEqual(16);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Broken.PROTOCOL: " + request.agent.Broken.PROTOCOL);
+        expect(request.agent.Broken.PROTOCOL).assertEqual(32);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Broken.FSIO: " + request.agent.Broken.FSIO);
+        expect(request.agent.Broken.FSIO).assertEqual(64);
+      } catch (err) {
+        console.error("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 error: " + err);
+        expect().assertFail();
+      }
+      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_broken_0010 end-----------------------");
+      done();
+    });
+
+    /**
      * @tc.number    SUB_Misc_REQUEST_Create_Download_Callback_0010
      * @tc.desc      Starts a download session.
      * @tc.size      : MEDIUM
