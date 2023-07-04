@@ -41,8 +41,7 @@ export default function imageJsTest() {
               })
               return true;
             }
-          }
-          
+          }        
           class MySequence2 {
             pixel_map;
             constructor(pixelmap) {
@@ -3039,7 +3038,7 @@ export default function imageJsTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100
-         * @tc.name      : marshalling and unmarshalling pixelmap-promise (editable: false, 
+         * @tc.name      : marshalling and unmarshalling pixelmap-promise (editable: false,
          *                 pixelFormat: RGB_565, size: { height: 4, width: 6 }, bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -3047,7 +3046,7 @@ export default function imageJsTest() {
          *                 4.marshalling pixelmap into the messageSequence
          *                 5.unmarshalling pixelmap from the messageSequence
          *                 6.return pixelmap not empty
-         * @tc.size      : MEDIUM 
+         * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
