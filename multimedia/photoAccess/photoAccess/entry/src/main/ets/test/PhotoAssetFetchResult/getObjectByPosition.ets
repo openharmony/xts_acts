@@ -30,13 +30,14 @@ export default function assetGetPositionObjectTest () {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
         expect(fetchResult.getCount() > 0).assertTrue();
+        const firAsset = await fetchResult.getFirstObject();
         fetchResult.getObjectByPosition(0, (err, asset) => {
           try {
             if (err !== undefined) {
               console.info(`${testNum} getObjectByPosition failed; err: ${err}`);
               expect(false).assertTrue();
             } else {
-              expect(asset !== undefined).assertTrue();
+              expect(asset.displayName).assertEqual(firAsset.displayName);
             }
           } catch (error) {
             console.info(`${testNum} getObjectByPosition failed; error: ${error}`);
@@ -55,9 +56,10 @@ export default function assetGetPositionObjectTest () {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
         expect(fetchResult.getCount() > 0).assertTrue();
+        const firAsset = await fetchResult.getFirstObject();
         const asset = await fetchResult.getObjectByPosition(0);
         fetchResult.close();
-        expect(asset !== undefined).assertTrue();
+        expect(asset.displayName).assertEqual(firAsset.displayName);
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);

@@ -24,7 +24,7 @@ export default function createAssetTest () {
 
     async function createAssetCallback1 (done, testNum, type, extension, options) {
       try {
-				helper.createAsset(type, extension, options, (err, uri) => {
+        helper.createAsset(type, extension, options, (err, uri) => {
           try {
             if (err !== undefined) {
               console.info(`${testNum} err: ${err}`);
@@ -38,15 +38,15 @@ export default function createAssetTest () {
           done();
         })
       } catch (error) {
-				console.info(`${testNum} failed; error: ${error}`);
-				expect(false).assertTrue();
-				done();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
       }
     }
 
     async function createAssetCallback2 (done, testNum, type, extension) {
       try {
-				helper.createAsset(type, extension, (err, uri) => {
+        helper.createAsset(type, extension, (err, uri) => {
           try {
             if (err !== undefined) {
               console.info(`${testNum} err: ${err}`);
@@ -60,15 +60,15 @@ export default function createAssetTest () {
           done();
         })
       } catch (error) {
-				console.info(`${testNum} failed; error: ${error}`);
-				expect(false).assertTrue();
-				done();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
       }
     }
 
     async function createAssetAbnormalCallback1 (done, testNum, type, extension, options) {
       try {
-				helper.createAsset(type, extension, options, (err, uri) => {
+        helper.createAsset(type, extension, options, (err, uri) => {
           try {
             if (err !== undefined) {
               console.info(`${testNum} err: ${err}`);
@@ -82,9 +82,9 @@ export default function createAssetTest () {
           done();
         })
       } catch (error) {
-				console.info(`${testNum} failed; error: ${error}`);
-				expect(true).assertTrue();
-				done();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(true).assertTrue();
+        done();
       }
     }
 
@@ -93,9 +93,9 @@ export default function createAssetTest () {
         await helper.createAsset(type, extension, options);
         done();
       } catch (error) {
-				console.info(`${testNum} failed; error: ${error}`);
-				expect(false).assertTrue();
-				done();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
       }
     }
 
@@ -104,21 +104,21 @@ export default function createAssetTest () {
         await helper.createAsset(type, extension);
         done();
       } catch (error) {
-				console.info(`${testNum} failed; error: ${error}`);
-				expect(false).assertTrue();
-				done();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
       }
     }
 
     async function createAssetAbnormalPromise1 (done, testNum, type, extension, options) {
       try {
         await helper.createAsset(type, extension, options);
-				expect(false).assertTrue();
+        expect(false).assertTrue();
         done()
       } catch (error) {
-				console.info(`${testNum} failed; error: ${error}`);
-				expect(true).assertTrue();
-				done();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(true).assertTrue();
+        done();
       }
     }
 
@@ -131,13 +131,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createImage_callback_000', 0, async function (done) {
-			const testNum = 'createImage_callback_000';
+      const testNum = 'createImage_callback_000';
       const type = photoType.IMAGE;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetCallback1(done, testNum, type, extension, options);
+      await createAssetCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -149,10 +149,10 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createImage_callback_001', 0, async function (done) {
-			const testNum = 'createImage_callback_001';
+      const testNum = 'createImage_callback_001';
       const type = photoType.IMAGE;
       const extension = 'jpg';
-			await createAssetCallback2(done, testNum, type, extension);
+      await createAssetCallback2(done, testNum, type, extension);
     });
 
     /**
@@ -164,13 +164,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_callback_002', 2, async function (done) {
-			const testNum = 'createImage_callback_002';
+      const testNum = 'createImage_callback_002';
       const type = undefined;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -182,13 +182,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_callback_003', 2, async function (done) {
-			const testNum = 'createImage_callback_003';
+      const testNum = 'createImage_callback_003';
       const type = photoType.IMAGE;
       const extension = '123';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -200,13 +200,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_callback_004', 2, async function (done) {
-			const testNum = 'createImage_callback_004';
+      const testNum = 'createImage_callback_004';
       const type = photoType.IMAGE;
       const extension = undefined;
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -218,13 +218,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_callback_005', 2, async function (done) {
-			const testNum = 'createImage_callback_005';
+      const testNum = 'createImage_callback_005';
       const type = photoType.IMAGE;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = {
         title: undefined
       }
-			await createAssetCallback1(done, testNum, type, extension, options);
+      await createAssetCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -236,34 +236,12 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_callback_006', 2, async function (done) {
-			const testNum = 'createImage_callback_006';
+      const testNum = 'createImage_callback_006';
       const type = photoType.IMAGE;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = undefined;
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_IMAGE_0700
-     * @tc.name      : createImage_callback_007
-     * @tc.desc      : createAsset with title  'aaaaaaa....' (253)
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    // it('createImage_callback_007', 2, async function (done) {
-		// 	const testNum = 'createImage_callback_007';
-    //   let value = '';
-    //   for (let i = 0; i < 253; i++) {
-    //     value += 'a';
-    //   }
-    //   const type = photoType.IMAGE;
-    //   const extension = 'jpg';
-    //   const options: photoAccessHelper.CreateOptions = {
-    //     title: value
-    //   }
-		// 	await createAssetAbnormalCallback1(done, testNum, type, extension, options);
-    // });
     
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_IMAGE_0000
@@ -274,13 +252,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createImage_promise_000', 0, async function (done) {
-			const testNum = 'createImage_promise_000';
+      const testNum = 'createImage_promise_000';
       const type = photoType.IMAGE;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetPromise1(done, testNum, type, extension, options);
+      await createAssetPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -292,10 +270,10 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createImage_promise_001', 0, async function (done) {
-			const testNum = 'createImage_promise_001';
+      const testNum = 'createImage_promise_001';
       const type = photoType.IMAGE;
       const extension = 'jpg';
-			await createAssetPromise2(done, testNum, type, extension);
+      await createAssetPromise2(done, testNum, type, extension);
     });
 
     /**
@@ -307,13 +285,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_promise_002', 2, async function (done) {
-			const testNum = 'createImage_promise_002';
+      const testNum = 'createImage_promise_002';
       const type = undefined;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -325,13 +303,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_promise_003', 2, async function (done) {
-			const testNum = 'createImage_promise_003';
+      const testNum = 'createImage_promise_003';
       const type = photoType.IMAGE;
       const extension = '123';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -343,13 +321,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_promise_004', 2, async function (done) {
-			const testNum = 'createImage_promise_004';
+      const testNum = 'createImage_promise_004';
       const type = photoType.IMAGE;
       const extension = undefined;
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -361,13 +339,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_promise_005', 2, async function (done) {
-			const testNum = 'createImage_promise_005';
+      const testNum = 'createImage_promise_005';
       const type = photoType.IMAGE;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = {
         title: undefined
       }
-			await createAssetPromise1(done, testNum, type, extension, options);
+      await createAssetPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -379,34 +357,12 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createImage_promise_006', 2, async function (done) {
-			const testNum = 'createImage_promise_006';
+      const testNum = 'createImage_promise_006';
       const type = photoType.IMAGE;
       const extension = 'jpg';
       const options: photoAccessHelper.CreateOptions = undefined;
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_IMAGE_0700
-     * @tc.name      : createImage_promise_007
-     * @tc.desc      : createAsset with title  'aaaaaaa....' (253)
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    // it('createImage_promise_007', 2, async function (done) {
-		// 	const testNum = 'createImage_promise_007';
-    //   let value = '';
-    //   for (let i = 0; i < 253; i++) {
-    //     value += 'a';
-    //   }
-    //   const type = photoType.IMAGE;
-    //   const extension = 'jpg';
-    //   const options: photoAccessHelper.CreateOptions = {
-    //     title: value
-    //   }
-		// 	await createAssetAbnormalPromise1(done, testNum, type, extension, options);
-    // });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_VIDEO_0000
@@ -417,13 +373,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createVideo_callback_000', 0, async function (done) {
-			const testNum = 'createVideo_callback_000';
+      const testNum = 'createVideo_callback_000';
       const type = photoType.VIDEO;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetCallback1(done, testNum, type, extension, options);
+      await createAssetCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -435,10 +391,10 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createVideo_callback_001', 0, async function (done) {
-			const testNum = 'createVideo_callback_001';
+      const testNum = 'createVideo_callback_001';
       const type = photoType.VIDEO;
       const extension = 'mp4';
-			await createAssetCallback2(done, testNum, type, extension);
+      await createAssetCallback2(done, testNum, type, extension);
     });
 
     /**
@@ -450,13 +406,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_callback_002', 2, async function (done) {
-			const testNum = 'createVideo_callback_002';
+      const testNum = 'createVideo_callback_002';
       const type = undefined;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -468,13 +424,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_callback_003', 2, async function (done) {
-			const testNum = 'createVideo_callback_003';
+      const testNum = 'createVideo_callback_003';
       const type = photoType.VIDEO;
       const extension = '123';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -486,13 +442,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_callback_004', 2, async function (done) {
-			const testNum = 'createVideo_callback_004';
+      const testNum = 'createVideo_callback_004';
       const type = photoType.VIDEO;
       const extension = undefined;
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -504,13 +460,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_callback_005', 2, async function (done) {
-			const testNum = 'createVideo_callback_005';
+      const testNum = 'createVideo_callback_005';
       const type = photoType.VIDEO;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = {
         title: undefined
       }
-			await createAssetCallback1(done, testNum, type, extension, options);
+      await createAssetCallback1(done, testNum, type, extension, options);
     });
 
     /**
@@ -522,35 +478,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_callback_006', 2, async function (done) {
-			const testNum = 'createVideo_callback_006';
+      const testNum = 'createVideo_callback_006';
       const type = photoType.VIDEO;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = undefined;
-			await createAssetAbnormalCallback1(done, testNum, type, extension, options);
+      await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
 
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_CREATE_VIDEO_0700
-     * @tc.name      : createVideo_callback_007
-     * @tc.desc      : createAsset with title  'aaaaaaa....' (253)
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    // it('createVideo_callback_007', 2, async function (done) {
-		// 	const testNum = 'createVideo_callback_007';
-    //   let value = '';
-    //   for (let i = 0; i < 253; i++) {
-    //     value += 'a';
-    //   }
-    //   const type = photoType.VIDEO;
-    //   const extension = 'mp4';
-    //   const options: photoAccessHelper.CreateOptions = {
-    //     title: value
-    //   }
-		// 	await createAssetAbnormalCallback1(done, testNum, type, extension, options);
-    // });
-    
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_VIDEO_0000
      * @tc.name      : createVideo_promise_000
@@ -560,13 +494,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createVideo_promise_000', 0, async function (done) {
-			const testNum = 'createVideo_promise_000';
+      const testNum = 'createVideo_promise_000';
       const type = photoType.VIDEO;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetPromise1(done, testNum, type, extension, options);
+      await createAssetPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -578,10 +512,10 @@ export default function createAssetTest () {
      * @tc.level     : Level 0
      */
     it('createVideo_promise_001', 0, async function (done) {
-			const testNum = 'createVideo_promise_001';
+      const testNum = 'createVideo_promise_001';
       const type = photoType.VIDEO;
       const extension = 'mp4';
-			await createAssetPromise2(done, testNum, type, extension);
+      await createAssetPromise2(done, testNum, type, extension);
     });
 
     /**
@@ -593,13 +527,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_promise_002', 2, async function (done) {
-			const testNum = 'createVideo_promise_002';
+      const testNum = 'createVideo_promise_002';
       const type = undefined;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -611,13 +545,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_promise_003', 2, async function (done) {
-			const testNum = 'createVideo_promise_003';
+      const testNum = 'createVideo_promise_003';
       const type = photoType.VIDEO;
       const extension = '123';
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -629,13 +563,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_promise_004', 2, async function (done) {
-			const testNum = 'createVideo_promise_004';
+      const testNum = 'createVideo_promise_004';
       const type = photoType.VIDEO;
       const extension = undefined;
       const options: photoAccessHelper.CreateOptions = {
         title: testNum
       }
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -647,13 +581,13 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_promise_005', 2, async function (done) {
-			const testNum = 'createVideo_promise_005';
+      const testNum = 'createVideo_promise_005';
       const type = photoType.VIDEO;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = {
         title: undefined
       }
-			await createAssetPromise1(done, testNum, type, extension, options);
+      await createAssetPromise1(done, testNum, type, extension, options);
     });
 
     /**
@@ -665,33 +599,11 @@ export default function createAssetTest () {
      * @tc.level     : Level 2
      */
     it('createVideo_promise_006', 2, async function (done) {
-			const testNum = 'createVideo_promise_006';
+      const testNum = 'createVideo_promise_006';
       const type = photoType.VIDEO;
       const extension = 'mp4';
       const options: photoAccessHelper.CreateOptions = undefined;
-			await createAssetAbnormalPromise1(done, testNum, type, extension, options);
+      await createAssetAbnormalPromise1(done, testNum, type, extension, options);
     });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_VIDEO_0700
-     * @tc.name      : createVideo_promise_007
-     * @tc.desc      : createAsset with title  'aaaaaaa....' (253)
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    // it('createVideo_promise_007', 2, async function (done) {
-		// 	const testNum = 'createVideo_promise_007';
-    //   let value = '';
-    //   for (let i = 0; i < 253; i++) {
-    //     value += 'a';
-    //   }
-    //   const type = photoType.VIDEO;
-    //   const extension = 'mp4';
-    //   const options: photoAccessHelper.CreateOptions = {
-    //     title: value
-    //   }
-		// 	await createAssetAbnormalPromise1(done, testNum, type, extension, options);
-    // });
   })
 }

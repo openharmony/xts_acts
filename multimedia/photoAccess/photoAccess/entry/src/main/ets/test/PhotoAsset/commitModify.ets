@@ -117,14 +117,14 @@ export default function commitModifyTest () {
     it('photoAsset_commitModify_callback_000', 0, async function (done) {
       const testNum = 'photoAsset_commitModify_callback_000';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb01.jpg');
-      const newTitle = new Date().getTime() + '.jpg';
+      const newTitle = new Date().getTime() + testNum;
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0100
      * @tc.name      : photoAsset_commitModify_callback_001
-     * @tc.desc      : modify image displayName '中中...' (83)
+     * @tc.desc      : modify image displayName '一...' (84)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -133,10 +133,9 @@ export default function commitModifyTest () {
       const testNum = 'photoAsset_commitModify_callback_001';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb02.jpg');
       let newTitle = '';
-      for (let i = 0; i < 83; i++) {
-        newTitle += '中';
+      for (let i = 0; i < 84; i++) {
+        newTitle += '一';
       }
-      newTitle += '.jpg';
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
     });
 
@@ -155,7 +154,6 @@ export default function commitModifyTest () {
       for (let i = 0; i < 251; i++) {
         newTitle += 'a';
       }
-      newTitle += '.jpg';
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
     });
 
@@ -194,7 +192,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0500
      * @tc.name      : photoAsset_commitModify_callback_005
-     * @tc.desc      : modify image displayName '中中....jpg' (84)
+     * @tc.desc      : modify image displayName '二二....jpg' (84)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -205,7 +203,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 84; i++) {
-        value += '中';
+        value += '二';
       }
       value += '.jpg';
       await commitModifyAbnormalCallback(done, testNum, fetchOps, type, value);
@@ -214,7 +212,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0600
      * @tc.name      : photoAsset_commitModify_callback_006
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (252)
+     * @tc.desc      : modify image displayName 'bbbbbbb...' (252)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -225,7 +223,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 252; i++) {
-        value += 'a';
+        value += 'b';
       }
       value += '.jpg';
       await commitModifyAbnormalCallback(done, testNum, fetchOps, type, value);
@@ -243,14 +241,14 @@ export default function commitModifyTest () {
     it('photoAsset_commitModify_callback_007', 0, async function (done) {
       const testNum = 'photoAsset_commitModify_callback_007';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb01.mp4');
-      const newTitle = new Date().getTime() + '.mp4';
+      const newTitle = new Date().getTime() + testNum;
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0800
      * @tc.name      : photoAsset_commitModify_callback_008
-     * @tc.desc      : modify video displayName '中中...' (83)
+     * @tc.desc      : modify video displayName '三三...' (84)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -259,17 +257,16 @@ export default function commitModifyTest () {
       const testNum = 'photoAsset_commitModify_callback_008';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb02.mp4');
       let newTitle = '';
-      for (let i = 0; i < 83; i++) {
-        newTitle += '中';
+      for (let i = 0; i < 84; i++) {
+        newTitle += '三';
       }
-      newTitle += '.mp4';
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0900
      * @tc.name      : photoAsset_commitModify_callback_009
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (251)
+     * @tc.desc      : modify image displayName 'ccccccc...' (251)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -279,9 +276,8 @@ export default function commitModifyTest () {
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb03.mp4');
       let newTitle = '';
       for (let i = 0; i < 251; i++) {
-        newTitle += 'a';
+        newTitle += 'c';
       }
-      newTitle += '.mp4';
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
     });
 
@@ -320,7 +316,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_1200
      * @tc.name      : photoAsset_commitModify_callback_012
-     * @tc.desc      : modify image displayName '中中...' (84)
+     * @tc.desc      : modify image displayName '四四...' (84)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -331,7 +327,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 84; i++) {
-        value += '中';
+        value += '四';
       }
       value += '.mp4';
       await commitModifyAbnormalCallback(done, testNum, fetchOps, type, value);
@@ -340,7 +336,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_1300
      * @tc.name      : photoAsset_commitModify_callback_013
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (252)
+     * @tc.desc      : modify image displayName 'ddddddd...' (252)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -351,7 +347,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 252; i++) {
-        value += 'a';
+        value += 'd';
       }
       value += '.mp4';
       await commitModifyAbnormalCallback(done, testNum, fetchOps, type, value);
@@ -377,7 +373,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_0100
      * @tc.name      : photoAsset_commitModify_promise_001
-     * @tc.desc      : modify image displayName '中中...' (83)
+     * @tc.desc      : modify image displayName '五五...' (83)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -387,16 +383,15 @@ export default function commitModifyTest () {
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro02.jpg');
       let newTitle = '';
       for (let i = 0; i < 83; i++) {
-        newTitle += '中';
+        newTitle += '五';
       }
-      newTitle += '.jpg';
       await commitModifyPromise(done, testNum, fetchOps, newTitle);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_0200
      * @tc.name      : photoAsset_commitModify_promise_002
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (251)
+     * @tc.desc      : modify image displayName 'eeeeeee...' (251)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -406,9 +401,8 @@ export default function commitModifyTest () {
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro03.jpg');
       let newTitle = '';
       for (let i = 0; i < 251; i++) {
-        newTitle += 'a';
+        newTitle += 'e';
       }
-      newTitle += '.jpg';
       await commitModifyPromise(done, testNum, fetchOps, newTitle);
     });
 
@@ -447,7 +441,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_0500
      * @tc.name      : photoAsset_commitModify_promise_005
-     * @tc.desc      : modify image displayName '中中....jpg' (84)
+     * @tc.desc      : modify image displayName '六六....jpg' (84)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -458,7 +452,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 84; i++) {
-        value += '中';
+        value += '六';
       }
       value += '.jpg';
       await commitModifyAbnormalPromise(done, testNum, fetchOps, type, value);
@@ -467,7 +461,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_0600
      * @tc.name      : photoAsset_commitModify_promise_006
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (252)
+     * @tc.desc      : modify image displayName 'fffffff...' (252)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -478,7 +472,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 252; i++) {
-        value += 'a';
+        value += 'f';
       }
       value += '.jpg';
       await commitModifyAbnormalPromise(done, testNum, fetchOps, type, value);
@@ -503,7 +497,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_0800
      * @tc.name      : photoAsset_commitModify_promise_008
-     * @tc.desc      : modify video displayName '中中...' (83)
+     * @tc.desc      : modify video displayName '七七...' (83)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -513,16 +507,15 @@ export default function commitModifyTest () {
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro02.mp4');
       let newTitle = '';
       for (let i = 0; i < 83; i++) {
-        newTitle += '中';
+        newTitle += '七';
       }
-      newTitle += '.mp4';
       await commitModifyPromise(done, testNum, fetchOps, newTitle);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_0900
      * @tc.name      : photoAsset_commitModify_promise_009
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (251)
+     * @tc.desc      : modify image displayName 'ggggggg...' (251)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -532,9 +525,8 @@ export default function commitModifyTest () {
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyPro03.mp4');
       let newTitle = '';
       for (let i = 0; i < 251; i++) {
-        newTitle += 'a';
+        newTitle += 'g';
       }
-      newTitle += '.mp4';
       await commitModifyPromise(done, testNum, fetchOps, newTitle);
     });
 
@@ -573,7 +565,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_1200
      * @tc.name      : photoAsset_commitModify_promise_012
-     * @tc.desc      : modify image displayName '中中...' (84)
+     * @tc.desc      : modify image displayName '八八...' (84)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -584,7 +576,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 84; i++) {
-        value += '中';
+        value += '八';
       }
       value += '.mp4';
       await commitModifyAbnormalPromise(done, testNum, fetchOps, type, value);
@@ -593,7 +585,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_FILE_ASSET_COMMITMODIFY_1300
      * @tc.name      : photoAsset_commitModify_promise_013
-     * @tc.desc      : modify image displayName 'aaaaaaa...' (252)
+     * @tc.desc      : modify image displayName 'hhhhhhh...' (252)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -604,7 +596,7 @@ export default function commitModifyTest () {
       const type = 'displayName';
       let value = '';
       for (let i = 0; i < 252; i++) {
-        value += 'a';
+        value += 'h';
       }
       value += '.mp4';
       await commitModifyAbnormalPromise(done, testNum, fetchOps, type, value);

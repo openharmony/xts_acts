@@ -17,8 +17,8 @@ ohos_js_hap_suite("photoAccess_system_js_hap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":photoAccess_js_assets",
-    ":photoAccess_resources",
+    ":photoAccessSystem_js_assets",
+    ":photoAccessSystem_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
@@ -27,17 +27,17 @@ ohos_js_hap_suite("photoAccess_system_js_hap") {
   subsystem_name = "multimedia"
 }
 
-ohos_app_scope("photoAccess_app_profile") {
+ohos_app_scope("photoAccessSystem_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("photoAccess_js_assets") {
+ohos_js_assets("photoAccessSystem_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("photoAccess_resources") {
+ohos_resources("photoAccessSystem_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":photoAccess_app_profile" ]
+  deps = [ ":photoAccessSystem_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

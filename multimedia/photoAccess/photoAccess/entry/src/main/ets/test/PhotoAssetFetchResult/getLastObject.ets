@@ -37,6 +37,8 @@ export default function assetGetLastObjectTest () {
               expect(false).assertTrue();
             } else {
               expect(asset !== undefined).assertTrue();
+              const ret = fetchResult.isAfterLast();
+              expect(ret).assertTrue();
             }
           } catch (error) {
             console.info(`${testNum} getLastObject failed; error: ${error}`);
@@ -56,8 +58,10 @@ export default function assetGetLastObjectTest () {
         let fetchResult = await helper.getAssets(fetchOps);
         expect(fetchResult.getCount() > 0).assertTrue();
         const asset = await fetchResult.getLastObject();
-        fetchResult.close();
         expect(asset !== undefined).assertTrue();
+        const ret = fetchResult.isAfterLast();
+        fetchResult.close();
+        expect(ret).assertTrue();
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);

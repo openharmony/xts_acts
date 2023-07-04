@@ -14,15 +14,15 @@
         },
         {
             "name": "form_description",
-            "value": "photoAccess"
+            "value": "photoAccessSystem"
         },
         {
             "name": "serviceability_description",
-            "value": "photoAccess"
+            "value": "photoAccessSystem"
         },
         {
             "name": "description_application",
-            "value": "photoAccess test"
+            "value": "photoAccessSystem test"
         },
         {
             "name": "app_name",

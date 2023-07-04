@@ -31,50 +31,58 @@ export default function assetCloseTest () {
         let fetchResult = await helper.getAssets(fetchOps);
         expect(fetchResult.getCount() > 0).assertTrue();
         fetchResult.close();
+        let testCount = 0;
         let count = 0;
         try {
+          testCount++;
           fetchResult.getCount();
         } catch (error) {
           console.info(`${testNum} getCount failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getFirstObject();
         } catch (error) {
           console.info(`${testNum} getFirstObject failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getNextObject();
         } catch (error) {
           console.info(`${testNum} getNextObject failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getLastObject();
         } catch (error) {
           console.info(`${testNum} getLastObject failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getObjectByPosition(0);
         } catch (error) {
           console.info(`${testNum} getObjectByPosition failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           await fetchResult.getAllObjects();
         } catch (error) {
           console.info(`${testNum} getAllObjects failed; error: ${error}`);
           count++;
         }
         try {
+          testCount++;
           fetchResult.isAfterLast();
         } catch (error) {
           console.info(`${testNum} isAfterLast failed; error: ${error}`);
           count++;
         }
-        expect(count).assertEqual(7);
+        expect(count).assertEqual(testCount);
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);

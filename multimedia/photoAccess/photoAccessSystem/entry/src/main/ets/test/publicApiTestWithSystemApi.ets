@@ -273,11 +273,11 @@ export default function publicApiTestWithSystemApiTest () {
         await createAsset.close(fd);
         let count = 0;
         await sleep(500);
-        helper.on(createAsset.uri, false, async (changeData) => {
+        helper.registerChange(createAsset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
-        helper.off(createAsset.uri);
+        helper.unRegisterChange(createAsset.uri);
         await sleep(100);
         fd = await createAsset.getReadOnlyFd();
         await createAsset.close(fd);
@@ -306,12 +306,12 @@ export default function publicApiTestWithSystemApiTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count= 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         await sleep(100);
         await asset.setFavorite(true);
         await sleep(1000);
@@ -340,12 +340,12 @@ export default function publicApiTestWithSystemApiTest () {
         await asset.setFavorite(true);
         let count= 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         await sleep(100);
         await asset.setFavorite(false);
         await sleep(1000);
@@ -373,12 +373,12 @@ export default function publicApiTestWithSystemApiTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count= 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} asset changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         await sleep(100);
         await helper.deleteAssets([asset.uri]);
         await sleep(2000);
@@ -414,14 +414,14 @@ export default function publicApiTestWithSystemApiTest () {
         const trashFileAsset = await trashFetchResult.getFirstObject();
         let count= 0;
         await sleep(500);
-        helper.on(trashFileAsset.uri, false, async (changeData) => {
+        helper.registerChange(trashFileAsset.uri, false, async (changeData) => {
           count++;
           console.info(`off_005 changeData: ${JSON.stringify(changeData)}`);
           expect(false).assertTrue();
           done();
         });
         await sleep(100);
-        helper.off(trashFileAsset.uri);
+        helper.unRegisterChange(trashFileAsset.uri);
         await sleep(100);
         await trashAlbum.recoverAssets([trashFileAsset]);
         await sleep(2000);
@@ -457,12 +457,12 @@ export default function publicApiTestWithSystemApiTest () {
         const trashFileAsset = await trashFetchResult.getFirstObject();
         let count= 0;
         await sleep(500);
-        helper.on(trashAlbum.albumUri, false, async (changeData) => {
+        helper.registerChange(trashAlbum.albumUri, false, async (changeData) => {
           count++;
           console.info(`off_006 changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(trashAlbum.albumUri);
+        helper.unRegisterChange(trashAlbum.albumUri);
         await sleep(100);
         await trashAlbum.deleteAssets([trashFileAsset]);
         await sleep(1000);
@@ -489,12 +489,12 @@ export default function publicApiTestWithSystemApiTest () {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
         await sleep(500);
-        helper.on(DEFAULT_ALBUM_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           count++;
           console.info(`off_009 changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(DEFAULT_ALBUM_URI);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         await sleep(100);
         await helper.deleteAlbums([album]);
         await sleep(1000);
@@ -527,12 +527,12 @@ export default function publicApiTestWithSystemApiTest () {
         await helper.deleteAssets([fileAsset.uri]);
         await sleep(500);
         let listenCount = 0;
-        helper.on(DEFAULT_ALBUM_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           listenCount++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(DEFAULT_ALBUM_URI);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         await sleep(100);
         // 1
         let albumName = 'testAlbum' + Date.now();
@@ -581,12 +581,12 @@ export default function publicApiTestWithSystemApiTest () {
         let listenCount = 0;
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'off14.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
-        helper.on(DEFAULT_PHOTO_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_PHOTO_URI, true, async (changeData) => {
           listenCount++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(DEFAULT_PHOTO_URI);
+        helper.unRegisterChange(DEFAULT_PHOTO_URI);
         await sleep(100);
         // 1
         let fd = await asset.open('rw');
@@ -639,7 +639,7 @@ export default function publicApiTestWithSystemApiTest () {
         await createAsset.close(fd);
         let count = 0;
         await sleep(500);
-        helper.on(createAsset.uri, false, async (changeData) => {
+        helper.registerChange(createAsset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ADD);
@@ -649,7 +649,7 @@ export default function publicApiTestWithSystemApiTest () {
         fd = await createAsset.getReadOnlyFd();
         await createAsset.close(fd);
         await sleep(1000);
-        helper.off(createAsset.uri);
+        helper.unRegisterChange(createAsset.uri);
         expect(count).assertEqual(0);
         done();
       } catch (error) {
@@ -674,7 +674,7 @@ export default function publicApiTestWithSystemApiTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count= 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
@@ -682,7 +682,7 @@ export default function publicApiTestWithSystemApiTest () {
         });
         await asset.setFavorite(true);
         await sleep(1000);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -708,7 +708,7 @@ export default function publicApiTestWithSystemApiTest () {
         await asset.setFavorite(true);
         let count= 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
@@ -716,7 +716,7 @@ export default function publicApiTestWithSystemApiTest () {
         });
         await asset.setFavorite(false);
         await sleep(1000);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -749,7 +749,7 @@ export default function publicApiTestWithSystemApiTest () {
         const trashFileAsset = await trashFetchResult.getFirstObject();
         let count= 0;
         await sleep(500);
-        helper.on(trashFileAsset.uri, false, async (changeData) => {
+        helper.registerChange(trashFileAsset.uri, false, async (changeData) => {
           count++;
           console.info(`on_callback_005 changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ADD);
@@ -757,7 +757,7 @@ export default function publicApiTestWithSystemApiTest () {
         });
         await trashAlbum.recoverAssets([trashFileAsset]);
         await sleep(2000);
-        helper.off(trashFileAsset.uri);
+        helper.unRegisterChange(trashFileAsset.uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -790,15 +790,15 @@ export default function publicApiTestWithSystemApiTest () {
         const trashFileAsset = await trashFetchResult.getFirstObject();
         let count= 0;
         await sleep(500);
-        helper.on(trashAlbum.albumUri, false, async (changeData) => {
+        helper.registerChange(trashAlbum.albumUri, false, async (changeData) => {
           count++;
           console.info(`on_callback_006 changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
-          // expect(changeData.extraUris[0]).assertEqual(trashFileAsset.uri);
+          expect(changeData.extraUris[0]).assertEqual(trashFileAsset.uri);
         });
         await trashAlbum.deleteAssets([trashFileAsset]);
         await sleep(1000);
-        helper.off(trashAlbum.albumUri);
+        helper.unRegisterChange(trashAlbum.albumUri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -824,7 +824,7 @@ export default function publicApiTestWithSystemApiTest () {
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
         await sleep(500);
-        helper.on(DEFAULT_ALBUM_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           listenCount++;
           if (listenCount < 2) {
             console.info(`on_callback_009 changeData: ${JSON.stringify(changeData)}`);
@@ -836,7 +836,7 @@ export default function publicApiTestWithSystemApiTest () {
         await helper.deleteAlbums([album]);
         await sleep(1000);
         expect(listenCount).assertEqual(1);
-        helper.off(DEFAULT_ALBUM_URI);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         done();
       } catch (error) {
         console.log(`on_callback_009: tryError: $${error}`);
@@ -860,7 +860,7 @@ export default function publicApiTestWithSystemApiTest () {
         const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'on14.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
         let photoAssetUri = asset.uri;
-        helper.on(DEFAULT_PHOTO_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_PHOTO_URI, true, async (changeData) => {
           listenCount++;
           switch (listenCount) {
             case 1:
@@ -894,7 +894,7 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(500);
         await asset.setFavorite(false);
         await sleep(1000);
-        helper.off(DEFAULT_PHOTO_URI);
+        helper.unRegisterChange(DEFAULT_PHOTO_URI);
         expect(listenCount).assertEqual(3);
         done();
       } catch (error) {
@@ -921,7 +921,7 @@ export default function publicApiTestWithSystemApiTest () {
         await asset.close(fd);
         let listenCount = 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           listenCount++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
@@ -936,7 +936,7 @@ export default function publicApiTestWithSystemApiTest () {
           await sleep(500);
         }
         await sleep(2000);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         expect(listenCount).assertEqual(10);
         done();
       } catch (error) {
@@ -965,7 +965,7 @@ export default function publicApiTestWithSystemApiTest () {
         await fileAsset.close(fd);
         let count= 0;
         await sleep(1000);
-        helper.on(fileAsset.uri, false, async (changeData) => {
+        helper.registerChange(fileAsset.uri, false, async (changeData) => {
           count++;
           console.info(`on_callback_017 changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
@@ -979,7 +979,7 @@ export default function publicApiTestWithSystemApiTest () {
         await fileAsset.close(fd);
         await sleep(1000);
         expect(count).assertEqual(1);
-        helper.off(fileAsset.uri);
+        helper.unRegisterChange(fileAsset.uri);
         done();
       } catch (error) {
         console.log(`on_callback_017: tryError: $${error}`);

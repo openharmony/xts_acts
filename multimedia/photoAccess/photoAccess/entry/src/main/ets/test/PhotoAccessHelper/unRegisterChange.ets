@@ -27,8 +27,8 @@ import {
   albumSubtype
 } from '../../../../../../../common'
 
-export default function offTest () {
-  describe('offTest', function () {
+export default function unRegisterChangeTest () {
+  describe('unRegisterChangeTest', function () {
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
     const DEFAULT_PHOTO_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_PHOTO_URI;
     const DEFAULT_ALBUM_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_ALBUM_URI;
@@ -48,12 +48,12 @@ export default function offTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         await sleep(100);
         const newTitle = testNum + asset.get(photoKeys.TITLE);
         asset.set(photoKeys.TITLE, newTitle);
@@ -80,12 +80,12 @@ export default function offTest () {
       const testNum = 'off_007';
       try {
         let count = 0;
-        helper.on(DEFAULT_ALBUM_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(DEFAULT_ALBUM_URI);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         await sleep(100);
         let albumName = testNum + Date.now();
         await helper.createAlbum(albumName);
@@ -116,12 +116,12 @@ export default function offTest () {
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
         await sleep(500);
-        helper.on(albumUri, false, async (changeData) => {
+        helper.registerChange(albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(albumUri);
+        helper.unRegisterChange(albumUri);
         await sleep(100);
         album.albumName = Date.now() + album.albumName;
         await album.commitModify();
@@ -155,12 +155,12 @@ export default function offTest () {
         albumUri = album.albumUri;
         await album.addAssets([asset]);
         await sleep(500);
-        helper.on(albumUri, false, async (changeData) => {
+        helper.registerChange(albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(albumUri);
+        helper.unRegisterChange(albumUri);
         await sleep(100);
         album.albumName = testNum + album.albumName;
         await album.commitModify();
@@ -191,12 +191,12 @@ export default function offTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
         await sleep(500);
-        helper.on(album.albumUri, false, async (changeData) => {
+        helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(album.albumUri);
+        helper.unRegisterChange(album.albumUri);
         await sleep(100);
         await album.addAssets([asset]);
         await sleep(1000);
@@ -227,12 +227,12 @@ export default function offTest () {
         let count = 0;
         await album.addAssets([asset]);
         await sleep(500);
-        helper.on(album.albumUri, false, async (changeData) => {
+        helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(album.albumUri);
+        helper.unRegisterChange(album.albumUri);
         await sleep(100);
         await album.removeAssets([asset]);
         await sleep(1000);
@@ -260,16 +260,16 @@ export default function offTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let listenCount = 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           listenCount++;
           console.info(`${testNum} changeData1: ${JSON.stringify(changeData)}`);
         });
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           listenCount++;
           console.info(`${testNum} changeData2: ${JSON.stringify(changeData)}`);
         });
         await sleep(100);
-        helper.off(asset.uri);
+        helper.unRegisterChange(asset.uri);
         await sleep(100);
         const newTitle = testNum + asset.get(photoKeys.TITLE);
         asset.set(photoKeys.TITLE, newTitle);
@@ -307,13 +307,13 @@ export default function offTest () {
         const callback2 = async (changeData) => {
           listenCount2++;
           console.info(`${testNum} callback2: ${JSON.stringify(changeData)}`);
-          helper.off(asset.uri, callback2);
+          helper.unRegisterChange(asset.uri, callback2);
         };
-        helper.on(asset.uri, false, callback1);
-        helper.on(asset.uri, false, callback2);
+        helper.registerChange(asset.uri, false, callback1);
+        helper.registerChange(asset.uri, false, callback2);
 
         await sleep(100);
-        helper.off(asset.uri, callback1);
+        helper.unRegisterChange(asset.uri, callback1);
         await sleep(100);
         const newTitle = testNum + asset.get(photoKeys.TITLE);
         asset.set(photoKeys.TITLE, newTitle);

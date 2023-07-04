@@ -14,6 +14,7 @@
  */
 
 // @ts-nocheck
+import fileio from "@ohos.fileio";
 import { describe, it, expect } from 'deccjsunit/index'
 import {
   photoKeys,
@@ -34,7 +35,12 @@ export default function getReadOnlyFdTest () {
             expect(false).assertTrue();
           } else {
             console.info(`${testNum} fd: ${fd}`);
-            expect(isNum(fd)).assertTrue();
+            try {
+              await fileio.write(fd, testNum);
+              expect(false).assertTrue();
+            } catch (error) {
+              console.info(`${testNum} error: ${error}`);
+            }
           }
           done();
         })
@@ -50,11 +56,11 @@ export default function getReadOnlyFdTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         const fd = await asset.getReadOnlyFd();
         console.info(`${testNum} fd: ${fd}`);
-        expect(isNum(fd)).assertTrue();
+        await fileio.write(fd, testNum);
+        expect(false).assertTrue();
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
-        expect(false).assertTrue();
         done();
       }
     }

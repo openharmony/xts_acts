@@ -35,12 +35,12 @@ import assetGetLastObjectTest from './PhotoAssetFetchResult/getLastObject'
 import assetGetNextObjectTest from './PhotoAssetFetchResult/getNextObject'
 import assetGetPositionObjectTest from './PhotoAssetFetchResult/getObjectByPosition'
 import assetIsAfterLastTest from './PhotoAssetFetchResult/isAfterLast'
-import createAssetTest from './UserFileManager/createAsset'
-import getAlbumsTest from './UserFileManager/getAlbums'
-import getAssetsTest from './UserFileManager/getAssets'
-import offTest from './UserFileManager/off'
-import onTest from './UserFileManager/on'
-import releaseTest from './UserFileManager/release'
+import createAssetTest from './PhotoAccessHelper/createAsset'
+import getAlbumsTest from './PhotoAccessHelper/getAlbums'
+import getAssetsTest from './PhotoAccessHelper/getAssets'
+import unRegisterChangeTest from './PhotoAccessHelper/unRegisterChange'
+import registerChangeTest from './PhotoAccessHelper/registerChange'
+import releaseTest from './PhotoAccessHelper/release'
 import checkAttrTest from './PhotoAsset/checkAttr'
 import closeTest from './PhotoAsset/close'
 import commitModifyTest from './PhotoAsset/commitModify'
@@ -74,8 +74,8 @@ export default function testsuite () {
   createAssetTest()
   getAlbumsTest()
   getAssetsTest()
-  offTest()
-  onTest()
+  unRegisterChangeTest()
+  registerChangeTest()
   releaseTest()
   checkAttrTest()
   closeTest()

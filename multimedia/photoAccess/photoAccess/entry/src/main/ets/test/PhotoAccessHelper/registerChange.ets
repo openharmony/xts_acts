@@ -25,8 +25,8 @@ import {
   photoType,
 } from '../../../../../../../common'
 
-export default function onTest () {
-  describe('onTest', function () {
+export default function registerChangeTest () {
+  describe('registerChangeTest', function () {
     const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
     const { NOTIFY_ADD, NOTIFY_UPDATE, NOTIFY_REMOVE, NOTIFY_ALBUM_ADD_ASSET, NOTIFY_ALBUM_REMOVE_ASSET } =
       photoAccessHelper.NotifyType;
@@ -48,10 +48,10 @@ export default function onTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
         await sleep(500);
-        helper.on(asset.uri, false, async (changeData) => {
+        helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          helper.off(asset.uri);
+          helper.unRegisterChange(asset.uri);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(asset.uri);
         });
@@ -81,10 +81,10 @@ export default function onTest () {
       try {
         let changeDataUri = '';
         let listenCount = 0;
-        helper.on(DEFAULT_ALBUM_URI, true, async (changeData) => {
+        helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
           listenCount++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          helper.off(DEFAULT_ALBUM_URI);
+          helper.unRegisterChange(DEFAULT_ALBUM_URI);
           changeDataUri = changeData.uris[0];
           expect(changeData.type).assertEqual(NOTIFY_ADD);
         });
@@ -92,7 +92,7 @@ export default function onTest () {
         let album = await helper.createAlbum(albumName);
         let creatAlbumUri = album.albumUri;
         await sleep(2000);
-        helper.off(DEFAULT_ALBUM_URI);
+        helper.unRegisterChange(DEFAULT_ALBUM_URI);
         expect(creatAlbumUri).assertEqual(changeDataUri);
         expect(listenCount).assertEqual(1);
         done();
@@ -120,7 +120,7 @@ export default function onTest () {
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
         await sleep(500);
-        helper.on(albumUri, false, async (changeData) => {
+        helper.registerChange(albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
@@ -129,7 +129,7 @@ export default function onTest () {
         album.albumName = Date.now() + album.albumName;
         await album.commitModify();
         await sleep(1000);
-        helper.off(albumUri);
+        helper.unRegisterChange(albumUri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -156,16 +156,16 @@ export default function onTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
         await sleep(500);
-        helper.on(album.albumUri, false, async (changeData) => {
+        helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_ADD_ASSET);
           expect(changeData.uris[0]).assertEqual(album.albumUri);
-          // expect(changeData.extraUris[0]).assertEqual(asset.uri);
+          expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
         await album.addAssets([asset]);
         await sleep(1000);
-        helper.off(album.albumUri);
+        helper.unRegisterChange(album.albumUri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
@@ -193,16 +193,16 @@ export default function onTest () {
         let count = 0;
         await album.addAssets([asset]);
         await sleep(500);
-        helper.on(album.albumUri, false, async (changeData) => {
+        helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_ALBUM_REMOVE_ASSET);
           expect(changeData.uris[0]).assertEqual(album.albumUri);
-          // expect(changeData.extraUris[0]).assertEqual(asset.uri);
+          expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
         await album.removeAssets([asset]);
         await sleep(1000);
-        helper.off(album.albumUri);
+        helper.unRegisterChange(album.albumUri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {

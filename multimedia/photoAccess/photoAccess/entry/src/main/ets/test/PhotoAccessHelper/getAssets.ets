@@ -133,9 +133,9 @@ export default function getAssetsTest () {
      * @tc.desc      : getAssets image
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getAssets_callback_003', 0, async function (done) {
+    it('getAssets_callback_003', 2, async function (done) {
       const testNum = 'getAssets_callback_003';
       await getAssetsAbnormalCallbackTest(done, testNum, undefined);
     });
@@ -177,9 +177,9 @@ export default function getAssetsTest () {
      * @tc.desc      : getAssets image
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('getAssets_promise_003', 0, async function (done) {
+    it('getAssets_promise_003', 2, async function (done) {
       const testNum = 'getAssets_promise_003';
       await getAssetsAbnormalPromiseTest(done, testNum, undefined);
     });
