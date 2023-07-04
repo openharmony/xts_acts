@@ -472,7 +472,6 @@ export default function relationalStoreBackupRestoreCallbackTest() {
                                 console.error(`Restore failed, code is ${error.code},message is ${error.message}`);
                                 expect(error.code === 14800011).assertTrue();
                                 done();
-                                //                        return;
                             } else {
                                 console.info(`Restore2 success.`);
                                 expect(error !== undefined).assertFail();
