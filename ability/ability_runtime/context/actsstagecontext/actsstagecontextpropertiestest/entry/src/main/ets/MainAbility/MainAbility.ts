@@ -23,6 +23,7 @@ export default class MainAbility extends Ability {
         console.log("ActsStageContextPropertiesTest  MainAbility onCreate")
         globalThis.abilityWant = want;
         globalThis.abilityContext = this.context
+        globalThis.abilityContextRes = this.context.createModuleContext('entry_test')
         let abilityDelegator: any
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let abilityDelegatorArguments: any
