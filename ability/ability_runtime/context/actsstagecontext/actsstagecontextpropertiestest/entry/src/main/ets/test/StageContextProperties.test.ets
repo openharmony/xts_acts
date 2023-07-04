@@ -398,7 +398,7 @@ export default function stageContextPropertiesTest(abilityContext) {
         it('SUB_AA_OpenHarmony_Context_0900', 0, async function (done) {
             TAG = "SUB_AA_OpenHarmony_Context_0900"
             console.log(TAG + " --- start");
-            let result = await abilityContext.resourceManager.getString(16777219);
+            let result = await globalThis.abilityContextRes.resourceManager.getString(16777219);
             console.log(TAG + " : result = " + JSON.stringify(result));
             expect(result).assertEqual("entry_MainAbility");
             done();
@@ -413,7 +413,7 @@ export default function stageContextPropertiesTest(abilityContext) {
         it('SUB_AA_OpenHarmony_Context_1000', 0, async function (done) {
             TAG = "SUB_AA_OpenHarmony_Context_1000"
             console.log(TAG + " --- start");
-            let result = await globalThis.abilityStageContext.resourceManager.getString(16777219);
+            let result = await globalThis.abilityStageContextRes.resourceManager.getString(16777219);
             console.log(TAG + " : result = " + JSON.stringify(result));
             expect(result).assertEqual("entry_MainAbility");
             done();
@@ -428,10 +428,10 @@ export default function stageContextPropertiesTest(abilityContext) {
         it('SUB_AA_OpenHarmony_Context_1100', 0, async function (done) {
             TAG = "SUB_AA_OpenHarmony_Context_1100"
             console.log(TAG + " --- start");
-            let result = await globalThis.abilityStageContext.getApplicationContext()
+            let result = await globalThis.abilityStageContextRes.getApplicationContext()
                 .resourceManager.getString(16777219);
             console.log(TAG + " : result = " + JSON.stringify(result));
-            expect(result).assertEqual("entry_MainAbility");
+            expect(result).assertEqual("feature_MainAbility");
             done();
         });
 
@@ -448,9 +448,11 @@ export default function stageContextPropertiesTest(abilityContext) {
             async function SubscribeCallBack(err, data) {
                 console.log(TAG + " Subscribe CallBack data: " + JSON.stringify(data)
                     + "err: " + JSON.stringify(err));
-                let result = await globalThis.abilityContextA.resourceManager.getString(16777219);
-                console.log(TAG + " : result = " + JSON.stringify(result));
-                expect(result).assertEqual("entry_MainAbility");
+                console.log(TAG, JSON.stringify(globalThis.abilityContextA))
+                console.log(TAG, JSON.stringify(globalThis.abilityContextA.resourceManager))
+                let result = globalThis.abilityContextA.resourceManager.getStringSync(16777219);
+                console.log(TAG + " : results = " + JSON.stringify(result));
+                expect(result).assertEqual("feature_MainAbility");
                 checkContextDirEqualB(abilityContext, globalThis.abilityContextA)
                 commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
             }
