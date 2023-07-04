@@ -465,6 +465,7 @@ export default function relationalStoreBackupRestoreCallbackTest() {
                         if (err) {
                             console.error(`Restore failed, code is ${err.code},message is ${err.message}`);
                             expect(err != null).assertFail();
+                            done();
                         }
                         console.info(`Restore1 success.`);
                         RdbStore.restore(DATABASE_BACKUP_NAME, function (error) {
