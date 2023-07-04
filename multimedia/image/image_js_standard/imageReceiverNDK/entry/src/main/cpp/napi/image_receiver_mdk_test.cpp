@@ -51,6 +51,8 @@ napi_value ImageReceiverNDKTest::Init(napi_env env, napi_value exports)
         STATIC_FUNCTION("imageSize", JsImageSize),
         STATIC_FUNCTION("imageFormat", JsImageFormat),
         STATIC_FUNCTION("imageGetComponent", JsImageGetComponent),
+        STATIC_FUNCTION("receiverRelease", JsReceiverRelease),
+        STATIC_FUNCTION("imageRelease", JsImageRelease),
     };
     napi_define_properties(env, exports, sizeof(props) / sizeof(props[0]), props);
     return exports;
@@ -183,6 +185,22 @@ napi_value ImageReceiverNDKTest::JsOn(napi_env env, napi_callback_info info)
     return result;
 }
 
+napi_value ImageReceiverNDKTest::JsReceiverRelease(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+
+    ImageReceiverNative *native = getNativeReceiver(env, info);
+    if (native == nullptr)
+    {
+        return result;
+    }
+
+    int32_t res = OH_Image_Receiver_Release(native);
+    napi_create_int32(env, res, &result);
+    return result;
+}
+
 static void setInt32NamedProperty(napi_env env, napi_value object, const char* utf8name, int32_t value)
 {
     napi_value tmp;
@@ -274,6 +292,22 @@ static ImageNative* getNativeImage(napi_env env, napi_callback_info info)
         return nullptr;
     }
     return OH_Image_InitImageNative(env, argValue[NUM_0]);
+}
+
+napi_value ImageReceiverNDKTest::JsImageRelease(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+
+    ImageNative *native = getNativeImage(env, info);
+    if (native == nullptr)
+    {
+        return result;
+    }
+
+    int32_t res = OH_Image_Release(native);
+    napi_create_int32(env, res, &result);
+    return result;
 }
 
 napi_value ImageReceiverNDKTest::JsImageClipRect(napi_env env, napi_callback_info info)

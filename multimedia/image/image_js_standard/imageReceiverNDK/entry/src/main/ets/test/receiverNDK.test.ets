@@ -365,5 +365,70 @@ export default function ImageReceiverNDKTest() {
                 done();
             }
         })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900
+         * @tc.name      : img.release
+         * @tc.desc      : 1.createImageReceiver
+         *               : 2.readLatestImage
+         *               : 3.release
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900', 0, async function (done) {
+            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900");
+            try {
+                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_0900");
+                let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
+                let onRet = ndkTest.on(myReceiver);
+                mlg.log("onRet " + JSON.stringify(onRet));
+                expect(onRet != undefined).assertTrue();
+                var dummy = myReceiver.test;
+                mlg.log("dummy test !!! ")
+                let myLatestImage = ndkTest.readLatestImage(myReceiver);
+                let myImageComponent = ndkTest.imageGetComponent(myLatestImage, JPEG);
+                var bufferArr = new Uint8Array(myImageComponent.byteBuffer);
+                mlg.log("myImageComponent.byteBuffer size " + JSON.stringify(bufferArr.length));
+                for (var i = 0; i < 30; i++) {
+                    mlg.log("myImageComponent.byteBuffer data " + JSON.stringify(bufferArr[i]));
+                }
+                expect(myImageComponent.byteBuffer != undefined).assertTrue();
+                let releaseRes = ndkTest.imageRelease(myLatestImage);
+                mlg.log('release result ' + JSON.stringify(releaseRes));
+                expect(releaseRes != undefined).assertTrue();
+                done();
+            } catch (error) {
+                mlg.log("Test exception " + error);
+                expect().assertFail();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000
+         * @tc.name      : receiver.release
+         * @tc.desc      : 1.createImageReceiver
+         *               : 2.release
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000', 0, async function (done) {
+            let mlg = logger("SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000");
+            try {
+                mlg.log("SUB_GRAPHIC_IMAGE_RECEIVERNDK_1000");
+                let myReceiver = ndkTest.createImageReceiver(WIDTH, HEIGHT, RECEIVER_FORMAT, CAPACITY);
+
+                let releaseRes = ndkTest.receiverRelease(myReceiver);
+                mlg.log('release result ' + JSON.stringify(releaseRes));
+                expect(releaseRes != undefined).assertTrue();
+                done();
+            } catch (error) {
+                mlg.log("Test exception " + error);
+                expect().assertFail();
+                done();
+            }
+        })
     })
 }
