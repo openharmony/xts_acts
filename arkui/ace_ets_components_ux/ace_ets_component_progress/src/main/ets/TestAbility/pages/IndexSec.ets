@@ -200,9 +200,37 @@ struct progressSecTest {
                         showDefaultPercentage: this.progress_capsule_showDefaultPercentage_boolean
                     })
 
+                Progress({ value: 60, total: 100, type: ProgressType.Capsule })
+                    .key('progress_capsule_resource_judge')
+                    .style({
+                        borderWidth: $r('sys.float.ohos_id_text_margin_vertical'),
+                        borderColor: $r('sys.color.ohos_id_color_connected'),
+                        font: {
+                            size: $r('sys.float.ohos_id_text_margin_vertical'),
+                            weight: this.progress_capsule_fontWeight_number,
+                            style: this.progress_capsule_fontStyle_fontStyle
+                        },
+                        fontColor: $r('sys.color.ohos_id_color_connected'),
+                        content: this.progress_capsule_content_string,
+                        enableScanEffect: this.progress_capsule_enableScanEffect_boolean,
+                        showDefaultPercentage: this.progress_capsule_showDefaultPercentage_boolean
+                    })
+
 
                 Progress({ value: 60, total: 100, type: ProgressType.Ring })
                     .key('progress_ring_default')
+
+                Progress({ value: 60, total: 100, type: ProgressType.Ring })
+                    .key('progress_ring_default_default')
+                    .backgroundColor($r('sys.color.ohos_id_color_component_normal'))
+
+                Progress({ value: 60, total: 100, type: ProgressType.Ring })
+                    .key('progress_ring_default_default_color_begin')
+                    .color($r('sys.color.ohos_id_color_ring_progress_begin'))
+
+                Progress({ value: 60, total: 100, type: ProgressType.Ring })
+                    .key('progress_ring_default_default_color_end')
+                    .color($r('sys.color.ohos_id_color_ring_progress_end'))
 
                 Progress({ value: 60, total: 100, type: ProgressType.Ring })
                     .key('progress_ring_number')
@@ -233,6 +261,17 @@ struct progressSecTest {
                         enableScanEffect: this.progress_ring_enableScanEffect_boolean
                     })
                     .color(this.progress_ring_color_purity)
+
+                Progress({ value: 60, total: 100, type: ProgressType.Ring })
+                    .key('progress_ring_resource_judge')
+                    .style({
+                        strokeWidth: $r('sys.float.ohos_id_text_margin_vertical'),
+                        shadow: this.progress_ring_shadow_bool,
+                        status: this.progress_ring_status_progressStatus,
+                        enableScanEffect: this.progress_ring_enableScanEffect_boolean
+                    })
+                    .color($r('sys.color.ohos_id_color_background'))
+                    .backgroundColor($r('sys.color.ohos_id_color_connected'))
 
                 Progress({ value: 60, total: 100, type: ProgressType.Ring })
                     .key('progress_ring_linear_number')

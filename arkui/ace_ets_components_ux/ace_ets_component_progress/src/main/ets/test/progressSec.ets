@@ -146,11 +146,32 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
+      let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(newJson));
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(newJsonDefault));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.backgroundColor);
+      let strOpicity = JSON.stringify(objDefault.$attrs.padding);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strOpicity);
+
+      let strColor_2 = "0x" + strColor.substr(2, 2);
+      let strOpicity_2 = strOpicity.substr(1, 4);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strColor_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + strOpicity_2);
+
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(calculatedOpicaty));
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + calculatedOpicaty.toString(16));
+
+      let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
+      console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + finalResult);
+
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual("#33FFFFFF");
+      expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BackgroundColor_0100] end");
       done();
     });
@@ -163,11 +184,32 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Capsule_Color_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
+      let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(newJson));
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(newJsonDefault));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.color);
+      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strOpicity);
+
+      let strColor_2 = "0x" + strColor.substr(2, 2);
+      let strOpicity_2 = strOpicity.substr(1, 4);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strColor_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + strOpicity_2);
+
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(calculatedOpicaty));
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + calculatedOpicaty.toString(16));
+
+      let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
+      console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + finalResult);
+
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100]: " + JSON.stringify(obj.$attrs.color));
-      expect(obj.$attrs.color).assertEqual("#33006CDE");
+      expect(obj.$attrs.color).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_Color_0100] end");
       done();
     });
@@ -180,12 +222,14 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
+      let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("1.00vp");
+      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0100] end");
       done();
     });
@@ -295,11 +339,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
+      let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("2.00vp");
+      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objJudge.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400] end");
       done();
     });
@@ -523,11 +569,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("1.00vp");
+      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1000] end");
       done();
     });
@@ -599,11 +647,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("1.00vp");
+      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1200] end");
       done();
     });
@@ -637,11 +687,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderWidth));
-      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual("1.00vp");
+      expect(obj.$attrs.capsuleStyle.borderWidth).assertEqual(objDefault.$attrs.capsuleStyle.borderWidth);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_1300] end");
       done();
     });
@@ -654,12 +706,33 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Capsule_BorderColor_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
+      let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(newJson));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(newJsonDefault));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strOpicity);
+
+      let strColor_2 = "0x" + strColor.substr(2, 2);
+      let strOpicity_2 = strOpicity.substr(1, 4);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strColor_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + strOpicity_2);
+
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(calculatedOpicaty));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + calculatedOpicaty.toString(16));
+
+      let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + finalResult);
+
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#33006CDE");
+      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0100] end");
       done();
     });
@@ -807,11 +880,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
+      let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#FF00CB87");
+      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(objJudge.$attrs.capsuleStyle.borderColor);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500] end");
       done();
     });
@@ -845,11 +920,33 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(strJson))
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(strJsonDefault));
+
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strOpicity);
+
+      let strColor_2 = "0x" + strColor.substr(2, 2);
+      let strOpicity_2 = strOpicity.substr(1, 4);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strColor_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + strOpicity_2);
+
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(calculatedOpicaty));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + calculatedOpicaty.toString(16));
+
+      let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + finalResult);
+
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#33006CDE");
+      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0600] end");
       done();
     });
@@ -883,11 +980,33 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(strJson))
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(strJsonDefault));
+
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strOpicity);
+
+      let strColor_2 = "0x" + strColor.substr(2, 2);
+      let strOpicity_2 = strOpicity.substr(1, 4);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strColor_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + strOpicity_2);
+
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(calculatedOpicaty));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + calculatedOpicaty.toString(16));
+
+      let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + finalResult);
+
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#33006CDE");
+      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0700] end");
       done();
     });
@@ -921,11 +1040,33 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(strJson))
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(strJsonDefault));
+
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.capsuleStyle.borderColor);
+      let strOpicity = JSON.stringify(objDefault.$attrs.margin);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strColor);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strOpicity);
+
+      let strColor_2 = "0x" + strColor.substr(2, 2);
+      let strOpicity_2 = strOpicity.substr(1, 4);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strColor_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + strOpicity_2);
+
+      let calculatedOpicaty = parseInt(strColor_2) * Number(strOpicity_2);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(calculatedOpicaty));
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + calculatedOpicaty.toString(16));
+
+      let finalResult = "#" + calculatedOpicaty.toString(16) + strColor.substr(4, 6);
+      console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + finalResult);
+
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.borderColor));
-      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual("#33006CDE");
+      expect(obj.$attrs.capsuleStyle.borderColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0800] end");
       done();
     });
@@ -938,13 +1079,15 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Capsule_Font_Size_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
+      let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("12.00fp");
+      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0100] end");
       done();
     });
@@ -1056,12 +1199,14 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
+      let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("2.00vp");
+      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objJudge.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400] end");
       done();
     });
@@ -1290,12 +1435,14 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("12.00fp");
+      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1000] end");
       done();
     });
@@ -1368,12 +1515,14 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("12.00fp");
+      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1200] end");
       done();
     });
@@ -1407,12 +1556,14 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_number');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font));
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300]: " + JSON.stringify(obj.$attrs.capsuleStyle.font.size));
-      expect(obj.$attrs.capsuleStyle.font.size).assertEqual("12.00fp");
+      expect(obj.$attrs.capsuleStyle.font.size).assertEqual(objDefault.$attrs.capsuleStyle.font.size);
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_1300] end");
       done();
     });
@@ -2126,12 +2277,14 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Capsule_FontColor_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100] start");
       let newJson = getInspectorByKey('progress_capsule_default');
+      let newJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FF182431");
+      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0100] end");
       done();
     });
@@ -2279,11 +2432,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
+      let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FF00CB87");
+      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objJudge.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500] end");
       done();
     });
@@ -2317,11 +2472,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FF182431");
+      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0600] end");
       done();
     });
@@ -2355,11 +2512,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FF182431");
+      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0700] end");
       done();
     });
@@ -2393,11 +2552,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_string');
+      let strJsonDefault = getInspectorByKey('progress_capsule_default_default');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle));
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800]: " + JSON.stringify(obj.$attrs.capsuleStyle.fontColor));
-      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual("#FF182431");
+      expect(obj.$attrs.capsuleStyle.fontColor).assertEqual(objDefault.$attrs.capsuleStyle.fontColor);
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0800] end");
       done();
     });
@@ -3039,11 +3200,19 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100] start");
       let newJson = getInspectorByKey('progress_ring_default');
+      let newJsonDefault = getInspectorByKey('progress_ring_default_default');
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefault = JSON.parse(newJsonDefault);
+
+      let strColor = JSON.stringify(objDefault.$attrs.backgroundColor);
+      console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + strColor);
+
+      let finalResult = "#08" + strColor.substr(4, 6);
+
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100]: " + JSON.stringify(obj.$attrs.backgroundColor));
-      expect(obj.$attrs.backgroundColor).assertEqual("#08182431");
+      expect(obj.$attrs.backgroundColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_BackgroundColor_0100] end");
       done();
     });
@@ -3152,7 +3321,7 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_ring_resource');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(newJson));
 
-      let progress_ring_strokeWidth_resource = $r('sys.float.ohos_id_text_margin_vertical');;
+      let progress_ring_strokeWidth_resource = $r('sys.float.ohos_id_text_margin_vertical');
       try {
         var eventData = {
           data: {
@@ -3171,11 +3340,13 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_resource');
+      let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(obj.$attrs.ringStyle));
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(obj.$attrs.ringStyle.strokeWidth));
-      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual("2.00vp");
+      expect(obj.$attrs.ringStyle.strokeWidth).assertEqual(objJudge.$attrs.ringStyle.strokeWidth);
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400] end");
       done();
     });
@@ -3870,11 +4041,17 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Ring_Color_0100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100] start");
       let newJson = getInspectorByKey('progress_ring_default');
+      let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefaultColorBegin = JSON.parse(newJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(newJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0100] end");
       done();
     });
@@ -4056,10 +4233,15 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_resource');
+      let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
+      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF00CB87\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600] end");
       done();
     });
@@ -4093,10 +4275,17 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_null');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0700]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_0700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0700] end");
       done();
     });
@@ -4130,10 +4319,17 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_undefined');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0800]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_0800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_0800] end");
       done();
     });
@@ -4146,11 +4342,17 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Ring_Color_1100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100] start");
       let newJson = getInspectorByKey('progress_linear_color_default');
+      let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefaultColorBegin = JSON.parse(newJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(newJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1100] end");
       done();
     });
@@ -4332,10 +4534,15 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_resource');
+      let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
+      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF00CB87\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600] end");
       done();
     });
@@ -4369,10 +4576,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_null');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1700] end");
       done();
     });
@@ -4406,10 +4621,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_undefined');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_1800] end");
       done();
     });
@@ -4422,11 +4645,17 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Ring_Color_2100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100] start");
       let newJson = getInspectorByKey('progress_eclipse_color_default');
+      let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefaultColorBegin = JSON.parse(newJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(newJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2100] end");
       done();
     });
@@ -4608,10 +4837,15 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_resource');
+      let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
+      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF00CB87\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600] end");
       done();
     });
@@ -4645,10 +4879,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_null');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2700] end");
       done();
     });
@@ -4682,10 +4924,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_undefined');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_2800] end");
       done();
     });
@@ -4698,11 +4948,17 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Ring_Color_3100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100] start");
       let newJson = getInspectorByKey('progress_scaleRing_color_default');
+      let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefaultColorBegin = JSON.parse(newJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(newJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3100] end");
       done();
     });
@@ -4884,10 +5140,15 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_resource');
+      let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
+      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF00CB87\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600] end");
       done();
     });
@@ -4921,10 +5182,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_null');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3700] end");
       done();
     });
@@ -4958,10 +5227,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_undefined');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_3800] end");
       done();
     });
@@ -4974,11 +5251,17 @@ export default function progressSecTest() {
     it('[ArkUI_Stage_Progress_Ring_Color_4100]', 0, async function (done) {
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100] start");
       let newJson = getInspectorByKey('progress_capsule_color_default');
+      let newJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let newJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100]: " + JSON.stringify(newJson));
 
       let obj = JSON.parse(newJson);
+      let objDefaultColorBegin = JSON.parse(newJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(newJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF86C1FF\",\"offset\":\"0.000000\"},{\"color\":\"#FF254FF7\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4100] end");
       done();
     });
@@ -5160,10 +5443,15 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_resource');
+      let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objJudge = JSON.parse(strJsonJudge);
+      let finalResult = "[{\"color\":\"" + objJudge.$attrs.backgroundColor + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objJudge.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF00CB87\",\"offset\":\"0.000000\"},{\"color\":\"#FFFFFFFF\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600] end");
       done();
     });
@@ -5197,10 +5485,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_null');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4700] end");
       done();
     });
@@ -5234,10 +5530,18 @@ export default function progressSecTest() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_undefined');
+      let strJsonDefaultColorBegin = getInspectorByKey('progress_ring_default_default_color_begin');
+      let strJsonDefaultColorEnd = getInspectorByKey('progress_ring_default_default_color_end');
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(strJson))
+
       let obj = JSON.parse(strJson);
+      let objDefaultColorBegin = JSON.parse(strJsonDefaultColorBegin);
+      let objDefaultColorEnd = JSON.parse(strJsonDefaultColorEnd);
+      let finalResult = "[{\"color\":\"" + objDefaultColorEnd.$attrs.color + "\",\"offset\":\"0.000000\"},{\"color\":\"" + objDefaultColorBegin.$attrs.color + "\",\"offset\":\"1.000000\"}]"
+      finalResult = "[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]"
+
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800]: " + JSON.stringify(obj.$attrs.progressGradientColor));
-      expect(obj.$attrs.progressGradientColor).assertEqual("[{\"color\":\"#FF000000\",\"offset\":\"0.000000\"},{\"color\":\"#FF000000\",\"offset\":\"1.000000\"}]");
+      expect(obj.$attrs.progressGradientColor).assertEqual(finalResult);
       console.info("[ArkUI_Stage_Progress_Ring_Color_4800] end");
       done();
     });
