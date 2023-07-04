@@ -18,7 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 struct stageMediaquery {
   @State color: string = '#000'
   @State text: string = 'Test'
-  listener = globalThis.uiContent.getMediaquery().matchMediaSync('(orientation: landscape)')
+  listener = globalThis.uiContent.getMediaQuery().matchMediaSync('(orientation: landscape)')
   aboutToAppear() {
     this.listener.on('change', (mediaQueryResult) => {
       if (mediaQueryResult.matches) {

@@ -56,6 +56,8 @@ export default function gridScrollbarUpdateTest() {
       console.info('Grid_scrollbarUpdate_0801 START');
       setTimeout(()=>{
         try{
+          let computeda: ComputedBarAttribute = { totalOffset:10, totalLength:10 }
+          console.info("Grid_scrollbarUpdate_0801 computeda is: " + JSON.stringify(computeda))
           let strJson = getInspectorByKey('Grid_scrollbarUpdate_0800');
           console.info('Grid_scrollbarUpdate_0801 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
@@ -77,6 +79,8 @@ export default function gridScrollbarUpdateTest() {
       console.info('Grid_scrollbarUpdate_0802 START');
       setTimeout(()=>{
         try{
+          let computedb: ComputedBarAttribute = { totalOffset:0, totalLength:0 }
+          console.info("Grid_scrollbarUpdate_0802 computedb is: " + JSON.stringify(computedb))
           let strJson = getInspectorByKey('Grid_scrollbarUpdate_0800');
           console.info('Grid_scrollbarUpdate_0802 START  :'+ JSON.stringify(strJson));
           let obj = JSON.parse(strJson);
