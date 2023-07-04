@@ -193,8 +193,8 @@ export default function lifecycleTest() {
           expect(code).assertEqual(0);
           console.log("------------Singlehap_LifeCycleTest_0200 END-------------");
           done();
-        }, 1000);
-      }, 3000);
+        }, 500);
+      }, 3500);
     });
 
     /*
@@ -279,7 +279,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_0300 END-------------");
           done();
         }, 2000);
-      }, 3000);
+      }, 3500);
     });
 
     /*
@@ -808,7 +808,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2000);
+      }, 2500);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -852,7 +852,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_0900 END-------------");
             done();
           });
-      }, 4000);
+      }, 4800);
     });
 
     /*
@@ -891,7 +891,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2000);
+      }, 2500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list6));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
@@ -905,7 +905,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_1000 END-------------");
             done();
           });
-      }, 4500);
+      }, 5000);
     });
 
     /*
@@ -944,7 +944,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2000);
+      }, 2500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list7));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid7));
@@ -970,7 +970,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_1100 END-------------");
           done();
         });
-      }, 4000);
+      }, 4500);
     });
     /*
      * @tc.number  Singlehap_LifeCycleTest_1200
@@ -1008,7 +1008,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2000);
+      }, 2500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list8));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid8));
@@ -1034,7 +1034,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_LifeCycleTest_1200 END-------------");
           done();
         });
-      }, 4000);
+      }, 5000);
     });
 
     /*
@@ -1215,8 +1215,8 @@ export default function lifecycleTest() {
             }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
-        }, 1000);
-      }, 3000);
+        }, 500);
+      }, 3500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list11));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid11));
@@ -1246,7 +1246,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_1500 END-------------");
             done();
           });
-      }, 6000);
+      }, 7000);
     });
 
     var callbackid_NA = 100
@@ -1388,7 +1388,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
         });
-      }, 2500);
+      }, 3000);
       setTimeout(function () {
         var str = {
           "bundleName": "com.example.lifecycle_xts",
@@ -1412,7 +1412,7 @@ export default function lifecycleTest() {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         }, 500);
-      }, 4000);
+      }, 4200);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list12));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
@@ -1442,7 +1442,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_2000 END-------------");
             done();
           });
-      }, 6200);
+      }, 7500);
     });
 
     /*
@@ -1477,7 +1477,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 1000);
+      }, 500);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " firstCallback callbackid1 : " + JSON.stringify(globalThis.callbackid1));
@@ -1497,7 +1497,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
             console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
           });
-      }, 4500);
+      }, 3500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey1 : " + JSON.stringify(globalThis.list1));
         let templist1 = globalThis.list1;
@@ -1525,7 +1525,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_LifeCycleTest_2100 END-------------");
             done();
           });
-      }, 7000);
+      }, 7500);
     });
   })
 }
