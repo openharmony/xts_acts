@@ -126,12 +126,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_createPanelCallback_0010 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 10
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 10
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_createPanelPromise_0020', 0, async function (done) {
@@ -178,12 +178,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_createPanelPromise_0020 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 20
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 20
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030', 0, async function (done) {
@@ -230,12 +230,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_destroyPanelCallback_0030 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 30
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 30
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040', 0, async function (done) {
@@ -282,12 +282,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_destroyPanelPromise_0040 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 40
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 40
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0050', 0, async function (done) {
@@ -334,12 +334,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0050 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 50
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 50
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0060', 0, async function (done) {
@@ -386,12 +386,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0060 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 60
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 60
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_setUiContentCallback_0070', 0, async function (done) {
@@ -438,12 +438,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentCallback_0070 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 70
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 70
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_setUiContentPromise_0080', 0, async function (done) {
@@ -490,12 +490,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_setUiContentPromise_0080 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 80
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 80
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_resizeCallback_0090', 0, async function (done) {
@@ -542,12 +542,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_resizeCallback_0090 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 90
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 90
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_resizePromise_0100', 0, async function (done) {
@@ -594,12 +594,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_resizePromise_0100 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 100
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 100
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_moveToCallback_0110', 0, async function (done) {
@@ -646,12 +646,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_moveToCallback_0110 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 110
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 110
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_moveToPromise_0120', 0, async function (done) {
@@ -698,12 +698,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_moveToPromise_0120 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 120
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 120
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_showCallback_0130', 0, async function (done) {
@@ -750,12 +750,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_showCallback_0130 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 130
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 130
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_hideCallback_0150', 0, async function (done) {
@@ -802,12 +802,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_hideCallback_0150 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 150
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 150
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_showPromise_0140', 0, async function (done) {
@@ -854,12 +854,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_showPromise_0140 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 140
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 140
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_hidePromise_0160', 0, async function (done) {
@@ -906,12 +906,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_hidePromise_0160 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 160
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 160
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_onShow_0170', 0, async function (done) {
@@ -958,12 +958,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_onShow_0170 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_onShow_0170 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 170
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 170
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_onHide_0180', 0, async function (done) {
@@ -1010,12 +1010,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_onHide_0180 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_onHide_0180 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 180
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 180
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_offShow_0190', 0, async function (done) {
@@ -1062,12 +1062,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_offShow_0190 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_offShow_0190 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 190
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 190
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_Panel_offHide_0200', 0, async function (done) {
@@ -1114,12 +1114,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_offHide_0200 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_offHide_0200 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 200
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 200
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
     it('Sub_Misc_inputMethod_onImeShow_0201', 0, async function (done) {
@@ -1322,12 +1322,12 @@ export default function inputMethodWindManageAbility() {
         console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscribe data: " + JSON.stringify(data));
         commonEventManager.subscribe(subscriber, subscriberCallback);
         console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0210 subscribe finish====");
-      })
 
-      var commonEventPublishData = {
-        code: 210
-      }
-      commonEventManager.publish("test", commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 210
+        }
+        commonEventManager.publish("test", commonEventPublishData, publishCallback);
+      })
     });
 
 

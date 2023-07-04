@@ -241,12 +241,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_028 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_028 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 28
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 28
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_029', 0, async function (done) {
@@ -297,12 +297,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_029 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_029 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 29
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 29
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_030', 0, async function (done) {
@@ -353,12 +353,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_030 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_030 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 30
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 30
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_031', 0, async function (done) {
@@ -408,12 +408,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_031 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_031 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 31
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 31
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_032', 0, async function (done) {
@@ -463,12 +463,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_032 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_032 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 32
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 32
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_033', 0, async function (done) {
@@ -517,17 +517,16 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.debug("====>inputMethodEngine_test_033 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.debug("====>inputMethodEngine_test_033 subscriber finish")
-      })
+        console.debug("====>inputMethodEngine_test_033 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 33
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 33
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_034', 0, async function (done) {
-
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_034 unSubscriberCallback start");
         if (err) {
@@ -574,12 +573,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_034 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_034 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 34
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 34
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_035', 0, async function (done) {
@@ -630,12 +629,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_035 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_035 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 35
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 35
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_036', 0, async function (done) {
@@ -686,12 +685,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_036 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_036 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 36
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 36
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_037', 0, async function (done) {
@@ -742,12 +741,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_037 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_037 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 37
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 37
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_038', 0, async function (done) {
@@ -798,12 +797,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_038 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_038 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 38
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 38
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_039', 0, async function (done) {
@@ -854,12 +853,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_039 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_039 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 39
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 39
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_040', 0, async function (done) {
@@ -910,12 +909,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_040 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_040 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 40
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 40
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_041', 0, async function (done) {
@@ -966,12 +965,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_041 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_041 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 41
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 41
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_042', 0, async function (done) {
@@ -1022,16 +1021,15 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_042 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_042 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 42
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 42
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_043', 0, async function (done) {
-
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_043 unSubscriberCallback start");
         if (err) {
@@ -1078,16 +1076,15 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_043 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_043 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 43
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 43
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_049', 0, async function (done) {
-
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_049 unSubscriberCallback start");
         if (err) {
@@ -1133,17 +1130,16 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.debug("====>inputMethodEngine_test_049 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.debug("====>inputMethodEngine_test_049 subscriber finish")
-      })
+        console.debug("====>inputMethodEngine_test_049 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 49
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 49
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_050', 0, async function (done) {
-
       function unSubscriberCallback(err) {
         console.debug("====>inputMethodEngine_test_050 unSubscriberCallback start");
         if (err) {
@@ -1190,12 +1186,12 @@ export default function inputMethodEngineJSUnit() {
         console.debug("====>inputMethodEngine_test_050 subscriber data:" + JSON.stringify(data));
         commoneventmanager.subscribe(subscriber, subscriberCallback);
         console.debug("====>inputMethodEngine_test_050 subscriber finish");
-      })
 
-      var commonEventPublishData = {
-        code: 50
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+        var commonEventPublishData = {
+          code: 50
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_071', 0, async function (done) {
@@ -1244,13 +1240,13 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.info("====>inputMethodEngine_test_071 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodEngine_test_071 subscriber finish")
-      })
+        console.info("====>inputMethodEngine_test_071 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 71
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 71
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_072', 0, async function (done) {
@@ -1299,13 +1295,13 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.info("====>inputMethodEngine_test_072 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodEngine_test_072 subscriber finish")
-      })
+        console.info("====>inputMethodEngine_test_072 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 72
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 72
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_073', 0, async function (done) {
@@ -1358,13 +1354,13 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.info("====>inputMethodEngine_test_073 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodEngine_test_073 subscriber finish")
-      })
+        console.info("====>inputMethodEngine_test_073 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 73
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 73
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_074', 0, async function (done) {
@@ -1413,13 +1409,13 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.info("====>inputMethodEngine_test_074 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodEngine_test_074 subscriber finish")
-      })
+        console.info("====>inputMethodEngine_test_074 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 74
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 74
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_076', 0, async function (done) {
@@ -1468,13 +1464,13 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.info("====>inputMethodEngine_test_076 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodEngine_test_076 subscriber finish")
-      })
+        console.info("====>inputMethodEngine_test_076 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 76
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 76
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
     it('inputMethodEngine_test_077', 0, async function (done) {
@@ -1523,13 +1519,13 @@ export default function inputMethodEngineJSUnit() {
         subscriber = data;
         console.info("====>inputMethodEngine_test_077 subscriber data:" + JSON.stringify(data))
         commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>inputMethodEngine_test_077 subscriber finish")
-      })
+        console.info("====>inputMethodEngine_test_077 subscriber finish");
 
-      var commonEventPublishData = {
-        code: 77
-      }
-      commoneventmanager.publish('test1', commonEventPublishData, publishCallback)
+        var commonEventPublishData = {
+          code: 77
+        }
+        commoneventmanager.publish('test1', commonEventPublishData, publishCallback);
+      })
     });
 
   })
