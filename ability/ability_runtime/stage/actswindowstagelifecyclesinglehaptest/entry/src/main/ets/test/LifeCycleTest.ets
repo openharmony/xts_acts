@@ -1073,7 +1073,7 @@ export default function lifecycleTest() {
             console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
           });
         }, 500);
-      }, 3000);
+      }, 4500);
       setTimeout(function () {
         var str = {
           "bundleName": "com.example.windowstagelifecycle_xts",
@@ -1109,7 +1109,7 @@ export default function lifecycleTest() {
             })
           }, 500);
         }, 500);
-      }, 4000);
+      }, 5500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey1 : " + JSON.stringify(globalThis.list1));
         let templist1 = globalThis.list1;
@@ -1173,7 +1173,7 @@ export default function lifecycleTest() {
               done();
             });
         }, 100);
-      }, 7000);
+      }, 9000);
     });
 
   })
