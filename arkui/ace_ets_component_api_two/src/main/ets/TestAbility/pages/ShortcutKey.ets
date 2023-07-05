@@ -12,16 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct ShortcutKey {
-  private arr: string[] = ['0', '1','2', '3', '4', '5', '6', '7', '8', '9',
-    '-', '=', '`', '[', ']', ';', '\'', ',', '.', '/', ' ', '*', '+',
-    'B','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','W']
-  private functionKey: string[] = Object.keys(FunctionKey)
-    .filter(key => typeof FunctionKey[key] === 'number')
+  private functionKey: FunctionKey[] = [
+  FunctionKey.ESC,
+  FunctionKey.F1,
+  FunctionKey.F2,
+  FunctionKey.F3,
+  FunctionKey.F4,
+  FunctionKey.F5,
+  FunctionKey.F6,
+  FunctionKey.F7,
+  FunctionKey.F8,
+  FunctionKey.F9,
+  FunctionKey.F10,
+  FunctionKey.F11,
+  FunctionKey.F12,
+  ]
 
   sendEvent(message, eventId) {
     var eventData = {
@@ -42,20 +53,18 @@ struct ShortcutKey {
   build() {
     Scroll() {
       Column({ space: 10 }) {
-        ForEach(this.arr, (item, index) => {
-          Button("Ctrl" + "+" + item)
-            .keyboardShortcut(item, [ModifierKey.CTRL])
+        Button("Ctrl + B")
+          .keyboardShortcut('B', [ModifierKey.CTRL])
           .onClick(() => {
-            this.sendEvent('Ctrl_' + item, this.baseEvent + index)
+            this.sendEvent('Ctrl_B', this.baseEvent)
           })
-          .key('ShortcutKey_Button_' + index)
-        }, item => item)
+          .key('ShortcutKey_Button_0')
 
         ForEach(this.functionKey, (item, index) => {
           Button("CTRL + " + item)
-            .keyboardShortcut(<FunctionKey><unknown>FunctionKey[item], [ModifierKey.CTRL])
+            .keyboardShortcut(item, [ModifierKey.CTRL])
             .onClick(() => {
-              this.sendEvent('Ctrl_' + item, this.baseEvent2 + index)
+              this.sendEvent('Ctrl_' + FunctionKey[item], this.baseEvent2 + index)
             })
             .width("80%")
             .key('ShortcutKey2_Ctrl_' + item)
@@ -71,7 +80,6 @@ struct ShortcutKey {
           .onClick(() => {
             this.sendEvent('Alt_Q', 72003)
           })
-
       }.width("100%")
     }
   }

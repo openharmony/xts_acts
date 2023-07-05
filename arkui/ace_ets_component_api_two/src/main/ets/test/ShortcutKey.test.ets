@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//@ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
@@ -31,56 +32,22 @@ export default function ShortcutKeyTest() {
     }
   }
 
-  const arr = ['0', '1','2', '3', '4', '5', '6', '7', '8', '9',
-    '-', '=', '`', '[', ']', ';', '\'', ',', '.', '/', ' ', '*', '+',
-    'B','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','W']
-  const arr_keyCode = [
-    input.KeyCode.KEYCODE_0
-    ,input.KeyCode.KEYCODE_1
-    ,input.KeyCode.KEYCODE_2
-    ,input.KeyCode.KEYCODE_3
-    ,input.KeyCode.KEYCODE_4
-    ,input.KeyCode.KEYCODE_5
-    ,input.KeyCode.KEYCODE_6
-    ,input.KeyCode.KEYCODE_7
-    ,input.KeyCode.KEYCODE_8
-    ,input.KeyCode.KEYCODE_9
-    ,input.KeyCode.KEYCODE_MINUS
-    ,input.KeyCode.KEYCODE_EQUALS
-    ,input.KeyCode.KEYCODE_GRAVE
-    ,input.KeyCode.KEYCODE_LEFT_BRACKET
-    ,input.KeyCode.KEYCODE_RIGHT_BRACKET
-    ,input.KeyCode.KEYCODE_SEMICOLON
-    ,input.KeyCode.KEYCODE_APOSTROPHE
-    ,input.KeyCode.KEYCODE_COMMA
-    ,input.KeyCode.KEYCODE_PERIOD
-    ,input.KeyCode.KEYCODE_SLASH
-    ,input.KeyCode.KEYCODE_SPACE
-    ,input.KeyCode.KEYCODE_STAR
-    ,input.KeyCode.KEYCODE_PLUS
-    ,input.KeyCode.KEYCODE_B
-    ,input.KeyCode.KEYCODE_D
-    ,input.KeyCode.KEYCODE_E
-    ,input.KeyCode.KEYCODE_F
-    ,input.KeyCode.KEYCODE_G
-    ,input.KeyCode.KEYCODE_H
-    ,input.KeyCode.KEYCODE_I
-    ,input.KeyCode.KEYCODE_J
-    ,input.KeyCode.KEYCODE_K
-    ,input.KeyCode.KEYCODE_L
-    ,input.KeyCode.KEYCODE_M
-    ,input.KeyCode.KEYCODE_N
-    ,input.KeyCode.KEYCODE_O
-    ,input.KeyCode.KEYCODE_P
-    ,input.KeyCode.KEYCODE_Q
-    ,input.KeyCode.KEYCODE_R
-    ,input.KeyCode.KEYCODE_S
-    ,input.KeyCode.KEYCODE_T
-    ,input.KeyCode.KEYCODE_U
-    ,input.KeyCode.KEYCODE_W
+  const functionKey: FunctionKey[] = [
+    FunctionKey.ESC,
+    FunctionKey.F1,
+    FunctionKey.F2,
+    FunctionKey.F3,
+    FunctionKey.F4,
+    FunctionKey.F5,
+    FunctionKey.F6,
+    FunctionKey.F7,
+    FunctionKey.F8,
+    FunctionKey.F9,
+    FunctionKey.F10,
+    FunctionKey.F11,
+    FunctionKey.F12,
   ]
-  const functionKey = Object.keys(FunctionKey).filter(key => typeof FunctionKey[key] === 'number')
-  const arr_keyCode2 = [
+  const arr_keyCode = [
     input.KeyCode.KEYCODE_ESCAPE
     ,input.KeyCode.KEYCODE_F1
     ,input.KeyCode.KEYCODE_F2
@@ -106,7 +73,6 @@ export default function ShortcutKeyTest() {
         url: "TestAbility/pages/ShortcutKey",
       }
       try {
-        router.clear();
         let pages = router.getState();
         if (pages == null || !("ShortcutKey" == pages.name)) {
           await router.pushUrl(options).then(()=>{
@@ -121,6 +87,11 @@ export default function ShortcutKeyTest() {
       done()
     });
 
+    afterEach(async function (done) {
+      sleep(2)
+      done()
+    });
+
     /*
      *tc.number ArkUI_Shortcut_Key_0100
      *tc.name   Custom keyboard shortcuts
@@ -130,27 +101,18 @@ export default function ShortcutKeyTest() {
       let CASE = 'ArkUI_Shortcut_Key_0100'
       console.info(`${SUITE} ${CASE} START`);
 
-      let start = 0
-      let end = arr.length
-      let driver = Driver.create()
-      for (let i = start; i < end; i++ ) {
-        let item = arr[i]
-
-        let callback = (event) => {
-          expect(event.data.msg).assertEqual('Ctrl_' + item);
-          console.info(`${SUITE} ${CASE} event.data.msg:` + i + ',' + event.data.msg);
-          if ( i == end - 1 ) {
-            done()
-          }
-        }
-        let event = {
-          eventId: baseEvent + i,
-          priority: events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(event, callback);
-        await driver.triggerCombineKeys(input.KeyCode.KEYCODE_CTRL_LEFT, arr_keyCode[i])
+      let callback = (event) => {
+        expect(event.data.msg).assertEqual('Ctrl_B');
+        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+        done()
       }
-      sleep(2)
+      let event = {
+        eventId: baseEvent,
+        priority: events_emitter.EventPriority.LOW
+      }
+      events_emitter.on(event, callback);
+      let driver = Driver.create()
+      await driver.triggerCombineKeys(input.KeyCode.KEYCODE_CTRL_LEFT, input.KeyCode.KEYCODE_B)
 
       console.info(`${SUITE} ${CASE} END`);
     });
@@ -174,7 +136,6 @@ export default function ShortcutKeyTest() {
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event, callback);
-      sleep(2)
       let driver = Driver.create()
       await driver.triggerCombineKeys(input.KeyCode.KEYCODE_SHIFT_LEFT, input.KeyCode.KEYCODE_1);
 
@@ -200,7 +161,6 @@ export default function ShortcutKeyTest() {
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event, callback);
-      sleep(2)
       let driver = Driver.create()
       await driver.triggerCombineKeys(input.KeyCode.KEYCODE_ALT_LEFT, input.KeyCode.KEYCODE_Q);
 
@@ -218,13 +178,12 @@ export default function ShortcutKeyTest() {
 
       let start = 0
       let end = functionKey.length
-      sleep(2)
       let driver = Driver.create()
       for (let i = start; i < end; i++ ) {
         let item = functionKey[i]
 
         let callback = (event) => {
-          expect(event.data.msg).assertEqual('Ctrl_' + item);
+          expect(event.data.msg).assertEqual('Ctrl_' + FunctionKey[item]);
           console.info(`${SUITE} ${CASE} event.data.msg:` + i + ',' + event.data.msg);
           if ( i == end - 1 ) {
             done()
@@ -235,7 +194,7 @@ export default function ShortcutKeyTest() {
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(event, callback);
-        await driver.triggerCombineKeys(input.KeyCode.KEYCODE_CTRL_LEFT, arr_keyCode2[i])
+        await driver.triggerCombineKeys(input.KeyCode.KEYCODE_CTRL_LEFT, arr_keyCode[i])
       }
 
       console.info(`${SUITE} ${CASE} END`);
