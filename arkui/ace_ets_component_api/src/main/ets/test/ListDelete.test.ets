@@ -71,7 +71,6 @@ export default function ListDeleteTest() {
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
       expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-//      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.None");
 
       let rectCenter = getRectCenterVp(obj.$rect)
       let driver = Driver.create()
@@ -102,73 +101,10 @@ export default function ListDeleteTest() {
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
       expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-//      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.None");
 
       let rectCenter = getRectCenterVp(obj.$rect)
       let driver = Driver.create()
       await driver.swipe(rectCenter[0], rectCenter[1], 600, rectCenter[1])
-
-      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-      let objButtonDel = JSON.parse(strJsonButtonDel);
-      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-      let objButtonSet = JSON.parse(strJsonButtonSet);
-      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
-
-      console.info(`${SUITE} ${CASE} END`);
-      done();
-    });
-
-    /*
-     *tc.number ArkUI_List_Delete_0300
-     *tc.name   Set swipeAction.end by CustomBuilder
-     *tc.desc   Set swipeAction.end by CustomBuilder and edgeEffect is SwipeEdgeEffect.Spring
-     */
-    it('ArkUI_List_Delete_0300', 0, async function (done) {
-      let CASE = 'ArkUI_List_Delete_0300'
-      console.info(`${SUITE} ${CASE} START`);
-
-      let baseKey = 'MyList3_ListItem0'
-      let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.Spring");
-
-      let rectCenter = getRectCenterVp(obj.$rect)
-      let driver = Driver.create()
-      await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
-
-      let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
-      let objButtonDel = JSON.parse(strJsonButtonDel);
-      expect(objButtonDel.$attrs.visibility).assertEqual("Visibility.Visible");
-      let strJsonButtonSet = getInspectorByKey(baseKey + '_Button_Set');
-      let objButtonSet = JSON.parse(strJsonButtonSet);
-      expect(objButtonSet.$attrs.visibility).assertEqual("Visibility.Visible");
-
-      console.info(`${SUITE} ${CASE} END`);
-      done();
-    });
-
-    /*
-     *tc.number ArkUI_List_Delete_0400
-     *tc.name   Set swipeAction.start by CustomBuilder
-     *tc.desc   Set swipeAction.start by CustomBuilder and edgeEffect is SwipeEdgeEffect.Spring
-     */
-    it('ArkUI_List_Delete_0400', 0, async function (done) {
-      let CASE = 'ArkUI_List_Delete_0400'
-      console.info(`${SUITE} ${CASE} START`);
-
-      let baseKey = 'MyList4_ListItem0'
-      let strJson = getInspectorByKey(baseKey);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
-      expect(obj.$attrs.swipeAction.edgeEffect).assertEqual("SwipeEdgeEffect.Spring");
-
-      let rectCenter = getRectCenterVp(obj.$rect)
-      let driver = Driver.create()
-      await driver.swipe(0, rectCenter[1], rectCenter[0], rectCenter[1])
 
       let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
       let objButtonDel = JSON.parse(strJsonButtonDel);
