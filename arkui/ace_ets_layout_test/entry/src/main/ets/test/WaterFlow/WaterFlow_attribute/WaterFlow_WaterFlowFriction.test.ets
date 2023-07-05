@@ -15,29 +15,28 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function waterFlow_WaterFlowFrictionTest() {
-  describe('WaterFlow_WaterFlowFrictionTest', function () {
+  describe('waterFlow_WaterFlowFrictionTest', function () {
     beforeEach(async function (done) {
-      console.info("WaterFlow_WaterFlowFrictionTest beforeEach start");
+      console.info("WaterFlowFrictionPage beforeEach start");
       let options = {
         url: 'MainAbility/pages/WaterFlow/WaterFlow_attribute/WaterFlowFrictionPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get WaterFlow_WaterFlowFrictionTest state pages:" + JSON.stringify(pages));
-        if (!("WaterFlow_WaterFlowFrictionTest" == pages.name)) {
+        console.info("get WaterFlowFrictionPage state pages:" + JSON.stringify(pages));
+        if (!("WaterFlowFrictionPage" == pages.name)) {
           console.info("get WaterFlow_WaterFlow pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push WaterFlow_WaterFlowFrictionTest page result:" + JSON.stringify(result));
+          console.info("push WaterFlowFrictionPage page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push WaterFlow_WaterFlowFrictionTest page error:" + err);
+        console.error("push WaterFlowFrictionPage page error:" + err);
       }
-      console.info("WaterFlow_WaterFlowFrictionTest beforeEach end");
+      console.info("WaterFlowFrictionPage beforeEach end");
       done();
     });
     afterEach(async function () {
@@ -52,10 +51,11 @@ export default function waterFlow_WaterFlowFrictionTest() {
     it('testWaterFlowFriction', 0, async function (done) {
       console.info('[testWaterFlowFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
+      await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('WaterFlow_WaterFlowFriction');
       let scrollContainerObj = JSON.parse(scrollContainerStrJson);
       expect(scrollContainerObj.$type).assertEqual('WaterFlow');
-      expect(scrollContainerObj.$friction).assertEqual(0.6);
+      expect(scrollContainerObj.$attrs.friction).assertEqual(0.6);
       console.info('[testWaterFlowFriction] END');
       done();
     });
@@ -68,10 +68,11 @@ export default function waterFlow_WaterFlowFrictionTest() {
     it('testWaterFlowFriction', 0, async function (done) {
       console.info('[testWaterFlowFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
+      await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('WaterFlow_WaterFlowFriction');
       let scrollContainerObj = JSON.parse(scrollContainerStrJson);
       expect(scrollContainerObj.$type).assertEqual('WaterFlow');
-      expect(scrollContainerObj.$friction).assertEqual(10);
+      expect(scrollContainerObj.$attrs.friction).assertEqual(10);
       console.info('[testWaterFlowFriction] END');
       done();
     });

@@ -15,34 +15,33 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function grid_GridFrictionTest() {
-  describe('Grid_GridFrictionTest', function () {
+  describe('grid_GridFrictionTest', function () {
     beforeEach(async function (done) {
-      console.info("Grid_GridFrictionTest beforeEach start");
+      console.info("GridFrictionPage beforeEach start");
       let options = {
         url: 'MainAbility/pages/Grid/Grid_attribute/GridFrictionPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get Grid_GridFrictionTest state pages:" + JSON.stringify(pages));
-        if (!("Grid_GridFrictionTest" == pages.name)) {
-          console.info("get Grid_GridInitialIndex1 pages.name:" + JSON.stringify(pages.name));
+        console.info("get GridFrictionPage state pages:" + JSON.stringify(pages));
+        if (!("GridFrictionPage" == pages.name)) {
+          console.info("get GridFrictionPage pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push Grid_GridFrictionTest page result:" + JSON.stringify(result));
+          console.info("push GridFrictionPage page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Grid_GridFrictionTest page error:" + err);
+        console.error("push GridFrictionPage page error:" + err);
       }
-      console.info("Grid_GridFrictionTest beforeEach end");
+      console.info("GridFrictionPage beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("Grid_GridFrictionTest after each called");
+      console.info("GridFrictionPage after each called");
     });
     /**
      * @tc.number    SUB_ACE_GRID_GRIDFRICTION_001
@@ -52,10 +51,11 @@ export default function grid_GridFrictionTest() {
     it('testGridFriction', 0, async function (done) {
       console.info('[testGridFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
+      await CommonFunc.sleep(2000);
       let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
       expect(gridContainerObj.$type).assertEqual('Grid');
-      expect(gridContainerObj.$friction).assertEqual(0.6);
+      expect(gridContainerObj.$attrs.friction).assertEqual(0.6);
       console.info('[testGridFriction] END');
       done();
     });
@@ -68,10 +68,11 @@ export default function grid_GridFrictionTest() {
     it('testGridFriction', 0, async function (done) {
       console.info('[testGridFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
+      await CommonFunc.sleep(2000);
       let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
       let gridContainerObj = JSON.parse(gridContainerStrJson);
       expect(gridContainerObj.$type).assertEqual('Grid');
-      expect(gridContainerObj.$friction).assertEqual(10);
+      expect(gridContainerObj.$attrs.friction).assertEqual(10);
       console.info('[testGridFriction] END');
       done();
     });

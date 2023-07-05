@@ -15,34 +15,34 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function list_ListFrictionTest() {
-  describe('List_ListFrictionTest', function () {
+
+  describe('list_ListFrictionTest', function () {
     beforeEach(async function (done) {
-      console.info("List_ListFrictionTest beforeEach start");
+      console.info("ListFrictionPage beforeEach start");
       let options = {
         url: 'MainAbility/pages/List/List_attribute/ListFrictionPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get List_ListFrictionTest state pages:" + JSON.stringify(pages));
-        if (!("list_ListFrictionTest" == pages.name)) {
-          console.info("get List_ListInitialIndex1 pages.name:" + JSON.stringify(pages.name));
+        console.info("get ListFrictionPage state pages:" + JSON.stringify(pages));
+        if (!("ListFrictionPage" == pages.name)) {
+          console.info("get ListFrictionPage pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push List_ListFrictionTest page result:" + JSON.stringify(result));
+          console.info("push ListFrictionPage page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push List_ListFrictionTest page error:" + err);
+        console.error("push ListFrictionPage page error:" + err);
       }
-      console.info("List_ListFrictionTest beforeEach end");
+      console.info("ListFrictionPage beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("List_ListFrictionTest after each called");
+      console.info("ListFrictionPage after each called");
     });
     /**
      * @tc.number    SUB_ACE_LIST_LISTFRICTION_001
@@ -52,10 +52,11 @@ export default function list_ListFrictionTest() {
     it('testListFriction', 0, async function (done) {
       console.info('[testListFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
+      await CommonFunc.sleep(2000);
       let listContainerStrJson = getInspectorByKey('List_ListFriction');
       let listContainerObj = JSON.parse(listContainerStrJson);
       expect(listContainerObj.$type).assertEqual('List');
-      expect(listContainerObj.$friction).assertEqual(0.6);
+      expect(listContainerObj.$attrs.friction).assertEqual(0.6);
       console.info('[testListFriction] END');
       done();
     });
@@ -68,10 +69,11 @@ export default function list_ListFrictionTest() {
     it('testListFriction', 0, async function (done) {
       console.info('[testListFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
+      await CommonFunc.sleep(2000);
       let listContainerStrJson = getInspectorByKey('List_ListFriction');
       let listContainerObj = JSON.parse(listContainerStrJson);
       expect(listContainerObj.$type).assertEqual('List');
-      expect(listContainerObj.$friction).assertEqual(10);
+      expect(listContainerObj.$attrs.friction).assertEqual(10);
       console.info('[testListFriction] END');
       done();
     });
