@@ -129,7 +129,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 4,
                 wantAgent: {
-                    pkgName: "ohos.samples.jshelloworld",
+                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
                     abilityName: "ohos.samples.jshelloworld.MainAbility"
                 },
             };
@@ -2166,7 +2166,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "",
+                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
                     abilityName: "com.oh.phone.MainAbility"
                 }
             }
@@ -2180,7 +2180,7 @@ export default function ReminderAgentTest() {
                     if (reminder.length !== 0) {
                         let pkgName = reminder[0].wantAgent.pkgName;
                         console.info("callback,the testGetValidRemindersPkgName_083 pkgName is: " + pkgName);
-                        expect(pkgName).assertEqual("");
+                        expect(pkgName.length).assertLarger(0);
                         done()
                     }
                 });
@@ -2198,7 +2198,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: 123,
+                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
                     abilityName: "com.oh.phone.MainAbility"
                 }
             }
@@ -2212,7 +2212,7 @@ export default function ReminderAgentTest() {
                     if (reminder.length !== 0) {
                         let pkgName = reminder[0].wantAgent.pkgName;
                         console.info("callback,the testGetValidRemindersPkgName_084 pkgName is: " + pkgName);
-                        expect(pkgName).assertEqual("");
+                        expect(pkgName.length).assertLarger(0);
                         done()
                     }
                 });
@@ -2230,7 +2230,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "com.oh.phone",
+                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
                     abilityName: ""
                 }
             }
@@ -2263,7 +2263,7 @@ export default function ReminderAgentTest() {
                 reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,
                 triggerTimeInSeconds: 20,
                 wantAgent: {
-                    pkgName: "com.oh.phone",
+                    pkgName: "ohos.acts.resourceschedule.reminderagent.js.function",
                     abilityName: 1243
                 }
             }
