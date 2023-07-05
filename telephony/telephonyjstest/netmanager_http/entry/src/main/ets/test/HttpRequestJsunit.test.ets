@@ -38,6 +38,7 @@ export default function httpRequestJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_request Test end-----------------------");
           done();
         });
@@ -61,6 +62,7 @@ export default function httpRequestJsunit() {
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_request_01 Test end-----------------------");
           done();
         });
@@ -91,6 +93,7 @@ export default function httpRequestJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_request_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -154,6 +157,7 @@ export default function httpRequestJsunit() {
         httpRequest.on('headerReceive', (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headerReceive Test end-----------------------");
           done();
         });
@@ -180,6 +184,7 @@ export default function httpRequestJsunit() {
         httpRequest.off('headerReceive', (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(false).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_off_headerReceive Test end-----------------------");
           done();
         });
@@ -209,6 +214,7 @@ export default function httpRequestJsunit() {
         httpRequest.on("headersReceive", (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
           done();
         });
@@ -235,6 +241,7 @@ export default function httpRequestJsunit() {
         httpRequest.off("headersReceive", (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(false).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_off_headersReceive Test end-----------------------");
           done();
         });
@@ -260,6 +267,7 @@ export default function httpRequestJsunit() {
         var httpRequest = http.createHttp();
         httpRequest.off('headersReceive');
         expect(true).assertTrue();
+          httpRequest.destroy();
         console.log("-----------------------HttpRequest_off_headersReceive_0200 Test end-----------------------");
         done();
       } catch (error) {
@@ -282,6 +290,7 @@ export default function httpRequestJsunit() {
         httpRequest.once('headersReceive', (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
           done();
         });
