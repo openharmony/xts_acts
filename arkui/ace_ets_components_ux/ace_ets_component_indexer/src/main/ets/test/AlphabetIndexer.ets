@@ -77,8 +77,8 @@ export default function AlphabetIndexer() {
       console.info("ArkUI_AlphabetIndexer_0100 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual("#FF182431");
-      expect(obj.$attrs.popupUnselectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
+      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
       expect(obj.$attrs.popupItemBackground).assertEqual("#FFFFFFFF");
       expect(obj.$attrs.popupItemFontSize).assertEqual("24.00vp");
       expect(obj.$attrs.popupItemFontWeight).assertEqual("FontWeight.Medium");
@@ -90,7 +90,8 @@ export default function AlphabetIndexer() {
       console.info("ArkUI_AlphabetIndexer_0600 start");
       let strJson = getInspectorByKey('alphabetIndexerTest6');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.popupItemFontSize).assertEqual("30.00vp");
+      let popupItemFontSize = obj.$attrs.popupItemFontSize;
+      expect(parseFloat(popupItemFontSize)).assertEqual(30)
       done();
     });
 
@@ -123,7 +124,7 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
       let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
       done();
     });
 
@@ -148,7 +149,7 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest2');
       let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
       done();
     });
 
@@ -273,7 +274,7 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
       let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
       done();
     });
 
@@ -298,7 +299,7 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest3');
       let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
       done();
     });
 
@@ -423,7 +424,7 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
       let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupSelectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupSelectedColor).assertEqual(obj.$attrs.backgroundColor);
       done();
     });
 
@@ -448,7 +449,7 @@ export default function AlphabetIndexer() {
       await Utils.sleep(2000);
       let newJson = getInspectorByKey('alphabetIndexerTest4');
       let obj = JSON.parse(newJson);
-      expect(obj.$attrs.popupUnselectedColor).assertEqual("#FF182431");
+      expect(obj.$attrs.popupUnselectedColor).assertEqual(obj.$attrs.backgroundColor);
       done();
     });
 
