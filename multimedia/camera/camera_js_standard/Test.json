@@ -19,7 +19,11 @@
                 "power-shell setmode 602"
             ],
             "teardown-command":[
-                "power-shell setmode 600"
+                "power-shell setmode 600",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "scanner",
+                "sleep 5"
             ]
         },
         {
