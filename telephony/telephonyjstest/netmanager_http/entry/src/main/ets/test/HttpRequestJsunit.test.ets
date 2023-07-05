@@ -267,7 +267,7 @@ export default function httpRequestJsunit() {
         var httpRequest = http.createHttp();
         httpRequest.off('headersReceive');
         expect(true).assertTrue();
-          httpRequest.destroy();
+        httpRequest.destroy();
         console.log("-----------------------HttpRequest_off_headersReceive_0200 Test end-----------------------");
         done();
       } catch (error) {
