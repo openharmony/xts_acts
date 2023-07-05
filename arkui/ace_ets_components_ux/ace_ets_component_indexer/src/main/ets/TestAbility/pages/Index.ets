@@ -166,7 +166,7 @@ struct AlphabetIndexerTest {
         .selectedFont({ size: 28, weight: FontWeight.Bold })
         .color(0x000000)
         .selectedColor(0xFF1493)
-        .backgroundColor(0xF8F8FF)
+        .backgroundColor($r("sys.color.ohos_id_color_primary"))
         .selectedBackgroundColor(0xBEBEBE)
         .itemSize(26)
         .onSelect((index: number) => {
@@ -203,7 +203,7 @@ struct AlphabetIndexerTest {
         .selectedFont({ size: 28, weight: FontWeight.Bold })
         .color(0x000000)
         .selectedColor(0xFF1493)
-        .backgroundColor(0xF8F8FF)
+        .backgroundColor($r("sys.color.ohos_id_color_primary"))
         .selectedBackgroundColor(0xBEBEBE)
         .itemSize(26)
         .onSelect((index: number) => {
@@ -244,7 +244,7 @@ struct AlphabetIndexerTest {
         .selectedFont({ size: 28, weight: FontWeight.Bold })
         .color(0x000000)
         .selectedColor(0xFF1493)
-        .backgroundColor(0xF8F8FF)
+        .backgroundColor($r("sys.color.ohos_id_color_primary"))
         .selectedBackgroundColor(0xBEBEBE)
         .itemSize(26)
         .onSelect((index: number) => {
@@ -285,7 +285,7 @@ struct AlphabetIndexerTest {
         .selectedFont({ size: 28, weight: FontWeight.Bold })
         .color(0x000000)
         .selectedColor(0xFF1493)
-        .backgroundColor(0xF8F8FF)
+        .backgroundColor($r("sys.color.ohos_id_color_primary"))
         .selectedBackgroundColor(0xBEBEBE)
         .itemSize(26)
         .onSelect((index: number) => {
