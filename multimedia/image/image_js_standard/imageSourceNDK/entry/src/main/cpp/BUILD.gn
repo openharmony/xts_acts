@@ -42,7 +42,7 @@ ohos_shared_library("ImageSourceNDKTest") {
   deps = [ "$image_subsystem/frameworks/kits/js/common/ndk:image_source_ndk" ]
 
   external_deps = [
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
     "napi:ace_napi",
   ]
 

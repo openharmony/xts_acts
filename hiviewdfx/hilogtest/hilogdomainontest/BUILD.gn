@@ -21,7 +21,7 @@ ohos_js_hap_suite("ActsHilogDomainOnJsTest") {
 
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHilogDomainOnJsTest"
-  part_name = "hilog_native"
+  part_name = "hilog"
   subsystem_name = "hiviewdfx"
 }
 ohos_js_assets("hilog_js_assets") {

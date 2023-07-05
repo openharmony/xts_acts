@@ -44,7 +44,7 @@ ohos_moduletest_suite("hipluginmoduleapitest") {
     "-Wno-inconsistent-missing-override",
     "-Dprivate=public",  #allow test code access private members
   ]
-  external_deps = [ "hiviewdfx_hilog_native:libhilog" ]
+  external_deps = [ "hilog:libhilog" ]
   subsystem_name = "${OHOS_PROFILER_SUBSYS_NAME}"
   defines = [ "HAVE_HILOG" ]
 }

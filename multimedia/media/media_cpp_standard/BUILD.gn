@@ -74,7 +74,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
   ]
   external_deps = [
     "c_utils:utils",
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
   ]
 
   part_name = "av_codec"

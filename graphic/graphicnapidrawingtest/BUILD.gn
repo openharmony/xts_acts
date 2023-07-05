@@ -47,7 +47,7 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
   external_deps = [
     "c_utils:utils",
     "graphic_standard:2d_graphics",
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
 }

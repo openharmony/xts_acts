@@ -21,7 +21,7 @@ ohos_js_hap_suite("ActsHilogJsTest") {
 
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHilogJsTest"
-  part_name = "hilog_native"
+  part_name = "hilog"
   subsystem_name = "hiviewdfx"
   js_build_mode = "debug"
   shared_libraries = [ "./src/main/cpp:hilogndk" ]
