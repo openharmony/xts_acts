@@ -87,6 +87,11 @@ export default class Utils {
     router.clear();
   }
 
+  static async backOnly() {
+    router.back()
+    await Utils.sleep(1000);
+  }
+
   static getComponentRect(key) {
     let strJson = getInspectorByKey(key);
     let obj = JSON.parse(strJson);
@@ -121,8 +126,164 @@ export default class Utils {
   static getRectVerticalCenterY(rect) {
     (rect.bottom - rect.top) / 2 + rect.top;
   }
+
+  static requestFocus(id): boolean {
+    console.info('requestFocus id : ' + id);
+    let result = focusControl.requestFocus(id);
+    console.info('requestFocus result : ' + result);
+    return result;
+  }
+
+  static performClick(id: string): boolean {
+    console.info('performClick id : ' + id);
+    let result = sendEventByKey(id, 10, '');
+    console.info('performClick result : ' + result);
+    return result
+  }
+
+  static async performClickPoint(x: number, y: number) {
+    Utils.performTouch(x, y, x, y, TouchType.Down);
+    await Utils.sleep(100);
+    Utils.performTouch(x, y, x, y, TouchType.Up);
+  }
+
+  static performTouchDownUp(id): boolean {
+    let down = Utils.performTouchComponentCenter(id, TouchType.Down)
+    if (down) {
+      let up = Utils.performTouchComponentCenter(id, TouchType.Up)
+      return up
+    }
+
+    return false;
+  }
+
+  static performTouchComponentCenter(id, type: TouchType): boolean {
+    console.info('performTouchComponent id : ' + id);
+    return Utils.performTouchRectCenter(0, 0, Utils.getComponentRect(id), type);
+  }
+
+  static performTouchRectCenter(rootX, rootY, rect, type: TouchType): boolean {
+    console.info('performTouchRectCenter parentX : ' + rootX);
+    console.info('performTouchRectCenter parentY : ' + rootY);
+    console.info('performTouchRectCenter rect.left : ' + rect.left);
+    console.info('performTouchRectCenter rect.top : ' + rect.top);
+    console.info('performTouchRectCenter rect.right : ' + rect.right);
+    console.info('performTouchRectCenter rect.bottom : ' + rect.bottom);
+
+    let screenX = (rect.right + rect.left) * 0.5;
+    let screenY = (rect.bottom + rect.top) * 0.5;
+    let x = (rect.right + rect.left) * 0.5 - rootX;
+    let y = (rect.bottom + rect.top) * 0.5 - rootY;
+
+    return Utils.performTouch(screenX, screenY, x, y, type);
+  }
+
+  static performTouch(screenX, screenY, x, y, type: TouchType): boolean {
+    console.info('performTouch type : ' + type);
+    console.info('performTouch screenX : ' + screenX);
+    console.info('performTouch screenY : ' + screenY);
+    console.info('performTouch x : ' + x);
+    console.info('performTouch y : ' + y);
+
+    let result = sendTouchEvent({
+      windowX: screenX,
+      windowY: screenX,
+      displayX: screenX,
+      displayY: screenX,
+      type: type,
+      id: 0,
+      screenX: screenX,
+      screenY: screenX,
+      x: x,
+      y: y
+    })
+
+    console.info('performTouch result : ' + result);
+
+    return result;
+  }
+
+  static performKeyEventDownUp(keyCode: number, keyText: string): boolean {
+    let down = Utils.performKeyEvent(KeyType.Down, keyCode, keyText)
+    if (down) {
+      let up = Utils.performKeyEvent(KeyType.Up, keyCode, keyText)
+      return up
+    }
+
+    return false;
+  }
+
+  static performKeyEvent(type: KeyType, keyCode: number, keyText: string): boolean {
+    console.info('performKeyEvent type : ' + type);
+    console.info('performKeyEvent keyCode : ' + keyCode);
+    console.info('performKeyEvent keyText : ' + keyText);
+
+    let result = sendKeyEvent({
+      type: type,
+      keyCode: keyCode,
+      keyText: keyText,
+      intentionCode: -1,
+      keySource: 1,
+      deviceId: 0,
+      metaKey: 0,
+      timestamp: new Date().getTime()
+    })
+    console.info('performKeyEvent result : ' + result);
+    return result
+  }
+
+  static performMouseEvent(id, button: MouseButton, action: MouseAction): boolean {
+    console.info('performMouseEvent id : ' + id);
+    console.info('performMouseEvent button : ' + button);
+    console.info('performMouseEvent action : ' + action);
+
+    let targetComponentRect = Utils.getComponentRect(id);
+    let screenX = (targetComponentRect.right + targetComponentRect.left) * 0.5;
+    let screenY = (targetComponentRect.bottom + targetComponentRect.top) * 0.5;
+    let x = (targetComponentRect.right + targetComponentRect.left) * 0.5;
+    let y = (targetComponentRect.bottom + targetComponentRect.top) * 0.5;
+    let width = targetComponentRect.right - targetComponentRect.left;
+    let height = targetComponentRect.bottom - targetComponentRect.top;
+    console.info('performMouseEvent screenX : ' + screenX);
+    console.info('performMouseEvent screenY : ' + screenY);
+    console.info('performMouseEvent x : ' + x);
+    console.info('performMouseEvent y : ' + y);
+    console.info('performMouseEvent width : ' + y);
+    console.info('performMouseEvent height : ' + y);
+
+    let result = sendMouseEvent({
+      windowX: screenX,
+      windowY: screenX,
+      displayX: screenX,
+      displayY: screenX,
+      screenX: screenX,
+      screenY: screenX,
+      x: x,
+      y: y,
+      button: button,
+      action: action,
+      timestamp: new Date().getTime(),
+      target: {
+        area: {
+          width: width,
+          height: height,
+          position: {
+            x: 0, y: 0
+          },
+          globalPosition: {
+            x: 0, y: 0
+          },
+        }
+      },
+      source: SourceType.Mouse,
+      tiltX: 0,
+      tiltY: 0,
+      sourceTool: 1,
+      pressure: 0
+    })
+
+    console.info('performMouseEvent result : ' + result);
+
+    return result;
+  }
 }
-
-
-
-

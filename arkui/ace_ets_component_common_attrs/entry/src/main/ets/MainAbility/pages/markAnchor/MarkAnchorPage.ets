@@ -38,7 +38,7 @@ struct MarkAnchor {
   @State subassemblyHeight: number = router.getParams() ? router.getParams()['view']['subassemblyHeight'] : 0
 
   onPageShow() {
-    console.info('[ButtonDimensionsOne] page show called ')
+    console.info('[MarkAnchor] page show called ')
 
     //Register data change call back.
     attrsManager.registerDataChange(value => this._markAnchor = value)
