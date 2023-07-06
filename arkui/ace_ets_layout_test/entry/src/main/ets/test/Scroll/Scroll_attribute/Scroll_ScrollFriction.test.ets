@@ -15,34 +15,33 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../../MainAbility/common/Common';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection,
-  WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
+import { MessageManager,Callback } from '../../../MainAbility/common/MessageManager';
 export default function scroll_ScrollFrictionTest() {
-  describe('Scroll_ScrollFrictionTest', function () {
+  describe('scroll_ScrollFrictionTest', function () {
     beforeEach(async function (done) {
-      console.info("Scroll_ScrollFrictionTest beforeEach start");
+      console.info("ScrollFrictionPage beforeEach start");
       let options = {
         url: 'MainAbility/pages/Scroll/Scroll_attribute/ScrollFrictionPage',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get Scroll_ScrollFrictionTest state pages:" + JSON.stringify(pages));
-        if (!("Scroll_ScrollFrictionTest" == pages.name)) {
+        console.info("get ScrollFrictionPage state pages:" + JSON.stringify(pages));
+        if (!("ScrollFrictionPage" == pages.name)) {
           console.info("get Scroll_ScrollInitialIndex1 pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push Scroll_ScrollFrictionTest page result:" + JSON.stringify(result));
+          console.info("push ScrollFrictionPage page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Scroll_ScrollFrictionTest page error:" + err);
+        console.error("push ScrollFrictionPage page error:" + err);
       }
-      console.info("Scroll_ScrollFrictionTest beforeEach end");
+      console.info("ScrollFrictionPage beforeEach end");
       done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("Scroll_ScrollFrictionTest after each called");
+      console.info("ScrollFrictionPage after each called");
     });
     /**
      * @tc.number    SUB_ACE_SCROLL_SCROLLFRICTION_001
@@ -52,10 +51,11 @@ export default function scroll_ScrollFrictionTest() {
     it('testScrollFriction', 0, async function (done) {
       console.info('[testScrollFriction] START');
       globalThis.value.message.notify({name:'friction', value:-1})
+      await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
       let scrollContainerObj = JSON.parse(scrollContainerStrJson);
       expect(scrollContainerObj.$type).assertEqual('Scroll');
-      expect(scrollContainerObj.$friction).assertEqual(0.6);
+      expect(scrollContainerObj.$attrs.friction).assertEqual(0.6);
       console.info('[testScrollFriction] END');
       done();
     });
@@ -68,10 +68,11 @@ export default function scroll_ScrollFrictionTest() {
     it('testScrollFriction', 0, async function (done) {
       console.info('[testScrollFriction] START');
       globalThis.value.message.notify({name:'friction', value:10})
+      await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('Scroll_ScrollFriction');
       let scrollContainerObj = JSON.parse(scrollContainerStrJson);
       expect(scrollContainerObj.$type).assertEqual('Scroll');
-      expect(scrollContainerObj.$friction).assertEqual(10);
+      expect(scrollContainerObj.$attrs.friction).assertEqual(10);
       console.info('[testScrollFriction] END');
       done();
     });
