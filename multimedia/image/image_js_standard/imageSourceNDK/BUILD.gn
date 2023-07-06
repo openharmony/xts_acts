@@ -24,7 +24,7 @@ ohos_js_hap_suite("image_source_ndk_js_hap") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsImageSourceNdkJsTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
   shared_libraries = [ "./entry/src/main/cpp:ImageSourceNDKTest" ]
 }
 

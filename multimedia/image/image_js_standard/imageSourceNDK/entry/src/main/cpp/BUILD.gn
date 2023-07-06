@@ -48,5 +48,5 @@ ohos_shared_library("ImageSourceNDKTest") {
 
   output_extension = "so"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }

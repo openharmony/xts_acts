@@ -22,7 +22,7 @@ ohos_js_hap_suite("image_pixelmapframework_js_hap") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsImagePixelMapFrameworkJsTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }
 ohos_js_assets("image_pixelmapframework_js_assets") {
   js2abc = true

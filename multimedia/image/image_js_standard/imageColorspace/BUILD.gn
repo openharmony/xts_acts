@@ -22,7 +22,7 @@ ohos_js_hap_suite("image_colorspace_js_hap") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsImageColorspaceJsTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }
 ohos_js_assets("image_colorspace_js_assets") {
   js2abc = true
