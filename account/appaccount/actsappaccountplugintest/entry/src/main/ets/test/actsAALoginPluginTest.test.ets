@@ -272,7 +272,7 @@ export default function ActsAALoginPlugin() {
         let scheduler = new appAccount.AccountCapabilityScheduler();
         scheduler.executeRequest(request, async (err, data) => {
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_1700 err: " + JSON.stringify(err));
-          expect(err).assertEqual(12300002);
+          expect(err.code).assertEqual(12300002);
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_1700 end====");
           await sleep(200)
           done();
@@ -303,7 +303,7 @@ export default function ActsAALoginPlugin() {
           done();
         }).catch(async (err) => {
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_1800 err: " + JSON.stringify(err));
-          expect(err).assertEqual(12300002);
+          expect(err.code).assertEqual(12300002);
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_1800 end====");
           await sleep(200)
           done();
@@ -331,7 +331,7 @@ export default function ActsAALoginPlugin() {
         let scheduler = new appAccount.AccountCapabilityScheduler();
         scheduler.executeRequest(request, async (err, data) => {
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_1900 err: " + JSON.stringify(err));
-          expect(err).assertEqual(12300002);
+          expect(err.code).assertEqual(12300002);
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_1900 end====");
           await sleep(200)
           done();
@@ -362,7 +362,7 @@ export default function ActsAALoginPlugin() {
           done();
         }).catch(async (err) => {
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_2000 err: " + JSON.stringify(err));
-          expect(err).assertEqual(12300002);
+          expect(err.code).assertEqual(12300002);
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_2000 end====");
           await sleep(200)
           done();
@@ -388,7 +388,7 @@ export default function ActsAALoginPlugin() {
         let scheduler = new appAccount.AccountCapabilityScheduler();
         scheduler.executeRequest(request, async (err, data) => {
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_2100 err: " + JSON.stringify(err));
-          expect(err).assertEqual(12300002);
+          expect(err.code).assertEqual(12300002);
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_2100 end====");
           await sleep(200)
           done();
@@ -419,7 +419,7 @@ export default function ActsAALoginPlugin() {
           done();
         }).catch(async (err) => {
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_2200 err: " + JSON.stringify(err));
-          expect(err).assertEqual(12300002);
+          expect(err.code).assertEqual(12300002);
           console.debug("====>SUB_ACCOUNT_APPACCOUNT_ExecuteRequest_2200 end====");
           await sleep(200)
           done();
@@ -431,6 +431,36 @@ export default function ActsAALoginPlugin() {
         done()
       }
     })
+	
+	/*
+    * @tc.number    : SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100
+    * @tc.name      : ExtensionAbility Attribute verification test_0100
+    * @tc.desc      : capabilityType & request
+    */
+    it('SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100', 0, async function (done) {
+      console.debug("====>SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100 start====");
+      try {
+        let capabilityType = appAccount.AccountCapabilityType.AUTHORIZATION
+        let testProvider = new appAccount.AccountCapabilityProvider(capabilityType)
+        let request = new TestAuthRequest(testProvider)
+        let testResponse = new appAccount.AccountCapabilityResponse(request)
+        let result_1 = (testProvider instanceof appAccount.AccountCapabilityProvider)
+        let result_2 = (testResponse instanceof appAccount.AccountCapabilityResponse)
+        console.debug("====>SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100 testProvider result: " + JSON.stringify(result_1));
+        console.debug("====>SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100 testResponse result: " + JSON.stringify(result_2));
+        expect(result_1).assertTrue()
+        expect(result_2).assertTrue()
+        console.debug("====>SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100 end====");
+        await sleep(200)
+        done();
+      } catch (err) {
+        console.debug("====>SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100 exception: " + JSON.stringify(err));
+        console.debug("====>SUB_ACCOUNT_APPACCOUNT_EXTENSION_ABILITY_0100 err====");
+        expect().assertFail();
+        await sleep(200)
+        done()
+      }
+    });
 
     /*
     * @tc.number    : SUB_ACCOUNT_APPACCOUNT_Enum_AccountCapabilityType_0100

@@ -3331,6 +3331,19 @@ export default function ActsAccountAuthToken() {
                 done();
             });
         });
+		
+		it('ActsAccountOAuthToken_13201', 0, async function (done) {
+			console.debug("====>ActsAccountOAuthToken_13201 start====");
+			var appAccountManager = account.createAppAccountManager();
+			await appAccountManager.queryAuthenticatorInfo("com.example.actsaccountOauthtoken").then((dataInfo) =>{
+				console.debug("====>ActsAccountOAuthToken_13201 queryAuthenticatorInfo dataInfo:" + JSON.stringify(dataInfo));
+				expect(isNaN(dataInfo.iconId)).assertFalse();
+				expect(isNaN(dataInfo.labelId)).assertFalse();
+				done();
+			}).catch((err) => {
+				console.debug("====>ActsAccountOAuthToken_13201 queryAuthenticatorInfo err:" + JSON.stringify(err));
+			});
+		});
     
         it('ActsAccountAuthToken_13300', 0, async function (done) {
             console.debug("====>ActsAccountAuthToken_13300 start====");
