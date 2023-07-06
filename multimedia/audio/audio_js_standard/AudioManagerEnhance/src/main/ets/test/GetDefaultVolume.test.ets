@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
 import ArrayList from '@ohos.util.ArrayList';
+import * as env from './Const.ets';
 
 export default function audioManagerTest() {
   describe('getDefaultVolume', function () {

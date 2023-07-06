@@ -15,6 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
+import * as env from './Const.ets';
 
 export default function audioManagerTest() {
   describe('isVolumeUnadjustable', function () {

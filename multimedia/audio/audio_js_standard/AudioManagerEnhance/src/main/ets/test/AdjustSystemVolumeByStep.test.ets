@@ -15,6 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import featureAbility from '@ohos.ability.featureAbility';
+import * as env from './Const.ets';
 
 export default function audioManagerTest() {
   describe('adjustSystemVolumeByStep', function () {
@@ -128,7 +129,7 @@ export default function audioManagerTest() {
             await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_DOWN).then((data) => {
               console.info(`####${index} adjustSystemVolumeByStep :SUCCESS ${data}`);
             }).catch((error) => {
-              if(index == 'ALL' && error.code == 6800104){
+              if(index == 'ALL' && error.code == UNSUPORTED_OPTION_6800104){
                 console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${error.message} ${error.code}`);
               }else{
                 expect(false).assertTrue();
@@ -166,7 +167,7 @@ export default function audioManagerTest() {
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_UP).then((data) => {
             console.info(`####${index} adjustSystemVolumeByStep :SUCCESS ${data}`);
           }).catch((error) => {
-            if(index == 'ALL' && error.code == 6800104){
+            if(index == 'ALL' && error.code == UNSUPORTED_OPTION_6800104){
               console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : data ${error.message} ${error.code}`);
             }else{
               expect(false).assertTrue();
@@ -203,7 +204,7 @@ export default function audioManagerTest() {
         await audioVolumeGroupManager.adjustSystemVolumeByStep(AUDIO_VLOUME_TYPE_ERROR, VOLUME_ADJUST_DOWN).then((data) => {
           console.info(`####Unknown volume type, Set it to default MEDIA! adjustSystemVolumeByStep :SUCCESS ${data}`);
         }).catch((error) => {
-          if(error.code == 6800104){
+          if(error.code == UNSUPORTED_OPTION_6800104){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
           }else{
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
@@ -242,7 +243,7 @@ export default function audioManagerTest() {
         await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, VOLUME_ADJUST_ERROR).then((data) => {
           console.info(`####adjustSystemVolumeByStep :SUCCESS ${data}`);
         }).catch((error) => {
-          if(error.code == 6800104){
+          if(error.code == UNSUPORTED_OPTION_6800104){
             console.info(`####adjustSystemVolumeByStep : ${error.message}, code ${error.code}`);
             expect(true).assertTrue();
             done();
@@ -278,7 +279,7 @@ export default function audioManagerTest() {
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == 6800101){
+          if(error.code == INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
             expect(true).assertTrue();
             done();
@@ -310,7 +311,7 @@ export default function audioManagerTest() {
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == 6800101){
+          if(error.code == INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
             expect(true).assertTrue();
             done();
@@ -343,7 +344,7 @@ export default function audioManagerTest() {
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == 6800104){
+          if(error.code == UNSUPORTED_OPTION_6800104){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
             expect(true).assertTrue();
             done();
@@ -412,7 +413,7 @@ export default function audioManagerTest() {
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_UP).then((data) => {
             console.info(`####${index} adjustSystemVolumeByStep :SUCCESS ${data}`);
           }).catch((error) => {
-            if(index == 'ALL' && error.code == 6800104){
+            if(index == 'ALL' && error.code == UNSUPORTED_OPTION_6800104){
               console.info(`####${index} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
               expect(true).assertTrue();
               done();
@@ -481,7 +482,7 @@ export default function audioManagerTest() {
         }
         done();
       }catch (error){
-        if(type == 'ALL' && error.code == 6800301){
+        if(type == 'ALL' && error.code == UNSUPORTED_OPTION_6800104){
           console.info(`####${type} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
           expect(true).assertTrue();
           done();
@@ -604,7 +605,7 @@ export default function audioManagerTest() {
           console.info(`####${index} setVolume :volome ${Vol}`);
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_DOWN, (err,data) => {
             if(err){
-              if(index == 'ALL' && err.code == 6800104){
+              if(index == 'ALL' && err.code == UNSUPORTED_OPTION_6800104){
                 console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
               }else{
                 console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
@@ -644,7 +645,7 @@ export default function audioManagerTest() {
           console.info(`####${index} setVolume :volome ${Vol}`);
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_UP, (err,data) => {
             if(err){
-              if(index == 'ALL' && err.code == 6800104){
+              if(index == 'ALL' && err.code == UNSUPORTED_OPTION_6800104){
                 console.log(`####${index} adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
               }else{
                 console.log(`####${index} adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
@@ -682,7 +683,7 @@ export default function audioManagerTest() {
         await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, vol_MEDIA);
         console.info(`####setVolume :volume ${vol_MEDIA}`);
         await audioVolumeGroupManager.adjustSystemVolumeByStep(AUDIO_VOLUME_TYPE_ERROR, VOLUME_ADJUST_UP, (err,data) => {
-          if(err.code == 6800104){
+          if(err.code == UNSUPORTED_OPTION_6800104){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
           }else{
             console.info(`####adjustSystemVolumeByStep :SUCCESS ${data}`);
@@ -721,7 +722,7 @@ export default function audioManagerTest() {
       try {
         let VOLUME_ADJUST_TYPE_ERROR = 3;
         await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, VOLUME_ADJUST_TYPE_ERROR, (err,data) => {
-          if(err.code == 6800104){
+          if(err.code == UNSUPORTED_OPTION_6800104){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
             expect(true).assertTrue();
             done();
@@ -749,8 +750,7 @@ export default function audioManagerTest() {
       try {
         let AUDIO_VOLUME_TYPE_ERROR = '123';
         await audioVolumeGroupManager.adjustSystemVolumeByStep(AUDIO_VOLUME_TYPE_ERROR, VOLUME_ADJUST_DOWN, (err,data) => {
-          if(err.code == 6800101){
-            //error invalid parameter, code 6800101
+          if(err.code == INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
             expect(true).assertTrue();
             done();
@@ -816,7 +816,7 @@ export default function audioManagerTest() {
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == 6800101){
+          if(error.code == INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
             expect(true).assertTrue();
             done();
@@ -849,7 +849,7 @@ export default function audioManagerTest() {
           expect(true).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == 6800101){
+          if(error.code == INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustSystemVolumeByStep : error ${error.message}, code ${error.code}`);
             expect(true).assertTrue();
             done();
@@ -884,7 +884,7 @@ export default function audioManagerTest() {
           console.info(`####${index} set max Volume :volome ${maxVol}`);
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_UP, (err,data) => {
             if(err){
-              if(index == 'ALL' && err.code == 6800104){
+              if(index == 'ALL' && err.code == UNSUPORTED_OPTION_6800104){
                 console.info(`####${index} adjustSystemVolumeByStep: error ${err.message}, code ${err.code}`);
                 expect(true).assertTrue();
                 done();
@@ -910,7 +910,7 @@ export default function audioManagerTest() {
         }
         done();
       }catch (error){
-        if(type == 'ALL' && error.code == 6800104){
+        if(type == 'ALL' && error.code == UNSUPORTED_OPTION_6800104){
           console.info(`####${type} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
           expect(true).assertTrue();
           done();
@@ -960,7 +960,7 @@ export default function audioManagerTest() {
         }
         done();
       }catch (error){
-        if(type ==  'ALL' && error.code == 6800301){
+        if(type ==  'ALL' && error.code == UNSUPORTED_OPTION_6800104){
           console.info(`####${type} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
           expect(true).assertTrue();
           done();
