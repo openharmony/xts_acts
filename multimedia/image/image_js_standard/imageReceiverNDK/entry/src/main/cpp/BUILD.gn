@@ -34,7 +34,7 @@ ohos_shared_library("ImageReceiverNDKTest") {
   configs = [ ":config" ]
 
   external_deps = [
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
     "multimedia_image_framework:image_ndk",
     "multimedia_image_framework:image_receiver_ndk",
     "napi:ace_napi",

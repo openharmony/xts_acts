@@ -20,7 +20,7 @@ ohos_js_hap_suite("ActsBytraceJsTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsByTraceJsTest"
-  part_name = "hitrace_native"
+  part_name = "hitrace"
   subsystem_name = "hiviewdfx"
 }
 ohos_js_assets("bytrace_assets") {

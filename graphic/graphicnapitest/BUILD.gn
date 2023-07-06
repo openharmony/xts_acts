@@ -50,7 +50,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "access_token:libnativetoken",
     "access_token:libtoken_setproc",
     "graphic_standard:libgraphic_utils",
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
     "ipc:ipc_core",
     "samgr:samgr_proxy",
   ]
