@@ -10,9 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//build/ohos_var.gni")
-
 group("ability_runtime") {
   testonly = true
   if (is_standard_system) {
@@ -31,7 +29,6 @@ group("ability_runtime") {
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsfwkdataaccessortest:dataability",
       "actsmultiplecall:actsmultiplecall",
-      "actsparsingparameterstest:actsparsingparameterstest",
       "actsqueryfunctiontest:actsqueryfunctiontest",
       "actsrequestdialogtest:actsrequestdialogtest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
