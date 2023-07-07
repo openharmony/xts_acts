@@ -258,7 +258,6 @@ export default function avVideoRecorderTestOne() {
                 console.info('case success!!');
                 done();
             } else {
-                avVideoRecorderTestBase.sleep(1000)
                 eventEmitter.emit(steps[0], avRecorder, avConfig, recorderTime, steps, done);
             }
         }
