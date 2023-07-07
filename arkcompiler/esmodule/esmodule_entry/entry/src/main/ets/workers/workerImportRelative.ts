@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { add } from '../test/test'
+import { add } from '../test/test';
 import worker from '@ohos.worker';
 
-var workerPort = worker.workerPort;
-workerPort.onmessage = function() {
-  if (add(2, 6) == 8){
-    console.log("ModuleTest relativePath");
-    workerPort.postMessage("ModuleTest receive data from main thread");
+const ADDEND_FIRST = 2;
+const ADDEND_SECOND = 3;
+const SUM = 5;
+let workerPort = worker.workerPort;
+workerPort.onmessage = function(): void {
+  if (add(ADDEND_FIRST, ADD_SECOND) === SUM) {
+    workerPort.postMessage('ModuleTest receive data from main thread');
   }
-}
+};

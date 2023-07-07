@@ -12,13 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {add} from 'libentry.so'
+import {add} from 'libentry.so';
 import worker from '@ohos.worker';
 
+const ADDEND_FIRST = 2;
+const ADDEND_SECOND = 3;
+const SUM = 5;
 var workerPort = worker.workerPort;
-workerPort.onmessage = function() {
-  if (add(2, 3) == 5) {
-    console.log("ModuleTest AppNapi");
-    workerPort.postMessage("ModuleTest receive data from main thread");
+workerPort.onmessage = function(): void {
+  if (add(ADDEND_FIRST, ADD_SECOND) === SUM) {
+    workerPort.postMessage('ModuleTest receive data from main thread');
   }
-}
+};

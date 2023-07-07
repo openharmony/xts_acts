@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import isLeapYear from 'leap-year'
+import isLeapYear from 'leap-year';
 import worker from '@ohos.worker';
 
-var workerPort = worker.workerPort;
-workerPort.onmessage = function() {
-  if (isLeapYear(2000)){
-    console.log("ModuleTest ohpm");
-    workerPort.postMessage("ModuleTest receive data from main thread");
+const LEAP_YEAR = 2000;
+let workerPort = worker.workerPort;
+workerPort.onmessage = function(): void {
+  if (isLeapYear(LEAP_YEAR)) {
+    workerPort.postMessage('ModuleTest receive data from main thread');
   }
-}
+};

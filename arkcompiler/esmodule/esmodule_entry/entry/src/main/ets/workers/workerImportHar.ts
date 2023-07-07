@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {ohpmRes} from 'har'
+import {ohpmRes} from 'har';
 import worker from '@ohos.worker';
 
-var workerPort = worker.workerPort;
-workerPort.onmessage = function() {
-  console.log("ModuleTest har");
-  if (ohpmRes){
-    workerPort.postMessage("ModuleTest receive data from main thread");
+let workerPort = worker.workerPort;
+workerPort.onmessage = function(): void {
+  if (ohpmRes) {
+    workerPort.postMessage('ModuleTest receive data from main thread');
   }
-}
+};

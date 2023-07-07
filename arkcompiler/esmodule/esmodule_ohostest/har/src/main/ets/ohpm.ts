@@ -12,5 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import isLeapYear from "leap-year"
-export var ohpmRes = isLeapYear(2000);
+import isLeapYear from 'leap-year';
+
+const LEAP_YEAR = 2000;
+export let ohpmRes = isLeapYear(LEAP_YEAR);

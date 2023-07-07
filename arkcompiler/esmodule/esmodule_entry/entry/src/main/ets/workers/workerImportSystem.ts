@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from "@ohos.hilog"
+import hilog from '@ohos.hilog';
 import worker from '@ohos.worker';
 
-hilog.info(0x0000, "testTag", 'dexter log: call ohos.hilog')
+hilog.info(0x0000, 'testTag', 'dexter log: call ohos.hilog');
 
-var workerPort = worker.workerPort;
-workerPort.onmessage = function() {
-  console.log("ModuleTest systemNapi");
-  workerPort.postMessage("ModuleTest receive data from main thread");
-}
+let workerPort = worker.workerPort;
+workerPort.onmessage = function(): void {
+  workerPort.postMessage('ModuleTest receive data from main thread');
+};
