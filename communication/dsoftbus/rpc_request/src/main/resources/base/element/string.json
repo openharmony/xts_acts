@@ -2,7 +2,7 @@
   "string": [
     {
       "name": "app_name",
-      "value": "rpctest"
+      "value": "rpcrequesttest"
     },
     {
       "name": "mainability_description",
@@ -14,7 +14,7 @@
   },
   {
       "name": "MainAbility_label",
-      "value": "label"
+      "value": "rpcrequesttest"
   },
   {
       "name": "TestAbility_desc",
@@ -22,7 +22,7 @@
   },
   {
       "name": "TestAbility_label",
-      "value": "label"
+      "value": "rpcrequesttest"
   }
   ]
 }
