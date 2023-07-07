@@ -2,79 +2,43 @@ import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility'
 import Window from '@ohos.window'
 import commonEvent from '@ohos.commonEvent'
-import AbilityConstant from '@ohos.app.ability.AbilityConstant'
 
-let sequence = 0;
-let TAG = 'GetRunningProcessInformation'
-let commonStateArr: number[] = [-1,-1,-1,-1]
-let commonEventData={
+
+let TAG = 'getRunningProcess'
+let commonStateArr
+let commonEventData = {
     parameters:{
         commonStateArr: commonStateArr
     }
 }
-globalThis.StartFloatingAbility = () => {
-    let want = {
-        "deviceId": "",
-        "bundleName": "com.example.getrunningprocessinformationtworeply", //
-        "abilityName": "EntryAbility"
-    };
-    let options = {
-        windowMode: AbilityConstant.WindowMode.WINDOW_MODE_FLOATING,
-    };
-    globalThis.abilityContext.startAbility(want, options, (error) => {
-        console.log(TAG,"start floating ability error.code = " + error.code)
-    })
+let ApplicationStateChangeCallbackFir = {
+    onApplicationForeground() {
+        console.log(TAG,'ApplicationStateChangeCallbackFir onApplicationForeground')
+    },
+    onApplicationBackground() {
+        console.log(TAG,'ApplicationStateChangeCallbackFir onApplicationBackground')
+        setTimeout(() => {
+            console.info('Enter onApplicationForeground publish!')
+            commonEventData.parameters.commonStateArr = 1
+            commonEvent.publish('processState',commonEventData, (err) => {
+                console.info("====>processState publish err: " + JSON.stringify(err))
+            })
+        },1000)
+    }
 }
-
-globalThis.StartNormalAbility = () => {
-    let want = {
-        "deviceId": "",
-        "bundleName": "com.example.getrunningprocessinformationtworeply", //
-        "abilityName": "EntryAbility"
-    };
-    globalThis.abilityContext.startAbility(want, (error) => {
-        console.log(TAG, "start normal ability error.code = " + error.code)
-    })
-}
-
-globalThis.GetRunningProcessInfoCallback = () => {
-    globalThis.applicationContext.getRunningProcessInformation((err,data) => {
-        if (err) {
-            console.log(TAG,`getRunningProcessInformation err: ` + JSON.stringify(err));
-        }
-        else {
-            console.log(TAG,'Oncreate Callback State: ' + JSON.stringify(data[0].state));
-            commonStateArr[sequence++] = data[0].state
-        }
-    })
-}
-
-globalThis.GetRunningProcessInfoPromise = () => {
-    globalThis.applicationContext.getRunningProcessInformation().then((data) => {
-        console.log(TAG,'Oncreate Promise State: ' + JSON.stringify(data[0].state));
-        commonStateArr[sequence++] = data[0].state
-    }).catch((err) => {
-        console.log(TAG,`getRunningProcessInformation err: ` + JSON.stringify(err));
-    });
-}
-
-globalThis.PublishStateArray = () => {
-    commonEvent.publish('processState',commonEventData, (err) => {
-        console.info("====>processState publish err: " + JSON.stringify(err))
-    })
-}
-
+let ForegroundTAG = -1
 export default class EntryAbility extends Ability {
     onCreate(want, launchParam) {
-        sequence = 0
+        ForegroundTAG = -1
+        commonEventData.parameters.commonStateArr = -1
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
         hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
         hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-
-        globalThis.want = want
-        globalThis.abilityContext = this.context
-        globalThis.applicationContext = this.context.getApplicationContext();
+        globalThis.abilityContext1 = this.context
+        globalThis.want1 = want
+        globalThis.applicationContext1 = this.context.getApplicationContext();
+        globalThis.applicationContext1.on('applicationStateChange', ApplicationStateChangeCallbackFir)
 
     }
 
@@ -82,6 +46,7 @@ export default class EntryAbility extends Ability {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     }
+
     onWindowStageCreate(windowStage: Window.WindowStage) {
         // Main window is created, set main page for this ability
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
@@ -106,6 +71,15 @@ export default class EntryAbility extends Ability {
 
     onForeground() {
         // Ability has brought to foreground
+        ForegroundTAG++
+        if(ForegroundTAG == 1) {
+            setTimeout(() => {
+                commonEvent.publish('processState',commonEventData, (err) => {
+                    console.info("====>processState publish err: " + JSON.stringify(err))
+                })
+            },3000)
+
+        }
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     }

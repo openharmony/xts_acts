@@ -18,9 +18,11 @@ group("getrunningprocessinformation") {
   if (is_standard_system) {
     deps = [
       "ApplicationStateChangeOneReply:ApplicationStateChangeOneReply",
+      "ApplicationStateChangeThreeReply:ApplicationStateChangeThreeReply",
       "ApplicationStateChangeTwoReply:ApplicationStateChangeTwoReply",
       "GetRunningProcessInformationOneReply:GetRunningProcessInformationOneReply",
       "GetRunningProcessInformationTest:GetRunningProcessInformationTest",
+      "GetRunningProcessInformationTwoReply:GetRunningProcessInformationTwoReply",
     ]
   }
 }

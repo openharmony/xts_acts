@@ -6,13 +6,15 @@
         "bundle-name": "com.example.getrunningprocessinformationtest",
         "module-name": "entry_test",
         "shell-timeout": "600000",
-        "testcase-timeout": "15000"
+        "testcase-timeout": "30000"
     },
     "kits": [
 		{
             "test-file-name": [
                 "GetRunningProcessInformationTest.hap",
                 "GetRunningProcessInformationOneReply.hap",
+                "GetRunningProcessInformationTwoReply.hap",
+                "ApplicationStateChangeThreeReply.hap",
                 "ApplicationStateChangeOneReply.hap",
                 "ApplicationStateChangeTwoReply.hap"
             ],

@@ -69,6 +69,10 @@ export default class EntryAbility extends Ability {
         globalThis.abilityContext = this.context
         globalThis.want = want
         globalThis.applicationContext = this.context.getApplicationContext();
+        if (globalThis.want.action == 'RegisterOnOffOn') {
+            globalThis.applicationContext.on('applicationStateChange', ApplicationStateChangeCallbackFir)
+            globalThis.applicationContext.off('applicationStateChange', ApplicationStateChangeCallbackFir)
+        }
         globalThis.applicationContext.on('applicationStateChange', ApplicationStateChangeCallbackFir)
         if (globalThis.want.action == 'doubleRegister' || globalThis.want.action == 'doubleNeedBackGroundOff'
             || globalThis.want.action == 'DoubleRegisterOff') {
