@@ -74,27 +74,6 @@ export default class EntryAbility extends UIAbility {
         abilityName: 'UIExtAbility'
       });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
 
   onDestroy() {
@@ -142,9 +121,6 @@ export default class EntryAbility extends UIAbility {
         console.info('====>startAbility err:' + JSON.stringify(err));
       })
     }
-
-
-
   }
 
   onBackground() {

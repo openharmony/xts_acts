@@ -25,10 +25,6 @@ export default class EntryAbility extends UIAbility {
       });
     }
 
-
-
-
-
     if(want.action == 'Promise_0600') {
       console.info("====>EntryAbility want.action == 'Promise_0600':");
       AppStorage.SetOrCreate('want', {
@@ -46,11 +42,6 @@ export default class EntryAbility extends UIAbility {
         abilityName: 'UIExtAbility'
       });
     }
-
-
-
-
-
   }
 
   onDestroy() {
