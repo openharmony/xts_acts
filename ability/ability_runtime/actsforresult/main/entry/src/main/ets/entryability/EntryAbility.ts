@@ -1,0 +1,154 @@
+import UIAbility from '@ohos.app.ability.UIAbility';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want, launchParam) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    globalThis.terminate = () => {
+      setTimeout(() => {
+        this.context.terminateSelf().then(() => {
+          console.debug("====>terminateSelf end");
+        }).catch((err) => {
+          console.debug("====>terminateSelf err:" + JSON.stringify(err));
+        });
+      }, 50)
+    };
+
+    if(want.action == 'AsyncCallback_0100') {
+      console.info("====>EntryAbility want.action == 'AsyncCallback_0100':");
+      AppStorage.SetOrCreate('want', {
+        action: "AsyncCallback_0100",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    } else if (want.action == 'AsyncCallback_0300') {
+      console.info("====>EntryAbility want.action == 'AsyncCallback_0300':");
+      AppStorage.SetOrCreate('want', {
+        action: "AsyncCallback_0300",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    } else if (want.action == 'AsyncCallback_0400') {
+      console.info("====>EntryAbility want.action == 'AsyncCallback_0400':");
+      AppStorage.SetOrCreate('want', {
+        action: "AsyncCallback_0400",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    } else if (want.action == 'AsyncCallback_0500') {
+      console.info("====>EntryAbility want.action == 'AsyncCallback_0500':");
+      AppStorage.SetOrCreate('want', {
+        action: "AsyncCallback_0500",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    }
+
+    if(want.action == 'Promise_0100') {
+      console.info("====>EntryAbility want.action == 'Promise_0100':");
+      AppStorage.SetOrCreate('want', {
+        action: "Promise_0100",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    } else if (want.action == 'Promise_0300') {
+      console.info("====>EntryAbility want.action == 'Promise_0300':");
+      AppStorage.SetOrCreate('want', {
+        action: "Promise_0300",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    } else if (want.action == 'Promise_0400') {
+      console.info("====>EntryAbility want.action == 'Promise_0400':");
+      AppStorage.SetOrCreate('want', {
+        action: "Promise_0400",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    } else if (want.action == 'Promise_0500') {
+      console.info("====>EntryAbility want.action == 'Promise_0500':");
+      AppStorage.SetOrCreate('want', {
+        action: "Promise_0500",
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility'
+      });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+  onDestroy() {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground() {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    globalThis.StartAbilityForResult = () => {
+      this.context.startAbilityForResult({
+        bundleName: 'com.example.mainhap',
+        abilityName: 'CalledAbility',
+        //moduleName: 'entry'
+      }, (error, data) => {
+        console.log('=======>startAbilityForResult error.code ======>' + error.code);
+        console.log('=======>startAbilityForResult data.resultCode ======>' + data.resultCode);
+        console.log('=======>startAbilityForResult data.action ======>' + data.want.parameters.action);
+      })
+    }
+
+    globalThis.startUIExtension = () => {
+      this.context.startAbility({
+        bundleName: 'com.example.mainhap',
+        abilityName: 'UIExtAbility',
+      },(err) => {
+        console.info('====>startAbility err:' + JSON.stringify(err));
+      })
+    }
+
+
+
+  }
+
+  onBackground() {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}

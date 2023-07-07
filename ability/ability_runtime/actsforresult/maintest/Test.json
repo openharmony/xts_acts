@@ -1,0 +1,30 @@
+{
+    "description": "Configuration for aceceshi Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "600000",
+        "bundle-name": "com.example.mainhap",
+        "module-name": "entry_test",
+        "shell-timeout": "600000",
+        "testcase-timeout": 25000
+    },
+    "kits": [
+		{
+            "test-file-name": [
+                "forresulttest.hap",
+                "forresulttestnopermission.hap",
+                "main.hap",
+                "maintest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
+}

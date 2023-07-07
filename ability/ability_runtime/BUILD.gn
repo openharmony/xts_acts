@@ -29,6 +29,7 @@ group("ability_runtime") {
       "actscalltest:actscalltest",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
+      "actsforresult:actsforresult",
       "actsfwkdataaccessortest:dataability",
       "actsmultiplecall:actsmultiplecall",
       "actsqueryfunctiontest:actsqueryfunctiontest",

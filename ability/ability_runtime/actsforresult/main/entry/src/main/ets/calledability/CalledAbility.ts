@@ -1,0 +1,95 @@
+import UIAbility from '@ohos.app.ability.UIAbility';
+import hilog from '@ohos.hilog';
+import window from '@ohos.window';
+
+export default class CalledAbility extends UIAbility {
+  onCreate(want, launchParam) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onCreate');
+
+    console.log('=====> first app CalledAbility =====>');
+
+    if (want.action == 'AsyncCallback_0100'){
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
+          }
+        }
+      }, (err) => {
+        console.log('=====> AsyncCallback_0100 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
+      })
+    }
+
+    if (want.action == 'Promise_0100'){
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
+          }
+        }
+      }, (err) => {
+        console.log('=====> Promise_0100 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
+      })
+    }
+
+    if (want.action == 'AsyncCallback_0200'){
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
+          }
+        }
+      }, (err) => {
+        console.log('=====> AsyncCallback_0200 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
+      })
+    }
+
+    if (want.action == 'Promise_0200'){
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
+          }
+        }
+      }, (err) => {
+        console.log('=====> Promise_0200 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
+      })
+    }
+  }
+
+  onDestroy() {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/PageTwo', (err, data) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+
+  onWindowStageDestroy() {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onWindowStageDestroy');
+  }
+
+  onForeground() {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onForeground');
+  }
+
+  onBackground() {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'CalledAbility onBackground');
+  }
+}
