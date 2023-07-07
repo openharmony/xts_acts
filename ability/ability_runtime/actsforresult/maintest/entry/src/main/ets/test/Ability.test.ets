@@ -1,11 +1,22 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEventManager'
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver } from '@ohos.UiTest';
-
-
-
 
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
 var ACTS_CallFunction = {
@@ -85,7 +96,6 @@ export default function abilityTest() {
         },(err) => {
           console.info('====>startAbility err:' + JSON.stringify(err));
         })
-
       })
 
       function subscribeCallBack(err, data) {
@@ -108,7 +118,6 @@ export default function abilityTest() {
             done()
           })
         }, 2000)
-        // done()
       }
     })
 
@@ -164,7 +173,6 @@ export default function abilityTest() {
             done()
           })
         }, 1000)
-        // done()
       }
     })
 
@@ -400,17 +408,10 @@ export default function abilityTest() {
 
       function unSubscribeCallback() {
         console.info(`====>Promise_0200 unSubscribeCallback 'ACTS_CALL_EVENT'`)
-        // setTimeout(() => {
           abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestsecond').then(result =>{
             console.info('====>Promise_0200 unSubscribeCallback pkill ok' + JSON.stringify(result));
             done()
           })
-        //     .catch(err => {
-        //     console.info('====>Promise_0200 unSubscribeCallback pkill ng' + JSON.stringify(err));
-        //     done()
-        //   })
-        // }, 2000)
-        // done()
       }
     })
 
@@ -450,7 +451,6 @@ export default function abilityTest() {
           console.info(`====>Promise_0300 subscribeCallBack 'ACTS_CALL_EVENT_ANOTHER'  ${data}`)
           expect(data.parameters.str).assertEqual('ACTION');
           expect(data.parameters.result).assertEqual(0);
-
         }
         globalThis.terminate()
         abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestsecond').then(result =>{
@@ -498,7 +498,6 @@ export default function abilityTest() {
         console.info(`====>Promise_0400 subscribeCallBack all  ${data.event}`)
         if(data.event == 'ACTS_CALL_EVENT') {
           console.info(`====>Promise_0400 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`)
-          // expect(data.parameters.str).assertEqual('ACTION');
           expect(data.parameters.result).assertEqual(-1);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         }
@@ -535,7 +534,6 @@ export default function abilityTest() {
         console.info(`====>Promise_0500 subscribeCallBack all  ${data.event}`)
         if(data.event == 'ACTS_CALL_EVENT') {
           console.info(`====>Promise_0500 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`)
-          // expect(data.parameters.str).assertEqual('ACTION');
           expect(data.parameters.result != 0).assertTrue();
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         }
