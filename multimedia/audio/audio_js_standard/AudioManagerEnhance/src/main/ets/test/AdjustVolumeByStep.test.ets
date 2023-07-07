@@ -159,7 +159,7 @@ export default function audioManagerTest() {
         await audioVolumeGroupManager.adjustVolumeByStep(VOLUME_ADJUST_ERROR).then((data) => {
           console.info(`####adjustVolumeByStep :SUCCESS ${data}`);
         }).catch((error) => {
-          if(error.code == UNSUPORTED_OPTION_6800104){
+          if(error.code == env.UNSUPORTED_OPTION_6800104){
             console.log(`####adjustVolumeByStep : error.code ${error.code}, ${error.message}`);
           }else{
             console.log(`${TagFrmwk}: ####adjustVolumeByStep : error.code ${error.code}, ${error.message}`);
@@ -194,7 +194,7 @@ export default function audioManagerTest() {
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == INVALID_INPUT_PARAMETER_6800101){
+          if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustVolumeByStep : error ${error.code}, message ${error.message}`);
             expect(true).assertTrue();
             done();
@@ -225,7 +225,7 @@ export default function audioManagerTest() {
           expect(true).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == INVALID_INPUT_PARAMETER_6800101){
+          if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustVolumeByStep : error ${error.code}, message ${error.message}`);
             expect(true).assertTrue();
             done();
@@ -443,7 +443,7 @@ export default function audioManagerTest() {
         await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, Vol);
         await audioVolumeGroupManager.adjustVolumeByStep(VOLUME_ADJUST_ERROR, (err,data) => {
           if (err) {
-            if(err.code == UNSUPORTED_OPTION_6800104){
+            if(err.code == env.UNSUPORTED_OPTION_6800104){
               console.log(`####adjustVolumeByStep : error ${err.code}, message ${err.message}`);
             }else{
               console.log(`####adjustVolumeByStep : error ${err.code}, message ${err.message}`);
@@ -476,7 +476,7 @@ export default function audioManagerTest() {
       try {
         let VOLUME_ADJUST_ERROR = '123';
         await audioVolumeGroupManager.adjustVolumeByStep(VOLUME_ADJUST_ERROR, (err,data) => {
-          if(err.code == INVALID_INPUT_PARAMETER_6800101){
+          if(err.code == env.INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustVolumeByStep : error ${err.code}, message ${err.message}`);
             expect(true).assertTrue();
             done();
@@ -513,7 +513,7 @@ export default function audioManagerTest() {
             done();
           }
         }).catch ((error)=>{
-          if(error.code == INVALID_INPUT_PARAMETER_6800101){
+          if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
             console.log(`${TagFrmwk}: ####adjustVolumeByStep : error ${error.code}, message ${error.message}`);
             expect(true).assertTrue();
             done();
@@ -557,7 +557,7 @@ export default function audioManagerTest() {
         expect(curVol).assertEqual(maxVol);
         done();
       }catch (error){
-        if(error.code == INVALID_INPUT_PARAMETER_6800101){
+        if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
           console.info(`####adjustVolumeByStep  : error ${error.message} ${error.code}`);
           expect(true).assertTrue();
           done();
@@ -597,7 +597,7 @@ export default function audioManagerTest() {
         expect(curVol).assertEqual(minVol);
         done();
       }catch (error){
-        if(error.code == INVALID_INPUT_PARAMETER_6800101){
+        if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
           console.info(`####adjustVolumeByStep : error ${error.message} ${error.code}`);
           expect(true).assertTrue();
           done();
