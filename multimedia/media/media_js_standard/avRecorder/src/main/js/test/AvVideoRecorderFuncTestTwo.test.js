@@ -65,7 +65,7 @@ export default function avVideoRecorderTestTwo() {
             let permissionNames = [permissionName1, permissionName2, permissionName3, permissionName4, permissionName5];
             await mediaTestBase.getPermission(permissionNames);
             await mediaTestBase.msleepAsync(2000);
-            await mediaTestBase.driveFn(3);
+            await mediaTestBase.driveFn(4);
             if (deviceInfo.deviceType === 'default') {
                 avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES
             } else {
@@ -87,11 +87,11 @@ export default function avVideoRecorderTestTwo() {
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
             }
             await avRecorderTestBase.sleep(1000);
+            await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
             console.info('afterEach case');
         })
 
         afterAll(function () {
-            mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
             console.info('afterAll case');
         })
 

@@ -150,7 +150,7 @@ export default function avVideoRecorderTestThree() {
             let permissionNames = [permissionName1, permissionName2, permissionName3, permissionName4, permissionName5];
             await mediaTestBase.getPermission(permissionNames);
             await mediaTestBase.msleepAsync(2000);
-            await mediaTestBase.driveFn(3)
+            await mediaTestBase.driveFn(4)
             console.info('beforeAll out');
         })
 
@@ -167,11 +167,11 @@ export default function avVideoRecorderTestThree() {
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
             }
             await avRecorderTestBase.sleep(1000);
+            await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
             console.info('afterEach case');
         })
 
         afterAll(function () {
-            mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
             console.info('afterAll case');
         })
 
