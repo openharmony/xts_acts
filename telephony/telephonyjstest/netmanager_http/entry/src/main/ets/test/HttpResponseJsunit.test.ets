@@ -39,6 +39,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.result != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse result Test end-----------------------");
           done();
         });
@@ -64,6 +65,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.result != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse result_01 Test end-----------------------");
           done();
         });
@@ -96,6 +98,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.result != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse result_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -132,6 +135,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse responseCode Test end-----------------------");
           done();
         });
@@ -157,6 +161,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse responseCode_01 Test end-----------------------");
           done();
         });
@@ -190,6 +195,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse responseCode_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -225,6 +231,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.header != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------header result Test end-----------------------");
           done();
         });
@@ -250,6 +257,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.header != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------header header_01 Test end-----------------------");
           done();
         });
@@ -283,6 +291,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.header != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse header_02 Test end-----------------------");
           done();
         }).catch(error => {
@@ -317,6 +326,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse cookies Test end-----------------------");
           done();
         });
@@ -343,6 +353,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse cookies_01 Test end-----------------------");
           done();
         });
@@ -375,6 +386,7 @@ export default function httpResponseJsunit() {
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
+          httpRequest.destroy();
           console.log("-----------------------HttpResponse cookies_02 Test end-----------------------");
           done();
         }).catch(error => {
