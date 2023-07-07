@@ -1,9 +1,7 @@
 import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility'
 import wantConstant from '@ohos.app.ability.wantConstant';
 import commonEvent from '@ohos.commonEventManager'
-// import Logger from '../model/Logger'
 import hilog from '@ohos.hilog';
-// const TAG: string = '[UIExtensionAbility]'
 
 export default class UIExtAbility extends UIExtensionAbility {
   onCreate() {
