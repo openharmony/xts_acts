@@ -20,7 +20,7 @@ const ADDEND_SECOND = 3;
 const SUM = 5;
 let workerPort = worker.workerPort;
 workerPort.onmessage = function(): void {
-  if (add(ADDEND_FIRST, ADD_SECOND) === SUM) {
+  if (add(ADDEND_FIRST, ADDEND_SECOND) === SUM) {
     workerPort.postMessage('ModuleTest receive data from main thread');
   }
 };

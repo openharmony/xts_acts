@@ -19,5 +19,6 @@ ohos_js_app_suite("ActsEsmoduleOhostestTest") {
   testonly = true
   part_name = "ets_frontend"
   subsystem_name = "arkcompiler"
-  certificate_profile = "./signature/auto_ohos_default_esmodule_ohosTest_com.esmodule.acts.p7b"
+  certificate_profile =
+      "./signature/auto_ohos_default_esmodule_ohosTest_com.esmodule.acts.p7b"
 }
