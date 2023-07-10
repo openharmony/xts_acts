@@ -43,6 +43,19 @@
             "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite_2.input -> /data/test",
             "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite0.output -> /data/test"
         ]
+    },
+    {
+        "type": "ShellKit",
+	    "run-command": [
+            "mount -o rw,remount /",
+            "[ -d '/system/lib' ] && cp /system/lib/ndk/libmindspore_lite_ndk.so /system/lib/platformsdk/",
+            "[ -d '/system/lib64' ] && cp /system/lib64/ndk/libmindspore_lite_ndk.so /system/lib64/platformsdk/"
+	    ],
+        "teardown-command": [
+            "[ -d '/system/lib' ] && cp /system/lib64/platformsdk/libmindspore_lite_ndk.so",
+            "[ -d '/system/lib64' ] && cp /system/lib64/platformsdk/libmindspore_lite_ndk.so",
+            "mount -o ro,remount /"
+        ]
     }
-]
+  ]
 }
