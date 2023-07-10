@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility'
 import Window from '@ohos.window'
@@ -6,11 +20,11 @@ let TAG = 'StateChangeTestTAG'
 let ApplicationStateChangeCallbackSec = {
     onApplicationForeground() {
         console.info('==== ApplicationStateChange Foreground ====');
-        console.log(TAG,'App2 ApplicationStateChangeCallbackSec onApplicationForeground')
+        console.log(TAG, 'App2 ApplicationStateChangeCallbackSec onApplicationForeground')
     },
     onApplicationBackground() {
         console.info('==== ApplicationStateChange Background ====');
-        console.log(TAG,'App2 ApplicationStateChangeCallbackSec onApplicationBackground')
+        console.log(TAG, 'App2 ApplicationStateChangeCallbackSec onApplicationBackground')
     }
 }
 export default class EntryAbility extends Ability {
@@ -63,7 +77,7 @@ export default class EntryAbility extends Ability {
             globalThis.abilityContext.terminateSelf((err) => {
                 console.log('terminateSelf result:' + JSON.stringify(err));
             })
-        },3000)
+        }, 3000)
     }
 
     onBackground() {
