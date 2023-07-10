@@ -6,32 +6,36 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-      "tablet",
+            "tablet",
             "default",
-            "phone"
+            "phone",
+            "2in1"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
-        "abilities": [{
-            "name": "TestAbility",
-            "srcEntrance": "./ets/TestAbility/TestAbility.ts",
-            "description": "$string:phone_entry_main",
-            "icon": "$media:icon",
-            "label": "$string:entry_label",
-            "visible": true,
-            "orientation": "portrait",
-            "skills": [{
-                "actions": [
-                    "action.system.home"
-                ],
-                "entities": [
-                    "entity.system.home"
+        "abilities": [
+            {
+                "name": "TestAbility",
+                "srcEntrance": "./ets/TestAbility/TestAbility.ts",
+                "description": "$string:phone_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "orientation": "portrait",
+                "skills": [
+                    {
+                        "actions": [
+                            "action.system.home"
+                        ],
+                        "entities": [
+                            "entity.system.home"
+                        ]
+                    }
                 ]
-            }]
-        }],
-
+            }
+        ],
         "requestPermissions": []
     }
 }
