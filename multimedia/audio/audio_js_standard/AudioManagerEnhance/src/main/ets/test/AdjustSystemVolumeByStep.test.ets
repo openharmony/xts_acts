@@ -452,10 +452,8 @@ export default function audioManagerTest() {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ADJUSTSYSTEMVOLUMEBYSTEP_PROMISE_1100', 0, async function (done) {
-      let type;
       try {
         for(let index in audio.AudioVolumeType){
-          type = index;
           console.info(`####AudioVolumeType : ${index}`);
           let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType[index]);
           await audioVolumeGroupManager.setVolume(audio.AudioVolumeType[index], minVol);
@@ -465,10 +463,17 @@ export default function audioManagerTest() {
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_DOWN).then((data) => {
             console.info(`####${index} adjustSystemVolumeByStep :SUCCESS ${data}`);
           }).catch((error) => {
-            console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${error.message} ${error.code}`);
-            expect(false).assertTrue();
-            done();
-            return;
+            if(index == 'ALL' && error.code == 6800104){
+              console.info(`####${index} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
+              expect(true).assertTrue();
+              done();
+              return
+            }else{
+              console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${error.message} ${error.code}`);
+              expect(false).assertTrue();
+              done();
+              return;
+            }
           });
           await sleep(20);
           let curVol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType[index]);
@@ -482,15 +487,9 @@ export default function audioManagerTest() {
         }
         done();
       }catch (error){
-        if(type == 'ALL' && error.code == env.UNSUPORTED_OPTION_6800104){
-          console.info(`####${type} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
-          expect(true).assertTrue();
-          done();
-        }else{
-          console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ADJUSTSYSTEMVOLUMEBYSTEP_PROMISE_1100: error ${error.message}, code ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ADJUSTSYSTEMVOLUMEBYSTEP_PROMISE_1000: error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
@@ -931,19 +930,23 @@ export default function audioManagerTest() {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ADJUSTSYSTEMVOLUMEBYSTEP_CALLBACK_1100', 0, async function (done) {
-      let type;
       try {
         for(let index in audio.AudioVolumeType) {
-          type = index;
           console.info(`####AudioVolumeType: ${index}`);
           let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType[index]);
           await audioVolumeGroupManager.setVolume(audio.AudioVolumeType[index], minVol);
           console.info(`####${index} setVolume :volome ${minVol}`);
           await audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType[index], VOLUME_ADJUST_DOWN, (err,data) => {
             if(err){
-              console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${err.message}, code ${err.code}`);
-              expect(false).assertTrue();
-              done();
+              if(index ==  'ALL' && err.code == 6800104){
+                console.info(`####${index} adjustSystemVolumeByStep: error ${err.message}, code ${err.code}`);
+                expect(true).assertTrue();
+                done();
+              }else{
+                console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${err.message} ${err.code}`);
+                expect(false).assertTrue();
+                done();
+              }
             }else{
               console.info(`####${index} adjustSystemVolumeByStep :SUCCESS ${data}`);
             }
@@ -960,15 +963,9 @@ export default function audioManagerTest() {
         }
         done();
       }catch (error){
-        if(type ==  'ALL' && error.code == env.UNSUPORTED_OPTION_6800104){
-          console.info(`####${type} adjustSystemVolumeByStep: error ${error.message}, code ${error.code}`);
-          expect(true).assertTrue();
-          done();
-        }else{
-          console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ADJUSTSYSTEMVOLUMEBYSTEP_CALLBACK_1100: error ${error.message}, code ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ADJUSTSYSTEMVOLUMEBYSTEP_CALLBACK_1100: error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
     })
 
