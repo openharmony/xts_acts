@@ -710,7 +710,7 @@ export default function pasteBoardRecordTest(){
         /**
          * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1100
          * @tc.name      AddData
-         * @tc.desc      Test pasteBoard add 613th record fail
+         * @tc.desc      Test pasteBoard add 613th record successful
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
@@ -753,6 +753,32 @@ export default function pasteBoardRecordTest(){
             }
             expect(error != undefined).assertTrue();
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1200 end")
+            done();
+        })
+		
+		/**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300
+         * @tc.name      AddData
+         * @tc.desc      Test pasteBoard add 613th record successful
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+         it('SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300 start")
+            let pasteData = pasteboard.createData("string",ARRAY_BUFFER)
+            for(var i = 0; i < 998; i++){
+                pasteData.addRecord("stringRecord" + i, ARRAY_BUFFER);
+            }
+            try{
+                pasteData.addRecord("stringRecord1000", ARRAY_BUFFER);
+            }catch(err){
+                console.info("Add record error, err code is: " + err.code)
+                expect(err!=undefined).assertFail();
+            }
+            let hasType = pasteData.hasType("stringRecord1000")
+            expect(hasType == true).assertTrue();
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1300 end")
             done();
         })
     });
