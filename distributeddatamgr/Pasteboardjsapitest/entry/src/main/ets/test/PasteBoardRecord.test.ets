@@ -725,10 +725,10 @@ export default function pasteBoardRecordTest(){
                 pasteData.addRecord("stringRecord513", ARRAY_BUFFER);
             }catch(err){
                 console.info("Add record error, err code is: " + err.code)
-                expect(err.code).assertEqual("12900002")
+                expect(err!=undefined).assertFail();
             }
             let hasType = pasteData.hasType("stringRecord513")
-            expect(hasType == false).assertTrue();
+            expect(hasType == true).assertTrue();
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_ADDRECORD_1100 end")
             done();
         })
