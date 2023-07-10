@@ -30,7 +30,6 @@ export default function albumTestCallbackTest(abilityContext) {
     describe("albumTestCallbackTest", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            await getPermission(null, abilityContext);
             console.info("beforeAll case");
         });
         beforeEach(function () {

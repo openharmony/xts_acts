@@ -14,7 +14,6 @@
  */
 import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
-import bundleManager from '@ohos.bundle.bundleManager';
 import uitest from "@ohos.UiTest";
 const presetsCount = {
     ActsMediaLibraryAlbumTest: { albumsCount: 15, assetsCount: 27 },
@@ -239,38 +238,28 @@ const getPermission = async function (name, context) {
         name = "ohos.acts.multimedia.mediaLibrary";
     }
 
-    try {
-        console.info('getPermission start', name);
-        let permissionState = new Map();
-        const permissions = [
-            'ohos.permission.MEDIA_LOCATION',
-            'ohos.permission.READ_MEDIA',
-            'ohos.permission.WRITE_MEDIA',
-        ];
-
-        const atManager = abilityAccessCtrl.createAtManager();
-        const appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
-        const userId = 100;
-        const appInfo = await bundleManager.getApplicationInfo(name, appFlags, userId);
-        const tokenID = appInfo.accessTokenId;
-        for (const permission of permissions) {
-            console.info('getPermission permission: ' + permission);
-            try {
-                await atManager.grantUserGrantedPermission(tokenID, permission, 1);
-            } catch (error) {
-                console.info(`getPermission ${permission} failed`);
-            }
-            permissionState.set(permission, await atManager.verifyAccessToken(tokenID, permission));
+    console.info('getPermission start: ' + name);
+    let permissions = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA", "ohos.permission.WRITE_MEDIA"];
+    let atManager = abilityAccessCtrl.createAtManager();
+    atManager.requestPermissionsFromUser(context, permissions, (err, result) => {
+        if (err) {
+            console.info('getPermission failed: ' + JSON.stringify(err));
+        } else {
+            console.info('getPermission suc: ' + JSON.stringify(result));
         }
-        permissionState.forEach((value, key, map) => {
-            if (value !== 0) {
-                console.info(`getPermission failed; permission: ${key}, state: ${value}`);
-            }
-        });
-        console.info('getPermission end');
-    } catch (error) {
-        console.info(`getPermission failed, error: ${error}`);
+    });
+
+    let driver = uitest.Driver.create();
+    await sleep(500);
+
+    for (let i = 0; i < 10; i++) {
+        await sleep(500);
+        let button = await driver.findComponent(uitest.ON.text('允许'));
+        if (button != undefined) {
+            await button.click();
+        }
     }
+    console.info("getPermission end");
 };
 
 const MODIFY_ERROR_CODE_01 = "-1000";

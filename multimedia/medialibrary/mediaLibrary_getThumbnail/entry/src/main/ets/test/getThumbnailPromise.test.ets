@@ -24,7 +24,6 @@ import {
     AUDIO_TYPE,
     checkAssetsCount,
     fetchOps,
-    getPermission,
 } from "../../../../../../common";
 
 export default function getThumbnailPromise(abilityContext) {
