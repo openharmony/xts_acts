@@ -12,13 +12,19 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-group("commonlibrary") {
+group("crossplatform") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform:crossplatform",
-      "ets_utils:ets_utils",
-      "toolchain:toolchain",
+      "commonlibraryutiletstest:util_ets_test",
+      "commonlibraryurletstest:url_ets_test",
+      "commonlibraryconvertxmletstest:convertxml_ets_test",
+      "commonlibraryurietstest:uri_ets_test",
+      "commonlibrarydequeetstest:deque_ets_test",
+      "commonlibraryhashmapetstest:hashmap_ets_test",
+      "commonlibraryhashsetetstest:hashset_ets_test",
+      "commonlibrarytreesetetstest:treeset_ets_test",
+      "commonlibraryplainarrayetstest:plainarray_ets_test",
     ]
   }
 }
