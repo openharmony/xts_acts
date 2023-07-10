@@ -16,9 +16,10 @@
         "package": "ohos.acts.sensors.sensor.function",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
-            "phone"
+            "tablet",
+            "default",
+            "phone",
+            "2in1"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -101,8 +102,8 @@
             {
                 "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
                 "reason": "need use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
-            },			
-			{
+            },
+            {
                 "name": "ohos.permission.ACTIVITY_MOTION",
                 "reason": "need use ohos.permission.ACTIVITY_MOTION"
             }
