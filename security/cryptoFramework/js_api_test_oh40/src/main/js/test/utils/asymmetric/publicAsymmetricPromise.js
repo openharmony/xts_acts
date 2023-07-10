@@ -954,6 +954,64 @@ async function keyGenerationBySpecProcess(asyKeySpec) {
   });
 }
 
+async function verifyUpdateAbnormalParameterSM2Process(
+  asyKeySpec,
+  signVerifyAlgoName,
+  updateType
+) {
+  var globalRsaKeyPair;
+  var globalText = "This is a sign test";
+  var input = { data: stringTouInt8Array(globalText) };
+
+  return new Promise((resolve, reject) => {
+    let specGenerator = createAsyKeyGenerator(asyKeySpec);
+    let signGenerator = createAsySign(signVerifyAlgoName);
+    let verifyGenerator = createAsyVerify(signVerifyAlgoName);
+    let keyPairPromise = specGenerator.generateKeyPair();
+    keyPairPromise
+      .then((rsaKeyPair) => {
+        globalRsaKeyPair = rsaKeyPair;
+        return initSign(signGenerator, globalRsaKeyPair.priKey);
+      })
+      .then((initSignOut) => {
+        console.log(
+          "[Promise] verifyUpdateAbnormalParameterProcess initSignOut:" +
+            initSignOut
+        );
+        return updateSign(signGenerator, input);
+      })
+      .then((updateSignOut) => {
+        console.log(
+          "[Promise] verifyUpdateAbnormalParameterProcess updateSignOut:" +
+            updateSignOut
+        );
+        return signForSign(signGenerator, input);
+      })
+      .then((signOut) => {
+        console.log(
+          "[Promise] verifyUpdateAbnormalParameterProcess signOut:" + signOut
+        );
+        if (updateType == 4) {
+          resolve(updateVerifyFailed(verifyGenerator, input, updateType));
+        }
+        return initVerify(verifyGenerator, globalRsaKeyPair.pubKey);
+      })
+      .then((initVerifyOut) => {
+        console.log(
+          "[Promise] verifyUpdateAbnormalParameterProcess initVerifyOut:" +
+            initVerifyOut
+        );
+        resolve(updateVerifyFailed(verifyGenerator, input, updateType));
+      })
+      .catch((err) => {
+        console.error(
+          "[Promise] verifyUpdateAbnormalParameterProcess catch err:" + err
+        );
+        reject(err);
+      });
+  });
+}
+
 export {
   encryptAndDecryptNormalProcess,
   signAndVerifyNormalProcess,
@@ -967,4 +1025,5 @@ export {
   updateAbnormalParameterProcess,
   verifyUpdateAbnormalParameterProcess,
   keyGenerationBySpecProcess,
+  verifyUpdateAbnormalParameterSM2Process,
 };
