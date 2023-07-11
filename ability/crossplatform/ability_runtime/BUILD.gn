@@ -13,13 +13,14 @@
 
 import("//build/ohos_var.gni")
 
-group("ability") {
+group("ability_crossplatform_runtime") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ability_runtime:ability_runtime",
-      "dmsfwk:dmsfwk",
-	  "crossplatform:ability_crossplatform"
+      "ActsLifeCycleEtsFeatureTest:ActsLifeCycleEtsFeatureTest",
+      "ActsLifeCycleEtsTest:ActsLifeCycleEtsTest",
+      "ActsUiAbilityEtsTest:ActsUiAbilityEtsTest",
+      "commonTestAbilityApp:commonTestAbilityApp"
     ]
   }
 }
