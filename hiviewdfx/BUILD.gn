@@ -18,6 +18,7 @@ group("hiviewdfxtestacts") {
       "abilityconstanttest:ActsAbilityConstantTest",
       "apprecoverytest:ActsAppRecoveryTest",
       "bytracetest:ActsBytraceJsTest",
+      "crossplatform/hiviewdfxhilogetstest:hilog_ets_test",
       "hiappeventtest/hiappeventcpptest:ActsHiAppEventCPPTest",
       "hiappeventtest/hiappeventjstest:ActsHiAppeventTest",
       "hiappeventtest/hiappeventsubjstest:ActsHiAppeventSubTest",
