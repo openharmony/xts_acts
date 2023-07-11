@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import Telephony_NETSTACK_SocketTest from './NetStackSocket.test.js';
- import NetworkManagerTCPSocketServer.test from "./NetworkManagerTCPSocketServer.test";
+ import Telephony_NETSTACK_SocketTest from './NetStackSocket.test';
+ import NetworkManagerTCPSocketServer from "./NetworkManagerTCPSocketServer.test";
  export default function testsuite() {
     Telephony_NETSTACK_SocketTest();
-    NetworkManagerTCPSocketServer.test();
+    NetworkManagerTCPSocketServer();
  }
