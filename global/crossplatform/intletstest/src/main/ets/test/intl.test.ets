@@ -1,0 +1,1722 @@
+/*
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import I18n from "@ohos.i18n";
+import Intl from "@ohos.intl";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+
+export default function intlTest() {
+  describe("intlTest", function () {
+      
+    console.log("*************start IntlTest*************");
+
+    /* *
+     * @tc.number: LOCALE_TEST_001
+     * @tc.name  : localeTest001
+     * @tc.desc  : check the language
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest001", 0, function () {
+      let locale = new Intl.Locale("en-Latn-GB");
+      console.log("LOCALE_TEST_001 " + locale.language);
+      expect(locale.language).assertEqual("en");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_002
+     * @tc.name  : localeTest002
+     * @tc.desc  : check the numeric
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest002", 0, function () {
+      let locale = new Intl.Locale("en-Latn-GB", undefined);
+      console.log("LOCALE_TEST_002 " + locale.numeric);
+      expect(locale.numeric).assertFalse();
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_003
+     * @tc.name  : localeTest003
+     * @tc.desc  : check the script
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest003", 0, function () {
+      let locale = new Intl.Locale("en-Latn-GB");
+      console.log("LOCALE_TEST_003 " + locale.script);
+      expect(locale.script).assertEqual("Latn");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_004
+     * @tc.name  : localeTest004
+     * @tc.desc  : check the region
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest004", 0, function () {
+      let locale = new Intl.Locale("en-Latn-GB");
+      console.log("LOCALE_TEST_004 " + locale.region);
+      expect(locale.region).assertEqual("GB");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_005
+     * @tc.name  : localeTest005
+     * @tc.desc  : check the basename
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest005", 0, function () {
+      let locale = new Intl.Locale("en-Latn-GB");
+      console.log("LOCALE_TEST_005 " + locale.baseName);
+      expect(locale.baseName).assertEqual("en-Latn-GB");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_006
+     * @tc.name  : localeTest006
+     * @tc.desc  : check the hourCycle
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest006", 0, function () {
+      let locale = new Intl.Locale("zh-CN", { hourCycle: "h24", calendar: "gregory" });
+      console.log("LOCALE_TEST_006 " + locale.hourCycle);
+      expect(locale.hourCycle).assertEqual("h24");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_007
+     * @tc.name  : localeTest007
+     * @tc.desc  : check the calendar
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest007", 0, function () {
+      let locale = new Intl.Locale("zh-CN", { hourCycle: "h24", calendar: "gregory" });
+      console.log("LOCALE_TEST_007 " + locale.calendar);
+      expect(locale.calendar).assertEqual("gregory");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_008
+     * @tc.name  : localeTest008
+     * @tc.desc  : check the calendar
+     * @tc.size  : MediumTest
+     * @tc.type  : Field
+     * @tc.level : Level 0
+     */
+    it("localeTest008", 0, function () {
+      let locale = new Intl.Locale("ja-Jpan-JP-u-ca-japanese-hc-h12");
+      console.log("LOCALE_TEST_008 " + locale.calendar);
+      expect(locale.calendar).assertEqual("japanese");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_009
+     * @tc.name  : localeTest009
+     * @tc.desc  : check the hourCycle
+     * @tc.size  : MediumTest
+     * @tc.type  : Field
+     * @tc.level : Level 0
+     */
+    it("localeTest009", 0, function () {
+      let locale = new Intl.Locale("ja-Jpan-JP-u-ca-japanese-hc-h12");
+      console.log("LOCALE_TEST_009 " + locale.hourCycle);
+      expect(locale.hourCycle).assertEqual("h12");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_010
+     * @tc.name  : localeTest010
+     * @tc.desc  : check the caseFirst
+     * @tc.size  : MediumTest
+     * @tc.type  : Field
+     * @tc.level : Level 0
+     */
+    it("localeTest010", 0, function () {
+      let locale = new Intl.Locale("ja-Jpan-JP", { caseFirst: "upper" });
+      console.log("LOCALE_TEST_010 " + locale.caseFirst);
+      expect(locale.caseFirst).assertEqual("upper");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_011
+     * @tc.name  : localeTest011
+     * @tc.desc  : check the collation
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest011", 0, function () {
+      let locale = new Intl.Locale("ja-Jpan-JP", { collation: "big5han" });
+      console.log("LOCALE_TEST_011 " + locale.collation);
+      expect(locale.collation).assertEqual("big5han");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_012
+     * @tc.name  : localeTest012
+     * @tc.desc  : check the numeric
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest012", 0, function () {
+      let locale = new Intl.Locale("ja-Jpan-JP", { numeric: true });
+      console.log("LOCALE_TEST_012 " + locale.numeric);
+      expect(locale.numeric).assertTrue();
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_013
+     * @tc.name  : localeTest013
+     * @tc.desc  : check the numberingSystem
+     * @tc.size  : MediumTest
+     * @tc.type  : Field
+     * @tc.level : Level 0
+     */
+    it("LOCALE_TEST_013", 0, function () {
+      let locale = new Intl.Locale("ja-Jpan-JP", { numberingSystem: "arab" });
+      console.log("LOCALE_TEST_013 " + locale.numberingSystem);
+      expect(locale.numberingSystem).assertEqual("arab");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_014
+     * @tc.name  : localeTest014
+     * @tc.desc  : check the toString method with zh
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest014", 0, function () {
+      let locale = new Intl.Locale("zh");
+      console.log("LOCALE_TEST_14 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_015
+     * @tc.name  : localeTest015
+     * @tc.desc  : check the toString method with zh-cn
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest015", 0, function () {
+      let locale = new Intl.Locale("zh-CN");
+      console.log("LOCALE_TEST_015 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh-CN");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_016
+     * @tc.name  : localeTest016
+     * @tc.desc  : check the toString method with zh-Hans-CN
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest016", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN");
+      console.log("LOCALE_TEST_016 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh-Hans-CN");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_017
+     * @tc.name  : localeTest017
+     * @tc.desc  : check the toString method with zh-Hans-CN-u-hc-h12-ca-japanese
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest017", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN-u-ca-japanese-hc-h12");
+      console.log("LOCALE_TEST_017 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh-Hans-CN-u-hc-h12-ca-japanese");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_018
+     * @tc.name  : localeTest018
+     * @tc.desc  : check the toString method with zh-u-ca-gregory-co-compact
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest018", 0, function () {
+      let locale = new Intl.Locale("zh", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_018 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_019
+     * @tc.name  : localeTest019
+     * @tc.desc  : check the toString method with zh-u-ca-gregory-co-compact
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest019", 0, function () {
+      let locale = new Intl.Locale("zh-CN", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_019 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh-CN-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_020
+     * @tc.name  : localeTest020
+     * @tc.desc  : check the toString method with zh-hans-CN-u-ca-gregory-co-compact
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest020", 0, function () {
+      let locale = new Intl.Locale("zh-hans-CN", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_020 " + locale.toString());
+      expect(locale.toString()).assertEqual("zh-hans-CN-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_021
+     * @tc.name  : localeTest021
+     * @tc.desc  : check the minimize method with one param zh
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest021", 0, function () {
+      let locale = new Intl.Locale("zh");
+      console.log("LOCALE_TEST_021 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_022
+     * @tc.name  : localeTest022
+     * @tc.desc  : check the minimize method with one param zh-CN
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest022", 0, function () {
+      let locale = new Intl.Locale("zh-CN");
+      console.log("LOCALE_TEST_022 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_023
+     * @tc.name  : localeTest023
+     * @tc.desc  : check the minimize method with one param zh-Hans-CN
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest023", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN");
+      console.log("LOCALE_TEST_023 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_024
+     * @tc.name  : localeTest024
+     * @tc.desc  : check the minimize method with one param zh-Hans-CN-u-ca-gregory-co-compact
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest024", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN-u-ca-gregory-co-compact");
+      console.log("LOCALE_TEST_024 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_025
+     * @tc.name  : localeTest025
+     * @tc.desc  : check the minimize method with one param zh lcoale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest025", 0, function () {
+      let locale = new Intl.Locale("zh", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_025 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_026
+     * @tc.name  : localeTest026
+     * @tc.desc  : check the minimize method with one param zh-CN lcoale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest026", 0, function () {
+      let locale = new Intl.Locale("zh-CN", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_026 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_027
+     * @tc.name  : localeTest027
+     * @tc.desc  : check the minimize method with one param zh-hans-CN lcoale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest027", 0, function () {
+      let locale = new Intl.Locale("zh-hans-CN", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_027 " + locale.minimize().toString());
+      expect(locale.minimize().toString()).assertEqual("zh-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_028
+     * @tc.name  : localeTest028
+     * @tc.desc  : check the maximize method with one param zh
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest028", 0, function () {
+      let locale = new Intl.Locale("zh");
+      console.log("LOCALE_TEST_028 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_029
+     * @tc.name  : localeTest029
+     * @tc.desc  : check the maximize method with one param zh-CN
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest029", 0, function () {
+      let locale = new Intl.Locale("zh-CN");
+      console.log("LOCALE_TEST_029 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_030
+     * @tc.name  : localeTest030
+     * @tc.desc  : check the maximize method with one param zh-Hans-CN-u-ca-gregory-co-compact
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest030", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN");
+      console.log("LOCALE_TEST_030 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_031
+     * @tc.name  : localeTest031
+     * @tc.desc  : check the maximize method with zh-Hans-CN-u-ca-gregory-co-compact locale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest031", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN-u-ca-gregory-co-compact");
+      console.log("LOCALE_TEST_031 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_032
+     * @tc.name  : localeTest032
+     * @tc.desc  : check the maximize method with zh locale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest032", 0, function () {
+      let locale = new Intl.Locale("zh", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_032 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_033
+     * @tc.name  : localeTest033
+     * @tc.desc  : check the maximize method with zh-CN locale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest033", 0, function () {
+      let locale = new Intl.Locale("zh-CN", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_033 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: LOCALE_TEST_034
+     * @tc.name  : localeTest034
+     * @tc.desc  : check the maximize method with zh-Hans-CN locale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("localeTest034", 0, function () {
+      let locale = new Intl.Locale("zh-Hans-CN", { calendar: "gregory", collation: "compact" });
+      console.log("LOCALE_TEST_034 " + locale.maximize().toString());
+      expect(locale.maximize().toString()).assertEqual("zh-Hans-CN-u-ca-gregory-co-compact");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_001
+     * @tc.name  : dateTimeFormatTest001
+     * @tc.desc  : check the datefmt is not null
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest001", 0, function () {
+      let datefmt = new Intl.DateTimeFormat("en-GB");
+      expect(datefmt !== null).assertTrue();
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_002
+     * @tc.name  : dateTimeFormatTest002
+     * @tc.desc  : check the datefmt is not null
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest002", 0, function () {
+      let datefmt = new Intl.DateTimeFormat();
+      expect(datefmt !== null).assertTrue();
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_003
+     * @tc.name  : dateTimeFormatTest003
+     * @tc.desc  : check the format(date)
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest003", 0, function () {
+      let date = new Date(2021, 11, 17, 3, 24, 0);
+      let datefmt = new Intl.DateTimeFormat("zh");
+      console.log("DATE_TIME_FORMAT_TEST_003 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertContain("2021");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_004
+     * @tc.name  : dateTimeFormatTest004
+     * @tc.desc  : check the format(date)
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest004", 0, function () {
+      let date = new Date(2021, 11, 17, 3, 24, 0);
+      let datefmt = new Intl.DateTimeFormat("en");
+      console.log("DATE_TIME_FORMAT_TEST_004 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertContain("21");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_005
+     * @tc.name  : dateTimeFormatTest005
+     * @tc.desc  : check the format(date)
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest005", 0, function () {
+      let date = new Date(2021, 11, 17, 3, 24, 0);
+      let datefmt = new Intl.DateTimeFormat("en-US");
+      console.log("DATE_TIME_FORMAT_TEST_005 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertContain("21");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_006
+     * @tc.name  : dateTimeFormatTest006
+     * @tc.desc  : check the format(date)
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest006", 0, function () {
+      let date = new Date(2021, 11, 17, 3, 24, 0);
+      let datefmt = new Intl.DateTimeFormat("en-GB");
+      console.log("DATE_TIME_FORMAT_TEST_006 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertContain("2021");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_007
+     * @tc.name  : dateTimeFormatTest007
+     * @tc.desc  : check the format(date)
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest007", 0, function () {
+      let date = new Date(2021, 11, 17, 3, 24, 0);
+      let datefmt = new Intl.DateTimeFormat("aa");
+      let value = datefmt.format(date);
+      console.log("DATE_TIME_FORMAT_TEST_007 " + value);
+      expect(value).assertInstanceOf("String");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_008
+     * @tc.name  : dateTimeFormatTest008
+     * @tc.desc  : check the datestyle
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest008", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { dateStyle: "full" };
+      let datefmt = new Intl.DateTimeFormat(["ban", "zh"], option);
+      console.log("DATE_TIME_FORMAT_TEST_008 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertEqual("2020年12月20日星期日");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_009
+     * @tc.name  : dateTimeFormatTest009
+     * @tc.desc  : check the timeStyle
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest009", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { dateStyle: "full", timeStyle: "full" };
+      let datefmt = new Intl.DateTimeFormat("zh-Hans-CN", option);
+      console.log("DATE_TIME_FORMAT_TEST_009 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertContain("2020年12月20日星期日");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_010
+     * @tc.name  : dateTimeFormatTest010
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest010", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { dateStyle: "long", timeStyle: "long" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN", option);
+      console.log("DATE_TIME_FORMAT_TEST_010 " + datefmt.resolvedOptions().dateStyle);
+      expect(datefmt.resolvedOptions().dateStyle).assertEqual("long");
+      expect(datefmt.format(date)).assertContain("2020年12月20日");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_011
+     * @tc.name  : dateTimeFormatTest011
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest011", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { dateStyle: "medium", timeStyle: "medium" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN", option);
+      console.log("DATE_TIME_FORMAT_TEST_011 " + datefmt.resolvedOptions().dateStyle);
+      expect(datefmt.resolvedOptions().dateStyle).assertEqual("medium");
+      expect(datefmt.format(date)).assertContain("2020年12月20日");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_012
+     * @tc.name  : dateTimeFormatTest012
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest012", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { dateStyle: "short", timeStyle: "short" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN", option);
+      console.log("DATE_TIME_FORMAT_TEST_012 " + datefmt.resolvedOptions().dateStyle);
+      expect(datefmt.resolvedOptions().dateStyle).assertEqual("short");
+      expect(datefmt.format(date)).assertContain("2020/12/20");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_013
+     * @tc.name  : dateTimeFormatTest013
+     * @tc.desc  : check the formatRange
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest013", 0, function () {
+      let startdate = new Date(2020, 11, 20, 14, 23, 16);
+      let enddate = new Date(2020, 11, 21, 14, 23, 16);
+      let datefmt = new Intl.DateTimeFormat("en-GB");
+      console.log("DATE_TIME_FORMAT_TEST_013 " + datefmt.formatRange(startdate, enddate));
+      expect(datefmt.formatRange(startdate, enddate)).assertEqual("20/12/2020 – 21/12/2020");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_014
+     * @tc.name  : dateTimeFormatTest014
+     * @tc.desc  : check the formatRange
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest014", 0, function () {
+      let startdate = new Date(2020, 11, 20, 14, 23, 16);
+      let enddate = new Date(2020, 11, 20, 14, 23, 16);
+      let datefmt = new Intl.DateTimeFormat("en-GB");
+      console.log("DATE_TIME_FORMAT_TEST_014 " + datefmt.formatRange(startdate, enddate));
+      expect(datefmt.formatRange(startdate, enddate)).assertEqual("20/12/2020");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_015
+     * @tc.name  : dateTimeFormatTest015
+     * @tc.desc  : check the month, day, weekday
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 0
+     */
+    it("dateTimeFormatTest015", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { year: "numeric", month: "long", day: "numeric", weekday: "long" };
+      let datefmt = new Intl.DateTimeFormat("ja", option);
+      console.log("DATE_TIME_FORMAT_TEST_015 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertEqual("2020年12月20日日曜日");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_016
+     * @tc.name  : dateTimeFormatTest016
+     * @tc.desc  : check the formatRange
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 0
+     */
+    it("dateTimeFormatTest016", 0, function () {
+      let startdate = new Date(2020, 11, 20, 14, 23, 16);
+      let enddate = new Date(2021, 4, 5, 10, 5, 3);
+      let option = { year: "numeric", month: "long", day: "numeric", weekday: "long" };
+      let datefmt = new Intl.DateTimeFormat("en", option);
+      console.log("DATE_TIME_FORMAT_TEST_016 " + datefmt.formatRange(startdate, enddate));
+      expect(datefmt.formatRange(startdate, enddate)).assertEqual("Sunday, December 20, 2020 – Wednesday, May 5, 2021");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_017
+     * @tc.name  : dateTimeFormatTest017
+     * @tc.desc  : check the hour, minute, second, era
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 0
+     */
+    it("dateTimeFormatTest017", 0, function () {
+      let date = new Date(2020, 11, 20, 14, 23, 16);
+      let option = { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", second: "numeric", weekday: "long", era: "short" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN-u-hc-h12", option);
+      console.log("DATE_TIME_FORMAT_TEST_017 " + datefmt.format(date));
+      expect(datefmt.format(date)).assertContain("公元2020年12月20日星期日");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_018
+     * @tc.name  : dateTimeFormatTest018
+     * @tc.desc  : check the hour, minute, second, era
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 0
+     */
+    it("dateTimeFormatTest018", 0, function () {
+      let date = new Date(2020, 3, 14, 15, 5, 3);
+      let option = { timeZone: "America/Los_Angeles", timeZoneName: "long" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN-u-hc-h12", option);
+      console.log("DATE_TIME_FORMAT_TEST_018 " + datefmt.format(date));
+      expect(datefmt.format(date).indexOf("北美太平洋夏令时间") !== -1).assertTrue();
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_019
+     * @tc.name  : dateTimeFormatTest019
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest019", 0, function () {
+      let option = { timeZone: "America/Los_Angeles", timeZoneName: "long" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN-u-hc-h12", option);
+      console.log("DATE_TIME_FORMAT_TEST_019 " + datefmt.resolvedOptions().timeZone);
+      expect(datefmt.resolvedOptions().timeZone).assertEqual("America/Los_Angeles");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_020
+     * @tc.name  : dateTimeFormatTest020
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest020", 0, function () {
+      let option = { timeZone: "America/Los_Angeles", timeZoneName: "long" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN-u-hc-h12", option);
+      console.log("DATE_TIME_FORMAT_TEST_020 " + datefmt.resolvedOptions().timeZoneName);
+      expect(datefmt.resolvedOptions().timeZoneName).assertEqual("long");
+    });
+
+    /* *
+     * @tc.number: DATE_TIME_FORMAT_TEST_021
+     * @tc.name  : dateTimeFormatTest021
+     * @tc.desc  : check the DateTimeOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("dateTimeFormatTest021", 0, function () {
+      let option = { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", second: "numeric", weekday: "long", era: "short", hourCycle: "h24", numberingSystem: "arab", hour12: true, dayPeriod: "short", formatMatcher: "basic", localeMatcher: "lookup" };
+      let datefmt = new Intl.DateTimeFormat("zh-CN-u-hc-h12", option);
+      expect(datefmt.resolvedOptions().locale).assertEqual("zh-CN");
+      expect(datefmt.resolvedOptions().hourCycle).assertEqual("h24");
+      expect(datefmt.resolvedOptions().numberingSystem).assertEqual("arab");
+      expect(datefmt.resolvedOptions().hour12).assertTrue();
+      expect(datefmt.resolvedOptions().era).assertEqual("short");
+      expect(datefmt.resolvedOptions().month).assertEqual("long");
+      expect(datefmt.resolvedOptions().day).assertEqual("numeric");
+      expect(datefmt.resolvedOptions().minute).assertEqual("2-digit");
+      expect(datefmt.resolvedOptions().second).assertEqual("numeric");
+      expect(datefmt.resolvedOptions().dayPeriod).assertEqual("short");
+      expect(datefmt.resolvedOptions().formatMatcher).assertEqual("basic");
+      expect(datefmt.resolvedOptions().localeMatcher).assertEqual("lookup");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_001
+     * @tc.name  : numberFormatTest001
+     * @tc.desc  : check the constructor()
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest001", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh");
+      console.log("NUMBER_FORMAT_TEST_001 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_002
+     * @tc.name  : numberFormatTest002
+     * @tc.desc  : check the constructor()
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest002", 0, function () {
+      let numfmt = new Intl.NumberFormat();
+      expect(numfmt !== null).assertTrue();
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_003
+     * @tc.name  : numberFormatTest003
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest003", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-u-nu-latn");
+      console.log("NUMBER_FORMAT_TEST_003 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_004
+     * @tc.name  : numberFormatTest004
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest004", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-u-nu-arab");
+      console.log("NUMBER_FORMAT_TEST_004 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("١٢٣٬٤٥٦٫٧٨٩");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_005
+     * @tc.name  : numberFormatTest005
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest005", 0, function () {
+      let numfmt = new Intl.NumberFormat("en");
+      console.log("NUMBER_FORMAT_TEST_005 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_006
+     * @tc.name  : numberFormatTest006
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest006", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-u-nu-thai");
+      console.log("NUMBER_FORMAT_TEST_006 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("๑๒๓,๔๕๖.๗๘๙");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_007
+     * @tc.name  : numberFormatTest007
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest007", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-GB");
+      console.log("NUMBER_FORMAT_TEST_007 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_008
+     * @tc.name  : numberFormatTest008
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest008", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-US");
+      console.log("NUMBER_FORMAT_TEST_008 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_009
+     * @tc.name  : numberFormatTest009
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest009", 0, function () {
+      let numfmt = new Intl.NumberFormat(["zh", "en"]);
+      console.log("NUMBER_FORMAT_TEST_0900 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_010
+     * @tc.name  : numberFormatTest010
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest010", 0, function () {
+      let numfmt = new Intl.NumberFormat(["en", "zh"]);
+      console.log("NUMBER_FORMAT_TEST_010 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_011
+     * @tc.name  : numberFormatTest011
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest011", 0, function () {
+      let numfmt = new Intl.NumberFormat(["en", "aa"]);
+      console.log("NUMBER_FORMAT_TEST_011 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_012
+     * @tc.name  : numberFormatTest012
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest012", 0, function () {
+      let numfmt = new Intl.NumberFormat(["aa", "zh"]);
+      console.log("NUMBER_FORMAT_TEST_1200 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_013
+     * @tc.name  : numberFormatTest013
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest013", 0, function () {
+      let numfmt = new Intl.NumberFormat(["aa", "bb", "es"]);
+      console.log("NUMBER_FORMAT_TEST_1400 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123.456,789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_014
+     * @tc.name  : numberFormatTest014
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest014", 0, function () {
+      let numfmt = new Intl.NumberFormat(["aa", "it", "bb"]);
+      console.log("NUMBER_FORMAT_TEST_014 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123.456,789");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_015
+     * @tc.name  : numberFormatTest015
+     * @tc.desc  : check the style  and notation
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest015", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-GB", { style: "decimal", notation: "scientific" });
+      console.log("NUMBER_FORMAT_TEST_015 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("1.234568E5");
+      expect(numfmt.resolvedOptions().style).assertEqual("decimal");
+      expect(numfmt.resolvedOptions().notation).assertEqual("scientific");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_016
+     * @tc.name  : numberFormatTest016
+     * @tc.desc  : check the currency, currencyDisplay, currencySign, signDisplay
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest016", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", currencyDisplay: "name", currencySign: "accounting", signDisplay: "always" });
+      console.log("NUMBER_FORMAT_TEST_016 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("+123,456.79 euros");
+      expect(numfmt.resolvedOptions().locale).assertEqual("en-GB");
+      expect(numfmt.resolvedOptions().style).assertEqual("currency");
+      expect(numfmt.resolvedOptions().currency).assertEqual("EUR");
+      expect(numfmt.resolvedOptions().currencyDisplay).assertEqual("name");
+      expect(numfmt.resolvedOptions().currencySign).assertEqual("accounting");
+      expect(numfmt.resolvedOptions().signDisplay).assertEqual("always");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_017
+     * @tc.name  : numberFormatTest017
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest017", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", currencyDisplay: "code", currencySign: "accounting", signDisplay: "always" });
+      console.log("NUMBER_FORMAT_TEST_017 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertContain("+USD");
+      expect(numfmt.format(123456.789)).assertContain("123,456.79");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_018
+     * @tc.name  : numberFormatTest018
+     * @tc.desc  : check the construct
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest018", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY", currencyDisplay: "symbol", currencySign: "accounting", signDisplay: "always" });
+      console.log("NUMBER_FORMAT_TEST_018 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("+¥123,456.79");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_019
+     * @tc.name  : numberFormatTest019
+     * @tc.desc  : check the construct
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest019", 0, function () {
+      let numfmt = new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY", currencyDisplay: "narrowSymbol", currencySign: "accounting", signDisplay: "always" });
+      console.log("NUMBER_FORMAT_TEST_019 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("+￥123,457");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_020
+     * @tc.name  : numberFormatTest020
+     * @tc.desc  : check the compactDisplay and localeMatcher
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest020", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", currencyDisplay: "name", currencySign: "accounting", signDisplay: "always", notation: "compact", compactDisplay: "long", localeMatcher: "lookup" });
+      console.log("NUMBER_FORMAT_TEST_020 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("+123 thousand euros");
+      expect(numfmt.resolvedOptions().locale).assertEqual("en-GB");
+      expect(numfmt.resolvedOptions().style).assertEqual("currency");
+      expect(numfmt.resolvedOptions().currency).assertEqual("EUR");
+      expect(numfmt.resolvedOptions().currencyDisplay).assertEqual("name");
+      expect(numfmt.resolvedOptions().currencySign).assertEqual("accounting");
+      expect(numfmt.resolvedOptions().compactDisplay).assertEqual("long");
+      expect(numfmt.resolvedOptions().localeMatcher).assertEqual("lookup");
+      expect(numfmt.resolvedOptions().signDisplay).assertEqual("always");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_021
+     * @tc.name  : numberFormatTest021
+     * @tc.desc  : check the unit, unitDisplay, maximumFractionDigits and minimumIntegerDigits
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest021", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-CN", { style: "unit", unit: "meter", unitDisplay: "long", maximumFractionDigits: 2, minimumIntegerDigits: 7 });
+      console.log("NUMBER_FORMAT_TEST_021 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("0,123,456.79米");
+      expect(numfmt.resolvedOptions().style).assertEqual("unit");
+      expect(numfmt.resolvedOptions().unit).assertEqual("meter");
+      expect(numfmt.resolvedOptions().unitDisplay).assertEqual("long");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_022
+     * @tc.name  : numberFormatTest022
+     * @tc.desc  : check the unitUsage
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest022", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-CN", { style: "unit", unit: "meter", unitDisplay: "long", unitUsage: "length-road" });
+      console.log("NUMBER_FORMAT_TEST_022 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789米");
+      expect(numfmt.resolvedOptions().unitUsage).assertEqual("length-road");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_023
+     * @tc.name  : numberFormatTest023
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest023", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-CN", { style: "unit", unit: "meter", unitDisplay: "narrow", unitUsage: "length-road" });
+      console.log("NUMBER_FORMAT_TEST_023 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789米");
+      expect(numfmt.resolvedOptions().unitUsage).assertEqual("length-road");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_024
+     * @tc.name  : numberFormatTest024
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest024", 0, function () {
+      let numfmt = new Intl.NumberFormat("zh-CN", { style: "unit", unit: "meter", unitDisplay: "short", unitUsage: "length-road" });
+      console.log("NUMBER_FORMAT_TEST_024 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("123,456.789米");
+      expect(numfmt.resolvedOptions().unitUsage).assertEqual("length-road");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_025
+     * @tc.name  : numberFormatTest025
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest025", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-US", { style: "unit", unit: "meter", unitDisplay: "narrow", unitUsage: "length-road" });
+      console.log("NUMBER_FORMAT_TEST_025 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("76.712mi");
+      expect(numfmt.resolvedOptions().unitUsage).assertEqual("length-road");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_026
+     * @tc.name  : numberFormatTest026
+     * @tc.desc  : check the resolvedOptions
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest026", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-US", { style: "unit", unit: "meter", unitDisplay: "short", unitUsage: "length-road" });
+      console.log("NUMBER_FORMAT_TEST_026 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("76.712 mi");
+      expect(numfmt.resolvedOptions().unitUsage).assertEqual("length-road");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_027
+     * @tc.name  : numberFormatTest027
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest027", 0, function () {
+      let numfmt = new Intl.NumberFormat("en-CN", { style: "percent", maximumFractionDigits: 2, minimumIntegerDigits: 7 });
+      console.log("NUMBER_FORMAT_TEST_027 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("12,345,678.9%");
+    });
+
+    /* *
+     * @tc.number: NUMBER_FORMAT_TEST_028
+     * @tc.name  : numberFormatTest028
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("numberFormatTest028", 0, function () {
+      let numfmt = new Intl.NumberFormat("ar-EG", { numberingSystem: "arab" });
+      console.log("NUMBER_FORMAT_TEST_028 " + numfmt.format(123456.789));
+      expect(numfmt.format(123456.789)).assertEqual("١٢٣٬٤٥٦٫٧٨٩");
+      expect(numfmt.resolvedOptions().numberingSystem).assertEqual("arab");
+    });
+
+    /* *
+        * @tc.number: NUMBER_FORMAT_TEST_029
+        * @tc.name  : numberFormatTest029
+        * @tc.desc  : check the minimumFractionDigits, minimumSignificantDigits, maximumSignificantDigits
+                      and useGrouping
+        * @tc.size  : MediumTest
+        * @tc.type  : Method
+        * @tc.level : Level 2
+        */
+    it("numberFormatTest029", 0, function () {
+      let numfmt = new Intl.NumberFormat("ar", { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 2, minimumIntegerDigits: 7, minimumSignificantDigits: 5, maximumSignificantDigits: 10, useGrouping: true });
+      console.log("NUMBER_FORMAT_TEST_029 " + numfmt.resolvedOptions().style);
+      expect(numfmt.resolvedOptions().style).assertEqual("percent");
+      expect(numfmt.resolvedOptions().minimumFractionDigits).assertEqual(1);
+      expect(numfmt.resolvedOptions().maximumFractionDigits).assertEqual(2);
+      expect(numfmt.resolvedOptions().minimumIntegerDigits).assertEqual(7);
+      expect(numfmt.resolvedOptions().minimumSignificantDigits).assertEqual(5);
+      expect(numfmt.resolvedOptions().maximumSignificantDigits).assertEqual(10);
+      expect(numfmt.resolvedOptions().useGrouping).assertTrue();
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_001
+     * @tc.name  : collatorTest001
+     * @tc.desc  : check the compare
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest001", 0, function () {
+      let coll = new Intl.Collator();
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_001 " + value);
+      expect(value).assertEqual(-1);
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_002
+     * @tc.name  : collatorTest002
+     * @tc.desc  : check the compare
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest002", 0, function () {
+      let coll = new Intl.Collator();
+      let value = coll.compare("a", "a");
+      console.log("COLLATOR_TEST_002 " + value);
+      expect(value).assertEqual(0);
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_003
+     * @tc.name  : collatorTest003
+     * @tc.desc  : check the compare
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest003", 0, function () {
+      let coll = new Intl.Collator();
+      let value = coll.compare("b", "a");
+      console.log("COLLATOR_TEST_003 " + value);
+      expect(value).assertEqual(1);
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_004
+     * @tc.name  : collatorTest004
+     * @tc.desc  : check the compare
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest004", 0, function () {
+      let coll = new Intl.Collator("zh");
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_004 " + value);
+      expect(value).assertEqual(-1);
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_005
+     * @tc.name  : collatorTest005
+     * @tc.desc  : check the compare, resolvedOptions and collation
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest005", 0, function () {
+      let coll = new Intl.Collator("zh", { collation: "eor" });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_005 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().collation).assertEqual("eor");
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_006
+     * @tc.name  : collatorTest006
+     * @tc.desc  : check the compare, resolvedOptions and sensitivity
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest006", 0, function () {
+      let coll = new Intl.Collator("zh", { sensitivity: "base" });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_006 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().sensitivity).assertEqual("base");
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_007
+     * @tc.name  : collatorTest007
+     * @tc.desc  : check the resolvedOptions and caseFirst
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest007", 0, function () {
+      let coll = new Intl.Collator("zh", { caseFirst: "upper" });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_007 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().caseFirst).assertEqual("upper");
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_008
+     * @tc.name  : collatorTest008
+     * @tc.desc  : check the resolvedOptions and numeric
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest008", 0, function () {
+      let coll = new Intl.Collator("zh", { numeric: true });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_008 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().numeric).assertTrue();
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_009
+     * @tc.name  : collatorTest009
+     * @tc.desc  : check the resolvedOptions and ignorePunctuation
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest009", 0, function () {
+      let coll = new Intl.Collator("zh", { ignorePunctuation: true });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_009 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().ignorePunctuation).assertTrue();
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_010
+     * @tc.name  : collatorTest010
+     * @tc.desc  : check the resolvedOptions and usage
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest010", 0, function () {
+      let coll = new Intl.Collator("zh", { usage: "sort" });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_010 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().usage).assertEqual("sort");
+    });
+
+    /* *
+     * @tc.number: COLLATOR_TEST_011
+     * @tc.name  : collatorTest011
+     * @tc.desc  : check the localeMatcher
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("collatorTest011", 0, function () {
+      let coll = new Intl.Collator("zh", { localeMatcher: "lookup" });
+      let value = coll.compare("a", "b");
+      console.log("COLLATOR_TEST_011 " + value);
+      expect(value).assertEqual(-1);
+      expect(coll.resolvedOptions().localeMatcher).assertEqual("lookup");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_001
+     * @tc.name  : pluralrulesTest001
+     * @tc.desc  : check the select
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest001", 0, function () {
+      let pl = new Intl.PluralRules();
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_001 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_002
+     * @tc.name  : pluralrulesTest002
+     * @tc.desc  : check the select
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest002", 0, function () {
+      let pl = new Intl.PluralRules("zh");
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_002 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_003
+     * @tc.name  : pluralrulesTest003
+     * @tc.desc  : check the select and type
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest003", 0, function () {
+      let pl = new Intl.PluralRules("zh", { type: "ordinal" });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_003 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_004
+     * @tc.name  : pluralrulesTest004
+     * @tc.desc  : check the select and localeMatcher
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest004", 0, function () {
+      let pl = new Intl.PluralRules("zh", { localeMatcher: "lookup" });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_004 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_005
+     * @tc.name  : pluralrulesTest005
+     * @tc.desc  : check the select and minimumIntegerDigits
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest005", 0, function () {
+      let pl = new Intl.PluralRules("zh", { minimumIntegerDigits: 10 });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_005 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_006
+     * @tc.name  : pluralrulesTest006
+     * @tc.desc  : check the minimumFractionDigits
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest006", 0, function () {
+      let pl = new Intl.PluralRules("zh", { minimumFractionDigits: 11 });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_006 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_007
+     * @tc.name  : pluralrulesTest007
+     * @tc.desc  : check the maximumFractionDigits
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest007", 0, function () {
+      let pl = new Intl.PluralRules("zh", { maximumFractionDigits: 11 });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_007 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_008+
+     * @tc.name  : pluralrulesTest008
+     * @tc.desc  : check the minimumSignificantDigits
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest008", 0, function () {
+      let pl = new Intl.PluralRules("zh", { minimumSignificantDigits: 10 });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_008 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: PLURALRULES_TEST_009
+     * @tc.name  : pluralrulesTest009
+     * @tc.desc  : check the maximumSignificantDigits
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("pluralrulesTest009", 0, function () {
+      let pl = new Intl.PluralRules("zh", { maximumSignificantDigits: 11 });
+      let value = pl.select(0);
+      console.log("PLURALRULES_TEST_009 " + value);
+      expect(value).assertEqual("other");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_001
+     * @tc.name  : relativeTimeFormatTest001
+     * @tc.desc  : check the format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest001", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat();
+      let value = relativetimefmt.format(100, "second");
+      console.log("RELATIVE_TIME_FORMAT_TEST_001 " + value);
+      expect(value).assertContain("100");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_002
+     * @tc.name  : relativeTimeFormatTest002
+     * @tc.desc  : check the locale and format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest002", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en");
+      let value = relativetimefmt.format(100, "second");
+      console.log("RELATIVE_TIME_FORMAT_TEST_002 " + value);
+      expect(value).assertEqual("in 100 seconds");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_003
+     * @tc.name  : relativeTimeFormatTest003
+     * @tc.desc  : check the style and format
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest003", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en", { style: "narrow" });
+      let value = relativetimefmt.format(100, "second");
+      console.log("RELATIVE_TIME_FORMAT_TEST_003 " + value);
+      expect(value).assertEqual("in 100 sec.");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_004
+     * @tc.name  : relativeTimeFormatTest004
+     * @tc.desc  : check the formatToParts
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest004", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+      const parts = relativetimefmt.formatToParts(100, "second");
+      const result = parts[0]["value"].trim();
+      console.log("RELATIVE_TIME_FORMAT_TEST_004 result:" + result);
+      expect(result).assertEqual("in");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_005
+     * @tc.name  : relativeTimeFormatTest005
+     * @tc.desc  : check the locale
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest005", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en");
+      let value = relativetimefmt.resolvedOptions();
+      console.log("RELATIVE_TIME_FORMAT_TEST_005 " + value);
+      expect(value.locale).assertEqual("en");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_006
+     * @tc.name  : relativeTimeFormatTest006
+     * @tc.desc  : check the resolvedOptions and resolvedOptions.style
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest006", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en");
+      let value = relativetimefmt.resolvedOptions();
+      console.log("RELATIVE_TIME_FORMAT_TEST_006 " + value);
+      expect(value.style).assertEqual("long");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_007
+     * @tc.name  : relativeTimeFormatTest007
+     * @tc.desc  : check the resolvedOptions and resolvedOptions.numeric
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest007", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en");
+      let value = relativetimefmt.resolvedOptions();
+      console.log("RELATIVE_TIME_FORMAT_TEST_007 " + value);
+      expect(value.numeric).assertEqual("always");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_008
+     * @tc.name  : relativeTimeFormatTest008
+     * @tc.desc  : check the resolvedOptions and resolvedOptions.numberingSystem
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest008", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en");
+      let value = relativetimefmt.resolvedOptions();
+      console.log("RELATIVE_TIME_FORMAT_TEST_008 " + value.numberingSystem);
+      expect(value.numberingSystem).assertEqual("latn");
+    });
+
+    /* *
+     * @tc.number: RELATIVE_TIME_FORMAT_TEST_009
+     * @tc.name  : relativeTimeFormatTest009
+     * @tc.desc  : check the localeMatcher, numeric, style
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("relativeTimeFormatTest009", 0, function () {
+      let relativetimefmt = new Intl.RelativeTimeFormat("en", { localeMatcher: "best fit", numeric: "auto", style: "narrow" });
+      let value = relativetimefmt.resolvedOptions();
+      console.log("RELATIVE_TIME_FORMAT_TEST_009 " + value);
+      expect(value.numeric).assertEqual("auto");
+      expect(value.style).assertEqual("narrow");
+    });
+
+    console.log("*************end IntlTest*************");
+  });
+}
