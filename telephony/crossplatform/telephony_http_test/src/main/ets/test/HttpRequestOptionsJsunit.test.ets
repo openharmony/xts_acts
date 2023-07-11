@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -607,6 +607,48 @@ export default function HttpRequestOptionsJsunit() {
           readTimeout: 60000,
           connectTimeout: 60000,
           priority: 1
+        }
+        var httpRequest = http.createHttp();
+        httpRequest.request("https://image.baidu.com/search/albumsdetail/", httpRequestOptions, (err, data) => {
+          console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
+          expect(data.responseCode == 200).assertTrue();
+          console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          done();
+        });
+      } catch (error) {
+        console.log("testTelephonyHttpRequestOptionsPriority001 : error = " + error);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number TEST_TELEPHONYHTTPREQUESTOPTIONSPRIORITY_002
+     * @tc.name testTelephonyHttpRequestOptionsPriority002
+     * @tc.desc Test Test HttpRequestOptions property.
+     * @tc.size:  MediumTest
+     * @tc.type:  Method
+     * @tc.level: level 2
+     */
+    it("testTelephonyHttpRequestOptionsPriority002", 0, async function (done) {
+      var casename = 'Telephony_Http_HttpRequestOptions_priority_0100';
+      console.log("-----------------------HttpRequestOptions_priority Test is starting-----------------------");
+      try {
+        let httpRequestOptions = {
+          method: http.RequestMethod.GET,
+          extraData: {
+            //tn=albumsdetail&word=渐变风格插画&fr=albumslist&album_tab=设计素材&album_id=409&rn=30
+            tn: "albumsdetail",
+            work: "渐变风格插画",
+            fr: "albumslist",
+            album_tab: "设计素材",
+            album_id: "409",
+            rn: "30"
+          },
+          header: "content-type': 'application/json",
+          readTimeout: 60000,
+          connectTimeout: 60000,
+          priority: 1000
         }
         var httpRequest = http.createHttp();
         httpRequest.request("https://image.baidu.com/search/albumsdetail/", httpRequestOptions, (err, data) => {
