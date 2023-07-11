@@ -16,7 +16,6 @@ import {describe,it, expect} from '@ohos/hypium';
 import http from '@ohos.net.http';
 export default function responseCodeJsunit() {
   describe("responseCodeJsunitTest", function () {
-
     /**
      * @tc.number TEST_TELEPHONY_HTTP_RESPONSECODE_OK_001
      * @tc.name testTelephonyHttpResponseCodeOK001
