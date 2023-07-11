@@ -14,7 +14,6 @@
  */
 import {describe,it, expect} from '@ohos/hypium';
 import http from '@ohos.net.http';
-
 export default function responseCodeJsunit() {
   describe("responseCodeJsunitTest", function () {
 
