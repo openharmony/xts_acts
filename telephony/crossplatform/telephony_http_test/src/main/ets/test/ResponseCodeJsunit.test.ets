@@ -30,8 +30,6 @@ export default function responseCodeJsunit() {
     it("testTelephonyHttpResponseCodeOK001", 0, async function (done) {
       console.log("-----------------------Telephony_Http_ResponseCode_OK_0100 start-----------------------");
       try {
-        const localIpAddress = '192.168.1.101';
-        let serverIpAddress: string = "192.168.1.100";
         expect(200).assertEqual(http.ResponseCode.OK);
         console.log("-----------------------Telephony_Http_ResponseCode_OK_0100 OK assertEqual SUCCESS-----------------------");
       } catch (error) {
