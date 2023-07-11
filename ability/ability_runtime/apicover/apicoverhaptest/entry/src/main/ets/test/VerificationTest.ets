@@ -20,6 +20,11 @@ import wantConstant from '@ohos.ability.wantConstant';
 
 var INVALID_PARAM = 401
 var TAG
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default function verificationTest(){
 
   describe('VerificationTestTest', function() {
@@ -315,6 +320,113 @@ export default function verificationTest(){
         console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
         expect(err.code).assertEqual(INVALID_PARAM);
       }
+
+      done();
+    })
+
+    /*
+    * @tc.number  SUB_AA_OpenHarmony_SetMissionLabel_0200
+    * @tc.name    Verify setMissionLabel that the input parameter is number.
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_AA_OpenHarmony_SetMissionLabel_0200', 0, async function(done) {
+      TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0200 ==>';
+      let label = 0;
+
+      try {
+        await globalThis.abilityContext.setMissionLabel(label).then((data) => {
+          console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
+        }).catch((err) => {
+          console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+        });
+        expect().assertFail();
+      } catch (err) {
+        console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+        expect(err.code).assertEqual(INVALID_PARAM);
+      }
+
+      try {
+        await globalThis.abilityContext.setMissionLabel(label, (err, data) => {
+          console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+          console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
+        })
+        expect().assertFail();
+      } catch (err) {
+        console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+        expect(err.code).assertEqual(INVALID_PARAM);
+      }
+
+      done();
+    })
+
+    /*
+    * @tc.number  SUB_AA_OpenHarmony_SetMissionLabel_0300
+    * @tc.name    Verify setMissionLabel that the input parameter is string.
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_AA_OpenHarmony_SetMissionLabel_0300', 0, async function(done) {
+      TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0300 ==>';
+      let label = "testlabel";
+      let missionLabelUpdatedFlag = false;
+
+      await globalThis.abilityContext.setMissionLabel(label).then((data) => {
+        console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
+        missionLabelUpdatedFlag = true;
+      }).catch((err) => {
+        console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
+      });
+      await sleep(1000);
+      expect(missionLabelUpdatedFlag).assertTrue();
+
+      done();
+    })
+
+    /*
+    * @tc.number  SUB_AA_OpenHarmony_SetMissionLabel_0400
+    * @tc.name    Verify multiple setMissionLabel that the input parameter is string.
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_AA_OpenHarmony_SetMissionLabel_0400', 0, async function(done) {
+      TAG = 'SUB_AA_OpenHarmony_SetMissionLabel_0400 ==>';
+      let label1 = "testlabel1";
+      let label2 = "testlabel2";
+      let missionLabelUpdatedCount = 0;
+
+      await globalThis.abilityContext.setMissionLabel(label1).then((data) => {
+        console.info(TAG + "setMissionLabel1 data = " + JSON.stringify(data));
+        missionLabelUpdatedCount++;
+      }).catch((err) => {
+        console.info(TAG + "setMissionLabel1 err = " + JSON.stringify(err));
+      });
+      await globalThis.abilityContext.setMissionLabel(label2).then((data) => {
+        console.info(TAG + "setMissionLabel2 data = " + JSON.stringify(data));
+        missionLabelUpdatedCount++;
+      }).catch((err) => {
+        console.info(TAG + "setMissionLabel2 err = " + JSON.stringify(err));
+      });
+      await sleep(1000);
+      expect(missionLabelUpdatedCount).assertEqual(2);
+
+      missionLabelUpdatedCount = 0;
+      await globalThis.abilityContext.setMissionLabel(label1, (err, data) => {
+        console.info(TAG + "setMissionLabel1 err = " + JSON.stringify(err));
+        console.info(TAG + "setMissionLabel1 data = " + JSON.stringify(data));
+        if (err.code == 0) {
+          missionLabelUpdatedCount++;
+        }
+      })
+      await globalThis.abilityContext.setMissionLabel(label2, (err, data) => {
+        console.info(TAG + "setMissionLabel2 err = " + JSON.stringify(err));
+        console.info(TAG + "setMissionLabel2 data = " + JSON.stringify(data));
+        if (err.code == 0) {
+          missionLabelUpdatedCount++;
+        }
+      })
+      await sleep(1000);
+      expect(missionLabelUpdatedCount).assertEqual(2);
 
       done();
     })
