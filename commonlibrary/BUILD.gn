@@ -18,6 +18,7 @@ group("commonlibrary") {
     deps = [
       "ets_utils:ets_utils",
       "toolchain:toolchain",
+      "crossplatform/commonlibraryxmletstest:xml_ets_test"
     ]
   }
 }
