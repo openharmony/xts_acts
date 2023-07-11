@@ -20,6 +20,13 @@
     "TestAbility/pages/stageAnimator",
     "TestAbility/pages/textSpanFont",
     "TestAbility/pages/gridScrollBar",
-    "TestAbility/pages/sidebarType"
+    "TestAbility/pages/sidebarType",
+    "TestAbility/pages/navigationType",
+    "TestAbility/pages/noBarrierComponents",
+    "TestAbility/pages/noBarriersGroup",
+    "TestAbility/pages/assemblyCallback",
+    "TestAbility/pages/list",
+    "TestAbility/pages/grid",
+    "TestAbility/pages/swiper"
   ]
 }
