@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="arkui_android_adapter5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/commonlibraryConnectionetstest/src/main/libs/arkui_android_adapter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
