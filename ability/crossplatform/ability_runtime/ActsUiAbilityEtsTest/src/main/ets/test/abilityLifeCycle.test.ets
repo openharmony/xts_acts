@@ -14,6 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import aConstant from '@ohos.app.ability.AbilityConstant'
 
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -481,5 +482,42 @@ export default function abilityTest() {
     //   await sleep(500);
     //   done();
     // })
+
+    /**
+     *@tc.number    : UIAbilityConstantTest0100
+     *@tc.name      : UIAbilityConstantTest0100
+     *@tc.desc      : start mainability1, check ability constant.
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+    */
+    it("UIAbilityConstantTest0100", 0, async (done) => {
+      console.log("------------UIAbilityConstantTest0100 START-------------");
+      TAG = "UIAbilityConstantTest0100";
+
+      var want = {
+        bundleName: "com.example.uiabilitylifecycle",
+        abilityName: "MainAbility1",
+        moduleName: moduleName,
+      };
+      globalThis.abilityContext
+        .startAbility(want)
+        .then((data) => {
+          console.info(TAG + " start successful. Data: " + data);
+        })
+        .catch((error) => {
+          console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
+        });
+
+      await sleep(1000);
+
+      console.log('UIAbilityConstantTest0100:' + globalThis.launchParam1.lastExitReason)
+      expect(globalThis.launchParam1.launchReason == 1).assertTrue();
+      expect(globalThis.launchParam1.lastExitReason == 2).assertTrue();
+      expect(aConstant.LaunchReason.UNKNOWN == 0).assertTrue();
+      expect(aConstant.LastExitReason.UNKNOWN == 0).assertTrue();
+      done();
+    });
+
   });
 }

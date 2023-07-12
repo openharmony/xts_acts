@@ -28,6 +28,7 @@ export default class MainAbility1 extends Ability {
 
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility1 onCreate")
+        globalThis.launchParam1 = launchParam;
         abilityName = want.abilityName
         globalThis.list1 = [];
         recordLife(globalThis.list1, abilityName, 'onCreate');
