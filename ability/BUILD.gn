@@ -19,7 +19,7 @@ group("ability") {
     deps = [
       "ability_runtime:ability_runtime",
       "dmsfwk:dmsfwk",
-	  "crossplatform:ability_crossplatform"
+      "crossplatform:ability_crossplatform"
     ]
   }
 }
