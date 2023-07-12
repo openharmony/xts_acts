@@ -16,10 +16,9 @@
         "package": "ohos.acts.resourceschedule.taskmgr.js.function",
         "name": ".entry",
         "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
+      "tablet",
+      "default",
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -66,7 +65,7 @@
             },
             {
                 "backgroundModes": [
-                    "location"
+                  "location"
                 ],
                 "visible": true,
                 "srcPath": "ServiceAbility",
@@ -75,7 +74,7 @@
                 "srcLanguage": "js",
                 "description": "$string:description_serviceability",
                 "type": "service"
-            }
+              }
         ],
         "js": [
             {

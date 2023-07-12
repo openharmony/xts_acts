@@ -6,10 +6,9 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
+      "tablet",
+      "default",
+            "phone"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -30,7 +29,7 @@
                         "actions": [
                             "action.system.home"
                         ],
-                        "entities": [
+                        "entities":[
                             "entity.system.home"
                         ]
                     }
@@ -39,30 +38,30 @@
         ],
         "extensionAbilities": [
             {
-                "description": "\u8f93\u5165\u6cd5demoStage",
-                "icon": "$media:icon",
-                "name": "inputStageService",
-                "srcEntrance": "./ets/InputMethodAbility/InputStageService.ts",
-                "type": "inputMethod",
-                "visible": true
+              "description": "输入法demoStage",
+              "icon": "$media:icon",
+              "name": "inputStageService",
+              "srcEntrance": "./ets/InputMethodAbility/InputStageService.ts",
+              "type": "inputMethod",
+              "visible":true
             },
             {
-                "description": "\u8f93\u5165\u6cd5Demo",
-                "icon": "$media:icon",
-                "name": "InputDemoService",
-                "srcEntrance": "./ets/InputMethodEngine/InputDemoService.ts",
-                "type": "inputMethod",
-                "visible": true
+              "description": "输入法Demo",
+              "icon": "$media:icon",
+              "name": "InputDemoService",
+              "srcEntrance": "./ets/InputMethodEngine/InputDemoService.ts",
+              "type": "inputMethod",
+              "visible":true
             }
         ],
         "requestPermissions": [
             {
-                "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
-                "reason": "need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+              "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
+              "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
             },
-            {
-                "name": "ohos.permission.CONNECT_IME_ABILITY"
-            }
+          {
+            "name": "ohos.permission.CONNECT_IME_ABILITY"
+          }
         ]
     }
 }

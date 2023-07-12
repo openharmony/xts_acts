@@ -16,10 +16,9 @@
         "package": "com.example.mypowerapp",
         "name": ".entry",
         "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
+      "tablet",
+      "default",
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -88,8 +87,8 @@
         ],
         "reqPermissions": [
             {
-                "name": "ohos.permission.RUNNING_LOCK",
-                "reason": "use ohos.permission.RUNNING_LOCK"
+              "name": "ohos.permission.RUNNING_LOCK",
+              "reason": "use ohos.permission.RUNNING_LOCK"
             }
         ],
         "testRunner": {

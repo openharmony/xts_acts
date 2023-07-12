@@ -16,10 +16,9 @@
         "package": "com.hidebug.test",
         "name": ".entry",
         "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
+      "tablet",
+      "default",
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,

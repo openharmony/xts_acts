@@ -6,9 +6,8 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-            "tablet",
-            "default",
-            "2in1"
+      "tablet",
+      "default"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -29,7 +28,7 @@
                         "actions": [
                             "action.system.home"
                         ],
-                        "entities": [
+                        "entities":[
                             "entity.system.home"
                         ]
                     }
@@ -37,19 +36,19 @@
             }
         ],
         "extensionAbilities": [
-            {
-                "description": "inputPanelTest",
-                "icon": "$media:icon",
-                "name": "inputMethodWindService",
-                "srcEntrance": "./ets/InputMethodWindManage/InputMethodWindService.ts",
-                "type": "inputMethod",
-                "visible": true
-            }
+          {
+            "description": "inputPanelTest",
+            "icon": "$media:icon",
+            "name": "inputMethodWindService",
+            "srcEntrance": "./ets/InputMethodWindManage/InputMethodWindService.ts",
+            "type": "inputMethod",
+            "visible":true
+          }
         ],
         "requestPermissions": [
-            {
-                "name": "ohos.permission.CONNECT_IME_ABILITY"
-            }
+          {
+            "name": "ohos.permission.CONNECT_IME_ABILITY"
+          }
         ]
     }
 }

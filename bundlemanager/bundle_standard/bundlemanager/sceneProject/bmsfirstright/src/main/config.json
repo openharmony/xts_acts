@@ -53,8 +53,7 @@
         ],
         "deviceType": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "mainAbility": "com.example.l3jsdemo.MainAbility",
         "distro": {
