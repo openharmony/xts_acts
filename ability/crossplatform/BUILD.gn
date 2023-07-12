@@ -16,8 +16,6 @@ import("//build/ohos_var.gni")
 group("ability_crossplatform") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "ability_runtime:ability_crossplatform_runtime",
-    ]
+    deps = [ "ability_runtime:ability_crossplatform_runtime" ]
   }
 }
