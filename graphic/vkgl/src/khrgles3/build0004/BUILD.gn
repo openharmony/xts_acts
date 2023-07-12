@@ -27,7 +27,7 @@ config("deqp_platform_ohos_config") {
 
 ohos_static_library("libkhrgles3func0004") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = common_src
   sources += [ "../Khrgles3BaseFunc.cpp" ]
 
@@ -42,7 +42,7 @@ ohos_static_library("libkhrgles3func0004") {
 
 ohos_moduletest_suite("ActsKhrgles3TestSuite0004") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = [
     "../ActsKhrgles30004TestSuite.cpp",
     "../copy_tex_image_conversions/Khrgles3copy_tex_image_conversions_forbiddenTestCase.cpp",
