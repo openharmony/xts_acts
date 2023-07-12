@@ -212,29 +212,29 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       console.info(TAG + "************* testRdbStoreBackup001 end *************");
     });
 
-    // /**
-    //  * @tc.number : TEST_RDB_STORE_BACKUP_002
-    //  * @tc.name   : testRdbStoreBackup002
-    //  * @tc.desc   : RdbStore backup callback test
-    //  * @tc.size   : MediumTest
-    //  * @tc.type   : Function
-    //  * @tc.level  : Level 2
-    //  */
-    // it("testRdbStoreBackup002", 0, async function (done) {
-    //   console.info(TAG + "************* testRdbStoreBackup002 start *************");
-    //   try {
-    //     RdbStore.backup(STORE_CONFIG.name, async (err) => {
-    //       console.info(TAG + "backup err ttt:  " + err.message + "code:  " + err.code);
-    //       expect(err.code == 14800011 && err.message == "Failed to open database by database corrupted").assertTrue();
-    //       done();
-    //     });
-    //   } catch (errInfo) {
-    //     console.info(TAG + "testRdbStoreBackup002 error: " + errInfo);
-    //     expect().assertFail();
-    //     done();
-    //   }
-    //   console.info(TAG + "************* testRdbStoreBackup002 end *************");
-    // });
+    /**
+     * @tc.number : TEST_RDB_STORE_BACKUP_002
+     * @tc.name   : testRdbStoreBackup002
+     * @tc.desc   : RdbStore backup callback test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreBackup002", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreBackup002 start *************");
+      try {
+        RdbStore.backup(STORE_CONFIG.name, async (err) => {
+          console.info(TAG + "backup err ttt:  " + err.message + "code:  " + err.code);
+          expect(err.code == 14800011 && err.message == "Failed to open database by database corrupted").assertTrue();
+          done();
+        });
+      } catch (errInfo) {
+        console.info(TAG + "testRdbStoreBackup002 error: " + errInfo);
+        expect().assertFail();
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreBackup002 end *************");
+    });
 
     /**
      * @tc.number : TEST_RDB_STORE_BACKUP_003
