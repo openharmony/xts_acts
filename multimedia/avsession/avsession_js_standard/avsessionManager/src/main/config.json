@@ -61,8 +61,7 @@
         ],
         "deviceType": [
             "tablet",
-            "default",
-            "2in1"
+            "default"
         ],
         "distro": {
             "moduleType": "entry",

@@ -18,10 +18,9 @@
         "srcPath": "",
         "mainAbility": ".MainAbility",
         "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
+      "tablet",
+      "default",
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -93,5 +92,6 @@
             "name": "OpenHarmonyTestRunner",
             "srcPath": "TestRunner"
         }
+
     }
 }

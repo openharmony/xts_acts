@@ -62,8 +62,7 @@
             "phone",
             "tablet",
             "tv",
-            "wearable",
-            "2in1"
+            "wearable"
         ],
         "mainAbility": ".MainAbility",
         "distro": {

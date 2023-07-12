@@ -7,8 +7,7 @@
         "mainElement": "MainAbility",
         "deviceTypes": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -28,7 +27,7 @@
                         "actions": [
                             "action.system.home"
                         ],
-                        "entities": [
+                        "entities":[
                             "entity.system.home"
                         ]
                     }
@@ -36,22 +35,22 @@
             }
         ],
         "requestPermissions": [
-            {
-                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
-            },
-            {
-                "name": "ohos.permission.MEDIA_LOCATION",
-                "reason": "use ohos.permission.MEDIA_LOCATION"
-            },
-            {
-                "name": "ohos.permission.READ_MEDIA",
-                "reason": "use ohos.permission.READ_MEDIA"
-            },
-            {
-                "name": "ohos.permission.WRITE_MEDIA",
-                "reason": "use ohos.permission.WRITE_MEDIA"
-            }
-        ]
+          {
+            "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+            "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+          },
+          {
+            "name" : "ohos.permission.MEDIA_LOCATION",
+            "reason" : "use ohos.permission.MEDIA_LOCATION"
+          },
+          {
+              "name" : "ohos.permission.READ_MEDIA",
+              "reason" : "use ohos.permission.READ_MEDIA"
+          },
+          {
+              "name" : "ohos.permission.WRITE_MEDIA",
+              "reason" : "use ohos.permission.WRITE_MEDIA"
+          }
+          ]
     }
 }
