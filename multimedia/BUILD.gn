@@ -17,6 +17,7 @@ group("multimedia") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "image/image_js_standard/crossplatform/image:image_ets_normal_test",
       "audio/audio_cpp_standard:ActsOpenslesNdkTest",
       "audio/audio_js_standard/AudioCapturer:audio_capturer_js_hap",
       "audio/audio_js_standard/AudioCapturerChangeInfo:audio_capturerchangeInfo_js_hap",
