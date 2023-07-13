@@ -1166,13 +1166,6 @@ export default function lifecycleTest() {
         expect(exlist[3]).assertEqual("MainAbility2 onAbilityBackground");
         expect(exlist[4]).assertEqual("MainAbility2 onWindowStageDestroy");
         expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
-        // globalThis.applicationContext1
-        //   .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
-        //     console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-        //     ",data: " + JSON.stringify(data));
-        //     console.log("------------Singlehap_LifeCycleTest_2100 END-------------");
-        //     done();
-        //   });
 
         globalThis.applicationContext1.off("abilityLifecycle", globalThis.callbackid1, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
