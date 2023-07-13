@@ -19,7 +19,8 @@
         "deviceType": [
             "tablet",
             "default",
-            "phone"
+            "phone",
+            "2in1"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -27,28 +28,27 @@
             "moduleType": "entry"
         },
         "reqPermissions": [
-        
             {
-              "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-              "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
             },
             {
-              "name": "ohos.permission.MICROPHONE",
-              "reason": "use ohos.permission.MICROPHONE"
+                "name": "ohos.permission.MICROPHONE",
+                "reason": "use ohos.permission.MICROPHONE"
             },
             {
-              "name": "ohos.permission.ACCESS_NOTIFICATION_POLICY",
-              "reason": "use ohos.permission.ACCESS_NOTIFICATION_POLICY"
+                "name": "ohos.permission.ACCESS_NOTIFICATION_POLICY",
+                "reason": "use ohos.permission.ACCESS_NOTIFICATION_POLICY"
             },
             {
-              "name": "ohos.permission.MODIFY_AUDIO_SETTINGS",
-              "reason": "use ohos.permission.MODIFY_AUDIO_SETTINGS"
+                "name": "ohos.permission.MODIFY_AUDIO_SETTINGS",
+                "reason": "use ohos.permission.MODIFY_AUDIO_SETTINGS"
             },
             {
-              "name": "ohos.permission.MANAGE_AUDIO_CONFIG",
-              "reason": "use ohos.permission.MANAGE_AUDIO_CONFIG"
+                "name": "ohos.permission.MANAGE_AUDIO_CONFIG",
+                "reason": "use ohos.permission.MANAGE_AUDIO_CONFIG"
             }
-          ],
+        ],
         "abilities": [
             {
                 "skills": [

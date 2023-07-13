@@ -57,12 +57,13 @@
             }
         ],
         "deviceType": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "phone",
             "tablet",
             "tv",
-            "wearable"
+            "wearable",
+            "2in1"
         ],
         "mainAbility": ".MainAbility",
         "distro": {

@@ -27,6 +27,7 @@
     "TestAbility/pages/assemblyCallback",
     "TestAbility/pages/list",
     "TestAbility/pages/grid",
-    "TestAbility/pages/swiper"
+    "TestAbility/pages/swiper",
+    "TestAbility/pages/getcomponent"
   ]
 }
