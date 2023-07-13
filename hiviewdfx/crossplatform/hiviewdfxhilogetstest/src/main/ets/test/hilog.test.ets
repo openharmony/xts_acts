@@ -607,5 +607,95 @@ export default function HilogJsTest() {
       }
       console.info("testHilogFatal001 end");
     });
+
+    /**
+     * @tc.number: TEST_HILOG_IS_LOGGABLE_001
+     * @tc.name  : testHilogIsLoggable001
+     * @tc.desc  : hitrace begin interface test.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("testHilogIsLoggable001", 2, function () {
+      console.info("testHilogIsLoggable001 start");
+      const res = hilog.isLoggable(0x123456789, "HILOGTEST", 3);
+      expect(res).assertEqual(false);
+      console.info("testHilogIsLoggable001 end");
+    });
+
+    /**
+     * @tc.number: TEST_HILOG_IS_LOGGABLE_002
+     * @tc.name  : testHilogIsLoggable002
+     * @tc.desc  : hitrace begin interface test.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("testHilogIsLoggable002", 2, function () {
+      console.info("testHilogIsLoggable002 start");
+      const res = hilog.isLoggable(0x3200, "HILOGTEST", 6);
+      expect(res).assertEqual(true);
+      console.info("testHilogIsLoggable002 end");
+    });
+
+    /**
+     * @tc.number: TEST_HILOG_IS_LOGGABLE_003
+     * @tc.name  : testHilogIsLoggable003
+     * @tc.desc  : hitrace begin interface test.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("testHilogIsLoggable003", 2, function () {
+      console.info("testHilogIsLoggable003 start");
+      const res = hilog.isLoggable(0x3200, "HILOGTEST", 7);
+      expect(res).assertEqual(true);
+      console.info("testHilogIsLoggable003 end");
+    });
+
+    /**
+     * @tc.number: TEST_HILOG_IS_LOGGABLE_004
+     * @tc.name  : testHilogIsLoggable004
+     * @tc.desc  : hitrace begin interface test.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("testHilogIsLoggable004", 2, function () {
+      console.info("testHilogIsLoggable004 start");
+      const res = hilog.isLoggable(0x3200, "HILOGTEST", 4);
+      expect(res).assertEqual(true);
+      console.info("testHilogIsLoggable004 end");
+    });
+
+    /**
+     * @tc.number: TEST_HILOG_IS_LOGGABLE_005
+     * @tc.name  : testHilogIsLoggable005
+     * @tc.desc  : hitrace begin interface test.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("testHilogIsLoggable005", 2, function () {
+      console.info("testHilogIsLoggable005 start");
+      const res = hilog.isLoggable(0x3200, "HILOGTEST", 5);
+      expect(res).assertEqual(true);
+      console.info("testHilogIsLoggable005 end");
+    });
+
+    /**
+     * @tc.number: TEST_HILOG_IS_LOGGABLE_006
+     * @tc.name  : testHilogIsLoggable006
+     * @tc.desc  : hitrace begin interface test.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it("testHilogIsLoggable006", 2, function () {
+      console.info("testHilogIsLoggable006 start");
+      const res = hilog.isLoggable(0x3200, "HILOGTEST", 100);
+      expect(res).assertEqual(false);
+      console.info("testHilogIsLoggable006 end");
+    });
   });
 }
