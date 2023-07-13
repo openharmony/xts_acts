@@ -16,8 +16,8 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform/preferencesetstest:preferences_ets_test",
-      "crossplatform/relationalstoreetstest:relationalStore_ets_test",
+      "crossplatform/preferencesetstest:ActsCrossplatformPreferencesTest",
+      "crossplatform/relationalstoreetstest:ActsCrossplatformRelationalStoreTest",
       "dataObjectjstest/hap:dataObject_js_test",
       "dataSharejstest/hap:dataShare_js_test",
       "distributedKVStoretest:distributedKVStoretest",

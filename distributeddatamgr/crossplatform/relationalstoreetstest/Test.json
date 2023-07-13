@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "relationalStore_ets_test.hap"
+                "ActsCrossplatformRelationalStoreTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
