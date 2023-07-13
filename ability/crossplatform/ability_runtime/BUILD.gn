@@ -17,11 +17,11 @@ group("ability_crossplatform_runtime") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actscontexttest:ActsCrossplatformAbilityContextTest",
-      "actscontexttestentry:ActsCrossplatformAbilityContextEntryTest"
       "ActsLifeCycleEtsFeatureTest:ActsLifeCycleEtsFeatureTest",
       "ActsLifeCycleEtsTest:ActsLifeCycleEtsTest",
       "ActsUiAbilityEtsTest:ActsUiAbilityEtsTest",
+      "actscontexttest:ActsCrossplatformAbilityContextTest",
+      "actscontexttestentry:ActsCrossplatformAbilityContextEntryTest",
       "commonTestAbilityApp:commonTestAbilityApp",
     ]
   }
