@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsImageTest.hap"
+                "ActsCrossplatformImageTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
