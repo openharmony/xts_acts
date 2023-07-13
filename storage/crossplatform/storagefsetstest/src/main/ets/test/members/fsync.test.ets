@@ -27,7 +27,7 @@ export default function fileIOFsync() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_fsync_async_000", 0, async function (done) {
+    it("fileIO_test_fsync_async_000", 2, async function (done) {
       let fpath = await nextFileName("fileIO_test_fsync_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -50,9 +50,9 @@ export default function fileIOFsync() {
      * Invalid fd parameter.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 3
      */
-    it("fileIO_test_fsync_async_001", 0, async function (done) {
+    it("fileIO_test_fsync_async_001", 3, async function (done) {
       try {
         await fileIO.fsync(-1);
         expect(false).assertTrue();
@@ -72,7 +72,7 @@ export default function fileIOFsync() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_fsync_async_002", 0, async function (done) {
+    it("fileIO_test_fsync_async_002", 2, async function (done) {
       let fpath = await nextFileName("fileIO_test_fsync_async_002");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -100,9 +100,9 @@ export default function fileIOFsync() {
      * Invalid fd parameter.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 3
      */
-    it("fileIO_test_fsync_async_003", 0, async function (done) {
+    it("fileIO_test_fsync_async_003", 3, async function (done) {
       try {
         fileIO.fsync(-1, (err) => {
           if (err) {
@@ -179,7 +179,7 @@ export default function fileIOFsync() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_fsync_sync_000", 0, async function () {
+    it("fileIO_test_fsync_sync_000", 2, async function () {
       let fpath = await nextFileName("fileIO_test_fsync_sync_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -201,9 +201,9 @@ export default function fileIOFsync() {
      * Invalid fd parameter.
      * @tc.size   : MediumTest
      * @tc.type   : Function
-     * @tc.level  : Level 2
+     * @tc.level  : Level 3
      */
-    it("fileIO_test_fsync_sync_001", 0, function () {
+    it("fileIO_test_fsync_sync_001", 3, function () {
       try {
         fileIO.fsyncSync(-1);
         expect(false).assertTrue();

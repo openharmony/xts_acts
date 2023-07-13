@@ -56,7 +56,7 @@ export default function fileIOMkdir() {
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
-        await fileIO.mkdirSync(fpath);
+        await fileIO.mkdir(fpath);
         expect(false).assertTrue();
       } catch (e) {
         console.log("fileIO_test_mkdir_async_001 has failed for " + e.message + ", code: " + e.code);

@@ -125,22 +125,22 @@ export default function fileIOClose() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("fileIO_test_close_async_003", 2, async function (done) {
-      let fpath = await nextFileName("fileIO_test_close_async_003");
+    it("fileIO_test_close_async_004", 2, async function (done) {
+      let fpath = await nextFileName("fileIO_test_close_async_004");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
       try {
         let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
         fileIO.close(file.fd, (err) => {
           if (err) {
-            console.log("fileIO_test_close_async_003 error package: " + JSON.stringify(err));
+            console.log("fileIO_test_close_async_004 error package: " + JSON.stringify(err));
             expect(false).assertTrue();
           }
           fileIO.unlinkSync(fpath);
           done();
         });
       } catch (e) {
-        console.log("fileIO_test_close_async_003 has failed for " + e.message + ", code: " + e.code);
+        console.log("fileIO_test_close_async_004 has failed for " + e.message + ", code: " + e.code);
         expect(false).assertTrue();
       }
     });

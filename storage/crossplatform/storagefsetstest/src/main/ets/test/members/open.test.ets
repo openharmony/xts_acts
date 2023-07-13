@@ -30,9 +30,9 @@ export default function fileIOOpen() {
     it("fileIO_test_open_async_000", 2, async function (done) {
       let fpath = await nextFileName("fileIO_test_open_async_000");
       expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+      let file = await fileIO.open(fpath, fileIO.OpenMode.READ_ONLY);
 
       try {
-        let file = await fileIO.open(fpath, fileIO.OpenMode.READ_ONLY);
         expect(isIntNum(file.fd)).assertTrue();
         fileIO.read(file.fd, new ArrayBuffer(4096)).then((readLen) => {
           expect(readLen == FILE_CONTENT.length).assertTrue();
@@ -40,6 +40,7 @@ export default function fileIOOpen() {
         fileIO.writeSync(file.fd, new ArrayBuffer(4096));
         expect(false).assertTrue();
       } catch (e) {
+        fileIO.closeSync(file)
         fileIO.unlinkSync(fpath);
         console.log("fileIO_test_open_async_000 has failed for " + e.message + ", code: " + e.code);
         expect(e.code == 13900008 && e.message == "Bad file descriptor").assertTrue();
@@ -1023,32 +1024,6 @@ export default function fileIOOpen() {
         expect(false).assertTrue();
       }
     });
-
-    // /**
-    //  * @tc.number : TEST_FILEIO_OPEN_SYNC_011
-    //  * @tc.name   : testFileIoOpenSync011
-    //  * @tc.desc   : Test openSync() interfaces. mode=0o400002.
-    //  * The path points to a symbolic link, throw error.
-    //  * @tc.size   : MediumTest
-    //  * @tc.type   : Function
-    //  * @tc.level  : Level 2
-    //  */
-    // it('testFileIoOpenSync011', 0, async function () {
-    //     let fpath = await nextFileName('testFileIoOpenSync011');
-    //     let ffpath = fpath + 'aaaa';
-    //     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
-
-    //     try {
-    //     fileIO.symlinkSync(fpath, ffpath);
-    //     fileIO.openSync(ffpath, fileIO.OpenMode.NOFOLLOW | fileIO.OpenMode.READ_WRITE);
-    //     expect(false).assertTrue();
-    //     } catch (e) {
-    //     fileIO.unlinkSync(fpath);
-    //     // fileIO.unlinkSync(ffpath);
-    //     console.log('testFileIoOpenSync011 has failed for ' + e.message + ', code: ' + e.code);
-    //     expect(e.code == 13900033 && e.message == 'Too many symbolic links encountered').assertTrue();
-    //     }
-    // });
 
     /**
      * @tc.number : SUB_FM_TEST_FILEFS_OPEN_SYNC_1000
