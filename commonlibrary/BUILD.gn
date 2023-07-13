@@ -16,9 +16,9 @@ group("commonlibrary") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "crossplatform/commonlibraryxmletstest:ActsCrossplatformXmlTest",
       "ets_utils:ets_utils",
       "toolchain:toolchain",
-      "crossplatform/commonlibraryxmletstest:xml_ets_test"
     ]
   }
 }

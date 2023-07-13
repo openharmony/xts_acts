@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("xml_ets_test") {
+ohos_js_hap_suite("ActsCrossplatformXmlTest") {
   hap_profile = "src/main/module.json"
   deps = [
     ":windowStage_js_assets",
@@ -20,7 +20,7 @@ ohos_js_hap_suite("xml_ets_test") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "xml_ets_test"
+  hap_name = "ActsCrossplatformXmlTest"
   subsystem_name = "commonlibrary"
   part_name = "ets_utils"
 }
