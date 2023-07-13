@@ -381,5 +381,359 @@ export default function abilityTest() {
       done()
     })
 
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0100
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.NONE
+			*/ 
+    it('ArkUX_Stage_List_LimitAnimation_0100',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0100"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0100 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.log('ArkUX_Stage_List_LimitAnimation_0100 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0200
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.START
+			*/ 
+    it('ArkUX_Stage_List_LimitAnimation_0200',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0200"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0200 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.START")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0200 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0300
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.CENTER
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0300',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0300"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0300 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.CENTER")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0300 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0400
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to ScrollSnapAlign.END
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0400',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0400"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0400 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.END")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0400 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0500
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to null
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0500',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0500"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0500 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0500 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0600
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to ""
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0600',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0600"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0600 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0600 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0700
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to undefined
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0700',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0700"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0700 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0700 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0800
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List does not call scrollSnapAlign 
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0800',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0800"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0800 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0800 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_0900
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to "ScrollSnapAlign.START"
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_0900',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_0900"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_0900 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_0900 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1000
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test the scrollSnapAlign interface of the list, pass in ScrollSnapAlign.Start,
+      *             and then pass in ScrollSnapAlign.NONE
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1000',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1000"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1000 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1000 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1100
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test the scrollSnapAlign interface of the list, pass in ScrollSnapAlign.NONE,
+      *             and then pass in ScrollSnapAlign.Start
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1100',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1100"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1100 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.START")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1100 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1200
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test the scrollSnapAlign interface of the list, pass in ScrollSnapAlign.Start,
+      *             and then pass in ""
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1200',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1200"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1200 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1200 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1300
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test the scrollSnapAlign interface of the list, pass in "",
+      *             and then pass in ScrollSnapAlign.Start
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1300',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1300"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1300 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.START")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1300 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1400
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to 0
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1400',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1400"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1400 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1400 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1500
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to 1
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1500',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1500"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1500 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.START")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1500 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
+    /** 
+      * @tc.number  ArkUX_Stage_List_LimitAnimation_1600
+      * @tc.name    The List/Grid component has basic sliding operation animations, 
+      *             including stepless style animations and limit style animations
+      * @tc.desc    Test List's scrollSnapAlign interface incoming to 6
+			*/ 
+
+    it('ArkUX_Stage_List_LimitAnimation_1600',0, function (done) {
+      setTimeout(() => {
+        try {
+          let scrollSnapAlign = JSON.parse(getInspectorByKey("ArkUX_Stage_List_LimitAnimation_1600"))
+            .$attrs.scrollSnapAlign
+          console.log("====> ArkUX_Stage_List_LimitAnimation_1600 listItemLeft:" + scrollSnapAlign )
+          expect(scrollSnapAlign).assertEqual("ScrollSnapAlign.NONE")
+        } catch (err) {
+          expect().assertFail();
+          console.info('ArkUX_Stage_List_LimitAnimation_1600 ERR  ' + JSON.stringify(err));
+        }
+        done()
+      },500);
+    })
+
   })
 }

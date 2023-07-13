@@ -27,7 +27,7 @@ config("deqp_platform_ohos_config") {
 
 ohos_static_library("libdeqpgles31func0012") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = common_src
   sources += [ "../Deqpgles31BaseFunc.cpp" ]
 
@@ -42,7 +42,7 @@ ohos_static_library("libdeqpgles31func0012") {
 
 ohos_moduletest_suite("ActsDeqpgles31TestSuite0012") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles310012TestSuite.cpp",
     "../functional/Deqpgles312_level_struct_array_per_block_bufferTestCase.cpp",

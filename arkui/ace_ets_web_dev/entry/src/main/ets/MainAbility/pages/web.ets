@@ -592,7 +592,13 @@ struct Index {
                 this.loadedResource=event.url
             })
             .onProgressChange((event)=>{
-                console.info("onProgressChange==>")
+		if(this.isProgressFinish){
+                    console.info("isProgressFinish==>")
+                    if(this.progress=="100"){
+                        Utils.emitEvent(this.progress,114)
+                        this.isProgressFinish=false
+                    }
+                }
                 this.progress=event.newProgress+""
             })
             .onRefreshAccessedHistory((event)=>{
@@ -611,12 +617,6 @@ struct Index {
                 if(this.enterPageEnd){
                     Utils.emitEvent(this.newScale,97)
                     this.enterPageEnd=false
-                }else if(this.isProgressFinish){
-                    console.info("isProgressFinish==>")
-                    if(this.progress="100"){
-                        Utils.emitEvent(this.progress,114)
-                        this.isProgressFinish=false
-                    }
                 }
             })
             .onConsole((event) => {

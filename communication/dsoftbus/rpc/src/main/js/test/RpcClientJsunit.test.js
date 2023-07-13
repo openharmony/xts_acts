@@ -1670,6 +1670,7 @@ export default function actsRpcClientJsTest() {
                 expect(error == null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageSequence_02900---------------------------");
         });
@@ -1704,6 +1705,7 @@ export default function actsRpcClientJsTest() {
                 expect(error == null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageSequence_03000---------------------------");
         });
@@ -6916,6 +6918,7 @@ export default function actsRpcClientJsTest() {
                 expect(error==null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_05600---------------------------");
         });
@@ -6950,6 +6953,7 @@ export default function actsRpcClientJsTest() {
                 expect(error==null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_05700---------------------------");
         });
@@ -6981,6 +6985,7 @@ export default function actsRpcClientJsTest() {
                 expect(error==null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_05800---------------------------");
         });
@@ -7342,6 +7347,7 @@ export default function actsRpcClientJsTest() {
                 expect(error==null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
                 done();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_06900---------------------------");
@@ -7373,6 +7379,7 @@ export default function actsRpcClientJsTest() {
                 expect(error==null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
                 done();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_07000---------------------------");
@@ -7404,6 +7411,7 @@ export default function actsRpcClientJsTest() {
                 expect(error==null).assertTrue();
             } finally{
                 data.reclaim();
+                reply.reclaim();
                 done();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_MessageParcel_07100---------------------------");

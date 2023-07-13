@@ -19,6 +19,9 @@ import SecurityKeyAgreementJsunit from "./SecurityKeyAgreement.test";
 import AsyKeyGeneratorBySpecJsunit from "./AsyKeyGeneratorBySpec.test";
 import AsyGetKeySpecBySpecJsunit from "./AsyGetKeySpecBySpec.test";
 import SecurityCipherJsunit from "./SecurityCipher.test";
+import SecuritySignatureVerificationSM2Jsunit from "./SecuritySignatureVerificationSM2.test";
+import SecurityCipherSM2SM4Jsunit from "./SecurityCipherSM2SM4.test";
+import DigestAlgorithmSm3Jsunit from "./DigestAlgorithmSm3.test";
 
 export default function testsuite() {
   SecurityRandomSyncJsunit();
@@ -27,4 +30,7 @@ export default function testsuite() {
   AsyGetKeySpecBySpecJsunit();
   AsyKeyGeneratorBySpecJsunit();
   SecurityCipherJsunit();
+  SecuritySignatureVerificationSM2Jsunit();
+  SecurityCipherSM2SM4Jsunit();
+  DigestAlgorithmSm3Jsunit();
 }

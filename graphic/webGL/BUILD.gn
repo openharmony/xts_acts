@@ -22,7 +22,7 @@ ohos_js_hap_suite("webGL_hap_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsWebGLHapTest"
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
 }
 ohos_js_assets("webGL_js_assets") {
   js2abc = true

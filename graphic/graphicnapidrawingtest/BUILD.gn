@@ -20,7 +20,7 @@ module_output_path = "hit/ActsGraphicNapiDrawingTest"
 ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
   module_out_path = module_output_path
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
@@ -41,12 +41,13 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
 
   include_dirs = [
     "$comPath/rosen/modules/2d_engine",
+    "$comPath/rosen/modules/2d_engine/rosen_text/export",
     "//third_party/googletest/googletest/include",
   ]
 
   external_deps = [
     "c_utils:utils",
-    "graphic_standard:2d_graphics",
+    "graphic_2d:2d_graphics",
     "hilog:libhilog",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
