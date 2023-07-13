@@ -16,7 +16,7 @@ group("crossplatform") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "commonlibraryTreeMapetstest:TreeMap_ets_test",
+      "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest",
     ]
   }
 }
