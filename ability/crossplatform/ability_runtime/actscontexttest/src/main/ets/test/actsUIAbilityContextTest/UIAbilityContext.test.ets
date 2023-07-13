@@ -360,6 +360,46 @@ export default function UIAbilityContext() {
     })
 
     /**
+     * @tc.number    : ABILITY_TEST_STARTABILITY_PROMISE_0700
+     * @tc.name      : testStartAbilityPromise007
+     * @tc.desc      : test startAbility right want
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testStartAbilityPromise007', 0, async function (done) {
+      try {
+        let context: common.UIAbilityContext = globalThis.abilityContext;
+        expect(context != null).assertTrue();
+
+        var want = {
+          "bundleName": "com.example.contexttest",
+          "abilityName": "MainAbility1"
+        }
+        context.startAbility(want).then(() => {
+          console.info('testStartAbilityPromise007 start successful.');
+        }).catch((error) => {
+          console.error('testStartAbilityPromise007 start failed. Cause: ' + JSON.stringify(error));
+        })
+        await sleep(1500);
+        const result = globalThis.list1;
+        console.info('result: ' + JSON.stringify(result));
+        expect(result[0]).assertEqual('MainAbility1 onCreate');
+
+        let context1: common.UIAbilityContext = globalThis.ability1Context;
+        context1.terminateSelf();
+        await sleep(1000);
+
+        console.log(`testStartAbilityPromise007 success`);
+        done();
+      } catch (err) {
+        console.log(`testStartAbilityPromise007 fail: ` + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : ABILITY_TEST_STARTABILITY_PROMISE_0800
      * @tc.name      : testStartAbilityPromise008
      * @tc.desc      : test startAbility wrong want
@@ -806,6 +846,49 @@ export default function UIAbilityContext() {
     })
 
     /**
+     * @tc.number    : ABILITY_TEST_STARTABILITY_CALLBACK_0700
+     * @tc.name      : testStartAbilityCallback007
+     * @tc.desc      : test startAbility right want
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('testStartAbilityCallback007', 0, async function (done) {
+      try {
+        let context: common.UIAbilityContext = globalThis.abilityContext;
+        expect(context != null).assertTrue();
+
+        var want = {
+          "bundleName": "com.example.contexttest",
+          "abilityName": "MainAbility1"
+        }
+        context.startAbility(want, (err) => {
+          if (err.code) {
+            console.log(`testStartAbilityCallback007 fail: ` + err);
+            expect().assertFail();
+            done();
+          }
+          console.info('testStartAbilityCallback007 startAbility succeed');
+        })
+        await sleep(1500);
+        const result = globalThis.list1;
+        console.info('result: ' + JSON.stringify(result));
+        expect(result[0]).assertEqual('MainAbility1 onCreate');
+
+        let context1: common.UIAbilityContext = globalThis.ability1Context;
+        context1.terminateSelf();
+        await sleep(1000);
+
+        console.log(`testStartAbilityCallback007 success`);
+        done();
+      } catch (err) {
+        console.log(`testStartAbilityCallback007 fail: ` + err);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : ABILITY_TEST_STARTABILITY_CALLBACK_0800
      * @tc.name      : testStartAbilityCallback008
      * @tc.desc      : test startAbility wrong want
@@ -1060,8 +1143,8 @@ export default function UIAbilityContext() {
 
     /**
      * @tc.number    : ABILITY_TEST_APPLICATIONINFO_PROMISE_0100
-     * @tc.name      : testApplicationInfoPromise001
-     * @tc.desc      : test filed of applicationInfo
+     * @tc.name      : testTerminateSelfPromise001
+     * @tc.desc      : test terminateSelf(Promise)
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
@@ -1102,13 +1185,13 @@ export default function UIAbilityContext() {
 
     /**
      * @tc.number    : ABILITY_TEST_APPLICATIONINFO_CALLBACK_0100
-     * @tc.name      : testApplicationInfoCallback001
-     * @tc.desc      : test filed of applicationInfo
+     * @tc.name      : testTerminateSelfCallback001
+     * @tc.desc      : test terminateSelf(Callback)
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('testApplicationInfoCallback001', 0, async function (done) {
+    it('testTerminateSelfCallback001', 0, async function (done) {
       try {
         let context: common.UIAbilityContext = globalThis.abilityContext;
         expect(context != null).assertTrue();
@@ -1119,16 +1202,16 @@ export default function UIAbilityContext() {
           "moduleName": "entryTest"
         }
         context.startAbility(want).then(() => {
-          console.info('testApplicationInfoCallback001 start successful. ');
+          console.info('testTerminateSelfCallback001 start successful. ');
         }).catch((error) => {
-          console.error('testApplicationInfoCallback001 start failed. Cause: ' + JSON.stringify(error));
+          console.error('testTerminateSelfCallback001 start failed. Cause: ' + JSON.stringify(error));
         })
         await sleep(1500);
 
         let context1: common.UIAbilityContext = globalThis.ability1Context;
         context1.terminateSelf((err) => {
           if (err.code) {
-            console.log(`testApplicationInfoCallback001 fail: ` + err);
+            console.log(`testTerminateSelfCallback001 fail: ` + err);
             expect().assertFail();
             done();
           }

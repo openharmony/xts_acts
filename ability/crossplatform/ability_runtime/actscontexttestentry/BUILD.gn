@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("context_entry_ets_normal_test") {
+ohos_hap_assist_suite("ActsCrossplatformAbilityContextEntryTest") {
   hap_profile = "src/main/module.json"
   deps = [
     ":windowStage_js_assets",
@@ -21,7 +21,7 @@ ohos_hap_assist_suite("context_entry_ets_normal_test") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsAbilityContextEntryTest"
+  hap_name = "ActsCrossplatformAbilityContextEntryTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
