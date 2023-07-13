@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="arkui_android_adapter1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/commonlibraryArrayListetstest/src/main/libs/arkui_android_adapter.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -16,6 +16,7 @@ group("graphic") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "crossplatform:crossplatform",
       "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
@@ -23,7 +24,6 @@ group("graphic") {
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",
-      "crossplatform:crossplatform",
     ]
     if (!(product_name == "ohcore")) {
       deps += [ "vkgl:cpvkgl" ]
