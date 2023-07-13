@@ -18,7 +18,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsDemoStageTest.hap"
+                "ActsHashSetTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("hashset_ets_test") {
+ohos_js_hap_suite("ActsHashSetTest") {
   hap_profile = "src/main/module.json"
   deps = [
     ":windowStage_js_assets",
@@ -22,7 +22,7 @@ ohos_js_hap_suite("hashset_ets_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
 
   # hap_name: HAP的名字，可选，默认为目标名
-  hap_name = "hashset_ets_test"
+  hap_name = "ActsHashSetTest"
   subsystem_name = "commonlibrary"
   part_name = "ets_utils"
 }

@@ -16,15 +16,15 @@ group("crossplatform") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "commonlibraryconvertxmletstest:convertxml_ets_test",
-      "commonlibrarydequeetstest:deque_ets_test",
-      "commonlibraryhashmapetstest:hashmap_ets_test",
-      "commonlibraryhashsetetstest:hashset_ets_test",
-      "commonlibraryplainarrayetstest:plainarray_ets_test",
-      "commonlibrarytreesetetstest:treeset_ets_test",
-      "commonlibraryurietstest:uri_ets_test",
-      "commonlibraryurletstest:url_ets_test",
-      "commonlibraryutiletstest:util_ets_test",
+      "commonlibraryconvertxmletstest:ActsConvertxmlTest",
+      "commonlibrarydequeetstest:ActsDequeTest",
+      "commonlibraryhashmapetstest:ActsHashMapTest",
+      "commonlibraryhashsetetstest:ActsHashSetTest",
+      "commonlibraryplainarrayetstest:ActsPlainArrayTest",
+      "commonlibrarytreesetetstest:ActsTreeSetTest",
+      "commonlibraryurietstest:ActsUriTest",
+      "commonlibraryurletstest:ActsUrlTest",
+      "commonlibraryutiletstest:ActsUtilTest",
     ]
   }
 }
