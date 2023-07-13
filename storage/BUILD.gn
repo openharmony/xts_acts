@@ -16,7 +16,7 @@ group("storage") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform/storagefsetstest:storagefs_ets_test",
+      "crossplatform/storagefsetstest:ActsCrossplatformFsTest",
       "storagefileioerrorjstest:storagefileioerror_js_test",
       "storagefileiojstest:storagefileio_js_test",
       "storagefileiov9jstest:storagefileiov9_js_test",

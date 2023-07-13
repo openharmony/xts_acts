@@ -6,7 +6,7 @@
     "versionName": "1.0.0",
     "icon": "$media:app_icon",
     "label": "$string:app_name",
-    "minAPIVersion": 9,
+    "minAPIVersion": 10,
     "targetAPIVersion": 10,
     "car": {
       "apiCompatibleVersion": 10,
