@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct Index {
+struct textObscured {
   private scroller: Scroller = new Scroller()
   @State message: string = 'Hello World'
 

@@ -7,8 +7,7 @@
         "mainElement": "ohos.acts.atomic.service.test.MainAbility",
         "deviceTypes": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": true,

@@ -19,6 +19,10 @@ group("ability_crossplatform_runtime") {
     deps = [
       "actscontexttest:ActsCrossplatformAbilityContextTest",
       "actscontexttestentry:ActsCrossplatformAbilityContextEntryTest"
+      "ActsLifeCycleEtsFeatureTest:ActsLifeCycleEtsFeatureTest",
+      "ActsLifeCycleEtsTest:ActsLifeCycleEtsTest",
+      "ActsUiAbilityEtsTest:ActsUiAbilityEtsTest",
+      "commonTestAbilityApp:commonTestAbilityApp",
     ]
   }
 }

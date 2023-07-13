@@ -17,8 +17,9 @@ group("ability") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform:ability_crossplatform",
       "ability_runtime:ability_runtime",
+      "crossplatform:ability_crossplatform",
+      "crossplatform:ability_crossplatform",
       "dmsfwk:dmsfwk",
     ]
   }
