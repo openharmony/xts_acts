@@ -209,9 +209,22 @@ export default function PreferencesSyncTest() {
         })
 
         /**
+         * @tc.number SUB_DDM_Preferences_HasSync_0600
+         * @tc.name hasSync interface test
+         * @tc.desc hasSync interface test
+         */
+        it('SUB_DDM_Preferences_HasSync_0600', 0, async function (done) {
+            mPreferences.clearSync();
+            const ret = mPreferences.hasSync(KEY_TEST_LONG_ELEMENT);
+            console.info('ret = ' + ret);
+            expect(ret === false).assertTrue();
+            done();
+        })
+
+        /**
          * @tc.number SUB_DDM_Preferences_GetSync_0100
-         * @tc.name putSync interface test
-         * @tc.desc putSync interface test
+         * @tc.name getSync interface test
+         * @tc.desc getSync interface test
          */
         it('SUB_DDM_Preferences_GetSync_0100', 0, async function (done) {
             mPreferences.clearSync();
@@ -222,8 +235,8 @@ export default function PreferencesSyncTest() {
 
         /**
          * @tc.number SUB_DDM_Preferences_GetSync_0200
-         * @tc.name putSync interface test
-         * @tc.desc putSync interface test
+         * @tc.name getSync interface test
+         * @tc.desc getSync interface test
          */
         it('SUB_DDM_Preferences_GetSync_0200', 0, async function (done) {
             mPreferences.clearSync();
@@ -235,8 +248,8 @@ export default function PreferencesSyncTest() {
 
         /**
          * @tc.number SUB_DDM_Preferences_GetSync_0300
-         * @tc.name putSync interface test
-         * @tc.desc putSync interface test
+         * @tc.name getSync interface test
+         * @tc.desc getSync interface test
          */
         it('SUB_DDM_Preferences_GetSync_0300', 0, async function (done) {
             mPreferences.clearSync();
@@ -248,8 +261,8 @@ export default function PreferencesSyncTest() {
 
         /**
          * @tc.number SUB_DDM_Preferences_GetSync_0400
-         * @tc.name putSync interface test
-         * @tc.desc putSync interface test
+         * @tc.name getSync interface test
+         * @tc.desc getSync interface test
          */
         it('SUB_DDM_Preferences_GetSync_0400', 0, async function (done) {
             mPreferences.clearSync();
@@ -261,8 +274,8 @@ export default function PreferencesSyncTest() {
 
         /**
          * @tc.number SUB_DDM_Preferences_GetSync_0500
-         * @tc.name putSync interface test
-         * @tc.desc putSync interface test
+         * @tc.name getSync interface test
+         * @tc.desc getSync interface test
          */
         it('SUB_DDM_Preferences_GetSync_0500', 0, async function (done) {
             mPreferences.clearSync();
