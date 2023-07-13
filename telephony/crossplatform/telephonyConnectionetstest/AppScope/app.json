@@ -6,17 +6,10 @@
     "versionName": "1.0.0",
     "icon": "$media:app_icon",
     "label": "$string:app_name",
-<<<<<<< HEAD
     "minAPIVersion": 10,
     "targetAPIVersion": 10,
     "car": {
       "apiCompatibleVersion": 10,
-=======
-    "minAPIVersion": 9,
-    "targetAPIVersion": 9,
-    "car": {
-      "apiCompatibleVersion": 9,
->>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       "singleUser": false
     }
   }
