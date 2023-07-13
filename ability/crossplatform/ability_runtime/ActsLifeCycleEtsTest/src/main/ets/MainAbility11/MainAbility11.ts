@@ -80,7 +80,6 @@ export default class MainAbility11 extends Ability {
             }
         }
         globalThis.applicationContext11 = globalThis.ability11.getApplicationContext();
-        // let lifecycleid = globalThis.applicationContext11.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         let lifecycleid = globalThis.applicationContext11.on('abilityLifecycle', AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback11 number: " + JSON.stringify(lifecycleid));
         setTimeout(function () {
@@ -97,8 +96,6 @@ export default class MainAbility11 extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility11 onWindowStageCreate")
-
-        // windowStage.setUIContent(this.context, "testability/pages/index11", null)
 
         windowStage.loadContent('testability/pages/index11', (err, data) => {
             if (err.code) {

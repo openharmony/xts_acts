@@ -201,7 +201,6 @@ export default class MainAbility13 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility13 onWindowStageCreate")
         globalThis.ability1context = this.context;
-        // windowStage.setUIContent(this.context, "testability/pages/index1", null)
 
         windowStage.loadContent('testability/pages/index1', (err, data) => {
             if (err.code) {

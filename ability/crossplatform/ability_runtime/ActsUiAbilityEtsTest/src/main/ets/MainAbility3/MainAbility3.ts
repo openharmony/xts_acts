@@ -56,15 +56,6 @@ export default class MainAbility3 extends Ability {
     onForeground() {
         console.log("[Demo] MainAbility3 onForeground")
         recordLife(globalThis.list3, abilityName, 'onForeground');
-        // setTimeout(function () {
-        //     console.log("[Demo] MainAbility3 onForeground after 1500ms")
-        //     globalThis.ability3context.terminateSelf()
-        //         .then((data) => {
-        //             console.info('[Demo] MainAbility3 terminateself succeeded: ' + data);
-        //         }).catch((error) => {
-        //         console.error('[Demo] MainAbility3 terminateself failed. Cause: ' + error);
-        //     })
-        // }, 1500);
     }
 
     onBackground() {

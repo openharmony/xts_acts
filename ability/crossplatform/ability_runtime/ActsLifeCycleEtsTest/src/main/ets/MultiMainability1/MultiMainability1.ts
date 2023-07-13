@@ -21,7 +21,6 @@ export default class MultiMainability1 extends Ability {
         console.log("[Demo] MultiMainability1 onCreate")
         globalThis.abilityWant1 = want;
         console.log("[Demo] MultiMainability1 context: " + JSON.stringify(this.context));
-        // var listKey1 = [];
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 console.log("[Demo] AbilityLifecycleCallback1 onAbilityCreate ability:"
@@ -117,7 +116,6 @@ export default class MultiMainability1 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MultiMainability1 onWindowStageCreate")
         globalThis.ability1context = this.context;
-        // windowStage.setUIContent(this.context, "testability/pages/index1", null)
 
         windowStage.loadContent('testability/pages/index1', (err, data) => {
             if (err.code) {

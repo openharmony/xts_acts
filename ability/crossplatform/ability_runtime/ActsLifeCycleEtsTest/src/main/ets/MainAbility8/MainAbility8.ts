@@ -28,7 +28,6 @@ export default class MainAbility8 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility8 onWindowStageCreate")
         globalThis.ability8 = this.context;
-        // windowStage.setUIContent(this.context, "testability/pages/index8", null)
 
         windowStage.loadContent('testability/pages/index8', (err, data) => {
             if (err.code) {
@@ -129,7 +128,6 @@ export default class MainAbility8 extends Ability {
             }
         }
         globalThis.applicationContext8 = this.context.getApplicationContext();
-        // let lifecycleid = globalThis.applicationContext8.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         let lifecycleid = globalThis.applicationContext8.on('abilityLifecycle', AbilityLifecycleCallback);
         console.log("[Demo] AbilityLifecycleCallback8 number: " + JSON.stringify(lifecycleid));
         setTimeout(function () {

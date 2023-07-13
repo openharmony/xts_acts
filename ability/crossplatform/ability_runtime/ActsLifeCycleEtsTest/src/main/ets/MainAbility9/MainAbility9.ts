@@ -28,8 +28,6 @@ export default class MainAbility9 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility9 onWindowStageCreate")
 
-        // windowStage.setUIContent(this.context, "testability/pages/index9", null)
-
         windowStage.loadContent('testability/pages/index9', (err, data) => {
             if (err.code) {
                 console.log('MainAbility9 loadContent error');
@@ -96,8 +94,6 @@ export default class MainAbility9 extends Ability {
             }
         }
         globalThis.applicationContext9 = this.context.getApplicationContext();
-        // var callBackId = globalThis.applicationContext9
-        //     .registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         var callBackId = globalThis.applicationContext9.on('abilityLifecycle', AbilityLifecycleCallback);
 
         console.log("callBackId is aaa :" + callBackId);
