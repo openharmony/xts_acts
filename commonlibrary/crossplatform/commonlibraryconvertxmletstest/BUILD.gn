@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsConvertxmlTest") {
+ohos_js_hap_suite("ActsCrossplatformConvertxmlTest") {
   hap_profile = "src/main/module.json"
   deps = [
     ":windowStage_js_assets",
@@ -22,7 +22,7 @@ ohos_js_hap_suite("ActsConvertxmlTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
 
   # hap_name: HAP的名字，可选，默认为目标名
-  hap_name = "ActsConvertxmlTest"
+  hap_name = "ActsCrossplatformConvertxmlTest"
   subsystem_name = "commonlibrary"
   part_name = "ets_utils"
 }

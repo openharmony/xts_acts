@@ -18,7 +18,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsUrlTest.hap"
+                "ActsCrossplatformUrlTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

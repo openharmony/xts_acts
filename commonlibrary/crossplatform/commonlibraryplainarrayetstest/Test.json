@@ -18,7 +18,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsPlainArrayTest.hap"
+                "ActsCrossplatformPlainArrayTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

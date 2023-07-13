@@ -18,7 +18,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsConvertxmlTest.hap"
+                "ActsCrossplatformConvertxmlTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
