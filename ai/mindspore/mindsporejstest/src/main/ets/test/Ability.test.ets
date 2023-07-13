@@ -1220,6 +1220,7 @@ export default function abilityTest() {
           let resize_result = msliteModel.resize(modelInputs, new_dim);
           expect(resize_result).assertFalse()
           console.log('=========MSLITE resize failed=====')
+          done();
         }).catch(err => {
           console.log("loadModel catch: ", err);
           done();
@@ -1267,6 +1268,7 @@ export default function abilityTest() {
           let resize_result = msliteModel.resize(modelInputs, new_dim);
           expect(resize_result).assertFalse()
           console.log('=========MSLITE resize failed=====')
+          done();
         }).catch(err => {
           console.log("loadModel catch: ", err);
           done();
