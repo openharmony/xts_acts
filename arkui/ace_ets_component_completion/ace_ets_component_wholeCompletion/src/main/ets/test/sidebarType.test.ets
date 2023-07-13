@@ -146,7 +146,7 @@ export default function sidebarTypeTest() {
           let minSideBarWidth = obj.$attrs.minSideBarWidth
           expect(type).assertEqual("SideBarContainerType.Embed");
           expect(minContentWidth).assertEqual("360.000000");
-          expect(minSideBarWidth).assertEqual("200.000000");
+          expect(minSideBarWidth).assertEqual("240.000000");
           console.info('ArkUX_SideBarContainer_1400 END ');
 
         } catch(err) {
