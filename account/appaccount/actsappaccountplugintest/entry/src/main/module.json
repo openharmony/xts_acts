@@ -8,35 +8,40 @@
         "deviceTypes": [
             "tablet",
             "default",
-            "phone"
+            "phone",
+            "2in1"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
-        "abilities": [{
-            "name": "com.example.accountplugintest.MainAbility",
-            "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-            "description": "$string:phone_entry_main",
-            "icon": "$media:icon",
-            "label": "$string:entry_label",
-            "visible": true,
-            "orientation": "portrait",
-            "skills": [{
-                "actions": [
-                    "action.system.home"
-                ],
-                "entities": [
-                    "entity.system.home"
+        "abilities": [
+            {
+                "name": "com.example.accountplugintest.MainAbility",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:phone_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "orientation": "portrait",
+                "skills": [
+                    {
+                        "actions": [
+                            "action.system.home"
+                        ],
+                        "entities": [
+                            "entity.system.home"
+                        ]
+                    }
                 ]
-            }]
-        }],
+            }
+        ],
         "requestPermissions": [
             {
-              "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
+                "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
             },
             {
-              "name": "ohos.permission.ACCESS_USER_AUTH_INTERNAL"
+                "name": "ohos.permission.ACCESS_USER_AUTH_INTERNAL"
             }
         ]
     }
