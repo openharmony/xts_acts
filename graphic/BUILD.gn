@@ -23,7 +23,7 @@ group("graphic") {
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",
-	  "crossplatform:crossplatform",
+      "crossplatform:crossplatform",
     ]
     if (!(product_name == "ohcore")) {
       deps += [ "vkgl:cpvkgl" ]
