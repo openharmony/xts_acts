@@ -39,6 +39,7 @@ import assemblyCallbackTest from './assemblyCallback.test';
 import ActsGridTest from './Grid.test';
 import ActsListTest from './Listitem.test';
 import ActsSwiperTest from './Swiper.test';
+import ActsgetcomponentTest from './getcomponent.test';
 
 
 export default function testsuite() {
@@ -68,4 +69,5 @@ export default function testsuite() {
   ActsGridTest()
   ActsListTest()
   ActsSwiperTest()
+  ActsgetcomponentTest()
 }
