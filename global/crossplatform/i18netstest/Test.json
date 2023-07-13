@@ -18,7 +18,7 @@
     "kits": [
         {
             "test-file-name": [
-                "i18n_ets_test.hap"
+                "ActsCrossplatformI18nTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
