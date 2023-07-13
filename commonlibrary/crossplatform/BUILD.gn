@@ -15,8 +15,6 @@ import("//test/xts/tools/build/suite.gni")
 group("crossplatform") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest",
-    ]
+    deps = [ "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest" ]
   }
 }
