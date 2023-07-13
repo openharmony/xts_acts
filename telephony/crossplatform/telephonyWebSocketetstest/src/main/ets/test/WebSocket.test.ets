@@ -12,6 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import webSocket from '@ohos.net.webSocket'
 
@@ -95,14 +99,24 @@ export default function webSocketTest() {
      */
     it('testConnect001', 0, async function (done) {
       let mWebSocket = webSocket.createWebSocket();
+<<<<<<< HEAD
       mWebSocket.connect(null, (error, value) => {
         if (!error) {
           console.log(`case success11:` + value);
+=======
+      mWebSocket.connect(serverIpAddress, (error, value) => {
+        if (!error) {
+          console.log(`case success11:` + value);  //自动化脚本调用所有的跨平台的接口！！！
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
           expect(value).assertTrue();
           done();
         } else {
           console.log(`error, case failed,errCode:` + error.code);
+<<<<<<< HEAD
           expect(error.code).assertEqual(401);
+=======
+          expect().assertFail();
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
           done();
         }
       });
@@ -125,14 +139,22 @@ export default function webSocketTest() {
         }
       }
       console.info('webSocket: start11');
+<<<<<<< HEAD
       mWebSocket.connect("ws://19211.16811.1.100:8081/string", webSocketRequestOptions, (error, value) => {
+=======
+      mWebSocket.connect(serverIpAddress, webSocketRequestOptions, (error, value) => {
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
         if (!error) {
           console.log(`case success11:` + value);
           expect(value).assertTrue();
           done();
         } else {
           console.log(`error, case failed,errCode:` + error.code);
+<<<<<<< HEAD
           expect(error.code).assertEqual(-1);
+=======
+          expect().assertFail();
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
           done();
         }
       });
@@ -148,6 +170,7 @@ export default function webSocketTest() {
      */
     it('testConnect003', 0, async function (done) {
       let mWebSocket = webSocket.createWebSocket();
+<<<<<<< HEAD
       mWebSocket.connect("", (error, value) => {
         if (!error) {
           console.log(`case success11:` + value);
@@ -158,6 +181,41 @@ export default function webSocketTest() {
           expect(error.code).assertEqual(-1);
           done();
         }
+=======
+      let webSocketRequestOptions: webSocket.WebSocketRequestOptions = {
+        header: "test header"
+      }
+      console.info('webSocket: start11');
+      mWebSocket.connect(serverIpAddress, webSocketRequestOptions).then(value => {
+        console.log(`case success,data:` + value);
+        expect(value).assertTrue();
+        done();
+      }).catch((error) => {
+        console.log(`error, case failed,errCode:` + error.code);
+        expect().assertFail();
+        done();
+      });
+    });
+
+    /*
+     * @tc.number: TEST_CONNECT_004
+     * @tc.name  : testConnect004
+     * @tc.desc  : Initiates a WebSocket request to establish a WebSocket connection to a given URL.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testConnect004', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+      mWebSocket.connect(serverIpAddress).then(value => {
+        console.log(`case success,data:` + value);
+        expect(value).assertTrue();
+        done();
+      }).catch((error) => {
+        console.log(`error, case failed,errCode:` + error.code);
+        expect().assertFail();
+        done();
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       });
     });
 
@@ -171,6 +229,7 @@ export default function webSocketTest() {
      */
     it('testSend001', 0, async function (done) {
       let mWebSocket = webSocket.createWebSocket();
+<<<<<<< HEAD
       mWebSocket.send("test data", (error, value) => {
         if (!error) {
           console.log(`case success,data:` + value);
@@ -181,6 +240,20 @@ export default function webSocketTest() {
           expect(error.code).assertEqual(2302999);
           done();
         }
+=======
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        mWebSocket.send("test data", (error, value) => {
+          if (!error) {
+            console.log(`case success,data:` + value);
+            expect(value).assertTrue();
+            done();
+          } else {
+            console.log(`error, case failed,errCode:` + error.code);
+            expect().assertFail();
+            done();
+          }
+        });
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       });
     });
 
@@ -194,6 +267,7 @@ export default function webSocketTest() {
      */
     it('testSend002', 0, async function (done) {
       let mWebSocket = webSocket.createWebSocket();
+<<<<<<< HEAD
       let promise = mWebSocket.send("test data");
       promise.then(value => {
         console.log(`case success,data:` + value);
@@ -203,6 +277,19 @@ export default function webSocketTest() {
         console.log(`error, case failed,errCode:` + error.code);
         expect(error.code).assertEqual(2302999);
         done();
+=======
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        let promise = mWebSocket.send("test data");
+        promise.then(value => {
+          console.log(`case success,data:` + value);
+          expect(value).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(`error, case failed,errCode:` + error.code);
+          expect().assertFail();
+          done();
+        });
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       });
     });
 
@@ -216,12 +303,44 @@ export default function webSocketTest() {
      */
     it('testSend003', 0, async function (done) {
       let mWebSocket = webSocket.createWebSocket();
+<<<<<<< HEAD
+=======
+      var str = "Hello";
+      for (var i = 0; i < 200; i++) {
+        str += "Hello";
+      }
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        let promise = mWebSocket.send(str);
+        promise.then(value => {
+          console.log(`case success,data:` + value);
+          expect(value).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(`error, case failed,errCode:` + error.code);
+          expect().assertFail();
+          done();
+        });
+      });
+    });
+
+    /*
+     * @tc.number: TEST_SEND_004
+     * @tc.name  : testSend004
+     * @tc.desc  : Sends data through a WebSocket connection.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testSend004', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       var str = "Hello, server!(arrayBuffer promise mode)";
       var buf = new ArrayBuffer(str.length);
       var message = new Uint8Array(buf);
       for (var i = 0, strLen = str.length; i < strLen; i++) {
         message[i] = str.charCodeAt(i);
       }
+<<<<<<< HEAD
       let promise = mWebSocket.send(message.buffer);
       promise.then(value => {
         console.log(`case success,data:` + value);
@@ -231,6 +350,19 @@ export default function webSocketTest() {
         console.log(`error, case failed,errCode:` + error.code);
         expect(error.code).assertEqual(2302999);
         done();
+=======
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        let promise = mWebSocket.send(message.buffer);
+        promise.then(value => {
+          console.log(`case success,data:` + value);
+          expect(value).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(`error, case failed,errCode:` + error.code);
+          expect().assertFail();
+          done();
+        });
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       });
     });
 
@@ -244,6 +376,90 @@ export default function webSocketTest() {
      */
     it('testClose001', 0, async function (done) {
       let mWebSocket = webSocket.createWebSocket();
+<<<<<<< HEAD
+=======
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        mWebSocket.close((error, value) => {
+          if (!error) {
+            console.log(`case success:` + value);
+            expect(value).assertTrue();
+            done();
+          } else {
+            console.log(`error, case failed,errCode:` + error.code);
+            expect(error.code).assertEqual(2302999);
+            done();                                    //补上on、off的接口，触发10次，每次都能监听到!!!
+          }
+        });
+      });
+    });
+
+    /*
+     * @tc.number: TEST_CLOSE_002
+     * @tc.name  : testClose002
+     * @tc.desc  : Closes a WebSocket connection.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testClose002', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+      let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
+        code: 1,
+        reason: "test reason"
+      }
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        mWebSocket.close(webSocketCloseOptions, (error, value) => {
+          if (!error) {
+            console.log(`case success,data:` + value);
+            expect(value).assertTrue();
+            done();
+          } else {
+            console.log(`error, case failed,errCode:` + error.code);
+            expect().assertFail();
+            done();
+          }
+        });
+      });
+    });
+
+    /*
+     * @tc.number: TEST_CLOSE_003
+     * @tc.name  : testClose003
+     * @tc.desc  : Closes a WebSocket connection.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testClose003', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+      let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
+        code: 1,
+        reason: "test reason"
+      }
+      mWebSocket.connect(serverIpAddress, (error, data) => {
+        mWebSocket.close(webSocketCloseOptions).then(value => {
+          console.log(`case success,data:` + value);
+          expect(value).assertTrue();
+          done();
+        }).catch((error) => {
+          console.log(`error, case failed,errCode:` + error.code);
+          expect().assertFail();
+          done();
+        });
+      });
+    });
+
+    /*
+     * @tc.number: TEST_CLOSE_004
+     * @tc.name  : testClose004
+     * @tc.desc  : Closes a WebSocket connection.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testClose004', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       mWebSocket.close((error, value) => {
         if (!error) {
           console.log(`case success:` + value);
@@ -258,14 +474,23 @@ export default function webSocketTest() {
     });
 
     /*
+<<<<<<< HEAD
      * @tc.number: TEST_CLOSE_002
      * @tc.name  : testClose002
+=======
+     * @tc.number: TEST_CLOSE_005
+     * @tc.name  : testClose005
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
      * @tc.desc  : Closes a WebSocket connection.
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
      */
+<<<<<<< HEAD
     it('testClose002', 0, async function (done) {
+=======
+    it('testClose005', 0, async function (done) {
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       let mWebSocket = webSocket.createWebSocket();
       let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
         code: 1,
@@ -285,14 +510,23 @@ export default function webSocketTest() {
     });
 
     /*
+<<<<<<< HEAD
      * @tc.number: TEST_CLOSE_003
      * @tc.name  : testClose003
+=======
+     * @tc.number: TEST_CLOSE_006
+     * @tc.name  : testClose006
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
      * @tc.desc  : Closes a WebSocket connection.
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
      */
+<<<<<<< HEAD
     it('testClose003', 0, async function (done) {
+=======
+    it('testClose006', 0, async function (done) {
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
       let mWebSocket = webSocket.createWebSocket();
       let webSocketCloseOptions: webSocket.WebSocketCloseOptions = {
         code: 1,
@@ -309,6 +543,7 @@ export default function webSocketTest() {
       });
     });
 
+<<<<<<< HEAD
     /*
      * @tc.number: TEST_ON_OPEN_001
      * @tc.name  : testOn_Open001
@@ -446,6 +681,8 @@ export default function webSocketTest() {
       expect(true).assertTrue();
     });
 
+=======
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
 
   })
 }

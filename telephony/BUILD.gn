@@ -14,7 +14,13 @@
 group("telephony") {
   testonly = true
   deps = [
+<<<<<<< HEAD
   "telephonyjstest:telephonyjstest",
   "crossplatform:crossplatform",
    ]
+=======
+    "crossplatform:crossplatform",
+    "telephonyjstest:telephonyjstest",
+  ]
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
 }

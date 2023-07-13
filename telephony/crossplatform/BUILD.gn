@@ -16,8 +16,13 @@ group("crossplatform") {
   testonly = true
   if (is_standard_system) {
     deps = [
+<<<<<<< HEAD
       "telephonyConnectionetstest:ActsCrossPlatformConnectionTest",
       "telephonyWebSocketetstest:ActsCrossPlatformWebSocketTest",
+=======
+      "telephonyConnectionetstest:Connection_ets_test",
+      "telephonyWebSocketetstest:WebSocket_ets_test",
+>>>>>>> c661a9d77ed4eae4068dadf859aa14d46767d4a4
     ]
   }
 }
