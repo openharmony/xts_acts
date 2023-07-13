@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -43,6 +43,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_options Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -79,6 +80,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_options_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -117,6 +119,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_options Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -153,6 +156,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_GET Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -189,6 +193,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_GET_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -226,6 +231,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_GET Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -268,6 +274,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_POST Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -312,6 +319,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_POST_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -352,6 +360,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_TRACE Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -387,6 +396,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_TRACE_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -431,6 +441,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_PUT Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -469,6 +480,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_PUT_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -511,6 +523,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_PUT Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -545,6 +558,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_head Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -578,6 +592,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_HEAD_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -616,6 +631,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_head Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -650,6 +666,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_DELETE Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -683,6 +700,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_DELETE_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -721,6 +739,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_DELETE Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -754,6 +773,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_CONNECT Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -787,6 +807,7 @@ export default function requestMethodJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestMethod_CONNECT_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));

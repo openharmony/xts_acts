@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "telephony_http_ets_test.hap"
+                "ActsCrossplatformTelephonyHttpEtsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

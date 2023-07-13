@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,6 +42,7 @@ export default function httpRequestJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequest_request Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -68,6 +69,7 @@ export default function httpRequestJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequest_request_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -101,6 +103,7 @@ export default function httpRequestJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequest_request_02 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info('HttpRequest_request_0300 asyncCallback error : ' + JSON.stringify(error));
@@ -138,6 +141,7 @@ export default function httpRequestJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequest_request Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -171,6 +175,7 @@ export default function httpRequestJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequest_request Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -206,6 +211,7 @@ export default function httpRequestJsunit() {
             httpRequest.destroy();
             expect(true).assertTrue();
             console.log("-----------------------HttpRequest_destroy Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             expect(false).assertFail();
@@ -245,6 +251,7 @@ export default function httpRequestJsunit() {
             httpRequest.destroy();
             expect(true).assertTrue();
             console.log("-----------------------HttpRequest_destroy Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             expect(false).assertFail();
@@ -284,6 +291,7 @@ export default function httpRequestJsunit() {
             httpRequest.destroy();
             expect(true).assertTrue();
             console.log("-----------------------HttpRequest_destroy Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             expect(false).assertFail();
@@ -315,6 +323,7 @@ export default function httpRequestJsunit() {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
         httpRequest.request("https://www.baidu.com/", (err, data) => {
@@ -344,6 +353,7 @@ export default function httpRequestJsunit() {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(false).assertTrue();
           console.log("-----------------------HttpRequest_off_headersReceive Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
         httpRequest.request("https://www.baidu.com/", (err, data) => {
@@ -372,6 +382,7 @@ export default function httpRequestJsunit() {
         httpRequest.off('headersReceive');
         expect(true).assertTrue();
         console.log("-----------------------HttpRequest_off_headersReceive_0200 Test end-----------------------");
+        httpRequest.destroy();
         done();
       } catch (error) {
         console.log("testTelephonyHttpRequestOffheadersReceive002 : error = " + error);
@@ -397,6 +408,7 @@ export default function httpRequestJsunit() {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
         httpRequest.request("https://www.baidu.com/", (err, data) => {
@@ -426,6 +438,7 @@ export default function httpRequestJsunit() {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
         httpRequest.request("https://app.4399.cn/", (err, data) => {

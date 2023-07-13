@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -43,6 +43,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -71,6 +72,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -106,6 +108,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result_02 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -144,6 +147,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.result != null).assertTrue();
           console.log("-----------------------HttpResponse result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -179,6 +183,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.resultType == http.HttpDataType.STRING).assertTrue();
           console.log("-----------------------HttpResponse result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -214,6 +219,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.resultType == http.HttpDataType.OBJECT).assertTrue();
           console.log("-----------------------HttpResponse result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -249,6 +255,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.resultType == http.HttpDataType.ARRAY_BUFFER).assertTrue();
           console.log("-----------------------HttpResponse result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -284,6 +291,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -312,6 +320,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -348,6 +357,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode_02 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -386,6 +396,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode != 0).assertTrue();
           console.log("-----------------------HttpResponse responseCode Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -422,6 +433,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.header != null).assertTrue();
           console.log("-----------------------header result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -450,6 +462,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.header != null).assertTrue();
           console.log("-----------------------header header_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -486,6 +499,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.header != null).assertTrue();
           console.log("-----------------------HttpResponse header_02 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -523,6 +537,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.header != null).assertTrue();
           console.log("-----------------------header result Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -557,6 +572,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -586,6 +602,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -621,6 +638,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies_02 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -658,6 +676,7 @@ export default function httpResponseJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.cookies != null).assertTrue();
           console.log("-----------------------HttpResponse cookies Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {

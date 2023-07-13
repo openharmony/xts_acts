@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,8 +18,6 @@ import http from '@ohos.net.http';
 
 export default function HttpRequestOptionsJsunit() {
   describe("HttpRequestOptionsJsunitTest", function () {
-
-
     /**
      * @tc.number TEST_TELEPHONYHTTPREQUESTOPTIONSMETHOD_001
      * @tc.name testTelephonyHttpRequestOptionsMethod001
@@ -44,6 +42,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_method Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -77,6 +76,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_method_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -114,6 +114,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_method Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -155,6 +156,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -196,6 +198,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData_01 Test end-----------------------");
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
@@ -242,6 +245,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -284,6 +288,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -326,6 +331,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -360,6 +366,7 @@ export default function HttpRequestOptionsJsunit() {
           try {
             expect(true).assertTrue();
             console.log("-----------------------HttpRequestOptions_header Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             console.log("testTelephonyHttpRequestOptionsHeaders001 : JSON parse error = " + error);
@@ -399,6 +406,7 @@ export default function HttpRequestOptionsJsunit() {
           try {
             expect(true).assertTrue();
             console.log("-----------------------HttpRequestOptions_header_01 Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             console.log("Telephony_Http_HttpRequestOptions_header_0200 : JSON parse error = " + error);
@@ -442,6 +450,7 @@ export default function HttpRequestOptionsJsunit() {
           try {
             expect(data.responseCode == 200).assertTrue();
             console.log("-----------------------HttpRequestOptions_header_02 Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             console.log("testTelephonyHttpRequestOptionsHeader003 : JSON parse error = " + error);
@@ -481,6 +490,7 @@ export default function HttpRequestOptionsJsunit() {
           try {
             expect(data.result.valueOf() != "").assertTrue();
             console.log("-----------------------HttpRequestOptions_header_03 Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             console.log("testTelephonyHttpRequestOptionsHeader004 : JSON parse error = " + error);
@@ -524,6 +534,7 @@ export default function HttpRequestOptionsJsunit() {
           try {
             expect(true).assertTrue();
             console.log("-----------------------HttpRequestOptions_header Test end-----------------------");
+            httpRequest.destroy();
             done();
           } catch (error) {
             console.log("testTelephonyHttpRequestOptionsHeaders001 : JSON parse error = " + error);
@@ -571,6 +582,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -613,6 +625,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -655,6 +668,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_extraData Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -697,6 +711,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_usingProtocol Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -730,6 +745,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_usingProtocol Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -766,6 +782,7 @@ export default function HttpRequestOptionsJsunit() {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 200).assertTrue();
           console.log("-----------------------HttpRequestOptions_usingProtocol Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
@@ -784,8 +801,8 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.level: level 2
      */
     it("testTelephonyHttpRequestOptionsReadTimeout001", 0, async function (done) {
-      var casename = 'Telephony_Http_HttpRequestOptions_0400';
-      console.log("-----------------------HttpRequestOptions_readTimeout Test is starting-----------------------");
+      var casename = 'testTelephonyHttpRequestOptionsReadTimeout001';
+      console.log("-----------------------testTelephonyHttpRequestOptionsReadTimeout001 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
           method: http.RequestMethod.GET,
@@ -795,19 +812,18 @@ export default function HttpRequestOptionsJsunit() {
           connectTimeout: 60
         }
         var httpRequest = http.createHttp();
-        if (httpRequestOptions.connectTimeout < 60000) {
-          done();
-          return;
-        }
-        httpRequest.request("https://www.zhihu.com/signin", httpRequestOptions, (err, data) => {
-          console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode == 408).assertTrue();
-          console.log("-----------------------HttpRequestOptions_readTimeout Test end-----------------------");
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
+          console.log(casename + ' error:' + JSON.stringify(err) + " data: " + JSON.stringify(data));
+           expect(err.code == 2300028).assertTrue();
+           expect(err.message == 'Timeout was reached').assertTrue();
+           httpRequest.destroy();
+          console.log("-----------------------testTelephonyHttpRequestOptionsReadTimeout001 Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
         console.log("testTelephonyHttpRequestOptionsReadTimeout001 : error = " + error);
-        expect(false).assertTrue();
+         expect(false).assertTrue();
         done();
       }
     });
@@ -821,8 +837,8 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.level: level 2
      */
     it("testTelephonyHttpRequestOptionsReadTimeout002", 0, async function (done) {
-      var casename = 'Telephony_Http_HttpRequestOptions_0400';
-      console.log("-----------------------HttpRequestOptions_readTimeout_01 Test is starting-----------------------");
+      var casename = 'testTelephonyHttpRequestOptionsReadTimeout002';
+      console.log("-----------------------HttpRequestOptions_readTimeout_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
           method: http.RequestMethod.GET,
@@ -832,18 +848,16 @@ export default function HttpRequestOptionsJsunit() {
           connectTimeout: 60
         }
         var httpRequest = http.createHttp();
-        if (httpRequestOptions.connectTimeout < 60000) {
-          done();
-          return;
-        }
-        httpRequest.request("https://www.zhihu.com/signin", httpRequestOptions).then(data => {
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode == 408).assertTrue();
-          console.log("-----------------------HttpRequestOptions_readTimeout_01 Test end-----------------------");
+          console.log("-----------------------HttpRequestOptions_readTimeout_02 Test end-----------------------");
+          expect().assertFail();
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
-          expect(false).assertTrue();
+          expect(error.code == 2300028).assertTrue();
+          expect(error.message == 'Timeout was reached').assertTrue();
           done();
         });
       } catch (error) {
@@ -872,20 +886,18 @@ export default function HttpRequestOptionsJsunit() {
           readTimeout: 60,
           connectTimeout: 0.1
         }
-        if (httpRequestOptions.connectTimeout < 60000) {
-          done();
-          return;
-        }
         var httpRequest = http.createHttp();
-        httpRequest.request("https://app.4399.cn/", httpRequestOptions, (err, data) => {
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode == 504).assertTrue();
+          expect(err.code == 2300028).assertTrue();
+          expect(err.message == 'Timeout was reached').assertTrue();
           console.log("-----------------------HttpRequestOptions_connectTimeout Test end-----------------------");
+          httpRequest.destroy();
           done();
         });
       } catch (error) {
         console.log("testTelephonyHttpRequestOptionsConnectTimeout001 : error = " + error);
-        expect(false).assertTrue();
+        //expect(false).assertTrue();
         done();
       }
     });
@@ -900,7 +912,7 @@ export default function HttpRequestOptionsJsunit() {
      * @tc.level: level 2
      */
     it("testTelephonyHttpRequestOptionsConnectTimeout002", 0, async function (done) {
-      var casename = 'Telephony_Http_HttpRequestOptions_0500';
+      var casename = 'Telephony_Http_HttpRequestOptions_0600';
       console.log("-----------------------HttpRequestOptions_connectTimeout_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -910,24 +922,21 @@ export default function HttpRequestOptionsJsunit() {
           readTimeout: 60,
           connectTimeout: 0.1
         }
-        if (httpRequestOptions.connectTimeout < 60000) {
-          done();
-          return;
-        }
         var httpRequest = http.createHttp();
-        httpRequest.request("https://app.4399.cn/", httpRequestOptions).then(data => {
+        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode == 504).assertTrue();
           console.log("-----------------------HttpRequestOptions_connectTimeout_01 Test end-----------------------");
+          expect().assertFail();
+          httpRequest.destroy();
           done();
         }).catch(error => {
           console.info(casename+"errocode" + JSON.stringify(error));
-          expect(false).assertTrue();
+          expect(error.code == 2300028).assertTrue();
+          expect(error.message == 'Timeout was reached').assertTrue();
           done();
         });
       } catch (error) {
         console.log("testTelephonyHttpRequestOptionsConnectTimeout002 : error = " + error);
-        expect(false).assertTrue();
         done();
       }
     });

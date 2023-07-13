@@ -14,6 +14,6 @@
 group("telephony") {
   testonly = true
   deps = [ 
-    "crossplatform/telephony_http_test:telephony_http_ets_test", 
+    "crossplatform/telephony_http_test:ActsCrossplatformTelephonyHttpEtsTest", 
     "telephonyjstest:telephonyjstest" ]
 }
