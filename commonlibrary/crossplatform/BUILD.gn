@@ -17,6 +17,7 @@ group("crossplatform") {
   if (is_standard_system) {
     deps = [
       "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest",
+      "commonlibraryWorkeretstest:ActsCrossplatformWorkerTest",
       "commonlibraryconvertxmletstest:ActsCrossplatformConvertxmlTest",
       "commonlibrarydequeetstest:ActsCrossplatformDequeTest",
       "commonlibraryhashmapetstest:ActsCrossplatformHashMapTest",
