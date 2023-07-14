@@ -56,7 +56,7 @@ export default function requestUploadJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('subRequestConstant0001', 0, async function (done) {
+    it('SUB_REQUEST_CONSTANT_0001', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_CONSTANT_0001 is starting-----------------------");
       expect(typeof request.EXCEPTION_PERMISSION == 'number').assertTrue();
       expect(typeof request.EXCEPTION_PARAMCHECK == 'number').assertTrue();
