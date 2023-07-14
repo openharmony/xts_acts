@@ -17,9 +17,18 @@ group("crossplatform") {
   if (is_standard_system) {
     deps = [
       "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest",
+      "commonlibraryconvertxmletstest:ActsCrossplatformConvertxmlTest",
+      "commonlibrarydequeetstest:ActsCrossplatformDequeTest",
+      "commonlibraryhashmapetstest:ActsCrossplatformHashMapTest",
+      "commonlibraryhashsetetstest:ActsCrossplatformHashSetTest",
+      "commonlibraryplainarrayetstest:ActsCrossplatformPlainArrayTest",
       "commonlibraryqueueetstest:ActsCrossplatformCommonlibraryQueueTest",
       "commonlibrarystacketstest:ActsCrossplatformCommonlibraryStackTest",
       "commonlibrarytaskpooletstest:ActsCrossplatformCommonlibraryTaskpoolTest",
+      "commonlibrarytreesetetstest:ActsCrossplatformTreeSetTest",
+      "commonlibraryurietstest:ActsCrossplatformUriTest",
+      "commonlibraryurletstest:ActsCrossplatformUrlTest",
+      "commonlibraryutiletstest:ActsCrossplatformUtilTest",
     ]
   }
 }
