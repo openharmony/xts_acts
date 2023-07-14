@@ -29,6 +29,9 @@ group("crossplatform") {
       "commonlibrarytreesetetstest:ActsCrossplatformTreeSetTest",
       "commonlibraryurietstest:ActsCrossplatformUriTest",
       "commonlibraryurletstest:ActsCrossplatformUrlTest",
+      "commonlibraryutiletstest:ActsCrossplatformLightWeightMapTest",
+      "commonlibraryutiletstest:ActsCrossplatformLinkedListTest",
+      "commonlibraryutiletstest:ActsCrossplatformProcessTest",
       "commonlibraryutiletstest:ActsCrossplatformUtilTest",
     ]
   }
