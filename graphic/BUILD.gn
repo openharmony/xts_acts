@@ -16,7 +16,7 @@ group("graphic") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform/window:window_ets_normal_test",
+      "crossplatform/window:ActsCrossplatformWindowTest",
       "effectKit:EffectKitTest",
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
