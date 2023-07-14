@@ -22,33 +22,33 @@ const STORE_CONFIG = {
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
-var rdbStore = undefined;
+let rdbStore = undefined;
 
 export default function rdbStoreDeleteTest() {
   describe("rdbStoreDeleteTest", function () {
     beforeAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeAll");
-      rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     });
 
     beforeEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "beforeEach");
+      rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
+      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await createTest1();
       await createTest2();
       await createTest3();
     });
 
     afterEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
+      rdbStore = null;
+      await relationalStore.deleteRdbStore(context, "Delete.db");
     });
 
     afterAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterAll");
-      rdbStore = null;
-      await relationalStore.deleteRdbStore(context, "Delete.db");
     });
 
     async function createTest1() {
@@ -93,7 +93,7 @@ export default function rdbStoreDeleteTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_STORE_DELETE_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0100
      * @tc.name   : testRdbStoreDelete001
      * @tc.desc   : RdbStore delete callback test
      * @tc.size   : MediumTest
@@ -110,6 +110,7 @@ export default function rdbStoreDeleteTest() {
       rdbStore.delete(predicates, async (err, rows) => {
         if (err) {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         }
         console.info(`Delete rows: ${rows}`);
         expect(1).assertEqual(rows);
@@ -124,7 +125,7 @@ export default function rdbStoreDeleteTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_DELETE_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0200
      * @tc.name   : testRdbStoreDelete002
      * @tc.desc   : RdbStore delete callback test
      * @tc.size   : MediumTest
@@ -138,7 +139,7 @@ export default function rdbStoreDeleteTest() {
       rdbStore.delete(predicates, async (err, rows) => {
         if (err) {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code === 14800000).assertTrue();
           console.info(TAG + "delete with wrong conditions");
           done();
         }
@@ -147,7 +148,7 @@ export default function rdbStoreDeleteTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_DELETE_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0300
      * @tc.name   : testRdbStoreDelete003
      * @tc.desc   : RdbStore delete callback test
      * @tc.size   : MediumTest
@@ -161,6 +162,7 @@ export default function rdbStoreDeleteTest() {
       rdbStore.delete(predicates, async (err, rows) => {
         if (err) {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
           done();
         }
         console.info(`Delete rows: ${rows}`);
@@ -171,7 +173,7 @@ export default function rdbStoreDeleteTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_DELETE_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0400
      * @tc.name   : testRdbStoreDelete004
      * @tc.desc   : RdbStore delete promise test
      * @tc.size   : MediumTest
@@ -199,12 +201,13 @@ export default function rdbStoreDeleteTest() {
         })
         .catch((err) => {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         });
       console.info(TAG + "************* testRdbStoreDelete004 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_DELETE_005
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0500
      * @tc.name   : testRdbStoreDelete005
      * @tc.desc   : RdbStore delete promise test
      * @tc.size   : MediumTest
@@ -222,7 +225,7 @@ export default function rdbStoreDeleteTest() {
         })
         .catch((err) => {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
-          expect(err.code == 14800000).assertTrue();
+          expect(err.code === 14800000).assertTrue();
           console.info(TAG + "delete with wrong conditions");
           done();
         });
@@ -230,7 +233,7 @@ export default function rdbStoreDeleteTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_DELETE_006
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0600
      * @tc.name   : testRdbStoreDelete006
      * @tc.desc   : RdbStore delete promise test
      * @tc.size   : MediumTest
@@ -250,6 +253,7 @@ export default function rdbStoreDeleteTest() {
         })
         .catch((err) => {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         });
       console.info(TAG + "************* testRdbStoreDelete006 end *************");
     });

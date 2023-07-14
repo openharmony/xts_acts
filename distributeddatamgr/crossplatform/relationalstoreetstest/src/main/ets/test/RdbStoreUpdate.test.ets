@@ -22,31 +22,31 @@ const STORE_CONFIG = {
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
-var rdbStore = undefined;
+let rdbStore = undefined;
 
 export default function rdbStoreUpdateTest() {
   describe("rdbStoreUpdateTest", function () {
     beforeAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeAll");
+    });
+
+    beforeEach(async function () {
+      let context = globalThis.abilityContext;
+      console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await createTest();
     });
 
-    beforeEach(async function () {
-      console.info(TAG + "beforeEach");
-    });
-
     afterEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
+      rdbStore = null;
+      await relationalStore.deleteRdbStore(context, "UpdataTest.db");
     });
 
     afterAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterAll");
-      rdbStore = null;
-      await relationalStore.deleteRdbStore(context, "UpdataTest.db");
     });
 
     async function createTest() {
@@ -64,7 +64,7 @@ export default function rdbStoreUpdateTest() {
     }
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0100
      * @tc.name   : testRdbStoreUpdate001
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -86,6 +86,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
             return;
           }
           try {
@@ -110,16 +111,18 @@ export default function rdbStoreUpdateTest() {
             done();
           } catch (e) {
             console.info("update error " + e);
+            expect(!e).assertTrue();
           }
         });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate001 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0200
      * @tc.name   : testRdbStoreUpdate002
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -136,7 +139,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(emptyBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is 6").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is 6").assertTrue();
             console.info(TAG + "update with wrong valueBucket");
             done();
           }
@@ -144,12 +147,13 @@ export default function rdbStoreUpdateTest() {
         });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate002 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0300
      * @tc.name   : testRdbStoreUpdate003
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -171,7 +175,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
             console.info(TAG + "update with wrong condition");
             done();
           }
@@ -179,12 +183,13 @@ export default function rdbStoreUpdateTest() {
         });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate003 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0400
      * @tc.name   : testRdbStoreUpdate004
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -207,7 +212,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
             console.info(TAG + "update with wrong table name");
             done();
           }
@@ -215,12 +220,13 @@ export default function rdbStoreUpdateTest() {
         });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate004 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_005
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0500
      * @tc.name   : testRdbStoreUpdate005
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -243,7 +249,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
             console.info(TAG + "update with wrong column name");
             done();
           }
@@ -251,13 +257,14 @@ export default function rdbStoreUpdateTest() {
         });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       done();
       console.info(TAG + "************* testRdbStoreUpdate005 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_006
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0600
      * @tc.name   : testRdbStoreUpdate006
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -297,12 +304,13 @@ export default function rdbStoreUpdateTest() {
         done();
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate006 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_007
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0700
      * @tc.name   : testRdbStoreUpdate007
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -323,18 +331,19 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is 6").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is 6").assertTrue();
             console.info(TAG + "update with wrong valueBucket");
             done();
           });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate007 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_008
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0800
      * @tc.name   : testRdbStoreUpdate008
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -360,18 +369,19 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
             console.info(TAG + "update with wrong condition");
             done();
           });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate008 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_009
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0900
      * @tc.name   : testRdbStoreUpdate009
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -398,18 +408,19 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
             console.info(TAG + "update with null table name");
             done();
           });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate009 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_010
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1000
      * @tc.name   : testRdbStoreUpdate010
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -436,18 +447,19 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code == 14800000 && err.message == "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
             console.info(TAG + "update with wrong column name");
             done();
           });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate010 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_011
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1100
      * @tc.name   : testRdbStoreUpdate011
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -466,7 +478,6 @@ export default function rdbStoreUpdateTest() {
 
         let predicates = new relationalStore.RdbPredicates("test");
         predicates.equalTo("id", "1");
-        // @ts-ignore
         rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_FAIL, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
@@ -494,16 +505,18 @@ export default function rdbStoreUpdateTest() {
             done();
           } catch (e) {
             console.info("update error " + e);
+            expect(!e).assertTrue();
           }
         });
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate011 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_UPDATE_012
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1200
      * @tc.name   : testRdbStoreUpdate012
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -522,7 +535,6 @@ export default function rdbStoreUpdateTest() {
 
         let predicates = new relationalStore.RdbPredicates("test");
         predicates.equalTo("id", "1");
-        // @ts-ignore
         await rdbStore.update(valueBucket, predicates, relationalStore.ConflictResolution.ON_CONFLICT_FAIL);
         let resultSet = await rdbStore.query(predicates);
         console.info(TAG + "resultSet query done");
@@ -544,6 +556,7 @@ export default function rdbStoreUpdateTest() {
         done();
       } catch (e) {
         console.info("update error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreUpdate012 end *************");
     });

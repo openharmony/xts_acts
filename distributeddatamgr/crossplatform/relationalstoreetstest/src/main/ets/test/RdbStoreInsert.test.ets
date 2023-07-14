@@ -22,9 +22,9 @@ const STORE_CONFIG = {
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
-var rdbStore = undefined;
-var resultSet = undefined;
-var context = null;
+let rdbStore = undefined;
+let resultSet = undefined;
+let context = null;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,33 +34,33 @@ export default function InsertTest() {
   describe("InsertTest", function () {
     beforeAll(async function () {
       console.info(TAG + "beforeAll");
-      context = globalThis.abilityContext;
-      rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.log("InsertTestrdbStore" + rdbStore);
-      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     });
 
     beforeEach(async function () {
       console.info(TAG + "beforeEach");
+      context = globalThis.abilityContext;
+      rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
+      console.log("InsertTestrdbStore" + rdbStore);
+      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await rdbStore.executeSql("DELETE FROM test");
     });
 
     afterEach(async function () {
       console.info(TAG + "afterEach");
-    });
-
-    afterAll(async function () {
-      console.info(TAG + "afterAll");
       rdbStore = null;
       await relationalStore.deleteRdbStore(context, "InsertTest.db").then(() => {
         sleep(2);
       });
     });
 
+    afterAll(async function () {
+      console.info(TAG + "afterAll");
+    });
+
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_STORE_VERSION_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_VERSION_0100
      * @tc.name   : testRdbStoreVersion001
      * @tc.desc   : RdbStore version test
      * @tc.size   : MediumTest
@@ -76,7 +76,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_INSERT_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0100
      * @tc.name   : testRdbStoreInsert001
      * @tc.desc   : RdbStore insert callback test
      * @tc.size   : MediumTest
@@ -93,6 +93,109 @@ export default function InsertTest() {
           blobType: new Uint8Array([1, 2, 3]),
         };
         rdbStore.insert("test", valueBucket, async (err, rowId) => {
+          if (err) {
+            console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            done();
+          }
+          try {
+            console.info(`Insert is successful, rowId = ${rowId}`);
+            let predicates = new relationalStore.RdbPredicates("test");
+            predicates.equalTo("name", "zhangsan");
+            let resultSet = await rdbStore.query(predicates);
+            console.info(TAG + "resultSet query done");
+            expect(true).assertEqual(resultSet.goToFirstRow());
+            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+            const name = resultSet.getString(resultSet.getColumnIndex("name"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+            expect(1).assertEqual(id);
+            expect("zhangsan").assertEqual(name);
+            expect(18).assertEqual(age);
+            expect(100.5).assertEqual(salary);
+            expect(1).assertEqual(blobType[0]);
+            expect(2).assertEqual(blobType[1]);
+            expect(3).assertEqual(blobType[2]);
+            resultSet.close();
+            done();
+          } catch (e) {
+            console.info("Insert error " + e);
+            expect(!e).assertTrue();
+          }
+        });
+      } catch (e) {
+        console.info("Insert error " + e);
+        expect(!e).assertTrue();
+      }
+
+      console.info(TAG + "************* testRdbStoreInsert001 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0200
+     * @tc.name   : testRdbStoreInsert002
+     * @tc.desc   : RdbStore insert promise test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreInsert002", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreInsert002 start *************");
+      try {
+        const valueBucket = {
+          name: "zhangsan",
+          age: 18,
+          salary: 100.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+        await rdbStore.insert("test", valueBucket);
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("name", "zhangsan");
+        let resultSet = await rdbStore.query(predicates);
+        console.info(TAG + "resultSet query done");
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
+        const name = resultSet.getString(resultSet.getColumnIndex("name"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
+        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
+        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+        expect(1).assertEqual(id);
+        expect("zhangsan").assertEqual(name);
+        expect(18).assertEqual(age);
+        expect(100.5).assertEqual(salary);
+        expect(1).assertEqual(blobType[0]);
+        expect(2).assertEqual(blobType[1]);
+        expect(3).assertEqual(blobType[2]);
+        resultSet.close();
+        done();
+      } catch (e) {
+        console.info("Insert error " + e);
+        expect(!e).assertTrue();
+      }
+      console.info(TAG + "************* testRdbStoreInsert002 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0300
+     * @tc.name   : testRdbStoreInsert003
+     * @tc.desc   : RdbStore insert callback with ConflictResolution test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreInsert003", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreInsert003 start *************");
+      try {
+        const valueBucket = {
+          name: "zhangsan",
+          age: 18,
+          salary: 100.5,
+          blobType: new Uint8Array([1, 2, 3]),
+        };
+        rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_ROLLBACK, async (err, rowId) => {
           if (err) {
             console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
             done();
@@ -121,117 +224,19 @@ export default function InsertTest() {
             done();
           } catch (e) {
             console.info("Insert error " + e);
+            expect(!e).assertTrue();
           }
         });
       } catch (e) {
         console.info("Insert error " + e);
-      }
-
-      console.info(TAG + "************* testRdbStoreInsert001 end *************");
-    });
-
-    /**
-     * @tc.number : TEST_RDB_STORE_INSERT_002
-     * @tc.name   : testRdbStoreInsert002
-     * @tc.desc   : RdbStore insert promise test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbStoreInsert002", 0, async function (done) {
-      console.info(TAG + "************* testRdbStoreInsert002 start *************");
-      try {
-        const valueBucket = {
-          name: "zhangsan",
-          age: 18,
-          salary: 100.5,
-          blobType: new Uint8Array([1, 2, 3]),
-        };
-        await rdbStore.insert("test", valueBucket);
-        let predicates = new relationalStore.RdbPredicates("test");
-        predicates.equalTo("name", "zhangsan");
-        let resultSet = await rdbStore.query(predicates);
-        console.info(TAG + "resultSet query done");
-        expect(true).assertEqual(resultSet.goToFirstRow());
-        const id = resultSet.getLong(resultSet.getColumnIndex("id"));
-        const name = resultSet.getString(resultSet.getColumnIndex("name"));
-        const age = resultSet.getLong(resultSet.getColumnIndex("age"));
-        const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
-        const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
-        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
-        expect(2).assertEqual(id);
-        expect("zhangsan").assertEqual(name);
-        expect(18).assertEqual(age);
-        expect(100.5).assertEqual(salary);
-        expect(1).assertEqual(blobType[0]);
-        expect(2).assertEqual(blobType[1]);
-        expect(3).assertEqual(blobType[2]);
-        resultSet.close();
-        done();
-      } catch (e) {
-        console.info("Insert error " + e);
-      }
-      console.info(TAG + "************* testRdbStoreInsert002 end *************");
-    });
-
-    /**
-     * @tc.number : TEST_RDB_STORE_INSERT_003
-     * @tc.name   : testRdbStoreInsert003
-     * @tc.desc   : RdbStore insert callback with ConflictResolution test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbStoreInsert003", 0, async function (done) {
-      console.info(TAG + "************* testRdbStoreInsert003 start *************");
-      try {
-        const valueBucket = {
-          name: "zhangsan",
-          age: 18,
-          salary: 100.5,
-          blobType: new Uint8Array([1, 2, 3]),
-        };
-        // @ts-ignore
-        rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_ROLLBACK, async (err, rowId) => {
-          if (err) {
-            console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
-            done();
-          }
-          try {
-            console.info(`Insert is successful, rowId = ${rowId}`);
-            let predicates = new relationalStore.RdbPredicates("test");
-            predicates.equalTo("name", "zhangsan");
-            let resultSet = await rdbStore.query(predicates);
-            console.info(TAG + "resultSet query done");
-            expect(true).assertEqual(resultSet.goToFirstRow());
-            const id = resultSet.getLong(resultSet.getColumnIndex("id"));
-            const name = resultSet.getString(resultSet.getColumnIndex("name"));
-            const age = resultSet.getLong(resultSet.getColumnIndex("age"));
-            const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
-            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
-            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
-            expect(3).assertEqual(id);
-            expect("zhangsan").assertEqual(name);
-            expect(18).assertEqual(age);
-            expect(100.5).assertEqual(salary);
-            expect(1).assertEqual(blobType[0]);
-            expect(2).assertEqual(blobType[1]);
-            expect(3).assertEqual(blobType[2]);
-            resultSet.close();
-            done();
-          } catch (e) {
-            console.info("Insert error " + e);
-          }
-        });
-      } catch (e) {
-        console.info("Insert error " + e);
+        expect(!e).assertTrue();
       }
 
       console.info(TAG + "************* testRdbStoreInsert003 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_INSERT_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0400
      * @tc.name   : testRdbStoreInsert004
      * @tc.desc   : RdbStore insert promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -247,7 +252,6 @@ export default function InsertTest() {
           salary: 100.5,
           blobType: new Uint8Array([1, 2, 3]),
         };
-        // @ts-ignore
         await rdbStore.insert("test", valueBucket, relationalStore.ConflictResolution.ON_CONFLICT_IGNORE);
         let predicates = new relationalStore.RdbPredicates("test");
         predicates.equalTo("name", "zhangsan");
@@ -260,7 +264,7 @@ export default function InsertTest() {
         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
         const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
         console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
-        expect(4).assertEqual(id);
+        expect(1).assertEqual(id);
         expect("zhangsan").assertEqual(name);
         expect(18).assertEqual(age);
         expect(100.5).assertEqual(salary);
@@ -271,12 +275,13 @@ export default function InsertTest() {
         done();
       } catch (e) {
         console.info("Insert error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreInsert004 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BATCH_INSERT_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_0100
      * @tc.name   : testRdbStoreBatchInsert001
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -308,6 +313,7 @@ export default function InsertTest() {
         rdbStore.batchInsert("test", valueBuckets, async (err, insertNum) => {
           if (err) {
             console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
             done();
           }
           try {
@@ -323,7 +329,7 @@ export default function InsertTest() {
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
             const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"));
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
-            expect(5).assertEqual(id);
+            expect(1).assertEqual(id);
             expect("zhangsan").assertEqual(name);
             expect(18).assertEqual(age);
             expect(100.5).assertEqual(salary);
@@ -334,16 +340,18 @@ export default function InsertTest() {
             done();
           } catch (e) {
             console.info("Insert error " + e);
+            expect(!e).assertTrue();
           }
         });
       } catch (e) {
         console.info("BatchInsert error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreBatchInsert001 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BATCH_INSERT_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_0200
      * @tc.name   : testRdbStoreBatchInsert002
      * @tc.desc   : RdbStore batchInsert promise test
      * @tc.size   : MediumTest
@@ -383,7 +391,7 @@ export default function InsertTest() {
         const age = resultSet.getLong(resultSet.getColumnIndex("age"));
         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"));
         console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
-        expect(9).assertEqual(id);
+        expect(2).assertEqual(id);
         expect("lisi").assertEqual(name);
         expect(23).assertEqual(age);
         expect(200).assertEqual(salary);
@@ -391,6 +399,7 @@ export default function InsertTest() {
         done();
       } catch (e) {
         console.info("BatchInsert error " + e);
+        expect(!e).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreBatchInsert002 end *************");
     });

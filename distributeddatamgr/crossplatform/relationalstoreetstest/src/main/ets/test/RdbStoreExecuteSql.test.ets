@@ -23,18 +23,18 @@ const STORE_CONFIG = {
   name: "ExcuteSqlTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
 };
-var rdbStore = undefined;
+let rdbStore = undefined;
 
 export default function rdbstoreStoreExcuteSqlTest() {
   describe("rdbstoreStoreExcuteSqlTest", function () {
     beforeAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeAll");
-      rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
     });
 
     beforeEach(async function () {
+      let context = globalThis.abilityContext;
+      rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
+      await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await rdbStore.executeSql("DELETE FROM test");
       console.info(TAG + "beforeEach");
       await createTest1();
@@ -42,15 +42,15 @@ export default function rdbstoreStoreExcuteSqlTest() {
       await createTest3();
     });
 
-    afterEach(function () {
+    afterEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
+      rdbStore = null;
+      await relationalStore.deleteRdbStore(context, "ExcuteSqlTest.db");
     });
 
     afterAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterAll");
-      rdbStore = null;
-      await relationalStore.deleteRdbStore(context, "ExcuteSqlTest.db");
     });
 
     async function createTest1() {
@@ -93,7 +93,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     }
 
     /**
-     * @tc.number : TEST_RDB_STORE_EXECUTE_SQL_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0100
      * @tc.name   : testRdbStoreExecuteSql001
      * @tc.desc   : RdbStore executeSql callback test
      * @tc.size   : MediumTest
@@ -105,6 +105,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
       rdbStore.executeSql("DELETE FROM test WHERE name = 'zhangsan'", async (err) => {
         if (err) {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
           done();
         }
         console.info(`Delete table done.`);
@@ -117,7 +118,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_EXECUTE_SQL_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0200
      * @tc.name   : testRdbStoreExecuteSql002
      * @tc.desc   : RdbStore executeSql callback test
      * @tc.size   : MediumTest
@@ -129,6 +130,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
       rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "28"], async (err) => {
         if (err) {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
           done();
         }
         console.info(`Delete table done.`);
@@ -141,7 +143,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_EXECUTE_SQL_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0300
      * @tc.name   : testRdbStoreExecuteSql003
      * @tc.desc   : RdbStore executeSql promise test
      * @tc.size   : MediumTest
@@ -161,12 +163,13 @@ export default function rdbstoreStoreExcuteSqlTest() {
         })
         .catch((err) => {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         });
       console.info(TAG + "************* testRdbStoreExecuteSql003 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_EXECUTE_SQL_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0400
      * @tc.name   : testRdbStoreExecuteSql004
      * @tc.desc   : RdbStore executeSql promise test
      * @tc.size   : MediumTest
@@ -186,6 +189,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
         })
         .catch((err) => {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         });
       console.info(TAG + "************* testRdbStoreExecuteSql004 end *************");
     });

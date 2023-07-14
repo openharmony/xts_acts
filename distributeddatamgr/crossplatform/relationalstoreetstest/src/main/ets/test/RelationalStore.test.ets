@@ -24,8 +24,8 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-var context;
-var rdbStore;
+let context;
+let rdbStore;
 
 export default function relationalStoreTest() {
   describe("relationalStoreTest", function () {
@@ -49,7 +49,7 @@ export default function relationalStoreTest() {
     console.log(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_GET_RDB_STORE_001
+     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_0100
      * @tc.name   : testGetRdbStore001
      * @tc.desc   : getRdbStore callback test
      * @tc.size   : MediumTest
@@ -64,18 +64,18 @@ export default function relationalStoreTest() {
       };
       let getResult = false;
       relationalStore.getRdbStore(context, config, async (err, rdbStore) => {
-        expect(err == null).assertTrue();
-        if (err == null) {
+        expect(!err).assertTrue();
+        if (!err) {
           getResult = true;
         } else {
           console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         }
         try {
           await rdbStore.executeSql(CREATE_TABLE_TEST);
         } catch (err) {
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         }
         await relationalStore.deleteRdbStore(context, "secure.db");
@@ -87,7 +87,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : TEST_GET_RDB_STORE_002
+     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_0200
      * @tc.name   : testGetRdbStore002
      * @tc.desc   : getRdbStore promise test
      * @tc.size   : MediumTest
@@ -108,21 +108,21 @@ export default function relationalStoreTest() {
           try {
             await rdbStore.executeSql(CREATE_TABLE_TEST);
           } catch (err) {
-            expect().assertFail();
+            expect(!err).assertTrue();
           }
           await relationalStore.deleteRdbStore(context, "secure.db");
           expect(getResult).assertTrue();
           done();
         })
         .catch((err) => {
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         });
       console.log(TAG + "************* testGetRdbStore002 end   *************");
     });
 
     /**
-     * @tc.number : TEST_DELETE_RDB_STORE_001
+     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_0100
      * @tc.name   : testDeleteRdbStore001
      * @tc.desc   : deleteRdbStore callback test
      * @tc.size   : MediumTest
@@ -141,10 +141,10 @@ export default function relationalStoreTest() {
       relationalStore.deleteRdbStore(context, "secure.db", async (err) => {
         if (err) {
           console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         }
-        if (err == undefined) {
+        if (err === undefined) {
           deleteResult = true;
         }
         console.info(`Delete RdbStore successfully.`);
@@ -156,7 +156,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : TEST_DELETE_RDB_STORE_002
+     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_0200
      * @tc.name   : testDeleteRdbStore002
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -183,14 +183,14 @@ export default function relationalStoreTest() {
         })
         .catch((err) => {
           console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         });
       console.log(TAG + "************* testDeleteRdbStore002 end   *************");
     });
 
     /**
-     * @tc.number : TEST_SYNC_MODE_001
+     * @tc.number : SUB_DDM_TEST_SYNC_MODE_0100
      * @tc.name   : testSyncMode001
      * @tc.desc   : SYNC_MODE_PUSH test
      * @tc.size   : MediumTest
@@ -205,7 +205,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : TEST_SYNC_MODE_002
+     * @tc.number : SUB_DDM_TEST_SYNC_MODE_0100
      * @tc.name   : testSyncMode002
      * @tc.desc   : SYNC_MODE_PULL test
      * @tc.size   : MediumTest
@@ -220,7 +220,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : TEST_CONFLICT_RESOLUTION_001
+     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0100
      * @tc.name   : testConflictResolution001
      * @tc.desc   : ON_CONFLICT_NONE test
      * @tc.size   : MediumTest
@@ -229,14 +229,13 @@ export default function relationalStoreTest() {
      */
     it("testConflictResolution001", 0, async function (done) {
       console.log(TAG + "************* testConflictResolution001 start *************");
-      // @ts-ignore
       expect(0).assertEqual(relationalStore.ConflictResolution.ON_CONFLICT_NONE);
       done();
       console.log(TAG + "************* testConflictResolution001 end   *************");
     });
 
     /**
-     * @tc.number : TEST_CONFLICT_RESOLUTION_002
+     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0200
      * @tc.name   : testConflictResolution002
      * @tc.desc   : ON_CONFLICT_ROLLBACK test
      * @tc.size   : MediumTest
@@ -245,14 +244,13 @@ export default function relationalStoreTest() {
      */
     it("testConflictResolution002", 0, async function (done) {
       console.log(TAG + "************* testConflictResolution002 start *************");
-      // @ts-ignore
       expect(1).assertEqual(relationalStore.ConflictResolution.ON_CONFLICT_ROLLBACK);
       done();
       console.log(TAG + "************* testConflictResolution002 end   *************");
     });
 
     /**
-     * @tc.number : TEST_CONFLICT_RESOLUTION_003
+     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0300
      * @tc.name   : testConflictResolution003
      * @tc.desc   : ON_CONFLICT_ABORT test
      * @tc.size   : MediumTest
@@ -261,14 +259,13 @@ export default function relationalStoreTest() {
      */
     it("testConflictResolution003", 0, async function (done) {
       console.log(TAG + "************* testConflictResolution003 start *************");
-      // @ts-ignore
       expect(2).assertEqual(relationalStore.ConflictResolution.ON_CONFLICT_ABORT);
       done();
       console.log(TAG + "************* testConflictResolution003 end   *************");
     });
 
     /**
-     * @tc.number : TEST_CONFLICT_RESOLUTION_004
+     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0400
      * @tc.name   : testConflictResolution004
      * @tc.desc   : ON_CONFLICT_FAIL test
      * @tc.size   : MediumTest
@@ -277,14 +274,13 @@ export default function relationalStoreTest() {
      */
     it("testConflictResolution004", 0, async function (done) {
       console.log(TAG + "************* testConflictResolution004 start *************");
-      // @ts-ignore
       expect(3).assertEqual(relationalStore.ConflictResolution.ON_CONFLICT_FAIL);
       done();
       console.log(TAG + "************* testConflictResolution004 end   *************");
     });
 
     /**
-     * @tc.number : TEST_CONFLICT_RESOLUTION_005
+     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0500
      * @tc.name   : testConflictResolution005
      * @tc.desc   : ON_CONFLICT_IGNORE test
      * @tc.size   : MediumTest
@@ -293,14 +289,13 @@ export default function relationalStoreTest() {
      */
     it("testConflictResolution005", 0, async function (done) {
       console.log(TAG + "************* testConflictResolution005 start *************");
-      // @ts-ignore
       expect(4).assertEqual(relationalStore.ConflictResolution.ON_CONFLICT_IGNORE);
       done();
       console.log(TAG + "************* testConflictResolution005 end   *************");
     });
 
     /**
-     * @tc.number : TEST_CONFLICT_RESOLUTION_006
+     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0600
      * @tc.name   : testConflictResolution006
      * @tc.desc   : ON_CONFLICT_REPLACE test
      * @tc.size   : MediumTest
@@ -309,7 +304,6 @@ export default function relationalStoreTest() {
      */
     it("testConflictResolution006", 0, async function (done) {
       console.log(TAG + "************* testConflictResolution006 start *************");
-      // @ts-ignore
       expect(5).assertEqual(relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
       done();
       console.log(TAG + "************* testConflictResolution006 end   *************");

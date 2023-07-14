@@ -30,13 +30,17 @@ const STORE_CONFIG = {
   name: "Predicates.db",
   securityLevel: relationalStore.SecurityLevel.S1,
 };
-var rdbStore = undefined;
-var DOUBLE_MAX = 9223372036854775807;
+let rdbStore = undefined;
+let DOUBLE_MAX = 9223372036854775807;
 export default function rdbPredicatesTest() {
   describe("rdbPredicatesTest", function () {
     beforeAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeAll");
+    });
+
+    beforeEach(async function () {
+      let context = globalThis.abilityContext;
+      console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_ALL_DATA_TYPE_SQL, null);
       await buildAllDataType1();
@@ -44,19 +48,15 @@ export default function rdbPredicatesTest() {
       await buildAllDataType3();
     });
 
-    beforeEach(function () {
-      console.info(TAG + "beforeEach");
-    });
-
-    afterEach(function () {
+    afterEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
+      rdbStore = null;
+      await relationalStore.deleteRdbStore(context, "Predicates.db");
     });
 
     afterAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterAll");
-      rdbStore = null;
-      await relationalStore.deleteRdbStore(context, "Predicates.db");
     });
 
     async function buildAllDataType1() {
@@ -122,7 +122,7 @@ export default function rdbPredicatesTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_CONSTRUCTOR_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0100
      * @tc.name   : testRdbPredicatesConstructor001
      * @tc.desc   : Test the constructor method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -140,7 +140,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_CONSTRUCTOR_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0200
      * @tc.name   : testRdbPredicatesConstructor002
      * @tc.desc   : Test the constructor() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -158,7 +158,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0100
      * @tc.name   : testRdbPredicatesEqualTo001
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -180,7 +180,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0200
      * @tc.name   : testRdbPredicatesEqualTo002
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -202,7 +202,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0300
      * @tc.name   : testRdbPredicatesEqualTo003
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -224,7 +224,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0400
      * @tc.name   : testRdbPredicatesEqualTo004
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -246,7 +246,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0500
      * @tc.name   : testRdbPredicatesEqualTo005
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -268,7 +268,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0600
      * @tc.name   : testRdbPredicatesEqualTo006
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -290,7 +290,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_007
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0700
      * @tc.name   : testRdbPredicatesEqualTo007
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -312,7 +312,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_EQUALTO_008
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0800
      * @tc.name   : testRdbPredicatesEqualTo008
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -335,7 +335,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0100
      * @tc.name   : testRdbPredicatesNotEqualTo001
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -357,7 +357,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0200
      * @tc.name   : testRdbPredicatesNotEqualTo002
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -380,7 +380,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0300
      * @tc.name   : testRdbPredicatesNotEqualTo003
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -402,7 +402,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0400
      * @tc.name   : testRdbPredicatesNotEqualTo004
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -424,7 +424,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0500
      * @tc.name   : testRdbPredicatesNotEqualTo005
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -446,7 +446,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0600
      * @tc.name   : testRdbPredicatesNotEqualTo006
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -468,7 +468,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_007
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0700
      * @tc.name   : testRdbPredicatesNotEqualTo007
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -490,7 +490,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_EQUALTO_008
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0800
      * @tc.name   : testRdbPredicatesNotEqualTo008
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -512,7 +512,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0100
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap001
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -534,7 +534,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0200
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap002
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -556,7 +556,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0300
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap003
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -578,7 +578,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0400
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap004
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -600,7 +600,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0500
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap005
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -622,7 +622,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_OR_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0100
      * @tc.name   : testRdbPredicatesOr001
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -644,7 +644,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_AND_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0100
      * @tc.name   : testRdbPredicatesAnd001
      * @tc.desc   : Test the and() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -666,7 +666,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_CONTAINS_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0100
      * @tc.name   : testRdbPredicatesContains001
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -686,7 +686,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_CONTAINS_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0200
      * @tc.name   : testRdbPredicatesContains002
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -706,7 +706,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_CONTAINS_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0300
      * @tc.name   : testRdbPredicatesContains003
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -726,7 +726,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_CONTAINS_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0400
      * @tc.name   : testRdbPredicatesContains004
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -746,7 +746,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINSWITH_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0100
      * @tc.name   : testRdbPredicatesBeginsWith001
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -766,7 +766,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINSWITH_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0200
      * @tc.name   : testRdbPredicatesBeginsWith002
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -786,7 +786,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINSWITH_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0300
      * @tc.name   : testRdbPredicatesBeginsWith003
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -806,7 +806,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BEGINSWITH_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0400
      * @tc.name   : testRdbPredicatesBeginsWith004
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -826,7 +826,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ENDSWITH_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0100
      * @tc.name   : testRdbPredicatesEndsWith001
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -846,7 +846,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ENDSWITH_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0200
      * @tc.name   : testRdbPredicatesEndsWith002
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -866,7 +866,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ENDSWITH_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0300
      * @tc.name   : testRdbPredicatesEndsWith003
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -886,7 +886,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ENDSWITH_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0400
      * @tc.name   : testRdbPredicatesEndsWith004
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -906,7 +906,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NULL_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0100
      * @tc.name   : testRdbPredicatesIsNull001
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -926,7 +926,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NULL_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0200
      * @tc.name   : testRdbPredicatesIsNull002
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -946,7 +946,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NULL_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0300
      * @tc.name   : testRdbPredicatesIsNull003
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -966,7 +966,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NULL_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0400
      * @tc.name   : testRdbPredicatesIsNull004
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -986,7 +986,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NOT_NULL_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0100
      * @tc.name   : testRdbPredicatesIsNotNull001
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1006,7 +1006,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NOT_NULL_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0200
      * @tc.name   : testRdbPredicatesIsNotNull002
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1026,7 +1026,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NOT_NULL_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0300
      * @tc.name   : testRdbPredicatesIsNotNull003
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1046,7 +1046,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IS_NOT_NULL_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0400
      * @tc.name   : testRdbPredicatesIsNotNull004
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1066,7 +1066,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIKE_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0100
      * @tc.name   : testRdbPredicatesLike001
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1086,7 +1086,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIKE_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0200
      * @tc.name   : testRdbPredicatesLike002
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1106,7 +1106,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIKE_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0300
      * @tc.name   : testRdbPredicatesLike003
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1126,7 +1126,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIKE_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0400
      * @tc.name   : testRdbPredicatesLike004
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1146,7 +1146,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GLOB_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0100
      * @tc.name   : testRdbPredicatesGlob001
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with ? by glob.
@@ -1169,7 +1169,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GLOB_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0200
      * @tc.name   : testRdbPredicatesGlob002
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin with ? by glob.
@@ -1192,7 +1192,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GLOB_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0300
      * @tc.name   : testRdbPredicatesGlob003
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin and end with ? by glob.
@@ -1215,7 +1215,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GLOB_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0400
      * @tc.name   : testRdbPredicatesGlob004
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with * by glob.
@@ -1238,7 +1238,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GLOB_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0500
      * @tc.name   : testRdbPredicatesGlob005
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin with * by glob.
@@ -1261,7 +1261,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GLOB_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0600
      * @tc.name   : testRdbPredicatesGlob006
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin and end with * by glob.
@@ -1284,7 +1284,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0100
      * @tc.name   : testRdbPredicatesBetween001
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1306,7 +1306,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0200
      * @tc.name   : testRdbPredicatesBetween002
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1328,7 +1328,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0300
      * @tc.name   : testRdbPredicatesBetween003
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1350,7 +1350,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0400
      * @tc.name   : testRdbPredicatesBetween004
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1372,7 +1372,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0500
      * @tc.name   : testRdbPredicatesBetween005
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1394,7 +1394,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0600
      * @tc.name   : testRdbPredicatesBetween006
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1416,7 +1416,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_007
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0700
      * @tc.name   : testRdbPredicatesBetween007
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1438,7 +1438,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_BETWEEN_008
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0800
      * @tc.name   : testRdbPredicatesBetween008
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1460,7 +1460,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_BETWEEN_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0100
      * @tc.name   : testRdbPredicatesNotBetween001
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1482,7 +1482,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_BETWEEN_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0200
      * @tc.name   : testRdbPredicatesNotBetween002
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1504,7 +1504,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_BETWEEN_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0300
      * @tc.name   : testRdbPredicatesNotBetween003
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1526,7 +1526,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_BETWEEN_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0400
      * @tc.name   : testRdbPredicatesNotBetween004
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1548,7 +1548,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0100
      * @tc.name   : testRdbPredicatesGreaterThan001
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1570,7 +1570,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0200
      * @tc.name   : testRdbPredicatesGreaterThan002
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1592,7 +1592,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0300
      * @tc.name   : testRdbPredicatesGreaterThan003
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1614,7 +1614,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0400
      * @tc.name   : testRdbPredicatesGreaterThan004
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1636,7 +1636,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0500
      * @tc.name   : testRdbPredicatesGreaterThan005
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1658,7 +1658,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0600
      * @tc.name   : testRdbPredicatesGreaterThan006
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1680,7 +1680,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_007
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0700
      * @tc.name   : testRdbPredicatesGreaterThan007
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1702,7 +1702,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_008
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0800
      * @tc.name   : testRdbPredicatesGreaterThan008
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1724,7 +1724,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0100
      * @tc.name   : testRdbPredicatesLessThan001
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1746,7 +1746,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0200
      * @tc.name   : testRdbPredicatesLessThan002
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1768,7 +1768,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0300
      * @tc.name   : testRdbPredicatesLessThan003
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1790,7 +1790,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0400
      * @tc.name   : testRdbPredicatesLessThan004
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1812,7 +1812,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0500
      * @tc.name   : testRdbPredicatesLessThan005
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1834,7 +1834,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0600
      * @tc.name   : testRdbPredicatesLessThan006
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1856,7 +1856,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_007
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0700
      * @tc.name   : testRdbPredicatesLessThan007
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1878,7 +1878,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_008
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0800
      * @tc.name   : testRdbPredicatesLessThan008
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1900,7 +1900,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0100
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo001
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1922,7 +1922,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0200
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo002
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1944,7 +1944,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0300
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo003
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1966,7 +1966,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0400
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo004
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1988,7 +1988,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0100
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo001
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2010,7 +2010,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0200
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo002
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2032,7 +2032,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0300
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo003
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2054,7 +2054,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0400
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo004
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2076,7 +2076,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ORDER_BY_ASC_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_ASC_0100
      * @tc.name   : testRdbPredicatesOrderByAsc001
      * @tc.desc   : Test the orderByAsc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2104,7 +2104,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ORDER_BY_ASC_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_ASC_0200
      * @tc.name   : testRdbPredicatesOrderByAsc002
      * @tc.desc   : Test the orderByAsc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2126,7 +2126,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ORDER_BY_DESC_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_DESC_0100
      * @tc.name   : testRdbPredicatesOrderByDesc001
      * @tc.desc   : Test the orderByDesc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2154,7 +2154,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_ORDER_BY_DESC_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_DESC_0200
      * @tc.name   : testRdbPredicatesOrderByDesc002
      * @tc.desc   : Test the orderByDesc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2176,7 +2176,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIMIT_AS_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0100
      * @tc.name   : testRdbPredicatesLimitAs001
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2196,7 +2196,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIMIT_AS_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0200
      * @tc.name   : testRdbPredicatesLimitAs002
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2216,7 +2216,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIMIT_AS_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0300
      * @tc.name   : testRdbPredicatesLimitAs003
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2236,7 +2236,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIMIT_AS_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0400
      * @tc.name   : testRdbPredicatesLimitAs004
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2256,7 +2256,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIMIT_AS_005
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0500
      * @tc.name   : testRdbPredicatesLimitAs005
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2276,7 +2276,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_LIMIT_AS_006
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0600
      * @tc.name   : testRdbPredicatesLimitAs006
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2296,7 +2296,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_OFFSET_AS_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0100
      * @tc.name   : testRdbPredicatesOffsetAs001
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2316,7 +2316,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_OFFSET_AS_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0200
      * @tc.name   : testRdbPredicatesOffsetAs002
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2336,7 +2336,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_OFFSET_AS_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0300
      * @tc.name   : testRdbPredicatesOffsetAs003
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2356,7 +2356,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_OFFSET_AS_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0400
      * @tc.name   : testRdbPredicatesOffsetAs004
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2376,7 +2376,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GROUP_BY_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GROUP_BY_0100
      * @tc.name   : testRdbPredicatesGroupBy001
      * @tc.desc   : Test the groupBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2396,7 +2396,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_GROUP_BY_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GROUP_BY_0200
      * @tc.name   : testRdbPredicatesGroupBy002
      * @tc.desc   : Test the groupBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2416,7 +2416,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_INDEXED_BY_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_INDEXED_BY_0100
      * @tc.name   : testRdbPredicatesIndexedBy001
      * @tc.desc   : Test the indexedBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2442,7 +2442,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_INDEXED_BY_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_INDEXED_BY_0200
      * @tc.name   : testRdbPredicatesIndexedBy002
      * @tc.desc   : Test the indexedBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2465,7 +2465,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IN_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0100
      * @tc.name   : testRdbPredicatesIn001
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2485,7 +2485,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IN_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0200
      * @tc.name   : testRdbPredicatesIn002
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2505,7 +2505,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IN_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0300
      * @tc.name   : testRdbPredicatesIn003
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2525,7 +2525,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_IN_004
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0400
      * @tc.name   : testRdbPredicatesIn004
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2545,7 +2545,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_IN_001
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0100
      * @tc.name   : testRdbPredicatesNotIn001
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2565,7 +2565,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_IN_002
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0200
      * @tc.name   : testRdbPredicatesNotIn002
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2585,7 +2585,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_PREDICATES_NOT_IN_003
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0300
      * @tc.name   : testRdbPredicatesNotIn003
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest

@@ -24,8 +24,8 @@ const STORE_CONFIG = {
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
-var rdbStore = undefined;
-var context = null;
+let rdbStore = undefined;
+let context = null;
 
 export default function rdbstoreTransactionTest() {
   describe("rdbstoreTransactionTest", function () {
@@ -55,7 +55,7 @@ export default function rdbstoreTransactionTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_STORE_TRANSACTION_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0100
      * @tc.name   : testRdbStoreTransaction001
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -82,7 +82,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_TRANSACTION_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0200
      * @tc.name   : testRdbStoreTransaction002
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -126,7 +126,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_TRANSACTION_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0300
      * @tc.name   : testRdbStoreTransaction003
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -139,7 +139,6 @@ export default function rdbstoreTransactionTest() {
       let resultSet1 = await rdbStore.query(predicates1);
       expect(0).assertEqual(resultSet1.rowCount);
       resultSet1.close();
-      console.info("************* 1*************"+resultSet1.rowCount);
       rdbStore.beginTransaction();
       const valueBucket = {
         name: "zhangsan",
@@ -152,14 +151,13 @@ export default function rdbstoreTransactionTest() {
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
       expect(0).assertEqual(resultSet.rowCount);
-      console.info("************* 2*************"+resultSet.rowCount);
       resultSet.close();
       done();
       console.info(TAG + "************* testRdbStoreTransaction003 end *************");
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_TRANSACTION_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0400
      * @tc.name   : testRdbStoreTransaction004
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -187,7 +185,7 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.insert("test", valueBucket2);
 
       await rdbStore.commit();
-      
+
       await rdbStore.commit();
 
       let predicates = new relationalStore.RdbPredicates("test");
@@ -199,7 +197,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_ROLL_BACK_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_ROLL_BACK_0100
      * @tc.name   : testRdbStoreRollBack001
      * @tc.desc   : RdbStore rollBack test
      * @tc.size   : MediumTest
@@ -225,7 +223,7 @@ export default function rdbstoreTransactionTest() {
         blobType: new Uint8Array([1, 2, 3]),
       };
       await rdbStore.insert("test", valueBucket2);
-      
+
       await rdbStore.rollBack();
 
       await rdbStore.commit();
@@ -239,7 +237,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_ROLL_BACK_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_ROLL_BACK_0200
      * @tc.name   : testRdbStoreRollBack002
      * @tc.desc   : RdbStore rollBack test
      * @tc.size   : MediumTest
@@ -263,9 +261,7 @@ export default function rdbstoreTransactionTest() {
         await rdbStore.commit();
       } catch (e) {
         await rdbStore.rollBack();
-        console.info(TAG + "************* testRdbStoreRollBack002 start 5*************");
         let predicates = new relationalStore.RdbPredicates("test");
-        console.info(TAG + "************* testRdbStoreRollBack002 start 6*************");
         let resultSet = await rdbStore.query(predicates);
         console.info(TAG + "testRdbStoreRollBack002 result count " + resultSet.rowCount);
         expect(0).assertEqual(resultSet.rowCount);

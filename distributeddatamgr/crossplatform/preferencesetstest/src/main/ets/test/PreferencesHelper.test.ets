@@ -14,13 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
-//import featureAbility from '@ohos.ability.featureAbility';
 
 const NAME = "test_preferences";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
-var mPreferences;
-var context;
+let mPreferences;
+let context;
 export default function preferencesHelperTest() {
   describe("preferencesHelperTest", function () {
     beforeAll(async function () {
@@ -39,7 +38,7 @@ export default function preferencesHelperTest() {
     }
 
     /**
-     * @tc.number : TEST_GET_PREFERENCES_HELPER_0001
+     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0100
      * @tc.name   : testGetPreferencesHelper0001
      * @tc.desc   : GetPreferencesSync interface test
      * @tc.size   : MediumTest
@@ -55,7 +54,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : TEST_GET_PREFERENCES_HELPER_0002
+     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0200
      * @tc.name   : testGetPreferencesHelper0002
      * @tc.desc   : GetPreferences interface test
      * @tc.size   : MediumTest
@@ -68,17 +67,21 @@ export default function preferencesHelperTest() {
       promise
         .then(async (pref) => {
           preferences = pref;
-          expect(preferences != null).assertTrue();
+          await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+            expect("test").assertEqual(ret);
+          });
+          await dataPreferences.deletePreferences(context, NAME);
           console.info("Succeeded in getting preferences.");
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_GET_PREFERENCES_HELPER_0003
+     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0300
      * @tc.name   : testGetPreferencesHelper0003
      * @tc.desc   : GetPreferences interface test
      * @tc.size   : MediumTest
@@ -89,16 +92,15 @@ export default function preferencesHelperTest() {
       try {
         // @ts-ignore
         await dataPreferences.getPreferences(context, -1);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("testGetPreferencesHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_GET_PREFERENCES_HELPER_0004
+     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0400
      * @tc.name   : testGetPreferencesHelper0004
      * @tc.desc   : GetPreferences interface test
      * @tc.size   : MediumTest
@@ -109,16 +111,15 @@ export default function preferencesHelperTest() {
       try {
         // @ts-ignore
         await dataPreferences.getPreferences(context);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("testGetPreferencesHelper0004 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0001
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0100
      * @tc.name   : testRemovePreferencesFromCacheHelper0001
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -126,20 +127,22 @@ export default function preferencesHelperTest() {
      * @tc.level  : Level 2
      */
     it("testRemovePreferencesFromCacheHelper0001", 0, async function (done) {
-      await dataPreferences.getPreferences(context, NAME);
+      let preferences = null;
+      preferences = await dataPreferences.getPreferences(context, NAME);
       const promise = dataPreferences.removePreferencesFromCache(context, NAME);
       promise
         .then(() => {
           console.info("Succeeded in removing preferences.");
+          expect("{}").assertEqual(JSON.stringify(preferences));
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0002
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0200
      * @tc.name   : testRemovePreferencesFromCacheHelper0002
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -151,16 +154,15 @@ export default function preferencesHelperTest() {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
         await dataPreferences.removePreferencesFromCache(context);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("testRemovePreferencesFromCacheHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0003
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0300
      * @tc.name   : testRemovePreferencesFromCacheHelper0003
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -172,16 +174,15 @@ export default function preferencesHelperTest() {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
         await dataPreferences.removePreferencesFromCache(context, -1);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("testRemovePreferencesFromCacheHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0004
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0400
      * @tc.name   : testRemovePreferencesFromCacheHelper0004
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -206,12 +207,13 @@ export default function preferencesHelperTest() {
         })
         .catch((err) => {
           console.info("Remove preferences from cache error: " + err);
+          expect(!err).assertTrue();
           done();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_HELPER_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0100
      * @tc.name   : testPreferencesDeleteHelper0001
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -225,16 +227,17 @@ export default function preferencesHelperTest() {
       promise
         .then(() => {
           console.info("Succeeded in deleting preferences.");
+          expect("{}").assertEqual(JSON.stringify(preferences));
           done();
         })
         .catch((err) => {
           console.info("Delete preferences err: " + err);
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_HELPER_0002
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0200
      * @tc.name   : testPreferencesDeleteHelper0002
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -246,16 +249,15 @@ export default function preferencesHelperTest() {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
         await dataPreferences.deletePreferences(context);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("testPreferencesDeleteHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_HELPER_0003
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0300
      * @tc.name   : testPreferencesDeleteHelper0003
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -267,16 +269,15 @@ export default function preferencesHelperTest() {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
         await dataPreferences.deletePreferences(context, -1);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("testPreferencesDeleteHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_HELPER_0004
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0400
      * @tc.name   : testPreferencesDeleteHelper0004
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -301,12 +302,13 @@ export default function preferencesHelperTest() {
         })
         .catch((err) => {
           console.info("Delete preferences err: " + err);
+          expect(!err).assertTrue();
           done();
         });
     });
 
     /**
-     * @tc.number  : TEST_MAX_KEY_LENGTH_001
+     * @tc.number  : SUB_DDM_TEST_MAX_KEY_LENGTH_0100
      * @tc.name    : testMaxKeyLength001
      * @tc.desc    : Test key length
      * @tc.size    : MediumTest
@@ -318,7 +320,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : TEST_MAX_VALUE_LENGTH_001
+     * @tc.number  : SUB_DDM_TEST_MAX_VALUE_LENGTH_0100
      * @tc.name    : testMaxValueLength001
      * @tc.desc    : Test value length
      * @tc.size    : MediumTest
@@ -330,7 +332,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_ON_001
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_ON_0100
      * @tc.name    : testPreferencesOn001
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -349,12 +351,12 @@ export default function preferencesHelperTest() {
         await mPreferences.flush();
       } catch (err) {
         console.info("Failed to testPreferencesOn001. code =" + err.code + ", message =" + err.message);
-        expect().assertFail();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_ON_002
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_ON_0200
      * @tc.name    : testPreferencesOn002
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -369,15 +371,14 @@ export default function preferencesHelperTest() {
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
         mPreferences.on("change");
-        expect(false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOn002. code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 parameters!");
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 parameters!").assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_ON_003
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_ON_0300
      * @tc.name    : testPreferencesOn003
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -392,15 +393,14 @@ export default function preferencesHelperTest() {
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
         mPreferences.on(null, observer);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOn003. code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'type' must be string 'change'.");
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'type' must be string 'change'.").assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_ON_004
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_ON_0400
      * @tc.name    : testPreferencesOn004
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -415,15 +415,14 @@ export default function preferencesHelperTest() {
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
         mPreferences.on("", observer);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOn004. code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'type' must be string 'change'.");
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'type' must be string 'change'.").assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_OFF_001
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_OFF_0100
      * @tc.name    : testPreferencesOff001
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -443,15 +442,15 @@ export default function preferencesHelperTest() {
         await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abc");
         await mPreferences.flush();
         await sleep(1000);
-        expect(isTrigger == false).assertTrue();
+        expect(isTrigger === false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOff001. code =" + err.code + ", message =" + err.message);
-        expect().assertFail();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_OFF_002
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_OFF_0200
      * @tc.name    : testPreferencesOff002
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -471,15 +470,15 @@ export default function preferencesHelperTest() {
         await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abc");
         await mPreferences.flush();
         await sleep(1000);
-        expect(isTrigger == false).assertTrue();
+        expect(isTrigger === false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOff001. code =" + err.code + ", message =" + err.message);
-        expect().assertFail();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_OFF_003
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_OFF_0300
      * @tc.name    : testPreferencesOff003
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -496,15 +495,14 @@ export default function preferencesHelperTest() {
         };
         mPreferences.on("change", observer);
         mPreferences.off(null);
-        expect(false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOff003. code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'type' must be string 'change'.");
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'type' must be string 'change'.").assertTrue();
       }
     });
 
     /**
-     * @tc.number  : TEST_PREFERENCES_OFF_004
+     * @tc.number  : SUB_DDM_TEST_PREFERENCES_OFF_0400
      * @tc.name    : testPreferencesOff004
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -521,10 +519,9 @@ export default function preferencesHelperTest() {
         };
         mPreferences.on("change", observer);
         mPreferences.off("");
-        expect(false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOff004. code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'type' must be string 'change'.");
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'type' must be string 'change'.").assertTrue();
       }
     });
   });

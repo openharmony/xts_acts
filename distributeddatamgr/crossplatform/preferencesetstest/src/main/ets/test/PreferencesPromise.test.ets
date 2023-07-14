@@ -14,7 +14,6 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
-//import featureAbility from '@ohos.ability.featureAbility';
 
 const NAME = "test_preferences";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
@@ -25,8 +24,8 @@ const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = "key_test_number_array";
 const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
-var mPreferences;
-var context;
+let mPreferences;
+let context;
 
 export default function preferencesPromiseTest() {
   describe("preferencesPromiseTest", function () {
@@ -42,7 +41,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_DEF_VALUE_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_DEF_VALUE_PROMISE_0100
      * @tc.name   : testPreferencesGetDefValuePromise0001
      * @tc.desc   : Get defaultValue promise interface test
      * @tc.size   : MediumTest
@@ -58,12 +57,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_FLOAT_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_FLOAT_PROMISE_0100
      * @tc.name   : testPreferencesGetFloatPromise0001
      * @tc.desc   : Get float promise interface test
      * @tc.size   : MediumTest
@@ -80,12 +79,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_INT_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_INT_PROMISE_0100
      * @tc.name   : testPreferencesGetIntPromise0001
      * @tc.desc   : Get int promise interface test
      * @tc.size   : MediumTest
@@ -102,12 +101,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_LONG_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_LONG_PROMISE_0100
      * @tc.name   : testPreferencesGetLongPromise0001
      * @tc.desc   : Get long promise interface test
      * @tc.size   : MediumTest
@@ -124,12 +123,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_STRING_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_STRING_PROMISE_0100
      * @tc.name   : testPreferencesGetStringPromise0001
      * @tc.desc   : Get string promise interface test
      * @tc.size   : MediumTest
@@ -147,12 +146,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_BOOLEAN_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_BOOLEAN_PROMISE_0100
      * @tc.name   : testPreferencesGetBooleanPromise0001
      * @tc.desc   : Get boolean promise interface test
      * @tc.size   : MediumTest
@@ -169,12 +168,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_STRING_ARRAY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_STRING_ARRAY_PROMISE_0100
      * @tc.name   : testPreferencesGetStringArrayPromise0001
      * @tc.desc   : Get StringArray promise interface test
      * @tc.size   : MediumTest
@@ -194,12 +193,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_NUM_ARRAY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_NUM_ARRAY_PROMISE_0100
      * @tc.name   : testPreferencesGetNumArrayPromise0001
      * @tc.desc   : Get NumArray promise interface test
      * @tc.size   : MediumTest
@@ -219,12 +218,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_BOOL_ARRAY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_BOOL_ARRAY_PROMISE_0100
      * @tc.name   : testPreferencesGetBoolArrayPromise0001
      * @tc.desc   : Get BoolArray promise interface test
      * @tc.size   : MediumTest
@@ -244,12 +243,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_DEFAULT_VALUE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_DEFAULT_VALUE_0100
      * @tc.name   : testPreferencesGetSyncDefaultValue0001
      * @tc.desc   : GetSync defaultValue interface test
      * @tc.size   : MediumTest
@@ -264,7 +263,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_FLOAT_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_FLOAT_0100
      * @tc.name   : testPreferencesGetSyncFloat0001
      * @tc.desc   : GetSync float interface test
      * @tc.size   : MediumTest
@@ -280,7 +279,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_INT_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_INT_0100
      * @tc.name   : testPreferencesGetSyncInt0001
      * @tc.desc   : GetSync int interface test
      * @tc.size   : MediumTest
@@ -296,7 +295,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_LONG_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_LONG_0100
      * @tc.name   : testPreferencesGetSyncLong0001
      * @tc.desc   : GetSync long interface test
      * @tc.size   : MediumTest
@@ -312,7 +311,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_STRING_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_STRING_0100
      * @tc.name   : testPreferencesGetSyncString0001
      * @tc.desc   : GetSync string interface test
      * @tc.size   : MediumTest
@@ -328,7 +327,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_BOOLEAN_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_BOOLEAN_0100
      * @tc.name   : testPreferencesGetSyncBoolean0001
      * @tc.desc   : GetSync string interface test
      * @tc.size   : MediumTest
@@ -344,7 +343,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_STRING_ARRAY_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_STRING_ARRAY_0100
      * @tc.name   : testPreferencesGetSyncStringArray0001
      * @tc.desc   : GetSync stringArray interface test
      * @tc.size   : MediumTest
@@ -363,7 +362,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_NUM_ARRAY_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_NUM_ARRAY_0100
      * @tc.name   : testPreferencesGetSyncNumArray0001
      * @tc.desc   : GetSync numArray interface test
      * @tc.size   : MediumTest
@@ -382,7 +381,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_SYNC_BOOL_ARRAY_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_SYNC_BOOL_ARRAY_0100
      * @tc.name   : testPreferencesGetSyncBoolArray0001
      * @tc.desc   : GetSync boolArray interface test
      * @tc.size   : MediumTest
@@ -401,7 +400,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_ALL_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_ALL_PROMISE_0100
      * @tc.name   : testPreferencesGetAllPromise0001
      * @tc.desc   : GetAll promise interface test
      * @tc.size   : MediumTest
@@ -445,12 +444,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_ALL_SYNC_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_ALL_SYNC_0100
      * @tc.name   : testPreferencesGetAllSync0001
      * @tc.desc   : GetAllSync interface test
      * @tc.size   : MediumTest
@@ -493,7 +492,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_FLOAT_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_FLOAT_PROMISE_0100
      * @tc.name   : testPreferencesPutFloatPromise0001
      * @tc.desc   : Put float promise interface test
      * @tc.size   : MediumTest
@@ -513,7 +512,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_INT_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_INT_PROMISE_0100
      * @tc.name   : testPreferencesPutIntPromise0001
      * @tc.desc   : Put int promise interface test
      * @tc.size   : MediumTest
@@ -533,7 +532,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_LONG_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_LONG_PROMISE_0100
      * @tc.name   : testPreferencesPutLongPromise0001
      * @tc.desc   : Put long promise interface test
      * @tc.size   : MediumTest
@@ -552,7 +551,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_STRING_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_STRING_PROMISE_0100
      * @tc.name   : testPreferencesPutStringPromise0001
      * @tc.desc   : Put string promise interface test
      * @tc.size   : MediumTest
@@ -571,7 +570,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_BOOLEAN_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_BOOLEAN_PROMISE_0100
      * @tc.name   : testPreferencesPutBooleanPromise0001
      * @tc.desc   : Put boolean promise interface test
      * @tc.size   : MediumTest
@@ -591,7 +590,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_STRING_ARRAY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_STRING_ARRAY_PROMISE_0100
      * @tc.name   : testPreferencesPutStringArrayPromise0001
      * @tc.desc   : Put StringArray promise interface test
      * @tc.size   : MediumTest
@@ -612,12 +611,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_NUM_ARRAY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_NUM_ARRAY_PROMISE_0100
      * @tc.name   : testPreferencesPutNumArrayPromise0001
      * @tc.desc   : Put NumberArray promise interface test
      * @tc.size   : MediumTest
@@ -638,12 +637,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_BOOL_ARRAY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_BOOL_ARRAY_PROMISE_0100
      * @tc.name   : testPreferencesPutBoolArrayPromise0001
      * @tc.desc   : Put BoolArray promise interface test
      * @tc.size   : MediumTest
@@ -664,12 +663,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_FLOAT_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_FLOAT_0100
      * @tc.name   : testPreferencesPutSyncFloat0001
      * @tc.desc   : PutSync float promise interface test
      * @tc.size   : MediumTest
@@ -688,7 +687,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_INT_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_INT_0100
      * @tc.name   : testPreferencesPutSyncInt0001
      * @tc.desc   : PutSync int promise interface test
      * @tc.size   : MediumTest
@@ -707,7 +706,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_LONG_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_LONG_0100
      * @tc.name   : testPreferencesPutSyncLong0001
      * @tc.desc   : PutSync long promise interface test
      * @tc.size   : MediumTest
@@ -725,7 +724,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_STRING_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_STRING_0100
      * @tc.name   : testPreferencesPutSyncString0001
      * @tc.desc   : PutSync string promise interface test
      * @tc.size   : MediumTest
@@ -743,7 +742,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_BOOLEAN_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_BOOLEAN_0100
      * @tc.name   : testPreferencesPutSyncBoolean0001
      * @tc.desc   : PutSync boolean promise interface test
      * @tc.size   : MediumTest
@@ -762,7 +761,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_STRING_ARRAY_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_STRING_ARRAY_0100
      * @tc.name   : testPreferencesPutSyncStringArray0001
      * @tc.desc   : PutSync StringArray promise interface test
      * @tc.size   : MediumTest
@@ -782,12 +781,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_NUM_ARRAY_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_NUM_ARRAY_0100
      * @tc.name   : testPreferencesPutSyncNumArray0001
      * @tc.desc   : PutSync NumberArray promise interface test
      * @tc.size   : MediumTest
@@ -807,12 +806,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_SYNC_BOOL_ARRAY_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_BOOL_ARRAY_0100
      * @tc.name   : testPreferencesPutSyncBoolArray0001
      * @tc.desc   : PutSync BoolArray promise interface test
      * @tc.size   : MediumTest
@@ -832,12 +831,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_PROMISE_0100
      * @tc.name   : testPreferencesHasKeyPromise0001
      * @tc.desc   : Has float promise interface test
      * @tc.size   : MediumTest
@@ -853,12 +852,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_PROMISE_0002
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_PROMISE_0100
      * @tc.name   : testPreferencesHasKeyPromise0002
      * @tc.desc   : Has int promise interface test
      * @tc.size   : MediumTest
@@ -874,12 +873,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_PROMISE_0003
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_PROMISE_0100
      * @tc.name   : testPreferencesHasKeyPromise0003
      * @tc.desc   : Has long promise interface test
      * @tc.size   : MediumTest
@@ -895,12 +894,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_PROMISE_0004
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_PROMISE_0100
      * @tc.name   : testPreferencesHasKeyPromise0004
      * @tc.desc   : Has string promise interface test
      * @tc.size   : MediumTest
@@ -916,12 +915,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_PROMISE_0005
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_PROMISE_0100
      * @tc.name   : testPreferencesHasKeyPromise0005
      * @tc.desc   : Has boolean promise interface test
      * @tc.size   : MediumTest
@@ -937,12 +936,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_SYNC_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_SYNC_0100
      * @tc.name   : testPreferencesHasSync0001
      * @tc.desc   : HasSync float interface test
      * @tc.size   : MediumTest
@@ -957,7 +956,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_SYNC_0002
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_SYNC_0200
      * @tc.name   : testPreferencesHasSync0002
      * @tc.desc   : HasSync int interface test
      * @tc.size   : MediumTest
@@ -972,7 +971,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_SYNC_0003
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_SYNC_0300
      * @tc.name   : testPreferencesHasSync0003
      * @tc.desc   : HasSync long interface test
      * @tc.size   : MediumTest
@@ -987,7 +986,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_SYNC_0004
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_SYNC_0400
      * @tc.name   : testPreferencesHasSync0004
      * @tc.desc   : HasSync string interface test
      * @tc.size   : MediumTest
@@ -1002,7 +1001,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_SYNC_0005
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_SYNC_0500
      * @tc.name   : testPreferencesHasSync0005
      * @tc.desc   : HasSync boolean interface test
      * @tc.size   : MediumTest
@@ -1017,7 +1016,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_CLEAR_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_CLEAR_PROMISE_0100
      * @tc.name   : testPreferencesClearPromise0001
      * @tc.desc   : Clear promise interface test
      * @tc.size   : MediumTest
@@ -1071,12 +1070,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_CLEAR_SYNC_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_CLEAR_SYNC_0100
      * @tc.name   : testPreferencesClearSync0001
      * @tc.desc   : ClearSync interface test
      * @tc.size   : MediumTest
@@ -1129,7 +1128,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PROMISE_0100
      * @tc.name   : testPreferencesDeletePromise0001
      * @tc.desc   : Delete promise interface test
      * @tc.size   : MediumTest
@@ -1149,12 +1148,12 @@ export default function preferencesPromiseTest() {
           done();
         })
         .catch((err) => {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_SYNC_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_SYNC_0100
      * @tc.name   : testPreferencesDeleteSync0001
      * @tc.desc   : DeleteSync interface test
      * @tc.size   : MediumTest
@@ -1173,7 +1172,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_FLUSH_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_FLUSH_PROMISE_0100
      * @tc.name   : testPreferencesFlushPromise0001
      * @tc.desc   : Flush promise interface test
      * @tc.size   : MediumTest
@@ -1184,15 +1183,14 @@ export default function preferencesPromiseTest() {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
       const promise = mPreferences.flush();
-      promise
-        .then(async () => {
-          let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
-          expect("test").assertEqual(per);
-          done();
-        })
-        .catch((err) => {
-          expect(null).assertFail();
-        });
+      promise.then(async () => {
+        let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
+        expect("test").assertEqual(per);
+        done();
+      })
+      .catch((err) => {
+        expect(!err).assertTrue();
+      });
     });
   });
 }

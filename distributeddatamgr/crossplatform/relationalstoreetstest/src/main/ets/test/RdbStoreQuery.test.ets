@@ -22,13 +22,17 @@ const STORE_CONFIG = {
   securityLevel: relationalStore.SecurityLevel.S1,
 };
 
-var rdbStore = undefined;
+let rdbStore = undefined;
 
 export default function rdbStoreQueryTest() {
   describe("rdbStoreQueryTest", function () {
     beforeAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeAll");
+    });
+
+    beforeEach(async function () {
+      let context = globalThis.abilityContext;
+      console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
       await createTest1();
@@ -36,19 +40,15 @@ export default function rdbStoreQueryTest() {
       await createTest3();
     });
 
-    beforeEach(async function () {
-      console.info(TAG + "beforeEach");
-    });
-
     afterEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
+      rdbStore = null;
+      await relationalStore.deleteRdbStore(context, "Query.db");
     });
 
     afterAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterAll");
-      rdbStore = null;
-      await relationalStore.deleteRdbStore(context, "Query.db");
     });
 
     async function createTest1() {
@@ -93,7 +93,7 @@ export default function rdbStoreQueryTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0100
      * @tc.name   : testRdbStoreQuery001
      * @tc.desc   : RdbStore query callback test
      * @tc.size   : MediumTest
@@ -106,6 +106,7 @@ export default function rdbStoreQueryTest() {
       rdbStore.query(predicates, async (err, resultSet) => {
         if (err) {
           console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         }
         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
         expect(3).assertEqual(resultSet.rowCount);
@@ -116,7 +117,7 @@ export default function rdbStoreQueryTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0200
      * @tc.name   : testRdbStoreQuery002
      * @tc.desc   : RdbStore query callback test
      * @tc.size   : MediumTest
@@ -130,6 +131,7 @@ export default function rdbStoreQueryTest() {
       rdbStore.query(predicates, "salary", async (err, resultSet) => {
         if (err) {
           console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
         }
         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
         expect(true).assertEqual(resultSet.goToFirstRow());
@@ -142,7 +144,7 @@ export default function rdbStoreQueryTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0300
      * @tc.name   : testRdbStoreQuery003
      * @tc.desc   : RdbStore query promise test
      * @tc.size   : MediumTest
@@ -163,7 +165,7 @@ export default function rdbStoreQueryTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0400
      * @tc.name   : testRdbStoreQuery004
      * @tc.desc   : RdbStore query promise test
      * @tc.size   : MediumTest

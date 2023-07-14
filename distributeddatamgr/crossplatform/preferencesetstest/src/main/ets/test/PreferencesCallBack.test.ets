@@ -14,9 +14,9 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import dataPreferences from "@ohos.data.preferences";
-// import featureAbility from '@ohos.ability.featureAbility';
 
 const NAME = "test_preferences";
+const NAME1 = "getPreferencesTest";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 const KEY_TEST_LONG_ELEMENT = "key_test_long";
 const KEY_TEST_FLOAT_ELEMENT = "key_test_float";
@@ -25,15 +25,14 @@ const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = "key_test_number_array";
 const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
-var mPreferences;
-var context;
+let mPreferences;
+let context;
 
 const TAG = "[PREFERENCES_CALLBACK_JSUNIT_TEST]";
 export default function preferencesCallBackTest() {
   describe("preferencesCallBackTest", function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      // context = featureAbility.getContext()
       context = globalThis.abilityContext;
       mPreferences = await dataPreferences.getPreferences(context, NAME);
     });
@@ -44,101 +43,104 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_PREFERENCES_0001
-     * @tc.name   : testPreferencesGetPreferences0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0000
+     * @tc.name   : testPreferencesGetPreferences000
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences0001", 0, async function (done) {
-      const NAME = "getPreferencesTest";
-      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+    it("testPreferencesGetPreferences000", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, async (err, preferences) => {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success" + preferences);
-          expect(preferences != null).assertTrue();
+          await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+            expect("test").assertEqual(ret);
+          });
+          await dataPreferences.deletePreferences(context, NAME1);
           done();
         }
       });
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_PREFERENCES_0002
-     * @tc.name   : testPreferencesGetPreferences0002
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0100
+     * @tc.name   : testPreferencesGetPreferences001
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences0002", 0, async function (done) {
+    it("testPreferencesGetPreferences001", 0, async function (done) {
       try {
         // @ts-ignore
         await dataPreferences.getPreferences(context, -1, (err, preferences) => {
-          if (err != null) {
+          if (err) {
             console.info(TAG + "Get preferences err: " + err);
+            expect(!err).assertTrue();
             done();
           } else {
             console.info(TAG + "Get preferences success" + preferences);
-            expect(preferences != null).assertTrue();
+            done();
           }
         });
       } catch (err) {
-        console.info("testPreferencesGetPreferences0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        console.info("testPreferencesGetPreferences001 fail: " + err.message + "code: " + err.code);
+        expect(err.code === "401" && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_PREFERENCES_0003
-     * @tc.name   : testPreferencesGetPreferences0003
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0200
+     * @tc.name   : testPreferencesGetPreferences002
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences0003", 0, async function (done) {
+    it("testPreferencesGetPreferences002", 0, async function (done) {
       try {
-        // @ts-ignore
-        dataPreferences.getPreferences(context, (err, preferences) => {
-          if (err != null) {
+        dataPreferences.getPreferences(context, null, (err, preferences) => {
+          if (err) {
             console.info(TAG + "Get preferences err: " + JSON.stringify(err));
+            expect(!err).assertTrue();
             done();
           } else {
             console.info(TAG + "Get preferences success" + preferences);
-            expect(preferences != null).assertTrue();
+            done();
           }
         });
       } catch (err) {
-        console.info("testPreferencesGetPreferences0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        console.info("testPreferencesGetPreferences002 fail: " + err.message + "code: " + err.code);
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_PREFERENCES_0001
-     * @tc.name   : testPreferencesDeletePreferences0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0000
+     * @tc.name   : testPreferencesDeletePreferences000
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences0001", 0, async function (done) {
-      const NAME = "getPreferencesTest";
-      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+    it("testPreferencesDeletePreferences000", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
-          dataPreferences.deletePreferences(context, NAME, (err) => {
+          expect(preferences !== null).assertTrue();
+          dataPreferences.deletePreferences(context, NAME1, (err) => {
             console.info(TAG + "Delete preferences success");
-            expect(err == null).assertTrue();
+            expect(!err).assertTrue();
             done();
           });
         }
@@ -146,33 +148,32 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_PREFERENCES_0002
-     * @tc.name   : testPreferencesDeletePreferences0002
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0100
+     * @tc.name   : testPreferencesDeletePreferences001
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences0002", 0, async function (done) {
-      const NAME = "getPreferencesTest";
-      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+    it("testPreferencesDeletePreferences001", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           try {
-            // @ts-ignore
-            dataPreferences.deletePreferences(context, (err) => {
-              if (err != null) {
+            dataPreferences.deletePreferences(context, null, (err) => {
+              if (err) {
                 console.info(TAG + "Delete preferences err: " + err);
+                expect(!err).assertTrue();
                 done();
               }
             });
           } catch (err) {
-            console.info("testPreferencesDeletePreferences0002 fail: " + err.message + "code: " + err.code);
-            expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+            console.info("testPreferencesDeletePreferences001 fail: " + err.message + "code: " + err.code);
+            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
             done();
           }
         }
@@ -180,33 +181,33 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_PREFERENCES_0003
-     * @tc.name   : testPreferencesDeletePreferences0003
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0200
+     * @tc.name   : testPreferencesDeletePreferences002
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences0003", 0, async function (done) {
-      const NAME = "getPreferencesTest";
-      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+    it("testPreferencesDeletePreferences002", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           try {
             // @ts-ignore
             dataPreferences.deletePreferences(context, -1, (err) => {
-              if (err != null) {
+              if (err) {
                 console.info(TAG + "Delete preferences err: " + err);
+                expect(!err).assertTrue();
                 done();
               }
             });
           } catch (err) {
-            console.info("testPreferencesDeletePreferences0003 fail: " + err.message + "code: " + err.code);
-            expect(err.code == 401 && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            console.info("testPreferencesDeletePreferences002 fail: " + err.message + "code: " + err.code);
+            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
             done();
           }
         }
@@ -214,38 +215,35 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_PREFERENCES_0004
-     * @tc.name   : testPreferencesDeletePreferences0004
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0300
+     * @tc.name   : testPreferencesDeletePreferences003
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDeletePreferences0004", 0, async function (done) {
-      const NAME = "getPreferencesTest";
-      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+    it("testPreferencesDeletePreferences003", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           try {
             preferences.put(KEY_TEST_STRING_ELEMENT, "test");
             preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
               expect("test").assertEqual(ret);
             });
-            // @ts-ignore
             dataPreferences.deletePreferences(context, "getPreferencesTest1", (err) => {
-              console.info(TAG + "Delete preferences success");
               preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
                 expect("test").assertEqual(pre);
+                done();
               });
-              preferences.delete(KEY_TEST_STRING_ELEMENT);
-              done();
             });
           } catch (err) {
-            console.info("testPreferencesDeletePreferences0004 fail: " + err.message + "code: " + err.code);
+            console.info("testPreferencesDeletePreferences003 fail: " + err.message + "code: " + err.code);
+            expect(!err).assertTrue();
             done();
           }
         }
@@ -253,24 +251,24 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_0001
-     * @tc.name   : testRemovePreferencesFromCache0001
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0000
+     * @tc.name   : testRemovePreferencesFromCache000
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache0001", 0, async function (done) {
+    it("testRemovePreferencesFromCache000", 0, async function (done) {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           dataPreferences.removePreferencesFromCache(context, NAME, (err) => {
             console.info(TAG + "Remove preferences from cache success");
-            expect(err == null).assertTrue();
+            expect(!err).assertTrue();
             done();
           });
         }
@@ -278,32 +276,32 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_0002
-     * @tc.name   : testRemovePreferencesFromCache0002
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0100
+     * @tc.name   : testRemovePreferencesFromCache001
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache0002", 0, async function (done) {
+    it("testRemovePreferencesFromCache001", 0, async function (done) {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           try {
-            // @ts-ignore
-            dataPreferences.removePreferencesFromCache(context, (err) => {
-              if (err != null) {
+            dataPreferences.removePreferencesFromCache(context, null, (err) => {
+              if (err) {
                 console.info(TAG + "Remove preferences from cache error: " + err);
+                expect(!err).assertTrue();
                 done();
               }
             });
           } catch (err) {
-            console.info("testRemovePreferencesFromCache0002 fail: " + err.message + "code: " + err.code);
-            expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+            console.info("testRemovePreferencesFromCache001 fail: " + err.message + "code: " + err.code);
+            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
             done();
           }
         }
@@ -311,32 +309,33 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_0003
-     * @tc.name   : testRemovePreferencesFromCache0003
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0200
+     * @tc.name   : testRemovePreferencesFromCache002
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache0003", 0, async function (done) {
+    it("testRemovePreferencesFromCache002", 0, async function (done) {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           try {
             // @ts-ignore
             dataPreferences.removePreferencesFromCache(context, -1, (err) => {
-              if (err != null) {
+              if (err) {
                 console.info(TAG + "Remove preferences from cache error: " + err);
+                expect(!err).assertTrue();
                 done();
               }
             });
           } catch (err) {
-            console.info("testRemovePreferencesFromCache0003 fail: " + err.message + "code: " + err.code);
-            expect(err.code == 401 && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            console.info("testRemovePreferencesFromCache002 fail: " + err.message + "code: " + err.code);
+            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
             done();
           }
         }
@@ -344,42 +343,35 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_REMOVE_PREFERENCES_FROM_CACHE_0004
-     * @tc.name   : testRemovePreferencesFromCache0004
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0300
+     * @tc.name   : testRemovePreferencesFromCache003
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache0004", 0, async function (done) {
+    it("testRemovePreferencesFromCache003", 0, async function (done) {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err != null) {
+        if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(TAG + "Get preferences success");
-          expect(preferences != null).assertTrue();
+          expect(preferences !== null).assertTrue();
           try {
-            // @ts-ignore
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+              expect("test").assertEqual(ret);
+            });
             dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
-              if (err != null) {
-                console.info(TAG + "Remove preferences from cache error: " + err);
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                expect("test").assertEqual(pre);
                 done();
-              } else {
-                preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-                preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-                  expect("test").assertEqual(ret);
-                });
-                console.info(TAG + "Remove preferences from cache success1");
-                preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
-                  expect("test").assertEqual(pre);
-                });
-                preferences.delete(KEY_TEST_STRING_ELEMENT);
-                done();
-              }
+              });
             });
           } catch (err) {
-            console.info("testRemovePreferencesFromCache0004 fail: " + err.message + "code: " + err.code);
+            console.info("testRemovePreferencesFromCache003 fail: " + err.message + "code: " + err.code);
+            expect(!err).assertTrue();
             done();
           }
         }
@@ -387,8 +379,8 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_DEFAULT_VALUE_0001
-     * @tc.name   : testPreferencesGetDefaultValue0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_DEFAULT_VALUE_0000
+     * @tc.name   : testPreferencesGetDefaultValue0000
      * @tc.desc   : Get defaultValue callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
@@ -403,14 +395,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_FLOAT_0001
-     * @tc.name   : testPreferencesGetFloat0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_FLOAT_0000
+     * @tc.name   : testPreferencesGetFloat0000
      * @tc.desc   : Get float callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetFloat0001", 0, async function (done) {
+    it("testPreferencesGetFloat0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0, function (err, ret) {
@@ -420,14 +412,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_INT_0001
-     * @tc.name   : testPreferencesGetInt0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_INT_0000
+     * @tc.name   : testPreferencesGetInt0000
      * @tc.desc   : Get int callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetInt0001", 0, async function (done) {
+    it("testPreferencesGetInt0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       await mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0, function (err, ret) {
@@ -437,14 +429,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_LONG_0001
-     * @tc.name   : testPreferencesGetLong0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_LONG_0000
+     * @tc.name   : testPreferencesGetLong0000
      * @tc.desc   : Get long callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetLong0001", 0, async function (done) {
+    it("testPreferencesGetLong0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0, function (err, ret) {
@@ -454,14 +446,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_STRING_0001
-     * @tc.name   : testPreferencesGetString0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_STRING_0000
+     * @tc.name   : testPreferencesGetString0000
      * @tc.desc   : Get String callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetString0001", 0, async function (done) {
+    it("testPreferencesGetString0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -472,14 +464,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_BOOLEAN_0001
-     * @tc.name   : testPreferencesGetBoolean0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_BOOLEAN_0000
+     * @tc.name   : testPreferencesGetBoolean0000
      * @tc.desc   : Get Boolean callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolean0001", 0, async function (done) {
+    it("testPreferencesGetBoolean0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true, function (err, ret) {
@@ -489,14 +481,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_STRING_ARRAY_0001
-     * @tc.name   : testPreferencesGetStringArray0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_STRING_ARRAY_0000
+     * @tc.name   : testPreferencesGetStringArray0000
      * @tc.desc   : Get StringArray callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringArray0001", 0, async function (done) {
+    it("testPreferencesGetStringArray0000", 0, async function (done) {
       await mPreferences.clear();
       var stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -509,14 +501,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_NUM_ARRAY_0001
-     * @tc.name   : testPreferencesGetNumArray0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_NUM_ARRAY_0000
+     * @tc.name   : testPreferencesGetNumArray0000
      * @tc.desc   : Get NumArray callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetNumArray0001", 0, async function (done) {
+    it("testPreferencesGetNumArray0000", 0, async function (done) {
       await mPreferences.clear();
       var doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
@@ -529,14 +521,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_BOOL_ARRAY_0001
-     * @tc.name   : testPreferencesGetBoolArray0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_BOOL_ARRAY_0000
+     * @tc.name   : testPreferencesGetBoolArray0000
      * @tc.desc   : Get BoolArray callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolArray0001", 0, async function (done) {
+    it("testPreferencesGetBoolArray0000", 0, async function (done) {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -549,14 +541,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_GET_ALL_0001
-     * @tc.name   : testPreferencesGetAll0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_ALL_0000
+     * @tc.name   : testPreferencesGetAll0000
      * @tc.desc   : GetAll callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAll0001", 0, async function (done) {
+    it("testPreferencesGetAll0000", 0, async function (done) {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -594,14 +586,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_FLOAT_0001
-     * @tc.name   : testPreferencesPutFloat0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_FLOAT_0000
+     * @tc.name   : testPreferencesPutFloat0000
      * @tc.desc   : Put float callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutFloat0001", 0, async function (done) {
+    it("testPreferencesPutFloat0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0, async function (err, ret) {
         let pre = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -614,14 +606,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_INT_0001
-     * @tc.name   : testPreferencesPutInt0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_INT_0000
+     * @tc.name   : testPreferencesPutInt0000
      * @tc.desc   : Put int callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutInt0001", 0, async function (done) {
+    it("testPreferencesPutInt0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 4, async function (err, ret) {
         let pre = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -634,14 +626,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_LONG_0001
-     * @tc.name   : testPreferencesPutLong0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_LONG_0000
+     * @tc.name   : testPreferencesPutLong0000
      * @tc.desc   : Put long callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutLong0001", 0, async function (done) {
+    it("testPreferencesPutLong0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4, async function (err, ret) {
@@ -655,14 +647,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_STRING_0001
-     * @tc.name   : testPreferencesPutString0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_STRING_0000
+     * @tc.name   : testPreferencesPutString0000
      * @tc.desc   : Put String callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutString0001", 0, async function (done) {
+    it("testPreferencesPutString0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "", async function (err, ret) {
         let pre = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
@@ -675,14 +667,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_BOOLEAN_0001
-     * @tc.name   : testPreferencesPutBoolean0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_BOOLEAN_0000
+     * @tc.name   : testPreferencesPutBoolean0000
      * @tc.desc   : Put Boolean callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolean0001", 0, async function (done) {
+    it("testPreferencesPutBoolean0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true, async function (err, ret) {
         let pre = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -695,14 +687,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_STRING_ARRAY_0001
-     * @tc.name   : testPreferencesPutStringArray0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_STRING_ARRAY_0000
+     * @tc.name   : testPreferencesPutStringArray0000
      * @tc.desc   : Put StringArray callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringArray0001", 0, async function (done) {
+    it("testPreferencesPutStringArray0000", 0, async function (done) {
       await mPreferences.clear();
       var stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr, async function (err, ret) {
@@ -716,14 +708,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_NUM_ARRAY_0001
-     * @tc.name   : testPreferencesPutNumArray0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_NUM_ARRAY_0000
+     * @tc.name   : testPreferencesPutNumArray0000
      * @tc.desc   : Put NumberArray callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutNumArray0001", 0, async function (done) {
+    it("testPreferencesPutNumArray0000", 0, async function (done) {
       await mPreferences.clear();
       var doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr, async function (err, ret) {
@@ -737,14 +729,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PUT_BOOL_ARRAY_0001
-     * @tc.name   : testPreferencesPutBoolArray0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_BOOL_ARRAY_0000
+     * @tc.name   : testPreferencesPutBoolArray0000
      * @tc.desc   : Put BoolArray callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolArray0001", 0, async function (done) {
+    it("testPreferencesPutBoolArray0000", 0, async function (done) {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr, async function (err, ret) {
@@ -758,14 +750,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_0001
-     * @tc.name   : testPreferencesHasKey0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0000
+     * @tc.name   : testPreferencesHasKey0000
      * @tc.desc   : Has float callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0001", 0, async function (done) {
+    it("testPreferencesHasKey0000", 0, async function (done) {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 1.1);
       await mPreferences.has(KEY_TEST_FLOAT_ELEMENT, function (err, ret) {
         expect(true).assertEqual(ret);
@@ -774,14 +766,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_0002
-     * @tc.name   : testPreferencesHasKey0002
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0100
+     * @tc.name   : testPreferencesHasKey0001
      * @tc.desc   : Has int callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0002", 0, async function (done) {
+    it("testPreferencesHasKey0001", 0, async function (done) {
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
       await mPreferences.has(KEY_TEST_INT_ELEMENT, function (err, ret) {
         expect(true).assertEqual(ret);
@@ -790,14 +782,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_0003
-     * @tc.name   : testPreferencesHasKey0003
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0200
+     * @tc.name   : testPreferencesHasKey0002
      * @tc.desc   : Has long callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0003", 0, async function (done) {
+    it("testPreferencesHasKey0002", 0, async function (done) {
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
       await mPreferences.has(KEY_TEST_LONG_ELEMENT, function (err, ret) {
         expect(true).assertEqual(ret);
@@ -806,14 +798,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_0004
-     * @tc.name   : testPreferencesHasKey0004
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0300
+     * @tc.name   : testPreferencesHasKey0003
      * @tc.desc   : Has string callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0004", 0, async function (done) {
+    it("testPreferencesHasKey0003", 0, async function (done) {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.has(KEY_TEST_STRING_ELEMENT, function (err, ret) {
         expect(true).assertEqual(ret);
@@ -822,14 +814,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_HAS_KEY_0005
-     * @tc.name   : testPreferencesHasKey0005
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_HAS_KEY_0400
+     * @tc.name   : testPreferencesHasKey0004
      * @tc.desc   : Has boolean callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0005", 0, async function (done) {
+    it("testPreferencesHasKey0004", 0, async function (done) {
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
       await mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT, function (err, ret) {
         expect(true).assertEqual(ret);
@@ -838,14 +830,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_CLEAR_0001
-     * @tc.name   : testPreferencesClear0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_CLEAR_0000
+     * @tc.name   : testPreferencesClear0000
      * @tc.desc   : Clear callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesClear0001", 0, async function (done) {
+    it("testPreferencesClear0000", 0, async function (done) {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -880,7 +872,7 @@ export default function preferencesCallBackTest() {
 
       await mPreferences.clear(async function (err) {
         let ret = mPreferences.getAllSync();
-        console.log("testPreferencesClearPromise0001 end." + JSON.stringify(ret.key_test_string));
+        console.log("testPreferencesClear0000 end." + JSON.stringify(ret.key_test_string));
         expect(undefined).assertEqual(ret.key_test_boolean);
         expect(undefined).assertEqual(ret.key_test_string);
         expect(undefined).assertEqual(ret.key_test_float);
@@ -892,14 +884,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_DELETE_0001
-     * @tc.name   : testPreferencesDelete0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_0000
+     * @tc.name   : testPreferencesDelete0000
      * @tc.desc   : Delete callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesDelete0001", 0, async function (done) {
+    it("testPreferencesDelete0000", 0, async function (done) {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -907,7 +899,7 @@ export default function preferencesCallBackTest() {
       mPreferences.delete(KEY_TEST_FLOAT_ELEMENT, async (err, ret) => {
         if (err) {
           console.info("Failed to delete the key KEY_TEST_STRING_ELEMENT. code =" + err.code + ", message =" + err.message);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         }
         console.info("Succeeded in deleting the key KEY_TEST_STRING_ELEMENT.");
         let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -917,24 +909,24 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_FLUSH_0001
-     * @tc.name   : testPreferencesFlush0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_FLUSH_0000
+     * @tc.name   : testPreferencesFlush0000
      * @tc.desc   : Flush callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesFlush0001", 0, async function (done) {
+    it("testPreferencesFlush0000", 0, async function (done) {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
       mPreferences.flush(async function (err, val) {
         if (err) {
           console.info("Failed to flush. code =" + err.code + ", message =" + err.message);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         }
         console.info("Succeeded in flushing.");
-        expect(err == undefined).assertTrue();
+        expect(err === undefined).assertTrue();
         let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
         expect("test").assertEqual(per);
         done();
@@ -942,39 +934,39 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_CALLBACK_0001
-     * @tc.name   : testPreferencesCallback0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_CALLBACK_0000
+     * @tc.name   : testPreferencesCallback0000
      * @tc.desc   : Clear、Put、Get、Flush String callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesCallback0001", 0, function (done) {
-      console.log(TAG + "testPreferencesCallback0001 begin.");
+    it("testPreferencesCallback0000", 0, function (done) {
+      console.log(TAG + "testPreferencesCallback0000 begin.");
       mPreferences.clear(function (err, val) {
         if (err) {
-          expect(null).assertFail();
+          expect(!err).assertTrue();
         }
         mPreferences.put(KEY_TEST_STRING_ELEMENT, "123", function (err) {
           if (err) {
-            expect(null).assertFail();
+            expect(!err).assertTrue();
           }
           mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
             if (err) {
-              expect(null).assertFail();
+              expect(!err).assertTrue();
             }
             expect("123").assertEqual(pre);
             mPreferences.flush(function (err) {
               if (err) {
-                expect(null).assertFail();
+                expect(!err).assertTrue();
               }
               mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre2) {
                 if (err) {
-                  expect(null).assertFail();
+                  expect(!err).assertTrue();
                 }
                 expect("123").assertEqual(pre2);
                 done();
-                console.log(TAG + "testPreferencesCallback0001 end.");
+                console.log(TAG + "testPreferencesCallback0000 end.");
               });
             });
           });

@@ -14,18 +14,16 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import data_preferences from "@ohos.data.preferences";
-//import featureAbility from '@ohos.ability.featureAbility'
 
 const NAME = "test_preferences_promise_with_error";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
-var mPreference;
-var context;
+let mPreference;
+let context;
 export default function preferencesPromiseWithErrorTest() {
   describe("preferencesPromiseWithErrorTest", async function () {
     beforeAll(async function () {
       console.info("beforeAll");
-      //context = featureAbility.getContext()
       context = globalThis.abilityContext;
       mPreference = await data_preferences.getPreferences(context, NAME);
     });
@@ -42,7 +40,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : TEST_PREFERENCES_PROMISE_WITH_ERROR_0001
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_PROMISE_WITH_ERROR_0100
      * @tc.name   : testPreferencesPromiseWithError0001
      * @tc.desc   : Clear、Delete、Put、Get、Flush promise interface test
      * @tc.size   : MediumTest
@@ -52,9 +50,8 @@ export default function preferencesPromiseWithErrorTest() {
     it("testPreferencesPromiseWithError0001", 0, function (done) {
       console.log("testPreferencesPromiseWithError0001 begin.");
       try {
-        if (mPreference == undefined) {
+        if (mPreference === undefined) {
           console.log("mPreference undefined");
-          expect(false).assertTrue();
         }
         mPreference
           .clear()
@@ -80,36 +77,36 @@ export default function preferencesPromiseWithErrorTest() {
                           })
                           .catch((err) => {
                             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
-                            expect(false).assertTrue();
+                            expect(!err).assertTrue();
                           });
                       })
                       .catch((err) => {
                         console.log("flush err =" + err + ", code =" + err.code + ", message =" + err.message);
-                        expect(false).assertTrue();
+                        expect(!err).assertTrue();
                       });
                   })
                   .catch((err) => {
                     console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
-                    expect(false).assertTrue();
+                    expect(!err).assertTrue();
                   });
               })
               .catch((err) => {
                 console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-                expect(false).assertTrue();
+                expect(!err).assertTrue();
               });
           })
           .catch((err) => {
             console.log("clear err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_PROMISE_0100
      * @tc.name   : testMpreferencesGetPromise0001
      * @tc.desc   : mPreference.get promise test
      * @tc.size   : MediumTest
@@ -123,22 +120,21 @@ export default function preferencesPromiseWithErrorTest() {
           .get(1233)
           .then((ret) => {
             console.log("get err");
-            expect(false).assertTrue();
           })
           .catch((err) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
         done();
         console.log("testMpreferencesGetPromise0001 end.");
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_PROMISE_0002
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_PROMISE_0200
      * @tc.name   : testMpreferencesGetPromise0002
      * @tc.desc   : mPreference.get promise test
      * @tc.size   : MediumTest
@@ -157,16 +153,17 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_PROMISE_0003
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_PROMISE_0300
      * @tc.name   : testMpreferencesGetPromise0003
      * @tc.desc   : mPreference.get promise test
      * @tc.size   : MediumTest
@@ -180,12 +177,13 @@ export default function preferencesPromiseWithErrorTest() {
         mPreference
           .get(KEY_TEST_INT_ELEMENT, "default")
           .then((ret) => {
-            expect(ret != "123").assertTrue();
+            expect(ret !== "123").assertTrue();
             done();
             console.log("testMpreferencesGetPromise0003 end." + JSON.stringify(ret));
           })
           .catch((err) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
@@ -194,7 +192,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0100
      * @tc.name   : testMpreferencesGetSyncWithError0001
      * @tc.desc   : mPreference.getSync test
      * @tc.size   : MediumTest
@@ -205,17 +203,16 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesGetSyncWithError0001 begin.");
       try {
         mPreference.getSync(1233);
-        expect(false).assertTrue();
       } catch (err) {
         console.log("trycatch1 err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 parameters!").assertTrue();
         done();
         console.log("testMpreferencesGetSyncWithError0001 end.");
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0002
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0200
      * @tc.name   : testMpreferencesGetSyncWithError0002
      * @tc.desc   : mPreference.getSync test
      * @tc.size   : MediumTest
@@ -227,16 +224,15 @@ export default function preferencesPromiseWithErrorTest() {
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
         mPreference.getSync(-1, KEY_TEST_INT_ELEMENT);
-        expect(false).assertTrue();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0003
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0300
      * @tc.name   : testMpreferencesGetSyncWithError0003
      * @tc.desc   : mPreference.getSync test
      * @tc.size   : MediumTest
@@ -248,16 +244,17 @@ export default function preferencesPromiseWithErrorTest() {
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
         let ret = mPreference.getSync(KEY_TEST_INT_ELEMENT, "default");
-        expect(ret != "123").assertTrue();
+        expect(ret !== "123").assertTrue();
         done();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
+        expect(!err).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_GET_ALL_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_ALL_PROMISE_0100
      * @tc.name   : testMpreferencesGetALLPromise0001
      * @tc.desc   : mPreference.getAll promise test
      * @tc.size   : MediumTest
@@ -276,16 +273,16 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("getAll err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_HAS_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_HAS_PROMISE_0100
      * @tc.name   : testMpreferencesHasPromise0001
      * @tc.desc   : mPreference.has promise test
      * @tc.size   : MediumTest
@@ -299,22 +296,21 @@ export default function preferencesPromiseWithErrorTest() {
           .has(123)
           .then((val) => {
             console.log("has err");
-            expect(false).assertTrue();
           })
           .catch((err) => {
             console.log("has err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
         done();
         console.log("testMpreferencesHasPromise0001 end.");
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_HAS_PROMISE_0002
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_HAS_PROMISE_0200
      * @tc.name   : testMpreferencesHasPromise0002
      * @tc.desc   : mPreference.has promise test
      * @tc.size   : MediumTest
@@ -332,16 +328,16 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("has err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0100
      * @tc.name   : testMpreferencesPutPromise0001
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -355,22 +351,21 @@ export default function preferencesPromiseWithErrorTest() {
           .put(1233)
           .then(() => {
             console.log("put err");
-            expect(false).assertTrue();
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
         done();
         console.log("testMpreferencesPutPromise0001 end.");
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_PROMISE_0002
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0200
      * @tc.name   : testMpreferencesPutPromise0002
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -390,18 +385,18 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
             done();
           });
       } catch (err) {
         console.log("trycatch err =1" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_PROMISE_0003
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0300
      * @tc.name   : testMpreferencesPutPromise0003
      * @tc.desc   : mPreference.put promise test   space
      * @tc.size   : MediumTest
@@ -422,18 +417,18 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-            //expect(false).assertTrue();
+            expect(!err).assertTrue();
             done();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        //expect(false).assertTrue();
+        expect(!err).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_PROMISE_0004
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0400
      * @tc.name   : testMpreferencesPutPromise0004
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -451,17 +446,18 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
+            expect(!err).assertTrue();
             done();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_PROMISE_0005
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0500
      * @tc.name   : testMpreferencesPutPromise0005
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -479,17 +475,18 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
+            expect(!err).assertTrue();
             done();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be ValueType.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be ValueType.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0100
      * @tc.name   : testMpreferencesPutSyncWithError0001
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -500,17 +497,16 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesPutSyncWithError0001 begin.");
       try {
         mPreference.putSync(1233);
-        expect(false).assertTrue();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. Need 2 parameters!").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. Need 2 parameters!").assertTrue();
         done();
         console.log("testMpreferencesPutSyncWithError0001 end.");
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0002
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0200
      * @tc.name   : testMpreferencesPutSyncWithError0002
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -527,13 +523,13 @@ export default function preferencesPromiseWithErrorTest() {
         console.log("testMpreferencesPutSyncWithError0002 end.");
       } catch (err) {
         console.log("trycatch err =1" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0003
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0300
      * @tc.name   : testMpreferencesPutSyncWithError0003
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -550,13 +546,13 @@ export default function preferencesPromiseWithErrorTest() {
         console.log("testMpreferencesPutSyncWithError0003 end.");
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0004
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0400
      * @tc.name   : testMpreferencesPutSyncWithError0004
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -567,16 +563,15 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesPutSyncWithError0004 begin.");
       try {
         mPreference.putSync(-1, 123);
-        expect(false).assertTrue();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0005
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0500
      * @tc.name   : testMpreferencesPutSyncWithError0005
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -587,16 +582,15 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesPutSyncWithError0005 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, null);
-        expect(false).assertTrue();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be ValueType.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be ValueType.").assertTrue();
         done();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_DELETE_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_DELETE_PROMISE_0100
      * @tc.name   : testMpreferencesDeletePromise0001
      * @tc.desc   : mPreference.delete promise test
      * @tc.size   : MediumTest
@@ -610,22 +604,21 @@ export default function preferencesPromiseWithErrorTest() {
           .delete(1233)
           .then(() => {
             console.log("delete err");
-            expect(false).assertTrue();
           })
           .catch((err) => {
             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code == 401 && err.message == "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
         done();
         console.log("testMpreferencesDeletePromise0001 end.");
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_DELETE_PROMISE_0002
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_DELETE_PROMISE_0200
      * @tc.name   : testMpreferencesDeletePromise0002
      * @tc.desc   : mPreference.delete promise test
      * @tc.size   : MediumTest
@@ -643,16 +636,16 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_CLEAR_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_CLEAR_PROMISE_0100
      * @tc.name   : testMpreferencesClearPromise0001
      * @tc.desc   : mPreference.clear promise test
      * @tc.size   : MediumTest
@@ -670,16 +663,16 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("clear err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
       }
     });
 
     /**
-     * @tc.number : TEST_MPREFERENCES_FLUSH_PROMISE_0001
+     * @tc.number : SUB_DDM_TEST_MPREFERENCES_FLUSH_PROMISE_0100
      * @tc.name   : testMpreferencesFlushPromise0001
      * @tc.desc   : mPreference.flush promise test
      * @tc.size   : MediumTest
@@ -697,11 +690,11 @@ export default function preferencesPromiseWithErrorTest() {
           })
           .catch((err) => {
             console.log("flush err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(false).assertTrue();
+            expect(!err).assertTrue();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(false).assertTrue();
+        expect(!err).assertTrue();
       }
     });
   });

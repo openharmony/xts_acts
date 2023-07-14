@@ -15,13 +15,11 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import relationalStore from "@ohos.data.relationalStore";
-//import fileIO from "@ohos.file.fs";
 
 const TAG = "[RDB_JSKITS_TEST]";
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS backupTest (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
-//const DATABASE_DIR = "/data/storage/el2/database/entry/rdb/";
-var RdbStore = undefined;
-var context = null;
+let RdbStore = undefined;
+let context = null;
 const STORE_CONFIG = {
   name: "BackupResotreTest.db",
   securityLevel: relationalStore.SecurityLevel.S1,
@@ -89,7 +87,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_STORE_BACKUP_RESTORE_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_RESTORE_0100
      * @tc.name   : testRdbStoreBackupRestore001
      * @tc.desc   : RdbStore backup and restore callback test
      * @tc.size   : MediumTest
@@ -124,13 +122,13 @@ export default function RdbStoreBackupRestoreCallbackTest() {
                 expect("zhangsan").assertEqual(name);
                 expect(1).assertEqual(blobType[0]);
                 resultSet.close();
+                done();
               } catch (err) {
                 expect(false).assertTrue();
               }
               resultSet = null;
               RdbStore = null;
             }
-            done();
             console.info(TAG + "************* testRdbStoreBackupRestore001 end *************");
           });
         }
@@ -138,7 +136,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BACKUP_RESTORE_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_RESTORE_0200
      * @tc.name   : testRdbStoreBackupRestore002
      * @tc.desc   : RdbStore backup and restore promise test
      * @tc.size   : MediumTest
@@ -171,12 +169,12 @@ export default function RdbStoreBackupRestoreCallbackTest() {
                 expect("zhangsan").assertEqual(name);
                 expect(1).assertEqual(blobType[0]);
                 resultSet.close();
+                done();
               } catch (err) {
                 console.info(TAG + "testRdbStoreBackupRestore002 error: " + err);
               }
               resultSet = null;
               RdbStore = null;
-              done();
               console.info(TAG + "************* testRdbStoreBackupRestore002 end *************");
             })
             .catch((err) => {
@@ -189,7 +187,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BACKUP_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0100
      * @tc.name   : testRdbStoreBackup001
      * @tc.desc   : RdbStore backup callback test: file name empty
      * @tc.size   : MediumTest
@@ -213,7 +211,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BACKUP_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0200
      * @tc.name   : testRdbStoreBackup002
      * @tc.desc   : RdbStore backup callback test
      * @tc.size   : MediumTest
@@ -237,7 +235,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BACKUP_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0300
      * @tc.name   : testRdbStoreBackup003
      * @tc.desc   : RdbStore backup promise test: file name empty
      * @tc.size   : MediumTest
@@ -247,7 +245,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     it("testRdbStoreBackup003", 0, async function (done) {
       console.info(TAG + "************* testRdbStoreBackup003 start *************");
       try {
-        RdbStore.backup("");
+        await RdbStore.backup("");
         expect().assertFail();
         done();
       } catch (errInfo) {
@@ -260,7 +258,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_BACKUP_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0400
      * @tc.name   : testRdbStoreBackup004
      * @tc.desc   : RdbStore backup promise test
      * @tc.size   : MediumTest
@@ -288,7 +286,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_RESTORE_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0100
      * @tc.name   : testRdbStoreRestore001
      * @tc.desc   : RdbStore retore callback test: file name empty
      * @tc.size   : MediumTest
@@ -314,7 +312,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_RESTORE_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0200
      * @tc.name   : testRdbStoreRestore002
      * @tc.desc   : RdbStore retore callback test
      * @tc.size   : MediumTest
@@ -339,7 +337,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_RESTORE_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0300
      * @tc.name   : testRdbStoreRestore003
      * @tc.desc   : RdbStore retore promise test: file name empty
      * @tc.size   : MediumTest
@@ -364,7 +362,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_RESTORE_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0400
      * @tc.name   : testRdbStoreRestore004
      * @tc.desc   : RdbStore retore promise test
      * @tc.size   : MediumTest

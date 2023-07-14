@@ -33,31 +33,31 @@ const CURRENT_STORE_VERSION = 1;
 
 const TAG = "RDB_TEST";
 
-var rdbStore = undefined;
+let rdbStore = undefined;
 
 export default function rdbStoreQuerySqlTest() {
   describe("rdbStoreQuerySqlTest", function () {
     beforeAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "beforeAll");
+    });
+
+    beforeEach(async function () {
+      let context = globalThis.abilityContext;
+      console.info(TAG + "beforeEach");
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
       await generateUserTable();
       await generateBookTable();
     });
 
-    beforeEach(async function () {
-      console.info(TAG + "beforeEach");
-    });
-
     afterEach(async function () {
+      let context = globalThis.abilityContext;
       console.info(TAG + "afterEach");
+      rdbStore = null;
+      await relationalStore.deleteRdbStore(context, "QuerySqlTest.db");
     });
 
     afterAll(async function () {
-      let context = globalThis.abilityContext;
       console.info(TAG + "afterAll");
-      rdbStore = null;
-      await relationalStore.deleteRdbStore(context, "QuerySqlTest.db");
     });
 
     async function generateUserTable() {
@@ -109,7 +109,7 @@ export default function rdbStoreQuerySqlTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_SQL_001
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0100
      * @tc.name   : testRdbStoreQuerySql001
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -121,6 +121,7 @@ export default function rdbStoreQuerySqlTest() {
       rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = 'sanguo'", async (err, resultSet) => {
         if (err) {
           console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
           done();
         }
         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -141,7 +142,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_SQL_002
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0200
      * @tc.name   : testRdbStoreQuerySql002
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -153,6 +154,7 @@ export default function rdbStoreQuerySqlTest() {
       rdbStore.querySql("SELECT * FROM user INNER JOIN Book ON user.userId = Book.id WHERE Book.name = ?", ["sanguo"], async (err, resultSet) => {
         if (err) {
           console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
           done();
         }
         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -173,7 +175,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_SQL_003
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0300
      * @tc.name   : testRdbStoreQuerySql003
      * @tc.desc   : RdbStore querySql promise test
      * @tc.size   : MediumTest
@@ -198,7 +200,7 @@ export default function rdbStoreQuerySqlTest() {
       console.info(TAG + "testRdbStoreQuerySql003 end.");
     });
     /**
-     * @tc.number : TEST_RDB_STORE_QUERY_SQL_004
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0400
      * @tc.name   : testRdbStoreQuerySql004
      * @tc.desc   : RdbStore querySql promise test
      * @tc.size   : MediumTest
