@@ -53,6 +53,14 @@
                 "srcEntrance": "./ets/InputMethodEngine/InputDemoService.ts",
                 "type": "inputMethod",
                 "visible": true
+            },
+            {
+                "description": "keyEventDemo",
+                "icon": "$media:icon",
+                "name": "InputKeyService",
+                "srcEntrance": "./ets/InputMethodEngineKey/InputKeyService.ts",
+                "type": "inputMethod",
+                "visible":true
             }
         ],
         "requestPermissions": [
