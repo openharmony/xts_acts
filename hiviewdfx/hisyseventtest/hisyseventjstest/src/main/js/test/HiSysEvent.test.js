@@ -67,9 +67,9 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi02', 1, async function (done) {
 		console.info('testHiSysEventApi02 start')
 		hiSysEvent.write({
-		domain: "RELIABILITY",
-		name: "STACK",
-		eventType: hiSysEvent.EventType.FAULT,
+			domain: "RELIABILITY",
+			name: "STACK",
+			eventType: hiSysEvent.EventType.FAULT,
 		}).then(
 			(value) => {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -86,260 +86,426 @@ describe('hiSysEventJsTest', function () {
 	})
 
 	/**
+	 * @tc.number DFX_DFT_HiSysEvent_JS_0300
+	 * @tc.name testHiSysEventApi03
+	 * @tc.desc 验证调用HiSysEvent write接口，打点fault类型事件，支持基础数据类型自定义传参
+	 */
+	it('testHiSysEventApi03', 1, async function (done) {
+		console.info('testHiSysEventApi03 start')
+		try {
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT,
+				params: {
+					MAX: Number.MAX_VALUE,
+					MIN: Number.MIN_VALUE,
+					INT: 100,
+					DOU: 30949.374,
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
+					PROCESS_NAME: "syseventservice_HiSysEventApi03",
+					BOOL: true,
+					UNF: undefined,
+					NUL: null,
+					MSG: [123, 3.14, 0.123]
+				}
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi03 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi03 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi03 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi03 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi03 error')
+			done()
+		}
+	})
+
+	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0400
 	 * @tc.name testHiSysEventApi04
-	 * @tc.desc HiSysEvent添加Js打点事件-添加成功后回调函数被调用(domain+eventName, eventType=FAULT)
+	 * @tc.desc 验证调用HiSysEvent write接口，打点statistic类型事件，支持基础数据类型自定义传参
 	 */
 	it('testHiSysEventApi04', 3, async function (done) {
 		console.info('testHiSysEventApi04 start')
-		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
-			eventType: hiSysEvent.EventType.FAULT,
-		},(err, value) => {
-			console.log('HiSysEvent into json-callback');
-			if (err) {
-				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`HiSysEvent json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi04 end')
+		try {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_STATS",
+				eventType: hiSysEvent.EventType.STATISTIC,
+				params: {
+					MAX: Number.MAX_VALUE,
+					MIN: Number.MIN_VALUE,
+					INT: 100,
+					DOU: 30949.374,
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
+					PROCESS_NAME: "syseventservice_HiSysEventApi04",
+					BOOL: true,
+					UNF: undefined,
+					NUL: null,
+					MSG: [123, 3.14, 0.123]
+				}
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi04 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi04 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi04 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi04 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi04 error')
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0500
 	 * @tc.name testHiSysEventApi05
-	 * @tc.desc 添加Js打点事件-添加成功后回调函数被调用(domain+eventName, eventType=STATISTIC)
+	 * @tc.desc 验证调用HiSysEvent write接口，打点security类型事件，支持基础数据类型自定义传参
 	 */
 	it('testHiSysEventApi05', 3, async function (done) {
 		console.info('testHiSysEventApi05 start')
-		hiSysEvent.write({
-			domain: "HIVIEWDFX",
-			name: "PLUGIN_STATS",
-			eventType: hiSysEvent.EventType.STATISTIC,
-		},(err, value) => {
-			console.log('HiSysEvent into json-callback');
-			if (err) {
-				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`HiSysEvent json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi05 end')
+		try {
+			hiSysEvent.write({
+				domain: "ACCOUNT",
+				name: "PERMISSION_EXCEPTION",
+				eventType: hiSysEvent.EventType.SECURITY,
+				params: {
+					MAX: Number.MAX_VALUE,
+					MIN: Number.MIN_VALUE,
+					INT: 100,
+					DOU: 30949.374,
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
+					PROCESS_NAME: "syseventservice_HiSysEventApi05",
+					BOOL: true,
+					UNF: undefined,
+					NUL: null,
+					MSG: [123, 3.14, 0.123]
+				}
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi05 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi05 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi05 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi05 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi05 error')
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0600
 	 * @tc.name testHiSysEventApi06
-	 * @tc.desc 添加Js打点事件-添加成功后回调函数被调用(domain+eventName, eventType=SECURITY)
+	 * @tc.desc 验证调用HiSysEvent write接口，打点behavior类型事件，支持基础数据类型自定义传参
 	 */
 	it('testHiSysEventApi06', 3, async function (done) {
 		console.info('testHiSysEventApi06 start')
-		hiSysEvent.write({
-			domain: "ACCOUNT",
-			name: "PERMISSION_EXCEPTION",
-			eventType: hiSysEvent.EventType.SECURITY,
-		},(err, value) => {
-			console.log('HiSysEvent into json-callback');
-			if (err) {
-				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`HiSysEvent json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi06 end')
+		try {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_LOAD",
+				eventType: hiSysEvent.EventType.BEHAVIOR,
+				params: {
+					MAX: Number.MAX_VALUE,
+					MIN: Number.MIN_VALUE,
+					INT: 100,
+					DOU: 30949.374,
+					PACKAGE_NAME: "com.ohos.hisysevent.test",
+					PROCESS_NAME: "syseventservice_HiSysEventApi06",
+					BOOL: true,
+					UNF: undefined,
+					NUL: null,
+					MSG: [123, 3.14, 0.123]
+				}
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi06 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi06 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi06 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi06 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi06 error')
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0700
 	 * @tc.name testHiSysEventApi07
-	 * @tc.desc 添加Js打点事件-添加成功后回调函数被调用(domain+eventName, eventType=BEHAVIOR)
+	 * @tc.desc 验证调用HiSysEvent write接口，支持自定义传参最大字符串10k
 	 */
 	it('testHiSysEventApi07', 3, async function (done) {
 		console.info('testHiSysEventApi07 start')
-		hiSysEvent.write({
-			domain: "HIVIEWDFX",
-			name: "PLUGIN_LOAD",
-			eventType: hiSysEvent.EventType.BEHAVIOR,
-		},(err, value) => {
-			console.log('HiSysEvent into json-callback');
-			if (err) {
-				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`HiSysEvent json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi07 end')
+		try {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_LOAD",
+				eventType: hiSysEvent.EventType.BEHAVIOR,
+				params: {
+					PROCESS_NAME: Array.from({length: 10 * 1024 + 1}).join("a"),
+				}
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi07 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi07 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi07 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi07 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi07 error')
+			done()
+		}
 	})
 
-    /**
+	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0800
 	 * @tc.name testHiSysEventApi08
-	 * @tc.desc 添加Js打点事件-添加成功后回调函数被调用(domain+eventName+params, eventType=FAULT)
-     */
+	 * @tc.desc 验证调用HiSysEvent write接口，支持自定义传参最多参数个数128个
+	 */
 	it('testHiSysEventApi08', 3, async function (done) {
 		console.info('testHiSysEventApi08 start')
-		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
-			eventType: hiSysEvent.EventType.FAULT,
-			params: {
-				PID: 487,
-				UID: 103,
-				PACKAGE_NAME: "com.ohos.hisysevent.test",
-				PROCESS_NAME: "syseventservice",
-				MSG: "no msg."
-			}
-		},(err, value) => {
-			console.log('HiSysEvent into json-callback');
-			if (err) {
-				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`HiSysEvent json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi08 end')
+		let largeParams = {}
+		for (let i = 0; i < 128; i++) {
+			largeParams["name" + i] = i
+		}
+		try {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_LOAD",
+				eventType: hiSysEvent.EventType.BEHAVIOR,
+				params: largeParams
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi08 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi08 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi08 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi08 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi08 error')
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0900
 	 * @tc.name testHiSysEventApi09
-	 * @tc.desc HiSysEvent添加Js打点事件-添加成功后回调函数被调用(domain+eventName+params, eventType=STATISTIC)
+	 * @tc.desc 验证调用HiSysEvent write接口，支持自定义传参最长数组个数100个
 	 */
 	it('testHiSysEventApi09', 3, async function (done) {
 		console.info('testHiSysEventApi09 start')
-		hiSysEvent.write({
-			domain: "HIVIEWDFX",
-			name: "PLUGIN_STATS",
-			eventType: hiSysEvent.EventType.STATISTIC,
-			params: {
-				PID: 487,
-				UID: 103,
-				PACKAGE_NAME: "com.ohos.hisysevent.test",
-				PROCESS_NAME: "syseventservice",
-				MSG: "no msg."
-			}
-		},(err, value) => {
-			console.log('HiSysEvent into json-callback');
-			if (err) {
-				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`HiSysEvent json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi09 end')
+		let msgArray = []
+		for (let i = 0; i < 100; i++) {
+			msgArray[i] = i
+		}
+		try {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_LOAD",
+				eventType: hiSysEvent.EventType.BEHAVIOR,
+				params: {
+					MSG: msgArray
+				}
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi09 json-callback-error code=${err.code}`);
+					expect().assertFail();
+					done();
+				} else {
+					console.log(`testHiSysEventApi09 json-callback-success value=${value}`);
+					expect(value == 0).assertTrue();
+					console.info('testHiSysEventApi09 end')
+					done();
+				}
+			})
+		} catch (error) {
+			console.error(`testHiSysEventApi09 error code: ${error.code}, error msg: ${error.message}`);
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi09 error')
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1000
 	 * @tc.name testHiSysEventApi10
-	 * @tc.desc HiSysEvent添加Js打点事件-添加成功后回调函数被调用(domain+eventName+params, eventType=SECURITY)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName+tag, rule=PREFIX
 	 */
 	it('testHiSysEventApi10', 3, async function (done) {
 		console.info('testHiSysEventApi10 start')
-		hiSysEvent.write({
-			domain: "ACCOUNT",
-			name: "PERMISSION_EXCEPTION",
-			eventType: hiSysEvent.EventType.SECURITY,
-			params: {
-				PID: 487,
-				UID: 103,
-				PACKAGE_NAME: "com.ohos.hisysevent.test",
-				PROCESS_NAME: "syseventservice",
-				MSG: "no msg."
+		let watcher110
+		watcher110 = {
+			rules: [{
+				domain: "RELIABILI",
+				name: "STA",
+				tag: "STABILI",
+				ruleType: hiSysEvent.RuleType.PREFIX
+			}],
+			onEvent: (info) => {
+				console.info(`testHiSysEventApi10: OnEvent...`)
+				expect(Object.keys(info).length > 0).assertTrue()
+				console.info(`testHiSysEventApi10: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
+				if (info.params instanceof Object) {
+					for (const key in info.params) {
+						console.info(`testHiSysEventApi10: ${key}: ${info.params[key]}`)
+					}
+				}
+			},
+			onServiceDied: () => {
+				console.info(`testHiSysEventApi10 Onservice died`);
 			}
-		},(err, value) => {
-			console.log('testHiSysEventApi10 into json-callback');
-			if (err) {
-				console.error(`testHiSysEventApi10 json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`testHiSysEventApi10 json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi10 end')
+		}
+		try {
+			hiSysEvent.addWatcher(watcher110)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi10 json-callback-error code=${err.code}`);
+					done();
+				} else {
+					console.log(`testHiSysEventApi10 json-callback-success value=${value}`);
+				}
+			});
+			console.info('testHiSysEventApi10 end')
+		} catch (err) {
+			console.error(`testHiSysEventApi10 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi10 end')
+			done()
+		}
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher110)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1100
 	 * @tc.name testHiSysEventApi11
-	 * @tc.desc HiSysEvent添加Js打点事件-添加成功后回调函数被调用(domain+eventName+params, eventType=BEHAVIOR)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName+tag, rule=REGULAR
 	 */
 	it('testHiSysEventApi11', 3, async function (done) {
 		console.info('testHiSysEventApi11 start')
-		hiSysEvent.write({
-			domain: "HIVIEWDFX",
-			name: "PLUGIN_LOAD",
-			eventType: hiSysEvent.EventType.BEHAVIOR,
-			params: {
-				PID: 487,
-				UID: 103,
-				PACKAGE_NAME: "com.ohos.hisysevent.test",
-				PROCESS_NAME: "syseventservice",
-				MSG: "no msg."
+		let watcher111
+		watcher111 = {
+			rules: [{
+				domain: "RELIABILI\\w+",
+				name: "STA\\w+",
+				tag: "STABILI\\w+",
+				ruleType: hiSysEvent.RuleType.REGULAR
+			}],
+			onEvent: (info) => {
+				console.info(`testHiSysEventApi11: OnEvent...`)
+				expect(Object.keys(info).length > 0).assertTrue()
+				console.info(`testHiSysEventApi11: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
+				if (info.params instanceof Object) {
+					for (const key in info.params) {
+						console.info(`testHiSysEventApi11: ${key}: ${info.params[key]}`)
+					}
+				}
+			},
+			onServiceDied: () => {
+				console.info(`testHiSysEventApi11 Onservice died`);
 			}
-		},(err, value) => {
-			console.log('testHiSysEventApi11 into json-callback');
-			if (err) {
-				console.error(`testHiSysEventApi11 json-callback-error code=${err.code}`);
-				expect(err.code == 0).assertFail();
-				done();
-			} else {
-				console.log(`testHiSysEventApi11 json-callback-success value=${value}`);
-				expect(value == 0).assertTrue();
-				done();
-			}
-		});
-		console.info('testHiSysEventApi11 end')
+		}
+		try {
+			hiSysEvent.addWatcher(watcher111)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi11 json-callback-error code=${err.code}`);
+					done()
+				} else {
+					console.log(`testHiSysEventApi11 json-callback-success value=${value}`);
+				}
+			});
+			console.info('testHiSysEventApi11 end')
+		} catch (err) {
+			console.error(`testHiSysEventApi11 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi11 end')
+			done()
+		}
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher111)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1200
 	 * @tc.name testHiSysEventApi12
-	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName, rule=PREFIX)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName+tag, rule=WHOLE_WORD
 	 */
 	it('testHiSysEventApi12', 3, async function (done) {
 		console.info('testHiSysEventApi12 start')
-		let watcher = {
+		let watcher112
+		watcher112 = {
 			rules: [{
 				domain: "RELIABILITY",
 				name: "STACK",
 				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.PREFIX
+				ruleType: hiSysEvent.RuleType.WHOLE_WORD
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi12: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi12: domain is : ${info.domain}, name is ${info.name},
-				                                               eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi12: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi12: ${key}: ${info.params[key]}`)
@@ -351,37 +517,51 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		try {
-			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			hiSysEvent.addWatcher(watcher112)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi12 json-callback-error code=${err.code}`);
+					done();
+				} else {
+					console.log(`testHiSysEventApi12 json-callback-success value=${value}`);
+				}
+			});
 			console.info('testHiSysEventApi12 end')
-			done();
 		} catch (err) {
 			console.error(`testHiSysEventApi12 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(err.code == 201).assertTrue()
+			expect(false).assertTrue()
 			console.info('testHiSysEventApi12 end')
 			done()
 		}
-		hiSysEvent.removeWatcher(watcher)
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher112)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1300
 	 * @tc.name testHiSysEventApi13
-	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName, rule=REGULAR)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventNameg, rule=PREFIX
 	 */
 	it('testHiSysEventApi13', 3, async function (done) {
 		console.info('testHiSysEventApi13 start')
-		let watcher = {
+		let watcher113
+		watcher113 = {
 			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				ruleType: hiSysEvent.RuleType.REGULAR
+				domain: "RELIABILI",
+				name: "STA",
+				ruleType: hiSysEvent.RuleType.PREFIX
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi13: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi13: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi13: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi13: ${key}: ${info.params[key]}`)
@@ -393,37 +573,51 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		try {
-			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			hiSysEvent.addWatcher(watcher113)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi13 json-callback-error code=${err.code}`);
+					done();
+				} else {
+					console.log(`testHiSysEventApi13 json-callback-success value=${value}`);
+				}
+			});
 			console.info('testHiSysEventApi13 end')
-			done();
 		} catch (err) {
 			console.error(`testHiSysEventApi13 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(err.code == 201).assertTrue()
+			expect(false).assertTrue()
 			console.info('testHiSysEventApi13 end')
 			done()
 		}
-		hiSysEvent.removeWatcher(watcher)
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher113)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1400
 	 * @tc.name testHiSysEventApi14
-	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName, rule=WHOLE_WORD)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName, rule=REGULAR
 	 */
 	it('testHiSysEventApi14', 3, async function (done) {
 		console.info('testHiSysEventApi14 start')
-		let watcher = {
+		let watcher114
+		watcher114 = {
 			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				ruleType: hiSysEvent.RuleType.WHOLE_WORD
+				domain: "RELIABILI\\w+",
+				name: "STA\\w+",
+				ruleType: hiSysEvent.RuleType.REGULAR
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi14: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi14: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi14: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi14: ${key}: ${info.params[key]}`)
@@ -435,38 +629,51 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		try {
-			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			hiSysEvent.addWatcher(watcher114)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi14 json-callback-error code=${err.code}`);
+					done()
+				} else {
+					console.log(`testHiSysEventApi14 json-callback-success value=${value}`);
+				}
+			});
 			console.info('testHiSysEventApi14 end')
-			done();
 		} catch (err) {
 			console.error(`testHiSysEventApi14 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(err.code == 201)
+			expect(false).assertTrue()
 			console.info('testHiSysEventApi14 end')
 			done()
 		}
-		hiSysEvent.removeWatcher(watcher)
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher114)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1500
 	 * @tc.name testHiSysEventApi15
-	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName+tag, rule=PREFIX)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则domain+eventName, rule=WHOLE_WORD
 	 */
 	it('testHiSysEventApi15', 3, async function (done) {
 		console.info('testHiSysEventApi15 start')
-		let watcher = {
+		let watcher115
+		watcher115 = {
 			rules: [{
 				domain: "RELIABILITY",
 				name: "STACK",
-				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.PREFIX
+				ruleType: hiSysEvent.RuleType.WHOLE_WORD
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi15: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi15: domain is : ${info.domain}, name is ${info.name},
-				                                   eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi15: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi15: ${key}: ${info.params[key]}`)
@@ -478,38 +685,52 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		try {
-			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			hiSysEvent.addWatcher(watcher115)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi15 json-callback-error code=${err.code}`);
+					done();
+				} else {
+					console.log(`testHiSysEventApi15 json-callback-success value=${value}`);
+				}
+			});
 			console.info('testHiSysEventApi15 end')
-			done();
 		} catch (err) {
 			console.error(`testHiSysEventApi15 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(err.code == 201).assertTrue()
+			expect(false).assertTrue()
 			console.info('testHiSysEventApi15 end')
 			done()
 		}
-		hiSysEvent.removeWatcher(watcher)
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher115)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1600
 	 * @tc.name testHiSysEventApi16
-	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName+tag, rule=REGULAR)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则tag, rule=PREFIX
 	 */
 	it('testHiSysEventApi16', 3, async function (done) {
 		console.info('testHiSysEventApi16 start')
-		let watcher = {
+		let watcher116
+		watcher116 = {
 			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.REGULAR
+				domain: "",
+				name: "",
+				tag: "STABILI",
+				ruleType: hiSysEvent.RuleType.PREFIX
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi16: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi16: domain is : ${info.domain},
-				              name is ${info.name}, eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi16: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi16: ${key}: ${info.params[key]}`)
@@ -521,38 +742,52 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		try {
-			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			hiSysEvent.addWatcher(watcher116)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi16 json-callback-error code=${err.code}`);
+					done();
+				} else {
+					console.log(`testHiSysEventApi16 json-callback-success value=${value}`);
+				}
+			});
 			console.info('testHiSysEventApi16 end')
-			done();
 		} catch (err) {
 			console.error(`testHiSysEventApi16 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(err.code == 201).assertTrue()
+			expect(false).assertTrue()
 			console.info('testHiSysEventApi16 end')
 			done()
 		}
-		hiSysEvent.removeWatcher(watcher)
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher116)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1700
 	 * @tc.name testHiSysEventApi17
-	 * @tc.desc HiSysEvent订阅接口测试-订阅成功回调函数被调用(domain+eventName+tag, rule=WHOLE_WORD)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则tag, rule=REGULAR
 	 */
 	it('testHiSysEventApi17', 3, async function (done) {
 		console.info('testHiSysEventApi17 start')
-		let watcher = {
+		let watcher117
+		watcher117 = {
 			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.WHOLE_WORD
+				domain: "",
+				name: "",
+				tag: "STABILI\\w+",
+				ruleType: hiSysEvent.RuleType.REGULAR
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi17: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi17: domain is : ${info.domain}, name is ${info.name},
-				                                   eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi17: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi17: ${key}: ${info.params[key]}`)
@@ -564,37 +799,52 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		try {
-			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			hiSysEvent.addWatcher(watcher117)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi17 json-callback-error code=${err.code}`);
+					done()
+				} else {
+					console.log(`testHiSysEventApi17 json-callback-success value=${value}`);
+				}
+			});
 			console.info('testHiSysEventApi17 end')
-			done();
 		} catch (err) {
 			console.error(`testHiSysEventApi17 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(err.code == 201).assertTrue()
+			expect(false).assertTrue()
 			console.info('testHiSysEventApi17 end')
 			done()
 		}
-		hiSysEvent.removeWatcher(watcher)
+		setTimeout(() => {
+			hiSysEvent.removeWatcher(watcher117)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1800
 	 * @tc.name testHiSysEventApi18
-	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName, rule=PREFIX)
+	 * @tc.desc 验证可成功调用addwatcher接口，订阅规则tag, rule=WHOLE_WORD
 	 */
 	it('testHiSysEventApi18', 3, async function (done) {
 		console.info('testHiSysEventApi18 start')
-		let watcher = {
+		let watcher118
+		watcher118 = {
 			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				ruleType: hiSysEvent.RuleType.PREFIX
+				domain: "",
+				name: "",
+				tag: "STABILITY",
+				ruleType: hiSysEvent.RuleType.WHOLE_WORD
 			}],
 			onEvent: (info) => {
 				console.info(`testHiSysEventApi18: OnEvent...`)
 				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi18: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
+				console.info(`testHiSysEventApi18: domain is ${info.domain}, name is ${info.name},
+            		eventType is ${info.eventType}`)
 				if (info.params instanceof Object) {
 					for (const key in info.params) {
 						console.info(`testHiSysEventApi18: ${key}: ${info.params[key]}`)
@@ -605,243 +855,181 @@ describe('hiSysEventJsTest', function () {
 				console.info(`testHiSysEventApi18 Onservice died`);
 			}
 		}
-		hiSysEvent.addWatcher(watcher)
+		try {
+			hiSysEvent.addWatcher(watcher118)
+			hiSysEvent.write({
+				domain: "RELIABILITY",
+				name: "STACK",
+				eventType: hiSysEvent.EventType.FAULT
+			},(err, value) => {
+				if (err) {
+					console.error(`testHiSysEventApi18 json-callback-error code=${err.code}`);
+					done();
+				} else {
+					console.log(`testHiSysEventApi18 json-callback-success value=${value}`);
+				}
+			});
+			console.info('testHiSysEventApi18 end')
+		} catch (err) {
+			console.error(`testHiSysEventApi18 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi18 end')
+			done()
+		}
 		setTimeout(() => {
-			try {
-				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
-				console.info('testHiSysEventApi18 end')
-				done();
-			} catch (err) {
-				console.error(`testHiSysEventApi18 > error code: ${err.code}, error msg: ${err.message}`)
-				expect(err.code == 201).assertTrue()
-				console.info('testHiSysEventApi18 end')
-				done()
-			}
-        }, 1000)
+			hiSysEvent.removeWatcher(watcher118)
+			done()
+		}, 1000)
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_1900
 	 * @tc.name testHiSysEventApi19
-	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName, rule=REGULAR)
+	 * @tc.desc 验证可添加订阅者后调用removewatcher接口删除订阅者
 	 */
 	it('testHiSysEventApi19', 3, async function (done) {
 		console.info('testHiSysEventApi19 start')
-		let watcher = {
+		let watcher119 = {
 			rules: [{
 				domain: "RELIABILITY",
 				name: "STACK",
-				ruleType: hiSysEvent.RuleType.REGULAR
+				tag: "STABILITY",
+				ruleType: hiSysEvent.RuleType.WHOLE_WORD
 			}],
 			onEvent: (info) => {
-				console.info(`testHiSysEventApi19: OnEvent...`)
-				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi19: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
-				if (info.params instanceof Object) {
-					for (const key in info.params) {
-						console.info(`testHiSysEventApi19: ${key}: ${info.params[key]}`)
-					}
-				}
 			},
 			onServiceDied: () => {
-				console.info(`testHiSysEventApi19 Onservice died`);
 			}
 		}
-		hiSysEvent.addWatcher(watcher)
-		setTimeout(() => {
-			try {
-				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
-				console.info('testHiSysEventApi19 end')
-				done();
-			} catch (err) {
-				console.error(`testHiSysEventApi19 > error code: ${err.code}, error msg: ${err.message}`)
-				expect(err.code == 201).assertTrue()
-				console.info('testHiSysEventApi19 end')
-				done()
-			}
-        }, 1000)
+		try {
+			hiSysEvent.addWatcher(watcher119)
+			hiSysEvent.removeWatcher(watcher119)
+			expect(true).assertTrue()
+			console.info('testHiSysEventApi19 end')
+			done();
+		} catch (err) {
+			console.error(`testHiSysEventApi19 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi19 error')
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2000
 	 * @tc.name testHiSysEventApi20
-	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName, rule=WHOLE_WORD)
+	 * @tc.desc 验证调用addwatcher接口，可添加20个规则
 	 */
 	it('testHiSysEventApi20', 3, async function (done) {
-		console.info('testHiSysEventApi14 start')
-		let watcher = {
-			rules: [{
-				domain: "RELIABILITY",
+		console.info('testHiSysEventApi20 start')
+		let msgArray = []
+		for (let i = 0; i < 20; i++) {
+			msgArray[i] = {
+				domain: "RELIABILITY" + i,
 				name: "STACK",
-				ruleType: hiSysEvent.RuleType.WHOLE_WORD
-			}],
-			onEvent: (info) => {
-				console.info(`testHiSysEventApi20: OnEvent...`)
-				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi20: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
-				if (info.params instanceof Object) {
-					for (const key in info.params) {
-						console.info(`testHiSysEventApi20: ${key}: ${info.params[key]}`)
-					}
-				}
-			},
-			onServiceDied: () => {
-				console.info(`testHiSysEventApi20 Onservice died`);
+				tag: "STABILITY",
+				ruleType: hiSysEvent.RuleType.WHOLE_WORD,
 			}
 		}
-		hiSysEvent.addWatcher(watcher)
-		setTimeout(() => {
-			try {
-				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
-				console.info('testHiSysEventApi20 end')
-				done();
-			} catch (err) {
-				console.error(`testHiSysEventApi20 > error code: ${err.code}, error msg: ${err.message}`)
-				expect(err.code == 201).assertTrue()
-				console.info('testHiSysEventApi20 end')
-				done()
+		let watcher = {
+			rules: msgArray,
+			onEvent: (info) => {
+			},
+			onServiceDied: () => {
 			}
-        }, 1000)
+		}
+		try {
+			hiSysEvent.addWatcher(watcher)
+		}catch (err) {
+			console.error(`testHiSysEventApi20 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi20 end')
+			done()
+		}
+		hiSysEvent.removeWatcher(watcher)
+		done()
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2100
 	 * @tc.name testHiSysEventApi21
-	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName+tag, rule=PREFIX)
+	 * @tc.desc 验证调用addwatcher接口，可添加20个订阅者
 	 */
 	it('testHiSysEventApi21', 3, async function (done) {
 		console.info('testHiSysEventApi21 start')
-		let watcher = {
-			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.PREFIX
-			}],
-			onEvent: (info) => {
-				console.info(`testHiSysEventApi21: OnEvent...`)
-				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi21: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
-				if (info.params instanceof Object) {
-					for (const key in info.params) {
-						console.info(`testHiSysEventApi21: ${key}: ${info.params[key]}`)
+		let maxNumber = 20
+		var watcher = []
+		try {
+			for (var i = 0; i < maxNumber; i++) {
+				watcher[i] = {
+					rules: [{
+						domain: "RELIABILITY" + i,
+						name: "STACK",
+						ruleType: hiSysEvent.RuleType.WHOLE_WORD,
+					}],
+					onEvent: (info) => {
+					},
+					onServiceDied: () => {
 					}
 				}
-			},
-			onServiceDied: () => {
-				console.info(`testHiSysEventApi21 Onservice died`);
+				hiSysEvent.addWatcher(watcher[i])
 			}
+			expect(true).assertTrue()
+		}catch (err) {
+			console.error(`testHiSysEventApi21 > addWatcher error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			done()
 		}
-		hiSysEvent.addWatcher(watcher)
-		setTimeout(() => {
-			try {
-				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
-				console.info('testHiSysEventApi21 end')
-				done();
-			} catch (err) {
-				console.error(`testHiSysEventApi21 > error code: ${err.code}, error msg: ${err.message}`)
-				expect(err.code == 201).assertTrue()
-				console.info('testHiSysEventApi21 end')
-				done()
+		try {
+			for (var j = 0; j < maxNumber; j++) {
+				hiSysEvent.removeWatcher(watcher[j])
 			}
-        }, 1000)
+			console.info('testHiSysEventApi21 remove end')
+			done()
+		}catch (err) {
+			console.error(`testHiSysEventApi21 > remove error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			done()
+		}
 	})
 
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2200
 	 * @tc.name testHiSysEventApi22
-	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName+tag, rule=REGULAR)
+	 * @tc.desc 验证调用query接口，可添加10条查询规则
 	 */
 	it('testHiSysEventApi22', 3, async function (done) {
 		console.info('testHiSysEventApi22 start')
-		let watcher = {
-			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.REGULAR
-			}],
-			onEvent: (info) => {
-				console.info(`testHiSysEventApi22: OnEvent...`)
-				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi22: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
-				if (info.params instanceof Object) {
-					for (const key in info.params) {
-						console.info(`testHiSysEventApi22: ${key}: ${info.params[key]}`)
-					}
+		try {
+			let msgArray = []
+			for (let i = 0; i < 10; i++) {
+				msgArray[i] = {
+					domain: "RELIABILITY",
+					names: ["SYS_FREEZE"],
 				}
-			},
-			onServiceDied: () => {
-				console.info(`testHiSysEventApi22 Onservice died`);
 			}
-		}
-		hiSysEvent.addWatcher(watcher)
-		setTimeout(() => {
-			try {
-				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
-				console.info('testHiSysEventApi22 end')
-				done();
-			} catch (err) {
-				console.error(`testHiSysEventApi22 > error code: ${err.code}, error msg: ${err.message}`)
-				expect(err.code == 201).assertTrue()
-				console.info('testHiSysEventApi22 end')
-				done()
-			}
-        }, 1000)
-	})
-
-	/**
-	 * @tc.number DFX_DFT_HiSysEvent_JS_2300
-	 * @tc.name testHiSysEventApi23
-	 * @tc.desc HiSysEvent删除订阅接口测试-删除订阅成功回调函数被调用(domain+eventName+tag, rule=WHOLE_WORD)
-	 */
-	it('testHiSysEventApi23', 3, async function (done) {
-		console.info('testHiSysEventApi23 start')
-		let watcher = {
-			rules: [{
-				domain: "RELIABILITY",
-				name: "STACK",
-				tag: "STABILITY",
-				ruleType: hiSysEvent.RuleType.WHOLE_WORD
-			}],
-			onEvent: (info) => {
-				console.info(`testHiSysEventApi23: OnEvent...`)
-				expect(Object.keys(info).length > 0).assertTrue()
-				console.info(`testHiSysEventApi23: domain is : ${info.domain}, name is ${info.name},
-				                                                               eventType is ${info.eventType}`)
-				if (info.params instanceof Object) {
-					for (const key in info.params) {
-						console.info(`testHiSysEventApi23: ${key}: ${info.params[key]}`)
-					}
+			hiSysEvent.query({
+				beginTime: -1,
+				endTime: -1,
+				maxEvents: 1,
+			}, msgArray, {
+				onQuery: function (infos) {
+					console.info(`testHiSysEventApi22: onQuery...`)
+				},
+				onComplete: function(reason, total) {
+					console.info(`testHiSysEventApi22: onComplete...`)
+					console.info(`testHiSysEventApi22: reason is ${reason}, total is ${total}`)
+					expect(reason == 0).assertTrue()
+					console.info(`testHiSysEventApi22 end`)
 				}
-			},
-			onServiceDied: () => {
-				console.info(`testHiSysEventApi23 Onservice died`);
-			}
+			})
+			done()
+		} catch (err) {
+			console.error(`testHiSysEventApi22 delay > error code: ${err.code}, error msg: ${err.message}`)
+			expect(false).assertTrue()
+			console.info('testHiSysEventApi22 error')
+			done()
 		}
-		hiSysEvent.addWatcher(watcher)
-		setTimeout(() => {
-			try {
-				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
-				console.info('testHiSysEventApi23 end')
-				done();
-			} catch (err) {
-				console.error(`testHiSysEventApi23 > error code: ${err.code}, error msg: ${err.message}`)
-				expect(err.code == 201).assertTrue()
-				console.info('testHiSysEventApi23 end')
-				done()
-			}
-        }, 1000)
 	})
 
 	/**
@@ -857,18 +1045,11 @@ describe('hiSysEventJsTest', function () {
 				name: "PERMISSION_EXCEPTION",
 				eventType: hiSysEvent.EventType.SECURITY,
 				params: {
-					PID: 487,
-					UID: 103,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "syseventservice",
-					MSG: "no msg."
+					PID: 487
 				}
 			},(err, value) => {
-				console.log('testHiSysEventApi24 into json-callback');
 				if (err) {
-					console.error('in testHiSysEventApi24 test callback: err.code = ' + err.code)
 				} else {
-					console.info('in testHiSysEventApi24 test callback: result = ' + value)
 				}
 			});
 			setTimeout(() => {
@@ -900,12 +1081,14 @@ describe('hiSysEventJsTest', function () {
 					onComplete: function(reason, total) {
 						console.info(`testHiSysEventApi24: onComplete...`)
 						console.info(`testHiSysEventApi24: reason is ${reason}, total is ${total}`)
+						expect(reason == 0).assertTrue()
 						done()
 						console.info(`testHiSysEventApi24 end`)
 					}
 				})
-			}, 1000);
+			}, 2000);
 		} catch (error) {
+			expect(false).assertTrue()
 			console.error(`error code: ${error.code}, error msg: ${error.message}`);
 		}
 	})
@@ -923,11 +1106,8 @@ describe('hiSysEventJsTest', function () {
 				name: "SYS_USAGE",
 				eventType: hiSysEvent.EventType.STATISTIC,
 			},(err, value) => {
-				console.log('testHiSysEventApi25 into json-callback');
 				if (err) {
-					console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
 				} else {
-					console.info('in testHiSysEventApi25 test callback: result = ' + value)
 				}
 			});
 			console.info('add second..')
@@ -937,11 +1117,8 @@ describe('hiSysEventJsTest', function () {
 					name: "PLUGIN_STATS",
 					eventType: hiSysEvent.EventType.STATISTIC,
 				},(err, value) => {
-					console.log('testHiSysEventApi25 into json-callback');
 					if (err) {
-						console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
 					} else {
-						console.info('in testHiSysEventApi25 test callback: result = ' + value)
 					}
 				})
 			},1000)
@@ -974,12 +1151,14 @@ describe('hiSysEventJsTest', function () {
 					onComplete: function(reason, total) {
 						console.info(`testHiSysEventApi25: onComplete...`)
 						console.info(`testHiSysEventApi25: reason is ${reason}, total is ${total}`)
+						expect(reason == 0).assertTrue()
 						done()
 						console.info(`testHiSysEventApi25 end`)
 					}
 				})
 			}, 2000);
 		} catch (error) {
+			expect(false).assertTrue()
 			console.error(`error code: ${error.code}, error msg: ${error.message}`);
 		}
 	})
