@@ -13,23 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsAccessibleAbilityListTest") {
-  hap_profile = "./src/main/config.json"
-  deps = [
-    ":hjs_demo_js_assets",
-    ":hjs_demo_resources",
-  ]
+ohos_js_app_suite("ActsAccessibleAbilityListTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAccessibleAbilityListTest"
   part_name = "accessibility"
   subsystem_name = "barrierfree"
-}
-ohos_js_assets("hjs_demo_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
-}
-ohos_resources("hjs_demo_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
 }

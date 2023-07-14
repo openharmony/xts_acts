@@ -1561,7 +1561,7 @@ HWTEST(MSLiteTest, OHOS_Input_0003, Function | MediumTest | Level1) {
     printf("==========ReadFile==========\n");
     size_t size1;
     size_t *ptr_size1 = &size1;
-    const char *imagePath = "/data/test/aiy_vision_classifier_plants_V1_3_0.input";
+    const char *imagePath = "/data/test/aiy_vision_classifier_plants_V1_3.input";
     char *imageBuf = ReadFile(imagePath, ptr_size1);
     ASSERT_NE(imageBuf, nullptr);
     printf("==========Init Context==========\n");

@@ -977,20 +977,17 @@ describe('XmlTest', function () {
      * @tc.desc: To convert XML text to JavaScript object.
      */
     it('testConvert028', 0, function () {
-        let  xml = '<![CDATA[ \t <foo></bar> \t ]]>';
+        let xml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[ \t <foo>\r\n</bar> \t ]]>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
                        instructionKey : "_instruction", attributesKey : "_attributes",
                        textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
                        commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
                        nameKey : "_name", elementsKey : "_elements"}
-        let result = JSON.stringify(conv.convert(xml, options));
-        let str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
-        ' \\t'+
-        ' <foo></bar> '+
-        '\\t '+
-        '"}]}'
-        expect(result).assertEqual(str1);
+        let result = conv.convertToJSObject(xml, options);
+        let cdata = result._elements[0]._cdata;
+        let str1 = ' \\t <foo>\\r\\n</bar> \\t ';
+        expect(cdata).assertEqual(str1);
     })
 
     /**
@@ -998,26 +995,17 @@ describe('XmlTest', function () {
      * @tc.desc: To convert XML text to JavaScript object.
      */
     it('testConvert029', 0, function () {
-        let  xml = '<![CDATA[ \t data]]><![CDATA[< > " and & \t ]]>';
+        let xml = '<?xml version="1.0" encoding="utf-8"?><![CDATA[ \t data\n]]><![CDATA[< > " and & \t ]]>';
         let conv = new convertxml.ConvertXML();
         let options = {trim : false, declarationKey:"_declaration",
                        instructionKey : "_instruction", attributesKey : "_attributes",
                        textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
                        commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
                        nameKey : "_name", elementsKey : "_elements"}
-        let result = JSON.stringify(conv.convert(xml, options));
-        console.log("LHC..." + result);
-        let str1 = '{"_elements":[{"_type":"cdata","_cdata":"'+
-        ' \\t'+
-        ' data"},{"_type":"cdata","_cdata":"< '+
-        '> '+
-        '\\"'+
-        ' and'+
-        ' & '+
-        '\\t '+
-        '"}]}';
-        console.log("LHC..." + str1);
-        expect(result).assertEqual(str1);
+        let result = conv.convertToJSObject(xml, options);
+        let cdata = result._elements[0]._cdata;
+        let str = ' \\t data\\n< > \" and & \\t ';
+        expect(cdata).assertEqual(str);
     })
 
     /**

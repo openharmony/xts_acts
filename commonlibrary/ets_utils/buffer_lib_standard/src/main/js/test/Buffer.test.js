@@ -2053,13 +2053,11 @@ describe('BufferTest', function () {
    *              let blob = blob2.slice(0, 1);
    */
   it("testBlobSlice0300", 0, async function () {
-    let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
+    let blob2 = new buffer.Blob(["c", "b", "a"], { type: "new type", endings: "transparent" });
     let blob = blob2.slice(0, 1);
     blob.arrayBuffer().then((value) => {
       let arr = new Uint8Array(value)
-      expect(arr[0]).assertEqual(97);
-      expect(arr[1]).assertEqual(98);
-      expect(arr[2]).assertEqual(99);
+      expect(arr[0]).assertEqual(99);
     });
   });
 

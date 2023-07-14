@@ -28,7 +28,7 @@ config("deqp_platform_ohos_config") {
 ohos_static_library("libdeqpgles3func0035") {
   sources = common_src
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources += [ "../Deqpgles3BaseFunc.cpp" ]
 
   include_dirs = common_include
@@ -42,7 +42,7 @@ ohos_static_library("libdeqpgles3func0035") {
 
 ohos_moduletest_suite("ActsDeqpgles3TestSuite0035") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles30035TestSuite.cpp",
     "../functional/Deqpgles3single_basic_array_packedTestCase.cpp",

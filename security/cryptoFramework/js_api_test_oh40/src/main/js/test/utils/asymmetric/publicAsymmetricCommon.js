@@ -80,6 +80,17 @@ function createAsyKeyAgreement(ECDHAlgoName) {
   }
 }
 
+function createSymKeyGenerator(symAlgoName) {
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator(symAlgoName);
+    console.log("symKeyGenerator algName: " + symKeyGenerator.algName);
+    return symKeyGenerator;
+  } catch (err) {
+    console.error("symKeyGenerator error:" + err);
+    return err;
+  }
+}
+
 export {
   createAsyKeyGenerator,
   createAsyKeyGeneratorBySpec,
@@ -87,4 +98,5 @@ export {
   createAsySign,
   createAsyVerify,
   createAsyKeyAgreement,
+  createSymKeyGenerator,
 };

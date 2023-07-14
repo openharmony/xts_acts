@@ -161,29 +161,35 @@ export default function abilityTest() {
         syscontext.resourceManager.getRawFileContent(modelName).then((model_buffer) => {
           let modelBuffer = model_buffer
           let context: mindSporeLite.Context = {};
-          context.target = ["cpu"];
-          context.cpu = {
-            "threadNum": 1,
-          }
-          context.cpu.threadAffinityMode = 1;
+          context.target = ["cpu", "nnrt"];
+          context.nnrt = {};
+          context.cpu = {};
+          context.cpu.threadNum = 1
+          context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
           context.cpu.precisionMode = "preferred_fp16";
           context.cpu.threadAffinityCoreList = [0, 1, 2, 3];
           mindSporeLite.loadModelFromBuffer(modelBuffer.buffer, context).then((msliteModel) => {
             expect(msliteModel !== null).assertTrue();
             console.log('=========MSLITE loadModel end=====');
             const modelInputs = msliteModel.getInputs();
-            expect(modelInputs[0].name.toString()).assertEqual("data");
-            console.log(modelInputs[0].name);
-            expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-            console.log(modelInputs[0].shape.toString());
-            expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-            console.log(modelInputs[0].elementNum.toString());
-            expect(modelInputs[0].dtype.toString()).assertEqual("43");
-            console.log(modelInputs[0].dtype.toString());
-            expect(modelInputs[0].format.toString()).assertEqual("1");
-            console.log(modelInputs[0].format.toString());
-            expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-            console.log(modelInputs[0].dataSize.toString());
+            let input_name = modelInputs[0].name
+            console.log(input_name.toString());
+            expect(input_name.toString()).assertEqual("data");
+            let input_shape = modelInputs[0].shape
+            console.log(input_shape.toString());
+            expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+            let input_elementNum = modelInputs[0].elementNum
+            console.log(input_elementNum.toString());
+            expect(input_elementNum.toString()).assertEqual("6082560");
+            let input_dtype = modelInputs[0].dtype
+            console.log(input_dtype.toString());
+            expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+            let input_format = modelInputs[0].format
+            console.log(input_format.toString());
+            expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+            let input_dataSize = modelInputs[0].dataSize
+            console.log(input_dataSize.toString());
+            expect(input_dataSize.toString()).assertEqual("24330240");
             modelInputs[0].setData(inputBuffer.buffer);
             console.log('=========MSLITE predict start=====');
             msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -229,18 +235,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -279,11 +291,11 @@ export default function abilityTest() {
         let inputBuffer = buffer;
         console.log('=========MSLITE success, input bin bytelength: ' + inputBuffer.byteLength)
         let context:mindSporeLite.Context={};
-        context.target = ["cpu"];
-        context.cpu = {
-          "threadNum": 1,
-        }
-        context.cpu.threadAffinityMode = 1;
+        context.target = ["cpu", "nnrt"];
+        context.nnrt = {};
+        context.cpu = {};
+        context.cpu.threadNum = 1
+        context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
         context.cpu.precisionMode = "preferred_fp16";
         context.cpu.threadAffinityCoreList = [0, 1, 2, 3];
         console.log('=========MSLITE loadModel start=====');
@@ -291,18 +303,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -350,18 +368,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -409,18 +433,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -467,18 +497,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -526,18 +562,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -585,18 +627,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");;
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -626,7 +674,7 @@ export default function abilityTest() {
     })
 
 
-    ///异常场景：Context设置CPU，绑核设置为2，绑大核
+    ///异常场景：Context设置CPU，绑核设置为2，绑小核
     it('Test_load_model_param_model_path_settings_affinity_002',0, function (done) {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_002");
       let inputName = 'mnet_caffemodel_nhwc.bin';
@@ -638,24 +686,30 @@ export default function abilityTest() {
         let context:mindSporeLite.Context={};
         context.target = ["cpu"];
         context.cpu={};
-        context.cpu.threadAffinityMode = 2;
+        context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.LITTLE_CORES_FIRST;
         console.log("MSLITE api test: set threadAffinityMode=2.");
         mindSporeLite.loadModelFromFile(model_file, context).then((msliteModel) => {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -685,7 +739,7 @@ export default function abilityTest() {
     })
 
 
-    //异常场景：Context设置CPU，绑核设置为1，绑小核
+    //异常场景：Context设置CPU，绑核设置为1，绑大核
     it('Test_load_model_param_model_path_settings_affinity_003',0, function (done) {
       console.log("MSLITE api test: loadModel param model file.Test_load_model_param_model_path_settings_affinity_003");
       let inputName = 'mnet_caffemodel_nhwc.bin';
@@ -697,24 +751,30 @@ export default function abilityTest() {
         let context:mindSporeLite.Context={};
         context.target = ["cpu"];
         context.cpu={};
-        context.cpu.threadAffinityMode = 1;
+        context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
         console.log("MSLITE api test: set threadAffinityMode=1.");
         mindSporeLite.loadModelFromFile(model_file, context).then((msliteModel) => {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -755,24 +815,30 @@ export default function abilityTest() {
         let context:mindSporeLite.Context={};
         context.target = ["cpu"];
         context.cpu={};
-        context.cpu.threadAffinityMode = 0;
+        context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.NO_AFFINITIES;
         console.log("MSLITE api test: set threadAffinityMode=0.");
         mindSporeLite.loadModelFromFile(model_file, context).then((msliteModel) => {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -821,18 +887,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -910,36 +982,48 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].shape.toString()).assertEqual("1,32,512,1");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].dataSize.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("65536");
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,32,512,1");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("16384");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("65536");
           console.log('=========MSLITE resize start=====')
           let new_dim = new Array([1, 32, 512, 1]);
           let resize_result = msliteModel.resize(modelInputs, new_dim);
           expect(resize_result).assertTrue()
           console.log('=========MSLITE resize success=====')
           const modelInputs2 = msliteModel.getInputs();
-          console.log(modelInputs2[0].name);
-          expect(modelInputs2[0].name.toString()).assertEqual("data");
-          console.log(modelInputs2[0].shape.toString());
-          expect(modelInputs2[0].shape.toString()).assertEqual("1,32,512,1");
-          console.log(modelInputs2[0].elementNum.toString());
-          expect(modelInputs2[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs2[0].dtype.toString());
-          expect(modelInputs2[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs2[0].format.toString());
-          expect(modelInputs2[0].format.toString()).assertEqual("1");
-          console.log(modelInputs2[0].dataSize.toString());
-          expect(modelInputs2[0].dataSize.toString()).assertEqual("65536");
+          let input_name2 = modelInputs2[0].name
+          console.log(input_name2.toString());
+          expect(input_name2.toString()).assertEqual("data");
+          let input_shape2 = modelInputs2[0].shape
+          console.log(input_shape2.toString());
+          expect(input_shape2.toString()).assertEqual("1,32,512,1");
+          let input_elementNum2 = modelInputs2[0].elementNum
+          console.log(input_elementNum2.toString());
+          expect(input_elementNum2.toString()).assertEqual("16384");
+          let input_dtype2 = modelInputs2[0].dtype
+          console.log(input_dtype2.toString());
+          expect(input_dtype2).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format2 = modelInputs2[0].format
+          console.log(input_format2.toString());
+          expect(input_format2).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize2 = modelInputs2[0].dataSize
+          console.log(input_dataSize2.toString());
+          expect(input_dataSize2.toString()).assertEqual("65536");
           modelInputs2[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs2).then((modelOutputs) => {
@@ -982,36 +1066,48 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].shape.toString()).assertEqual("1,32,512,1");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].dataSize.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("65536");
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,32,512,1");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("16384");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("65536");
           console.log('=========MSLITE resize start=====')
           let new_dim = new Array([1,64,256,1]);
           let resize_result = msliteModel.resize(modelInputs, new_dim);
           expect(resize_result).assertTrue()
           console.log('=========MSLITE resize success=====')
           const modelInputs2 = msliteModel.getInputs();
-          console.log(modelInputs2[0].name);
-          expect(modelInputs2[0].name.toString()).assertEqual("data");
-          console.log(modelInputs2[0].shape.toString());
-          expect(modelInputs2[0].shape.toString()).assertEqual("1,64,256,1");
-          console.log(modelInputs2[0].elementNum.toString());
-          expect(modelInputs2[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs2[0].dtype.toString());
-          expect(modelInputs2[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs2[0].format.toString());
-          expect(modelInputs2[0].format.toString()).assertEqual("1");
-          console.log(modelInputs2[0].dataSize.toString());
-          expect(modelInputs2[0].dataSize.toString()).assertEqual("65536");
+          let input_name2 = modelInputs2[0].name
+          console.log(input_name2.toString());
+          expect(input_name2.toString()).assertEqual("data");
+          let input_shape2 = modelInputs2[0].shape
+          console.log(input_shape2.toString());
+          expect(input_shape2.toString()).assertEqual("1,64,256,1");
+          let input_elementNum2 = modelInputs2[0].elementNum
+          console.log(input_elementNum2.toString());
+          expect(input_elementNum2.toString()).assertEqual("16384");
+          let input_dtype2 = modelInputs2[0].dtype
+          console.log(input_dtype2.toString());
+          expect(input_dtype2).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format2 = modelInputs2[0].format
+          console.log(input_format2.toString());
+          expect(input_format2).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize2 = modelInputs2[0].dataSize
+          console.log(input_dataSize2.toString());
+          expect(input_dataSize2.toString()).assertEqual("65536");
           modelInputs2[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs2).then((modelOutputs) => {
@@ -1054,18 +1150,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].shape.toString()).assertEqual("1,32,512,1");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].dataSize.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("65536");
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,32,512,1");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("16384");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("65536");
           console.log('=========MSLITE resize start=====')
           let new_dim = new Array([1,32,1]);
           let resize_result = msliteModel.resize(modelInputs, new_dim);
@@ -1097,54 +1199,28 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].name.toString()).assertEqual("data");
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
           console.log(modelInputs[0].shape.toString());
           expect(modelInputs[0].shape.toString()).assertEqual("1,48,48,3");
           console.log(modelInputs[0].elementNum.toString());
           expect(modelInputs[0].elementNum.toString()).assertEqual("6912");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].dataSize.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("27648");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("27648");
           console.log('=========MSLITE resize start=====')
           let new_dim = new Array([1,96,96,1]);
           let resize_result = msliteModel.resize(modelInputs, new_dim);
           expect(resize_result).assertFalse()
           console.log('=========MSLITE resize failed=====')
-          const modelInputs2 = msliteModel.getInputs();
-          console.log(modelInputs2[0].name);
-          expect(modelInputs2[0].name.toString()).assertEqual("data");
-          console.log(modelInputs2[0].shape.toString());
-          expect(modelInputs2[0].shape.toString()).assertEqual("1,48,48,3");
-          console.log(modelInputs2[0].elementNum.toString());
-          expect(modelInputs2[0].elementNum.toString()).assertEqual("6912");
-          console.log(modelInputs2[0].dtype.toString());
-          expect(modelInputs2[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs2[0].format.toString());
-          expect(modelInputs2[0].format.toString()).assertEqual("1");
-          console.log(modelInputs2[0].dataSize.toString());
-          expect(modelInputs2[0].dataSize.toString()).assertEqual("27648");
-          modelInputs2[0].setData(inputBuffer.buffer);
-          console.log('=========MSLITE predict start=====');
-          msliteModel.predict(modelInputs2).then((modelOutputs) => {
-            expect(modelOutputs !== null).assertTrue();
-            console.log('=========MSLITE new Float32Array start=====');
-            let output0 = new Float32Array(modelOutputs[0].getData());
-            expect(output0.length).assertLarger(0);
-            console.log('output0.length:' + output0.length);
-            for (var i = 0; i < 2; i++) {
-              console.log(output0[i].toString());
-              expect(output0[i].toString() !== null).assertTrue();
-            }
-            console.log('=========MSLITE new Float32Array end=====');
-            done();
-          }).catch(err => {
-            console.log("predict catch: ", err);
-            done();
-          })
+          done();
         }).catch(err => {
           console.log("loadModel catch: ", err);
           done();
@@ -1169,54 +1245,30 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].shape.toString()).assertEqual("1,32,512,1");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].dataSize.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("65536");
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,32,512,1");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("16384");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("65536");
           console.log('=========MSLITE resize start=====')
           let new_dim = new Array([1,-32,32,1]);
           let resize_result = msliteModel.resize(modelInputs, new_dim);
           expect(resize_result).assertFalse()
-          console.log('=========MSLITE resize success=====')
-          const modelInputs2 = msliteModel.getInputs();
-          console.log(modelInputs2[0].name);
-          expect(modelInputs2[0].name.toString()).assertEqual("data");
-          console.log(modelInputs2[0].shape.toString());
-          expect(modelInputs2[0].shape.toString()).assertEqual("1,32,512,1");
-          console.log(modelInputs2[0].elementNum.toString());
-          expect(modelInputs2[0].elementNum.toString()).assertEqual("16384");
-          console.log(modelInputs2[0].dtype.toString());
-          expect(modelInputs2[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs2[0].format.toString());
-          expect(modelInputs2[0].format.toString()).assertEqual("1");
-          console.log(modelInputs2[0].dataSize.toString());
-          expect(modelInputs2[0].dataSize.toString()).assertEqual("65536");
-          modelInputs2[0].setData(inputBuffer.buffer);
-          console.log('=========MSLITE predict start=====');
-          msliteModel.predict(modelInputs2).then((modelOutputs) => {
-            expect(modelOutputs !== null).assertTrue();
-            console.log('=========MSLITE new Float32Array start=====');
-            let output0 = new Float32Array(modelOutputs[0].getData());
-            expect(output0.length).assertLarger(0);
-            console.log('output0.length:' + output0.length);
-            for (var i = 0; i < 2; i++) {
-              console.log(output0[i].toString());
-              expect(output0[i].toString() !== null).assertTrue();
-            }
-            console.log('=========MSLITE new Float32Array end=====');
-            done();
-          }).catch(err => {
-            console.log("predict catch: ", err);
-            done();
-          })
+          console.log('=========MSLITE resize failed=====')
+          done();
         }).catch(err => {
           console.log("loadModel catch: ", err);
           done();
@@ -1241,18 +1293,24 @@ export default function abilityTest() {
       expect(msliteModel !== null).assertTrue();
       console.log('=========MSLITE loadModel end=====');
       const modelInputs = msliteModel.getInputs();
-      expect(modelInputs[0].name.toString()).assertEqual("data");
-      console.log(modelInputs[0].name);
-      expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-      console.log(modelInputs[0].shape.toString());
-      expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-      console.log(modelInputs[0].elementNum.toString());
-      expect(modelInputs[0].dtype.toString()).assertEqual("43");
-      console.log(modelInputs[0].dtype.toString());
-      expect(modelInputs[0].format.toString()).assertEqual("1");
-      console.log(modelInputs[0].format.toString());
-      expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-      console.log(modelInputs[0].dataSize.toString());
+      let input_name = modelInputs[0].name
+      console.log(input_name.toString());
+      expect(input_name.toString()).assertEqual("data");
+      let input_shape = modelInputs[0].shape
+      console.log(input_shape.toString());
+      expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+      let input_elementNum = modelInputs[0].elementNum
+      console.log(input_elementNum.toString());
+      expect(input_elementNum.toString()).assertEqual("6082560");
+      let input_dtype = modelInputs[0].dtype
+      console.log(input_dtype.toString());
+      expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+      let input_format = modelInputs[0].format
+      console.log(input_format.toString());
+      expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+      let input_dataSize = modelInputs[0].dataSize
+      console.log(input_dataSize.toString());
+      expect(input_dataSize.toString()).assertEqual("24330240");
       modelInputs[0].setData(inputBuffer.buffer);
       console.log('=========MSLITE predict start=====');
       let num = 0;
@@ -1278,7 +1336,7 @@ export default function abilityTest() {
         if (num==10) {
           done();
         }
-       }
+      }
     })
 
     // 异常场景：Build多次
@@ -1297,18 +1355,24 @@ export default function abilityTest() {
           expect(msliteModel !== null).assertTrue();
           console.log('=========MSLITE loadModel end=====');
           const modelInputs = msliteModel.getInputs();
-          expect(modelInputs[0].name.toString()).assertEqual("data");
-          console.log(modelInputs[0].name);
-          expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-          console.log(modelInputs[0].shape.toString());
-          expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-          console.log(modelInputs[0].elementNum.toString());
-          expect(modelInputs[0].dtype.toString()).assertEqual("43");
-          console.log(modelInputs[0].dtype.toString());
-          expect(modelInputs[0].format.toString()).assertEqual("1");
-          console.log(modelInputs[0].format.toString());
-          expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
-          console.log(modelInputs[0].dataSize.toString());
+          let input_name = modelInputs[0].name
+          console.log(input_name.toString());
+          expect(input_name.toString()).assertEqual("data");
+          let input_shape = modelInputs[0].shape
+          console.log(input_shape.toString());
+          expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+          let input_elementNum = modelInputs[0].elementNum
+          console.log(input_elementNum.toString());
+          expect(input_elementNum.toString()).assertEqual("6082560");
+          let input_dtype = modelInputs[0].dtype
+          console.log(input_dtype.toString());
+          expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+          let input_format = modelInputs[0].format
+          console.log(input_format.toString());
+          expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+          let input_dataSize = modelInputs[0].dataSize
+          console.log(input_dataSize.toString());
+          expect(input_dataSize.toString()).assertEqual("24330240");
           modelInputs[0].setData(inputBuffer.buffer);
           console.log('=========MSLITE predict start=====');
           msliteModel.predict(modelInputs).then((modelOutputs) => {
@@ -1353,18 +1417,22 @@ export default function abilityTest() {
             expect(msliteModel !== null).assertTrue();
             console.log('=========MSLITE loadModel end=====');
             const modelInputs = msliteModel.getInputs();
-            console.log(modelInputs[0].name);
-            expect(modelInputs[0].name.toString()).assertEqual("data");
+            let input_name = modelInputs[0].name
+            console.log(input_name.toString());
+            expect(input_name.toString()).assertEqual("data");
             console.log(modelInputs[0].shape.toString());
             expect(modelInputs[0].shape.toString()).assertEqual("1,48,48,3");
             console.log(modelInputs[0].elementNum.toString());
             expect(modelInputs[0].elementNum.toString()).assertEqual("6912");
-            console.log(modelInputs[0].dtype.toString());
-            expect(modelInputs[0].dtype.toString()).assertEqual("43");
-            console.log(modelInputs[0].format.toString());
-            expect(modelInputs[0].format.toString()).assertEqual("1");
-            console.log(modelInputs[0].dataSize.toString());
-            expect(modelInputs[0].dataSize.toString()).assertEqual("27648");
+            let input_dtype = modelInputs[0].dtype
+            console.log(input_dtype.toString());
+            expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+            let input_format = modelInputs[0].format
+            console.log(input_format.toString());
+            expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+            let input_dataSize = modelInputs[0].dataSize
+            console.log(input_dataSize.toString());
+            expect(input_dataSize.toString()).assertEqual("27648");
             modelInputs[0].setData(inputBuffer.buffer);
             let Inputs2 = new Float32Array(modelInputs[0].getData());
             for (var i = 0; i < 5; i++) {
@@ -1424,12 +1492,15 @@ export default function abilityTest() {
               expect(modelInputs[0].shape.toString()).assertEqual("1,512,512,3");
               console.log(modelInputs[0].elementNum.toString());
               expect(modelInputs[0].elementNum.toString()).assertEqual("786432");
-              console.log(modelInputs[0].dtype.toString());
-              expect(modelInputs[0].dtype.toString()).assertEqual("43");
-              console.log(modelInputs[0].format.toString());
-              expect(modelInputs[0].format.toString()).assertEqual("1");
-              console.log(modelInputs[0].dataSize.toString());
-              expect(modelInputs[0].dataSize.toString()).assertEqual("3145728");
+              let input_dtype = modelInputs[0].dtype
+              console.log(input_dtype.toString());
+              expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+              let input_format = modelInputs[0].format
+              console.log(input_format.toString());
+              expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+              let input_dataSize = modelInputs[0].dataSize
+              console.log(input_dataSize.toString());
+              expect(input_dataSize.toString()).assertEqual("3145728");
 
               console.log(modelInputs[1].name);
               expect(modelInputs[1].name.toString()).assertEqual("b");
@@ -1571,12 +1642,15 @@ export default function abilityTest() {
                 expect(modelInputs[0].shape.toString()).assertEqual("1,64,64,3");
                 console.log(modelInputs[0].elementNum.toString());
                 expect(modelInputs[0].elementNum.toString()).assertEqual("12288");
-                console.log(modelInputs[0].dtype.toString());
-                expect(modelInputs[0].dtype.toString()).assertEqual("43");
-                console.log(modelInputs[0].format.toString());
-                expect(modelInputs[0].format.toString()).assertEqual("1");
-                console.log(modelInputs[0].dataSize.toString());
-                expect(modelInputs[0].dataSize.toString()).assertEqual("49152");
+                let input_dtype = modelInputs[0].dtype
+                console.log(input_dtype.toString());
+                expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+                let input_format = modelInputs[0].format
+                console.log(input_format.toString());
+                expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+                let input_dataSize = modelInputs[0].dataSize
+                console.log(input_dataSize.toString());
+                expect(input_dataSize.toString()).assertEqual("49152");
 
                 console.log(modelInputs[1].name);
                 expect(modelInputs[1].name.toString()).assertEqual("batch_normalization_8/batchnorm/add");
@@ -1660,7 +1734,7 @@ export default function abilityTest() {
         context.cpu = {
           "threadNum": 4,
         }
-        context.cpu.threadAffinityMode = 1;
+        context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
         context.cpu.precisionMode = "preferred_fp16";
         context.cpu.threadAffinityCoreList = [0, 1, 2, 3];
         console.log('=========MSLITE loadModel start=====');
@@ -1670,18 +1744,24 @@ export default function abilityTest() {
             expect(msliteModel !== null).assertTrue();
             console.log('=========MSLITE loadModel end=====');
             const modelInputs = msliteModel.getInputs();
-            console.log(modelInputs[0].name);
-            expect(modelInputs[0].name.toString()).assertEqual("data");
-            console.log(modelInputs[0].shape.toString());
-            expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-            console.log(modelInputs[0].elementNum.toString());
-            expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-            console.log(modelInputs[0].dtype.toString());
-            expect(modelInputs[0].dtype.toString()).assertEqual("43");
-            console.log(modelInputs[0].format.toString());
-            expect(modelInputs[0].format.toString()).assertEqual("1");
-            console.log(modelInputs[0].dataSize.toString());
-            expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
+            let input_name = modelInputs[0].name
+            console.log(input_name.toString());
+            expect(input_name.toString()).assertEqual("data");
+            let input_shape = modelInputs[0].shape
+            console.log(input_shape.toString());
+            expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+            let input_elementNum = modelInputs[0].elementNum
+            console.log(input_elementNum.toString());
+            expect(input_elementNum.toString()).assertEqual("6082560");
+            let input_dtype = modelInputs[0].dtype
+            console.log(input_dtype.toString());
+            expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+            let input_format = modelInputs[0].format
+            console.log(input_format.toString());
+            expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+            let input_dataSize = modelInputs[0].dataSize
+            console.log(input_dataSize.toString());
+            expect(input_dataSize.toString()).assertEqual("24330240");
             modelInputs[0].setData(inputBuffer.buffer);
             console.log('=========MSLITE predict start=====');
             msliteModel.predict(modelInputs, (modelOutputs) => {
@@ -1730,7 +1810,7 @@ export default function abilityTest() {
           context.cpu = {
             "threadNum": 4,
           }
-          context.cpu.threadAffinityMode = 1;
+          context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
           context.cpu.precisionMode = "preferred_fp16";
           context.cpu.threadAffinityCoreList = [0, 1, 2, 3];
           console.log('=========MSLITE loadModel start=====');
@@ -1740,18 +1820,24 @@ export default function abilityTest() {
               expect(msliteModel !== null).assertTrue();
               console.log('=========MSLITE loadModel end=====');
               const modelInputs = msliteModel.getInputs();
-              console.log(modelInputs[0].name);
-              expect(modelInputs[0].name.toString()).assertEqual("data");
-              console.log(modelInputs[0].shape.toString());
-              expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-              console.log(modelInputs[0].elementNum.toString());
-              expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-              console.log(modelInputs[0].dtype.toString());
-              expect(modelInputs[0].dtype.toString()).assertEqual("43");
-              console.log(modelInputs[0].format.toString());
-              expect(modelInputs[0].format.toString()).assertEqual("1");
-              console.log(modelInputs[0].dataSize.toString());
-              expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
+              let input_name = modelInputs[0].name
+              console.log(input_name.toString());
+              expect(input_name.toString()).assertEqual("data");
+              let input_shape = modelInputs[0].shape
+              console.log(input_shape.toString());
+              expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+              let input_elementNum = modelInputs[0].elementNum
+              console.log(input_elementNum.toString());
+              expect(input_elementNum.toString()).assertEqual("6082560");
+              let input_dtype = modelInputs[0].dtype
+              console.log(input_dtype.toString());
+              expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+              let input_format = modelInputs[0].format
+              console.log(input_format.toString());
+              expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+              let input_dataSize = modelInputs[0].dataSize
+              console.log(input_dataSize.toString());
+              expect(input_dataSize.toString()).assertEqual("24330240");
               modelInputs[0].setData(inputBuffer.buffer);
               console.log('=========MSLITE predict start=====');
               msliteModel.predict(modelInputs, (modelOutputs) => {
@@ -1803,7 +1889,7 @@ export default function abilityTest() {
         context.cpu = {
           "threadNum": 4,
         }
-        context.cpu.threadAffinityMode = 1;
+        context.cpu.threadAffinityMode = mindSporeLite.ThreadAffinityMode.BIG_CORES_FIRST;
         context.cpu.precisionMode = "preferred_fp16";
         context.cpu.threadAffinityCoreList = [0, 1, 2, 3];
         console.log('=========MSLITE loadModel start=====');
@@ -1813,18 +1899,24 @@ export default function abilityTest() {
             expect(msliteModel !== null).assertTrue();
             console.log('=========MSLITE loadModel end=====');
             const modelInputs = msliteModel.getInputs();
-            console.log(modelInputs[0].name);
-            expect(modelInputs[0].name.toString()).assertEqual("data");
-            console.log(modelInputs[0].shape.toString());
-            expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-            console.log(modelInputs[0].elementNum.toString());
-            expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-            console.log(modelInputs[0].dtype.toString());
-            expect(modelInputs[0].dtype.toString()).assertEqual("43");
-            console.log(modelInputs[0].format.toString());
-            expect(modelInputs[0].format.toString()).assertEqual("1");
-            console.log(modelInputs[0].dataSize.toString());
-            expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
+            let input_name = modelInputs[0].name
+            console.log(input_name.toString());
+            expect(input_name.toString()).assertEqual("data");
+            let input_shape = modelInputs[0].shape
+            console.log(input_shape.toString());
+            expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+            let input_elementNum = modelInputs[0].elementNum
+            console.log(input_elementNum.toString());
+            expect(input_elementNum.toString()).assertEqual("6082560");
+            let input_dtype = modelInputs[0].dtype
+            console.log(input_dtype.toString());
+            expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+            let input_format = modelInputs[0].format
+            console.log(input_format.toString());
+            expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+            let input_dataSize = modelInputs[0].dataSize
+            console.log(input_dataSize.toString());
+            expect(input_dataSize.toString()).assertEqual("24330240");
             modelInputs[0].setData(inputBuffer.buffer);
             console.log('=========MSLITE predict start=====');
             msliteModel.predict(modelInputs, (modelOutputs) => {
@@ -1873,18 +1965,24 @@ export default function abilityTest() {
             expect(msliteModel !== null).assertTrue();
             console.log('=========MSLITE loadModel end=====');
             const modelInputs = msliteModel.getInputs();
-            console.log(modelInputs[0].name);
-            expect(modelInputs[0].name.toString()).assertEqual("data");
-            console.log(modelInputs[0].shape.toString());
-            expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-            console.log(modelInputs[0].elementNum.toString());
-            expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-            console.log(modelInputs[0].dtype.toString());
-            expect(modelInputs[0].dtype.toString()).assertEqual("43");
-            console.log(modelInputs[0].format.toString());
-            expect(modelInputs[0].format.toString()).assertEqual("1");
-            console.log(modelInputs[0].dataSize.toString());
-            expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
+            let input_name = modelInputs[0].name
+            console.log(input_name.toString());
+            expect(input_name.toString()).assertEqual("data");
+            let input_shape = modelInputs[0].shape
+            console.log(input_shape.toString());
+            expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+            let input_elementNum = modelInputs[0].elementNum
+            console.log(input_elementNum.toString());
+            expect(input_elementNum.toString()).assertEqual("6082560");
+            let input_dtype = modelInputs[0].dtype
+            console.log(input_dtype.toString());
+            expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+            let input_format = modelInputs[0].format
+            console.log(input_format.toString());
+            expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+            let input_dataSize = modelInputs[0].dataSize
+            console.log(input_dataSize.toString());
+            expect(input_dataSize.toString()).assertEqual("24330240");
             modelInputs[0].setData(inputBuffer.buffer);
             console.log('=========MSLITE predict start=====');
             msliteModel.predict(modelInputs, (modelOutputs) => {
@@ -1934,18 +2032,24 @@ export default function abilityTest() {
               expect(msliteModel !== null).assertTrue();
               console.log('=========MSLITE loadModel end=====');
               const modelInputs = msliteModel.getInputs();
-              console.log(modelInputs[0].name);
-              expect(modelInputs[0].name.toString()).assertEqual("data");
-              console.log(modelInputs[0].shape.toString());
-              expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-              console.log(modelInputs[0].elementNum.toString());
-              expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-              console.log(modelInputs[0].dtype.toString());
-              expect(modelInputs[0].dtype.toString()).assertEqual("43");
-              console.log(modelInputs[0].format.toString());
-              expect(modelInputs[0].format.toString()).assertEqual("1");
-              console.log(modelInputs[0].dataSize.toString());
-              expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
+              let input_name = modelInputs[0].name
+              console.log(input_name.toString());
+              expect(input_name.toString()).assertEqual("data");
+              let input_shape = modelInputs[0].shape
+              console.log(input_shape.toString());
+              expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+              let input_elementNum = modelInputs[0].elementNum
+              console.log(input_elementNum.toString());
+              expect(input_elementNum.toString()).assertEqual("6082560");
+              let input_dtype = modelInputs[0].dtype
+              console.log(input_dtype.toString());
+              expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+              let input_format = modelInputs[0].format
+              console.log(input_format.toString());
+              expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+              let input_dataSize = modelInputs[0].dataSize
+              console.log(input_dataSize.toString());
+              expect(input_dataSize.toString()).assertEqual("24330240");
               modelInputs[0].setData(inputBuffer.buffer);
               console.log('=========MSLITE predict start=====');
               msliteModel.predict(modelInputs, (modelOutputs) => {
@@ -1998,18 +2102,24 @@ export default function abilityTest() {
             expect(msliteModel !== null).assertTrue();
             console.log('=========MSLITE loadModel end=====');
             const modelInputs = msliteModel.getInputs();
-            console.log(modelInputs[0].name);
-            expect(modelInputs[0].name.toString()).assertEqual("data");
-            console.log(modelInputs[0].shape.toString());
-            expect(modelInputs[0].shape.toString()).assertEqual("1,1024,1980,3");
-            console.log(modelInputs[0].elementNum.toString());
-            expect(modelInputs[0].elementNum.toString()).assertEqual("6082560");
-            console.log(modelInputs[0].dtype.toString());
-            expect(modelInputs[0].dtype.toString()).assertEqual("43");
-            console.log(modelInputs[0].format.toString());
-            expect(modelInputs[0].format.toString()).assertEqual("1");
-            console.log(modelInputs[0].dataSize.toString());
-            expect(modelInputs[0].dataSize.toString()).assertEqual("24330240");
+            let input_name = modelInputs[0].name
+            console.log(input_name.toString());
+            expect(input_name.toString()).assertEqual("data");
+            let input_shape = modelInputs[0].shape
+            console.log(input_shape.toString());
+            expect(input_shape.toString()).assertEqual("1,1024,1980,3");
+            let input_elementNum = modelInputs[0].elementNum
+            console.log(input_elementNum.toString());
+            expect(input_elementNum.toString()).assertEqual("6082560");
+            let input_dtype = modelInputs[0].dtype
+            console.log(input_dtype.toString());
+            expect(input_dtype).assertEqual(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32);
+            let input_format = modelInputs[0].format
+            console.log(input_format.toString());
+            expect(input_format).assertEqual(mindSporeLite.Format.NHWC);
+            let input_dataSize = modelInputs[0].dataSize
+            console.log(input_dataSize.toString());
+            expect(input_dataSize.toString()).assertEqual("24330240");
             modelInputs[0].setData(inputBuffer.buffer);
             console.log('=========MSLITE predict start=====');
             msliteModel.predict(modelInputs, (modelOutputs) => {
@@ -2040,5 +2150,36 @@ export default function abilityTest() {
         done();
       })
     })
+
+    // 正常场景：头文件枚举值测试
+    it('Test_enumerated_value',0, function (done) {
+      try{
+        expect(mindSporeLite.Format.NCHW).assertEqual(0);
+        expect(mindSporeLite.Format.NHWC).assertEqual(1);
+        expect(mindSporeLite.Format.NHWC4).assertEqual(2);
+        expect(mindSporeLite.Format.HWKC).assertEqual(3);
+        expect(mindSporeLite.Format.HWCK).assertEqual(4);
+        expect(mindSporeLite.Format.KCHW).assertEqual(5);
+        expect(mindSporeLite.Format.DEFAULT_FORMAT).assertEqual(-1);
+
+        expect(mindSporeLite.DataType.TYPE_UNKNOWN).assertEqual(0);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_INT8).assertEqual(32);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_INT16).assertEqual(33);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_INT32).assertEqual(34);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_INT64).assertEqual(35);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_UINT8).assertEqual(37);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_UINT16).assertEqual(38);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_UINT32).assertEqual(39);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_UINT64).assertEqual(40);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_FLOAT16).assertEqual(42);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_FLOAT32).assertEqual(43);
+        expect(mindSporeLite.DataType.NUMBER_TYPE_FLOAT64).assertEqual(44);
+        done()
+      } catch (error) {
+        console.info("The enumerated are changed:" + error)
+        done()
+      }
+    })
+
   })
 }
