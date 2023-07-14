@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("intl_ets_test") {
+ohos_js_hap_suite("ActsCrossplatformIntlTest") {
   hap_profile = "src/main/module.json"
   deps = [
     ":windowStage_js_assets",
@@ -22,7 +22,7 @@ ohos_js_hap_suite("intl_ets_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
 
   # hap_name: HAP的名字，可选，默认为目标名
-  hap_name = "intl_ets_test"
+  hap_name = "ActsCrossplatformIntlTest"
   subsystem_name = "global"
   part_name = "i18n"
 }

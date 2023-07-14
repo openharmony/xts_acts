@@ -19,12 +19,11 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 export default function intlTest() {
   describe("intlTest", function () {
-      
     console.log("*************start IntlTest*************");
 
     /* *
      * @tc.number: LOCALE_TEST_001
-     * @tc.name  : localeTest001
+     * @tc.name  : test the language in en-Latn-GB locale
      * @tc.desc  : check the language
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -38,7 +37,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_002
-     * @tc.name  : localeTest002
+     * @tc.name  : test the numeric with false value
      * @tc.desc  : check the numeric
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -52,7 +51,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_003
-     * @tc.name  : localeTest003
+     * @tc.name  : test the script in locale
      * @tc.desc  : check the script
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -66,7 +65,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_004
-     * @tc.name  : localeTest004
+     * @tc.name  : test the region in locale
      * @tc.desc  : check the region
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -80,7 +79,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_005
-     * @tc.name  : localeTest005
+     * @tc.name  : test the basename in locale
      * @tc.desc  : check the basename
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -94,7 +93,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_006
-     * @tc.name  : localeTest006
+     * @tc.name  : test the hourCycle
      * @tc.desc  : check the hourCycle
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -108,7 +107,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_007
-     * @tc.name  : localeTest007
+     * @tc.name  : test the calendar
      * @tc.desc  : check the calendar
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -122,8 +121,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_008
-     * @tc.name  : localeTest008
-     * @tc.desc  : check the calendar
+     * @tc.name  : test the japanese calendar
+     * @tc.desc  : check the japanese calendar
      * @tc.size  : MediumTest
      * @tc.type  : Field
      * @tc.level : Level 0
@@ -136,8 +135,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_009
-     * @tc.name  : localeTest009
-     * @tc.desc  : check the hourCycle
+     * @tc.name  : test the h12 hourCycle
+     * @tc.desc  : check the h12 hourCycle
      * @tc.size  : MediumTest
      * @tc.type  : Field
      * @tc.level : Level 0
@@ -150,7 +149,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_010
-     * @tc.name  : localeTest010
+     * @tc.name  : test the caseFirst with upper
      * @tc.desc  : check the caseFirst
      * @tc.size  : MediumTest
      * @tc.type  : Field
@@ -164,7 +163,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_011
-     * @tc.name  : localeTest011
+     * @tc.name  : test the collation
      * @tc.desc  : check the collation
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -178,7 +177,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_012
-     * @tc.name  : localeTest012
+     * @tc.name  : test the numeric with true value
      * @tc.desc  : check the numeric
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -192,7 +191,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_013
-     * @tc.name  : localeTest013
+     * @tc.name  : test the numberingSystem
      * @tc.desc  : check the numberingSystem
      * @tc.size  : MediumTest
      * @tc.type  : Field
@@ -206,7 +205,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_014
-     * @tc.name  : localeTest014
+     * @tc.name  : test the toString interface with zh
      * @tc.desc  : check the toString method with zh
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -220,7 +219,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_015
-     * @tc.name  : localeTest015
+     * @tc.name  : test the toString interface with zh-CN
      * @tc.desc  : check the toString method with zh-cn
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -234,7 +233,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_016
-     * @tc.name  : localeTest016
+     * @tc.name  : test the toString interface with zh-Hans-CN
      * @tc.desc  : check the toString method with zh-Hans-CN
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -248,7 +247,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_017
-     * @tc.name  : localeTest017
+     * @tc.name  : test the toString interface with zh-Hans-CN-u-hc-h12-ca-japanese
      * @tc.desc  : check the toString method with zh-Hans-CN-u-hc-h12-ca-japanese
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -262,7 +261,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_018
-     * @tc.name  : localeTest018
+     * @tc.name  : test the maximize interface with zh-u-ca-gregory-co-compact param
      * @tc.desc  : check the toString method with zh-u-ca-gregory-co-compact
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -276,7 +275,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_019
-     * @tc.name  : localeTest019
+     * @tc.name  : test the toString interface with zh-CN-u-ca-gregory-co-compact param
      * @tc.desc  : check the toString method with zh-u-ca-gregory-co-compact
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -290,7 +289,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_020
-     * @tc.name  : localeTest020
+     * @tc.name  : test the toString interface with zh-hans-CN-u-ca-gregory-co-compact param
      * @tc.desc  : check the toString method with zh-hans-CN-u-ca-gregory-co-compact
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -304,7 +303,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_021
-     * @tc.name  : localeTest021
+     * @tc.name  : test the minimize interface with one param zh
      * @tc.desc  : check the minimize method with one param zh
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -318,7 +317,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_022
-     * @tc.name  : localeTest022
+     * @tc.name  : test the minimize interface with one param zh-CN
      * @tc.desc  : check the minimize method with one param zh-CN
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -332,7 +331,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_023
-     * @tc.name  : localeTest023
+     * @tc.name  : test the minimize interface with one param zh-Hans-CN
      * @tc.desc  : check the minimize method with one param zh-Hans-CN
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -346,7 +345,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_024
-     * @tc.name  : localeTest024
+     * @tc.name  : test the minimize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
      * @tc.desc  : check the minimize method with one param zh-Hans-CN-u-ca-gregory-co-compact
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -360,8 +359,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_025
-     * @tc.name  : localeTest025
-     * @tc.desc  : check the minimize method with one param zh lcoale
+     * @tc.name  : test the minimize interface with zh lcoale
+     * @tc.desc  : check the minimize method with zh lcoale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -374,8 +373,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_026
-     * @tc.name  : localeTest026
-     * @tc.desc  : check the minimize method with one param zh-CN lcoale
+     * @tc.name  : test the minimize interface with zh-CN lcoale
+     * @tc.desc  : check the minimize method with zh-CN lcoale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -388,8 +387,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_027
-     * @tc.name  : localeTest027
-     * @tc.desc  : check the minimize method with one param zh-hans-CN lcoale
+     * @tc.name  : test the minimize interface with zh-Hans-CN lcoale
+     * @tc.desc  : check the minimize method with zh-Hans-CN lcoale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -402,7 +401,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_028
-     * @tc.name  : localeTest028
+     * @tc.name  : test the maximize interface with one param zh
      * @tc.desc  : check the maximize method with one param zh
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -416,7 +415,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_029
-     * @tc.name  : localeTest029
+     * @tc.name  : test the maximize interface with one param zh-CN
      * @tc.desc  : check the maximize method with one param zh-CN
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -430,7 +429,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_030
-     * @tc.name  : localeTest030
+     * @tc.name  : test the maximize interface with one param zh-Hans-CN-u-ca-gregory-co-compact
      * @tc.desc  : check the maximize method with one param zh-Hans-CN-u-ca-gregory-co-compact
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -444,7 +443,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_031
-     * @tc.name  : localeTest031
+     * @tc.name  : test the maximize interface with zh-Hans-CN-u-ca-gregory-co-compact locale
      * @tc.desc  : check the maximize method with zh-Hans-CN-u-ca-gregory-co-compact locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -458,7 +457,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_032
-     * @tc.name  : localeTest032
+     * @tc.name  : test the maximize interface with zh locale
      * @tc.desc  : check the maximize method with zh locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -472,7 +471,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_033
-     * @tc.name  : localeTest033
+     * @tc.name  : test the maximize interface with zh-CN locale
      * @tc.desc  : check the maximize method with zh-CN locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -486,7 +485,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: LOCALE_TEST_034
-     * @tc.name  : localeTest034
+     * @tc.name  : test the maximize interface with zh-Hans-CN locale
      * @tc.desc  : check the maximize method with zh-Hans-CN locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -500,7 +499,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_001
-     * @tc.name  : dateTimeFormatTest001
+     * @tc.name  : format the datetime with en-GB locale
      * @tc.desc  : check the datefmt is not null
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -513,7 +512,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_002
-     * @tc.name  : dateTimeFormatTest002
+     * @tc.name  : format the datetime with en-GB locale
      * @tc.desc  : check the datefmt is not null
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -526,7 +525,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_003
-     * @tc.name  : dateTimeFormatTest003
+     * @tc.name  : format the date with zh locale
      * @tc.desc  : check the format(date)
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -541,7 +540,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_004
-     * @tc.name  : dateTimeFormatTest004
+     * @tc.name  : format the date with en locale
      * @tc.desc  : check the format(date)
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -556,7 +555,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_005
-     * @tc.name  : dateTimeFormatTest005
+     * @tc.name  : format the date with en-US locale
      * @tc.desc  : check the format(date)
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -571,7 +570,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_006
-     * @tc.name  : dateTimeFormatTest006
+     * @tc.name  : format the date with en-GB locale
      * @tc.desc  : check the format(date)
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -586,7 +585,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_007
-     * @tc.name  : dateTimeFormatTest007
+     * @tc.name  : format the date with aa locale
      * @tc.desc  : check the format(date)
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -602,8 +601,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_008
-     * @tc.name  : dateTimeFormatTest008
-     * @tc.desc  : check the datestyle
+     * @tc.name  : format the hour with ban and zh locale
+     * @tc.desc  : check the hour with ban and zh locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -618,8 +617,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_009
-     * @tc.name  : dateTimeFormatTest009
-     * @tc.desc  : check the timeStyle
+     * @tc.name  : format the hour with zh-Hans-CN locale
+     * @tc.desc  : check the hour with zh-Hans-CN locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -634,8 +633,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_010
-     * @tc.name  : dateTimeFormatTest010
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the hour with zh-CN locale
+     * @tc.desc  : check the hour with zh-CN locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -651,8 +650,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_011
-     * @tc.name  : dateTimeFormatTest011
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the date dateStyle with medium style
+     * @tc.desc  : check the dateStyle with medium style
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -668,8 +667,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_012
-     * @tc.name  : dateTimeFormatTest012
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the date dateStyle with short style
+     * @tc.desc  : check the dateStyle with short style
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -685,8 +684,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_013
-     * @tc.name  : dateTimeFormatTest013
-     * @tc.desc  : check the formatRange
+     * @tc.name  : format the date with daterange
+     * @tc.desc  : check the daterange
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -701,8 +700,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_014
-     * @tc.name  : dateTimeFormatTest014
-     * @tc.desc  : check the formatRange
+     * @tc.name  : format the date with daterange when the start and end date is equal
+     * @tc.desc  : check the daterange when the start and end date is equal
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -717,8 +716,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_015
-     * @tc.name  : dateTimeFormatTest015
-     * @tc.desc  : check the month, day, weekday
+     * @tc.name  : format the year、month、day、weekday
+     * @tc.desc  : check the year、month、day、weekday
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 0
@@ -733,8 +732,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_016
-     * @tc.name  : dateTimeFormatTest016
-     * @tc.desc  : check the formatRange
+     * @tc.name  : format the timerange with year、month、day、weekday
+     * @tc.desc  : check the timerange with year、month、day、weekday
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 0
@@ -750,8 +749,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_017
-     * @tc.name  : dateTimeFormatTest017
-     * @tc.desc  : check the hour, minute, second, era
+     * @tc.name  : format the hour&minute&second
+     * @tc.desc  : check the hour&minute&second
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 0
@@ -766,7 +765,7 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_018
-     * @tc.name  : dateTimeFormatTest018
+     * @tc.name  : format the timeZone
      * @tc.desc  : check the hour, minute, second, era
      * @tc.size  : MediumTest
      * @tc.type  : Method
@@ -782,8 +781,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_019
-     * @tc.name  : dateTimeFormatTest019
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the America/Los_Angeles timeZone
+     * @tc.desc  : check the America/Los_Angeles timeZone
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -797,8 +796,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_020
-     * @tc.name  : dateTimeFormatTest020
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the America/Los_Angeles timeZoneName
+     * @tc.desc  : check the America/Los_Angeles timeZoneName
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -812,8 +811,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: DATE_TIME_FORMAT_TEST_021
-     * @tc.name  : dateTimeFormatTest021
-     * @tc.desc  : check the DateTimeOptions
+     * @tc.name  : format the hour in zh-CN-u-hc-h12 with matcher
+     * @tc.desc  : check the hour in zh-CN-u-hc-h12 with matcher
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -837,8 +836,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_001
-     * @tc.name  : numberFormatTest001
-     * @tc.desc  : check the constructor()
+     * @tc.name  : format the number in zh
+     * @tc.desc  : check the number in zh
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -851,8 +850,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_002
-     * @tc.name  : numberFormatTest002
-     * @tc.desc  : check the constructor()
+     * @tc.name  : format the number with default locale
+     * @tc.desc  : check the number with default locale
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -864,8 +863,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_003
-     * @tc.name  : numberFormatTest003
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in zh-u-nu-latn
+     * @tc.desc  : check the number in zh-u-nu-latn
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -878,8 +877,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_004
-     * @tc.name  : numberFormatTest004
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in zh-u-nu-arab
+     * @tc.desc  : check the number in zh-u-nu-arab
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -892,8 +891,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_005
-     * @tc.name  : numberFormatTest005
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in en
+     * @tc.desc  : check the number in en
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -906,8 +905,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_006
-     * @tc.name  : numberFormatTest006
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in en-u-nu-thai
+     * @tc.desc  : check the number in en-u-nu-thai
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -920,8 +919,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_007
-     * @tc.name  : numberFormatTest007
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in en-GB
+     * @tc.desc  : check the number in en-GB
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -934,8 +933,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_008
-     * @tc.name  : numberFormatTest008
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in en-US
+     * @tc.desc  : check the number in en-US
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -948,8 +947,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_009
-     * @tc.name  : numberFormatTest009
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in zh and en list
+     * @tc.desc  : check the number in zh and en list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -962,8 +961,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_010
-     * @tc.name  : numberFormatTest010
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in en and zh list
+     * @tc.desc  : check the number in en and zh list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -976,8 +975,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_011
-     * @tc.name  : numberFormatTest011
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in en and aa list
+     * @tc.desc  : check the number in en and aa list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -990,8 +989,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_012
-     * @tc.name  : numberFormatTest012
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in aa and zh list
+     * @tc.desc  : check the number in aa and zh list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1004,8 +1003,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_013
-     * @tc.name  : numberFormatTest013
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in aa and bb list
+     * @tc.desc  : check the number in aa and bb list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1018,8 +1017,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_014
-     * @tc.name  : numberFormatTest014
-     * @tc.desc  : check the format
+     * @tc.name  : format the number in aa bb and es list
+     * @tc.desc  : check the number in aa  bb and es list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1032,8 +1031,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_015
-     * @tc.name  : numberFormatTest015
-     * @tc.desc  : check the style  and notation
+     * @tc.name  : format the number in aa it and bb list
+     * @tc.desc  : check the number in aa it and bb list
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1048,8 +1047,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_016
-     * @tc.name  : numberFormatTest016
-     * @tc.desc  : check the currency, currencyDisplay, currencySign, signDisplay
+     * @tc.name  : format the number with currency EUR
+     * @tc.desc  : check the number with currency EUR
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1068,8 +1067,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_017
-     * @tc.name  : numberFormatTest017
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the number with currency USD
+     * @tc.desc  : check the number with currency USD
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1083,8 +1082,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_018
-     * @tc.name  : numberFormatTest018
-     * @tc.desc  : check the construct
+     * @tc.name  : format the number with currency CNY
+     * @tc.desc  : check the number with currency CNY
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1097,8 +1096,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_019
-     * @tc.name  : numberFormatTest019
-     * @tc.desc  : check the construct
+     * @tc.name  : format the number with currency JPY
+     * @tc.desc  : check the number with currency JPY
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1111,8 +1110,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_020
-     * @tc.name  : numberFormatTest020
-     * @tc.desc  : check the compactDisplay and localeMatcher
+     * @tc.name  : format the number with signDisplay
+     * @tc.desc  : check the number with signDisplay
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1133,8 +1132,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_021
-     * @tc.name  : numberFormatTest021
-     * @tc.desc  : check the unit, unitDisplay, maximumFractionDigits and minimumIntegerDigits
+     * @tc.name  : format the number with  meter unit
+     * @tc.desc  : check the number with meter unit
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1150,8 +1149,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_022
-     * @tc.name  : numberFormatTest022
-     * @tc.desc  : check the unitUsage
+     * @tc.name  : format the number with unitUsage
+     * @tc.desc  : check the number with unitUsage
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1165,8 +1164,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_023
-     * @tc.name  : numberFormatTest023
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the number with narrow value in unitUsage param
+     * @tc.desc  : check the number with unitUsage
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1180,9 +1179,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_024
-     * @tc.name  : numberFormatTest024
-     * @tc.desc  : check the resolvedOptions
-     * @tc.size  : MediumTest
+     * @tc.name  : format the number with short value in unitUsage param
+     * @tc.desc  : check the number with unitUsage
      * @tc.type  : Method
      * @tc.level : Level 2
      */
@@ -1195,8 +1193,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_025
-     * @tc.name  : numberFormatTest025
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the number with narrow value in unitUsage param
+     * @tc.desc  : check the number with unitUsage
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1210,8 +1208,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_026
-     * @tc.name  : numberFormatTest026
-     * @tc.desc  : check the resolvedOptions
+     * @tc.name  : format the number with short value in unitUsage param
+     * @tc.desc  : check the number with unitUsage
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1225,8 +1223,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_027
-     * @tc.name  : numberFormatTest027
-     * @tc.desc  : check the format
+     * @tc.name  : format the number with percetn style
+     * @tc.desc  : check the number with percetn style
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1239,8 +1237,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: NUMBER_FORMAT_TEST_028
-     * @tc.name  : numberFormatTest028
-     * @tc.desc  : check the format
+     * @tc.name  : format the number with numberingSystem
+     * @tc.desc  : check the number with numberingSystem
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1253,14 +1251,13 @@ export default function intlTest() {
     });
 
     /* *
-        * @tc.number: NUMBER_FORMAT_TEST_029
-        * @tc.name  : numberFormatTest029
-        * @tc.desc  : check the minimumFractionDigits, minimumSignificantDigits, maximumSignificantDigits
-                      and useGrouping
-        * @tc.size  : MediumTest
-        * @tc.type  : Method
-        * @tc.level : Level 2
-        */
+     * @tc.number: NUMBER_FORMAT_TEST_029
+     * @tc.name  : format the number with style
+     * @tc.desc  : check the number with style
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
     it("numberFormatTest029", 0, function () {
       let numfmt = new Intl.NumberFormat("ar", { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 2, minimumIntegerDigits: 7, minimumSignificantDigits: 5, maximumSignificantDigits: 10, useGrouping: true });
       console.log("NUMBER_FORMAT_TEST_029 " + numfmt.resolvedOptions().style);
@@ -1275,8 +1272,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_001
-     * @tc.name  : collatorTest001
-     * @tc.desc  : check the compare
+     * @tc.name  : compare two different strings
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1290,8 +1287,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_002
-     * @tc.name  : collatorTest002
-     * @tc.desc  : check the compare
+     * @tc.name  : compare the same strings
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1305,8 +1302,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_003
-     * @tc.name  : collatorTest003
-     * @tc.desc  : check the compare
+     * @tc.name  : compare two different strings and return positive value
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1320,8 +1317,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_004
-     * @tc.name  : collatorTest004
-     * @tc.desc  : check the compare
+     * @tc.name  : compare two different strings with zh locale
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1335,8 +1332,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_005
-     * @tc.name  : collatorTest005
-     * @tc.desc  : check the compare, resolvedOptions and collation
+     * @tc.name  : compare two different strings with zh locale and eor collation
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1351,8 +1348,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_006
-     * @tc.name  : collatorTest006
-     * @tc.desc  : check the compare, resolvedOptions and sensitivity
+     * @tc.name  : compare two different strings with zh locale and base sensitivity
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1367,8 +1364,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_007
-     * @tc.name  : collatorTest007
-     * @tc.desc  : check the resolvedOptions and caseFirst
+     * @tc.name  : compare two different strings with zh locale and upper caseFirst
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1383,8 +1380,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_008
-     * @tc.name  : collatorTest008
-     * @tc.desc  : check the resolvedOptions and numeric
+     * @tc.name  : compare two different strings with zh locale and true numeric
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1399,8 +1396,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_009
-     * @tc.name  : collatorTest009
-     * @tc.desc  : check the resolvedOptions and ignorePunctuation
+     * @tc.name  : compare two different strings with zh locale and true ignorePunctuation
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1415,8 +1412,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_010
-     * @tc.name  : collatorTest010
-     * @tc.desc  : check the resolvedOptions and usage
+     * @tc.name  : compare two different strings with zh locale and sort usage
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1431,8 +1428,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: COLLATOR_TEST_011
-     * @tc.name  : collatorTest011
-     * @tc.desc  : check the localeMatcher
+     * @tc.name  : compare the string with localeMatcher options
+     * @tc.desc  : check the compare result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1447,8 +1444,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_001
-     * @tc.name  : pluralrulesTest001
-     * @tc.desc  : check the select
+     * @tc.name  : get PluralRules
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1462,8 +1459,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_002
-     * @tc.name  : pluralrulesTest002
-     * @tc.desc  : check the select
+     * @tc.name  : get PluralRules with zh locale
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1477,8 +1474,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_003
-     * @tc.name  : pluralrulesTest003
-     * @tc.desc  : check the select and type
+     * @tc.name  : get PluralRules with zh locale and ordinal type
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1492,8 +1489,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_004
-     * @tc.name  : pluralrulesTest004
-     * @tc.desc  : check the select and localeMatcher
+     * @tc.name  : get PluralRules with zh locale and loolup localeMatcher
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1507,8 +1504,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_005
-     * @tc.name  : pluralrulesTest005
-     * @tc.desc  : check the select and minimumIntegerDigits
+     * @tc.name  : get PluralRules with zh locale and minimumIntegerDigits options
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1522,8 +1519,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_006
-     * @tc.name  : pluralrulesTest006
-     * @tc.desc  : check the minimumFractionDigits
+     * @tc.name  : get PluralRules with zh locale and minimumFractionDigits options
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1537,8 +1534,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_007
-     * @tc.name  : pluralrulesTest007
-     * @tc.desc  : check the maximumFractionDigits
+     * @tc.name  : get PluralRules with zh locale and maximumFractionDigits options
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1552,8 +1549,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_008+
-     * @tc.name  : pluralrulesTest008
-     * @tc.desc  : check the minimumSignificantDigits
+     * @tc.name  : get PluralRules with zh locale and minimumSignificantDigits options
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1567,8 +1564,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: PLURALRULES_TEST_009
-     * @tc.name  : pluralrulesTest009
-     * @tc.desc  : check the maximumSignificantDigits
+     * @tc.name  : get PluralRules with zh locale and maximumSignificantDigits options
+     * @tc.desc  : check the select result
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1582,8 +1579,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_001
-     * @tc.name  : relativeTimeFormatTest001
-     * @tc.desc  : check the format
+     * @tc.name  : format the relativetime with 100 second
+     * @tc.desc  : format the relativetime with 100 second
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1597,8 +1594,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_002
-     * @tc.name  : relativeTimeFormatTest002
-     * @tc.desc  : check the locale and format
+     * @tc.name  : format the relativetime with 100 second in en
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1612,8 +1609,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_003
-     * @tc.name  : relativeTimeFormatTest003
-     * @tc.desc  : check the style and format
+     * @tc.name  : format the relativetime with 100 second in narrow style
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1627,8 +1624,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_004
-     * @tc.name  : relativeTimeFormatTest004
-     * @tc.desc  : check the formatToParts
+     * @tc.name  : format the relativetime with 100 second, get the formatToParts value
+     * @tc.desc  : check the formatToParts value
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1643,8 +1640,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_005
-     * @tc.name  : relativeTimeFormatTest005
-     * @tc.desc  : check the locale
+     * @tc.name  : format the relativetime, get the locale options
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1658,8 +1655,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_006
-     * @tc.name  : relativeTimeFormatTest006
-     * @tc.desc  : check the resolvedOptions and resolvedOptions.style
+     * @tc.name  : format the relativetime, get the style options
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1673,8 +1670,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_007
-     * @tc.name  : relativeTimeFormatTest007
-     * @tc.desc  : check the resolvedOptions and resolvedOptions.numeric
+     * @tc.name  : format the relativetime, get the numeric options
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1688,8 +1685,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_008
-     * @tc.name  : relativeTimeFormatTest008
-     * @tc.desc  : check the resolvedOptions and resolvedOptions.numberingSystem
+     * @tc.name  : format the relativetime, get the numberingSystem options
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
@@ -1703,8 +1700,8 @@ export default function intlTest() {
 
     /* *
      * @tc.number: RELATIVE_TIME_FORMAT_TEST_009
-     * @tc.name  : relativeTimeFormatTest009
-     * @tc.desc  : check the localeMatcher, numeric, style
+     * @tc.name  : format the relativetime with localeMatcher options
+     * @tc.desc  : check the relativetime
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
