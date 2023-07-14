@@ -58,8 +58,11 @@ describe('I18nTest', function () {
     
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_001
-    * @tc.name    testGetDisplayCountry001
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and true param
     * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry001', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', true);
@@ -69,8 +72,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_002
-    * @tc.name    testGetDisplayCountry002
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and undefined param
     * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry002', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', undefined);
@@ -80,8 +86,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_003
-    * @tc.name    testGetDisplayCountry003
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and null param
     * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry003', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', null);
@@ -91,8 +100,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_004
-    * @tc.name    testGetDisplayCountry004
+    * @tc.name    getDisplayCountry with zh and en-US and true param
     * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry004', 0, function () {
         try{
@@ -110,8 +122,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_005
-    * @tc.name    testGetDisplayCountry005
+    * @tc.name    getDisplayCountry with zh-CN and en-US and true param
     * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry005', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-CN', 'en-US', true);
@@ -121,8 +136,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_006
-    * @tc.name    testGetDisplayCountry006
+    * @tc.name    getDisplayCountry with zh-Hans and en-US and true param
     * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry006', 0, function () {
         try{
@@ -140,19 +158,25 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_007
-    * @tc.name    testGetDisplayCountry007
-    * @tc.desc    check the language
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and false param
+    * @tc.desc    check the display country
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
-    it('i18n_system_test_0700', 0, function () {
+    it('testGetDisplayCountry007', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US', false);
-        console.log('i18n_system_test_0700 ' + value);
+        console.log('testGetDisplayCountry007 ' + value);
         expect(value).assertEqual('China');
     })
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_008
-    * @tc.name    testGetDisplayCountry008
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry008', 0, function () {
         let value = I18n.System.getDisplayCountry('zh-Hans-CN', 'en-US');
@@ -162,8 +186,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_009
-    * @tc.name    testGetDisplayCountry009
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry009', 0, function () {
         try{
@@ -181,8 +208,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYCOUNTRY_010
-    * @tc.name    testGetDisplayCountry010
+    * @tc.name    getDisplayCountry with zh-Hans-CN and en-US param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayCountry010', 0, function () {
         try{
@@ -200,8 +230,11 @@ describe('I18nTest', function () {
 
      /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_001
-    * @tc.name    testGetDisplayLanguage001
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and true param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage001', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
@@ -211,8 +244,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_002
-    * @tc.name    testGetDisplayLanguage002
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and undefined param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage002', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', undefined);
@@ -222,8 +258,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_003
-    * @tc.name    testGetDisplayLanguage003
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and null param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage003', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', null);
@@ -233,8 +272,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_004
-    * @tc.name    testGetDisplayLanguage004
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-GB and true param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage004', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
@@ -244,8 +286,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_005
-    * @tc.name    testGetDisplayLanguage005
+    * @tc.name    getDisplayLanguage with zh and en-US and true param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage005', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh', 'en-US', true);
@@ -255,8 +300,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_006
-    * @tc.name    testGetDisplayLanguage006
+    * @tc.name    getDisplayLanguage with zh-CN and en-US and true param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage006', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-CN', 'en-US', true);
@@ -266,8 +314,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_007
-    * @tc.name    testGetDisplayLanguage007
+    * @tc.name    getDisplayLanguage with zh-Hans and en-US and true param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage007', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans', 'en-US', true);
@@ -277,8 +328,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_008
-    * @tc.name    testGetDisplayLanguage008
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US and false param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage008', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
@@ -288,8 +342,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_009
-    * @tc.name    testGetDisplayLanguage009
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage009', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US');
@@ -299,8 +356,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_010
-    * @tc.name    testGetDisplayLanguage010
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage010', 0, function () {
         try{
@@ -318,8 +378,11 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDISPLAYLANGUAGE_011
-    * @tc.name    testGetDisplayLanguage011
+    * @tc.name    getDisplayLanguage with zh-Hans-CN and en-US param
     * @tc.desc    check the language
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testGetDisplayLanguage011', 0, function () {
         try{
@@ -338,8 +401,11 @@ describe('I18nTest', function () {
 
      /* *
     * @tc.number  TEST_SYSTEMLANGUAGE_001
-    * @tc.name    testSystemLanguage001
+    * @tc.name    getSystemLanguage
     * @tc.desc    check the getSystemLanguage
+    * @tc.size    MediumTest
+    * @tc.type    Method
+    * @tc.level   Level 2
     */
     it('testSystemLanguage001', 0, function () {
         let lang = I18n.System.getSystemLanguage();
@@ -350,7 +416,7 @@ describe('I18nTest', function () {
     
     /* *
     * @tc.number  TEST_GETSYSTEMREGION_001
-    * @tc.name    testGetSystemRegion001
+    * @tc.name    getSystemRegion
     * @tc.desc    check the getSystemRegion
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -365,7 +431,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETSYSTEMLOCALE_001
-    * @tc.name    testGetSystemLocale001
+    * @tc.name    getSystemLocale
     * @tc.desc    check the getSystemLocale
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -380,7 +446,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS24HOURCLOCK_001
-    * @tc.name    testIs24HourClock001
+    * @tc.name    is24HourClock
     * @tc.desc    check the value of is24HourClock method
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -395,7 +461,7 @@ describe('I18nTest', function () {
 
      /* *
     * @tc.number  TEST_GETDATEORDER_001
-    * @tc.name    testGetDateOrder001
+    * @tc.name    test getDateOrder method with en param
     * @tc.desc    get the DateOrder value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -410,7 +476,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDATEORDER_002
-    * @tc.name    testGetDateOrder002
+    * @tc.name    test getDateOrder method with th param
     * @tc.desc    get the DateOrder value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -425,7 +491,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GETDATEORDER_003
-    * @tc.name    testGetDateOrder003
+    * @tc.name    test getDateOrder method with jp param
     * @tc.desc    get the DateOrder value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -438,12 +504,9 @@ describe('I18nTest', function () {
         expect(value).assertEqual('LLL-d-y');
     })
 
-
-
-    
     /**
     * @tc.number  TEST_GETCALENDAR_001
-    * @tc.name    testGetCalendar001
+    * @tc.name    test getCalendar interface
     * @tc.desc    get the getCalendar value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -455,12 +518,9 @@ describe('I18nTest', function () {
         expect(calendar != null).assertTrue();
     })
 
-    
-
-  
    /**
     * @tc.number  TEST_SETTIME_001
-    * @tc.name    testSetTime001
+    * @tc.name    test setTime interface with date param
     * @tc.desc    get the setTime value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -479,7 +539,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SETTIME_002
-    * @tc.name    testSetTime002
+    * @tc.name    test setTime interface with wrong month param
     * @tc.desc    get the setTime value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -497,7 +557,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SETTIME_003
-    * @tc.name    testSetTime003
+    * @tc.name    test setTime interface
     * @tc.desc    get the setTime value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -513,12 +573,9 @@ describe('I18nTest', function () {
     })
 
    
-
-
-
     /**
     * @tc.number  TEST_SET_001
-    * @tc.name    testSet001
+    * @tc.name    test set interface
     * @tc.desc    get the set value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -535,7 +592,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SET_002
-    * @tc.name    testSet002
+    * @tc.name    test set interface with hour,minute,second param
     * @tc.desc    get the set value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -552,7 +609,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SET_003
-    * @tc.name    testSet003
+    * @tc.name    test set interface with hour,minute param
     * @tc.desc    get the set value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -567,11 +624,9 @@ describe('I18nTest', function () {
         expect(value).assertTrue();
     })
 
- 
-
     /**
     * @tc.number  TEST_SETTIMEZONEANDGETTIMEZONE_001
-    * @tc.name    testSetTimeZoneAndGetTimeZone001
+    * @tc.name    test setTimeZone and getTimeZone interface
     * @tc.desc    get the setTimeZone and getTimeZone value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -588,7 +643,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SETTIMEZONEANDGETTIMEZONE_002
-    * @tc.name    testSetTimeZoneAndGetTimeZone002
+    * @tc.name    test setTimeZone with AAA param and getTimeZone interface
     * @tc.desc    get the setTimeZone and getTimeZone value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -606,7 +661,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_GETFIRSTDAYOFWEEKANDSETFIRSTDAYOFWEEK_001
-    * @tc.name    testGetFirstDayOfWeekAndSetFirstDayOfWeek001
+    * @tc.name    test setFirstDayOfWeek and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -623,7 +678,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_GETFIRSTDAYOFWEEKANDSETFIRSTDAYOFWEEK_002
-    * @tc.name    testGetFirstDayOfWeekAndSetFirstDayOfWeek002
+    * @tc.name    test setFirstDayOfWeek with 0 param and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -640,7 +695,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_GETFIRSTDAYOFWEEKANDSETFIRSTDAYOFWEEK_003
-    * @tc.name    testGetFirstDayOfWeekAndSetFirstDayOfWeek003
+    * @tc.name    test setFirstDayOfWeek with 7 param and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -657,7 +712,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_GETFIRSTDAYOFWEEKANDSETFIRSTDAYOFWEEK_004
-    * @tc.name    testGetFirstDayOfWeekAndSetFirstDayOfWeek004
+    * @tc.name    test setFirstDayOfWeek with 8 param and getFirstDayOfWeek interface
     * @tc.desc    get the setFirstDayOfWeek and getFirstDayOfWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -674,7 +729,7 @@ describe('I18nTest', function () {
 
      /**
     * @tc.number  TEST_SET_MINIMALDAYS_IN_FIRST_WEEK_AND_GET_MINIMALDAYS_IN_FIRST_WEEK_001
-    * @tc.name    testSetMinimalDaysInFirstWeekAndGetMinimalDaysInFirstWeek001
+    * @tc.name    test setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -691,7 +746,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SET_MINIMALDAYS_IN_FIRST_WEEK_AND_GET_MINIMALDAYS_IN_FIRST_WEEK_002
-    * @tc.name    testSetMinimalDaysInFirstWeekAndGetMinimalDaysInFirstWeek002
+    * @tc.name    test setMinimalDaysInFirstWeek with 0 param and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -708,7 +763,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SET_MINIMALDAYS_IN_FIRST_WEEK_AND_GET_MINIMALDAYS_IN_FIRST_WEEK_003
-    * @tc.name    testSetMinimalDaysInFirstWeekAndGetMinimalDaysInFirstWeek003
+    * @tc.name    test setMinimalDaysInFirstWeek with 8 param and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -725,7 +780,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_SET_MINIMALDAYS_IN_FIRST_WEEK_AND_GET_MINIMALDAYS_IN_FIRST_WEEK_004
-    * @tc.name    testSetMinimalDaysInFirstWeekAndGetMinimalDaysInFirstWeek004
+    * @tc.name    test setMinimalDaysInFirstWeek with 7 param and getMinimalDaysInFirstWeek interface
     * @tc.desc    get the setMinimalDaysInFirstWeek and getMinimalDaysInFirstWeek value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -743,7 +798,7 @@ describe('I18nTest', function () {
 
      /**
     * @tc.number  TEST_GET_001
-    * @tc.name    testGet001
+    * @tc.name    test get interface
     * @tc.desc    get the get value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -759,7 +814,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_GET_002
-    * @tc.name    testGet002
+    * @tc.name    test get interface with month param
     * @tc.desc    get the get value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -777,7 +832,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_GET_003
-    * @tc.name    testGet003
+    * @tc.name    test get interface with day_of_year param
     * @tc.desc    get the get value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -793,7 +848,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_IS_WEEKEND_001
-    * @tc.name    testIsWeekend001
+    * @tc.name    test isWeekend interface
     * @tc.desc    get the isWeekend value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -810,7 +865,7 @@ describe('I18nTest', function () {
 
      /**
     * @tc.number  TEST_I18N.ISRTL_001
-    * @tc.name    testI18n.IsRTL001
+    * @tc.name    test isRTL interface with zh-CN param
     * @tc.desc    get the isRTL value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -825,7 +880,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_I18N.ISRTL_002
-    * @tc.name    testI18n.IsRTL002
+    * @tc.name    test isRTL interface with en-US param
     * @tc.desc    get the isRTL value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -840,7 +895,7 @@ describe('I18nTest', function () {
 
     /**
     * @tc.number  TEST_I18N.ISRTL_003
-    * @tc.name    testI18n.IsRTL003
+    * @tc.name    test isRTL interface with ar param
     * @tc.desc    get the isRTL value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -855,7 +910,7 @@ describe('I18nTest', function () {
 
       /* *
     * @tc.number  TEST_IS_DIGIT_001
-    * @tc.name    testIsDigit001
+    * @tc.name    test isDigit interface
     * @tc.desc    check the isDigit interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -870,7 +925,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_DIGIT_002
-    * @tc.name    testIsDigit002
+    * @tc.name    test isDigit interface with 123 param
     * @tc.desc    check the isDigit interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -885,7 +940,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_DIGIT_003
-    * @tc.name    testIsDigit003
+    * @tc.name    test isDigit interface with 123abc param
     * @tc.desc    check the isDigit interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -900,7 +955,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_DIGIT_004
-    * @tc.name    testIsDigit004
+    * @tc.name    test isDigit interface with abc123 param
     * @tc.desc    check the isDigit interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -915,7 +970,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_DIGIT_005
-    * @tc.name    testIsDigit005
+    * @tc.name    test isDigit interface with null param
     * @tc.desc    check the isDigit interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -931,7 +986,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_SPACE_CHAR_001
-    * @tc.name    testIsSpaceChar001
+    * @tc.name    test isSpaceChar interface with abc param
     * @tc.desc    check the isSpaceChar interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -946,7 +1001,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_SPACE_CHAR_002
-    * @tc.name    testIsSpaceChar002
+    * @tc.name    test isSpaceChar interface with one space param
     * @tc.desc    check the isSpaceChar interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -961,7 +1016,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_SPACE_CHAR_003
-    * @tc.name    testIsSpaceChar003
+    * @tc.name    test isSpaceChar interface with multi space param
     * @tc.desc    check the isSpaceChar interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -977,7 +1032,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_WHITESPACE_001
-    * @tc.name    testIsWhitespace001
+    * @tc.name    test isWhitespace interface with abc param
     * @tc.desc    check the isWhitespace interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -992,7 +1047,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_WHITESPACE_002
-    * @tc.name    testIsWhitespace002
+    * @tc.name    test isWhitespace interface with \u0009 param
     * @tc.desc    check the isWhitespace interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1008,7 +1063,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_I18N.UNICODE.ISRTL_001
-    * @tc.name    testI18n.Unicode.IsRTL001
+    * @tc.name    test isRTL interface with abc param
     * @tc.desc    check the isRTL interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1023,7 +1078,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_I18N.UNICODE.ISRTL_002
-    * @tc.name    testI18n.Unicode.IsRTL002
+    * @tc.name    test isRTL interface with ١٢٣٤٥٦٧ param
     * @tc.desc    check the isRTL interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1038,7 +1093,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_I18N.UNICODE.ISRTL_003
-    * @tc.name    testI18n.Unicode.IsRTL003
+    * @tc.name    test isRTL interface with 我是小明 param
     * @tc.desc    check the isRTL interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1053,7 +1108,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_I18N.UNICODE.ISRTL_004
-    * @tc.name    testI18n.Unicode.IsRTL004
+    * @tc.name    test isRTL interface with نحن param
     * @tc.desc    check the isRTL interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1068,7 +1123,7 @@ describe('I18nTest', function () {
 
       /* *
     * @tc.number  TEST_IS_IDEOGRAPH_001
-    * @tc.name    testIsIdeograph001
+    * @tc.name    test isIdeograph interface with abc param
     * @tc.desc    check the isIdeograph interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1083,7 +1138,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_IDEOGRAPH_002
-    * @tc.name    testIsIdeograph002
+    * @tc.name    test isIdeograph interface with '我' param
     * @tc.desc    check the isIdeograph interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1098,7 +1153,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_IDEOGRAPH_003
-    * @tc.name    testIsIdeograph003
+    * @tc.name    test isIdeograph interface with '우리' param
     * @tc.desc    check the isIdeograph interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1113,7 +1168,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_IDEOGRAPH_004
-    * @tc.name    testIsIdeograph004
+    * @tc.name    test isIdeograph interface with '私た' param
     * @tc.desc    check the isIdeograph interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1128,7 +1183,7 @@ describe('I18nTest', function () {
 
      /* *
     * @tc.number  TEST_IS_LETTER_001
-    * @tc.name    testIsLetter001
+    * @tc.name    test isLetter interface with abc param
     * @tc.desc    check the isLetter interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1143,7 +1198,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_LETTER_002
-    * @tc.name    testIsLetter002
+    * @tc.name    test isLetter interface with 123 param
     * @tc.desc    check the isLetter interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1158,7 +1213,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_LETTER_003
-    * @tc.name   testIsLetter003
+    * @tc.name   test isLetter interface with abc123 param
     * @tc.desc    check the isLetter interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1173,7 +1228,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_LETTER_004
-    * @tc.name    testIsLetter004
+    * @tc.name    test isLetter interface with 123abc param
     * @tc.desc    check the isLetter interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1189,7 +1244,7 @@ describe('I18nTest', function () {
 
      /* *
     * @tc.number  TEST_IS_LOWER_CASE_001
-    * @tc.name    testIsLowerCase001
+    * @tc.name    test isLowerCase interface with abc param
     * @tc.desc    check the isLowerCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1204,7 +1259,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_LOWER_CASE_002
-    * @tc.name    testIsLowerCase002
+    * @tc.name    ftest isLowerCase interface with ABC param
     * @tc.desc    check the isLowerCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1219,7 +1274,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_LOWER_CASE_003
-    * @tc.name    testIsLowerCase003
+    * @tc.name    test isLowerCase interface with abcDEF param
     * @tc.desc    check the isLowerCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1234,7 +1289,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_LOWER_CASE_004
-    * @tc.name    testIsLowerCase004
+    * @tc.name    test isLowerCase interface with ABCdef param
     * @tc.desc    check the isLowerCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1250,7 +1305,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_UPPER_CASE_001
-    * @tc.name    testIsUpperCase001
+    * @tc.name    test isUpperCase interface with ABC param
     * @tc.desc    check the isUpperCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1265,7 +1320,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_UPPER_CASE_002
-    * @tc.name    testIsUpperCase002
+    * @tc.name    test isUpperCase interface with abc param
     * @tc.desc    check the isUpperCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1280,7 +1335,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_UPPER_CASE_003
-    * @tc.name    testIsUpperCase003
+    * @tc.name    test isUpperCase interface with ABCdef param
     * @tc.desc    check the isUpperCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1295,7 +1350,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_IS_UPPER_CASE_004
-    * @tc.name    testIsUpperCase004
+    * @tc.name    test isUpperCase interface with abcDEF param
     * @tc.desc    check the isUpperCase interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1310,7 +1365,7 @@ describe('I18nTest', function () {
 
      /* *
     * @tc.number  TEST_GET_TYPE_001
-    * @tc.name    testGetType001
+    * @tc.name    test getType interface with a param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1325,7 +1380,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TYPE_002
-    * @tc.name    testGetType002
+    * @tc.name    ftest getType interface with ABC param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1340,7 +1395,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TYPE_003
-    * @tc.name    testGetType003
+    * @tc.name    test getType interface with ABCdef param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1355,7 +1410,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TYPE_004
-    * @tc.name    testGetType004
+    * @tc.name    test getType interface with 123 param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1370,7 +1425,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TYPE_005
-    * @tc.name    testGetType005
+    * @tc.name    test getType interface with 123abc param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1385,7 +1440,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TYPE_006
-    * @tc.name    testGetType006
+    * @tc.name    test getType interface with ١٢٣٤٥٦٧ param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1400,7 +1455,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TYPE_007
-    * @tc.name    testGetType007
+    * @tc.name    test getType interface with multi space param
     * @tc.desc    check the getType interface
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1416,7 +1471,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_TIME_ZONE_001
-    * @tc.name    testGetTimeZone001
+    * @tc.name    test getTimeZone method
     * @tc.desc    get the getTimeZone value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1433,7 +1488,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_ID_001
-    * @tc.name    testGetID001
+    * @tc.name    test getID
     * @tc.desc    get the getID value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1450,7 +1505,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_RAW_OFF_SET_001
-    * @tc.name    testGetRawOffSet001
+    * @tc.name    test getRawOffset method
     * @tc.desc    get the getRawOffset value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1467,7 +1522,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_OFF_SET_001
-    * @tc.name    testGetOffSet001
+    * @tc.name    test getOffset method
     * @tc.desc    get the getOffset value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1483,7 +1538,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_OFF_SET_002
-    * @tc.name    testGetOffSet002
+    * @tc.name    test getOffset method with date param
     * @tc.desc    get the getOffset value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1500,7 +1555,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_OFF_SET_003
-    * @tc.name    testGetOffSet003
+    * @tc.name    test getOffset method with timezone id
     * @tc.desc    get the getOffset value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1516,7 +1571,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number  TEST_GET_OFF_SET_004
-    * @tc.name    testGetOffSet004
+    * @tc.name    test getOffset method with date and timezone id param
     * @tc.desc    get the getOffset value
     * @tc.size    MediumTest
     * @tc.type    Method
@@ -1533,7 +1588,7 @@ describe('I18nTest', function () {
 
     /* *
     * @tc.number TEST_GET_AVAILABLE_IDS_001
-    * @tc.name   testGetAvailableIDs001
+    * @tc.name   test getAvailableIDs method
     * @tc.desc   get the getAvailableIDs value
     * @tc.size    MediumTest
     * @tc.type    Method

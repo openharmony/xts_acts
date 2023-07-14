@@ -21,8 +21,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_DIRECTION_VERTICAL_001
-    * @tc.name    testDirectionVertical001
-    * @tc.desc    get the configuration in promise mode
+    * @tc.name    test DIRECTION_VERTICAL
+    * @tc.desc    get the value of DIRECTION_VERTICAL
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 0
@@ -36,8 +36,8 @@ describe('resourceManagerTest', function () {
 
     /* *
    * @tc.number  TEST_DIRECTION_HORIZONTAL_001
-   * @tc.name    testDirectionHorizontal001
-   * @tc.desc    get the configuration in promise mode
+   * @tc.name    test DIRECTION_HORIZONTAL
+   * @tc.desc   get the value of DIRECTION_HORIZONTAL
    * @tc.size:    MediumTest
    * @tc.type     method
    * @tc.level    level 0
@@ -51,8 +51,8 @@ describe('resourceManagerTest', function () {
 
     /* *
         * @tc.number  TEST_DEVICE_TYPE_PHONE_001
-        * @tc.name    testDeviceTypePhone001
-        * @tc.desc    get the device capability in promise mode
+        * @tc.name    test DEVICE_TYPE_PHONE
+        * @tc.desc    get  the value of DEVICE_TYPE_PHONE
         * @tc.size:    MediumTest
         * @tc.type     method
         * @tc.level    level 0
@@ -66,8 +66,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_DEVICE_TYPE_TABLET_001
-    * @tc.name    testDeviceTypeTable001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test DEVICE_TYPE_TABLET
+    * @tc.desc    get the value of DEVICE_TYPE_TABLET
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 0
@@ -81,8 +81,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_DEVICE_TYPE_CAR_001
-    * @tc.name    testDeviceTypeCar001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test DEVICE_TYPE_CAR
+    * @tc.desc    get the value of DEVICE_TYPE_CAR
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 0
@@ -96,8 +96,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_DEVICE_TYPE_PC_001
-    * @tc.name    testDeviceTypePC001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test DEVICE_TYPE_PC
+    * @tc.desc    get the value of DEVICE_TYPE_PC
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 0
@@ -111,8 +111,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_DEVICE_TYPE_TV_001
-    * @tc.name    testDeviceTypeTV001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test DEVICE_TYPE_TV
+    * @tc.desc    get the value of DEVICE_TYPE_TV
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 0
@@ -126,8 +126,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_DEVICE_TYPE_WEARABLE_001
-    * @tc.name    testDeviceTypeWearable001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test DEVICE_TYPE_WEARABLE
+    * @tc.desc    get the 
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 0
@@ -142,8 +142,8 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number:  TEST_SCREEN_SDIP_001
-    * @tc.name:    testScreenSdip001
-    * @tc.desc:    get the device capability in promise mode
+    * @tc.name:    test SCREEN_SDPI
+    * @tc.desc:    get the value of SCREEN_SDPI
     * @tc.size:    MediumTest
     * @tc.type     enum
     * @tc.level    level 0
@@ -157,8 +157,8 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_SCREEN_MDPI_001
-    * @tc.name    testScreenMdpi001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test SCREEN_MDPI
+    * @tc.desc    get the value of SCREEN_MDPI
     * @tc.size:    MediumTest
     * @tc.type     enum
     * @tc.level    level 0
@@ -172,8 +172,8 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_SCREEN_LDPI-001
-    * @tc.name    testScreenLdpi001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test SCREEN_LDPI
+    * @tc.desc    get the value of SCREEN_LDPI
     * @tc.size:    MediumTest
     * @tc.type     enum
     * @tc.level    level 0
@@ -187,8 +187,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_SCREEN_XLDPI_001
-    * @tc.name    testScreenXldpi001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test SCREEN_XLDPI
+    * @tc.desc    get the value of SCREEN_XLDPI
     * @tc.size:    MediumTest
     * @tc.type     enum
     * @tc.level    level 0
@@ -202,8 +202,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_SCREEN_XXLDPI_001
-    * @tc.name    testScreenXxldpi001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test SCREEN_XXLDPI
+    * @tc.desc    get the value of SCREEN_XXLDPI
     * @tc.size:    MediumTest
     * @tc.type     enum
     * @tc.level    level 0
@@ -217,8 +217,8 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_SCREEN_XXXLDPI_001
-    * @tc.name    testScreenXxxldpi001
-    * @tc.desc    get the device capability in promise mode
+    * @tc.name    test SCREEN_XXXLDPI
+    * @tc.desc    get the value of SCREEN_XXXLDPI
     * @tc.size:    MediumTest
     * @tc.type     enum
     * @tc.level    level 0
@@ -232,7 +232,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGVALUERERESOURCECALLBACK_001
-    * @tc.name    testGetStringValueResourceCallback001
+    * @tc.name    test getString method in callback mode
     * @tc.desc    get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -250,7 +250,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGVALUERESOURCEPROMISE_001
-    * @tc.name    testGetStringValueResourcePromise001
+    * @tc.name    test getString method in promise mode
     * @tc.desc    get the string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -269,7 +269,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGVALUERESIDCALLBACK_001
-    * @tc.name    testGetStringValueResIdCallback001
+    * @tc.name    test getString method in callback mode
     * @tc.desc    get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -286,7 +286,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGVALUERESIDCallback_002
-    * @tc.name    testGetStringValueResIdCallback002
+    * @tc.name    test getString method in callback mode
     * @tc.desc    get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -315,9 +315,9 @@ describe('resourceManagerTest', function () {
     })
 
     /* *
-    * @tc.number TEST_GETSTRINGVALUERESIDCALLBACK_003
-    * @tc.name testGetStringValueResIdCallback003
-    * @tc.desc get the string in callback mode
+    * @tc.number   TEST_GETSTRINGVALUERESIDCALLBACK_003
+    * @tc.name     test getString method in callback mode
+    * @tc.desc     get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 2
@@ -345,9 +345,9 @@ describe('resourceManagerTest', function () {
     })
 
     /* *
-    * @tc.number TEST_GETSTRINGVALUERESIDCALLBACK_004
-    * @tc.name testGetStringValueResIdCallback004
-    * @tc.desc get the string in callback mode
+    * @tc.number   TEST_GETSTRINGVALUERESIDCALLBACK_004
+    * @tc.name     test getString method in callback mode
+    * @tc.desc     get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
     * @tc.level    level 2
@@ -375,7 +375,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number   TEST_GETSTRINGVALUERESIDCALLBACK_005
-    * @tc.name     testGetStringValueResIdCallback005
+    * @tc.name     test getString method in callback mode
     * @tc.desc     get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -405,7 +405,7 @@ describe('resourceManagerTest', function () {
 
     /* *
         * @tc.number  TEST_GETSTRINGVALUERESIDPROMISE_001
-        * @tc.name    testGetStringValueResIdPromise001
+        * @tc.name    test getString method in promise mode
         * @tc.desc    get the string in promise mode
         * @tc.size:    MediumTest
         * @tc.type     method
@@ -423,7 +423,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number TEST_GETSTRINGVALUERESIDPROMISE_002
-    * @tc.name   testGetStringValueResIdPromise002
+    * @tc.name   test getString method in promise mode
     * @tc.desc   get the string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -452,7 +452,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number TEST_GETSTRINGVALUERESIDPROMISE_003
-    * @tc.name   testGetStringValueResIdPromise003
+    * @tc.name   test getString method in promise mode
     * @tc.desc   get the string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -485,7 +485,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number TEST_GETSTRINGVALUERESIDPROMISE_004
-    * @tc.name   testGetStringValueResIdPromise004
+    * @tc.name   test getString method in promise mode
     * @tc.desc   get the string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -514,7 +514,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number TEST_GETSTRINGVALUERESIDPROMISE_005
-    * @tc.name   testGetStringValueResIdPromise005
+    * @tc.name   test getStringValue method in promise mode
     * @tc.desc   get the string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -543,7 +543,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGARRAYVALUERESOURCECALLBACK_001
-    * @tc.name    testGetStartArrayValueResourceCallback001
+    * @tc.name    test getStringValue method in callback mode
     * @tc.desc    get the string array in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -561,7 +561,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGARRAYVALUERESOURCEPROMISE_001
-    * @tc.name    testGetStartArrayValueResourcePromise001
+    * @tc.name    test getStringArrayValue method in promise mode
     * @tc.desc    get the string array in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -579,7 +579,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTARTARRAYVALUERESIDCALLBACK_001
-    * @tc.name    testGetStartArrayValueResIdCallback001
+    * @tc.name    test getStringArrayValue method in callback mode
     * @tc.desc    get the string array in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -602,7 +602,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTARTARRAYVALUERESIDPROMISE_001
-    * @tc.name    testGetStartArrayValueResIdPromise001
+    * @tc.name    test getStringArrayValue method in promise mode
     * @tc.desc    get the string array in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -626,7 +626,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTRESOURCECALLBACK_001
-    * @tc.name    testGetMediaContentResourceCallback001
+    * @tc.name    test getMediaContent method in callback mode
     * @tc.desc    get the media in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -644,7 +644,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTRESOURCEPROMISE_001
-    * @tc.name    testGetMediaContentResourcePromise001
+    * @tc.name    test getMediaContent method in promise mode
     * @tc.desc    get the media in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -662,7 +662,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTRESIDCALLBACK_001
-    * @tc.name    testGetMediaContentResIdCallback001
+    * @tc.name    test getMediaContent method in callback mode
     * @tc.desc    get the media in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -678,7 +678,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTRESIDPROMISE_001
-    * @tc.name    testGetMediaContentResIdPromise001
+    * @tc.name    test getMediaContent method in callback mode
     * @tc.desc    get the media in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -695,7 +695,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETMEDIACONTENTBASE64RESOURCECALLBACK_001
-    * @tc.name    testGetMediaContentBase64ResourceCallback001
+    * @tc.name    test getMediaContentBase64 method in callback mode
     * @tc.desc    get the media base64 in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -713,7 +713,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTBASE64RESOURCEPROMISE_001
-    * @tc.name    testGetMediaContentBase64ResourcePromise001
+    * @tc.name    test getMediaContentBase64 method in promise mode
     * @tc.desc    get the media base64 in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -731,7 +731,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTBASE64RESIDCALLBACK_001
-    * @tc.name    testGetMediaContentBase64ResIdCallback001
+    * @tc.name    test getMediaContentBase64 method in callback mode
     * @tc.desc    get the media base64 in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -747,7 +747,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIACONTENTBASE64RESIDPROMISE_001
-    * @tc.name    testGetMediaContentBase64ResIdPromise001
+    * @tc.name    test getMediaContentBase64 method in promise mode
     * @tc.desc    get the media base64 in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -763,7 +763,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETDEVICECAPABILITYCALLBACK_001
-    * @tc.name    testGetDeviceCapabilityCallback001
+    * @tc.name    test getDeviceCapability method in callback mode
     * @tc.desc    get the device capability in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -792,7 +792,7 @@ describe('resourceManagerTest', function () {
 
       /* *
         * @tc.number  TEST_GETDEVICECAPABILITYPROMISE_001
-        * @tc.name    testGetDeviceCapabilityPromise001
+        * @tc.name    test getDeviceCapability method in promise mode
         * @tc.desc    get the device capability in promise mode
         * @tc.size:    MediumTest
         * @tc.type     method
@@ -814,7 +814,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST-GETCONFIGURATIONCALLBACK_001
-    * @tc.name    testGetConfigurationCallback001
+    * @tc.name    test getConfiguration method in callback mode
     * @tc.desc    get the configuration in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -843,7 +843,7 @@ describe('resourceManagerTest', function () {
 
     /* *
         * @tc.number  TEST_GETCONFIGURATIONPROMISE_001
-        * @tc.name    testGetConfigurationPromise001
+        * @tc.name    test getConfiguration method in promise mode
         * @tc.desc    get the configuration in promise mode
         * @tc.size:    MediumTest
         * @tc.type     method
@@ -866,7 +866,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETPLURALSTRINGVALUERESOURCECALLBACK_001
-    * @tc.name    testGetPluralStringValueResourceCallback001
+    * @tc.name    test getPluralStringValue method in callback mode
     * @tc.desc    get the plural string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -884,7 +884,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETPLURALSTRINGVALUERESOURCEPROMISE_001
-    * @tc.name    testGetPluralStringValueResourcePromise001
+    * @tc.name    test getPluralStringValue method in promise mode
     * @tc.desc    get the plural string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -902,7 +902,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETPLURALSTRINGVALUERESIDCALLBACK_001
-    * @tc.name    testGetPluralStringValueResIdCallback001
+    * @tc.name    test getPluralStringValue method in callback mode
     * @tc.desc    get the plural string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -919,7 +919,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETPLURALSTRINGVALUERESIDPROMISE_001
-    * @tc.name    testGetPluralStringValueResIdPromise001
+    * @tc.name    test getPluralStringValue method in promise mode
     * @tc.desc    get the plural string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -936,7 +936,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGBYNAMECALLBACK_001
-    * @tc.name    testGetStringByNameCallback001
+    * @tc.name    test getStringByName method in callback mode
     * @tc.desc    get the string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -953,7 +953,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGBYNAMEPromise_001
-    * @tc.name    testGetStringByNamePromise001
+    * @tc.name    test getStringByName method in promise mode
     * @tc.desc    get the string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -971,7 +971,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETSTRINGARRAYBYNAMECALLBACK_001
-    * @tc.name    testGetStringArrayByNameCallback001
+    * @tc.name    test getStringArrayByName method in callback mode
     * @tc.desc    get the string array in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -994,7 +994,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGARRAYBYNAMEPROMISE_001
-    * @tc.name    testGetStringArrayByNamePromise001
+    * @tc.name    test getStringArrayByName method in promise mode
     * @tc.desc    get the string array in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1018,7 +1018,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIABYNAMECALLBACK_001
-    * @tc.name    testGetMediaByNameCallback001
+    * @tc.name    test getMediaByName method in callback mode
     * @tc.desc    get the media in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1033,7 +1033,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIABYNAMEPROMISE_001
-    * @tc.name    testGetMediaByNamePromise001
+    * @tc.name    test getMediaByName method in promise mode
     * @tc.desc    get the media in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1048,7 +1048,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETMEDIABASE64BYNAMECALLBACK_001
-    * @tc.name    testGetMediaBase64ByNameCallback001
+    * @tc.name    test getMediaBase64ByName method in callback mode
     * @tc.desc    get the media base64 in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1064,7 +1064,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETMEDIABASE64BYNAMEPROMISE_001
-    * @tc.name    testGetMediaBase64ByNamePromise001
+    * @tc.name    test getMediaBase64ByName method in promise mode
     * @tc.desc    get the media base64 in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1080,7 +1080,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETPLURALSTRINGBYNAMECALLBACK_001
-    * @tc.name    testGetPluralStringByNameCallback001
+    * @tc.name    test getPluralStringByName method in callback mode
     * @tc.desc    get the plural string in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1097,7 +1097,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETPLURALSTRINGBYNAMEPROMISE_001
-    * @tc.name    testGetPluralStringByNamePromise001
+    * @tc.name    test getPluralStringByName method in promise mode
     * @tc.desc    get the plural string in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1114,7 +1114,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_GETSTRINGSYNCRESID_001
-    * @tc.name    testGetStringSyncResId001
+    * @tc.name    test getStringSync method in sync mode
     * @tc.desc    get the string in sync mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1130,7 +1130,7 @@ describe('resourceManagerTest', function () {
 
     /* *
    * @tc.number  TEST_GETSTRINGSYNCRESIDARGS_001
-   * @tc.name    testGetStringSyncResIdArgs001
+   * @tc.name    test getStringSync method in sync mode
    * @tc.desc    get the string in sync mode
    * @tc.size:    MediumTest
    * @tc.type     method
@@ -1146,7 +1146,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number TEST_GETSTRINGSYNCRESOURCE_001
-    * @tc.name    testGetStringSyncResource001
+    * @tc.name    test getStringSync method in sync mode
     * @tc.desc    get the string in sync mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1164,7 +1164,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETSTRINGSYNCRESOURCEARGS_001
-    * @tc.name    testGetStringSyncResourceArgs001
+    * @tc.name    test getStringSync method in sync mode
     * @tc.desc    get the string in sync mode
     * @tc.size:   MediumTest
     * @tc.type    method
@@ -1183,7 +1183,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST-GETSTRINGBYNAMESYNC_001
-    * @tc.name    testGetStringByNameSync001
+    * @tc.name    test getStringByNameSync method in sync mode
     * @tc.desc    get the string in sync mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1206,7 +1206,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST-GETSTRINGBYNAMESYNC_002
-    * @tc.name    testGetStringByNameSync002
+    * @tc.name    test getStringByNameSync method in sync mode
     * @tc.desc    get the string in sync mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1222,7 +1222,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST-GETSTRINGBYNAMESYNCARGS_001
-    * @tc.name    testGetStringByNameSyncArgs001
+    * @tc.name    test getStringByNameSync method in sync mode
     * @tc.desc    get the string in sync mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1239,7 +1239,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST-GETBOOLEANRESID_001
-    * @tc.name    testGetBooleanResId001
+    * @tc.name    test getBoolean method
     * @tc.desc    get the boolean value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1254,7 +1254,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETBOOLEANRESOURCE_001
-    * @tc.name    testGetBooleanResource001
+    * @tc.name    test getBoolean method
     * @tc.desc    get the boolean value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1271,7 +1271,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETBOOLEANBYNAME_001
-    * @tc.name    testGetBooleanByName001
+    * @tc.name    test getBooleanByName method
     * @tc.desc    get the boolean value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1286,7 +1286,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETNUMBERRESID_001
-    * @tc.name    testGetNumberResId001
+    * @tc.name    test getNumber method with interger id
     * @tc.desc    get the interger value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1304,7 +1304,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETNUMBERRESID_002
-    * @tc.name    testGetNumberResId002
+    * @tc.name    test getNumber with float id
     * @tc.desc    get the float value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1320,7 +1320,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETNUMBERRESOURCE_001
-    * @tc.name    testGetNumberResource001
+    * @tc.name    test getNumber method with interger id
     * @tc.desc    get the interger value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1338,7 +1338,7 @@ describe('resourceManagerTest', function () {
     
     /* *
     * @tc.number  TEST_GETNUMBERRESOURCE_002
-    * @tc.name    testGetNumberResource002
+    * @tc.name    test getNumber with float id
     * @tc.desc    get the float value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1357,7 +1357,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETNUMBERBYNAME_001
-    * @tc.name    testGetNumberByName001
+    * @tc.name    test getNumberByName with interger
     * @tc.desc    get the interger value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1372,7 +1372,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETNUMBERBYNAME_002
-    * @tc.name    testGetNumberByName002
+    * @tc.name    test getNumberByName with float
     * @tc.desc    get the float value
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1387,7 +1387,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_RELEASE_001
-    * @tc.name    testRelease001
+    * @tc.name    test release method
     * @tc.desc    get the release function
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1403,7 +1403,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETRAWFILECONTENTCALLBACK_001
-    * @tc.name    testGetRawFileContentCallback001
+    * @tc.name    test getRawFile method in callback mode
     * @tc.desc    get the getRawFile in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1419,7 +1419,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_GETRAWFILECONTENTPROMISE_001
-    * @tc.name    testGetRawFileContentPromise001
+    * @tc.name    test getRawFile method in promise mode
     * @tc.desc    get the getRawFile in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1435,7 +1435,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST-GETRAWFDCALLBACK_001
-    * @tc.name    testGetRawFdCallback001
+    * @tc.name    test getRawFileDescriptor method in callback mode
     * @tc.desc    get the RawFileDescriptor in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1457,7 +1457,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST-GETRAWFDPROMISE_001
-    * @tc.name    testGetRawFdPromise001
+    * @tc.name    test getRawFileDescriptor method in promise mode
     * @tc.desc    get the RawFileDescriptor in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1480,7 +1480,7 @@ describe('resourceManagerTest', function () {
 
      /* *
     * @tc.number  TEST_CLOSERAWFDCALLBACK_001
-    * @tc.name    testCloseRawFdCallback001
+    * @tc.name    test closeRawFileDescriptor method in callback mode
     * @tc.desc    get the closeRawFileDescriptor in callback mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1508,7 +1508,7 @@ describe('resourceManagerTest', function () {
 
     /* *
     * @tc.number  TEST_CLOSERAWFDPROMISE_001
-    * @tc.name    testCloseRawFdPromise001
+    * @tc.name    test closeRawFd method in promise mode throw 9001005 error code
     * @tc.desc    get the closeRawFd in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
@@ -1535,7 +1535,7 @@ describe('resourceManagerTest', function () {
 
     /*
     * @tc.number  TEST_CLOSERAWFDPROMISE_002
-    * @tc.name    testCloseRawFdPromise002
+    * @tc.name    test closeRawFd method in promise mode throw 401 error code
     * @tc.desc    get the closeRawFd in promise mode
     * @tc.size:    MediumTest
     * @tc.type     method
