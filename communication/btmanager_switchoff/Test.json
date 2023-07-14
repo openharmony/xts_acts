@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBluetoothProFileHapTest.hap"
+                "ActsBtManagerSwitchOff003HapTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
@@ -19,7 +19,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "svc bluetooth enable"
+                "svc bluetooth disable"
             ]
         }
     ]

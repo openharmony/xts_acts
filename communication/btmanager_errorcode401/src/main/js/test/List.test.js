@@ -13,13 +13,9 @@
  * limitations under the License.
  */
 
-import btHfpConnTest from './BluetoothHfp.test.js'
-import btA2dpConnTest from './BluetoothA2dp.test.js'
-import btManagerHfpConnTest from './BtManagerHfp.test.js'
-import btManagerA2dpConnTest from './BtManagerA2dp.test.js'
+import btManagerMError401Test from './BtMGattManager401.test.js'
+import btManagerAdvertError401Test from './BtMGattAdvertiser401.test.js'
 export default function testsuite() {
-    btHfpConnTest()
-    btA2dpConnTest()
-    btManagerHfpConnTest()
-    btManagerA2dpConnTest()
+	btManagerMError401Test()
+	btManagerAdvertError401Test()
 }
