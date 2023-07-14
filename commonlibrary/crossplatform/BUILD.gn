@@ -16,6 +16,11 @@ group("crossplatform") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "commonlibraryArrayListetstest:ActsCrossPlatformArrayListTest",
+      "commonlibraryLightWeightMapetstest:ActsCrossplatformLightWeightMapTest",
+      "commonlibraryLightWeightSetetstest:ActsCrossPlatformLightWeightSetTest",
+      "commonlibraryLinkedListetstest:ActsCrossplatformLinkedListTest",
+      "commonlibraryListetstest:ActsCrossPlatformList2Test",
       "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest",
       "commonlibraryWorkeretstest:ActsCrossplatformWorkerTest",
       "commonlibrarybufferetstest:ActsCrossplatformBufferTest",
@@ -24,15 +29,13 @@ group("crossplatform") {
       "commonlibraryhashmapetstest:ActsCrossplatformHashMapTest",
       "commonlibraryhashsetetstest:ActsCrossplatformHashSetTest",
       "commonlibraryplainarrayetstest:ActsCrossplatformPlainArrayTest",
+      "commonlibraryprocessetstest:ActsCrossplatformProcessTest",
       "commonlibraryqueueetstest:ActsCrossplatformCommonlibraryQueueTest",
       "commonlibrarystacketstest:ActsCrossplatformCommonlibraryStackTest",
       "commonlibrarytaskpooletstest:ActsCrossplatformCommonlibraryTaskpoolTest",
       "commonlibrarytreesetetstest:ActsCrossplatformTreeSetTest",
       "commonlibraryurietstest:ActsCrossplatformUriTest",
       "commonlibraryurletstest:ActsCrossplatformUrlTest",
-      "commonlibraryutiletstest:ActsCrossplatformLightWeightMapTest",
-      "commonlibraryutiletstest:ActsCrossplatformLinkedListTest",
-      "commonlibraryutiletstest:ActsCrossplatformProcessTest",
       "commonlibraryutiletstest:ActsCrossplatformUtilTest",
     ]
   }
