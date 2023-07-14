@@ -18,6 +18,7 @@ group("crossplatform") {
     deps = [
       "commonlibraryTreeMapetstest:ActsCrossplatformTreeMapTest",
       "commonlibraryWorkeretstest:ActsCrossplatformWorkerTest",
+      "commonlibrarybufferetstest:ActsCrossplatformBufferTest",
       "commonlibraryconvertxmletstest:ActsCrossplatformConvertxmlTest",
       "commonlibrarydequeetstest:ActsCrossplatformDequeTest",
       "commonlibraryhashmapetstest:ActsCrossplatformHashMapTest",
