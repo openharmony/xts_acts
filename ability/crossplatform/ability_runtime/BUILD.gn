@@ -20,6 +20,8 @@ group("ability_crossplatform_runtime") {
       "ActsLifeCycleEtsFeatureTest:ActsLifeCycleEtsFeatureTest",
       "ActsLifeCycleEtsTest:ActsLifeCycleEtsTest",
       "ActsUiAbilityEtsTest:ActsUiAbilityEtsTest",
+      "actscontexttest:ActsCrossplatformAbilityContextTest",
+      "actscontexttestentry:ActsCrossplatformAbilityContextEntryTest",
       "commonTestAbilityApp:commonTestAbilityApp",
     ]
   }
