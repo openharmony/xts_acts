@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -76,6 +76,45 @@ export default function requestDownloadJSUnit() {
         filePath: downloadFilePath,
         title: "XTS download test!",
         background: false,
+      };
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        console.info("====>SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
+        try {
+          expect(downloadTask != undefined).assertEqual(true);
+        } catch (e) {
+          console.info("====>SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 except error: " + e);
+        }
+        await downloadTask.delete();
+        removeFile(downloadFilePath);
+        console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 end-----------------------");
+        done();
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_FILE_STAGE_API_CALLBACK_0002
+     * *@tc.name     subRequestDownloadFileStageApiCallback0002
+     * @tc.desc      Starts a download session.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+    */
+    it("subRequestDownloadFileStageApiCallback0002", 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0002 is starting-----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: true,
+        enableRoaming: true,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: true,
       };
       request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
         console.info("====>SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 downloadTask: " + downloadTask);
@@ -663,5 +702,488 @@ export default function requestDownloadJSUnit() {
         }
       });
     });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0001
+     * *@tc.name     subRequestDownloadApiEvent0001
+     * @tc.desc      Start download task, and test the event of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+    */
+    it("subRequestDownloadApiEvent0001", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0001 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0001_bk.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0001_bk.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0001 downloadTask: " + downloadTask);
+        expect(downloadTask != undefined).assertEqual(true);
+        try {
+          downloadTask.on("progress", async (receivedSize: number, totalSize: number) => {
+            try {
+              console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0001 downloadTask in progress");
+              expect(receivedSize != null).assertTrue();
+              expect(totalSize != null).assertTrue();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0001 on api throw_error: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          });
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0001 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0002
+     * *@tc.name     subRequestDownloadApiEvent0002
+     * @tc.desc      Start download task, and test the event of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0002", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0002 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0002_bk.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0002_bk.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        try {
+          console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0002 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on("complete", async () => {
+            try {
+              console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0002 complete in callback");
+              expect(true).assertTrue();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0002 complete api throw_error: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          });
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0002 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0003
+     * *@tc.name     subRequestDownloadApiEvent0003
+     * @tc.desc      Start download task, and test the event of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0003", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0003 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0003_bk.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0003_bk.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/not-exist.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        try {
+          console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0003 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on("fail", async () => {
+            try {
+              expect(true).assertTrue();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0003 throw_error: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          });
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0003 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0004
+     * *@tc.name     subRequestDownloadApiEvent0004
+     * @tc.desc      Start download task, and test the event 'off progress' of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0004", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0004 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0004.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0004.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      let count = 0;
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0004 downloadTask: " + downloadTask);
+        expect(downloadTask != undefined).assertEqual(true);
+        try {
+          downloadTask.on("progress", () => {
+            downloadTask.off("progress");
+            count++;
+          });
+
+          downloadTask.on("complete", async () => {
+            try {
+              console.log("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0004 count: " + count);
+              expect(count).assertEqual(1);
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0004 throw_error in complete: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          });
+
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0004 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0005
+     * *@tc.name     subRequestDownloadApiEvent0005
+     * @tc.desc      Start download task, and test the event 'off complete' of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0005", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0005.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0005.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      let result = true;
+      let onFailedCallback = function() {
+        result = false;
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 onFailedCallback");
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        try {
+          console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on("complete", onFailedCallback)
+          downloadTask.off("complete", onFailedCallback);
+
+          const t = setTimeout(async () => {
+            try {
+              console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 in setTimeout");
+              clearTimeout(t);
+              expect(result).assertTrue();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 throw_error in setTimeout: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          }, 5000);
+
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0006
+     * *@tc.name     subRequestDownloadApiEvent0006
+     * @tc.desc      Start download task, and test the event 'off error' of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0006", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0006.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0006.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/not-exist.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      let result = true;
+      let onFailedCallback = function() {
+        result = false;
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 onFailedCallback");
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        try {
+          console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on("fail", onFailedCallback);
+          downloadTask.off("fail", onFailedCallback);
+
+          const t = setTimeout(async () => {
+            try {
+              console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 in setTimeout");
+              clearTimeout(t);
+              expect(result).assertTrue();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 throw_error in setTimeout: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          }, 5000);
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0007
+     * *@tc.name     subRequestDownloadApiEvent0007
+     * @tc.desc      Start download task, and test the event 'off complete' of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0007", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0007 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0007.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0007.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      let result1 = true;
+      let result2 = true;
+      let onFailedCallback = function() {
+        result1 = false;
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 onFailedCallback");
+      }
+      let onFailedCallback2 = function() {
+        result2 = false;
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 onFailedCallback");
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        try {
+          console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on("complete", onFailedCallback)
+          downloadTask.on("complete", onFailedCallback2)
+
+          downloadTask.off("complete", onFailedCallback);
+
+          const t = setTimeout(async () => {
+            try {
+              console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 in setTimeout");
+              clearTimeout(t);
+              expect(result2).assertFalse();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 throw_error in setTimeout: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          }, 5000);
+
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DOWNDLOAD_API_EVENT_0008
+     * *@tc.name     subRequestDownloadApiEvent0008
+     * @tc.desc      Start download task, and test the event 'off error' of it.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("subRequestDownloadApiEvent0008", 0, async function (done) {
+      console.info("====>-------------------SUB_REQUEST_DOWNDLOAD_API_EVENT_0008 is starting----------------------");
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0008.txt`;
+      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNDLOAD_API_EVENT_0008.txt`);
+      let downloadFileConfig = {
+        url: "https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/not-exist.apk",
+        header: {
+          headers: "http",
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: "XTS download test!",
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: "XTS download test!",
+        background: false,
+      };
+
+      let result1 = true;
+      let result2 = true;
+      let onFailedCallback = function() {
+        result1 = false;
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 onFailedCallback");
+      }
+      let onFailedCallback2 = function() {
+        result2 = false;
+        console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0005 onFailedCallback");
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask) => {
+        try {
+          console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.on("fail", onFailedCallback);
+          downloadTask.on("fail", onFailedCallback2);
+          downloadTask.off("fail", onFailedCallback);
+
+          const t = setTimeout(async () => {
+            try {
+              console.info("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 in setTimeout");
+              clearTimeout(t);
+              expect(result2).assertFalse();
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            } catch (err) {
+              console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 throw_error in setTimeout: " + JSON.stringify(err));
+              await downloadTask.delete();
+              removeFile(downloadFilePath);
+              done();
+            }
+          }, 5000);
+        } catch (err) {
+          console.error("====>SUB_REQUEST_DOWNDLOAD_API_EVENT_0006 throw_error: " + JSON.stringify(err));
+          await downloadTask.delete();
+          removeFile(downloadFilePath);
+          done();
+        }
+      });
+    });
+
   });
 }

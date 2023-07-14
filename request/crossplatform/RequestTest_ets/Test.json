@@ -4,6 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "60000",
         "shell-timeout": "60000",
+        "testcase-timeout": 15000,
         "bundle-name": "ohos.acts.request.crossplatform.request",
         "module-name": "crossplatform_request_test_ets"
     },
