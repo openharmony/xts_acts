@@ -328,6 +328,7 @@ export default function webSocketTest() {
         expect(true).assertTrue();
         done();
       });
+      ws.off('open');
       console.log("testOn_Open001: 3");
     });
 
@@ -365,6 +366,7 @@ export default function webSocketTest() {
         console.log("on message, message:" + value);
         expect(true).assertTrue();
       });
+      ws.off('message');
     });
 
     /*
@@ -378,6 +380,7 @@ export default function webSocketTest() {
     it('testOff_Message001', 0, async function (done) {
       let ws = webSocket.createWebSocket();
       done();
+      ws.on('message');
       ws.off('message');
       expect(true).assertTrue();
     });
@@ -396,6 +399,7 @@ export default function webSocketTest() {
       ws.on('close', (err, value) => {
         console.log("on close, code is " + value.code + ", reason is " + value.reason);
       });
+      ws.off('close');
       expect(true).assertTrue();
     });
 
@@ -410,6 +414,7 @@ export default function webSocketTest() {
     it('testOff_Close001', 0, async function (done) {
       let ws = webSocket.createWebSocket();
       done();
+      ws.on('close');
       ws.off('close');
       expect(true).assertTrue();
     });
@@ -428,6 +433,7 @@ export default function webSocketTest() {
       ws.on('error', (err) => {
         console.log("on error, error:" + JSON.stringify(err))
       });
+      ws.off('error');
       expect(true).assertTrue();
     });
 
@@ -442,6 +448,7 @@ export default function webSocketTest() {
     it('testOff_Error001', 0, async function (done) {
       let ws = webSocket.createWebSocket();
       done();
+      ws.on('error');
       ws.off('error');
       expect(true).assertTrue();
     });

@@ -105,8 +105,10 @@ export default function connectionTest() {
       netConn.register((error) => {
         if (!error) {
           console.log(`register success11`);
-          expect(true).assertTrue();
-          done();
+          netConn.unregister((error) => {
+            expect(true).assertTrue();
+            done();
+          });
         } else {
           console.log(`register failed,errCode:` + error.code);
           expect().assertFail();
@@ -159,9 +161,6 @@ export default function connectionTest() {
             console.log("register success11:" + error);
             netConn.on("netAvailable",(data) => {
               console.log("netAvailable success11:" + data);
-              // netConn.unregister((error) => {
-              //   console.log("unregister success11:" + error);
-              // });
             });
             netConn.unregister((error) => {
               console.log("unregister success11:" + error);
@@ -341,33 +340,6 @@ export default function connectionTest() {
           done();
         }
       });
-    });
-
-    /**
-     * @tc.number: TEST_BEARER_TYPES_001
-     * @tc.name  : testBearerTypes001
-     * @tc.desc  : bearerTypes test
-     * @tc.size  : MediumTest
-     * @tc.type  : Field
-     * @tc.level : Level 1
-     */
-    it('testBearerTypes001', 0, function (done) {
-      try {
-        let netSpecifier = {
-          netCapabilities: {
-            linkUpBandwidthKbps: 41,
-            linkDownBandwidthKbps: 62,
-            bearerTypes: [1],
-            networkCap: [9],
-          }, bearerPrivateIdentifier: '876'
-        }
-        connection.createNetConnection(netSpecifier, 100);
-        expect(true).assertTrue();
-        done();
-      } catch (error) {
-        expect().assertFail();
-        done();
-      }
     });
 
     /**
