@@ -54,6 +54,7 @@ export default function NetworkManagerCaPathTest() {
                 if (err) {
                     console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(err)}`);
                     expect(err.code == 2300077).assertTrue();
+                    httpRequest.destroy();
                     done();
                 } else {
                     console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);
@@ -75,6 +76,7 @@ export default function NetworkManagerCaPathTest() {
                 if (err) {
                     console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(err)}`);
                     expect(err.code == 2300077).assertTrue();
+                    httpRequest.destroy();
                     done();
                 } else {
                     console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);
@@ -96,6 +98,7 @@ export default function NetworkManagerCaPathTest() {
                 if (err) {
                     console.info(`${CASE_NAME} httpsRequest fail, err: ${JSON.stringify(err)}`);
                     expect(err.code == 2300077).assertTrue();
+                    httpRequest.destroy();
                     done();
                 } else {
                     console.info(`${CASE_NAME} httpsRequest success, data: ${JSON.stringify(data)}`);

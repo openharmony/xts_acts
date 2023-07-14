@@ -18,6 +18,7 @@ group("ability") {
   if (is_standard_system) {
     deps = [
       "ability_runtime:ability_runtime",
+      "crossplatform:ability_crossplatform",
       "dmsfwk:dmsfwk",
     ]
   }

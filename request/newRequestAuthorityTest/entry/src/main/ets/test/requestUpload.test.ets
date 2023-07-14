@@ -58,7 +58,7 @@ export default function requestUploadJSUnit() {
       }
     }];
 
-    let conf = {
+    let config = {
       action: request.agent.Action.UPLOAD,
       url: 'http://127.0.0.1',
       title: 'uploadTest',
@@ -84,6 +84,7 @@ export default function requestUploadJSUnit() {
     let sleep = function (timeout) {
       return new Promise(resolve => {
         const st = setTimeout(() => {
+          clearTimeout(st);
           resolve(null);
         }, timeout);
       });
@@ -98,7 +99,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Create_Upload_Callback_0010', 0, async function (done) {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, conf, async (err, task)=>{
+      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Callback_0010 uploadTask: " + task);
         try{
           if(err){
@@ -127,7 +128,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Create_Upload_Promise_0010', 0, async function (done) {
       console.info("-----------------------SUB_Misc_REQUEST_Create_Upload_Promise_0010 is starting-----------------------");
       try {
-        var task = await request.agent.create(globalThis.abilityContext, conf);
+        var task = await request.agent.create(globalThis.abilityContext, config);
         expect(task !== undefined).assertEqual(true);
         await request.agent.remove(task.tid);
         console.info("====>SUB_Misc_REQUEST_Create_Upload_Promise_0010 create success: " + task);
@@ -150,7 +151,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Remove_Upload_Callback_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Callback_0010 is starting-----------------------");
       try {
-        let task = await request.agent.create(globalThis.abilityContext, conf);
+        let task = await request.agent.create(globalThis.abilityContext, config);
         request.agent.remove(task.tid, err => {
           try {
             if(err){
@@ -181,7 +182,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Remove_Upload_Promise_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Remove_Upload_Promise_0010 is starting-----------------------");
       try {
-        let task = await request.agent.create(globalThis.abilityContext, conf);
+        let task = await request.agent.create(globalThis.abilityContext, config);
         await request.agent.remove(task.tid);
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Remove_Upload_Promise_0010 remove success: " + task);
@@ -202,7 +203,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Start_Upload_Callback_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, conf, async (err, task)=>{
+      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(async err => {
           try{
@@ -232,7 +233,7 @@ export default function requestUploadJSUnit() {
     it('SUB_Misc_REQUEST_Start_Upload_Promise_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Start_Upload_Promise_0010 is starting-----------------------");
       try {
-        var task = await request.agent.create(globalThis.abilityContext, conf);
+        var task = await request.agent.create(globalThis.abilityContext, config);
         await task.start();
         expect(true).assertEqual(true);
         console.info("====>SUB_Misc_REQUEST_Start_Upload_Promise_0010 upload start success: " + JSON.stringify(task));
@@ -254,7 +255,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Pause_Upload_Callback_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, conf, async (err, task)=>{
+      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(err => {
           console.info("====>SUB_Misc_REQUEST_Pause_Upload_Callback_0010 upload start: " + JSON.stringify(err));
@@ -286,7 +287,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Pause_Upload_Promise_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Pause_Upload_Promise_0010 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, conf);
+      let task = await request.agent.create(globalThis.abilityContext, config);
       console.info("====>SUB_Misc_REQUEST_Pause_Upload_Promise_0010 create task: " + JSON.stringify(task));
       task.start(async err => {
         try {
@@ -314,7 +315,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Resume_Upload_Callback_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, conf, async (err, task)=>{
+      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(err => {
           console.info("====>SUB_Misc_REQUEST_Resume_Upload_Callback_0010 start: " + JSON.stringify(err));
@@ -349,7 +350,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Resume_Upload_Promise_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Resume_Upload_Promise_0010 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, conf);
+      let task = await request.agent.create(globalThis.abilityContext, config);
       console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 create task: " + JSON.stringify(task));
       task.start(err => {
         console.info("====>SUB_Misc_REQUEST_Resume_Upload_Promise_0010 start: " + JSON.stringify(err));
@@ -380,7 +381,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Stop_Upload_Callback_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Callback_0010 is starting-----------------------");
-      request.agent.create(globalThis.abilityContext, conf, async (err, task)=>{
+      request.agent.create(globalThis.abilityContext, config, async (err, task)=>{
         console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 uploadTask: " + JSON.stringify(task));
         task.start(err => {
           console.info("====>SUB_Misc_REQUEST_Stop_Upload_Callback_0010 start: " + JSON.stringify(err));
@@ -412,7 +413,7 @@ export default function requestUploadJSUnit() {
      */
     it('SUB_Misc_REQUEST_Stop_Upload_Promise_0010', 0, async function (done) {
       console.info("====>-----------------------SUB_Misc_REQUEST_Stop_Upload_Promise_0010 is starting-----------------------");
-      let task = await request.agent.create(globalThis.abilityContext, conf);
+      let task = await request.agent.create(globalThis.abilityContext, config);
       console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 create task: " + JSON.stringify(task));
       task.start(async err => {
         console.info("====>SUB_Misc_REQUEST_Stop_Upload_Promise_0010 start: " + JSON.stringify(err));
