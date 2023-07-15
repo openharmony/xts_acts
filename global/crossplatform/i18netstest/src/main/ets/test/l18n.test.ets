@@ -638,7 +638,7 @@ describe('I18nTest', function () {
         calendar.setTimeZone('Asia/Shanghai');
         let value = calendar.getTimeZone();
         console.log('testSetTimeZoneAndGetTimeZone001 ' + value);
-        expect(['China Standard Time', 'Asia/Shanghai'].indexOf(value) != -1).assertTrue();
+        expect(value).assertEqual('Asia/Shanghai')
     })
 
     /**
@@ -655,7 +655,7 @@ describe('I18nTest', function () {
         calendar.setTimeZone('AAA');
         let value = calendar.getTimeZone();
         console.log('testSetTimeZoneAndGetTimeZone002 ' + value);
-        expect(['GMT', 'Etc/Unknown'].indexOf(value) != -1).assertTrue();
+        expect(value).assertEqual('Etc/Unknown')
     })
 
 
