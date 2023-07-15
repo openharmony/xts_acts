@@ -352,14 +352,14 @@ export default function webSocketTest() {
     });
 
     /*
-     * @tc.number: TEST_ON_MESSAGE_001
-     * @tc.name  : testOn_Message001
+     * @tc.number: TEST_ON_OFF_MESSAGE_001
+     * @tc.name  : testOn_Off_Message001
      * @tc.desc  : Subscribe to WebSocket received server message events, using callback as an asynchronous method. The maximum length of each message is 4K, and more than 4K automatic fragmentation.
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it('testOn_Message001', 0, async function (done) {
+    it('testOn_Off_Message001', 0, async function (done) {
       let ws = webSocket.createWebSocket();
       done();
       ws.on('message', (err, value) => {
@@ -370,30 +370,14 @@ export default function webSocketTest() {
     });
 
     /*
-     * @tc.number: TEST_OFF_MESSAGE_001
-     * @tc.name  : testOff_Message001
-     * @tc.desc  : Unsubscribe to WebSocket received server message events, using callback as an asynchronous method. The maximum length of each message is 4K, and more than 4K automatic fragmentation.
-     * @tc.size  : MediumTest
-     * @tc.type  : Method
-     * @tc.level : Level 2
-     */
-    it('testOff_Message001', 0, async function (done) {
-      let ws = webSocket.createWebSocket();
-      done();
-      ws.on('message');
-      ws.off('message');
-      expect(true).assertTrue();
-    });
-
-    /*
-     * @tc.number: TEST_On_CLOSE_001
-     * @tc.name  : testOn_Close001
+     * @tc.number: TEST_On_Off_CLOSE_001
+     * @tc.name  : testOn_Off_Close001
      * @tc.desc  : Subscribe to WebSocket shutdown events, using the callback method as an asynchronous method.
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it('testOn_Close001', 0, async function (done) {
+    it('testOn_Off_Close001', 0, async function (done) {
       let ws = webSocket.createWebSocket();
       done();
       ws.on('close', (err, value) => {
@@ -404,51 +388,19 @@ export default function webSocketTest() {
     });
 
     /*
-     * @tc.number: TEST_OFF_CLOSE_001
-     * @tc.name  : testOff_Close001
+     * @tc.number: TEST_ON_OFF_ERROR_001
+     * @tc.name  : testOn_Off_Error001
      * @tc.desc  : Unsubscribe to WebSocket shutdown events, using the callback method as an asynchronous method.
      * @tc.size  : MediumTest
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it('testOff_Close001', 0, async function (done) {
-      let ws = webSocket.createWebSocket();
-      done();
-      ws.on('close');
-      ws.off('close');
-      expect(true).assertTrue();
-    });
-
-    /*
-     * @tc.number: TEST_ON_ERROR_001
-     * @tc.name  : testOn_Error001
-     * @tc.desc  : Unsubscribe to WebSocket shutdown events, using the callback method as an asynchronous method.
-     * @tc.size  : MediumTest
-     * @tc.type  : Method
-     * @tc.level : Level 2
-     */
-    it('testOn_Error001', 0, async function (done) {
+    it('testOn_Off_Error001', 0, async function (done) {
       let ws = webSocket.createWebSocket();
       done();
       ws.on('error', (err) => {
         console.log("on error, error:" + JSON.stringify(err))
       });
-      ws.off('error');
-      expect(true).assertTrue();
-    });
-
-    /*
-     * @tc.number: TEST_OFF_Error_001
-     * @tc.name  : testOff_Error001
-     * @tc.desc  : Unsubscribe to WebSocket shutdown events, using the callback method as an asynchronous method.
-     * @tc.size  : MediumTest
-     * @tc.type  : Method
-     * @tc.level : Level 2
-     */
-    it('testOff_Error001', 0, async function (done) {
-      let ws = webSocket.createWebSocket();
-      done();
-      ws.on('error');
       ws.off('error');
       expect(true).assertTrue();
     });

@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsCrossPlatformConnectionTest") {
+ohos_js_hap_suite("ActsCrossplatformConnectionTest") {
   hap_profile = "src/main/module.json"
   deps = [
     ":windowStage_js_assets",
@@ -21,7 +21,7 @@ ohos_js_hap_suite("ActsCrossPlatformConnectionTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   # hap_name: HAP的名字，可选，默认为目标名
-  hap_name = "ActsCrossPlatformConnectionTest"
+  hap_name = "ActsCrossplatformConnectionTest"
   subsystem_name = "communication"
   part_name = "netstack"
 }
