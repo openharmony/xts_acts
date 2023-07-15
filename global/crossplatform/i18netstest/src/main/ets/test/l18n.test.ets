@@ -239,7 +239,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage001', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', true);
         console.log('testGetDisplayLanguage001 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -253,7 +253,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage002', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', undefined);
         console.log('testGetDisplayLanguage002 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -267,7 +267,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage003', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', null);
         console.log('testGetDisplayLanguage003 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -281,7 +281,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage004', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-GB', true);
         console.log('testGetDisplayLanguage004 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -323,7 +323,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage007', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans', 'en-US', true);
         console.log('testGetDisplayLanguage007 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -337,7 +337,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage008', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US', false);
         console.log('testGetDisplayLanguage008 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -351,7 +351,7 @@ describe('I18nTest', function () {
     it('testGetDisplayLanguage009', 0, function () {
         let value = I18n.System.getDisplayLanguage('zh-Hans-CN', 'en-US');
         console.log('testGetDisplayLanguage009 ' + value);
-        expect(value).assertEqual('Simplified Chinese'||'Chinese');
+        expect(['Chinese', 'Simplified Chinese'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -486,7 +486,7 @@ describe('I18nTest', function () {
         console.log('testGetDateOrder002 ' + 'start');
         let value = I18n.I18NUtil.getDateOrder('th');
         console.log('testGetDateOrder002 ' + value);
-        expect(value).assertEqual('d-LLL-y'|| 'LLL-d-y'||'y-L-d');
+        expect(['d-LLL-y', 'LLL-d-y','y-L-d'].indexOf(value) != -1).assertTrue();
     })
 
     /* *
@@ -501,7 +501,7 @@ describe('I18nTest', function () {
         console.log('testGetDateOrder003 ' + 'start');
         let value = I18n.I18NUtil.getDateOrder('jp');
         console.log('testGetDateOrder003 ' + value);
-        expect(value).assertEqual('LLL-d-y'||'y-L-d');
+        expect(['LLL-d-y', 'y-L-d'].indexOf(value) != -1).assertTrue();
     })
 
     /**
@@ -638,7 +638,7 @@ describe('I18nTest', function () {
         calendar.setTimeZone('Asia/Shanghai');
         let value = calendar.getTimeZone();
         console.log('testSetTimeZoneAndGetTimeZone001 ' + value);
-        expect(value).assertEqual('China Standard Time'||'Asia/Shanghai');
+        expect(['China Standard Time', 'Asia/Shanghai'].indexOf(value) != -1).assertTrue();
     })
 
     /**
@@ -655,7 +655,7 @@ describe('I18nTest', function () {
         calendar.setTimeZone('AAA');
         let value = calendar.getTimeZone();
         console.log('testSetTimeZoneAndGetTimeZone002 ' + value);
-        expect(value).assertEqual('GMT'||'Etc/Unknown');
+        expect(['GMT', 'Etc/Unknown'].indexOf(value) != -1).assertTrue();
     })
 
 
