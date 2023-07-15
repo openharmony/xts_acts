@@ -14,6 +14,7 @@
  */
 
 import sim from '@ohos.telephony.sim';
+import radio from '@ohos.telephony.radio';
 import * as env from './lib/Const';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function SimManagerTest() {
@@ -496,5 +497,144 @@ describe('SimManagerTest', function () {
           done();
       });
   });
+  /**
+   * @tc.number Telephony_Sim_getSimAccountInfo_CallBack_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sim_getSimAccountInfo_CallBack_0100', 0, async function (done) {
+    sim.getSimAccountInfo(0, (err, data) => {
+      if(err){
+        console.info("Telephony_Sim_getSimAccountInfo_CallBack_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sim_getSimAccountInfo_CallBack_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+        return;
+      }
+      console.log(`Telephony_Sim_getSimAccountInfo_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      expect(true).assertTrue();
+      done();
+    });
+  });
+  /**
+   * @tc.number Telephony_Sim_getSimAccountInfo_Promise_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sim_getSimAccountInfo_Promise_0100', 0, async function (done) {
+    let promise = sim.getSimAccountInfo(0);
+    promise.then(data => {
+        console.info("Telephony_Sim_getSimAccountInfo_Promise_0100 data = " + JSON.stringify(data));
+        expect(true).assertTrue();
+        done();
+    }).catch(err => {
+        console.info("Telephony_Sim_getSimAccountInfo_Promise_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sim_getSimAccountInfo_Promise_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+    });
+  });
+  /**
+   * @tc.number Telephony_Sim_getActiveSimAccountInfoList_CallBack_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sim_getActiveSimAccountInfoList_CallBack_0100', 0, async function (done) {
+    sim.getActiveSimAccountInfoList((err, data) => {
+      if(err){
+        console.info("Telephony_Sim_getActiveSimAccountInfoList_CallBack_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sim_getActiveSimAccountInfoList_CallBack_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+        return;
+      }
+      console.log(`Telephony_Sim_getActiveSimAccountInfoList_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      expect(true).assertTrue();
+      done();
+    });
+  });
+  /**
+   * @tc.number Telephony_Sim_getActiveSimAccountInfoList_Promise_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sim_getActiveSimAccountInfoList_Promise_0100', 0, async function (done) {
+    let promise = sim.getActiveSimAccountInfoList();
+    promise.then(data => {
+        console.info("Telephony_Sim_getActiveSimAccountInfoList_Promise_0100 data = " + JSON.stringify(data));
+        expect(true).assertTrue();
+        done();
+    }).catch(err => {
+        console.info("Telephony_Sim_getActiveSimAccountInfoList_Promise_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sim_getActiveSimAccountInfoList_Promise_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+    });
+  });
+
+  /**
+   * @tc.number Telephony_Sim_getDefaultVoiceSimId_CallBack_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sim_getDefaultVoiceSimId_CallBack_0100', 0, async function (done) {
+    sim.getDefaultVoiceSimId((err, data) => {
+      if(err){
+        console.info("Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+        return;
+      }
+      console.log(`Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      expect(true).assertTrue();
+      done();
+    });
+  });
+  /**
+   * @tc.number Telephony_Sim_getDefaultVoiceSimId_Promise_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sim_getDefaultVoiceSimId_Promise_0100', 0, async function (done) {
+    let promise = sim.getDefaultVoiceSimId();
+    promise.then(data => {
+        console.info("Telephony_Sim_getDefaultVoiceSimId_Promise_0100 data = " + JSON.stringify(data));
+        expect(true).assertTrue();
+        done();
+    }).catch(err => {
+        console.info("Telephony_Sim_getDefaultVoiceSimId_Promise_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sim_getDefaultVoiceSimId_Promise_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+    });
+  });
+
+
+
 })
 }

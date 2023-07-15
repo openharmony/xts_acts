@@ -14,6 +14,7 @@
  */
 import { describe, expect, it } from '@ohos/hypium';
 import sms from '@ohos.telephony.sms';
+import radio from '@ohos.telephony.radio';
 
 export default function smsUiJsunit() {
   describe('smsUiJsunit', function () {
@@ -120,5 +121,51 @@ export default function smsUiJsunit() {
       expect(sms.ShortMessageClass.FORWARD_MESSAGE == 4).assertTrue();
       done();
     });
+
+      /**
+   * @tc.number Telephony_Sms_getDefaultSmsSimId_CallBack_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', 0, async function (done) {
+    sms.getDefaultSmsSimId((err, data) => {
+      if(err){
+        console.info("Telephony_Sms_getDefaultSmsSimId_CallBack_0100 err = " + JSON.stringify(data));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sms_getDefaultSmsSimId_CallBack_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+        return;
+      }
+      console.log(`Telephony_Sms_getDefaultSmsSimId_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      expect(true).assertTrue();
+      done();
+    });
+  });
+  /**
+   * @tc.number Telephony_Sms_getDefaultSmsSimId_Promise_0100
+   * @tc.name   Test getOpName interface
+   * @tc.desc   
+   */
+  it('Telephony_Sms_getDefaultSmsSimId_Promise_0100', 0, async function (done) {
+    let promise = sms.getDefaultSmsSimId();
+    promise.then(data => {
+        console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 data = " + JSON.stringify(data));
+        expect(true).assertTrue();
+        done();
+    }).catch(err => {
+        console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 err = " + JSON.stringify(err));
+        radio.isRadioOn(0, (err, data) => {
+          console.info('Telephony_Sms_getDefaultSmsSimId_Promise_0100 isRadioOn err' + JSON.stringify(err) + ' data ' + JSON.stringify(data));
+          if (!err) {
+              expect().assertFail();
+          }
+        });
+        done();
+    });
+  });
   })
 }
