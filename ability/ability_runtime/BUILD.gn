@@ -31,6 +31,7 @@ group("ability_runtime") {
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsfwkdataaccessortest:dataability",
       "actsmultiplecall:actsmultiplecall",
+      "actsnfcselecttypes:actsnfcselecttypes",
       "actsqueryfunctiontest:actsqueryfunctiontest",
       "actsrequestdialogtest:actsrequestdialogtest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
