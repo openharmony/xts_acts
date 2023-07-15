@@ -18,16 +18,16 @@ group("actsnfcselecttypes") {
   if (is_standard_system) {
     deps = [
       "ActsNFCSelectTypesTest:ActsNFCSelectTypesTest",
+      "ActsNFCSelectTypesTestRelyFifth:ActsNFCSelectTypesTestRelyFifth",
       "ActsNFCSelectTypesTestRelyFirst:ActsNFCSelectTypesTestRelyFirst",
       "ActsNFCSelectTypesTestRelyFourth:ActsNFCSelectTypesTestRelyFourth",
       "ActsNFCSelectTypesTestRelyMultiAbility:ActsNFCSelectTypesTestRelyMultiAbility",
       "ActsNFCSelectTypesTestRelyMultiHapFirst:ActsNFCSelectTypesTestRelyMultiHapFirst",
+      "ActsNFCSelectTypesTestRelyMultiHapFourth:ActsNFCSelectTypesTestRelyMultiHapFourth",
       "ActsNFCSelectTypesTestRelyMultiHapSecond:ActsNFCSelectTypesTestRelyMultiHapSecond",
       "ActsNFCSelectTypesTestRelyMultiHapThird:ActsNFCSelectTypesTestRelyMultiHapThird",
       "ActsNFCSelectTypesTestRelySecond:ActsNFCSelectTypesTestRelySecond",
       "ActsNFCSelectTypesTestRelyThird:ActsNFCSelectTypesTestRelyThird",
-      "ActsNFCSelectTypesTestRelyMultiHapFourth:ActsNFCSelectTypesTestRelyMultiHapFourth",
-      "ActsNFCSelectTypesTestRelyFifth:ActsNFCSelectTypesTestRelyFifth",
     ]
   }
 }
