@@ -60,7 +60,7 @@ export default function GetAbilityStateTest() {
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0001 getAbilityState: " + stateNum
                 );
-                expect(stateNum).assertEqual(2);
+                expect(stateNum).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0001 getAbilityState Pass. "
                 );
@@ -69,6 +69,7 @@ export default function GetAbilityStateTest() {
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0001 error: " + error
                 );
+                expect().assertFail();
                 done();
               }
             });
@@ -107,7 +108,7 @@ export default function GetAbilityStateTest() {
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0002 getAbilityState: " + stateNum
                 );
-                expect(stateNum).assertEqual(3);
+                expect(stateNum).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.BACKGROUND);
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0002 getAbilityState Pass. "
                 );
@@ -116,6 +117,7 @@ export default function GetAbilityStateTest() {
                 abilityDelegator.printSync(
                   "ACTS_GET_ABILITY_STATE_0002 error: " + error
                 );
+                expect().assertFail();
                 done();
               }
             }, START_ABILITY_TIMEOUT_TWO_THOUSAND);

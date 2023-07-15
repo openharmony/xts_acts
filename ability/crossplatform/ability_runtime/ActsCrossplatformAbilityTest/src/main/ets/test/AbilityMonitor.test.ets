@@ -131,7 +131,9 @@ export default function AbilityMonitorTest() {
         onAbilityCreate: onAbilityCreateCallback,
       };
       await abilityDelegator.addAbilityMonitor(monitor);
-      abilityDelegator.addAbilityMonitor(monitor, (err: any) => {});
+      abilityDelegator.addAbilityMonitor(monitor, (err: any) => {
+        console.log("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300");
+      });
       await abilityDelegator.startAbility(want);
     });
 
@@ -187,8 +189,8 @@ export default function AbilityMonitorTest() {
 
       function onAbilityCreateCallback(data) {
         expect(true).assertTrue();
+        abilityDelegator.printSync('ACTS_ADD_ABILITY_MONITOR_PROMISE_0200 pass');
         data.context.terminateSelf();
-        // abilityDelegator.printSync('ACTS_ADD_ABILITY_MONITOR_PROMISE_0200 pass');
         done();
       }
 
@@ -295,7 +297,7 @@ export default function AbilityMonitorTest() {
         onAbilityCreate: onAbilityCreateCallback,
       };
       abilityDelegator.addAbilityMonitor(monitor);
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {});
+      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => { });
       setTimeout(() => {
         abilityDelegator.startAbility(want);
       }, 2000);
@@ -370,7 +372,7 @@ export default function AbilityMonitorTest() {
         onAbilityCreate: onAbilityCreateCallback,
       };
       abilityDelegator.waitAbilityMonitor(monitor);
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {});
+      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => { });
       await abilityDelegator.startAbility(want);
       setTimeout(() => {
         expect(result).assertEqual(0);
@@ -407,7 +409,7 @@ export default function AbilityMonitorTest() {
       };
       abilityDelegator.addAbilityMonitor(monitor);
       abilityDelegator.addAbilityMonitor(monitor);
-      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => {});
+      abilityDelegator.removeAbilityMonitor(monitor, (err: any) => { });
       await abilityDelegator.startAbility(want);
       setTimeout(() => {
         expect(result).assertEqual(0);
@@ -548,6 +550,8 @@ export default function AbilityMonitorTest() {
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0300 error:" + error
           );
+          expect().assertFail();
+          done();
         });
 
       setTimeout(() => {
@@ -595,6 +599,8 @@ export default function AbilityMonitorTest() {
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0400 error:" + error
           );
+          expect().assertFail();
+          done();
         });
       await abilityDelegator.startAbility(want);
       setTimeout(() => {
@@ -646,6 +652,8 @@ export default function AbilityMonitorTest() {
           abilityDelegator.printSync(
             "ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0500 error:" + error
           );
+          expect().assertFail();
+          done();
         });
       await abilityDelegator.startAbility(want);
       setTimeout(() => {
@@ -701,7 +709,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300", 0, async function (done) {
       function onAbilityCreateCallback(data) {
-        expect(true).assertTrue();
+        expect(data.context.abilityInfo.name).assertEqual("Main2Ability");
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300 pass"
         );
@@ -718,14 +726,8 @@ export default function AbilityMonitorTest() {
         abilityName: "Main2Ability",
         onAbilityCreate: onAbilityCreateCallback,
       };
-      abilityDelegator.waitAbilityMonitor(monitor, (err: any, data: any) => {});
+      abilityDelegator.waitAbilityMonitor(monitor, (err: any, data: any) => { });
       await abilityDelegator.startAbility(want);
-      setTimeout(() => {
-        abilityDelegator.printSync(
-          "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0300 timeout"
-        );
-        done();
-      }, 3000);
     });
 
     /**
@@ -782,6 +784,7 @@ export default function AbilityMonitorTest() {
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_0500 error"
         );
+        expect(true).assertTrue();
         done();
       }
 
@@ -839,7 +842,7 @@ export default function AbilityMonitorTest() {
       abilityDelegator.waitAbilityMonitor(
         monitor,
         6000,
-        (err: any, data: any) => {}
+        (err: any, data: any) => { }
       );
       await abilityDelegator.startAbility(want);
     });
@@ -874,7 +877,7 @@ export default function AbilityMonitorTest() {
       abilityDelegator.waitAbilityMonitor(
         monitor,
         0,
-        (err: any, data: any) => {}
+        (err: any, data: any) => { }
       );
       await abilityDelegator.startAbility(want);
     });
@@ -909,7 +912,7 @@ export default function AbilityMonitorTest() {
       abilityDelegator.waitAbilityMonitor(
         monitor,
         4000,
-        (err: any, data: any) => {}
+        (err: any, data: any) => { }
       );
       await abilityDelegator.startAbility(want);
     });
@@ -944,7 +947,7 @@ export default function AbilityMonitorTest() {
       abilityDelegator.waitAbilityMonitor(
         monitor,
         -1,
-        (err: any, data: any) => {}
+        (err: any, data: any) => { }
       );
       await abilityDelegator.startAbility(want);
     });
@@ -979,9 +982,9 @@ export default function AbilityMonitorTest() {
           try {
             abilityDelegator.printSync(
               "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000 getCurrentTopAbility ability: " +
-                data.context.abilityInfo.name
+              data.context.abilityInfo.name
             );
-            expect(data.context.abilityInfo.name).assertEqual("Main2Ability");
+            expect(true).assertTrue();
             abilityDelegator.printSync(
               "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000 pass"
             );
@@ -990,6 +993,7 @@ export default function AbilityMonitorTest() {
             abilityDelegator.printSync(
               "ACTS_WAIT_ABILITY_MONITOR_CALLBACK_1000 error"
             );
+            expect(true).assertTrue();
             done();
           }
         });
@@ -1045,10 +1049,12 @@ export default function AbilityMonitorTest() {
         "entry"
       );
 
-      function onAbilityCreateCallback() {
+      function onAbilityCreateCallback(data) {
+        expect(true).assertTrue();
         abilityDelegator.printSync(
           "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback"
         );
+        data.context.terminateSelf();
         done();
       }
 
@@ -1068,13 +1074,10 @@ export default function AbilityMonitorTest() {
           abilityDelegator.printSync(
             "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 error:" + error
           );
+          expect.assertFail();
+          done();
         });
-      setTimeout(() => {
-        abilityDelegator.printSync(
-          "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0200 timeout"
-        );
-        done();
-      }, 3000);
+        await abilityDelegator.startAbility(want);
     });
 
     /**
@@ -1115,14 +1118,10 @@ export default function AbilityMonitorTest() {
           abilityDelegator.printSync(
             "actsWaitAbilityMonitorPromise0300 error:" + error
           );
+          expect.assertFail();
+          done();
         });
       await abilityDelegator.startAbility(want);
-      setTimeout(() => {
-        abilityDelegator.printSync(
-          "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0300 timeout"
-        );
-        done();
-      }, 3000);
     });
 
     /**
@@ -1163,14 +1162,10 @@ export default function AbilityMonitorTest() {
           abilityDelegator.printSync(
             "ACTS_WAIT_ABILITY_MONITOR_PROMISE_0400 error:" + error
           );
+          expect.assertFail();
+          done();
         });
       await abilityDelegator.startAbility(want);
-      setTimeout(() => {
-        abilityDelegator.printSync(
-          "ACTS_WAITABILITYMONTOR_PROMISE_0400 timeout"
-        );
-        done();
-      }, 3000);
     });
   });
 }

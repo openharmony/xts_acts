@@ -189,6 +189,8 @@ export default function PrintTest() {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0001 catch error: " + error
           );
+          expect().assertFail();
+          done();
         });
     });
 
@@ -217,6 +219,8 @@ export default function PrintTest() {
             abilityDelegator.printSync(
               "ACTS_PRINT_PROMISE_ERROR_0002 catch error: " + error
             );
+            expect().assertFail();
+            done();
           });
       } catch (e) {
         abilityDelegator.printSync(
@@ -255,6 +259,8 @@ export default function PrintTest() {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0003 catch error: " + error
           );
+          expect().assertFail();
+          done();
         });
     });
 
@@ -279,6 +285,8 @@ export default function PrintTest() {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0004 catch error: " + error
           );
+          expect().assertFail();
+          done();
         });
     });
 
@@ -303,6 +311,8 @@ export default function PrintTest() {
           abilityDelegator.printSync(
             "ACTS_PRINT_PROMISE_0005 catch error: " + error
           );
+          expect().assertFail();
+          done();
         });
     });
 
@@ -337,6 +347,8 @@ export default function PrintTest() {
         })
         .catch((error) => {
           abilityDelegator.printSync("ACTS_PRINT_PROMISE_0006 error:" + error);
+          expect().assertFail();
+          done();
         });
     });
 

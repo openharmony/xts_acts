@@ -85,9 +85,7 @@ export default function BackgroundPromise() {
                         .doAbilityBackground(ability2)
                         .then(() => {
                           setTimeout(() => {
-                            // abilityDelegator.getCurrentTopAbility((err: any, ability3: any) => {
                             try {
-                              // abilityDelegator.printSync('ACTS_DO_ABILITY_BACKGROUND_PROMISE_0001 Main4Ability: ' + ability3.context.abilityInfo.name);
                               var stateNum =
                                 abilityDelegator.getAbilityState(ability2);
                               abilityDelegator.printSync(
@@ -105,7 +103,6 @@ export default function BackgroundPromise() {
                               );
                             }
                             done();
-                            // });
                           }, START_ABILITY_TIMEOUT_TWO_THOUSAND);
                         })
                         .catch((error) => {
@@ -189,9 +186,7 @@ export default function BackgroundPromise() {
                             "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0002 getAbilityState: " +
                               stateNum
                           );
-                          // ability1 abilityState is 3.
                           expect(stateNum).assertEqual(3);
-                          // topActivity is Main3Ability
                           expect(ability2.context.abilityInfo.name).assertEqual(
                             "Main3Ability"
                           );
@@ -272,9 +267,7 @@ export default function BackgroundPromise() {
                       "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0003 getAbilityState: " +
                         stateNum
                     );
-                    // ability1 abilityState is 3.
                     expect(stateNum).assertEqual(3);
-                    // topActivity is Main3Ability
                     expect(ability2.context.abilityInfo.name).assertEqual(
                       "Main4Ability"
                     );

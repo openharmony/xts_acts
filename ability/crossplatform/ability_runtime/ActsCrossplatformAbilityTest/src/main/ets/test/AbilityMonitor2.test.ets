@@ -54,8 +54,8 @@ export default function AbilityMonitor2Test() {
       );
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-      function onAbilityForegroundCallback() {
-        expect(true).assertTrue();
+      function onAbilityForegroundCallback(data) {
+        expect(data!=null).assertTrue();
         abilityDelegator.printSync("ACTS_AddAbilityMonitor_Callback_0100 pass");
         abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
           abilityDelegator.printSync(
@@ -102,8 +102,8 @@ export default function AbilityMonitor2Test() {
       );
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-      function onWindowStageCreateCallBack() {
-        expect(true).assertTrue();
+      function onWindowStageCreateCallBack(data) {
+        expect(data!=null).assertTrue();
         abilityDelegator.printSync("ACTS_AddAbilityMonitor_Callback_0200 pass");
         abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
           abilityDelegator.printSync(
@@ -150,8 +150,8 @@ export default function AbilityMonitor2Test() {
       );
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-      function onAbilityBackgroundCallback() {
-        expect(true).assertTrue();
+      function onAbilityBackgroundCallback(data) {
+        expect(data!=null).assertTrue();
         console.info("ACTS_AddAbilityMonitor_Callback_0300 pass");
         abilityDelegator.removeAbilityMonitor(monitor);
         done();
@@ -208,7 +208,7 @@ export default function AbilityMonitor2Test() {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
       function onWindowStageDestroyCallBack(data) {
-        expect(true).assertTrue();
+        expect(data!=null).assertTrue();
         console.info("ACTS_AddAbilityMonitor_Callback_0400 pass");
         abilityDelegator.removeAbilityMonitor(monitor);
         done();
@@ -266,7 +266,7 @@ export default function AbilityMonitor2Test() {
           "ACTS_AddAbilityMonitor_Callback_0500 data1: " +
             JSON.stringify(data.context.abilityInfo)
         );
-        expect(true).assertTrue();
+        expect(data!=null).assertTrue();
         abilityDelegator.printSync("ACTS_AddAbilityMonitor_Callback_0500 pass");
         abilityDelegator.removeAbilityMonitor(monitor);
         done();
@@ -320,8 +320,8 @@ export default function AbilityMonitor2Test() {
         "entry"
       );
 
-      function onAbilityForegroundPromise() {
-        expect(true).assertTrue();
+      function onAbilityForegroundPromise(data) {
+        expect(data!=null).assertTrue();
         abilityDelegator.printSync("ACTS_AddAbilityMonitor_Promise_0100 pass");
         abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
           abilityDelegator.printSync(
@@ -368,8 +368,8 @@ export default function AbilityMonitor2Test() {
         "entry"
       );
 
-      function onWindowStageCreatePromise() {
-        expect(true).assertTrue();
+      function onWindowStageCreatePromise(data) {
+        expect(data!=null).assertTrue();
         abilityDelegator.printSync("ACTS_AddAbilityMonitor_Promise_0200 pass");
         abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
           abilityDelegator.printSync(
@@ -422,13 +422,10 @@ export default function AbilityMonitor2Test() {
       );
 
       function onAbilityBackgroundPromise(data) {
-        expect(true).assertTrue();
+        expect(data!=null).assertTrue();
         console.log("ACTS_AddAbilityMonitor_Promise_0300 pass");
-        // abilityDelegator.getCurrentTopAbility((err: any, ability1: any) => {
-        //   abilityDelegator.printSync("ACTS_AddAbilityMonitor_Promise_0300 getCurrentTopAbility :" + ability1.context.abilityInfo.name);
         abilityDelegator.removeAbilityMonitor(monitor);
         data.context.terminateSelf();
-        // })
         done();
       }
 
@@ -488,8 +485,8 @@ export default function AbilityMonitor2Test() {
         "entry"
       );
 
-      function onWindowStageDestroyPromise() {
-        expect(true).assertTrue();
+      function onWindowStageDestroyPromise(data) {
+        expect(data!=null).assertTrue();
         console.log("ACTS_AddAbilityMonitor_Promise_0400 pass");
         abilityDelegator.removeAbilityMonitor(monitor);
         done();
@@ -507,6 +504,7 @@ export default function AbilityMonitor2Test() {
         })
         .catch((err) => {
           console.info("ACTS_AddAbilityMonitor_Promise_0400 error");
+          expect().assertFail();
           done();
         });
       setTimeout(() => {
@@ -545,8 +543,8 @@ export default function AbilityMonitor2Test() {
         "entry"
       );
 
-      function onAbilityDestroyPromise() {
-        expect(true).assertTrue();
+      function onAbilityDestroyPromise(data) {
+        expect(data!=null).assertTrue();
         abilityDelegator.printSync("ACTS_AddAbilityMonitor_Promise_0500 pass");
         abilityDelegator.removeAbilityMonitor(monitor);
         done();
@@ -875,7 +873,6 @@ export default function AbilityMonitor2Test() {
           "ACTS_REMOVEABILITY_MONITOR_PROMISE_0100 error "
         );
         result = 0;
-        done();
       }
 
       let monitor = {
@@ -894,6 +891,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0100 error"
           );
+          expect().assertFail();
           done();
         });
       await abilityDelegator.startAbility(want);
@@ -927,7 +925,6 @@ export default function AbilityMonitor2Test() {
           "ACTS_REMOVEABILITY_MONITOR_PROMISE_0200 error "
         );
         result = 0;
-        done();
       }
 
       let monitor = {
@@ -946,6 +943,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0200 error"
           );
+          expect().assertFail();
           done();
         });
       await abilityDelegator.startAbility(want);
@@ -979,7 +977,6 @@ export default function AbilityMonitor2Test() {
           "ACTS_REMOVEABILITY_MONITOR_PROMISE_0300 error "
         );
         result = 0;
-        done();
       }
 
       let monitor = {
@@ -998,6 +995,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0300 error"
           );
+          expect().assertFail();
           done();
         });
       abilityDelegator
@@ -1020,6 +1018,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0300 start error"
           );
+          expect().assertFail();
           done();
         });
       setTimeout(() => {
@@ -1052,7 +1051,6 @@ export default function AbilityMonitor2Test() {
           "ACTS_REMOVEABILITY_MONITOR_PROMISE_0400 error "
         );
         result = 0;
-        done();
       }
 
       let monitor = {
@@ -1071,6 +1069,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0400 error"
           );
+          expect().assertFail();
           done();
         });
       abilityDelegator
@@ -1089,6 +1088,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0400 start error"
           );
+          expect().assertFail();
           done();
         });
       setTimeout(() => {
@@ -1121,7 +1121,6 @@ export default function AbilityMonitor2Test() {
           "ACTS_REMOVEABILITY_MONITOR_PROMISE_0500 error "
         );
         result = 0;
-        done();
       }
 
       let monitor = {
@@ -1140,6 +1139,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0500 error"
           );
+          expect().assertFail();
           done();
         });
       abilityDelegator
@@ -1158,6 +1158,7 @@ export default function AbilityMonitor2Test() {
           abilityDelegator.printSync(
             "ACTS_REMOVEABILITY_MONITOR_PROMISE_0500 start error"
           );
+          expect().assertFail();
           done();
         });
       setTimeout(() => {

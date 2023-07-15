@@ -121,12 +121,16 @@ export default function AbilityStageMonitor2Test() {
           let moduleName = data.context.currentHapModuleInfo.name;
           expect(moduleName).assertEqual(monitor.moduleName)
           abilityDelegator.printSync('Phase2_AbilityStageMonitor_0300 pass');
+          done();
         } catch (error) {
           abilityDelegator.printSync('PHASE2_ABILITY_STAGE_MONITOR_0200 catch error:' + error);
+          expect().assertFail();
+          done();
         }
-        done();
+
       }).catch((err) => {
-        abilityDelegator.printSync('Phase2_AbilityStageMonitor_0300 error');
+        abilityDelegator.printSync('Phase2_AbilityStageMonitor_0300 catch err' + err);
+        expect(err != null).assertTrue();
         done();
       })
       abilityDelegator.startAbility(want, (err: any) => {
@@ -156,6 +160,7 @@ export default function AbilityStageMonitor2Test() {
         done();
       }).catch((err) => {
         abilityDelegator.printSync('Phase2_AbilityStageMonitor_0400 error');
+        expect(err != null).assertTrue();
         done();
       });
       abilityDelegator.startAbility(want)
@@ -227,6 +232,7 @@ export default function AbilityStageMonitor2Test() {
         done();
       }).catch((err) => {
         abilityDelegator.printSync('Phase2_AbilityStageMonitor_0600 error')
+        expect().assertFail();
         done();
       })
       abilityDelegator.removeAbilityStageMonitor(monitor).then((data) => {
@@ -292,6 +298,7 @@ export default function AbilityStageMonitor2Test() {
         done();
       }).catch((err) => {
         abilityDelegator.printSync('Phase2_AbilityStageMonitor_0800 error')
+        expect().assertFail();
         done();
       })
       abilityDelegator.removeAbilityStageMonitor(monitor).then((data) => {

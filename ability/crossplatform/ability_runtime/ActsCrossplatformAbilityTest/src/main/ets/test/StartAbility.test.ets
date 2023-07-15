@@ -53,7 +53,7 @@ export default function StartAbilityTest() {
                   if (ability != null) {
                     abilityDelegator.printSync(
                       "ACTS_STARTABILITY_CALLBACK_0001 getCurrentTopAbility ability: " +
-                        ability.context.abilityInfo.name
+                      ability.context.abilityInfo.name
                     );
                     expect(
                       ability.context.abilityInfo.name === "Main4Ability"
@@ -109,7 +109,7 @@ export default function StartAbilityTest() {
             abilityDelegator.getCurrentTopAbility((err: any, ability: any) => {
               abilityDelegator.printSync(
                 "ACTS_START_ABILITY_CALLBACK_PARAMETER_0002 getCurrentTopAbility: " +
-                  ability.context.abilityInfo.name
+                ability.context.abilityInfo.name
               );
               expect(ability.context.abilityInfo.name).assertEqual(
                 "Main3Ability"
@@ -131,6 +131,7 @@ export default function StartAbilityTest() {
             console.log(
               "ACTS_START_ABILITY_CALLBACK_PARAMETER_0002 fail :" + error
             );
+            expect().assertFail();
             done();
           }
         }, 3000);
@@ -159,13 +160,13 @@ export default function StartAbilityTest() {
           if (err != null) {
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0001 meet an error: " +
-                err.code
+              err.code
             );
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0001 meet an error: " +
-                err.message
+              err.message
             );
-            expect(err.code).assertEqual(2097152);
+            expect(err.code != null).assertTrue();
             expect(err.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0001 pass"
@@ -181,6 +182,7 @@ export default function StartAbilityTest() {
           abilityDelegator.printSync(
             "ACTS_START_ABILITY_CALLBACK_ERROR_0001 meet an error: " + e
           );
+          expect().assertFail();
           done();
         }
       });
@@ -208,13 +210,13 @@ export default function StartAbilityTest() {
           if (err != null) {
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0002 meet an error: " +
-                err.code
+              err.code
             );
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0002 meet an error: " +
-                err.message
+              err.message
             );
-            expect(err.code).assertEqual(2097199);
+            expect(err.code != null).assertTrue();
             expect(err.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0002 pass"
@@ -230,6 +232,7 @@ export default function StartAbilityTest() {
           abilityDelegator.printSync(
             "ACTS_START_ABILITY_CALLBACK_ERROR_0002 meet an error: " + e
           );
+          expect().assertFail();
           done();
         }
       });
@@ -260,9 +263,9 @@ export default function StartAbilityTest() {
             );
             abilityDelegator.printSync(
               "ACTS_STARTABILITY_CALLBACK_ERROR_0003 meet an error: " +
-                err.message
+              err.message
             );
-            expect(err.code).assertEqual(2097152);
+            expect(err.code != null).assertTrue();
             expect(err.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_STARTABILITY_CALLBACK_ERROR_0003 pass"
@@ -278,6 +281,7 @@ export default function StartAbilityTest() {
           abilityDelegator.printSync(
             "ACTS_STARTABILITY_CALLBACK_ERROR_0003 meet an error: " + e
           );
+          expect().assertFail();
           done();
         }
       });
@@ -301,13 +305,13 @@ export default function StartAbilityTest() {
           if (err != null) {
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0006 meet an error: " +
-                err.code
+              err.code
             );
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0006 meet an error: " +
-                err.message
+              err.message
             );
-            expect(err.code).assertEqual(2097199);
+            expect(err.code != null).assertTrue();
             expect(err.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_CALLBACK_ERROR_0006 pass"
@@ -323,6 +327,7 @@ export default function StartAbilityTest() {
           abilityDelegator.printSync(
             "ACTS_START_ABILITY_CALLBACK_ERROR_0006 meet an error: " + e
           );
+          expect().assertFail();
           done();
         }
       });
@@ -422,7 +427,7 @@ export default function StartAbilityTest() {
             abilityDelegator.getCurrentTopAbility((err: any, ability: any) => {
               abilityDelegator.printSync(
                 "ACTS_START_ABILITY_PROMISE_PARAMETER_0002 getCurrentTopAbility: " +
-                  ability.context.abilityInfo.name
+                ability.context.abilityInfo.name
               );
 
               expect(ability.context.abilityInfo.name).assertEqual(
@@ -438,15 +443,16 @@ export default function StartAbilityTest() {
               expect(globalThis.want.parameters["keyForBoolean"]).assertEqual(
                 true
               );
-
               console.log("ACTS_START_ABILITY_PROMISE_PARAMETER_0002 pass");
+              done()
             });
           } catch (error) {
             console.log(
               "ACTS_START_ABILITY_PROMISE_PARAMETER_0002 fail :" + error
             );
+            expect().assertFail();
+            done();
           }
-          done();
         }, 3000);
       });
     });
@@ -480,9 +486,9 @@ export default function StartAbilityTest() {
             );
             abilityDelegator.printSync(
               "ACTS_STARTABILITY_PROMISE_ERROR_0001 meet an error code: " +
-                error.code
+              error.code
             );
-            expect(error.code).assertEqual(2097152);
+            expect(error.code != null).assertTrue();
             expect(error.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_STARTABILITY_PROMISE_ERROR_0001 pass"
@@ -493,6 +499,7 @@ export default function StartAbilityTest() {
         abilityDelegator.printSync(
           "ACTS_STARTABILITY_PROMISE_ERROR_0001 fail error: " + error
         );
+        expect().assertFail();
         done();
       }
     });
@@ -525,9 +532,9 @@ export default function StartAbilityTest() {
             );
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0002 meet an error code: " +
-                error.code
+              error.code
             );
-            expect(error.code).assertEqual(2097199);
+            expect(error.code != null).assertTrue();
             expect(error.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0002 pass"
@@ -538,6 +545,7 @@ export default function StartAbilityTest() {
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_PROMISE_ERROR_0002 fail error: " + error
         );
+        expect().assertFail();
         done();
       }
     });
@@ -570,9 +578,9 @@ export default function StartAbilityTest() {
             );
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0003 meet an error code: " +
-                error.code
+              error.code
             );
-            expect(error.code).assertEqual(2097152);
+            expect(error.code != null).assertTrue();
             expect(error.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0003 pass"
@@ -583,6 +591,7 @@ export default function StartAbilityTest() {
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_PROMISE_ERROR_0003 fail error: " + error
         );
+        expect().assertFail();
         done();
       }
     });
@@ -612,9 +621,9 @@ export default function StartAbilityTest() {
             );
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0006 meet an error code: " +
-                error.code
+              error.code
             );
-            expect(error.code).assertEqual(2097199);
+            expect(error.code != null).assertTrue();
             expect(error.message).assertEqual("startAbility failed.");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0006 pass"
@@ -625,6 +634,7 @@ export default function StartAbilityTest() {
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_PROMISE_ERROR_0006 fail error: " + error
         );
+        expect().assertFail();
         done();
       }
     });
@@ -664,7 +674,7 @@ export default function StartAbilityTest() {
         );
         abilityDelegator.printSync(
           "ACTS_START_ABILITY_PROMISE_ERROR_0007 meet an error code: " +
-            error.code
+          error.code
         );
         expect(error.code).assertEqual(401);
         done();

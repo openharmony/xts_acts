@@ -188,9 +188,7 @@ export default function ForegroundPromise() {
                       "ACTS_DO_ABILITY_FOREGROUND_PROMISE_ERROR_0002 getAbilityState: " +
                         stateNum
                     );
-                    // ability1 abilityState is 3.
                     expect(stateNum).assertEqual(3);
-                    // topActivity is Main3Ability
                     expect(ability2.context.abilityInfo.name).assertEqual(
                       "Main3Ability"
                     );
@@ -268,9 +266,7 @@ export default function ForegroundPromise() {
                       "ACTS_DO_ABILITY_FOREGROUND_PROMISE_ERROR_0003 getAbilityState: " +
                         stateNum
                     );
-                    // ability1 abilityState is 3.
                     expect(stateNum).assertEqual(3);
-                    // topActivity is Main3Ability
                     expect(ability2.context.abilityInfo.name).assertEqual(
                       "Main4Ability"
                     );
