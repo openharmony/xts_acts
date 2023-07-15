@@ -4612,6 +4612,60 @@ describe('Base64HelperTest', function () {
             }
         })
     })
+
+    /**
+     * @tc.name: test_encodeToStringSync_basic_base64_001
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     */
+     it('test_encodeToStringSync_basic_base64_001', 0, function () {
+      var that = new util.Base64Helper()
+      var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
+      var result = that.encodeToStringSync(array, util.Type.BASIC);
+      expect(result).assertEqual('TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=')
+  })
+
+    /**
+     * @tc.name: test_decodeSync_basic_base64_002
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     */
+        it('test_decodeSync_basic_base64_002', 0, function () {
+          var that = new util.Base64Helper()
+          var buff = 'TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=';
+          var rarray = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
+          var result = that.decodeSync(buff, util.Type.BASIC);
+          for (var i = 0; i < rarray.length; i++) {
+              expect(result[i]).assertEqual(rarray[i]);
+          }
+      })
+
+      /**
+       * @tc.name: test_encodeToString_basic_base64_003
+       * @tc.desc: Asynchronously encodes the specified byte array into a String using the Base64 encoding scheme.
+       */
+      it('test_encodeToString_basic_base64_003', 0, async function () {
+          var that = new util.Base64Helper()
+          var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
+          that.encodeToString(array, util.Type.BASIC).then(val=>{
+              expect(val).assertEqual('TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=');
+          })
+      })
+
+      /**
+       * @tc.name: test_decode_basic_base64_004
+       * @tc.desc: Use the Base64 encoding scheme to asynchronously decode a Base64-encoded string or input u8
+          array into a newly allocated u8 array.
+       */
+      it('test_encodeToString_basic_base64_004', 0, async function () {
+          var that = new util.Base64Helper()
+          var buff = 'TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=';
+          var array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
+          that.decode(buff, util.Type.BASIC).then(val=>{
+              for (var i = 0; i < array.length; i++) {
+                  expect(val[i]).assertEqual(array[i]);
+              }
+          })
+      })
 })
 
 describe('DecodeEncodeTest', function () {

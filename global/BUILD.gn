@@ -17,7 +17,8 @@ group("global") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform/intletstest:ActsCrossplatformIntlTest",
+      "crossplatform/i18netstest:ActsCrossplatformI18nTest",
+      "crossplatform/resourcemanageretstest:ActsCrossplatformResourceManagerTest",
       "global_napi_test:ActsGlobalNapiTest",
       "global_stage:global_stage_hap",
       "i18n_standard/intljs:intljs_test",

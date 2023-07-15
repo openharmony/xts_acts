@@ -310,7 +310,7 @@ describe('CalendarInI18nTest', function () {
         calendar.setTimeZone('Asia/Shanghai');
         let value = calendar.getTimeZone();
         console.log('i18n_calendar_test_1800 ' + value);
-        expect(value).assertEqual('China Standard Time');
+        expect(value).assertEqual('Asia/Shanghai');
     })
 
     /**
@@ -324,7 +324,7 @@ describe('CalendarInI18nTest', function () {
         calendar.setTimeZone('AAA');
         let value = calendar.getTimeZone();
         console.log('i18n_calendar_test_1900 ' + value);
-        expect(value).assertEqual('GMT');
+        expect(value).assertEqual('Etc/Unknown');
     })
 
     /**

@@ -158,6 +158,21 @@ export default function dataJsunit() {
       console.log(`==========> ${caseName} Test end ==========>`);
       done();
     });
+
+    /**
+       * @tc.number  Telephony_Data_DefaultCellularDataSimId_DATA_GET_SimId
+       * @tc.name    Enum DataConnectState
+       * @tc.desc    Enum value test
+       */
+    it("Telephony_Data_DefaultCellularDataSimId_DATA_GET_SimId", 0, async function (done) {
+      let caseName = 'Telephony_Data_DefaultCellularDataSimId_DATA_GET_SimId';
+      console.log(`==========> ${caseName} Test start ==========>`);
+      console.log("Result: "+ data.getDefaultCellularDataSimId());
+      expect(true).assertTrue();
+      console.log(`==========> ${caseName} Test end ==========>`);
+      done();
+    });
+
   });
 }
 

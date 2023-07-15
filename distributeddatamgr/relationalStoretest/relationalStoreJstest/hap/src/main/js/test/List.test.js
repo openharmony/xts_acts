@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
+import relationalStoreCloudSyncTest from './RelationalStoreCloudSync.test.js'
 import relationalStoreDeleteTest from './RelationalStoreDeleteJsunit.test.js'
 import relationalStoreDistributedTest from './RelationalStoreDistributedJsunit.test.js'
 import relationalStoreInsertTest from './RelationalStoreInsertJsunit.test.js'
@@ -30,6 +30,7 @@ import relationalStoreBackupRestoreWithFAContextTest from './RelationalStoreBack
 import relationalStoreBackupRestoreCallbackTest from './RelationalStoreBackupRestoreCallbackJsunit.test.js'
 import relationalStoreAssetResultSetTest from './RelationalStoreAssetResultSetJsunit.test.js'
 export default function testsuite() {
+    relationalStoreCloudSyncTest()
     relationalStoreDeleteTest()
     relationalStoreDistributedTest()
     relationalStoreInsertTest()

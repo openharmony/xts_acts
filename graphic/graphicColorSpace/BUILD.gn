@@ -24,7 +24,7 @@ ohos_js_hap_suite("ActsColorSpaceManagerTest") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsColorSpaceManagerTest"
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
 }
 
 ohos_app_scope("graphicColorSpace_app_profile") {

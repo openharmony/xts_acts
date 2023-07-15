@@ -17,6 +17,7 @@ import fileIOAccess from './members/access.test.js'
 import fileIOClose from './members/close.test.js'
 import fileIOCopyDir from './members/copyDir.test'
 import fileIOCopyfile from './members/copyFile.test.js'
+import fileIOCreateRandomAccessFile from './members/createRandomAccessFile.test.js'
 import fileIOCreateStream from './members/createStream.test.js'
 import fileIOFdatasync from './members/fdatasync.test.js'
 import fileIOFdOpenStream from './members/fdopenStream.test.js'
@@ -30,6 +31,10 @@ import fileIOMkdtemp from './members/mkdtemp.test.js'
 import fileIOMoveDir from './members/moveDir.test.js'
 import fileIOMoveFile from './members/moveFile.test.js'
 import fileIOOpen from './members/open.test.js'
+import fileIORandomAccessFileClose from './class_randomAccessFile/close.test.js'
+import fileIORandomAccessFileRead from './class_randomAccessFile/read.test.js'
+import fileIORandomAccessFileSetFilePointer from './class_randomAccessFile/setFilePointer.test.js'
+import fileIORandomAccessFileWrite from './class_randomAccessFile/write.test.js'
 import fileIORead from './members/read.test.js'
 import fileIOReadtext from './members/readtext.test.js'
 import fileIORename from './members/rename.test.js'
@@ -49,6 +54,7 @@ export default function testsuite() {
     fileIOClose()
     fileIOCopyDir()
     fileIOCopyfile()
+    fileIOCreateRandomAccessFile()
     fileIOCreateStream()
     fileIOFdatasync()
     fileIOFdOpenStream()
@@ -62,6 +68,10 @@ export default function testsuite() {
     fileIOMoveDir()
     fileIOMoveFile()
     fileIOOpen()
+    fileIORandomAccessFileClose()
+    fileIORandomAccessFileRead()
+    fileIORandomAccessFileSetFilePointer()
+    fileIORandomAccessFileWrite()
     fileIORead()
     fileIOReadtext()
     fileIORename()

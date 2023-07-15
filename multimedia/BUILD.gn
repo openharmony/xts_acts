@@ -30,6 +30,7 @@ group("multimedia") {
       "audio/audio_js_standard/audio_ndk_test:audioDemo_ndk_hap",
       "avsession/avsession_js_standard/avsessionManager:avsession_framework_js_hap",
       "camera/camera_js_standard:camera_framework_ets_hap",
+      "image/image_js_standard/crossplatform/image:ActsCrossplatformImageTest",
       "image/image_js_standard/image:image_js_hap",
       "image/image_js_standard/imageColorspace:image_colorspace_js_hap",
       "image/image_js_standard/imageCreator:image_creator_js_hap",

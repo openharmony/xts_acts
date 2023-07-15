@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Copyright (c) 2022-2023 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -23,6 +23,7 @@ import storageSyncTest from './StorageSyncJsunit.test.js'
 import systemStorageTest from './SystemStorageJsunit.test.js'
 import preferencesV9CallbackTest from './V9_PreferencesCallBackJsunit.test.js'
 import preferencesV9PromiseTest from './V9_PreferencesPromiseJsunit.test.js'
+import PreferencesSyncTest from './PreferencesSyncJsunit.test.js'
 
 export default function testsuite() {
     storageCallBackTest()
@@ -35,4 +36,5 @@ export default function testsuite() {
     preferencesPromiseTest()
     preferencesV9CallbackTest()
     preferencesV9PromiseTest()
+    PreferencesSyncTest()
 }

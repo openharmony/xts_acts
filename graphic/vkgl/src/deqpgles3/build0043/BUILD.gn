@@ -27,7 +27,7 @@ config("deqp_platform_ohos_config") {
 
 ohos_static_library("libdeqpgles3func0043") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = common_src
   sources += [ "../Deqpgles3BaseFunc.cpp" ]
 
@@ -42,7 +42,7 @@ ohos_static_library("libdeqpgles3func0043") {
 
 ohos_moduletest_suite("ActsDeqpgles3TestSuite0043") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = [
     "../ActsDeqpgles30043TestSuite.cpp",
     "../functional/Deqpgles3dither_disabledTestCase.cpp",

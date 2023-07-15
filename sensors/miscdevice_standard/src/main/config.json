@@ -16,9 +16,10 @@
         "package": "ohos.acts.sensors.miscdevice.function",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
-            "phone"
+            "tablet",
+            "default",
+            "phone",
+            "2in1"
         ],
         "distro": {
             "deliveryWithInstall": true,
