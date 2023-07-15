@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
-import requestDownloadJSUnit from './requestDownload.test';
-import requestConstantJSUnit from './requestConstant.test';
+import crossplatformRequestDownloadTest from './requestDownload.test';
+import crossplatformRequestConstantTest from './requestConstant.test';
+import crossplatformRequestUploadTest from './RequestUpload.test';
 
 export default function testsuite() {  
-  requestDownloadJSUnit()
-  requestConstantJSUnit()
+  crossplatformRequestDownloadTest();
+  crossplatformRequestConstantTest();
+  crossplatformRequestUploadTest();
 }

@@ -16,8 +16,8 @@
 import request from "@ohos.request";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
-export default function requestUploadJSUnit() {
-  describe('requestConstantJSUnit', function () {
+export default function requestConstantCrossplatformJSUnit() {
+  describe('requestConstantCrossplatformTest', function () {
     console.info('====>################################request upload Test start');
 
     /**
@@ -49,45 +49,46 @@ export default function requestUploadJSUnit() {
     });
 
     /**
-     * @tc.number    SUB_REQUEST_CONSTANT_0001
-     * *@tc.name     subRequestConstant0001
+     * @tc.number    SUB_REQUEST_CROSSPLATFORM_CONSTANT_0001
+     * *@tc.name     SUB_REQUEST_CROSSPLATFORM_CONSTANT_0001
      * @tc.desc      Test constants of the request module.
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_REQUEST_CONSTANT_0001', 0, async function (done) {
+    it('SUB_REQUEST_CROSSPLATFORM_CONSTANT_0001', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_CONSTANT_0001 is starting-----------------------");
-      expect(typeof request.EXCEPTION_PERMISSION == 'number').assertTrue();
-      expect(typeof request.EXCEPTION_PARAMCHECK == 'number').assertTrue();
-      expect(typeof request.EXCEPTION_UNSUPPORTED == 'number').assertTrue();
-      expect(typeof request.EXCEPTION_FILEIO == 'number').assertTrue();
-      expect(typeof request.EXCEPTION_FILEPATH == 'number').assertTrue();
-      expect(typeof request.EXCEPTION_SERVICE == 'number').assertTrue();
-      expect(typeof request.EXCEPTION_OTHERS == 'number').assertTrue();
-      expect(typeof request.NETWORK_MOBILE == 'number').assertTrue();
-      expect(typeof request.NETWORK_WIFI == 'number').assertTrue();
-      expect(typeof request.ERROR_CANNOT_RESUME == 'number').assertTrue();
-      expect(typeof request.ERROR_DEVICE_NOT_FOUND == 'number').assertTrue();
-      expect(typeof request.ERROR_FILE_ALREADY_EXISTS == 'number').assertTrue();
-      expect(typeof request.ERROR_FILE_ERROR == 'number').assertTrue();
-      expect(typeof request.ERROR_HTTP_DATA_ERROR == 'number').assertTrue();
-      expect(typeof request.ERROR_INSUFFICIENT_SPACE == 'number').assertTrue();
-      expect(typeof request.ERROR_TOO_MANY_REDIRECTS == 'number').assertTrue();
-      expect(typeof request.ERROR_UNHANDLED_HTTP_CODE == 'number').assertTrue();
-      expect(typeof request.ERROR_UNKNOWN == 'number').assertTrue();
-      expect(typeof request.ERROR_OFFLINE == 'number').assertTrue();
-      expect(typeof request.ERROR_UNSUPPORTED_NETWORK_TYPE == 'number').assertTrue();
-      expect(typeof request.PAUSED_QUEUED_FOR_WIFI == 'number').assertTrue();
-      expect(typeof request.PAUSED_WAITING_FOR_NETWORK == 'number').assertTrue();
-      expect(typeof request.PAUSED_WAITING_TO_RETRY == 'number').assertTrue();
-      expect(typeof request.PAUSED_BY_USER == 'number').assertTrue();
-      expect(typeof request.PAUSED_UNKNOWN == 'number').assertTrue();
-      expect(typeof request.SESSION_SUCCESSFUL == 'number').assertTrue();
-      expect(typeof request.SESSION_RUNNING == 'number').assertTrue();
-      expect(typeof request.SESSION_PENDING == 'number').assertTrue();
-      expect(typeof request.SESSION_PAUSED == 'number').assertTrue();
-      expect(typeof request.SESSION_FAILED == 'number').assertTrue();
+
+      expect(request.EXCEPTION_PERMISSION === 201).assertTrue();
+      expect(request.EXCEPTION_PARAMCHECK === 401).assertTrue();
+      expect(request.EXCEPTION_UNSUPPORTED === 801).assertTrue();
+      expect(request.EXCEPTION_FILEIO === 13400001).assertTrue();
+      expect(request.EXCEPTION_FILEPATH === 13400002).assertTrue();
+      expect(request.EXCEPTION_SERVICE === 13400003).assertTrue();
+      expect(request.EXCEPTION_OTHERS === 13499999).assertTrue();
+      expect(request.NETWORK_MOBILE === 1).assertTrue();
+      expect(request.NETWORK_WIFI === 65536).assertTrue();
+      expect(request.ERROR_CANNOT_RESUME === 0).assertTrue();
+      expect(request.ERROR_DEVICE_NOT_FOUND === 1).assertTrue();
+      expect(request.ERROR_FILE_ALREADY_EXISTS === 2).assertTrue();
+      expect(request.ERROR_FILE_ERROR === 3).assertTrue();
+      expect(request.ERROR_HTTP_DATA_ERROR === 4).assertTrue();
+      expect(request.ERROR_INSUFFICIENT_SPACE === 5).assertTrue();
+      expect(request.ERROR_TOO_MANY_REDIRECTS === 6).assertTrue();
+      expect(request.ERROR_UNHANDLED_HTTP_CODE === 7).assertTrue();
+      expect(request.ERROR_UNKNOWN === 8).assertTrue();
+      expect(request.ERROR_OFFLINE === 9).assertTrue();
+      expect(request.ERROR_UNSUPPORTED_NETWORK_TYPE === 10).assertTrue();
+      expect(request.PAUSED_QUEUED_FOR_WIFI === 0).assertTrue();
+      expect(request.PAUSED_WAITING_FOR_NETWORK === 1).assertTrue();
+      expect(request.PAUSED_WAITING_TO_RETRY === 2).assertTrue();
+      expect(request.PAUSED_BY_USER === 3).assertTrue();
+      expect(request.PAUSED_UNKNOWN === 4).assertTrue();
+      expect(request.SESSION_SUCCESSFUL === 0).assertTrue();
+      expect(request.SESSION_RUNNING === 1).assertTrue();
+      expect(request.SESSION_PENDING === 2).assertTrue();
+      expect(request.SESSION_PAUSED === 3).assertTrue();
+      expect(request.SESSION_FAILED === 4).assertTrue();
       done();
     });
 
