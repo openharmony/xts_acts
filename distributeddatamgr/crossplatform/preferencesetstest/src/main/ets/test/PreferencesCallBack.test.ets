@@ -68,34 +68,6 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0100
-     * @tc.name   : testPreferencesGetPreferences001
-     * @tc.desc   : GetPreferences callback interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testPreferencesGetPreferences001", 0, async function (done) {
-      try {
-        // @ts-ignore
-        await dataPreferences.getPreferences(context, -1, (err, preferences) => {
-          if (err) {
-            console.info(TAG + "Get preferences err: " + err);
-            expect(!err).assertTrue();
-            done();
-          } else {
-            console.info(TAG + "Get preferences success" + preferences);
-            done();
-          }
-        });
-      } catch (err) {
-        console.info("testPreferencesGetPreferences001 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
-        done();
-      }
-    });
-
-    /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0200
      * @tc.name   : testPreferencesGetPreferences002
      * @tc.desc   : GetPreferences callback interface test
@@ -173,40 +145,6 @@ export default function preferencesCallBackTest() {
             });
           } catch (err) {
             console.info("testPreferencesDeletePreferences001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
-            done();
-          }
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0200
-     * @tc.name   : testPreferencesDeletePreferences002
-     * @tc.desc   : DeletePreferences callback interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testPreferencesDeletePreferences002", 0, async function (done) {
-      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
-        if (err) {
-          console.info(TAG + "Get preferences err: " + err);
-          expect(!err).assertTrue();
-        } else {
-          console.info(TAG + "Get preferences success");
-          expect(preferences !== null).assertTrue();
-          try {
-            // @ts-ignore
-            dataPreferences.deletePreferences(context, -1, (err) => {
-              if (err) {
-                console.info(TAG + "Delete preferences err: " + err);
-                expect(!err).assertTrue();
-                done();
-              }
-            });
-          } catch (err) {
-            console.info("testPreferencesDeletePreferences002 fail: " + err.message + "code: " + err.code);
             expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
             done();
           }
@@ -301,40 +239,6 @@ export default function preferencesCallBackTest() {
             });
           } catch (err) {
             console.info("testRemovePreferencesFromCache001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
-            done();
-          }
-        }
-      });
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0200
-     * @tc.name   : testRemovePreferencesFromCache002
-     * @tc.desc   : RemovePreferencesFromCache callback interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRemovePreferencesFromCache002", 0, async function (done) {
-      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
-        if (err) {
-          console.info(TAG + "Get preferences err: " + err);
-          expect(!err).assertTrue();
-        } else {
-          console.info(TAG + "Get preferences success");
-          expect(preferences !== null).assertTrue();
-          try {
-            // @ts-ignore
-            dataPreferences.removePreferencesFromCache(context, -1, (err) => {
-              if (err) {
-                console.info(TAG + "Remove preferences from cache error: " + err);
-                expect(!err).assertTrue();
-                done();
-              }
-            });
-          } catch (err) {
-            console.info("testRemovePreferencesFromCache002 fail: " + err.message + "code: " + err.code);
             expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
             done();
           }

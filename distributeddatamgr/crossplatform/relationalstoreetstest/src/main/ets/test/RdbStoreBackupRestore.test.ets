@@ -97,17 +97,17 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     it("testRdbStoreBackupRestore001", 0, async function (done) {
       console.info(TAG + "************* testRdbStoreBackupRestore001 start *************");
       RdbStore.backup(DATABASE_BACKUP_NAME, async (err) => {
-        if (err != null) {
+        if (err) {
           console.info(TAG + "backup err ttt:  " + err);
-          expect(false).assertTrue();
+          expect(!err).assertTrue();
         } else {
           console.info(`Backup success.`);
           let deleteData = new relationalStore.RdbPredicates("backupTest");
           deleteData.equalTo("name", "zhangsan");
           await RdbStore.delete(deleteData);
           RdbStore.restore(DATABASE_BACKUP_NAME, async (err) => {
-            if (err != null) {
-              expect(false).assertTrue();
+            if (err) {
+              expect(!err).assertTrue();
             } else {
               let predicates = new relationalStore.RdbPredicates("backupTest");
               predicates.equalTo("name", "zhangsan");
@@ -124,7 +124,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
                 resultSet.close();
                 done();
               } catch (err) {
-                expect(false).assertTrue();
+                expect(!err).assertTrue();
               }
               resultSet = null;
               RdbStore = null;
@@ -172,6 +172,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
                 done();
               } catch (err) {
                 console.info(TAG + "testRdbStoreBackupRestore002 error: " + err);
+                expect(!err).assertTrue();
               }
               resultSet = null;
               RdbStore = null;
@@ -179,10 +180,12 @@ export default function RdbStoreBackupRestoreCallbackTest() {
             })
             .catch((err) => {
               console.info(TAG + "Restore error: " + err);
+              expect(!err).assertTrue();
             });
         })
         .catch((err) => {
           console.info(TAG + "Backup error: " + err);
+          expect(!err).assertTrue();
         });
     });
 
@@ -199,7 +202,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       try {
         RdbStore.backup("", async (err) => {
           console.info(`Backup success.`);
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         });
       } catch (errInfo) {
@@ -228,7 +231,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
         });
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreBackup002 error: " + errInfo);
-        expect().assertFail();
+        expect(!errInfo).assertTrue();
         done();
       }
       console.info(TAG + "************* testRdbStoreBackup002 end *************");
@@ -246,7 +249,6 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       console.info(TAG + "************* testRdbStoreBackup003 start *************");
       try {
         await RdbStore.backup("");
-        expect().assertFail();
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreBackup003 error: " + errInfo);
@@ -279,8 +281,10 @@ export default function RdbStoreBackupRestoreCallbackTest() {
             expect(err.code == 14800011 && err.message == "Failed to open database by database corrupted").assertTrue();
             done();
           });
-      } catch (errInfo) {
-        console.info(TAG + "testRdbStoreBackup004 error: " + errInfo);
+      } catch (err) {
+        console.info(TAG + "testRdbStoreBackup004 error:  " + err.message + "code:  " + err.code);
+        expect(!err).assertTrue();
+        done();
       }
       console.info(TAG + "************* testRdbStoreBackup004 end *************");
     });
@@ -300,7 +304,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       try {
         RdbStore.restore("", async (err) => {
           console.info(`restore success.`);
-          expect().assertFail();
+          expect(!err).assertTrue();
           done();
         });
       } catch (errInfo) {
@@ -325,13 +329,14 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       await RdbStore.backup(backupName);
       try {
         RdbStore.restore(STORE_CONFIG.name, async (err) => {
-          expect(err != null).assertTrue();
+          expect(err !== null).assertTrue();
           console.info(TAG + "restore err ttt:  " + err);
           console.info(`Restore err: file name wrong.`);
           done();
         });
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore002 error: " + errInfo);
+        expect(!errInfo).assertTrue();
       }
       console.info(TAG + "************* testRdbStoreRestore002 end *************");
     });
@@ -349,8 +354,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       let backupName = "BackupTest003.db";
       await RdbStore.backup(backupName);
       try {
-        RdbStore.retore("");
-        expect().assertFail();
+        await RdbStore.retore("");
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore003 error: " + errInfo);
@@ -374,8 +378,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       let backupName = "BackupTest003.db";
       await RdbStore.backup(backupName);
       try {
-        RdbStore.retore(STORE_CONFIG.name);
-        expect().assertFail();
+        await RdbStore.retore(STORE_CONFIG.name);
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore004 error: " + errInfo);

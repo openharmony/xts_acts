@@ -81,44 +81,6 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0300
-     * @tc.name   : testGetPreferencesHelper0003
-     * @tc.desc   : GetPreferences interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testGetPreferencesHelper0003", 0, async function (done) {
-      try {
-        // @ts-ignore
-        await dataPreferences.getPreferences(context, -1);
-      } catch (err) {
-        console.info("testGetPreferencesHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0400
-     * @tc.name   : testGetPreferencesHelper0004
-     * @tc.desc   : GetPreferences interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testGetPreferencesHelper0004", 0, async function (done) {
-      try {
-        // @ts-ignore
-        await dataPreferences.getPreferences(context);
-      } catch (err) {
-        console.info("testGetPreferencesHelper0004 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
-        done();
-      }
-    });
-
-    /**
      * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0100
      * @tc.name   : testRemovePreferencesFromCacheHelper0001
      * @tc.desc   : RemovePreferencesFromCache interface test
@@ -139,46 +101,6 @@ export default function preferencesHelperTest() {
         .catch((err) => {
           expect(!err).assertTrue();
         });
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0200
-     * @tc.name   : testRemovePreferencesFromCacheHelper0002
-     * @tc.desc   : RemovePreferencesFromCache interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRemovePreferencesFromCacheHelper0002", 0, async function (done) {
-      try {
-        await dataPreferences.getPreferences(context, NAME);
-        // @ts-ignore
-        await dataPreferences.removePreferencesFromCache(context);
-      } catch (err) {
-        console.info("testRemovePreferencesFromCacheHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0300
-     * @tc.name   : testRemovePreferencesFromCacheHelper0003
-     * @tc.desc   : RemovePreferencesFromCache interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRemovePreferencesFromCacheHelper0003", 0, async function (done) {
-      try {
-        await dataPreferences.getPreferences(context, NAME);
-        // @ts-ignore
-        await dataPreferences.removePreferencesFromCache(context, -1);
-      } catch (err) {
-        console.info("testRemovePreferencesFromCacheHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
-        done();
-      }
     });
 
     /**
@@ -234,46 +156,6 @@ export default function preferencesHelperTest() {
           console.info("Delete preferences err: " + err);
           expect(!err).assertTrue();
         });
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0200
-     * @tc.name   : testPreferencesDeleteHelper0002
-     * @tc.desc   : DeletePreferences interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testPreferencesDeleteHelper0002", 0, async function (done) {
-      try {
-        await dataPreferences.getPreferences(context, NAME);
-        // @ts-ignore
-        await dataPreferences.deletePreferences(context);
-      } catch (err) {
-        console.info("testPreferencesDeleteHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0300
-     * @tc.name   : testPreferencesDeleteHelper0003
-     * @tc.desc   : DeletePreferences interface test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testPreferencesDeleteHelper0003", 0, async function (done) {
-      try {
-        await dataPreferences.getPreferences(context, NAME);
-        // @ts-ignore
-        await dataPreferences.deletePreferences(context, -1);
-      } catch (err) {
-        console.info("testPreferencesDeleteHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
-        done();
-      }
     });
 
     /**

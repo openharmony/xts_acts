@@ -501,8 +501,7 @@ export default function preferencesPromiseTest() {
      */
     it("testPreferencesPutFloatPromise0001", 0, async function (done) {
       await mPreferences.clear();
-      const promise = mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
-      await promise;
+      await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
       let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(4.0).assertEqual(per);
       await mPreferences.flush();
@@ -521,8 +520,7 @@ export default function preferencesPromiseTest() {
      */
     it("testPreferencesPutIntPromise0001", 0, async function (done) {
       await mPreferences.clear();
-      let promise = mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
-      await promise;
+      await mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
       expect(4).assertEqual(per);
       await mPreferences.flush();
@@ -540,8 +538,7 @@ export default function preferencesPromiseTest() {
      * @tc.level  : Level 2
      */
     it("testPreferencesPutLongPromise0001", 0, async function (done) {
-      let promise = mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
-      await promise;
+      await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
       let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
       expect(4).assertEqual(per);
       await mPreferences.flush();
@@ -559,8 +556,7 @@ export default function preferencesPromiseTest() {
      * @tc.level  : Level 2
      */
     it("testPreferencesPutStringPromise0001", 0, async function (done) {
-      let promise = mPreferences.put(KEY_TEST_STRING_ELEMENT, "");
-      await promise;
+      await mPreferences.put(KEY_TEST_STRING_ELEMENT, "");
       let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
       expect("").assertEqual(per);
       await mPreferences.flush();
@@ -579,8 +575,7 @@ export default function preferencesPromiseTest() {
      */
     it("testPreferencesPutBooleanPromise0001", 0, async function (done) {
       await mPreferences.clear();
-      let promise = mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
-      await promise;
+      await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
       let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
       expect(true).assertEqual(per);
       await mPreferences.flush();
@@ -600,8 +595,7 @@ export default function preferencesPromiseTest() {
     it("testPreferencesPutStringArrayPromise0001", 0, async function (done) {
       await mPreferences.clear();
       var stringArr = ["1", "2", "3"];
-      let promise1 = mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
-      await promise1;
+      await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
       let promise2 = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ["123", "321"]);
       promise2
         .then((pre) => {
@@ -626,8 +620,7 @@ export default function preferencesPromiseTest() {
     it("testPreferencesPutNumArrayPromise0001", 0, async function (done) {
       await mPreferences.clear();
       var numberArr = [11, 22, 33, 44, 55];
-      let promise1 = mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
-      await promise1;
+      await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
       let promise2 = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
       promise2
         .then((pre) => {
@@ -652,8 +645,7 @@ export default function preferencesPromiseTest() {
     it("testPreferencesPutBoolArrayPromise0001", 0, async function (done) {
       await mPreferences.clear();
       var boolArr = [true, true, false];
-      let promise1 = mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
-      await promise1;
+      await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
       let promise2 = mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]);
       promise2
         .then((pre) => {
@@ -670,7 +662,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_FLOAT_0100
      * @tc.name   : testPreferencesPutSyncFloat0001
-     * @tc.desc   : PutSync float promise interface test
+     * @tc.desc   : PutSync float interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -689,7 +681,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_INT_0100
      * @tc.name   : testPreferencesPutSyncInt0001
-     * @tc.desc   : PutSync int promise interface test
+     * @tc.desc   : PutSync int interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -708,7 +700,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_LONG_0100
      * @tc.name   : testPreferencesPutSyncLong0001
-     * @tc.desc   : PutSync long promise interface test
+     * @tc.desc   : PutSync long interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -726,7 +718,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_STRING_0100
      * @tc.name   : testPreferencesPutSyncString0001
-     * @tc.desc   : PutSync string promise interface test
+     * @tc.desc   : PutSync string interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -744,7 +736,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_BOOLEAN_0100
      * @tc.name   : testPreferencesPutSyncBoolean0001
-     * @tc.desc   : PutSync boolean promise interface test
+     * @tc.desc   : PutSync boolean interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -763,7 +755,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_STRING_ARRAY_0100
      * @tc.name   : testPreferencesPutSyncStringArray0001
-     * @tc.desc   : PutSync StringArray promise interface test
+     * @tc.desc   : PutSync StringArray interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -773,6 +765,7 @@ export default function preferencesPromiseTest() {
       var stringArr = ["1", "2", "3"];
       mPreferences.putSync(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
       let promise2 = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ["123", "321"]);
+      await promise2;
       promise2
         .then((pre) => {
           for (let i = 0; i < stringArr.length; i++) {
@@ -788,7 +781,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_NUM_ARRAY_0100
      * @tc.name   : testPreferencesPutSyncNumArray0001
-     * @tc.desc   : PutSync NumberArray promise interface test
+     * @tc.desc   : PutSync NumberArray interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -798,6 +791,7 @@ export default function preferencesPromiseTest() {
       var numberArr = [11, 22, 33, 44, 55];
       mPreferences.putSync(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
       let promise2 = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
+      await promise2;
       promise2
         .then((pre) => {
           for (let i = 0; i < numberArr.length; i++) {
@@ -813,7 +807,7 @@ export default function preferencesPromiseTest() {
     /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_PUT_SYNC_BOOL_ARRAY_0100
      * @tc.name   : testPreferencesPutSyncBoolArray0001
-     * @tc.desc   : PutSync BoolArray promise interface test
+     * @tc.desc   : PutSync BoolArray interface test
      * @tc.size   : MediumTest
      * @tc.type   : Method
      * @tc.level  : Level 2
@@ -823,6 +817,7 @@ export default function preferencesPromiseTest() {
       var boolArr = [true, true, false];
       mPreferences.putSync(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
       let promise2 = mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]);
+      await promise2;
       promise2
         .then((pre) => {
           for (let i = 0; i < boolArr.length; i++) {
@@ -993,7 +988,7 @@ export default function preferencesPromiseTest() {
      * @tc.type   : Method
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKeyPromise0004", 0, async function (done) {
+    it("testPreferencesHasSync0004", 0, async function (done) {
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       let ret = mPreferences.hasSync(KEY_TEST_STRING_ELEMENT);
       expect(true).assertEqual(ret);
@@ -1117,7 +1112,7 @@ export default function preferencesPromiseTest() {
 
       mPreferences.clearSync();
       let ret = mPreferences.getAllSync();
-      console.log("testPreferencesClearPromise0001 end." + JSON.stringify(ret.key_test_string));
+      console.log("testPreferencesClearSync0001 end." + JSON.stringify(ret.key_test_string));
       expect(undefined).assertEqual(ret.key_test_boolean);
       expect(undefined).assertEqual(ret.key_test_string);
       expect(undefined).assertEqual(ret.key_test_float);
