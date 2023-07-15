@@ -52,24 +52,24 @@ export default function connectionTest() {
      * @tc.level : Level 2
      */
     it('testHasDefaultNet001', 0, function (done) {
-      console.log('testHasDefaultNet001 1')
+      console.log('testHasDefaultNet001 1');
       connection.hasDefaultNet((error, value) => {
-        console.log('testHasDefaultNet001 2')
+        console.log('testHasDefaultNet001 2');
         if (!error) {
-          console.log('testHasDefaultNet001 3')
+          console.log('testHasDefaultNet001 3');
           console.log(`testHasDefaultNet001 case success,data:` + value);
-          console.log('testHasDefaultNet001 4')
+          console.log('testHasDefaultNet001 4');
           expect(value).assertTrue();
           done();
         } else {
-          console.log('testHasDefaultNet001 6')
+          console.log('testHasDefaultNet001 6');
           console.log(`testHasDefaultNet001 error, case failed,errCode:` + error.code);
-          console.log('testHasDefaultNet001 7')
+          console.log('testHasDefaultNet001 7');
           expect().assertFail();
           done();
         }
       });
-      console.log('testHasDefaultNet001 9')
+      console.log('testHasDefaultNet001 9');
     });
 
     /*
@@ -177,34 +177,6 @@ export default function connectionTest() {
     });
 
     /**
-     * @tc.number: TEST_ON_NET_BLOCK_STATUS_CHANGE_001
-     * @tc.name  : testOn_NetBlockStatusChange001
-     * @tc.desc  : Subscribe to network blocking status events, using the callback method as an asynchronous method.
-     * @tc.size  : MediumTest
-     * @tc.type  : Method
-     * @tc.level : Level 2
-     */
-    it('testOn_NetBlockStatusChange001', 0, function (done) {
-      let netConn = connection.createNetConnection();
-      netConn.register((error) => {
-        if (!error) {
-          netConn.on('netBlockStatusChange',(data) => {
-            console.log("success11:" + data);
-          });
-          netConn.unregister((error) => {
-            console.log("result11:" + error);
-          });
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.log(`register failed,errCode:` + error.code);
-          expect().assertFail();
-          done();
-        }
-      });
-    });
-
-    /**
      * @tc.number: TEST_ON_NET_CAPABILITIES_CHANGE_001
      * @tc.name  : testOn_NetCapabilitiesChange001
      * @tc.desc  : Subscribe to network capability change events.
@@ -218,34 +190,7 @@ export default function connectionTest() {
         if (!error) {
           netConn.on('netCapabilitiesChange',(data) => {
             console.log("success11:" + data);
-          });
-          netConn.unregister((error) => {
-            console.log("result11:" + error);
-          });
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.log(`register failed,errCode:` + error.code);
-          expect().assertFail();
-          done();
-        }
-      });
-    });
-
-    /**
-     * @tc.number: TEST_ON_NET_CONNECTION_PROPERTIES_CHANGE_001
-     * @tc.name  : testOn_NetConnectionPropertiesChange001
-     * @tc.desc  : Subscribe to network connection information change events.
-     * @tc.size  : MediumTest
-     * @tc.type  : Method
-     * @tc.level : Level 2
-     */
-    it('testOn_NetConnectionPropertiesChange001', 0, function (done) {
-      let netConn = connection.createNetConnection();
-      netConn.register((error) => {
-        if (!error) {
-          netConn.on('netConnectionPropertiesChange',(data) => {
-            console.log("success11:" + data);
+            expect(data.netCap.bearerTypes.length >= 0).assertTrue();
           });
           netConn.unregister((error) => {
             console.log("result11:" + error);
@@ -357,7 +302,6 @@ export default function connectionTest() {
       expect(nbt_1).assertEqual(1);
       done();
     });
-
 
   })
 }

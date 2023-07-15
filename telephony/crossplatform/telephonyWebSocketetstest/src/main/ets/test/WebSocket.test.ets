@@ -19,8 +19,6 @@ export default function webSocketTest() {
   describe('webSocketTest', function () {
     console.log("************* webSocket Test start*************");
 
-    let serverIpAddress: string = "ws://192.168.1.100:8081/string";
-
     /*
      * @tc.number: TEST_CREATE_WEB_SOCKET_001
      * @tc.name  : testCreateWebSocket001
@@ -32,6 +30,17 @@ export default function webSocketTest() {
     it('testCreateWebSocket001', 0, async function (done) {
       var mWebSocket = webSocket.createWebSocket();
       expect(mWebSocket != null).assertTrue();
+      mWebSocket.close((error, value) => {
+        if (!error) {
+          console.log(`case success:` + value);
+          expect(value).assertTrue();
+          done();
+        } else {
+          console.log(`error, case failed,errCode:` + error.code);
+          expect(error.code).assertEqual(2302999);
+          done();
+        }
+      });
       done();
     });
 
@@ -162,6 +171,54 @@ export default function webSocketTest() {
     });
 
     /*
+     * @tc.number: TEST_CONNECT_004
+     * @tc.name  : testConnect004
+     * @tc.desc  : Initiates a WebSocket request to establish a WebSocket connection to a given URL.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testConnect004', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+      mWebSocket.connect(null).then(value => {
+        console.log(`case success11：` + value);
+        expect(value).assertTrue();
+        done();
+      }).catch((error) => {
+        console.log(`error, case failed,errCode:` + error.code);
+        expect(error.code).assertEqual(401);
+        done();
+      });
+    });
+
+    /*
+     * @tc.number: TEST_CONNECT_005
+     * @tc.name  : testConnect005
+     * @tc.desc  : Initiates a WebSocket request to establish a WebSocket connection to a given URL.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testConnect005', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+      let webSocketRequestOptions: webSocket.WebSocketRequestOptions = {
+        header: {
+          key: "value",
+          key2: "value2"
+        }
+      }
+      mWebSocket.connect("ws://19211.16811.1.100:8081/string", webSocketRequestOptions).then(value => {
+        console.log(`case success11：` + value);
+        expect(value).assertTrue();
+        done();
+      }).catch((error) => {
+        console.log(`error, case failed,errCode:` + error.code);
+        expect(error.code).assertEqual(-1);
+        done();
+      });
+    });
+
+    /*
      * @tc.number: TEST_SEND_001
      * @tc.name  : testSend001
      * @tc.desc  : Sends data through a WebSocket connection.
@@ -231,6 +288,35 @@ export default function webSocketTest() {
         console.log(`error, case failed,errCode:` + error.code);
         expect(error.code).assertEqual(2302999);
         done();
+      });
+    });
+
+    /*
+     * @tc.number: TEST_SEND_004
+     * @tc.name  : testSend004
+     * @tc.desc  : Sends data through a WebSocket connection.
+     * @tc.size  : MediumTest
+     * @tc.type  : Method
+     * @tc.level : Level 2
+     */
+    it('testSend004', 0, async function (done) {
+      let mWebSocket = webSocket.createWebSocket();
+      var str = "Hello, server!(arrayBuffer promise mode)";
+      var buf = new ArrayBuffer(str.length);
+      var message = new Uint8Array(buf);
+      for (var i = 0, strLen = str.length; i < strLen; i++) {
+        message[i] = str.charCodeAt(i);
+      }
+      mWebSocket.send(message.buffer, (error, value) => {
+        if (!error) {
+          console.log(`case success:` + value);
+          expect(value).assertTrue();
+          done();
+        } else {
+          console.log(`error, case failed,errCode:` + error.code);
+          expect(error.code).assertEqual(2302999);
+          done();
+        }
       });
     });
 
