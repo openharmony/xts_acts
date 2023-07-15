@@ -18,12 +18,13 @@
         "name": ".entry",
         "mainAbility": ".MainAbility",
         "deviceType": [
-      "tablet",
-      "default",
+            "tablet",
+            "default",
             "phone",
             "tablet",
             "tv",
-            "wearable"
+            "wearable",
+            "2in1"
         ],
         "distro": {
             "deliveryWithInstall": true,

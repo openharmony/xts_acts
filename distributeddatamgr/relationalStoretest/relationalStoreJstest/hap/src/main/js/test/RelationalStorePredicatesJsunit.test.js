@@ -42,6 +42,7 @@ describe('relationalStorePredicatesTest', function () {
         await buildAllDataType1();
         await buildAllDataType2();
         await buildAllDataType3();
+		await rdbStore.executeSql("CREATE INDEX index_name ON AllDataType (characterValue);", null);
     })
 
     beforeEach(function () {
@@ -2174,48 +2175,92 @@ describe('relationalStorePredicatesTest', function () {
     })
 
     /**
-     * @tc.name predicates indexedBy test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_0220
-     * @tc.desc predicates indexedBy test
-     */
-    it('testIndexedBy0001', 0, async function (done) {
-        console.info(TAG + "************* testIndexedBy0001 start *************");
-        let errInfo = undefined
-        try{
-            let predicates = await new data_Rdb.RdbPredicates("AllDataType");
-            predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
-            let result = await rdbStore.query(predicates);
-            expect(3).assertEqual(result.rowCount);
-            result.close();
-        }catch(err){
-            errInfo = err
-        }
-        expect(errInfo.code).assertEqual("401")
-        done();
-        console.info(TAG + "************* testIndexedBy0001 end *************");
-    })
+	 * @tc.name predicates indexedBy test
+	 * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_0220
+	 * @tc.desc predicates indexedBy test
+	 */
+	it('testIndexedBy0001', 0, async function (done) {
+		console.info(TAG + "************* testIndexedBy0001 start *************");
+		try{
+			let predicates = await new data_Rdb.RdbPredicates("AllDataType");
+			predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
+			let result = await rdbStore.query(predicates);
+			expect(result.rowCount == -1).assertTrue();
+			result.close();
+			done();
+		}catch(err){
+			expect(err.code).assertEqual("401");
+			done();
+		}
+		console.info(TAG + "************* testIndexedBy0001 end *************");
+	})
 
-    /**
-     * @tc.name predicates indexedBy test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_0221
-     * @tc.desc predicates indexedBy test
-     */
-    it('testIndexedBy0002', 0, async function (done) {
-        console.info(TAG + "************* testIndexedBy0002 start *************");
-        let errInfo = undefined
-        try{
-            let predicates = await new data_Rdb.RdbPredicates("AllDataType");
-            predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValueX"]);
-            let result = await rdbStore.query(predicates);
-            expect(3).assertEqual(result.rowCount);
-            result.close();
-        }catch(err){
-            errInfo = err
-        }
-        expect(errInfo.code).assertEqual("401")
-        done();
-        console.info(TAG + "************* testIndexedBy0002 end *************");
-    })
+	/**
+	 * @tc.name predicates indexedBy test
+	 * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_0221
+	 * @tc.desc predicates indexedBy test
+	 */
+	it('testIndexedBy0002', 0, async function (done) {
+		console.info(TAG + "************* testIndexedBy0002 start *************");
+		try{
+			let predicates = await new data_Rdb.RdbPredicates("AllDataType");
+			predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy("characterValue");
+			let result = await rdbStore.query(predicates);
+			expect(result.rowCount == -1).assertTrue();
+			result.close();
+			done();
+		}catch(err){
+			expect(err != undefined ).assertFalse();
+			done();
+		}
+		console.info(TAG + "************* testIndexedBy0002 end *************");
+	})
+
+	/**
+	 * @tc.name predicates indexedBy test
+	 * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_0222
+	 * @tc.desc predicates indexedBy test
+	 */
+	it('testIndexedBy0003', 0, async function (done) {
+		console.info(TAG + "************* testIndexedBy0003 start *************");
+		try{
+			let predicates = await new data_Rdb.RdbPredicates("AllDataType");
+			predicates.indexedBy("index_name");
+			let result = await rdbStore.query(predicates);
+			console.info(TAG + "result.rowCount = " + result.rowCount);
+			expect(3).assertEqual(result.rowCount);
+			result.close();
+			done();
+		}catch(err){
+			console.info(TAG + "err = " + err);
+			expect(err != undefined ).assertFalse();
+			done();
+		}
+		console.info(TAG + "************* testIndexedBy0003 end *************");
+	})
+
+	/**
+	 * @tc.name predicates indexedBy test
+	 * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Predicates_0223
+	 * @tc.desc predicates indexedBy test
+	 */
+	it('testIndexedBy0004', 0, async function (done) {
+		console.info(TAG + "************* testIndexedBy0004 start *************");
+		try{
+			let predicates = await new data_Rdb.RdbPredicates("AllDataType");
+			predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy("index_name");
+			let result = await rdbStore.query(predicates);
+			console.info(TAG + "result.rowCount = " + result.rowCount);
+			expect(3).assertEqual(result.rowCount);
+			result.close();
+			done();
+		}catch(err){
+			console.info(TAG + "err = " + err);
+			expect(err != undefined ).assertFalse();
+			done();
+		}
+		console.info(TAG + "************* testIndexedBy0004 end *************");
+	})
 
     console.info(TAG + "*************Unit Test End*************");
 })}

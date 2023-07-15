@@ -14,9 +14,16 @@
  */
 
 import requestUploadJSUnit from './requestUpload.test';
+import requestUploadOneJSUnit from './requestUpload001.test';
 import requestDownloadJSUnit from './requestDownload.test';
+import requestDownloadOneJSUnit from './requestDownload001.test';
+import requestDownloadTwoJSUnit from './requestDownload002.test';
 
 export default function testsuite() {  
-  requestDownloadJSUnit()
-  requestUploadJSUnit()
+  requestDownloadJSUnit();
+  requestDownloadOneJSUnit();
+  requestDownloadTwoJSUnit();
+  requestUploadJSUnit();
+  requestUploadOneJSUnit();
+
 }

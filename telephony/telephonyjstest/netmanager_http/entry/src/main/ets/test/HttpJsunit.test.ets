@@ -28,6 +28,7 @@ export default function httpJsunit() {
       var httpRequest = http.createHttp();
       expect(httpRequest != null).assertTrue();
       console.log("-----------------------http createHttp Test end-----------------------");
+      httpRequest.destroy();
       done();
     });
     /**

@@ -7,7 +7,8 @@
         "mainElement": "MainAbility",
         "deviceTypes": [
             "default",
-            "tablet"
+            "tablet",
+            "2in1"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -27,22 +28,21 @@
                         "actions": [
                             "action.system.home"
                         ],
-                        "entities":[
+                        "entities": [
                             "entity.system.home"
                         ]
                     }
                 ]
             },
             {
-              "name": "com.example.staticquerytesttwo.SecondAbility",
-              "srcEntrance": "./ets/SecondMainAbility/SecondMainAbility.ts",
-              "description": "$string:phone_entry_main",
-              "icon": "$media:icon",
-              "label": "$string:entry_label",
-              "visible": true,
-              "orientation": "portrait"
-          }
+                "name": "com.example.staticquerytesttwo.SecondAbility",
+                "srcEntrance": "./ets/SecondMainAbility/SecondMainAbility.ts",
+                "description": "$string:phone_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "orientation": "portrait"
+            }
         ]
-
     }
 }

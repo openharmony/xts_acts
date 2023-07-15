@@ -432,5 +432,121 @@ export default function missionManagerTest() {
           done();
         })
     })
+
+    /**
+     * @tc.number: System_API_Test_Mission_Manager_2200
+     * @tc.name: callback form moveMissionsToForeground system interface interception test
+     * @tc.desc:  Test the third-party application call moveMissionsToForeground will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_Mission_Manager_2200', 0, function (done) {
+      let TAG = 'System_API_Test_Mission_Manager_2200';
+      let missionIds = [1, 2, 3];
+      missionManager.moveMissionsToForeground(missionIds, (err) => {
+        console.log(TAG + "  err.code: " + err.code);
+        expect(err.code).assertEqual(ERROR_CODE);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number: System_API_Test_Mission_Manager_2300
+     * @tc.name: promise form moveMissionsToForeground system interface interception test
+     * @tc.desc:  Test the third-party application call moveMissionsToForeground will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_Mission_Manager_2300', 0, function (done) {
+      let TAG = 'System_API_Test_Mission_Manager_2300';
+      let missionIds = [1, 2, 3];
+      missionManager.moveMissionsToForeground(missionIds)
+        .then(err => {
+          console.log(TAG + ` err->${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+        .catch(err => {
+          console.log(TAG + "  err.code: " + err.code);
+          expect(err.code).assertEqual(ERROR_CODE);
+          done();
+        })
+    })
+
+    /**
+     * @tc.number: System_API_Test_Mission_Manager_2400
+     * @tc.name: Multi-parameter moveMissionsToForeground system interface interception test in the form of callback
+     * @tc.desc:  Test the third-party application call moveMissionsToForeground will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_Mission_Manager_2400', 0, function (done) {
+      let TAG = 'System_API_Test_Mission_Manager_2400';
+      let missionIds = [1, 2, 3];
+      let topMission = 2;
+      missionManager.moveMissionsToForeground(missionIds, topMission, (err) => {
+        console.log(TAG + "  err.code: " + err.code);
+        expect(err.code).assertEqual(ERROR_CODE);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number: System_API_Test_Mission_Manager_2500
+     * @tc.name: Multi-parameter moveMissionsToForeground system interface interception test in the form of promise
+     * @tc.desc:  Test the third-party application call moveMissionsToForeground will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_Mission_Manager_2500', 0, function (done) {
+      let TAG = 'System_API_Test_Mission_Manager_2500';
+      let missionIds = [1, 2, 3];
+      let topMission = 2;
+      missionManager.moveMissionsToForeground(missionIds, topMission)
+        .then(err => {
+          console.log(TAG + ` err->${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+        .catch(err => {
+          console.log(TAG + "  err.code: " + err.code);
+          expect(err.code).assertEqual(ERROR_CODE);
+          done();
+        })
+    })
+
+    /**
+     * @tc.number: System_API_Test_Mission_Manager_2600
+     * @tc.name: callback form moveMissionsToBackground system interface interception test
+     * @tc.desc:  Test the third-party application call moveMissionsToBackground will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_Mission_Manager_2600', 0, function (done) {
+      let TAG = 'System_API_Test_Mission_Manager_2600';
+      let missionIds = [1, 2, 3];
+      missionManager.moveMissionsToBackground(missionIds, (err) => {
+        console.log(TAG + "  err.code: " + err.code);
+        expect(err.code).assertEqual(ERROR_CODE);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number: System_API_Test_Mission_Manager_2700
+     * @tc.name: promise form moveMissionsToBackground system interface interception test
+     * @tc.desc:  Test the third-party application call moveMissionsToBackground will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_Mission_Manager_2700', 0, function (done) {
+      let TAG = 'System_API_Test_Mission_Manager_2700';
+      let missionIds = [1, 2, 3];
+      missionManager.moveMissionsToBackground(missionIds)
+        .then(err => {
+          console.log(TAG + ` err->${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+        .catch(err => {
+          console.log(TAG + "  err.code: " + err.code);
+          expect(err.code).assertEqual(ERROR_CODE);
+          done();
+        })
+    })
   })
 }

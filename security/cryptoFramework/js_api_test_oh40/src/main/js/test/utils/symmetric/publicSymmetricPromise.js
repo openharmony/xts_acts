@@ -380,4 +380,72 @@ async function convertKeyEncryptAndDecryptProcess(
   });
 }
 
-export { encryptAndDecryptNormalProcess, convertKeyEncryptAndDecryptProcess };
+async function encryptAndDecryptNormalSM4Process(symKeyPair, cipherAlgoName) {
+  var updateOutputdata;
+  var globalCipherText;
+  var globalText = "abcdefghabcdefghabcdefghabcdefgh";
+  var encryptMode = cryptoFramework.CryptoMode.ENCRYPT_MODE;
+  var decryptMode = cryptoFramework.CryptoMode.DECRYPT_MODE;
+  return new Promise((resolve, reject) => {
+    var cipherGenerator = createSymCipher(cipherAlgoName);
+    initCipher(cipherGenerator, encryptMode, symKeyPair, null)
+      .then((initData) => {
+        console.log("initData: " + initData);
+        let plainText = { data: stringTouInt8Array(globalText) };
+        return updateCipher(cipherGenerator, encryptMode, plainText);
+      })
+      .then((updateOutput) => {
+        console.log(
+          "[promise] encrypt update out hex:" +
+            uInt8ArrayToShowStr(updateOutput.data)
+        );
+        console.log(
+          "[promise] encrypt update updateOutput out hex:" +
+            uInt8ArrayToShowStr(symKeyPair.getEncoded().data)
+        );
+        globalCipherText = updateOutput;
+        return doFinalCipher(cipherGenerator, encryptMode, null);
+      })
+      .then((finalOutput) => {
+        if (finalOutput == null) {
+        } else {
+          globalCipherText = Array.from(globalCipherText.data);
+          finalOutput = Array.from(finalOutput.data);
+          globalCipherText = globalCipherText.concat(finalOutput);
+          globalCipherText = new Uint8Array(globalCipherText);
+          globalCipherText = { data: globalCipherText };
+        }
+        return initCipher(cipherGenerator, decryptMode, symKeyPair, null);
+      })
+      .then((initData) => {
+        console.log("initData: " + initData);
+        return updateCipher(cipherGenerator, decryptMode, globalCipherText);
+      })
+      .then((updateOutput) => {
+        updateOutputdata = uInt8ArrayToString(updateOutput.data);
+        console.log(
+          "[promise] decrypt update out: " +
+            uInt8ArrayToString(updateOutput.data)
+        );
+        return doFinalCipher(cipherGenerator, decryptMode, null);
+      })
+      .then((finalOutput) => {
+        console.log("finalOutput: " + finalOutput);
+        if (updateOutputdata == globalText) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      })
+      .catch((err) => {
+        console.error("[promise] encryptProcess catch err:" + err);
+        reject(err);
+      });
+  });
+}
+
+export {
+  encryptAndDecryptNormalProcess,
+  convertKeyEncryptAndDecryptProcess,
+  encryptAndDecryptNormalSM4Process,
+};
