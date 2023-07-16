@@ -56,6 +56,36 @@ export default function getBundleInfoForSelf() {
       })
     })
 
-
+    /*
+     * @tc.number: SUB_BMS_SERVICE_SPLIT_0032
+     * @tc.name: getBundleInfoForSelfSyncAtomicService
+     * @tc.desc: Test getBundleInfoForSelfSync with AtomicService
+     */
+    it('getBundleInfoForSelfSyncAtomicService', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+        bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE);
+      let preloadItemTest: bundle.PreloadItem = data.hapModulesInfo[2].preloads[0];
+      expect(typeof (preloadItemTest.moduleName)).assertEqual('string');
+      let dependencyTest: bundle.Dependency = data.hapModulesInfo[2].dependencies[0];
+      expect(typeof (dependencyTest.moduleName)).assertEqual('string');
+      console.info("getBundleInfoForSelfApplicationPro" + JSON.stringify(data.appInfo));
+      for (let i = 0; i < data.hapModulesInfo.length; i++) {
+        console.info("getBundleInfoForSelfApplicationPro : " + i + "  ==" + JSON.stringify(data.hapModulesInfo[i]));
+      }
+      expect(data.appInfo.bundleType).assertEqual(bundle.BundleType.ATOMIC_SERVICE);
+      expect(data.hapModulesInfo[0].type).assertEqual(bundle.ModuleType.FEATURE);
+      expect(data.hapModulesInfo[0].preloads.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].dependencies.length).assertEqual(0);
+      expect(data.hapModulesInfo[1].type).assertEqual(bundle.ModuleType.SHARED);
+      expect(data.hapModulesInfo[1].preloads.length).assertEqual(0);
+      expect(data.hapModulesInfo[1].dependencies.length).assertEqual(0);
+      expect(data.hapModulesInfo[2].type).assertEqual(bundle.ModuleType.ENTRY);
+      expect(data.hapModulesInfo[2].preloads.length).assertEqual(2);
+      expect(data.hapModulesInfo[2].preloads[0].moduleName).assertEqual("feature");
+      expect(data.hapModulesInfo[2].preloads[1].moduleName).assertEqual("shared");
+      expect(data.hapModulesInfo[2].dependencies.length).assertEqual(1);
+      expect(data.hapModulesInfo[2].dependencies[0].moduleName).assertEqual("feature");
+      done();
+    })
   })
 }
