@@ -60,11 +60,12 @@ export default function socketTest() {
         promise.then(()=>{
           console.log('test_Socket_setExtraOptions_Tcp_Error_002 success' );
           expect(false).assertTrue();
-          tcp.close();
-          done();
+          tcp.close(err => {
+            expect(err == undefined).assertTrue();
+            done();
+          })
         }).catch(err=>{
           console.log('test_Socket_setExtraOptions_Tcp_Error_002 err :' + JSON.stringify(err));
-          // expect(err.code == 2301088).assertTrue();
           tcp.close(()=>{
             setTimeout(function (){
               done();
@@ -166,6 +167,7 @@ export default function socketTest() {
         done();
       } catch (err) {
         console.log('test_Socket_Tcp_Bind_001 error' + JSON.stringify(err));
+        expect().assertFail();
         tcp.close();
         done();
       }
@@ -189,6 +191,7 @@ export default function socketTest() {
         done();
       })} catch(err) {
         console.log('test_Socket_Tcp_Bind_002 bind fail');
+        expect().assertFail();
         tcp.close();
         done();
       };
@@ -216,6 +219,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_Tcp_Connect_001 error' + JSON.stringify(err));
+        expect().assertFail();
         tcp.close();
         done();
       }
@@ -244,6 +248,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_Tcp_Connect_002 error' + JSON.stringify(err));
+        expect().assertFail();
         tcp.close();
         done();
       }
@@ -272,6 +277,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_Tcp_Connect_Promise_Error_001 error' + JSON.stringify(err));
+        expect().assertFail();
         tcp.close();
         done();
       }
@@ -298,6 +304,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_Tcp_Connect_Promise_Error_001 error' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -457,7 +464,6 @@ export default function socketTest() {
          expect(err.code == 2301009).assertTrue();
          tcp.close();
          done();
-         // return;
        } else {
          console.log('test_Socket_setExtraOptions_Tcp_Error_001 success');
          tcp.close();
@@ -546,6 +552,7 @@ export default function socketTest() {
         done();
       } catch (err) {
         console.log('test_Socket_Udp_Bind_001 error' + JSON.stringify(err))
+        expect().assertFail();
         done();
       }
     })
@@ -559,17 +566,16 @@ export default function socketTest() {
      * @tc.level : Level 2
      */
     it('test_Socket_Udp_Bind_002', 0,async function (done) {
-
       let udp = socket.constructUDPSocketInstance();
       try{
         let promise = udp.bind({ address: '127.0.0.1', port: 0, family: 1 });
         promise.then(async () => {
           console.log('bind success');
-
           udp.close();
           done();
         })} catch(err) {
         console.log('bind fail');
+        expect().assertFail();
         done();
       };
     })
@@ -746,6 +752,7 @@ export default function socketTest() {
           done();
         })
       }catch (err){
+        expect().assertFail();
         done();
       }
     });
@@ -767,6 +774,7 @@ export default function socketTest() {
         done();
       } catch (err) {
         console.log('test_Socket_Udp_Bind_001 error' + JSON.stringify(err))
+        expect().assertFail();
         done();
       }
     })
@@ -789,6 +797,7 @@ export default function socketTest() {
           done();
         })} catch(err) {
         console.log('bind fail');
+        expect().assertFail();
         done();
       };
     })
@@ -818,7 +827,6 @@ export default function socketTest() {
      * @tc.level : Level 2
      */
     it('test_Socket_Close_Tls_Error_002', 0, function (done) {
-
       let tls = socket.constructUDPSocketInstance();
       let promise = tls.close();
       promise.then((err) => {
@@ -903,6 +911,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_tls_Connect_001 error' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -929,6 +938,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_tls_Connect_002 error' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -956,6 +966,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_tls_Connect_Promise_Error_001 error' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -982,6 +993,7 @@ export default function socketTest() {
         })
       } catch (err) {
         console.log('test_Socket_tls_Connect_Promise_Error_001 error' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
