@@ -10,29 +10,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//test/xts/tools/build/suite.gni")
 
-import("//build/ohos_var.gni")
-group("graphic") {
+group("crossplatform") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "crossplatform:crossplatform",
-      "crossplatform/window:ActsCrossplatformWindowTest",
-      "effectKit:EffectKitTest",
-      "graphicColorSpace:ActsColorSpaceManagerTest",
-      "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
-      "graphicnapitest:ActsGraphicNapiTest",
-      "webGL:webGL_hap_test",
-      "windowStage:ActsWindowStageTest",
-      "windowstandard:window_hap_test",
-    ]
-    if (!(product_name == "ohcore")) {
-      deps += [ "vkgl:cpvkgl" ]
-    }
-  } else {
-    deps = [
-      "appaccount:appaccount_hap",
-      "osaccount:osaccount_hap",
-    ]
+    deps = [ "graphicDisplayetstest:ActsCrossPlatformDisplayTest" ]
   }
 }
