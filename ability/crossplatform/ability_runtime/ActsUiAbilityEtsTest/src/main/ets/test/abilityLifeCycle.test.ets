@@ -439,6 +439,49 @@ export default function abilityTest() {
     });
 
     /**
+     *@tc.number    : UI_ABILITY_LIFE_CYCLE_TEST_0007
+     *@tc.name      : UIAbilityLifeCycleTest0007
+     *@tc.desc      : start mainability1, after start mainability1 twice, mainability1 is a single ability.
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+    */
+    it('UI_ABILITY_LIFE_CYCLE_TEST_0007',0, async (done) => {
+      console.log("------------UI_ABILITY_LIFE_CYCLE_TEST_0007 START-------------");
+      TAG = "UI_ABILITY_LIFE_CYCLE_TEST_0007";
+
+      var want = {
+        "bundleName": "com.example.uiabilitylifecycle",
+        "abilityName": "MainAbility1",
+        "moduleName": moduleName
+      }
+      await globalThis.abilityContext.startAbility(want)
+        .then((data) => {
+          console.info(TAG + ' start successful. Data: ' + data);
+        }).catch((error) => {
+          console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+        })
+
+      await sleep(2000);
+
+      globalThis.abilityContext.startAbility(want)
+        .then((data) => {
+          console.info(TAG + ' start successful. Data: ' + data);
+        }).catch((error) => {
+        console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
+      })
+
+      await sleep(2000);
+      const result = globalThis.onNewWantStr;
+      console.info(TAG + 'result: ' + JSON.stringify(result));
+      expect(result).assertEqual('MainAbility1 onNewWant');
+
+      globalThis.ability1context.terminateSelf();
+      await sleep(500);
+      done();
+    })
+
+    /**
      *@tc.number    : UI_Ability_Constant_Test_0100
      *@tc.name      : UI_Ability_Constant_Test_0100
      *@tc.desc      : start mainability1, check ability constant.
