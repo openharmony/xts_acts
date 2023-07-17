@@ -26,6 +26,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
+import formBindingData from '@ohos.application.formBindingData';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -525,6 +526,9 @@ export default function ApiCoverTest() {
       expect('ohos.extra.param.key.contentTitle').assertEqual(wantConstant.Params.CONTENT_TITLE_KEY)
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY)
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY)
+      expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART)
+      expect('ohos.extra.param.key.supportContinuePageStack').assertEqual(wantConstant.Params.SUPPORT_CONTINUE_PAGE_STACK_KEY)
+      expect('ohos.extra.param.key.supportContinueSourceExit').assertEqual(wantConstant.Params.SUPPORT_CONTINUE_SOURCE_EXIT_KEY)
       done()
     });
 
@@ -723,6 +727,8 @@ export default function ApiCoverTest() {
           expect(data[i].processName.length).assertLarger(0);
           expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
           expect(data[i].bundleNames.length).assertLarger(0);
+          expect(typeof data[i].state).assertEqual("number");
+          expect(data[i].state).assertLarger(0);
         }
         done();
       })
@@ -781,6 +787,25 @@ export default function ApiCoverTest() {
         }
         done();
       })
+    })
+    /*
+     * @tc.number  SUB_AA_Form_formBindingData_0100
+     * @tc.name    The form of a callback getRunningProcessInformation
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_formBindingData_0100', 0, async function (done) {
+      TAG = 'SUB_AA_Form_formBindingData_0100';
+      let proxies = [
+        {
+          "key": "detail",
+          "subscriberId": "11"
+        }
+      ]
+      let formBinding = formBindingData.createFormBindingData(formData);
+      formBinding["proxies"] = proxies;
+      expect(formBinding != undefined).assertTrue()
+      done()
     })
   })
 }
