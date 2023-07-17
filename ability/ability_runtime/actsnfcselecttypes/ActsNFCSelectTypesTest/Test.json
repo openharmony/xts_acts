@@ -12,10 +12,12 @@
 		{
             "test-file-name": [
                 "ActsNFCSelectTypesTest.hap",
+                "ActsNFCSelectTypesTestRelyFifth.hap",
                 "ActsNFCSelectTypesTestRelyFirst.hap",
                 "ActsNFCSelectTypesTestRelyFourth.hap",
                 "ActsNFCSelectTypesTestRelyMultiAbility.hap",
                 "ActsNFCSelectTypesTestRelyMultiHapFirst.hap",
+                "ActsNFCSelectTypesTestRelyMultiHapFourth.hap",
                 "ActsNFCSelectTypesTestRelyMultiHapSecond.hap",
                 "ActsNFCSelectTypesTestRelyMultiHapThird.hap",
                 "ActsNFCSelectTypesTestRelySecond.hap",
