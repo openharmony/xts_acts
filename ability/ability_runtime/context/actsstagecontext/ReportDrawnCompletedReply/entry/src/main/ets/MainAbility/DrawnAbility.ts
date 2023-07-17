@@ -40,8 +40,8 @@ export default class DrawnAbility extends Ability {
   onForeground() {
     console.info('ActsStageContextAssistOne DrawnAbility onForeground');
     globalThis.abilityContextA = this.context;
-    commonEvent.publish("StartDrawnAbility_CommonEvent_ContextOne", () => {
-      console.log("Publish StartDrawnAbility_CommonEvent_ContextOne callback");
+    commonEvent.publish('StartDrawnAbility_CommonEvent_ContextOne', () => {
+      console.log('Publish StartDrawnAbility_CommonEvent_ContextOne callback');
     });
   }
 
