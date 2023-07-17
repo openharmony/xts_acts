@@ -28,10 +28,6 @@ export default function abilityTest() {
     beforeEach(async function () {
       var abilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let cmd1 = 'hilog -r'
-      await abilityDelegator.executeShellCommand(cmd1, (err : any, data : any) => {
-        console.info("executeShellCommand1 callback");
-      });
       await abilityDelegator.executeShellCommand("hilog -G 20M", async (err, data) => {})
     })
 
@@ -43,15 +39,11 @@ export default function abilityTest() {
       let cmd6 = 'aa force-stop com.example.applicationstatechangethreereply'
       let cmd4 = 'aa force-stop com.example.getrunningprocessinformationonereply'
       let cmd5 = 'aa force-stop com.example.getrunningprocessinformationtworeply'
-      let cmd3 = 'hilog -r'
       await abilityDelegator.executeShellCommand(cmd1).then(() => {
         console.info("executeShellCommand1 callback");
       });
       await abilityDelegator.executeShellCommand(cmd2).then(() => {
         console.info("executeShellCommand2 callback");
-      });
-      await abilityDelegator.executeShellCommand(cmd3).then(() => {
-        console.info("executeShellCommand3 callback");
       });
       await abilityDelegator.executeShellCommand(cmd4).then(() => {
         console.info("executeShellCommand3 callback");
