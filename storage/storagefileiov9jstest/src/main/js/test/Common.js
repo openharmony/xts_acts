@@ -83,6 +83,13 @@ export function randomString(num) {
   return pwd;
 }
 
+export async function sleep(times) {
+  if (!times) {
+      times = 10;
+  }
+  await new Promise((res) => setTimeout(res, times));
+}
+
 function isIntNum(val) {
   return typeof val === 'number' && val % 1 === 0;
 }
