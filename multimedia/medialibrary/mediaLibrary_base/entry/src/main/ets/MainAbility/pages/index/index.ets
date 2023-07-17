@@ -24,8 +24,6 @@ struct Index {
 
   aboutToAppear(){
     console.info("start run testcase!!!!")
-    console.info("getPermission 5");
-
         var abilityDelegator: any
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         var abilityDelegatorArguments: any

@@ -16,38 +16,35 @@ import image from "@ohos.multimedia.image";
 import mediaLibrary from "@ohos.multimedia.mediaLibrary";
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import abilityAccessCtrl from "@ohos.abilityAccessCtrl";
-import bundleManager from '@ohos.bundle.bundleManager';
+import uitest from "@ohos.UiTest";
+import { sleep, } from "../../../../../../common";
 
 export default function getExifNoLocation(abilityContext) {
     describe("getExifNoLocation", function () {
         beforeAll(async function () {
             console.info("beforeAll case");
             try {
-                let permissionState = new Map();
-                const permissions = [
-                    'ohos.permission.READ_MEDIA',
-                ];
-
-                const atManager = abilityAccessCtrl.createAtManager();
-                const appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
-                const userId = 100;
-                const appInfo = await bundleManager.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', appFlags, userId);
-                const tokenID = appInfo.accessTokenId;
-                for (const permission of permissions) {
-                    console.info('getPermission permission: ' + permission);
-                    try {
-                        await atManager.grantUserGrantedPermission(tokenID, permission, 1);
-                    } catch (error) {
-                        console.info(`getPermission ${permission} failed`);
-                    }
-                    permissionState.set(permission, await atManager.verifyAccessToken(tokenID, permission));
-                }
-                permissionState.forEach((value, key, map) => {
-                    if (value !== 0) {
-                        console.info(`getPermission failed; permission: ${key}, state: ${value}`);
+                let permissions = ["ohos.permission.READ_MEDIA"];
+                let atManager = abilityAccessCtrl.createAtManager();
+                atManager.requestPermissionsFromUser(abilityContext, permissions, (err, result) => {
+                    if (err) {
+                        console.info('getPermission failed: ' + JSON.stringify(err));
+                    } else {
+                        console.info('getPermission suc: ' + JSON.stringify(result));
                     }
                 });
-                console.info('getPermission end');
+            
+                let driver = uitest.Driver.create();
+                await sleep(500);
+            
+                for (let i = 0; i < 10; i++) {
+                    await sleep(500);
+                    let button = await driver.findComponent(uitest.ON.text('允许'));
+                    if (button != undefined) {
+                        await button.click();
+                    }
+                }
+                console.info("getPermission end");
             } catch (error) {
                 console.info(`getPermission failed, error: ${error}`);
             }

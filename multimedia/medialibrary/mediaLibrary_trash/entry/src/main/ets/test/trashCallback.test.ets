@@ -30,8 +30,8 @@ import {
 export default function trashCallback(abilityContext) {
     describe("trashCallback", function () {
         beforeAll(async function () {
-            await getPermission(null, abilityContext);
             console.info("beforeAll case");
+            await getPermission(null, abilityContext);
             await checkPresetsAssets(media, "ActsMediaLibraryTrashJsTest");
         });
         beforeEach(function () {
