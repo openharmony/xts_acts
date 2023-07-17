@@ -114,11 +114,15 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
 
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000) 
 
@@ -127,7 +131,7 @@ export default function abilityTest() {
 
         setTimeout(()=>{
           done();
-        }, 18000);
+        }, 9500);
     })
 
     
@@ -174,11 +178,15 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
 
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000)
         })
@@ -186,7 +194,7 @@ export default function abilityTest() {
 
       setTimeout(()=>{
         done();
-      }, 18000);
+      }, 9500);
     })
 
     
@@ -233,10 +241,14 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000)
         })
@@ -244,7 +256,7 @@ export default function abilityTest() {
 
       setTimeout(()=>{
         done();
-      }, 18000);
+      }, 9500);
 
     })
     
@@ -294,10 +306,14 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000)
         })
@@ -305,7 +321,7 @@ export default function abilityTest() {
 
       setTimeout(()=>{
         done();
-      }, 18000);
+      }, 9500);
     })
 
 
@@ -354,10 +370,14 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000)
         })
@@ -365,7 +385,7 @@ export default function abilityTest() {
 
       setTimeout(()=>{
         done();
-      }, 18000);
+      }, 9500);
     })
 
     it('Acts_ApplicationStateChange_0600',0, async function (done) {
@@ -413,10 +433,14 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000)
         })
@@ -424,7 +448,7 @@ export default function abilityTest() {
 
       setTimeout(()=>{
         done();
-      }, 18000);
+      }, 9500);
 
     })
     
@@ -470,11 +494,15 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
 
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           },3000) 
 
@@ -483,7 +511,7 @@ export default function abilityTest() {
 
         setTimeout(()=>{
           done();
-        }, 18000);
+        }, 9500);
     })
  
 
@@ -531,10 +559,14 @@ export default function abilityTest() {
 
           globalThis.abilityContext.startAbility(want, (error) => {
             console.log("ability error.code = " + error.code)
+            expect().assertFail();
+            done();
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
               console.log("auxiliary ability error.code = " + error.code)
+              expect().assertFail();
+              done();
             })
           }, 3000)
         })
