@@ -1034,6 +1034,121 @@ export default function getBundleInfoForSelf() {
       }
     })
 
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERY_0138
+     * @tc.name: getBundleInfoForSelfSyncParamErrCal
+     * @tc.desc: Test getBundleInfoForSelfSync with error param.
+     */
+    it('getBundleInfoForSelfSyncParamErrCal', 0, async function (done) {
+      try {
+        let bundleInfo = bundle.getBundleInfoForSelfSync(null);
+        expect(bundleInfo).assertFail();
+      } catch (err) {
+        console.info("ParamErrCal null fail2 " + JSON.stringify(err));
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+      }
+      try {
+        let bundleInfo = bundle.getBundleInfoForSelfSync(undefined);
+        expect(bundleInfo).assertFail();
+      } catch (err) {
+        console.info("ParamErrCal undefined fail2 " + JSON.stringify(err));
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERY_0139
+     * @tc.name: getBundleInfoForSelfSyncDisCal
+     * @tc.desc: Test getBundleInfoForSelfSync with disable flag.
+     */
+    it('getBundleInfoForSelfSyncDisCal', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_DISABLE);
+      console.info("DisCal" + JSON.stringify(data));
+      checkCommonBundleInfo(data);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo.length).assertEqual(0);
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo).assertEqual(null);
+      done();
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERY_0140
+     * @tc.name: getBundleInfoForSelfSyncSigCal
+     * @tc.desc: Test getBundleInfoForSelfSync with signatureInfo flag.
+     */
+    it('getBundleInfoForSelfSyncSigCal', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO);
+      console.info("SigCal" + JSON.stringify(data.signatureInfo));
+      checkCommonBundleInfo(data);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo.length).assertEqual(0);
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo.appId).assertEqual(APPID);
+      expect(data.signatureInfo.fingerprint).assertEqual(FINGERPRINT);
+      done();
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERY_0141
+     * @tc.name: getBundleInfoForSelfSyncModuleCal
+     * @tc.desc: Test getBundleInfoForSelfSync with hapModuleInfo flag.
+     */
+    it('getBundleInfoForSelfSyncModuleCal', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE);
+      console.info("getBundleInfoForSelfSyncPro" + JSON.stringify(data.hapModulesInfo));
+      checkCommonBundleInfo(data);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo.length).assertEqual(1);
+      expect(data.hapModulesInfo[0].name).assertEqual("testModule");
+      expect(data.hapModulesInfo[0].icon).assertEqual("$media:icon");
+      expect(data.hapModulesInfo[0].iconId).assertLarger(0);
+      expect(data.hapModulesInfo[0].label).assertEqual("$string:entry_label");
+      expect(data.hapModulesInfo[0].labelId).assertLarger(0);
+      expect(data.hapModulesInfo[0].description).assertEqual("$string:testModule_entry_dsc");
+      expect(data.hapModulesInfo[0].descriptionId).assertLarger(0);
+      expect(data.hapModulesInfo[0].mainElementName).assertEqual(ABILITY_NAME);
+      expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
+      expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
+      expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
+      expect(data.hapModulesInfo[0].installationFree).assertFalse();
+      expect(data.hapModulesInfo[0].hashValue).assertEqual("");
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo).assertEqual(null);
+      done();
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERY_0142
+     * @tc.name: getBundleInfoForSelfSyncCal
+     * @tc.desc: Test getBundleInfoForSelfSync with default flag
+     */
+    it('getBundleInfoForSelfSyncCal', 0, async function (done) {
+      let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT);
+      console.info("getBundleInfoForSelfSyncCal" + JSON.stringify(data));
+      expect(data.name).assertEqual(BUNDLE_NAME);
+      expect(data.vendor).assertEqual(VENDOR);
+      expect(data.versionCode).assertEqual(1000000);
+      expect(data.versionName).assertEqual("1.0.0");
+      expect(data.minCompatibleVersionCode).assertEqual(1000000);
+      expect(data.targetVersion).assertEqual(9);
+      expect(data.installTime).assertLarger(0);
+      expect(data.updateTime).assertLarger(0);
+      expect(data.appInfo).assertEqual(null);
+      expect(data.hapModulesInfo.length).assertEqual(0);
+      expect(data.reqPermissionDetails.length).assertEqual(0);
+      expect(data.permissionGrantStates.length).assertEqual(0);
+      expect(data.signatureInfo).assertEqual(null);
+      done();
+    })
+
     function checkCommonBundleInfo(data) {
       expect(data.name).assertEqual(BUNDLE_NAME);
       expect(data.vendor).assertEqual(VENDOR);
