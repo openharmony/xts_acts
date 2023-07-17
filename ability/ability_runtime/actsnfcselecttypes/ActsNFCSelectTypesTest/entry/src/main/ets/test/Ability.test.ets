@@ -51,6 +51,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0100
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0100', 0, async (done) => {
       let want = {
@@ -90,6 +91,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0200
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0200', 0, async (done) => {
       let want = {
@@ -127,6 +129,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0300
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0300', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 begin');
@@ -158,6 +161,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0400
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0400', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 begin');
@@ -195,6 +199,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0500
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0500', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500 begin');
@@ -237,6 +242,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0600
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0600', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600 begin');
@@ -277,6 +283,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0700
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0700', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 begin');
@@ -314,6 +321,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0800
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0800' ,0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 begin');
@@ -353,6 +361,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0900
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_0900', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0900 begin');
@@ -394,6 +403,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_1000
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_1000', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1000 begin');
@@ -443,6 +453,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_1100
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_1100', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1100 begin');
@@ -490,6 +501,7 @@ export default function abilityTest() {
     * @tc.number: ACTS_NFC_SelectTypes_1200
     * @tc.name: NFC supports application selection box display and user click application
     * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+    * @tc.level:1
     */
     it('ACTS_NFC_SelectTypes_1200',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
@@ -519,7 +531,7 @@ export default function abilityTest() {
         }).catch(err => {
           console.log('pkill -f err is ' + JSON.stringify(err))
         });
-      },5000)
+      },1000)
       await sleep(1000);
       setTimeout(()=> {
         globalThis.abilitycontext.startAbility(
@@ -549,6 +561,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_1300
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_1300',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1300 begin');
@@ -577,7 +590,7 @@ export default function abilityTest() {
         }).catch(err => {
           console.log('pkill -f err is ' + JSON.stringify(err))
         });
-      },5000)
+      },1000)
       globalThis.abilitycontext.startAbility(
         want, (err) => {
         if (err.code) {
