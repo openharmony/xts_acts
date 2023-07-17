@@ -13,9 +13,13 @@
  * limitations under the License.
  */
 
-import bluetoothhostTest_host_1 from './BluetoothHfp.test.js'
-import bluetoothhostTest_host_3 from './BluetoothA2dp.test.js'
+import btHfpConnTest from './BluetoothHfp.test.js'
+import btA2dpConnTest from './BluetoothA2dp.test.js'
+import btManagerHfpConnTest from './BtManagerHfp.test.js'
+import btManagerA2dpConnTest from './BtManagerA2dp.test.js'
 export default function testsuite() {
-bluetoothhostTest_host_1()
-bluetoothhostTest_host_3()
+    btHfpConnTest()
+    btA2dpConnTest()
+    btManagerHfpConnTest()
+    btManagerA2dpConnTest()
 }

@@ -41,7 +41,6 @@ ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
 
   include_dirs = [
     "$comPath/rosen/modules/2d_engine",
-    "$comPath/rosen/modules/2d_engine/rosen_text/export",
     "//third_party/googletest/googletest/include",
   ]
 
