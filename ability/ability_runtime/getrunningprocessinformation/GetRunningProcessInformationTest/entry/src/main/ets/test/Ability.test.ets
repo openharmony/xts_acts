@@ -116,6 +116,11 @@ export default function abilityTest() {
 
         });
       },700);
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -179,6 +184,11 @@ export default function abilityTest() {
           },3000)
         })
       },700)
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -241,6 +251,11 @@ export default function abilityTest() {
           },3000)
         })
       },700)
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -305,6 +320,11 @@ export default function abilityTest() {
           },3000)
         })
       },700)
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -368,7 +388,12 @@ export default function abilityTest() {
             })
           },3000)
         })
-      },700)
+      },700);
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -433,6 +458,11 @@ export default function abilityTest() {
           },3000)
         })
       },700);
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -495,6 +525,11 @@ export default function abilityTest() {
 
         })
       },700);
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
@@ -557,6 +592,11 @@ export default function abilityTest() {
           }, 3000)
         })
       }, 700);
+
+      setTimeout(() => {
+        expect().assertFail();
+        done();
+      },8000);
     })
 
     /*
