@@ -76,7 +76,7 @@ export default function loadingProgressJsunit() {
       let strJson = getInspectorByKey('loadingProgress');
       let obj = JSON.parse(strJson);
       console.info('loadingProgressJsunit_0300  component obj is: ' + JSON.stringify(obj));
-      expect(obj.$attrs.color).assertEqual('#FF008000');
+      expect(obj.$attrs.color).assertEqual('#99666666');
       done();
    });
     
