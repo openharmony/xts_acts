@@ -17,8 +17,6 @@ import Ability from '@ohos.app.ability.UIAbility';
 import type Window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 
-const ONE_SECOND = 1000;
-const THREE_SECOND = 3000;
 const VALID_STATE = 1;
 const INVALID_STATE = -1;
 const TAG = 'getRunningProcess';
@@ -34,13 +32,11 @@ let applicationStateChangeCallbackFir = {
   },
   onApplicationBackground() {
     console.log(TAG, 'applicationStateChangeCallbackFir onApplicationBackground');
-    setTimeout(() => {
-      console.info('Enter onApplicationForeground publish!');
-      commonEventData.parameters.commonStateArr = VALID_STATE;
-      commonEvent.publish('processState', commonEventData, (err) => {
-        console.info('====>processState publish err: ' + JSON.stringify(err));
-      });
-    }, ONE_SECOND);
+    console.info('Enter onApplicationForeground publish!');
+    commonEventData.parameters.commonStateArr = VALID_STATE;
+    commonEvent.publish('processState', commonEventData, (err) => {
+    console.info('====>processState publish err: ' + JSON.stringify(err));
+    });
   }
 };
 let foregroundTAG = INVALID_STATE;
@@ -89,11 +85,9 @@ export default class EntryAbility extends Ability {
     // Ability has brought to foreground
     foregroundTAG++
     if (foregroundTAG === VALID_STATE) {
-      setTimeout(() => {
-        commonEvent.publish('processState', commonEventData, (err) => {
+      commonEvent.publish('processState', commonEventData, (err) => {
           console.info('====>processState publish err: ' + JSON.stringify(err));
-        })
-      }, THREE_SECOND)
+      })
 
     }
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
