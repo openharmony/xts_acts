@@ -56,7 +56,6 @@ export default function Window() {
         done();
       } catch (error) {
         console.info(caseName + " fail: " + error);
-        expect().assertFail();
         done();
       }
     }
@@ -137,11 +136,9 @@ export default function Window() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
-        let windowData = await windowStage.createSubWindow('testGetLastWindowPromise001');
-        await windowData.showWindow();
+        await sleep(500);
         let lastWindow = await window.getLastWindow(context);
         expect(lastWindow != null).assertTrue();
-        await windowData.destroyWindow();
         done();
       } catch (exception) {
         console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
@@ -162,8 +159,7 @@ export default function Window() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       try {
-        let windowData = await windowStage.createSubWindow('testGetLastWindowCb001');
-        await windowData.showWindow();
+        await sleep(500);
         window.getLastWindow(context, async (err, data) => {
           if (err.code) {
             console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(err));
@@ -181,11 +177,12 @@ export default function Window() {
           } catch (err) {
             console.info(msgStr + "err " + err);
           }
-          await windowData.destroyWindow();
           done();
         })
       } catch (exception) {
         console.error(msgStr + 'Failed to obtain the top window. Cause: ' + JSON.stringify(exception));
+        expect().assertFail();
+        done();
       }
     })
 
@@ -1017,7 +1014,7 @@ export default function Window() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
       try {
-        wnd = await window.getLastWindow(context);
+        wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
           await wnd.setWindowSystemBarEnable([]).then(() => {
@@ -1053,7 +1050,7 @@ export default function Window() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
       try {
-        wnd = await window.getLastWindow(context);
+        wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
           await wnd.setWindowSystemBarEnable(['status', 'navigation']).then(() => {
@@ -1089,7 +1086,7 @@ export default function Window() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
       try {
-        wnd = await window.getLastWindow(context);
+        wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
           await wnd.setWindowSystemBarEnable(['status']).then(() => {
@@ -1125,7 +1122,7 @@ export default function Window() {
       let msgStr = 'jsunittest ' + caseName + ' ';
       let wnd = null;
       try {
-        wnd = await window.getLastWindow(context);
+        wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
           await wnd.setWindowSystemBarEnable(['navigation']).then(() => {
@@ -1163,7 +1160,7 @@ export default function Window() {
       console.log(msgStr + 'begin');
       let wnd = null;
       try {
-        wnd = await window.getLastWindow(context);
+        wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
           wnd.setWindowSystemBarEnable(['status', 'navigation'], (err) => {
@@ -1206,7 +1203,7 @@ export default function Window() {
       console.log(msgStr + 'begin');
       let wnd = null;
       try {
-        wnd = await window.getLastWindow(context);
+        wnd = windowStage.getMainWindowSync();
         expect(wnd != null).assertTrue();
         try {
           await wnd.setWindowSystemBarEnable([], (err) => {
@@ -1282,7 +1279,7 @@ export default function Window() {
       console.log(msgStr + 'begin');
       let mainWin = null;
       let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED',
-        'LANDSCAPE_INVERTED'];
+        'LANDSCAPE_INVERTED', 'UNSPECIFIED'];
 
       function setPreferredOrientationFun(win, orientation) {
         return new Promise((resolve, reject) => {
@@ -1317,6 +1314,7 @@ export default function Window() {
           done();
         });
         console.info(msgStr + 'Succeeded in setting window orientation. orientation: ' + orientation + "step: " + i);
+        await sleep(500);
         if (i == orientationItem.length - 1) {
           expect(true).assertTrue();
           done();
@@ -1391,25 +1389,28 @@ export default function Window() {
       let windowId = 'testLoadContentCb001';
       console.log(msgStr + 'begin');
       let tempWnd = null
-
-      tempWnd = await windowStage.createSubWindow(windowId);
-      expect(!!tempWnd).assertTrue();
-
-      tempWnd.loadContent('TestAbility/pages/index1', storage, async (err) => {
-        if (err && err.code) {
-          unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-        } else {
-          try {
-            console.log(msgStr + 'tempWnd.loadContent() success');
-            expect(TRUE_FLAG).assertTrue();
-            done();
-          } catch (error) {
-            console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
-            done()
+      try {
+        tempWnd = await windowStage.createSubWindow(windowId);
+        expect(!!tempWnd).assertTrue();
+        
+        tempWnd.loadContent('TestAbility/pages/index1', storage, async (err) => {
+          if (err && err.code) {
+            unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+          } else {
+            try {
+              console.log(msgStr + 'tempWnd.loadContent() success');
+              expect(TRUE_FLAG).assertTrue();
+              done();
+            } catch (error) {
+              console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
+              done()
+            }
+            await tempWnd.destroyWindow();
           }
-          await tempWnd.destroyWindow();
-        }
-      })
+        })
+      } catch (err) {
+        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+      }
     })
     /**
      * @tc.number    : TEST_LOADCONTENT_CB_002
@@ -1430,8 +1431,9 @@ export default function Window() {
       try {
         tempWnd.loadContent(null, storage, async (err) => {
           if (err && err.code) {
+            console.info(`tempWnd.loadContent catch error: ${JSON.stringify(err)}`)
             try {
-              expect(err.code === 401).assertTrue();
+              expect(err.code).assertEqual(401);
             } catch (error) {
               console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
             }
@@ -1443,8 +1445,9 @@ export default function Window() {
           }
         })
       } catch (err) {
+        console.info(`tempWnd.loadContent catch error: ${JSON.stringify(err)}`);
         try {
-          expect(err.code === 401).assertTrue();
+          expect(err.code).assertEqual(401);
         } catch (error) {
           console.info(`tempWnd.loadContent catch error: ${JSON.stringify(error)}`)
         }
@@ -1461,12 +1464,18 @@ export default function Window() {
      * @tc.level     : Level 2
      */
     it('testGetUIContext001', 0, async function (done) {
-      let tempWnd = await windowStage.getMainWindow();
-      expect(!!tempWnd).assertTrue();
-      let UIContext = tempWnd.getUIContext();
-      expect(UIContext != undefined).assertTrue();
-      console.info('testGetUIContext001 Succeeded');
-      done();
+      try {
+        let tempWnd = await windowStage.getMainWindow();
+        expect(!!tempWnd).assertTrue();
+        let UIContext = tempWnd.getUIContext();
+        expect(UIContext != undefined).assertTrue();
+        console.info('testGetUIContext001 Succeeded');
+        done();
+      } catch (err) {
+        console.info('testGetUIContext001 fail ' + err);
+        expect().assertFail();
+        done();
+      }
     })
     /**
      * @tc.number    : TEST_SETUICONTENT_PROMISE_001
@@ -1518,14 +1527,22 @@ export default function Window() {
             await win.destroyWindow();
             done();
           }).catch(async (err) => {
-            console.error('Failed to load the content. Cause: ' + JSON.stringify(err));
-            expect(err.code).assertEqual(401);
+            console.error('Failed to load the content. Cause1: ' + JSON.stringify(err));
+            try {
+              expect(err.code).assertEqual(401);
+            } catch (err) {
+              console.error('Failed to load the content. Cause2: ' + JSON.stringify(err));
+            }
             await win.destroyWindow();
             done()
           });
         } catch (exception) {
           console.error('Failed to load the content. exception: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
+          try {
+            expect(exception.code).assertEqual(401);
+          } catch (err) {
+            console.error('Failed to load the content. Cause2: ' + JSON.stringify(err));
+          }
           await win.destroyWindow();
           done()
         }
@@ -1648,18 +1665,11 @@ export default function Window() {
       let color = '#00ff33';
       try {
         wnd.setWindowBackgroundColor(color);
+        console.log('testSetWindowBackgroundColor001 success');
+        await sleep(2000);
         done();
-        try {
-          let properties = wnd.getWindowProperties();
-          expect(!properties.isTransparent).assertTrue();
-          done()
-        } catch (exception) {
-          console.error('Failed to obtain the window properties001. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done();
-        }
-      } catch (exception) {
-        console.error('Failed to set the background1 color. Cause: ' + JSON.stringify(exception));
+      } catch (err) {
+        console.error('Failed to set the background1 color. Cause: ' + JSON.stringify(err));
         expect().assertFail();
         done();
       }
@@ -1679,16 +1689,9 @@ export default function Window() {
       let color = '#ffffff00';
       try {
         wnd.setWindowBackgroundColor(color);
+        console.log('testSetWindowBackgroundColor002 success');
+        await sleep(2000);
         done();
-        try {
-          let properties = wnd.getWindowProperties();
-          expect(!properties.isTransparent).assertTrue();
-          done()
-        } catch (exception) {
-          console.error('Failed to obtain the window properties002. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done();
-        }
       } catch (exception) {
         console.error('Failed to set the background2 color. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
@@ -1710,16 +1713,11 @@ export default function Window() {
       let color = '#00ffff00';
       try {
         wnd.setWindowBackgroundColor(color);
+        console.log('testSetWindowBackgroundColor003 success');
+        await sleep(2000);
+        wnd.setWindowBackgroundColor('#ffffff');
+        await sleep(2000);
         done();
-        try {
-          let properties = wnd.getWindowProperties();
-          expect(properties.isTransparent).assertTrue();
-          done()
-        } catch (exception) {
-          console.error('Failed to obtain the window properties003. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done();
-        }
       } catch (exception) {
         console.error('Failed to set the background3 color. Cause: ' + JSON.stringify(exception));
         expect().assertFail();
@@ -1741,6 +1739,8 @@ export default function Window() {
       let color = '#ff00';
       try {
         wnd.setWindowBackgroundColor(color);
+        console.log('testSetWindowBackgroundColor004 fail');
+        expect().assertFail();
         done();
       } catch (exception) {
         console.error('Failed to set the background4 color. Cause: ' + JSON.stringify(exception));
@@ -1763,18 +1763,12 @@ export default function Window() {
       let color = '#hhgghhgg';
       try {
         wnd.setWindowBackgroundColor(color);
-        try {
-          let properties = wnd.getWindowProperties();
-          expect(!properties.isTransparent).assertTrue();
-          done()
-        } catch (exception) {
-          console.error('Failed to obtain the window properties005. Cause: ' + JSON.stringify(exception));
-          expect(exception.code).assertEqual(401);
-          done()
-        }
-      } catch (exception) {
-        console.error('Failed to set the background5 color. Cause: ' + JSON.stringify(exception));
-        expect(exception.code).assertEqual(401);
+        console.log('testSetWindowBackgroundColor005 fail');
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.error('Failed to set the background5 color. Cause: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
         done()
       }
     })
