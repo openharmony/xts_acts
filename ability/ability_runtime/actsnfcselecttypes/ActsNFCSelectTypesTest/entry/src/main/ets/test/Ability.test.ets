@@ -514,7 +514,7 @@ export default function abilityTest() {
       });
       await sleep(1000);
       setTimeout(()=> {
-        abilityDelegator.executeShellCommand('pkill -f com.example.mytest4').then(data => {
+        abilityDelegator.executeShellCommand('pkill -f com.example.mytest5').then(data => {
           console.log('pkill -f successful ' + JSON.stringify(data))
         }).catch(err => {
           console.log('pkill -f err is ' + JSON.stringify(err))
@@ -527,12 +527,14 @@ export default function abilityTest() {
           if (err.code) {
             console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
             expect(true).assertFalse();
+            return;
           }
           console.info('startAbility succeed');
-          expect(true).assertTrue()
+          expect(true).assertTrue();
+          done();
         });
       },1000)
-      done();
+
     })
 
     /*
@@ -573,11 +575,12 @@ export default function abilityTest() {
         if (err.code) {
           console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
           expect(true).assertFalse();
+          return;
         }
         console.info('startAbility succeed');
-        expect(true).assertTrue()
+        expect(true).assertTrue();
+        done();
       });
-      done();
     })
   })
 }
