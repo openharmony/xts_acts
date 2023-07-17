@@ -15,7 +15,7 @@
 
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
-import Window from '@ohos.window';
+import type Window from '@ohos.window';
 
 export default class FourthEntryAbility extends Ability {
   onCreate(want, launchParam) {
