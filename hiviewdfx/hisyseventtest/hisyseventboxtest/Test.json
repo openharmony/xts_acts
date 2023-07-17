@@ -4,14 +4,14 @@
         "type": "OHJSUnitTest",
         "test-timeout": "270000",
         "shell-timeout": "270000",
-        "testcase-timeout": "15000",
-        "bundle-name": "ohos.acts.hiviewdfx.hisysevent.function",
-        "package-name": "ohos.acts.hiviewdfx.hisysevent.function"
+        "testcase-timeout": "10000",
+        "bundle-name": "ohos.acts.hiviewdfx.hisysevent.box.function",
+        "package-name": "ohos.acts.hiviewdfx.hisysevent.box.function"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsHiSysEventJsTest.hap"
+                "ActsHiSysEventBoxTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

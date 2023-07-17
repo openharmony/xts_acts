@@ -15,22 +15,22 @@
 import hiSysEvent from '@ohos.hiSysEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-export default function hiSysEventJsSecondTest() {
-describe('hiSysEventJsSecondTest', function () {
+export default function hiSysEventErrcodeTest() {
+describe('hiSysEventErrcodeTest', function () {
     beforeAll(function() {
-        console.info('hiSysEventJsTest beforeAll called')
+        console.info('hiSysEventErrcodeTest beforeAll called')
     })
 
     afterAll(function() {
-        console.info('hiSysEventJsTest afterAll called')
+        console.info('hiSysEventErrcodeTest afterAll called')
     })
 
     beforeEach(function() {
-        console.info('hiSysEventJsTest beforeEach called')
+        console.info('hiSysEventErrcodeTest beforeEach called')
     })
 
     afterEach(function() {
-        console.info('hiSysEventJsTest afterEach called')
+        console.info('hiSysEventErrcodeTest afterEach called')
     })
 
 	/**
@@ -618,7 +618,7 @@ describe('hiSysEventJsSecondTest', function () {
 		console.info('testHiSysEventApi44 start')
 		let watcher11 = {
 			rules: [{
-				domain: "RELIABILITY" ,
+				domain: "RELIABILITY",
 				name: "STACK",
 				ruleType: hiSysEvent.RuleType.WHOLE_WORD,
 			}],
@@ -651,7 +651,7 @@ describe('hiSysEventJsSecondTest', function () {
 		console.info('testHiSysEventApi45 start')
 		let watcher11 = {
 			rules: [{
-				domain: "RELIABILITY" ,
+				domain: "RELIABILITY",
 				name: "STACK",
 				ruleType: hiSysEvent.RuleType.WHOLE_WORD,
 			}],
@@ -682,76 +682,35 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi46', 3, async function (done) {
 		console.info('testHiSysEventApi46 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi46 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi46 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					let msgArray = []
-					for (let i = 0; i < 11; i++) {
-						msgArray[i] = {
-							domain: "RELIABILITY" + i,
-							names: ["STACK"],
-						}
+		setTimeout(() => {
+			try {
+				let msgArray = []
+				for (let i = 0; i < 11; i++) {
+					msgArray[i] = {
+						domain: "RELIABILITY",
+						names: ["STACK"],
 					}
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, msgArray, {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi46: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi46: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi46: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi46: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi46: onComplete...`)
-							console.info(`testHiSysEventApi46: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi46 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi46 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200301).assertTrue()
-					console.info('hiSysEventJsUnitTest006 end')
-					done()
 				}
-			}, 1000);
-		} catch (err) {
-			console.error(`testHiSysEventApi46 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi46 end')
-			done()
-		}
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, msgArray, {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi46: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi46 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200301).assertTrue()
+				console.info('hiSysEventJsUnitTest006 end')
+				done()
+			}
+		}, 1000);
 	})
 
 	/**
@@ -761,72 +720,31 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi47', 3, async function (done) {
 		console.info('testHiSysEventApi47 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi47 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi47 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, [{
-						domain: "RELIABILITY_RELIABILITY" ,
-						names: ["STACK"],
-					}], {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi47: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi47: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi47: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi47: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi47: onComplete...`)
-							console.info(`testHiSysEventApi47: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi47 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi47 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200302 || err.code == 11200304).assertTrue()
-					console.info('testHiSysEventApi47 end')
-					done()
-				}
-			}, 2000);
-		} catch (err) {
-			console.error(`testHiSysEventApi47 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi47 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, [{
+					domain: "RELIABILITY_RELIABILITY",
+					names: ["STACK"],
+				}], {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi47: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi47 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200302 || err.code == 11200304).assertTrue()
+				console.info('testHiSysEventApi47 end')
+				done()
+			}
+		}, 2000);
 	})
 
 	/**
@@ -836,72 +754,31 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi48', 3, async function (done) {
 		console.info('testHiSysEventApi48 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi48 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi48 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, [{
-						domain: "RELIABILITY" ,
-						names: ["STACK_STACK_STACK_STACK_STACK_STACK"],
-					}], {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi48: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi48: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi48: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi48: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi48: onComplete...`)
-							console.info(`testHiSysEventApi48: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi48 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi48 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200302 || err.code == 11200304).assertTrue()
-					console.info('testHiSysEventApi48 end')
-					done()
-				}
-			}, 2000);
-		} catch (err) {
-			console.error(`testHiSysEventApi48 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi48 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, [{
+					domain: "RELIABILITY",
+					names: ["STACK_STACK_STACK_STACK_STACK_STACK"],
+				}], {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi48: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi48 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200302 || err.code == 11200304).assertTrue()
+				console.info('testHiSysEventApi48 end')
+				done()
+			}
+		}, 2000);
 	})
 
 	/**
@@ -911,72 +788,31 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi49', 3, async function (done) {
 		console.info('testHiSysEventApi49 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi49 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi49 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, [{
-						domain: "RELIABILITY?#" ,
-						names: ["STACK"],
-					}], {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi49: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi49: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi49: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi49: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi49: onComplete...`)
-							console.info(`testHiSysEventApi49: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi49 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi49 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200302 || err.code == 11200304).assertTrue()
-					console.info('testHiSysEventApi49 end')
-					done()
-				}
-			}, 2000);
-		} catch (err) {
-			console.error(`testHiSysEventApi49 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi49 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, [{
+					domain: "RELIABILITY?#",
+					names: ["STACK"],
+				}], {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi49: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi49 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200302 || err.code == 11200304).assertTrue()
+				console.info('testHiSysEventApi49 end')
+				done()
+			}
+		}, 2000);
 	})
 
 	/**
@@ -986,72 +822,31 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi50', 3, async function (done) {
 		console.info('testHiSysEventApi50 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi50 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi50 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, [{
-						domain: "RELIABILITY" ,
-						names: ["STACK?#"],
-					}], {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi50: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi50: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi50: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi50: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi50: onComplete...`)
-							console.info(`testHiSysEventApi50: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi50 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi50 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200302 || err.code == 11200304).assertTrue()
-					console.info('testHiSysEventApi50 end')
-					done()
-				}
-			}, 2000);
-		} catch (err) {
-			console.error(`testHiSysEventApi50 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi50 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, [{
+					domain: "RELIABILITY",
+					names: ["STACK?#"],
+				}], {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi50: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi50 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200302 || err.code == 11200304).assertTrue()
+				console.info('testHiSysEventApi50 end')
+				done()
+			}
+		}, 2000);
 	})
 
 	/**
@@ -1061,72 +856,31 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi51', 3, async function (done) {
 		console.info('testHiSysEventApi51 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi51 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi51 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, [{
-						domain: "" ,
-						names: ["STACK"],
-					}], {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi51: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi51: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi51: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi51: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi51: onComplete...`)
-							console.info(`testHiSysEventApi51: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi51 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi51 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200302 || err.code == 11200304).assertTrue()
-					console.info('testHiSysEventApi51 end')
-					done()
-				}
-			}, 2000);
-		} catch (err) {
-			console.error(`testHiSysEventApi51 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi51 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, [{
+					domain: "",
+					names: ["STACK"],
+				}], {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi51: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi51 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200302 || err.code == 11200304).assertTrue()
+				console.info('testHiSysEventApi51 end')
+				done()
+			}
+		}, 2000);
 	})
 
 	/**
@@ -1136,72 +890,31 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi52', 3, async function (done) {
 		console.info('testHiSysEventApi52 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi52 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi52 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query({
-						beginTime: -1,
-						endTime: -1,
-						maxEvents: 2,
-					}, [{
-						domain: "RELIABILITY" ,
-						names: [],
-					}], {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi52: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi52: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi52: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi52: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi52: onComplete...`)
-							console.info(`testHiSysEventApi52: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi52 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi52 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 11200302 || err.code == 11200304).assertTrue()
-					console.info('testHiSysEventApi52 end')
-					done()
-				}
-			}, 2000);
-		} catch (err) {
-			console.error(`testHiSysEventApi52 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi52 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query({
+					beginTime: -1,
+					endTime: -1,
+					maxEvents: 2,
+				}, [{
+					domain: "RELIABILITY" ,
+					names: [],
+				}], {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi52: reason is ${reason}, total is ${total}`)
+						expect(reason != 0).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi52 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 11200302 || err.code == 11200304).assertTrue()
+				console.info('testHiSysEventApi52 end')
+				done()
+			}
+		}, 2000);
 	})
 
 	/**
@@ -1234,65 +947,24 @@ describe('hiSysEventJsSecondTest', function () {
 	 */
 	it('testHiSysEventApi54', 3, async function (done) {
 		console.info('testHiSysEventApi54 start')
-		try {
-			hiSysEvent.write({
-				domain: "RELIABILITY",
-				name: "STACK",
-				eventType: hiSysEvent.EventType.FAULT,
-				params: {
-					PID: 1,
-					UID: 1,
-					PACKAGE_NAME: "com.ohos.hisysevent.test",
-					PROCESS_NAME: "hiview napi test suite",
-					MSG: "no msg."
-				}
-			}, (err, val) => {
-				if (err) {
-					console.error('in testHiSysEventApi54 test callback: err.code = ' + err.code)
-				} else {
-					console.info('in testHiSysEventApi54 test callback: result = ' + val)
-				}
-			})
-			setTimeout(() => {
-				try {
-					hiSysEvent.query( {
-						onQuery: function (infos) {
-							console.info(`testHiSysEventApi54: onQuery...`)
-							expect(infos.length >= 0).assertTrue()
-							console.info(`testHiSysEventApi54: infos.size is ${infos.length}`)
-							if (infos instanceof Array) {
-								for (let i = 0; i < infos.length; i++) {
-									let item = infos[i];
-									console.info(`testHiSysEventApi54: domain is ${item.domain}, name is ${item.name}, eventType is ${item.eventType}`)
-									if (item.params instanceof Object) {
-										for (const key in item.params) {
-											console.info(`testHiSysEventApi54: ${key}: ${item.params[key]}`)
-										}
-									}
-								}
-							}
-						},
-						onComplete: function(reason, total) {
-							console.info(`testHiSysEventApi54: onComplete...`)
-							console.info(`testHiSysEventApi54: reason is ${reason}, total is ${total}`)
-							expect(true).assertTrue()
-							console.info(`testHiSysEventApi54 end`)
-							done()
-						}
-					})
-				} catch (err) {
-					console.error(`testHiSysEventApi54 delay > error code: ${err.code}, error msg: ${err.message}`)
-					expect(err.code == 401).assertTrue()
-					console.info('testHiSysEventApi54 end')
-					done()
-				}
-			}, 1000);
-		} catch (err) {
-			console.error(`testHiSysEventApi54 > error code: ${err.code}, error msg: ${err.message}`)
-			expect(false).assertTrue()
-			console.info('testHiSysEventApi54 end')
-			done()
-		}
+		setTimeout(() => {
+			try {
+				hiSysEvent.query( {
+					onQuery: function (infos) {
+					},
+					onComplete: function(reason, total) {
+						console.info(`testHiSysEventApi54: reason is ${reason}, total is ${total}`)
+						expect(false).assertTrue()
+						done()
+					}
+				})
+			} catch (err) {
+				console.error(`testHiSysEventApi54 delay > error code: ${err.code}, error msg: ${err.message}`)
+				expect(err.code == 401).assertTrue()
+				console.info('testHiSysEventApi54 end')
+				done()
+			}
+		}, 1000);
 	})
 
 	/**
@@ -1348,7 +1020,6 @@ describe('hiSysEventJsSecondTest', function () {
 					onQuery: function (infos) {
 					},
 					onComplete: function(reason, total) {
-						done()
 					}
 				})
 			}

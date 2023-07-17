@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hiSysEventJsTest from './HiSysEvent.test.js'
-import hiSysEventErrcodeTest from './HiSysEventErrcode.test.js'
+import hiSysEventSerTest from "./HiSysEventSer.test.js"
 export default function testsuite() {
-hiSysEventJsTest()
-hiSysEventErrcodeTest()
+hiSysEventSerTest()
 }
