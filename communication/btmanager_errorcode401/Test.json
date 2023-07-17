@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBluetoothProFileHapTest.hap"
+                "ActsBtManagerErrorCode401HapTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

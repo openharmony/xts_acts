@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsBluetoothProFileJsTest") {
+ohos_js_hap_suite("ActsBtManagerErrorCode202JsTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":bluetooth_js_assets",
@@ -20,7 +20,7 @@ ohos_js_hap_suite("ActsBluetoothProFileJsTest") {
   ]
 
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsBluetoothProFileHapTest"
+  hap_name = "ActsBtManagerErrorCode202HapTest"
   part_name = "bluetooth"
   subsystem_name = "communication"
 }

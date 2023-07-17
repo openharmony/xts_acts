@@ -13,13 +13,20 @@
  * limitations under the License.
  */
 
-import btHfpConnTest from './BluetoothHfp.test.js'
-import btA2dpConnTest from './BluetoothA2dp.test.js'
-import btManagerHfpConnTest from './BtManagerHfp.test.js'
-import btManagerA2dpConnTest from './BtManagerA2dp.test.js'
+import btBleScanTest from './BtBleScanResult.test.js'
+import btDiscoveryTest from './BtDiscovery.test.js'
+import btManagerBleScanTest from './BtManagerBleScanResult.test.js'
+import btPairTest from './BtPair.test.js'
+import btScanModeTest from './BtScanMode.test.js'
+import btManagerDiscoveryTest from './BtManagerDiscovery.test.js'
+import btManagerPairTest from './BtManagerPair.test.js'
+
 export default function testsuite() {
-    btHfpConnTest()
-    btA2dpConnTest()
-    btManagerHfpConnTest()
-    btManagerA2dpConnTest()
+    btBleScanTest()
+    btDiscoveryTest()
+    btManagerBleScanTest()
+    btPairTest()
+    btScanModeTest()
+    btManagerDiscoveryTest()
+    btManagerPairTest()
 }
