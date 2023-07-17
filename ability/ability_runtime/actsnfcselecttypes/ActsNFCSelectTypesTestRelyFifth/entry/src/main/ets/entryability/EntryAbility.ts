@@ -30,23 +30,23 @@ export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Abilitytest4 onCreate');
     globalThis.terminate = () => {
-        setTimeout(() => {
-            this.context.terminateSelf().then(() => {
-                console.info('====>EntryAbility terminateSelf end');
-            }).catch((err) => {
-                console.info('====>EntryAbility terminateSelf err:' + JSON.stringify(err));
-            });
-        }, timeout);
+      setTimeout(() => {
+        this.context.terminateSelf().then(() => {
+          console.info('====>EntryAbility terminateSelf end');
+        }).catch((err) => {
+          console.info('====>EntryAbility terminateSelf err:' + JSON.stringify(err));
+        });
+      }, timeout);
     };
     console.info('Ability4 onCreate' + JSON.stringify(want));
     let actionStr = want.action;
     if (actionStr === 'ohos.nfc.tag.action.TAG_FOUND') {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'a4Ability ok');
-        commonEventData.parameters.message = 'select';
-        commonEvent.publish('ACTS_CROSS_CALL_EVENT', commonEventData, (err) => {
-            console.info('====>' + actionStr + ' apublish err:' + JSON.stringify(err));
-            globalThis.terminate();
-        });
+      hilog.info(0x0000, 'testTag', '%{public}s', 'a4Ability ok');
+      commonEventData.parameters.message = 'select';
+      commonEvent.publish('ACTS_CROSS_CALL_EVENT', commonEventData, (err) => {
+        console.info('====>' + actionStr + ' apublish err:' + JSON.stringify(err));
+        globalThis.terminate();
+      });
     }
   }
 
@@ -59,11 +59,11 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability4 onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
-        if (err.code) {
-            hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-            return;
-        }
-        hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
   }
 
