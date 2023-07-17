@@ -17,11 +17,11 @@ group("actsstagecontext") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ReportDrawnCompletedManualTestRely:ReportDrawnCompletedManualTestRely",
+      "ReportDrawnCompletedReply:ReportDrawnCompletedReply",
       "actsstagecontextassistone:ActsStageContextAssistOne",
       "actsstagecontextassisttwo:ActsStageContextAssistTwo",
       "actsstagecontextpropertiestest:ActsStageContextPropertiesTest",
-      "ReportDrawnCompletedManualTestRely:ReportDrawnCompletedManualTestRely",
-      "ReportDrawnCompletedReply:ReportDrawnCompletedReply",
     ]
   }
 }
