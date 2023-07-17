@@ -68,12 +68,12 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0001
-        * @tc.name testWifiStateChange
-        * @tc.desc Test wifiStateChange callback
-        * @tc.type Function
-        * @tc.level Level 3
-        */
+         * @tc.number SUB_Communication_WiFi_Event_Test_0001
+         * @tc.name testWifiStateChange
+         * @tc.desc Test wifiStateChange callback
+         * @tc.type Function
+         * @tc.level Level 3
+         */
         it('SUB_Communication_WiFi_Event_Test_0001', 0, async function (done) {
             let wifiState = "wifiStateChange";
             let wifiStateChangeCallback = result => {
@@ -86,12 +86,12 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0002
-        * @tc.name testWifiConnectionChange
-        * @tc.desc Test wifiConnectionChange callback
-        * @tc.type Function
-        * @tc.level Level 3
-        */
+         * @tc.number SUB_Communication_WiFi_Event_Test_0002
+         * @tc.name testWifiConnectionChange
+         * @tc.desc Test wifiConnectionChange callback
+         * @tc.type Function
+         * @tc.level Level 3
+         */
         it('SUB_Communication_WiFi_Event_Test_0002', 0, async function (done) {
             let wifiConnectionState = "wifiConnectionChange";
             let wifiConnectionChangeCallback = result => {
@@ -104,12 +104,12 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0003
-        * @tc.name testWifiScanStateChange
-        * @tc.desc Test wifiScanStateChange  callback
-        * @tc.type Function
-        * @tc.level Level 3
-        */
+         * @tc.number SUB_Communication_WiFi_Event_Test_0003
+         * @tc.name testWifiScanStateChange
+         * @tc.desc Test wifiScanStateChange  callback
+         * @tc.type Function
+         * @tc.level Level 3
+         */
         it('SUB_Communication_WiFi_Event_Test_0003', 0, async function (done) {
             let wifiScanState = "wifiScanStateChange";
             let wifiScanStateChangeCallback = result => {
@@ -123,12 +123,12 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0004
-        * @tc.name testWifiRssiChange
-        * @tc.desc Test wifiRssiChange callback
-        * @tc.type Function
-        * @tc.level Level 3
-        */
+         * @tc.number SUB_Communication_WiFi_Event_Test_0004
+         * @tc.name testWifiRssiChange
+         * @tc.desc Test wifiRssiChange callback
+         * @tc.type Function
+         * @tc.level Level 3
+         */
         it('SUB_Communication_WiFi_Event_Test_0004', 0, async function (done) {
             let wifiRssiState = "wifiRssiChange";
             let wifiRssiChangeCallback = result => {
@@ -141,12 +141,12 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_Event_Test_0005
-        * @tc.name testHotspotStateChange
-        * @tc.desc Test hotspotStateChange api.
-        * @tc.type Function
-        * @tc.level Level 3
-        */
+         * @tc.number SUB_Communication_WiFi_Event_Test_0005
+         * @tc.name testHotspotStateChange
+         * @tc.desc Test hotspotStateChange api.
+         * @tc.type Function
+         * @tc.level Level 3
+         */
         it('SUB_Communication_WiFi_Event_Test_0005', 0, async function (done) {
             let hotspotState = "hotspotStateChange";
             let hotspotStateChangeCallback = result => {
@@ -159,11 +159,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0008
-        * @tc.name testenableHotspot
-        * @tc.desc Test enableHotspot api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0008
+         * @tc.name testenableHotspot
+         * @tc.desc Test enableHotspot api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0008', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0008 start');
             let ret = false;
@@ -183,11 +183,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0009
-        * @tc.name testdisableHotspot
-        * @tc.desc Test disableHotspot api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0009
+         * @tc.name testdisableHotspot
+         * @tc.desc Test disableHotspot api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0009', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0009 start');
             let ret = false;
@@ -207,11 +207,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0010
-        * @tc.name testgetSupportedPowerMode
-        * @tc.desc Test getSupportedPowerMode api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0010
+         * @tc.name testgetSupportedPowerMode
+         * @tc.desc Test getSupportedPowerMode api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0010', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0010 start');
             let ret = false;
@@ -234,11 +234,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0011
-        * @tc.name testgetSupportedPowerMode
-        * @tc.desc Test getSupportedPowerMode api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0011
+         * @tc.name testgetSupportedPowerMode
+         * @tc.desc Test getSupportedPowerMode api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0011', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0011 start');
             let ret = false;
@@ -271,11 +271,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0012
-        * @tc.name testgetPowerMode
-        * @tc.desc Test getPowerMode api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0012
+         * @tc.name testgetPowerMode
+         * @tc.desc Test getPowerMode api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0012', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0012 start');
             let ret = false;
@@ -298,11 +298,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0013
-        * @tc.name testgetPowerMode
-        * @tc.desc Test getPowerMode api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0013
+         * @tc.name testgetPowerMode
+         * @tc.desc Test getPowerMode api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0013', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0013 start');
             let ret = false;
@@ -335,11 +335,11 @@ export default function actsWifiManagerEventTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_SysCaps_Test_0014
-        * @tc.name testsetPowerModel
-        * @tc.desc Test setPowerModel api.
-        * @tc.type Function
-        */
+         * @tc.number SUB_Communication_WiFi_SysCaps_Test_0014
+         * @tc.name testsetPowerMode
+         * @tc.desc Test setPowerMode api.
+         * @tc.type Function
+         */
         it('SUB_Communication_WiFi_SysCaps_Test_0014', 0, async function (done) {
             console.info('SUB_Communication_WiFi_SysCaps_Test_0014 start');
             let ret = false;
@@ -347,7 +347,7 @@ export default function actsWifiManagerEventTest() {
                 var isAccessToken = canIUse("SystemCapability.Communication.wifiMg.AP.Extension");
                 console.info("SUB_Communication_WiFi_SysCaps_Test_0014 test.syscap.param.001 : " + isAccessToken);
                 if (isAccessToken) {
-                    console.info("[wifi_test] setPowerModel: " + wifiManagerExt.setPowerModel(PowerModel))
+                    console.info("[wifi_test] setPowerMode: " + wifiManagerExt.setPowerMode(PowerModel))
                     done();
                 }
                 expect(isAccessToken).assertFalse();
