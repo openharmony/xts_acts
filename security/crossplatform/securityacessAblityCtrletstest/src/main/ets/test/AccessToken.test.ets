@@ -17,6 +17,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import bundleManager from '@ohos.bundle.bundleManager';
 import osAccount from '@ohos.account.osAccount'
+import deviceInfo from '@ohos.deviceInfo'
 
 const GrantStatus = abilityAccessCtrl.GrantStatus;
 
@@ -25,7 +26,7 @@ const ERR_PARAM_INVALID = 12100001;
 
 var permissionNameUser = "ohos.permission.DISTRIBUTED_DATASYNC";
 var permissionNameSystem = "ohos.permission.GET_BUNDLE_INFO";
-var tokenID = undefined;
+var tokenID = 11;
 
 export default function AccessTokenTest() {
   describe('AccessTokenTest', function () {
@@ -33,20 +34,25 @@ export default function AccessTokenTest() {
       var accountManager = osAccount.getAccountManager();
       var userId = await accountManager.getOsAccountLocalIdFromProcess();
       try {
-        let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
-        var buddleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags);
-        console.log('getBundleInfoForSelf ok')
-        var appInfo = buddleInfo.appInfo;
-        console.log('getBundleInfoForSelf ok2')
-        tokenID = appInfo.accessTokenId;
-        console.log('getBundleInfoForSelf ok3'+tokenID)
-        console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
-        + ", bundleName:" + 'com.example.myapplication')
+        let productModelInfo = deviceInfo.productModel;
+        if (productModelInfo == "ohos") {
+          let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+          var buddleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags);
+          console.log('getBundleInfoForSelf ok')
+          var appInfo = buddleInfo.appInfo;
+          console.log('getBundleInfoForSelf ok2')
+          tokenID = appInfo.accessTokenId;
+          console.log('getBundleInfoForSelf ok3'+tokenID)
+          console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
+          + ", bundleName:" + 'com.example.myapplication')
 
-        console.info("sleep begin");
-        sleep(TIMEOUT);
-        console.info("sleep end");
-        done();
+          console.info("sleep begin");
+          sleep(TIMEOUT);
+          console.info("sleep end");
+          done();
+        }else{
+          tokenID = 11;
+        }
       } catch (err) {
         console.log('beforeAll error' + JSON.stringify(err));
         done();
