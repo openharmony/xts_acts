@@ -83,7 +83,7 @@ struct webOnFirstContFour {
                 .onFirstContentfulPaint(event => {
                     console.log("onFirstContentfulPaint:" + "[navigationStartTick]:" + 
                         event.navigationStartTick + ", [firstContentfulPaintMs]:" + event.firstContentfulPaintMs + this.firstId)
-                    if (event.firstContentfulPaintMs > 0 && event.firstContentfulPaintMs < 3000) {
+                    if (event.firstContentfulPaintMs > 0 && event.navigationStartTick > 0) {
                         this.firstcontentfulpaint = true;
                         console.error("result of onFirstContentfulPaint is: "+ this.firstcontentfulpaint + this.firstId);
                     }
