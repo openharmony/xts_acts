@@ -27,11 +27,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
          it('ACTS_AACommand_finish_01_0100', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_01_0100'
             globalThis.abilityDelegator.finishTest(msg, 1,()=>{
                 console.log("ACTS_AACommand_finish_01_0100 finishTest  test  end ========> callback " )
-               
+                done()
             })
         })
 
@@ -85,10 +84,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_0400', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE,()=>{
                 console.log("ACTS_AACommand_finish_01_0400 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
@@ -100,10 +99,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_0500', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE,()=>{
                 console.log("ACTS_AACommand_finish_01_0500 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
@@ -115,10 +114,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_0600', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE+1),()=>{
                 console.log("ACTS_AACommand_finish_01_0600 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
@@ -130,10 +129,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_0700', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE-1),()=>{
                 console.log("ACTS_AACommand_finish_01_0700 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
@@ -162,11 +161,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_0900', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, 1).then(() => {
                 console.log("ACTS_AACommand_finish_01_0900 finishTest  test  end ========> callback " )
-                
+                done()
             })
         })
 
@@ -202,10 +200,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1200', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1200 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
@@ -217,7 +215,6 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1300', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1300 finishTest  test  end ========> callback " )
@@ -233,10 +230,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1400', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE+1).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1400 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
@@ -248,10 +245,10 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1500', 0, async function (done) {
-            done()
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE-1).then(()=>{
                 console.log("ACTS_AACommand_finish_01_1500 finishTest  test  end ========> callback " )
+                done()
             })
         })
 
