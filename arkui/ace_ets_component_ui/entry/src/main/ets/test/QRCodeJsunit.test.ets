@@ -47,12 +47,15 @@ export default function QRCodeJsunit() {
       // Get the information of the QRCode component
       console.info('[QRCodeJsunit_0100] START');
       let strJson = getInspectorByKey('qr');
+      let strJsonDefault = getInspectorByKey('qrDefault');
       let obj = JSON.parse(strJson);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[QRCodeJsunit_0100] component obj is: " + JSON.stringify(obj));
+      console.info("[QRCodeJsunit_0100] component objDefault is: " + JSON.stringify(objDefault));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.value).assertEqual('normal');
-      expect(obj.$attrs.color).assertEqual('#FF000000');
-      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
+      expect(obj.$attrs.color).assertEqual(objDefault.$attrs.color);
+      expect(obj.$attrs.backgroundColor).assertEqual(objDefault.$attrs.backgroundColor);
       console.info('[QRCodeJsunit_0100] END');
       done();
     });
@@ -118,9 +121,12 @@ export default function QRCodeJsunit() {
       globalThis.value.message.notify({name:'backgroundColor',value:'test'})
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('qr2');
+      let strJsonDefault = getInspectorByKey('qrDefault');
       let obj1 = JSON.parse(strJson1);
+      let objDefault = JSON.parse(strJsonDefault);
       console.info("[QRCodeJsunit_0500] component obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
+      console.info("[QRCodeJsunit_0500] component objDefault is: " + JSON.stringify(objDefault));
+      expect(obj1.$attrs.backgroundColor).assertEqual(objDefault.$attrs.backgroundColor);
       console.info('[QRCodeJsunit_0500] END');
       done();
     });
