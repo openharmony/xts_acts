@@ -567,14 +567,16 @@ export default function abilityTest() {
         expect(true).assertFalse();
         done();
       });
+      await driver.delayMs(1000);
       await globalThis.abilitycontext.startAbility(wantStandard).then(() => {
-        console.info('startAbility first succeed');
+        console.info('startAbility wantStandard succeed');
         expect(true).assertTrue();
       }).catch((err) => {
-        console.error(`startAbility first failed, error is ${JSON.stringify(err)}`);
+        console.error(`startAbility wantStandard failed, error is ${JSON.stringify(err)}`);
         expect(true).assertFalse();
         done();
       });
+      await driver.delayMs(1000);
       await globalThis.abilitycontext.startAbility(wantSingle).then(() => {
         console.info('startAbility second succeed');
         expect(true).assertTrue();
