@@ -147,7 +147,7 @@ static bool checkType(napi_env env, napi_value arg, napi_valuetype type)
     napi_typeof(env, arg, &argType);
     return (type == argType);
 }
-static bool checkArgs(napi_value* argValue, size_t argCount, size_t want)
+static bool checkArgs(const napi_value* argValue, size_t argCount, size_t want)
 {
     if (argCount < want) {
         DEBUG_LOG("argCount %{public}zu < want %{public}zu", argCount, want);
@@ -414,7 +414,7 @@ napi_value ImageSourceNDKTest::GetDelayTime(napi_env env, napi_callback_info inf
 
     struct OhosImageSourceDelayTimeList timeList;
     int32_t res = OH_ImageSource_GetDelayTime(native, &timeList);
-    if (timeList.size == SIZE_ZERO) {
+    if (timeList.size == SIZE_ZERO || res != OHOS_IMAGE_RESULT_SUCCESS) {
         DEBUG_LOG("Delay time list get failed");
         return createUndefine(env);
     }
@@ -471,7 +471,7 @@ napi_value ImageSourceNDKTest::GetSupportedFormats(napi_env env, napi_callback_i
 {
     struct OhosImageSourceSupportedFormatList formatList;
     int32_t res = OH_ImageSource_GetSupportedFormats(&formatList);
-    if (formatList.size == SIZE_ZERO) {
+    if (formatList.size == SIZE_ZERO || res != OHOS_IMAGE_RESULT_SUCCESS) {
         DEBUG_LOG("Supported format list get failed");
         return createUndefine(env);
     }
@@ -497,7 +497,7 @@ napi_value ImageSourceNDKTest::GetSupportedFormats(napi_env env, napi_callback_i
     return createResultValue(env, res, result);
 }
 
-static napi_value createImageInfoNVal(napi_env env, struct OhosImageSourceInfo &imageInfo)
+static napi_value createImageInfoNVal(napi_env env, const struct OhosImageSourceInfo &imageInfo)
 {
     napi_value result = nullptr;
     napi_create_object(env, &result);
