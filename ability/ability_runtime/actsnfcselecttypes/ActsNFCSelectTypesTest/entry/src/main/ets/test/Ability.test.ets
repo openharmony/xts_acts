@@ -283,7 +283,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0700
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
-     * @tc.level:1
+     * @tc.level:3
      */
     it('ACTS_NFC_SelectTypes_0700', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 begin');
@@ -321,7 +321,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_0800
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
-     * @tc.level:1
+     * @tc.level:3
      */
     it('ACTS_NFC_SelectTypes_0800' ,0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 begin');
@@ -436,7 +436,7 @@ export default function abilityTest() {
         if (data.event === 'ACTS_CROSS_CALL_EVENT') {
           expect(data.parameters.message === 'select').assertTrue();
           commonEvent.unsubscribe(subscriber, async () => {
-            console.info('====>ACTS_NFC_SelectTypes_1200 unSubscribeCallback kill');
+            console.info('====>ACTS_NFC_SelectTypes_1000 unSubscribeCallback kill');
             let cmdkill = 'pkill -f com.example.mytest4';
             await abilityDelegator.executeShellCommand(cmdkill);
             await driver.delayMs(1000);
@@ -501,7 +501,7 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_1200
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
-     * @tc.level:1
+     * @tc.level:3
      */
     it('ACTS_NFC_SelectTypes_1200',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
@@ -537,11 +537,11 @@ export default function abilityTest() {
      * @tc.number: ACTS_NFC_SelectTypes_1300
      * @tc.name: NFC supports application selection box display and user click application
      * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
-     * @tc.level:1
+     * @tc.level:3
      */
     it('ACTS_NFC_SelectTypes_1300',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1300 begin');
-      let want = {
+      let wantSingle = {
         action: "ohos.nfc.tag.action.TAG_FOUND",
         type: '',
         parameters: {
@@ -550,7 +550,16 @@ export default function abilityTest() {
           ]
         }
       };
-      await globalThis.abilitycontext.startAbility(want).then(() => {
+      let wantStandard = {
+        action: "ohos.nfc.tag.action.TAG_FOUND",
+        type: '',
+        parameters: {
+          'ohos.ability.params.uriTypes': [
+            'tag-tech/NFCstandard'
+          ]
+        }
+      };
+      await globalThis.abilitycontext.startAbility(wantSingle).then(() => {
         console.info('startAbility first succeed');
         expect(true).assertTrue();
       }).catch((err) => {
@@ -558,7 +567,15 @@ export default function abilityTest() {
         expect(true).assertFalse();
         done();
       });
-      await globalThis.abilitycontext.startAbility(want).then(() => {
+      await globalThis.abilitycontext.startAbility(wantStandard).then(() => {
+        console.info('startAbility first succeed');
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.error(`startAbility first failed, error is ${JSON.stringify(err)}`);
+        expect(true).assertFalse();
+        done();
+      });
+      await globalThis.abilitycontext.startAbility(wantSingle).then(() => {
         console.info('startAbility second succeed');
         expect(true).assertTrue();
         done();
