@@ -128,10 +128,10 @@ export default function navigationTypeTest() {
           let minContentWidth = obj.$attrs.minContentWidth
           let navBarWidth = obj.$attrs.navBarWidth
           let navBarWidthRange = obj.$attrs.navBarWidthRange
-          expect(mode).assertEqual("NavigationMode.STACK");
+          expect(mode).assertEqual("NavigationMode.SPLIT");
           expect(minContentWidth).assertEqual("360.00vp");
           expect(navBarWidth).assertEqual("100.00vp");
-          expect(navBarWidthRange).assertEqual("240.00vp, 280.00vp");
+          expect(navBarWidthRange).assertEqual("240.00vp, 432.00vp");
           console.info('ArkUX_Navigation_1900 END ');
         } catch(err) {
           expect().assertFail()
