@@ -100,10 +100,14 @@ export default function AVPlayerMultiTrackTest() {
         }
 
         async function getCurrentAudioTrack() {
-            await avPlayer.getCurrentTrack(0).then((index) => {
-                console.info(`case current audio track index is ${index}`);
-                currentTrack = index;
-            }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+            await avPlayer.getCurrentTrack(0, (err, index) => {
+                if (err == null) {
+                    console.info(`case current audio track index is ${index}`);
+                    trackIndex = index;
+                } else {
+                    console.error('getCurrentTrack failed and error is ' + err.message);
+                }
+            });
         }
 
         async function changeAudioTrack() {

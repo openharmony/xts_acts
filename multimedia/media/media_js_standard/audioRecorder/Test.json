@@ -14,6 +14,9 @@
             "run-command": [
                 "rm -rf /storage/media/100/local/files/Audios/audio_*",
                 "rm -rf /storage/media/100/local/files/Videos/audio_*",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "sleep 5",
                 "param set persist.ace.testmode.enabled 1",
                 "power-shell wakeup",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
