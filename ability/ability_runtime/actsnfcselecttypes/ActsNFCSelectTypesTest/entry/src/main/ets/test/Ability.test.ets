@@ -498,11 +498,11 @@ export default function abilityTest() {
     })
 
     /*
-    * @tc.number: ACTS_NFC_SelectTypes_1200
-    * @tc.name: NFC supports application selection box display and user click application
-    * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
-    * @tc.level:1
-    */
+     * @tc.number: ACTS_NFC_SelectTypes_1200
+     * @tc.name: NFC supports application selection box display and user click application
+     * @tc.desc: Set the Want parameter, test the specified Types type, and match the corresponding application
+     * @tc.level:1
+     */
     it('ACTS_NFC_SelectTypes_1200',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
       let want = {
@@ -514,27 +514,20 @@ export default function abilityTest() {
           ]
         }
       };
-      globalThis.abilitycontext.startAbility(want).then(() => {
+      await globalThis.abilitycontext.startAbility(want).then(() => {
         console.info('startAbility first succeed');
-        setTimeout(() => {
-          globalThis.abilitycontext.startAbility(want).then(() => {
-            console.info('startAbility second succeed');
-            setTimeout(()=> {
-              abilityDelegator.executeShellCommand('pkill -f com.example.mytest5').then((data) => {
-                console.log('pkill -f successful ' + JSON.stringify(data))
-              }).catch((err) => {
-                console.log('pkill -f err is ' + JSON.stringify(err))
-              });
-              done();
-            }, 1000)
-          }).catch((err) => {
-            console.error(`startAbility second failed, error is ${JSON.stringify(err)}`);
-            expect(true).assertFalse();
-            done();
-          });
-        }, 1000);
+        expect(true).assertTrue();
       }).catch((err) => {
         console.error(`startAbility first failed, error is ${JSON.stringify(err)}`);
+        expect(true).assertFalse();
+        done();
+      });
+      await globalThis.abilitycontext.startAbility(want).then(() => {
+        console.info('startAbility second succeed');
+        expect(true).assertTrue();
+        done();
+      }).catch((err) => {
+        console.error(`startAbility second failed, error is ${JSON.stringify(err)}`);
         expect(true).assertFalse();
         done();
       });
@@ -547,7 +540,7 @@ export default function abilityTest() {
      * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_1300',0, async function (done) {
-      hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
+      hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1300 begin');
       let want = {
         action: "ohos.nfc.tag.action.TAG_FOUND",
         type: '',
@@ -557,27 +550,20 @@ export default function abilityTest() {
           ]
         }
       };
-      globalThis.abilitycontext.startAbility(want).then(() => {
+      await globalThis.abilitycontext.startAbility(want).then(() => {
         console.info('startAbility first succeed');
-        setTimeout(() => {
-          globalThis.abilitycontext.startAbility(want).then(() => {
-            console.info('startAbility second succeed');
-            setTimeout(()=> {
-              abilityDelegator.executeShellCommand('pkill -f com.example.mytest4').then((data) => {
-                console.log('pkill -f successful ' + JSON.stringify(data))
-              }).catch((err) => {
-                console.log('pkill -f err is ' + JSON.stringify(err))
-              });
-              done();
-            }, 1000)
-          }).catch((err) => {
-            console.error(`startAbility second failed, error is ${JSON.stringify(err)}`);
-            expect(true).assertFalse();
-            done();
-          });
-        }, 1000);
+        expect(true).assertTrue();
       }).catch((err) => {
         console.error(`startAbility first failed, error is ${JSON.stringify(err)}`);
+        expect(true).assertFalse();
+        done();
+      });
+      await globalThis.abilitycontext.startAbility(want).then(() => {
+        console.info('startAbility second succeed');
+        expect(true).assertTrue();
+        done();
+      }).catch((err) => {
+        console.error(`startAbility second failed, error is ${JSON.stringify(err)}`);
         expect(true).assertFalse();
         done();
       });
