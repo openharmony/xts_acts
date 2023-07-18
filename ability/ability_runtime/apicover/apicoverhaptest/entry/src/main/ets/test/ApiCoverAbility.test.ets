@@ -796,6 +796,7 @@ export default function ApiCoverTest() {
      */
     it('SUB_AA_Form_formBindingData_0100', 0, async function (done) {
       TAG = 'SUB_AA_Form_formBindingData_0100';
+      let formData = {};
       let proxies = [
         {
           "key": "detail",
