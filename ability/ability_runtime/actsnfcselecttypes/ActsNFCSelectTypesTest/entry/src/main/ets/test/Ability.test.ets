@@ -514,47 +514,30 @@ export default function abilityTest() {
           ]
         }
       };
-      globalThis.abilitycontext.startAbility(
-        want, (err) => {
-        if (err.code) {
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-          expect(true).assertFalse();
-          return;
-        }
-        console.info('startAbility succeed');
-        expect(true).assertTrue()
-      });
-      await sleep(1000);
-      setTimeout(()=> {
-        abilityDelegator.executeShellCommand('pkill -f com.example.mytest5').then(data => {
-          console.log('pkill -f successful ' + JSON.stringify(data))
-        }).catch(err => {
-          console.log('pkill -f err is ' + JSON.stringify(err))
-        });
-      },1000)
-      await sleep(1000);
-      setTimeout(()=> {
-        globalThis.abilitycontext.startAbility(
-          want, (err) => {
-          if (err.code) {
-            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+      globalThis.abilitycontext.startAbility(want).then(() => {
+        console.info('startAbility first succeed');
+        setTimeout(() => {
+          globalThis.abilitycontext.startAbility(want).then(() => {
+            console.info('startAbility second succeed');
+            setTimeout(()=> {
+              abilityDelegator.executeShellCommand('pkill -f com.example.mytest5').then((data) => {
+                console.log('pkill -f successful ' + JSON.stringify(data))
+              }).catch((err) => {
+                console.log('pkill -f err is ' + JSON.stringify(err))
+              });
+              done();
+            }, 1000)
+          }).catch((err) => {
+            console.error(`startAbility second failed, error is ${JSON.stringify(err)}`);
             expect(true).assertFalse();
             done();
-            return;
-          }
-          console.info('startAbility succeed');
-          expect(true).assertTrue();
-          setTimeout(()=> {
-            abilityDelegator.executeShellCommand('pkill -f com.example.mytest5').then(data => {
-              console.log('pkill -f successful ' + JSON.stringify(data))
-            }).catch(err => {
-              console.log('pkill -f err is ' + JSON.stringify(err))
-            });
-            done();
-          },1000)
-        });
-      },1000)
-
+          });
+        }, 1000);
+      }).catch((err) => {
+        console.error(`startAbility first failed, error is ${JSON.stringify(err)}`);
+        expect(true).assertFalse();
+        done();
+      });
     })
 
     /*
@@ -564,7 +547,7 @@ export default function abilityTest() {
      * @tc.level:1
      */
     it('ACTS_NFC_SelectTypes_1300',0, async function (done) {
-      hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1300 begin');
+      hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
       let want = {
         action: "ohos.nfc.tag.action.TAG_FOUND",
         type: '',
@@ -574,41 +557,29 @@ export default function abilityTest() {
           ]
         }
       };
-      globalThis.abilitycontext.startAbility(
-        want, (err) => {
-        if (err.code) {
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-          expect(true).assertFalse();
-          return;
-        }
-        console.info('startAbility succeed');
-        expect(true).assertTrue()
-      });
-      setTimeout(()=> {
-        abilityDelegator.executeShellCommand('pkill -f com.example.mytest4').then(data => {
-          console.log('pkill -f successful ' + JSON.stringify(data))
-        }).catch(err => {
-          console.log('pkill -f err is ' + JSON.stringify(err))
-        });
-      },1000)
-      globalThis.abilitycontext.startAbility(
-        want, (err) => {
-        if (err.code) {
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-          expect(true).assertFalse();
-          done();
-          return;
-        }
-        console.info('startAbility succeed');
-        expect(true).assertTrue();
-        setTimeout(()=> {
-          abilityDelegator.executeShellCommand('pkill -f com.example.mytest5').then(data => {
-            console.log('pkill -f successful ' + JSON.stringify(data))
-          }).catch(err => {
-            console.log('pkill -f err is ' + JSON.stringify(err))
+      globalThis.abilitycontext.startAbility(want).then(() => {
+        console.info('startAbility first succeed');
+        setTimeout(() => {
+          globalThis.abilitycontext.startAbility(want).then(() => {
+            console.info('startAbility second succeed');
+            setTimeout(()=> {
+              abilityDelegator.executeShellCommand('pkill -f com.example.mytest4').then((data) => {
+                console.log('pkill -f successful ' + JSON.stringify(data))
+              }).catch((err) => {
+                console.log('pkill -f err is ' + JSON.stringify(err))
+              });
+              done();
+            }, 1000)
+          }).catch((err) => {
+            console.error(`startAbility second failed, error is ${JSON.stringify(err)}`);
+            expect(true).assertFalse();
+            done();
           });
-          done();
-        },1000)
+        }, 1000);
+      }).catch((err) => {
+        console.error(`startAbility first failed, error is ${JSON.stringify(err)}`);
+        expect(true).assertFalse();
+        done();
       });
     })
   })
