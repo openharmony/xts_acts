@@ -2979,5 +2979,81 @@ describe('resMgrTest', function () {
         })
     })
 
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_ADDRESOURCE_JS_0100
+    * @tc.name    test addResource method with int param
+    * @tc.desc    addResource
+    */
+    it('addResource_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.addResource(123);
+            }catch(err){
+                console.log('addResource_test_001 err.code' + err.code);
+                console.log('addResource_test_001 err.message' + err.message);
+                expect(err.code).assertEqual('401');
+                expect(err.message).assertEqual('Invalid input parameter');
+                done();
+            }
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_ADDRESOURCE_JS_0200
+    * @tc.name    test addResource method with not exist path
+    * @tc.desc    addResource
+    */
+    it('addResource_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.addResource('123');
+            }catch(err){
+                console.log('addResource_test_002 err.code' + err.code);
+                console.log('addResource_test_002 err.message' + err.message);
+                expect(err.code).assertEqual('9001010');
+                expect(err.message).assertEqual('Overlay resource path is invalid');
+                done();
+            }
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_REMOVERESOURCE_JS_0100
+    * @tc.name    test removeResource method with int param
+    * @tc.desc    removeResource
+    */
+    it('removeResource_test_001', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.removeResource(123);
+            }catch(err){
+                console.log('removeResource_test_001 err.code' + err.code);
+                console.log('removeResource_test_001 err.message' + err.message);
+                expect(err.code).assertEqual('401');
+                expect(err.message).assertEqual('Invalid input parameter');
+                done();
+            }
+        })
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_REMOVERESOURCE_JS_0200
+    * @tc.name    test removeResource method with not exist path
+    * @tc.desc    removeResource
+    */
+    it('removeResource_test_002', 0, async function (done) {
+        resmgr.getResourceManager((error, mgr) => {
+            try{
+                mgr.removeResource('123');
+            }catch(err){
+                console.log('removeResource_test_002 err.code' + err.code);
+                console.log('removeResource_test_002 err.message' + err.message);
+                expect(err.code).assertEqual('9001010');
+                expect(err.message).assertEqual('Overlay resource path is invalid');
+                done();
+            }
+        })
+    })
+
     console.log('*************end ResmgrTest*************');
 })}
