@@ -12,10 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import inputMethodEngine from './inputMethodEngine.test'
-import inputMethodAbility from './inputMethodAbility.test'
+import inputMethodEngine from './inputMethodEngine.test';
+import inputMethodAbility from './inputMethodAbility.test';
+import inputMethodEngineKey from './inputMethodEngineKey.test';
 
 export default function testsuite() {
   inputMethodEngine();
   inputMethodAbility();
+  inputMethodEngineKey();
 }
