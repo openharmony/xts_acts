@@ -1,0 +1,44 @@
+{
+    "description": "Configuration for aceceshi Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "600000",
+        "bundle-name": "com.example.getrunningprocessinformationtest",
+        "module-name": "entry_test",
+        "shell-timeout": "600000",
+        "testcase-timeout": "30000"
+    },
+    "kits": [
+		{
+            "test-file-name": [
+                "GetRunningProcessInformationTest.hap",
+                "GetRunningProcessInformationOneReply.hap",
+                "GetRunningProcessInformationTwoReply.hap",
+                "ApplicationStateChangeThreeReply.hap",
+                "ApplicationStateChangeOneReply.hap",
+                "ApplicationStateChangeTwoReply.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "param set persist.sys.suspend_manager_enabled false",
+                "reboot",
+                "power-shell wakeup",
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "power-shell setmode 602",
+                "hilog -Q pidoff",
+                "hilog -Q domainoff",
+                "hilog -b D",
+                "setenforce 0"
+            ],
+            "teardown-command": [
+                "param set persist.sys.suspend_manager_enabled true",
+                "power-shell setmode 601",
+                "reboot"
+            ]
+        }
+    ]
+}
