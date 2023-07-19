@@ -121,16 +121,15 @@ struct ListDelete {
           }
           .swipeAction({ end: {
             builder: this.itemEnd.bind(this, index, 'MyList5'),
-            onDelete: () => {
-              console.info('MyList5_ListItem' + index + ' onDelete')
+            onAction: () => {
+              console.info('MyList5_ListItem' + index + ' onAction')
               this.arr2.splice(index, 1)
-              MyUtils.sendEvent('MyList5_ListItem' + index + 'onDelete', 72000)
+              MyUtils.sendEvent('MyList5_ListItem' + index + 'onAction', 72000)
             },
-            deleteAreaDistance: 5,
-            useDefaultDeleteAnimation: true,
-            onEnterDeleteArea: () => {
+            actionAreaDistance: 5,
+            onEnterActionArea: () => {
             },
-            onExitDeleteArea: () => {
+            onExitActionArea: () => {
             }
           }
           })
