@@ -41,8 +41,7 @@ let ApplicationStateChangeCallbackFir = {
         console.log(TAG, 'ApplicationStateChangeCallbackFir onApplicationBackground')
         commonEventData.parameters.commonStateArr[1] = 1
 
-        if (globalThis.want.action == 'NeedBackGroundOff' || globalThis.want.action == 'MultiAppRegister'
-            || globalThis.want.action == 'DoubleRegisterOff') {
+        if (globalThis.want.action == 'NeedBackGroundOff' || globalThis.want.action == 'MultiAppRegister') {
             console.info('entered needbackgroundoff!')
             globalThis.applicationContext.off('applicationStateChange', ApplicationStateChangeCallbackFir)
         }
