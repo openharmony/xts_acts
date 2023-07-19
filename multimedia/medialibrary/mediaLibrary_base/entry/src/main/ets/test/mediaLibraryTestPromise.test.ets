@@ -24,7 +24,6 @@ import {
     FILEKEY,
     checkAssetsCount,
     fetchOps,
-    getPermission,
     isNum,
 } from "../../../../../../common";
 

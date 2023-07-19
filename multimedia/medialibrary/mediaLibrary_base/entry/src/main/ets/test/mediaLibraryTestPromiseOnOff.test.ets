@@ -24,7 +24,6 @@ import {
     checkAssetsCount,
     fetchOps,
     albumFetchOps,
-    getPermission,
     checkAlbumsCount,
     FILEKEY,
     fileFetchOption,
@@ -34,7 +33,6 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
     describe("mediaLibraryTestPromiseOnOffTest", function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            await getPermission(null, abilityContext);
             console.info("beforeAll case");
         });
         beforeEach(function () {

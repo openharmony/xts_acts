@@ -18,6 +18,7 @@ group("stage") {
   if (is_standard_system) {
     deps = [
       "actsdebuggabletest:actsdebuggabletest",
+      "actsgetgroupdirtest:actsgetgroupdirtest",
       "actslifecyclemultihap2:ActsLifecycleMultiHap2",
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",
       "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",

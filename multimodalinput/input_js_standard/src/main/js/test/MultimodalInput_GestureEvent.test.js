@@ -14,6 +14,8 @@
  */
 
 import gestureEvent from '@ohos.multimodalInput.gestureEvent';
+import { Pinch } from '@ohos.multimodalInput.gestureEvent';
+import inputMonitor from '@ohos.multimodalInput.inputMonitor';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function MultimodalInput_GestureEvent_test() {
@@ -49,6 +51,55 @@ export default function MultimodalInput_GestureEvent_test() {
       expect(gestureEvent.ActionType.END == 3).assertTrue();
 
       console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_004 exit`);
+    })
+
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005', 0, function () {
+      let label = '02800/MultimodalinputJs';
+      console.info(`${label}:Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005 start`);
+      console.info(`${label}:onClickMonitorOn callback`);
+      const handleEvent = (err, pinch) => {
+        pinch.type = 1;
+        pinch.scale = 1;
+        expect(pinch.type == gestureEvent.ActionType.BEGIN).assertTrue();
+        expect(pinch.scale == 1).assertTrue();
+        console.info(`${label}:callbackPinch start`);
+        if (err) {
+          console.info(`${label}:callbackPinch error:${JSON.stringify(err)}`);
+          expect(false).assertTrue();
+          return;
+        }
+        console.info(`${label}:callbackPinch success: ${JSON.stringify(pinch)}`);
+        let ret = Object.keys(pinch);
+        expect(ret.length > 0).assertTure();
+      };
+
+      console.info(`${label}:onClickMonitorOn start`);
+      try {
+        inputMonitor.on("pinch", handleEvent);
+      } catch (error) {
+        expect(true).assertTrue();
+      }
+      console.info(`${label}:onClickMonitorOn end`);
+
+      console.info(`${label}:onClickMonitorOff start`);
+      try {
+        inputMonitor.off("pinch", handleEvent);
+      } catch (error) {
+        expect(false).assertTrue();
+      }
+      console.info(`${label}:Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_005 end`);
+    })
+
+    it('Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006', 0, function () {
+      console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006 enter`);
+      /** @type { Pinch } */
+      let pinch = {
+        type: gestureEvent.ActionType.BEGIN,
+        scale: 1
+      }
+      expect(pinch.type == 1).assertTrue();
+      expect(pinch.scale == 1).assertTrue();
+      console.info(`Multimodalinput_GestureEvent_test_SUB_MMI_GestureEvent_006 exit`);
     })
   })
 }

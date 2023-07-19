@@ -16,12 +16,13 @@ group("communication") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "bluetooth_ble:ActsBluetoothBleJsTest",
-      "bluetooth_manager:ActsBluetoothBleJs1Test",
-      "bluetooth_on:ActsBluetoothOnJsTest",
+      "bluetooth_gatt:ActsBluetoothGattJsTest",
       "bluetooth_profile:ActsBluetoothProFileJsTest",
+      "bluetooth_scanpairing:ActsBluetoothScanPairingJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
-      "bluetooth_switchoff:ActsBluetoothSwitchTest",
+      "btmanager_errorcode202:ActsBtManagerErrorCode202JsTest",
+      "btmanager_errorcode401:ActsBtManagerErrorCode401JsTest",
+      "btmanager_switchoff:ActsBtManagerSwitchOff003JsTest",
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
       "nfc_Controller:ActsNFCJSTest",

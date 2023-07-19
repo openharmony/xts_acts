@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import hiSysEventJsTest from './HiSysEvent.test.js'
-import hiSysEventJsSecondTest from './HiSysEventSecond.test.js'
+import hiSysEventErrcodeTest from './HiSysEventErrcode.test.js'
 export default function testsuite() {
 hiSysEventJsTest()
-hiSysEventJsSecondTest()	
+hiSysEventErrcodeTest()
 }

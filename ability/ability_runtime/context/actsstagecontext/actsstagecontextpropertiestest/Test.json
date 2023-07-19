@@ -13,7 +13,9 @@
             "test-file-name": [
                 "ActsStageContextPropertiesTest.hap",
                 "ActsStageContextAssistOne.hap",
-                "ActsStageContextAssistTwo.hap"
+                "ActsStageContextAssistTwo.hap",
+                "ReportDrawnCompletedManualTestRely.hap",
+                "ReportDrawnCompletedReply.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

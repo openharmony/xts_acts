@@ -59,10 +59,9 @@
         "deviceType": [
             "tablet",
             "default",
-            "default",
-            "tablet",
             "tv",
-            "wearable"
+            "wearable",
+            "2in1"
         ],
         "reqPermissions": [
             {
@@ -72,6 +71,10 @@
             {
                 "name": "ohos.permission.MICROPHONE",
                 "reason": "use ohos.permission.MICROPHONE"
+            },
+            {
+                "name": "ohos.permission.CAMERA",
+                "reason": "use ohos.permission.CAMERA"
             },
             {
                 "name": "ohos.permission.MEDIA_LOCATION",

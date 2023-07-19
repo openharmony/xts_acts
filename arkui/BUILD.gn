@@ -16,6 +16,7 @@ group("arkui") {
   deps = [
     "ace_ets_component:ActsAceEtsComponentTest",
     "ace_ets_component_api:ActsAceComponentApi03Test",
+    "ace_ets_component_api_five:ActsAceComponentApi06Test",
     "ace_ets_component_api_four:ActsAceComponentApi05Test",
     "ace_ets_component_api_three:ActsAceComponentApi04Test",
     "ace_ets_component_api_two:ActsAceComponentApi02Test",
@@ -40,6 +41,7 @@ group("arkui") {
     "ace_ets_web_dev_two:ActsAceWebDevTwoTest",
     "ace_ets_web_dev_webController:ActsAceWebDevWebControllerTest",
     "ace_ets_web_dev_webviewController:ActsAceWebDevWebViewControllerTest",
+    "ace_ets_web_dev_webviewControllerError:ActsAceWebDevWebViewContErrorTest",
     "ace_ets_xcomponent:ActsAceXComponentEtsTest",
     "ace_js_attribute_api:ActsAceJsApiTest",
     "ace_napi_test:ActsAceNapiEtsTest",

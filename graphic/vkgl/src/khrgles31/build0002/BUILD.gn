@@ -27,7 +27,7 @@ config("deqp_platform_ohos_config") {
 
 ohos_static_library("libkhrgles31func0002") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = common_src
   sources += [ "../Khrgles31BaseFunc.cpp" ]
 
@@ -42,7 +42,7 @@ ohos_static_library("libkhrgles31func0002") {
 
 ohos_moduletest_suite("ActsKhrgles31TestSuite0002") {
   subsystem_name = "graphic"
-  part_name = "graphic_standard"
+  part_name = "graphic_2d"
   sources = [
     "../ActsKhrgles310002TestSuite.cpp",
     "../core/Khrgles31blend_equation_advanced_BlendEquationSeparateTestCase.cpp",

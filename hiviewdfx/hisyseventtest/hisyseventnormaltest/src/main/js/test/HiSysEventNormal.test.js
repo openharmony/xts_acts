@@ -47,8 +47,10 @@ describe('hiSysEventNormalTest', function () {
 				eventType: hiSysEvent.EventType.FAULT,
 			},(err, val) => {
 				if (err) {
+					expect().assertFail();
 					console.error('in testHiSysEventApi58 test callback: err.code = ' + err.code)
 				} else {
+					expect().assertFail();
 					console.info('in testHiSysEventApi58 test callback: result = ' + val)
 				}
 			})
@@ -76,7 +78,7 @@ describe('hiSysEventNormalTest', function () {
 			}).then(
 				(value) => {
 					console.log(`HiSysEvent json-callback-success value=${value}`);
-					expect(value == 0).assertTrue();
+					expect().assertFail();
 					done();
 				}
 			).catch(
@@ -125,7 +127,7 @@ describe('hiSysEventNormalTest', function () {
 		}
 		try {
 			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			expect().assertFail();
 			console.info('testHiSysEventApi60 end')
 			done();
 		} catch (err) {
@@ -166,7 +168,7 @@ describe('hiSysEventNormalTest', function () {
 		}
 		try {
 			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			expect().assertFail();
 			console.info('testHiSysEventApi61 end')
 			done();
 		} catch (err) {
@@ -207,7 +209,7 @@ describe('hiSysEventNormalTest', function () {
 		}
 		try {
 			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			expect().assertFail();
 			console.info('testHiSysEventApi62 end')
 			done();
 		} catch (err) {
@@ -249,7 +251,7 @@ describe('hiSysEventNormalTest', function () {
 		}
 		try {
 			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			expect().assertFail();
 			console.info('testHiSysEventApi63 end')
 			done();
 		} catch (err) {
@@ -289,7 +291,7 @@ describe('hiSysEventNormalTest', function () {
 		}
 		try {
 			hiSysEvent.addWatcher(watcher)
-			expect(true).assertTrue()
+			expect().assertFail();
 			console.info('testHiSysEventApi64 end')
 			done();
 		} catch (err) {
@@ -331,7 +333,7 @@ describe('hiSysEventNormalTest', function () {
 		setTimeout(() => {
 			try {
 				hiSysEvent.removeWatcher(watcher)
-				expect(true).assertTrue()
+				expect().assertFail();
 				console.info('testHiSysEventApi65 end')
 				done();
 			} catch (err) {
@@ -365,10 +367,81 @@ describe('hiSysEventNormalTest', function () {
 					done()
 				}
 			})
+			expect().assertFail()
 		} catch (err) {
-			console.error(`testHiSysEventApi66 delay > error code: ${err.code}, error msg: ${err.message}`)
+			console.error(`testHiSysEventApi66 > error code: ${err.code}, error msg: ${err.message}`)
 			expect(err.code == 202).assertTrue()
 			console.info('testHiSysEventApi66 end')
+			done()
+		}
+	})
+
+	/**
+	 * @tc.number DFX_DFT_HiSysevent_SandBox_0100
+	 * @tc.name testHiSysEventBox01
+	 * @tc.desc 验证普通应用调用exportSysEvents接口，返回错误码202
+	 */
+	it('testHiSysEventBox01', 1, async function (done) {
+		console.info('testHiSysEventBox01 start')
+		try {
+			hiSysEvent.exportSysEvents({
+				beginTime: -1,
+				endTime: -1,
+				maxEvents: 1,
+			}, [{
+				domain: "RELIABILITY",
+				names: ["STACK"],
+			}])
+			expect().assertFail()
+			console.error('testHiSysEventBox01 error')
+			done()
+		} catch (err) {
+			console.error(`testHiSysEventBox01 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(err.code == 202).assertTrue()
+			console.info('testHiSysEventBox01 end')
+			done()
+		}
+	})
+
+	/**
+	 * @tc.number DFX_DFT_HiSysevent_SandBox_0200
+	 * @tc.name testHiSysEventBox02
+	 * @tc.desc 验证普通应用调用subscribe接口，返回错误码202
+	 */
+	it('testHiSysEventBox02', 1, async function (done) {
+		console.info('testHiSysEventBox02 start')
+		try {
+			hiSysEvent.subscribe([{
+				domain: "RELIABILITY",
+				names: ["STACK"],
+			}])
+			expect().assertFail()
+			console.error('testHiSysEventBox02 error')
+			done()
+		} catch (err) {
+			console.error(`testHiSysEventBox02 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(err.code == 202).assertTrue()
+			console.info('testHiSysEventBox02 end')
+			done()
+		}
+	})
+
+	/**
+	 * @tc.number DFX_DFT_HiSysevent_SandBox_0300
+	 * @tc.name testHiSysEventBox03
+	 * @tc.desc 验证普通应用调用unsubscribe接口，返回错误码202
+	 */
+	it('testHiSysEventBox03', 1, async function (done) {
+		console.info('testHiSysEventBox03 start')
+		try {
+			hiSysEvent.unsubscribe();
+			expect().assertFail()
+			console.error('testHiSysEventBox03 error')
+			done()
+		} catch (err) {
+			console.error(`testHiSysEventBox03 > error code: ${err.code}, error msg: ${err.message}`)
+			expect(err.code == 202).assertTrue()
+			console.info('testHiSysEventBox03 end')
 			done()
 		}
 	})

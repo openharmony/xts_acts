@@ -68,7 +68,6 @@ struct webONHttpErrorReceive {
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
-                            Utils.emitEvent(this.title, 490)
                             break;
                         }
                     }
@@ -125,6 +124,7 @@ struct webONHttpErrorReceive {
                     console.log('The response header last result is ' + this.responseKey + this.responseValue);
                     Utils.emitEvent(this.responseKey, 486);
                     Utils.emitEvent(this.responseValue, 488);
+                    Utils.emitEvent(this.title, 490)
                 })
             }
     }
