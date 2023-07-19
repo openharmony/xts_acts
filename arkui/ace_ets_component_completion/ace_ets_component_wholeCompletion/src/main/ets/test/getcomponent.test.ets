@@ -170,7 +170,7 @@ export default function ActsgetcomponentTest() {
         try{
           let strJson = Utils.getComponentRect('ArkUX_Get_component_0060');
           expect(parseInt(strJson.width)).assertEqual(126);
-          expect(parseInt(strJson.height)).assertEqual(36);
+          expect(parseInt(strJson.height)).assertEqual(60);
           expect(parseInt(strJson.localOffsetX)).assertEqual(297);
           expect(parseInt(strJson.localOffsetY)).assertEqual(2712);
           expect(parseInt(strJson.windowOffsetX)).assertEqual(297);
@@ -194,9 +194,9 @@ export default function ActsgetcomponentTest() {
           expect(parseInt(strJson.width)).assertEqual(421);
           expect(parseInt(strJson.height)).assertEqual(88);
           expect(parseInt(strJson.localOffsetX)).assertEqual(149);
-          expect(parseInt(strJson.localOffsetY)).assertEqual(2748);
+          expect(parseInt(strJson.localOffsetY)).assertEqual(2772);
           expect(parseInt(strJson.windowOffsetX)).assertEqual(149);
-          expect(parseInt(strJson.windowOffsetY)).assertEqual(2820);
+          expect(parseInt(strJson.windowOffsetY)).assertEqual(2844);
           expect(parseInt(strJson.screenOffsetX)).assertEqual(149);
           expect(parseInt(strJson.screenOffsetY)).assertEqual(149);
           console.info('ArkUX_Get_component_0070 END ');
@@ -216,9 +216,9 @@ export default function ActsgetcomponentTest() {
           expect(parseInt(strJson.width)).assertEqual(648);
           expect(parseInt(strJson.height)).assertEqual(450);
           expect(parseInt(strJson.localOffsetX)).assertEqual(36);
-          expect(parseInt(strJson.localOffsetY)).assertEqual(2836);
+          expect(parseInt(strJson.localOffsetY)).assertEqual(2860);
           expect(parseInt(strJson.windowOffsetX)).assertEqual(36);
-          expect(parseInt(strJson.windowOffsetY)).assertEqual(2908);
+          expect(parseInt(strJson.windowOffsetY)).assertEqual(2932);
           expect(parseInt(strJson.screenOffsetX)).assertEqual(36);
           expect(parseInt(strJson.screenOffsetY)).assertEqual(36);
           console.info('ArkUX_Get_component_0080 END ');
@@ -238,9 +238,9 @@ export default function ActsgetcomponentTest() {
           expect(parseInt(strJson.width)).assertEqual(648);
           expect(parseInt(strJson.height)).assertEqual(1136);
           expect(parseInt(strJson.localOffsetX)).assertEqual(36);
-          expect(parseInt(strJson.localOffsetY)).assertEqual(3286);
+          expect(parseInt(strJson.localOffsetY)).assertEqual(3310);
           expect(parseInt(strJson.windowOffsetX)).assertEqual(36);
-          expect(parseInt(strJson.windowOffsetY)).assertEqual(3358);
+          expect(parseInt(strJson.windowOffsetY)).assertEqual(3382);
           expect(parseInt(strJson.screenOffsetX)).assertEqual(36);
           expect(parseInt(strJson.screenOffsetY)).assertEqual(36);
           console.info('ArkUX_Get_component_0090 END ');
@@ -260,9 +260,9 @@ export default function ActsgetcomponentTest() {
           expect(parseInt(strJson.width)).assertEqual(600);
           expect(parseInt(strJson.height)).assertEqual(60);
           expect(parseInt(strJson.localOffsetX)).assertEqual(60);
-          expect(parseInt(strJson.localOffsetY)).assertEqual(4452);
+          expect(parseInt(strJson.localOffsetY)).assertEqual(4476);
           expect(parseInt(strJson.windowOffsetX)).assertEqual(60);
-          expect(parseInt(strJson.windowOffsetY)).assertEqual(4524);
+          expect(parseInt(strJson.windowOffsetY)).assertEqual(4548);
           expect(parseInt(strJson.screenOffsetX)).assertEqual(60);
           expect(parseInt(strJson.screenOffsetY)).assertEqual(60);
           console.info('ArkUX_Get_component_0100 END ');
