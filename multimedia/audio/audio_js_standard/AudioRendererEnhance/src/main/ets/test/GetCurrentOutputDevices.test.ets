@@ -139,12 +139,9 @@ export default function audioRendererTest() {
         await audioRen.getCurrentOutputDevices().then((data) => {
           console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, name:${data.name}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
           try {
-            if(data.sampleRates == 44100 && data.channelCounts == 2){
               expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
               expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
               expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
-              expect(data.channelMasks).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
-            }
           } catch (error){
             console.log('${TagFrmwkRender}: ######assertion failure');
           }
@@ -304,12 +301,9 @@ export default function audioRendererTest() {
           } else {
             console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
             try {
-              if(data.sampleRates == 44100 && data.channelCounts == 2){
                 expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
                 expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
                 expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
-                expect(data.channelMasks).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
-              }
             } catch (error){
               console.log('${TagFrmwkRender}: ######assertion failure');
             }

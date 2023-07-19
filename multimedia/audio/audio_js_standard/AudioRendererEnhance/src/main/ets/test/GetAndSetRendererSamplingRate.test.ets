@@ -36,8 +36,8 @@ export default function audioRendererTest() {
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
       let AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
         rendererFlags: 0
       }
       let AudioRendererOptions = {
@@ -48,7 +48,6 @@ export default function audioRendererTest() {
         await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
           audioRen = data;
           console.info('audioRendererEnhanceTest: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
-          console.info('audioRendererEnhanceTest: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
         }).catch((err) => {
           console.info('audioRendererEnhanceTest: AudioRender Created : ERROR : ' + err.message);
         });
@@ -152,16 +151,16 @@ export default function audioRendererTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0200
      * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - promise
-     * @tc.desc      : AudioRenderer - setRendererSamplingRate in pprepare ,then get the SamplingRate
+     * @tc.desc      : AudioRenderer - setRendererSamplingRate INVALID_INPUT_PARAMETER, then get the  default SamplingRate
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0200', 0, async function (done) {
-      let samplingrate = 48000;
+      let rate = '123';
       try{
-        await audioRen.setRendererSamplingRate(samplingrate).then((data) => {
-          console.info(`${TagFrmwkRender}: ####setRendererSamplingRate :set ${samplingrate}, SUCCESS`);
+        await audioRen.setRendererSamplingRate(rate).then((data) => {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate :set ${rate}, SUCCESS`);
         }).catch ((error)=>{
           console.log("${TagFrmwkRender}: ####setRendererSamplingRate : error = " + error);
         });
@@ -172,7 +171,7 @@ export default function audioRendererTest() {
       try{
         await audioRen.getRendererSamplingRate().then((data) => {
           console.info(`${TagFrmwkRender}: #####getRendererSamplingRate :SUCCESS ${data}`);
-          expect(data).assertEqual(env.SAMPLING_RATE_48000);
+          expect(data).assertEqual(env.SAMPLING_RATE_44100);
           done();
         }).catch ((error)=>{
           console.log("${TagFrmwkRender}: #####getRendererSamplingRate : error = " + error);
@@ -188,48 +187,12 @@ export default function audioRendererTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0300
      * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - promise
-     * @tc.desc      : AudioRenderer - setRendererSamplingRate INVALID_INPUT_PARAMETER, then get the  default SamplingRate
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0300', 0, async function (done) {
-      let rate = '123';
-      try{
-        await audioRen.setRendererSamplingRate(rate).then((data) => {
-          console.info(`${TagFrmwkRender}: setRendererSamplingRate :set ${rate}, SUCCESS`);
-        }).catch ((error)=>{
-          console.log("${TagFrmwkRender}: ####setRendererSamplingRate : error = " + error);
-        });
-      }catch(error){
-        console.log("####setRendererSamplingRate: catch error = " + error);
-      }
-
-      try{
-        await audioRen.getRendererSamplingRate().then((data) => {
-          console.info(`${TagFrmwkRender}: #####getRendererSamplingRate :SUCCESS ${data}`);
-          expect(data).assertEqual(env.SAMPLING_RATE_44100);
-          done();
-        }).catch ((error)=>{
-          console.log("${TagFrmwkRender}: #####getRendererSamplingRate : error = " + error);
-          expect(false).assertTrue();
-          done();
-        });
-      }catch(error){
-        console.log("#####getRendererSamplingRate: catch error = " + error);
-        expect(false).assertTrue();
-        done();
-      }
-    });
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0400
-     * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - promise
      * @tc.desc      : AudioRenderer - set a effective SamplingRate, then set a invalid SamplingRate, can get the  effective SamplingRate
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0300', 0, async function (done) {
       let samplingrate = 48000;
       try{
         await audioRen.setRendererSamplingRate(samplingrate).then((data) => {
@@ -269,14 +232,14 @@ export default function audioRendererTest() {
       }
     });
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0400
      * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - promise
      * @tc.desc      : AudioRenderer - getRendererSamplingRate in running
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0400', 0, async function (done) {
       try{
         renderPlay();
         await audioRen.getRendererSamplingRate().then((data) => {
@@ -289,7 +252,7 @@ export default function audioRendererTest() {
           done();
         });
       }catch(error){
-        console.log("#####SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0500: catch error = " + error);
+        console.log("#####SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_PROMISE_0400: catch error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -409,8 +372,8 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0400
-     * @tc.name      : AudioRenderer - setRendererSamplingRate "int32" - promise
-     * @tc.desc      : AudioRenderer - setRendererSamplingRate in running
+     * @tc.name      : AudioRenderer - setRendererSamplingRate "uint32" - promise
+     * @tc.desc      : AudioRenderer - setRendererSamplingRate  in running, then getRendererSamplingRate
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -420,29 +383,7 @@ export default function audioRendererTest() {
       try {
         renderPlay();
         await audioRen.setRendererSamplingRate(samplingrate);
-        console.info(`${TagFrmwkRender}: ####setRendererSamplingRate: execution success`);
-        expect(true).assertTrue();
-        done();
-      }catch (error){
-        console.log("#####setRendererSamplingRate : error = " + error);
-        expect(false).assertTrue();
-        done();
-      };
-    });
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0500
-     * @tc.name      : AudioRenderer - setRendererSamplingRate "uint32" - promise
-     * @tc.desc      : AudioRenderer - setRendererSamplingRate  in running, then getRendererSamplingRate
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0500', 0, async function (done) {
-      let samplingrate = 48000;
-      try {
-        renderPlay();
-        await audioRen.setRendererSamplingRate(samplingrate);
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0500: execution success`);
+        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0400: execution success`);
       }catch (error){
         console.log("#####setRendererSamplingRate : error = " + error);
         expect(false).assertTrue();
@@ -475,196 +416,114 @@ export default function audioRendererTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0100', 0, async function (done) {
-      try {
-        audioRen.getRendererSamplingRate((err,data) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-            expect(data).assertEqual(env.SAMPLING_RATE_44100);
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0100: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+      audioRen.getRendererSamplingRate((err, data) => {
+        if (err) {
+          console.info(`${TagFrmwkRender}: getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        } else {
+          console.info(`${TagFrmwkRender}: getRendererSamplingRate Success now SamplingRate: ${data}`);
+          expect(data).assertEqual(env.SAMPLING_RATE_44100);
+          done();
+        }
+      });
     });
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0200
-     * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - callback
-     * @tc.desc      : AudioRenderer - setRendererSamplingRate, then get the  SamplingRate
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0200', 0, async function (done) {
-      let rate = 48000;
-      try {
-        await audioRen.setRendererSamplingRate(rate, (err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : set ${rate} SUCCESS`);
-            try {
-              audioRen.getRendererSamplingRate((err,data) => {
-                if (err) {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-                  expect(false).assertTrue();
-                  done();
-                } else {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-                  expect(data).assertEqual(env.SAMPLING_RATE_48000);
-                  done();
-                }
-              });
-            }catch(error){
-              console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0200： catch error, error: [${error.code}, ${error.message}]`);
-              expect(false).assertTrue();
-              done();
-            };
-          }
-        });
-      }catch (error){
-        console.info(`####setRendererSamplingRate： catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
-    });
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0300
      * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - callback
      * @tc.desc      : AudioRenderer - set a valid SamplingRate, get the default SamplingRate
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0200', 0, async function (done) {
       let rate = '123';
-      try {
-        audioRen.setRendererSamplingRate(rate, (err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : set ${rate} SUCCESS`);
-          }
-        });
-      } catch (error) {
-        console.info(`####setRendererSamplingRate： catch error, error: [${error.code}, ${error.message}]`);
-      };
-
-      try {
-        audioRen.getRendererSamplingRate((err, data) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-            expect(data).assertEqual(env.SAMPLING_RATE_44100);
-            done();
-          }
-        });
-      } catch (error) {
-        console.info(`####getRendererSamplingRate: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+      audioRen.setRendererSamplingRate(rate, (err) => {
+        if (err) {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+          audioRen.getRendererSamplingRate((err, data) => {
+            if (err) {
+              console.info(`${TagFrmwkRender}: getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+              expect(false).assertTrue();
+              done();
+            } else {
+              console.info(`${TagFrmwkRender}: getRendererSamplingRate Success! SamplingRate: ${data}`);
+              expect(data).assertEqual(env.SAMPLING_RATE_44100);
+              done();
+            }
+          });
+        } else {
+          console.info(`${TagFrmwkRender}:  setRendererSamplingRate : set ${rate} SUCCESS`);
+          expect(false).assertTrue();
+          done();
+        }
+      });
     });
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0300
      * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - callback
      * @tc.desc      : AudioRenderer - getRendererSamplingRate
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0400', 0, async function (done) {
-      console.info('AudioFrameworkRenderLog: SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0400 IN.\n');
-      let ret = 48000;
-      try {
-        audioRen.setRendererSamplingRate(ret, (err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate1 : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate1 : set ${ret} SUCCESS`);
-          }
-        });
-      }catch (error){
-        console.info(`####setRendererSamplingRate1: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
-
-      let rate = '123';
-      try {
-        audioRen.setRendererSamplingRate(rate, (err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate2 : ERROR : code: ${err.code}, mesage: ${err.message}`);
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate2 : set ${rate} SUCCESS`);
-          }
-        });
-      } catch (error) {
-        console.info(`####setRendererSamplingRate2: catch error, error: [${error.code}, ${error.message}]`);
-      };
-
-      try {
-        audioRen.getRendererSamplingRate((err, data) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-            expect(data).assertEqual(env.SAMPLING_RATE_48000);
-            done();
-          }
-        });
-      } catch (error) {
-        console.info(`####getRendererSamplingRate: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0300', 0, async function (done) {
+      let rate1 = 48000;
+      audioRen.setRendererSamplingRate(rate1, (err) => {
+        if (err) {
+          console.info(`${TagFrmwkRender}: set rate1 ERROR! code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        } else {
+          console.info(`${TagFrmwkRender}: set rate1: ${rate1} SUCCESS! begin set rate2`);
+          let rate2 = '123';
+          audioRen.setRendererSamplingRate(rate2, (err) => {
+            if (err) {
+              console.info(`${TagFrmwkRender}: set rate2 ERROR! code: ${err.code}, mesage: ${err.message}`);
+              audioRen.getRendererSamplingRate((err, data) => {
+                if (err) {
+                  console.info(`${TagFrmwkRender}: getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+                  expect(false).assertTrue();
+                  done();
+                } else {
+                  console.info(`${TagFrmwkRender}: getRendererSamplingRate Success now sampling rate: ${data}`);
+                  expect(data).assertEqual(env.SAMPLING_RATE_48000);
+                  done();
+                }
+              });
+            } else {
+              console.info(`${TagFrmwkRender}: set Rate2: ${rate2} SUCCESS! testcase FAIL!`);
+              expect(false).assertTrue();
+              done();
+            }
+          });
+        }
+      });
     });
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0400
      * @tc.name      : AudioRenderer - getRendererSamplingRate "uint32" - callback
      * @tc.desc      : AudioRenderer - getRendererSamplingRate "uint32" - callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0500', 0, async function (done) {
-      try {
-        renderPlay();
-        audioRen.getRendererSamplingRate((err,data) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-            expect(data).assertEqual(env.SAMPLING_RATE_44100);
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`####getRendererSamplingRate: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETRENDERERSAMPLINGRATE_CALLBACK_0400', 0, async function (done) {
+      renderPlay();
+      audioRen.getRendererSamplingRate((err, data) => {
+        if (err) {
+          console.info(`${TagFrmwkRender}:getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        } else {
+          console.info(`${TagFrmwkRender}:getRendererSamplingRate Success! now samplingRate: ${data}`);
+          expect(data).assertEqual(env.SAMPLING_RATE_44100);
+          done();
+        }
+      });
     });
 
     /**
@@ -677,38 +536,26 @@ export default function audioRendererTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0100', 0, async function (done) {
       let rate = 48000;
-      try {
-        audioRen.setRendererSamplingRate(rate,(err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : set ${rate} SUCCESS`);
-            try {
-              audioRen.getRendererSamplingRate((err,data) => {
-                if (err) {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-                  expect(false).assertTrue();
-                  done();
-                } else {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-                  expect(data).assertEqual(env.SAMPLING_RATE_48000);
-                  done();
-                }
-              });
-            }catch (error){
-              console.info(`####getRendererSamplingRate: catch error, error: [${error.code}, ${error.message}]`);
+      audioRen.setRendererSamplingRate(rate, (err) => {
+        if (err) {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        } else {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate : set ${rate} SUCCESS start getting samplingRate`);
+          audioRen.getRendererSamplingRate((err, data) => {
+            if (err) {
+              console.info(`${TagFrmwkRender}: getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
               expect(false).assertTrue();
               done();
-            };
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0100: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+            } else {
+              console.info(`${TagFrmwkRender}: getRendererSamplingRate Success! samplingRate: ${data}`);
+              expect(data).assertEqual(env.SAMPLING_RATE_48000);
+              done();
+            }
+          });
+        }
+      });
     });
 
     /**
@@ -721,38 +568,26 @@ export default function audioRendererTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0200', 0, async function (done) {
       let rate = 0;
-      try {
-        audioRen.setRendererSamplingRate(rate, (err) => {
-          if (err.code == env.UNSUPORTED_OPTION_6800104) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            try {
-              audioRen.getRendererSamplingRate((err,data) => {
-                if (err) {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-                  expect(false).assertTrue();
-                  done();
-                } else {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-                  rate = data;
-                  expect(data).assertEqual(env.SAMPLING_RATE_44100);
-                  done();
-                }
-              });
-            }catch (error){
-              console.info(`####getRendererSamplingRate： catch error, error: [${error.code}, ${error.message}]`);
+      audioRen.setRendererSamplingRate(rate, (err) => {
+        if (err.code == env.INVALID_INPUT_PARAMETER_6800104) {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message} start getting samplingRate`);
+          audioRen.getRendererSamplingRate((err, data) => {
+            if (err) {
+              console.info(`${TagFrmwkRender}: getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
               expect(false).assertTrue();
               done();
-            };
-          } else {
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0200: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+            } else {
+              console.info(`${TagFrmwkRender}: getRendererSamplingRate Success! now samplingRate: ${data}`);
+              expect(data).assertEqual(env.SAMPLING_RATE_44100);
+              done();
+            }
+          });
+        } else {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate Success! testcase FAIL!`);
+          expect(false).assertTrue();
+          done();
+        }
+      });
     });
 
     /**
@@ -765,38 +600,26 @@ export default function audioRendererTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0300', 0, async function (done) {
       let rate = '123';
-      try {
-        audioRen.setRendererSamplingRate(rate, (err) => {
-          if (err.code == env.INVALID_INPUT_PARAMETER_6800101) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            try {
-              audioRen.getRendererSamplingRate((err,data) => {
-                if (err) {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-                  expect(false).assertTrue();
-                  done();
-                } else {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-                  rate = data;
-                  expect(data).assertEqual(env.SAMPLING_RATE_44100);
-                  done();
-                }
-              });
-            }catch (error){
-              console.info(`####getRendererSamplingRate: catch error, error: [${error.code}, ${error.message}]`);
+      audioRen.setRendererSamplingRate(rate, (err) => {
+        if (err.code == env.INVALID_INPUT_PARAMETER_6800101) {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message} start getting samplingRate`);
+          audioRen.getRendererSamplingRate((err, data) => {
+            if (err) {
+              console.info(`${TagFrmwkRender}:getRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
               expect(false).assertTrue();
               done();
-            };
-          } else {
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0300: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+            } else {
+              console.info(`${TagFrmwkRender}:getRendererSamplingRate Success! now samplingRate: ${data}`);
+              expect(data).assertEqual(env.SAMPLING_RATE_44100);
+              done();
+            }
+          });
+        } else {
+          console.info(`${TagFrmwkRender}: setRendererSamplingRate Success! testcase FAIL!`);
+          expect(false).assertTrue();
+          done();
+        }
+      });
     });
 
     /**
@@ -809,69 +632,27 @@ export default function audioRendererTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0400', 0, async function (done) {
       let rate = 48000;
-      try {
-        renderPlay();
-        audioRen.setRendererSamplingRate(rate, (err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : set ${rate} SUCCESS`);
-            expect(true).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0400: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
-    });
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0500
-     * @tc.name      : AudioRenderer - setRendererSamplingRate "uint32" - callback
-     * @tc.desc      : AudioRenderer - setRendererSamplingRate "uint32" - callback
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0500', 0, async function (done) {
-      let rate = 48000;
-      try {
-        renderPlay();
-        audioRen.setRendererSamplingRate(rate,(err) => {
-          if (err) {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-            expect(false).assertTrue();
-            done();
-          } else {
-            console.info(`${TagFrmwkRender}: ####setRendererSamplingRate : set ${rate} SUCCESS`);
-            try {
-              audioRen.getRendererSamplingRate((err,data) => {
-                if (err) {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
-                  expect(false).assertTrue();
-                  done();
-                } else {
-                  console.info(`${TagFrmwkRender}: ####getRendererSamplingRate : Success ${data}`);
-                  expect(data).assertEqual(env.SAMPLING_RATE_48000);
-                  done();
-                }
-              });
-            }catch (error){
-              console.info(`####getRendererSamplingRate: catch error, error: [${error.code}, ${error.message}]`);
+      renderPlay();
+      audioRen.setRendererSamplingRate(rate, (err) => {
+        if (err) {
+          console.info(`${TagFrmwkRender}:setRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        } else {
+          console.info(`${TagFrmwkRender}:setRendererSamplingRate : set samplingRate:${rate} SUCCESS! start getting samplingRate`);
+          audioRen.getRendererSamplingRate((err, data) => {
+            if (err) {
+              console.info(`${TagFrmwkRender}:getRendererSamplingRate : ERROR : code: ${err.code}, mesage: ${err.message}`);
               expect(false).assertTrue();
               done();
-            };
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0500: catch error, error: [${error.code}, ${error.message}]`);
-        expect(false).assertTrue();
-        done();
-      };
+            } else {
+              console.info(`${TagFrmwkRender}:getRendererSamplingRate : Success ${data}`);
+              expect(data).assertEqual(env.SAMPLING_RATE_48000);
+              done();
+            }
+          });
+        }
+      });
     });
 
   })

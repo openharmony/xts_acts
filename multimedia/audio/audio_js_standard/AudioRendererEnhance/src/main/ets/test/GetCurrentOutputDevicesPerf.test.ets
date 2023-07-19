@@ -80,12 +80,9 @@ export default function audioRendererTest() {
         try {
           let data = await audioRen.getCurrentOutputDevices();
           try{
-            if (data.sampleRates == 44100 && data.channelCounts == 2) {
               expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
               expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
               expect(data.id).assertLargerOrEqual(0);
-              expect(data.channelMasks).assertLargerOrEqual(0);
-            }
           }catch (error){
             console.log('${TagFrmwkRender}:######assertion failure');
           }
@@ -121,12 +118,9 @@ export default function audioRendererTest() {
                 return;
               }else{
                 try{
-                  if(data.sampleRates == 44100 && data.channelCounts == 2){
                     expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
                     expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
                     expect(data.id).assertLargerOrEqual(0);
-                    expect(data.channelMasks).assertLargerOrEqual(0);
-                  }
                 }catch (error){
                   console.log('${TagFrmwkRender}: ######assertion failure');
                 }

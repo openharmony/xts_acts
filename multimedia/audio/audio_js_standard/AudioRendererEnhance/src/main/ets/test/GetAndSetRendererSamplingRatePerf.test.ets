@@ -34,8 +34,8 @@ export default function audioRendererTest() {
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
       let AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
         rendererFlags: 0
       }
       let AudioRendererOptions = {
@@ -100,8 +100,8 @@ export default function audioRendererTest() {
       done();
     })
 
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0600', 0, async function (done) {
-      let number = `SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0600`
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0500', 0, async function (done) {
+      let number = `SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_PROMISE_0500`
       let rate = 48000
       for (let index = 0; index < env.GENERAL_RUN_TIMES; index++){
         try {
@@ -173,9 +173,9 @@ export default function audioRendererTest() {
       }
     })
 
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0600',0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0500',0, async function (done) {
       // Defines a test case. This API supports zaro parameters: test case name, filter parameter, and test case function.
-      let number = `SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0600`
+      let number = `SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0500`
       let rate = 48000
       setRendererSamplingRateTest(0)
       function setRendererSamplingRateTest(index) {
@@ -215,6 +215,5 @@ export default function audioRendererTest() {
         })
       }
     })
-
   })
 }

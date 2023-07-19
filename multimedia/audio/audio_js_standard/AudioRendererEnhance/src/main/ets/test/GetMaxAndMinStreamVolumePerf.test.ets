@@ -34,8 +34,8 @@ export default function audioRendererTest() {
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
       let AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
         rendererFlags: 0
       }
       let AudioRendererOptions = {
@@ -79,7 +79,7 @@ export default function audioRendererTest() {
       for (let index = 0; index < env.GENERAL_RUN_TIMES; index++) {
         try {
           let data = await audioRen.getMaxStreamVolume();
-          expect(data).assertEqual(1.0);
+          expect(data).assertEqual(env.OUTPUT_NUMBER_1);
         } catch (error) {
           console.log(`${TagFrmwkRender}: ####getMaxStreamVolume: execution ${index + 1} times error: ${JSON.stringify(error)}`);
           expect(false).assertTrue();
@@ -117,7 +117,7 @@ export default function audioRendererTest() {
       for (let index = 0; index < env.GENERAL_RUN_TIMES; index++) {
         try {
           let data = await audioRen.getMinStreamVolume();
-          expect(data).assertEqual(0.0);
+          expect(data).assertEqual(env.OUTPUT_NUMBER_0);
         } catch (error) {
           console.log(`${TagFrmwkRender}: ####getMinStreamVolume: execution ${index + 1} times error: ${JSON.stringify(error)}`);
           expect(false).assertTrue();
@@ -164,7 +164,7 @@ export default function audioRendererTest() {
                 done();
                 return;
               }else{
-                expect(data).assertEqual(1.0);
+                expect(data).assertEqual(env.OUTPUT_NUMBER_1);
                 recursive(n-1);
               }
             });
@@ -223,7 +223,7 @@ export default function audioRendererTest() {
                 done();
                 return;
               }else{
-                expect(data).assertEqual(0.0);
+                expect(data).assertEqual(env.OUTPUT_NUMBER_0);
                 recursive(n-1);
               }
             });
