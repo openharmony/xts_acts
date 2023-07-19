@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -22,7 +21,6 @@ import {
   photoKeys,
   getFileAsset,
   photoFetchOption,
-  photoType,
 } from '../../../../../../../common'
 
 export default function registerChangeTest () {
@@ -34,15 +32,15 @@ export default function registerChangeTest () {
     const DEFAULT_ALBUM_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_ALBUM_URI;
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0100
-     * @tc.name      : on_callback_001
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0100
+     * @tc.name      : registerChange_callback_001
      * @tc.desc      : listening motify file displayName, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('on_callback_001', 0, async function (done) {
-      const testNum = 'on_callback_001';
+    it('registerChange_callback_001', 0, async function (done) {
+      const testNum = 'registerChange_callback_001';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'on01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
@@ -69,15 +67,15 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0700
-     * @tc.name      : on_callback_007
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0700
+     * @tc.name      : registerChange_callback_007
      * @tc.desc      : listening create album, type NOTIFY_ADD
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('on_callback_007', 0, async function (done) {
-      const testNum = 'on_callback_007';
+    it('registerChange_callback_007', 0, async function (done) {
+      const testNum = 'registerChange_callback_007';
       try {
         let changeDataUri = '';
         let listenCount = 0;
@@ -104,15 +102,15 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0800
-     * @tc.name      : on_callback_008
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0800
+     * @tc.name      : registerChange_callback_008
      * @tc.desc      : listening change albumName, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('on_callback_008', 0, async function (done) {
-      const testNum = 'on_callback_008';
+    it('registerChange_callback_008', 0, async function (done) {
+      const testNum = 'registerChange_callback_008';
       try {
         let albumUri = '';
         let count = 0;
@@ -140,15 +138,15 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1100
-     * @tc.name      : on_callback_011
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1100
+     * @tc.name      : registerChange_callback_011
      * @tc.desc      : listening album removeAssets, type NOTIFY_ALBUM_ADD_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('on_callback_011', 0, async function (done) {
-      const testNum = 'on_callback_011';
+    it('registerChange_callback_011', 0, async function (done) {
+      const testNum = 'registerChange_callback_011';
       try {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
@@ -176,15 +174,15 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1200
-     * @tc.name      : on_callback_012
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1200
+     * @tc.name      : registerChange_callback_012
      * @tc.desc      : listening album removeAssets, type NOTIFY_ALBUM_REMOVE_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('on_callback_012', 0, async function (done) {
-      const testNum = 'on_callback_012';
+    it('registerChange_callback_012', 0, async function (done) {
+      const testNum = 'registerChange_callback_012';
       try {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);

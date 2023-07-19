@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -94,7 +94,7 @@ export default function getAlbumsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('getAlbums_callback_001', 0, async function (done) {
+    it('getAlbums_callback_001', 2, async function (done) {
       const testNum = 'getAlbums_callback_001';
       try {
         // Firstly, create an album
@@ -134,7 +134,7 @@ export default function getAlbumsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUM_003', 0, async function (done) {
+    it('getAlbums_callback_002', 0, async function (done) {
       const testNum = 'getAlbums_callback_002';
       try {
         let subTypes : Array<photoAccessHelper.AlbumSubtype> = [
@@ -225,7 +225,7 @@ export default function getAlbumsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('getAlbums_promise_001', 0, async function (done) {
+    it('getAlbums_promise_001', 2, async function (done) {
       const testNum = 'getAlbums_promise_001';
       try {
         // Firstly, create an album
@@ -254,7 +254,7 @@ export default function getAlbumsTest () {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUM_003', 0, async function (done) {
+    it('getAlbums_promise_002', 0, async function (done) {
       const testNum = 'getAlbums_promise_002';
       try {
         let subTypes : Array<photoAccessHelper.AlbumSubtype> = [
@@ -274,6 +274,82 @@ export default function getAlbumsTest () {
         done();
       } catch (error) {
         console.info(`${testNum} failed, error: ${JSON.stringify(error)}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0300
+      * @tc.name      : getAlbums_promise_003
+      * @tc.desc      : get user albums by orderByAsc
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('getAlbums_promise_003', 2, async function (done) {
+      const testNum = 'getAlbums_promise_003';
+      try {
+        const albumNames = ['b', 'a', 'c'];
+        for (let i = 0; i < albumNames.length; i++) {
+          await helper.createAlbum(albumNames[i]);
+        }
+
+        const predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.in(albumKeys.ALBUM_NAME, albumNames).orderByAsc(albumKeys.ALBUM_NAME);
+        const fetchOps : photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps);
+        expect(fetchResult.getCount()).assertEqual(3);
+        const resultList = await fetchResult.getAllObjects();
+        const expectNames = ['a', 'b', 'c'];
+        for (let i = 0; i < albumNames.length; i++) {
+          console.info(`${testNum} albumName: ${resultList[i].albumName}`);
+          expect(resultList[i].albumName).assertEqual(expectNames[i]);
+        }
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0400
+      * @tc.name      : getAlbums_promise_004
+      * @tc.desc      : get user albums by orderByDesc
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('getAlbums_promise_004', 2, async function (done) {
+      const testNum = 'getAlbums_promise_004';
+      try {
+        const albumNames = ['x', 'y', 'z'];
+        for (let i = 0; i < albumNames.length; i++) {
+          await helper.createAlbum(albumNames[i]);
+        }
+
+        const predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.in(albumKeys.ALBUM_NAME, albumNames).orderByDesc(albumKeys.ALBUM_NAME);
+        const fetchOps : photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps);
+        expect(fetchResult.getCount()).assertEqual(3);
+        const resultList = await fetchResult.getAllObjects();
+        const expectNames = ['z', 'y', 'x'];
+        for (let i = 0; i < albumNames.length; i++) {
+          console.info(`${testNum} albumName: ${resultList[i].albumName}`);
+          expect(resultList[i].albumName).assertEqual(expectNames[i]);
+        }
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
       }

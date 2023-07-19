@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -22,9 +21,6 @@ import {
   photoKeys,
   getFileAsset,
   photoFetchOption,
-  photoType,
-  albumType,
-  albumSubtype
 } from '../../../../../../../common'
 
 export default function unRegisterChangeTest () {
@@ -34,15 +30,15 @@ export default function unRegisterChangeTest () {
     const DEFAULT_ALBUM_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_ALBUM_URI;
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_0100
-     * @tc.name      : off_001
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0100
+     * @tc.name      : unRegisterChange_001
      * @tc.desc      : off listening motify file displayName, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('off_001', 0, async function (done) {
-      const testNum = 'off_001';
+    it('unRegisterChange_001', 0, async function (done) {
+      const testNum = 'unRegisterChange_001';
       try {
         const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'off01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
@@ -69,15 +65,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_0700
-     * @tc.name      : off_007
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0700
+     * @tc.name      : unRegisterChange_007
      * @tc.desc      : off listening create album, type NOTIFY_ADD
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('off_007', 0, async function (done) {
-      const testNum = 'off_007';
+    it('unRegisterChange_007', 0, async function (done) {
+      const testNum = 'unRegisterChange_007';
       try {
         let count = 0;
         helper.registerChange(DEFAULT_ALBUM_URI, true, async (changeData) => {
@@ -100,15 +96,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_0800
-     * @tc.name      : off_008
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0800
+     * @tc.name      : unRegisterChange_008
      * @tc.desc      : off listening create album, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('off_008', 0, async function (done) {
-      const testNum = 'off_008';
+    it('unRegisterChange_008', 0, async function (done) {
+      const testNum = 'unRegisterChange_008';
       try {
         let albumUri = '';
         let count = 0;
@@ -136,15 +132,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_1000
-     * @tc.name      : off_010
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1000
+     * @tc.name      : unRegisterChange_010
      * @tc.desc      : off listening change album overUri, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('off_010', 0, async function example(done) {
-      const testNum = 'off_010';
+    it('unRegisterChange_010', 0, async function example(done) {
+      const testNum = 'unRegisterChange_010';
       try {
         let albumUri = '';
         let count = 0;
@@ -175,15 +171,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_1100
-     * @tc.name      : off_011
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1100
+     * @tc.name      : unRegisterChange_011
      * @tc.desc      : off listening album removeAssets, type NOTIFY_ALBUM_ADD_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('off_011', 0, async function (done) {
-      const testNum = 'off_011';
+    it('unRegisterChange_011', 0, async function (done) {
+      const testNum = 'unRegisterChange_011';
       try {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
@@ -210,15 +206,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_1200
-     * @tc.name      : off_012
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1200
+     * @tc.name      : unRegisterChange_012
      * @tc.desc      : off listening album removeAssets, type NOTIFY_ALBUM_REMOVE_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('off_012', 0, async function (done) {
-      const testNum = 'off_012';
+    it('unRegisterChange_012', 0, async function (done) {
+      const testNum = 'unRegisterChange_012';
       try {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
@@ -246,15 +242,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_1500
-     * @tc.name      : off_015
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1500
+     * @tc.name      : unRegisterChange_015
      * @tc.desc      : off remove all listening
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('off_015', 0, async function (done) {
-      const testNum = 'off_015';
+    it('unRegisterChange_015', 0, async function (done) {
+      const testNum = 'unRegisterChange_015';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'off15.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
@@ -285,15 +281,15 @@ export default function unRegisterChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_OFF_CALLBACK_0000
-     * @tc.name      : off_callback_000
+     * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_CALLBACK_0000
+     * @tc.name      : unRegisterChange_callback_000
      * @tc.desc      : off remove specified callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('off_callback_000', 0, async function (done) {
-      const testNum = 'off_callback_000';
+    it('unRegisterChange_callback_000', 0, async function (done) {
+      const testNum = 'unRegisterChange_callback_000';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'offCb01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);

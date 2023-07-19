@@ -238,28 +238,36 @@ const getPermission = async function (name, context) {
         name = "ohos.acts.multimedia.mediaLibrary";
     }
 
-    console.info('getPermission start: ' + name);
-    let permissions = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA", "ohos.permission.WRITE_MEDIA"];
-    let atManager = abilityAccessCtrl.createAtManager();
-    atManager.requestPermissionsFromUser(context, permissions, (err, result) => {
-        if (err) {
-            console.info('getPermission failed: ' + JSON.stringify(err));
-        } else {
-            console.info('getPermission suc: ' + JSON.stringify(result));
-        }
-    });
+    try {
+        console.info('getPermission start: ' + name);
+        let isGetPermission = false;
+        let permissions = ["ohos.permission.MEDIA_LOCATION", "ohos.permission.READ_MEDIA", "ohos.permission.WRITE_MEDIA"];
+        let atManager = abilityAccessCtrl.createAtManager();
+        atManager.requestPermissionsFromUser(context, permissions, (err, result) => {
+            if (err) {
+                console.info('getPermission failed: ' + JSON.stringify(err));
+            } else {
+                console.info('getPermission suc: ' + JSON.stringify(result));
+                isGetPermission = true;
+            }
+        });
 
-    let driver = uitest.Driver.create();
-    await sleep(500);
-
-    for (let i = 0; i < 10; i++) {
+        let driver = uitest.Driver.create();
         await sleep(500);
-        let button = await driver.findComponent(uitest.ON.text('允许'));
-        if (button != undefined) {
-            await button.click();
+        for (let i = 0; i < 10; i++) {
+            if (isGetPermission) {
+                break;
+            }
+            await sleep(500);
+            let button = await driver.findComponent(uitest.ON.text('允许'));
+            if (button != undefined) {
+                await button.click();
+            }
         }
+        console.info("getPermission end");
+    } catch (error) {
+        console.info('getPermission error: ' + error);
     }
-    console.info("getPermission end");
 };
 
 const MODIFY_ERROR_CODE_01 = "-1000";

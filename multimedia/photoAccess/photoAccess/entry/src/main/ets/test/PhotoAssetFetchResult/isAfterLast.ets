@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
-  fetchOption,
   photoType,
   photoKeys
 } from '../../../../../../../common'
@@ -30,17 +29,12 @@ export default function assetIsAfterLastTest () {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
         let count = fetchResult.getCount();
-        expect(count > 1).assertTrue();
+        expect(count).assertEqual(2);
         let asset = await fetchResult.getFirstObject();
-        for (let i = 1; i < count; i++) {
-          asset = await fetchResult.getNextObject();
-          if (i + 1 === count) {
-            const result = fetchResult.isAfterLast();
-            expect(result).assertTrue();
-            fetchResult.close();
-            done();
-          }
-        }
+        asset = await fetchResult.getNextObject();
+        const result = fetchResult.isAfterLast();
+        expect(result).assertTrue();
+        done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
@@ -59,7 +53,12 @@ export default function assetIsAfterLastTest () {
      */
     it('isAfterLast_callback_000', 0, async function (done) {
       const testNum = 'isAfterLast_callback_000';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).limit(2, 0);
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await isAfterLastCallbackTest(done, testNum, fetchOps);
     });
 
@@ -74,7 +73,12 @@ export default function assetIsAfterLastTest () {
      */
     it('isAfterLast_callback_001', 0, async function (done) {
       const testNum = 'isAfterLast_callback_001';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).limit(2, 0);
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await isAfterLastCallbackTest(done, testNum, fetchOps);
     });
   })

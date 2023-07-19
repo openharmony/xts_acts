@@ -6,7 +6,7 @@
         "bundle-name": "ohos.acts.multimedia.mediaLibrary",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "testcase-timeout": 10000
     },
     "kits": [
         {

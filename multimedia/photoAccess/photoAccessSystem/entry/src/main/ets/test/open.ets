@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import fileio from "@ohos.fileio";
 import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 import {
@@ -46,8 +45,6 @@ export default function openTest() {
 
               let write = await fileio.write(fd, testNum);
               expect(write).assertEqual(testNum.length);
-              let newAsset = await getFileAsset(testNum, fetchOp);
-              // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
@@ -75,6 +72,9 @@ export default function openTest() {
               let buf = new ArrayBuffer(4096);
               let res = await fileio.read(fd, buf);
               expect(res.bytesRead).assertEqual(assetBytes);
+              console.info(`${testNum} read suc`);
+              await fileio.write(fd, testNum);
+              expect(false).assertTrue();
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
@@ -100,14 +100,15 @@ export default function openTest() {
             } else {
               let write = await fileio.write(fd, testNum);
               expect(write).assertEqual(testNum.length);
-              await asset.close(fd);
-              let newAsset = await getFileAsset(testNum, fetchOp);
-              // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
+
+              let buf = new ArrayBuffer(4096);
+              await fileio.read(fd, buf);
+              expect(false).assertTrue();
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
-            await asset.close(fd);
           }
+          await asset.close(fd);
           done();
         });
       } catch (error) {
@@ -118,9 +119,10 @@ export default function openTest() {
     };
 
     async function rwOpenPromise(done, testNum, fetchOp, assetBytes) {
-      const asset = await getFileAsset(testNum, fetchOp);
+      let asset;
       let fd;
       try {
+        asset = await getFileAsset(testNum, fetchOp);
         fd = await asset.open('rw');
         console.info(`${testNum} fd: ${fd}`);
         let buf = new ArrayBuffer(4096);
@@ -129,50 +131,71 @@ export default function openTest() {
 
         let write = await fileio.write(fd, testNum);
         expect(write).assertEqual(testNum.length);
-        let newAsset = await getFileAsset(testNum, fetchOp);
-        // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
-        await asset.close(fd);
         done();
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
-        await asset.close(fd);
         expect(false).assertTrue();
         done();
+      } finally {
+        if (asset) {
+          await asset.close(fd);
+        }
       }
     };
 
     async function rOpenPromise(done, testNum, fetchOp, assetBytes) {
+      let asset;
+      let fd;
       try {
-        const asset = await getFileAsset(testNum, fetchOp);
-        const fd = await asset.open('r');
+        asset = await getFileAsset(testNum, fetchOp);
+        fd = await asset.open('r');
         console.info(`${testNum} fd: ${fd}`);
         let buf = new ArrayBuffer(4096);
         let res = await fileio.read(fd, buf);
         expect(res.bytesRead).assertEqual(assetBytes);
-        await asset.close(fd);
+        try {
+          await fileio.write(fd, testNum);
+          expect(false).assertTrue();
+        } catch (error) {
+          console.info(`${testNum} error: ${error}`);
+        }
         done();
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
+      } finally {
+        if (asset) {
+          await asset.close(fd);
+        }
       }
     };
 
     async function wOpenPromise(done, testNum, fetchOp) {
+      let asset;
+      let fd;
       try {
-        const asset = await getFileAsset(testNum, fetchOp);
-        const fd = await asset.open('w');
+        asset = await getFileAsset(testNum, fetchOp);
+        fd = await asset.open('w');
         let write = await fileio.write(fd, testNum);
         expect(write).assertEqual(testNum.length);
 
-        let newAsset = await getFileAsset(testNum, fetchOp);
-        // expect(newAsset.get(photoKeys.DATE_MODIFIED) != asset.get(photoKeys.DATE_MODIFIED)).assertTrue();
-        await asset.close(fd);
+        try {
+          let buf = new ArrayBuffer(4096);
+          await fileio.read(fd, buf);
+          expect(false).assertTrue();
+        } catch (error) {
+          console.info(`${testNum} error: ${error}`);
+        }
         done();
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
+      } finally {
+        if (asset) {
+          await asset.close(fd);
+        }
       }
     };
 
