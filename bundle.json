@@ -24,7 +24,7 @@
         "build": {
             "sub_component": [],
             "inner_kits": [],
-            "test": [ "//test/xts/acts:acts" ]
+            "test": [ "//test/xts/acts:acts_" ]
         }
     }
 }
