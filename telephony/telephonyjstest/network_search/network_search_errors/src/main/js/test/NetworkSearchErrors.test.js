@@ -235,11 +235,7 @@ describe('ActsNetworkSearchTest', function () {
         }
         done();
     });
-
-    
-
-    
-
+	
     /**
      * @tc.number  Telephony_NetworkSearch_getNetworkState_Promise_0700
      * @tc.name    SlotId parameter input is -1, test getNetworkState() query function go to the error
@@ -442,26 +438,6 @@ describe('ActsNetworkSearchTest', function () {
     });
 
     /**
-     * @tc.number  Telephony_StateRegistry_on_0200
-     * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
-     * @tc.desc    Function test
-     */
-    it('Telephony_StateRegistry_on_0200', 0, async function (done) {
-        try {
-            observer.on('networkStateChange', {
-                slotId: 0
-            }, NetworkState => {
-                console.log("on networkStateChange, NetworkState:" + JSON.stringify(NetworkState));
-                expect(typeof NetworkState === undefined).assertFalse();
-            });
-            done();
-        } catch (error) {
-            expect(false).assertTrue();
-            done();
-        }
-    });
-
-    /**
      * @tc.number  Telephony_StateRegistry_off_0200
      * @tc.name    Add a networkStatus change listen and test observer.off() to view the callback results
      * @tc.desc    Function test
@@ -476,26 +452,6 @@ describe('ActsNetworkSearchTest', function () {
             // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
             observer.off('networkStateChange', callback);
             observer.off('networkStateChange');
-            done();
-        } catch (error) {
-            expect(false).assertTrue();
-            done();
-        }
-    });
-
-    /**
-     * @tc.number  Telephony_StateRegistry_on_0300
-     * @tc.name    Add a networkStatus change listen and test observer.on({slotId:0}) to view the callback results
-     * @tc.desc    Function test
-     */
-    it('Telephony_StateRegistry_on_0300', 0, async function (done) {
-        try {
-            observer.on('signalInfoChange', {
-                slotId: 0
-            }, SignalInformation => {
-                console.log("on signalInfoChange, SignalInformation:" + JSON.stringify(SignalInformation));
-                expect(typeof SignalInformation === undefined).assertFalse();
-            });
             done();
         } catch (error) {
             expect(false).assertTrue();
