@@ -74,15 +74,12 @@ export default function abilityTest() {
 
       function unSubscribeCallback() {
         console.info(`====>AsyncCallback_0100 unSubscribeCallback 'ACTS_CALL_EVENT'`)
-        globalThis.terminate()
+        globalThis.terminate('AsyncCallback_0100')
         done()
       }
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0200',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
       await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -122,9 +119,7 @@ export default function abilityTest() {
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0300',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>AsyncCallback_0300 createSubscriber  ${data}`)
@@ -164,7 +159,7 @@ export default function abilityTest() {
       function unSubscribeCallback() {
         console.info(`====>AsyncCallback_0300 unSubscribeCallback 'ACTS_CALL_EVENT'`)
         setTimeout(() => {
-          globalThis.terminate()
+          globalThis.terminate('AsyncCallback_0300')
           abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestsecond').then((result) =>{
             console.info('====>AsyncCallback_0300 unSubscribeCallback pkill ok' + JSON.stringify(result));
             done()
@@ -177,9 +172,6 @@ export default function abilityTest() {
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0400',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
       await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -216,16 +208,13 @@ export default function abilityTest() {
         console.info(`====>AsyncCallback_0400 unSubscribeCallback 'ACTS_CALL_EVENT'`)
 
         setTimeout(() => {
-          globalThis.terminate()
+          globalThis.terminate('AsyncCallback_0400')
           done()
-        }, 10000)
+        }, 1000)
       }
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0500',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
       await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -245,7 +234,7 @@ export default function abilityTest() {
         console.info(`====>AsyncCallback_0500 subscribeCallBack all  ${data.event}`)
         if(data.event == 'ACTS_CALL_EVENT') {
           console.info(`====>AsyncCallback_0500 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`)
-          expect(data.parameters.result != 0).assertTrue();
+          expect(data.parameters.num).assertEqual(16000001);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         }
       }
@@ -253,16 +242,13 @@ export default function abilityTest() {
       function unSubscribeCallback() {
         console.info(`====>AsyncCallback_0500 unSubscribeCallback 'ACTS_CALL_EVENT'`)
         setTimeout(() => {
-          globalThis.terminate()
+          globalThis.terminate('AsyncCallback_0500')
           done()
         }, 2000)
       }
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0600',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
       await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -304,9 +290,7 @@ export default function abilityTest() {
 
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_AsyncCallback_0700',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>AsyncCallback_0700 createSubscriber  ${data}`)
@@ -346,9 +330,7 @@ export default function abilityTest() {
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0100',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0100 createSubscriber  ${data}`)
@@ -374,15 +356,12 @@ export default function abilityTest() {
 
       function unSubscribeCallback() {
         console.info(`====>Promise_0100 unSubscribeCallback 'ACTS_CALL_EVENT'`)
-        globalThis.terminate()
+        globalThis.terminate('Promise_0100')
         done()
       }
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0200',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0200 createSubscriber  ${data}`)
@@ -416,9 +395,7 @@ export default function abilityTest() {
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0300',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       await commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0300 createSubscriber  ${data}`)
@@ -452,7 +429,7 @@ export default function abilityTest() {
           expect(data.parameters.str).assertEqual('ACTION');
           expect(data.parameters.result).assertEqual(0);
         }
-        globalThis.terminate()
+        globalThis.terminate('Promise_0300')
         abilityDelegator.executeShellCommand('aa force-stop com.example.forresulttestsecond').then(result =>{
           console.info('====>Promise_0300 unSubscribeCallback pkill ok' + JSON.stringify(result));
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
@@ -469,9 +446,7 @@ export default function abilityTest() {
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0400',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0400 createSubscriber  ${data}`)
@@ -506,16 +481,14 @@ export default function abilityTest() {
       function unSubscribeCallback() {
         console.info(`====>Promise_0400 unSubscribeCallback 'ACTS_CALL_EVENT'`)
         setTimeout(() => {
-          globalThis.terminate()
+          globalThis.terminate('Promise_0400')
           done()
         }, 1000)
       }
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0500',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0500 createSubscriber  ${data}`)
@@ -534,24 +507,22 @@ export default function abilityTest() {
         console.info(`====>Promise_0500 subscribeCallBack all  ${data.event}`)
         if(data.event == 'ACTS_CALL_EVENT') {
           console.info(`====>Promise_0500 subscribeCallBack 'ACTS_CALL_EVENT'  ${data}`)
-          expect(data.parameters.result != 0).assertTrue();
+          expect(data.parameters.num).assertEqual(16000001);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         }
       }
 
       function unSubscribeCallback() {
         console.info(`====>Promise_0500 unSubscribeCallback 'ACTS_CALL_EVENT'`)
+        globalThis.terminate('Promise_0500')
         setTimeout(() => {
-          globalThis.terminate()
           done()
-        }, 2000)
+        }, 1000)
       }
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0600',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0600 createSubscriber  ${data}`)
@@ -591,9 +562,7 @@ export default function abilityTest() {
     })
 
     it('ACTS_UIExtensionAbility_StartAbilityForResult_Promise_0700',0, async function (done) {
-      await setTimeout(() => {
-        console.info(`====>beforeEach setTimeout'`)
-      }, 2000)
+      await Driver.create().delayMs(2000)
       var subscriber
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info(`====>Promise_0700 createSubscriber  ${data}`)

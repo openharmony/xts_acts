@@ -19,12 +19,12 @@ import window from '@ohos.window';
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    globalThis.terminate = () => {
+    globalThis.terminate = (str) => {
       setTimeout(() => {
         this.context.terminateSelf().then(() => {
-          console.debug("====>terminateSelf end");
+          console.info("====>terminateSelf " + JSON.stringify(str) + " end");
         }).catch((err) => {
-          console.debug("====>terminateSelf err:" + JSON.stringify(err));
+          console.info("====>terminateSelf " + JSON.stringify(str) + " err:" + JSON.stringify(err));
         });
       }, 50)
     };

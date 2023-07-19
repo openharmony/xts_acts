@@ -59,7 +59,7 @@ export default class UIExtAbility extends UIExtensionAbility {
     }
 
     if (want.action === 'AsyncCallback_0300') {
-      console.info('=======>UIExtAbility onSessionCreate want.action == AsyncCallback_0200======>');
+      console.info('=======>UIExtAbility onSessionCreate want.action == AsyncCallback_0300======>');
       this.context.startAbilityForResult({
         action: 'AsyncCallback_0300',
         bundleName: 'com.example.mainhap',
