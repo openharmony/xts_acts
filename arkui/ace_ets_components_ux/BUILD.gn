@@ -25,6 +25,7 @@ group("componentUxTest") {
       "ace_ets_component_list:ActsAceListTest",
       "ace_ets_component_menu:ActsAceMenuTest",
       "ace_ets_component_navigation:ActsAceNavigationTest",
+      "ace_ets_component_panel:ActsAcePanelTest",
       "ace_ets_component_popup:ActsAcePopupTest",
       "ace_ets_component_progress:ActsAceProgressTest",
       "ace_ets_component_radio:ActsAceRadioTest",
