@@ -35,7 +35,7 @@ ohos_static_library("libdeqpgles31func0025") {
   deps = common_depends
   external_deps = [
     "hilog:libhilog",
-    "multimedia_image_framework:image_native",
+    "image_framework:image_native",
   ]
   configs = [ ":deqp_platform_ohos_config" ]
 }

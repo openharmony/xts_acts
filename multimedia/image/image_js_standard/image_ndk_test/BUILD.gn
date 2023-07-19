@@ -25,7 +25,7 @@ ohos_js_hap_suite("image_pixelmap_ndk_hap") {
   hap_name = "ActsPixelMapNapiEtsTest"
   shared_libraries = [ "./entry/src/main/cpp:imagePixelmap" ]
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }
 
 ohos_js_assets("pixelmap_ets_assets") {

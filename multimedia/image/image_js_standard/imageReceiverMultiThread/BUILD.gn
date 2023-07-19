@@ -24,7 +24,7 @@ ohos_js_hap_suite("image_receiver_multi_thread_hap") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsImageReceiverMultiThreadJsTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }
 
 ohos_app_scope("image_receiver_multi_thread_app_profile") {

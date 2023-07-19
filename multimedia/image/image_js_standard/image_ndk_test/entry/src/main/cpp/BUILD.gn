@@ -39,11 +39,11 @@ ohos_shared_library("imagePixelmap") {
 
   deps = []
   external_deps = [
-    "multimedia_image_framework:pixelmap_ndk",
+    "image_framework:pixelmap_ndk",
     "napi:ace_napi",
   ]
 
   output_extension = "so"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }
