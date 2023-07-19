@@ -42,6 +42,12 @@
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background"
       }
+    ],
+    "requestPermissions": [
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      }
     ]
   }
 }
