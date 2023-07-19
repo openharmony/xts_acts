@@ -1913,6 +1913,18 @@ describe('BufferTest', function () {
   });
 
   /**
+   * @tc.name: testfrom0269
+   * @tc.desc: Create a new buffer containing a newline character string. Creating using base64 encoding
+   * For example: buffer.from(string, encoding);
+   */
+  it("testfrom0269", 0, function () {
+    const str = `MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC/OgIQLaulKklB\npZltSaWwM3Cnzcmvh+LoqYFYjCePUxnoJRDusFqy4sjwBx9fn/XSxxJ9A0KxMtXa\nr7YFjwQo3FsIjLZ3+8wS+Kydcg==`;
+    const buf = buffer.from(str, 'base64');
+    let ref = buf.readInt8(buf.length - 1);
+    expect(ref).assertEqual(114);
+  });
+  
+  /**
    * @tc.name: testBlobConstructor0270
    * @tc.desc: Creates a new Blob object containing a concatenation of the given sources.
    * For example: let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
