@@ -569,7 +569,7 @@ export default function audioRendererTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETRENDERERSAMPLINGRATE_CALLBACK_0200', 0, async function (done) {
       let rate = 0;
       audioRen.setRendererSamplingRate(rate, (err) => {
-        if (err.code == env.INVALID_INPUT_PARAMETER_6800104) {
+        if (err.code == env.UNSUPORTED_OPTION_6800104) {
           console.info(`${TagFrmwkRender}: setRendererSamplingRate ERROR! code: ${err.code}, mesage: ${err.message} start getting samplingRate`);
           audioRen.getRendererSamplingRate((err, data) => {
             if (err) {
