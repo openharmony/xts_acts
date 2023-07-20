@@ -25,28 +25,32 @@ let commonEventData = {
 };
 
 let tag = 'StateChangeTesttag';
-let delayTime_500 = 500;
-let delayTime_1000 = 1000;
-let delayTime_2000 = 2000;
+let delayTime500 = 500;
+let delayTime1000 = 1000;
+let delayTime2000 = 2000;
 let undefineTag = -1;
 let defineTag = 1;
 let arrLength = 4;
 let onForeGroundTAG = undefineTag;
+let zero = 0;
+let one = 1;
+let two = 2;
+let three = 3;
 let applicationStateChangeCallbackFir = {
   onApplicationForeground() {
     console.log(tag, 'applicationStateChangeCallbackFir onApplicationForeground');
-    commonEventData.parameters.commonStateArr[0] = defineTag;
+    commonEventData.parameters.commonStateArr[zero] = defineTag;
 
     setTimeout(() => {
       console.info('Enter onApplicationForeground publish!');
       commonEvent.publish('processState', commonEventData, (err) => {
         console.info('====>processState publish err: ' + JSON.stringify(err));
       });
-    }, delayTime_1000);
+    }, delayTime1000);
   },
   onApplicationBackground() {
     console.log(tag, 'applicationStateChangeCallbackFir onApplicationBackground');
-    commonEventData.parameters.commonStateArr[1] = defineTag;
+    commonEventData.parameters.commonStateArr[one] = defineTag;
 
     if (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister') {
       console.info('entered needbackgroundoff!');
@@ -58,21 +62,21 @@ let applicationStateChangeCallbackFir = {
 let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
     console.log(tag, 'applicationStateChangeCallbackSec onApplicationForeground');
-    commonEventData.parameters.commonStateArr[2] = defineTag;
+    commonEventData.parameters.commonStateArr[two] = defineTag;
   },
   onApplicationBackground() {
     console.log(tag, 'applicationStateChangeCallbackSec onApplicationBackground');
-    commonEventData.parameters.commonStateArr[3] = defineTag;
+    commonEventData.parameters.commonStateArr[three] = defineTag;
     if (globalThis.want.action === 'doubleNeedBackGroundOff') {
       setTimeout(() => {
         globalThis.applicationContext.off('applicationStateChange', applicationStateChangeCallbackSec);
-      }, delayTime_500);
+      }, delayTime500);
     }
     else if (globalThis.want.action === 'DoubleRegisterOff') {
       setTimeout(() => {
         console.info('entered DoubleRegisterOff');
         globalThis.applicationContext.off('applicationStateChange');
-      }, delayTime_500);
+      }, delayTime500);
     }
   }
 };
@@ -141,7 +145,7 @@ export default class EntryAbility extends Ability {
         commonEvent.publish('processState', commonEventData, (err) => {
           console.info('====>processState publish err: ' + JSON.stringify(err));
         });
-      }, delayTime_2000);
+      }, delayTime2000);
 
     }
   }

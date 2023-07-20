@@ -17,7 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility';
 import type Window from '@ohos.window';
 
 let TAG = 'StateChangeTestTAG';
-let delayTime_3000 = 3000;
+let delayTime3000 = 3000;
 let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
     console.info('==== ApplicationStateChange Foreground ====');
@@ -79,7 +79,7 @@ export default class EntryAbility extends Ability {
       globalThis.abilityContext.terminateSelf((err) => {
         console.log('terminateSelf result:' + JSON.stringify(err));
       });
-    }, delayTime_3000);
+    }, delayTime3000);
   }
 
   onBackground() {

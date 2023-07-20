@@ -20,8 +20,8 @@ import commonEvent from '@ohos.commonEvent';
 
 let tag = 'getRunningProcess';
 let commonStateArr;
-let delayTime_3000 = 3000;
-let delayTime_1000 = 1000;
+let delayTime3000 = 3000;
+let delayTime1000 = 1000;
 let undefinedTag = -1;
 let definedTag = 1;
 let commonEventData = {
@@ -41,7 +41,7 @@ let applicationStateChangeCallbackFir = {
       commonEvent.publish('processState', commonEventData, (err) => {
         console.info('====>processState publish err: ' + JSON.stringify(err));
       });
-    }, delayTime_1000);
+    }, delayTime1000);
   }
 };
 let foregroundTAG = undefinedTag;
@@ -96,7 +96,7 @@ export default class EntryAbility extends Ability {
         commonEvent.publish('processState', commonEventData, (err) => {
           console.info('====>processState publish err: ' + JSON.stringify(err));
         });
-      }, delayTime_3000);
+      }, delayTime3000);
 
     }
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
