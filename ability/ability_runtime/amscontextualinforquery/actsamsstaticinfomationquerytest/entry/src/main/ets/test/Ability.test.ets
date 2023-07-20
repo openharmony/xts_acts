@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
-
+import bundleManager from '@ohos.bundle.bundleManager'
 
 var subscriberInfo_MainAbility_ability = {
     events: ["MainAbility_Start_CommonEvent_ability", "SecondAbility_Start_CommonEvent_ability"],
@@ -121,231 +121,288 @@ export default function abilityTest() {
         })
 
         function checkAbilityInfo(data) {
-            console.log("checkAbilityInfo start  " + data);
+            console.log("checkAbilityInfo start  " + JSON.stringify(data));
             console.log("checkAbilityInfo bundleName : " + data.bundleName);
+            console.log("checkAbilityInfo moduleName : " + data.moduleName);
             console.log("checkAbilityInfo name : " + data.name);
             console.log("checkAbilityInfo label : " + data.label);
-            console.log("checkAbilityInfo description : " + data.description);
-            console.log("checkAbilityInfo icon : " + data.icon);
             console.log("checkAbilityInfo labelId : " + data.labelId);
+            console.log("checkAbilityInfo description : " + data.description);
             console.log("checkAbilityInfo descriptionId : " + data.descriptionId);
+            console.log("checkAbilityInfo icon : " + data.icon);
             console.log("checkAbilityInfo iconId : " + data.iconId);
-            console.log("checkAbilityInfo moduleName : " + data.moduleName);
             console.log("checkAbilityInfo process : " + data.process);
-            console.log("checkAbilityInfo targetAbility : " + data.targetAbility);
-            console.log("checkAbilityInfo backgroundModes : " + data.backgroundModes);
-            console.log("checkAbilityInfo isVisible : " + data.isVisible);
-            console.log("checkAbilityInfo formEnabled : " + data.formEnabled);
+            console.log("checkAbilityInfo exported : " + data.exported);
             console.log("checkAbilityInfo type : " + data.type)
-            console.log("checkAbilityInfo subType : " + data.subType);
             console.log("checkAbilityInfo orientation : " + data.orientation);
-            console.log("checkAbilityInfo launchMode : " + data.launchMode);
+            console.log("checkAbilityInfo launchType : " + data.launchType);
             console.log("checkAbilityInfo permissions length : " + data.permissions.length);
             console.log("checkAbilityInfo permissions: " + data.permissions);
             for (var j = 0; j < data.permissions.length; j++) {
-                console.log("getAbilityInfo data.permissions[" + j + "] : " + data.permissions[j]);
-            }
-            console.log("checkAbilityInfo deviceTypes length : " + data.deviceTypes.length);
-            for (var j = 0; j < data.deviceTypes.length; j++) {
-                console.log("getAbilityInfo data.deviceTypes[" + j + "] : " + data.deviceTypes[j]);
-            }
-            console.log("checkAbilityInfo deviceCapabilities length : " + data.deviceCapabilities.length);
-            for (var j = 0; j < data.deviceCapabilities.length; j++) {
-                console.log("getAbilityInfo data.deviceCapabilities[" + j + "] : " + data.deviceCapabilities[j]);
+                console.log("checkAbilityInfo data.permissions[" + j + "] : " + data.permissions[j]);
             }
             console.log("checkAbilityInfo readPermission : " + data.readPermission);
             console.log("checkAbilityInfo writePermission : " + data.writePermission);
-            console.log("checkAbilityInfo formEntity : " + data.formEntity);
-            console.log("checkAbilityInfo minFormHeight : " + data.minFormHeight);
-            console.log("checkAbilityInfo defaultFormHeight : " + data.defaultFormHeight);
-            console.log("checkAbilityInfo minFormWidth : " + data.minFormWidth);
-            console.log("checkAbilityInfo defaultFormWidth : " + data.defaultFormWidth);
             console.log("checkAbilityInfo uri : " + data.uri);
+            console.log("checkAbilityInfo deviceTypes length : " + data.deviceTypes.length);
+            for (var j = 0; j < data.deviceTypes.length; j++) {
+                console.log("checkAbilityInfo data.deviceTypes[" + j + "] : " + data.deviceTypes[j]);
+            }
+            console.log("checkAbilityInfo applicationInfo : " + JSON.stringify(data.applicationInfo));
+            console.log("checkAbilityInfo metadata length : " + data.metadata.length);
+            for (var j = 0; j < data.metadata.length; j++) {
+                console.log("checkAbilityInfo data.metadata[" + j + "] : " + data.metadata[j]);
+            }
+            console.log("checkAbilityInfo enabled : " + data.enabled);
+            console.log("checkAbilityInfo supportWindowModes length : " + data.supportWindowModes.length);
+            for (var j = 0; j < data.supportWindowModes.length; j++) {
+                console.log("checkAbilityInfo data.supportWindowModes[" + j + "] : " + data.supportWindowModes[j]);
+            }
+            console.log("checkAbilityInfo windowSize : " + JSON.stringify(data.windowSize));
+
             expect(typeof (data)).assertEqual("object");
             expect(typeof (data.bundleName)).assertEqual("string");
+            expect(typeof (data.moduleName)).assertEqual("string");
             expect(typeof (data.name)).assertEqual("string");
             expect(typeof (data.label)).assertEqual("string");
-            expect(typeof (data.description)).assertEqual("string");
-            expect(typeof (data.icon)).assertEqual("string");
             expect(typeof (data.labelId)).assertEqual("number");
+            expect(typeof (data.description)).assertEqual("string");
             expect(typeof (data.descriptionId)).assertEqual("number");
+            expect(typeof (data.icon)).assertEqual("string");
             expect(typeof (data.iconId)).assertEqual("number");
-            expect(typeof (data.moduleName)).assertEqual("string");
             expect(typeof (data.process)).assertEqual("string");
-            expect(typeof (data.targetAbility)).assertEqual("string");
-            expect(typeof (data.backgroundModes)).assertEqual("number");
-            expect(typeof (data.isVisible)).assertEqual("boolean");
-            expect(typeof (data.formEnabled)).assertEqual("boolean");
+            expect(typeof (data.exported)).assertEqual("boolean");
             expect(typeof (data.type)).assertEqual("number");
-            expect(typeof (data.subType)).assertEqual("number");
             expect(typeof (data.orientation)).assertEqual("number");
-            expect(typeof (data.launchMode)).assertEqual("number");
+            expect(typeof (data.launchType)).assertEqual("number");
             expect(Array.isArray(data.permissions)).assertEqual(true);
-            expect(Array.isArray(data.deviceTypes)).assertEqual(true);
-            expect(Array.isArray(data.deviceCapabilities)).assertEqual(true);
             expect(typeof (data.readPermission)).assertEqual("string");
             expect(typeof (data.writePermission)).assertEqual("string");
-            expect(typeof (data.applicationInfo)).assertEqual("object");
-            expect(typeof (data.formEntity)).assertEqual("number");
-            expect(typeof (data.minFormHeight)).assertEqual("number");
-            expect(typeof (data.defaultFormHeight)).assertEqual("number");
-            expect(typeof (data.minFormWidth)).assertEqual("number");
-            expect(typeof (data.defaultFormWidth)).assertEqual("number");
             expect(typeof (data.uri)).assertEqual("string");
+            expect(Array.isArray(data.deviceTypes)).assertEqual(true);
+            expect(typeof (data.applicationInfo)).assertEqual("object");
+            expect(Array.isArray(data.metadata)).assertEqual(true);
+            expect(typeof (data.enabled)).assertEqual("boolean");
+            expect(Array.isArray(data.supportWindowModes)).assertEqual(true);
+            expect(typeof (data.windowSize)).assertEqual("object");
 
             expect(data.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.moduleName).assertEqual("com.acts.staticinfomationquery");
             expect(data.name).assertEqual("com.acts.staticinfomationquery.MainAbility");
             expect(data.label).assertEqual("$string:entry_label");
-            expect(data.description).assertEqual("$string:phone_entry_main");
-            expect(data.icon).assertEqual("$media:icon");
             expect(data.labelId).assertLarger(0);
+            expect(data.description).assertEqual("$string:phone_entry_main");
             expect(data.descriptionId).assertLarger(0);
+            expect(data.icon).assertEqual("$media:icon");
             expect(data.iconId).assertLarger(0);
-            expect(data.moduleName).assertEqual("com.acts.staticinfomationquery");
             expect(data.process).assertEqual("");
-            expect(data.targetAbility).assertEqual("");
-            expect(data.backgroundModes).assertEqual(0);
-            expect(data.isVisible).assertEqual(true);
-            expect(data.formEnabled).assertEqual(false);
+            expect(data.exported).assertEqual(true);
             expect(data.type).assertEqual(1);
-            expect(data.subType).assertEqual(0);
             expect(data.orientation).assertEqual(2);
-            expect(data.launchMode).assertEqual(0);
+            expect(data.launchType).assertEqual(0);
             expect(data.permissions.length).assertEqual(0);
-            expect(data.deviceTypes[0]).assertEqual("default");
-            expect(data.deviceTypes.length).assertEqual(2);
-            expect(data.deviceCapabilities.length).assertEqual(0);
             expect(data.readPermission).assertEqual("");
             expect(data.writePermission).assertEqual("");
-            expect(data.formEntity).assertEqual(0);
-            expect(data.minFormHeight).assertEqual(0);
-            expect(data.defaultFormHeight).assertEqual(0);
-            expect(data.minFormWidth).assertEqual(0);
-            expect(data.defaultFormWidth).assertEqual(0);
             expect(data.uri).assertEqual("");
+            expect(data.deviceTypes[0]).assertEqual("default");
+            expect(data.deviceTypes[1]).assertEqual("tablet");
+            expect(data.deviceTypes[2]).assertEqual("2in1");
+            expect(data.deviceTypes.length).assertEqual(3);
+
+            expect(data.applicationInfo.name).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.description).assertEqual("$string:description_application");
+            expect(data.applicationInfo.descriptionId).assertLarger(0);
+            expect(data.applicationInfo.enabled).assertEqual(true);
+            expect(data.applicationInfo.label).assertEqual("$string:app_name");
+            expect(data.applicationInfo.labelId).assertLarger(0);
+            expect(data.applicationInfo.icon).assertEqual("$media:icon");
+            expect(data.applicationInfo.iconId).assertEqual(16777224);
+            expect(data.applicationInfo.process).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.permissions.length).assertEqual(0);
+            expect(data.applicationInfo.codePath).assertEqual("/data/app/el1/bundle/public/com.acts.staticinfomationquery");
+            expect(data.applicationInfo.removable).assertEqual(true);
+            expect(data.applicationInfo.accessTokenId).assertLarger(0);
+            expect(data.applicationInfo.uid).assertLarger(0);
+            expect(data.applicationInfo.iconResource.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.iconResource.moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.iconResource.id).assertLarger(0);
+            expect(data.applicationInfo.labelResource.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.labelResource.moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.labelResource.id).assertLarger(0);
+            expect(data.applicationInfo.descriptionResource.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.descriptionResource.moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.applicationInfo.descriptionResource.id).assertLarger(0);
+            expect(data.applicationInfo.appDistributionType).assertEqual("os_integration");
+            expect(data.applicationInfo.appProvisionType).assertEqual("release");
+            expect(data.applicationInfo.systemApp).assertEqual(true);
+            expect(data.applicationInfo.bundleType).assertEqual(0);
+            expect(data.applicationInfo.debug).assertEqual(false);
+
+            expect(data.metadata.length).assertEqual(0);
+            expect(data.enabled).assertEqual(true);
+            expect(data.supportWindowModes.length).assertEqual(3);
+
             console.log("checkAbilityInfo end  " + data);
         }
+
         function checkApplicationInfo(data) {
-            console.log("checkApplicationInfo start  " + data);
+            console.log("checkApplicationInfo start  " + JSON.stringify(data));
             console.log("checkApplicationInfo name : " + data.name);
             console.log("checkApplicationInfo description : " + data.description);
             console.log("checkApplicationInfo descriptionId : " + data.descriptionId);
-            console.log("checkApplicationInfo systemApp : " + data.systemApp);
             console.log("checkApplicationInfo enabled : " + data.enabled);
             console.log("checkApplicationInfo label : " + data.label)
             console.log("checkApplicationInfo labelId : " + data.labelId);
             console.log("checkApplicationInfo icon : " + data.icon);
             console.log("checkApplicationInfo iconId : " + data.iconId);
             console.log("checkApplicationInfo process : " + data.process);
-            console.log("checkApplicationInfo supportedModes : " + data.supportedModes);
-            console.log("checkApplicationInfo moduleSourceDirs length : " + data.moduleSourceDirs.length);
-            for (var j = 0; j < data.moduleSourceDirs.length; j++) {
-                console.log("checkApplicationInfo data.moduleSourceDirs[" + j + "] : " + data.moduleSourceDirs[j]);
-            }
             console.log("checkApplicationInfo permissions length : " + data.permissions.length);
             for (var j = 0; j < data.permissions.length; j++) {
                 console.log("checkApplicationInfo data.permissions[" + j + "] : " + data.permissions[j]);
             }
-            console.log("checkApplicationInfo moduleInfos length : " + data.moduleInfos.length);
-            for (var j = 0; j < data.moduleInfos.length; j++) {
-                console.log("checkApplicationInfo data.moduleInfos[" + j + "].moduleName : " +
-                data.moduleInfos[j].moduleName);
-                console.log("checkApplicationInfo data.moduleInfos[" + j + "].moduleSourceDir : " +
-                data.moduleInfos[j].moduleSourceDir);
-            }
-
-            console.log("checkApplicationInfo entryDir : " + data.entryDir);
             console.log("checkApplicationInfo codePath : " + data.codePath);
+            console.log("checkApplicationInfo metadata size : " + data.metadata.size);
+            for (var j = 0; j < data.metadata.size; j++) {
+                console.log("checkApplicationInfo data.metadata[" + j + "] : " + data.metadata[j]);
+            }
             console.log("checkApplicationInfo removable: " + data.removable);
+            console.log("checkApplicationInfo accessTokenId: " + data.accessTokenId);
+            console.log("checkApplicationInfo uid: " + data.uid);
+            console.log("checkApplicationInfo iconResource: " + JSON.stringify(data.iconResource));
+            console.log("checkApplicationInfo labelResource: " + JSON.stringify(data.labelResource));
+            console.log("checkApplicationInfo descriptionResource: " + JSON.stringify(data.descriptionResource));
+            console.log("checkApplicationInfo appDistributionType: " + data.appDistributionType);
+            console.log("checkApplicationInfo appProvisionType: " + data.appProvisionType);
+            console.log("checkApplicationInfo systemApp : " + data.systemApp);
+            console.log("checkApplicationInfo bundleType : " + data.bundleType);
+            console.log("checkApplicationInfo debug : " + data.debug);
 
             expect(typeof (data)).assertEqual("object");
             expect(typeof (data.name)).assertEqual("string");
             expect(typeof (data.description)).assertEqual("string");
             expect(typeof (data.descriptionId)).assertEqual("number");
-            expect(typeof (data.systemApp)).assertEqual("boolean");
             expect(typeof (data.enabled)).assertEqual("boolean");
             expect(typeof (data.label)).assertEqual("string");
-            expect(typeof (data.labelId)).assertEqual("string");
+            expect(typeof (data.labelId)).assertEqual("number");
             expect(typeof (data.icon)).assertEqual("string");
-            expect(typeof (data.iconId)).assertEqual("string");
+            expect(typeof (data.iconId)).assertEqual("number");
             expect(typeof (data.process)).assertEqual("string");
-            expect(typeof (data.supportedModes)).assertEqual("number");
             expect(Array.isArray(data.permissions)).assertEqual(true);
-            expect(Array.isArray(data.moduleInfos)).assertEqual(true);
             expect(typeof (data.codePath)).assertEqual("string");
             expect(typeof (data.removable)).assertEqual("boolean");
+            expect(typeof (data.accessTokenId)).assertEqual("number");
+            expect(typeof (data.uid)).assertEqual("number");
+            expect(typeof (data.iconResource)).assertEqual("object");
+            expect(typeof (data.labelResource)).assertEqual("object");
+            expect(typeof (data.descriptionResource)).assertEqual("object");
+            expect(typeof (data.appDistributionType)).assertEqual("string");
+            expect(typeof (data.appProvisionType)).assertEqual("string");
+            expect(typeof (data.systemApp)).assertEqual("boolean");
+            expect(typeof (data.bundleType)).assertEqual("number");
+            expect(typeof (data.debug)).assertEqual("boolean");
             console.log("checkApplicationInfo_expect_typeof_end")
+
             expect(data.name).assertEqual("com.acts.staticinfomationquery");
             expect(data.description).assertEqual("$string:description_application");
             expect(data.descriptionId).assertLarger(0);
-            expect(data.systemApp).assertEqual(true);
             expect(data.enabled).assertEqual(true);
             expect(data.label).assertEqual("$string:app_name");
-            expect(data.labelId.length).assertLarger(0);
+            expect(data.labelId).assertLarger(0);
             expect(data.icon).assertEqual("$media:icon");
-            expect(data.iconId.length).assertLarger(0);
+            expect(data.iconId).assertLarger(0);
             expect(data.process).assertEqual("com.acts.staticinfomationquery");
-            expect(data.supportedModes).assertEqual(0);
-            expect(data.moduleInfos.length).assertEqual(1);
-            expect(data.moduleInfos[0].moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.permissions.length).assertEqual(0);
             expect(data.codePath).assertEqual("/data/app/el1/bundle/public/com.acts.staticinfomationquery")
             expect(data.removable).assertEqual(true);
+            expect(data.accessTokenId).assertLarger(0);
+            expect(data.uid).assertLarger(0);
+            expect(data.iconResource.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.iconResource.moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.iconResource.id).assertLarger(0);
+            expect(data.labelResource.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.labelResource.moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.labelResource.id).assertLarger(0);
+            expect(data.descriptionResource.bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.descriptionResource.moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.descriptionResource.id).assertLarger(0);
+            expect(data.appDistributionType).assertEqual("os_integration");
+            expect(data.appProvisionType).assertEqual("release");
+            expect(data.systemApp).assertEqual(true);
+            expect(data.bundleType).assertEqual(0);
+            expect(data.debug).assertEqual(false);
             console.log("checkApplicationInfo end  " + data);
         }
+
         function checkHapModuleInfo(data) {
-            console.log("checkHapModuleInfo start  " + data);
+            console.log("checkHapModuleInfo start  " + JSON.stringify(data));
             console.log("checkHapModuleInfo name : " + data.name);
-            console.log("checkHapModuleInfo description : " + data.description);
-            console.log("checkHapModuleInfo descriptionId : " + data.descriptionId);
             console.log("checkHapModuleInfo icon : " + data.icon);
+            console.log("checkHapModuleInfo iconId : " + data.iconId);
             console.log("checkHapModuleInfo label : " + data.label);
             console.log("checkHapModuleInfo labelId : " + data.labelId);
-            console.log("checkHapModuleInfo iconId : " + data.iconId);
-            console.log("checkHapModuleInfo backgroundImg : " + data.backgroundImg);
-            console.log("checkHapModuleInfo supportedModes : " + data.supportedModes);
-            console.log("checkHapModuleInfo reqCapabilities length : " + data.reqCapabilities.length);
-            for (var j = 0; j < data.reqCapabilities.length; j++) {
-                console.log("checkHapModuleInfo data.reqCapabilities[" + j + "] : " + data.reqCapabilities[j]);
-            }
-            console.log("checkHapModuleInfo  deviceTypes length : " + data.deviceTypes.length);
+            console.log("checkHapModuleInfo description : " + data.description);
+            console.log("checkHapModuleInfo descriptionId : " + data.descriptionId);
+            console.log("checkHapModuleInfo mainElementName : " + data.mainElementName);
+            console.log("checkHapModuleInfo abilitiesInfo : " + JSON.stringify(data.abilitiesInfo));
+            console.log("checkHapModuleInfo extensionAbilitiesInfo : " + JSON.stringify(data.extensionAbilitiesInfo));
+            console.log("checkHapModuleInfo metadata : " + JSON.stringify(data.metadata));
+            console.log("checkHapModuleInfo deviceTypes length : " + data.deviceTypes.length);
             for (var j = 0; j < data.deviceTypes.length; j++) {
                 console.log("checkHapModuleInfo data.deviceTypes[" + j + "] : " + data.deviceTypes[j]);
             }
-
-            console.log("checkHapModuleInfo moduleName : " + data.moduleName);
-            console.log("checkHapModuleInfo mainAbilityName : " + data.mainAbilityName);
             console.log("checkHapModuleInfo installationFree : " + data.installationFree);
+            console.log("checkHapModuleInfo hashValue : " + data.hashValue);
+            console.log("checkHapModuleInfo type : " + data.type);
+            console.log("checkHapModuleInfo dependencies length : " + data.dependencies.length);
+            for (var j = 0; j < data.dependencies.length; j++) {
+                console.log("checkHapModuleInfo data.dependencies[" + j + "] : " + data.dependencies[j]);
+            }
+            console.log("checkHapModuleInfo preloads length : " + data.preloads.length);
+            for (var j = 0; j < data.preloads.length; j++) {
+                console.log("checkHapModuleInfo data.preloads[" + j + "] : " + data.preloads[j]);
+            }
 
             expect(typeof (data)).assertEqual("object");
             expect(typeof (data.name)).assertEqual("string");
-            expect(typeof (data.description)).assertEqual("string");
             expect(typeof (data.icon)).assertEqual("string");
+            expect(typeof (data.iconId)).assertEqual("number");
             expect(typeof (data.label)).assertEqual("string");
-            expect(typeof (data.backgroundImg)).assertEqual("string");
-            expect(typeof (data.supportedModes)).assertEqual("number");
-            expect(Array.isArray(data.reqCapabilities)).assertEqual(true);
+            expect(typeof (data.labelId)).assertEqual("number");
+            expect(typeof (data.description)).assertEqual("string");
+            expect(typeof (data.descriptionId)).assertEqual("number");
+            expect(typeof (data.mainElementName)).assertEqual("string");
+            expect(Array.isArray(data.abilitiesInfo)).assertEqual(true);
+            expect(Array.isArray(data.extensionAbilitiesInfo)).assertEqual(true);
+            expect(Array.isArray(data.metadata)).assertEqual(true);
             expect(Array.isArray(data.deviceTypes)).assertEqual(true);
-            expect(Array.isArray(data.abilityInfo)).assertEqual(true);
-            expect(typeof (data.moduleName)).assertEqual("string");
-            expect(typeof (data.mainAbilityName)).assertEqual("string");
+            expect(typeof (data.installationFree)).assertEqual("boolean");
+            expect(typeof (data.hashValue)).assertEqual("string");
+            expect(typeof (data.type)).assertEqual("number");
+            expect(Array.isArray(data.dependencies)).assertEqual(true);
+            expect(Array.isArray(data.preloads)).assertEqual(true);
             console.log("checkHapModuleInfo_expect_typeof_end")
+
             expect(data.name).assertEqual("com.acts.staticinfomationquery");
-            expect(data.description).assertEqual("$string:phone_entry_dsc");
-            expect(data.descriptionId).assertEqual(16777221);
             expect(data.icon).assertEqual("$media:icon");
+            expect(data.iconId).assertEqual(16777224);
             expect(data.label).assertEqual("$string:entry_label");
             expect(data.labelId).assertEqual(16777219);
-            expect(data.iconId).assertEqual(16777224);
-            expect(data.backgroundImg).assertEqual("");
-            expect(data.supportedModes).assertEqual(0);
-            expect(data.reqCapabilities.length).assertEqual(0);
-            expect(data.deviceTypes.length).assertEqual(2);
-            expect(data.deviceTypes[0]).assertEqual("default");
-            expect(data.moduleName).assertEqual("com.acts.staticinfomationquery")
-            expect(data.mainAbilityName).assertEqual("com.acts.staticinfomationquery.MainAbility");
-            expect(data.installationFree).assertEqual(false);
+            expect(data.description).assertEqual("$string:phone_entry_dsc");
+            expect(data.descriptionId).assertEqual(16777221);
             expect(data.mainElementName).assertEqual('com.acts.staticinfomationquery.MainAbility');
+            expect(data.abilitiesInfo.length).assertEqual(1);
+            expect(data.abilitiesInfo[0].bundleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.abilitiesInfo[0].moduleName).assertEqual("com.acts.staticinfomationquery");
+            expect(data.extensionAbilitiesInfo.length).assertEqual(0);
+            expect(data.metadata.length).assertEqual(0);
+            expect(data.deviceTypes[0]).assertEqual("default");
+            expect(data.deviceTypes[1]).assertEqual("tablet");
+            expect(data.deviceTypes[2]).assertEqual("2in1");
+            expect(data.installationFree).assertEqual(false);
             expect(data.hashValue).assertEqual('');
+            expect(data.type).assertEqual(bundleManager.ModuleType.ENTRY);
+            expect(data.dependencies.length).assertEqual(0);
+            expect(data.preloads.length).assertEqual(0);
             console.log("checkHapModuleInfo end  " + data);
         }
     })
