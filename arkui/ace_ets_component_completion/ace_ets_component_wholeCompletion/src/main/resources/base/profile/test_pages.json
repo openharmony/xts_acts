@@ -21,7 +21,6 @@
     "TestAbility/pages/textSpanFont",
     "TestAbility/pages/gridScrollBar",
     "TestAbility/pages/sidebarType",
-    "TestAbility/pages/navigationType",
     "TestAbility/pages/noBarrierComponents",
     "TestAbility/pages/noBarriersGroup",
     "TestAbility/pages/assemblyCallback",
