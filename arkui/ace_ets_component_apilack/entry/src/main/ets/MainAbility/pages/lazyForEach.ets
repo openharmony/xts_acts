@@ -67,7 +67,7 @@ class BasicDataSource implements IDataSource {
 }
 
 class MyDataSource extends BasicDataSource {
-  private dataArray: string[] = ['/path/image0', '/path/image1', '/path/image2', '/path/image3']
+  private dataArray: string[] = ['/path/image0']
 
   public totalCount(): number {
     return this.dataArray.length

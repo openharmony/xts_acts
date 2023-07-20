@@ -45,6 +45,7 @@
         "MainAbility/pages/TogglePage",
         "MainAbility/pages/NavDestinationPage",
         "MainAbility/pages/NavigationPage",
-        "MainAbility/pages/GridItemPage"
+        "MainAbility/pages/GridItemPage",
+        "MainAbility/pages/GridColoffsetPage"
     ]
 }
