@@ -61,7 +61,7 @@ export default class EntryAbility1 extends Ability {
     setTimeout(() => {
       globalThis.abilityContext2.terminateSelf((err) => {
         console.log('terminateSelf result:' + JSON.stringify(err));
-      })
+      });
     }, 3000);
   }
 

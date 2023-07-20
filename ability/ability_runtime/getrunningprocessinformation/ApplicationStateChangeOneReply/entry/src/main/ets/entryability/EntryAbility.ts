@@ -25,22 +25,26 @@ let commonEventData = {
 };
 let onForeGroundTAG = -1;
 let TAG = 'StateChangeTestTAG';
+let delayTime_500 = 500;
+let delayTime_1000 = 1000;
+let delayTime_2000 = 2000;
+let undefineTag = -1;
+let defineTag = 1;
 let applicationStateChangeCallbackFir = {
   onApplicationForeground() {
     console.log(TAG, 'applicationStateChangeCallbackFir onApplicationForeground');
-    commonEventData.parameters.commonStateArr[0] = 1;
+    commonEventData.parameters.commonStateArr[0] = defineTag;
 
     setTimeout(() => {
-      console.info('Enter onApplicationForeground publish!')
+      console.info('Enter onApplicationForeground publish!');
       commonEvent.publish('processState', commonEventData, (err) => {
-        console.info("====>processState publish err: " + JSON.stringify(err));
-      })
-    }, 1000);
-
+        console.info('====>processState publish err: ' + JSON.stringify(err));
+      });
+    }, delayTime_1000);
   },
   onApplicationBackground() {
     console.log(TAG, 'applicationStateChangeCallbackFir onApplicationBackground');
-    commonEventData.parameters.commonStateArr[1] = 1;
+    commonEventData.parameters.commonStateArr[1] = defineTag;
 
     if (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister') {
       console.info('entered needbackgroundoff!');
@@ -52,30 +56,30 @@ let applicationStateChangeCallbackFir = {
 let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
     console.log(TAG, 'applicationStateChangeCallbackSec onApplicationForeground');
-    commonEventData.parameters.commonStateArr[2] = 1;
+    commonEventData.parameters.commonStateArr[2] = defineTag;
   },
   onApplicationBackground() {
     console.log(TAG, 'applicationStateChangeCallbackSec onApplicationBackground');
-    commonEventData.parameters.commonStateArr[3] = 1;
+    commonEventData.parameters.commonStateArr[3] = defineTag;
     if (globalThis.want.action === 'doubleNeedBackGroundOff') {
       setTimeout(() => {
         globalThis.applicationContext.off('applicationStateChange', applicationStateChangeCallbackSec);
-      }, 500);
+      }, delayTime_500);
     }
     else if (globalThis.want.action === 'DoubleRegisterOff') {
       setTimeout(() => {
         console.info('entered DoubleRegisterOff');
         globalThis.applicationContext.off('applicationStateChange');
-      }, 500);
+      }, delayTime_500);
     }
   }
-}
+};
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
-    onForeGroundTAG = -1;
+    onForeGroundTAG = undefineTag;
     for (let i = 0; i < 4; i++) {
-      commonStateArr[i] = -1
+      commonStateArr[i] = undefineTag;
     }
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -89,9 +93,9 @@ export default class EntryAbility extends Ability {
       globalThis.applicationContext.off('applicationStateChange', applicationStateChangeCallbackFir);
     }
     globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackFir);
-    if (globalThis.want.action === 'doubleRegister' || globalThis.want.action === 'doubleNeedBackGroundOff'||
+    if (globalThis.want.action === 'doubleRegister' || globalThis.want.action === 'doubleNeedBackGroundOff'|| 
         globalThis.want.action === 'DoubleRegisterOff') {
-      console.info("double in action is logic entered!");
+      console.info('double in action is logic entered!');
       globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackSec);
     }
 
@@ -129,13 +133,13 @@ export default class EntryAbility extends Ability {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Abilityone onForeground');
     onForeGroundTAG += 1;
-    if (onForeGroundTAG === 1 && (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister'||
+    if (onForeGroundTAG === 1 && (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister'|| 
         globalThis.want.action === 'DoubleRegisterOff')) {
       setTimeout(() => {
         commonEvent.publish('processState', commonEventData, (err) => {
-          console.info("====>processState publish err: " + JSON.stringify(err));
-        })
-      }, 2000);
+          console.info('====>processState publish err: ' + JSON.stringify(err));
+        });
+      }, delayTime_2000);
 
     }
   }

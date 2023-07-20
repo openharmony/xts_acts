@@ -17,6 +17,7 @@ import Ability from '@ohos.app.ability.UIAbility';
 import Window from '@ohos.window';
 
 let TAG = 'StateChangeTestTAG';
+let delayTime_3000 = 3000;
 let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
     console.info('==== ApplicationStateChange Foreground ====');
@@ -37,7 +38,7 @@ export default class EntryAbility extends Ability {
 
     globalThis.abilityContext = this.context;
     globalThis.want = want;
-    if (want.action == 'MultiAppRegister' || want.action == 'DoubleRegisterOff') {
+    if (want.action === 'MultiAppRegister' || want.action === 'DoubleRegisterOff') {
       globalThis.applicationContext = this.context.getApplicationContext();
       globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackSec);
     }
@@ -77,8 +78,8 @@ export default class EntryAbility extends Ability {
     setTimeout(() => {
       globalThis.abilityContext.terminateSelf((err) => {
         console.log('terminateSelf result:' + JSON.stringify(err));
-      })
-    }, 3000)
+      });
+    }, delayTime_3000);
   }
 
   onBackground() {

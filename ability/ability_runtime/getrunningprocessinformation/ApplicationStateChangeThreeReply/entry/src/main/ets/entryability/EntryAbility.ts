@@ -14,12 +14,14 @@
  */
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
-import Window from '@ohos.window';
+import type Window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 
 
 let TAG = 'getRunningProcess';
 let commonStateArr;
+let delayTime_3000 = 3000;
+let delayTime_1000 = 1000;
 let commonEventData = {
   parameters: {
     commonStateArr: commonStateArr
@@ -36,15 +38,15 @@ let applicationStateChangeCallbackFir = {
       commonEventData.parameters.commonStateArr = 1;
       commonEvent.publish('processState', commonEventData, (err) => {
         console.info('====>processState publish err: ' + JSON.stringify(err));
-      })
-    }, 1000);
+      });
+    }, delayTime_1000);
   }
-}
-let ForegroundTAG = -1;
+};
+let foregroundTAG = -1;
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
-    ForegroundTAG = -1;
+    foregroundTAG = -1;
     commonEventData.parameters.commonStateArr = -1;
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -86,13 +88,13 @@ export default class EntryAbility extends Ability {
 
   onForeground() {
     // Ability has brought to foreground
-    ForegroundTAG++
-    if (ForegroundTAG === 1) {
+    foregroundTAG++;
+    if (foregroundTAG === 1) {
       setTimeout(() => {
         commonEvent.publish('processState', commonEventData, (err) => {
-          console.info("====>processState publish err: " + JSON.stringify(err));
-        })
-      }, 3000);
+          console.info('====>processState publish err: ' + JSON.stringify(err));
+        });
+      }, delayTime_3000);
 
     }
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);

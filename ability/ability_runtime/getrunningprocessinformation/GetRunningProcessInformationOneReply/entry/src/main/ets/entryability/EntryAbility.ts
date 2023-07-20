@@ -37,8 +37,8 @@ globalThis.StartFloatingAbility = () => {
   };
   globalThis.abilityContext.startAbility(want, options, (error) => {
     console.log(TAG, 'start floating ability error.code = ' + error.code);
-  })
-}
+  });
+};
 
 globalThis.StartNormalAbility = () => {
   let want = {
@@ -48,8 +48,8 @@ globalThis.StartNormalAbility = () => {
   };
   globalThis.abilityContext.startAbility(want, (error) => {
     console.log(TAG, 'start normal ability error.code = ' + error.code);
-  })
-}
+  });
+};
 
 globalThis.GetRunningProcessInfoCallback = () => {
   globalThis.applicationContext.getRunningProcessInformation((err, data) => {
@@ -60,8 +60,8 @@ globalThis.GetRunningProcessInfoCallback = () => {
       console.log(TAG, 'Oncreate Callback State: ' + JSON.stringify(data[0].state));
       commonStateArr[sequence++] = data[0].state;
     }
-  })
-}
+  });
+};
 
 globalThis.GetRunningProcessInfoPromise = () => {
   globalThis.applicationContext.getRunningProcessInformation().then((data) => {
@@ -69,18 +69,18 @@ globalThis.GetRunningProcessInfoPromise = () => {
     commonStateArr[sequence++] = data[0].state;
   }).catch((err) => {
     console.log(TAG, 'getRunningProcessInformation err: ' + JSON.stringify(err));
-  })
-}
+  });
+};
 
 globalThis.PublishStateArray = () => {
   commonEvent.publish('processState', commonEventData, (err) => {
     console.info('====>processState publish err: ' + JSON.stringify(err));
-  })
-}
+  });
+};
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
-    sequence = 0
+    sequence = 0;
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
