@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
-import Window from '@ohos.window';
+import type Window from '@ohos.window';
 
 let TAG = 'StateChangeTestTAG';
 let delayTime_3000 = 3000;

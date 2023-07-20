@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
-import Window from '@ohos.window';
+import type Window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 
 let commonStateArr: number[] = [-1, -1, -1, -1];
@@ -23,16 +23,18 @@ let commonEventData = {
     commonStateArr: commonStateArr
   }
 };
-let onForeGroundTAG = -1;
-let TAG = 'StateChangeTestTAG';
+
+let tag = 'StateChangeTesttag';
 let delayTime_500 = 500;
 let delayTime_1000 = 1000;
 let delayTime_2000 = 2000;
 let undefineTag = -1;
 let defineTag = 1;
+let arrLength = 4;
+let onForeGroundTAG = undefineTag;
 let applicationStateChangeCallbackFir = {
   onApplicationForeground() {
-    console.log(TAG, 'applicationStateChangeCallbackFir onApplicationForeground');
+    console.log(tag, 'applicationStateChangeCallbackFir onApplicationForeground');
     commonEventData.parameters.commonStateArr[0] = defineTag;
 
     setTimeout(() => {
@@ -43,7 +45,7 @@ let applicationStateChangeCallbackFir = {
     }, delayTime_1000);
   },
   onApplicationBackground() {
-    console.log(TAG, 'applicationStateChangeCallbackFir onApplicationBackground');
+    console.log(tag, 'applicationStateChangeCallbackFir onApplicationBackground');
     commonEventData.parameters.commonStateArr[1] = defineTag;
 
     if (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister') {
@@ -55,11 +57,11 @@ let applicationStateChangeCallbackFir = {
 
 let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
-    console.log(TAG, 'applicationStateChangeCallbackSec onApplicationForeground');
+    console.log(tag, 'applicationStateChangeCallbackSec onApplicationForeground');
     commonEventData.parameters.commonStateArr[2] = defineTag;
   },
   onApplicationBackground() {
-    console.log(TAG, 'applicationStateChangeCallbackSec onApplicationBackground');
+    console.log(tag, 'applicationStateChangeCallbackSec onApplicationBackground');
     commonEventData.parameters.commonStateArr[3] = defineTag;
     if (globalThis.want.action === 'doubleNeedBackGroundOff') {
       setTimeout(() => {
@@ -78,7 +80,7 @@ let applicationStateChangeCallbackSec = {
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
     onForeGroundTAG = undefineTag;
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < arrLength; i++) {
       commonStateArr[i] = undefineTag;
     }
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
@@ -93,7 +95,7 @@ export default class EntryAbility extends Ability {
       globalThis.applicationContext.off('applicationStateChange', applicationStateChangeCallbackFir);
     }
     globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackFir);
-    if (globalThis.want.action === 'doubleRegister' || globalThis.want.action === 'doubleNeedBackGroundOff'|| 
+    if (globalThis.want.action === 'doubleRegister' || globalThis.want.action === 'doubleNeedBackGroundOff' ||
         globalThis.want.action === 'DoubleRegisterOff') {
       console.info('double in action is logic entered!');
       globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackSec);
@@ -132,8 +134,8 @@ export default class EntryAbility extends Ability {
     // Ability has brought to foreground
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Abilityone onForeground');
-    onForeGroundTAG += 1;
-    if (onForeGroundTAG === 1 && (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister'|| 
+    onForeGroundTAG += defineTag;
+    if (onForeGroundTAG === defineTag && (globalThis.want.action === 'NeedBackGroundOff' || globalThis.want.action === 'MultiAppRegister' ||
         globalThis.want.action === 'DoubleRegisterOff')) {
       setTimeout(() => {
         commonEvent.publish('processState', commonEventData, (err) => {

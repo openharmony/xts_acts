@@ -18,10 +18,12 @@ import type Window from '@ohos.window';
 import commonEvent from '@ohos.commonEvent';
 
 
-let TAG = 'getRunningProcess';
+let tag = 'getRunningProcess';
 let commonStateArr;
 let delayTime_3000 = 3000;
 let delayTime_1000 = 1000;
+let undefinedTag = -1;
+let definedTag = 1;
 let commonEventData = {
   parameters: {
     commonStateArr: commonStateArr
@@ -29,10 +31,10 @@ let commonEventData = {
 };
 let applicationStateChangeCallbackFir = {
   onApplicationForeground() {
-    console.log(TAG, 'applicationStateChangeCallbackFir onApplicationForeground');
+    console.log(tag, 'applicationStateChangeCallbackFir onApplicationForeground');
   },
   onApplicationBackground() {
-    console.log(TAG, 'applicationStateChangeCallbackFir onApplicationBackground');
+    console.log(tag, 'applicationStateChangeCallbackFir onApplicationBackground');
     setTimeout(() => {
       console.info('Enter onApplicationForeground publish!');
       commonEventData.parameters.commonStateArr = 1;
@@ -42,12 +44,12 @@ let applicationStateChangeCallbackFir = {
     }, delayTime_1000);
   }
 };
-let foregroundTAG = -1;
+let foregroundTAG = undefinedTag;
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
-    foregroundTAG = -1;
-    commonEventData.parameters.commonStateArr = -1;
+    foregroundTAG = undefinedTag;
+    commonEventData.parameters.commonStateArr = undefinedTag;
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
@@ -89,7 +91,7 @@ export default class EntryAbility extends Ability {
   onForeground() {
     // Ability has brought to foreground
     foregroundTAG++;
-    if (foregroundTAG === 1) {
+    if (foregroundTAG === definedTag) {
       setTimeout(() => {
         commonEvent.publish('processState', commonEventData, (err) => {
           console.info('====>processState publish err: ' + JSON.stringify(err));
