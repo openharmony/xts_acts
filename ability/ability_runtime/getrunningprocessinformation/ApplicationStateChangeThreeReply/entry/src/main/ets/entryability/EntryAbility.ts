@@ -13,47 +13,47 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import Window from '@ohos.window'
-import commonEvent from '@ohos.commonEvent'
+import Ability from '@ohos.app.ability.UIAbility';
+import Window from '@ohos.window';
+import commonEvent from '@ohos.commonEvent';
 
 
-let TAG = 'getRunningProcess'
-let commonStateArr
+let TAG = 'getRunningProcess';
+let commonStateArr;
 let commonEventData = {
   parameters: {
     commonStateArr: commonStateArr
   }
-}
-let ApplicationStateChangeCallbackFir = {
+};
+let applicationStateChangeCallbackFir = {
   onApplicationForeground() {
-    console.log(TAG, 'ApplicationStateChangeCallbackFir onApplicationForeground')
+    console.log(TAG, 'applicationStateChangeCallbackFir onApplicationForeground');
   },
   onApplicationBackground() {
-    console.log(TAG, 'ApplicationStateChangeCallbackFir onApplicationBackground')
+    console.log(TAG, 'applicationStateChangeCallbackFir onApplicationBackground');
     setTimeout(() => {
-      console.info('Enter onApplicationForeground publish!')
-      commonEventData.parameters.commonStateArr = 1
+      console.info('Enter onApplicationForeground publish!');
+      commonEventData.parameters.commonStateArr = 1;
       commonEvent.publish('processState', commonEventData, (err) => {
-        console.info("====>processState publish err: " + JSON.stringify(err))
+        console.info('====>processState publish err: ' + JSON.stringify(err));
       })
-    }, 1000)
+    }, 1000);
   }
 }
-let ForegroundTAG = -1
+let ForegroundTAG = -1;
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
-    ForegroundTAG = -1
-    commonEventData.parameters.commonStateArr = -1
+    ForegroundTAG = -1;
+    commonEventData.parameters.commonStateArr = -1;
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-    globalThis.abilityContext1 = this.context
-    globalThis.want1 = want
+    globalThis.abilityContext1 = this.context;
+    globalThis.want1 = want;
     globalThis.applicationContext1 = this.context.getApplicationContext();
-    globalThis.applicationContext1.on('applicationStateChange', ApplicationStateChangeCallbackFir)
+    globalThis.applicationContext1.on('applicationStateChange', applicationStateChangeCallbackFir);
 
   }
 
@@ -87,12 +87,12 @@ export default class EntryAbility extends Ability {
   onForeground() {
     // Ability has brought to foreground
     ForegroundTAG++
-    if (ForegroundTAG == 1) {
+    if (ForegroundTAG === 1) {
       setTimeout(() => {
         commonEvent.publish('processState', commonEventData, (err) => {
-          console.info("====>processState publish err: " + JSON.stringify(err))
+          console.info("====>processState publish err: " + JSON.stringify(err));
         })
-      }, 3000)
+      }, 3000);
 
     }
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);

@@ -13,20 +13,20 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import Window from '@ohos.window';
 
-let TAG = 'StateChangeTestTAG'
-let ApplicationStateChangeCallbackSec = {
+let TAG = 'StateChangeTestTAG';
+let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
     console.info('==== ApplicationStateChange Foreground ====');
-    console.log(TAG, 'App2 ApplicationStateChangeCallbackSec onApplicationForeground')
+    console.log(TAG, 'App2 applicationStateChangeCallbackSec onApplicationForeground');
   },
   onApplicationBackground() {
     console.info('==== ApplicationStateChange Background ====');
-    console.log(TAG, 'App2 ApplicationStateChangeCallbackSec onApplicationBackground')
+    console.log(TAG, 'App2 applicationStateChangeCallbackSec onApplicationBackground');
   }
-}
+};
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
@@ -35,11 +35,11 @@ export default class EntryAbility extends Ability {
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
 
-    globalThis.abilityContext = this.context
-    globalThis.want = want
+    globalThis.abilityContext = this.context;
+    globalThis.want = want;
     if (want.action == 'MultiAppRegister' || want.action == 'DoubleRegisterOff') {
       globalThis.applicationContext = this.context.getApplicationContext();
-      globalThis.applicationContext.on('applicationStateChange', ApplicationStateChangeCallbackSec)
+      globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackSec);
     }
   }
 

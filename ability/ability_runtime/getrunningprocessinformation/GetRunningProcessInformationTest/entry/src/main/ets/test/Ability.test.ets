@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest'
-import commonEvent from '@ohos.commonEvent'
-import appManager from '@ohos.app.ability.appManager'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import hilog from '@ohos.hilog';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
+import commonEvent from '@ohos.commonEvent';
+import appManager from '@ohos.app.ability.appManager';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 let ACTS_ProcessState = {
   events: ["processState"]
@@ -29,23 +29,23 @@ export default function abilityTest() {
     beforeEach(async function () {
       var abilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let cmd1 = 'hilog -r'
+      let cmd1 = 'hilog -r';
       await abilityDelegator.executeShellCommand(cmd1, (err: any, data: any) => {
         console.info("executeShellCommand1 callback");
       });
       await abilityDelegator.executeShellCommand("hilog -G 20M", async (err, data) => {
-      })
+      });
     })
 
     afterEach(async function () {
       var abilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-      let cmd1 = 'aa force-stop com.example.applicationstatechangeonereply'
-      let cmd2 = 'aa force-stop com.example.applicationstatechangetworeply'
-      let cmd6 = 'aa force-stop com.example.applicationstatechangethreereply'
-      let cmd4 = 'aa force-stop com.example.getrunningprocessinformationonereply'
-      let cmd5 = 'aa force-stop com.example.getrunningprocessinformationtworeply'
-      let cmd3 = 'hilog -r'
+      let cmd1 = 'aa force-stop com.example.applicationstatechangeonereply';
+      let cmd2 = 'aa force-stop com.example.applicationstatechangetworeply';
+      let cmd6 = 'aa force-stop com.example.applicationstatechangethreereply';
+      let cmd4 = 'aa force-stop com.example.getrunningprocessinformationonereply';
+      let cmd5 = 'aa force-stop com.example.getrunningprocessinformationtworeply';
+      let cmd3 = 'hilog -r';
       await abilityDelegator.executeShellCommand(cmd1).then(() => {
         console.info("executeShellCommand1 callback");
       });
@@ -103,7 +103,7 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -125,7 +125,7 @@ export default function abilityTest() {
               console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
 
         });
       }, 700);
@@ -150,7 +150,7 @@ export default function abilityTest() {
         "abilityName": "EntryAbility",
         "action": "Normal"
       }
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_ApplicationStateChange_0200 unSubscribeCallback");
@@ -161,15 +161,15 @@ export default function abilityTest() {
         console.debug("====>Acts_ApplicationStateChange_0200 data: " + JSON.stringify(data));
         console.debug("====>Acts_ApplicationStateChange_0200 err: " + JSON.stringify(err));
         if (data.event == "processState") {
-          console.info("entered assert zone!")
+          console.info("entered assert zone!");
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            expect(data.parameters.commonStateArr[2]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1)
+            expect(data.parameters.commonStateArr[0]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            expect(data.parameters.commonStateArr[2]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
           }
           catch {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
 
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
@@ -183,18 +183,18 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
 
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
         })
-      }, 700)
+      }, 700);
     })
 
     /*
@@ -217,7 +217,7 @@ export default function abilityTest() {
         "action": "Normal"
       }
 
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_ApplicationStateChange_0300 unSubscribeCallback");
@@ -230,13 +230,13 @@ export default function abilityTest() {
         if (data.event == "processState") {
           console.info("entered assert zone!")
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(1)
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            expect(data.parameters.commonStateArr[2]).assertEqual(1)
-            expect(data.parameters.commonStateArr[3]).assertEqual(1)
+            expect(data.parameters.commonStateArr[0]).assertEqual(1);
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            expect(data.parameters.commonStateArr[2]).assertEqual(1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -249,17 +249,17 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
         })
-      }, 700)
+      }, 700);
     })
 
     /*
@@ -284,7 +284,7 @@ export default function abilityTest() {
         "action": "Normal"
       }
 
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_ApplicationStateChange_0400 unSubscribeCallback");
@@ -295,15 +295,15 @@ export default function abilityTest() {
         console.debug("====>Acts_ApplicationStateChange_0400 data: " + JSON.stringify(data));
         console.debug("====>Acts_ApplicationStateChange_0400 err: " + JSON.stringify(err));
         if (data.event == "processState") {
-          console.info("entered assert zone!")
+          console.info("entered assert zone!");
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(1)
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            expect(data.parameters.commonStateArr[2]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[3]).assertEqual(1)
+            expect(data.parameters.commonStateArr[0]).assertEqual(1);
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            expect(data.parameters.commonStateArr[2]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -316,12 +316,12 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
           }, 3000)
@@ -351,7 +351,7 @@ export default function abilityTest() {
         "action": "MultiAppRegister"
       }
 
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_ApplicationStateChange_0500 unSubscribeCallback");
@@ -362,15 +362,15 @@ export default function abilityTest() {
         console.debug("====>Acts_ApplicationStateChange_0500 data: " + JSON.stringify(data));
         console.debug("====>Acts_ApplicationStateChange_0500 err: " + JSON.stringify(err));
         if (data.event == "processState") {
-          console.info("entered assert zone!")
+          console.info("entered assert zone!");
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            expect(data.parameters.commonStateArr[2]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1)
+            expect(data.parameters.commonStateArr[0]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            expect(data.parameters.commonStateArr[2]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -383,17 +383,17 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
         })
-      }, 700)
+      }, 700);
     })
 
     /*
@@ -418,7 +418,7 @@ export default function abilityTest() {
         "action": "DoubleRegisterOff"
       }
 
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_ApplicationStateChange_0600 unSubscribeCallback");
@@ -429,15 +429,15 @@ export default function abilityTest() {
         console.debug("====>Acts_ApplicationStateChange_0600 data: " + JSON.stringify(data));
         console.debug("====>Acts_ApplicationStateChange_0600 err: " + JSON.stringify(err));
         if (data.event == "processState") {
-          console.info("entered assert zone!")
+          console.info("entered assert zone!");
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            expect(data.parameters.commonStateArr[2]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[3]).assertEqual(1)
+            expect(data.parameters.commonStateArr[0]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            expect(data.parameters.commonStateArr[2]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -450,15 +450,15 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
         })
       }, 700);
     })
@@ -482,7 +482,7 @@ export default function abilityTest() {
         "abilityName": "EntryAbility",
         "action": "Normal"
       }
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_ApplicationStateChange_0700 unSubscribeCallback");
@@ -494,13 +494,13 @@ export default function abilityTest() {
         console.debug("====>Acts_ApplicationStateChange_0700 err: " + JSON.stringify(err));
         if (data.event == "processState") {
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(1)
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            expect(data.parameters.commonStateArr[2]).assertEqual(-1)
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1)
+            expect(data.parameters.commonStateArr[0]).assertEqual(1);
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            expect(data.parameters.commonStateArr[2]).assertEqual(-1);
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -513,16 +513,16 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
 
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
 
         })
       }, 700);
@@ -559,12 +559,12 @@ export default function abilityTest() {
         console.debug("====>Acts_ApplicationStateChange_0800 data: " + JSON.stringify(data));
         console.debug("====>Acts_ApplicationStateChange_0800 err: " + JSON.stringify(err));
         if (data.event == "processState") {
-          console.info("entered assert zone!")
+          console.info("entered assert zone!");
           try {
-            expect(data.parameters.commonStateArr).assertEqual(-1)
+            expect(data.parameters.commonStateArr).assertEqual(-1);
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -577,15 +577,15 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("ability error.code = " + error.code)
+            console.log("ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
           setTimeout(() => {
             globalThis.abilityContext.startAbility(wantAuxiliary, (error) => {
-              console.log("auxiliary ability error.code = " + error.code)
+              console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000)
+          }, 3000);
         })
       }, 700);
     })
@@ -605,11 +605,11 @@ export default function abilityTest() {
         "abilityName": "EntryAbility",
         "action": "Callback"
       }
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_GetRunningProcessInformation_AsyncCallback_0100 unSubscribeCallback");
-        done()
+        done();
       }
 
       function subscribeCallBack(err, data) {
@@ -618,17 +618,17 @@ export default function abilityTest() {
         if (data.event == "processState") {
           console.info("entered assert zone!")
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(2)
-            console.info("this is array one")
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            console.info("this is array one")
-            expect(data.parameters.commonStateArr[2]).assertEqual(3)
-            console.info("this is array one")
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1)
-            console.info("this is array one")
+            expect(data.parameters.commonStateArr[0]).assertEqual(2);
+            console.info("this is array one");
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            console.info("this is array one");
+            expect(data.parameters.commonStateArr[2]).assertEqual(3);
+            console.info("this is array one");
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            console.info("this is array one");
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -641,29 +641,29 @@ export default function abilityTest() {
           commonEvent.subscribe(subscriber, subscribeCallBack);
 
           globalThis.abilityContext.startAbility(want, (error) => {
-            console.log("start normal ability error.code = " + error.code)
+            console.log("start normal ability error.code = " + error.code);
             expect(error.code).assertEqual(0);
           })
 
           setTimeout(async () => {
-            let driver = Driver.create()
-            await driver.delayMs(1500)
-            let button1 = await driver.findComponent(ON.text('get focusedInfo'))
-            await expect(button1 != null).assertTrue()
-            let button2 = await driver.findComponent(ON.text('get unFocusedInfo'))
-            await expect(button2 != null).assertTrue()
-            let button3 = await driver.findComponent(ON.text('get BackInfo'))
-            await expect(button3 != null).assertTrue()
-            await button1.click()
-            await driver.delayMs(2000)
-            await button2.click()
-            await driver.delayMs(4000)
-            await driver.pressBack()
-            await driver.delayMs(2000)
-            await button3.click()
-          }, 3000)
+            let driver = Driver.create();
+            await driver.delayMs(1500);
+            let button1 = await driver.findComponent(ON.text('get focusedInfo'));
+            await expect(button1 != null).assertTrue();
+            let button2 = await driver.findComponent(ON.text('get unFocusedInfo'));
+            await expect(button2 != null).assertTrue();
+            let button3 = await driver.findComponent(ON.text('get BackInfo'));
+            await expect(button3 != null).assertTrue();
+            await button1.click();
+            await driver.delayMs(2000);
+            await button2.click();
+            await driver.delayMs(4000);
+            await driver.pressBack();
+            await driver.delayMs(2000);
+            await button3.click();
+          }, 3000);
         })
-      }, 1000)
+      }, 1000);
     })
 
     /*
@@ -681,7 +681,7 @@ export default function abilityTest() {
         "abilityName": "EntryAbility",
         "action": "Promise"
       }
-      let subscriber
+      let subscriber;
 
       function unSubscribeCallback() {
         console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 unSubscribeCallback");
@@ -692,19 +692,19 @@ export default function abilityTest() {
         console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 data: " + JSON.stringify(data));
         console.debug("====>Acts_GetRunningProcessInformation_Promise_0100 err: " + JSON.stringify(err));
         if (data.event == "processState") {
-          console.info("entered assert zone!")
+          console.info("entered assert zone!");
           try {
-            expect(data.parameters.commonStateArr[0]).assertEqual(2)
-            console.info("this is array one")
-            expect(data.parameters.commonStateArr[1]).assertEqual(1)
-            console.info("this is array one")
-            expect(data.parameters.commonStateArr[2]).assertEqual(3)
-            console.info("this is array one")
-            expect(data.parameters.commonStateArr[3]).assertEqual(-1)
-            console.info("this is array one")
+            expect(data.parameters.commonStateArr[0]).assertEqual(2);
+            console.info("this is array one");
+            expect(data.parameters.commonStateArr[1]).assertEqual(1);
+            console.info("this is array one");
+            expect(data.parameters.commonStateArr[2]).assertEqual(3);
+            console.info("this is array one");
+            expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            console.info("this is array one");
           }
           catch (error) {
-            console.log("An error is generated")
+            console.log("An error is generated");
           }
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
@@ -722,24 +722,24 @@ export default function abilityTest() {
           })
 
           setTimeout(async () => {
-            let driver = Driver.create()
-            await driver.delayMs(1500)
-            let button1 = await driver.findComponent(ON.text('get focusedInfo'))
-            await expect(button1 != null).assertTrue()
-            let button2 = await driver.findComponent(ON.text('get unFocusedInfo'))
-            await expect(button2 != null).assertTrue()
-            let button3 = await driver.findComponent(ON.text('get BackInfo'))
-            await expect(button3 != null).assertTrue()
-            await button1.click()
-            await driver.delayMs(2000)
-            await button2.click()
-            await driver.delayMs(4000)
-            await driver.pressBack()
-            await driver.delayMs(2000)
-            await button3.click()
-          }, 3000)
+            let driver = Driver.create();
+            await driver.delayMs(1500);
+            let button1 = await driver.findComponent(ON.text('get focusedInfo'));
+            await expect(button1 != null).assertTrue();
+            let button2 = await driver.findComponent(ON.text('get unFocusedInfo'));
+            await expect(button2 != null).assertTrue();
+            let button3 = await driver.findComponent(ON.text('get BackInfo'));
+            await expect(button3 != null).assertTrue();
+            await button1.click();
+            await driver.delayMs(2000);
+            await button2.click();
+            await driver.delayMs(4000);
+            await driver.pressBack();
+            await driver.delayMs(2000);
+            await button3.click();
+          }, 3000);
         })
-      }, 1000)
+      }, 1000);
 
     })
 

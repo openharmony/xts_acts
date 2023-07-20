@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import Window from '@ohos.window';
 
 export default class EntryAbility1 extends Ability {
   onCreate(want, launchParam) {
@@ -22,8 +22,8 @@ export default class EntryAbility1 extends Ability {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-    globalThis.abilityContext2 = this.context
-    globalThis.want2 = want
+    globalThis.abilityContext2 = this.context;
+    globalThis.want2 = want;
     globalThis.applicationContext2 = this.context.getApplicationContext();
   }
 
@@ -62,7 +62,7 @@ export default class EntryAbility1 extends Ability {
       globalThis.abilityContext2.terminateSelf((err) => {
         console.log('terminateSelf result:' + JSON.stringify(err));
       })
-    }, 3000)
+    }, 3000);
   }
 
   onBackground() {

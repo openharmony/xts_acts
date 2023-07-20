@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import Window from '@ohos.window';
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
