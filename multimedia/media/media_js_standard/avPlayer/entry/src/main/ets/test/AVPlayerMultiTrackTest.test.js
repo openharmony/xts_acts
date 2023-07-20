@@ -106,6 +106,17 @@ export default function AVPlayerMultiTrackTest() {
             }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         }
 
+        async function getCurrentAudioTrackCall() {
+            await avPlayer.getCurrentTrack(0, (err, index) => {
+                if (err == null) {
+                    console.info(`case current audio track index is ${index}`);
+                    currentTrack = index;
+                } else {
+                    console.error('getCurrentTrack failed and error is ' + err.message);
+                }
+            });
+        }
+
         async function changeAudioTrack() {
             for(let i = 0; i < audioTrackList.length; i++) {
                 if (audioTrackList[i] != currentTrack) {
@@ -223,7 +234,7 @@ export default function AVPlayerMultiTrackTest() {
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_MULTI_AUDIOTRACK_FUNC_0100', 0, async function (done) {
             async function preparedOperation() {
                 await getAudioTracks();
-                await getCurrentAudioTrack();
+                await getCurrentAudioTrackCall();
                 await changeAudioTrack();
                 avPlayer.selectTrack(selectedTrack);
                 expect(currentTrack!=selectedTrack).assertTrue();
