@@ -50,7 +50,7 @@ export default class UiExtAbility extends UIExtensionAbility {
             str: data.want.parameters.action,
             result: data.resultCode
           }
-        }
+        };
         commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
           console.debug('====>AsyncCallback_0200 first publish err:' + JSON.stringify(err));
         });

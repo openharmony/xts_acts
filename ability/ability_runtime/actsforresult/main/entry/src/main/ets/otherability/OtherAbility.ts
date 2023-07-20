@@ -14,10 +14,12 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
+
+const CUMULATIVE = 2;
 
 export default class OtherAbility extends UIAbility {
-  asyncCallback_0300: number = 0;
+  circulate: number = 0;
 
   onCreate(want, launchParam) {
     console.log('=====> OtherAbility onCreate =====>');
@@ -46,9 +48,9 @@ export default class OtherAbility extends UIAbility {
 
   onForeground() {
     console.log('=====> OtherAbility onForeground =====>');
-    this.asyncCallback_0300++;
-    console.log(`=====> OtherAbility asyncCallback_0300 count: ${this.asyncCallback_0300}`);
-    if (this.asyncCallback_0300 === 2) {
+    this.circulate++;
+    console.log(`=====> OtherAbility circulate count: ${this.circulate}`);
+    if (this.circulate === CUMULATIVE) {
       this.context.terminateSelfWithResult({
         resultCode: 0,
         want: {
