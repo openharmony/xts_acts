@@ -12,22 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility'
+import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import wantConstant from '@ohos.app.ability.wantConstant';
-import commonEvent from '@ohos.commonEventManager'
+import commonEvent from '@ohos.commonEventManager';
 import hilog from '@ohos.hilog';
 
-export default class UIExtAbility extends UIExtensionAbility {
+export default class UiExtAbility extends UIExtensionAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', 'UIExtAbility onCreate  want: %{public}s');
     console.info('=======>UIExtAbility onCreate======>');
   }
+
   onSessionCreate(want, session) {
-    console.log(`want: ${JSON.stringify(want)}}`)
+    console.log(`want: ${JSON.stringify(want)}}`);
     let storage: LocalStorage = new LocalStorage({
       'session': session
     });
-    session.loadContent('pages/Page', storage)
+    session.loadContent('pages/Page', storage);
     console.info('=======>UIExtAbility onSessionCreate======>');
 
     if (want.action === 'AsyncCallback_0600') {
@@ -42,14 +43,14 @@ export default class UIExtAbility extends UIExtensionAbility {
       }, (error, data) => {
         console.info('=======>Callback_0600  first from own error.code ======>' + error.code);
         let commonEventData = {
-          parameters:{
+          parameters: {
             num: error.code
           }
-        }
+        };
         commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
           console.debug('====>AsyncCallback_0600 first publish err:' + JSON.stringify(err));
-        })
-      })
+        });
+      });
     }
 
     if (want.action === 'AsyncCallback_0700') {
@@ -64,14 +65,14 @@ export default class UIExtAbility extends UIExtensionAbility {
       }, (error, data) => {
         console.info('=======>Callback_0700  first from own error.code ======>' + error.code);
         let commonEventData = {
-          parameters:{
+          parameters: {
             num: error.code
           }
-        }
+        };
         commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
           console.debug('====>AsyncCallback_0700 first publish err:' + JSON.stringify(err));
-        })
-      })
+        });
+      });
     }
 
     if (want.action === 'Promise_0600') {
@@ -83,19 +84,19 @@ export default class UIExtAbility extends UIExtensionAbility {
         parameters: {
           [wantConstant.Params.ABILITY_BACK_TO_OTHER_MISSION_STACK]: true
         }
-      }).then ((data) => {
+      }).then((data) => {
         console.info('=======>Promise_0600  startAbilityForResult ok ======>');
-      }).catch ((error) => {
+      }).catch((error) => {
         console.info('=======>Promise_0600  first from own error.code ======>' + error.code);
-          let commonEventData = {
-            parameters:{
-              num: error.code
-            }
+        let commonEventData = {
+          parameters: {
+            num: error.code
           }
-          commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-            console.debug('====>Promise_0600 first publish err:' + JSON.stringify(err));
-          })
-      })
+        };
+        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+          console.debug('====>Promise_0600 first publish err:' + JSON.stringify(err));
+        });
+      });
     }
 
     if (want.action === 'Promise_0700') {
@@ -107,24 +108,24 @@ export default class UIExtAbility extends UIExtensionAbility {
         parameters: {
           [wantConstant.Params.ABILITY_BACK_TO_OTHER_MISSION_STACK]: true
         }
-      }).then ((data) => {
+      }).then((data) => {
         console.info('=======>Promise_0700  startAbilityForResult ok ======>');
-      }).catch ((error) => {
+      }).catch((error) => {
         console.info('=======>Promise_0700  first from own error.code ======>' + error.code);
-          let commonEventData = {
-            parameters:{
-              num: error.code
-            }
+        let commonEventData = {
+          parameters: {
+            num: error.code
           }
-          commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-            console.debug('====>AsyncCallback_0700 first publish err:' + JSON.stringify(err));
-          })
-      })
+        };
+        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+          console.debug('====>AsyncCallback_0700 first publish err:' + JSON.stringify(err));
+        });
+      });
     }
   }
 
   onSessionDestroy(session) {
-    console.log(`onSessionDestroy`)
+    console.log('onSessionDestroy');
   }
 
   onDestroy() {

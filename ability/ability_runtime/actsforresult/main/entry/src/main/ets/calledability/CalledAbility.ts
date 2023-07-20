@@ -14,7 +14,7 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 
 export default class CalledAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -22,7 +22,7 @@ export default class CalledAbility extends UIAbility {
 
     console.log('=====> first app CalledAbility =====>');
 
-    if (want.action == 'AsyncCallback_0100'){
+    if (want.action === 'AsyncCallback_0100') {
       this.context.terminateSelfWithResult({
         resultCode: 0,
         want: {
@@ -32,10 +32,10 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> AsyncCallback_0100 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
 
-    if (want.action == 'Promise_0100'){
+    if (want.action === 'Promise_0100') {
       this.context.terminateSelfWithResult({
         resultCode: 0,
         want: {
@@ -45,10 +45,10 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> Promise_0100 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
 
-    if (want.action == 'AsyncCallback_0200'){
+    if (want.action === 'AsyncCallback_0200') {
       this.context.terminateSelfWithResult({
         resultCode: 0,
         want: {
@@ -58,10 +58,10 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> AsyncCallback_0200 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
 
-    if (want.action == 'Promise_0200'){
+    if (want.action === 'Promise_0200') {
       this.context.terminateSelfWithResult({
         resultCode: 0,
         want: {
@@ -71,7 +71,7 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> Promise_0200 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
   }
 

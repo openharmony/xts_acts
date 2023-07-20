@@ -16,9 +16,9 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 
-
 export default class OtherAbility extends UIAbility {
-  AsyncCallback_0300: number= 0;
+  asyncCallback_0300: number = 0;
+
   onCreate(want, launchParam) {
     console.log('=====> OtherAbility onCreate =====>');
   }
@@ -46,20 +46,20 @@ export default class OtherAbility extends UIAbility {
 
   onForeground() {
     console.log('=====> OtherAbility onForeground =====>');
-      this.AsyncCallback_0300++;
-      console.log(`=====> OtherAbility AsyncCallback_0300 count: ${this.AsyncCallback_0300}`);
-      if (this.AsyncCallback_0300 === 2) {
-        this.context.terminateSelfWithResult({
-          resultCode: 0,
-          want: {
-            parameters: {
-              action: 'ACTION'
-            }
+    this.asyncCallback_0300++;
+    console.log(`=====> OtherAbility asyncCallback_0300 count: ${this.asyncCallback_0300}`);
+    if (this.asyncCallback_0300 === 2) {
+      this.context.terminateSelfWithResult({
+        resultCode: 0,
+        want: {
+          parameters: {
+            action: 'ACTION'
           }
-        }, (err) => {
-          console.log('=====> OtherAbility CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-        })
-      }
+        }
+      }, (err) => {
+        console.log('=====> OtherAbility CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
+      });
+    }
   }
 
   onBackground() {

@@ -19,38 +19,38 @@ import window from '@ohos.window';
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    console.info("====>another EntryAbility");
+    console.info('====>another EntryAbility');
 
-    if(want.action == 'AsyncCallback_0200') {
+    if (want.action === 'AsyncCallback_0200') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0200':");
       AppStorage.SetOrCreate('want', {
-        action: "AsyncCallback_0200",
+        action: 'AsyncCallback_0200',
         bundleName: 'com.example.forresulttestsecond',
         abilityName: 'UIExtAbility'
       });
     }
 
-    if(want.action == 'AsyncCallback_0300') {
+    if (want.action === 'AsyncCallback_0300') {
       console.info("====>EntryAbility want.action == 'AsyncCallback_0300':");
       AppStorage.SetOrCreate('want', {
-        action: "AsyncCallback_0300",
+        action: 'AsyncCallback_0300',
         bundleName: 'com.example.forresulttestsecond',
         abilityName: 'UIExtAbility'
       });
     }
 
-    if(want.action == 'Promise_0200') {
+    if (want.action === 'Promise_0200') {
       console.info("====>EntryAbility want.action == 'Promise_0200':");
       AppStorage.SetOrCreate('want', {
-        action: "Promise_0200",
+        action: 'Promise_0200',
         bundleName: 'com.example.forresulttestsecond',
         abilityName: 'UIExtAbility'
       });
     }
-    if(want.action == 'Promise_0300') {
+    if (want.action === 'Promise_0300') {
       console.info("====>EntryAbility want.action == 'Promise_0300':");
       AppStorage.SetOrCreate('want', {
-        action: "Promise_0300",
+        action: 'Promise_0300',
         bundleName: 'com.example.forresulttestsecond',
         abilityName: 'UIExtAbility'
       });

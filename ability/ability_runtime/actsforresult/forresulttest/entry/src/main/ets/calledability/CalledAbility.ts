@@ -14,7 +14,7 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 
 export default class CalledAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -22,7 +22,7 @@ export default class CalledAbility extends UIAbility {
 
     console.log('=====> second app CalledAbility bas been created =====>');
 
-    if (want.action == 'AsyncCallback_0200'){
+    if (want.action === 'AsyncCallback_0200') {
       this.context.terminateSelfWithResult({
         resultCode: 0,
         want: {
@@ -32,7 +32,7 @@ export default class CalledAbility extends UIAbility {
         }
       }, (err) => {
         console.log('=====> AsyncCallback_0200 CalledAbilityCallBack terminateSelfWithResult =====>' + err.code);
-      })
+      });
     }
   }
 
