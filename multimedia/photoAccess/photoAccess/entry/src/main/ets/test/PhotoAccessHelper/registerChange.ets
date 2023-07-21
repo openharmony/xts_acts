@@ -45,7 +45,7 @@ export default function registerChangeTest () {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'on01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
@@ -53,6 +53,7 @@ export default function registerChangeTest () {
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(asset.uri);
         });
+        await sleep(550);
         const newTitle = testNum + asset.get(photoKeys.TITLE);
         asset.set(photoKeys.TITLE, newTitle);
         await asset.commitModify();
@@ -86,10 +87,11 @@ export default function registerChangeTest () {
           changeDataUri = changeData.uris[0];
           expect(changeData.type).assertEqual(NOTIFY_ADD);
         });
+        await sleep(550);
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
         let creatAlbumUri = album.albumUri;
-        await sleep(2000);
+        await sleep(1000);
         helper.unRegisterChange(DEFAULT_ALBUM_URI);
         expect(creatAlbumUri).assertEqual(changeDataUri);
         expect(listenCount).assertEqual(1);
@@ -117,13 +119,14 @@ export default function registerChangeTest () {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(albumUri);
         });
+        await sleep(550);
         album.albumName = Date.now() + album.albumName;
         await album.commitModify();
         await sleep(1000);
@@ -153,7 +156,7 @@ export default function registerChangeTest () {
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'on11.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
@@ -161,6 +164,7 @@ export default function registerChangeTest () {
           expect(changeData.uris[0]).assertEqual(album.albumUri);
           expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
+        await sleep(550);
         await album.addAssets([asset]);
         await sleep(1000);
         helper.unRegisterChange(album.albumUri);
@@ -190,7 +194,7 @@ export default function registerChangeTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
         await album.addAssets([asset]);
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
@@ -198,6 +202,7 @@ export default function registerChangeTest () {
           expect(changeData.uris[0]).assertEqual(album.albumUri);
           expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
+        await sleep(550);
         await album.removeAssets([asset]);
         await sleep(1000);
         helper.unRegisterChange(album.albumUri);

@@ -18,7 +18,7 @@ import {
   photoKeys,
   fetchOption,
   getFileAsset,
-  getId,
+  getAssetId,
   photoType
 } from '../../../../../../../common'
 
@@ -30,7 +30,7 @@ export default function checkAttrTest () {
         const fetchOps = fetchOption(testNum, key, displayName);
         const asset = await getFileAsset(testNum, fetchOps);
         console.info(`${testNum} uri: ${asset.uri} filetype: ${asset.photoType} displayName: ${asset.displayName}`)
-        const id = getId(asset.uri);
+        const id = getAssetId(asset.uri);
         const expectUri = 'file://media/Photo/' + id;
         const isIncludes = asset.uri.includes(expectUri);
         expect(isIncludes).assertTrue();

@@ -126,9 +126,18 @@ export function isNum(value) : boolean {
   return typeof value === 'number' && !isNaN(value);
 };
 
-export function getId(uri) : string {
-  let index = uri.lastIndexOf('/');
+export function getAssetId(uri) : string {
+  const tag = 'Photo/';
+  const index = uri.indexOf(tag);
+  let str = uri.substring(index + tag.length);
+  console.info(`getAssetId str: ${str}`);
+  return str;
+}
+
+export function getAlbumId(uri) : string {
+  const index = uri.lastIndexOf('/');
   let str = uri.substring(index + 1);
+  console.info(`getAlbumId str: ${str}`);
   return str;
 }
 

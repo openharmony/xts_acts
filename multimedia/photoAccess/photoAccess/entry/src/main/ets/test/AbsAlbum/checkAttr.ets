@@ -20,7 +20,7 @@ import {
   albumSubtype,
   fetchOption,
   getFileAsset,
-  getId,
+  getAlbumId,
   photoKeys
 } from '../../../../../../../common'
 
@@ -34,7 +34,7 @@ export default function checkAlbumAttrTest () {
         expect(album.albumType).assertEqual(albumType.USER);
         expect(album.albumSubtype).assertEqual(albumSubtype.USER_GENERIC);
         expect(album.albumName).assertEqual(testNum);
-        const id = getId(album.albumUri);
+        const id = getAlbumId(album.albumUri);
         expect(album.albumUri).assertEqual('file://media/PhotoAlbum/' + id);
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
