@@ -81,6 +81,39 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>SUB_Misc_inputMethod_offSendFunctionKey_0040 event:' + data.event);
                     that.SUB_Misc_inputMethod_offSendFunctionKey_0040();
                     break;
+                case 50:
+                    console.debug(TAG + '====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 event:' + data.event);
+                    that.SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050();
+                    break;
+                case 70:
+                    console.debug(TAG + '====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 event:' + data.event);
+                    that.SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070();
+                    break;
+                case 80:
+                    console.debug(TAG + '====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 event:' + data.event);
+                    that.SUB_Misc_InputMethod_onGetRightTextOfCursor_0080();
+                    break;
+                case 100:
+                    console.debug(TAG + '====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 event:' + data.event);
+                    that.SUB_Misc_InputMethod_offGetRightTextOfCursor_0100();
+                    break;
+                case 110:
+                    console.debug(TAG + '====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 event:' + data.event);
+                    that.SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110();
+                    break;
+                case 130:
+                    console.debug(TAG + '====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 event:' + data.event);
+                    that.SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130();
+                    break;
+
+                case 140:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_onEditorAttributeChanged_0140 event:' + data.event);
+                    that.SUB_Misc_inputMethod_onEditorAttributeChanged_0140();
+                    break;
+                case 160:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 event:' + data.event);
+                    that.SUB_Misc_inputMethod_offEditorAttributeChanged_0160();
+                    break;
             }
         }
 
@@ -147,6 +180,7 @@ export class KeyboardDelegate {
     private SUB_Misc_inputMethod_onHandleExtendAction_0010(): void {
         console.info(TAG + '====>SUB_Misc_inputMethod_onHandleExtendAction_0010 start');
         inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
             let t = setTimeout(async () => {
                 clearTimeout(t);
                 console.info(TAG + '====>SUB_Misc_inputMethod_onHandleExtendAction_0010 sendExtendAction start');
@@ -159,6 +193,7 @@ export class KeyboardDelegate {
     private SUB_Misc_inputMethod_offHandleExtendAction_0020(): void {
         console.info(TAG + '====>SUB_Misc_inputMethod_offHandleExtendAction_0020 start');
         inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
             let t = setTimeout(async () => {
                 clearTimeout(t);
                 console.info(TAG + '====>SUB_Misc_inputMethod_offHandleExtendAction_0020 sendExtendAction start');
@@ -173,6 +208,7 @@ export class KeyboardDelegate {
     private SUB_Misc_inputMethod_onSendFunctionKey_0030(): void {
         console.info(TAG + '====>SUB_Misc_inputMethod_onSendFunctionKey_0030 start');
         inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
             let t = setTimeout(async () => {
                 clearTimeout(t);
                 console.info(TAG + '====>SUB_Misc_inputMethod_onSendFunctionKey_0030 sendExtendAction start');
@@ -185,6 +221,7 @@ export class KeyboardDelegate {
     private SUB_Misc_inputMethod_offSendFunctionKey_0040(): void {
         console.info(TAG + '====>SUB_Misc_inputMethod_offSendFunctionKey_0040 start');
         inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
             let t = setTimeout(async () => {
                 clearTimeout(t);
                 console.info(TAG + '====>SUB_Misc_inputMethod_offSendFunctionKey_0040 sendExtendAction start');
@@ -196,5 +233,168 @@ export class KeyboardDelegate {
         });
     }
 
+    private SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 start');
+        inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let t = setTimeout(async () => {
+                clearTimeout(t);
+                let getForward_info = await InputClient.getForward(10000);
+                console.info(TAG + '====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 getForward_info: ' + getForward_info);
+                if(getForward_info === 'test'){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050", commonEventPublishData, this.publishCallback);
+            }, 500);
+        });
+    }
+
+    private SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 start');
+        inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let t = setTimeout(async () => {
+                clearTimeout(t);
+                let getForward_info = await InputClient.getForward(10000);
+                console.info(TAG + '====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 getForward_info: ' + getForward_info);
+                if(getForward_info === ''){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070", commonEventPublishData, this.publishCallback);
+            }, 500);
+        });
+    }
+
+    private SUB_Misc_InputMethod_onGetRightTextOfCursor_0080(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 start');
+        inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let t = setTimeout(async () => {
+                clearTimeout(t);
+                let getBackward_info = await InputClient.getBackward(10000);
+                console.info(TAG + '====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 getBackward_info: ' + getBackward_info);
+                if(getBackward_info === 'test'){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("SUB_Misc_InputMethod_onGetRightTextOfCursor_0080", commonEventPublishData, this.publishCallback);
+            }, 500);
+        });
+    }
+
+    private SUB_Misc_InputMethod_offGetRightTextOfCursor_0100(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 start');
+        inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let t = setTimeout(async () => {
+                clearTimeout(t);
+                let getBackward_info = await InputClient.getBackward(10000);
+                console.info(TAG + '====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 getBackward_info: ' + getBackward_info);
+                if(getBackward_info === ''){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("SUB_Misc_InputMethod_offGetRightTextOfCursor_0100", commonEventPublishData, this.publishCallback);
+            }, 500);
+        });
+    }
+
+    private SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 start');
+        inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let t = setTimeout(async () => {
+                clearTimeout(t);
+                let getTextIndexAtCursor_info = await InputClient.getTextIndexAtCursor();
+                console.info(TAG + '====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 getTextIndexAtCursor_info: ' + getTextIndexAtCursor_info);
+                if(getTextIndexAtCursor_info === 10000){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110", commonEventPublishData, this.publishCallback);
+            }, 500);
+        });
+    }
+
+    private SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 start');
+        inputMethodAbility.on("inputStart", async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let t = setTimeout(async () => {
+                clearTimeout(t);
+                console.info(TAG + '====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 getTextIndexAtCursor_info: ');
+
+                let getTextIndexAtCursor_info = await InputClient.getTextIndexAtCursor();
+                console.info(TAG + '====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 getTextIndexAtCursor_info: ' + getTextIndexAtCursor_info);
+                if(getTextIndexAtCursor_info === -1){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130", commonEventPublishData, this.publishCallback);
+            }, 500);
+        });
+    }
+
+    private SUB_Misc_inputMethod_onEditorAttributeChanged_0140(): void{
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_onEditorAttributeChanged_0140 success');
+        inputKeyboardDelegate.on('editorAttributeChanged', (attr) => {
+            console.log(`====>Succeeded in receiving attribute of editor, inputPattern = ${attr.inputPattern}, enterKeyType = ${attr.enterKeyType}`);
+            if(attr.enterKeyType === 0){
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+                inputKeyboardDelegate.off('editorAttributeChanged');
+                commoneventmanager.publish("SUB_Misc_inputMethod_onEditorAttributeChanged_0140", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private SUB_Misc_inputMethod_offEditorAttributeChanged_0160(): void{
+        let commonEventPublishData = {
+            data: "SUCCESS"
+        };
+        let editorCallback =  (attr) => {
+            console.log(`====>Succeeded in receiving attribute of editor, inputPattern = ${attr.inputPattern}, enterKeyType = ${attr.enterKeyType}`);
+            commonEventPublishData = {
+                data: "FAILED"
+            };
+        };
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_offEditorAttributeChanged_0160 success');
+        inputKeyboardDelegate.on('editorAttributeChanged', editorCallback);
+        inputKeyboardDelegate.off('editorAttributeChanged', editorCallback);
+        let t = setTimeout(() => {
+            clearTimeout(t);
+            commoneventmanager.publish("SUB_Misc_inputMethod_offEditorAttributeChanged_0160", commonEventPublishData, this.publishCallback);
+        }, 100);
+    }
 
 }
