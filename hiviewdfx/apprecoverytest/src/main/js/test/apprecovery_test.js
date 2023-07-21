@@ -26,6 +26,7 @@ class AbilityTest extends Ability {
         return AbilityConstant.OnSaveResult.ALL_REJECT
     }
 }
+let ability_test = new AbilityTest();
 
 export default function ActsAppRecoveryTest() {
 describe("ActsAppRecoveryTest", function () {
@@ -330,7 +331,6 @@ describe("ActsAppRecoveryTest", function () {
     it("DFX_DFR_AppRecovery_Interface_1900", 0, function () {
         console.info("-------------------------DFX_DFR_AppRecovery_Interface_1900 start-------------------------");
         try{
-            let ability_test = new AbilityTest();
             let StateType = AbilityConstant.StateType.APP_RECOVERY;
             let wantParam = {"test1": 1, "test2": 2};
             let ret = ability_test.onSaveState(StateType, wantParam);
