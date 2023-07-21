@@ -80,7 +80,7 @@ parse_cmdline()
         shift
     done
     if [ "$SYSTEM_SIZE" = "standard" ]; then
-       BUILD_TARGET=${BUILD_TARGET:-"acts"}
+       BUILD_TARGET=${BUILD_TARGET:-"test/xts/acts:acts"}
        PRODUCT_NAME=${PRODUCT_NAME:-"Hi3516DV300"}
     else
        BUILD_TARGET=${BUILD_TARGET:-"acts acts_ivi acts_intellitv acts_wearable"}
