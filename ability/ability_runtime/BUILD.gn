@@ -55,6 +55,7 @@ group("ability_runtime") {
       "featureability:featureability",
       "formmanager:formmanager",
       "freeinstalltest:freeinstalltest",
+      "getrunningprocessinformation:getrunningprocessinformation",
       "newwant:newwant",
       "non_concurrent:non_concurrent",
       "registerjserror:registerjserror",
