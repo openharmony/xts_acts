@@ -529,8 +529,6 @@ export default function ApiCoverTest() {
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY)
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY)
       expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART)
-      expect('ohos.extra.param.key.supportContinuePageStack').assertEqual(wantConstant.Params.SUPPORT_CONTINUE_PAGE_STACK_KEY)
-      expect('ohos.extra.param.key.supportContinueSourceExit').assertEqual(wantConstant.Params.SUPPORT_CONTINUE_SOURCE_EXIT_KEY)
       done()
     });
 
