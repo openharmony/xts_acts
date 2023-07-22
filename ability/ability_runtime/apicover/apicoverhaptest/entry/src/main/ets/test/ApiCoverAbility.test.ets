@@ -26,6 +26,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
+import formBindingData from '@ohos.application.formBindingData';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -373,13 +374,13 @@ export default function ApiCoverTest() {
      })
     })
 
-	/*
+	  /*
      * @tc.number  SUB_AA_AMS_Context_0200
      * @tc.name    Register the listener of Ability and cancel the listener.
      * @tc.desc    Function test
      * @tc.level   3
      */
-	it('SUB_AA_AMS_Context_0200', 0, async function (done) {
+	  it('SUB_AA_AMS_Context_0200', 0, async function (done) {
       await globalThis.abilityContext.eventHub.on("contextEvent", func1)
       globalThis.abilityContext.eventHub.emit("contextEvent", "aa", "bb")
       await sleep(500)
@@ -522,9 +523,12 @@ export default function ApiCoverTest() {
       expect(1).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_LOW)
       expect(2).assertEqual(abilityConstant.MemoryLevel.MEMORY_LEVEL_CRITICAL)
       expect(5).assertEqual(abilityConstant.LaunchReason.SHARE)
+      expect(0).assertEqual(abilityConstant.ContinueState.ACTIVE)
+      expect(1).assertEqual(abilityConstant.ContinueState.INACTIVE)
       expect('ohos.extra.param.key.contentTitle').assertEqual(wantConstant.Params.CONTENT_TITLE_KEY)
       expect('ohos.extra.param.key.shareAbstract').assertEqual(wantConstant.Params.SHARE_ABSTRACT_KEY)
       expect('ohos.extra.param.key.shareUrl').assertEqual(wantConstant.Params.SHARE_URL_KEY)
+      expect('ohos.ability.params.abilityRecoveryRestart').assertEqual(wantConstant.Params.ABILITY_RECOVERY_RESTART)
       done()
     });
 
@@ -723,6 +727,8 @@ export default function ApiCoverTest() {
           expect(data[i].processName.length).assertLarger(0);
           expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
           expect(data[i].bundleNames.length).assertLarger(0);
+          expect(typeof data[i].state).assertEqual("number");
+          expect(data[i].state).assertLarger(0);
         }
         done();
       })
@@ -779,6 +785,60 @@ export default function ApiCoverTest() {
           expect(Array.isArray(data[i].bundleNames)).assertEqual(true);
           expect(data[i].bundleNames.length).assertLarger(0);
         }
+        done();
+      })
+    })
+    /*
+     * @tc.number  SUB_AA_Form_formBindingData_0100
+     * @tc.name    Create FormBindingData
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_formBindingData_0100', 0, async function (done) {
+      TAG = 'SUB_AA_Form_formBindingData_0100';
+      let formData = {};
+      let proxies = [
+        {
+          "key": "detail",
+          "subscriberId": "11"
+        }
+      ]
+      let formBinding = formBindingData.createFormBindingData(formData);
+      formBinding["proxies"] = proxies;
+      expect(formBinding != undefined).assertTrue()
+      done()
+    })
+
+     /*
+     * @tc.number  SUB_AA_UIAbilityContext_setMissionContinueState_0100
+     * @tc.name    setMissionContinueState with callback for Ability.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+     it('SUB_AA_UIAbilityContext_setMissionContinueState_0100', 0, async function (done) {
+      TAG = 'SUB_AA_UIAbilityContext_setMissionContinueState_0100';
+      globalThis.abilityContext.setMissionContinueState(0, (err, data)=>{
+        console.log(`${TAG} setMissionContinueState data  ${JSON.stringify(err)}`);
+        expect(data).assertEqual(undefined);
+        done();
+      })
+    })
+
+      /*
+     * @tc.number  SUB_AA_UIAbilityContext_setMissionContinueState_0200
+     * @tc.name    setMissionContinueState with promise for Ability.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+     it('SUB_AA_UIAbilityContext_setMissionContinueState_0200', 0, async function (done) {
+      TAG = 'SUB_AA_UIAbilityContext_setMissionContinueState_0200';
+      globalThis.abilityContext.setMissionContinueState(0).then((data)=>{
+        console.log(`${TAG} setMissionContinueState data  ${JSON.stringify(data)}`);
+        expect(data).assertEqual(undefined);
+        done();
+      }).catch((err)=>{
+        console.log(`${TAG} setMissionContinueState promise err  ${JSON.stringify(err)}`);
+        expect().assertFail();
         done();
       })
     })

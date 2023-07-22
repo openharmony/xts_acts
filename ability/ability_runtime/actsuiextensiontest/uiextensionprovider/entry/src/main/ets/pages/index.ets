@@ -62,6 +62,26 @@ struct Index {
           commonEventManager.unsubscribe(subscriber, async (err, data) => {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
+        } else if (data.event == "terminateSelfPromise") {
+          this.session.terminateSelf().then((data)=>{
+            console.log(TAG + "terminateSelfPromise : " + JSON.stringify(data));
+          }).catch((err)=>{
+            console.log(TAG + "terminateSelfPromise : " + JSON.stringify(err));
+          })
+        } else if (data.event == "terminateSelfCallback") {
+          this.session.terminateSelf((err, data)=>{
+            console.log(TAG + "terminateSelfCallback : " + JSON.stringify(data));
+          })
+        } else if (data.event == "setWindowPrivacyModeFalseCallback") {
+          this.session.setWindowPrivacyMode(false, (err, data)=>{
+            console.log(TAG + "setWindowPrivacyModeFalseCallback : " + JSON.stringify(data));
+          })
+        } else if (data.event == "setWindowPrivacyModeFalsePromise") {
+          this.session.setWindowPrivacyMode(false).then(()=>{
+            console.log(TAG + "setWindowPrivacyModeFalsePromise : " + JSON.stringify(data));
+          }).catch((err)=>{
+            console.log(TAG + "setWindowPrivacyModeFalsePromise : " + JSON.stringify(err));
+          })
         }
       });
     }).catch((error) => {

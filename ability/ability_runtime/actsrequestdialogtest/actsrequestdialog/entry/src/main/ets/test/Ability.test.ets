@@ -111,6 +111,10 @@ export default function abilityTest() {
           expect(globalThis.requestDialogSuccess).assertTrue();
           expect(globalThis.validRequestInfo).assertTrue();
           expect(globalThis.validRequestCallback).assertTrue();
+          expect(typeof globalThis.windowRectLeft).assertEqual('number');
+          expect(typeof globalThis.windowRectTop).assertEqual('number');
+          expect(typeof globalThis.windowRectWidth).assertEqual('number');
+          expect(typeof globalThis.windowRectHeight).assertEqual('number');
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           done();
         }
