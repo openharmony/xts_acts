@@ -45,14 +45,22 @@ export default function webJsunit() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_API_002
+     *tc.number SUB_ACE_BASIC_ETS_API_001
      *tc.name OnLoadIntercept                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
      */
     it('OnLoadIntercept',0,async function(done){
-      emitKey="emitOnLoadIntercept";
+      emitKey="emitOnControllerAttached";
       Utils.registerEvent("OnLoadIntercept","https://www.baidu.com/",2,done);
       sendEventByKey('webcomponent',10,'');
     })
-
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_API_002
+     *tc.name OnControllerAttached                                                                                                                                                                                                                     *tc.desic Injects the JavaScript object into window and invoke the function in window
+     */
+    it('OnControllerAttached',0,async function(done){
+      emitKey="emitOnControllerAttached";
+      Utils.registerEvent("OnControllerAttached",1,7,done);
+      sendEventByKey('webcomponent',10,'');
+    })
   })
 }

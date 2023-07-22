@@ -70,9 +70,29 @@ export default function webTwoJsunit() {
      *tc.desic Sets allow the Web access overview mode
      */
     it('GetCertificate',0,async function(done){
-      emitKey="emitOverviewModeAccessFalse";
+      emitKey="emitGetCertificate";
       Utils.registerEvent("GetCertificate","getCertificate success: len = 0",4,done);
       sendEventByKey('webcomponenttwo',10,'');
     })
+    ///* 
+    // *tc.number SUB_ACE_BASIC_ETS_API_002                                                                                                                                                                     
+    // *tc.name PrefetchPage                                                                                                                                                                                                                 
+    // *tc.desic Sets allow the Web access overview mode
+    // */
+    //it('PrefetchPage',0,async function(done){
+    //  emitKey="emitPrepareForPageLoad";
+    //  Utils.registerEvent("PrefetchPage","success",6,done);
+    //  sendEventByKey('webcomponenttwo',10,'');
+    //})
+    ///* 
+    // *tc.number SUB_ACE_BASIC_ETS_API_003                                                                                                                                                                     
+    // *tc.name PrepareForPageLoad                                                                                                                                                                                                                 
+    // *tc.desic Sets allow the Web access overview mode
+    // */
+    //it('PrepareForPageLoad',0,async function(done){
+    //  emitKey="emitPrepareForPageLoad";
+    //  Utils.registerEvent("PrepareForPageLoad","success",8,done);
+    //  sendEventByKey('webcomponenttwo',10,'');
+    //})
   })
 }

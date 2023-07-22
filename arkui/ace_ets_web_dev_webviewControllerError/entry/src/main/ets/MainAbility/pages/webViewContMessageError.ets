@@ -113,7 +113,6 @@ struct webViewContMessageError {
                                 this.ports[1].postMessageEvent("post message from ets to html5");
                             } catch (error) {
                                 console.error(`emitPostMessageEventUnPortErr ErrorCode: ${error.code},  Message: ${error.message}`);
-                                this.errorCode = error.code
                                 this.errorMsg = error.message
                             }
                             this.controller.runJavaScript("test()",(res) => {
@@ -122,6 +121,7 @@ struct webViewContMessageError {
                             })
                             break;
                         }
+
                     }
                 })
             }
