@@ -234,6 +234,7 @@ describe('SmsMmsErrorTest', function () {
           done();
         }        
       });
+      done();
     } catch (error) {
       console.info('Telephony_SmsMms_sendShortMessage_Async_0100 catch ' + JSON.stringify(error));
       done();
