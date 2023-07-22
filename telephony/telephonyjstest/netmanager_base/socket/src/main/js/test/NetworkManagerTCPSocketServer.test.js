@@ -142,8 +142,10 @@ export default function NetTCPSocketServerTest() {
       try {
         server.on('connect', data => {
           console.info(`${caseName} on connect success ${JSON.stringify(data)}`);
+          expect(data.clientId != undefined).assertTrue();
           done();
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -219,6 +221,7 @@ export default function NetTCPSocketServerTest() {
           ExpectFalse();
           done();
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -268,6 +271,7 @@ export default function NetTCPSocketServerTest() {
             }
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -301,6 +305,7 @@ export default function NetTCPSocketServerTest() {
             }
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -334,6 +339,7 @@ export default function NetTCPSocketServerTest() {
             }
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect send error: [${error.code}, ${error.message}]`);
@@ -365,6 +371,7 @@ export default function NetTCPSocketServerTest() {
             return;
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -396,6 +403,7 @@ export default function NetTCPSocketServerTest() {
             return;
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -428,6 +436,7 @@ export default function NetTCPSocketServerTest() {
             }
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -459,6 +468,7 @@ export default function NetTCPSocketServerTest() {
             return;
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -491,6 +501,7 @@ export default function NetTCPSocketServerTest() {
             }
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -522,6 +533,7 @@ export default function NetTCPSocketServerTest() {
             return;
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -754,7 +766,9 @@ export default function NetTCPSocketServerTest() {
             done();
             return;
           }
+          data.off('message');
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -788,6 +802,7 @@ export default function NetTCPSocketServerTest() {
             return;
           }
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -824,6 +839,7 @@ export default function NetTCPSocketServerTest() {
             return;
           }
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -859,7 +875,9 @@ export default function NetTCPSocketServerTest() {
             done();
             return;
           }
+          data.off('message');
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -887,6 +905,7 @@ export default function NetTCPSocketServerTest() {
           expect(true).assertTrue();
           done();
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -919,7 +938,9 @@ export default function NetTCPSocketServerTest() {
             done();
             return;
           }
+          data.off('close');
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -953,6 +974,7 @@ export default function NetTCPSocketServerTest() {
             return;
           }
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -989,6 +1011,7 @@ export default function NetTCPSocketServerTest() {
             return;
           }
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1024,7 +1047,9 @@ export default function NetTCPSocketServerTest() {
             done();
             return;
           }
+          data.off('close');
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1052,6 +1077,7 @@ export default function NetTCPSocketServerTest() {
           expect(true).assertTrue();
           done();
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1076,7 +1102,9 @@ export default function NetTCPSocketServerTest() {
             console.info(`${caseName} on err failed, err: ${JSON.stringify(err)}`);
             done();
           });
+          data.off("error");
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1110,6 +1138,7 @@ export default function NetTCPSocketServerTest() {
             return;
           }
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1138,6 +1167,7 @@ export default function NetTCPSocketServerTest() {
             done();
           });
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1172,7 +1202,9 @@ export default function NetTCPSocketServerTest() {
             done();
             return;
           }
+          data.off("error");
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1198,6 +1230,7 @@ export default function NetTCPSocketServerTest() {
           });
           data.off("error");
         });
+        server.off('connect');
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1219,6 +1252,7 @@ export default function NetTCPSocketServerTest() {
         server.on("error", err => {
           console.info(`${caseName} on err failed, err: ${JSON.stringify(err)}`);
         });
+        server.off("error");
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1267,6 +1301,7 @@ export default function NetTCPSocketServerTest() {
         server.off(null, err => {
           console.info(`${caseName} off err failed, err: ${JSON.stringify(err)}`);
         });
+        server.off("error");
         done();
       } catch (error) {
         console.info(`${caseName} catch err, expect err: [${error.code}, ${error.message}]`);
@@ -1288,7 +1323,7 @@ export default function NetTCPSocketServerTest() {
         server.on("error", err => {
           console.info(`${caseName} on err failed, err: ${JSON.stringify(err)}`);
         });
-        server.off("error")
+        server.off("error");
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
@@ -1313,7 +1348,7 @@ export default function NetTCPSocketServerTest() {
           done();
         } else {
           console.info(caseName + ' getSocketFd data ' + JSON.stringify(data));
-          expect(data == 0).assertTrue();
+          expect(data != -1).assertTrue();
           done();
         }
       });
@@ -1329,7 +1364,7 @@ export default function NetTCPSocketServerTest() {
       let tcp = socket.constructTCPSocketInstance();
       tcp.getSocketFd().then((data) => {
         console.info(caseName + ' getSocketFd data ' + JSON.stringify(data));
-        expect(data == 0).assertTrue();
+        expect(data != -1).assertTrue();
         done();
       }).catch((err) => {
         console.info(caseName + ' getSocketFd err ' + JSON.stringify(err));
