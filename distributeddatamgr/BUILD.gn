@@ -25,6 +25,8 @@ group("distributeddatamgr") {
       "kvStoretest:kvStoretest",
       "preferencesjstest/hap:preferences_js_test",
       "relationalStoretest:relationalStoretest",
+      "relationalstoredatagroupidtest:ActsRelationalstoreDataGroupIdTest",
+      "preferencesdatagroupidtest:ActsPreferencesDataGroupIdTest",
     ]
   } else {
     deps = [
