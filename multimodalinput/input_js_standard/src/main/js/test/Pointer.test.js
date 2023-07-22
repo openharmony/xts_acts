@@ -443,7 +443,6 @@ export default function Pointer_test() {
       console.info('Touchpad_TOUCHPAD_TWO_FINGER_TAP_test = ' + pointer.RightClickType.TOUCHPAD_TWO_FINGER_TAP);
       expect(pointer.RightClickType.TOUCHPAD_TWO_FINGER_TAP == 3).assertTrue();
     })
-
     
     /**
      * @tc.number MultimodalInputPointer_Test_001
