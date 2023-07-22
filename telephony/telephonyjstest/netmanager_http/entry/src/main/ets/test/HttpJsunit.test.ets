@@ -15,8 +15,7 @@
 import {describe, it, expect} from '@ohos/hypium';
 import http from '@ohos.net.http';
 import connection from "@ohos.net.connection";
-import ethernet from '@ohos.net.ethernet';
-type httpProxy = connection.HttpProxy;
+import socket from '@ohos.net.socket';
 
 export default function httpJsunit() {
   describe("httpJsunitTest", function () {
@@ -157,8 +156,14 @@ export default function httpJsunit() {
           });
         }).catch(error => {
           console.log("setAppNet err " + JSON.stringify(error));
+          expect().assertFail();
+          done();
         });
-      });
+      }).catch(error => {
+          console.log("getDefaultNet err " + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        });
     });
 
     /**
@@ -183,8 +188,36 @@ export default function httpJsunit() {
           });
         }).catch(error => {
           console.log("setAppNet err " + JSON.stringify(error));
+          expect().assertFail();
+          done();
         });
-      });
+      }).catch(error => {
+          console.log("getDefaultNet err " + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        });
     });
+
+    /**
+     * @tc.number Telephony_Connection_Request_Socket_0100
+     * @tc.name Test type
+     * @tc.desc Function test
+     */
+    it('Telephony_Connection_Request_Socket_0100', 0, async function (done) {
+      let caseName = 'Telephony_Connection_Request_Socket_0100';
+      type HttpProxy = connection.HttpProxy;
+      type TCPSocket = socket.TCPSocket;
+      type UDPSocket = socket.UDPSocket;
+      Test(http.createHttp(),socket.constructTCPSocketInstance(),socket.constructUDPSocketInstance());
+
+      function Test(httpProxy:HttpProxy,tcpSocket:TCPSocket,udpSocket:UDPSocket){
+        except(httpProxy != null).assertTrue();
+        except(tcpSocket != null).assertTrue();
+        except(udpSocket != null).assertTrue();
+        httpRequest.destroy();
+        tcpSocket.close();
+        udp.close();
+        done();
+      }
   });
 }

@@ -182,7 +182,7 @@ describe('SmsMmsErrorTest', function () {
         sendCallback,
         deliveryCallback
       };
-      sms.sendMessage(options).then((data)=>{
+      sms.sendShortMessage(options).then((data)=>{
         console.info('Telephony_SmsMms_sendShortMessage_Promise_0100 ' + JSON.stringify(data));
         expect().assertFail();
         done();
@@ -224,9 +224,9 @@ describe('SmsMmsErrorTest', function () {
         sendCallback,
         deliveryCallback
       };
-      sms.sendMessage(options,(err,data)=>{
+      sms.sendShortMessage(options,(err, data)=>{
         if(err){
-          expect(error.code == 201).assertTrue();
+          expect(err.code == 201).assertTrue();
           done();
         } else {
           console.info('Telephony_SmsMms_sendShortMessage_Async_0100 ' + JSON.stringify(data));
@@ -234,7 +234,7 @@ describe('SmsMmsErrorTest', function () {
           done();
         }        
       });
-    } catch (err) {
+    } catch (error) {
       expect(true).assertFalse();
       done();
     }
