@@ -190,7 +190,7 @@ describe('SmsMmsErrorTest', function () {
         console.info('Telephony_SmsMms_sendShortMessage_Promise_0100 ' + JSON.stringify(error));
         done();
       });
-    } catch (err) {
+    } catch (error) {
       console.info('Telephony_SmsMms_sendShortMessage_Promise_0100 catch ' + JSON.stringify(error));
       done();
     }
