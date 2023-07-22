@@ -20,7 +20,7 @@ import dataRdb from '@ohos.data.rdb'
 const TABLE_NAME = 'book'
 const STORE_CONFIG = {name: 'book.db'}
 const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS book' +
-    '(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, age INTEGER, introduction TEXT NOT NULL)'
+    '(contact_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, age INTEGER, introduction TEXT NOT NULL, salary FLOAT)';
 let rdbStore: any = undefined
 const TAG = 'ACTS_ DataAbility.data'
 const context = featureAbility.getContext()
