@@ -61,9 +61,10 @@ struct WidthPage {
           Blank().color(this.BackGroundColor).commonStyle()
         }.key(this.parentComponentKey).width(this.parentWidth).height(this.parentHeight)
       } else if (this.targetView == 'Checkbox') {
-        Checkbox().backgroundColor(this.BackGroundColor).commonStyle().height(100)
+        Checkbox().backgroundColor(this.BackGroundColor).commonStyle().height(100).margin(0)
       } else if (this.targetView == 'CheckboxGroup') {
         CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(this.BackGroundColor).height(100)
+          .margin(0)
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: this.valueArr }).commonStyle().height(100)
       } else if (this.targetView == 'DatePicker') {
@@ -111,6 +112,7 @@ struct WidthPage {
           .height(100)
           .commonStyle()
           .backgroundColor(this.BackGroundColor)
+          .margin(0)
       } else if (this.targetView == 'Rating') {
         Rating({ rating: 3.5 }).commonStyle().height(100)
       } else if (this.targetView == 'RichText') {
@@ -147,7 +149,7 @@ struct WidthPage {
           selected: this.selectedTime
         }).useMilitaryTime(true).commonStyle().height(100)
       } else if (this.targetView == 'Toggle') {
-        Toggle({ type: ToggleType.Switch }).commonStyle().backgroundColor(this.BackGroundColor).height(100)
+        Toggle({ type: ToggleType.Switch }).commonStyle().backgroundColor(this.BackGroundColor).height(100).margin(0)
       } else if (this.targetView == 'Web') {
         Web({ src: 'www.example.com', controller: new WebController() }).commonStyle().height(100)
       } else if (this.targetView == 'Circle') {
@@ -333,17 +335,19 @@ struct WidthPage {
       } else if (this.targetView == 'Menu') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-        }.backgroundColor(Color.Yellow).commonStyle().height(100)
+        }.backgroundColor(Color.Yellow).commonStyle().height(100).padding(0)
       } else if (this.targetView == 'MenuItem') {
         Row() {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
               .width(this._width)
               .key(this.componentKey)
-          }.backgroundColor(this.BackGroundColor)
+          }
+          .backgroundColor(this.BackGroundColor)
           .width(this.parentWidth)
           .height(this.parentHeight)
           .key(this.parentComponentKey)
+          .padding(0)
         }
       } else if (this.targetView == 'MenuItemGroup') {
         Row() {
@@ -351,8 +355,10 @@ struct WidthPage {
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
             }.key(this.componentKey).width(this._width)
-          }.backgroundColor(Color.Yellow)
+          }
+          .backgroundColor(Color.Yellow)
           .height(this.parentHeight)
+          .padding(0)
           .width(this.parentWidth)
           .key(this.parentComponentKey)
         }

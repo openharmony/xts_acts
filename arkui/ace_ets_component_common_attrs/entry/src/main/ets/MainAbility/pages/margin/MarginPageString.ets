@@ -80,7 +80,11 @@ struct MarginPageString {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
               .margin(this._margin).key(this.componentKey).width('100%').height('100%')
-          }.backgroundColor(Color.Yellow).width(this.parentWidth).height(this.parentHeight)
+          }
+          .backgroundColor(Color.Yellow)
+          .width(this.parentWidth)
+          .height(this.parentHeight)
+          .padding(0)
           .key(this.parentComponentKey)
         }.width('100%').height('100%').backgroundColor(Color.Green)
       } else if (this.targetView == 'MenuItemGroup') {
@@ -89,7 +93,11 @@ struct MarginPageString {
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
             }.margin(this._margin).key(this.componentKey).width('100%').height('100%')
-          }.backgroundColor(Color.Yellow).width(this.parentWidth).height(this.parentHeight)
+          }
+          .backgroundColor(Color.Yellow)
+          .width(this.parentWidth)
+          .height(this.parentHeight)
+          .padding(0)
           .key(this.parentComponentKey)
         }.width('100%').height('100%').backgroundColor(Color.Green)
       } else if (this.targetView == 'TabContent') {

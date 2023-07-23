@@ -60,9 +60,9 @@ struct sizePage {
           Blank().color(this.BackGroundColor).commonStyle()
         }.width(this.parentWidth).height(this.parentHeight)
       } else if (this.targetView == 'Checkbox') {
-        Checkbox().backgroundColor(this.BackGroundColor).commonStyle()
+        Checkbox().backgroundColor(this.BackGroundColor).commonStyle().margin(0)
       } else if (this.targetView == 'CheckboxGroup') {
-        CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(this.BackGroundColor)
+        CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(this.BackGroundColor).margin(0)
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: this.valueArr }).commonStyle()
       } else if (this.targetView == 'DatePicker') {
@@ -106,6 +106,7 @@ struct sizePage {
           .checked(true)
           .commonStyle()
           .backgroundColor(this.BackGroundColor)
+          .margin(0)
       } else if (this.targetView == 'Rating') {
         Rating({ rating: 3.5 }).commonStyle()
       } else if (this.targetView == 'RichText') {
@@ -115,7 +116,7 @@ struct sizePage {
           Text().width(10).height(50).backgroundColor('#C0C0C0')
         }.commonStyle().backgroundColor(this.BackGroundColor)
       } else if (this.targetView == 'Search') {
-        Search().commonStyle()
+        Search().commonStyle().margin(0)
       } else if (this.targetView == 'Select') {
         Select([{ value: 'aaa' }, { value: 'bbb' }]).backgroundColor(this.BackGroundColor).commonStyle()
       } else if (this.targetView == 'Slider') {
@@ -143,7 +144,7 @@ struct sizePage {
           selected: this.selectedTime,
         }).useMilitaryTime(true).commonStyle()
       } else if (this.targetView == 'Toggle') {
-        Toggle({ type: ToggleType.Switch, isOn: false }).commonStyle().backgroundColor(this.BackGroundColor)
+        Toggle({ type: ToggleType.Switch, isOn: false }).commonStyle().backgroundColor(this.BackGroundColor).margin(0)
       } else if (this.targetView == 'Circle') {
         Circle().commonStyle()
       } else if (this.targetView == 'Ellipse') {
@@ -326,14 +327,14 @@ struct sizePage {
       } else if (this.targetView == 'Menu') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-        }.backgroundColor(Color.Yellow).commonStyle()
+        }.backgroundColor(Color.Yellow).commonStyle().padding(0)
       } else if (this.targetView == 'MenuItem') {
         Row() {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
               .size(this._size)
               .key(this.componentKey)
-          }.width(this.parentWidth).height(this.parentHeight)
+          }.width(this.parentWidth).height(this.parentHeight).padding(0)
         }
       } else if (this.targetView == 'MenuItemGroup') {
         Row() {
@@ -341,7 +342,7 @@ struct sizePage {
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
             }.key(this.componentKey).size(this._size)
-          }.width(this.parentWidth).height(this.parentHeight)
+          }.width(this.parentWidth).height(this.parentHeight).padding(0)
         }
       }
     }

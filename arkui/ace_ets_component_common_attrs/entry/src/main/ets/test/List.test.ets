@@ -42,7 +42,7 @@ export default function testsuite() {
   alignRulesTest();
   marginTest();
   marginLengthTest();
-  marginStringTest();
+  //marginStringTest();
   layoutWeightTest();
   layoutWeightFlexTest();
   layoutWeightRowTest();

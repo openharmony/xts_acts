@@ -62,10 +62,9 @@ struct PaddingPage_Length {
         GridRow({
           columns: 5,
           gutter: { x: 5, y: 10 },
-          breakpoints: { value: ['400vp', '600vp', '800vp'], reference: BreakpointsReference.WindowSize },
           direction: GridRowDirection.Row
         }) {
-          GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
+          GridCol({ span: 5 }) {
             Row()
               .width('100%')
               .height('100%')
@@ -74,11 +73,11 @@ struct PaddingPage_Length {
         }.commonStyle()
       } else if (this.targetView == 'Grid') {
         Grid() {
-            GridItem() {
-              Text('day')
-                .backgroundColor(0xF9CF93)
-                .textAlign(TextAlign.Center)
-            }
+          GridItem() {
+            Text('day')
+              .backgroundColor(0xF9CF93)
+              .textAlign(TextAlign.Center)
+          }
         }.commonStyle()
       } else if (this.targetView == 'List') {
         List() {
@@ -97,7 +96,12 @@ struct PaddingPage_Length {
               .height('100%')
               .backgroundColor('#FF3333')
           }.width('100%').height('100%').key(this.referenceComponentKey)
-        }.commonStyle().height('50%').width('50%')
+        }
+        .mode(PanelMode.Full)
+        .commonStyle()
+        .height('50%')
+        .width('50%')
+        .dragBar(false)
       } else if (this.targetView == 'Refresh') {
         Refresh({ refreshing: false }) {
           Text('123')

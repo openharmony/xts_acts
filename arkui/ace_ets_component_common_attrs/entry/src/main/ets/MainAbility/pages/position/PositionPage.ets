@@ -65,10 +65,12 @@ struct PositionPage {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' }).commonStyle()
               MenuItem({ startIcon: $r('app.media.icon'), content: 'referenceComponent' })
                 .key(this.referenceComponentKey)
-            }.backgroundColor(Color.Yellow)
+            }
+            .backgroundColor(Color.Yellow)
             .width(this.parentWidth)
             .height(this.parentHeight)
             .key(this.parentComponentKey)
+            .padding(0)
           }.width('100%').height('100%').backgroundColor(Color.Green)
         } else if (this.targetView == 'MenuItemGroup') {
           Row() {
@@ -79,10 +81,12 @@ struct PositionPage {
 
               MenuItem({ startIcon: $r('app.media.icon'), content: 'referenceComponent' })
                 .key(this.referenceComponentKey)
-            }.backgroundColor(Color.Yellow)
+            }
+            .backgroundColor(Color.Yellow)
             .width(this.parentWidth)
             .height(this.parentHeight)
             .key(this.parentComponentKey)
+            .padding(0)
           }.width('100%').height('100%').backgroundColor(Color.Green)
         } else if (this.targetView == 'ListItem') {
           List({ space: 20, initialIndex: 0 }) {
@@ -192,6 +196,7 @@ struct PositionPage {
           .width(this.parentWidth)
           .height(this.parentHeight)
           .key(this.parentComponentKey)
+          .padding(0)
         } else if (this.targetView == 'StepperItem') {
           StepperItemView({
             _position: $_position,
@@ -220,9 +225,9 @@ struct PositionPage {
             } else if (this.targetView == 'Button') {
               Button('button1').commonStyle()
             } else if (this.targetView == 'Checkbox') {
-              Checkbox({ name: 'checkbox1', group: 'checkboxGroup' }).commonStyle()
+              Checkbox({ name: 'checkbox1', group: 'checkboxGroup' }).commonStyle().margin(0)
             } else if (this.targetView == 'CheckboxGroup') {
-              CheckboxGroup({ group: 'checkboxGroup' }).commonStyle()
+              CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().margin(0)
             } else if (this.targetView == 'DataPanel') {
               DataPanel({ values: [25], max: 100, type: DataPanelType.Circle }).commonStyle()
             } else if (this.targetView == 'DatePicker') {
@@ -257,7 +262,7 @@ struct PositionPage {
             } else if (this.targetView == 'QRCode') {
               QRCode('QRCode').color(0xF7CE00).width(200).height(200).commonStyle()
             } else if (this.targetView == 'Radio') {
-              Radio({ value: 'Radio1', group: 'radioGroup' }).commonStyle()
+              Radio({ value: 'Radio1', group: 'radioGroup' }).commonStyle().margin(0)
             } else if (this.targetView == 'Rating') {
               Rating({ rating: 4 }).stars(5).commonStyle()
             } else if (this.targetView == 'ScrollBar') {
@@ -272,6 +277,7 @@ struct PositionPage {
                 .backgroundColor(Color.White)
                 .searchButton('SEARCH')
                 .commonStyle()
+                .margin(0)
             } else if (this.targetView == 'Select') {
               Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
                 { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle()
@@ -296,7 +302,7 @@ struct PositionPage {
             } else if (this.targetView == 'TimePicker') {
               TimePicker().commonStyle()
             } else if (this.targetView == 'Toggle') {
-              Toggle({ type: ToggleType.Switch }).commonStyle()
+              Toggle({ type: ToggleType.Switch }).commonStyle().margin(0)
             } else if (this.targetView == 'Badge') {
               Badge({
                 value: '',

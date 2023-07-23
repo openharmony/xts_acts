@@ -60,17 +60,17 @@ struct AlignRules {
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Radio') {
         Radio({ value: 'Radio1', group: 'radioGroup' })
-          .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
+          .margin(0).width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Select') {
         Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
           { value: 'bbb', icon: '/common/public_icon.svg' }])
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Checkbox') {
         Checkbox({ name: 'checkbox1' })
-          .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
+          .margin(0).width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'CheckboxGroup') {
         CheckboxGroup()
-          .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
+          .margin(0).width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: [25] })
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
@@ -132,7 +132,7 @@ struct AlignRules {
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Search') {
         Search()
-          .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
+          .margin(0).width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Slider') {
         Slider()
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
@@ -156,7 +156,7 @@ struct AlignRules {
           .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Toggle') {
         Toggle({ type: ToggleType.Switch })
-          .width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
+          .margin(0).width(this.subassemblyWidth).height(this.subassemblyHeight).commonStyle()
       } else if (this.targetView == 'Badge') {
         Badge({ value: '', style: { badgeSize: 6, badgeColor: Color.Red } }) {
           Button('BadgeContent')
