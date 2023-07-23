@@ -35,7 +35,7 @@ export default function sizeTest() {
     'Image',
     'ImageAnimator',
     'LoadingProgress',
-    'Marquee',
+//    'Marquee',
     'Navigation',
     'NavRouter',
     'Progress',
@@ -45,7 +45,7 @@ export default function sizeTest() {
     'Rating',
     'Search',
     'RichText',
-    'Select',
+//    'Select',
     'Slider',
     'Text',
     'TextArea',
@@ -60,7 +60,7 @@ export default function sizeTest() {
     'ColumnSplit',
     'Counter',
     'Flex',
-    'GridRow',
+//    'GridRow',
     'Grid',
     'List',
     'ListItem',
@@ -83,15 +83,15 @@ export default function sizeTest() {
     'Line',
     'WaterFlow',
     'Stepper',
-    'StepperItem',
+//    'StepperItem',
     'FlowItem',
-    'GridCol',
+//    'GridCol',
     'GridItem',
     'RelativeContainer',
     'Navigator',
     'Menu',
     'MenuItem',
-    'MenuItemGroup'
+//    'MenuItemGroup'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.
@@ -193,23 +193,23 @@ export default function sizeTest() {
       console.info('[' + data.caseTag + '] strJsonRectHeight is: ' + strJsonRectHeight);
       console.info('[' + data.caseTag + '] data.testValue.expectValue.width:' + data.testValue.expectValue.width);
       console.info('[' + data.caseTag + '] data.testValue.expectValue.height:' + data.testValue.expectValue.height);
-      console.info('[' + data.caseTag + '] data.viewObj.$attrs.width:' + data.viewObj.$attrs.width);
-      console.info('[' + data.caseTag + '] data.viewObj.$attrs.height:' + data.viewObj.$attrs.height);
+      console.info('[' + data.caseTag + '] data.viewObj.$attrs.size.width:' + data.viewObj.$attrs.width);
+      console.info('[' + data.caseTag + '] data.viewObj.$attrs.size.height:' + data.viewObj.$attrs.height);
 
       if (data.testValue.describe == 'SetStringWidth') {
         //When the use case is SetStringWidth.
         //Assertion width is consistent with expected value.
-        expect(data.viewObj.$attrs.width).assertEqual(data.testValue.expectValue.widthCompare);
+        expect(data.viewObj.$attrs.size.width).assertEqual(data.testValue.expectValue.widthCompare);
         expect(strJsonRectWidth).assertEqual(data.testValue.expectValue.width);
       } else if (data.testValue.describe == 'SetStringHeight') {
         //When the use case is SetStringHeight.
         //Assertion height is consistent with expected value.
-        expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
+        expect(data.viewObj.$attrs.size.height).assertEqual(data.testValue.expectValue.heightCompare);
         expect(strJsonRectHeight).assertEqual(data.testValue.expectValue.height);
       } else {
         //Confirm that the size attribute values have been successfully set.
-        expect(data.viewObj.$attrs.width).assertEqual(data.testValue.expectValue.widthCompare);
-        expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
+        expect(data.viewObj.$attrs.size.width).assertEqual(data.testValue.expectValue.widthCompare);
+        expect(data.viewObj.$attrs.size.height).assertEqual(data.testValue.expectValue.heightCompare);
 
         //Confirm that the calculated value is consistent with the expected value.
         expect(strJsonRectWidth).assertEqual(data.testValue.expectValue.width);

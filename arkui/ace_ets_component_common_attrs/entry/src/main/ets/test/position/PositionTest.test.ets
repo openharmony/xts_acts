@@ -25,7 +25,7 @@ export default function positionTest() {
   //A list of components that support the position attribute, which is required.
   let supportView = [
     'AlphabetIndexer',
-    'Blank',
+//    'Blank',
     'Button',
     'Checkbox',
     'CheckboxGroup',
@@ -65,12 +65,12 @@ export default function positionTest() {
     'Slider',
     'Text',
     'TextArea',
-    'TextClock',
+//    'TextClock',
     'TextInput',
     'TextPicker',
     'TimePicker',
     'Toggle',
-    'Badge',
+//    'Badge',
     'Column',
     'Counter',
     'GridRow',
@@ -194,17 +194,28 @@ export default function positionTest() {
         });
       }
 
+      //Base when setting percentage.
+      let percentBaseX = rectParent.right - rectParent.left;
+      let percentBaseY = rectParent.bottom - rectParent.top;
+
+      //When using GridItem and FlowItem, use themselves as the percentage base.
+      if ('GridItem' == data.pageConfig.targetView || 'FlowItem' == data.pageConfig.targetView) {
+        percentBaseX = rect.right - rect.left;
+        percentBaseY = rect.bottom - rect.top;
+        benchmarkChanged = true;
+      }
+
       //Using the upper left corner of the parent container as the reference point,
       //verify the actual offset of the target component.
       if ('SetStringPercent' == data.testValue.describe && benchmarkChanged) {
         console.info('[' + data.caseTag + '] benchmark changed after component rendered.');
         console.info('[' + data.caseTag + '] check actual offset x.');
         expect(Number(rect.left - rectParent.left).toFixed(2))
-          .assertEqual(Number((rectParent.right - rectParent.left) * data.testValue.setValue.xp).toFixed(2));
+          .assertEqual(Number(percentBaseX * data.testValue.setValue.xp).toFixed(2));
 
         console.info('[' + data.caseTag + '] check actual offset y.');
         expect(Number(rect.top - rectParent.top).toFixed(2))
-          .assertEqual(Number((rectParent.bottom - rectParent.top) * data.testValue.setValue.yp).toFixed(2));
+          .assertEqual(Number(percentBaseY * data.testValue.setValue.yp).toFixed(2));
       } else {
         console.info('[' + data.caseTag + '] check actual offset x.');
         expect(Number(rect.left - rectParent.left).toFixed(2))

@@ -440,17 +440,24 @@ struct ConstraintSizePage {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
                 .commonStyle()
             }.backgroundColor(Color.Yellow)
+            .padding(0)
             .width(400)
             .height(400)
           }.width('100%').height('100%').backgroundColor(Color.Green)
         } else if (this.targetView == 'MenuItemGroup') {
           Row() {
             Menu() {
-              MenuItemGroup({ header: 'MenuItemGroup' }) {
-                MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
+              MenuItemGroup() {
+                MenuItem({ content: 'MenuItem' }).backgroundColor(Color.White).padding(0).margin(0)
               }
+              .backgroundColor(Color.Pink)
               .commonStyle()
-            }.backgroundColor(Color.Yellow)
+              .padding(0)
+              .margin(0)
+            }
+            .backgroundColor(Color.Yellow)
+            .padding(0)
+            .margin(0)
             .width(400)
             .height(400)
           }.width('100%').height('100%').backgroundColor(Color.Green)

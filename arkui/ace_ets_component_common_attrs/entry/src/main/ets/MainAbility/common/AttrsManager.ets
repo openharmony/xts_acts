@@ -29,6 +29,10 @@ export class AttrsManager {
     this.onEvent(Constants.EVENT_ID_CHANGE_DATA);
   }
 
+  static unRegisterDataChange() {
+    events_emitter.off(Constants.EVENT_ID_CHANGE_DATA);
+  }
+
   private onEvent(eventId: number) {
     let stateChangeEvent = {
       eventId: eventId,

@@ -58,10 +58,9 @@ struct paddingPage {
         GridRow({
           columns: 5,
           gutter: { x: 5, y: 10 },
-          breakpoints: { value: ['400vp', '600vp', '800vp'], reference: BreakpointsReference.WindowSize },
           direction: GridRowDirection.Row
         }) {
-          GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
+          GridCol({ span: 5 }) {
             Row()
               .width('100%')
               .height('100%')
@@ -70,11 +69,11 @@ struct paddingPage {
         }.commonStyle()
       } else if (this.targetView == 'Grid') {
         Grid() {
-            GridItem() {
-              Text('day')
-                .backgroundColor(0xF9CF93)
-                .textAlign(TextAlign.Center)
-            }
+          GridItem() {
+            Text('day')
+              .backgroundColor(0xF9CF93)
+              .textAlign(TextAlign.Center)
+          }
         }.commonStyle()
       } else if (this.targetView == 'List') {
         List() {
@@ -89,8 +88,11 @@ struct paddingPage {
         Panel(true) {
           Column() {
             Text('1').height('100%').width('100%')
-          }.height('100%').width('100%').key(this.referenceComponentKey)
-        }.commonStyle().height('50%').width('50%')
+          }.height('100%').width('100%').key(this.referenceComponentKey).backgroundColor(Color.Black)
+        }
+        .mode(PanelMode.Full)
+        .commonStyle()
+        .dragBar(false)
       } else if (this.targetView == 'Refresh') {
         Refresh({ refreshing: false }) {
         }.commonStyle()

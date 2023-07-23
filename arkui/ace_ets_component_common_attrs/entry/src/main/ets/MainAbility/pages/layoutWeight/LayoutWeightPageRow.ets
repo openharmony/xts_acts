@@ -57,9 +57,9 @@ struct LayoutWeightPageRow {
       } else if (this.targetView == 'Button') {
         Button('button1').commonStyle()
       } else if (this.targetView == 'Checkbox') {
-        Checkbox().select(true).selectedColor(Color.Red).commonStyle()
+        Checkbox().select(true).selectedColor(Color.Red).margin(0).commonStyle()
       } else if (this.targetView == 'CheckboxGroup') {
-        CheckboxGroup({ group: 'checkboxGroup' }).selectedColor('#ffcd175f').commonStyle()
+        CheckboxGroup({ group: 'checkboxGroup' }).selectedColor('#ffcd175f').margin(0).commonStyle()
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: [5, 10, 10, 7, 9, 10, 10, 10, 10], max: 100, type: DataPanelType.Line }).commonStyle()
       } else if (this.targetView == 'DatePicker') {
@@ -107,7 +107,7 @@ struct LayoutWeightPageRow {
       } else if (this.targetView == 'QRCode') {
         QRCode('Running Marquee starts rolling').commonStyle()
       } else if (this.targetView == 'Radio') {
-        Radio({ value: 'Radio1', group: 'radioGroup' }).commonStyle()
+        Radio({ value: 'Radio1', group: 'radioGroup' }).margin(0).commonStyle()
       } else if (this.targetView == 'Rating') {
         Rating({ rating: 3.5, indicator: false }).commonStyle()
       } else if (this.targetView == 'RichText') {
@@ -126,6 +126,7 @@ struct LayoutWeightPageRow {
         Search({ placeholder: 'Type to search...' })
           .backgroundColor(Color.White)
           .searchButton('SEARCH')
+          .margin(0)
           .commonStyle()
       } else if (this.targetView == 'Select') {
         Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
@@ -164,7 +165,7 @@ struct LayoutWeightPageRow {
           selected: new Date('2022-07-22T08:00:00')
         }).useMilitaryTime(true).commonStyle()
       } else if (this.targetView == 'Toggle') {
-        Toggle({ type: ToggleType.Switch, isOn: false }).commonStyle()
+        Toggle({ type: ToggleType.Switch, isOn: false }).margin(0).commonStyle()
       } else if (this.targetView == 'Web') {
         Web({ src: 'www.example.com', controller: new WebController() }).commonStyle()
       } else if (this.targetView == 'Circle') {

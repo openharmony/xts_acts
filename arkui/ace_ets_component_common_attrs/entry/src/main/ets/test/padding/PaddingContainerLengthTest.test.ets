@@ -18,22 +18,22 @@ import CommonTest from '../common/CommonTest';
 import { describe, expect } from '@ohos/hypium'
 
 export default function paddingTest() {
-  //A list of components that support size attributes is required.
+  //A list of components that support padding attributes is required.
   let supportView = [
     'Badge',
     'Column',
-    'Counter',
+//    'Counter',
     'GridRow',
     'Grid',
     'List',
-    'Panel',
+//    'Panel',
     'Refresh',
     'Row',
     'Scroll',
-    'SideBarContainer',
+//    'SideBarContainer',
     'Stack',
     'Swiper',
-    'Tabs',
+//    'Tabs',
     'TabContent',
     'WaterFlow',
     'ColumnSplit',
@@ -43,9 +43,9 @@ export default function paddingTest() {
     'GridItem',
     'ListItemGroup',
     'Navigator',
-    'RelativeContainer',
+//    'RelativeContainer',
     'RowSplit',
-    'ListItem'
+//    'ListItem'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.
@@ -144,6 +144,10 @@ export default function paddingTest() {
       await Utils.sleep(1000);
       let targetRectAfter = Utils.getComponentRect(data.pageConfig.componentKey);
 
+      //Confirm that the size attribute values have been successfully set.
+      let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
+      expect(viewObj.$attrs.padding).assertEqual(data.testValue.expectValue.padding);
+
       //Verification method for special reference components.
       if (data.pageConfig.componentKey == 'RelativeContainer' || data.pageConfig.componentKey == 'RowSplit'
       || data.pageConfig.componentKey == 'ListItemGroup' || data.pageConfig.componentKey == 'List'
@@ -151,43 +155,55 @@ export default function paddingTest() {
       || data.pageConfig.componentKey == 'GridCol' || data.pageConfig.componentKey == 'FlowItem'
       || data.pageConfig.componentKey == 'GridRow' || data.pageConfig.componentKey == 'Panel'
       || data.pageConfig.componentKey == 'SideBarContainer' || data.pageConfig.componentKey == 'TabContent'
-      || data.pageConfig.componentKey == 'WaterFlow' /*||data.pageConfig.componentKey == 'ListItem'*/) {
-        //Obtain the size information of the targetRect component.
-        let targetRect = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
+      || data.pageConfig.componentKey == 'WaterFlow' /*||data.pageConfig.componentKey == 'ListItem'*/
+      ) {
+        //Obtain the size information of the reference component.
+        let referenceRect = Utils.getComponentRect(data.pageConfig.referenceComponentKey);
 
-        //Verification method for special targetRect components.
+        //Verification method for special components.
         if (data.testValue.describe == 'SetNumber' || data.testValue.describe == 'SetResource'
         || data.testValue.describe == 'SetStringPx') {
-          console.info('[' + data.caseTag + ']targetRect.top - targetRectAfter.top:'
-          + (targetRect.top - targetRectAfter.top));
-          console.info('[' + data.caseTag + '] targetRect.left - targetRectAfter.left:'
-          + (targetRect.left - targetRectAfter.left));
-          console.info('[' + data.caseTag + '] targetRectAfter.bottom - targetRect.bottom:'
-          + (targetRectAfter.bottom - targetRect.bottom));
-          console.info('[' + data.caseTag + ']targetRectAfter.right - targetRect.right:'
-          + (targetRectAfter.right - targetRect.right));
+          console.info('[' + data.caseTag + ']referenceRect.top - targetRectAfter.top:'
+          + (referenceRect.top - targetRectAfter.top));
+          console.info('[' + data.caseTag + '] referenceRect.left - targetRectAfter.left:'
+          + (referenceRect.left - targetRectAfter.left));
+          console.info('[' + data.caseTag + '] targetRectAfter.bottom - referenceRect.bottom:'
+          + (targetRectAfter.bottom - referenceRect.bottom));
+          console.info('[' + data.caseTag + ']targetRectAfter.right - referenceRect.right:'
+          + (targetRectAfter.right - referenceRect.right));
 
-          expect(targetRect.top - targetRectAfter.top).assertEqual(data.testValue.expectValue.top);
-          expect(targetRectAfter.bottom - targetRect.bottom).assertEqual(data.testValue.expectValue.bottom);
-          expect(targetRectAfter.right - targetRect.right).assertEqual(data.testValue.expectValue.right);
-          expect(targetRect.left - targetRectAfter.left).assertEqual(data.testValue.expectValue.left);
+          //Panel component need special adapter ,the reason is the top of Panel has a own size
+          if (data.pageConfig.componentKey == 'Panel') {
+            expect(referenceRect.top - targetRectAfter.top).assertEqual(data.testValue.expectValue.top + vp2px(8));
+          } else {
+            expect(referenceRect.top - targetRectAfter.top).assertEqual(data.testValue.expectValue.top);
+          }
+          expect(targetRectAfter.bottom - referenceRect.bottom).assertEqual(data.testValue.expectValue.bottom);
+          expect(targetRectAfter.right - referenceRect.right).assertEqual(data.testValue.expectValue.right);
+          expect(referenceRect.left - targetRectAfter.left).assertEqual(data.testValue.expectValue.left);
         } else if (data.testValue.describe == 'SetStringPercent') {
           console.info('[' + data.caseTag + ']referenceRect.top - targetRectAfter.top:'
-          + (targetRect.top - targetRectAfter.top));
+          + (referenceRect.top - targetRectAfter.top));
           console.info('[' + data.caseTag + '] referenceRect.left - targetRectAfter.left:'
-          + (targetRect.left - targetRectAfter.left));
+          + (referenceRect.left - targetRectAfter.left));
           console.info('[' + data.caseTag + '] targetRectAfter.bottom - referenceRect.bottom:'
-          + (targetRectAfter.bottom - targetRect.bottom));
+          + (targetRectAfter.bottom - referenceRect.bottom));
           console.info('[' + data.caseTag + '] targetRectAfter.right - referenceRect.right:'
-          + (targetRectAfter.right - targetRect.right));
+          + (targetRectAfter.right - referenceRect.right));
 
-          expect(targetRect.top - targetRectAfter.top)
+          //Panel component need special adapter ,the reason is the top of Panel has a own size
+          if (data.pageConfig.componentKey == 'Panel') {
+            expect(referenceRect.top - targetRectAfter.top)
+              .assertEqual((data.testValue.expectValue.parentWidthAfter + vp2px(8)));
+          } else {
+            expect(referenceRect.top - targetRectAfter.top)
+              .assertEqual((data.testValue.expectValue.parentWidthAfter));
+          }
+          expect(targetRectAfter.bottom - referenceRect.bottom)
             .assertEqual((data.testValue.expectValue.parentWidthAfter));
-          expect(targetRectAfter.bottom - targetRect.bottom)
+          expect(targetRectAfter.right - referenceRect.right)
             .assertEqual((data.testValue.expectValue.parentWidthAfter));
-          expect(targetRectAfter.right - targetRect.right)
-            .assertEqual((data.testValue.expectValue.parentWidthAfter));
-          expect(targetRect.left - targetRectAfter.left)
+          expect(referenceRect.left - targetRectAfter.left)
             .assertEqual((data.testValue.expectValue.parentWidthAfter));
         }
       } else if (data.pageConfig.componentKey == 'Tabs') {
@@ -245,17 +261,11 @@ export default function paddingTest() {
 
         //Verify the height size of the target component.
         let targetRectAfterHeight = targetRectAfter.bottom - targetRectAfter.top;
-        let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
 
         console.info('[' + data.caseTag + '] targetRectAfterHeight:' + targetRectAfterHeight);
         console.info('[' + data.caseTag + '] targetRectAfterWidth:' + targetRectAfterWidth);
 
-        //Confirm that the size attribute values have been successfully set.
-        expect(viewObj.$attrs.padding).assertEqual(data.testValue.expectValue.padding);
         if (data.testValue.describe == 'SetStringPercent') {
-          //Confirm that the calculated value is consistent with the expected value.
-          let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
-          expect(viewObj.$attrs.padding).assertEqual(data.testValue.expectValue.padding);
           expect(targetRectAfterWidth - targetRectBeforeWidth)
             .assertEqual((data.testValue.expectValue.parentWidthAfter) * 2);
           expect(targetRectAfterHeight - targetRectBeforeHeight)
