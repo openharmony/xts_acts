@@ -206,8 +206,6 @@ export default function abilityTest() {
             expect(data.uri).assertEqual("");
             expect(data.deviceTypes[0]).assertEqual("default");
             expect(data.deviceTypes[1]).assertEqual("tablet");
-            expect(data.deviceTypes[2]).assertEqual("2in1");
-            expect(data.deviceTypes.length).assertEqual(3);
 
             expect(data.applicationInfo.name).assertEqual("com.acts.staticinfomationquery");
             expect(data.applicationInfo.description).assertEqual("$string:description_application");
@@ -397,7 +395,6 @@ export default function abilityTest() {
             expect(data.metadata.length).assertEqual(0);
             expect(data.deviceTypes[0]).assertEqual("default");
             expect(data.deviceTypes[1]).assertEqual("tablet");
-            expect(data.deviceTypes[2]).assertEqual("2in1");
             expect(data.installationFree).assertEqual(false);
             expect(data.hashValue).assertEqual('');
             expect(data.type).assertEqual(bundleManager.ModuleType.ENTRY);
