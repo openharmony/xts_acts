@@ -143,42 +143,41 @@ export default function relationalStoreDataGroupIdCallback() {
     })
 
     /**
-     * @tc.number SUB_DDM_RelationalStore_DataGroupId_Callback_0100
+     * @tc.number SUB_DDM_RelationalStore_DataGroupId_Callback_0400
      * @tc.name relationalStore dataGroupId callback test
      * @tc.desc relationalStore dataGroupId callback test
      */
-    //    it('SUB_DDM_RelationalStore_DataGroupId_Callback_0100', 0, async function (done) {
-    //      const STORE_CONFIG = {
-    //        name: "RdbTest.db",
-    //        securityLevel: relationalStore.SecurityLevel.S1,
-    //        dataGroupId: '123456'
-    //      };
-    //      try {
-    //        relationalStore.getRdbStore(globalThis.abilityContext, STORE_CONFIG, async function (err, store) {
-    //          rdbStore = store;
-    //          if (err) {
-    //            console.error(TAG, `Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-    //            return false;
-    //          }
-    //          console.info(TAG, `Get RdbStore successfully.`);
-    //          await rdbStore.executeSql(CREATE_TABLE_TEST);
-    //          relationalStore.deleteRdbStore(globalThis.abilityContext, STORE_CONFIG, function (err) {
-    //            if (err) {
-    //              console.error(TAG, `Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-    //              return false;
-    //            }
-    //            console.info(TAG, `Delete RdbStore successfully.`);
-    //            expect(err === null).assertTrue()
-    //            done();
-    //          })
-    //        })
-    //      } catch (errInfo) {
-    //        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
-    //        expect(errInfo !== null).assertFail()
-    //        done();
-    //      }
-    //
-    //    })
+        it('SUB_DDM_RelationalStore_DataGroupId_Callback_0400', 0, async function (done) {
+          const STORE_CONFIG = {
+            name: "RdbTest.db",
+            securityLevel: relationalStore.SecurityLevel.S1,
+            dataGroupId: '123456'
+          };
+          try {
+            relationalStore.getRdbStore(globalThis.abilityContext, STORE_CONFIG, async function (err, rdbStore) {
+              if (err) {
+                console.error(TAG, `Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+                return false;
+              }
+              console.info(TAG, `Get RdbStore successfully.` + `  rdbStore = ${rdbStore} , err = ${err}`);
+              await rdbStore.executeSql(CREATE_TABLE_TEST);
+              relationalStore.deleteRdbStore(globalThis.abilityContext, STORE_CONFIG, function (err) {
+                if (err) {
+                  console.error(TAG, `Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+                  return false;
+                }
+                console.info(TAG, `Delete RdbStore successfully.` + `  rdbStore = ${rdbStore} , err = ${err}`);
+                expect(err === undefined).assertTrue()
+                done();
+              })
+            })
+          } catch (errInfo) {
+            console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+            expect(errInfo !== undefined).assertFail()
+            done();
+          }
+        })
+
 
 
     console.log(TAG + "*************Unit Test End*************");

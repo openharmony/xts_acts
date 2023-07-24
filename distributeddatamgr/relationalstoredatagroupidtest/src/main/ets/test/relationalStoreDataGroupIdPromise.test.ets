@@ -149,6 +149,43 @@ export default function relationalStoreDataGroupIdPromise() {
       }
     })
 
+    /**
+     * @tc.number SUB_DDM_RelationalStore_DataGroupId_Promise_0400
+     * @tc.name relationalStore dataGroupId callback test
+     * @tc.desc relationalStore dataGroupId callback test
+     */
+    it('SUB_DDM_RelationalStore_DataGroupId_Promise_0400', 0, async function (done) {
+      const STORE_CONFIG = {
+        name: "RdbTest.db",
+        securityLevel: relationalStore.SecurityLevel.S1,
+        dataGroupId: '123456',
+      };
+      try {
+        relationalStore.getRdbStore(globalThis.abilityContext, STORE_CONFIG).then(async (rdbStore) => {
+          console.info(TAG, `Get RdbStore successfully.`);
+          //          await rdbStore.executeSql(CREATE_TABLE_TEST);
+          rdbStore.executeSql(CREATE_TABLE_TEST, [], async function (error) {
+            if (error) {
+              console.error(TAG, `ExecuteSql failed, code is ${error.code},message is ${error.message}`);
+              return;
+            }
+            console.info(TAG, `executeSql1 done.` + error);
+            expect(error === undefined).assertTrue();
+            await relationalStore.deleteRdbStore(globalThis.abilityContext, STORE_CONFIG)
+            done();
+          })
+        }).catch((err) => {
+          console.info(TAG, `Get RdbStore fail, code is ${err.code},message is ${err.message}.`);
+          expect(err !== null).assertFail();
+          done();
+        })
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+        expect(errInfo !== null).assertFail();
+        done();
+      }
+    })
+
     console.info(TAG + "*************Unit Test End*************");
   })
 }

@@ -107,6 +107,155 @@ export default function preferencesDataGroupIdCallback() {
       }
     })
 
+    /**
+     * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0400
+     * @tc.name preferences dataGroupId callback test
+     * @tc.desc preferences dataGroupId callback test
+     */
+    it('SUB_DDM_Preferences_DataGroupId_Callback_0400', 0, async function (done) {
+      const Options = {
+        name: "test_preferences_callback",
+        dataGroupId: '123456',
+      };
+      try {
+        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+          if (err) {
+            console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
+            return false;
+          }
+          console.info(TAG, `getPreferences successfully.`);
+          dataPreferences.deletePreferences(globalThis.abilityContext, Options, function (error) {
+            if (error) {
+              console.error(TAG, `deletePreferences failed, code is ${error.code},message is ${error.message}`);
+              return false;
+            }
+            console.info(TAG, `deletePreferences successfully.`);
+            expect(error === undefined).assertTrue();
+            done();
+          })
+        })
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+        expect(errInfo !== null).assertFail();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0500
+     * @tc.name preferences dataGroupId null callback test
+     * @tc.desc preferences dataGroupId null callback test
+     */
+    it('SUB_DDM_Preferences_DataGroupId_Callback_0500', 0, async function (done) {
+      const Options = {
+        name: "test_preferences_callback",
+        dataGroupId: null,
+      };
+      try {
+        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+          console.info(TAG, `getPreferences successfully.`);
+          expect().assertFail();
+          done();
+          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+            console.info(TAG, `removePreferencesFromCache successfully.`);
+            expect().assertFail();
+            done();
+          })
+        })
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+        expect(errInfo.code).assertEqual('401');
+        done();
+      }
+    })
+
+    /**
+     * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0600
+     * @tc.name preferences dataGroupId undefined callback test
+     * @tc.desc preferences dataGroupId undefined callback test
+     */
+    it('SUB_DDM_Preferences_DataGroupId_Callback_0600', 0, async function (done) {
+      const Options = {
+        name: "test_preferences_callback",
+        dataGroupId: undefined,
+      };
+      try {
+        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+          console.info(TAG, `getPreferences successfully.`);
+          expect().assertFail();
+          done();
+          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+            console.info(TAG, `removePreferencesFromCache successfully.`);
+            expect().assertFail();
+            done();
+          })
+        })
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+        expect(errInfo.code).assertEqual('401');
+        done();
+      }
+    })
+    /**
+     * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0700
+     * @tc.name preferences dataGroupId callback test
+     * @tc.desc preferences dataGroupId callback test
+     */
+    it('SUB_DDM_Preferences_DataGroupId_Callback_0700', 0, async function (done) {
+      const Options = {
+        name: "test_preferences_callback",
+        dataGroupId: '112233',
+      };
+      try {
+        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+          console.info(TAG, `getPreferences successfully.`);
+          expect().assertFail();
+          done();
+          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+            console.info(TAG, `removePreferencesFromCache successfully.`);
+            expect().assertFail();
+            done();
+          })
+        })
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+        expect(errInfo.code).assertEqual('14801002');
+        done();
+      }
+    })
+
+        /**
+     * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0800
+     * @tc.name preferences dataGroupId callback test
+     * @tc.desc preferences dataGroupId callback test
+     */
+    it('SUB_DDM_Preferences_DataGroupId_Callback_0800', 0, async function (done) {
+      const Options = {
+        name: "test_preferences_callback",
+        dataGroupId: '123456',
+      };
+      try {
+        dataPreferences.getPreferences(globalThis.abilityContext, Options, async function (err) {
+          if (err) {
+            console.error(TAG, `getPreferences failed, code is ${err.code},message is ${err.message}`);
+            return false;
+          }
+          console.info(TAG, `getPreferences successfully.`);
+          dataPreferences.removePreferencesFromCache(globalThis.abilityContext, Options, function (error) {
+            if (error) {
+              console.error(TAG, `removePreferencesFromCache failed, code is ${error.code},message is ${error.message}`);
+              return false;
+            }
+            console.info(TAG, `removePreferencesFromCache successfully.`);
+            expect(error === undefined).assertTrue();
+            done();
+          })
+        })
+      } catch (errInfo) {
+        console.error(TAG, `failed, code is ${errInfo.code},message is ${errInfo.message}`);
+        expect(errInfo !== null).assertFail();
+      }
+    })
+
     console.log(TAG + "*************Unit Test End*************");
   })
 }
