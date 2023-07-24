@@ -1070,12 +1070,12 @@ export default function getBundleInfoForSelf() {
 
     /*
      * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0003
-     * @tc.name: getBundleInfoForSelfDefault
+     * @tc.name: getBundleInfoForSelfSyncDefault
      * @tc.desc: Test getBundleInfoForSelfSync with default flag
      */
-    it('getBundleInfoForSelfDefault', 0, async function (done) {
+    it('getBundleInfoForSelfSyncDefault', 0, async function (done) {
       let data = bundle.getBundleInfoForSelfSync(bundle.BundleFlag.GET_BUNDLE_INFO_DEFAULT);
-      console.info("getBundleInfoForSelfDefault" + JSON.stringify(data));
+      console.info("getBundleInfoForSelfSyncDefault" + JSON.stringify(data));
       expect(data.name).assertEqual(BUNDLE_NAME);
       expect(data.vendor).assertEqual(VENDOR);
       expect(data.versionCode).assertEqual(1000000);
