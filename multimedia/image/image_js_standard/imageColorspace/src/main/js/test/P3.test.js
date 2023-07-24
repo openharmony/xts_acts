@@ -25,6 +25,8 @@ export default function ImageP3() {
         const COLORSPACENAME = 5;
         let filePath;
         let fdNumber;
+        let globalpixelmap;
+        let globalImagesource;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
             await context.getFilesDir().then((data) => {
@@ -51,6 +53,22 @@ export default function ImageP3() {
         });
 
         afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info("globalpixelmap release start");
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info("globalpixelmap release fail");
+                }
+            }
+            if (globalImagesource != undefined) {
+                console.info("globalImagesource release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -77,7 +95,9 @@ export default function ImageP3() {
             try {
                 logger.log("ImageSource " + (imageSource != undefined));
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
+                    globalpixelmap = pixelMap;
                     logger.log("PixelMap " + pixelMap);
                     var csm = colorSpaceManager.create(colorSpaceName);
                     logger.log("colorSpaceManager.ColorSpace: " + colorSpaceName);
@@ -115,7 +135,9 @@ export default function ImageP3() {
             try {
                 let imageSource = GenPicSource(testImg);
                 if (imageSource != undefined) {
+                    globalImagesource = imageSource;
                     let pixelMap = await imageSource.createPixelMap();
+                    globalpixelmap = pixelMap;
                     var csm = pixelMap.getColorSpace();
                     logger.log("getColorSpace csm " + csm);
                     var csmn = csm.getColorSpaceName();

@@ -21,6 +21,7 @@ import featureAbility from "@ohos.ability.featureAbility";
 
 export default function imageModifyProperty() {
     describe("imageModifyProperty", function () {
+        let globalImagesource;
         let filePath;
         async function getFd(fileName) {
             let context = await featureAbility.getContext();
@@ -38,6 +39,14 @@ export default function imageModifyProperty() {
         });
 
         afterEach(async function () {
+            if (globalImagesource != undefined) {
+                console.info("globalImagesource release start");
+                try {
+                    await globalImagesource.release();
+                } catch (error) {
+                    console.info("globalImagesource release fail");
+                }
+            }
             console.info("afterEach case");
         });
 
@@ -59,6 +68,7 @@ export default function imageModifyProperty() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi
                     .modifyImageProperty(key, value)
                     .then(() => {
@@ -97,6 +107,7 @@ export default function imageModifyProperty() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi.modifyImageProperty(key, value, (error) => {
                     if (error) {
                         expect(false).assertTrue();
@@ -131,6 +142,7 @@ export default function imageModifyProperty() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 let property = { index: 0, defaultValue: "1" };
                 imageSourceApi.modifyImageProperty(key, value, property, (error) => {
                     if (error) {
@@ -166,6 +178,7 @@ export default function imageModifyProperty() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi.modifyImageProperty(key, value, (error) => {
                     expect(error.code != 0).assertTrue();
                     console.info(`${testNum} errormsg: ` + error);
@@ -188,6 +201,7 @@ export default function imageModifyProperty() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 let property = { index: 0, defaultValue: "1" };
                 imageSourceApi.modifyImageProperty(key, value, property, (error) => {
                     expect(error.code != 0).assertTrue();
@@ -217,6 +231,7 @@ export default function imageModifyProperty() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalImagesource = imageSourceApi;
                 imageSourceApi
                     .modifyImageProperty(key, value)
                     .then(() => {
