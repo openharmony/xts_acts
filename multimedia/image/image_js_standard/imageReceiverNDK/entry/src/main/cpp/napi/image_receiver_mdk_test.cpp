@@ -57,7 +57,7 @@ napi_value ImageReceiverNDKTest::Init(napi_env env, napi_value exports)
     napi_define_properties(env, exports, sizeof(props) / sizeof(props[0]), props);
     return exports;
 }
-static bool CheckArgs(size_t count, napi_value* argValues, size_t exceptCount)
+static bool CheckArgs(size_t count, const napi_value* argValues, size_t exceptCount)
 {
     if (count != exceptCount) {
         return false;
