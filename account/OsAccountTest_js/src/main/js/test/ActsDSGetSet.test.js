@@ -473,7 +473,7 @@ export default function ActsDAGetSetTest() {
             };
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
                 console.debug("====>setOsAccountDistributedInfo_test009 set_err:" + JSON.stringify(err))
-                expect(err.code).assertEqual(12300001);
+                expect(err.code).assertEqual(12300002);
                 done();
             })
         })
@@ -504,7 +504,7 @@ export default function ActsDAGetSetTest() {
                 done();
             }).catch((err) => {
                 console.debug("====>setOsAccountDistributedInfo_test010 throw_err:" + JSON.stringify(err))
-                expect(err.code).assertEqual(12300001);
+                expect(err.code).assertEqual(12300002);
                 done();
             })
         })
@@ -529,7 +529,7 @@ export default function ActsDAGetSetTest() {
             console.debug(JSON.stringify(obj))
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
                 console.debug("====>setOsAccountDistributedInfo_test011 update_err:" + JSON.stringify(err))
-                expect(err.code).assertEqual(12300001);
+                expect(err.code).assertEqual(12300002);
                 done();
             })
         })
@@ -559,7 +559,7 @@ export default function ActsDAGetSetTest() {
                 done();
             }catch(err){
                 console.debug("====>setOsAccountDistributedInfo_test012 throw_err:" + JSON.stringify(err))
-                expect(err.code).assertEqual(12300001);
+                expect(err.code).assertEqual(12300002);
                 done();
             }
         })
@@ -585,7 +585,7 @@ export default function ActsDAGetSetTest() {
             console.debug(JSON.stringify(obj))
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
                 console.debug("====>setOsAccountDistributedInfo_test013 update_err:" + JSON.stringify(err))
-                expect(err.code).assertEqual(12300001);
+                expect(err.code).assertEqual(12300002);
                 done();
             })
         })
@@ -614,7 +614,7 @@ export default function ActsDAGetSetTest() {
                 done();
             }catch(err){
                 console.debug("====>setOsAccountDistributedInfo_test014 throw_err:" + JSON.stringify(err))
-                expect(err.code).assertEqual(12300001)
+                expect(err.code).assertEqual(12300002)
                 done();
             }
         })
