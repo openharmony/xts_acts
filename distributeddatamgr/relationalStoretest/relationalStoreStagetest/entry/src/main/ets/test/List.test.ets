@@ -12,11 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+import relationalStoreCloudSyncEtsTest from './relationalStoreCloudSyncEts.test.ets'
 import relationalStoreDistributedTest from './relationalStoreDistributedEtsunit.test.ets'
 import relationalStoreTest from './relationalStoreEtsunit.test.ets'
 import relationalStoreResultSetTest from './relationalStoreTestResultsetEtsunit.test.ets'
 export default function testsuite() {
+  relationalStoreCloudSyncEtsTest(globalThis.abilityContext)
   relationalStoreDistributedTest(globalThis.abilityContext)
   relationalStoreTest(globalThis.abilityContext)
   relationalStoreResultSetTest(globalThis.abilityContext)
