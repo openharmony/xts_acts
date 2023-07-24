@@ -210,9 +210,9 @@ export default function httpJsunit() {
             Test(http.createHttp(),socket.constructTCPSocketInstance(),socket.constructUDPSocketInstance());
 
             function Test(httpRequest :HttpRequest,tcpSocket:TCPSocket,udpSocket:UDPSocket){
-                except(httpRequest  != null).assertTrue();
-                except(tcpSocket != null).assertTrue();
-                except(udpSocket != null).assertTrue();
+                expect(httpRequest  != null).assertTrue();
+                expect(tcpSocket != null).assertTrue();
+                expect(udpSocket != null).assertTrue();
                 httpRequest.destroy();
                 tcpSocket.close();
                 udpSocket.close();
