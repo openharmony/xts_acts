@@ -17,7 +17,8 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
 describe('ImageCreator', function () {
-
+    let globalCreator;
+    let globalImg;
     const JPEG = 4;
     const WIDTH = 8192;
     const HEIGHT = 8;
@@ -32,7 +33,23 @@ describe('ImageCreator', function () {
         console.info('beforeEach case');
     })
 
-    afterEach(function () {
+    afterEach(async function () {
+        if (globalCreator != undefined) {
+            console.info("globalCreator release start");
+            try {
+                await globalCreator.release();
+            } catch (error) {
+                console.info("globalCreator release fail");
+            }
+        }
+        if (globalImg != undefined) {
+            console.info("globalImg release start");
+            try {
+                await globalImg.release();
+            } catch (error) {
+                console.info("globalImg release fail");
+            }
+        }
         console.info('afterEach case');
     })
 
@@ -58,6 +75,7 @@ describe('ImageCreator', function () {
             expect(false).assertTrue();
             done();
         } else {
+            globalCreator = creator;
             try {
                 creator.on(param, (err) => {
                     expect(false).assertTrue();
@@ -74,12 +92,14 @@ describe('ImageCreator', function () {
     async function queueImageError(done, testNum, param) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.dequeueImage().then(img => {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done();
                     return
                 }
+                globalImg = img;
                 img.getComponent(JPEG, async (err, component) => {
                     if (err) {
                         expect(false).assertTrue();
@@ -123,11 +143,13 @@ describe('ImageCreator', function () {
     async function queueImageCbError(done, testNum, param) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.dequeueImage().then(img => {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done()
                 } else {
+                    globalImg = img;
                     img.getComponent(JPEG, (err, component) => {
                         if (err) {
                             expect(false).assertTrue();
@@ -187,6 +209,7 @@ describe('ImageCreator', function () {
             console.info('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100 undefined')
             done();
         } else {
+            globalCreator = creator;
             expect(creator.size.width == WIDTH).assertTrue();
             expect(creator.size.height == HEIGHT).assertTrue();
             expect(creator.capacity == CAPACITY).assertTrue();
@@ -335,6 +358,7 @@ describe('ImageCreator', function () {
     it('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.release().then(() => {
                 console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100 release ');
                 expect(true).assertTrue();
@@ -363,6 +387,7 @@ describe('ImageCreator', function () {
     it('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.release((err) => {
                 if (err) {
                     console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back' + err);
@@ -394,9 +419,11 @@ describe('ImageCreator', function () {
     it('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.dequeueImage().then(img => {
                 console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 dequeueImage Success');
                 expect(img != undefined).assertTrue();
+                globalImg = img;
                 done();
             }).catch(error => {
                 console.log('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 error: ' + error);
@@ -423,6 +450,7 @@ describe('ImageCreator', function () {
     it('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.dequeueImage((err, img) => {
                 if (err) {
                     console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 err:' + err);
@@ -430,6 +458,7 @@ describe('ImageCreator', function () {
                     done();
                     return;
                 }
+                globalImg = img;
                 console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 dequeueImage call back Success');
                 expect(img != undefined).assertTrue();
                 done();
@@ -455,12 +484,14 @@ describe('ImageCreator', function () {
     it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.dequeueImage().then(img => {
                 if (img == undefined) {
                     expect(false).assertTrue();
                     done();
                     return;
                 }
+                globalImg = img;
                 img.getComponent(JPEG, (err, component) => {
                     if (err) {
                         expect(false).assertTrue();
@@ -564,6 +595,7 @@ describe('ImageCreator', function () {
     it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
+            globalCreator = creator;
             creator.dequeueImage((err, img) => {
                 if (err || img == undefined) {
                     console.log('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 dequeueImage error:' + err);
@@ -571,7 +603,7 @@ describe('ImageCreator', function () {
                     done();
                     return;
                 }
-
+                globalImg = img;
                 img.getComponent(JPEG, (err, component) => {
                     if (err) {
                         expect(false).assertTrue();
@@ -687,6 +719,7 @@ describe('ImageCreator', function () {
             done()
             return;
         }
+        globalCreator = creator;
         creator.on('imageRelease', (err) => {
             if (err) {
                 console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 on release faild' + err);
@@ -705,6 +738,7 @@ describe('ImageCreator', function () {
                 done();
                 return;
             }
+            globalImg = img;
             img.getComponent(JPEG, (err, component) => {
                 if (err || component == undefined) {
                     console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 getComponent err:' + err);
