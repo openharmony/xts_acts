@@ -50,6 +50,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/wukong:wukong",
   "${ACTS_ROOT}/validator:validator",
   "${ACTS_ROOT}/xts:xts",
+  "${ACTS_ROOT}/driver:driver",
   "${ACTS_ROOT}/msdp:msdp",
   "${ACTS_ROOT}/arkcompiler:arkcompiler",
 ]
