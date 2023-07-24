@@ -153,5 +153,92 @@ describe('SmsMmsErrorTest', function () {
       done();
     }
   });
+
+  /**
+   * @tc.number Telephony_SmsMms_sendShortMessage_Promise_0100
+   * @tc.name Telephony_SmsMms_sendShortMessage_Promise_0100
+   * @tc.desc Function test
+   */
+   it('Telephony_SmsMms_sendShortMessage_Promise_0100', 0, async function (done) {
+    try {
+      let sendCallback = function (err, data) {
+        expect(data.isLastPart).assertEqual(false);
+        console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      }
+      let deliveryCallback = function (err, data) {
+        console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      }
+      let slotId = 0;
+      let content = '短信内容';
+      let destinationHost = '10086';
+      let serviceCenter = '';
+      let destinationPort = 1000;
+      let options = {
+        slotId,
+        content,
+        destinationHost,
+        serviceCenter,
+        destinationPort,
+        sendCallback,
+        deliveryCallback
+      };
+      sms.sendShortMessage(options).then((data)=>{
+        console.info('Telephony_SmsMms_sendShortMessage_Promise_0100 ' + JSON.stringify(data));
+        expect().assertFail();
+        done();
+      }).catch((error)=>{
+        console.info('Telephony_SmsMms_sendShortMessage_Promise_0100 ' + JSON.stringify(error));
+        done();
+      });
+    } catch (error) {
+      console.info('Telephony_SmsMms_sendShortMessage_Promise_0100 catch ' + JSON.stringify(error));
+      done();
+    }
+  });
+
+  /**
+   * @tc.number Telephony_SmsMms_sendShortMessage_Async_0100
+   * @tc.name Telephony_SmsMms_sendShortMessage_Async_0100
+   * @tc.desc Function test
+   */
+   it('Telephony_SmsMms_sendShortMessage_Async_0100', 0, async function (done) {
+    try {
+      let sendCallback = function (err, data) {
+        expect(data.isLastPart).assertEqual(false);
+        console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      }
+      let deliveryCallback = function (err, data) {
+        console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      }
+      let slotId = 0;
+      let content = '短信内容';
+      let destinationHost = '10086';
+      let serviceCenter = '';
+      let destinationPort = 1000;
+      let options = {
+        slotId,
+        content,
+        destinationHost,
+        serviceCenter,
+        destinationPort,
+        sendCallback,
+        deliveryCallback
+      };
+      sms.sendShortMessage(options,(err, data)=>{
+        if(err){
+          console.info('Telephony_SmsMms_sendShortMessage_Async_0100 ' + JSON.stringify(err));
+          done();
+        } else {
+          console.info('Telephony_SmsMms_sendShortMessage_Async_0100 ' + JSON.stringify(data));
+          expect().assertFail();
+          done();
+        }        
+      });
+      done();
+    } catch (error) {
+      console.info('Telephony_SmsMms_sendShortMessage_Async_0100 catch ' + JSON.stringify(error));
+      done();
+    }
+  });
 });
 }
