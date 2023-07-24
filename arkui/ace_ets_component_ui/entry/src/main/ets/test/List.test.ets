@@ -56,6 +56,8 @@ import NavDestinationJsunit from './NavDestinationJsunit.test.ets';
 import GridItemJsunit from './GridItemJsunit.test.ets';
 import NavigationJsunit from './NavigationJsunit.test.ets';
 import GridColOffsetJsunit from './GridColoffsetJsunit.test.ets';
+import ApiCommponentAddJsunit from './ApiCommponentAddJsunit.test.ets';
+import fontJsunit from './fontJsunit.test.ets';
 
 export default function testsuite() {
   blankJsunit();
@@ -101,4 +103,6 @@ export default function testsuite() {
   GridItemJsunit();
   NavigationJsunit();
   GridColOffsetJsunit();
+  fontJsunit();
+  ApiCommponentAddJsunit();
 }
