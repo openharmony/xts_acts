@@ -1491,7 +1491,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
         var value = array.toLocaleString('en');
         console.log('ArrayTest002 :' + value);
-        expect(value).assertEqual('1enaen12/21/2022, 10:12:00 PM');
+        expect(value).assertEqual('1,a,12/21/2022, 10:12:00 PM');
     })
     
     /**
@@ -1506,7 +1506,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', new Date('21 Dec 2022 14:12:00 UTC')];
         var value = array.toLocaleString('en', { timeZone: 'UTC' });
         console.log('ArrayTest003 :' + value);
-        expect(value).assertEqual('1enaen12/21/2022, 2:12:00 PM');
+        expect(value).assertEqual('1,a,12/21/2022, 2:12:00 PM');
     })
 
     /**
@@ -1521,7 +1521,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', '测试'];
         var value = array.toLocaleString('zh');
         console.log('ArrayTest004 :' + value);
-        expect(value).assertEqual('1zhazh测试');
+        expect(value).assertEqual('1,a,测试');
     })
 
     /**
@@ -1536,7 +1536,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, 'a', '测试', undefined];
         var value = array.toLocaleString('zh');
         console.log('ArrayTest005 :' + value);
-        expect(value).assertEqual('1zhazh测试zh');
+        expect(value).assertEqual('1,a,测试,');
     })
 
     /**
@@ -1569,7 +1569,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = ['￥7', 500, 8123, 12];
         var value = array.toLocaleString('ja-JP');
         console.log('ArrayTest007 :' + value);
-        expect(value).assertEqual('￥7ja-JP500ja-JP8,123ja-JP12');
+        expect(value).assertEqual('￥7,500,8,123,12');
     })
 
     /**
@@ -1584,7 +1584,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = ['￥7', 500, 8123, 12];
         var value = array.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' });
         console.log('ArrayTest008 :' + value);
-        expect(value).assertEqual('￥7ja-JP￥500ja-JP￥8,123ja-JP￥12');
+        expect(value).assertEqual('￥7,￥500,￥8,123,￥12');
     })
 
     /**
@@ -1599,7 +1599,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = ['￥7', 500, 8123, 12, undefined,  new Date('21 Dec 2022 14:12:00 UTC')];
         var value = array.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' });
         console.log('ArrayTest009 :' + value);
-        expect(value).assertEqual('￥7ja-JP￥500ja-JP￥8,123ja-JP￥12ja-JPja-JP2022/12/21 22:12:00');
+        expect(value).assertEqual('￥7,￥500,￥8,123,￥12,,2022/12/21 22:12:00');
     })
 
     /**
@@ -1629,7 +1629,7 @@ describe('etsIntlPtsFunTest', function () {
         var array = [1, , 3, ,"ABC"];
         var value = array.toLocaleString('en');
         console.log('ArrayTest011 :' + value);
-        expect(value).assertEqual('1enen3enenABC');
+        expect(value).assertEqual('1,,3,,ABC');
     })
 
     /**
@@ -1644,8 +1644,8 @@ describe('etsIntlPtsFunTest', function () {
         var array = [{a:1},{b:2}];
         var value = array.toLocaleString('en');
         console.log('ArrayTest012 :' + value);
-        expect(value.length == 32).assertTrue();
-        expect(value == '[object Object]en[object Object]').assertTrue();
+        expect(value.length == 31).assertTrue();
+        expect(value == '[object Object],[object Object]').assertTrue();
     })
 
     /**
