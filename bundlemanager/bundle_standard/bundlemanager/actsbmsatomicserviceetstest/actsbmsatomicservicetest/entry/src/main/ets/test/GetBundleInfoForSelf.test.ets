@@ -57,7 +57,7 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
-     * @tc.number: SUB_BMS_SERVICE_SPLIT_0032
+     * @tc.number: SUB_BMS_APPINFO_SYNC_SELF_0012
      * @tc.name: getBundleInfoForSelfSyncAtomicService
      * @tc.desc: Test getBundleInfoForSelfSync with AtomicService
      */
