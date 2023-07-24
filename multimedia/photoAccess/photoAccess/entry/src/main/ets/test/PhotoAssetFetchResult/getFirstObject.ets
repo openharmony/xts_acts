@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
-  fetchOption,
   photoType,
   photoKeys
 } from '../../../../../../../common'
@@ -30,17 +29,18 @@ export default function assetGetFirstObjectTest () {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
         console.info(`${testNum} fetchResult: ${fetchResult.getCount()}`);
-        expect(fetchResult.getCount() > 0).assertTrue();
+        expect(fetchResult.getCount()).assertEqual(1);
         fetchResult.getFirstObject((err, asset) => {
           try {
             if (err !== undefined) {
-              console.info(`${testNum} getFirstObject failed; err: ${err}`);
+              console.info(`${testNum} err: ${err}`);
               expect(false).assertTrue();
             } else {
+              console.info(`${testNum} asset: ${asset.displayName}`);
               expect(asset !== undefined).assertTrue();
             }
           } catch (error) {
-            console.info(`${testNum} getFirstObject failed; error: ${error}`);
+            console.info(`${testNum} error: ${error}`);
           }
           fetchResult.close();
           done();
@@ -55,9 +55,10 @@ export default function assetGetFirstObjectTest () {
     async function getFirstObjectPromiseTest (done, testNum, fetchOps) {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
-        expect(fetchResult.getCount() > 0).assertTrue();
+        expect(fetchResult.getCount()).assertEqual(1);
         const asset = await fetchResult.getFirstObject();
         fetchResult.close();
+        console.info(`${testNum} asset: ${asset.displayName}`);
         expect(asset !== undefined).assertTrue();
         done();
       } catch (error) {
@@ -79,7 +80,12 @@ export default function assetGetFirstObjectTest () {
      */
     it('getFirstObject_callback_000', 0, async function (done) {
       const testNum = 'getFirstObject_callback_000';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).and().equalTo(photoKeys.DISPLAY_NAME, '01.jpg');
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getFirstObjectCallbackTest(done, testNum, fetchOps);
     });
 
@@ -94,7 +100,12 @@ export default function assetGetFirstObjectTest () {
      */
     it('getFirstObject_promise_000', 0, async function (done) {
       const testNum = 'getFirstObject_promise_000';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).and().equalTo(photoKeys.DISPLAY_NAME, '01.jpg');
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getFirstObjectPromiseTest(done, testNum, fetchOps);
     });
     
@@ -110,7 +121,12 @@ export default function assetGetFirstObjectTest () {
      */
     it('getFirstObject_callback_001', 0, async function (done) {
       const testNum = 'getFirstObject_callback_001';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.VIDEO).and().equalTo(photoKeys.DISPLAY_NAME, '01.mp4');
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getFirstObjectCallbackTest(done, testNum, fetchOps);
     });
 
@@ -125,7 +141,12 @@ export default function assetGetFirstObjectTest () {
      */
     it('getFirstObject_promise_001', 0, async function (done) {
       const testNum = 'getFirstObject_promise_001';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.VIDEO).and().equalTo(photoKeys.DISPLAY_NAME, '01.mp4');
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getFirstObjectPromiseTest(done, testNum, fetchOps);
     });
   })

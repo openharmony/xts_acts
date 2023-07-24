@@ -13,14 +13,12 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import fileio from "@ohos.fileio";
 import { describe, it, expect } from 'deccjsunit/index'
 import {
   photoKeys,
   fetchOption,
   getFileAsset,
-  isNum,
 } from '../../../../../../../common'
 
 export default function getReadOnlyFdTest () {

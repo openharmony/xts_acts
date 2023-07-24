@@ -36,6 +36,7 @@ import assetGetNextObjectTest from './PhotoAssetFetchResult/getNextObject'
 import assetGetPositionObjectTest from './PhotoAssetFetchResult/getObjectByPosition'
 import assetIsAfterLastTest from './PhotoAssetFetchResult/isAfterLast'
 import createAssetTest from './PhotoAccessHelper/createAsset'
+import createDeleteRequestTest from './PhotoAccessHelper/createDeleteRequest'
 import getAlbumsTest from './PhotoAccessHelper/getAlbums'
 import getAssetsTest from './PhotoAccessHelper/getAssets'
 import unRegisterChangeTest from './PhotoAccessHelper/unRegisterChange'
@@ -72,6 +73,7 @@ export default function testsuite () {
   assetGetPositionObjectTest()
   assetIsAfterLastTest()
   createAssetTest()
+  createDeleteRequestTest()
   getAlbumsTest()
   getAssetsTest()
   unRegisterChangeTest()

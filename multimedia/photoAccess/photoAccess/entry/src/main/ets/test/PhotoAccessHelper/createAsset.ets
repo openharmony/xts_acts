@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import { photoType } from '../../../../../../../common'
@@ -242,7 +241,7 @@ export default function createAssetTest () {
       const options: photoAccessHelper.CreateOptions = undefined;
       await createAssetAbnormalCallback1(done, testNum, type, extension, options);
     });
-    
+
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_CREATE_IMAGE_0000
      * @tc.name      : createImage_promise_000

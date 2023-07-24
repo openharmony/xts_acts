@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -78,14 +78,16 @@ export default function addAssetsTest () {
       const testNum = 'addAssets_callback_003';
       try {
         const album = await helper.createAlbum(testNum);
-        const fetchOps1 = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'addCb03.jpg');
-        const fetchOps2 = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'addCb01.mp4');
-        const assetList: Array<photoAccessHelper.PhotoAsset> = new Array();
-        const asset1 = await getFileAsset(testNum, fetchOps1);
-        assetList.push(asset1);
-        const asset2 = await getFileAsset(testNum, fetchOps2);
-        assetList.push(asset2);
-
+        const predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.in(photoKeys.DISPLAY_NAME, ['addCb03.jpg', 'addCb01.mp4']);
+        const fetchOps : photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        const fetchResult = await helper.getAssets(fetchOps);
+        console.info(`${testNum} fetchResult: ${fetchResult.getCount()}`);
+        const assetList = await fetchResult.getAllObjects();
+        fetchResult.close();
         album.addAssets(assetList, async (err) => {
           try {
             if (err) {
@@ -102,6 +104,37 @@ export default function addAssetsTest () {
           }
           done();
         })
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_ADD_ASSETS_0400
+      * @tc.name      : addAssets_callback_004
+      * @tc.desc      : add empty array to user album
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('addAssets_callback_004', 2, async function (done) {
+      const testNum = 'addAssets_callback_004';
+      try {
+        const album = await helper.createAlbum(testNum);
+        album.addAssets([], async (err) => {
+          try {
+            if (err) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+          }
+          done();
+        })
+
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
@@ -176,18 +209,20 @@ export default function addAssetsTest () {
       const testNum = 'addAssets_promise_003';
       try {
         const album = await helper.createAlbum(testNum);
-        const fetchOps1 = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'addPro03.jpg');
-        const fetchOps2 = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'addPro01.mp4');
-        const assetList: Array<photoAccessHelper.PhotoAsset> = new Array();
-        const asset1 = await getFileAsset(testNum, fetchOps1);
-        assetList.push(asset1);
-        const asset2 = await getFileAsset(testNum, fetchOps2);
-        assetList.push(asset2);
-
-        await album.addAssets(assetList);
-        const fetchResult = await album.getAssets(fetchAllOption());
-        expect(fetchResult.getCount()).assertEqual(2);
+        const predicates = new dataSharePredicates.DataSharePredicates();
+        predicates.in(photoKeys.DISPLAY_NAME, ['addCb03.jpg', 'addCb01.mp4']);
+        const fetchOps : photoAccessHelper.FetchOptions = {
+          fetchColumns: [],
+          predicates: predicates
+        };
+        const fetchResult = await helper.getAssets(fetchOps);
+        console.info(`${testNum} fetchResult: ${fetchResult.getCount()}`);
+        const assetList = await fetchResult.getAllObjects();
         fetchResult.close();
+        await album.addAssets(assetList);
+        const albumFetchResult = await album.getAssets(fetchAllOption());
+        expect(albumFetchResult.getCount()).assertEqual(2);
+        albumFetchResult.close();
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);

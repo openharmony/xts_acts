@@ -6,14 +6,26 @@
         "bundle-name": "ohos.acts.multimedia.photoaccess",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "testcase-timeout": 10000
     },
     "kits": [
         {
             "type": "ShellKit",
             "pre-push": [],
             "run-command": [
-                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /storage/media/100/local/files/Audios/*",
+                "rm -rf /storage/media/100/local/files/Audios/.*",
+                "rm -rf /storage/media/100/local/files/Camera/*",
+                "rm -rf /storage/media/100/local/files/Camera/.*",
+                "rm -rf /storage/media/100/local/files/Documents/*",
+                "rm -rf /storage/media/100/local/files/Documents/.*",
+                "rm -rf /storage/media/100/local/files/Download/*",
+                "rm -rf /storage/media/100/local/files/Download/.*",
+                "rm -rf /storage/media/100/local/files/Pictures/*",
+                "rm -rf /storage/media/100/local/files/Pictures/.*",
+                "rm -rf /storage/media/100/local/files/Videos/*",
+                "rm -rf /storage/media/100/local/files/Videos/.*",
+                "sleep 5",
                 "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
                 "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
                 "scanner",

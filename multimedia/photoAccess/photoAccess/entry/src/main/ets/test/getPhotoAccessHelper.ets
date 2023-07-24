@@ -13,16 +13,15 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 import { getPermission } from '../../../../../../common'
 
-export default function getUserFileMgrTest () {
-  describe('getUserFileMgrTest', function () {
+export default function getPhotoAccessHelper () {
+  describe('getPhotoAccessHelper', function () {
     beforeAll(async function () {
       console.info('beforeAll case')
-      await getPermission('ohos.acts.multimedia.photoaccess');
+      await getPermission();
     })
 
     /**

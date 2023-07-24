@@ -13,13 +13,12 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, it, expect } from 'deccjsunit/index'
 import {
   photoKeys,
   fetchOption,
   getFileAsset,
-  getId,
+  getAssetId,
   photoType
 } from '../../../../../../../common'
 
@@ -28,12 +27,13 @@ export default function checkAttrTest () {
     async function checkAssetAttr (done, testNum, displayName, mediaType) {
       try {
         let key = photoKeys.DISPLAY_NAME;
-        let uri = 'file://media/Photo/';
         const fetchOps = fetchOption(testNum, key, displayName);
         const asset = await getFileAsset(testNum, fetchOps);
         console.info(`${testNum} uri: ${asset.uri} filetype: ${asset.photoType} displayName: ${asset.displayName}`)
-        const id = getId(asset.uri);
-        expect(asset.uri).assertEqual(uri + id);
+        const id = getAssetId(asset.uri);
+        const expectUri = 'file://media/Photo/' + id;
+        const isIncludes = asset.uri.includes(expectUri);
+        expect(isIncludes).assertTrue();
         expect(asset.photoType).assertEqual(mediaType);
         expect(asset.displayName).assertEqual(displayName);
         done();

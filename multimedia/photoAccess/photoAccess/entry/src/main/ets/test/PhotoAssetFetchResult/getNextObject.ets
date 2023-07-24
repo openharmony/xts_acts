@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
-  fetchOption,
   photoType,
   photoKeys
 } from '../../../../../../../common'
@@ -29,7 +28,7 @@ export default function assetGetNextObjectTest () {
     async function getNextObjectCallbackTest (done, testNum, fetchOps) {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
-        expect(fetchResult.getCount() > 1).assertTrue();
+        expect(fetchResult.getCount()).assertEqual(2);
         await fetchResult.getFirstObject();
         fetchResult.getNextObject((err, asset) => {
           try {
@@ -55,7 +54,7 @@ export default function assetGetNextObjectTest () {
     async function getNextObjectPromiseTest (done, testNum, fetchOps) {
       try {
         let fetchResult = await helper.getAssets(fetchOps);
-        expect(fetchResult.getCount() > 1).assertTrue();
+        expect(fetchResult.getCount()).assertEqual(2);
         let asset = await fetchResult.getFirstObject();
         asset = await fetchResult.getNextObject();
         fetchResult.close();
@@ -80,7 +79,12 @@ export default function assetGetNextObjectTest () {
      */
     it('getNextObject_callback_000', 0, async function (done) {
       const testNum = 'getNextObject_callback_000';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).limit(2, 0);
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getNextObjectCallbackTest(done, testNum, fetchOps);
     });
 
@@ -95,7 +99,12 @@ export default function assetGetNextObjectTest () {
      */
     it('getNextObject_promise_000', 0, async function (done) {
       const testNum = 'getNextObject_promise_000';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.IMAGE);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.IMAGE).limit(2, 0);
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getNextObjectPromiseTest(done, testNum, fetchOps);
     });
     
@@ -111,7 +120,12 @@ export default function assetGetNextObjectTest () {
      */
     it('getNextObject_callback_001', 0, async function (done) {
       const testNum = 'getNextObject_callback_001';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.VIDEO).limit(2, 0);
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getNextObjectCallbackTest(done, testNum, fetchOps);
     });
 
@@ -126,7 +140,12 @@ export default function assetGetNextObjectTest () {
      */
     it('getNextObject_promise_001', 0, async function (done) {
       const testNum = 'getNextObject_promise_001';
-      const fetchOps = fetchOption(testNum, photoKeys.PHOTO_TYPE, photoType.VIDEO);
+      const predicates = new dataSharePredicates.DataSharePredicates();
+      predicates.equalTo(photoKeys.PHOTO_TYPE, photoType.VIDEO).limit(2, 0);
+      const fetchOps : photoAccessHelper.FetchOptions = {
+        fetchColumns: [],
+        predicates: predicates
+      };
       await getNextObjectPromiseTest(done, testNum, fetchOps);
     });
   })

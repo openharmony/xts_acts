@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -30,8 +29,9 @@ export default function commitModifyTest () {
       try {
         const asset = await getFileAsset(testNum, fetchOps);
         const oldTitle: photoAccessHelper.MemberType = asset.get(photoKeys.TITLE).toString();
-        console.info(`${testNum} oldTitle: ${typeof oldTitle}`);
+        console.info(`${testNum} oldTitle: ${oldTitle}`);
         asset.set(photoKeys.TITLE, newTitle);
+        console.info(`${testNum} newTitle: ${newTitle}`);
         asset.commitModify(async (err) => {
           try {
             if (err) {

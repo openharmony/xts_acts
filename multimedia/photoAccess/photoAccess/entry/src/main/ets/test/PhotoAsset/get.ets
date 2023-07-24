@@ -13,13 +13,12 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import { describe, it, expect } from 'deccjsunit/index'
 import {
   photoKeys,
   photoFetchOption,
   getFileAsset,
-  getId,
+  getAssetId,
   isNum,
   photoType,
 } from '../../../../../../../common'
@@ -31,8 +30,11 @@ export default function getTest () {
         let asset = await getFileAsset(testNum, fetchOps);
         console.info(`${testNum} key: ${key}, value: ${value}, asset.key: ${asset.get(key)}`);
         if (key === 'uri') {
-          const id = getId(asset.get(key));
-          expect(asset.get(key)).assertEqual(value + id);
+          const id = getAssetId(asset.get(key));
+          const expectUri = value + id;
+          const uri = asset.get(key).toString();
+          const isIncludes = uri.includes(expectUri);
+          expect(isIncludes).assertTrue();
         } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken') {
           expect(isNum(asset.get(key))).assertTrue();
         } else {

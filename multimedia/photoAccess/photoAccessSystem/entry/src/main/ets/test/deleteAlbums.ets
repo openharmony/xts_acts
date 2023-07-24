@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, beforeAll, it, expect } from 'deccjsunit/index'
 import {
@@ -36,7 +35,7 @@ export default function deleteAlbumsTest () {
     /**
     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_DELETE_ALBUMS_0000
     * @tc.name      : deleteAlbums_callback_000
-    * @tc.desc      : delete user test
+    * @tc.desc      : delete user albums
     * @tc.size      : MEDIUM
     * @tc.type      : Function
     * @tc.level     : Level 0
@@ -120,7 +119,7 @@ export default function deleteAlbumsTest () {
     /**
     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_DELETE_ALBUMS_0000
     * @tc.name      : deleteAlbums_promise_000
-    * @tc.desc      : delete albums test
+    * @tc.desc      : delete user albums
     * @tc.size      : MEDIUM
     * @tc.type      : Function
     * @tc.level     : Level 0

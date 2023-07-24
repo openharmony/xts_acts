@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -102,6 +101,36 @@ export default function removeAssetsTest () {
               const fetchResult = await album.getAssets(fetchAllOption());
               expect(fetchResult.getCount()).assertEqual(0);
               fetchResult.close()
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+          }
+          done();
+        })
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_REMOVE_ASSETS_0300
+      * @tc.name      : removeAssets_callback_003
+      * @tc.desc      : user album remove empty array
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+    */
+    it('removeAssets_callback_003', 2, async function (done) {
+      const testNum = 'removeAssets_callback_003';
+      try {
+        const album = await helper.createAlbum(testNum);
+        album.removeAssets([], async (err) => {
+          try {
+            if (err) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);

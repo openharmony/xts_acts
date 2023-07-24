@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -38,7 +37,7 @@ export default function albumGetCountTest () {
      * @tc.level     : Level 0
      */
     it('album_getCount_callback_000', 0, async function (done) {
-	  const testNum = 'album_getCount_callback_000';
+      const testNum = 'album_getCount_callback_000';
       try {
         const subTypes : Array<photoAccessHelper.AlbumSubtype> = [
           albumSubtype.VIDEO,
@@ -61,8 +60,8 @@ export default function albumGetCountTest () {
           }
         }
       } catch (error) {
-		console.info(`${testNum} failed; error: ${error}`);
-		expect(false).assertTrue();
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
         done();
       }
     });
@@ -76,7 +75,7 @@ export default function albumGetCountTest () {
      * @tc.level     : Level 0
      */
     it('album_getCount_callback_001', 0, async function (done) {
-	  const testNum = 'album_getCount_callback_001';
+      const testNum = 'album_getCount_callback_001';
       try {
         const albumName = genRadomStr(10);
         await createUserAlbum(testNum, albumName);
@@ -92,7 +91,7 @@ export default function albumGetCountTest () {
         done();
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
-		expect(false).assertTrue();
+        expect(false).assertTrue();
         done();
       }
     });

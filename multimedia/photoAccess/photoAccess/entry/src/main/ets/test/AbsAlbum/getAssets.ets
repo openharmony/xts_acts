@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -21,7 +20,6 @@ import {
   albumSubtype,
   photoKeys,
   fetchOption,
-  getFileAsset,
 } from '../../../../../../../common'
 
 export default function albumGetAssetsTest () {
