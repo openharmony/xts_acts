@@ -46,6 +46,24 @@
         "MainAbility/pages/NavDestinationPage",
         "MainAbility/pages/NavigationPage",
         "MainAbility/pages/GridItemPage",
-        "MainAbility/pages/GridColoffsetPage"
+        "MainAbility/pages/GridColoffsetPage",
+        "MainAbility/pages/loadingprogrees_add",
+        "MainAbility/pages/list_add",
+        "MainAbility/pages/grid_add",
+        "MainAbility/pages/scroll_add",
+        "MainAbility/pages/search_add",
+        "MainAbility/pages/swipe_add",
+        "MainAbility/pages/textArea_add",
+        "MainAbility/pages/textinput_add",
+        "MainAbility/pages/waterflow_add",
+        "MainAbility/pages/navigation_add",
+        "MainAbility/pages/messureSize",
+        "MainAbility/pages/fontAdd",
+        "MainAbility/pages/scroll_addattrs",
+        "MainAbility/pages/listItemAddgroup",
+        "MainAbility/pages/navrouteradd",
+        "MainAbility/pages/animationAdd",
+        "MainAbility/pages/postCardAction"
+        
     ]
 }

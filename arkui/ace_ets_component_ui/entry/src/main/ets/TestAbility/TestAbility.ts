@@ -34,6 +34,16 @@ export default class TestAbility extends Ability {
         });
 
         globalThis.abilityContext = this.context;
+        let windowClass = null;
+        windowStage.getMainWindow((err, data) => {
+            if (err.code) {
+                console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+                return;
+            }
+            windowClass = data;
+            globalThis.uiContext = windowClass.getUIContext();
+        });
+
     }
 
     onWindowStageDestroy() {
