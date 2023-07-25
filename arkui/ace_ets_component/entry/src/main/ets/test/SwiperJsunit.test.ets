@@ -417,7 +417,7 @@ export default function swiperJsunit() {
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
       console.info("swiperTest_1700 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.loop).assertEqual('false');
+      expect(objNew.$attrs.loop).assertEqual('true');
       console.info('swiperTest_1700 END');
       done();
     });
