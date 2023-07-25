@@ -28,6 +28,7 @@ export default function commitModifyTest () {
     async function commitModifyCallback (done, testNum, fetchOps, newTitle) {
       try {
         const asset = await getFileAsset(testNum, fetchOps);
+        const uri = asset.uri;
         const oldTitle: photoAccessHelper.MemberType = asset.get(photoKeys.TITLE).toString();
         console.info(`${testNum} oldTitle: ${oldTitle}`);
         asset.set(photoKeys.TITLE, newTitle);
@@ -38,6 +39,10 @@ export default function commitModifyTest () {
               console.info(`${testNum} err: ${err}`);
               expect(false).assertTrue();
             } else {
+              const option = photoFetchOption(testNum, photoKeys.URI, uri);
+              const newAsset = await getFileAsset(testNum, option);
+              const title: photoAccessHelper.MemberType = newAsset.get(photoKeys.TITLE).toString();
+              expect(title).assertEqual(newTitle);
               asset.set(photoKeys.TITLE, oldTitle.toString());
               await asset.commitModify();
             }
@@ -76,10 +81,17 @@ export default function commitModifyTest () {
     async function commitModifyPromise (done, testNum, fetchOps, newTitle) {
       try {
         const asset = await getFileAsset(testNum, fetchOps);
+        const uri = asset.uri;
         const oldTitle: photoAccessHelper.MemberType = asset.get(photoKeys.TITLE);
         console.info(`${testNum} oldTitle: ${typeof oldTitle}`);
         asset.set(photoKeys.TITLE, newTitle);
         await asset.commitModify();
+
+        const option = photoFetchOption(testNum, photoKeys.URI, uri);
+        const newAsset = await getFileAsset(testNum, option);
+        const title: photoAccessHelper.MemberType = newAsset.get(photoKeys.TITLE).toString();
+        expect(title).assertEqual(newTitle);
+
         asset.set(photoKeys.TITLE, oldTitle.toString());
         await asset.commitModify();
         done();
@@ -133,7 +145,7 @@ export default function commitModifyTest () {
       const testNum = 'photoAsset_commitModify_callback_001';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb02.jpg');
       let newTitle = '';
-      for (let i = 0; i < 84; i++) {
+      for (let i = 0; i < 83; i++) {
         newTitle += '一';
       }
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
@@ -257,7 +269,7 @@ export default function commitModifyTest () {
       const testNum = 'photoAsset_commitModify_callback_008';
       const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'modifyCb02.mp4');
       let newTitle = '';
-      for (let i = 0; i < 84; i++) {
+      for (let i = 0; i < 83; i++) {
         newTitle += '三';
       }
       await commitModifyCallback(done, testNum, fetchOps, newTitle);
