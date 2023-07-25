@@ -69,7 +69,7 @@ export default function swiperMarPad() {
       let driver = await Driver.create();
       await CommonFunc.sleep(500)
       //await driver.swipe(250, 230, 200, 230);
-      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
+      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       await CommonFunc.sleep(1000);
       swiperMarPad = CommonFunc.getComponentRect('swiperMarPad');
       swiperMarPad01 = CommonFunc.getComponentRect('swiperMarPad01');
