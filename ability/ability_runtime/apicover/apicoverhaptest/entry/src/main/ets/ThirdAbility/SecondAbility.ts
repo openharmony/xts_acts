@@ -64,4 +64,7 @@ export default class SecondAbility extends Ability {
         wantParam[wantConstant.Params.SHARE_ABSTRACT_KEY] = {Abstract:"share data"},
         wantParam[wantConstant.Params.SHARE_URL_KEY] = {uri:"www.baidu.com"} 
     }
+    onPrepareToTerminate(){
+      return false
+    }
 };
