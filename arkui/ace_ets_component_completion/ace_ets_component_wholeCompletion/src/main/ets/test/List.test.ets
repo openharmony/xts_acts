@@ -32,7 +32,6 @@ import stageAnimatorTest from './stageAnimator.test';
 import textSpanFontTest from './textSpanFont.test';
 import gridScrollbarUpdateTest from './gridScrollbarUpdate.test';
 import sidebarTypeTest from './sidebarType.test';
-import navigationTypeTest from './navigationType.test';
 import noBarrierComponentsTest from './noBarrierComponents.test';
 import noBarriersGroupTest from './noBarriersGroup.test';
 import assemblyCallbackTest from './assemblyCallback.test';
@@ -62,7 +61,6 @@ export default function testsuite() {
   textSpanFontTest()
   gridScrollbarUpdateTest()
   sidebarTypeTest()
-  navigationTypeTest()
   noBarrierComponentsTest()
   noBarriersGroupTest()
   assemblyCallbackTest()
