@@ -7,8 +7,7 @@
         "mainElement": "Hap4MainAbility1",
         "deviceTypes": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
