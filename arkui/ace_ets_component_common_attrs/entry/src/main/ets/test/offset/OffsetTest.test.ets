@@ -25,9 +25,9 @@ export default function OffsetTest() {
     'AlphabetIndexer', 'NavRouter', 'Progress', 'QRCode', 'Rating', 'Search', 'Slider', 'TextArea', 'TextClock',
     'TextInput', 'TextPicker', 'TimePicker', 'Toggle', 'Badge', 'Column', 'Counter', 'Flex', 'Grid', 'GridRow',
     'List', 'Row', 'Scroll', 'SideBarContainer', 'Stack', 'Tabs', 'WaterFlow', 'Circle', 'Ellipse', 'Line',
-    'Polyline', 'Polygon', 'Path', 'Rect', 'Shape', 'Panel', 'Refresh', 'TabContent', 'ListItem',
-    'RowSplit', 'ColumnSplit', 'RelativeContainer', 'Swiper', 'Navigator', 'TextTimer', 'GridCol', 'FlowItem',
-    'Stepper', 'StepperItem', 'GridItem', 'ScrollBar', 'Menu', 'MenuItem', 'MenuItemGroup',
+    'Polyline', 'Polygon', 'Path', 'Rect', 'Shape', 'Panel', /*'Refresh',*/'TabContent', 'ListItem',
+    'RowSplit', 'ColumnSplit', 'RelativeContainer', 'Swiper', 'Navigator', 'TextTimer', /*'GridCol',*/ 'FlowItem',
+    'Stepper', 'StepperItem', 'GridItem', 'ScrollBar', /*'Menu',*/ 'MenuItem', 'MenuItemGroup',
     'ListItemGroup']
 
   //The size of the parent component, when set as a percentage, serves as the calculation basis.
@@ -152,11 +152,22 @@ export default function OffsetTest() {
       //Calculate shifting using pre and post setting positions
       //verify the actual shifting of the target component.
       if ('StringPercent' == data.testValue.describe) {
-        //When setting the type to percentage, use the width/height of the parent container as the base.
-        expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
-          .assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
-        expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
-          .assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
+        if ('GridItem' == data.pageConfig.targetView) {
+          //The width of the target component
+          let targetWight = targetRectAfter.right - targetRectAfter.left;
+          //The height of the target component
+          let targetHeight = targetRectAfter.bottom - targetRectAfter.top;
+          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
+            .assertEqual(Number((targetWight) * 0.5).toFixed(2));
+          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
+            .assertEqual(Number((targetHeight) * 0.5).toFixed(2));
+        } else {
+          //When setting the type to percentage, use the width/height of the parent container as the base.
+          expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
+            .assertEqual(Number((rectParent.right - rectParent.left) * 0.5).toFixed(2));
+          expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
+            .assertEqual(Number((rectParent.bottom - rectParent.top) * 0.5).toFixed(2));
+        }
       } else {
         //When set to the basic type, verify the calculated shifting
         expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))

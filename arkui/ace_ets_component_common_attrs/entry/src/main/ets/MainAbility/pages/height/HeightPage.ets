@@ -61,9 +61,10 @@ struct heightPage {
       } else if (this.targetView == 'BlankColumn') {
         Blank().color(this.BackGroundColor).commonStyle().width(100)
       } else if (this.targetView == 'Checkbox') {
-        Checkbox().backgroundColor(this.BackGroundColor).commonStyle().width(100)
+        Checkbox().backgroundColor(this.BackGroundColor).commonStyle().width(100).margin(0)
       } else if (this.targetView == 'CheckboxGroup') {
         CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(this.BackGroundColor).width(100)
+          .margin(0)
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: this.valueArr }).commonStyle().width(100)
       } else if (this.targetView == 'DatePicker') {
@@ -105,6 +106,7 @@ struct heightPage {
         QRCode(this.src).commonStyle().backgroundColor(this.BackGroundColor).width(100)
       } else if (this.targetView == 'Radio') {
         Radio({ value: 'Radio1', group: 'radioGroup' }).width(100).commonStyle().backgroundColor(this.BackGroundColor)
+          .margin(0)
       } else if (this.targetView == 'Rating') {
         Rating({ rating: 3.5 }).commonStyle().width(100)
       } else if (this.targetView == 'RichText') {
@@ -114,7 +116,7 @@ struct heightPage {
           Text().width(10).height(50).backgroundColor('#C0C0C0')
         }.commonStyle().backgroundColor(this.BackGroundColor).width(100)
       } else if (this.targetView == 'Search') {
-        Search().commonStyle().width(100)
+        Search().commonStyle().width(100).margin(0)
       } else if (this.targetView == 'Select') {
         Select([{ value: 'aaa' },
           { value: 'bbb' }]).backgroundColor(this.BackGroundColor).commonStyle().width(100)
@@ -125,9 +127,12 @@ struct heightPage {
       } else if (this.targetView == 'TextArea') {
         TextArea({ placeholder: 'TextArea' }).commonStyle().width(100)
       } else if (this.targetView == 'TextClock') {
-        TextClock({ timeZoneOffset: -8 }).format('hms').fontSize(30)
+        TextClock({ timeZoneOffset: -8 })
+          .format('hms')
+          .fontSize(30)
           .commonStyle()
-          .backgroundColor(this.BackGroundColor).width(100)
+          .backgroundColor(this.BackGroundColor)
+          .width(100)
       } else if (this.targetView == 'TextInput') {
         TextInput({ placeholder: 'input your word...' })
           .commonStyle().width(100)
@@ -141,7 +146,7 @@ struct heightPage {
           selected: this.selectedTime
         }).useMilitaryTime(true).commonStyle().width(100)
       } else if (this.targetView == 'Toggle') {
-        Toggle({ type: ToggleType.Switch }).commonStyle().backgroundColor(this.BackGroundColor).width(100)
+        Toggle({ type: ToggleType.Switch }).commonStyle().backgroundColor(this.BackGroundColor).width(100).margin(0)
       } else if (this.targetView == 'Web') {
         Web({ src: 'www.example.com', controller: new WebController() }).commonStyle().width(100)
       } else if (this.targetView == 'Circle') {
@@ -190,7 +195,8 @@ struct heightPage {
           }.commonStyle().width(100)
         }
       } else if (this.targetView == 'Counter') {
-        Counter() {}.commonStyle().width(100)
+        Counter() {
+        }.commonStyle().width(100)
       } else if (this.targetView == 'Flex') {
         Flex() {
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -269,7 +275,8 @@ struct heightPage {
           }.backgroundColor(Color.Orange)
         }.commonStyle()
       } else if (this.targetView == 'Stack') {
-        Stack() {}.commonStyle().width(100)
+        Stack() {
+        }.commonStyle().width(100)
       } else if (this.targetView == 'Swiper') {
         Swiper() {
           ForEach([1, 2, 3], (item: string) => {
@@ -325,16 +332,19 @@ struct heightPage {
       } else if (this.targetView == 'Menu') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-        }.backgroundColor(Color.Yellow).commonStyle().width(100)
+        }.backgroundColor(Color.Yellow).commonStyle().width(100).padding(0)
       } else if (this.targetView == 'MenuItem') {
         Row() {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
               .height(this._height)
               .key(this.componentKey)
-          }.backgroundColor(this.BackGroundColor)
+          }
+          .backgroundColor(this.BackGroundColor)
           .width(this.parentWidth)
-          .height(this.parentHeight).key(this.parentComponentKey)
+          .height(this.parentHeight)
+          .key(this.parentComponentKey)
+          .padding(0)
         }
       } else if (this.targetView == 'MenuItemGroup') {
         Row() {
@@ -342,9 +352,12 @@ struct heightPage {
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
             }.key(this.componentKey).height(this._height)
-          }.backgroundColor(Color.Yellow)
+          }
+          .backgroundColor(Color.Yellow)
           .height(this.parentHeight)
-          .width(this.parentWidth).key(this.parentComponentKey)
+          .width(this.parentWidth)
+          .key(this.parentComponentKey)
+          .padding(0)
         }
       }
     }

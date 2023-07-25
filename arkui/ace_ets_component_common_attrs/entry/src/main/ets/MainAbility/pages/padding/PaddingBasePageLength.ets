@@ -59,7 +59,7 @@ struct PaddingPage_Length {
       } else if (this.targetView == 'Checkbox') {
         Checkbox().backgroundColor(Color.Orange).commonStyle()
       } else if (this.targetView == 'CheckboxGroup') {
-        CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(Color.Orange)
+        CheckboxGroup({ group: 'checkboxGroup' }).commonStyle().backgroundColor(Color.Orange).margin(0)
       } else if (this.targetView == 'DataPanel') {
         DataPanel({ values: this.valueArr }).commonStyle()
       } else if (this.targetView == 'DatePicker') {

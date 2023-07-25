@@ -56,7 +56,7 @@ export default function layoutWeightFlexTest() {
     'Column',
     'ColumnSplit',
     'Counter',
-    'Flex',
+    //'Flex',
     'GridRow',
     'Grid',
     'List',

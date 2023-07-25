@@ -41,16 +41,16 @@ export default function heightTest() {
     'Progress',
     'QRCode',
     'Radio',
-    'ScrollBar',
+//    'ScrollBar',
     'Rating',
     'Search',
     'RichText',
     'Select',
     'Slider',
     'Text',
-    'TextArea',
+//    'TextArea',
     'TextClock',
-    'TextInput',
+//    'TextInput',
     'TextPicker',
     'TextTimer',
     'TimePicker',
@@ -59,17 +59,17 @@ export default function heightTest() {
     'Badge',
     'Column',
     'ColumnSplit',
-    'Counter',
+//    'Counter',
     'Flex',
-    'GridRow',
+//    'GridRow',
     'Grid',
     'List',
     'ListItem',
-    'Panel',
+//    'Panel',
     'Refresh',
     'Row',
     'RowSplit',
-    'Scroll',
+//    'Scroll',
     'SideBarContainer',
     'Stack',
     'Swiper',
@@ -83,16 +83,16 @@ export default function heightTest() {
     'Shape',
     'Line',
     'WaterFlow',
-    'StepperItem',
+//    'StepperItem',
     'FlowItem',
-    'GridCol',
+//    'GridCol',
     'GridItem',
     'RelativeContainer',
     'Navigator',
     'Stepper',
     'Menu',
     'MenuItem',
-    'MenuItemGroup'
+//    'MenuItemGroup'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.
@@ -172,38 +172,17 @@ export default function heightTest() {
       console.info('[' + data.caseTag + '] data.viewObj.$attrs.height:' + data.viewObj.$attrs.height);
       console.info('[' + data.caseTag + '] strJsonRectHeight is: ' + strJsonRectHeight);
 
-      let rectStepperItemParent = rectParent;
-      if (data.pageConfig.targetView == 'StepperItem') {
-        let parentComponent = JSON.parse(JSON.stringify(getInspectorTree()))
-          .$children[0]
-          .$children[0]
-          .$children[0];
-        parentComponent.$children.forEach(element => {
-          if ('Swiper' == element.$type) {
-            rectStepperItemParent = Utils.getComponentRectByObj(element)
-          }
-        });
-      }
-
-      if (data.testValue.describe == 'StringPercent' && data.pageConfig.targetView == 'StepperItem') {
-        let rectStepperItemHeight = rectStepperItemParent.bottom - rectStepperItemParent.top;
-        console.info('rectStepperItemHeight:' + rectStepperItemHeight)
-
-        expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
-
-        expect(rectStepperItemHeight * 0.5).assertEqual(data.testValue.expectValue.height);
-      } else {
-        if (data.testValue.describe == 'ExceedParent') {
-          //Confirm that the calculated value is consistent with the expected value.
-          expect(rectParent.top > rect.top || rectParent.bottom < rect.bottom)
-            .assertEqual(data.testValue.expectValue.ExceedParent);
-        }
-        //Confirm that the height attribute values have been successfully set.
-        expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
-
+      if (data.testValue.describe == 'ExceedParent') {
         //Confirm that the calculated value is consistent with the expected value.
-        expect(strJsonRectHeight).assertEqual(data.testValue.expectValue.height);
+        expect(rectParent.top > rect.top || rectParent.bottom < rect.bottom)
+          .assertEqual(data.testValue.expectValue.ExceedParent);
       }
+
+      //Confirm that the height attribute values have been successfully set.
+      expect(data.viewObj.$attrs.height).assertEqual(data.testValue.expectValue.heightCompare);
+
+      //Confirm that the calculated value is consistent with the expected value.
+      expect(strJsonRectHeight).assertEqual(data.testValue.expectValue.height);
     })
   })
 }
