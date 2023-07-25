@@ -224,9 +224,10 @@ describe('fileIO_fs_mkdir', function () {
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
     try {
-      await fileIO.mkdirSync(fpath);
+      await fileIO.mkdir(fpath);
       expect(false).assertTrue();
     } catch (e) {
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_mkdir_async_004 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900015 && e.message == 'File exists').assertTrue();
     }

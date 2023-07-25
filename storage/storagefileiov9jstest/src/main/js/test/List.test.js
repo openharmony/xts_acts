@@ -47,6 +47,7 @@ import fileIOStreamWrite from './class_stream/write.test.js'
 import fileIOSymlink from './members/symlink.test.js'
 import fileIOTruncate from './members/truncate.test.js'
 import fileIOUnlink from './members/unlink.test.js'
+import fileIOWatcher from './members/watcher.test.js'
 import fileIOWrite from './members/write.test.js'
 import fileIORW from './members/filerw.test.js'
 export default function testsuite() {
@@ -84,6 +85,7 @@ export default function testsuite() {
     fileIOSymlink()
     fileIOTruncate()
     fileIOUnlink()
+    fileIOWatcher()
     fileIOWrite()
     fileIORW()
 }
