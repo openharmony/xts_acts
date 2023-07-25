@@ -518,6 +518,7 @@ export default function userauthTest() {
         */
         it('Security_IAM_PIN_Kit_Func_0106', 0, async function (done) {
             console.info('testFace Security_IAM_PIN_Kit_Func_0106 start');
+            expect(1).assertEqual(userAuthNorth.UserAuthType.PIN);
             expect(2).assertEqual(userAuthNorth.UserAuthType.FACE);
             expect(4).assertEqual(userAuthNorth.UserAuthType.FINGERPRINT);
             console.info('testFace Security_IAM_PIN_Kit_Func_0106 end');
@@ -543,6 +544,7 @@ export default function userauthTest() {
             expect(12500007).assertEqual(userAuthNorth.UserAuthResultCode.BUSY);
             expect(12500009).assertEqual(userAuthNorth.UserAuthResultCode.LOCKED);
             expect(12500010).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+            expect(12500011).assertEqual(userAuthNorth.UserAuthResultCode.CANCELED_FROM_WIDGET);
             console.info('testFace Security_IAM_Func_0107 end');
             done();
         })
