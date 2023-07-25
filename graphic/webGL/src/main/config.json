@@ -1,32 +1,31 @@
 {
-    "app": {
-        "bundleName": "com.test.webGL",
-        "vendor": "test",
-        "version": {
-            "code": 1,
-            "name": "1.0"
-        },
-        "apiVersion": {
-            "compatible": 5,
-            "target": 5
-        }
+  "app": {
+    "bundleName": "com.test.webGL",
+    "vendor": "test",
+    "version": {
+      "code": 1,
+      "name": "1.0"
     },
-    "deviceConfig": {},
-    "module": {
-        "package": "com.test.webGL",
-        "name": ".MyApplication",
-        "deviceType": [
-            "tablet",
-            "default",
-            "phone",
-            "2in1"
-        ],
-        "distro": {
-            "deliveryWithInstall": true,
-            "moduleName": "entry",
-            "moduleType": "entry"
-        },
-        "abilities": [
+    "apiVersion": {
+      "compatible": 5,
+      "target": 5
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.test.webGL",
+    "name": ".MyApplication",
+    "deviceType": [
+      "tablet",
+      "default",
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
             {
                 "skills": [
                     {
@@ -92,5 +91,5 @@
         },
         "mainAbility": ".MainAbility",
         "srcPath": ""
-    }
+  }
 }
