@@ -94,12 +94,12 @@ export default function audioManagerTest() {
           }
         }
         for(let i =0; i < maxvol1.length; i++){
-          console.info(`maxvol1 : ${maxvol1[i]}, maxvol2 : ${maxvol2[i]}`);
+          console.info(`check maxvolume: maxvol1 : ${maxvol1[i]}, maxvol2 : ${maxvol2[i]}`);
           expect(maxvol1[i]).assertEqual(maxvol2[i]);
         }
         done();
       }catch (error){
-        console.log(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUME_0100: ####getVolume : error ${error.code}, message ${error.message}`);
+        console.log(`getVolume error: ${error.code}, message ${error.message}`);
         expect(false).assertTrue();
         done();
       }
@@ -126,12 +126,12 @@ export default function audioManagerTest() {
           }
         }
         for(let i =0; i < minvol1.length; i++){
-          console.info(`minvol1 : ${minvol1[i]}, minvol2 : ${minvol2[i]}`);
+          console.info(`check minvolume minvol1 : ${minvol1[i]}, minvol2 : ${minvol2[i]}`);
           expect(minvol1[i]).assertEqual(minvol2[i]);
         }
         done();
       }catch (error){
-        console.log(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100: ####getVolume : error ${error.code}, message ${error.message}`);
+        console.log(`getVolume error ${error.code}, message ${error.message}`);
         expect(false).assertTrue();
         done();
       }
