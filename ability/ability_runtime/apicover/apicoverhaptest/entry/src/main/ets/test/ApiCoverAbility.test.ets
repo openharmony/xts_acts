@@ -374,13 +374,13 @@ export default function ApiCoverTest() {
      })
     })
 
-	  /*
+	/*
      * @tc.number  SUB_AA_AMS_Context_0200
      * @tc.name    Register the listener of Ability and cancel the listener.
      * @tc.desc    Function test
      * @tc.level   3
      */
-	  it('SUB_AA_AMS_Context_0200', 0, async function (done) {
+	it('SUB_AA_AMS_Context_0200', 0, async function (done) {
       await globalThis.abilityContext.eventHub.on("contextEvent", func1)
       globalThis.abilityContext.eventHub.emit("contextEvent", "aa", "bb")
       await sleep(500)
