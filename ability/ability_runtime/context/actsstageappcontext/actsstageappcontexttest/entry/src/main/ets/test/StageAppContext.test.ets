@@ -255,7 +255,7 @@ export default function stageAppContextTest(abilityContext) {
           context.getProcessRunningInformation((err, data) => {
               console.log(TAG + " result = " + JSON.stringify(data));
               expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
-	      expect(typepf data[0].state).assertEqual("number");
+              expect(typeof data[0].state).assertEqual("number");
           })
           done();
       });
