@@ -51,14 +51,9 @@ export default function requestSystemJSUnit() {
             value: 'value',
           },
         ],
-        success: function(UploadResponse) {
-          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload success, code:' + UploadResponse.code);
-        },
-        fail: function(data, code) {
-          console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload fail');
-        },
         complete: function (){
           console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload complete');
+          done();
         }
       }
       try{
@@ -66,10 +61,10 @@ export default function requestSystemJSUnit() {
         console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + result);
         expect(true).assertEqual(true);
       }catch(err){
-        console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + err);
+        console.info('====>SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload catch err:' + err);
+        done();
       }
       console.info("====>-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 end-----------------------");
-      done();
     });
 
     /**
