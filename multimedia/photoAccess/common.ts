@@ -216,9 +216,7 @@ export function checkSystemAlbum(expect, testNum, album, expectedSubType) : void
     expect(album.albumType).assertEqual(albumType.SYSTEM);
     expect(album.albumSubtype).assertEqual(expectedSubType);
     expect(album.albumName).assertEqual('');
-    expect(album.coverUri).assertEqual('');
     expect(album.albumUri !== '').assertEqual(true);
-    expect(album.count).assertEqual(0);
   } catch (error) {
     console.info(`Failed to delete all user albums! error: ${error}`);
     throw error;

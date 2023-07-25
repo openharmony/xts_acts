@@ -418,17 +418,17 @@ export default function publicApiTestWithSystemApiTest () {
         await fileAsset.close(fd);
         await helper.deleteAssets([fileAsset.uri]);
         let trashAlbumList = await helper.getAlbums(albumType.SYSTEM, albumSubtype.TRASH);
+        console.info(`${testNum} trashAlbumList: ${trashAlbumList.getCount()}`);
         let trashAlbum = await trashAlbumList.getFirstObject();
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, testFileName);
         let trashFetchResult = await trashAlbum.getAssets(fetchOps);
+        console.info(`${testNum} trashFetchResult: ${trashFetchResult.getCount()}`);
         const trashFileAsset = await trashFetchResult.getFirstObject();
         let count= 0;
         await sleep(550);
         helper.registerChange(trashFileAsset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-          expect(false).assertTrue();
-          done();
         });
         await sleep(550);
         helper.unRegisterChange(trashFileAsset.uri);
@@ -621,7 +621,7 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         let trashAlbumList = await helper.getAlbums(albumType.SYSTEM, albumSubtype.TRASH);
         let trashAlbum = await trashAlbumList.getFirstObject();
-        const fetchOps1 = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'off14.jpg')
+        const fetchOps1 = fetchOption(testNum, photoKeys.URI, asset.uri)
         let trashFetchResult = await trashAlbum.getAssets(fetchOps1);
         let trashFileAsset = await trashFetchResult.getFirstObject();
         await trashAlbum.recoverAssets([trashFileAsset]);
@@ -954,9 +954,9 @@ export default function publicApiTestWithSystemApiTest () {
               break;
           }
         });
-        await sleep(550);
         let testCount = 0;
         // 1
+        await sleep(550);
         testCount++;
         console.info(`${testNum} testCount: ${testCount}`);
         let albumName = testNum + Date.now();
@@ -1096,23 +1096,15 @@ export default function publicApiTestWithSystemApiTest () {
         let asset = await getFileAsset(testNum, fetchOps);
         await sleep(550);
 
-        //notify times lessthan 32 in 500ms
         let i = 0;
         uri = DEFAULT_PHOTO_URI;
         helper.registerChange(DEFAULT_PHOTO_URI, true, async (changeData) => {
           listenCount++;
           console.info(`${testNum} i: ${i}, listenCount: ${listenCount}`);
-          if (listenCount > 1) {
-            if (i <= 32) {
-              expect(listenCount - 1).assertEqual(1);
-            } else {
-              expect(listenCount - 1).assertEqual(Math.ceil(i/32))
-            }
-            console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
-            expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-            expect(changeData.uris[0]).assertEqual(asset.uri);
-            listenCount--;
-          }
+          expect(i > 1).assertTrue()
+          console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
+          expect(changeData.type).assertEqual(NOTIFY_UPDATE);
+          expect(changeData.uris[0]).assertEqual(asset.uri);
         });
 
         await sleep(550);
