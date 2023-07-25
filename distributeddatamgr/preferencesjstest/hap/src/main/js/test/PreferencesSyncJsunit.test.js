@@ -378,5 +378,31 @@ export default function PreferencesSyncTest() {
             expect("default").assertEqual(mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "default"));
             done();
         })
+
+        /**
+         * @tc.number SUB_DDM_Preferences_removePreferencesFromCacheSync_0100
+         * @tc.name removePreferencesFromCacheSync interface test
+         * @tc.desc removePreferencesFromCacheSync interface test
+         */
+        it('testPreferencesCallback0172', 0, async function (done) {
+            console.log(TAG + "testPreferencesCallback0172 begin.");
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+            await mPreferences.clearSync();
+            await mPreferences.putSync(KEY_TEST_STRING_ELEMENT, 'test')
+            await mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
+            mPreferences.flush(async function (err, val) {
+                if (err) {
+                    console.log(TAG + "flush err.");
+                    expect().assertFail();
+                }
+                console.log(TAG + "flush done.");
+                await dataPreferences.removePreferencesFromCacheSync(context, NAME);
+                let value = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
+                console.log(TAG + "testPreferencesCallback0172 end." + value);
+                expect('test').assertEqual(value);
+                done();
+                console.log(TAG + "testPreferencesCallback0172 end.");
+            });
+        })
     })
 }

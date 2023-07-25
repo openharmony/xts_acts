@@ -26,8 +26,8 @@ export default function preferencesDataGroupIdCallback() {
 
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0100
-     * @tc.name preferences dataGroupId null callback test
-     * @tc.desc preferences dataGroupId null callback test
+     * @tc.name preferencesgetPreferences dataGroupId null callback test
+     * @tc.desc preferences getPreferences dataGroupId null callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0100', 0, async function (done) {
       const Options = {
@@ -55,7 +55,7 @@ export default function preferencesDataGroupIdCallback() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0200
      * @tc.name preferences dataGroupId undefined callback test
-     * @tc.desc preferences dataGroupId undefined callback test
+     * @tc.desc preferences getPreferences dataGroupId undefined callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0200', 0, async function (done) {
       const Options = {
@@ -82,7 +82,7 @@ export default function preferencesDataGroupIdCallback() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0300
      * @tc.name preferences dataGroupId callback test
-     * @tc.desc preferences dataGroupId callback test
+     * @tc.desc preferences getPreferences dataGroupId callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0300', 0, async function (done) {
       const Options = {
@@ -110,7 +110,7 @@ export default function preferencesDataGroupIdCallback() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0400
      * @tc.name preferences dataGroupId callback test
-     * @tc.desc preferences dataGroupId callback test
+     * @tc.desc preferences deletePreferences dataGroupId callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0400', 0, async function (done) {
       const Options = {
@@ -143,7 +143,7 @@ export default function preferencesDataGroupIdCallback() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0500
      * @tc.name preferences dataGroupId null callback test
-     * @tc.desc preferences dataGroupId null callback test
+     * @tc.desc preferences getPreferences dataGroupId null callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0500', 0, async function (done) {
       const Options = {
@@ -171,7 +171,7 @@ export default function preferencesDataGroupIdCallback() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0600
      * @tc.name preferences dataGroupId undefined callback test
-     * @tc.desc preferences dataGroupId undefined callback test
+     * @tc.desc preferences removePreferencesFromCache dataGroupId undefined callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0600', 0, async function (done) {
       const Options = {
@@ -198,7 +198,7 @@ export default function preferencesDataGroupIdCallback() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0700
      * @tc.name preferences dataGroupId callback test
-     * @tc.desc preferences dataGroupId callback test
+     * @tc.desc preferences removePreferencesFromCache dataGroupId callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0700', 0, async function (done) {
       const Options = {
@@ -226,7 +226,7 @@ export default function preferencesDataGroupIdCallback() {
         /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Callback_0800
      * @tc.name preferences dataGroupId callback test
-     * @tc.desc preferences dataGroupId callback test
+     * @tc.desc preferences removePreferencesFromCache dataGroupId callback test
      */
     it('SUB_DDM_Preferences_DataGroupId_Callback_0800', 0, async function (done) {
       const Options = {

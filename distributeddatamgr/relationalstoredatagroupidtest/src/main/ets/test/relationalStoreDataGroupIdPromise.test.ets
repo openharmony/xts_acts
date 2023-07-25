@@ -37,7 +37,7 @@ export default function relationalStoreDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_RelationalStore_DataGroupId_Promise_0100
      * @tc.name relationalStore dataGroupId null promise test
-     * @tc.desc relationalStore dataGroupId null promise test
+     * @tc.desc relationalStore getRdbStore dataGroupId null promise test
      */
     it('SUB_DDM_RelationalStore_DataGroupId_Promise_0100', 0, async function (done) {
       const STORE_CONFIG = {
@@ -75,7 +75,7 @@ export default function relationalStoreDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_RelationalStore_DataGroupId_Promise_0200
      * @tc.name relationalStore dataGroupId undefined callback test
-     * @tc.desc relationalStore dataGroupId undefined callback test
+     * @tc.desc relationalStore getRdbStore dataGroupId undefined callback test
      */
     it('SUB_DDM_RelationalStore_DataGroupId_Promise_0200', 0, async function (done) {
       const STORE_CONFIG = {
@@ -114,7 +114,7 @@ export default function relationalStoreDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_RelationalStore_DataGroupId_Promise_0300
      * @tc.name relationalStore dataGroupId callback test
-     * @tc.desc relationalStore dataGroupId callback test
+     * @tc.desc relationalStore getRdbStore dataGroupId callback test
      */
     it('SUB_DDM_RelationalStore_DataGroupId_Promise_0300', 0, async function (done) {
       const STORE_CONFIG = {
@@ -152,7 +152,7 @@ export default function relationalStoreDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_RelationalStore_DataGroupId_Promise_0400
      * @tc.name relationalStore dataGroupId callback test
-     * @tc.desc relationalStore dataGroupId callback test
+     * @tc.desc relationalStore deleteRdbStore dataGroupId callback test
      */
     it('SUB_DDM_RelationalStore_DataGroupId_Promise_0400', 0, async function (done) {
       const STORE_CONFIG = {

@@ -27,7 +27,7 @@ export default function preferencesDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Promise_0100
      * @tc.name preferences dataGroupId null promise test
-     * @tc.desc preferences dataGroupId null promise test
+     * @tc.desc preferences getPreferences dataGroupId null promise test
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0100', 0, async function (done) {
       const Options = {
@@ -63,7 +63,7 @@ export default function preferencesDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Promise_0200
      * @tc.name preferences dataGroupId undefined promise test
-     * @tc.desc preferences dataGroupId undefined promise test
+     * @tc.desc preferences getPreferences dataGroupId undefined promise test
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0200', 0, async function (done) {
       const Options = {
@@ -99,7 +99,7 @@ export default function preferencesDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Promise_0300
      * @tc.name preferences dataGroupId promise test
-     * @tc.desc preferences dataGroupId promise test
+     * @tc.desc preferences getPreferences dataGroupId promise test
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0300', 0, async function (done) {
       const Options = {
@@ -135,7 +135,7 @@ export default function preferencesDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Promise_0400
      * @tc.name preferences dataGroupId null promise test
-     * @tc.desc preferences dataGroupId null promise test
+     * @tc.desc preferences getPreferences dataGroupId null promise test
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0400', 0, async function (done) {
       const Options = {
@@ -171,7 +171,7 @@ export default function preferencesDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Promise_0500
      * @tc.name preferences dataGroupId undefined promise test
-     * @tc.desc preferences dataGroupId undefined promise test
+     * @tc.desc preferences removePreferencesFromCache dataGroupId undefined promise test
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0500', 0, async function (done) {
       const Options = {
@@ -207,7 +207,7 @@ export default function preferencesDataGroupIdPromise() {
     /**
      * @tc.number SUB_DDM_Preferences_DataGroupId_Promise_0600
      * @tc.name preferences dataGroupId promise test
-     * @tc.desc preferences dataGroupId promise test
+     * @tc.desc preferences removePreferencesFromCache dataGroupId promise test
      */
     it('SUB_DDM_Preferences_DataGroupId_Promise_0600', 0, async function (done) {
       const Options = {
