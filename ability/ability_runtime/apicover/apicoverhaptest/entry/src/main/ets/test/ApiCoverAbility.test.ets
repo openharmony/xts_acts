@@ -26,7 +26,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
-import formBindingData from '@ohos.application.formBindingData';
+import formBindingData from '@ohos.app.form.formBindingData';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;

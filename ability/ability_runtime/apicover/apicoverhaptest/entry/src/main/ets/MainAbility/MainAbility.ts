@@ -52,6 +52,15 @@ export default class MainAbility extends Ability {
         console.log("[Demo] MainAbility onBackground")
     }
 
+    onContinue(wantParam){
+      console.log("[Demo] MainAbility onContinue")
+      return undefined;
+    }
+
+    onBackPressed(){
+      return false
+    }
+
     onConfigurationUpdate(config) {
         console.log('[Demo] MainAbility onConfigurationUpdate: ' + this.context.config.language)
         console.log('[Demo] MainAbility onConfigurationUpdate: ' + config.language)
