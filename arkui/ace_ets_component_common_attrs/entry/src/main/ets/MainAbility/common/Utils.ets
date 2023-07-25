@@ -14,6 +14,7 @@
  */
 
 import router from '@ohos.router';
+import { AttrsManager } from './AttrsManager';
 
 export default class Utils {
   public static instance;
@@ -51,7 +52,16 @@ export default class Utils {
   static async pushPage(obj) {
     try {
       let pages = router.getState();
+      let pageParams = router.getParams();
       console.info('get ' + obj.pageName + ' state pages: ' + JSON.stringify(pages));
+      if (pageParams && pageParams['view'] && obj.targetView != pageParams['view']['targetView']) {
+        console.info('get ' + obj.pageName + ' params: ' + JSON.stringify(pageParams));
+        console.info('pageParams.view.targetView: ' + pageParams['view']['targetView']);
+        console.info('targetView: ' + obj.targetView);
+        await Utils.back();
+        pages = router.getState();
+      }
+
       if (!(obj.pageName == pages.name)) {
         console.info('get ' + obj.pageName + ' state pages.name:' + JSON.stringify(pages.name));
         let result = await router.pushUrl({
@@ -72,6 +82,7 @@ export default class Utils {
     if (!('Index' == router.getState().name)) {
       router.back()
     }
+    AttrsManager.unRegisterDataChange();
     await Utils.sleep(1000);
     router.clear();
   }

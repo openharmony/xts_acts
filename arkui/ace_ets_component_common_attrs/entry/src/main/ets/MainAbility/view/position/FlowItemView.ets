@@ -30,9 +30,10 @@ export struct FlowItemView {
             Text('N1').fontSize(12).height('16')
           }
         }
-        .width('30%')
-        .height('30%')
+        .width('100%')
+        .height('100%')
         .position(this._position)
+        .backgroundColor(Color.White)
         .key(this.componentKey)
 
         FlowItem() {
@@ -40,25 +41,12 @@ export struct FlowItemView {
             Text('N2').fontSize(12).height('16')
           }
         }
-        .width('30%')
-        .height('30%')
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.White)
         .key(this.referenceComponentKey)
       }
-      .columnsTemplate('1fr 1fr 1fr 1fr')
-      .itemConstraintSize({
-        minWidth: 0,
-        maxWidth: '100%',
-        minHeight: 0,
-        maxHeight: '100%'
-      })
-      .columnsGap(10)
-      .rowsGap(5)
-      .onReachStart(() => {
-        console.info('onReachStart')
-      })
-      .onReachEnd(() => {
-        console.info('onReachEnd')
-      })
+      .columnsTemplate('1fr 1fr')
       .backgroundColor(0xFAEEE0)
       .width(this.parentWidth)
       .height(this.parentHeight)

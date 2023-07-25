@@ -79,6 +79,7 @@ struct MarginPage {
           }.backgroundColor(Color.Yellow)
           .width(this.parentWidth)
           .height(this.parentHeight)
+          .padding(0)
           .key(this.parentComponentKey)
         }.width('100%').height('100%').backgroundColor(Color.Green)
       } else if (this.targetView == 'MenuItemGroup') {
@@ -90,6 +91,7 @@ struct MarginPage {
           }.backgroundColor(Color.Yellow)
           .width(this.parentWidth)
           .height(this.parentHeight)
+          .padding(0)
           .key(this.parentComponentKey)
         }.width('100%').height('100%').backgroundColor(Color.Green)
       } else if (this.targetView == 'TabContent') {

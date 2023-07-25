@@ -71,8 +71,12 @@ struct MarginPageLength {
           Menu() {
             MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
               .margin(this._margin).key(this.componentKey).width('100%').height('100%')
-          }.backgroundColor(Color.Yellow)
-          .width(this.parentWidth).height(this.parentHeight).key(this.parentComponentKey)
+          }
+          .backgroundColor(Color.Yellow)
+          .padding(0)
+          .width(this.parentWidth)
+          .height(this.parentHeight)
+          .key(this.parentComponentKey)
         }.width('100%').height('100%').backgroundColor(Color.Green)
       } else if (this.targetView == 'MenuItemGroup') {
         Row() {
@@ -80,8 +84,12 @@ struct MarginPageLength {
             MenuItemGroup({ header: 'MenuItemGroup' }) {
               MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' })
             }.margin(this._margin).key(this.componentKey).width('100%').height('100%')
-          }.backgroundColor(Color.Yellow)
-          .width(this.parentWidth).height(this.parentHeight).key(this.parentComponentKey)
+          }
+          .backgroundColor(Color.Yellow)
+          .padding(0)
+          .width(this.parentWidth)
+          .height(this.parentHeight)
+          .key(this.parentComponentKey)
         }.width('100%').height('100%').backgroundColor(Color.Green)
       } else if (this.targetView == 'TabContent') {
         Tabs() {

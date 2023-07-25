@@ -65,7 +65,6 @@ export struct TabsView {
     })
     .width(360)
     .height(296)
-    .margin({ top: 52 })
     .backgroundColor('#F1F3F5')
     .position(this._position)
     .key(this.componentKey)

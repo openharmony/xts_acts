@@ -19,7 +19,7 @@ import { describe, expect } from '@ohos/hypium'
 
 
 export default function paddingTest() {
-  //A list of components that support size attributes is required.
+  //A list of components that support padding attributes is required.
   let supportView = [
     'AlphabetIndexer',
     'Button',
