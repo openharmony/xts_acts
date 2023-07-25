@@ -19,8 +19,7 @@
         "deviceType": [
             "default",
             "tablet",
-            "phone",
-            "2in1"
+            "phone"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -30,21 +29,21 @@
         },
         "defPermissions": [
             {
-                "availableScope": [],
-                "grantMode": "user_grant",
-                "name": "ohos.permission.DISTRIBUTED_DATASYNC"
+              "availableScope": [],
+              "grantMode": "user_grant",
+              "name": "ohos.permission.DISTRIBUTED_DATASYNC"
             }
-        ],
-        "reqPermissions": [
+          ],
+          "reqPermissions": [
             {
-                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-                "reason": "ceshi"
+              "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+              "reason": "ceshi"
             },
             {
-                "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-                "reason": "ceshi"
+              "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+              "reason": "ceshi"
             }
-        ],
+          ],
         "abilities": [
             {
                 "skills": [
