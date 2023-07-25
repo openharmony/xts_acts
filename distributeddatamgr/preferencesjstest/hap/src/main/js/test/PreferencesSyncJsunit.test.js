@@ -396,7 +396,7 @@ export default function PreferencesSyncTest() {
                     expect().assertFail();
                 }
                 console.log("flush done.");
-                await dataPreferences.removePreferencesFromCacheSync(context, NAME);
+                await mPreferences.removePreferencesFromCacheSync(context, NAME);
                 let value = mPreferences.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue")
                 console.log("SUB_DDM_Preferences_removePreferencesFromCacheSync_0100 end." + value);
                 expect('test').assertEqual(value);
