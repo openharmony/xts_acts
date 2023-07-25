@@ -67,7 +67,7 @@ export default function swiperItemVisibility() {
       expect(visiblekey.bottom).assertEqual(visiblekey01.bottom);
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
+      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       //await driver.swipe(250, 230, 200, 230);
       await CommonFunc.sleep(1000);
       // 翻页后子组件2大小及位置与父组件一致，翻页成功
@@ -118,7 +118,7 @@ export default function swiperItemVisibility() {
       expect(visiblekey.bottom).assertEqual(visiblekey05.bottom);
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
+      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       //await driver.swipe(250, 230, 200, 230);
       await CommonFunc.sleep(1000);
       // 翻页后子组件6大小及位置与父组件一致，翻页成功
@@ -169,7 +169,7 @@ export default function swiperItemVisibility() {
       visiblekey03 = CommonFunc.getComponentRect('visiblekey03');
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
-      await driver.swipe(vp2px(150), vp2px(100), vp2px(100), vp2px(100));
+      await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       //await driver.swipe(250, 230, 200, 230);
       await CommonFunc.sleep(1000);
       // 翻页后子组件4大小及位置与父组件一致，翻页成功
