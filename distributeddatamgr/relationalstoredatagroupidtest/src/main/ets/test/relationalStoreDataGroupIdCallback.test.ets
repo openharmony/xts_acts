@@ -65,7 +65,7 @@ export default function relationalStoreDataGroupIdCallback() {
       try {
         relationalStore.getRdbStore(globalThis.abilityContext, STORE_CONFIG, async function (err, rdbStore) {
           console.info(TAG, `Get RdbStore successfully.`);
-          expect(err !== null && rdbStore !== null).assertFail();
+          expect().assertFail();
           done();
           await rdbStore.executeSql(CREATE_TABLE_TEST);
           relationalStore.deleteRdbStore(globalThis.abilityContext, STORE_CONFIG, function (error) {
