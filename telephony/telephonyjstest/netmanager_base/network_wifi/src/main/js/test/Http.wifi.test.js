@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -18,6 +18,12 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function Telephony_NetManager_NetWorkTest() {
 
 describe("Telephony_NetManager_NetWorkTest", function () {
+    afterEach(function(){
+        setTimeout(()=>{
+            network.unsubscribe();
+            console.info("async function unsubscribe end");
+        },100);
+    });
 
     /**
      * @tc.number Telephony_NetManager_NetWorkTest_GetType_WiFi_0100
@@ -27,21 +33,40 @@ describe("Telephony_NetManager_NetWorkTest", function () {
     it("Telephony_NetManager_NetWorkTest_GetType_WiFi_0100", 0, function (done) {
         network.getType({
             success : function(data){
-                console.info("NetManager getType "+ JSON.stringify(data))
-                expect(data.type === "WiFi").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
+                console.info("NetManager getType "+ JSON.stringify(data));
+                expect(data.type === "WiFi").assertTrue();
+                expect(data.metered === false).assertTrue();
                 done();
             },
             fail : function(data,code){
-                expect().assertFail()
+                expect().assertFail();
                 done();
             },
             complete : function(){
-                expect().assertTrue()
+                expect().assertTrue();
                 done();
             }
-        })
+        });
+    });
+
+    /**
+     * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_WiFi_0100
+     * @tc.name Whether the subscribe method is called successfully with WiFi
+     * @tc.desc Function test
+     */
+    it("Telephony_NetManager_NetWorkTest_Subscribe_WiFi_0100", 0, function (done) {
+        network.subscribe({
+            success : function(data){
+                console.info("NetManager subscribe "+JSON.stringify(data));
+                expect(data.type === "WiFi").assertTrue();
+                expect(data.metered === false).assertTrue();
+                done();
+            },
+            fail : function(data,code){
+                expect().assertFail();
+                done();
+            }
+        });
         done();
     });
 
@@ -53,45 +78,21 @@ describe("Telephony_NetManager_NetWorkTest", function () {
     it("Telephony_NetManager_NetWorkTest_GetType_WiFi_0200", 0, function (done) {
         network.getType({
             success : function(data){
-                console.info("NetManager getType "+ JSON.stringify(data))
-                expect(data.type === "WiFi").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
+                console.info("NetManager getType "+ JSON.stringify(data));
+                expect(data.type === "WiFi").assertTrue();
+                expect(data.metered === false).assertTrue();
                 done();
-                console.info("Telephony_NetManager_NetWorkTest_GetType_wifi_1 end")
+                console.info("Telephony_NetManager_NetWorkTest_GetType_wifi_1 end");
             },
             fail : function(data,code){
-                expect().assertFail()
+                expect().assertFail();
                 done();
             },
             complete : function(){
-                expect().assertTrue()
+                expect().assertTrue();
                 done();
             }
-        })
-        done();
-    });
-
-    /**
-     * @tc.number Telephony_NetManager_NetWorkTest_Subscribe_WiFi_0100
-     * @tc.name Whether the subscribe method is called successfully with WiFi
-     * @tc.desc Function test
-     */
-    it("Telephony_NetManager_NetWorkTest_Subscribe_WiFi_0100", 0, function (done) {
-        network.subscribe({
-            success : function(data){
-                console.info("NetManager subscribe "+JSON.stringify(data))
-                expect(data.type === "WiFi").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
-                done();
-            },
-            fail : function(data,code){
-                expect().assertFail()
-                done();
-            }
-        })
-        done();
+        });
     });
 
     /**
@@ -102,19 +103,17 @@ describe("Telephony_NetManager_NetWorkTest", function () {
     it("Telephony_NetManager_NetWorkTest_Subscribe_WiFi_0200", 0, function (done) {
         network.subscribe({
             success : function(data){
-                console.info("NetManager subscribe 1 "+JSON.stringify(data))
-                expect(data.type === "WiFi").assertTrue()
-                expect(data.metered === false).assertTrue()
-                network.unsubscribe()
+                console.info("NetManager subscribe 1 "+JSON.stringify(data));
+                expect(data.type === "WiFi").assertTrue();
+                expect(data.metered === false).assertTrue();
                 done();
             },
             fail : function(data,code){
-                expect().assertFail()
+                expect().assertFail();
                 done();
             }
-        })
+        });
         done();
     });
-
-})
+});
 }
