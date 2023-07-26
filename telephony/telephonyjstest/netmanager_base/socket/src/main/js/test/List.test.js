@@ -14,7 +14,9 @@
  */
  import Telephony_NETSTACK_SocketTest from './NetStackSocket.test';
  import NetworkManagerTCPSocketServer from "./NetworkManagerTCPSocketServer.test";
+ import NetManagerTLSSocketServer from './NetManagerTLSSocketServer.test';
  export default function testsuite() {
     Telephony_NETSTACK_SocketTest();
     NetworkManagerTCPSocketServer();
+    NetManagerTLSSocketServer();
  }
