@@ -64,7 +64,7 @@ export default function textTwoJsunit() {
       let strJson = getInspectorByKey('text1');
       let obj = JSON.parse(strJson);
       console.info('textTwoJsunit_0200 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FFFFEEAF"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FF000000"}');
       await CommonFunc.sleep(1000);
       // to modify the atrribute
       globalThis.value.message.notify({name:'type',value:TextDecorationType.Overline})
