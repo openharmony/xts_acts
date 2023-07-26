@@ -265,7 +265,7 @@ export default function TextInputJsunit() {
       console.info("[TextInputJsunit_0500] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
       expect(obj.$attrs.placeholder).assertEqual('');
       expect(obj.$attrs.type).assertEqual('InputType.Normal');
-      expect(obj.$attrs.placeholderColor).assertEqual('#FF000000');
+      expect(obj.$attrs.placeholderColor).assertEqual('#99182431');
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"18.00fp","weight":"500","fontFamily":"sans-serif"}');
       expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
       expect(obj.$attrs.caretColor).assertEqual('#FF00007B');
