@@ -93,7 +93,7 @@ export default function audioRendererTest() {
       } catch (error) {
         if (error) {
           console.log(`${TagFrmwkRender}: On catch error, error: [${error.code}, ${error.message}]`);
-          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_401);
+          expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_401);
           done();
         } else {
           expect(false).assertTrue();
@@ -125,7 +125,7 @@ export default function audioRendererTest() {
       } catch (error) {
         if (error) {
           console.log(`${TagFrmwkRender}: On catch error, error: [${error.code}, ${error.message}]`);
-          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_6800101);
+          expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
         } else {
           expect(false).assertTrue();
@@ -158,7 +158,7 @@ export default function audioRendererTest() {
       } catch (error) {
         if (error) {
           console.log(`${TagFrmwkRender}: On: catch error, error: [${error.code}, ${error.message}]`);
-          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_401);
+          expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_401);
           done();
         } else {
           expect(false).assertTrue();
@@ -191,7 +191,7 @@ export default function audioRendererTest() {
       } catch (error) {
         if (error) {
           console.log(`${TagFrmwkRender}:On catch error, error: [${error.code}, ${error.message}]`);
-          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_6800101);
+          expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
         } else {
           expect(false).assertTrue();
@@ -257,7 +257,7 @@ export default function audioRendererTest() {
       } catch (error) {
         if (error) {
           console.log(`${TagFrmwkRender}: Off catch error, error: [${error.code}, ${error.message}]`);
-          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_6800101);
+          expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
         } else {
           expect(false).assertTrue();
