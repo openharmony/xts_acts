@@ -35,7 +35,7 @@ export default class MainAbility extends Ability {
 
     onWindowStageRestore(windowStage){
       console.log("[Demo] MainAbility onWindowStageRestore")
-  }
+    }
 
     onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
@@ -50,6 +50,15 @@ export default class MainAbility extends Ability {
     onBackground() {
         // Ability has back to background
         console.log("[Demo] MainAbility onBackground")
+    }
+
+    onContinue(wantParam){
+      console.log("[Demo] MainAbility onContinue")
+      return undefined;
+    }
+
+    onBackPressed(){
+      return false
     }
 
     onConfigurationUpdate(config) {

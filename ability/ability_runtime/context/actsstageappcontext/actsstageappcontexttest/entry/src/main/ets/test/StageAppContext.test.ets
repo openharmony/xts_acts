@@ -240,5 +240,24 @@ export default function stageAppContextTest(abilityContext) {
             })
             done();
         });
+
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_1800
+         * @tc.name: getProcessRunningInformation test 2
+         * getProcessRunningInformation test
+         * @tc.desc: Function test
+         * @tc.level   3
+         */
+        it('SUB_AA_OpenHarmony_ApplicationContext_1800', 0, async function (done) {
+          let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1800";
+          console.log(TAG + " --- start");
+          let context = globalThis.abilityStageContext.getApplicationContext();
+          context.getProcessRunningInformation((err, data) => {
+              console.log(TAG + " result = " + JSON.stringify(data));
+              expect(data[0].processName).assertEqual("com.example.stageappcontexttest");
+              expect(typeof data[0].state).assertEqual("number");
+          })
+          done();
+      });
     })
 }

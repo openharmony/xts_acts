@@ -43,6 +43,10 @@ export default class MainAbility2 extends Ability {
             let requestInfo = dialogRequest.getRequestInfo(want);
             if (requestInfo) {
                 globalThis.validRequestInfo = true;
+                globalThis.windowRectLeft = requestInfo.windowRect.left;
+                globalThis.windowRectTop = requestInfo.windowRect.top;
+                globalThis.windowRectWidth = requestInfo.windowRect.width;
+                globalThis.windowRectHeight = requestInfo.windowRect.height;
                 console.log("MainAbility2 requestInfo is valid");
             } else {
                 console.log("MainAbility2 requestInfo is invalid");
