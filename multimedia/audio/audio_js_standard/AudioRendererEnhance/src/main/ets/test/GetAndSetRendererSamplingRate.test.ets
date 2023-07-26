@@ -654,6 +654,5 @@ export default function audioRendererTest() {
         }
       });
     });
-
   })
 }

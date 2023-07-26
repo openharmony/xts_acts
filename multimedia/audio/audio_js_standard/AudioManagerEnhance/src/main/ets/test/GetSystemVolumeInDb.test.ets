@@ -41,6 +41,7 @@ export default function audioManagerTest() {
     afterAll(function () {
       console.info(`${TagFrmwk}: afterAll: Test suite-level cleanup condition`);
     })
+
     function getAudioManager() {
       audioManager = audio.getAudioManager();
       if (audioManager != null) {
@@ -62,95 +63,110 @@ export default function audioManagerTest() {
         console.info(`${TagFrmwk}: getAudioManger : FAIL`);
       }
     }
+
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
+
     async function getPermission() {
       console.info("getPermission IN\n")
-      let permissions = ['ohos.permission.MICROPHONE','ohos.permission.MODIFY_AUDIO_SETTINGS','ohos.permission.ACCESS_NOTIFICATION_POLICY'];
+      let permissions = ['ohos.permission.MICROPHONE', 'ohos.permission.MODIFY_AUDIO_SETTINGS', 'ohos.permission.ACCESS_NOTIFICATION_POLICY'];
       featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
         console.info("request success" + JSON.stringify(data));
       })
     }
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0100
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0100
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0100', 0, async function (done) {
       try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER).then((data) => {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER)
+          .then((data) => {
+            console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+            expect(data).assertEqual(env.DEAFULT_MEDIA_DB);
             expect(true).assertTrue();
             done();
-        }).catch((error) => {
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error}`);
-          expect(false).assertTrue();
-          done();
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0100: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200', 0, async function (done) {
-      try {
-        for(let index in audio.AudioVolumeType){
-          console.info(`####AudioVolumeType: ${index}`);
-          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[index], 3, audio.DeviceType.SPEAKER).then((data) => {
-              console.info(`####${index} adjustSystemVolumeByStep :SUCCESS ${data}`);
-          }).catch((error) => {
-            console.log(`${TagFrmwk}: ####${index} adjustSystemVolumeByStep : error ${error}`);
+          })
+          .catch((error) => {
+            console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${error}`);
             expect(false).assertTrue();
             done();
           });
-        }
-        done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0300
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200', 0, async function (done) {
+      try {
+        var db1 = new ArrayList<Number>();
+        var db2 = [0.06932847946882248, 0.06932847946882248, 0.08370080590248108, 0.08370080590248108, 0.08370080590248108, 0.06932847946882248, 0.06932847946882248, 0.08370080590248108];
+        for (let index in audio.AudioVolumeType) {
+          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[index], 3, audio.DeviceType.SPEAKER)
+            .then((data) => {
+              console.info(`${index} getSystemVolumeInDb :SUCCESS ${data}`);
+              db1.add(data);
+            })
+            .catch((error) => {
+              console.log(`${TagFrmwk}: ${index} getSystemVolumeInDb : error ${error}`);
+              expect(false).assertTrue();
+              done();
+            });
+        }
+        for (let i = 0; i < db1.length; i++) {
+          console.log(`${db1[i]}: ${db2[i]}`);
+          expect(Number(db1[i])).assertEqual(Number(db2[i]));
+        }
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0300
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0300', 0, async function (done) {
       try {
         let maxVol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA);
         let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA);
         let volLevel = 0;
-        for(volLevel = minVol; volLevel <= maxVol; volLevel++){
-          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, volLevel, audio.DeviceType.SPEAKER).then((data) => {
-            console.info(`#### ${volLevel} getSystemVolumeInDb :SUCCESS ${data}`);
-          }).catch((error) => {
-            console.log(`${TagFrmwk}: #### ${volLevel} getSystemVolumeInDb : error ${error}`);
-            expect(false).assertTrue();
-            done();
-          });
+        for (volLevel = minVol; volLevel <= maxVol; volLevel++) {
+          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, volLevel, audio.DeviceType.SPEAKER)
+            .then((data) => {
+              console.info(` ${volLevel} getSystemVolumeInDb :SUCCESS ${data}`);
+            })
+            .catch((error) => {
+              console.log(`${TagFrmwk}: ${volLevel} getSystemVolumeInDb : error ${error}`);
+              expect(false).assertTrue();
+              done();
+            });
         }
         done();
-      }catch (error){
+      } catch (error) {
         console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0300: error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
@@ -158,212 +174,220 @@ export default function audioManagerTest() {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0400
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0400
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0400', 0, async function (done) {
       try {
-        for(let index in audio.DeviceType){
-            await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 1, audio.DeviceType[index]).then((data) => {
-              console.info(`####${index} getSystemVolumeInDb :SUCCESS ${data}`);
-            }).catch((error) => {
-              if(index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE'){
-                console.log(`####${index} getSystemVolumeInDb :${error.code} ${error.message}`);
-              }else{
-                console.log(`${TagFrmwk}: ####${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);
+        for (let index in audio.DeviceType) {
+          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 1, audio.DeviceType[index])
+            .then((data) => {
+              console.info(`${index} getSystemVolumeInDb :SUCCESS ${data}`);
+            })
+            .catch((error) => {
+              if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE') {
+                console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
+              } else {
+                console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);
                 expect(false).assertTrue();
                 done();
               }
             });
         }
         done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0400: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB: error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0500
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0500
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0500', 0, async function (done) {
       try {
         await audioVolumeGroupManager.getSystemVolumeInDb(-1, 3, audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
+          console.info(`getSystemVolumeInDb :SUCCESS ${data}, testcase FAIL!`);
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-          if(error.code == env.UNSUPORTED_OPTION_6800104){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-            expect(true).assertTrue();
+          if (error) {
+            console.log(`${TagFrmwk}:getSystemVolumeInDb error ${error.message} ${error.code}`);
+            expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
             done();
-          }else{
+          } else {
             expect(false).assertTrue();
             done();
           }
         });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0500: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0600
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0600
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0600', 0, async function (done) {
       try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, -1, audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(false).assertTrue();
-          done();
-        }).catch((error) => {
-          if(error.code == env.UNSUPORTED_OPTION_6800104){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-            expect(true).assertTrue();
-            done();
-          }else{
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, -1, audio.DeviceType.SPEAKER)
+          .then((data) => {
+            console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
             expect(false).assertTrue();
             done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0600: error ${error.message}, code ${error.code}`);
+          })
+          .catch((error) => {
+            if (error) {
+              console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${error.message} ${error.code}`);
+              expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+              done();
+            } else {
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0700
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0700
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0700', 0, async function (done) {
       try {
         let maxVol = audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA);
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, maxVol+1, audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(false).assertTrue();
-          done();
-        }).catch((error) => {
-          if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-            expect(true).assertTrue();
-            done();
-          }else{
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, maxVol + 1, audio.DeviceType.SPEAKER)
+          .then((data) => {
+            console.info(`getSystemVolumeInDb :SUCCESS ${data}, testcase FAIL!`);
             expect(false).assertTrue();
             done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0700: error ${error.message}, code ${error.code}`);
+          })
+          .catch((error) => {
+            if (error) {
+              console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${error.message} ${error.code}`);
+              expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+              done();
+            } else {
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800', 0, async function (done) {
       try {
         await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, -1).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(true).assertTrue();
+          console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+          expect(data).assertEqual(env.DEAFULT_MEDIA_DB);
           done();
         }).catch((error) => {
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-            expect(false).assertTrue();
-            done();
+          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${error.message} ${error.code}`);
+          expect(false).assertTrue();
+          done();
         });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0900
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0900
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0900', 0, async function (done) {
       try {
         await audioVolumeGroupManager.getSystemVolumeInDb('123', 3, audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
+          console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
           expect(false).assertTrue();
           done();
         }).catch((error) => {
-           if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-            expect(true).assertTrue();
+          if (error) {
+            console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${error.message} ${error.code}`);
+            expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
             done();
-          }else{
+          } else {
             expect(false).assertTrue();
             done();
           }
         });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0900: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1000
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1000
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1000', 0, async function (done) {
       try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, '123', audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(false).assertTrue();
-          done();
-        }).catch((error) => {
-          if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-            expect(true).assertTrue();
-            done();
-          }else{
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, '123', audio.DeviceType.SPEAKER)
+          .then((data) => {
+            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
             expect(false).assertTrue();
             done();
-          }
-        });
-      }catch (error){
+          })
+          .catch((error) => {
+            if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
+              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
+              expect(true).assertTrue();
+              done();
+            } else {
+              expect(false).assertTrue();
+              done();
+            }
+          });
+      } catch (error) {
         console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1000: error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
@@ -371,615 +395,129 @@ export default function audioManagerTest() {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1100
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1100
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1100', 0, async function (done) {
       try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.MIC).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(true).assertTrue();
-          done();
-        }).catch((error) => {
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1100: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(3, audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(true).assertTrue();
-          done();
-        }).catch((error) => {
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1200: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1300
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1300', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, audio.DeviceType.SPEAKER).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(true).assertTrue();
-          done();
-        }).catch((error) => {
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1300: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1400
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1400', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3).then((data) => {
-          console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(true).assertTrue();
-          done();
-        }).catch((error) => {
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1400: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1500
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1500', 0, async function (done) {
-      try {
-        var db1 = new ArrayList<Number>();
-        var db2 = new ArrayList<Number>();
-        var device = [audio.DeviceType.SPEAKER, audio.DeviceType.EARPIECE, audio.DeviceType.WIRED_HEADSET];
-        for(var deviceIndex = 0; deviceIndex < device.length; deviceIndex++){
-          for(let typeIndex in audio.AudioVolumeType){
-            let maxVol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType[typeIndex]);
-            let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType[typeIndex]);
-            for(let volIndex = minVol; volIndex <= maxVol; volIndex++){
-              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex]).then((data) => {
-                db1.add(data);
-              }).catch((error) => {
-                console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error}`);
-                expect(false).assertTrue();
-                done();
-              });
-              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex]).then((data) => {
-                db2.add(data);
-              }).catch((error) => {
-                console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error}`);
-                expect(false).assertTrue();
-                done();
-              });
-            }
-          }
-        }
-        console.log(`${TagFrmwk}: ####getSystemVolumeInDb : SUCCESS`);
-        for(let i = 0; i < db1.length; i++){
-          expect(db1[i]).assertEqual(db2[i]);
-        }
-        done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_1500': error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0100
-     *@tc.name      : getSystemVolumeInDb - Media - Callback
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0100', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err){
-            console.info(`####getSystemVolumeInDb : error ${err.message} ${err.code}`);
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.MIC)
+          .then((data) => {
+            console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+            expect(data).assertEqual(env.DEAFULT_MEDIA_DB);
+            done();
+          })
+          .catch((error) => {
+            console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${error.message} ${error.code}`);
             expect(false).assertTrue();
             done();
-          }else{
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(true).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0100: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0200
-     *@tc.name      : getSystemVolumeInDb - Media - Callback
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0200', 0, async function (done) {
-      try {
-        for(let index in audio.AudioVolumeType){
-          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[index], 3, audio.DeviceType.SPEAKER, (err,data) => {
-            if(err){
-              console.log(`${TagFrmwk}: ####${index} getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(false).assertTrue();
-              done();
-            }else{
-              console.info(`####${index} getSystemVolumeInDb :SUCCESS ${data}`);
-            }
           });
-          await sleep(20);
-        }
-        done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0200: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0300
-     *@tc.name      : getSystemVolumeInDb - Media - Callback
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0300', 0, async function (done) {
-      try {
-        let maxVol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA);
-        let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA);
-        for(let volLevel = minVol; volLevel <= maxVol; volLevel++){
-          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, volLevel, audio.DeviceType.SPEAKER, (err,data) => {
-            if(err){
-              console.log(`${TagFrmwk}: ####${volLevel} getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(false).assertTrue();
-              done();
-            }else{
-              console.info(`####${volLevel} getSystemVolumeInDb :SUCCESS ${data}`);
-            }
-          });
-          await sleep(20);
-        }
-        done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0300: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0400
-     *@tc.name      : getSystemVolumeInDb - Media - Callback
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0400', 0, async function (done) {
-      try {
-        for(let index in audio.DeviceType){
-          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType[index], (err,data) => {
-            if(err){
-              if(index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE'){
-                console.log(`####${index} getSystemVolumeInDb :${err.code} ${err.message}`);
-              }else{
-                console.log(`${TagFrmwk}: ####${index} getSystemVolumeInDb : error ${err.message} ${err.code}`);
-                expect(false).assertTrue();
-                done();
-              }
-            }else {
-              console.info(`####${index} getSystemVolumeInDb :SUCCESS ${data}`);
-            }
-          });
-          await sleep(20);
-        }
-        done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0400: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0500
-     *@tc.name      : getSystemVolumeInDb - Media - Callback
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0500', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(-1, 3, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err.code == env.UNSUPORTED_OPTION_6800104){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(true).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0500: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0600
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0600', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, -1, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err.code == env.UNSUPORTED_OPTION_6800104){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(true).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0600: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0700
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0700', 0, async function (done) {
-      try {
-        let maxVol = audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA);
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, maxVol+1, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err.code == env.INVALID_INPUT_PARAMETER_6800101){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(true).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0700: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0800
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0800', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, -1, (err,data) => {
-          if(err){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(false).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(true).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0800: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0900
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0900', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb('123', 3, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err.code == env.INVALID_INPUT_PARAMETER_6800101){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(true).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_0900: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1000
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1000', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, '123', audio.DeviceType.SPEAKER, (err,data) => {
-          if(err.code == env.INVALID_INPUT_PARAMETER_6800101){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(true).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(false).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1000: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1100
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1100', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.MIC, (err,data) => {
-          if(err){
-            console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(false).assertTrue();
-            done();
-          }else {
-            console.info(`####getSystemVolumeInDb :SUCCESS ${data}`);
-            expect(true).assertTrue();
-            done();
-          }
-        });
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1100: error ${error.message}, code ${error.code}`);
-        expect(false).assertTrue();
-        done();
-      }
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1200
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1200
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1200', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(3, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err) {
-            if (err.code == env.INVALID_INPUT_PARAMETER_6800101) {
-              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(true).assertTrue();
-              done();
-            } else {
-              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(false).assertTrue();
-              done();
-            }
-          }
-        });
-      }catch (error){
-        if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(true).assertTrue();
+      await audioVolumeGroupManager.getSystemVolumeInDb(3, audio.DeviceType.SPEAKER, (err, data) => {
+        if (err) {
+          console.log(`${TagFrmwk}getSystemVolumeInDb : error ${err.message} ${err.code}`);
+          expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
-        }else{
-          console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1200: error ${error.message}, code ${error.code}`);
+        } else {
+          console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${err.message} ${err.code}`);
           expect(false).assertTrue();
           done();
         }
-      }
+      });
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1300
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1300
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1300', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, audio.DeviceType.SPEAKER, (err,data) => {
-          if(err){
-            if(err.code == env.INVALID_INPUT_PARAMETER_6800101){
-              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(true).assertTrue();
-              done();
-            }else{
-              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(false).assertTrue();
-              done();
-            }
-          }
-        });
-      }catch (error){
-        if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(true).assertTrue();
+      await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, audio.DeviceType.SPEAKER, (err, data) => {
+        if (err) {
+          console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
+          expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
-        }else{
-          console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1300: error ${error.message}, code ${error.code}`);
+        } else {
+          console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
           expect(false).assertTrue();
           done();
         }
-      }
+      });
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1400
-     *@tc.name      : getSystemVolumeInDb - Media - Promise
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1400
+     * @tc.name      : getSystemVolumeInDb - Media - Promise
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1400', 0, async function (done) {
-      try {
-        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, (err,data) => {
-          if(err){
-            if(err.code == env.INVALID_INPUT_PARAMETER_6800101){
-              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(true).assertTrue();
-              done();
-            }else{
-              console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${err.message} ${err.code}`);
-              expect(false).assertTrue();
-              done();
-            }
-          }
-        });
-      }catch (error){
-        if(error.code == env.INVALID_INPUT_PARAMETER_6800101){
-          console.log(`${TagFrmwk}: ####getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(true).assertTrue();
+      await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, (err, data) => {
+        if (err) {
+          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${err.message} ${err.code}`);
+          expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
-        }else{
-          console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1400: error ${error.message}, code ${error.code}`);
+        } else {
+          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${err.message} ${err.code}`);
           expect(false).assertTrue();
           done();
         }
-      }
+      });
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1500
-     *@tc.name      : getSystemVolumeInDb - Media - Callback
-     *@tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 0
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1500
+     * @tc.name      : getSystemVolumeInDb - Media - Callback
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1500', 0, async function (done) {
       try {
         var db1 = new ArrayList<Number>();
         var db2 = new ArrayList<Number>();
         var device = [audio.DeviceType.SPEAKER, audio.DeviceType.EARPIECE, audio.DeviceType.WIRED_HEADSET];
-        for(var deviceIndex = 0; deviceIndex < device.length; deviceIndex++){
-          for(let typeIndex in audio.AudioVolumeType){
+        for (var deviceIndex = 0; deviceIndex < device.length; deviceIndex++) {
+          for (let typeIndex in audio.AudioVolumeType) {
             let maxVol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType[typeIndex]);
             let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType[typeIndex]);
-            for(let volIndex = minVol; volIndex <= maxVol; volIndex++){
-              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err,data) => {
-                if(err){
-                  console.info(`####getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            for (let volIndex = minVol; volIndex <= maxVol; volIndex++) {
+              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err, data) => {
+                if (err) {
+                  console.info(`getSystemVolumeInDb : error ${err.message} ${err.code}`);
                   expect(false).assertTrue();
                   done();
-                }else{
+                } else {
                   db1.add(data);
                 }
               });
-              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err,data) => {
+              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err, data) => {
                 if (err) {
-                  console.info(`####getSystemVolumeInDb : error ${err.message} ${err.code}`);
+                  console.info(`getSystemVolumeInDb : error ${err.message} ${err.code}`);
                   expect(false).assertTrue();
                   done();
                 } else {
@@ -990,17 +528,38 @@ export default function audioManagerTest() {
             }
           }
         }
-        console.log(`${TagFrmwk}: ####getSystemVolumeInDb : SUCCESS`);
-        for(let i = 0; i < db1.length; i++){
-            expect(db1[i]).assertEqual(db2[i]);
+        console.log(`${TagFrmwk}:getSystemVolumeInDb : SUCCESS`);
+        for (let i = 0; i < db1.length; i++) {
+          expect(db1[i]).assertEqual(db2[i]);
         }
         done();
-      }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1500: error ${error.message}, code ${error.code}`);
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
         expect(false).assertTrue();
         done();
       }
     })
 
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1600
+     * @tc.name      : getSystemVolumeInDb - Media - Callback
+     * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1600', 0, async function (done) {
+      await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 0, audio.DeviceType.SPEAKER, (err, data) => {
+        if (err) {
+          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${err.message} ${err.code}`);
+          expect(false).assertTrue();
+          done();
+        } else {
+          console.log(`${TagFrmwk}:getSystemVolumeInDb SUCCESS dB:${data}`);
+          expect(data).assertEqual(0);
+          done();
+        }
+      })
+    })
   })
 }

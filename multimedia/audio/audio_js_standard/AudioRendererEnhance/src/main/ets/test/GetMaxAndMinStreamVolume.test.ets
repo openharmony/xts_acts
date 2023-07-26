@@ -175,16 +175,16 @@ export default function audioRendererTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0100', 0, async function (done) {
       try{
         await audioRen.getMaxStreamVolume().then((data) => {
-          console.info(`${TagFrmwkRender}: #####getMaxStreamVolume :SUCCESS ${data}`);
+          console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_1);
           done();
         }).catch ((error)=>{
-          console.log("${TagFrmwkRender}: #####getMaxStreamVolume : error = " + error);
+          console.log("${TagFrmwkRender}:getMaxStreamVolume : error = " + error);
           expect(false).assertTrue();
           done();
         });
       }catch(error){
-        console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0100: catch error = " + error);
+        console.log("GETMAXSTREAMVOLUME catch error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -202,10 +202,10 @@ export default function audioRendererTest() {
       try{
         await renderPlay();
         await audioRen.getMaxStreamVolume().then((data) => {
-          console.info(`${TagFrmwkRender}: #####getMaxStreamVolume :SUCCESS ${data}`);
+          console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_1);
         }).catch ((error)=>{
-          console.log("${TagFrmwkRender}: #####getMaxStreamVolume : error = " + error);
+          console.log("${TagFrmwkRender}:getMaxStreamVolume : error = " + error);
           expect(false).assertTrue();
           done();
         });
@@ -221,7 +221,7 @@ export default function audioRendererTest() {
         });
         done();
       }catch(error){
-        console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0200: catch error = " + error);
+        console.log("GETMAXSTREAMVOLUME catch error = " + error);
         expect(false).assertTrue();
         done();
       }
@@ -255,24 +255,25 @@ export default function audioRendererTest() {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
           }
-
           try {
-            await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
-              audioRender = data;
-              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
-              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} STREAM_USAGE_MEDIA SUCCESS data value: ` + JSON.stringify(data));
-            }).catch((err) => {
-              console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
-            });
+            if (Number(audio.StreamUsage[StreamType]) != 9) {
+              await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+                audioRender = data;
+                console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
+              }).catch((err) => {
+                console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
+              });
+            } else {
+              audioRender = audioRen;
+            }
           } catch (error) {
             console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
           }
-
           await audioRender.getMaxStreamVolume().then((data) => {
-            console.info(`${TagFrmwkRender}: ####getMaxStreamVolume:Stream Type: ${StreamType} SUCCESS ${data}`);
+            console.info(`${TagFrmwkRender}:getMaxStreamVolume:Stream Type: ${StreamType} SUCCESS ${data}`);
             expect(data).assertEqual(env.OUTPUT_NUMBER_1);
           }).catch ((error)=>{
-            console.info(`${TagFrmwkRender}: #####getMaxStreamVolume:Stream Type: ${StreamType} ERROR : code: ${error.code}, mesage: ${error.message}`);
+            console.info(`${TagFrmwkRender}:getMaxStreamVolume:Stream Type: ${StreamType} ERROR : code: ${error.code}, mesage: ${error.message}`);
             expect(false).assertTrue();
             done();
           });
@@ -286,7 +287,7 @@ export default function audioRendererTest() {
         }
         done();
       }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0300:Stream ERROR : code: ${error.code}, mesage: ${error.message}`);
+        console.info(`GETMAXSTREAMVOLUME Stream ERROR : code: ${error.code}, mesage: ${error.message}`);
       }
     });
 
@@ -301,7 +302,7 @@ export default function audioRendererTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0400', 0, async function (done) {
       try{
         await audioRen.getMaxStreamVolume().then((data) => {
-          console.info(`${TagFrmwkRender}: #####getMaxStreamVolume :SUCCESS ${data}`);
+          console.info(`${TagFrmwkRender}:getMaxStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_1);
           audioRen.setVolume(data).then(() => {
             console.info(`${TagFrmwkRender}: setVolume to maxVolume Success! maxVolume: ${data}`);
@@ -313,12 +314,12 @@ export default function audioRendererTest() {
             done();
           });
         }).catch ((error)=>{
-          console.info(`${TagFrmwkRender}: ####getMaxStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
+          console.info(`${TagFrmwkRender}:getMaxStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
           expect(false).assertTrue();
           done();
         });
       }catch(error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETMAXSTREAMVOLUME_PROMISE_0400: catch error, error: [${error.code}, ${error.message}]`);
+        console.info(`GETMAXSTREAMVOLUME catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
         done();
       }
@@ -335,16 +336,16 @@ export default function audioRendererTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0100', 0, async function (done) {
       try{
         await audioRen.getMinStreamVolume().then((data) => {
-          console.info(`${TagFrmwkRender}: ####getMinStreamVolume :SUCCESS ${data}`);
+          console.info(`${TagFrmwkRender}:getMinStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_0);
           done();
         }).catch ((error)=>{
-          console.info(`${TagFrmwkRender}: #####getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
+          console.info(`${TagFrmwkRender}:getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
           expect(false).assertTrue();
           done();
         });
       }catch(error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0100: catch error, error: [${error.code}, ${error.message}]`);
+        console.info(`GETMINSTREAMVOLUME catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
         done();
       }
@@ -362,10 +363,10 @@ export default function audioRendererTest() {
       try{
         await renderPlay();
         await audioRen.getMinStreamVolume().then((data) => {
-          console.info(`${TagFrmwkRender}: #####getMinStreamVolume :SUCCESS ${data}`);
+          console.info(`${TagFrmwkRender}:getMinStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_0);
         }).catch ((error)=>{
-          console.info(`${TagFrmwkRender}: ####getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
+          console.info(`${TagFrmwkRender}:getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
           expect(false).assertTrue();
           done();
         });
@@ -381,7 +382,7 @@ export default function audioRendererTest() {
         });
         done();
       }catch(error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0200: catch error, error: [${error.code}, ${error.message}]`);
+        console.info(`GETMINSTREAMVOLUME catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
         done();
       }
@@ -415,23 +416,25 @@ export default function audioRendererTest() {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
           }
-
           try {
-            await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
-              audioRender = data;
-              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
-            }).catch((err) => {
-              console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
-            });
+            if (Number(audio.StreamUsage[StreamType]) != 9) {
+              await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+                audioRender = data;
+                console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
+              }).catch((err) => {
+                console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
+              });
+            } else {
+              audioRender = audioRen;
+            }
           } catch (error) {
             console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
           }
-
           await audioRender.getMinStreamVolume().then((data) => {
-            console.info(`${TagFrmwkRender}: ####getMinStreamVolume:Stream Type: ${StreamType} SUCCESS ${data}`);
+            console.info(`${TagFrmwkRender}:getMinStreamVolume:Stream Type: ${StreamType} SUCCESS ${data}`);
             expect(data).assertEqual(env.OUTPUT_NUMBER_0);
           }).catch ((error)=>{
-            console.info(`${TagFrmwkRender}: #####getMinStreamVolume:Stream Type: ${StreamType} ERROR : code: ${error.code}, mesage: ${error.message}`);
+            console.info(`${TagFrmwkRender}:getMinStreamVolume:Stream Type: ${StreamType} ERROR : code: ${error.code}, mesage: ${error.message}`);
             expect(false).assertTrue();
             done();
           });
@@ -445,7 +448,7 @@ export default function audioRendererTest() {
         }
         done();
       }catch (error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0300:Stream ERROR : code: ${error.code}, mesage: ${error.message}`);
+        console.info(`GETMINSTREAMVOLUME Stream ERROR : code: ${error.code}, mesage: ${error.message}`);
       }
     });
 
@@ -460,7 +463,7 @@ export default function audioRendererTest() {
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0400', 0, async function (done) {
       try{
         await audioRen.getMinStreamVolume().then((data) => {
-          console.info(`${TagFrmwkRender}: #####getMinStreamVolume :SUCCESS ${data}`);
+          console.info(`${TagFrmwkRender}: getMinStreamVolume :SUCCESS ${data}`);
           expect(data).assertEqual(env.OUTPUT_NUMBER_0);
           audioRen.setVolume(data).then(() => {
             console.info(`${TagFrmwkRender}: setVolume to minVolume Success! minVolume: ${data}`);
@@ -472,12 +475,12 @@ export default function audioRendererTest() {
             done();
           });
         }).catch ((error)=>{
-          console.info(`${TagFrmwkRender}: ####getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
+          console.info(`${TagFrmwkRender}:getMinStreamVolume : ERROR : code: ${error.code}, mesage: ${error.message}`);
           expect(false).assertTrue();
           done();
         });
       }catch(error){
-        console.info(`SUB_MULTIMEDIA_AUDIO_RENDERER_GETMINSTREAMVOLUME_PROMISE_0400: catch error, error: [${error.code}, ${error.message}]`);
+        console.info(`GETMINSTREAMVOLUME catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
         done();
       }
@@ -556,19 +559,20 @@ export default function audioRendererTest() {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
           }
-
           try {
-            await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
-              audioRender = data;
-              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
-              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} STREAM_USAGE_MEDIA SUCCESS data value: ` + JSON.stringify(data));
-            }).catch((err) => {
-              console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
-            });
+            if (Number(audio.StreamUsage[StreamType]) != 9) {
+              await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+                audioRender = data;
+                console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
+              }).catch((err) => {
+                console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
+              });
+            } else {
+              audioRender = audioRen;
+            }
           } catch (error) {
             console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
           }
-
           audioRen.getMaxStreamVolume((err, maxVolume) => {
             if (err) {
               console.error('${TagFrmwkRender} Get max stream volume Fail: ${err}');
@@ -591,7 +595,7 @@ export default function audioRendererTest() {
         done();
 
       }catch(error){
-        console.log(`${TagFrmwkRender}: ####getMaxStreamVolume: catch error, error: [${error.code}, ${error.message}]`);
+        console.log(`${TagFrmwkRender}:getMaxStreamVolume: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
         done();
       }
@@ -703,18 +707,20 @@ export default function audioRendererTest() {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
           }
-
           try {
-            await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
-              audioRender = data;
-              console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
-            }).catch((err) => {
-              console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
-            });
+            if (Number(audio.StreamUsage[StreamType]) != 9) {
+              await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+                audioRender = data;
+                console.info(`${TagFrmwkRender}: AudioRender Created : Stream Type: ${StreamType} SUCCESS data state: ` + Object.keys(data));
+              }).catch((err) => {
+                console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ` + err.message);
+              });
+            } else {
+              audioRender = audioRen;
+            }
           } catch (error) {
             console.info(`${TagFrmwkRender}: AudioRender Created : catch ERROR : ` + error.code + error.message);
           }
-
           audioRen.getMinStreamVolume((err, minVolume) => {
             if (err) {
               console.error('${TagFrmwkRender} Get min stream volume Fail: ${err}');
@@ -735,7 +741,7 @@ export default function audioRendererTest() {
         }
         done();
       }catch(error){
-        console.log(`${TagFrmwkRender}: ####getMinStreamVolume: catch error, error: [${error.code}, ${error.message}]`);
+        console.log(`${TagFrmwkRender}:getMinStreamVolume: catch error, error: [${error.code}, ${error.message}]`);
         expect(false).assertTrue();
         done();
       }

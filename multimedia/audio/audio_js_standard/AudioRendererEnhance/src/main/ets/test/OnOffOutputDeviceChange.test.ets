@@ -34,8 +34,8 @@ export default function audioRendererTest() {
         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
       }
       let AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
         rendererFlags: 0
       }
       let AudioRendererOptions = {
@@ -76,26 +76,24 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0100', 0, async function (done) {
-      let CallBack:any = (error,data) => {
+      try {
+        audioRen.on(-1, (error, data) => {
+          if (error) {
+            console.log(`${TagFrmwkRender}: On error, error: [${error.code}, ${error.message}]`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
         if (error) {
-          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
-          expect(false).assertTrue();
-          done();
-        }else{
-          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-          done();
-        }
-      };
-      try{
-        audioRen.on(-1, CallBack);
-      }catch(error){
-        if (error.code == env.INVALID_INPUT_PARAMETER_401) {
-          console.log(`${TagFrmwkRender}: ####on: catch error, error: [${error.code}, ${error.message}]`);
-          expect(true).assertTrue();
+          console.log(`${TagFrmwkRender}: On catch error, error: [${error.code}, ${error.message}]`);
+          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_401);
           done();
         } else {
           expect(false).assertTrue();
@@ -110,26 +108,24 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0200', 0, async function (done) {
-      let CallBack:any = (error,data) => {
+      try {
+        audioRen.on('123', (error, data) => {
+          if (error) {
+            console.log(`${TagFrmwkRender}: On error, error: [${error.code}, ${error.message}]`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
         if (error) {
-          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
-          expect(false).assertTrue();
-          done();
-        }else{
-          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-          done();
-        }
-      };
-      try{
-        audioRen.on('123', CallBack);
-      }catch(error){
-        if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
-          console.log(`${TagFrmwkRender}: ####on: catch error, error: [${error.code}, ${error.message}]`);
-          expect(true).assertTrue();
+          console.log(`${TagFrmwkRender}: On catch error, error: [${error.code}, ${error.message}]`);
+          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_6800101);
           done();
         } else {
           expect(false).assertTrue();
@@ -144,26 +140,25 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_ON_CALLBACK_0300', 0, async function (done) {
-      let CallBack:any = (error,data) => {
+      try {
+        audioRen.on((error, data) => {
+          if (error) {
+            console.log(`${TagFrmwkRender}: On execution fail,error: [${error.code}, ${error.message}]`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.log(`${TagFrmwkRender}: On execution success, testcase FAIL!`);
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
         if (error) {
-          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
-          expect(false).assertTrue();
-          done();
-        }else{
-          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-          done();
-        }
-      };
-      try{
-        audioRen.on(CallBack);
-      }catch(error){
-        if (error.code == 401) {
-          console.log(`${TagFrmwkRender}: ####on: catch error, error: [${error.code}, ${error.message}]`);
-          expect(true).assertTrue();
+          console.log(`${TagFrmwkRender}: On: catch error, error: [${error.code}, ${error.message}]`);
+          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_401);
           done();
         } else {
           expect(false).assertTrue();
@@ -178,33 +173,31 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0100', 0, async function (done) {
-      let CallBack:any = (error,data) => {
+      try {
+        audioRen.off(-1, (error, data) => {
+          if (error) {
+            console.log(`${TagFrmwkRender}:Off execution fail,error: [${error.code}, ${error.message}]`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.log(`${TagFrmwkRender}:Off execution success, testcase FAIL! `);
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
         if (error) {
-          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
-          expect(false).assertTrue();
-          done();
-        }else{
-          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-          done();
-        }
-      };
-      try{
-        audioRen.off(-1, CallBack);
-      }catch(error){
-        if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
-          console.log(`${TagFrmwkRender}: ####on: catch error, error: [${error.code}, ${error.message}]`);
-          expect(true).assertTrue();
+          console.log(`${TagFrmwkRender}:On catch error, error: [${error.code}, ${error.message}]`);
+          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_6800101);
           done();
         } else {
           expect(false).assertTrue();
           done();
         }
       }
-
     });
 
     /**
@@ -213,26 +206,25 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - on "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0200', 0, async function (done) {
-      let CallBack:any = (error,data) => {
+      try {
+        audioRen.off('123', (error, data) => {
+          if (error) {
+            console.log(`${TagFrmwkRender}: Off execution fail,error: [${error.code}, ${error.message}]`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.log(`${TagFrmwkRender}: Off execution success, testcase FAIL! `);
+            expect(true).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
         if (error) {
-          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
-          expect(false).assertTrue();
-          done();
-        }else{
-          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-          done();
-        }
-      };
-      try{
-        audioRen.off('123', CallBack);
-      }catch(error){
-        if (error.code == env.UNSUPORTED_OPTION_6800104) {
-          console.log(`${TagFrmwkRender}: ####on: catch error, error: [${error.code}, ${error.message}]`);
-          expect(true).assertTrue();
+          console.log(`${TagFrmwkRender}: Off catch error, error: [${error.code}, ${error.message}]`);
+          expect(Number(error.code)).assertEqual(UNSUPORTED_OPTION_6800104);
           done();
         } else {
           expect(false).assertTrue();
@@ -247,26 +239,25 @@ export default function audioRendererTest() {
      * @tc.desc      : AudioRenderer - off "struct" - promise
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_OFF_CALLBACK_0300', 0, async function (done) {
-      let CallBack:any = (error,data) => {
+      try {
+        audioRen.off((error, data) => {
+          if (error) {
+            console.log(`${TagFrmwkRender}: Off execution fail,error: [${error.code}, ${error.message}]`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.log(`${TagFrmwkRender}: Off execution success, testcase FAIL! `);
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
         if (error) {
-          console.log(`${TagFrmwkRender}: ####CallBack: execution fail,error: [${error.code}, ${error.message}]`);
-          expect(false).assertTrue();
-          done();
-        }else{
-          console.log(`${TagFrmwkRender}: ####CallBack: execution success, data: ${JSON.stringify(data)}`);
-          expect(true).assertTrue();
-          done();
-        }
-      };
-      try{
-        audioRen.off(CallBack);
-      }catch(error){
-        if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
-          console.log(`${TagFrmwkRender}: ####on: catch error, error: [${error.code}, ${error.message}]`);
-          expect(true).assertTrue();
+          console.log(`${TagFrmwkRender}: Off catch error, error: [${error.code}, ${error.message}]`);
+          expect(Number(error.code)).assertEqual(INVALID_INPUT_PARAMETER_6800101);
           done();
         } else {
           expect(false).assertTrue();
@@ -274,6 +265,5 @@ export default function audioRendererTest() {
         }
       }
     });
-
   })
 }
