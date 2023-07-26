@@ -1,0 +1,117 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/clang.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:\MinGW\bin\ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/clang++.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:\MinGW\bin\ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:/MinGW/bin/ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang++.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:/MinGW/bin/ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:/MinGW/bin/ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/x86_64/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_44db8 && [1/2] Building CXX object CMakeFiles\cmTC_44db8.dir\CMakeCXXCompilerABI.cpp.o
+OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin
+ (in-process)
+ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all --mrelax-relocations -mnoexecstack -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/x86_64/CMakeFiles/CMakeTmp -resource-dir D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4 -D __MUSL__ -internal-isystem D:/MinGW/mingw32/include/c++ -internal-isystem D:/MinGW/mingw32/include/c++/mingw32 -internal-isystem D:/MinGW/mingw32/include/c++/backward -internal-isystem D:/MinGW/mingw32/include/c++/6.3.0 -internal-isystem D:/MinGW/mingw32/include/c++/6.3.0/mingw32 -internal-isystem D:/MinGW/mingw32/include/c++/6.3.0/backward -internal-isystem D:/MinGW/include/c++/6.3.0 -internal-isystem D:/MinGW/include/c++/6.3.0/mingw32 -internal-isystem D:/MinGW/include/c++/6.3.0/backward -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/c++ -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/backward -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3.0 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3.0/mingw32 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3.0/backward -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3/mingw32 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3/backward -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6/mingw32 -internal-isystem D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6/backward -internal-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include -internal-isystem D:/MinGW/mingw32/sys-root/mingw/include -internal-isystem D:/MinGW/mingw32/include -internal-isystem D:/MinGW/mingw32/usr/include -internal-isystem D:/MinGW/include -Wformat -Werror=format-security -fdeprecated-macro -fdebug-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/x86_64/CMakeFiles/CMakeTmp -ferror-limit 19 -stack-protector 2 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -o "CMakeFiles\\cmTC_44db8.dir\\CMakeCXXCompilerABI.cpp.o" -x c++ "D:\\quxianfei_work\\tools\\Huawei\\OpenHarmony\\Sdk\\10\\native\\build-tools\\cmake\\share\\cmake-3.16\\Modules\\CMakeCXXCompilerABI.cpp"
+clang -cc1 version 15.0.4 based upon LLVM 15.0.4 default target x86_64-w64-windows-gnu
+ignoring nonexistent directory "D:/MinGW/mingw32/include/c++"
+ignoring nonexistent directory "D:/MinGW/mingw32/include/c++/mingw32"
+ignoring nonexistent directory "D:/MinGW/mingw32/include/c++/backward"
+ignoring nonexistent directory "D:/MinGW/mingw32/include/c++/6.3.0"
+ignoring nonexistent directory "D:/MinGW/mingw32/include/c++/6.3.0/mingw32"
+ignoring nonexistent directory "D:/MinGW/mingw32/include/c++/6.3.0/backward"
+ignoring nonexistent directory "D:/MinGW/include/c++/6.3.0"
+ignoring nonexistent directory "D:/MinGW/include/c++/6.3.0/mingw32"
+ignoring nonexistent directory "D:/MinGW/include/c++/6.3.0/backward"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/c++"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/c++/backward"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3.0"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3.0/mingw32"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3.0/backward"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3/mingw32"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6.3/backward"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6/mingw32"
+ignoring nonexistent directory "D:/MinGW/lib/gcc/mingw32/6.3.0/include/g++-v6/backward"
+ignoring nonexistent directory "D:/MinGW/mingw32/sys-root/mingw/include"
+ignoring nonexistent directory "D:/MinGW/mingw32/include"
+ignoring nonexistent directory "D:/MinGW/mingw32/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include
+ D:/MinGW/include
+End of search list.
+[2/2] Linking CXX executable cmTC_44db8
+FAILED: cmTC_44db8 
+cmd.exe /C "cd . && D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\llvm\bin\clang++.exe  -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -D__MUSL__  --rtlib=compiler-rt -fuse-ld=lld -Wl,--build-id=sha1 -Wl,--warn-shared-textrel -Wl,--fatal-warnings -lunwind -Wl,--no-undefined -Qunused-arguments -Wl,-z,noexecstack -Wl,--gc-sections  -v CMakeFiles\cmTC_44db8.dir\CMakeCXXCompilerABI.cpp.o  -o cmTC_44db8   && cd ."
+OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)
+Target: x86_64-w64-windows-gnu
+Thread model: posix
+InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin
+ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_44db8.exe D:/MinGW/lib/crt2.o D:/MinGW/lib/gcc/mingw32/6.3.0/crtbegin.o -LD:/MinGW/lib/gcc/mingw32/6.3.0 -LD:/MinGW/mingw32/lib -LD:/MinGW/mingw32/mingw/lib -LD:/MinGW/lib -LD:/MinGW/mingw32/sys-root/mingw/lib -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/windows --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections "CMakeFiles\\cmTC_44db8.dir\\CMakeCXXCompilerABI.cpp.o" -lstdc++ -lssp_nonshared -lssp -lmingw32 D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/windows/libclang_rt.builtins-x86_64.a -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/windows/libclang_rt.builtins-x86_64.a -lmoldname -lmingwex -lmsvcrt -lkernel32 D:/MinGW/lib/gcc/mingw32/6.3.0/crtend.o
+lld: error: unknown argument: --build-id=sha1
+lld: error: unknown argument: --warn-shared-textrel
+lld: error: unknown argument: -z
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+
+

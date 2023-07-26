@@ -1,0 +1,48 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/clang.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:\MinGW\bin\ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/clang++.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:\MinGW\bin\ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:/MinGW/bin/ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang++.exe 
+Build flags: -fdata-sections;-ffunction-sections;-funwind-tables;-fstack-protector-strong;-no-canonical-prefixes;-fno-addrsig;-Wa,--noexecstack;-Wformat;-Werror=format-security;;;-D__MUSL__
+Id flags:  
+
+The output was:
+1
+D:/MinGW/bin/ld.exe: unrecognised emulation mode: i386pep
+Supported emulations: i386pe
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+

@@ -1,0 +1,6 @@
+# ninja log v5
+0	1169	7106746347245937	CMakeFiles/entry.dir/hello.cpp.o	26fd8e635926e5fe
+1170	4102	7106746376555933	C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/build/default/intermediates/cmake/default/obj/arm64-v8a/libentry.so	bb4ad27744233bb9
+2	3072	7106746713495956	C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/build/default/intermediates/cmake/default/obj/arm64-v8a/libentry.so	bb4ad27744233bb9
+0	3349	7106747820405950	C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/build/default/intermediates/cmake/default/obj/arm64-v8a/libentry.so	bb4ad27744233bb9
+3	3403	7106748324325964	C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/build/default/intermediates/cmake/default/obj/arm64-v8a/libentry.so	bb4ad27744233bb9

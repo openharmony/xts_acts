@@ -1,0 +1,298 @@
+{
+  "version": "1.0",
+  "workerIdList": [
+    -1,
+    2,
+    0
+  ],
+  "metrics": [
+    {
+      "type": "build_line",
+      "endTime": 1690336575860,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "clean",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336575854
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336575873,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "clean",
+      "taskPath": "codec_ndk_test",
+      "workerId": -1,
+      "startTime": 1690336575873
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576743,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyPreBuild",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576564
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576754,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyGenerateMetadata",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576753
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576786,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyMergeProfile",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576785
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576787,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@BuildNativeWithCmake",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576787
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576789,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyGenerateJsManifest",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576788
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576791,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyMakePackInfo",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576790
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576848,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyProcessProfile",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576792
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576850,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@BuildNativeWithNinja",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576849
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576851,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyGenerateLoaderJson",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576850
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576854,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyProcessResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576852
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576859,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@ProcessLibs",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576854
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576914,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyCompileResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576861
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576915,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyHookCompileResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576915
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336576923,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyOhosTestCompileJS",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576922
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336582147,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyOhosTestCompileArkTS",
+      "taskPath": "entry",
+      "workerId": 2,
+      "startTime": 1690336576921
+    },
+    {
+      "type": "default",
+      "endTime": 1690336582148,
+      "status": "closed",
+      "children": [
+        {
+          "type": "build_line",
+          "endTime": 1690336582147,
+          "status": "closed",
+          "children": [],
+          "name": "overallTime",
+          "taskName": "ohosTest@LegacyOhosTestCompileArkTS",
+          "taskPath": "entry",
+          "workerId": 2,
+          "startTime": 1690336576921
+        }
+      ],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyOhosTestCompileArkTS",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336576916
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336582155,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyProcessNodeAssets",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336582150
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336583012,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyPackageHap",
+      "taskPath": "entry",
+      "workerId": 0,
+      "startTime": 1690336582160
+    },
+    {
+      "type": "default",
+      "endTime": 1690336583012,
+      "status": "closed",
+      "children": [
+        {
+          "type": "build_line",
+          "endTime": 1690336583012,
+          "status": "closed",
+          "children": [],
+          "name": "overallTime",
+          "taskName": "ohosTest@LegacyPackageHap",
+          "taskPath": "entry",
+          "workerId": 0,
+          "startTime": 1690336582160
+        }
+      ],
+      "name": "overallTime",
+      "taskName": "ohosTest@LegacyPackageHap",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336582156
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336583014,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "ohosTest@SignHap",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336583013
+    },
+    {
+      "type": "build_line",
+      "endTime": 1690336583015,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "assembleHap",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1690336583015
+    }
+  ],
+  "workLog": [
+    {
+      "type": "work",
+      "time": "[2023-07-26T09:56:22.144]",
+      "workerId": 2,
+      "content": "[2023-07-26T09:56:22.144] > hvigor \u001b[32m\u001b[33mWARN: \u001b[33mArkTS:WARN File: /home/wsl/openharmony/0620/test/xts/acts/multimedia/media/media_js_standard/codec_ndk_test/entry/src/ohosTest/ets/test/Ability.test.ets:2:23\n Currently module for 'libentry.so' is not verified. If you're importing napi, its verification will be enabled in later SDK version. Please make sure the corresponding .d.ts file is provided and the napis are correctly declared.\n\u001b[39m\n\u001b[39m\n",
+      "taskPath": "entry",
+      "taskName": "ohosTest@LegacyOhosTestCompileArkTS",
+      "taskCompletePath": "entry:ohosTest@LegacyOhosTestCompileArkTS"
+    }
+  ]
+}

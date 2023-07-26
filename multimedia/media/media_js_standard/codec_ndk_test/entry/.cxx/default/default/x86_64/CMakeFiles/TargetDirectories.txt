@@ -1,0 +1,3 @@
+C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/x86_64/CMakeFiles/entry.dir
+C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/x86_64/CMakeFiles/rebuild_cache.dir

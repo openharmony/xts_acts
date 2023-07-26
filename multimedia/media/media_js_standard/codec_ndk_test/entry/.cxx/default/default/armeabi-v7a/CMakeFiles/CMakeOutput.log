@@ -1,0 +1,593 @@
+The target system is: OHOS - 1 - arm
+The host system is: Windows - 10.0.19044 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/clang.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is Clang, found in "C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/3.16.5/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/clang++.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is Clang, found in "C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/3.16.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\build-tools\cmake\bin\ninja.exe cmTC_6e67b && [1/2] Building C object CMakeFiles/cmTC_6e67b.dir/testCCompiler.c.o
+clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm' [-Wunused-command-line-argument]
+[2/2] Linking C executable cmTC_6e67b
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\build-tools\cmake\bin\ninja.exe cmTC_32136 && [1/2] Building C object CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o
+OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin
+clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm' [-Wunused-command-line-argument]
+ (in-process)
+ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\clang.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fno-rounding-math -mconstructor-aliases -munwind-tables -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -crypto -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -resource-dir "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1" -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -internal-isystem "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\include" -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include -Wformat -Werror=format-security -fdebug-compilation-dir "C:\\Users\\quxianfei\\DevEcoStudioProjects\\MyApplication6\\entry\\.cxx\\default\\default\\armeabi-v7a\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -o CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o -x c D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-windows-gnu
+ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\lib\clang\12.0.1\include
+ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos
+ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include
+End of search list.
+[2/2] Linking C executable cmTC_32136
+OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin
+ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -pie -z noexecstack -EL --warn-shared-textrel -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_32136 "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\Scrt1.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crti.o" "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtbegin.o" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\" --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a -lc "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtend.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crtn.o"
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include]
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos]
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+  end of search list found
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+  implicit include dirs: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\build-tools\cmake\bin\ninja.exe cmTC_32136 && [1/2] Building C object CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o]
+  ignore line: [OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin]
+  ignore line: [clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\clang.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fno-rounding-math -mconstructor-aliases -munwind-tables -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -crypto -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -resource-dir "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1" -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -internal-isystem "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\include" -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include -Wformat -Werror=format-security -fdebug-compilation-dir "C:\\Users\\quxianfei\\DevEcoStudioProjects\\MyApplication6\\entry\\.cxx\\default\\default\\armeabi-v7a\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -o CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o -x c D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-windows-gnu]
+  ignore line: [ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\lib\clang\12.0.1\include]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking C executable cmTC_32136]
+  ignore line: [OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin]
+  link line: [ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -pie -z noexecstack -EL --warn-shared-textrel -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_32136 "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\Scrt1.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crti.o" "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtbegin.o" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\" --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a -lc "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtend.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crtn.o"]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\ld.lld] ==> ignore
+    arg [--sysroot=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [-EL] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-zmax-page-size=4096] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-musl-arm.so.1] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_32136] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\Scrt1.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crti.o] ==> ignore
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtbegin.o] ==> ignore
+    arg [-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos] ==> dir [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos]
+    arg [-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib;-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos;-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos;--build-id=sha1] ==> dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib;-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos;-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos;--build-id=sha1]
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_32136.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a] ==> lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [-lc] ==> lib [c]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a] ==> lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtend.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crtn.o] ==> ignore
+  remove lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+  remove lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+  collapse library dir [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/lib/arm-linux-ohos]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib]
+  collapse library dir [-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/arm-linux-ohos]
+  collapse library dir [-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib/arm-linux-ohos]
+  collapse library dir [--build-id=sha1] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/--build-id=sha1]
+  implicit libs: [unwind;-l:libunwind.a;c;-l:libunwind.a]
+  implicit dirs: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/lib/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/arm-linux-ohos;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib/arm-linux-ohos;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/--build-id=sha1]
+  implicit fwks: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\build-tools\cmake\bin\ninja.exe cmTC_056e4 && [1/2] Building CXX object CMakeFiles/cmTC_056e4.dir/testCXXCompiler.cxx.o
+clang++: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm' [-Wunused-command-line-argument]
+[2/2] Linking CXX executable cmTC_056e4
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\build-tools\cmake\bin\ninja.exe cmTC_9f509 && [1/2] Building CXX object CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o
+OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin
+clang++: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm' [-Wunused-command-line-argument]
+ (in-process)
+ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\clang++.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fno-rounding-math -mconstructor-aliases -munwind-tables -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -crypto -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -resource-dir "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1" -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -internal-isystem "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\include\\libcxx-ohos\\include\\c++\\v1" -internal-isystem "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\include" -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include -Wformat -Werror=format-security -fdeprecated-macro -fdebug-compilation-dir "C:\\Users\\quxianfei\\DevEcoStudioProjects\\MyApplication6\\entry\\.cxx\\default\\default\\armeabi-v7a\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -o CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o -x c++ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-windows-gnu
+ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin\..\include\libcxx-ohos\include\c++\v1
+ D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\lib\clang\12.0.1\include
+ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos
+ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include
+End of search list.
+[2/2] Linking CXX executable cmTC_9f509
+OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin
+ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -pie -z noexecstack -EL --warn-shared-textrel -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_9f509 "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\Scrt1.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crti.o" "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtbegin.o" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\c++\\" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\" --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lc++abi -lunwind -lm "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a -lc "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtend.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crtn.o"
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/../include/libcxx-ohos/include/c++/v1]
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include]
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos]
+    add: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+  end of search list found
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/bin/../include/libcxx-ohos/include/c++/v1] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/include/libcxx-ohos/include/c++/v1]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+  implicit include dirs: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/include/libcxx-ohos/include/c++/v1;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/include;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\build-tools\cmake\bin\ninja.exe cmTC_9f509 && [1/2] Building CXX object CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin]
+  ignore line: [clang++: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\clang++.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fno-rounding-math -mconstructor-aliases -munwind-tables -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -crypto -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -fno-split-dwarf-inlining -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -resource-dir "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1" -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -internal-isystem "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\include\\libcxx-ohos\\include\\c++\\v1" -internal-isystem "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\include" -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include -Wformat -Werror=format-security -fdeprecated-macro -fdebug-compilation-dir "C:\\Users\\quxianfei\\DevEcoStudioProjects\\MyApplication6\\entry\\.cxx\\default\\default\\armeabi-v7a\\CMakeFiles\\CMakeTmp" -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -o CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o -x c++ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 12.0.1 based upon LLVM 12.0.1 default target x86_64-w64-windows-gnu]
+  ignore line: [ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin\..\include\libcxx-ohos\include\c++\v1]
+  ignore line: [ D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\lib\clang\12.0.1\include]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include/arm-linux-ohos]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking CXX executable cmTC_9f509]
+  ignore line: [OHOS (dev) clang version 12.0.1 (llvm-project 1971c85d809b8dd102ede1ec71208518a9b0f68e)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:\quxianfei_work\tools\Huawei\HarmonyOS\Sdk\openharmony\9\native\llvm\bin]
+  link line: [ "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot -pie -z noexecstack -EL --warn-shared-textrel -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_9f509 "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\Scrt1.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crti.o" "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtbegin.o" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\c++\\" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\" "-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\" "-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\" --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lc++abi -lunwind -lm "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a -lc "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a" -l:libunwind.a "D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtend.o" "D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crtn.o"]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\ld.lld] ==> ignore
+    arg [--sysroot=D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [-EL] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-zmax-page-size=4096] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-musl-arm.so.1] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_9f509] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\Scrt1.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crti.o] ==> ignore
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtbegin.o] ==> ignore
+    arg [-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\c++;-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos] ==> dir [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\c++;-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos]
+    arg [-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib;-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos;-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos;--build-id=sha1] ==> dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib;-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos;-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos;--build-id=sha1]
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_9f509.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lc++abi] ==> lib [c++abi]
+    arg [-lunwind] ==> lib [unwind]
+    arg [-lm] ==> lib [m]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a] ==> lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [-lc] ==> lib [c]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a] ==> lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\clang_rt.crtend.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos\\crtn.o] ==> ignore
+  remove lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+  remove lib [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos\\libclang_rt.builtins.a]
+  collapse library dir [D:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos\\c++] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/arm-linux-ohos/c++]
+  collapse library dir [-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\lib\\clang\\12.0.1\\lib\\arm-linux-ohos] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/lib/arm-linux-ohos]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib] ==> [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib]
+  collapse library dir [-LD:\\quxianfei_work\\tools\\Huawei\\HarmonyOS\\Sdk\\openharmony\\9\\native\\llvm\\bin\\..\\lib\\arm-linux-ohos] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/arm-linux-ohos]
+  collapse library dir [-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot\\usr\\lib\\arm-linux-ohos] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib/arm-linux-ohos]
+  collapse library dir [--build-id=sha1] ==> [C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/--build-id=sha1]
+  implicit libs: [unwind;c++;c++abi;unwind;m;-l:libunwind.a;c;-l:libunwind.a]
+  implicit dirs: [D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/arm-linux-ohos/c++;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/clang/12.0.1/lib/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/llvm/lib/arm-linux-ohos;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/-LD:/quxianfei_work/tools/Huawei/HarmonyOS/Sdk/openharmony/9/native/sysroot/usr/lib/arm-linux-ohos;C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/--build-id=sha1]
+  implicit fwks: []
+
+
+The target system is: OHOS - 1 - arm
+The host system is: Windows - 10.0.19044 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is Clang, found in "C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/3.16.5/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang++.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is Clang, found in "C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/3.16.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_93480 && [1/2] Building C object CMakeFiles/cmTC_93480.dir/testCCompiler.c.o
+clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]
+[2/2] Linking C executable cmTC_93480
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_effb4 && [1/2] Building C object CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o
+OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin
+clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]
+ (in-process)
+ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=1 -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -sha2 -target-feature -aes -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -resource-dir D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4 -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -internal-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include -Wformat -Werror=format-security -fdebug-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o -x c D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+clang -cc1 version 15.0.4 based upon LLVM 15.0.4 default target x86_64-w64-windows-gnu
+ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include
+End of search list.
+[2/2] Linking C executable cmTC_effb4
+OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin
+ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -pie -EL -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_effb4 D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/Scrt1.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crti.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtbegin.o -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/ --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a -lc D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtend.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crtn.o
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include]
+    add: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos]
+    add: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+  end of search list found
+  collapse include dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+  implicit include dirs: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_effb4 && [1/2] Building C object CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o]
+  ignore line: [OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin]
+  ignore line: [clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=1 -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -sha2 -target-feature -aes -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -resource-dir D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4 -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -internal-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include -Wformat -Werror=format-security -fdebug-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o -x c D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 15.0.4 based upon LLVM 15.0.4 default target x86_64-w64-windows-gnu]
+  ignore line: [ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking C executable cmTC_effb4]
+  ignore line: [OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin]
+  link line: [ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -pie -EL -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_effb4 D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/Scrt1.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crti.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtbegin.o -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/ --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a -lc D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtend.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crtn.o]
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld] ==> ignore
+    arg [--sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-zmax-page-size=4096] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-musl-arm.so.1] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_effb4] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/Scrt1.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crti.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtbegin.o] ==> ignore
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos]
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/]
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/]
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/]
+    arg [--build-id=sha1] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_effb4.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a] ==> lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [-lc] ==> lib [c]
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a] ==> lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtend.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crtn.o] ==> ignore
+  remove lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+  remove lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/arm-linux-ohos]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos]
+  implicit libs: [unwind;-l:libunwind.a;c;-l:libunwind.a]
+  implicit dirs: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos]
+  implicit fwks: []
+
+
+The target system is: OHOS - 1 - arm
+The host system is: Windows - 10.0.19044 - AMD64
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_7d3e1 && [1/2] Building CXX object CMakeFiles/cmTC_7d3e1.dir/testCXXCompiler.cxx.o
+clang++: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]
+[2/2] Linking CXX executable cmTC_7d3e1
+
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is Clang, found in "C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/3.16.5/CompilerIdC/CMakeCCompilerId.o"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_459f0 && [1/2] Building C object CMakeFiles/cmTC_459f0.dir/testCCompiler.c.o
+clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]
+[2/2] Linking C executable cmTC_459f0
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_926cf && [1/2] Building C object CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o
+OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin
+clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]
+ (in-process)
+ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=1 -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -sha2 -target-feature -aes -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -resource-dir D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4 -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -internal-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include -Wformat -Werror=format-security -fdebug-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o -x c D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+clang -cc1 version 15.0.4 based upon LLVM 15.0.4 default target x86_64-w64-windows-gnu
+ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos
+ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include
+End of search list.
+[2/2] Linking C executable cmTC_926cf
+OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)
+Target: arm-unknown-linux-ohos
+Thread model: posix
+InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin
+ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -pie -EL -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_926cf D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/Scrt1.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crti.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtbegin.o -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/ --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a -lc D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtend.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crtn.o
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include]
+    add: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos]
+    add: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+  end of search list found
+  collapse include dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos]
+  collapse include dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+  implicit include dirs: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.lld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):D:\quxianfei_work\tools\Huawei\OpenHarmony\Sdk\10\native\build-tools\cmake\bin\ninja.exe cmTC_926cf && [1/2] Building C object CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o]
+  ignore line: [OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin]
+  ignore line: [clang: warning: argument unused during compilation: '--gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm' [-Wunused-command-line-argument]]
+  ignore line: [ (in-process)]
+  ignore line: [ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/clang.exe" -cc1 -triple armv7-unknown-linux-ohos -emit-obj -mrelax-all -mnoexecstack -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=1 -target-cpu generic -target-feature +soft-float -target-feature +soft-float-abi -target-feature -vfp2 -target-feature -vfp2sp -target-feature -vfp3 -target-feature -vfp3d16 -target-feature -vfp3d16sp -target-feature -vfp3sp -target-feature -fp16 -target-feature -vfp4 -target-feature -vfp4d16 -target-feature -vfp4d16sp -target-feature -vfp4sp -target-feature -fp-armv8 -target-feature -fp-armv8d16 -target-feature -fp-armv8d16sp -target-feature -fp-armv8sp -target-feature -fullfp16 -target-feature -fp64 -target-feature -d32 -target-feature -neon -target-feature -sha2 -target-feature -aes -target-feature -dotprod -target-feature -fp16fml -target-feature -bf16 -target-feature -mve -target-feature -mve.fp -target-feature -fpregs -target-abi aapcs-linux -msoft-float -mfloat-abi soft -fallow-half-arguments-and-returns -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -ffunction-sections -fdata-sections -fcoverage-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -resource-dir D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4 -D __MUSL__ -isysroot D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -internal-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include -internal-externc-isystem D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include -Wformat -Werror=format-security -fdebug-compilation-dir=C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -stack-protector 2 -fno-signed-char -fgnuc-version=4.2.1 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o -x c D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/build-tools/cmake/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 15.0.4 based upon LLVM 15.0.4 default target x86_64-w64-windows-gnu]
+  ignore line: [ignoring nonexistent directory "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/include]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include/arm-linux-ohos]
+  ignore line: [ D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking C executable cmTC_926cf]
+  ignore line: [OHOS (dev) clang version 15.0.4 (llvm-project cbfe4aa878e60f795ec03927b24d0f5911f844a0)]
+  ignore line: [Target: arm-unknown-linux-ohos]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin]
+  link line: [ "D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld" --sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot -pie -EL -z now -z relro -z max-page-size=4096 --hash-style=gnu --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-musl-arm.so.1 -o cmTC_926cf D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/Scrt1.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crti.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtbegin.o -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/ -LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/ --build-id=sha1 --warn-shared-textrel --fatal-warnings -lunwind --no-undefined -z noexecstack --gc-sections CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a -lc D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a -l:libunwind.a D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtend.o D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crtn.o]
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/ld.lld] ==> ignore
+    arg [--sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-zmax-page-size=4096] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-musl-arm.so.1] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_926cf] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/Scrt1.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crti.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtbegin.o] ==> ignore
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos]
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/]
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/]
+    arg [-LD:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/] ==> dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/]
+    arg [--build-id=sha1] ==> ignore
+    arg [--warn-shared-textrel] ==> ignore
+    arg [--fatal-warnings] ==> ignore
+    arg [-lunwind] ==> lib [unwind]
+    arg [--no-undefined] ==> ignore
+    arg [-znoexecstack] ==> ignore
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_926cf.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a] ==> lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [-lc] ==> lib [c]
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a] ==> lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+    arg [-l:libunwind.a] ==> lib [-l:libunwind.a]
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/clang_rt.crtend.o] ==> ignore
+    arg [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/crtn.o] ==> ignore
+  remove lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+  remove lib [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos/libclang_rt.builtins.a]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/bin/../lib/arm-linux-ohos/] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/arm-linux-ohos]
+  collapse library dir [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos/] ==> [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos]
+  implicit libs: [unwind;-l:libunwind.a;c;-l:libunwind.a]
+  implicit dirs: [D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/clang/15.0.4/lib/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm/lib/arm-linux-ohos;D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot/usr/lib/arm-linux-ohos]
+  implicit fwks: []
+
+
