@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsDemoStageTest.hap"
+                "ActsCrossplatformTreeMapTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
