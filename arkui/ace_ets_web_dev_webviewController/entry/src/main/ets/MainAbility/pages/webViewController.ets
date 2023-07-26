@@ -124,7 +124,7 @@ struct Index {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
                             this.controller.runJavaScript("test()",(res) => {
-                                Utils.emitEvent(this.userAgentAll, 102)
+                                Utils.emitEvent(this.userAgentAll, 1020)
                             })
                             break;
                         }
