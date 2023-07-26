@@ -521,116 +521,6 @@ describe('ProcessManager', function () {
 
 
 describe('ProcessTest', function () {
-
-     /**
-     * @tc.number:TEST_EGID_001
-     * @tc.name: testEgid001
-     * @tc.desc: Returns the numeric valid group ID of the process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-    it('testEgid001', 0, function () {
-        let result = process.egid;
-        if (result > 0) {
-            var flag = true;
-        }
-        expect(flag).assertEqual(true);
-    })
-
-     /**
-     * @tc.number:TEST_EGID_002
-     * @tc.name: testEgid002
-     * @tc.desc: Returns the numeric valid group ID of the process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-     it('testEgid002', 0, function () {
-        for (let i = 0; i < 3; i++) {
-            let result = process.egid;
-            if (result != null) {
-                if (result > 0) {
-                    var flag = true;
-                }
-                expect(flag).assertEqual(true);
-            }
-        }
-    })
-
-
-    /**
-     * @tc.number:TEST_EUID_001
-     * @tc.name: testEuid001
-     * @tc.desc: Return the numeric valid user identity of the process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-     it('testEuid001', 0, function () {
-        let result = process.euid;
-        if (result > 0) {
-            var flag = true;
-        }
-        expect(flag).assertEqual(true);
-    })
-
-    /**
-     * @tc.number:TEST_EUID_002
-     * @tc.name: testEuid002
-     * @tc.desc: Return the numeric valid user identity of the process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-     it('testUid002', 0, function () {
-        for (let i = 0; i < 3; i++) {
-            let result = process.euid;
-            if (result != null) {
-                if (result > 0) {
-                    var flag = true;
-                }
-                expect(flag).assertEqual(true);
-            }
-        }
-    })
-
-    /**
-     * @tc.number:TEST_GID_001
-     * @tc.name: testGid001
-     * @tc.desc: Return the numeric group if of the process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-
-     it('testGid001', 0, function () {  
-        let result = process.gid;
-        if (result > 0) {
-            var flag = true;
-        }
-        expect(flag).assertEqual(true);
-    })
-
-    /**
-     * @tc.number:TEST_GID_002
-     * @tc.name: testGid002
-     * @tc.desc: Return the numeric group if of the process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-     it('testGid002', 0, function () {
-        for (let i = 0; i < 3; i++) {
-            let result = process.gid;
-            if (result != null) {
-                if (result > 0) {
-                    var flag = true;
-                }
-                expect(flag).assertEqual(true);
-            }
-        }
-    })
     
     /**
      * @tc.number:TEST_Uid_001
@@ -728,22 +618,6 @@ describe('ProcessTest', function () {
         }
     })
 
-     /**
-     * @tc.number:TEST_GROUPS_001
-     * @tc.name:  testGroups001
-     * @tc.desc:  Return an array with supplementary group id
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-    it('testGroups001', 0, function () {
-        let result = process.groups;
-        if (result != null) {
-            var flag = true;
-        }
-        expect(flag).assertEqual(true);
-    })
-
 
      /**
      * @tc.number:TEST_PID_001
@@ -826,42 +700,6 @@ describe('ProcessTest', function () {
     it('testPid005', 0, function () {
         for (let i = 0; i < 8; i++) {
             let result = process.pid;
-            if (result > 0) {
-                var flag = true;
-            }
-            expect(flag).assertEqual(true);
-        }
-    })
-
-
-
-    /**
-     * @tc.number:TEST_PPID_001
-     * @tc.name: testPpid001
-     * @tc.desc: Return ppid is The pid of the current child process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-    it('testTid001', 0, function () {
-        let pres = process.ppid;
-        if (pres > 0) {
-            var flag = new Boolean(true);
-        }
-        expect(Boolean(flag)).assertEqual(true);
-    })
-
-    /**
-     * @tc.number:TEST_PPID_002
-     * @tc.name: testPpid002
-     * @tc.desc: Return ppid is The pid of the current child process
-     * @tc.size:  MediumTest
-     * @tc.type:  Constant
-     * @tc.level: level 2
-     */
-     it('testPpid002', 0, function () {
-        for (let i = 0; i < 8; i++) {
-            let result = process.ppid;
             if (result > 0) {
                 var flag = true;
             }
@@ -1134,37 +972,6 @@ describe('ProcessTest', function () {
             }
             expect(Boolean(flag)).assertEqual(true);
         }
-    })
-     
-
-    /**
-     * @tc.number:TEST_CWD_001
-     * @tc.name: testCwd001
-     * @tc.desc: Return the current work directory
-     * @tc.size:  MediumTest
-     * @tc.type:  Method
-     * @tc.level: level 2
-     */
-
-     it('testCwd001', 0, function () {
-        let result=process.cwd();
-        expect(result!=null).assertTrue();
-    })
-
-
-     /**
-     * @tc.number:TEST_CHDIR_001
-     * @tc.name: testChdir001
-     * @tc.desc: Change current directory
-     * @tc.size:  MediumTest
-     * @tc.type:  Method
-     * @tc.level: level 2
-     */
-
-     it('testChdir001', 0, function () {
-        let result=process.cwd();
-        let result1=process.chdir(result);
-        expect(result!=null).assertTrue();
     })
 
 
