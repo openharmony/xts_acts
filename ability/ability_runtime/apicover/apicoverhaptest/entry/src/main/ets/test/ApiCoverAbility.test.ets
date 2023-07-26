@@ -26,7 +26,7 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
-import formBindingData from '@ohos.application.formBindingData';
+import formBindingData from '@ohos.app.form.formBindingData';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -374,13 +374,13 @@ export default function ApiCoverTest() {
      })
     })
 
-	  /*
+	/*
      * @tc.number  SUB_AA_AMS_Context_0200
      * @tc.name    Register the listener of Ability and cancel the listener.
      * @tc.desc    Function test
      * @tc.level   3
      */
-	  it('SUB_AA_AMS_Context_0200', 0, async function (done) {
+	it('SUB_AA_AMS_Context_0200', 0, async function (done) {
       await globalThis.abilityContext.eventHub.on("contextEvent", func1)
       globalThis.abilityContext.eventHub.emit("contextEvent", "aa", "bb")
       await sleep(500)
