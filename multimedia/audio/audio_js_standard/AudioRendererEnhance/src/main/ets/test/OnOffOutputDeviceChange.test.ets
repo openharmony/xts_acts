@@ -224,7 +224,7 @@ export default function audioRendererTest() {
       } catch (error) {
         if (error) {
           console.log(`${TagFrmwkRender}: Off catch error, error: [${error.code}, ${error.message}]`);
-          expect(Number(error.code)).assertEqual(UNSUPORTED_OPTION_6800104);
+          expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
           done();
         } else {
           expect(false).assertTrue();

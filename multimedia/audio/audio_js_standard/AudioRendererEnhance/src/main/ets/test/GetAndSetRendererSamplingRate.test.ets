@@ -311,20 +311,19 @@ export default function audioRendererTest() {
       let samplingrate = 0;
       try{
         await audioRen.setRendererSamplingRate(samplingrate);
-        console.info(`${TagFrmwkRender}: ####setRendererSamplingRate: success`);
       }catch(error) {
         if (error.code == env.UNSUPORTED_OPTION_6800104){
-          console.log(`${TagFrmwkRender}: ####setRendererSamplingRate: catch error: [${error.code}, ${error.message}]`);
+          console.log(`${TagFrmwkRender}: setRendererSamplingRate: catch error: [${error.code}, ${error.message}]`);
           try{
             await audioRen.getRendererSamplingRate().then((data) => {
               console.info(`${TagFrmwkRender}: getRendererSamplingRate :SUCCESS ${data}`);
               expect(data).assertEqual(env.SAMPLING_RATE_44100);
             }).catch ((error)=>{
-              console.log("${TagFrmwkRender}: #####getRendererSamplingRate : error = " + error);
+              console.log("${TagFrmwkRender}: getRendererSamplingRate : error = " + error);
               expect(false).assertTrue();
             });
           }catch(error){
-            console.log("####setRendererSamplingRate: catch error = " + error);
+            console.log("setRendererSamplingRate: catch error = " + error);
           }
           done();
         } else {
