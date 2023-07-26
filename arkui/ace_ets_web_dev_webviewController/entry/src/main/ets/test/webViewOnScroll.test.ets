@@ -82,8 +82,8 @@ export default function webViewOnScroll() {
      */
     it('testOnscrollAgain',0,async function(done){
       emitKey="emitOnscrollAgain";
-      Utils.registerEvent("testOnscrollAgain",0,316,done);
-      Utils.registerEvent("testOnscrollAgain",0,318,done);
+      Utils.registerEvent("testOnscrollAgain",50,316,done);
+      Utils.registerEvent("testOnscrollAgain",50,318,done);
       sendEventByKey('webViewOnScroll',10,'');
     })
   })

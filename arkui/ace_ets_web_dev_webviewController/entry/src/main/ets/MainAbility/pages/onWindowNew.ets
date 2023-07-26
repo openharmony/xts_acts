@@ -36,6 +36,7 @@ struct OnWindowNew {
   @State imageAccess:boolean=true;
   @State onlineImageAccess:boolean=true;
   @State databaseAccess:boolean=true;
+  @State arr:boolean = true;
   onPageShow(){
     let valueChangeEvent={
       eventId:10,
@@ -78,9 +79,11 @@ struct OnWindowNew {
                 this.javaScriptAccess = true;
                 this.testAllowWindowOpenMethod = false;
                 this.testMultiWindowAccess = true;
-                this.controller.runJavaScript("OpenNewWindow()", (res) => {
-                  Utils.emitEvent(this.ref, 7102)
-                })
+                setTimeout(()=> {
+                    this.controller.runJavaScript("OpenNewWindow()", (res) => {
+                    Utils.emitEvent(this.ref, 7102)
+                  })
+                },2000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -154,19 +157,20 @@ struct OnWindowNew {
               break;
             }
             case "emitGetOriginsPromiseLoadLocalHtml01": {
+              this.arr = false
               let length = -1;
               try {
                 this.controller.loadUrl($rawfile('getOrigins.html'));
-                web_webview.WebStorage.getOrigins()
-                  .then(origins => {
-                    console.log(`getOrigins call`);
-                    if (origins) {
-                      length = origins.length;
-                      console.log(`length is: ${length}`);
-                    }
-                    console.log(`getOrigins call end`);
-                    Utils.emitEvent(length, 7166);
+                setTimeout(()=> {
+                  web_webview.WebStorage.getOrigins()
+                    .then(origins => {
+                      console.log(`getOrigins call`);   
+                        length = origins.length;
+                        console.log(`length is: ${length}`);
+                        Utils.emitEvent(length, 7166);
+                        console.log(`getOrigins call end`);
                   })
+                },2000)
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                 Utils.emitEvent(length, 7166);
@@ -189,10 +193,12 @@ struct OnWindowNew {
           }
         })
         .onPageVisible((event) => {
-          if (event) {
-            console.log('onWindowNew onPageVisible url:' + event.url);
-            Utils.emitEvent(event.url, this.eventId);
-          }
+          if (this.arr) {
+              if (event) {
+              console.log('onWindowNew onPageVisible url:' + event.url);
+              Utils.emitEvent(event.url, this.eventId);
+            }
+          } 
         })
         .blockNetwork(this.block)
         .onErrorReceive((event) => {
