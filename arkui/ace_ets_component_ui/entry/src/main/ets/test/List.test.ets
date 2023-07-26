@@ -58,6 +58,8 @@ import NavigationJsunit from './NavigationJsunit.test.ets';
 import GridColOffsetJsunit from './GridColoffsetJsunit.test.ets';
 import ApiCommponentAddJsunit from './ApiCommponentAddJsunit.test.ets';
 import fontJsunit from './fontJsunit.test.ets';
+import PanGestureEventJsunit from './PanGestureEventJsunit.test.ets';
+import RenderFitJsunit from './RenderFitJsunit.test.ets';
 
 export default function testsuite() {
   blankJsunit();
@@ -105,4 +107,6 @@ export default function testsuite() {
   GridColOffsetJsunit();
   fontJsunit();
   ApiCommponentAddJsunit();
+  PanGestureEventJsunit();
+  RenderFitJsunit();
 }
