@@ -63,7 +63,14 @@
         "MainAbility/pages/listItemAddgroup",
         "MainAbility/pages/navrouteradd",
         "MainAbility/pages/animationAdd",
-        "MainAbility/pages/postCardAction"
-        
+        "MainAbility/pages/postCardAction",
+        "MainAbility/pages/animateAdd",
+        "MainAbility/pages/bindConver",
+        "MainAbility/pages/common_ets_api",
+        "MainAbility/pages/commonAdd",
+        "MainAbility/pages/createBuilderadd",
+        "MainAbility/pages/dragAdd",
+        "MainAbility/pages/TouchAdd",
+        "MainAbility/pages/drwableAdd"
     ]
 }

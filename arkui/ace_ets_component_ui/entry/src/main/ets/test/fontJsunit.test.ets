@@ -95,6 +95,31 @@ export default function fontJsunit() {
       done();
     });
 
+     it('fontJsunit_0500', 0, async function (done) {
+      // Get the information of the font
+      console.info('fontJsunit_0500 START');
+      try {
+        let font = globalThis.uiContext.getFont().getUIInspector();
+        expect(font !=null).assertTrue();
+      } catch (err) {
+        console.error("fontJsunit_0500 error " + JSON.stringify(err));
+      }
+      done();
+    });
+
+    it('fontJsunit_0600', 0, async function (done) {
+      // Get the information of the font
+      console.info('fontJsunit_0600 START');
+      try {
+        let font = globalThis.uiContext.getFont().getComponentUtils();
+        expect(font !=null).assertTrue();
+      } catch (err) {
+        console.error("fontJsunit_0600 error " + JSON.stringify(err));
+      }
+      done();
+    });
+
+
 
   })
 }
