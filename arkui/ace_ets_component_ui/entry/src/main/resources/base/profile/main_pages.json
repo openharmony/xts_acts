@@ -71,6 +71,24 @@
         "MainAbility/pages/createBuilderadd",
         "MainAbility/pages/dragAdd",
         "MainAbility/pages/TouchAdd",
-        "MainAbility/pages/drwableAdd"
+        "MainAbility/pages/drwableAdd",
+        "MainAbility/pages/ClickMouseTouchEvent",
+        "MainAbility/pages/DragEvent",
+        "MainAbility/pages/MenuItemGroupOptions",
+        "MainAbility/pages/PanGestureEvent",
+        "MainAbility/pages/RotateOptions",
+        "MainAbility/pages/ShadowTypeStyle",
+        "MainAbility/pages/TransitionEffect",
+        "MainAbility/pages/ApiRect",
+        "MainAbility/pages/BlurStyle",
+        "MainAbility/pages/CanvasRenderer",
+        "MainAbility/pages/CustomDialogControllerOptions",
+        "MainAbility/pages/DatePickerDialogOptions",
+        "MainAbility/pages/EntryOptions",
+        "MainAbility/pages/ModalTransition",
+        "MainAbility/pages/RenderFit",
+        "MainAbility/pages/Xcomponent",
+        "MainAbility/pages/RouteType1",
+        "MainAbility/pages/RouteType2"
     ]
 }
