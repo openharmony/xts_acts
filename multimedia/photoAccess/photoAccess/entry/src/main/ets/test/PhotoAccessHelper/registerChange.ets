@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from 'deccjsunit/index'
 import {
@@ -22,7 +21,6 @@ import {
   photoKeys,
   getFileAsset,
   photoFetchOption,
-  photoType,
 } from '../../../../../../../common'
 
 export default function registerChangeTest () {
@@ -34,20 +32,20 @@ export default function registerChangeTest () {
     const DEFAULT_ALBUM_URI = photoAccessHelper.DefaultChangeUri.DEFAULT_ALBUM_URI;
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0100
-     * @tc.name      : on_callback_001
-     * @tc.desc      : listening motify file displayName, type NOTIFY_UPDATE
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0100
+     * @tc.name      : registerChange_callback_001
+     * @tc.desc      : listening motify file title, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('on_callback_001', 0, async function (done) {
-      const testNum = 'on_callback_001';
+    it('registerChange_callback_001', 0, async function (done) {
+      const testNum = 'registerChange_callback_001';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'on01.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(asset.uri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
@@ -55,6 +53,7 @@ export default function registerChangeTest () {
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(asset.uri);
         });
+        await sleep(550);
         const newTitle = testNum + asset.get(photoKeys.TITLE);
         asset.set(photoKeys.TITLE, newTitle);
         await asset.commitModify();
@@ -69,15 +68,15 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0700
-     * @tc.name      : on_callback_007
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0700
+     * @tc.name      : registerChange_callback_007
      * @tc.desc      : listening create album, type NOTIFY_ADD
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('on_callback_007', 0, async function (done) {
-      const testNum = 'on_callback_007';
+    it('registerChange_callback_007', 0, async function (done) {
+      const testNum = 'registerChange_callback_007';
       try {
         let changeDataUri = '';
         let listenCount = 0;
@@ -88,10 +87,11 @@ export default function registerChangeTest () {
           changeDataUri = changeData.uris[0];
           expect(changeData.type).assertEqual(NOTIFY_ADD);
         });
+        await sleep(550);
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
         let creatAlbumUri = album.albumUri;
-        await sleep(2000);
+        await sleep(1000);
         helper.unRegisterChange(DEFAULT_ALBUM_URI);
         expect(creatAlbumUri).assertEqual(changeDataUri);
         expect(listenCount).assertEqual(1);
@@ -104,28 +104,29 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_0800
-     * @tc.name      : on_callback_008
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0800
+     * @tc.name      : registerChange_callback_008
      * @tc.desc      : listening change albumName, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('on_callback_008', 0, async function (done) {
-      const testNum = 'on_callback_008';
+    it('registerChange_callback_008', 0, async function (done) {
+      const testNum = 'registerChange_callback_008';
       try {
         let albumUri = '';
         let count = 0;
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
         albumUri = album.albumUri;
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(albumUri);
         });
+        await sleep(550);
         album.albumName = Date.now() + album.albumName;
         await album.commitModify();
         await sleep(1000);
@@ -140,22 +141,22 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1100
-     * @tc.name      : on_callback_011
-     * @tc.desc      : listening album removeAssets, type NOTIFY_ALBUM_ADD_ASSET
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1100
+     * @tc.name      : registerChange_callback_011
+     * @tc.desc      : listening album addAssets, type NOTIFY_ALBUM_ADD_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('on_callback_011', 0, async function (done) {
-      const testNum = 'on_callback_011';
+    it('registerChange_callback_011', 0, async function (done) {
+      const testNum = 'registerChange_callback_011';
       try {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'on11.jpg');
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
@@ -163,6 +164,7 @@ export default function registerChangeTest () {
           expect(changeData.uris[0]).assertEqual(album.albumUri);
           expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
+        await sleep(550);
         await album.addAssets([asset]);
         await sleep(1000);
         helper.unRegisterChange(album.albumUri);
@@ -176,15 +178,15 @@ export default function registerChangeTest () {
     });
 
     /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_ON_CALLBACK_1200
-     * @tc.name      : on_callback_012
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1200
+     * @tc.name      : registerChange_callback_012
      * @tc.desc      : listening album removeAssets, type NOTIFY_ALBUM_REMOVE_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('on_callback_012', 0, async function (done) {
-      const testNum = 'on_callback_012';
+    it('registerChange_callback_012', 0, async function (done) {
+      const testNum = 'registerChange_callback_012';
       try {
         let albumName = 'testAlbum' + Date.now();
         let album = await helper.createAlbum(albumName);
@@ -192,7 +194,7 @@ export default function registerChangeTest () {
         const asset = await getFileAsset(testNum, fetchOps);
         let count = 0;
         await album.addAssets([asset]);
-        await sleep(500);
+        await sleep(550);
         helper.registerChange(album.albumUri, false, async (changeData) => {
           count++;
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
@@ -200,6 +202,7 @@ export default function registerChangeTest () {
           expect(changeData.uris[0]).assertEqual(album.albumUri);
           expect(changeData.extraUris[0]).assertEqual(asset.uri);
         });
+        await sleep(550);
         await album.removeAssets([asset]);
         await sleep(1000);
         helper.unRegisterChange(album.albumUri);
