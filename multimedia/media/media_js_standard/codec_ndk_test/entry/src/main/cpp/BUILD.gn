@@ -29,16 +29,9 @@ config("config") {
 
 ohos_shared_library("entry") {
   sources = [ "./hello.cpp" ]
-  if (!(product_name == "m40")) {
-    if (target_cpu == "arm") {
-      libs = [ "${clang_base_path}/../libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so" ]
-    } else if (target_cpu == "arm64") {
-      libs = [ "${clang_base_path}/../libcxx-ndk/lib/aarch64-linux-ohos/c++/libc++_shared.so" ]
-    } else {
-      libs = []
-    }
+  if (use_musl) {
+    libs = [ rebase_path(libcxx_ndk_shared_file) ]
   }
-
   include_dirs = [
     "../cpp",
     "$AVCODEC_ROOT_DIR/interfaces/kits/c/",
