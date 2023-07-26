@@ -27,6 +27,14 @@
         {
             "name": "app_name",
             "value": "Demo"
+        },
+        {
+          "name": "MenuItem2_labelInfo",
+          "value": "labelInfo2"
+        },
+        {
+          "name": "MenuItemGroup2_footer",
+          "value": "footer2"
         }
     ]
 }
