@@ -74,8 +74,8 @@ struct webViewOnScroll {
                             try {
                                 this.firstId = 316;
                                 this.secondId = 318;
-                                this.textX = -100;
-                                this.textY = -100;
+                                this.textX = -50;
+                                this.textY = -50;
                                 this.controller.scrollBy(this.textX, this.textY);
                                 await Utils.sleep(1000)
                                 console.log("action of emitOnscroll is scrollBy" + this.textX + this.textY);
