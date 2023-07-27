@@ -7,8 +7,7 @@
         "mainElement": "MainAbility",
         "deviceTypes": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -28,7 +27,7 @@
                         "actions": [
                             "action.system.home"
                         ],
-                        "entities": [
+                        "entities":[
                             "entity.system.home"
                         ]
                     }
@@ -38,34 +37,28 @@
                 "name": "MainAbility",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon"
-            },
+			},
             {
                 "name": "MainAbility1",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon",
-                "orientation": "unspecified",
-                "supportWindowMode": [
-                    "fullscreen"
-                ]
-            },
-            {
+				"orientation": "unspecified",
+				"supportWindowMode": ["fullscreen"]
+			},
+			{
                 "name": "MainAbility2",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon",
-                "orientation": "landscape",
-                "supportWindowMode": [
-                    "split"
-                ]
-            },
-            {
+				"orientation": "landscape",
+				"supportWindowMode": ["split"]
+			},
+			{
                 "name": "MainAbility3",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
                 "startWindowIcon": "$media:icon",
-                "orientation": "portrait",
-                "supportWindowMode": [
-                    "floating"
-                ]
-            }
+				"orientation": "portrait",
+				"supportWindowMode": ["floating"]
+			}
         ],
         "extensionAbilities": [
             {
@@ -76,14 +69,10 @@
                 "type": "form",
                 "skills": [
                     {
-                        "actions": [
-                            "actionZ"
-                        ]
+                        "actions": ["actionZ"]
                     },
                     {
-                        "actions": [
-                            "actionZ12"
-                        ],
+                        "actions": ["actionZ12"],
                         "uris": [
                             {
                                 "scheme": "https",
@@ -93,9 +82,7 @@
                         ]
                     },
                     {
-                        "actions": [
-                            "action_1"
-                        ],
+                        "actions": ["action_1"],
                         "uris": [
                             {
                                 "scheme": "https",
@@ -105,14 +92,8 @@
                         ]
                     },
                     {
-                        "actions": [
-                            "actionZ14"
-                        ],
-                        "entities": [
-                            "entitiesZ14",
-                            "entitiesCommon",
-                            "entitiesZZ"
-                        ]
+                        "actions": ["actionZ14"],
+                        "entities": ["entitiesZ14","entitiesCommon","entitiesZZ"]
                     }
                 ],
                 "metadata": [
@@ -130,14 +111,10 @@
                 "type": "form",
                 "skills": [
                     {
-                        "actions": [
-                            "actionY"
-                        ]
+                        "actions": ["actionY"]
                     },
                     {
-                        "actions": [
-                            "actionY12"
-                        ],
+                        "actions": ["actionY12"],
                         "uris": [
                             {
                                 "scheme": "https",
@@ -147,9 +124,7 @@
                         ]
                     },
                     {
-                        "actions": [
-                            "action_2"
-                        ],
+                        "actions": ["action_2"],
                         "uris": [
                             {
                                 "scheme": "https",
@@ -159,12 +134,8 @@
                         ]
                     },
                     {
-                        "actions": [
-                            "actionY14"
-                        ],
-                        "entities": [
-                            "entitiesY14"
-                        ]
+                        "actions": ["actionY14"],
+                        "entities": ["entitiesY14"]
                     }
                 ],
                 "metadata": [
@@ -174,9 +145,7 @@
                         "resource": "$profile:form_config"
                     }
                 ],
-                "permissions": [
-                    "ohos.permission.GET_BUNDLE_INFO"
-                ]
+                "permissions": ["ohos.permission.GET_BUNDLE_INFO"]
             },
             {
                 "name": "ServiceAbility",
