@@ -19,7 +19,7 @@ import {add as add2} from './test'
 import isLeapYear1 from 'leap-year'
 import hilog from "@ohos.hilog"
 import app from "@system.app"
-
+import testNapi from "libentry.so"
 
 export default function staticImport() {
   describe("StaticImportTest", function () {
@@ -40,6 +40,9 @@ export default function staticImport() {
     })
     it("harImportOhpm", 0, function () {
       expect(ohpmRes).assertEqual(true)
+    })
+    it("ImportAppNapi", 0, function () {
+      expect(testNapi.add(2, 3)).assertEqual(5)
     })
   })
 }
