@@ -269,7 +269,7 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0000
      * @tc.name      : unRegisterChange_000
-     * @tc.desc      : off listening create file, type NOTIFY_ADD
+     * @tc.desc      : unRegister listening create file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -304,7 +304,7 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0200
      * @tc.name      : unRegisterChange_002
-     * @tc.desc      : off listening setFavorite(true) file, type NOTIFY_UPDATE
+     * @tc.desc      : unRegister listening setFavorite(true) file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -337,7 +337,7 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0300
      * @tc.name      : unRegisterChange_003
-     * @tc.desc      : off listening setFavorite(false) file, type NOTIFY_UPDATE
+     * @tc.desc      : unRegister listening setFavorite(false) file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -371,12 +371,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0400
      * @tc.name      : unRegisterChange_004
-     * @tc.desc      : off listening delete file, type NOTIFY_REMOVE
+     * @tc.desc      : unRegister listening delete file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('unRegisterChange_004', 0, async function (done) {
+    it('unRegisterChange_004', 2, async function (done) {
       const testNum = 'unRegisterChange_004';
       try {
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'off04.jpg');
@@ -404,12 +404,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0500
      * @tc.name      : unRegisterChange_005
-     * @tc.desc      : off listening recover file, type NOTIFY_ADD
+     * @tc.desc      : unRegister listening recover file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('unRegisterChange_005', 0, async function (done) {
+    it('unRegisterChange_005', 2, async function (done) {
       const testNum = 'unRegisterChange_005';
       try {
         let testFileName = 'testCreateFile' + Date.now() + '.jpg';
@@ -447,12 +447,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0600
      * @tc.name      : unRegisterChange_006
-     * @tc.desc      : off listening trash delete file, type NOTIFY_REMOVE
+     * @tc.desc      : unRegister listening trash delete file
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('unRegisterChange_006', 0, async function (done) {
+    it('unRegisterChange_006', 2, async function (done) {
       const testNum = 'unRegisterChange_006';
       try {
         let testFileName = 'testCreateFile' + Date.now() + '.jpg';
@@ -488,7 +488,7 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0900
      * @tc.name      : unRegisterChange_009
-     * @tc.desc      : off listening delete album, type NOTIFY_REMOVE
+     * @tc.desc      : unRegister listening delete album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -521,12 +521,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1300
      * @tc.name      : unRegisterChange_013
-     * @tc.desc      : off listening DEFAULT_ALBUM_URI
+     * @tc.desc      : unRegister listening DEFAULT_ALBUM_URI
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('unRegisterChange_013', 0, async function (done) {
+    it('unRegisterChange_013', 3, async function (done) {
       const testNum = 'unRegisterChange_013';
       try {
         const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, 'off13.jpg');
@@ -581,12 +581,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1400
      * @tc.name      : unRegisterChange_014
-     * @tc.desc      : off listening DEFAULT_PHOTO_URI
+     * @tc.desc      : unRegister listening DEFAULT_PHOTO_URI
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('unRegisterChange_014', 0, async function (done) {
+    it('unRegisterChange_014', 3, async function (done) {
       const testNum = 'unRegisterChange_014';
       try {
         let listenCount = 0;
@@ -638,7 +638,7 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0000
      * @tc.name      : registerChange_callback_000
-     * @tc.desc      : off listening create file, type NOTIFY_ADD
+     * @tc.desc      : listening create file, type NOTIFY_ADD
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -758,7 +758,7 @@ export default function publicApiTestWithSystemApiTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('registerChange_callback_005', 0, async function (done) {
+    it('registerChange_callback_005', 2, async function (done) {
       const testNum = 'registerChange_callback_005';
       let uri;
       try {
@@ -800,12 +800,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0600
      * @tc.name      : registerChange_callback_006
-     * @tc.desc      : listening trash delete file, type NOTIFY_REMOVE
+     * @tc.desc      : listening trash delete file, type NOTIFY_ALBUM_REMOVE_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('registerChange_callback_006', 0, async function (done) {
+    it('registerChange_callback_006', 2, async function (done) {
       const testNum = 'registerChange_callback_006';
       let uri;
       try {
@@ -894,7 +894,7 @@ export default function publicApiTestWithSystemApiTest () {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('registerChange_callback_013', 0, async function (done) {
+    it('registerChange_callback_013', 3, async function (done) {
       const testNum = 'registerChange_callback_013';
       let uri;
       try {
@@ -1023,7 +1023,7 @@ export default function publicApiTestWithSystemApiTest () {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('registerChange_callback_014', 0, async function (done) {
+    it('registerChange_callback_014', 3, async function (done) {
       const testNum = 'registerChange_callback_014';
       let uri;
       try {
@@ -1033,23 +1033,27 @@ export default function publicApiTestWithSystemApiTest () {
         let photoAssetUri = asset.uri;
         await sleep(550);
         uri = DEFAULT_PHOTO_URI;
+        let expectUri = photoAssetUri;
         helper.registerChange(uri, true, async (changeData) => {
           listenCount++;
           switch (listenCount) {
             case 1:
               console.info(`${testNum} 1 changeData: ${JSON.stringify(changeData)}`);
               expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-              expect(changeData.uris[0]).assertEqual(photoAssetUri);
+              expect(changeData.uris[0]).assertEqual(expectUri);
               break;
             case 2:
               console.info(`${testNum} 2 changeData: ${JSON.stringify(changeData)}`);
+              const option = fetchOption(testNum, photoKeys.URI, photoAssetUri);
+              const newAsset = await getFileAsset(testNum, option);
+              expectUri = newAsset.uri;
               expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-              expect(changeData.uris[0]).assertEqual(photoAssetUri);
+              expect(changeData.uris[0]).assertEqual(expectUri);
               break;
             case 3:
               console.info(`${testNum} 3 changeData: ${JSON.stringify(changeData)}`);
               expect(changeData.type).assertEqual(NOTIFY_UPDATE);
-              expect(changeData.uris[0]).assertEqual(photoAssetUri);
+              expect(changeData.uris[0]).assertEqual(expectUri);
               break;
             default:
               break;
@@ -1082,12 +1086,12 @@ export default function publicApiTestWithSystemApiTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1500
      * @tc.name      : registerChange_callback_015
-     * @tc.desc      : listening 32
+     * @tc.desc      : listening in 500ms, notify times lessthan update times
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('registerChange_callback_015', 0, async function (done) {
+    it('registerChange_callback_015', 3, async function (done) {
       const testNum = 'registerChange_callback_015';
       let uri;
       try {
@@ -1101,19 +1105,18 @@ export default function publicApiTestWithSystemApiTest () {
         helper.registerChange(DEFAULT_PHOTO_URI, true, async (changeData) => {
           listenCount++;
           console.info(`${testNum} i: ${i}, listenCount: ${listenCount}`);
-          expect(i > 1).assertTrue()
+          expect(listenCount < i).assertTrue()
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_UPDATE);
           expect(changeData.uris[0]).assertEqual(asset.uri);
         });
 
         await sleep(550);
+        const isFav = (asset.get(photoKeys.FAVORITE) === 1) ? true : false;
         const endTime = Date.now() + 500;
         for (let now = Date.now(); now < endTime; now = Date.now()) {
           i++;
-          const newTitle = asset.get(photoKeys.TITLE).toString() + i;
-          asset.set(photoKeys.TITLE, newTitle);
-          await asset.commitModify();
+          await asset.setFavorite(!isFav);
         }
         await sleep(1000);
         done();
@@ -1134,7 +1137,7 @@ export default function publicApiTestWithSystemApiTest () {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('registerChange_callback_016', 0, async function (done) {
+    it('registerChange_callback_016', 3, async function (done) {
       const testNum = 'registerChange_callback_016';
       let uri;
       try {
@@ -1158,7 +1161,7 @@ export default function publicApiTestWithSystemApiTest () {
           } else {
             await asset.setFavorite(false);
           }
-          await sleep(550);
+          await sleep(500);
         }
         await sleep(1000);
 

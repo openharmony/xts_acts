@@ -32,7 +32,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0100
      * @tc.name      : unRegisterChange_001
-     * @tc.desc      : off listening motify file displayName, type NOTIFY_UPDATE
+     * @tc.desc      : unRegister listening motify file displayName
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -67,7 +67,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0700
      * @tc.name      : unRegisterChange_007
-     * @tc.desc      : off listening create album, type NOTIFY_ADD
+     * @tc.desc      : unRegister listening create album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -98,7 +98,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0800
      * @tc.name      : unRegisterChange_008
-     * @tc.desc      : off listening create album, type NOTIFY_UPDATE
+     * @tc.desc      : unRegister listening create album
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -134,7 +134,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1000
      * @tc.name      : unRegisterChange_010
-     * @tc.desc      : off listening change album overUri, type NOTIFY_UPDATE
+     * @tc.desc      : unRegister listening change album overUri
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -173,7 +173,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1100
      * @tc.name      : unRegisterChange_011
-     * @tc.desc      : off listening album removeAssets, type NOTIFY_ALBUM_ADD_ASSET
+     * @tc.desc      : unRegister listening album addAssets
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -208,7 +208,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1200
      * @tc.name      : unRegisterChange_012
-     * @tc.desc      : off listening album removeAssets, type NOTIFY_ALBUM_REMOVE_ASSET
+     * @tc.desc      : unRegister listening album removeAssets
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -244,12 +244,12 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_1500
      * @tc.name      : unRegisterChange_015
-     * @tc.desc      : off remove all listening
+     * @tc.desc      : unRegister remove all listening
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('unRegisterChange_015', 0, async function (done) {
+    it('unRegisterChange_015', 3, async function (done) {
       const testNum = 'unRegisterChange_015';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'off15.jpg');
@@ -283,12 +283,12 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_CALLBACK_0000
      * @tc.name      : unRegisterChange_callback_000
-     * @tc.desc      : off remove specified callback
+     * @tc.desc      : unRegister remove specified callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('unRegisterChange_callback_000', 0, async function (done) {
+    it('unRegisterChange_callback_000', 3, async function (done) {
       const testNum = 'unRegisterChange_callback_000';
       try {
         let fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'offCb01.jpg');

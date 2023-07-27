@@ -34,7 +34,7 @@ export default function registerChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_0100
      * @tc.name      : registerChange_callback_001
-     * @tc.desc      : listening motify file displayName, type NOTIFY_UPDATE
+     * @tc.desc      : listening motify file title, type NOTIFY_UPDATE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -143,12 +143,12 @@ export default function registerChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_REGISTERCHANGE_CALLBACK_1100
      * @tc.name      : registerChange_callback_011
-     * @tc.desc      : listening album removeAssets, type NOTIFY_ALBUM_ADD_ASSET
+     * @tc.desc      : listening album addAssets, type NOTIFY_ALBUM_ADD_ASSET
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('registerChange_callback_011', 0, async function (done) {
+    it('registerChange_callback_011', 2, async function (done) {
       const testNum = 'registerChange_callback_011';
       try {
         let albumName = 'testAlbum' + Date.now();
@@ -185,7 +185,7 @@ export default function registerChangeTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('registerChange_callback_012', 0, async function (done) {
+    it('registerChange_callback_012', 2, async function (done) {
       const testNum = 'registerChange_callback_012';
       try {
         let albumName = 'testAlbum' + Date.now();
