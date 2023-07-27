@@ -674,6 +674,38 @@ export default function nfcTagABFVTest() {
             }
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfctage_js_2300
+         * @tc.name Test registerForegroundDispatch
+         * @tc.desc This interface registerForegroundDispatch.
+         * @tc.size since 7
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfctage_js_2300', 0, function ()  {
+            let elementName = {
+                "bundleName": "com.test.cardemulation",
+                "abilityName": "MainAbility",
+                "moduleName": "entry"
+            };
+            let discTech = [1, 2, 4];
+            try {
+                let recvNfcTagFunc = tagInfo => {
+                    console.info("[NFC_test] controller1 nfc state receive state ->" + tagInfo);
+                    expect(tagInfo != null).assertTrue();
+                }
+                tag.registerForegroundDispatch(elementName, discTech, recvNfcTagFunc);
+                console.info('[NFC_test] nfc registerForegroundDispatch pass')
+                tag.unregisterForegroundDispatch(elementName);
+                console.info('[NFC_test] nfc unregisterForegroundDispatch pass')
+            } catch (error) {
+                console.info('nfc registerForegroundDispatch error' + error)
+                expect().assertFail();
+            }
+        })
+
+        
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
