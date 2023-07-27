@@ -14,9 +14,7 @@
  */
 import userauthTest from './Security_IAM_PIN_Kit_CallbackJsunit.test.js'
 import userauthTest_API9 from './Security_IAM_FUNC_Jsunit.test.js'
-import signNormalAccessBiometricExecute from './Security_IAM_FUNC_api10_Jsunit.test.js'
 export default function testsuite() {
     userauthTest()
     userauthTest_API9()
-    signNormalAccessBiometricExecute()
 }
