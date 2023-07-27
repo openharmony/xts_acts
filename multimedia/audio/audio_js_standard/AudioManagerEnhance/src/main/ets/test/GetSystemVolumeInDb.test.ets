@@ -435,10 +435,10 @@ export default function audioManagerTest() {
         await audioVolumeGroupManager.getSystemVolumeInDb(3, audio.DeviceType.SPEAKER, (err, data) => {
           if (err) {
             console.log(`${TagFrmwk}getSystemVolumeInDb : error ${err.message} ${err.code}`);
-            expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+            expect(false).assertTrue();
             done();
           } else {
-            console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            console.log(`${TagFrmwk}: getSystemVolumeInDb testcase FAIL! `);
             expect(false).assertTrue();
             done();
           }
@@ -466,7 +466,7 @@ export default function audioManagerTest() {
             expect(false).assertTrue();
             done();
           } else {
-            console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            console.log(`${TagFrmwk}: getSystemVolumeInDb testcase FAIL! `);
             expect(false).assertTrue();
             done();
           }
@@ -494,7 +494,7 @@ export default function audioManagerTest() {
             expect(false).assertTrue();
             done();
           } else {
-            console.log(`${TagFrmwk}:getSystemVolumeInDb error ${err.message} ${err.code}`);
+            console.log(`${TagFrmwk}: getSystemVolumeInDb testcase FAIL! `);
             expect(false).assertTrue();
             done();
           }
