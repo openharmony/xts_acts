@@ -404,42 +404,57 @@ describe('AudioEffect', function () {
 	}
 
 	/**
-	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100
-	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - MUSIC - Promise
-	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - MUSIC - UNKNOWN & UNKNOWN
-	 * @tc.size      : MEDIUM
-	 * @tc.type      : Function
-	 * @tc.level     : Level 2
-	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_UNKNOWN, audio.StreamUsage.STREAM_USAGE_UNKNOWN).then((audioEffectInfoArray) => {
-			expect(audioEffectInfoArray[0]).assertEqual(0);
-			expect(audioEffectInfoArray[1]).assertEqual(1);
-			console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-			done();
-		}).catch((err) => {
+		 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100
+		 * @tc.name      : GET_AUDIOEFFECTINFOARRY - UNKNOWN - Promise
+		 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - UNKNOWN - UNKNOWN & UNKNOWN
+		 * @tc.size      : MEDIUM
+		 * @tc.type      : Function
+		 * @tc.level     : Level 2
+		 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_UNKNOWN).then((audioEffectInfoArray) => {
+				expect(audioEffectInfoArray[0]).assertEqual(0);
+				expect(audioEffectInfoArray[1]).assertEqual(1);
+				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+				done();
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
 			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
 			done();
-		});
+		}
 	})
 	/**
 	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0200
-	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - MUSIC - Promise
-	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - MUSIC -MUSIC & MEDIA
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - MEDIA - Promise
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - MEDIA
 	 * @tc.size      : MEDIUM
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0200', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_MUSIC, audio.StreamUsage.STREAM_USAGE_MEDIA).then((audioEffectInfoArray) => {
-			expect(audioEffectInfoArray[0]).assertEqual(0);
-			expect(audioEffectInfoArray[1]).assertEqual(1);
-			console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-			done();
-		}).catch((err) => {
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0200', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MEDIA).then((audioEffectInfoArray) => {
+				expect(audioEffectInfoArray[0]).assertEqual(0);
+				expect(audioEffectInfoArray[1]).assertEqual(1);
+				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+				done();
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
 			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
 			done();
-		});
+		}
+
 	})
 	/**
 	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0300
@@ -449,16 +464,24 @@ describe('AudioEffect', function () {
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0300', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_SPEECH, audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION).then((audioEffectInfoArray) => {
-			expect(audioEffectInfoArray[0]).assertEqual(0);
-			expect(audioEffectInfoArray[1]).assertEqual(1);
-			console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-			done();
-		}).catch((err) => {
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0300', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION).then((audioEffectInfoArray) => {
+				expect(audioEffectInfoArray[0]).assertEqual(0);
+				expect(audioEffectInfoArray[1]).assertEqual(1);
+				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+				done();
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
 			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
 			done();
-		});
+		}
+
 	})
 	/**
 	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0400
@@ -468,16 +491,24 @@ describe('AudioEffect', function () {
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0400', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_MUSIC, audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE).then((audioEffectInfoArray) => {
-			expect(audioEffectInfoArray[0]).assertEqual(0);
-			expect(audioEffectInfoArray[1]).assertEqual(1);
-			console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-			done();
-		}).catch((err) => {
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0400', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE).then((audioEffectInfoArray) => {
+				expect(audioEffectInfoArray[0]).assertEqual(0);
+				expect(audioEffectInfoArray[1]).assertEqual(1);
+				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+				done();
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
 			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
 			done();
-		});
+		}
+
 	})
 	/**
 	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0500
@@ -487,37 +518,53 @@ describe('AudioEffect', function () {
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0500', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_MOVIE, audio.StreamUsage.STREAM_USAGE_MEDIA).then((audioEffectInfoArray) => {
-			expect(audioEffectInfoArray[0]).assertEqual(0);
-			expect(audioEffectInfoArray[1]).assertEqual(1);
-			console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-			done();
-		}).catch((err) => {
-			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
-			done();
-		});
-	})
-	/**
-	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0600
-	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - SPEECH - Callback
-	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - SPEECH
-	 * @tc.size      : MEDIUM
-	 * @tc.type      : Function
-	 * @tc.level     : Level 2
-	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0600', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_SPEECH, audio.StreamUsage.STREAM_USAGE_MEDIA, async (err, audioEffectInfoArray) => {
-			if (err) {
-				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
-				done();
-			} else {
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0500', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MEDIA).then((audioEffectInfoArray) => {
 				expect(audioEffectInfoArray[0]).assertEqual(0);
 				expect(audioEffectInfoArray[1]).assertEqual(1);
 				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
 				done();
-			}
-		});
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+	})
+	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0600
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - MUSIC - Callback
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - MUSIC
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0600', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
 
 
 	})
@@ -529,18 +576,26 @@ describe('AudioEffect', function () {
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0700', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_MUSIC, audio.StreamUsage.STREAM_USAGE_ALARM, async (err, audioEffectInfoArray) => {
-			if (err) {
-				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
-				done();
-			} else {
-				expect(audioEffectInfoArray[0]).assertEqual(0);
-				expect(audioEffectInfoArray[1]).assertEqual(1);
-				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-				done();
-			}
-		});
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0700', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_ALARM, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
 
 
 	})
@@ -552,18 +607,26 @@ describe('AudioEffect', function () {
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0800', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_SPEECH, audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT, async (err, audioEffectInfoArray) => {
-			if (err) {
-				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
-				done();
-			} else {
-				expect(audioEffectInfoArray[0]).assertEqual(0);
-				expect(audioEffectInfoArray[1]).assertEqual(1);
-				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
-				done();
-			}
-		});
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0800', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
 
 
 	})
@@ -575,19 +638,207 @@ describe('AudioEffect', function () {
 	 * @tc.type      : Function
 	 * @tc.level     : Level 2
 	 */
-	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0900', 1, async function (done) {
-		audioStreamManager.getAudioEffectInfoArray(audio.ContentType.CONTENT_TYPE_SPEECH, audio.StreamUsage.STREAM_USAGE_ACCESSIBILITY, async (err, audioEffectInfoArray) => {
-			if (err) {
-				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
-				done();
-			} else {
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0900', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_ACCESSIBILITY, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+
+
+	})
+	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1000
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - VOICE_MESSAGE - Callback
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - VOICE_MESSAGE
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1000', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_VOICE_MESSAGE, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+
+
+	})
+	/**
+		 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1100
+		 * @tc.name      : GET_AUDIOEFFECTINFOARRY - RINGTONE - Callback
+		 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - RINGTONE
+		 * @tc.size      : MEDIUM
+		 * @tc.type      : Function
+		 * @tc.level     : Level 2
+		 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1100', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_RINGTONE, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+
+
+	})
+
+	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1200
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - NOTIFICATION - Callback
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - NOTIFICATION
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1200', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_NOTIFICATION, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+
+
+	})
+	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1300
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - GAME - Callback
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - GAME
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1300', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_GAME, async (err, audioEffectInfoArray) => {
+				if (err) {
+					console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+					expect(false).asserttrue();
+					done();
+				} else {
+					expect(audioEffectInfoArray[0]).assertEqual(0);
+					expect(audioEffectInfoArray[1]).assertEqual(1);
+					console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+					done();
+				}
+			});
+
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+
+	})
+
+	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1400
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - AUDIOBOOK - Promise
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - AUDIOBOOK
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1400', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_AUDIOBOOK).then((audioEffectInfoArray) => {
 				expect(audioEffectInfoArray[0]).assertEqual(0);
 				expect(audioEffectInfoArray[1]).assertEqual(1);
 				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
 				done();
-			}
-		});
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
 
+	})
+	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1500
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRY - NAVIGATION - Promise
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - NAVIGATION
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_1500', 2, async function (done) {
+		try {
+			audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_NAVIGATION).then((audioEffectInfoArray) => {
+				expect(audioEffectInfoArray[0]).assertEqual(0);
+				expect(audioEffectInfoArray[1]).assertEqual(1);
+				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+				done();
+			}).catch((err) => {
+				console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+				expect(false).asserttrue();
+				done();
+			});
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
 
 	})
 
