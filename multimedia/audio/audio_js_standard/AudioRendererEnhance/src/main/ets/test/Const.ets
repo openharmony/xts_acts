@@ -14,8 +14,6 @@
  */
 //ts-nocheck
 //public invalid
-export const SAMPLING_RATE_44100 = 44100;
-export const SAMPLING_RATE_48000 = 48000;
 export const OUTPUT_NUMBER_0 = 0;
 export const OUTPUT_NUMBER_1 = 1;
 
