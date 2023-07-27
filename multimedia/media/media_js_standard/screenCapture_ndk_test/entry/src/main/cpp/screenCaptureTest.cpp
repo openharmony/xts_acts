@@ -107,7 +107,7 @@ void ScreenCaptureNdkTestCallback::OnAudioBufferAvailable(bool isReady, OH_Audio
         if (OH_AVScreenCapture_AcquireAudioBuffer(screenCapture_, &audioBuffer, type) == AV_SCREEN_CAPTURE_ERR_OK) {
             LOG(audioBuffer != nullptr, "AcquireAudioBuffer failed, audio buffer empty");
             LOG(g_aIndex % g_logCount != 0,
-                "AcquireAudioBuffer, audioBufferLen: %d, timestampe: %lld, audioSourceType: %d",
+                "AcquireAudioBuffer, audioBufferLen: %d, timestampe: %ld, audioSourceType: %d",
                 audioBuffer->size, audioBuffer->timestamp, audioBuffer->type);
             if ((aFile != nullptr) && (audioBuffer->buf != nullptr) && (type == OH_MIC)) {
                 int32_t ret = fwrite(audioBuffer->buf, 1, audioBuffer->size, aFile);
@@ -158,7 +158,7 @@ void ScreenCaptureNdkTestCallback::OnVideoBufferAvailable(bool isReady)
             OH_NativeBuffer_GetConfig(nativeBuffer, &config);
             int32_t length = config.height * config.width * size;
             LOG(g_vIndex % g_logCount != 0,
-                "AcquireVideoBuffer, videoBufferLen: %d, timestamp: %lld, size: %d", length, timestamp, length);
+                "AcquireVideoBuffer, videoBufferLen: %d, timestamp: %ld, size: %d", length, timestamp, length);
             DumpVideoFile(nativeBuffer, length);
             OH_NativeBuffer_Unreference(nativeBuffer);
             if (g_vFlag == 1) {
