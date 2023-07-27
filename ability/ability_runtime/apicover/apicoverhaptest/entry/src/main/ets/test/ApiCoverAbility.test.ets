@@ -251,6 +251,7 @@ export default function ApiCoverTest() {
         },
         onFailed: function () {
           console.log("onFailed");
+          done();
         }
       }
       try {
@@ -259,8 +260,8 @@ export default function ApiCoverTest() {
       } catch (err) {
         console.log(`connectServiceExtensionAbility catch code: ${err.code}, message: ${err.message}`);
         expect().assertFail();
+        done();
       }
-      done();
     })
 
     /*
@@ -318,6 +319,7 @@ export default function ApiCoverTest() {
         let appContext: common.ApplicationContext = abilityContext.getApplicationContext();
         let baseContext: common.BaseContext = stageContext;
         let context: common.Context = stageContext;
+        let flag = false;
         let el1 = contextConstant.AreaMode.EL1;
         let el2 = contextConstant.AreaMode.EL2;
         let eventHub: common.EventHub = context.eventHub;
@@ -334,12 +336,19 @@ export default function ApiCoverTest() {
         }
         abilityDelegator.addAbilityMonitor(abilityMonitor, (err, data) => {
           console.log(`printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+          flag = true;
         })
         let shellCmdResult: abilityDelegatorRegistry.ShellCmdResult;
+        abilityDelegator.removeAbilityMonitor(abilityMonitor, (err, data) => {
+          console.log(`SUB_AA_ABILITY_Extension_API_012 printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+          expect(flag).assertTrue();
+          done();
+        })
       } catch (err) {
         console.log(`catch code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
       }
-      done();
     })
 
     /*
