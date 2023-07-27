@@ -99,138 +99,138 @@ export default function swiperSecTest() {
 
      
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0100
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0100
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to true
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0100', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0100', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true
+          showBackground: true
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("true")
+      expect(obj.$attrs.showBackground).assertEqual("true")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0200
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0200
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to 1
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0200', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0200', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: 1
+          showBackground: 1
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0300
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0300
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to "true"
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0300', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0300', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: "true"
+          showBackground: "true"
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0400
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0400
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to "false"
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0400', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0400', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: "false",
+          showBackground: "false",
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0500
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0500
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to 0
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0500', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0500', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: 0
+          showBackground: 0
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0600
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0600
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to false
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0600', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0600', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: false
+          showBackground: false
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0700
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0700
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to ""
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0700', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0700', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: ""
+          showBackground: ""
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0800
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0800
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to undefined
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0800', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0800', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: undefined
+          showBackground: undefined
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
-     * @tc.number ArkUX_Stage_Swiper_IsShowBackground_0900
+     * @tc.number ArkUX_Stage_Swiper_showBackground_0900
      * @tc.name Tests whether baseboard is displayed in swiper arrow style
      * @tc.desc Set the isShowBoard property parameter to null
      */
-    it('ArkUX_Stage_Swiper_IsShowBackground_0900', 0, async function () {
+    it('ArkUX_Stage_Swiper_showBackground_0900', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: null
+          showBackground: null
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
     })
 
     /**
@@ -290,7 +290,7 @@ export default function swiperSecTest() {
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.isSidebarMiddle).assertEqual("false")
     })
 
     /**
@@ -335,7 +335,7 @@ export default function swiperSecTest() {
         }
       )
       let obj = JSON.parse(getInspectorByKey("SwiperA"))
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.isSidebarMiddle).assertEqual("false")
     })
 
     /**
@@ -376,7 +376,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0100', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: 34
         }
       )
@@ -396,7 +396,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0200', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "20px"
         }
       )
@@ -416,7 +416,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0300', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           isSidebarMiddle: true,
           backgroundSize: "48%"
         }
@@ -437,7 +437,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0400', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: ""
         }
       )
@@ -497,7 +497,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0700', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "abc"
         }
       )
@@ -517,7 +517,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0800', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "1000%"
         }
       )
@@ -537,7 +537,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_0900', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "100fp"
         }
       )
@@ -557,13 +557,13 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_1000', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: 10
         }
       )
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "42lpx"
         }
       )
@@ -583,13 +583,13 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_1100', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: 10
         }
       )
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "abc"
         }
       )
@@ -609,13 +609,13 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_BackgroundSize_1200', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: "abc"
         }
       )
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: 10
         }
       )
@@ -934,14 +934,14 @@ export default function swiperSecTest() {
     /**
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0100
      * @tc.name Tests the arrow size in the swiper arrow style
-     * @tc.desc Set the isShowBackground property parameter to false and
+     * @tc.desc Set the showBackground property parameter to false and
      *          backgroundSize property parameter to 12 and
      *          arrowSize property parameter to 34
      */
     it('ArkUX_Stage_Swiper_ArrowSize_0100', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: false,
+          showBackground: false,
           backgroundSize: 12,
           arrowSize: 34
         }
@@ -956,14 +956,14 @@ export default function swiperSecTest() {
     /**
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0200
      * @tc.name Tests the arrow size in the swiper arrow style
-     * @tc.desc Set the isShowBackground property parameter to true and
+     * @tc.desc Set the showBackground property parameter to true and
      *          backgroundSize property parameter to 12 and
      *          arrowSize property parameter to 34
      */
     it('ArkUX_Stage_Swiper_ArrowSize_0200', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: 12,
           arrowSize: 34
         }
@@ -978,14 +978,14 @@ export default function swiperSecTest() {
     /**
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0300
      * @tc.name Tests the arrow size in the swiper arrow style
-     * @tc.desc Set the isShowBackground property parameter to false and
+     * @tc.desc Set the showBackground property parameter to false and
      *          isSidebarMiddle property parameter to false and
      *          arrowSize property parameter to "20px"
      */
     it('ArkUX_Stage_Swiper_ArrowSize_0300', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: false,
+          showBackground: false,
           isSidebarMiddle: false,
           arrowSize: "20px"
         }
@@ -1000,14 +1000,14 @@ export default function swiperSecTest() {
     /**
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0400
      * @tc.name Tests the arrow size in the swiper arrow style
-     * @tc.desc Set the isShowBackground property parameter to true and
+     * @tc.desc Set the showBackground property parameter to true and
      *          isSidebarMiddle property parameter to true and
      *          arrowSize property parameter to "20px"
      */
     it('ArkUX_Stage_Swiper_ArrowSize_0400', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           isSidebarMiddle: true,
           arrowSize: "20px"
         }
@@ -1022,14 +1022,14 @@ export default function swiperSecTest() {
     /**
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0500
      * @tc.name Tests the arrow size in the swiper arrow style
-     * @tc.desc Set the isShowBackground property parameter to true and
+     * @tc.desc Set the showBackground property parameter to true and
      *          isSidebarMiddle property parameter to false and
      *          arrowSize property parameter to "20px"
      */
     it('ArkUX_Stage_Swiper_ArrowSize_0500', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: true,
+          showBackground: true,
           isSidebarMiddle: false,
           arrowSize: "20px"
         }
@@ -1081,7 +1081,7 @@ export default function swiperSecTest() {
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0800
      * @tc.name Tests the arrow size in the swiper arrow style
      * @tc.desc Set the isSidebarMiddle property parameter to true and
-     *          isShowBackground property parameter to true and
+     *          showBackground property parameter to true and
      *          backgroundSize property parameter to 12 and
      *          arrowSize property parameter to "-2"
      */
@@ -1089,7 +1089,7 @@ export default function swiperSecTest() {
       await setArrowStyle(
         {
           isSidebarMiddle: true,
-          isShowBackground: true,
+          showBackground: true,
           backgroundSize: 12,
           arrowSize: "-2"
         }
@@ -1105,7 +1105,7 @@ export default function swiperSecTest() {
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_0900
      * @tc.name Tests the arrow size in the swiper arrow style
      * @tc.desc Set the isSidebarMiddle property parameter to true and
-     *          isShowBackground property parameter to false and
+     *          showBackground property parameter to false and
      *          backgroundSize property parameter to 12 and
      *          arrowSize property parameter to "-2"
      */
@@ -1113,7 +1113,7 @@ export default function swiperSecTest() {
       await setArrowStyle(
         {
           isSidebarMiddle: true,
-          isShowBackground: false,
+          showBackground: false,
           backgroundSize: 12,
           arrowSize: "-2"
         }
@@ -1128,7 +1128,7 @@ export default function swiperSecTest() {
     /**
      * @tc.number ArkUX_Stage_Swiper_ArrowSize_1000
      * @tc.name Tests the arrow size in the swiper arrow style
-     * @tc.desc Set the isShowBackground property parameter to false and
+     * @tc.desc Set the showBackground property parameter to false and
      *          isSidebarMiddle property parameter to false and
      *          backgroundSize property parameter to 12 and
      *          arrowSize property parameter to "-2"
@@ -1136,7 +1136,7 @@ export default function swiperSecTest() {
     it('ArkUX_Stage_Swiper_ArrowSize_1000', 0, async function () {
       await setArrowStyle(
         {
-          isShowBackground: false,
+          showBackground: false,
           isSidebarMiddle: false,
           backgroundSize: 12,
           arrowSize: "-2"
@@ -1680,7 +1680,7 @@ export default function swiperSecTest() {
      */
     it('ArkUX_Stage_Swiper_NotSet_0100', 0, async function () {
       let obj = JSON.parse(getInspectorByKey("SwiperD"))
-      console.info('ArkUX_Stage_Swiper_NotSet_0100 isShowBackground :' + JSON.stringify(obj.$attrs.isShowBackground));
+      console.info('ArkUX_Stage_Swiper_NotSet_0100 showBackground :' + JSON.stringify(obj.$attrs.showBackground));
       console.info('ArkUX_Stage_Swiper_NotSet_0100 isSidebarMiddle :' + JSON.stringify(obj.$attrs.isSidebarMiddle));
       console.info('ArkUX_Stage_Swiper_NotSet_0100 backgroundSize :' + JSON.stringify(obj.$attrs.arrowBackgroundSize));
       console.info('ArkUX_Stage_Swiper_NotSet_0100 backgroundColor :' + JSON.stringify(obj.$attrs.arrowBackgroundColor));
@@ -1694,7 +1694,7 @@ export default function swiperSecTest() {
       let arrowSize = obj.$attrs.arrowSize;
       expect(parseFloat(arrowSize)).assertEqual(18)
       expect(arrowSize.substr(arrowSize.length-2, 2)).assertEqual("vp")
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
       expect(obj.$attrs.isSidebarMiddle).assertEqual("false")
       expect(obj.$attrs.arrowBackgroundColor).assertEqual("#00000000")
       expect(obj.$attrs.arrowColor).assertEqual(obj.$attrs.foregroundColor)
@@ -1709,7 +1709,7 @@ export default function swiperSecTest() {
      */
     it('ArkUX_Stage_Swiper_NotSet_0200', 0, async function () {
       let obj = JSON.parse(getInspectorByKey("SwiperE"))
-      console.info('ArkUX_Stage_Swiper_NotSet_0200 isShowBackground :' + JSON.stringify(obj.$attrs.isShowBackground));
+      console.info('ArkUX_Stage_Swiper_NotSet_0200 showBackground :' + JSON.stringify(obj.$attrs.showBackground));
       console.info('ArkUX_Stage_Swiper_NotSet_0200 isSidebarMiddle :' + JSON.stringify(obj.$attrs.isSidebarMiddle));
       console.info('ArkUX_Stage_Swiper_NotSet_0200 backgroundSize :' + JSON.stringify(obj.$attrs.arrowBackgroundSize));
       console.info('ArkUX_Stage_Swiper_NotSet_0200 backgroundColor :' + JSON.stringify(obj.$attrs.arrowBackgroundColor));
@@ -1723,7 +1723,7 @@ export default function swiperSecTest() {
       let arrowSize = obj.$attrs.arrowSize;
       expect(parseFloat(arrowSize)).assertEqual(18)
       expect(arrowSize.substr(arrowSize.length-2, 2)).assertEqual("vp")
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
       expect(obj.$attrs.isSidebarMiddle).assertEqual("false")
       expect(obj.$attrs.arrowBackgroundColor).assertEqual("#00000000")
       expect(obj.$attrs.arrowColor).assertEqual(obj.$attrs.foregroundColor)
@@ -1738,7 +1738,7 @@ export default function swiperSecTest() {
      */
     it('ArkUX_Stage_Swiper_NotSet_0300', 0, async function () {
       let obj = JSON.parse(getInspectorByKey("SwiperF"))
-      console.info('ArkUX_Stage_Swiper_NotSet_0300 isShowBackground :' + JSON.stringify(obj.$attrs.isShowBackground));
+      console.info('ArkUX_Stage_Swiper_NotSet_0300 showBackground :' + JSON.stringify(obj.$attrs.showBackground));
       console.info('ArkUX_Stage_Swiper_NotSet_0300 isSidebarMiddle :' + JSON.stringify(obj.$attrs.isSidebarMiddle));
       console.info('ArkUX_Stage_Swiper_NotSet_0300 backgroundSize :' + JSON.stringify(obj.$attrs.arrowBackgroundSize));
       console.info('ArkUX_Stage_Swiper_NotSet_0300 backgroundColor :' + JSON.stringify(obj.$attrs.arrowBackgroundColor));
@@ -1752,7 +1752,7 @@ export default function swiperSecTest() {
       let arrowSize = obj.$attrs.arrowSize;
       expect(parseFloat(arrowSize)).assertEqual(0)
       expect(arrowSize.substr(arrowSize.length-2, 2)).assertEqual("vp")
-      expect(obj.$attrs.isShowBackground).assertEqual("false")
+      expect(obj.$attrs.showBackground).assertEqual("false")
       expect(obj.$attrs.isSidebarMiddle).assertEqual("false")
       expect(obj.$attrs.arrowBackgroundColor).assertEqual("#00000000")
       expect(obj.$attrs.arrowColor).assertEqual("#00000000")
