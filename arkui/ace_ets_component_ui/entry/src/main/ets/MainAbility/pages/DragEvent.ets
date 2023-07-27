@@ -45,7 +45,7 @@ struct DragEvent {
           .margin({left: 15})
           .visibility(this.imgState)
           .onDragStart((event)=>{
-            event.setResult(DragResult.DRAG_SUCCESS);
+            event.setResult(DragResult.DRAG_SUCCESSFUL);
           })
           .onDragEnd((event)=>{
             event.dragBehavior = DragBehavior.MOVE
@@ -55,8 +55,8 @@ struct DragEvent {
               this.useCustomDropAnimation1 = "true"
               promptAction.showToast({duration: 100, message: 'useCustomDropAnimation==true'});
             }
-            if (event.getResult() === DragResult.DRAG_SUCCESS) {
-              promptAction.showToast({duration: 100, message: 'Drag Success'});
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+              promptAction.showToast({duration: 100, message: 'Drag DRAG_SUCCESSFUL'});
             } else if (event.getResult() === DragResult.DRAG_FAILED) {
               promptAction.showToast({duration: 100, message: 'Drag Failed'});
             } else if (event.getResult() === DragResult.DRAG_CANCELED) {
