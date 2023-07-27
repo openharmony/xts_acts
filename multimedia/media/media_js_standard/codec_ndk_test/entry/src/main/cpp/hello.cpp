@@ -172,7 +172,7 @@ static napi_value VideoDecoder(napi_env env, napi_callback_info info)
 // audio decode
 static napi_value AudioDecodeTest(napi_env env, napi_callback_info info)
 {
-    OH_AVCodec *audioDec = OH_AudioDecoder_CreateByMime("aaa");
+    OH_AVCodec* audioDec = OH_AudioDecoder_CreateByMime("aaa");
     audioDec = OH_AudioDecoder_CreateByName("aaa");
 
     OH_AVErrCode ret = AV_ERR_OK;
@@ -182,7 +182,7 @@ static napi_value AudioDecodeTest(napi_env env, napi_callback_info info)
     struct OH_AVCodecAsyncCallback callback = {nullptr, nullptr, nullptr, nullptr};
     OH_AudioDecoder_SetCallback(audioDec, callback, nullptr);
 
-    OH_AVFormat *format = nullptr;
+    OH_AVFormat* format = nullptr;
     OH_AudioDecoder_Configure(audioDec, format);
 
     OH_AudioDecoder_Prepare(audioDec);
@@ -210,17 +210,17 @@ static napi_value AudioDecodeTest(napi_env env, napi_callback_info info)
 // audio encode
 static napi_value AudioEncodeTest(napi_env env, napi_callback_info info)
 {
-    OH_AVCodec *audioEnc = OH_AudioEncoder_CreateByMime("aaa");
+    OH_AVCodec* audioEnc = OH_AudioEncoder_CreateByMime("aaa");
     audioEnc = OH_AudioEncoder_CreateByName("aaa");
 
     OH_AVErrCode ret = AV_ERR_OK;
 
     OH_AudioEncoder_Destroy(audioEnc);
 
-    struct OH_AVCodecAsyncCallback callback = {nullptr, nullptr, nullptr, nullptr};
+    struct OH_AVCodecAsyncCallback callback = { nullptr, nullptr, nullptr, nullptr };
     OH_AudioEncoder_SetCallback(audioEnc, callback, nullptr);
 
-    OH_AVFormat *format = nullptr;
+    OH_AVFormat* format = nullptr;
     OH_AudioEncoder_Configure(audioEnc, format);
 
     OH_AudioEncoder_Prepare(audioEnc);
@@ -252,19 +252,31 @@ static napi_value AVMuxerTest(napi_env env, napi_callback_info info)
     int32_t fd = -1;
 
     OH_AVErrCode ret = AV_ERR_OK;
-    OH_AVMuxer *avmuxer = OH_AVMuxer_Create(fd, format);
+    OH_AVMuxer* avmuxer = OH_AVMuxer_Create(fd, format);
 
     int32_t rotation = 90;
     OH_AVMuxer_SetRotation(avmuxer, rotation);
 
     int32_t trackId;
-    OH_AVFormat *trackFormat = nullptr;
+    OH_AVFormat* trackFormat = nullptr;
     OH_AVMuxer_AddTrack(avmuxer, &trackId, trackFormat);
 
     OH_AVMuxer_Start(avmuxer);
-    OH_AVMemory *sampleBuffer = nullptr;
+    OH_AVMemory* sampleBuffer = nullptr;
     OH_AVCodecBufferAttr info1;
     OH_AVMuxer_WriteSample(avmuxer, trackId, sampleBuffer, info1);
+
+    uint8_t a[100];
+    trackFormat = OH_AVFormat_Create();
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_MPEG);
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_HEVC);
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_MPEG4);
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_IMAGE_JPG);
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_IMAGE_PNG);
+    OH_AVFormat_SetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_IMAGE_BMP);
+
+    OH_AVFormat_SetBuffer(trackFormat, OH_MD_KEY_CODEC_CONFIG, a, 100);
+    OH_AVFormat_Destroy(trackFormat);
 
     OH_AVMuxer_Stop(avmuxer);
     OH_AVMuxer_Destroy(avmuxer);
@@ -284,6 +296,56 @@ static napi_value AVMemoryTest(napi_env env, napi_callback_info info)
 
     OH_AVMemory_GetSize(avMemBuffer);
     OH_AVMemory_Destroy(avMemBuffer);
+
+    napi_value res;
+    napi_create_int32(env, ret, &res);
+    return res;
+}
+
+// avformat
+static napi_value AVFormatTest(napi_env env, napi_callback_info info)
+{
+    OH_AVErrCode ret = AV_ERR_OK;
+    OH_AVFormat* avFormat = OH_AVFormat_CreateAudioFormat(OH_AVCODEC_MIMETYPE_AUDIO_FLAC, 44100, 2);
+    OH_AVFormat_Destroy(avFormat);
+
+    avFormat = OH_AVFormat_CreateAudioFormat(OH_AVCODEC_MIMETYPE_AUDIO_VORBIS, 44100, 2);
+    OH_AVFormat_Destroy(avFormat);
+
+    uint8_t a[100];
+    avFormat = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_VIDEO_AVC, 400, 500);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_RANGE_FLAG, 0);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_COLOR_PRIMARIES, COLOR_PRIMARY_BT709);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_TRANSFER_CHARACTERISTICS, TRANSFER_CHARACTERISTIC_BT709);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_MATRIX_COEFFICIENTS, MATRIX_COEFFICIENT_BT709);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_REQUEST_I_FRAME, 0);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_QUALITY, 0);
+
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_TITLE, "aaa");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_ARTIST, "bbb");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_ALBUM, "ccc");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_ALBUM_ARTIST, "ddd");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_DATE, "xx-xx-xx");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_COMMENT, "eee");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_GENRE, "fff");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_COPYRIGHT, "ggg");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_LANGUAGE, "hhh");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_DESCRIPTION, "iii");
+    OH_AVFormat_SetStringValue(avFormat, OH_MD_KEY_LYRICS, "jjj");
+
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_TRACK_COUNT, 2);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_CHANNEL_LAYOUT, STEREO);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_BITS_PER_CODED_SAMPLE, OH_BitsPerSample::SAMPLE_F32LE);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_AAC_IS_ADTS, 1);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_SBR, 0);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_COMPLIANCE_LEVEL, 0);
+
+    OH_AVFormat_SetBuffer(avFormat, OH_MD_KEY_IDENTIFICATION_HEADER, a, 100);
+    OH_AVFormat_SetBuffer(avFormat, OH_MD_KEY_SETUP_HEADER, a, 100);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_KEY_SCALING_MODE, SCALING_MODE_SCALE_TO_WINDOW);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_MAX_INPUT_BUFFER_COUNT, 1);
+    OH_AVFormat_SetIntValue(avFormat, OH_MD_MAX_OUTPUT_BUFFER_COUNT, 1);
+    OH_AVFormat_Destroy(avFormat);
 
     napi_value res;
     napi_create_int32(env, ret, &res);
