@@ -45,9 +45,9 @@ export default function GetAppContextTest() {
         );
         expect(context.applicationInfo.description).assertEqual("");
         expect(context.applicationInfo.label).assertEqual("$string:app_name");
-        expect(context.applicationInfo.labelId).assertEqual("16777216");
+        expect(context.applicationInfo.labelId).assertEqual(16777216);
         expect(context.applicationInfo.icon).assertEqual("$media:app_icon");
-        expect(context.applicationInfo.iconId).assertEqual("16777217");
+        expect(context.applicationInfo.iconId).assertEqual(16777217);
         expect(context.applicationInfo.codePath != null).assertTrue();
         abilityDelegator.printSync("ACTS_GET_APP_CONTENT_0001 pass ");
         done();
