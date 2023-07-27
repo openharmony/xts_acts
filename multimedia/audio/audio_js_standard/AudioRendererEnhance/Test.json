@@ -20,6 +20,7 @@
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
+                "power-shell setmode 602",
                 "mkdir -p /data/app/el2/100/base/com.example.xts_test_case/haps/entry/files",
                 "chmod 777 -R /data/app/el2/100/base/com.example.xts_test_case/haps/entry"
             ],

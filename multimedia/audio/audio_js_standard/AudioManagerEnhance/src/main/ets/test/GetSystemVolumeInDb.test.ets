@@ -290,7 +290,7 @@ export default function audioManagerTest() {
           .catch((error) => {
             if (error) {
               console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${error.message} ${error.code}`);
-              expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+              expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
               done();
             } else {
               expect(false).assertTrue();
@@ -431,17 +431,23 @@ export default function audioManagerTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1200', 0, async function (done) {
-      await audioVolumeGroupManager.getSystemVolumeInDb(3, audio.DeviceType.SPEAKER, (err, data) => {
-        if (err) {
-          console.log(`${TagFrmwk}getSystemVolumeInDb : error ${err.message} ${err.code}`);
-          expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
-          done();
-        } else {
-          console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${err.message} ${err.code}`);
-          expect(false).assertTrue();
-          done();
-        }
-      });
+      try {
+        await audioVolumeGroupManager.getSystemVolumeInDb(3, audio.DeviceType.SPEAKER, (err, data) => {
+          if (err) {
+            console.log(`${TagFrmwk}getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+            done();
+          } else {
+            console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${TagFrmwk}:getSystemVolumeInDb error, check error code: ${error.code}`);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
+      }
     })
 
     /**
@@ -453,17 +459,23 @@ export default function audioManagerTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1300', 0, async function (done) {
-      await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, audio.DeviceType.SPEAKER, (err, data) => {
-        if (err) {
-          console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
-          expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
-          done();
-        } else {
-          console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
-          expect(false).assertTrue();
-          done();
-        }
-      });
+      try {
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, audio.DeviceType.SPEAKER, (err, data) => {
+          if (err) {
+            console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.log(`${TagFrmwk} getSystemVolumeInDb : error ${err.message} ${err.code}`);
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${TagFrmwk}:getSystemVolumeInDb error, check error code: ${error.code}`);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
+      }
     })
 
     /**
@@ -475,17 +487,23 @@ export default function audioManagerTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1400', 0, async function (done) {
-      await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, (err, data) => {
-        if (err) {
-          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${err.message} ${err.code}`);
-          expect(Number(err.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
-          done();
-        } else {
-          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${err.message} ${err.code}`);
-          expect(false).assertTrue();
-          done();
-        }
-      });
+      try {
+        await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, (err, data) => {
+          if (err) {
+            console.log(`${TagFrmwk}:getSystemVolumeInDb error ${err.message} ${err.code}`);
+            expect(false).assertTrue();
+            done();
+          } else {
+            console.log(`${TagFrmwk}:getSystemVolumeInDb error ${err.message} ${err.code}`);
+            expect(false).assertTrue();
+            done();
+          }
+        });
+      } catch (error) {
+        console.log(`${TagFrmwk}:getSystemVolumeInDb error, check error code: ${error.code}`);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
+      }
     })
 
     /**
