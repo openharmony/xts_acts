@@ -323,6 +323,92 @@ export default function nfcIsoDepTagTest() {
             expect(tag.NDEF_FORMATABLE).assertEqual(7);
         })
 
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_0900
+         * @tc.name Test startHCE
+         * @tc.desc startHCE
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_0900', 0, function ()  {
+            let starthce ;
+            let aidList = "test"
+            try {
+                starthce = cardEmulation.startHCE(aidList);
+                console.info('[NFC_test] cardEmulationnfc9 hasHceCapability type ->' + starthce )
+                expect(starthce).assertTrue();
+            } catch (error) {
+                console.info('[NFC_test] cardEmulationnfc9 HCE not delivered')
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1000
+         * @tc.name Test start
+         * @tc.desc start.
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1000', 0, function ()  {
+            let Start ;
+            let aidList = "test"
+            let elementName = {
+                "bundleName": "com.test.cardemulation",
+                "abilityName": "MainAbility",
+                "moduleName": "entry"
+            };
+            try {
+                Start = cardEmulation.start(elementName, aidList);
+                console.info('[NFC_test] cardEmulationnfc10 Start pass'  )
+            } catch (error) {
+                console.info('[NFC_test] cardEmulationnfc10 HCE not delivered')
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1100
+         * @tc.name Test stopHCE
+         * @tc.desc stopHCE.
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1100', 0, function ()  {
+            let stophce ;
+            try {
+                stophce = cardEmulation.stopHCE();
+                console.info('[NFC_test] cardEmulationnfc11 hasHceCapability type ->' + starthce )
+                expect(starthce).assertTrue();
+            } catch (error) {
+                console.info('[NFC_test] cardEmulationnfc11 HCE not delivered')
+            }
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_1200
+         * @tc.name Test stop
+         * @tc.desc stop.
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_NFC_nfccardEmulationnfc_js_1200', 0, function ()  {
+            let Stop ;
+            let elementName = {
+                "bundleName": "com.test.cardemulation",
+                "abilityName": "MainAbility",
+                "moduleName": "entry"
+            };
+            try {
+                Stop = cardEmulation.stop(elementName);
+                console.info('[NFC_test] cardEmulationnfc12 stop pass'  )
+            } catch (error) {
+                console.info('[NFC_test] cardEmulationnfc12 HCE not delivered')
+            }
+        })
+
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }
