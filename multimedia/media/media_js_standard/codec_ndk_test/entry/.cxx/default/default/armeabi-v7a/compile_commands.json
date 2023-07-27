@@ -1,7 +1,0 @@
-[
-{
-  "directory": "C:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/.cxx/default/default/armeabi-v7a",
-  "command": "D:\\quxianfei_work\\tools\\Huawei\\OpenHarmony\\Sdk\\10\\native\\llvm\\bin\\clang++.exe --target=arm-linux-ohos --gcc-toolchain=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/llvm --sysroot=D:/quxianfei_work/tools/Huawei/OpenHarmony/Sdk/10/native/sysroot  -Dentry_EXPORTS -IC:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp -IC:/Users/quxianfei/DevEcoStudioProjects/MyApplication6/entry/src/main/cpp/include  -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -march=armv7a   -D__MUSL__ -O0 -g -fno-limit-debug-info  -fPIC   -o CMakeFiles\\entry.dir\\hello.cpp.o -c C:\\Users\\quxianfei\\DevEcoStudioProjects\\MyApplication6\\entry\\src\\main\\cpp\\hello.cpp",
-  "file": "C:\\Users\\quxianfei\\DevEcoStudioProjects\\MyApplication6\\entry\\src\\main\\cpp\\hello.cpp"
-}
-]

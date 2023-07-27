@@ -1,3 +1,0 @@
-string TestAbility_desc 0x02000000
-string TestAbility_label 0x02000001
-media icon 0x02000002
