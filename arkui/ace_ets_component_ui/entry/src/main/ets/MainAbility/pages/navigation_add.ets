@@ -99,7 +99,7 @@ struct NavigationExample2 {
       .key('navigationAdd')
       .hideToolBar(false)
       .navDestination((name,parm)=> {
-          this.navPathStack.pushName(name,parm)
+          this.navPathStack.pushPathByName(name,parm)
           promptA.showToast({message:name})
 
       })
@@ -107,16 +107,16 @@ struct NavigationExample2 {
         console.info('titleMode' + titleModel)
       })
 
-      Button('pushName')
+      Button('pushPathByName')
         .height('5%')
         .onClick(() => { // 点击后下滑指定距离150.0vp
-          this.navPathStack.pushName('navidesnation_add',this.value)
+          this.navPathStack.pushPathByName('navidesnation_add',this.value)
         })
         .margin({ top: 10, left: 20 })
-      Button('popTo')
+      Button('popToName')
         .height('5%')
         .onClick(() => {
-          this.navPathStack.popTo('navidesnation_add')
+          this.navPathStack.popToName('navidesnation_add')
         })
         .margin({ top: 60, left: 20 })
       Button('popToIndex')
