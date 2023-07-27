@@ -57,7 +57,7 @@ struct Index {
           .margin({left: 15})
           .visibility(this.imgState)
           .onDragEnd((event)=>{
-            if (event.getResult() === DragResult.DRAG_SUCCESS) {
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
               promptAction.showToast({duration: 100, message: 'Drag Success'});
             } else if (event.getResult() === DragResult.DRAG_FAILED) {
               promptAction.showToast({duration: 100, message: 'Drag failed'});
