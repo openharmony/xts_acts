@@ -21,6 +21,8 @@ import webViewContGetUrlAndOthersError from './webViewContGetUrlAndOthersError.t
 import webViewContCookieToGeoLocationError from './webViewContCookieToGeoLocationError.test'
 import webViewContJsMessageExtReturnError from './webViewContJsMessageExtReturnError.test'
 import webViewContWebMessageExtReturnError from './webViewContWebMessageExtReturnError.test'
+import webViewContPageAndprepareForPageLoadErrorOne from './webViewContPageAndprepareForPageLoadErrorOne.test'
+import webViewContPageAndprepareForPageLoadErrorTwo from './webViewContPageAndprepareForPageLoadErrorTwo.test'
 
 export default function testsuite() {
        webViewContMessageError()
@@ -32,4 +34,7 @@ export default function testsuite() {
        webViewContCookieToGeoLocationError()
        webViewContJsMessageExtReturnError()
        webViewContWebMessageExtReturnError()
+       //webViewContPageAndprepareForPageLoadErrorOne()
+       //webViewContPageAndprepareForPageLoadErrorTwo()
+
 }
