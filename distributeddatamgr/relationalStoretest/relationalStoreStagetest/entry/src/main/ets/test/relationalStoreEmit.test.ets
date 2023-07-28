@@ -73,13 +73,15 @@ export default function relationalStoreEmitTest() {
       }
 
       try {
-        await rdbStore.on('storeObserverInsert', false, subscribeInsert);
-        await rdbStore.emit('storeObserverInsert');
+        rdbStore.on('storeObserverInsert', false, subscribeInsert);
+        rdbStore.emit('storeObserverInsert');
         await sleep(2000);
         let resultSet = await rdbStore.querySql("SELECT * FROM test");
         console.info(TAG + "resultSet = " + resultSet.rowCount);
         expect(1).assertEqual(resultSet.rowCount);
-
+        rdbStore.off('storeObserverInsert', false, subscribeInsert);
+        resultSet.close();
+        resultSet = null;
         done();
       } catch (err) {
         console.error(`failed, code is ${err.code},message is ${err.message}`);
