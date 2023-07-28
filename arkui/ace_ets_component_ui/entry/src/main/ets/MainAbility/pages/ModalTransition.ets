@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct ModalTransitionExample {
+struct ModalTransition111 {
   @State isShow:boolean = false
   @State isShow2:boolean = false
 
