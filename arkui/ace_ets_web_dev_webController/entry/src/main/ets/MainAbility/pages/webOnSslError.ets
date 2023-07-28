@@ -85,11 +85,6 @@ struct webOnSslError {
                     Utils.emitEvent(this.sslerrorText, this.firstId)
                     return true
                 })
-                .onErrorReceive((event) => {
-                    console.log('getErrorInfo:' + event.error.getErrorInfo())
-                    console.log('getErrorCode:' + event.error.getErrorCode())
-                    console.log('url:' + event.request.getRequestUrl())
-                })
             }
     }
 }

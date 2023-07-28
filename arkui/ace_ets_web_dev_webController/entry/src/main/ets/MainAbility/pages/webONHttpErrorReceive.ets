@@ -68,7 +68,6 @@ struct webONHttpErrorReceive {
                             } catch (error) {
                                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
                             }
-                            Utils.emitEvent(this.title, 490)
                             break;
                         }
                     }
@@ -101,8 +100,7 @@ struct webONHttpErrorReceive {
                     Utils.emitEvent(event.response.getResponseMimeType(), 476);
                     console.log('getResponseCode:' + event.response.getResponseCode());
                     Utils.emitEvent(event.response.getResponseCode(), 478);
-                    this.title = JSON.stringify(event.response.getResponseCode()) + event.request.getRequestUrl();
-                    console.log("this.title result is :" + this.title);
+                    console.log("this.title result is :" + JSON.stringify(event.response.getResponseCode()) + event.request.getRequestUrl());
                     console.log('getReasonMessage:' + event.response.getReasonMessage());
                     Utils.emitEvent(event.response.getReasonMessage(), 480);
                     let result = event.request.getRequestHeader()
@@ -125,6 +123,7 @@ struct webONHttpErrorReceive {
                     console.log('The response header last result is ' + this.responseKey + this.responseValue);
                     Utils.emitEvent(this.responseKey, 486);
                     Utils.emitEvent(this.responseValue, 488);
+                    Utils.emitEvent(JSON.stringify(event.response.getResponseCode()) + event.request.getRequestUrl(), 490)
                 })
             }
     }
