@@ -40,7 +40,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedItemWidth));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedItemWidth_0100 component obj2 is: " + JSON.stringify(obj2.selectedItemWidth));
-          expect(obj2.selectedItemWidth).assertEqual("5.00px");
+          expect(obj2.selectedItemWidth).assertEqual("5.00vp");
           console.info('ArkUX_Stage_Swiper_SelectedItemWidth_0100 END ');
           done();
         } catch (err) {
@@ -280,7 +280,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedItemHeight));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedItemHeight_0100 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedItemHeight).assertEqual("3.00px");
+          expect(obj2.selectedItemHeight).assertEqual("3.00vp");
           console.info('ArkUX_Stage_Swiper_SelectedItemHeight_0100 END ');
           done();
         } catch (err) {
@@ -520,7 +520,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.itemWidth));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_ItemWidth_0100 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.itemWidth).assertEqual("3.00px");
+          expect(obj2.itemWidth).assertEqual("3.00vp");
           console.info('ArkUX_Stage_Swiper_ItemWidth_0100 END ');
           done();
         } catch (err) {
@@ -730,7 +730,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.itemHeight));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_ItemHeight_0100 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.itemHeight).assertEqual("3.00px");
+          expect(obj2.itemHeight).assertEqual("3.00vp");
           console.info('ArkUX_Stage_Swiper_ItemHeight_0100 END ');
           done();
         } catch (err) {
