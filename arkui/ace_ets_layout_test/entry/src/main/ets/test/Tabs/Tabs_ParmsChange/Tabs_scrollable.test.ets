@@ -175,8 +175,8 @@ export default function Tabs_scrollable() {
       let btn1 = await driver.findComponent(ON.text('blueTwo'));
       await btn1.click()
       await CommonFunc.sleep(1000);
-      Tabs_scrollable_002 = CommonFunc.getComponentRect('Tabs_scrollable_005');
-      Tabs_scrollable_012 = CommonFunc.getComponentRect('Tabs_scrollable_042');
+      let Tabs_scrollable_002 = CommonFunc.getComponentRect('Tabs_scrollable_005');
+      let Tabs_scrollable_012 = CommonFunc.getComponentRect('Tabs_scrollable_042');
       let btn2 = await driver.findComponent(ON.text('yellowTwo'));
       await btn2.click()
       await CommonFunc.sleep(1000);
