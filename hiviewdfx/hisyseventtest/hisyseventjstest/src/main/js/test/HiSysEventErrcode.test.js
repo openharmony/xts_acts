@@ -678,14 +678,14 @@ describe('hiSysEventErrcodeTest', function () {
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_4600
 	 * @tc.name testHiSysEventApi46
-	 * @tc.desc 验证调用query接口查询系统事件，查询规则个数超过10个，忽略此次系统事件的查询，错误码11200301。
+	 * @tc.desc 验证调用query接口查询系统事件，查询规则个数超过100个，忽略此次系统事件的查询，错误码11200301。
 	 */
 	it('testHiSysEventApi46', 3, async function (done) {
 		console.info('testHiSysEventApi46 start')
 		setTimeout(() => {
 			try {
 				let msgArray = []
-				for (let i = 0; i < 11; i++) {
+				for (let i = 0; i < 101; i++) {
 					msgArray[i] = {
 						domain: "RELIABILITY",
 						names: ["STACK"],

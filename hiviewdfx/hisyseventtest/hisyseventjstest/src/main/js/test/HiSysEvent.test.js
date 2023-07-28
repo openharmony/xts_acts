@@ -996,13 +996,13 @@ describe('hiSysEventJsTest', function () {
 	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_2200
 	 * @tc.name testHiSysEventApi22
-	 * @tc.desc 验证调用query接口，可添加10条查询规则
+	 * @tc.desc 验证调用query接口，可添加100条查询规则
 	 */
 	it('testHiSysEventApi22', 3, async function (done) {
 		console.info('testHiSysEventApi22 start')
 		try {
 			let msgArray = []
-			for (let i = 0; i < 10; i++) {
+			for (let i = 0; i < 100; i++) {
 				msgArray[i] = {
 					domain: "RELIABILITY",
 					names: ["SYS_FREEZE"],
