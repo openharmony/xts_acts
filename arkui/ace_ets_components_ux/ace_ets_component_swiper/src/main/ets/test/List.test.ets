@@ -16,6 +16,6 @@ import swiperTest from './swiper'
 import swiperSecTest from './swipersec'
 
 export default function testsuite() {
-       swiperTest()
+      swiperTest()
        swiperSecTest()
 }
