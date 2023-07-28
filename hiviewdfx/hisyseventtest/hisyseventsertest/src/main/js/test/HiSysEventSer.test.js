@@ -154,7 +154,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventBox23
 	 * @tc.desc 验证调用subscribe接口，关闭hiview进程，抛出错误码11200003
 	 */
-	it('testHiSysEventBox09', 1, async function (done) {
+	it('testHiSysEventBox23', 1, async function (done) {
 		console.info('testHiSysEventBox23 start')
 		try {
 			hiSysEvent.subscribe([{
@@ -176,7 +176,7 @@ describe('hiSysEventSerTest', function () {
 	 * @tc.name testHiSysEventBox24
 	 * @tc.desc 验证调用unsubscribe接口，关闭hiview进程，抛出错误码11200003
 	 */
-	it('testHiSysEventBox09', 1, async function (done) {
+	it('testHiSysEventBox24', 1, async function (done) {
 		console.info('testHiSysEventBox24 start')
 		try {
 			hiSysEvent.unsubscribe();
