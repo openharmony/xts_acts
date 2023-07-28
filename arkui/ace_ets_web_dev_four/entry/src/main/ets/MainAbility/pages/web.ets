@@ -28,6 +28,7 @@ struct Index {
     @State outputStr: string = ''
     @State playing: boolean = false
     @State str:string="emitOnLoadIntercept"
+    @State arrid:number = 0
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -62,6 +63,10 @@ struct Index {
                                 this.controller.loadUrl("https://www.baidu.com/")                                                                                                                          
                             break;
                         }
+                        case "emitOnControllerAttached":{  
+                            Utils.emitEvent(this.arrid,7)                                                                                                                         
+                            break;
+                        }
 
                         default:
                             console.info("can not match case")
@@ -81,6 +86,65 @@ struct Index {
             .onErrorReceive((event) => {
                 console.log('getErrorInfo:' + event.error.getErrorInfo())
                 Utils.emitEvent(event.error.getErrorInfo(),3)
+            })
+
+            .onScreenCaptureRequest((event) => {
+                AlertDialog.show({
+                    title: 'title: ' + event.handler.getOrigin(),
+                    message: 'text',
+                    primaryButton: {
+                    value: 'deny',
+                    action: () => {
+                        event.handler.deny()
+                    }
+                    },
+                    secondaryButton: {
+                    value: 'onConfirm',
+                    action: () => {
+                        event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN })
+                    }
+                    },
+                    cancel: () => {
+                    event.handler.deny()
+                    }
+                })
+            })
+
+            .onControllerAttached(() => {
+                try {
+                    this.arrid = this.controller.getWebId();
+                    console.log("id++++++: " + this.arrid);
+
+                } catch (error) {
+                    console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+                }
+            })
+
+            .onOverScroll((event) => {
+                console.info("x = " + event.xOffset)
+                console.info("y = " + event.yOffset)
+            })
+            
+            .onClientAuthenticationRequest((event) => {
+                AlertDialog.show({
+                    title: 'onClientAuthenticationRequest',
+                    message: 'text',
+                    primaryButton: {
+                    value: 'confirm',
+                    action: () => {
+                        event.handler.confirm("/system/etc/user.pk8", "/system/etc/chain-user.pem")
+                    }
+                    },
+                    secondaryButton: {
+                    value: 'cancel',
+                    action: () => {
+                        event.handler.cancel()
+                    }
+                    },
+                    cancel: () => {
+                    event.handler.ignore()
+                    }
+                })
             })
            
         }
