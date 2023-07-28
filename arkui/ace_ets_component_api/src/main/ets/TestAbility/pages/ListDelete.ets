@@ -124,7 +124,7 @@ struct ListDelete {
             onAction: () => {
               console.info('MyList5_ListItem' + index + ' onAction')
               this.arr2.splice(index, 1)
-              MyUtils.sendEvent('MyList5_ListItem' + index + 'onAction', 72000)
+              MyUtils.sendEvent('MyList5_ListItem' + index + 'onDelete', 72000)
             },
             actionAreaDistance: 5,
             onEnterActionArea: () => {
