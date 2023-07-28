@@ -35,6 +35,13 @@ struct ModalTransitionExample {
 
   @Builder myBuilder() {
     Column() {
+      Button("sheetSize")
+        .margin(10)
+        .fontSize(20)
+        .onClick(()=>{
+          this.isShow2 = true;
+        }).bindSheet($$this.isShow, this.myBuilder(), {height: SheetSize.MEDIUM, dragBar: this.showDragBar, backgroundColor: Color.Green, onAppear: () => {console.log("BindSheet onAppear.")}, onDisappear: () => {console.log("BindSheet onDisappear.")}})
+          .bindSheet($$this.isShow, this.myBuilder(), {height: SheetSize.LARGE, dragBar: this.showDragBar, backgroundColor: Color.Green, onAppear: () => {console.log("BindSheet onAppear.")}, onDisappear: () => {console.log("BindSheet onDisappear.")}})
       Button("transition modal 2")
         .margin(10)
         .fontSize(20)
@@ -48,6 +55,10 @@ struct ModalTransitionExample {
         .onClick(()=>{
           this.isShow = false;
         })
+      Progress({ value: 100, total: 100,type: ProgressType.Capsule }).width(100).height(50)
+        .style({borderColor: Color.Blue, borderWidth: 1, content: 'Installing...',enableSmoothEffect:false,
+          font: {size: 13, style: FontStyle.Normal}, fontColor: Color.Gray,
+          enableScanEffect: false, showDefaultPercentage: false})
     }
     .width('100%')
     .height('100%')
