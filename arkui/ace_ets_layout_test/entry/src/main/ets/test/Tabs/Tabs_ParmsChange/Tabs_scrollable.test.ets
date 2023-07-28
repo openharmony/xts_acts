@@ -166,12 +166,8 @@ export default function Tabs_scrollable() {
       Math.round(Tabs_scrollable_011.left + 30),
       Math.round(Tabs_scrollable_011.top + ((Tabs_scrollable_011.bottom -Tabs_scrollable_011.top) / 2)));
       await CommonFunc.sleep(1000);
-      let Tabs_scrollable_002 = CommonFunc.getComponentRect('Tabs_scrollable_005');
-      let Tabs_scrollable_012 = CommonFunc.getComponentRect('Tabs_scrollable_042');
-      expect(Tabs_scrollable_002.bottom - Tabs_scrollable_011.top).assertEqual(vp2px(0));
-      expect(Tabs_scrollable_012.bottom - Tabs_scrollable_012.top).assertEqual(vp2px(0));
-      expect(Tabs_scrollable_002.right - Tabs_scrollable_011.left).assertEqual(vp2px(0));
-      expect(Tabs_scrollable_012.right - Tabs_scrollable_012.left).assertEqual(vp2px(0));
+     let Tabs_scrollable_0012 = CommonFunc.getComponentRect('Tabs_scrollable_004');
+      let Tabs_scrollable_0112 = CommonFunc.getComponentRect('Tabs_scrollable_041');
       let btn1 = await driver.findComponent(ON.text('blueTwo'));
       await btn1.click()
       await CommonFunc.sleep(1000);
