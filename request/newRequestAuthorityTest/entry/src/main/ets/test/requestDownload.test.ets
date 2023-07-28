@@ -140,6 +140,7 @@ export default function requestDownloadJSUnit() {
             expect().assertFail();
           }
           expect(task !== undefined).assertEqual(true);
+          expect(typeof(task.config) === "object").assertEqual(true);
           console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0010 create success: " + task);
         }catch(error){
           console.info("====>SUB_Misc_REQUEST_Create_Download_Callback_0010 create fail: " + JSON.stringify(error));
