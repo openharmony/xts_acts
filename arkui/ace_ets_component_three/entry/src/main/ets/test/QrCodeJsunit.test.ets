@@ -129,12 +129,9 @@ export default function qrCodeJsunit() {
       }
       await Utils.sleep(2000);
       var strJson = getInspectorByKey('QrCodeColor');
-      var strJsonDefault = getInspectorByKey('QrCodeDefault');
       var obj = JSON.parse(strJson);
-      var objDefault = JSON.parse(strJsonDefault);
       console.info("[test_qrCode_004] component obj is: " + JSON.stringify(obj));
-      console.info("[test_qrCode_004] component objDefault is: " + JSON.stringify(objDefault));
-      expect(obj.$attrs.color).assertEqual(objDefault.$attrs.color);
+      expect(obj.$attrs.color).assertEqual('#FF000000');
       done();
     });
 
@@ -184,13 +181,10 @@ export default function qrCodeJsunit() {
       }
       await Utils.sleep(2000);
       var strJson = getInspectorByKey('QrCodeColor');
-      var strJsonDefault = getInspectorByKey('QrCodeDefault');
       var obj = JSON.parse(strJson);
-      var objDefault = JSON.parse(strJsonDefault);
       console.info("[test_qrCode_006] component obj is: " + JSON.stringify(obj));
-      console.info("[test_qrCode_006] component objDefault is: " + JSON.stringify(objDefault));
       // 非法入参默认初始值
-      expect(obj.$attrs.backgroundColor).assertEqual(objDefault.$attrs.backgroundColor);
+      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
       done();
     });
 
