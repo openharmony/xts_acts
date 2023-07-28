@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsDemoStageTest.hap"
+                "ActsCrossplatformBufferTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
