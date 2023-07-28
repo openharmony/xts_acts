@@ -67,8 +67,6 @@ describe('btManagerPairTest', function() {
      * @tc.number SUB_COMMUNICATION_BTMANAGER_PAIR_0100
      * @tc.name Test pinRequired and setDevicePairing true
      * @tc.desc Test pinRequired off api
-     * @tc.size MEDIUM
-     * @ since 8
      * @tc.type Function
      * @tc.level Level 3
      */
@@ -82,6 +80,69 @@ describe('btManagerPairTest', function() {
         } catch (error) {
             console.error(`[bluetooth_js]PairDevice error, code is ${error.code}, 
             message is ${error.message}`);
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BTMANAGER_PAIR_0200
+     * @tc.name Test setDevicePinCode callback
+     * @tc.desc Test setDevicePinCode api10
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BTMANAGER_PAIR_0200', 0, async function (done) {
+        try {
+            bluetoothManager.setDevicePinCode('11:22:33:44:55:66', '12345', (err, data) => {
+                console.info('setDevicePinCode callback,device name err:' + JSON.stringify(err) + ',device name:' + JSON.stringify(data));
+            });
+        } catch (err) {
+            console.error("setDevicePinCode callback errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BTMANAGER_PAIR_0300
+     * @tc.name Test setDevicePinCode promise
+     * @tc.desc Test setDevicePinCode api10
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BTMANAGER_PAIR_0300', 0, async function (done) {
+        try {
+            bluetoothManager.setDevicePinCode('11:22:33:44:55:66', '12345').then(() => {
+                console.info('setDevicePinCode promise');
+            }, error => {
+                console.info('setDevicePinCode promise: errCode:' + error.code + ',errMessage' + error.message);
+            })
+        
+        } catch (err) {
+            console.error("setDevicePinCode promise errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BTMANAGER_PAIR_0400
+     * @tc.name Test BluetoothTransport
+     * @tc.desc Test BluetoothTransport api10
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BTMANAGER_PAIR_0400', 0, async function (done) {
+        try {
+            let TRANSPORT_BR_EDR = bluetoothManager.BluetoothTransport.TRANSPORT_BR_EDR;
+            console.info("[bluetooth_js]TRANSPORT_BR_EDR : " + JSON.stringify(TRANSPORT_BR_EDR));
+            expect(true).assertTrue(TRANSPORT_BR_EDR == 0);
+
+            let TRANSPORT_LE = bluetoothManager.BluetoothTransport.TRANSPORT_LE;
+            console.info("[bluetooth_js]TRANSPORT_LE : " + JSON.stringify(TRANSPORT_LE));
+            expect(true).assertTrue(TRANSPORT_LE == 1);
+        } catch (err) {
+            console.error("BluetoothTransport errCode:" + err.code + ",errMessage:" + err.message);
         }
         done();
     })

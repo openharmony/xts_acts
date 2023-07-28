@@ -56,7 +56,7 @@ describe('btManagerGattServiceTest', function() {
         console.info('beforeAll called')
         await tryToEnableBt()
         gattServer = bluetooth.BLE.createGattServer();
-        gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
+        gattClient = bluetooth.BLE.createGattClientDevice("92:3A:C0:3A:4C:28");
         done()
     })
     beforeEach(async function(done) {

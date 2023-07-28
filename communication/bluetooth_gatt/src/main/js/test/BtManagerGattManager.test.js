@@ -475,6 +475,14 @@ describe('btManagerGattManagerTest', function() {
                 console.log('bluetooth characteristic characteristicUuid:'+ BLECharacteristic.characteristicUuid);
                 console.log('bluetooth characteristic characteristicValue:'+ BLECharacteristic.characteristicValue);
                 console.log('bluetooth characteristic descriptors:'+ BLECharacteristic.descriptors);
+                console.log('bluetooth characteristic properties:'+ BLECharacteristic.properties);
+
+                console.log('bluetooth BLECharacteristic write:'+ BLECharacteristic.properties.write);
+                console.log('bluetooth BLECharacteristic writeNoResponse:'+ BLECharacteristic.properties.writeNoResponse);
+                console.log('bluetooth BLECharacteristic read:'+ BLECharacteristic.properties.read);
+                console.log('bluetooth BLECharacteristic notify:'+ BLECharacteristic.properties.notify);
+                console.log('bluetooth BLECharacteristic indicate:'+ BLECharacteristic.properties.indicate);
+
                 let value = new Uint8Array(BLECharacteristic.characteristicValue);
                 console.log('bluetooth characteristic value: ' 
                 + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
