@@ -16,8 +16,6 @@ group("commonlibrary") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "crossplatform:crossplatform",
-      "crossplatform/commonlibraryxmletstest:ActsCrossplatformXmlTest",
       "ets_utils:ets_utils",
       "toolchain:toolchain",
     ]
