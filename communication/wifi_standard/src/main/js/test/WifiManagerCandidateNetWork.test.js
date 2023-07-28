@@ -68,12 +68,12 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0001
-        * @tc.name testaddCandidateConfig
-        * @tc.desc Test add OPEN and WEP CandidateConfig Promise API functionality.
-        * @tc.type Function
-        * @tc.level Level 2
-        */
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0001
+         * @tc.name testaddCandidateConfig
+         * @tc.desc Test add OPEN and WEP CandidateConfig Promise API functionality.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0001', 0, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TEST_OPEN",
@@ -131,13 +131,51 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0002
-        * @tc.name testaddCandidateConfig
-        * @tc.desc Test add PSK CandidateConfig and removeCandidateConfig Promise API functionality.
-        * @tc.type Function
-        * @tc.level Level 2
-        */
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0002
+         * @tc.name testaddCandidateConfig
+         * @tc.desc Test add PSK CandidateConfig and removeCandidateConfig Promise API functionality.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0002', 0, async function (done) {
+            let EapMethod = {
+                "EAP_NONE": 0,
+                "EAP_PEAP": 1,
+                "EAP_TLS": 2,
+                "EAP_TTLS": 3,
+                "EAP_PWD": 4,
+                "EAP_SIM": 5,
+                "EAP_AKA": 6,
+                "EAP_AKA_PRIME": 7,
+                "EAP_UNAUTH_TLS": 8,
+            };
+            let Phase2Method = {
+                "PHASE2_NONE": 0,
+                "PHASE2_PAP": 1,
+                "PHASE2_MSCHAP": 2,
+                "PHASE2_MSCHAPV2": 3,
+                "PHASE2_GTC": 4,
+                "PHASE2_SIM": 5,
+                "PHASE2_AKA": 6,
+                "PHASE2_AKA_PRIME": 7,
+            };
+            let WifiEapConfig = {
+                "eapMethod": wifiMg.EapMethod.EAP_NONE,
+                "phase2Method": wifiMg.Phase2Method.PHASE2_NONE,
+                "identity": "aaa",
+                "anonymousIdentity": "bbb",
+                "password": "12345678",
+                "caCertAliases": "ddd",
+                "caPath": "eee",
+                "clientCertAliases": "fff",
+                "certEntry": new Uint8Array(),
+                "certPassword": "12345678",
+                "altSubjectMatch": "ggg",
+                "domainSuffixMatch": "hhh",
+                "realm": "iii",
+                "plmn": "jjj",
+                "eapSubId": "kkk",
+            };
             let wifiDeviceConfig = {
                 "ssid": "TEST_PSK",
                 "bssid": "22:9b:e6:48:1f:5c",
@@ -151,6 +189,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                 "randomMacType": 0,
                 "randomMacAddr": "11:22:33:44:55:66",
                 "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
+                "eapConfig": wifiMg.WifiEapConfig,
             };
             await wifiMg.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
@@ -178,12 +217,12 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0003
-        * @tc.name testaddCandidateConfig
-        * @tc.desc Test add SAE CandidateConfig Promise API functionality.
-        * @tc.type Function
-        * @tc.level Level 2
-        */
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0003
+         * @tc.name testaddCandidateConfig
+         * @tc.desc Test add SAE CandidateConfig Promise API functionality.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0003', 0, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TEST_SAE",
@@ -217,12 +256,12 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0004
-        * @tc.name testaddCandidateConfig
-        * @tc.desc Test add MAX CandidateConfig and removeall CandidateConfig.
-        * @tc.type Function
-        * @tc.level Level 2
-        */
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0004
+         * @tc.name testaddCandidateConfig
+         * @tc.desc Test add MAX CandidateConfig and removeall CandidateConfig.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0004', 0, async function (done) {
             let SSID = "TYPE_PSK"
             for (let i = 0; i < 16; i++) {
@@ -278,12 +317,12 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0005
-        * @tc.name testaddCandidateConfig
-        * @tc.desc Test add CandidateConfig and removeCandidateConfig callback API functionality.
-        * @tc.type Function
-        * @tc.level Level 2
-        */
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0005
+         * @tc.name testaddCandidateConfig
+         * @tc.desc Test add CandidateConfig and removeCandidateConfig callback API functionality.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0005', 0, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "TEST_connect",
@@ -329,12 +368,12 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0006
-        * @tc.name testaddCandidateConfig
-        * @tc.desc Test connect To CandidateConfig API functionality.
-        * @tc.type Function
-        * @tc.level Level 2
-        */
+         * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0006
+         * @tc.name testaddCandidateConfig
+         * @tc.desc Test connect To CandidateConfig API functionality.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', 0, async function (done) {
             let wifiDeviceConfig = {
                 "ssid": "HONOR 3000",
@@ -381,4 +420,3 @@ export default function actsWifiManagerCandidateNetWorkTest() {
         })
     })
 }
-
