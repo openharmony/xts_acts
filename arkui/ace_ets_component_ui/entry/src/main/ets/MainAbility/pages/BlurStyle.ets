@@ -27,6 +27,14 @@ struct BlurStyle1 {
         .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK)
       Text("BlurStyle.BACKGROUND_ULTRA_THICK").margin(5).id("BACKGROUND_ULTRA_THICK")
         .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK)
+      Column({ space: 100 }) {
+        // 绘制一个直径为150的圆,默认填充色为黑色
+        Circle({ width: 150, height: 200 })
+        // 绘制一个直径为150的圆，
+        Circle({ width: 150, height: 200 })
+          .backgroundColor(Color.White)
+          .foregroundColor(ColoringStrategy.INVERT)
+      }.width('100%').backgroundColor(Color.Blue)
     }.width('90%').height("90%")
   }
 }
