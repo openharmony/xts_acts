@@ -21,7 +21,9 @@
             "run-command": [
                 "power-shell wakeup",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
-                "power-shell setmode 602"
+                "power-shell setmode 602",
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files",
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry"
             ],
             "teardown-command":[
                 "power-shell setmode 600"
@@ -32,6 +34,7 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
+                "./resource/media/audioplayer/wav/pcm_48ksr_32kbr_2ch.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/"
             ]
         }
     ]
