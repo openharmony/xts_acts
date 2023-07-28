@@ -337,7 +337,7 @@ export default function requestDownloadJSUnit() {
           console.info("====>SUB_REQUEST_DOWNLOAD_API_DOWNLOADTASK_OFF_0001 downloadTask: " + downloadTask);
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('progress', async (data1, data2) => {
-            downloadTask.off('progress', async (data1, data2) => {});
+            downloadTask.off('progress');
             await downloadTask.remove();
             fileio.unlinkSync(filePath);
             done();
@@ -368,7 +368,7 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('complete', () => {});
-          downloadTask.off('complete',async  () => {});
+          downloadTask.off('complete');
           await downloadTask.remove();
           fileio.unlinkSync(filePath);
           done();
@@ -397,7 +397,7 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('pause', () => {});
-          downloadTask.off('pause', async () => {});
+          downloadTask.off('pause');
           await downloadTask.remove();
           fileio.unlinkSync(filePath);
           done();
@@ -426,7 +426,7 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('remove', () => {});
-          downloadTask.off('remove', async () => {});
+          downloadTask.off('remove');
           await downloadTask.remove();
           fileio.unlinkSync(filePath);
           done();
@@ -455,7 +455,7 @@ export default function requestDownloadJSUnit() {
         try{
           expect(downloadTask != undefined).assertEqual(true);
           downloadTask.on('fail', (data) => {});
-          downloadTask.off('fail', async (err) => {});
+          downloadTask.off('fail');
           await downloadTask.remove();
           fileio.unlinkSync(filePath);
           done();

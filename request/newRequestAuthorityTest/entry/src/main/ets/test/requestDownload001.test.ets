@@ -1039,6 +1039,159 @@ export default function requestDownloadOneJSUnitTest() {
     })
 
     /**
+     * @tc.number    SUB_Misc_REQUEST_Create_Callback_0070
+     * @tc.desc      remove a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Misc_REQUEST_Create_Callback_0070", 0, async function (done) {
+      let urls = 'x';
+      for (let i = 0; i < 2030; i++){
+        urls += 'x';
+      }
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://' + urls + '/test.apk',
+        title: 'createTest',
+        description: "XTS download test!",
+        mode: request.agent.Mode.BACKGROUND,
+        overwrite: true,
+        saveas: "./SUB_Misc_REQUEST_Create_Callback_0070.txt",
+        network: request.agent.Network.WIFI,
+      };
+      console.info("====>-------------------SUB_Misc_REQUEST_Create_Callback_0070 is start ---------------------");
+      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        try {
+          if(err){
+            console.info(`====>SUB_Misc_REQUEST_Create_Callback_0070 task creat fail: ` + JSON.stringify(err));
+            expect().assertFail();
+          }
+          console.info(`====>SUB_Misc_REQUEST_Create_Callback_0070 Succeeded download task length: ` + task.config.url.length);
+          await request.agent.remove(task.tid);
+          done();
+        } catch (err) {
+          console.info(`====>SUB_Misc_REQUEST_Create_Callback_0070 Succeeded in starting a download task.` + JSON.stringify(err));
+          done();
+        }
+      });
+    })
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_Create_Promise_0070
+     * @tc.desc      remove a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Misc_REQUEST_Create_Promise_0070", 0, async function (done) {
+      let urls = 'x';
+      for (let i = 0; i < 2030; i++){
+        urls += 'x';
+      }
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://' + urls + '/test.apk',
+        title: 'createTest',
+        description: "XTS download test!",
+        mode: request.agent.Mode.BACKGROUND,
+        overwrite: true,
+        saveas: "./SUB_Misc_REQUEST_Create_Promise_0070.txt",
+        network: request.agent.Network.WIFI,
+      };
+      console.info("====>-------------SUB_Misc_REQUEST_Create_Promise_0070 is starting----------------");
+      try{
+        let task = await request.agent.create(globalThis.abilityContext, config);
+        console.info(`====>SUB_Misc_REQUEST_Create_Promise_0070 Succeeded download task length: ` + task.config.url.length);
+        await request.agent.remove(task.tid);
+        expect(true).assertTrue();
+        done();
+      }catch(err){
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_0070 create err: " + JSON.stringify(err));
+        expect().assertFail();
+        console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_0070 is end-----------------------");
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_Create_Callback_0080
+     * @tc.desc      remove a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Misc_REQUEST_Create_Callback_0080", 0, async function (done) {
+      let urls = 'x';
+      for (let i = 0; i < 2031; i++){
+        urls += 'x';
+      }
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://' + urls + '/test.apk',
+        title: 'createTest',
+        description: "XTS download test!",
+        mode: request.agent.Mode.BACKGROUND,
+        overwrite: true,
+        saveas: "./SUB_Misc_REQUEST_Create_Callback_0080.txt",
+        network: request.agent.Network.WIFI,
+      };
+      console.info("====>-------------------SUB_Misc_REQUEST_Create_Callback_0080 is start ---------------------");
+      try{
+        request.agent.create(globalThis.abilityContext, config, (err, task) => {
+          try {
+            console.info(`====>SUB_Misc_REQUEST_Create_Callback_0080 Succeeded in starting a download task.`);
+            expect().assertFail();
+          } catch (err) {
+            console.info(`====>SUB_Misc_REQUEST_Create_Callback_0080 Succeeded in starting a download task.` + JSON.stringify(err));
+            request.agent.remove(task.tid);
+            done();
+          }
+        });
+      }catch(err){
+        console.info("====>SUB_Misc_REQUEST_Create_Callback_0080 create err: " + JSON.stringify(err));
+        console.info("-----------------------SUB_Misc_REQUEST_Create_Callback_0080 is end-----------------------");
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    SUB_Misc_REQUEST_Create_Promise_0080
+     * @tc.desc      remove a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it("SUB_Misc_REQUEST_Create_Promise_0080", 0, async function (done) {
+      let urls = 'x';
+      for (let i = 0; i < 2031; i++){
+        urls += 'x';
+      }
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://' + urls + '/test.apk',
+        title: 'createTest',
+        description: "XTS download test!",
+        mode: request.agent.Mode.BACKGROUND,
+        overwrite: true,
+        saveas: "./SUB_Misc_REQUEST_Create_Promise_0080.txt",
+        network: request.agent.Network.WIFI,
+      };
+      console.info("====>-------------SUB_Misc_REQUEST_Create_Promise_0080 is starting----------------");
+      try{
+        await request.agent.create(globalThis.abilityContext, config);
+        console.info(`====>SUB_Misc_REQUEST_Create_Promise_0080 Succeeded in starting a download task.`);
+        expect().assertFail();
+      }catch(err){
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_0080 create err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_0080 is end-----------------------");
+        done();
+      }
+    })
+
+    /**
      * @tc.number    SUB_Misc_REQUEST_Create_Promise_0110
      * @tc.desc      remove a download session.
      * @tc.size      : MEDIUM
