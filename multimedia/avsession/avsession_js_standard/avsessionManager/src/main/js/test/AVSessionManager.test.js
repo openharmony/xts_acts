@@ -151,12 +151,6 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
             done();
         })
 
@@ -192,12 +186,6 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
             done();
         })
 
@@ -243,12 +231,6 @@ export default function AVSessionManager() {
             }
 
             await sleep(10000);
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
             done();
         })
         /* *
@@ -286,12 +268,6 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
             done();
         })
         /* *
@@ -339,12 +315,6 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
             done();
         })
         /* *
@@ -390,12 +360,7 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            await session.destroy();
             done();
         })
     })
