@@ -48,8 +48,7 @@
         ],
         "deviceType": [
             "default",
-            "tablet",
-            "2in1"
+            "tablet"
         ],
         "mainAbility": "com.example.l2jsdemo.MainAbility",
         "distro": {

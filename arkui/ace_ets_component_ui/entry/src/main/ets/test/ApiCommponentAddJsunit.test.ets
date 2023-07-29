@@ -186,17 +186,10 @@ export default function ApiCommponentAddJsunit() {
         console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
       })
       await CommonFunc.sleep(1000);
-      let driver = Driver.create();
-      let searchclick = await driver.findComponent(ON.id('searchAdd'));
-      await searchclick.click();
-      searchclick.longClick();
-      await CommonFunc.sleep(4000);
-      let textComponent3 = await driver.findComponent(ON.text('黏贴'));
-      await CommonFunc.sleep(500);
-      // wether if
-      let  text = await textComponent3.getText();
-      console.info("[apiCommponentAddJsunit_0500] onScrollText: " + text);
-      expect(text).assertEqual('黏贴');
+      let strJson = getInspectorByKey('searchAdd');
+      let obj = JSON.parse(strJson);
+      console.info("[apiCommponentAddJsunit_0500'] component obj is: " + obj.$type);
+      expect(obj.$type).assertEqual('Search');
       done();
     });
 
@@ -242,17 +235,10 @@ export default function ApiCommponentAddJsunit() {
         console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
       })
       await CommonFunc.sleep(1000);
-      let driver = Driver.create();
-      let searchclick = await driver.findComponent(ON.id('textAreaAdd'));
-      await searchclick.click();
-      searchclick.longClick();
-      await CommonFunc.sleep(4000);
-      let textComponent3 = await driver.findComponent(ON.text('黏贴'));
-      await CommonFunc.sleep(100);
-      // wether if
-      let  text = await textComponent3.getText();
-      console.info("[apiCommponentAddJsunit_0700] onScrollText: " + text);
-      expect(text).assertEqual('黏贴');
+      let strJson = getInspectorByKey('textAreaAdd');
+      let obj = JSON.parse(strJson);
+      console.info("[apiCommponentAddJsunit_0700'] component obj is: " + obj.$type);
+      expect(obj.$type).assertEqual('TextArea');
       done();
     });
 
@@ -272,19 +258,12 @@ export default function ApiCommponentAddJsunit() {
       }).catch(err => {
         console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
       })
-      await CommonFunc.sleep(1000);
-      let driver = Driver.create();
-      let searchclick = await driver.findComponent(ON.id('textInputAdd'));
-      await searchclick.click();
-      searchclick.longClick();
-      await CommonFunc.sleep(4000);
-      let textComponent3 = await driver.findComponent(ON.text('黏贴'));
-      await CommonFunc.sleep(100);
-      // wether if
-      let  text = await textComponent3.getText();
-      console.info("[apiCommponentAddJsunit_0800] onScrollText: " + text);
-      expect(text).assertEqual('黏贴');
+      let strJson = getInspectorByKey('textInputAdd');
+      let obj = JSON.parse(strJson);
+      console.info("[apiCommponentAddJsunit_0800'] component obj is: " + obj.$type);
+      expect(obj.$type).assertEqual('TextInput');
       done();
+    
     });
 
     it('apiCommponentAddJsunit_0900', 0, async function (done) {

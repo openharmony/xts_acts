@@ -245,9 +245,9 @@ export default function relationalStoreCloudSyncEtsTest(context) {
     it('testRdbStoreStatistic0010', 0, async function (done) {
       console.log(TAG + "************* testRdbStoreStatistic0010 start *************");
       try {
-        let statistic1 : relationalStore.Statistic = {"total":10, "success":6, "failed":3, "remained":1};
+        let statistic1 : relationalStore.Statistic = {"total":10, "successful":6, "failed":3, "remained":1};
         expect(statistic1.total == 10 ).assertTrue();
-        expect(statistic1.success == 6 ).assertTrue();
+        expect(statistic1.successful == 6 ).assertTrue();
         expect(statistic1.failed == 3 ).assertTrue();
         expect(statistic1.remained == 1 ).assertTrue();
         done();
@@ -267,8 +267,8 @@ export default function relationalStoreCloudSyncEtsTest(context) {
     it('testRdbStoreTableDetails0010', 0, async function (done) {
       console.log(TAG + "************* testRdbStoreTableDetails0010 start *************");
       try {
-        let statistic1 : relationalStore.Statistic = {"total":10, "success":6, "failed":3, "remained":1};
-        let statistic2 : relationalStore.Statistic = {"total":100, "success":60, "failed":30, "remained":10};
+        let statistic1 : relationalStore.Statistic = {"total":10, "successful":6, "failed":3, "remained":1};
+        let statistic2 : relationalStore.Statistic = {"total":100, "successful":60, "failed":30, "remained":10};
         let tableDetail : relationalStore.TableDetails = {"upload": statistic1, "download": statistic2};
 
         expect(tableDetail.upload == statistic1 ).assertTrue();
@@ -315,8 +315,8 @@ export default function relationalStoreCloudSyncEtsTest(context) {
     it('testRdbStoreProgressDetails0010', 0, async function (done) {
       console.log(TAG + "************* testRdbStoreProgressDetails0010 start *************");
       try {
-        let statistic1 : relationalStore.Statistic = {"total":10, "success":6, "failed":3, "remained":1};
-        let statistic2 : relationalStore.Statistic = {"total":100, "success":60, "failed":30, "remained":10};
+        let statistic1 : relationalStore.Statistic = {"total":10, "successful":6, "failed":3, "remained":1};
+        let statistic2 : relationalStore.Statistic = {"total":100, "successful":60, "failed":30, "remained":10};
         let tableDetail : relationalStore.TableDetails = {"upload": statistic1, "download": statistic2};
         let tableName = "cloud_text";
         let progressDetail : relationalStore.ProgressDetails = {"schedule":2,"code":0,"details":{ [tableName]:tableDetail}};

@@ -136,7 +136,7 @@ export default function ListDeleteTest() {
 
       let callback = (event) => {
         console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg)
-        expect(event.data.msg).assertEqual('MyList5_ListItem0onDelete')
+        expect(event.data.msg).assertEqual('MyList5_ListItem0onAction')
         done()
       }
       let event = {

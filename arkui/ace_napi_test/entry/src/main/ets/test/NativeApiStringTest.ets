@@ -670,9 +670,10 @@ export default function nativeApiStringJsunit() {
     */
     it('aceNapiTest047', 0, async function (done) {
       console.info('aceNapiTest047 START');
-      value = napitest.coerceToString(123);
+      let number = 123;
+      value = napitest.coerceToString(number);
       console.info('aceNapiTest047 testString result is: ' + value + "--" + JSON.stringify(value));
-      expect(value).assertEqual('123');
+      expect(value).assertEqual(number.toString());
       done();
     });
 
@@ -1135,9 +1136,9 @@ export default function nativeApiStringJsunit() {
           expect(result < 0).assertTrue();
           done();
         }
-      );  
+      );
     });
-    
+
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0080
      * @tc.name      aceNapiTest080
@@ -1151,7 +1152,7 @@ export default function nativeApiStringJsunit() {
       expect(value === 1).assertTrue();
       done();
     });
-    
+
     /**
     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0081
     * @tc.name      aceNapiTest081
@@ -1365,7 +1366,10 @@ export default function nativeApiStringJsunit() {
       console.info('aceNapiTest094 START');
       let valueeEmpty = napitest.createAndGetStringUtf16(' ');
       console.info('aceNapiTest094 testString result is: ' + valueeEmpty + "--" + JSON.stringify(valueeEmpty));
+      let value = napitest.createAndGetStringUtf16('中文');
+      console.info('aceNapiTest094 testString result is: ' + value + "--" + JSON.stringify(value));
       expect(valueeEmpty).assertEqual(' ');
+      expect(value).assertEqual('中文');
       done();
     });
 
@@ -1421,6 +1425,248 @@ export default function nativeApiStringJsunit() {
       expect(isTag3).assertFalse();
       console.info('aceNapiTest096 testTypeTag result is: ' + isTag4 + "--" + JSON.stringify(isTag4));
       expect(isTag4).assertFalse();
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0097
+    * @tc.name      aceNapiTest097
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest097', 0, async function (done) {
+      console.info('aceNapiTest097 START');
+      value = napitest.coerceToString('String Test');
+      console.info('aceNapiTest097 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('String Test');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0098
+    * @tc.name      aceNapiTest098
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest098', 0, async function (done) {
+      console.info('aceNapiTest098 START');
+      value = napitest.coerceToString(false);
+      console.info('aceNapiTest098 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('false');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0099
+    * @tc.name      aceNapiTest099
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest099', 0, async function (done) {
+      console.info('aceNapiTest099 START');
+      value = napitest.coerceToString(undefined);
+      console.info('aceNapiTest099 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('undefined');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0100
+    * @tc.name      aceNapiTest100
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest100', 0, async function (done) {
+      console.info('aceNapiTest100 START');
+      value = napitest.coerceToString(null);
+      console.info('aceNapiTest100 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('null');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0101
+    * @tc.name      aceNapiTest101
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest101', 0, async function (done) {
+      console.info('aceNapiTest101 START');
+      value = napitest.coerceToString(true);
+      console.info('aceNapiTest101 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('true');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0102
+    * @tc.name      aceNapiTest102
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest102', 0, async function (done) {
+      console.info('aceNapiTest102 START');
+      let bigintNum = napitest.napiCreateBigintInt64();
+      value = napitest.coerceToString(bigintNum);
+      console.info('aceNapiTest102 testString result is: ' + JSON.stringify(bigintNum));
+      console.info('aceNapiTest102 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(bigintNum.toString());
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0103
+    * @tc.name      aceNapiTest103
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest103', 0, async function (done) {
+      console.info('aceNapiTest103 START');
+      const arr = [1, 2, 3];
+      value = napitest.coerceToString(arr);
+      console.info('aceNapiTest103 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual(arr.toString());
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0104
+    * @tc.name      aceNapiTest104
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest104', 0, async function (done) {
+      console.info('aceNapiTest104 START');
+      let value = napitest.stringUtf16OfLengthLeZero('string utf16 test');
+      console.info('aceNapiTest104 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('string utf16 test');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0105
+    * @tc.name      aceNapiTest105
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest105', 0, async function (done) {
+      console.info('aceNapiTest105 START');
+      let copied = napitest.stringUtf16OfLengthEqOne('string utf16 test1');
+      console.info('aceNapiTest105 testString result is: ' + copied + "--" + JSON.stringify(copied));
+      expect(copied).assertEqual(0);
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0106
+    * @tc.name      aceNapiTest106
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest106', 0, async function (done) {
+      console.info('aceNapiTest106 START');
+      let value = napitest.stringUtf8OfLengthLeZero('string utf8 test');
+      console.info('aceNapiTest106 testString result is: ' + value + "--" + JSON.stringify(value));
+      expect(value).assertEqual('string utf8 test');
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0107
+    * @tc.name      aceNapiTest107
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest107', 0, async function (done) {
+      console.info('aceNapiTest107 START');
+      function InputString() {
+        const boolInput = true;
+        napitest.TestUtf8(boolInput);
+      }
+      expect(InputString).assertThrowError(
+        "assertion (valuetype == napi_string) failed: Wrong type of argment. Expects a string.");
+      done();
+    });
+
+    /**
+    * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0108
+    * @tc.name      aceNapiTest108
+    * @tc.desc      aceNapiEtsTest
+    */
+    it('aceNapiTest108', 0, async function (done) {
+      console.info('aceNapiTest108 START');
+      function InputString() {
+        const numberInput = 123;
+        napitest.TestUtf16(numberInput);
+      }
+      expect(InputString).assertThrowError(
+        "assertion (valuetype == napi_string) failed: Wrong type of argment. Expects a string.");
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0109
+     * @tc.name      aceNapiTest109
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest109', 0, async function (done) {
+      console.info('aceNapiTest109 START');
+      function InputString() {
+        const numberInput = 123;
+        napitest.TestLatin1(numberInput);
+      }
+      expect(InputString).assertThrowError(
+        "assertion (valuetype == napi_string) failed: Wrong type of argment. Expects a string.");
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0110
+     * @tc.name      aceNapiTest110
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest110', 0, async function (done) {
+      console.info('aceNapiTest110 START');
+      let func = napitest.NapiCreateFunctionTwo();
+      value = func();
+      console.info('aceNapiTest111 testString result is: ' + JSON.stringify(value));
+      expect(value).assertEqual(666);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0111
+     * @tc.name      aceNapiTest111
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest111', 0, async function (done) {
+      console.info('aceNapiTest111 START');
+      function testFunc() {
+        napitest.NewTargetTest();
+      }
+      expect(testFunc).assertThrowError("InstanceOf error when type of target is not Object");
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0112
+     * @tc.name      aceNapiTest112
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest112', 0, async function (done) {
+      console.info('aceNapiTest112 START');
+      function testFunc() {
+        throw new Error('error');
+      }
+      function testCall() {
+        napitest.callFunction(testFunc);
+      }
+      expect(testCall).assertThrowError("error");
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0113
+     * @tc.name      aceNapiTest113
+     * @tc.desc      aceNapiEtsTest
+     */
+    it('aceNapiTest113', 0, async function (done) {
+      console.info('aceNapiTest113 START');
+      function testFunc() {
+        return 'hello';
+      }
+      value = napitest.callFunction(testFunc);
+      console.info('aceNapiTest114 testString result is: ' + JSON.stringify(value));
+      expect(value.toString() === 'hello').assertTrue();
       done();
     });
   })

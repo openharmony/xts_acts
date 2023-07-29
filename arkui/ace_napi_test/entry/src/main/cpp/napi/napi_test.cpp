@@ -669,6 +669,33 @@ static napi_value createAndGetStringUtf8(napi_env env, napi_callback_info info)
     return output;
 }
 
+static napi_value StringUtf8OfLengthLeZero(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    NAPI_ASSERT(env, argc == 1, "Expects one argument.");
+
+    napi_valuetype valueType;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valueType));
+
+    NAPI_ASSERT(env, valueType == napi_string,
+            "Wrong type of argment. Expects a string.");
+
+    char buffer[128];
+    size_t bufferSize = 128;
+    size_t copied = 0;
+
+    NAPI_CALL(env,
+        napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, buffer, -1, &output));
+
+    return output;
+}
+
 static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -684,7 +711,7 @@ static napi_value CreateAndGetStringUtf16(napi_env env, napi_callback_info info)
 
     char16_t buffer[128]; // 128: char16_t type of element size
     size_t bufferSize = 128; // 128: char16_t type of element size
-    size_t copied  = 0;
+    size_t copied = 0;
 
     NAPI_CALL(env, napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
 
@@ -718,6 +745,52 @@ static napi_value StringUtf16OfCase(napi_env env, napi_callback_info info)
     NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &result));
 
     return result;
+}
+
+static napi_value StringUtf16OfLengthLeZero(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    NAPI_ASSERT(env, argc == 1, "Expects one argument.");
+
+    napi_valuetype valueType;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valueType));
+
+    NAPI_ASSERT(env, valueType == napi_string, "Expects a string.");
+
+    char16_t buffer[128];
+    size_t bufferSize = 128;
+    size_t copied = 0;
+
+    NAPI_CALL(env,
+        napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_string_utf16(env, buffer, -1, &result));
+
+    return result;
+}
+
+static napi_value StringUtf16OfLengthEqOne(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    NAPI_ASSERT(env, argc == 1, "Expects one argument.");
+
+    char16_t buffer[128];
+    size_t bufferSize = 1;
+    size_t copied = 1;
+
+    NAPI_CALL(env,
+        napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
+
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, copied, &value));
+    return value;
 }
 
 static const napi_type_tag typeTags[NUMBER_FIVE] = {
@@ -825,7 +898,7 @@ static napi_value getTypedArrayInfo(napi_env env, napi_callback_info info)
     size_t byteOffset = -1;
     NAPI_CALL(env, napi_get_typedarray_info(env, result, &type, &length, &data, &retArrayBuffer, &byteOffset));
     NAPI_ASSERT(env, type == napi_int32_array, "napi_get_typedarray_info success 0");
-    NAPI_ASSERT(env, length == arrayBufferSize, "napi_get_typedarray_info success 1");
+    NAPI_ASSERT(env, length == typedArrayLength, "napi_get_typedarray_info success 1");
     NAPI_ASSERT(env, data == arrayBufferPtr, "napi_get_dataview_info success 2");
 
     bool retIsArrayBuffer = false;
@@ -1556,6 +1629,21 @@ static napi_value MyConstructor(napi_env env, napi_callback_info info)
     return thisVar;
 }
 
+static napi_value NewTargetTest(napi_env env, napi_callback_info info)
+{
+    bool isConstructor = true;
+    napi_value constructor = nullptr;
+    napi_get_new_target(env, info, &constructor);
+    if (constructor == nullptr) {
+        napi_throw_error(env, nullptr, "is not new instance");
+        isConstructor = false;
+    }
+    napi_value value;
+    NAPI_CALL(env, napi_get_boolean(env, isConstructor, &value));
+
+    return value;
+}
+
 static napi_value wrap(napi_env env, napi_callback_info info)
 {
     napi_value testClass = nullptr;
@@ -1746,6 +1834,60 @@ static napi_value TestLatin1(napi_env env, napi_callback_info info)
 
     napi_value output;
     NAPI_CALL(env, napi_create_string_latin1(env, buffer, copied, &output));
+
+    return output;
+}
+
+static napi_value TestUtf8(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    NAPI_ASSERT(env, argc == 1, "Expects one argument.");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
+
+    NAPI_ASSERT(env, valuetype == napi_string,
+            "Wrong type of argment. Expects a string.");
+
+    char buffer[128];
+    size_t bufferSize = 128;
+    size_t copied;
+
+    NAPI_CALL(env,
+        napi_get_value_string_utf8(env, args[0], buffer, bufferSize, &copied));
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf8(env, buffer, copied, &output));
+
+    return output;
+}
+
+static napi_value TestUtf16(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+
+    NAPI_ASSERT(env, argc == 1, "Expects one argument.");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
+
+    NAPI_ASSERT(env, valuetype == napi_string,
+            "Wrong type of argment. Expects a string.");
+
+    char16_t buffer[128];
+    size_t bufferSize = 128;
+    size_t copied;
+
+    NAPI_CALL(env,
+        napi_get_value_string_utf16(env, args[0], buffer, bufferSize, &copied));
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_utf16(env, buffer, copied, &output));
 
     return output;
 }
@@ -2026,6 +2168,24 @@ static napi_value napiCreateFunction(napi_env env, napi_callback_info info)
     NAPI_CALL(env, napi_create_int32(env, 1, &value));
     
     return funcValue;
+}
+
+static napi_value NapiCreateFunctionTwo(napi_env env, napi_callback_info info)
+{
+    napi_value resultValue = nullptr;
+    napi_status status = napi_create_function(env, nullptr, NAPI_AUTO_LENGTH, SayHello, nullptr, &resultValue);
+    if (resultValue == nullptr) {
+        napi_throw_error(env, nullptr, "napi_create_function fail");
+        return nullptr;
+    }
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_create_function fail");
+        return nullptr;
+    }
+    napi_value value;
+    NAPI_CALL(env, napi_create_int32(env, 1, &value));
+
+    return resultValue;
 }
 
 static napi_value napiRefthreadSafeFunction(napi_env env, napi_callback_info info)
@@ -2706,6 +2866,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("resolveAndRejectDeferred", resolveAndRejectDeferred),
         DECLARE_NAPI_FUNCTION("isPromise", isPromise),
         DECLARE_NAPI_FUNCTION("TestLatin1", TestLatin1),
+        DECLARE_NAPI_FUNCTION("TestUtf16", TestUtf16),
+        DECLARE_NAPI_FUNCTION("TestUtf8", TestUtf8),
         DECLARE_NAPI_FUNCTION("runScript", runScript),
         DECLARE_NAPI_FUNCTION("getUvEventLoop", getUvEventLoop),
         DECLARE_NAPI_FUNCTION("napCreateArrayBuffer", napCreateArrayBuffer),
@@ -2729,6 +2891,7 @@ static napi_value Init(napi_env env, napi_value exports)
         { "testAsyncWork", nullptr, testAsyncWork, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "testPromise", nullptr, testPromise, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "napiCreateFunction", nullptr, napiCreateFunction, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "NapiCreateFunctionTwo", nullptr, NapiCreateFunctionTwo, nullptr, nullptr, nullptr, napi_default, nullptr },
         DECLARE_NAPI_FUNCTION("getGlobal", getGlobal),
         DECLARE_NAPI_FUNCTION("callFunction", callFunction),
         DECLARE_NAPI_FUNCTION("ThreadSafeTest", ThreadSafeTest),
@@ -2749,6 +2912,10 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("External", External),
         DECLARE_NAPI_FUNCTION("DetachTest", DetachTest),
         DECLARE_NAPI_FUNCTION("IsDetachedTest", IsDetachedTest),
+        DECLARE_NAPI_FUNCTION("stringUtf16OfLengthLeZero", StringUtf16OfLengthLeZero),
+        DECLARE_NAPI_FUNCTION("stringUtf16OfLengthEqOne", StringUtf16OfLengthEqOne),
+        DECLARE_NAPI_FUNCTION("stringUtf8OfLengthLeZero", StringUtf8OfLengthLeZero),
+        DECLARE_NAPI_FUNCTION("NewTargetTest", NewTargetTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

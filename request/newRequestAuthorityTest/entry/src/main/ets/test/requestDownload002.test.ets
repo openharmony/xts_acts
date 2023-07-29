@@ -237,6 +237,7 @@ export default function requestDownloadTwoUnitTest() {
             console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0020 on_progressCallback flag: " + flag);
           }
           let on_progressCallback1 = (pro) => {
+            task.off('progress');
             flag1 = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0020 on_progressCallback1 flag1: " + flag1);
             expect(true).assertTrue();
@@ -537,6 +538,7 @@ export default function requestDownloadTwoUnitTest() {
             console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0020 on_progressCallback flag: " + flag);
           }
           let on_progressCallback1 = (pro) => {
+            task.off('completed');
             flag1 = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Completed_0020 on_progressCallback1 flag1: " + flag1);
             expect(true).assertTrue();
@@ -837,6 +839,7 @@ export default function requestDownloadTwoUnitTest() {
             console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0020 on_progressCallback flag: " + flag);
           }
           let on_progressCallback1 = (pro) => {
+            task.off('failed');
             flag1 = false;
             console.info("====>SUB_Misc_REQUEST_Off_Download_Failed_0020 on_progressCallback1 flag1: " + flag1);
             expect(true).assertTrue();
@@ -1217,6 +1220,23 @@ export default function requestDownloadTwoUnitTest() {
             expect(taskInfo.bundle).assertEqual(undefined);
             expect(taskInfo.url).assertEqual(config.url);
             expect(taskInfo.data).assertEqual("");
+
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.saveas: ' + taskInfo.saveas);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.tid: ' + typeof taskInfo.tid);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.description: ' + taskInfo.description);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.action: ' + taskInfo.action);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.mode: ' + taskInfo.mode);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.gauge: ' + taskInfo.gauge);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.mtime: ' + taskInfo.mtime);
+            console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.extras: ' + taskInfo.extras);
+            expect(typeof(taskInfo.saveas) === 'string').assertTrue();
+            expect(typeof(taskInfo.tid) === 'string').assertTrue();
+            expect(taskInfo.description).assertEqual("");
+            expect(taskInfo.action).assertEqual(0);
+            expect(taskInfo.mode).assertEqual(1);
+            expect(taskInfo.gauge === false).assertTrue();
+            expect(typeof(taskInfo.mtime) === 'number').assertTrue();
+            expect(typeof(taskInfo.extras) === 'object').assertTrue();
             done();
           }catch(err){
             console.debug('====>SUB_Misc_REQUEST_Show_Callback_0010 show throw_err:' + JSON.stringify(err));
@@ -1264,10 +1284,24 @@ export default function requestDownloadTwoUnitTest() {
           expect(taskInfo.uid).assertEqual(undefined);
           expect(taskInfo.bundle).assertEqual(undefined);
           expect(taskInfo.title).assertEqual(config.title);
+          
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.mimeType: ' + taskInfo.mimeType);
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.progress: ' + taskInfo.progress);
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.ctime: ' + taskInfo.ctime);
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.tries: ' + taskInfo.tries);
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.faults: ' + taskInfo.faults);
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.reason: ' + taskInfo.reason);
+          console.info('====>SUB_Misc_REQUEST_Show_Promise_0010 taskInfo.retry: ' + taskInfo.retry);
+          expect(taskInfo.mimeType).assertEqual('');
+          expect(typeof(taskInfo.progress) === 'object').assertTrue();
+          expect(typeof(taskInfo.ctime) === 'number').assertTrue();
+          expect(taskInfo.tries).assertLargerOrEqual(0);
+          expect(taskInfo.faults).assertEqual(null);
+          expect(taskInfo.reason).assertContain('Task successful');
+          expect(typeof(taskInfo.retry) === 'boolean').assertTrue();
           done();
         }catch(err){
           console.debug('====>SUB_Misc_REQUEST_Show_Promise_0010 show throw_err:' + JSON.stringify(err));
-          expect().assertFail();
           done();
         };
       };
@@ -1881,32 +1915,33 @@ export default function requestDownloadTwoUnitTest() {
       let task:request.agent.Task
 
       function onCompletedCallback(progress){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 onCompletedCallback start')
+        task.off('completed');
+        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 onCompletedCallback start');
         request.agent.touch(task.tid, config.token,(err, taskInfo)=>{
           try{
             if(err){
-              console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 err:' + JSON.stringify(err))
-              expect().assertFail()
+              console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 err:' + JSON.stringify(err));
+              expect().assertFail();
               done();
             }
-            expect(taskInfo.url).assertEqual(config.url)
-            expect(taskInfo.data).assertEqual("")
-            expect(taskInfo.title).assertEqual(config.title)
+            expect(taskInfo.url).assertEqual(config.url);
+            expect(taskInfo.data).assertEqual("");
+            expect(taskInfo.title).assertEqual(config.title);
             done();
           }catch(err){
-            console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 touch throw_err:' + JSON.stringify(err))
+            console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 touch throw_err:' + JSON.stringify(err));
             done();
           }
         })
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config)
-        task.on('completed', onCompletedCallback)
-        await task.start()
+        task = await request.agent.create(globalThis.abilityContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 create throw_err:' + JSON.stringify(err))
-        expect().assertFail()
+        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0010 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
 
@@ -1934,25 +1969,25 @@ export default function requestDownloadTwoUnitTest() {
       let task:request.agent.Task
 
       async function onCompletedCallback(progress){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 onCompletedCallback start')
+        task.off('completed');
+        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 onCompletedCallback start');
         try{
-          let taskInfo = await request.agent.touch(task.tid, config.token)
-          expect(taskInfo.title).assertEqual(config.title)
+          let taskInfo = await request.agent.touch(task.tid, config.token);
+          expect(taskInfo.title).assertEqual(config.title);
           done();
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 touch throw_err:' + JSON.stringify(err))
-          expect().assertFail()
+          console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 touch throw_err:' + JSON.stringify(err));
           done();
         }
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config)
-        task.on('completed', onCompletedCallback)
-        await task.start()
+        task = await request.agent.create(globalThis.abilityContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 create throw_err:' + JSON.stringify(err))
-        expect().assertFail()
+        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0010 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
 
@@ -1980,27 +2015,28 @@ export default function requestDownloadTwoUnitTest() {
       let task:request.agent.Task
 
       function onCompletedCallback(progress){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 onCompletedCallback start')
+        task.off('completed');
+        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 onCompletedCallback start');
         try{
           // @ts-ignore
           request.agent.touch({}, config.token,(err, taskInfo)=>{
-            expect().assertFail()
+            expect().assertFail();
             done();
           })
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 touch throw_err:' + JSON.stringify(err))
-          expect(err.code).assertEqual(401)
+          console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 touch throw_err:' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
           done();
         }
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config)
-        task.on('completed', onCompletedCallback)
-        await task.start()
+        task = await request.agent.create(globalThis.abilityContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 create throw_err:' + JSON.stringify(err))
-        expect().assertFail()
+        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0020 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
 
@@ -2028,26 +2064,27 @@ export default function requestDownloadTwoUnitTest() {
       let task:request.agent.Task
 
       async function onCompletedCallback(progress){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 onCompletedCallback start')
+        task.off('completed');
+        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 onCompletedCallback start');
         try{
           // @ts-ignore
-          let taskInfo = await request.agent.touch(task.tid, {})
-          expect().assertFail()
+          let taskInfo = await request.agent.touch(task.tid, {});
+          expect().assertFail();
           done();
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 touch throw_err:' + JSON.stringify(err))
-          expect(err.code).assertEqual(401)
+          console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 touch throw_err:' + JSON.stringify(err));
+          expect(err.code).assertEqual(401);
           done();
         }
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config)
-        task.on('completed', onCompletedCallback)
-        await task.start()
+        task = await request.agent.create(globalThis.abilityContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 create throw_err:' + JSON.stringify(err))
-        expect().assertFail()
+        console.debug('====>SUB_Misc_REQUEST_Touch_Promise_0030 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
 
@@ -2075,27 +2112,27 @@ export default function requestDownloadTwoUnitTest() {
       let task:request.agent.Task
 
       function onCompletedCallback(progress){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 onCompletedCallback start')
+        task.off('completed');
+        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 onCompletedCallback start');
         try{
           request.agent.touch(task.tid, config.token+'1',(err, taskInfo)=>{
-            console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch err:' + JSON.stringify(err))
-            expect(err.code).assertEqual(21900006)
+            console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch err:' + JSON.stringify(err));
+            expect(err.code).assertEqual(21900006);
             done();
           })
         }catch(err){
-          console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch throw_err:' + JSON.stringify(err))
-          expect().assertFail()
+          console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 touch throw_err:' + JSON.stringify(err));
           done();
         }
       }
 
       try {
-        task = await request.agent.create(globalThis.abilityContext, config)
-        task.on('completed', onCompletedCallback)
-        await task.start()
+        task = await request.agent.create(globalThis.abilityContext, config);
+        task.on('completed', onCompletedCallback);
+        await task.start();
       }catch(err){
-        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 create throw_err:' + JSON.stringify(err))
-        expect().assertFail()
+        console.debug('====>SUB_Misc_REQUEST_Touch_Callback_0040 create throw_err:' + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
 

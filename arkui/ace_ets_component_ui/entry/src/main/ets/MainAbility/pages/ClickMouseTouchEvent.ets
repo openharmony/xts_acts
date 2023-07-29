@@ -12,6 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+function Rect1(x, y, z){
+  return {width: x, height: y, radios: z}
+}
 
 @Entry
 @Component
@@ -24,12 +27,14 @@ struct ClickExample {
 
   build() {
     Column() {
+      Rect(Rect1(200, 80, 1)).margin(10)
+
       Text(this.displayX).id("displayX")
       Text(this.displayY).id("displayY")
       Text(this.windowX).id("windowX")
       Text(this.windowY).id("windowY")
-
       Text(this.intentionCode).id("intentionCode")
+
       Row({ space: 20 }) {
         Button('Click').width(100).height(40).id("Button_click")
           .onClick((event: ClickEvent) => {

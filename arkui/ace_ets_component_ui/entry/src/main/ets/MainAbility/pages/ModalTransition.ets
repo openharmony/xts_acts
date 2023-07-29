@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct ModalTransition1 {
+struct ModalTransition111 {
   @State isShow:boolean = false
   @State isShow2:boolean = false
 
@@ -41,7 +41,7 @@ struct ModalTransition1 {
         .fontSize(20)
         .onClick(()=>{
           this.isShow2 = true;
-        }).bindContentCover(this.isShow2, this.myBuilder2(), {modalTransition: ModalTransition.ALPHA, backgroundColor: Color.Gray, onAppear: () => {console.log("BindContentCover onAppear.")}, onDisappear: () => {console.log("BindContentCover onDisappear.")}})
+        }).bindContentCover(this.isShow2, this.myBuilder2(), {modalTransition: ModalTransition.NONE, backgroundColor: Color.Gray, onAppear: () => {console.log("BindContentCover onAppear.")}, onDisappear: () => {console.log("BindContentCover onDisappear.")}})
 
       Button("close modal 1")
         .margin(10)
@@ -64,6 +64,14 @@ struct ModalTransition1 {
         .fontSize(20)
         .margin(10)
         .bindContentCover($$this.isShow, this.myBuilder(), {modalTransition: ModalTransition.ALPHA, backgroundColor: Color.Pink, onAppear: () => {console.log("BindContentCover onAppear.")}, onDisappear: () => {console.log("BindContentCover onDisappear.")}})
+
+      Button("transition modal 3")
+        .onClick(() => {
+          this.isShow = true
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindContentCover($$this.isShow, this.myBuilder(), {modalTransition: ModalTransition.DEFAULT, backgroundColor: Color.Pink, onAppear: () => {console.log("BindContentCover onAppear.")}, onDisappear: () => {console.log("BindContentCover onDisappear.")}})
     }
     .justifyContent(FlexAlign.Center)
     .backgroundColor(Color.White)
