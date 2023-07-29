@@ -29,7 +29,13 @@ export default function AVSessionManager() {
         }
 
         beforeAll(function () {
-            console.info('TestLog: Start Testing avSessionManager Interfaces');
+            console.info('TestLog: Init Session And Controller');
+//            avSession.createAVSession(context, tag, type).then((data) => {
+//                session = data;
+//            }).catch((err) => {
+//                console.info(`TestLog: Session create error: code: ${err.code}, message: ${err.message}`);
+//                expect(false).assertTrue();
+//            });
         })
 
         beforeEach(function () {
@@ -41,7 +47,13 @@ export default function AVSessionManager() {
         })
 
         afterAll(function () {
-            console.info('TestLog: End Testing avSessionManager Interfaces');
+            console.info('TestLog: Destroy Session And Controller');
+            session.destroy().then(() => {
+                console.info('TestLog: Session destroy success');
+            }).catch((err) => {
+                console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
         })
 
         /* *
@@ -108,6 +120,7 @@ export default function AVSessionManager() {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
                 expect(true).assertTrue();
             });
+
             done();
         })
 
@@ -151,6 +164,7 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
 
@@ -186,6 +200,7 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
 
@@ -231,6 +246,7 @@ export default function AVSessionManager() {
             }
 
             await sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -268,6 +284,7 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -315,6 +332,7 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -360,7 +378,7 @@ export default function AVSessionManager() {
                 }
             }
             await sleep(10000);
-            await session.destroy();
+            await currentAVSession.destroy();
             done();
         })
     })
