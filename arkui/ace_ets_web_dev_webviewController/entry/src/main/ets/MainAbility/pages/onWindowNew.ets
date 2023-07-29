@@ -167,7 +167,7 @@ struct OnWindowNew {
                       console.log(`getOrigins call`);   
                         length = origins.length;
                         console.log(`length is: ${length}`);
-                        Utils.emitEvent(length, 7166);
+                        Utils.emitEventTwo(1, length, 7166);
                         console.log(`getOrigins call end`);
                   })
                 },2000)
