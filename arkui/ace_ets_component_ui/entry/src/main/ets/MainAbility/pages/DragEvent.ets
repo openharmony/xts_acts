@@ -57,7 +57,7 @@ struct DragEvent {
           .visibility(this.imgState)
           .onDragStart((event)=>{
             event.dragBehavior = DragBehavior.COPY
-            event.setResult(DragRet.DRAG_SUCCESSFUL);
+            event.setResult(DragResult.DRAG_SUCCESSFUL);
           })
           .onDragEnd((event)=>{
             event.dragBehavior = DragBehavior.MOVE
@@ -75,7 +75,7 @@ struct DragEvent {
               promptAction.showToast({duration: 100, message: 'Drag Canceled'});
             } else if (event.getResult() === DragResult.DROP_DISABLED) {
               promptAction.showToast({duration: 100, message: 'Drop Disabled'});
-            }else if (event.getResult() === DragRet.DROP_ENABLED) {
+            }else if (event.getResult() === DragResult.DROP_ENABLED) {
               promptAction.showToast({duration: 100, message: 'Drop Enabled'});
             }
             this.dragResult = event.getResult().toString()
@@ -92,9 +92,9 @@ struct DragEvent {
                 extraParams: ''
               }
               dragController.executeDrag(this.DraggingBuilder.bind(this), dragInfo, (err, {event, extraParams}) => {
-                if (event.getResult() == DragRet.DRAG_SUCCESS) {
+                if (event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                   // ...
-                } else if (event.getResult() == DragRet.DRAG_FAILED) {
+                } else if (event.getResult() == DragResult.DRAG_FAILED) {
                   // ...
                 }
               })
