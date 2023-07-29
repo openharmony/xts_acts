@@ -130,7 +130,7 @@ struct Index {
                 this.imageHeight = 100;
                 this.imgState = Visibility.None;
               })
-              event.setResult(DragResult.DRAG_SUCCESS);
+              event.setResult(DragResult.DRAG_SUCCESSFUL);
             })
           })
 
