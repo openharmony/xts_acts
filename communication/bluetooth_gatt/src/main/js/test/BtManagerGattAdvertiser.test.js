@@ -102,6 +102,7 @@ describe('btManagerGattAdvertTest', function() {
                     serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
                     serviceValue:serviceValueBuffer.buffer
                }],
+               includeDeviceName:false,
           }
           let advResponse ={
                serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],

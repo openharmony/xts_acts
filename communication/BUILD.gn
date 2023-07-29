@@ -27,6 +27,7 @@ group("communication") {
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
       "nfc_Controller:ActsNFCJSTest",
       "nfc_ErrorCode:ActsNFCErrorJSTest",
+      "nfc_SecureElement:ActsnfcSEServiceTest",
       "wifi_ErrorCode201:ActsErrorcode201Test",
       "wifi_ErrorCode202:ActsErrorcode202Test",
       "wifi_ErrorCode401:ActsErrorcode401Test",
