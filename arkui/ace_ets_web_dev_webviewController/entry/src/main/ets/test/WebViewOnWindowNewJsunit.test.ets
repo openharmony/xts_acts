@@ -160,8 +160,7 @@ export default function webViewOnWindowNewJsunit() {
     */
      it('testGetOriginsPromiseLoadLocalHtml01', 0, async function(done){
       emitKey = 'emitGetOriginsPromiseLoadLocalHtml01';
-      let length = 1;
-      Utils.registerEvent("testGetOriginsPromiseLoadLocalHtml01", length, 7166, done);
+      Utils.registerLargerEvent("testGetOriginsPromiseLoadLocalHtml01", 7166, done);
       sendEventByKey('onWindowNew', 10, '');
     })
   })
