@@ -43,22 +43,19 @@ struct TransitionEffectExample1 {
       }else{
         Image($r('app.media.icon')).width(200).height(200)
           .transition(TransitionEffect.IDENTITY
-
             .animation({ duration: 2000, curve: Curve.Ease }).combine(
             TransitionEffect.rotate({ z: 1, centerZ: 1, angle: 180 })
             ))
       }
       Image($r('app.media.icon')).width(200).height(200)
         .transition(
-        TransitionEffect.SLIDE
-          .animation({ duration: 2000, curve: Curve.Ease })
-          .combine(
-          TransitionEffect.rotate({ z: 1, centerZ: 1, angle: 180 })
+        TransitionEffect.asymmetric(
+          TransitionEffect.rotate({ z: 1, centerZ: 1, angle: 180 }),
+          TransitionEffect.rotate({ z: 1, centerZ: 1, angle: 90 })
           )
-//          .asymmetric({
-//          appear: TransitionEffect,
-//          disappear: TransitionEffect })
         )
+      Image($r('app.media.icon')).width(200).height(200)
+        .transition(TransitionEffect.SLIDE_SWITCH)
     }.width('100%')
   }
 }

@@ -14,8 +14,9 @@
  */
 
 
+@Entry({ routeName : 'ApiRect' })
 @Component
-struct HelloComponent {
+struct MyComponent {
   @State message: string = 'Hello, World!';
 
   build() {
@@ -26,20 +27,6 @@ struct HelloComponent {
           // 状态变量message的改变驱动UI刷新，UI从'Hello, World!'刷新为'Hello, ArkUI!'
           this.message = 'Hello, ArkUI!';
         })
-    }
-  }
-}
-
-
-@Entry
-@Component
-struct myPage {
-  build() {
-    Column() {
-      Text('ArkUI message')
-      HelloComponent({ message: 'Hello, World!' });
-      Divider()
-      HelloComponent({ message: '你好!' });
     }
   }
 }
