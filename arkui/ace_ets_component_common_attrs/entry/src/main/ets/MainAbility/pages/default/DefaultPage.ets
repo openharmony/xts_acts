@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@ohos.router'
+import router from '@ohos.router';
 
 @Entry
 @Component
@@ -182,7 +182,7 @@ struct DefaultPage {
             .commonStyle()
         }.width(100).height(100)
       } else if (this.targetView == 'Navigator') {
-        Navigator().commonStyle()
+        Navigator({ target: '' }).commonStyle()
       } else if (this.targetView == 'Panel') {
         Panel(true).commonStyle()
       } else if (this.targetView == 'Refresh') {

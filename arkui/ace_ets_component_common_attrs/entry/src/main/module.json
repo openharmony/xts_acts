@@ -23,15 +23,28 @@
         "label": "$string:EntryAbility_label",
         "visible": true,
         "orientation": "portrait",
-        "skills": [{
-          "actions": [
-            "action.system.home"
-          ],
-          "entities": [
-            "entity.system.home"
-          ]
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
           }
         ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "$string:description_application",
+        "usedScene": {
+          "abilities": [
+            "MainAbility"
+          ],
+          "when": "always"
+        }
       }
     ]
   }
