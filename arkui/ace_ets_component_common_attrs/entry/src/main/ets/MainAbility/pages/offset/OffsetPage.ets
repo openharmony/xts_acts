@@ -42,7 +42,7 @@ struct Offset {
     router.getParams() ? router.getParams()['view']['referenceComponentKey'] : ''
 
   onPageShow() {
-    console.info('[ButtonDimensionsOne] page show called ')
+    console.info('[Offset] page show called ')
 
     //Register data change call back.
     attrsManager.registerDataChange(value => this._offset = value)

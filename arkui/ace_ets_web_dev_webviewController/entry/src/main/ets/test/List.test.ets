@@ -57,7 +57,6 @@ import webViewOnAudioStateChanged from './webViewOnAudioStateChanged.test'
 import webViewMediaOption from './webViewMediaOption.test'
 export default function testsuite() {
        webViewControllerJsunit()
-       webViewOnWindowNewJsunit()
        webViewOnErrorReceive02Jsunit()
        webViewOnErrorReceive03Jsunit()
        webViewHasImageJsunit()
@@ -99,4 +98,5 @@ export default function testsuite() {
        webViewGetAccessibleGeolocation()
        //webViewOnAudioStateChanged()
        //webViewMediaOption()
+       webViewOnWindowNewJsunit()
 }

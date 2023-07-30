@@ -14,7 +14,7 @@
  */
 
 import CommonTest from '../common/CommonTest';
-import { describe, expect } from '@ohos/hypium'
+import { describe, expect } from '@ohos/hypium';
 
 export default function defaultTest() {
 
@@ -150,7 +150,42 @@ export default function defaultTest() {
         x: '', y: ''
       }
     }
-  }]
+  }, {
+    describe: 'Visibility',
+    exceptView: ['RichText', 'Web', 'StepperItem', 'TabContent'],
+    expectValue: {
+      visibility: 'Visibility.Visible'
+    }
+  }, {
+    describe: 'Enabled',
+    exceptView: ['RichText', 'Web'],
+    expectValue: {
+      enabled: true
+    }
+  }, {
+    describe: 'Touchable',
+    exceptView: ['RichText', 'Web'],
+    expectValue: {
+      touchable: true
+    }
+  },
+    //    {
+    //    describe: 'ResponseRegion',
+    //    exceptView: ['RichText', 'Web'],
+    //    expectValue: {
+    //      responseRegion: {
+    //        x: '0.00vp', y: '0.00vp', width: '100.00%', height: '100.00%'
+    //      }
+    //    }
+    //  },
+    {
+      describe: 'HitTestBehavior',
+      exceptView: ['RichText', 'Web'],
+      expectValue: {
+        hitTestBehavior: 'HitTestMode.Default'
+      }
+    }
+  ]
 
   describe('DefaultTest', () => {
     CommonTest.initTest(pageConfig, supportView, testValues, async data => {
@@ -183,6 +218,29 @@ export default function defaultTest() {
         console.info('[' + data.caseTag + ']data.viewObj.$attrs.offset.y:' + data.viewObj.$attrs.offset.y);
         expect(data.viewObj.$attrs.offset.x).assertEqual(data.testValue.expectValue.offset.x);
         expect(data.viewObj.$attrs.offset.y).assertEqual(data.testValue.expectValue.offset.y);
+      } else if (data.testValue.describe == 'Visibility') {
+        // Test visibility defaults
+        console.info('[' + data.caseTag + ']data.viewObj.$attrs.visibility:' + data.viewObj.$attrs.visibility);
+        expect(data.viewObj.$attrs.visibility).assertEqual(data.testValue.expectValue.visibility);
+      } else if (data.testValue.describe == 'Enabled') {
+        // Test enabled defaults
+        console.info('[' + data.caseTag + ']data.viewObj.$attrs.enabled:' + data.viewObj.$attrs.enabled);
+        expect(data.viewObj.$attrs.enabled).assertEqual(data.testValue.expectValue.enabled);
+      } else if (data.testValue.describe == 'Touchable') {
+        // Test touchable defaults
+        console.info('[' + data.caseTag + ']data.viewObj.$attrs.touchable:' + data.viewObj.$attrs.touchable);
+        expect(data.viewObj.$attrs.touchable).assertEqual(data.testValue.expectValue.touchable);
+      } else if (data.testValue.describe == 'ResponseRegion') {
+        // Test responseRegion defaults
+        console.info('[' + data.caseTag + ']data.viewObj.$attrs.responseRegion[0]:' +
+        data.viewObj.$attrs.responseRegion[0]);
+        expect(data.viewObj.$attrs.responseRegion[0])
+          .assertEqual(JSON.stringify(data.testValue.expectValue.responseRegion));
+      } else if (data.testValue.describe == 'HitTestBehavior') {
+        // Test hitTestBehavior defaults
+        console.info('[' + data.caseTag + ']data.viewObj.$attrs.hitTestBehavior:' +
+        data.viewObj.$attrs.hitTestBehavior);
+        expect(data.viewObj.$attrs.hitTestBehavior).assertEqual(data.testValue.expectValue.hitTestBehavior);
       } else {
         console.info('[' + data.caseTag + ']data.testValue.describe is error:' + data.testValue.describe
         + data.pageConfig.componentKey);

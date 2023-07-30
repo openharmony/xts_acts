@@ -62,7 +62,7 @@ struct webViewSetHttpDns {
                     switch (this.str) {
                         case "emitSetHttpDnsSecureOnlyExample": {
                             try {
-                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SecureOnly, "https://example1.test")
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SECURE_ONLY, "https://example1.test")
                                 await Utils.sleep(1000);
                                 this.controller.loadUrl("https://www.baidu.com/");
                                 await Utils.sleep(5000);
@@ -78,7 +78,7 @@ struct webViewSetHttpDns {
                         }
                         case "emitSetHttpDnsSecureOnlyUserDefine": {
                             try {
-                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SecureOnly, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.SECURE_ONLY, "https://httpdns-browser.platform.dbankcloud.cn/dns-query{?dns}")
                                 await Utils.sleep(2000);
                                 this.controller.refresh();
                                 this.controller.loadUrl("https://weibo.com/");
@@ -95,7 +95,7 @@ struct webViewSetHttpDns {
                         }
                         case "emitSetHttpDnsAutoExample": {
                             try {
-                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.Auto, "https://example1.test")
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.AUTO, "https://example1.test")
                                 await Utils.sleep(1000);
                                 this.controller.loadUrl("https://www.huawei.com/cn/");
                                 await Utils.sleep(6000);
@@ -111,7 +111,7 @@ struct webViewSetHttpDns {
                         }
                         case "emitSetHttpDnsOffExample": {
                             try {
-                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.Off, "https://example1.test")
+                                web_webview.WebviewController.setHttpDns(web_webview.SecureDnsMode.OFF, "https://example1.test")
                                 await Utils.sleep(1000);
                                 this.controller.loadUrl("https://www.openharmony.cn/mainPlay");
                                 await Utils.sleep(5000);
