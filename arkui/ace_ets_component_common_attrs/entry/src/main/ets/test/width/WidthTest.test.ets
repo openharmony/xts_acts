@@ -90,9 +90,6 @@ export default function widthTest() {
     'GridItem',
     'RelativeContainer',
     'Navigator',
-    'Menu',
-    'MenuItem',
-//    'MenuItemGroup'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.

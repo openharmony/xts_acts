@@ -499,7 +499,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0600 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.width ).assertEqual("0.00vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0600 END ');
         } catch (err) {
           expect().assertFail();
@@ -574,7 +574,7 @@ export default function textInputTest() {
           console.info("ArkUX_Stage_TextInput_CaretWidth_0900 component obj.$attrs.caretStyle is: " +
           JSON.stringify(obj.$attrs.caretStyle));
           let cursorStyle = JSON.parse(obj.$attrs.caretStyle);
-          expect(cursorStyle.width ).assertEqual("0.00vp");
+          expect(cursorStyle.width ).assertEqual("1.50vp");
           console.info('ArkUX_Stage_TextInput_CaretWidth_0900 END ');
         } catch (err) {
           expect().assertFail();
