@@ -20,7 +20,6 @@ group("appaccount_hap") {
       "actsaccountoperatetest:ActsAccountOperateTest",
       "actsaccounttest:ActsAccountTest",
       "actsaccounttstest:ActsAccountTsTest",
-      "actsappaccountplugintest:ActsAppAccountPluginTest",
       "actsgetaccountsbyowner:ActsGetAccountsByOwnerTest",
       "actsgetallaccounts:ActsGetAllAccountsTest",
       "actssetcheckdatasyncenable:ActsSetCheckDataSyncEnableTest",
