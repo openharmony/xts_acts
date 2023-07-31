@@ -58,14 +58,26 @@ export default function ActsgetcomponentTest() {
       console.info('ArkUX_Get_component_0010 START');
       setTimeout(()=>{
         try{
-          let strJson = Utils.getComponentRect('ArkUX_Get_component_0010');
-          expect(parseInt(strJson.width)).assertEqual(vp2px(100));
-          expect(parseInt(strJson.height)).assertEqual(vp2px(100));
-          expect(parseInt(strJson.localOffsetY)).assertEqual(30);
-          expect(parseInt(strJson.windowOffsetX)).assertEqual(234);
-          expect(parseInt(strJson.windowOffsetY)).assertEqual(102);
-          expect(parseInt(strJson.screenOffsetX)).assertEqual(234);
-          expect(parseInt(strJson.screenOffsetY)).assertEqual(234);
+          let strJson = getInspectorByKey('ArkUX_Get_component_0010');
+          let obj = JSON.parse(strJson);
+          console.info('ArkUX_Get_component_0010 width: '+ JSON.stringify(obj.width));
+          console.info('ArkUX_Get_component_0010 height: '+ JSON.stringify(obj.height));
+          console.info('ArkUX_Get_component_0010 localOffsetX: '+ JSON.stringify(obj.localOffsetX));
+          console.info('ArkUX_Get_component_0010 localOffsetY: '+ JSON.stringify(obj.localOffsetY));
+          console.info('ArkUX_Get_component_0010 windowOffsetX: '+ JSON.stringify(obj.windowOffsetX));
+          console.info('ArkUX_Get_component_0010 windowOffsetY: '+ JSON.stringify(obj.windowOffsetY));
+          console.info('ArkUX_Get_component_0010 screenOffsetX: '+ JSON.stringify(obj.screenOffsetX));
+          console.info('ArkUX_Get_component_0010 screenOffsetY: '+ JSON.stringify(obj.screenOffsetY));
+          console.info('ArkUX_Get_component_0010 transform: '+ JSON.stringify(obj.transform));
+          expect(parseInt(obj.width)).assertEqual(vp2px(90));
+          expect(parseInt(obj.height)).assertEqual(vp2px(90));
+          expect(parseInt(obj.localOffsetX)).assertEqual(293);
+          expect(parseInt(obj.localOffsetY)).assertEqual(30);
+          expect(parseInt(obj.windowOffsetX)).assertEqual(293);
+          expect(parseInt(obj.windowOffsetY)).assertEqual(102);
+          expect(parseInt(obj.screenOffsetX)).assertEqual(293);
+          expect(parseInt(obj.screenOffsetY)).assertEqual(102);
+          expect(obj.transform).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
           console.info('ArkUX_Get_component_0010 END ');
         } catch(err) {
           expect().assertFail()
