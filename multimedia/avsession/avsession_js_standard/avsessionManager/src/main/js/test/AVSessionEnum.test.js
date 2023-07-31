@@ -66,7 +66,7 @@ export default function AVSessionEnum() {
             console.info(`AVCastCategory CATEGORY_LOCAL is ${avSession.AVCastCategory.CATEGORY_LOCAL}`);
             expect(avSession.AVCastCategory.CATEGORY_LOCAL).assertEqual(0);
             console.info(`AVCastCategory CATEGORY_REMOTE is ${avSession.AVCastCategory.CATEGORY_REMOTE}`);
-            expect(avSession.AVCastCategory.CATEGORY_REMOTE).assertEqual(undefined);
+            expect(avSession.AVCastCategory.CATEGORY_REMOTE).assertEqual(1);
             done();
         })
 
