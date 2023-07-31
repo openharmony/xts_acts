@@ -15,6 +15,8 @@
 
 import avSession from '@ohos.multimedia.avsession';
 import featureAbility from '@ohos.ability.featureAbility';
+//import image from '@ohos.multimedia.image';
+//import resourceManager from '@ohos.resourceManager';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 
 
@@ -31,6 +33,9 @@ export default function AVSessionControllerJsTest() {
     let receivedParam2 = null;
     let receivedExtras = null;
     let receivedExtras2 = null;
+//    let value = Uint8Array = resourceManager.getRawFileContent('IMAGE_URI');
+//    let imageSource = imageImageSource = image.createImageSource(value.buffer);
+//    let imagePixel = image.PixelMap = imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
     const INVALID_STRING = "invalid string";
     const UPDATE_LYRICS_EVENT = "dynamic_lyrics";
     const UPDATE_LYRICS_WANT_PARAMS = {
@@ -53,14 +58,48 @@ export default function AVSessionControllerJsTest() {
       mediaId: QUEUE_ITEM_KEY_WORD,
       title: QUEUE_ITEM_KEY_WORD,
       extras: EXTRAS,
+//      icon: undefined,
+      iconUri: "iconUri",
+      mediaSize: 10,
+      albumTitle: "albumTitle",
+      albumCoverUri : "albumCoverUri",
+      lyricContent : "lyricContent",
+      lyricUri : "lyricUri",
+      mediaUri : "mediaUri",
+      startPosition : 0,
+      creditsPosition : 0,
+      appName : "appName"
+    };
+    const QUEUE_ITEM_DESCRIPTION_ERROR = {
+      mediaId: QUEUE_ITEM_KEY_WORD,
+      title: QUEUE_ITEM_KEY_WORD,
+      extras: EXTRAS,
+      icon: undefined,
+      iconUri: "iconUri",
+      mediaSize: 10,
+      albumTitle: "albumTitle",
+      albumCoverUri : "albumCoverUri",
+      lyricContent : "lyricContent",
+      lyricUri : "lyricUri",
+      mediaUri : "mediaUri",
+      startPosition : 0,
+      creditsPosition : 0,
+      appName : "appName"
     };
     const QUEUE_ITEM = {
       itemId: QUEUE_ITEM_ID,
       description: QUEUE_ITEM_DESCRIPTION
     }
+    const QUEUE_ITEM_ERROR = {
+      itemId: QUEUE_ITEM_ID,
+      description: QUEUE_ITEM_DESCRIPTION_ERROR
+    }
     const ITEMS_ARRAY = [QUEUE_ITEM];
+    const ITEMS_ARRAY_ERROR = [QUEUE_ITEM_ERROR];
     const QUEUE_TITLE = "title";
     const SKIP_ITEM_ID = 200;
+
+
 
     beforeAll(async function () {
       session = await avSession.createAVSession(featureAbility.getContext(), "AVSessionDemo", 'audio').catch((err) => {
@@ -1214,6 +1253,22 @@ export default function AVSessionControllerJsTest() {
       done();
     })
 
+    /*
+   * @tc.name:SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300
+   * @tc.desc:setAVQueueItems - error situation
+   * @tc.type: FUNC
+   * @tc.require: I6KTU4
+   */
+    it("SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300", 0, async function (done) {
+      await session.setAVQueueItems(ITEMS_ARRAY_ERROR).catch((err) => {
+        console.error(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300 error " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      });
+      await sleep(2000);
+      console.info(TAG + "SUB_MULTIMEDIA_SETAVQUEUEITEMS_0300 finished");
+      done();
+    })
     /*
    * @tc.name:SUB_MULTIMEDIA_SETAVQUEUETITLE_0100
    * @tc.desc:setAVQueueTitle - callback

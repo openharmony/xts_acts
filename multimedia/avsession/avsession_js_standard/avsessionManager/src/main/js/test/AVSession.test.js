@@ -29,6 +29,15 @@ export default function AVSession() {
         let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
         let event = { action: 2, key: keyItem, keys: [keyItem] };
         let context = featureAbility.getContext();
+        let castControlCommandType = 'play';
+        let deviceInfo = {
+            castCategory : 0,
+            deviceId : "deviceId",
+            deviceName : "deviceName",
+        }
+        let outputDeviceInfo = {
+            devices : [ deviceInfo ],
+        }
 
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -50,6 +59,7 @@ export default function AVSession() {
             console.info('TestLog: Init Session And Controller');
             await avSession.createAVSession(context, tag, type).then((data) => {
                 session = data;
+                session.sessionType = 'audio';
             }).catch((err) => {
                 console.info(`TestLog: Session create error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
@@ -64,7 +74,7 @@ export default function AVSession() {
 
             controller = await session.getController();
             });
-        })
+
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
@@ -667,6 +677,7 @@ export default function AVSession() {
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100', 0, async function (done) {
             let PlaybackState1 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+                activeItemId : 0,
             };
             await session.setAVPlaybackState(PlaybackState1).then(() => {
                 console.info('TestLog: Set State successfully');
@@ -2780,6 +2791,29 @@ export default function AVSession() {
         })
 
         /* *
+ * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200
+ * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
+ * @tc.desc      : Testing get output device
+ * @tc.size      : MediumTest
+ * @tc.type      : Function
+ * @tc.level     : Level2
+ */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', 0, async function (done) {
+            await session.getOutputDevice().then((data) => {
+                if (data.devices.length > 0) {
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].deviceid))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].deviceName))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].castCategory))
+                    expect(true).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            })
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETCONTROLLER_PROMISE_0100
          * @tc.name      : GETCONTROLLER_PROMISE_0100
          * @tc.desc      : Testing get controller
@@ -2939,4 +2973,5 @@ export default function AVSession() {
             }
             done();
         })
-    }
+    })
+}
