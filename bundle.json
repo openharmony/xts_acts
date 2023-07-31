@@ -26,7 +26,7 @@
             "third_party": []
         },
         "build": {
-            "sub_component": [],
+            "sub_component": [ "//test/xts/acts/build:acts_lite" ],
             "inner_kits": [],
             "test": [ "//test/xts/acts/build:acts_group" ]
         }

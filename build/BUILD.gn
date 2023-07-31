@@ -19,7 +19,12 @@ group("acts_group") {
   deps = []
   if (os_level == "standard") {
     deps += [ "${xts_acts_path}:acts" ]
-  } else {
+  }
+}
+
+group("acts_lite") {
+  deps = []
+  if (os_level != "standard") {
     deps += [ "${xts_acts_path}/build_lite:acts" ]
   }
 }
