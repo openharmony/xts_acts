@@ -185,6 +185,8 @@ async function getX509CertInfoPromise(certType, processType) {
             let serialNumber = gInstance.getSerialNumber();
             console.log(processType + " is : " + serialNumber);
             expect(serialNumber != null).assertTrue();
+            let certSerialNumber = gInstance.getCertSerialNumber();
+            expect(certSerialNumber != null).assertTrue();
             break;
           case "getIssuerName":
             let issuerName = gInstance.getIssuerName();
