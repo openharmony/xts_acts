@@ -1525,5 +1525,159 @@ describe('ActsAbilityTest', function () {
         }, 3000);
         done();
     })
+
+    /**
+     * @tc.number    : TaskPoolTestClass066
+     * @tc.name      : Async Function GetTaskPoolInfo
+     * @tc.desc      : Get the taskPoolInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass066', 0, async function (done) {
+        async function currentFun() {
+            "use concurrent"
+            await new Promise((resolve, reject) => {
+              setTimeout(resolve, 500, "async operation 1")
+            });
+            await new Promise((resolve, reject) => {
+              setTimeout(resolve, 500, "async operation 2")
+            });
+        }
+
+        let highCount = 0;
+        let mediumCount = 0;
+        let lowCount = 0;
+        let allCount = 100;
+        for (let i = 0; i < allCount; i++) {
+          let task1 = new taskpool.Task(currentFun);
+          let task2 = new taskpool.Task(currentFun);
+          let task3 = new taskpool.Task(currentFun);
+          taskpool.execute(task1, taskpool.Priority.LOW).then(() => {
+            lowCount++;
+          }).catch((e) => {
+            console.error("low task error: " + e);
+          })
+          taskpool.execute(task2, taskpool.Priority.MEDIUM).then(() => {
+            mediumCount++;
+          }).catch((e) => {
+            console.error("medium task error: " + e);
+          })
+          taskpool.execute(task3, taskpool.Priority.HIGH).then(() => {
+            highCount++;
+          }).catch((e) => {
+            console.error("high task error: " + e);
+          })
+        }
+
+        let start = new Date().getTime();
+        while (new Date().getTime() - start < 1000) {
+            continue;
+        }
+
+        let taskpoolInfo = taskpool.getTaskPoolInfo();
+
+        let tid = 0;
+        let taskIds = [];
+        let priority = 0;
+        let taskId = 0;
+        let state = 0;
+        let duration = 0;
+
+        for (let threadInfo of taskpoolInfo.threadInfos) {
+          tid += threadInfo.tid;
+          taskIds.length += threadInfo.taskIds.length;
+          priority += threadInfo.priority;
+        }
+
+        for (let taskInfo of taskpoolInfo.taskInfos) {
+          taskId += taskInfo.taskId;
+          state += taskInfo.state;
+          duration += taskInfo.duration;
+        }
+        console.info("task duration is: " + duration);
+        expect(tid != 0);
+        expect(taskId.length != 0);
+        expect(priority != -1);
+        expect(taskId != 0);
+        expect(state != 0);
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass067
+     * @tc.name      : sync Function GetTaskPoolInfo
+     * @tc.desc      : Get the taskPoolInfo
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass067', 0, async function (done) {
+        function delay() {
+            "use concurrent"
+            let start = new Date().getTime();
+            while (new Date().getTime() - start < 500) {
+              continue;
+            }
+        }
+
+        let highCount = 0;
+        let mediumCount = 0;
+        let lowCount = 0;
+        let allCount = 100;
+        for (let i = 0; i < allCount; i++) {
+          let task1 = new taskpool.Task(delay);
+          let task2 = new taskpool.Task(delay);
+          let task3 = new taskpool.Task(delay);
+          taskpool.execute(task1, taskpool.Priority.LOW).then(() => {
+            lowCount++;
+          }).catch((e) => {
+            console.error("low task error: " + e);
+          })
+          taskpool.execute(task2, taskpool.Priority.MEDIUM).then(() => {
+            mediumCount++;
+          }).catch((e) => {
+            console.error("medium task error: " + e);
+          })
+          taskpool.execute(task3, taskpool.Priority.HIGH).then(() => {
+            highCount++;
+          }).catch((e) => {
+            console.error("high task error: " + e);
+          })
+        }
+
+        let start = new Date().getTime();
+        while (new Date().getTime() - start < 1000) {
+            continue;
+        }
+
+        let taskpoolInfo = taskpool.getTaskPoolInfo();
+
+        let tid = 0;
+        let taskIds = [];
+        let priority = 0;
+        let taskId = 0;
+        let state = 0;
+        let duration = 0;
+
+        for(let threadInfo of taskpoolInfo.threadInfos) {
+          tid += threadInfo.tid;
+          taskIds.length += threadInfo.taskIds.length;
+          priority += threadInfo.priority;
+        }
+
+        for(let taskInfo of taskpoolInfo.taskInfos) {
+          taskId += taskInfo.taskId;
+          state += taskInfo.state;
+          duration += taskInfo.duration;
+        }
+        console.info("task duration is: " + duration);
+        expect(tid != 0);
+        expect(taskId.length != 0);
+        expect(priority != -1);
+        expect(taskId != 0);
+        expect(state != 0);
+        done();
+    })
 })
 }
