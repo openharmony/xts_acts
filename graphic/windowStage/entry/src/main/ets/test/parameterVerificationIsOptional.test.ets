@@ -337,142 +337,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
     })
     /**
-     * @tc.number SUB_WINDOW_WINDOWOFFKEYBOARDHEIGHTCHANGE_JSAPI_001
-     * @tc.name Test window_off_keyboardHeightChange_Test_001
-     * @tc.desc Turn off listening for keyboard height changes
-     */
-    it('window_off_keyboardHeightChange_Test_001', 0, async function (done) {
-      let caseName = 'window_off_keyboardHeightChange_Test_001';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag = false
-      let secondListenFlag = false
-      let windowId = 'window_off_keyboardHeightChange_Test_001';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
-      };
-      let tempWnd = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
-      });
-      expect(!!tempWnd).assertTrue();
-      await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-      });
-      await tempWnd.resize(800, 800).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
-      });
-      await tempWnd.moveWindowTo(100, 100).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
-      });
-      await tempWnd.showWindow().catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.showWindow', done);
-      });
-      tempWnd.on('keyboardHeightChange', (data) => {
-        console.info(msgStr + "first listener trigger");
-        firstListenFlag = true
-      });
-      tempWnd.on('keyboardHeightChange', (data) => {
-        console.info(msgStr + "second listener trigger");
-        secondListenFlag = true
-      });
-      await inputClick('pageTwoinput', msgStr).catch(async err => {
-        console.info(msgStr + err);
-        await tempWnd.destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(1000);
-      tempWnd.off('keyboardHeightChange');
-      firstListenFlag = false
-      secondListenFlag = false
-      await inputClick('pageTwoinputSecond', msgStr).catch(async err => {
-        console.info(msgStr + err);
-        await tempWnd.destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(2000);
-      if (firstListenFlag === false && secondListenFlag === false) {
-        await tempWnd.destroyWindow();
-        done();
-      }
-    })
-    /**
-     * @tc.number SUB_WINDOW_WINDOWOFFKEYBOARDHEIGHTCHANGE_JSAPI_002
-     * @tc.name Test window_off_keyboardHeightChange_Test_002
-     * @tc.desc Turn off listening for keyboard height changes
-     */
-    it('window_off_keyboardHeightChange_Test_002', 0, async function (done) {
-      let caseName = 'window_off_keyboardHeightChange_Test_002';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      console.log(msgStr + 'begin');
-      let firstListenFlag = false
-      let secondListenFlag = false
-
-      function firstCall() {
-        console.log(msgStr + "first listener trigger")
-        firstListenFlag = true
-      }
-
-      function secondCall() {
-        console.log(msgStr + "second listener trigger")
-        secondListenFlag = true
-      }
-
-      let windowId = 'window_off_keyboardHeightChange_Test_002';
-      let windowConfig = {
-        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
-      };
-      let tempWnd = null;
-      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
-      });
-      expect(!!tempWnd).assertTrue();
-      await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-      });
-      await tempWnd.resize(800, 800).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
-      });
-      await tempWnd.moveWindowTo(100, 100).catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
-      });
-      await tempWnd.showWindow().catch((err) => {
-        unexpectedError(err, caseName, 'tempWnd.showWindow', done);
-      });
-      tempWnd.on('keyboardHeightChange', firstCall);
-      tempWnd.on('keyboardHeightChange', secondCall);
-      await inputClick('pageTwoinput', msgStr).catch(async err => {
-        console.info(msgStr + err);
-        await tempWnd.destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(1000);
-      tempWnd.off('keyboardHeightChange', firstCall);
-      firstListenFlag = false
-      secondListenFlag = false
-      await inputClick('pageTwoinputSecond', msgStr).catch(async err => {
-        console.info(msgStr + err);
-        await tempWnd.destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      })
-      await sleep(2000);
-      if (!firstListenFlag && secondListenFlag) {
-        tempWnd.off('keyboardHeightChange');
-        await tempWnd.destroyWindow();
-        done();
-      } else {
-        tempWnd.off('keyboardHeightChange');
-        await tempWnd.destroyWindow();
-        expect(TRUE_FLAG).assertFail();
-        done();
-      }
-    })
-
-    /**
      * @tc.number SUB_WINDOW_WINDOWOFFSCREENSHOT_JSAPI_001
      * @tc.name Test window_off_screenshot_Test_001
      * @tc.desc Disable the monitoring of screenshots.
@@ -740,6 +604,141 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       if (!firstListenFlag && secondListenFlag) {
         done();
       } else {
+        expect(TRUE_FLAG).assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number SUB_WINDOW_WINDOWOFFKEYBOARDHEIGHTCHANGE_JSAPI_001
+     * @tc.name Test window_off_keyboardHeightChange_Test_001
+     * @tc.desc Turn off listening for keyboard height changes
+     */
+    it('window_off_keyboardHeightChange_Test_001', 0, async function (done) {
+      let caseName = 'window_off_keyboardHeightChange_Test_001';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let firstListenFlag = false
+      let secondListenFlag = false
+      let windowId = 'window_off_keyboardHeightChange_Test_001';
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
+      };
+      let tempWnd = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+      });
+      await tempWnd.resize(800, 1000).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
+      });
+      await tempWnd.showWindow().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.showWindow', done);
+      });
+      tempWnd.on('keyboardHeightChange', (data) => {
+        console.info(msgStr + "first listener trigger");
+        firstListenFlag = true
+      });
+      tempWnd.on('keyboardHeightChange', (data) => {
+        console.info(msgStr + "second listener trigger");
+        secondListenFlag = true
+      });
+      await inputClick('pageTwoinput', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      await sleep(1000);
+      tempWnd.off('keyboardHeightChange');
+      firstListenFlag = false
+      secondListenFlag = false
+      await inputClick('pageTwoinputSecond', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      await sleep(2000);
+      if (firstListenFlag === false && secondListenFlag === false) {
+        await tempWnd.destroyWindow();
+        done();
+      }
+    })
+    /**
+     * @tc.number SUB_WINDOW_WINDOWOFFKEYBOARDHEIGHTCHANGE_JSAPI_002
+     * @tc.name Test window_off_keyboardHeightChange_Test_002
+     * @tc.desc Turn off listening for keyboard height changes
+     */
+    it('window_off_keyboardHeightChange_Test_002', 0, async function (done) {
+      let caseName = 'window_off_keyboardHeightChange_Test_002';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let firstListenFlag = false
+      let secondListenFlag = false
+
+      function firstCall() {
+        console.log(msgStr + "first listener trigger")
+        firstListenFlag = true
+      }
+
+      function secondCall() {
+        console.log(msgStr + "second listener trigger")
+        secondListenFlag = true
+      }
+
+      let windowId = 'window_off_keyboardHeightChange_Test_002';
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_DIALOG, ctx: context
+      };
+      let tempWnd = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.loadContent', done);
+      });
+      await tempWnd.resize(800, 1000).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
+      });
+      await tempWnd.showWindow().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.showWindow', done);
+      });
+      tempWnd.on('keyboardHeightChange', firstCall);
+      tempWnd.on('keyboardHeightChange', secondCall);
+      await inputClick('pageTwoinput', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      await sleep(1000);
+      tempWnd.off('keyboardHeightChange', firstCall);
+      firstListenFlag = false
+      secondListenFlag = false
+      await inputClick('pageTwoinputSecond', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      await sleep(2000);
+      if (!firstListenFlag && secondListenFlag) {
+        tempWnd.off('keyboardHeightChange');
+        await tempWnd.destroyWindow();
+        done();
+      } else {
+        tempWnd.off('keyboardHeightChange');
+        await tempWnd.destroyWindow();
         expect(TRUE_FLAG).assertFail();
         done();
       }
