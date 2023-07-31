@@ -971,6 +971,6 @@ export default function effectKitTest() {
         })
       })
     })
-
+    
   })
 }
