@@ -33,9 +33,6 @@ export default function AVSessionControllerJsTest() {
     let receivedParam2 = null;
     let receivedExtras = null;
     let receivedExtras2 = null;
-//    let value = Uint8Array = resourceManager.getRawFileContent('IMAGE_URI');
-//    let imageSource = imageImageSource = image.createImageSource(value.buffer);
-//    let imagePixel = image.PixelMap = imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
     const INVALID_STRING = "invalid string";
     const UPDATE_LYRICS_EVENT = "dynamic_lyrics";
     const UPDATE_LYRICS_WANT_PARAMS = {
@@ -58,17 +55,16 @@ export default function AVSessionControllerJsTest() {
       mediaId: QUEUE_ITEM_KEY_WORD,
       title: QUEUE_ITEM_KEY_WORD,
       extras: EXTRAS,
-//      icon: undefined,
       iconUri: "iconUri",
       mediaSize: 10,
       albumTitle: "albumTitle",
-      albumCoverUri : "albumCoverUri",
-      lyricContent : "lyricContent",
-      lyricUri : "lyricUri",
-      mediaUri : "mediaUri",
-      startPosition : 0,
-      creditsPosition : 0,
-      appName : "appName"
+      albumCoverUri: "albumCoverUri",
+      lyricContent: "lyricContent",
+      lyricUri: "lyricUri",
+      mediaUri: "mediaUri",
+      startPosition: 0,
+      creditsPosition: 0,
+      appName: "appName"
     };
     const QUEUE_ITEM_DESCRIPTION_ERROR = {
       mediaId: QUEUE_ITEM_KEY_WORD,
@@ -78,13 +74,13 @@ export default function AVSessionControllerJsTest() {
       iconUri: "iconUri",
       mediaSize: 10,
       albumTitle: "albumTitle",
-      albumCoverUri : "albumCoverUri",
-      lyricContent : "lyricContent",
-      lyricUri : "lyricUri",
-      mediaUri : "mediaUri",
-      startPosition : 0,
-      creditsPosition : 0,
-      appName : "appName"
+      albumCoverUri: "albumCoverUri",
+      lyricContent: "lyricContent",
+      lyricUri: "lyricUri",
+      mediaUri: "mediaUri",
+      startPosition: 0,
+      creditsPosition: 0,
+      appName: "appName"
     };
     const QUEUE_ITEM = {
       itemId: QUEUE_ITEM_ID,
@@ -107,7 +103,7 @@ export default function AVSessionControllerJsTest() {
         expect().assertFail();
       });
       session.activate();
-      
+
       controller = await session.getController();
 
       console.info(TAG + "Create session and controller finished, beforeAll called");
