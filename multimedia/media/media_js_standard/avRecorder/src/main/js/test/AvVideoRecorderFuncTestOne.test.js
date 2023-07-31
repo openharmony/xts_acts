@@ -505,6 +505,7 @@ export default function avVideoRecorderTestOne() {
                     }, recorderTime);
                 } else {
                     console.info('start AVRecorder failed and error is ' + err.message);
+                    toNextStep(avRecorder, avConfig, recorderTime, steps, done);
                 }
             })
         });
@@ -5785,9 +5786,9 @@ export default function avVideoRecorderTestOne() {
                 // start avRecorder
                 STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
                 // stop avRecorder
-                STOPRECORDER_CALLBACK_EVENT,
+                STOPRECORDER_CALLBACK_EVENT, STOPCAMERA_EVENT,
                 // start avRecorder
-                STARTRECORDER_CALLBACK_EVENT,
+                STARTCAMERA_EVENT, STARTRECORDER_CALLBACK_EVENT,
                 // stop camera
                 STOPCAMERA_EVENT,
                 // release avRecorder and camera
