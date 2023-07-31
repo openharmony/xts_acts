@@ -593,6 +593,40 @@ export default function ApiCommponentAddJsunit() {
       expect(obj.$attrs.margin).assertEqual('0.00vp');
       done();
     });
+
+    it('apiCommponentAddJsunit_2300', 0, async function (done) {
+      console.info("[apiCommponentAddJsunit_2300] START" );
+      ohosrouter.clear();
+      ohosrouter.pushUrl({
+        url: 'MainAbility/pages/navition3',
+        params: {
+          data1: 'message',
+          data2: {
+            data3: [123, 456, 789]
+          }
+        }
+      }).then(() => {
+        // success
+      }).catch(err => {
+        console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+      })
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('ArkUX_Navigation_1111');
+      console.info('apiCommponentAddJsunit_2300 START  :'+ JSON.stringify(strJson));
+      let obj = JSON.parse(strJson);
+      console.info("apiCommponentAddJsunit_2300 obj is: " + JSON.stringify(obj));
+      let mode = obj.$attrs.mode
+      let minContentWidth = obj.$attrs.minContentWidth
+      let navBarWidth = obj.$attrs.navBarWidth
+      let navBarWidthRange = obj.$attrs.navBarWidthRange
+      expect(mode).assertEqual("NavigationMode.AUTO");
+      expect(minContentWidth).assertEqual("50.00vp");
+      expect(navBarWidth).assertEqual("100.00vp");
+      expect(navBarWidthRange).assertEqual("50.00vp, 300.00vp");
+      console.info('apiCommponentAddJsunit_2300 END ');
+      done();
+    });
+
   })
 
 
