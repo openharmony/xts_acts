@@ -22,7 +22,7 @@
 #include <map>
 #include <iostream>
 #include <thread>
-#include "inttypes.h"
+#include <inttypes.h>
 #include "napi/native_api.h"
 #include "native_avscreen_capture.h"
 #include "native_avscreen_capture_base.h"
