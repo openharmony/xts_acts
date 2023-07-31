@@ -66,7 +66,7 @@ export default function AVSessionEnum() {
             console.info(`AVCastCategory CATEGORY_LOCAL is ${avSession.AVCastCategory.CATEGORY_LOCAL}`);
             expect(avSession.AVCastCategory.CATEGORY_LOCAL).assertEqual(0);
             console.info(`AVCastCategory CATEGORY_REMOTE is ${avSession.AVCastCategory.CATEGORY_REMOTE}`);
-            expect(avSession.AVCastCategory.CATEGORY_REMOTE).assertEqual(undefined);
+            expect(avSession.AVCastCategory.CATEGORY_REMOTE).assertEqual(1);
             done();
         })
 
@@ -83,8 +83,8 @@ export default function AVSessionEnum() {
             expect(avSession.DeviceType.DEVICE_TYPE_LOCAL).assertEqual(0);
             console.info(`DeviceType DEVICE_TYPE_TV is ${avSession.DeviceType.DEVICE_TYPE_TV}`);
             expect(avSession.DeviceType.DEVICE_TYPE_TV).assertEqual(2);
-            console.info(`DeviceType DEVICE_TYPE_SPEAKER is ${avSession.DeviceType.DEVICE_TYPE_SPEAKER}`);
-            expect(avSession.DeviceType.DEVICE_TYPE_SPEAKER).assertEqual(3);
+            console.info(`DeviceType DEVICE_TYPE_SPEAKER is ${avSession.DeviceType.DEVICE_TYPE_SMART_SPEAKER}`);
+            expect(avSession.DeviceType.DEVICE_TYPE_SMART_SPEAKER).assertEqual(3);
             console.info(`DeviceType DEVICE_TYPE_BLUETOOTH is ${avSession.DeviceType.DEVICE_TYPE_BLUETOOTH}`);
             expect(avSession.DeviceType.DEVICE_TYPE_BLUETOOTH).assertEqual(10);
             done();
@@ -116,12 +116,12 @@ export default function AVSessionEnum() {
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-//        it('SUB_MULTIMEDIA_AVSESSION_ERROR_CODE_ENUM_0100', 0, async function (done) {
-//            console.info(`AVSessionErrorCode ERR_CODE_DEVICE_CONNECTION_FAILED is ${avSession.AVSessionErrorCode.ERR_CODE_DEVICE_CONNECTION_FAILED}`);
-//            expect(avSession.AVSessionErrorCode.ERR_CODE_DEVICE_CONNECTION_FAILED).assertEqual(undefined);
-//            console.info(`AVSessionErrorCode ERR_CODE_REMOTE_CONNECTION_NOT_EXIST is ${avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_NOT_EXIST}`);
-//            expect(avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_NOT_EXIST).assertEqual(6600109);
-//            done();
-//        })
+        it('SUB_MULTIMEDIA_AVSESSION_ERROR_CODE_ENUM_0100', 0, async function (done) {
+            console.info(`AVSessionErrorCode ERR_CODE_DEVICE_CONNECTION_FAILED is ${avSession.AVSessionErrorCode.ERR_CODE_DEVICE_CONNECTION_FAILED}`);
+            expect(avSession.AVSessionErrorCode.ERR_CODE_DEVICE_CONNECTION_FAILED).assertEqual(6600108);
+            console.info(`AVSessionErrorCode ERR_CODE_REMOTE_CONNECTION_NOT_EXIST is ${avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_NOT_EXIST}`);
+            expect(avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_NOT_EXIST).assertEqual(6600109);
+            done();
+        })
     })
 }

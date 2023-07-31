@@ -52,8 +52,8 @@ export default function AVSessionJsTest() {
       console.info(TAG + "Create session finished, beforeAll called");
     })
 
-    afterAll(async function () {
-      await session.destroy();
+    afterAll(function () {
+      session.destroy();
       console.info(TAG + 'afterAll called')
     })
 
