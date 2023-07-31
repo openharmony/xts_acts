@@ -2671,7 +2671,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
 
             // avVideoRecorderTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0900 end')
@@ -2726,7 +2726,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
 
             // avVideoRecorderTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1000 end')
@@ -2836,7 +2836,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
 
             // avVideoRecorderTestBase.avConfigChangedPromise(avNewConfig, avRecorder, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_1200 end')
@@ -4190,9 +4190,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
-
-            // avVideoRecorderTestBase.recordStart2ReleaseWithPromise(avNewConfig, avRecorder, recorderTime, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1000 end')
         })
 
@@ -4248,7 +4246,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
 
             // avVideoRecorderTestBase.recordStart2PauseWithPromise(avConfig, avRecorder, recorderTime, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1100 end')
@@ -4310,7 +4308,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1200 end')
         })
 
@@ -4366,7 +4364,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
 
             // avVideoRecorderTestBase.recordStart2StopWithPromise(avConfig, avRecorder, recorderTime, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1300 end')
@@ -4424,7 +4422,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
 
             // avVideoRecorderTestBase.recordStart2ResetWithPromise(avConfig, avRecorder, recorderTime, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_1400 end')
@@ -5209,7 +5207,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0900 end')
         })
 
@@ -5260,7 +5258,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_1000 end')
         })
 
@@ -5311,7 +5309,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_1100 end')
         })
 
@@ -5362,7 +5360,7 @@ export default function avVideoRecorderTestOne() {
                 // end
                 END_EVENT
             );
-            eventEmitter.emit(mySteps[0], avRecorder, avConfig, recorderTime, mySteps, done);
+            eventEmitter.emit(mySteps[0], avRecorder, avNewConfig, recorderTime, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_1200 end')
         })
 
