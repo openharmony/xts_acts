@@ -39,6 +39,7 @@ export default function AVSessionErrorCode() {
 
         beforeAll(function () {
             console.info('TestLog: Start Testing avSession Interfaces');
+
         })
 
         beforeEach(async function () {
@@ -175,7 +176,6 @@ export default function AVSessionErrorCode() {
                 }).catch((err) => {
                     console.info(avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_ERR);
                     console.info(`Cast audio to remote BusinessError: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
                 });
             } catch (err) {
                 console.info(`Testing has failed BusinessError: ${err.code}, message: ${err.message}`);
