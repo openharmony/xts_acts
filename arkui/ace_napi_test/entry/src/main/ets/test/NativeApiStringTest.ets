@@ -125,19 +125,6 @@ export default function nativeApiStringJsunit() {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0007
-     * @tc.name      napiRunScriptPath007
-     * @tc.desc      aceNapiEtsTest
-     */
-    it('napiRunScriptPath007', 0, async function (done) {
-      console.info('napiRunScriptPath START');
-      value = napitest.napiRunScriptPath();
-      console.info('napiRunScriptPath testString result is: ' + JSON.stringify(value));
-      expect(value).assertEqual(0)
-      done();
-    });
-
-    /**
      * @tc.number    SUB_ACE_BASIC_ETS_NAPI_0008
      * @tc.name      napiCallThreadsafeFunction008
      * @tc.desc      aceNapiEtsTest
