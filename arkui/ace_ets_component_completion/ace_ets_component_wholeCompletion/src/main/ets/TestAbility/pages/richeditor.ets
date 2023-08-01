@@ -15,15 +15,11 @@
 @Entry
 @Component
 struct RichEditorExample {
-  @State spanStart: number = -1;
-  @State spanEnd: number = -1;
-  @State spanNum: number = -1;
   @State text1: string = '';
   @State text2: string = '';
   @State current: number = 5
   @State Richdelete: Boolean = false;
   controller1:RichEditorController = new RichEditorController();
-  RichEditorInsertValue: RichEditorInsertValue = { insertOffset:10, insertValue:"aaaaaa" }
   controller: RichEditorController = new RichEditorController()
   build() {
     Column() {
@@ -113,60 +109,24 @@ struct RichEditorExample {
 
       Column() {
         RichEditor({ controller: this.controller })
-          .key('Stage_RichEditor_Test_2100')
-          .key('Stage_RichEditor_Test_2200')
           .aboutToIMEInput((RichEditorInsertValue) => {
-            let InsertValue: RichEditorInsertValue = { insertOffset:10, insertValue:"aaaaaa" }
-            InsertValue.insertValue.toString()
-            RichEditorInsertValue.insertValue.toString()
-            InsertValue.insertOffset.toString()
-            RichEditorInsertValue.insertOffset.toString()
             console.log("wxh test app aboutToIMEInput")
             return true
           })
-          .key('Stage_RichEditor_Test_2300')
           .onIMEInputComplete((RichEditorTextSpanResult) => {
-            let TextSpanResult: RichEditorTextSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:(null),offsetInSpan:[10,100]}
-            let SpanPosition: RichEditorSpanPosition = { spanIndex:20, spanRange:[20,20]}
-            SpanPosition.spanRange.toString()
-            SpanPosition.spanIndex.toString()
-            TextSpanResult.spanPosition.toString()
-            RichEditorTextSpanResult.spanPosition.toString()
-            TextSpanResult.offsetInSpan.toString()
-            RichEditorTextSpanResult.offsetInSpan.toString()
             console.log("wxh test app onIMEInputComplete")
-            return ({ spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:(null),offsetInSpan:[10,100]})
           })
-          .key('Stage_RichEditor_Test_2400')
           .aboutToDelete((RichEditorDeleteValue) => {
-            let DeleteValue: RichEditorDeleteValue = { offset:10,direction:(RichEditorDeleteDirection.BACKWARD),length:10,richEditorDeleteSpans:(null)}
-            let DeleteValue1: RichEditorDeleteValue = { offset:10,direction:(RichEditorDeleteDirection.FORWARD),length:10,richEditorDeleteSpans:(null)}
-            DeleteValue.richEditorDeleteSpans.toString()
-            DeleteValue1.richEditorDeleteSpans.toString()
-            RichEditorDeleteValue.richEditorDeleteSpans.toString()
             console.log("wxh test app aboutToDelete")
             return true
-          }).key('Stage_RichEditor_Test_2600')
+          })
           .onDeleteComplete(() => {
             let DeleteValue: RichEditorDeleteValue = { offset:10,direction:(RichEditorDeleteDirection.BACKWARD),length:10,richEditorDeleteSpans:(null)}
             let DeleteValue1: RichEditorDeleteValue = { offset:10,direction:(RichEditorDeleteDirection.FORWARD),length:10,richEditorDeleteSpans:(null)}
-            let ImageSpanResult: RichEditorImageSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},valuePixelMap:(null),valueResourceStr:("aaa"),imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.TOP),objectFit:(ImageFit.Auto)},offsetInSpan:[10,100]}
-            ImageSpanResult.offsetInSpan.toString()
-            ImageSpanResult.spanPosition.spanIndex.toString()
-            ImageSpanResult.spanPosition.spanRange.toString()
-            ImageSpanResult.valuePixelMap.isEditable.valueOf()
-            ImageSpanResult.valueResourceStr.toString()
-            ImageSpanResult.imageStyle.size.toString()
-            ImageSpanResult.imageStyle.verticalAlign.toString()
-            ImageSpanResult.imageStyle.objectFit.toString()
             this.Richdelete = true;
             console.log("wxh test app onDeleteComplete")
-          }).key('Stage_RichEditor_Test_2700')
+          }).key('Stage_RichEditor_Test_2100')
           .onReady(() => {
-            let TextSpan: RichEditorTextSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:{ }}
-            let ImageSpan: RichEditorImageSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
-            TextSpan.spanPosition.spanRange.toString()
-            TextSpan.spanPosition.spanIndex.toString()
             for (let i = 0; i < 10; i++) {
               this.controller.addTextSpan("实例文字", {
                 offset: 6,
@@ -179,6 +139,7 @@ struct RichEditorExample {
                   decoration: { type: TextDecorationType.Underline, color: Color.Red }
                 }
               })
+
               this.controller.addImageSpan($r('app.media.icon'), {
                 offset: 0,
                 imageStyle: {
@@ -186,19 +147,6 @@ struct RichEditorExample {
                 }
               })
             }
-          })
-          .key('Stage_RichEditor_Test_2500')
-          .onSelect((value: RichEditorSelection) => {
-            let Selection: RichEditorSelection = { selection:[10,10],spans:(null)}
-            Selection.selection.toString()
-            Selection.spans.toString()
-            this.spanStart = value.selection[0]
-            this.spanEnd = value.selection[1]
-            this.spanNum = value.spans.length
-            console.log("mim_log: onSelect selection start: " + value.selection[0])
-            console.log("mim_log: onSelect selection end: " + value.selection[1])
-            console.log("mim_log: onSelect spans length: " + value.spans.length);
-            return { selection:[10,10],spans:(null)}
           })
           .borderWidth(1).borderColor(Color.Green)
       }

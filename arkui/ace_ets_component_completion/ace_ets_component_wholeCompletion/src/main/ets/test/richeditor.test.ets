@@ -41,28 +41,28 @@ export default function ActsRichEditorTest() {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     it('Stage_RichEditor_Test_0100', 0, async function (done) {
       console.info('Stage_RichEditor_Test_0100 START');
-        try{
-          let controller = new RichEditorController()
-          let res = controller.addTextSpan("实例文字0", {
-            offset: 5,
-            style: {
-              fontColor: Color.Red,
-              fontSize: 8,
-              fontStyle: FontStyle.Italic,
-              fontWeight: FontWeight.Lighter,
-              fontFamily: "sans-serif",
-              decoration: { type: TextDecorationType.None, color: Color.Brown }
-            }
-          })
-          console.info('Stage_Font_0100 START  :'+ JSON.stringify(res));
-          expect(typeof(res)).assertEqual('number')
-          expect(res).assertEqual(0)
-          console.info('Stage_RichEditor_Test_0100 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('Stage_RichEditor_Test_0100 ERR  '+ JSON.stringify(err));
-        }
-        done();
+      try{
+        let controller = new RichEditorController()
+        let res = controller.addTextSpan("实例文字0", {
+          offset: 5,
+          style: {
+            fontColor: Color.Red,
+            fontSize: 8,
+            fontStyle: FontStyle.Italic,
+            fontWeight: FontWeight.Lighter,
+            fontFamily: "sans-serif",
+            decoration: { type: TextDecorationType.None, color: Color.Brown }
+          }
+        })
+        console.info('Stage_Font_0100 START  :'+ JSON.stringify(res));
+        expect(typeof(res)).assertEqual('number')
+        expect(res).assertEqual(0)
+        console.info('Stage_RichEditor_Test_0100 END ');
+      } catch(err) {
+        expect().assertFail()
+        console.info('Stage_RichEditor_Test_0100 ERR  '+ JSON.stringify(err));
+      }
+      done();
     });
 
     it('Stage_RichEditor_Test_0200', 0, async function (done) {
@@ -397,195 +397,56 @@ export default function ActsRichEditorTest() {
     it('Stage_RichEditor_Test_2100', 0, async function (done) {
       console.info('Stage_RichEditor_Test_2100 START');
       setTimeout(()=>{
-      try{
-        let RichEditorInsertValue: RichEditorInsertValue = { insertOffset:10, insertValue:"aaaaaa" }
-        let RichEditorSpanPosition: RichEditorSpanPosition = { spanIndex:10, spanRange:[10,10]}
-        let RichEditorTextSpan: RichEditorTextSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:{ }}
-        let RichEditorImageSpanStyle: RichEditorImageSpanStyle = { size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}
-        let RichEditorTextSpanResult: RichEditorTextSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:(null),offsetInSpan:[10,100]}
-        let RichEditorImageSpanStyleResult: RichEditorImageSpanStyleResult = { size:[10,10],verticalAlign:(ImageSpanAlignment.BASELINE),objectFit:(ImageFit.Cover)}
-        let RichEditorImageSpanResult: RichEditorImageSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},valuePixelMap:(null),valueResourceStr:("aaa"),imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.TOP),objectFit:(ImageFit.Auto)},offsetInSpan:[10,100]}
-        let RichEditorImageSpan: RichEditorImageSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
-        let RichEditorImageSpanOptions: RichEditorImageSpanOptions = { offset:10,imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
-        let RichEditorUpdateImageSpanStyleOptions: RichEditorUpdateImageSpanStyleOptions = { imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
-        let RichEditorSelection: RichEditorSelection = { selection:[10,10],spans:(null)}
-        let RichEditorDeleteValue: RichEditorDeleteValue = { offset:10,direction:(0),length:10,richEditorDeleteSpans:(null)}
-        let RichEditorDeleteValue1: RichEditorDeleteValue = { offset:10,direction:(1),length:10,richEditorDeleteSpans:(null)}
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorInsertValue))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorSpanPosition))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorTextSpan))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorImageSpanStyle))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorTextSpanResult))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorImageSpanStyleResult))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorImageSpanResult))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorImageSpan))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorImageSpanOptions))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorUpdateImageSpanStyleOptions))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorSelection))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorDeleteValue))
-        console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(RichEditorDeleteValue1))
-        expect(typeof RichEditorInsertValue).assertEqual("object")
-        expect(typeof RichEditorSpanPosition).assertEqual("object")
-        expect(typeof RichEditorTextSpan).assertEqual("object")
-        expect(typeof RichEditorImageSpanStyle).assertEqual("object")
-        expect(typeof RichEditorTextSpanResult).assertEqual("object")
-        expect(typeof RichEditorImageSpanStyleResult).assertEqual("object")
-        expect(typeof RichEditorImageSpanResult).assertEqual("object")
-        expect(typeof RichEditorImageSpan).assertEqual("object")
-        expect(typeof RichEditorImageSpanOptions).assertEqual("object")
-        expect(typeof RichEditorUpdateImageSpanStyleOptions).assertEqual("object")
-        expect(typeof RichEditorSelection).assertEqual("object")
-        expect(typeof RichEditorDeleteValue).assertEqual("object")
-        expect(typeof RichEditorDeleteValue1).assertEqual("object")
-
-        console.info('Stage_RichEditor_Test_2100 END ');
-      } catch(err) {
-        expect().assertFail()
-        console.info('Stage_RichEditor_Test_2100 ERR  '+ JSON.stringify(err));
-      }
-      done();
-      },500)
-    });
-
-    it('Stage_RichEditor_Test_2200', 0, async function (done) {
-      console.info('Stage_RichEditor_Test_2200 START');
-      setTimeout(()=>{
         try{
-          let RichEditorInsertValue: RichEditorInsertValue = { insertOffset:10, insertValue:"aaaaaa" }
-          console.info("Stage_RichEditor_Test_2200 InsertValue is: " + JSON.stringify(RichEditorInsertValue))
-          expect(typeof RichEditorInsertValue).assertEqual("object")
-          expect(RichEditorInsertValue.insertOffset).assertEqual(10)
-          expect(RichEditorInsertValue.insertValue).assertEqual("aaaaaa")
+          let InsertValue: RichEditorInsertValue = { insertOffset:10, insertValue:"aaaaaa" }
+          let SpanPosition: RichEditorSpanPosition = { spanIndex:10, spanRange:[10,10]}
+          let TextSpan: RichEditorTextSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:{ }}
+          let ImageSpanStyle: RichEditorImageSpanStyle = { size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}
+          let TextSpanResult: RichEditorTextSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:(null),offsetInSpan:[10,100]}
+          let ImageSpanStyleResult: RichEditorImageSpanStyleResult = { size:[10,10],verticalAlign:(ImageSpanAlignment.BASELINE),objectFit:(ImageFit.Cover)}
+          let ImageSpanResult: RichEditorImageSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},valuePixelMap:(null),valueResourceStr:("aaa"),imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.TOP),objectFit:(ImageFit.Auto)},offsetInSpan:[10,100]}
+          let ImageSpan: RichEditorImageSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
+          let ImageSpanOptions: RichEditorImageSpanOptions = { offset:10,imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
+          let ImageSpanStyleOptions: RichEditorUpdateImageSpanStyleOptions = { imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
+          let Selection: RichEditorSelection = { selection:[10,10],spans:(null)}
+          let DeleteValue: RichEditorDeleteValue = { offset:10,direction:(0),length:10,richEditorDeleteSpans:(null)}
+          let DeleteValue1: RichEditorDeleteValue = { offset:10,direction:(1),length:10,richEditorDeleteSpans:(null)}
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(InsertValue))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(SpanPosition))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(TextSpan))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(ImageSpanStyle))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(TextSpanResult))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(ImageSpanStyleResult))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(ImageSpanResult))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(ImageSpan))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(ImageSpanOptions))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(ImageSpanStyleOptions))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(Selection))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(DeleteValue))
+          console.info("Stage_RichEditor_Test_2100 InsertValue is: " + JSON.stringify(DeleteValue1))
+          expect(typeof InsertValue).assertEqual("object")
+          expect(typeof SpanPosition).assertEqual("object")
+          expect(typeof TextSpan).assertEqual("object")
+          expect(typeof ImageSpanStyle).assertEqual("object")
+          expect(typeof TextSpanResult).assertEqual("object")
+          expect(typeof ImageSpanStyleResult).assertEqual("object")
+          expect(typeof ImageSpanResult).assertEqual("object")
+          expect(typeof ImageSpan).assertEqual("object")
+          expect(typeof ImageSpanOptions).assertEqual("object")
+          expect(typeof ImageSpanStyleOptions).assertEqual("object")
+          expect(typeof Selection).assertEqual("object")
+          expect(typeof DeleteValue).assertEqual("object")
+          expect(typeof DeleteValue1).assertEqual("object")
 
-          console.info('Stage_RichEditor_Test_2200 END ');
+          console.info('Stage_RichEditor_Test_2100 END ');
         } catch(err) {
           expect().assertFail()
-          console.info('Stage_RichEditor_Test_2200 ERR  '+ JSON.stringify(err));
+          console.info('Stage_RichEditor_Test_2100 ERR  '+ JSON.stringify(err));
         }
         done();
       },500)
     });
 
-    it('Stage_RichEditor_Test_2300', 0, async function (done) {
-      console.info('Stage_RichEditor_Test_2300 START');
-      setTimeout(()=>{
-        try{
-          let RichEditorTextSpanResult: RichEditorTextSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:(null),offsetInSpan:[10,100]}
-          let RichEditorSpanPosition: RichEditorSpanPosition = { spanIndex:20, spanRange:[20,20]}
-          console.info("Stage_RichEditor_Test_2300 InsertValue is: " + JSON.stringify(RichEditorTextSpanResult))
-          console.info("Stage_RichEditor_Test_2300 InsertValue is: " + JSON.stringify(RichEditorSpanPosition))
-          expect(typeof RichEditorTextSpanResult).assertEqual("object")
-          expect(typeof RichEditorSpanPosition).assertEqual("object")
-          expect(RichEditorTextSpanResult.spanPosition.spanIndex).assertEqual(10)
-          expect(RichEditorTextSpanResult.spanPosition.spanRange[0]).assertEqual(10)
-          expect(RichEditorTextSpanResult.spanPosition.spanRange[1]).assertEqual(10)
-          expect(RichEditorSpanPosition.spanIndex).assertEqual(20)
-          expect(RichEditorSpanPosition.spanRange[0]).assertEqual(20)
-          expect(RichEditorSpanPosition.spanRange[1]).assertEqual(20)
-          expect(RichEditorTextSpanResult.offsetInSpan[0]).assertEqual(10)
-          expect(RichEditorTextSpanResult.offsetInSpan[1]).assertEqual(100)
-
-          console.info('Stage_RichEditor_Test_2300 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('Stage_RichEditor_Test_2300 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    it('Stage_RichEditor_Test_2400', 0, async function (done) {
-      console.info('Stage_RichEditor_Test_2400 START');
-      setTimeout(()=>{
-        try{
-          let RichEditorDeleteValue: RichEditorDeleteValue = { offset:10,direction:(0),length:10,richEditorDeleteSpans:(null)}
-          let RichEditorDeleteValue1: RichEditorDeleteValue = { offset:10,direction:(1),length:10,richEditorDeleteSpans:(null)}
-          console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue))
-          console.info("Stage_RichEditor_Test_2400 InsertValue is: " + JSON.stringify(RichEditorDeleteValue1))
-          expect(typeof RichEditorDeleteValue).assertEqual("object")
-          expect(typeof RichEditorDeleteValue1).assertEqual("object")
-          expect(RichEditorDeleteValue.richEditorDeleteSpans).assertEqual(null)
-          expect(RichEditorDeleteValue1.richEditorDeleteSpans).assertEqual(null)
-
-          console.info('Stage_RichEditor_Test_2400 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('Stage_RichEditor_Test_2400 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    it('Stage_RichEditor_Test_2500', 0, async function (done) {
-      console.info('Stage_RichEditor_Test_2500 START');
-      setTimeout(()=>{
-        try{
-          let RichEditorSelection: RichEditorSelection = { selection:[10,10],spans:(null)}
-          console.info("Stage_RichEditor_Test_2500 InsertValue is: " + JSON.stringify(RichEditorSelection))
-          expect(typeof RichEditorSelection).assertEqual("object")
-          expect(RichEditorSelection.selection[0]).assertEqual(10)
-          expect(RichEditorSelection.selection[1]).assertEqual(10)
-          expect(RichEditorSelection.spans).assertEqual(null)
-          console.info('Stage_RichEditor_Test_2500 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('Stage_RichEditor_Test_2500 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    it('Stage_RichEditor_Test_2600', 0, async function (done) {
-      console.info('Stage_RichEditor_Test_2600 START');
-      setTimeout(()=>{
-        try{
-          let RichEditorImageSpanResult: RichEditorImageSpanResult = { spanPosition:{ spanIndex:10, spanRange:[10,10]},valuePixelMap:(null),valueResourceStr:("aaa"),imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.TOP),objectFit:(ImageFit.Auto)},offsetInSpan:[10,100]}
-          console.info("Stage_RichEditor_Test_2600 InsertValue is: " + JSON.stringify(RichEditorImageSpanResult))
-          expect(typeof RichEditorImageSpanResult).assertEqual("object")
-          expect(RichEditorImageSpanResult.spanPosition.spanRange[0]).assertEqual(10)
-          expect(RichEditorImageSpanResult.spanPosition.spanRange[1]).assertEqual(10)
-          expect(RichEditorImageSpanResult.spanPosition.spanIndex).assertEqual(10)
-          expect(RichEditorImageSpanResult.valuePixelMap).assertEqual(null)
-          expect(RichEditorImageSpanResult.valueResourceStr).assertEqual("aaa")
-          expect(RichEditorImageSpanResult.imageStyle.size[0]).assertEqual(10)
-          expect(RichEditorImageSpanResult.imageStyle.size[1]).assertEqual(10)
-          expect(RichEditorImageSpanResult.imageStyle.verticalAlign).assertEqual(ImageSpanAlignment.TOP)
-          expect(RichEditorImageSpanResult.imageStyle.objectFit).assertEqual(ImageFit.Auto)
-          expect(RichEditorImageSpanResult.offsetInSpan[0]).assertEqual(10)
-          expect(RichEditorImageSpanResult.offsetInSpan[1]).assertEqual(100)
-          console.info('Stage_RichEditor_Test_2600 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('Stage_RichEditor_Test_2600 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
-
-    it('Stage_RichEditor_Test_2700', 0, async function (done) {
-      console.info('Stage_RichEditor_Test_2700 START');
-      setTimeout(()=>{
-        try{
-          let RichEditorTextSpan: RichEditorTextSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",textStyle:{ }}
-          let RichEditorImageSpan: RichEditorImageSpan = { spanPosition:{ spanIndex:10, spanRange:[10,10]},value:"aaaaa",imageStyle:{ size:[10,10],verticalAlign:(ImageSpanAlignment.CENTER),objectFit:(ImageFit.Contain)}}
-          console.info("Stage_RichEditor_Test_2700 InsertValue is: " + JSON.stringify(RichEditorTextSpan))
-          console.info("Stage_RichEditor_Test_2700 InsertValue is: " + JSON.stringify(RichEditorImageSpan))
-          expect(typeof RichEditorTextSpan).assertEqual("object")
-          expect(typeof RichEditorImageSpan).assertEqual("object")
-          expect(RichEditorTextSpan.spanPosition.spanIndex).assertEqual(10)
-          expect(RichEditorTextSpan.spanPosition.spanRange[0]).assertEqual(10)
-          expect(RichEditorTextSpan.spanPosition.spanRange[1]).assertEqual(10)
-          expect(RichEditorImageSpan.spanPosition.spanIndex).assertEqual(10)
-          expect(RichEditorImageSpan.spanPosition.spanRange[0]).assertEqual(10)
-          expect(RichEditorImageSpan.spanPosition.spanRange[1]).assertEqual(10)
-          console.info('Stage_RichEditor_Test_2700 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('Stage_RichEditor_Test_2700 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
-    });
 
   })
 }
