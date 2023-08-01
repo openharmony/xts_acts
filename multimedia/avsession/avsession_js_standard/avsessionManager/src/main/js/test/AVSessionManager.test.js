@@ -30,12 +30,7 @@ export default function AVSessionManager() {
 
         beforeAll(function () {
             console.info('TestLog: Init Session And Controller');
-//            avSession.createAVSession(context, tag, type).then((data) => {
-//                session = data;
-//            }).catch((err) => {
-//                console.info(`TestLog: Session create error: code: ${err.code}, message: ${err.message}`);
-//                expect(false).assertTrue();
-//            });
+
         })
 
         beforeEach(function () {
@@ -187,10 +182,12 @@ export default function AVSessionManager() {
                 console.info(`CreateAVSession 111BusinessError: code: `);
                 let aVCastController;
                 console.info(`CreateAVSession 333BusinessError: code: `);
-                aVCastController = await currentAVSession.getAVCastController().catch((err) => {
-                    console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-                    expect(err.code == 6600101).assertTrue();
-                    done();
+                aVCastController = await currentAVSession.getAVCastController((err, data) => {
+                    if (err) {
+                        console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+                        expect(err.code == 6600101).assertTrue();
+                        done();
+                    }
                 });
             } catch (error) {
                 console.error(`getAVCastController BusinessError: code: ${error.code}, message: ${error.message}`);

@@ -29,6 +29,15 @@ export default function AVSession() {
         let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
         let event = { action: 2, key: keyItem, keys: [keyItem] };
         let context = featureAbility.getContext();
+        let castControlCommandType = 'play';
+        let deviceInfo = {
+            castCategory: 0,
+            deviceId: "deviceId",
+            deviceName: "deviceName",
+        }
+        let outputDeviceInfo = {
+            devices: [deviceInfo],
+        }
 
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -50,6 +59,7 @@ export default function AVSession() {
             console.info('TestLog: Init Session And Controller');
             await avSession.createAVSession(context, tag, type).then((data) => {
                 session = data;
+                session.sessionType = 'audio';
             }).catch((err) => {
                 console.info(`TestLog: Session create error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
@@ -63,8 +73,8 @@ export default function AVSession() {
             });
 
             controller = await session.getController();
-            });
-        })
+        });
+
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
@@ -667,6 +677,7 @@ export default function AVSession() {
         it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_0100', 0, async function (done) {
             let PlaybackState1 = {
                 state: avSession.PlaybackState.PLAYBACK_STATE_PLAY,
+                activeItemId: 0,
             };
             await session.setAVPlaybackState(PlaybackState1).then(() => {
                 console.info('TestLog: Set State successfully');
@@ -1447,7 +1458,7 @@ export default function AVSession() {
             });
             await sleep(500);
 
-            try{
+            try {
                 session.deactivate((err) => {
                     if (err) {
                         console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
@@ -1477,7 +1488,7 @@ export default function AVSession() {
             done();
         })
 
-     
+
 
         /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100
@@ -1817,75 +1828,75 @@ export default function AVSession() {
         })
 
 
-                /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
-         * @tc.name      : OFFPLAY_0100
+        /* *
+ * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100
+ * @tc.name      : OFFPLAY_0100
+ * @tc.desc      : Testing offPlay callback
+ * @tc.size      : MediumTest
+ * @tc.type      : Function
+ * @tc.level     : Level2
+ */
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
+            function callback1() {
+                console.info('TestLog: Play command registration1 success');
+                expect(false).assertTrue();
+            }
+
+            function callback2() {
+                console.info('TestLog: Play command registration2 success');
+                expect(false).assertTrue();
+            }
+
+            session.on('play', callback1);
+
+            session.on('play', callback2);
+
+            session.off('play');
+
+            await controller.sendControlCommand({ command: 'play' }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200
+         * @tc.name      : OFFPLAY_0200
          * @tc.desc      : Testing offPlay callback
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level2
          */
-                it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0100', 0, async function (done) {
-                    function callback1() {
-                        console.info('TestLog: Play command registration1 success');
-                        expect(false).assertTrue();
-                    }
-        
-                    function callback2() {
-                        console.info('TestLog: Play command registration2 success');
-                        expect(false).assertTrue();
-                    }
-        
-                    session.on('play', callback1);
-        
-                    session.on('play', callback2);
-        
-                    session.off('play');
-        
-                    await controller.sendControlCommand({ command: 'play' }).then(() => {
-                        console.info('TestLog: Controller send command successfully');
-                    }).catch((err) => {
-                        console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
-                        expect(true).assertTrue();
-                    });
-                    await sleep(500);
-                    done();
-                })
-        
-                /* *
-                 * @tc.number    : SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200
-                 * @tc.name      : OFFPLAY_0200
-                 * @tc.desc      : Testing offPlay callback
-                 * @tc.size      : MediumTest
-                 * @tc.type      : Function
-                 * @tc.level     : Level2
-                 */
-                it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', 0, async function (done) {
-                    function callback1() {
-                        console.info('TestLog: Play command registration1 success');
-                        expect(false).assertTrue();
-                    }
-        
-                    function callback2() {
-                        console.info('TestLog: Play command registration2 success');
-                        expect(true).assertTrue();
-                    }
-        
-                    session.on('play', callback1);
-        
-                    session.on('play', callback2);
-        
-                    session.off('play', callback1);
-        
-                    await controller.sendControlCommand({ command: 'play' }).then(() => {
-                        console.info('TestLog: Controller send command successfully');
-                    }).catch((err) => {
-                        console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
-                        expect(false).assertTrue();
-                    });
-                    await sleep(500);
-                    done();
-                })
+        it('SUB_MULTIMEDIA_AVSESSION_OFFPLAY_0200', 0, async function (done) {
+            function callback1() {
+                console.info('TestLog: Play command registration1 success');
+                expect(false).assertTrue();
+            }
+
+            function callback2() {
+                console.info('TestLog: Play command registration2 success');
+                expect(true).assertTrue();
+            }
+
+            session.on('play', callback1);
+
+            session.on('play', callback2);
+
+            session.off('play', callback1);
+
+            await controller.sendControlCommand({ command: 'play' }).then(() => {
+                console.info('TestLog: Controller send command successfully');
+            }).catch((err) => {
+                console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+            done();
+        })
 
 
         /* *
@@ -2741,9 +2752,9 @@ export default function AVSession() {
                 if (!data.isRemote) {
                     expect(true).assertTrue();
                 } else {
-					console.info(avSession.OutputDeviceInfo.isRemote);
-					console.info(avSession.OutputDeviceInfo.audioDeviceId.size);
-					console.info(avSession.OutputDeviceInfo.deviceName.size);
+                    console.info(avSession.OutputDeviceInfo.isRemote);
+                    console.info(avSession.OutputDeviceInfo.audioDeviceId.size);
+                    console.info(avSession.OutputDeviceInfo.deviceName.size);
                     console.info('getOutputDevice successfully');
                     console.info('Get device information failed');
                     expect(false).assertTrue();
@@ -2776,6 +2787,29 @@ export default function AVSession() {
                     expect(false).assertTrue();
                 }
             });
+            done();
+        })
+
+        /* *
+ * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200
+ * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
+ * @tc.desc      : Testing get output device
+ * @tc.size      : MediumTest
+ * @tc.type      : Function
+ * @tc.level     : Level2
+ */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', 0, async function (done) {
+            await session.getOutputDevice().then((data) => {
+                if (data.devices.length > 0) {
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].deviceid))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].deviceName))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].castCategory))
+                    expect(true).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`Get device BusinessError: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            })
             done();
         })
 
@@ -2829,8 +2863,8 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_CALLBACK_0100', 0, async function (done) {
-            let keyItem = {code: 0x49, pressedTime: 123456789, deviceId: 0};
-            let event = {action: 2, key: keyItem, keys: [keyItem]};
+            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
+            let event = { action: 2, key: keyItem, keys: [keyItem] };
             try {
                 controller.sendAVKeyEvent(event, (err, data) => {
                     if (err) {
@@ -2857,8 +2891,8 @@ export default function AVSession() {
          * @tc.level     : Level2
          */
         it('SUB_MULTIMEDIA_AVSESSION_SENDAVKEYEVENT_PROMISE_0100', 0, async function (done) {
-            let keyItem = {code: 0x49, pressedTime: 123456789, deviceId: 0};
-            let event = {action: 2, key: keyItem, keys: [keyItem]};
+            let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
+            let event = { action: 2, key: keyItem, keys: [keyItem] };
             await controller.sendAVKeyEvent(event).then(() => {
                 console.info('sendAVKeyEvent Successfully');
                 expect(true).assertTrue();
@@ -2880,7 +2914,7 @@ export default function AVSession() {
         it('SUB_MULTIMEDIA_AVSESSION_GETREALPLAYBACKPOSITIONSYNC_0100', 0, async function (done) {
             let realPosition = -1;
             try {
-                realPosition= controller.getRealPlaybackPositionSync();
+                realPosition = controller.getRealPlaybackPositionSync();
             } catch (err) {
                 console.info(`TestLog: getRealPlaybackPositionSync error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
@@ -2939,4 +2973,5 @@ export default function AVSession() {
             }
             done();
         })
-    }
+    })
+}
