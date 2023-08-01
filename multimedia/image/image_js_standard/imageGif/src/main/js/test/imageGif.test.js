@@ -115,7 +115,7 @@ export default function imageGif() {
             } else {
                 try {
                     console.info(`${testNum} getDelayTimePromise create imagesource success`);
-                    let delayTimes = await imageSourceApi.getDelayTimeList();
+                    let delayTimes = await imageSourceApi.getDelayTime();
                     if (delayTimes != undefined) {
                         console.info(`${testNum} getDelayTimePromise getDelayTime success`);
                         expect(true).assertTrue();
@@ -147,7 +147,7 @@ export default function imageGif() {
                 done();
             } else {
                 console.info(`${testNum} getDelayTimeCallBack create imagesource success`);
-                imageSourceApi.getDelayTimeList((err, delayTimes) => {
+                imageSourceApi.getDelayTime((err, delayTimes) => {
                     if (err != undefined) {
                         console.info(`${testNum} getDelayTimeCallBack getDelayTime failed err: ${err}`);
                         expect(false).assertTrue();
