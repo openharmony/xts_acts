@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsCrossplatformImageTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCrossplatformImageTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_image_framework"
+  part_name = "image_framework"
 }
 ohos_app_scope("windowStage_app_profile") {
   app_profile = "AppScope/app.json"
