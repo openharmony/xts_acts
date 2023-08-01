@@ -18,13 +18,12 @@
         "name": ".entry",
         "mainAbility": ".MainAbility",
         "deviceType": [
-            "tablet",
-            "default",
+      "tablet",
+      "default",
             "phone",
             "tablet",
             "tv",
-            "wearable",
-            "2in1"
+            "wearable"
         ],
         "distro": {
             "deliveryWithInstall": true,
@@ -92,6 +91,7 @@
                 }
             }
         ],
+       
         "testRunner": {
             "name": "OpenHarmonyTestRunner",
             "srcPath": "TestRunner"
