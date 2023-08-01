@@ -585,20 +585,15 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.DRIVER)
               count = count + 14;
               break;
-            case 'appAccountAuthorization':
-              console.info("appAccountAuthorization" + JSON.stringify(extensionList[i].extensionAbilityType));
-              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.APP_ACCOUNT_AUTHORIZATION)
-              count = count + 15;
-              break;
             case 'push':
               console.info("push" + JSON.stringify(extensionList[i].extensionAbilityType));
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
-              count = count + 16;
+              count = count + 15;
               break;
           }
           console.info("count" + JSON.stringify(count));
         }
-        expect(count).assertEqual(136);
+        expect(count).assertEqual(120);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
@@ -726,20 +721,15 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.DRIVER)
                 count = count + 14;
                 break;
-              case 'appAccountAuthorization':
-                console.info("appAccountAuthorization" + JSON.stringify(extensionList[i].extensionAbilityType));
-                expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.APP_ACCOUNT_AUTHORIZATION)
-                count = count + 15;
-                break;
               case 'push':
                 console.info("push" + JSON.stringify(extensionList[i].extensionAbilityType));
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
-                count = count + 16;
+                count = count + 15;
                 break;
             }
             console.info("count" + JSON.stringify(count));
           }
-          expect(count).assertEqual(136);
+          expect(count).assertEqual(120);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1386,21 +1376,15 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.DRIVER)
             count = count + 14;
             break;
-          case 'appAccountAuthorization':
-            console.info("appAccountAuthorization" + JSON.stringify(extensionList[i].extensionAbilityType));
-            expect(extensionList[i].extensionAbilityType)
-              .assertEqual(bundle.ExtensionAbilityType.APP_ACCOUNT_AUTHORIZATION)
-            count = count + 15;
-            break;
           case 'push':
             console.info("push" + JSON.stringify(extensionList[i].extensionAbilityType));
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
-            count = count + 16;
+            count = count + 15;
             break;
         }
         console.info("count" + JSON.stringify(count));
       }
-      expect(count).assertEqual(136);
+      expect(count).assertEqual(120);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
