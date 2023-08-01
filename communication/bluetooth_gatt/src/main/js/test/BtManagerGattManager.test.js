@@ -218,24 +218,20 @@ describe('btManagerGattManagerTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BTMANAGER_GETDEVICENAME_0100', 0, async function (done) {
-        await sleep(5000)   
+    it('SUB_COMMUNICATION_BTMANAGER_GETDEVICENAME_0100', 0, async function (done) {  
         try {
             await gattClient.getDeviceName().then((data) => {
                 console.info('[bluetooth_js] device name:' + JSON.stringify(data))             
                 expect(true).assertEqual(data != null);
-                done();
             }).catch(err => {
                 console.error('[bluetooth_js] bluetooth getDeviceName has error: '+ JSON.stringify(err));
-                expect(err).assertFalse();                
-                done();
+                expect(err.code).assertEqual(2900099);
             });
         } catch (error) {
-            console.error(`[bluetooth_js]GetDeviceName_0100 failed, code is ${error.code}, 
-            message is ${error.message}`);
-            expect(true).assertFalse();                    
-            done()
-        }       
+            console.error(`[bluetooth_js]GetDeviceName_0100 failed, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('2900099');
+        }
+        done();   
     })
 
     /**
@@ -305,7 +301,7 @@ describe('btManagerGattManagerTest', function() {
                     expect(true).assertEqual(data.length >= 0);
                 } else {
                     console.info('[bluetooth_js] get services code ' + JSON.stringify(code));
-                    expect(true).assertEqual(code.code == -1);
+                    expect(false).assertEqual(code.code == 0);
                 }
                 done();
             });
@@ -475,6 +471,14 @@ describe('btManagerGattManagerTest', function() {
                 console.log('bluetooth characteristic characteristicUuid:'+ BLECharacteristic.characteristicUuid);
                 console.log('bluetooth characteristic characteristicValue:'+ BLECharacteristic.characteristicValue);
                 console.log('bluetooth characteristic descriptors:'+ BLECharacteristic.descriptors);
+                console.log('bluetooth characteristic properties:'+ BLECharacteristic.properties);
+
+                console.log('bluetooth BLECharacteristic write:'+ BLECharacteristic.properties.write);
+                console.log('bluetooth BLECharacteristic writeNoResponse:'+ BLECharacteristic.properties.writeNoResponse);
+                console.log('bluetooth BLECharacteristic read:'+ BLECharacteristic.properties.read);
+                console.log('bluetooth BLECharacteristic notify:'+ BLECharacteristic.properties.notify);
+                console.log('bluetooth BLECharacteristic indicate:'+ BLECharacteristic.properties.indicate);
+
                 let value = new Uint8Array(BLECharacteristic.characteristicValue);
                 console.log('bluetooth characteristic value: ' 
                 + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);

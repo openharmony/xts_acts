@@ -604,8 +604,13 @@ export default function actsWifiManagerFunctionTest() {
         * @tc.level Level 3
         */
         it('SUB_Communication_WiFi_XTS_P2P_0009', 0, async function (done) {
+            let DeviceAddressType  = {
+                RANDOM_DEVICE_ADDRESS : 0 ,
+                REAL_DEVICE_ADDRESS : 1 ,
+            };
             let wifiP2PConfig = {
                 deviceAddress : "11:22:33:44:55:66",
+                deviceAddressType : wifiMg.DeviceAddressType.REAL_DEVICE_ADDRESS,
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "DIRECT-AAAZZZ456",
@@ -694,7 +699,8 @@ export default function actsWifiManagerFunctionTest() {
                             }
                             console.info("[wifi_test]getP2pLocalDevice callback result: " + JSON.stringify(ret));
                             console.info("deviceName: " + ret.deviceName + "deviceAddress: " +
-                            ret.deviceAddress + "primaryDeviceType: " + ret.primaryDeviceType +
+                            ret.deviceAddress + "deviceAddressType: " + ret.deviceAddressType + 
+                            "primaryDeviceType: " + ret.primaryDeviceType +
                             "deviceStatus: " + ret.deviceStatus + "groupCapabilitys: " +
                             ret.groupCapabilitys );
                             resolve();
