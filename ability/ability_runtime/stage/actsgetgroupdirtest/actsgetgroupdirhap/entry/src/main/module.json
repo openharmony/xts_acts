@@ -31,6 +31,14 @@
             ]
           }
         ]
+      },
+      {
+        "name": "EntryAbility2",
+        "srcEntrance": "./ets/entryability2/EntryAbility2.ts",
+        "description": "$string:EntryAbility2_desc",
+        "icon": "$media:icon",
+        "visible": true,
+        "label": "$string:EntryAbility2_label"
       }
     ]
   }

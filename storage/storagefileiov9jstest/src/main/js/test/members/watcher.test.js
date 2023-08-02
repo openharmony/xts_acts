@@ -32,8 +32,7 @@ import {
     'IN_CREATE': 0x00000100,
     'IN_DELETE': 0x00000200,
     'IN_DELETE_SELF': 0x00000400,
-    'IN_MOVE_SELF': 0x00000800,
-    'IN_ISDIR': 0x40000000
+    'IN_MOVE_SELF': 0x00000800
   }
 
   const callback = (data) => {
@@ -352,7 +351,7 @@ export default function fileIOWatcher() {
    * @tc.number SUB_DF_FILEIO_WATCHER_0800
    * @tc.name fileIO_test_watcher_008
    * @tc.desc Test watcher event '0x00000100': 'IN_CREATE'
-   *    open a nonexistent folder on create mode, verifying the event is 'IN_ISDIR | IN_CREATE'.
+   *    open a nonexistent folder on create mode, verifying the event is 'IN_CREATE'.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -365,18 +364,11 @@ export default function fileIOWatcher() {
     fileIO.mkdirSync(dpath);
 
     try {
-      let flag = false;
-      let watcher = fileIO.createWatcher(dpath, watcherEvent.IN_CREATE, (data) => {
-        console.log(`${testNum} :{event: ${data.event}, fileName: ${data.fileName}, cookie: ${data.cookie}}`);
-        if ((watcherEvent.IN_ISDIR | watcherEvent.IN_CREATE) === data.event) {
-          flag = true;
-        }
-      });
-      watcher.start();
+      let resWatcher = startWatcher(testNum, watcherEvent.IN_CREATE, dpath);
       fileIO.mkdirSync(ddpath);
       await sleep(WAIT_HALF_SECOND);
-      expect(flag == true).assertTrue();
-      watcher.stop();
+      expect(resWatcher.flag == true).assertTrue();
+      resWatcher.watcher.stop();
       fileIO.rmdirSync(dpath);
       done();
     } catch (e) {
@@ -420,7 +412,7 @@ export default function fileIOWatcher() {
    * @tc.number SUB_DF_FILEIO_WATCHER_1000
    * @tc.name fileIO_test_watcher_010
    * @tc.desc Test watcher event '0x00000200': 'IN_DELETE'
-   *    delete a file , verifying the event is 'IN_ISDIR | IN_DELETE'.
+   *    delete a directory , verifying the event is 'IN_DELETE'.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -434,18 +426,11 @@ export default function fileIOWatcher() {
     fileIO.mkdirSync(ddpath);
 
     try {
-      let flag = false;
-      let watcher = fileIO.createWatcher(dpath, watcherEvent.IN_DELETE, (data) => {
-        console.log(`${testNum} :{event: ${data.event}, fileName: ${data.fileName}, cookie: ${data.cookie}}`);
-        if ((watcherEvent.IN_ISDIR | watcherEvent.IN_DELETE) === data.event) {
-          flag = true;
-        }
-      });
-      watcher.start();
+      let resWatcher = startWatcher(testNum, watcherEvent.IN_DELETE, dpath);
       fileIO.rmdirSync(ddpath);
       await sleep(WAIT_HALF_SECOND);
-      expect(flag == true).assertTrue();
-      watcher.stop();
+      expect(resWatcher.flag == true).assertTrue();
+      resWatcher.watcher.stop();
       fileIO.rmdirSync(dpath);
       done();
     } catch (e) {

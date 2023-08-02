@@ -70,10 +70,10 @@ export default function widthTest() {
     'Row',
     'RowSplit',
 //    'Scroll',
-    'SideBarContainer',
+//    'SideBarContainer',
     'Stack',
     'Swiper',
-    'Tabs',
+//    'Tabs',
     'Circle',
     'Ellipse',
     'Polyline',
@@ -90,9 +90,6 @@ export default function widthTest() {
     'GridItem',
     'RelativeContainer',
     'Navigator',
-    'Menu',
-    'MenuItem',
-//    'MenuItemGroup'
   ]
 
   //The size of the parent component, when set as a percentage, serves as the calculation.

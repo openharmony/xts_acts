@@ -85,13 +85,8 @@ struct webOnFirstContFour {
                         event.navigationStartTick + ", [firstContentfulPaintMs]:" + event.firstContentfulPaintMs + this.firstId)
                     if (event.firstContentfulPaintMs > 0 && event.navigationStartTick > 0) {
                         this.firstcontentfulpaint = true;
-                        console.error("result of onFirstContentfulPaint is: "+ this.firstcontentfulpaint + this.firstId);
-                    }
-                })
-                .onPageEnd((event) => {
-                    console.log('url' + event.url + this.firstcontentfulpaint + this.firstId);
-                    if (this.firstBoo) {
                         Utils.emitEvent(this.firstcontentfulpaint, this.firstId)
+                        console.error("result of onFirstContentfulPaint is: "+ this.firstcontentfulpaint + this.firstId);
                     }
                 })
             }

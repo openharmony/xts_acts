@@ -11,6 +11,14 @@
     {
       "name": "EntryAbility_label",
       "value": "label"
+    },
+    {
+      "name": "EntryAbility2_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility2_label",
+      "value": "label"
     }
   ]
 }

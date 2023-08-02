@@ -258,7 +258,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetCache_0400, Function
 
 /**
  * @tc.number : SUB_AI_NNRt_Func_North_Compilation_SetCache_0500
- * @tc.name   : 设置cache路径，cache不完整
+ * @tc.name   : 设置cache路径，cache破坏，重新生成cache
  * @tc.desc   : [C- SOFTWARE -0200]
  */
 HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetCache_0500, Function | MediumTest | Level2)
@@ -276,7 +276,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_SetCache_0500, Function
         .cacheDir = "./cache",
         .cacheVersion = 10,
     };
-    ASSERT_EQ(OH_NN_INVALID_FILE, CompileGraphMock(compilation, compileParam));
+    ASSERT_EQ(OH_NN_SUCCESS, CompileGraphMock(compilation, compileParam));
     Free(model, compilation);
 }
 

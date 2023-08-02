@@ -136,7 +136,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0100
      * @tc.name      : photoAsset_commitModify_callback_001
-     * @tc.desc      : modify image displayName '一...' (84)
+     * @tc.desc      : modify image displayName '一...' (83)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -260,7 +260,7 @@ export default function commitModifyTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_FILE_ASSET_COMMITMODIFY_0800
      * @tc.name      : photoAsset_commitModify_callback_008
-     * @tc.desc      : modify video displayName '三三...' (84)
+     * @tc.desc      : modify video displayName '三三...' (83)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2

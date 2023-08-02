@@ -89,6 +89,8 @@
         "MainAbility/pages/RenderFit",
         "MainAbility/pages/Xcomponent",
         "MainAbility/pages/RouteType1",
-        "MainAbility/pages/RouteType2"
+        "MainAbility/pages/RouteType2",
+        "MainAbility/pages/navition3",
+        "MainAbility/pages/DragController"
     ]
 }

@@ -64,9 +64,9 @@ struct DragController1 {
               }
               dragController.executeDrag(dragItemInfo, dragInfo)
                 .then(({event, extraParams}) => {
-                  if (event.getResult() == DragRet.DRAG_SUCCESSFUL) {
+                  if (event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
-                  } else if (event.getResult() == DragRet.DRAG_FAILED) {
+                  } else if (event.getResult() == DragResult.DRAG_FAILED) {
                     // ...
                   }
                 })

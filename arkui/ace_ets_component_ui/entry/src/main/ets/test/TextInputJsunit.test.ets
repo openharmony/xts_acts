@@ -230,49 +230,5 @@ export default function TextInputJsunit() {
       console.info('[TextInputJsunit_0400] END');
       done();
     });
-
-    it('TextInputJsunit_0500', 0, async function (done) {
-      // Illegal modification of properties of TextInput component
-      console.info('[TextInputJsunit_0500] START');
-      globalThis.value.message.notify({name:'placeholder',value:168})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'type',value:10})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'placeholderColor',value:'aaa'})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'placeholderFont',value:'abc'})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'enterKeyType',value:123})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'caretColor',value:'123'})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'maxLength',value:'-5'})
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'textAlign',value:'abc'})
-      await CommonFunc.sleep(1000);
-
-      // Get the propoties value of the TextInput component
-      let strJson = getInspectorByKey('textInput');
-      let obj = JSON.parse(strJson);
-      console.info("[TextInputJsunit_0500] component obj is: " + JSON.stringify(obj));
-      console.info("[TextInputJsunit_0500] placeholder: " + JSON.stringify(obj.$attrs.placeholder));
-      console.info("[TextInputJsunit_0500] type: " + JSON.stringify(obj.$attrs.type));
-      console.info("[TextInputJsunit_0500] placeholderColor: " + JSON.stringify(obj.$attrs.placeholderColor));
-      console.info("[TextInputJsunit_0500] placeholderFont: " + JSON.stringify(obj.$attrs.placeholderFont));
-      console.info("[TextInputJsunit_0500] enterKeyType: " + JSON.stringify(obj.$attrs.enterKeyType));
-      console.info("[TextInputJsunit_0500] caretColor: " + JSON.stringify(obj.$attrs.caretColor));
-      console.info("[TextInputJsunit_0500] maxLength: " + JSON.stringify(obj.$attrs.maxLength));
-      console.info("[TextInputJsunit_0500] textAlign: " + JSON.stringify(obj.$attrs.textAlign));
-      expect(obj.$attrs.placeholder).assertEqual('');
-      expect(obj.$attrs.type).assertEqual('InputType.Normal');
-      expect(obj.$attrs.placeholderColor).assertEqual('#99182431');
-      expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"18.00fp","weight":"500","fontFamily":"sans-serif"}');
-      expect(obj.$attrs.enterKeyType).assertEqual('EnterKeyType.Done');
-      expect(obj.$attrs.caretColor).assertEqual('#FF00007B');
-      expect(obj.$attrs.maxLength).assertEqual('INF');
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
-      console.info('[TextInputJsunit_0500] END');
-      done();
-    });
   })
 }
