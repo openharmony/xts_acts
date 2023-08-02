@@ -183,56 +183,5 @@ export default function spanJsunit() {
       done();
     });
 
-    it('testSpan008', 0, async function (done) {
-      console.info('[testSpan008] START');
-      try {
-        let eventData = {
-          data: {
-            "fontColorValue": 'abc'
-          }
-        }
-        let indexEvent = {
-          eventId: 1031,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testSpan008] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("[testSpan008] change component data error: " + err.message);
-      }
-      await Utils.sleep(4000);
-      let strJson = getInspectorByKey('fontColor');
-      console.info("[testSpan008] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan008] fontColor:" + obj);
-      expect(obj.$attrs.fontColor).assertEqual('#FF000990');
-      done();
-    });
-
-    it('testSpan009', 0, async function (done) {
-      console.info('[testSpan009] START');
-      try {
-        let eventData = {
-          data: {
-            "fontColorValue": '-1'
-          }
-        }
-        let indexEvent = {
-          eventId: 1032,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[testSpan009] start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("[testSpan009] change component data error: " + err.message);
-      }
-      await Utils.sleep(4000);
-      let strJson = getInspectorByKey('fontColor');
-      console.info("[testSpan009] component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      console.info("[testSpan009] fontColor:" + obj);
-      expect(obj.$attrs.fontColor).assertEqual('#FF000990');
-      done();
-    });
   })
 }

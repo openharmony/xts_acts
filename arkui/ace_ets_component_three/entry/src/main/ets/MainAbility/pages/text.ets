@@ -18,7 +18,7 @@ import events_emitter from '@ohos.events.emitter'
 @Component
 struct TextExample {
   @State fontSize: number = 9;
-  @State fontColor: string = "0xCCCCCC";
+  @State fontColor: string = "#330A59F8";
   @State textAlign: TextAlign = TextAlign.Start;
   @State textOverflow: TextOverflow = TextOverflow.Clip;
   @State decoration: TextDecorationType = TextDecorationType.None;
