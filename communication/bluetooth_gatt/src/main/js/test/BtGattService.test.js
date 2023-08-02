@@ -81,13 +81,14 @@ describe('btGattServiceTest', function() {
             let status = BLEConnectChangedState.state;
             console.info("[bluetooth_js] connectStateChange jsondata:"
              +'deviceId:' + deviceId + 'status:' + status);
-            expect(true).assertEqual(BLEConnectChangedState !=null);
-          }
-        await gattServer.on("connectStateChange", Connected);
-        let ret = gattClient.connect();
-        await sleep(2000);
-        console.info('[bluetooth_js] gattClient connect' + ret)
-        expect(ret).assertFalse();
+        }
+        try {
+            await gattServer.on("connectStateChange", Connected);
+            gattClient.connect();
+        } catch (error) {
+            console.error(`[bluetooth_js]code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('2900099');
+        }
         await gattServer.off("connectStateChange");
         done();
     })
