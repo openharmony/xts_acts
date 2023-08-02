@@ -375,6 +375,17 @@
                 "srcEntrance": "./ets/FormAbility/FormAbility.ts",
                 "type": "push",
                 "visible": true
+            },
+            {
+                "description": "$string:form_description",
+                "descriptionId": 16777219,
+                "icon": "$media:icon",
+                "iconId": 16777225,
+                "label": "$string:entry_label",
+                "name": "action",
+                "srcEntrance": "./ets/FormAbility/FormAbility.ts",
+                "type": "action",
+                "visible": true
             }
         ],
         "requestPermissions": [
