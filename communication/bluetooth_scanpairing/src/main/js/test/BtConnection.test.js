@@ -84,7 +84,7 @@ describe('btConnectionTest', function() {
             bluetooth.on('pinRequired', onReceiveEvent);
             bluetooth.off('pinRequired', onReceiveEvent);
         } catch (error) {
-            console.error(`[bluetooth_js]PairDevice error, code is ${error.code}, 
+            console.error(`[bluetooth_js]pinRequired error, code is ${error.code}, 
             message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
@@ -130,8 +130,8 @@ describe('btConnectionTest', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0400
-     * @tc.name Test On pair StateChange
-     * @tc.desc Test bondStateChange ON api10
+     * @tc.name Test pairDevice callback
+     * @tc.desc Test pairDevice callback api10
      * @tc.type Function
      * @tc.level Level 3
      */
@@ -142,15 +142,21 @@ describe('btConnectionTest', function() {
         }
         try {
             bluetooth.on('bondStateChange', BondStateParam);
-            bluetooth.pairDevice("11:22:55:66:33:44");
+            bluetooth.pairDevice("11:22:55:66:33:44", err => {
+                if (err) {
+                    console.info('pairDevice errCode: ' + err.code + ', errMessage: ' + err.message);
+                }
+                console.info('pairDevice, err: ' + JSON.stringify(err));
+            });
+            bluetooth.off('bondStateChange', BondStateParam);
             expect(bluetooth.BondState.BOND_STATE_INVALID == 0).assertTrue();
             expect(bluetooth.BondState.BOND_STATE_BONDING == 1).assertTrue();
             expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
-            bluetooth.off('bondStateChange', BondStateParam);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
             expect(error.code).assertEqual('2900099');
         }
+        bluetooth.off('bondStateChange', BondStateParam);
         done();
     })
 
@@ -235,6 +241,37 @@ describe('btConnectionTest', function() {
             console.error("setDevicePinCode promise errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0900
+     * @tc.name Test pairDevice promise
+     * @tc.desc Test pairDevice promise api10
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_PAIR_0900', 0, async function (done) {
+        function BondStateParam(data) {
+            console.info("[bluetooth_js] bondStateChange on:" + JSON.stringify(data)
+            +'bondStateChange deviceId:' + data.deviceId + 'bondStateChange state:' + data.state);
+        }
+        try {
+            bluetooth.on('bondStateChange', BondStateParam);
+            bluetooth.pairDevice("11:22:55:66:33:44").then((data) => {
+                console.info('pairDevice info success');
+            }, err => {
+                console.info('pairDevice:errCode' + err.code + ', errMessage: ' + err.message);
+            });
+            bluetooth.off('bondStateChange', BondStateParam);
+            expect(bluetooth.BondState.BOND_STATE_INVALID == 0).assertTrue();
+            expect(bluetooth.BondState.BOND_STATE_BONDING == 1).assertTrue();
+            expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
+        } catch (err) {
+            console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(error.code).assertEqual('2900099');
+        }
+        bluetooth.off('bondStateChange', BondStateParam);
         done();
     })
 
@@ -335,6 +372,7 @@ describe('btConnectionTest', function() {
         console.error(`[bluetooth_js]bluetoothDeviceFin error, code is ${error.code},message is ${error.message}`);
         expect(error.code).assertEqual('2900099');
     }
+    bluetooth.off('bluetoothDeviceFind', onReceiveEvent);
     done(); 
     })
 
