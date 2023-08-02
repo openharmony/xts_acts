@@ -57,9 +57,9 @@ struct Index {
           .margin({left: 15})
           .visibility(this.imgState)
           .onDragEnd((event)=>{
-            if (event.getResult() === DragRet.DRAG_SUCCESS) {
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
               promptAction.showToast({duration: 100, message: 'Drag Success'});
-            } else if (event.getResult() === DragRet.DRAG_FAILED) {
+            } else if (event.getResult() === DragResult.DRAG_FAILED) {
               promptAction.showToast({duration: 100, message: 'Drag failed'});
             }
           })
@@ -130,7 +130,7 @@ struct Index {
                 this.imageHeight = 100;
                 this.imgState = Visibility.None;
               })
-              event.setResult(DragRet.DRAG_SUCCESS);
+              event.setResult(DragResult.DRAG_SUCCESSFUL);
             })
           })
 
