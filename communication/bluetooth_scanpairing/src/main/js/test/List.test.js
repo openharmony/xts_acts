@@ -20,13 +20,18 @@ import btPairTest from './BtPair.test.js'
 import btScanModeTest from './BtScanMode.test.js'
 import btManagerDiscoveryTest from './BtManagerDiscovery.test.js'
 import btManagerPairTest from './BtManagerPair.test.js'
+import bluetoothBleTest from './BluetoothBle.test.js'
+import btConnectionTest from './BtConnection.test.js'
 
-export default function testsuite() {
+export default function testsuite() {  
+    bluetoothBleTest()
+    btConnectionTest()
+    btPairTest()
     btBleScanTest()
     btDiscoveryTest()
     btManagerBleScanTest()
-    btPairTest()
     btScanModeTest()
     btManagerDiscoveryTest()
     btManagerPairTest()
+    
 }

@@ -81,9 +81,9 @@ describe('btSppTest', function() {
                 serverNumber = number;
                 expect(true).assertEqual(number!=null);
             }
+            done();
         }
-        await bluetooth.sppListen('server1', SppOption, serverSocket);
-        done()
+        bluetooth.sppListen('server1', SppOption, serverSocket);
     })
 
     /**
@@ -105,9 +105,9 @@ describe('btSppTest', function() {
                 serverNumber = number;
                 expect(true).assertEqual(number!=null);
              }
+             done();
         }
-        await bluetooth.sppListen('server1', sppOption, serverSocket);
-        done();
+        bluetooth.sppListen('server1', sppOption, serverSocket);
     })
 
     /**
@@ -154,9 +154,9 @@ describe('btSppTest', function() {
                 serverNumber = number;
                 expect(true).assertEqual(serverNumber!=null);
              }
+             done();
         }
-        await bluetooth.sppListen('server1', sppOption, serverSocket);
-        done();
+        bluetooth.sppListen('server1', sppOption, serverSocket);
     })
 
     /**
@@ -175,9 +175,9 @@ describe('btSppTest', function() {
                 console.log('[bluetooth_js] clientSocket Number:' + JSON.stringify(number));
                 expect(true).assertEqual(number!=null);
             }
+            done();
         }
-        await bluetooth.sppAccept(0, acceptClientSocket);
-        done();
+        bluetooth.sppAccept(0, acceptClientSocket);
     })
 
     /**
