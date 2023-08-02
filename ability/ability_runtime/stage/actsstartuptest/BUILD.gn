@@ -13,20 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("stage") {
+group("startuptest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "actsdebuggabletest:actsdebuggabletest",
-      "actsgetgroupdirtest:actsgetgroupdirtest",
-      "actslifecyclemultihap2:ActsLifecycleMultiHap2",
-      "actslifecyclemultihap3:ActsLifecycleMultiHap3",
-      "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",
-      "actslifecyclesinglehaptest:ActsLifecycleSingleHapTest",
-      "actsstartuptest:startuptest",
-      "actsuripermission:ActsUriPermission",
-      "actswindowstagelifecyclemultihaptest:ActsWindowStageLifecycleMultiHapTest",
-      "actswindowstagelifecyclesinglehaptest:ActsWindowStageLifecycleSingleHapTest",
+      "StartUpAssistant:StartUpAssistant",
+      "StartUpRuleTest:StartUpRuleTest",
     ]
   }
 }
