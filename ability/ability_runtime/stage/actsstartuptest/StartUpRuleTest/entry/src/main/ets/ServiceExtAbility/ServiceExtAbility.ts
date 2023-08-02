@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility'
-import rpc from '@ohos.rpc'
+import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
+import rpc from '@ohos.rpc';
 
 class StubTest extends rpc.RemoteObject {
   constructor(des) {
@@ -33,13 +33,13 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     console.log(`onRequest: ${JSON.stringify(want)}`);
   }
   onConnect(want) {
-    console.log(`onConnect END`);
-    return new StubTest("stub");
+    console.log('onConnect END');
+    return new StubTest('stub');
   }
   onDisconnect(want): void {
     console.log(`HXW onDisconnect: ${JSON.stringify(want)}`);
   }
   onDestroy() {
-    console.log(`onDestroy`);
+    console.log('onDestroy');
   }
 }

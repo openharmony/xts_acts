@@ -17,8 +17,8 @@ group("startuptest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "StartUpAssistant:StartUpAssistant",
-      "StartUpRuleTest:StartUpRuleTest",
+      "StartUpAssistant:ActsStartUpAssistant",
+      "StartUpRuleTest:ActsStartUpRuleTest",
     ]
   }
 }

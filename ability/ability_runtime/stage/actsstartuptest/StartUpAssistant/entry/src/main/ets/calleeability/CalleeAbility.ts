@@ -44,7 +44,7 @@ export default class CalleeAbility extends UIAbility {
         this.context.terminateSelfWithResult(result, () => {});
         unsubscribe(subscriber);
       });
-    })
+    });
   }
 
   onDestroy() {

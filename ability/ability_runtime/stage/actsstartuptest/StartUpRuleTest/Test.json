@@ -22,11 +22,7 @@
         "run-command": [
             "power-shell wakeup",
             "power-shell setmode 602",
-            "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
-            "hilog -b D",
-            "hilog -Q pidoff",
-            "hilog -Q domainoff",
-            "hilog -G 2M"
+            "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
         ]
     }
   ] 

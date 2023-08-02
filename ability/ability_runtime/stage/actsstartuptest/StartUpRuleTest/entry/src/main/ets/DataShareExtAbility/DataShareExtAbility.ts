@@ -20,6 +20,6 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
     console.log(`DataShareExtAbility onCreate: ${JSON.stringify(want)}`);
   }
   onDestroy() {
-    console.log(`DataShareExtAbility onDestroy`);
+    console.log('DataShareExtAbility onDestroy');
   }
 }
