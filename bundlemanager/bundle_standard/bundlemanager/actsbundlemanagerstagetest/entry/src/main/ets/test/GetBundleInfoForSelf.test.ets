@@ -1278,7 +1278,7 @@ export default function getBundleInfoForSelf() {
       let extensionList = data.hapModulesInfo[0].extensionAbilitiesInfo
       expect(extensionList.length).assertEqual(17);
       let count = 0;
-      for (let i = 0;i < 16; i++) {
+      for (let i = 0;i < 17; i++) {
         switch (extensionList[i].name) {
           case "Form":
             console.info("Form" + JSON.stringify(extensionList[i].extensionAbilityType));
