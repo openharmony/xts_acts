@@ -18,16 +18,53 @@ import continuationManager from '@ohos.continuation.continuationManager';
 const TEST_DEVICE_ID = "test_deviceId";
 const TEST_CONNECT_STATUS = continuationManager.DeviceConnectState.CONNECTED;
 let token = -1;
+import featureAbility from '@ohos.ability.featureAbility';
+import { UiDriver, BY } from '@ohos.UiTest'
 
 export default function continuationManagerTest() {
 describe('continuationManagerTest', function() {
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function requestPermission() {
+        try {
+            let context = featureAbility.getContext();
+            await context.requestPermissionsFromUser(['ohos.permission.DISTRIBUTED_DATASYNC'], 666, (data) => {
+                console.info('TestApplication requestPermission data: ' + JSON.stringify(data));
+            });
+        } catch (err) {
+            console.error('TestApplication permission' + JSON.stringify(err));
+        }
+    }
+
+
+    async function driveFn() {
+        try {
+            let driver = await UiDriver.create();
+            console.info(`come in driveFn`);
+            console.info(`driver is ${JSON.stringify(driver)}`);
+            sleep(2000);
+            let button = await driver.findComponent(BY.text('允许'));
+            console.info(`button is ${JSON.stringify(button)}`);
+            sleep(5000);
+            await button.click();
+        } catch (err) {
+            console.info('err is ' + err);
+            return;
+        }
+    }
+
+
+    
     beforeAll(async function (done) {
         console.info('beforeAll');
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-        await sleep(20000)
+        await requestPermission();
+        sleep(5000);
+        await driveFn();
+        sleep(5000);
+
         done();
     })
 
