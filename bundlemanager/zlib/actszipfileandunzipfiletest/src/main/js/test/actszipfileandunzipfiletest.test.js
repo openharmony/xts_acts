@@ -45,21 +45,21 @@ export default function ActsZlibTest() {
         * @tc.desc: inFile is empty
         */
         it('ACTS_ZipFile_0100', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_0100 start==================");
+            console.info("==================ACTS_ZipFile_0100 start==================");
             var path = "";
             var zipDest = dir + "/ACTS_ZipFile_0100.zip"
             var options = {};
             options.level = zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION;
             zlib.zipFile(path, zipDest, options).then((data) => {
-                console.log("ACTS_ZipFile_0100 data: " + data);
+                console.info("ACTS_ZipFile_0100 data: " + data);
                 expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                 done();
             }).catch((err) => {
-                console.log("ACTS_ZipFile_0100 zipFile fail: " + err);
+                console.info("ACTS_ZipFile_0100 zipFile fail: " + err);
                 expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                 done();
             })
-            console.log("==================ACTS_ZipFile_0100 end==================");
+            console.info("==================ACTS_ZipFile_0100 end==================");
         })
 
         /*
@@ -68,7 +68,7 @@ export default function ActsZlibTest() {
         * @tc.desc: inFile doesn't exist
         */
         it('ACTS_ZipFile_0200', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_0200 start==================");
+            console.info("==================ACTS_ZipFile_0200 start==================");
             var path = dir + "/ACTS_ZipFile_9999900.txt";
             var src = dir + "/ACTS_ZipFile_999991100.txt";
             var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -77,11 +77,11 @@ export default function ActsZlibTest() {
                 var options = {};
                 options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
                 zlib.zipFile(src, dir, options).then((data) => {
-                    console.log("ACTS_ZipFile_0200 data: " + data);
+                    console.info("ACTS_ZipFile_0200 data: " + data);
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 }).catch((err) => {
-                    console.log("ACTS_ZipFile_0200 zipFile fail: " + err);
+                    console.info("ACTS_ZipFile_0200 zipFile fail: " + err);
                     expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 })
@@ -90,7 +90,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_0200 end==================");
+            console.info("==================ACTS_ZipFile_0200 end==================");
         })
 
         /*
@@ -99,7 +99,7 @@ export default function ActsZlibTest() {
         * @tc.desc: output file not specified
         */
         it('ACTS_ZipFile_0300', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_0300 start==================");
+            console.info("==================ACTS_ZipFile_0300 start==================");
             var path = dir + "/ACTS_ZipFile_0300.txt";
             var zipDest = "";
             var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -108,11 +108,11 @@ export default function ActsZlibTest() {
                 var options = {};
                 options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
                 zlib.zipFile(path, zipDest, options).then((data) => {
-                    console.log("ACTS_ZipFile_0300 data: " + data);
+                    console.info("ACTS_ZipFile_0300 data: " + data);
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 }).catch((err) => {
-                    console.log("ACTS_ZipFile_0300 zipFile fail: " + err);
+                    console.info("ACTS_ZipFile_0300 zipFile fail: " + err);
                     expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 })
@@ -121,7 +121,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_0300 end==================");
+            console.info("==================ACTS_ZipFile_0300 end==================");
         })
 
         /*
@@ -130,7 +130,7 @@ export default function ActsZlibTest() {
         * @tc.desc: The output file is a directory that does not exist
         */
         it('ACTS_ZipFile_0400', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_0400 start==================");
+            console.info("==================ACTS_ZipFile_0400 start==================");
             var path = dir + "/ACTS_ZipFile_0400.txt";
             var zipDest = "/ACTS_ZipFile_0400.zip";
             var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -139,11 +139,11 @@ export default function ActsZlibTest() {
                 var options = {};
                 options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
                 zlib.zipFile(path, zipDest, options).then((data) => {
-                    console.log("ACTS_ZipFile_0400 data: " + data);
+                    console.info("ACTS_ZipFile_0400 data: " + data);
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 }).catch((err) => {
-                    console.log("ACTS_ZipFile_0400 zipFile fail: " + err);
+                    console.info("ACTS_ZipFile_0400 zipFile fail: " + err);
                     expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 })
@@ -152,7 +152,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_0400 end==================");
+            console.info("==================ACTS_ZipFile_0400 end==================");
         })
 
         /*
@@ -161,7 +161,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_LEVEL_NO_COMPRESSION,
         */
         it('ACTS_ZipFile_2200', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2200 start==================");
+            console.info("==================ACTS_ZipFile_2200 start==================");
             var path = dir + "/ACTS_ZipFile_2200.txt";
             var zipDest = dir + "/ACTS_ZipFile_2200.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2200";
@@ -193,7 +193,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2200 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2200 err: " + err);
+                            console.info("ACTS_ZipFile_2200 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -203,7 +203,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -212,7 +212,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2200 end==================");
+            console.info("==================ACTS_ZipFile_2200 end==================");
         });
 
         /*
@@ -221,7 +221,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_LEVEL_BEST_SPEED,
         */
         it('ACTS_ZipFile_2300', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2300 start==================");
+            console.info("==================ACTS_ZipFile_2300 start==================");
             var path = dir + "/ACTS_ZipFile_2300.txt";
             var zipDest = dir + "/ACTS_ZipFile_2300.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2300";
@@ -253,7 +253,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2300 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2300 err: " + err);
+                            console.info("ACTS_ZipFile_2300 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -263,7 +263,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -272,7 +272,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2300 end==================");
+            console.info("==================ACTS_ZipFile_2300 end==================");
         })
 
         /*
@@ -281,7 +281,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_LEVEL_BEST_COMPRESSION,
         */
         it('ACTS_ZipFile_2400', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2400 start==================");
+            console.info("==================ACTS_ZipFile_2400 start==================");
             var path = dir + "/ACTS_ZipFile_2400.txt";
             var zipDest = dir + "/ACTS_ZipFile_2400.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2400";
@@ -313,7 +313,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2400 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2400 err: " + err);
+                            console.info("ACTS_ZipFile_2400 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -323,7 +323,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -332,7 +332,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2400 end==================");
+            console.info("==================ACTS_ZipFile_2400 end==================");
         });
 
         /*
@@ -341,7 +341,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_LEVEL_DEFAULT_COMPRESSION,
         */
         it('ACTS_ZipFile_2500', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2500 start==================");
+            console.info("==================ACTS_ZipFile_2500 start==================");
             var path = dir + "/ACTS_ZipFile_2500.txt";
             var zipDest = dir + "/ACTS_ZipFile_2500.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2500";
@@ -373,7 +373,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2500 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2500 err: " + err);
+                            console.info("ACTS_ZipFile_2500 err: " + err);
                             expect(err).assertFail();
                             done()
                         })
@@ -383,7 +383,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -392,7 +392,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2500 end==================");
+            console.info("==================ACTS_ZipFile_2500 end==================");
         });
 
         /*
@@ -401,7 +401,7 @@ export default function ActsZlibTest() {
         * @tc.desc: MEM_LEVEL_MIN_MEMLEVEL,,
         */
         it('ACTS_ZipFile_2600', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2600 start==================");
+            console.info("==================ACTS_ZipFile_2600 start==================");
             var path = dir + "/ACTS_ZipFile_2600.txt";
             var zipDest = dir + "/ACTS_ZipFile_2600.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2600";
@@ -433,7 +433,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2600 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2600 err: " + err);
+                            console.info("ACTS_ZipFile_2600 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -443,7 +443,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -452,7 +452,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2600 end==================");
+            console.info("==================ACTS_ZipFile_2600 end==================");
         });
 
         /*
@@ -461,7 +461,7 @@ export default function ActsZlibTest() {
         * @tc.desc: MEM_LEVEL_MAX_MEMLEVEL,,
         */
         it('ACTS_ZipFile_2700', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2700 start==================");
+            console.info("==================ACTS_ZipFile_2700 start==================");
             var path = dir + "/ACTS_ZipFile_2700.txt";
             var zipDest = dir + "/ACTS_ZipFile_2700.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2700";
@@ -493,7 +493,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2700 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2700 err: " + err);
+                            console.info("ACTS_ZipFile_2700 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -503,7 +503,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -512,7 +512,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2700 end==================");
+            console.info("==================ACTS_ZipFile_2700 end==================");
         });
 
         /*
@@ -521,7 +521,7 @@ export default function ActsZlibTest() {
         * @tc.desc: MEM_LEVEL_DEFAULT_MEMLEVEL,,
         */
         it('ACTS_ZipFile_2800', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2800 start==================");
+            console.info("==================ACTS_ZipFile_2800 start==================");
             var path = dir + "/ACTS_ZipFile_2800.txt";
             var zipDest = dir + "/ACTS_ZipFile_2800.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2800";
@@ -553,7 +553,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2800 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2800 err: " + err);
+                            console.info("ACTS_ZipFile_2800 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -563,7 +563,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -572,7 +572,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2800 end==================");
+            console.info("==================ACTS_ZipFile_2800 end==================");
         });
 
         /*
@@ -581,7 +581,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_DEFAULT_STRATEGY,,
         */
         it('ACTS_ZipFile_2900', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_2900 start==================");
+            console.info("==================ACTS_ZipFile_2900 start==================");
             var path = dir + "/ACTS_ZipFile_2900.txt";
             var zipDest = dir + "/ACTS_ZipFile_2900.zip"
             var unzipdir = dir + "/ACTS_ZipFile_2900";
@@ -613,7 +613,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_2900 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_2900 err: " + err);
+                            console.info("ACTS_ZipFile_2900 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -623,7 +623,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -632,7 +632,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_2900 end==================");
+            console.info("==================ACTS_ZipFile_2900 end==================");
         });
 
         /*
@@ -641,7 +641,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_FILTERED,,
         */
         it('ACTS_ZipFile_3000', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_3000 start==================");
+            console.info("==================ACTS_ZipFile_3000 start==================");
             var path = dir + "/ACTS_ZipFile_3000.txt";
             var zipDest = dir + "/ACTS_ZipFile_3000.zip"
             var unzipdir = dir + "/ACTS_ZipFile_3000";
@@ -673,7 +673,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_3000 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_3000 err: " + err);
+                            console.info("ACTS_ZipFile_3000 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -683,7 +683,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -692,7 +692,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_3000 end==================");
+            console.info("==================ACTS_ZipFile_3000 end==================");
         });
 
         /*
@@ -701,7 +701,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_HUFFMAN_ONLY,,
         */
         it('ACTS_ZipFile_3100', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_3100 start==================");
+            console.info("==================ACTS_ZipFile_3100 start==================");
             var path = dir + "/ACTS_ZipFile_3100.txt";
             var zipDest = dir + "/ACTS_ZipFile_3100.zip"
             var unzipdir = dir + "/ACTS_ZipFile_3100";
@@ -733,7 +733,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_3100 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_3100 err: " + err);
+                            console.info("ACTS_ZipFile_3100 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -743,7 +743,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -752,7 +752,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_3100 end==================");
+            console.info("==================ACTS_ZipFile_3100 end==================");
         });
 
         /*
@@ -761,7 +761,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_RLE,,
         */
         it('ACTS_ZipFile_3200', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_3200 start==================");
+            console.info("==================ACTS_ZipFile_3200 start==================");
             var path = dir + "/ACTS_ZipFile_3200.txt";
             var zipDest = dir + "/ACTS_ZipFile_3200.zip";
             var unzipdir = dir + "/ACTS_ZipFile_3200";
@@ -793,7 +793,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_3200 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_3200 err: " + err);
+                            console.info("ACTS_ZipFile_3200 err: " + err);
                             done();
                             expect(err).assertFail();
                             done();
@@ -804,7 +804,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -813,7 +813,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_3200 end==================");
+            console.info("==================ACTS_ZipFile_3200 end==================");
         });
 
         /*
@@ -822,7 +822,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_FIXED,,
         */
         it('ACTS_ZipFile_3300', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_3300 start==================");
+            console.info("==================ACTS_ZipFile_3300 start==================");
             var path = dir + "/ACTS_ZipFile_3300.txt";
             var zipDest = dir + "/ACTS_ZipFile_3300.zip"
             var unzipdir = dir + "/ACTS_ZipFile_3300";
@@ -854,7 +854,7 @@ export default function ActsZlibTest() {
                             console.error('ACTS_ZipFile_3300 unzipFile');
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_3300 err: " + err);
+                            console.info("ACTS_ZipFile_3300 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -864,7 +864,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -873,7 +873,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_3300 end==================");
+            console.info("==================ACTS_ZipFile_3300 end==================");
         });
 
         /*
@@ -882,7 +882,7 @@ export default function ActsZlibTest() {
         * @tc.desc: INPUT_FILE_NOT_EXIST,,
         */
         it('ACTS_ZipFile_3500', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_3500 start==================");
+            console.info("==================ACTS_ZipFile_3500 start==================");
             var path = dir + "/ACTS_ZipFile_3500.txt";
             var src = dir + "/ACTS_ZipFile_9900.txt";
             var unzipdir = dir + "/ACTS_ZipFile_3500";
@@ -892,11 +892,11 @@ export default function ActsZlibTest() {
             fileio.write(fd, infos).then(function (number) {
                 console.info("ACTS_ZipFile_3500 write  successfully:" + number);
                 zlib.zipFile(src, dir, options).then((data) => {
-                    console.log("ACTS_ZipFile_3500 data: " + data);
+                    console.info("ACTS_ZipFile_3500 data: " + data);
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 }).catch((err) => {
-                    console.log("ACTS_ZipFile_3500 err: " + err);
+                    console.info("ACTS_ZipFile_3500 err: " + err);
                     expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 });
@@ -905,7 +905,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_3500 end ==================");
+            console.info("==================ACTS_ZipFile_3500 end ==================");
         })
 
         /*
@@ -914,7 +914,7 @@ export default function ActsZlibTest() {
         * @tc.desc: INPUT_FILE_NULL,,
         */
         it('ACTS_ZipFile_3600', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_3600 start==================");
+            console.info("==================ACTS_ZipFile_3600 start==================");
             var path = dir + "/ACTS_ZipFile_3600.txt";
             var zipDest = "";
             var options = {};
@@ -923,11 +923,11 @@ export default function ActsZlibTest() {
             fileio.write(fd, infos).then(function (number) {
                 console.info("ACTS_ZipFile_3600 write data to file successfully:" + number);
                 zlib.zipFile(path, zipDest, options).then((data) => {
-                    console.log("ACTS_ZipFile_3600 data: " + data);
+                    console.info("ACTS_ZipFile_3600 data: " + data);
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 }).catch((err) => {
-                    console.log("ACTS_ZipFile_3600 err: " + err);
+                    console.info("ACTS_ZipFile_3600 err: " + err);
                     expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 });
@@ -936,7 +936,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_3600 end ==================")
+            console.info("==================ACTS_ZipFile_3600 end ==================")
         })
 
         /*
@@ -945,7 +945,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_FILTERED_CALLBACK,,
         */
         it('ACTS_ZipFile_4500', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_4500 start==================");
+            console.info("==================ACTS_ZipFile_4500 start==================");
             var path = dir + "/ACTS_ZipFile_4500.txt";
             var zipDest = dir + "/ACTS_ZipFile_4500.zip"
             var unzipDest = dir + "/ACTS_ZipFile_9900.zip"
@@ -967,11 +967,11 @@ export default function ActsZlibTest() {
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_4500 mkdir successfully");
                         zlib.unzipFile(unzipDest, zipdir, options).then((data) => {
-                            console.log("ACTS_ZipFile_4500 data: " + data);
+                            console.info("ACTS_ZipFile_4500 data: " + data);
                             expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                             done();
                         }).catch((err) => {
-                            console.log("ACTS_ZipFile_4500 err: " + err);
+                            console.info("ACTS_ZipFile_4500 err: " + err);
                             expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                             done();
                         })
@@ -981,7 +981,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch((err) => {
-                    console.log("ACTS_ZipFile_4500 zipFile fail: " + err);
+                    console.info("ACTS_ZipFile_4500 zipFile fail: " + err);
                     expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
                     done();
                 })
@@ -990,7 +990,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_4500 end==================");
+            console.info("==================ACTS_ZipFile_4500 end==================");
         })
 
         /*
@@ -999,7 +999,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_FILTERED_PROMISE,
         */
         it('ACTS_ZipFile_4900', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_4900 start==================");
+            console.info("==================ACTS_ZipFile_4900 start==================");
             var path = dir + "/ACTS_ZipFile_4900.txt";
             var zipDest = dir + "/ACTS_ZipFile_4900.zip"
             var unzipDest = dir + "/ACTS_ZipFile_4900.zip"
@@ -1021,11 +1021,11 @@ export default function ActsZlibTest() {
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_4900 mkdir successfully");
                         zlib.unzipFile(unzipDest, zipdir, options).then(data => {
-                            console.log("ACTS_ZipFile_4900 data: " + data);
+                            console.info("ACTS_ZipFile_4900 data: " + data);
                             expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                             done();
                         }).catch(err => {
-                            console.log("ACTS_ZipFile_4900 err: " + err);
+                            console.info("ACTS_ZipFile_4900 err: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -1035,7 +1035,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch(err => {
-                    console.log("ACTS_ZipFile_4900 zipFile fail: " + err);
+                    console.info("ACTS_ZipFile_4900 zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -1044,7 +1044,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_4900 end==================");
+            console.info("==================ACTS_ZipFile_4900 end==================");
         })
 
         /*
@@ -1053,7 +1053,7 @@ export default function ActsZlibTest() {
         * @tc.desc: COMPRESS_STRATEGY_FIXED,
         */
         it('ACTS_ZipFile_5000', 0, async function (done) {
-            console.log("==================ACTS_ZipFile_5000 start==================");
+            console.info("==================ACTS_ZipFile_5000 start==================");
             var path = dir + "/ACTS_ZipFile_5000.txt";
             var zipDest = dir + "/ACTS_ZipFile_5000.zip"
             var unzipdir = dir + "/ACTS_ZipFile_5000";
@@ -1073,11 +1073,11 @@ export default function ActsZlibTest() {
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_5000 mkdir successfully");
                         zlib.unzipFile(zipDest, unzipdir, options).then(data => {
-                            console.log("ACTS_ZipFile_5000 data: " + data);
+                            console.info("ACTS_ZipFile_5000 data: " + data);
                             expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                             done();
                         }).catch(err => {
-                            console.log("unzipFile fail: " + err);
+                            console.info("unzipFile fail: " + err);
                             expect(err).assertFail();
                             done();
                         })
@@ -1087,7 +1087,7 @@ export default function ActsZlibTest() {
                         done();
                     });
                 }).catch(err => {
-                    console.log("zipFile fail: " + err);
+                    console.info("zipFile fail: " + err);
                     expect(err).assertFail();
                     done();
                 })
@@ -1096,7 +1096,7 @@ export default function ActsZlibTest() {
                 expect(err).assertFail();
                 done();
             });
-            console.log("==================ACTS_ZipFile_5000 end==================");
+            console.info("==================ACTS_ZipFile_5000 end==================");
         })
 
         /*
@@ -1105,7 +1105,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when input is folders
         */
         it('compressFileOfFolders', Level.LEVEL2, async function (done) {
-            console.log("==================compressFileOfFolders start==================");
+            console.info("==================compressFileOfFolders start==================");
             let inputPath1 = dir + "/compressFileOfFolders1";
             let inputPath2 = dir + "/compressFileOfFolders2";
             let path1 = inputPath1 + "/compressFileOfFolders1.txt";
@@ -1167,7 +1167,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when inFile and out file is valid
         */
         it('compressFileTest', Level.LEVEL2, async function (done) {
-            console.log("==================compressFileTest start==================");
+            console.info("==================compressFileTest start==================");
             let path1 = dir + "/compressFileTest1.txt";
             let zipDest1 = dir + "/compressFileTest1.zip";
             let path2 = dir + "/compressFileTest2.txt";
@@ -1225,17 +1225,17 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when inFile is not exist
         */
         it('compressFileInFileNotExist', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileInFileNotExist start==================");
+            console.info("==================compressFileInFileNotExist start==================");
             let path = "nonexist.txt";
             let zipDest = dir + "/compressFileInFileNotExist.zip";
             await zlib.compressFile(path, zipDest, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
             }).then((data) => {
-                console.log("compressFileInFileNotExist invalid src file success!");
+                console.info("compressFileInFileNotExist invalid src file success!");
                 expect(data).assertFail();
                 done();
             }).catch((err) => {
-                console.log("compressFileInFileNotExist zipFile fail: " + JSON.stringify(err));
+                console.info("compressFileInFileNotExist zipFile fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(SRC_FILE_INVALID);
                 done();
             })
@@ -1246,7 +1246,7 @@ export default function ActsZlibTest() {
                 expect(data).assertEqual(undefined);
                 done();
             })
-            console.log("==================compressFileInFileNotExist end==================");
+            console.info("==================compressFileInFileNotExist end==================");
         })
 
         /*
@@ -1255,16 +1255,16 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when inFile is null
         */
         it('compressFileInFileNull', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileInFileNull start==================");
+            console.info("==================compressFileInFileNull start==================");
             let zipDest = dir + "/compressFileInFileNull.zip";
             try {
                 await zlib.compressFile(null, zipDest, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }).then((data) => {
-                    console.log("compressFileInFileNull invalid src file success!");
+                    console.info("compressFileInFileNull invalid src file success!");
                     expect().assertFail();
                 }).catch((err) => {
-                    console.log("compressFileInFileNull zipFile fail: " + JSON.stringify(err));
+                    console.info("compressFileInFileNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
@@ -1274,7 +1274,7 @@ export default function ActsZlibTest() {
                 zlib.compressFile(null, zipDest, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }, (err, data) => {
-                    console.log("compressFile result");
+                    console.info("compressFile result");
                     expect().assertFail();
                     done();
                 })
@@ -1282,7 +1282,7 @@ export default function ActsZlibTest() {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
-            console.log("==================compressFileInFileNull end==================");
+            console.info("==================compressFileInFileNull end==================");
         })
 
         /*
@@ -1291,7 +1291,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when outFile is not existed.
         */
         it('compressFileOutFileNull', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileOutFileNull start==================");
+            console.info("==================compressFileOutFileNull start==================");
             let path1 = dir + "/compressFileOutFileNull.txt";
             let outFile = "/11111/22222.zip";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
@@ -1304,21 +1304,21 @@ export default function ActsZlibTest() {
             await zlib.compressFile(path1, outFile, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
             }).then((data) => {
-                console.log("compressFileOutFileNull invalid src file success!");
+                console.info("compressFileOutFileNull invalid src file success!");
                 expect().assertFail();
             }).catch((err) => {
-                console.log("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
+                console.info("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(OUTPUT_FILE_INVALID);
 
             })
             zlib.compressFile(path1, outFile, {
                 level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
             }, (err, data) => {
-                console.log("compressFile result");
+                console.info("compressFile result");
                 expect(err.code).assertEqual(OUTPUT_FILE_INVALID);
                 done();
             })
-            console.log("==================compressFileOutFileNull end==================");
+            console.info("==================compressFileOutFileNull end==================");
         })
 
 
@@ -1328,7 +1328,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when outFile is null
         */
         it('compressFileOutFileNull', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileOutFileNull start==================");
+            console.info("==================compressFileOutFileNull start==================");
             let path1 = dir + "/compressFileOutFileNull.txt";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
             await fileio.write(fd, infos).then(function (number) {
@@ -1341,10 +1341,10 @@ export default function ActsZlibTest() {
                 await zlib.compressFile(path1, null, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }).then((data) => {
-                    console.log("compressFileOutFileNull invalid src file success!");
+                    console.info("compressFileOutFileNull invalid src file success!");
                     expect().assertFail();
                 }).catch((err) => {
-                    console.log("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
+                    console.info("compressFileOutFileNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
@@ -1354,7 +1354,7 @@ export default function ActsZlibTest() {
                 zlib.compressFile(path1, null, {
                     level: zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION
                 }, (err, data) => {
-                    console.log("compressFile result");
+                    console.info("compressFile result");
                     expect().assertFail();
                     done();
                 })
@@ -1362,7 +1362,7 @@ export default function ActsZlibTest() {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
-            console.log("==================compressFileOutFileNull end==================");
+            console.info("==================compressFileOutFileNull end==================");
         })
 
         /*
@@ -1371,7 +1371,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when option is null
         */
         it('compressFileOptionNull', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileOptionNull start==================");
+            console.info("==================compressFileOptionNull start==================");
             let path1 = dir + "/compressFileOptionNull.txt";
             let zipDest1 = dir + "/compressFileOptionNull.zip";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
@@ -1383,10 +1383,10 @@ export default function ActsZlibTest() {
             });
             try {
                 await zlib.compressFile(path1, zipDest1, null).then((data) => {
-                    console.log("compressFileOptionNull invalid src file success!");
+                    console.info("compressFileOptionNull invalid src file success!");
                     expect().assertFail();
                 }).catch((err) => {
-                    console.log("compressFileOptionNull zipFile fail: " + JSON.stringify(err));
+                    console.info("compressFileOptionNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
@@ -1394,7 +1394,7 @@ export default function ActsZlibTest() {
             }
             try {
                 zlib.compressFile(path1, zipDest1, null, (err, data) => {
-                    console.log("compressFile result");
+                    console.info("compressFile result");
                     expect().assertFail();
                     done();
                 })
@@ -1402,7 +1402,7 @@ export default function ActsZlibTest() {
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
-            console.log("==================compressFileOptionNull end==================");
+            console.info("==================compressFileOptionNull end==================");
         })
 
         /*
@@ -1411,7 +1411,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when option is invalid
         */
         it('compressFileInvalidOption', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileInvalidOption start==================");
+            console.info("==================compressFileInvalidOption start==================");
             let path1 = dir + "/compressFileInvalidOption.txt";
             let zipDest1 = dir + "/compressFileInvalidOption.zip";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
@@ -1424,21 +1424,21 @@ export default function ActsZlibTest() {
             await zlib.compressFile(path1, zipDest1, {
                 memLevel: -1
             }).then((data) => {
-                console.log("compressFileInvalidOption invalid src file success!");
+                console.info("compressFileInvalidOption invalid src file success!");
                 expect(data).assertNull();
             }).catch((err) => {
-                console.log("compressFileInvalidOption zipFile fail: " + JSON.stringify(err));
+                console.info("compressFileInvalidOption zipFile fail: " + JSON.stringify(err));
                 expect().assertFail();
             })
             zlib.compressFile(path1, zipDest1, {
                 memLevel: -1
             }, (err, data) => {
-                console.log("compressFile result");
+                console.info("compressFile result");
                 expect(data).assertUndefined();
                 expect(err).assertNull();
                 done();
             })
-            console.log("==================compressFileInvalidOption end==================");
+            console.info("==================compressFileInvalidOption end==================");
         })
 
         /*
@@ -1447,7 +1447,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test compressFile when strategy is null
         */
         it('compressFileStrategyNull', Level.LEVEL3, async function (done) {
-            console.log("==================compressFileStrategyNull start==================");
+            console.info("==================compressFileStrategyNull start==================");
             let path1 = dir + "/compressFileStrategyNull.txt";
             let zipDest1 = dir + "/compressFileStrategyNull.zip";
             let fd = fileio.openSync(path1, 0o100 | 0o2, 0o666);
@@ -1461,9 +1461,9 @@ export default function ActsZlibTest() {
                 await zlib.compressFile(path1, zipDest1, {
                     strategy: null
                 }).then((data) => {
-                    console.log("compressFileStrategyNull invalid src file success!");
+                    console.info("compressFileStrategyNull invalid src file success!");
                 }).catch((err) => {
-                    console.log("compressFileStrategyNull zipFile fail: " + JSON.stringify(err));
+                    console.info("compressFileStrategyNull zipFile fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
@@ -1473,23 +1473,23 @@ export default function ActsZlibTest() {
                 zlib.compressFile(path1, zipDest1, {
                     strategy: null
                 }, (err, data) => {
-                    console.log("compressFile result");
+                    console.info("compressFile result");
                     done();
                 })
             } catch (err) {
                 expect().assertFail();
                 done();
             }
-            console.log("==================compressFileOutFileNull end==================");
+            console.info("==================compressFileOutFileNull end==================");
         })
 
         /*
-        * @tc.number: SUB_BMS_TOOL_ZLIB_0087
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0086
         * @tc.name: decompressFileTest
         * @tc.desc: test decompressFile when inFile and out file is valid
         */
         it('decompressFileTest', Level.LEVEL2, async function (done) {
-            console.log("==================decompressFileTest start==================");
+            console.info("==================decompressFileTestOutDir start==================");
             let path = dir + "/decompressFileTest.txt";
             let zipDest1 = dir + "/decompressFileTest1.zip";
             let zipDest2 = dir + "/decompressFileTest2.zip";
@@ -1578,7 +1578,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when inFile is not exist
         */
         it('decompressFileInFileNotExist', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileInFileNotExist start==================");
+            console.info("==================decompressFileInFileNotExist start==================");
             let zipDest = dir + "/noneexist.zip";
             let unzipdir = dir + "/decompressFileInFileNotExist";
             await fileio.mkdir(unzipdir).then(function () {
@@ -1590,11 +1590,11 @@ export default function ActsZlibTest() {
             await zlib.decompressFile(zipDest, unzipdir, {
                 strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
             }).then(data => {
-                console.log("decompressFile data: " + data);
+                console.info("decompressFile data: " + data);
                 expect(data).assertFail(null);
                 done();
             }).catch(err => {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(SRC_FILE_INVALID);
                 done();
             })
@@ -1605,7 +1605,7 @@ export default function ActsZlibTest() {
                 expect(data).assertEqual(undefined);
                 done();
             })
-            console.log("==================decompressFileInFileNotExist end==================");
+            console.info("==================decompressFileInFileNotExist end==================");
         })
 
         /*
@@ -1614,7 +1614,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when inFile is null
         */
         it('decompressFileInFileNull', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileInFileNull start==================");
+            console.info("==================decompressFileInFileNull start==================");
             let unzipdir = dir + "/decompressFileInFileNull";
             await fileio.mkdir(unzipdir).then(function () {
                 console.info("fileio mkdir successfully");
@@ -1626,14 +1626,14 @@ export default function ActsZlibTest() {
                 await zlib.decompressFile(null, unzipdir, {
                     strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
                 }).then(data => {
-                    console.log("decompressFile data: " + data);
+                    console.info("decompressFile data: " + data);
                     expect().assertFail();
                 }).catch(err => {
-                    console.log("decompress fail: " + JSON.stringify(err));
+                    console.info("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
             try {
@@ -1644,11 +1644,11 @@ export default function ActsZlibTest() {
                     done();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
-            console.log("==================decompressFileInFileNull end==================");
+            console.info("==================decompressFileInFileNull end==================");
         })
 
         /*
@@ -1657,7 +1657,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when outFile is not existed.
         */
         it('decompressFileOutFileNotExist', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileOutFileNotExist start==================");
+            console.info("==================decompressFileOutFileNotExist start==================");
             let path = dir + "/decompressFileOutFileNotExist.txt";
             let zipDest1 = dir + "/decompressFileOutFileNotExist.zip";
             let outFile = "/111111/22222/test";
@@ -1686,10 +1686,10 @@ export default function ActsZlibTest() {
             await zlib.decompressFile(zipDest1, outFile, {
                 strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
             }).then(data => {
-                console.log("decompressFile data: " + data);
+                console.info("decompressFile data: " + data);
                 expect().assertFail();
             }).catch(err => {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(OUTPUT_FILE_INVALID);
             })
             zlib.decompressFile(zipDest1, outFile, {
@@ -1698,7 +1698,7 @@ export default function ActsZlibTest() {
                 expect(err.code).assertEqual(OUTPUT_FILE_INVALID);
                 done();
             })
-            console.log("==================decompressFileOutFileNotExist end==================");
+            console.info("==================decompressFileOutFileNotExist end==================");
         })
 
         /*
@@ -1707,7 +1707,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when outFile is null
         */
         it('decompressFileOutFileNull', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileOutFileNull start==================");
+            console.info("==================decompressFileOutFileNull start==================");
             let path = dir + "/decompressFileOutFileNull.txt";
             let zipDest1 = dir + "/decompressFileOutFileNull.zip";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -1736,14 +1736,14 @@ export default function ActsZlibTest() {
                 await zlib.decompressFile(zipDest1, null, {
                     strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED
                 }).then(data => {
-                    console.log("decompressFile data: " + data);
+                    console.info("decompressFile data: " + data);
                     expect().assertFail();
                 }).catch(err => {
-                    console.log("decompress fail: " + JSON.stringify(err));
+                    console.info("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
             try {
@@ -1754,11 +1754,11 @@ export default function ActsZlibTest() {
                     done();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
-            console.log("==================decompressFileOutFileNull end==================");
+            console.info("==================decompressFileOutFileNull end==================");
         })
 
         /*
@@ -1767,7 +1767,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when option is null
         */
         it('decompressFileOptionNull', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileOptionNull start==================");
+            console.info("==================decompressFileOptionNull start==================");
             let path = dir + "/decompressFileOptionNull.txt";
             let zipDest1 = dir + "/decompressFileOptionNull.zip";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -1801,14 +1801,14 @@ export default function ActsZlibTest() {
             });
             try {
                 await zlib.decompressFile(zipDest1, unzipdir, null).then(data => {
-                    console.log("decompressFile data: " + data);
+                    console.info("decompressFile data: " + data);
                     expect().assertFail();
                 }).catch(err => {
-                    console.log("decompress fail: " + JSON.stringify(err));
+                    console.info("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
             }
             try {
@@ -1817,11 +1817,11 @@ export default function ActsZlibTest() {
                     done();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect(err.code).assertEqual(PARAM_ERROR);
                 done();
             }
-            console.log("==================decompressFileOutFileNull end==================");
+            console.info("==================decompressFileOutFileNull end==================");
         })
 
         /*
@@ -1830,7 +1830,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when option is invalid
         */
         it('decompressFileInvalidOption', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileInvalidOption start==================");
+            console.info("==================decompressFileInvalidOption start==================");
             let path = dir + "/decompressFileInvalidOption.txt";
             let zipDest1 = dir + "/decompressFileInvalidOption.zip";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -1865,10 +1865,10 @@ export default function ActsZlibTest() {
             await zlib.decompressFile(zipDest1, unzipdir, {
                 memLevel: -1
             }).then(data => {
-                console.log("decompressFile data: " + data);
+                console.info("decompressFile data: " + data);
                 expect(data).assertNull();
             }).catch(err => {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect().assertFail();
             })
             zlib.decompressFile(zipDest1, unzipdir, {
@@ -1878,7 +1878,7 @@ export default function ActsZlibTest() {
                 expect(err).assertNull();
                 done();
             })
-            console.log("==================decompressFileOutFileNull end==================");
+            console.info("==================decompressFileOutFileNull end==================");
         })
 
         /*
@@ -1887,7 +1887,7 @@ export default function ActsZlibTest() {
         * @tc.desc: test decompressFile when strategy is null
         */
         it('decompressFileStrategyNull', Level.LEVEL3, async function (done) {
-            console.log("==================decompressFileStrategyNull start==================");
+            console.info("==================decompressFileStrategyNull start==================");
             let path = dir + "/decompressFileStrategyNull.txt";
             let zipDest1 = dir + "/decompressFileStrategyNull.zip";
             let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
@@ -1923,29 +1923,387 @@ export default function ActsZlibTest() {
                 await zlib.decompressFile(zipDest1, unzipdir, {
                     strategy: null
                 }).then(data => {
-                    console.log("decompressFile data: " + data);
+                    console.info("decompressFile data: " + data);
                 }).catch(err => {
-                    console.log("decompress fail: " + JSON.stringify(err));
+                    console.info("decompress fail: " + JSON.stringify(err));
                     expect().assertFail();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect().assertFail();
             }
             try {
                 zlib.decompressFile(zipDest1, unzipdir, {
                     strategy: null
                 }, (err, data) => {
-                    console.log("decompressFile data: " + data);
+                    console.info("decompressFile data: " + data);
                     done();
                 })
             } catch (err) {
-                console.log("decompress fail: " + JSON.stringify(err));
+                console.info("decompress fail: " + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.log("==================decompressFileStrategyNull end==================");
+            console.info("==================decompressFileStrategyNull end==================");
         })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0096
+        * @tc.name: decompressFileInfileSpecialCharacters
+        * @tc.desc: test decompressFile when outFile is a dir
+        */
+        it('decompressFileInfileSpecialCharacters', Level.LEVEL2, async function (done) {
+            console.info("==================decompressFileInfileSpecialCharacters start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/@#@##.zip";
+            let zipDest2 = dir + "/@#@#@.zip";
+            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0096a";
+            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0096b";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInfileSpecialCharacters write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInfileSpecialCharacters write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileSpecialCharacters success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileSpecialCharacters fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileSpecialCharacters success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileSpecialCharacters fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressFileInfileSpecialCharacters mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileSpecialCharacters mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileSpecialCharacters success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileSpecialCharacters fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressFileInfileSpecialCharacters mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileSpecialCharacters mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }, (err, data) => {
+                console.info("decompressFileInfileSpecialCharacters success2 " + JSON.stringify(data));
+                console.info("decompressFileInfileSpecialCharacters success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0099
+        * @tc.name: decompressFileInfileChinesePath
+        * @tc.desc: test decompressFile when outFile is a dir
+        */
+        it('decompressFileInfileChinesePath', Level.LEVEL2, async function (done) {
+            console.info("==================decompressFileInfileChinesePath start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/解压1.zip";
+            let zipDest2 = dir + "/解压2.zip";
+            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0099a";
+            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0099b";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInfileChinesePath write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInfileChinesePath write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileChinesePath success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileChinesePath fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileChinesePath success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileChinesePath fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressFileInfileChinesePath mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileChinesePath mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileChinesePath success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileChinesePath fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressFileInfileChinesePath mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileChinesePath mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }, (err, data) => {
+                console.info("decompressFileInfileChinesePath success2 " + JSON.stringify(data));
+                console.info("decompressFileInfileChinesePath success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0100
+        * @tc.name: decompressFileInfileZipPath
+        * @tc.desc: test decompressFile when outFile is a dir
+        */
+        it('decompressFileInfileZipPath', Level.LEVEL2, async function (done) {
+            console.info("==================decompressFileInfileZipPath start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/1#@.zip.zip";
+            let zipDest2 = dir + "/2##.zip.zip";
+            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0100a";
+            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0100b";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInfileZipPath write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInfileZipPath write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileZipPath success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileZipPath fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileZipPath success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileZipPath fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressFileInfileZipPath mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileZipPath mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileZipPath success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileZipPath fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressFileInfileZipPath mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileZipPath mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }, (err, data) => {
+                console.info("decompressFileInfileZipPath success2 " + JSON.stringify(data));
+                console.info("decompressFileInfileZipPath success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0101
+        * @tc.name: decompressFileInfileBlankPath
+        * @tc.desc: test decompressFile when outFile is a dir
+        */
+        it('decompressFileInfileBlankPath', Level.LEVEL2, async function (done) {
+            console.info("==================decompressFileInfileBlankPath start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/解压 1#@.zip";
+            let zipDest2 = dir + "/解压 2##.zip";
+            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0101a";
+            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0101b";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInfileBlankPath write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInfileBlankPath write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileBlankPath success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileBlankPath fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileBlankPath success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileBlankPath fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressFileInfileBlankPath mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileBlankPath mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileBlankPath success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileBlankPath fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressFileInfileBlankPath mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileBlankPath mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }, (err, data) => {
+                console.info("decompressFileInfileBlankPath success2 " + JSON.stringify(data));
+                console.info("decompressFileInfileBlankPath success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+
     })
 }
 
