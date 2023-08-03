@@ -809,6 +809,7 @@ export default function NetworkManagerMdnsTest() {
                     }, delayTime)
                 }
             });
+            discoveryService.off("discoveryStart");
         });
 
 
@@ -851,6 +852,7 @@ export default function NetworkManagerMdnsTest() {
                     }, delayTime)
                 }
             });
+            discoveryService.off("discoveryStop");
         });
 
         /**
@@ -892,6 +894,7 @@ export default function NetworkManagerMdnsTest() {
                     }, delayTime)
                 }
             });
+            discoveryService.off("discoveryStart");
         });
 
         /**
@@ -933,6 +936,7 @@ export default function NetworkManagerMdnsTest() {
                     }, delayTime)
                 }
             });
+            discoveryService.off("discoveryStop");
         });
 
         /**
@@ -974,6 +978,7 @@ export default function NetworkManagerMdnsTest() {
                     }, delayTime)
                 }
             });
+            discoveryService.off("serviceFound");
         });
 
         /**
@@ -1012,6 +1017,7 @@ export default function NetworkManagerMdnsTest() {
                     }, delayTime)
                 }
             });
+            discoveryService.off("serviceLost");
         });
 
         /**
