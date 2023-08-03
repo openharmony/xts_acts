@@ -26,7 +26,7 @@ async function applyPermission() {
     console.info("=== getAccountManager finish");
     let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
     console.info("LocalId is :" + localId);
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.wifiMg.wifidevice', 0, localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.wifi.wifidevice', 0, localId);
     let atManager = abilityAccessCtrl.createAtManager();
     if (atManager != null) {
         let tokenID = appInfo.accessTokenId;
@@ -40,6 +40,9 @@ async function applyPermission() {
     } else {
         console.info('[permission] case apply permission failed, createAtManager failed');
     }
+
+
+
 }
 
 function sleep(delay) {

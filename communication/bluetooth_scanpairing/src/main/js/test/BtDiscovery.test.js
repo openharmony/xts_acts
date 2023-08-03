@@ -28,10 +28,22 @@ async function grantPerm() {
     tokenID = appInfo.accessTokenId;
     console.info("accessTokenId" + appInfo.accessTokenId + " bundleName:" + appInfo.bundleName);
     let atManager = abilityAccessCtrl.createAtManager();
-    let result = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME1, PERMISSION_USER_SET);
-    console.info("tokenId" + tokenID + " result:" + result);
-    let result1 = await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME2, PERMISSION_USER_SET);
-    console.info("tokenId" + tokenID + " result1:" + result1);
+    if (atManager != null) {
+        await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME1, PERMISSION_USER_SET).then((result) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(result));
+            console.info("tokenId" + tokenID + " result:" + result);
+        }).catch((err) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(err));
+        });
+        await atManager.grantUserGrantedPermission(tokenID, PERMISSION_USER_NAME2, PERMISSION_USER_SET).then((results) => {
+            console.info('[permission] case grantUserGrantedPermission success :' + JSON.stringify(results));
+            console.info("tokenId" + tokenID + " result:" + results);
+        }).catch((error) => {
+            console.info('[permission] case grantUserGrantedPermission failed :' + JSON.stringify(error));
+        });
+    } else {
+        console.info('[permission] case apply permission failed, createAtManager failed');
+    }
     console.info("====grant Permission end====");
 }
 export default function btDiscoveryTest() {

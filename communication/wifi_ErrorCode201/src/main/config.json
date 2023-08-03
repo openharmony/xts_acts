@@ -122,6 +122,64 @@
             {
                 "name": "ohos.permission.GET_NFC_INFO",
                 "reason": "use ohos.permission.GET_NFC_INFO"
+            },
+            {
+                "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
+                "reason": "use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+            },
+            {
+                "name": "ohos.permission.LOCATION",
+                "reason": "need use ohos.permission.LOCATION",
+                "usedScene": {
+                    "ability": [
+                        "ohos.acts.location.geolocation.function.MainAbility"
+                    ],
+                    "when": "inuse"
+                }
+            },
+            {
+                "name": "ohos.permission.ACCESS_LOCATION",
+                "reason": "need use ohos.permission.ACCESS_LOCATION",
+                "usedScene": {
+                    "ability": [
+                        "ohos.acts.location.geolocation.function.MainAbility"
+                    ],
+                    "when": "inuse"
+                }
+            },
+            {
+                "name": "ohos.permission.LOCATION_IN_BACKGROUND",
+                "reason": "need use ohos.permission.LOCATION_IN_BACKGROUND",
+                "usedScene": {
+                    "ability": [
+                        "ohos.acts.location.geolocation.function.MainAbility"
+                    ],
+                    "when": "inuse"
+                }
+            },
+            {
+                "name": "ohos.permission.MANAGE_SECURE_SETTINGS",
+                "reason": "need use ohos.permission.MANAGE_SECURE_SETTINGS",
+                "usedScene": {
+                    "ability": [
+                        "ohos.acts.location.geolocation.function.MainAbility"
+                    ],
+                    "when": "inuse"
+                }
+            },
+            {
+                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+            },
+            {
+                "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+                "reason": "use ohos.permission.REVOKE_SENSITIVE_PERMISSIONS"
+            },
+            {
+                "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+            },
+            {
+                "name": "ohos.permission.GET_BUNDLE_INFO"
             }
         ],
         "testRunner": {

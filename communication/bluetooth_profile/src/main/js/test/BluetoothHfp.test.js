@@ -147,7 +147,7 @@ describe('btHfpConnTest', function () {
         }
         let hfpSrc = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
         hfpSrc.on('connectionStateChange', StateChangeParam);
-        await sleep(10000);
+        await sleep(6000);
         let conn = hfpSrc.disconnect('11:22:33:44:55:66');
         console.info('[bluetooth_js]hfp disconnect result:' + JSON.stringify(conn));
         expect(conn).assertFalse();

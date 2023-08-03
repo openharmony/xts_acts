@@ -14,6 +14,7 @@
  */
 
 import bluetooth from '@ohos.bluetooth.a2dp';
+import btAccess from '@ohos.bluetooth.access';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function btA2dpTest() {
@@ -24,12 +25,12 @@ describe('btA2dpTest', function() {
     }
 
     async function tryToEnableBt() {
-        let sta = bluetooth.getState();
+        let sta = btAccess.getState();
         switch (sta) {
             case 0:
-                bluetooth.enableBluetooth();
+                btAccess.enableBluetooth();
                 await sleep(10000);
-                let sta1 = bluetooth.getState();
+                let sta1 = btAccess.getState();
                 console.info('[bluetooth_js] bt turn off:' + JSON.stringify(sta1));
                 break;
             case 1:
@@ -40,9 +41,9 @@ describe('btA2dpTest', function() {
                 console.info('[bluetooth_js] bt turn on:' + JSON.stringify(sta));
                 break;
             case 3:
-                bluetooth.enableBluetooth();
+                btAccess.enableBluetooth();
                 await sleep(10000);
-                let sta2 = bluetooth.getState();
+                let sta2 = btAccess.getState();
                 console.info('[bluetooth_js] bt turning off:' + JSON.stringify(sta2));
                 break;
             default:
