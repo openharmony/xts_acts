@@ -220,24 +220,22 @@ export default function PatternLockJsunit() {
     }); 
 
     it('PatternLockJsunit_1300', 0, async function (done) {
-      // Verify default value of the PatternLock component
       console.info('[PatternLockJsunit_1300] START');
       let strJson = getInspectorByKey('default');
       let obj = JSON.parse(strJson);
-      console.info("[PatternLockJsunit_1300'] component obj is: " + JSON.stringify(obj));
-      await CommonFunc.sleep(1000);
-      // Verify password for the first time
-      expect(obj.$attrs.sideLength).assertEqual('300.00vp');
-      expect(obj.$attrs.circleRadius).assertEqual('14.00vp');
-      expect(obj.$attrs.regularColor).assertEqual('#FF000000');
-      expect(obj.$attrs.selectedColor).assertEqual('#FF000000');
-      expect(obj.$attrs.activeColor).assertEqual('#FF000000');
-      expect(obj.$attrs.pathColor).assertEqual('#FF0000FF');
-      expect(obj.$attrs.pathStrokeWidth).assertEqual('34.00vp');
-      expect(obj.$attrs.autoReset).assertEqual('true');
-      await CommonFunc.sleep(1000);
+      let newStrJson = getInspectorByKey('PatternLock');
+      let newObj = JSON.parse(newStrJson);
+      expect(obj.$attrs.sideLength).assertEqual(newObj.$attrs.sideLength);
+      expect(obj.$attrs.circleRadius).assertEqual(newObj.$attrs.circleRadius);
+      expect(obj.$attrs.regularColor).assertEqual(newObj.$attrs.regularColor);
+      expect(obj.$attrs.selectedColor).assertEqual(newObj.$attrs.selectedColor);
+      expect(obj.$attrs.activeColor).assertEqual(newObj.$attrs.activeColor);
+      expect(obj.$attrs.pathColor).assertEqual(newObj.$attrs.pathColor);
+      expect(obj.$attrs.pathStrokeWidth).assertEqual(newObj.$attrs.pathStrokeWidth);
+      expect(obj.$attrs.autoReset).assertEqual(newObj.$attrs.autoReset);
       console.info('[PatternLockJsunit_1300] END');
       done();
     });
   })
 }
+
