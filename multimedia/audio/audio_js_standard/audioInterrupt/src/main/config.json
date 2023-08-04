@@ -45,8 +45,7 @@
         ],
         "deviceType": [
             "tablet",
-            "default",
-            "2in1"
+            "default"
         ],
         "mainAbility": "ohos.acts.multimedia.audio.audiointerrupt.MainAbility",
         "distro": {
