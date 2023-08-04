@@ -44,6 +44,7 @@ group("ability_runtime") {
       "actssystemapitest:ActsSystemAPITest",
       "actsuiextensiontest:actsuiextensiontest",
       "actsusers:actsusers",
+      "actsturipermisssiontest:actsturipermisssiontest",
       "amscontextualinforquery:amscontextualinforquery",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
       "amsdisplayIdtest:amsdisplayIdtest",
