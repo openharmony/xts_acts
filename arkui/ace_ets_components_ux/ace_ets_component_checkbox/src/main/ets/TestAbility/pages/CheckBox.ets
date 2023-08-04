@@ -28,8 +28,7 @@ struct checkBoxTest {
   build() {
     Row() {
       Column() {
-        List({space: 0, initialIndex: 0 }){
-          ListItem(){
+
             Checkbox({name: 'checkbox1',  group: 'checkboxGroup1'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0100")
               .select(false)
@@ -38,8 +37,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox2',  group: 'checkboxGroup1'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0200")
               .select(false)
@@ -48,8 +46,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox3',  group: 'checkboxGroup1'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0300")
               .select(false)
@@ -58,8 +55,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox4',  group: 'checkboxGroup2'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0400")
               .select(false)
@@ -68,8 +64,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox5',  group: 'checkboxGroup2'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0500")
               .select(false)
@@ -78,8 +73,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox6',  group: 'checkboxGroup2'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0600")
               .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
@@ -89,8 +83,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox7',  group: 'checkboxGroup3'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0700")
               .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
@@ -100,8 +93,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox8',  group: 'checkboxGroup3'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0800")
               .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
@@ -111,8 +103,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox9',  group: 'checkboxGroup3'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_0900")
               .select(false)
@@ -122,8 +113,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox10',  group: 'checkboxGroup13'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_1000")
               .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
@@ -134,8 +124,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox11',  group: 'checkboxGroup13'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_1100")
               .backgroundColor($r("sys.color.ohos_id_color_switch_outline_off"))
@@ -145,8 +134,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox12',  group: 'checkboxGroup13'})
               .key("ArkUX_Stage_Checkbox_unselectedColor_1200")
               .select(false)
@@ -156,8 +144,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox13',  group: 'checkboxGroup14'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0100")
               .select(true)
@@ -166,8 +153,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox14',  group: 'checkboxGroup14'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0200")
               .select(true)
@@ -176,8 +162,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox15',  group: 'checkboxGroup14'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0300")
               .select(true)
@@ -186,8 +171,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox16',  group: 'checkboxGroup15'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0400")
               .select(true)
@@ -196,8 +180,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox17',  group: 'checkboxGroup15'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0500")
               .select(true)
@@ -206,8 +189,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox18',  group: 'checkboxGroup15'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0600")
               .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
@@ -217,8 +199,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox19',  group: 'checkboxGroup25'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0700")
               .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
@@ -228,8 +209,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox20',  group: 'checkboxGroup25'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0800")
               .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
@@ -239,8 +219,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox21',  group: 'checkboxGroup25'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_0900")
               .select(true)
@@ -250,8 +229,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox22',  group: 'checkboxGroup26'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_1000")
               .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
@@ -262,8 +240,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox23',  group: 'checkboxGroup26'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_1100")
               .backgroundColor($r("sys.color.ohos_id_color_foreground_contrary"))
@@ -273,8 +250,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox24',  group: 'checkboxGroup26'})
               .key("ArkUX_Stage_Checkbox_CheckMarkColor_1200")
               .select(true)
@@ -284,8 +260,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox25',  group: 'checkboxGroup27'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0100")
               .select(true)
@@ -294,8 +269,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox26',  group: 'checkboxGroup27'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0200")
               .select(true)
@@ -304,8 +278,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox27',  group: 'checkboxGroup27'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0300")
               .select(true)
@@ -314,8 +287,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+ 
             Checkbox({name: 'checkbox28',  group: 'checkboxGroup38'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0400")
               .select(true)
@@ -324,8 +296,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox29',  group: 'checkboxGroup38'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0500")
               .select(true)
@@ -334,8 +305,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox30',  group: 'checkboxGroup38'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0600")
               .select(true)
@@ -344,8 +314,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox31',  group: 'checkboxGroup39'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0700")
               .select(true)
@@ -354,8 +323,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox32',  group: 'checkboxGroup39'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0800")
               .select(true)
@@ -364,8 +332,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox33',  group: 'checkboxGroup39'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_0900")
               .select(true)
@@ -375,8 +342,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox34',  group: 'checkboxGroup40'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_1000")
               .select(true)
@@ -386,8 +352,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox35',  group: 'checkboxGroup40'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_1100")
               .select(true)
@@ -396,8 +361,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox36',  group: 'checkboxGroup40'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_1200")
               .select(true)
@@ -407,8 +371,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox36',  group: 'checkboxGroup40'})
               .key("ArkUX_Stage_Checkbox_CheckMarkSize_1300")
               .select(true)
@@ -418,8 +381,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox37',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0100")
               .select(true)
@@ -428,8 +390,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox38',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0200")
               .select(true)
@@ -438,8 +399,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox39',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0300")
               .select(true)
@@ -448,8 +408,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox40',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0400")
               .select(true)
@@ -458,8 +417,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+ 
             Checkbox({name: 'checkbox41',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0500")
               .select(true)
@@ -468,8 +426,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox42',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0600")
               .select(true)
@@ -478,8 +435,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox43',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0700")
               .select(true)
@@ -488,8 +444,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox44',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0800")
               .select(true)
@@ -498,8 +453,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox45',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_0900")
               .select(true)
@@ -509,8 +463,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox46',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_1000")
               .select(true)
@@ -520,8 +473,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox47',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_1100")
               .select(true)
@@ -530,8 +482,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox48',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_1200")
               .select(true)
@@ -541,8 +492,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox49',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_1300")
               .select(true)
@@ -552,8 +502,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
-          ListItem(){
+
             Checkbox({name: 'checkbox49',  group: 'checkboxGroup'})
               .key("ArkUX_Stage_Checkbox_CheckMarkWidth_1400")
               .select(true)
@@ -563,9 +512,7 @@ struct checkBoxTest {
               .onChange((value: boolean) => {
                 console.info('Checkbox1 change is'+ value)
               })
-          }
         }
-      }
       .width('100%')
     }
     .height('100%')

@@ -35,8 +35,7 @@ struct RadioTest {
   build() {
     Row() {
       Column() {
-        List({ space: 0, initialIndex: 0 }) {
-          ListItem() {
+
             Radio({ value: 'Radio1', group: 'radioGroup' })
               .checked(true)
               .width(50)
@@ -46,8 +45,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio1 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio2', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -57,8 +55,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio2 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio3', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -68,8 +65,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio3 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio4', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -79,8 +75,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio4 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio5', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -90,8 +85,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio5 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio6', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -102,8 +96,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio6 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio7', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -114,8 +107,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio7 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio8', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -126,8 +118,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio8 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio9', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -138,8 +129,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio9 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio10', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -150,8 +140,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio10 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio11', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -163,8 +152,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio11 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio12', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -175,8 +163,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio12 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio13', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -186,8 +173,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio13 status is' + isChecked)
               })
-          }
-          ListItem() {
+ 
             Radio({ value: 'Radio14', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -197,8 +183,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio14 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio15', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -208,8 +193,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio15 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio16', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -219,8 +203,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio16 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio17', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -230,8 +213,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio17 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio18', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -242,8 +224,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio18 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio19', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -254,8 +235,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio19 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio20', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -266,8 +246,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio20 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio21', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -278,8 +257,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio21 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio22', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -290,8 +268,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio22 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio23', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -303,8 +280,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio23 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio24', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -315,8 +291,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio24 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio25', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -326,8 +301,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio25 status is' + isChecked)
               })
-          }
-          ListItem() {
+ 
             Radio({ value: 'Radio26', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -337,8 +311,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio26 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio27', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -348,8 +321,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio27 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio28', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -359,8 +331,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio28 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio29', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -370,8 +341,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio29 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio30', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -382,8 +352,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio30 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio31', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -394,8 +363,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio31 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio32', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -406,8 +374,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio32 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio33', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -418,8 +385,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio33 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio34', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -430,8 +396,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio34 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio35', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -443,8 +408,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio35 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio36', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -455,8 +419,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio36 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio37', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -470,8 +433,7 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio37 status is' + isChecked)
               })
-          }
-          ListItem() {
+
             Radio({ value: 'Radio38', group: 'radioGroup' })
               .checked(false)
               .width(50)
@@ -483,8 +445,6 @@ struct RadioTest {
               .onChange((isChecked: boolean) => {
                 console.log('Radio38 status is' + isChecked)
               })
-          }
-        }
       }
     .width('100%')
     }

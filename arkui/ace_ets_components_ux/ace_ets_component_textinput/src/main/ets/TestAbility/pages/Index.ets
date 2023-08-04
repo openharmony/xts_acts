@@ -34,8 +34,6 @@ struct textInputTest {
   build() {
     Row() {
       Column() {
-        List({space: 0, initialIndex: 0 }){
-          ListItem(){
             TextInput({ placeholder: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0100")
               .placeholderColor(Color.Grey)
@@ -48,8 +46,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0200")
               .placeholderColor(Color.Grey)
@@ -62,8 +58,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0300")
               .placeholderColor(Color.Grey)
@@ -76,8 +70,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0400")
               .placeholderColor(Color.Grey)
@@ -90,8 +82,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0500")
               .placeholderColor(Color.Grey)
@@ -104,8 +94,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0600")
               .placeholderColor(Color.Grey)
@@ -118,8 +106,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0700")
               .placeholderColor(Color.Grey)
@@ -132,8 +118,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0800")
               .placeholderColor(Color.Grey)
@@ -146,8 +130,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_0900")
               .placeholderColor(Color.Grey)
@@ -160,8 +142,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_1000")
               .placeholderColor(Color.Grey)
@@ -174,8 +154,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_1100")
               .placeholderColor(Color.Grey)
@@ -189,8 +167,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_1200")
               .placeholderColor(Color.Grey)
@@ -204,8 +180,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_1300")
               .placeholderColor(Color.Grey)
@@ -219,8 +193,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "To display string text for extra long To display string text for extra long ",
                         controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretPosition_1400")
@@ -235,8 +207,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0100")
               .placeholderColor(Color.Grey)
@@ -249,8 +219,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0200")
               .placeholderColor(Color.Grey)
@@ -263,8 +231,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0300")
               .placeholderColor(Color.Grey)
@@ -277,8 +243,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0400")
               .placeholderColor(Color.Grey)
@@ -291,8 +255,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0500")
               .placeholderColor(Color.Grey)
@@ -305,8 +267,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0600")
               .placeholderColor(Color.Grey)
@@ -319,8 +279,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0700")
               .placeholderColor(Color.Grey)
@@ -333,8 +291,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0800")
               .placeholderColor(Color.Grey)
@@ -347,8 +303,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_0900")
               .placeholderColor(Color.Grey)
@@ -361,8 +315,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_1000")
               .placeholderColor(Color.Grey)
@@ -376,8 +328,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_1100")
               .placeholderColor(Color.Grey)
@@ -391,8 +341,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_CaretWidth_1200")
               .placeholderColor(Color.Grey)
@@ -406,8 +354,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0100")
               .placeholderColor(Color.Grey)
@@ -420,8 +366,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0200")
               .placeholderColor(Color.Grey)
@@ -434,8 +378,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0300")
               .placeholderColor(Color.Grey)
@@ -448,8 +390,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0400")
               .placeholderColor(Color.Grey)
@@ -462,8 +402,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0500")
               .placeholderColor(Color.Grey)
@@ -476,8 +414,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0600")
               .placeholderColor(Color.Grey)
@@ -491,8 +427,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0700")
               .placeholderColor(Color.Grey)
@@ -506,8 +440,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0800")
               .placeholderColor(Color.Grey)
@@ -521,8 +453,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_0900")
               .placeholderColor(Color.Grey)
@@ -536,8 +466,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_1000")
               .placeholderColor(Color.Grey)
@@ -552,8 +480,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_1100")
               .placeholderColor(Color.Grey)
@@ -567,8 +493,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_1200")
               .placeholderColor(Color.Grey)
@@ -583,8 +507,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-          ListItem(){
             TextInput({ text: "input your word...", controller: this.controller })
               .key("ArkUX_Stage_TextInput_selectedColor_1300")
               .placeholderColor(Color.Grey)
@@ -597,8 +519,6 @@ struct textInputTest {
               .onChange((value: string) => {
                 this.text = value;
               })
-          }
-        }
       }
       .width('100%')
     }
