@@ -32,7 +32,7 @@ export default function abilityTest() {
       console.log('ActsUriPermissionTest_0100 start.');
       await abilityDelegator.executeShellCommand("hilog -x | grep UriPermissionManagerService").then((data) => {
         console.log("executeShellCommand ActsUriPermissionTest_0100 : data : " + data.stdResult);
-        let i = JSON.stringify(data.stdResult).indexOf('UriPermissionManagerService');
+        let i = JSON.stringify(data.stdResult).indexOf('UriPermissionManagerService start');
         expect(i).assertEqual(-1);
         done();
       }).catch((error) => {
@@ -56,7 +56,7 @@ export default function abilityTest() {
       setTimeout(() => {
         abilityDelegator.executeShellCommand("hilog -x | grep UriPermissionManagerService").then((data) => {
           console.log("Verification failed executeShellCommand ActsUriPermissionTest_0200: data: " + data.stdResult);
-          expect(data.stdResult).assertContain('UriPermissionManagerService');
+          expect(data.stdResult).assertContain('UriPermissionManagerService start');
           done();
         }).catch((error) => {
           console.log("Verification failed executeShellCommand ActsUriPermissionTest_0200 error: " + JSON.stringify(error));
