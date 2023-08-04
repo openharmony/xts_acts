@@ -1573,6 +1573,95 @@ export default function ActsZlibTest() {
         })
 
         /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0087
+        * @tc.name: decompressDifferentLevel
+        * @tc.desc: test decompressFile when inFile and out file is valid
+        */
+        it('decompressDifferentLevel', Level.LEVEL2, async function (done) {
+            console.info("==================decompressDifferentLevel start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/decompressFileTest1.zip";
+            let zipDest2 = dir + "/decompressFileTest2.zip";
+            let unzipdir1 = dir + "/SUB_BMS_TOOL_ZLIB_0087a";
+            let unzipdir2 = dir + "/SUB_BMS_TOOL_ZLIB_0087b";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressDifferentLevel write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressDifferentLevel write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_BEST_COMPRESSION
+            }).then(data => {
+                console.info("decompressDifferentLevel success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressDifferentLevel fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED
+            }).then(data => {
+                console.info("decompressDifferentLevel success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressDifferentLevel  fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressDifferentLevel mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressDifferentLevel mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_BEST_COMPRESSION
+            }).then(data => {
+                console.info("decompressDifferentLevel success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressDifferentLevel fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressDifferentLevel mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressDifferentLevel mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED
+            }, (err, data) => {
+                console.info("decompressDifferentLevel success2 " + JSON.stringify(data));
+                console.info("decompressDifferentLevel success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+        /*
         * @tc.number: SUB_BMS_TOOL_ZLIB_0088
         * @tc.name: decompressFileInFileNotExist
         * @tc.desc: test decompressFile when inFile is not exist
@@ -2027,6 +2116,184 @@ export default function ActsZlibTest() {
             }, (err, data) => {
                 console.info("decompressFileInfileSpecialCharacters success2 " + JSON.stringify(data));
                 console.info("decompressFileInfileSpecialCharacters success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0097
+        * @tc.name: decompressFileOutfileSpecialCharDir
+        * @tc.desc: test decompressFile when outFile is a dir
+        */
+        it('decompressFileOutfileSpecialCharDir', Level.LEVEL2, async function (done) {
+            console.info("==================decompressFileOutfileSpecialCharDir start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/@#@##.zip";
+            let zipDest2 = dir + "/@#@#@.zip";
+            let unzipdir1 = dir + "/@####1";
+            let unzipdir2 = dir + "/#@@@@2";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileOutfileSpecialCharDir write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileOutfileSpecialCharDir write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileOutfileSpecialCharDir success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileOutfileSpecialCharDir fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileOutfileSpecialCharDir success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileOutfileSpecialCharDir fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressFileOutfileSpecialCharDir mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileOutfileSpecialCharDir mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileOutfileSpecialCharDir success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileOutfileSpecialCharDir fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressFileOutfileSpecialCharDir mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileOutfileSpecialCharDir mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }, (err, data) => {
+                console.info("decompressFileOutfileSpecialCharDir success2 " + JSON.stringify(data));
+                console.info("decompressFileOutfileSpecialCharDir success2 " + JSON.stringify(err));
+                let zipStat = fileio.statSync(finalFile2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(undefined);
+                expect(err).assertEqual(null);
+                done();
+            })
+        })
+
+        /*
+        * @tc.number: SUB_BMS_TOOL_ZLIB_0098
+        * @tc.name: decompressFileInfileChineseDir
+        * @tc.desc: test decompressFile when outFile is a dir
+        */
+        it('decompressFileInfileChineseDir', Level.LEVEL2, async function (done) {
+            console.info("==================decompressFileInfileChineseDir start==================");
+            let path = dir + "/decompressFileTest.txt";
+            let zipDest1 = dir + "/解压1.zip";
+            let zipDest2 = dir + "/解压2.zip";
+            let unzipdir1 = dir + "/文件夹1";
+            let unzipdir2 = dir + "/文件夹2";
+            let finalFile1 = unzipdir1 + "/decompressFileTest.txt";
+            let finalFile2 = unzipdir2 + "/decompressFileTest.txt";
+            let fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+            await fileio.write(fd, infos).then(function (number) {
+                console.info("decompressFileInfileChineseDir write data to file success " + JSON.stringify(number));
+            }).catch(function (err) {
+                console.info("decompressFileInfileChineseDir write data to file failed with error:" + err);
+                expect(err).assertFail();
+            });
+            await zlib.compressFile(path, zipDest1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileChineseDir success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileChineseDir fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await zlib.compressFile(path, zipDest2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileChineseDir success " + JSON.stringify(data));
+                let zipStat = fileio.statSync(zipDest2);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                let srcSize = fileio.statSync(path).size;
+                let destSize = zipStat.size;
+                expect(srcSize > destSize).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileChineseDir fail " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir1).then(function () {
+                console.info("decompressFileInfileChineseDir mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileChineseDir mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            await zlib.decompressFile(zipDest1, unzipdir1, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }).then(data => {
+                console.info("decompressFileInfileChineseDir success1 " + JSON.stringify(data));
+                let zipStat = fileio.statSync(finalFile1);
+                let isFile = zipStat.isFile();
+                expect(isFile).assertTrue();
+                expect(data).assertEqual(null);
+            }).catch(err => {
+                console.info("decompressFileInfileChineseDir fail1 " + JSON.stringify(err));
+                expect(err).assertFail();
+            })
+            await fileio.mkdir(unzipdir2).then(function () {
+                console.info("decompressFileInfileChineseDir mkdir successfully");
+            }).catch(function (error) {
+                console.info("decompressFileInfileChineseDir mkdir failed with error:" + error);
+                expect(error).assertFail();
+            });
+            zlib.decompressFile(zipDest2, unzipdir2, {
+                level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION
+            }, (err, data) => {
+                console.info("decompressFileInfileChineseDir success2 " + JSON.stringify(data));
+                console.info("decompressFileInfileChineseDir success2 " + JSON.stringify(err));
                 let zipStat = fileio.statSync(finalFile2);
                 let isFile = zipStat.isFile();
                 expect(isFile).assertTrue();
