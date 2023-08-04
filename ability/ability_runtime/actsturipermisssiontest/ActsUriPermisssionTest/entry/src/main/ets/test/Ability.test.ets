@@ -21,13 +21,6 @@ let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
-    beforeEach(function () {
-      abilityDelegator.executeShellCommand("hilog -r").then((data) => {
-        console.log("pkill : data : " + data.stdResult);
-      }).catch((error) => {
-        console.log("pkill error : " + JSON.stringify(error));
-      })
-    })
 
     /*
      * @tc.number: ActsUriPermissionTest_0100
@@ -35,12 +28,12 @@ export default function abilityTest() {
      * @tc.desc: UriPermission on demand start and stop
      * @tc.level:1
      */
-    it('ActsUriPermissionTest_0100',0,  async function(done) {
+    it('ActsUriPermissionTest_0100', 0, async function (done) {
       console.log('ActsUriPermissionTest_0100 start.');
       await abilityDelegator.executeShellCommand("hilog -x | grep UriPermissionManagerService").then((data) => {
         console.log("executeShellCommand ActsUriPermissionTest_0100 : data : " + data.stdResult);
         let i = JSON.stringify(data.stdResult).indexOf('UriPermissionManagerService');
-        expect(i == -1).assertEqual(true);
+        expect(i).assertEqual(-1);
         done();
       }).catch((error) => {
         console.log("executeShellCommand ActsUriPermissionTest_0100 error : " + JSON.stringify(error));
@@ -48,34 +41,29 @@ export default function abilityTest() {
         done();
       })
     })
-    
+
     /*
-     * @tc.number: ActsUriPermissionTest_0100
+     * @tc.number: ActsUriPermissionTest_0200
      * @tc.name: UriPermission on demand start and stop
      * @tc.desc: UriPermission on demand start and stop
      * @tc.level:1
      */
-    it('ActsUriPermissionTest_0200',0,  async function(done) {
+    it('ActsUriPermissionTest_0200', 0, async function (done) {
       console.log('ActsUriPermissionTest_0200 start.');
       let targetBundleName = 'com.example.actsuripermissionrely'
       let uri = "fileshare:///com.samples.filesharetest.FileShare/person/10"
-      uriPermissionManager.grantUriPermission(uri, WantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName)
-        .then((data) => {
-          console.log('Verification succeeded.' + data)
+      let result = uriPermissionManager.grantUriPermission(uri, WantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION, targetBundleName);
+      setTimeout(() => {
+        abilityDelegator.executeShellCommand("hilog -x | grep UriPermissionManagerService").then((data) => {
+          console.log("Verification failed executeShellCommand ActsUriPermissionTest_0200: data: " + data.stdResult);
+          expect(data.stdResult).assertContain('UriPermissionManagerService');
+          done();
         }).catch((error) => {
-        console.log('Verification failed err is.' + JSON.stringify(error));
-        setTimeout(() => {
-          abilityDelegator.executeShellCommand("hilog -x | grep UriPermissionManagerService").then((data) => {
-            console.log("Verification failed executeShellCommand ActsUriPermissionTest_0200: data: " + data.stdResult);
-            expect(data.stdResult).assertContain('UriPermissionManagerService');
-            done();
-          }).catch((error) => {
-            console.log("Verification failed executeShellCommand ActsUriPermissionTest_0200 error: " + JSON.stringify(error));
-            expect().assertFail();
-            done();
-          })
-        },500)
-      })
+          console.log("Verification failed executeShellCommand ActsUriPermissionTest_0200 error: " + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        })
+      }, 500)
     })
   })
 }
