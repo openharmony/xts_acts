@@ -108,7 +108,7 @@ export default function NetTCPSocketServerTest() {
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
-        expect(error.code).assertEqual(401);
+        expect(error.code == 401).assertTrue();
         done();
       }
     });
@@ -172,7 +172,7 @@ export default function NetTCPSocketServerTest() {
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
-        expect(error.code).assertEqual(401);
+        expect(error.code == 401).assertTrue();
         done();
         return;
       }
@@ -225,7 +225,7 @@ export default function NetTCPSocketServerTest() {
         done();
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
-        expect(error.code).assertEqual(401);
+        expect(error.code == 401).assertTrue();
         done();
         return;
       }
@@ -690,7 +690,7 @@ export default function NetTCPSocketServerTest() {
         });
       } catch (error) {
         console.info(`${caseName} catch error, expect error: [${error.code}, ${error.message}]`);
-        ExpectFalse();
+        expect(error.code == 401).assertTrue();
         done();
         return;
       }
@@ -1305,7 +1305,7 @@ export default function NetTCPSocketServerTest() {
         done();
       } catch (error) {
         console.info(`${caseName} catch err, expect err: [${error.code}, ${error.message}]`);
-        expect(error.code).assertEqual(401);
+        expect(error.code == 401).assertTrue();
         done();
         return;
       }
