@@ -13,12 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("actsturipermisssiontest") {
+group("actsuiextensiontest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ActsUriPermissionRely:ActsUriPermissionRely",
-      "ActsUriPermisssionTest:ActsUriPermisssionTest",
+      "uiextensionprovider:UIExtensionProvider",
+      "uiextensiontest:UIExtensionTest",
     ]
   }
 }
