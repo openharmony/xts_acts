@@ -569,7 +569,7 @@ export default function requestUploadOnetJSUnitTest() {
               arr.push(2);
             });
             await task.start();
-            await sleep(10);
+            await sleep(20);
             console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 task progress on arr: " + JSON.stringify(arr));
             task.off('progress');
             expect(arr.join()).assertEqual(arr1.join());
@@ -1115,7 +1115,7 @@ export default function requestUploadOnetJSUnitTest() {
               arr.push(2);
             });
             await task.start();
-            await sleep(10);
+            await sleep(20);
             task.off('failed');
             console.info("====>SUB_Misc_REQUEST_On_Upload_Failed_0030 task progress on arr: " + JSON.stringify(arr));
             expect(arr.join()).assertEqual(arr1.join());
