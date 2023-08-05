@@ -321,9 +321,8 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_capsule_resource');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(newJson));
       let progress_capsule_borderWidth_resource = $r('sys.float.ohos_id_text_margin_vertical');
-      console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400 ..qianduan]: " + JSON.stringify(progress_capsule_borderWidth_resource));
       globalThis.value.message.notify({name:'progress_capsule_borderWidth_resource',value:progress_capsule_borderWidth_resource});
-      Utils.sleep(2000);
+      await Utils.sleep(2000);
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(strJson))
