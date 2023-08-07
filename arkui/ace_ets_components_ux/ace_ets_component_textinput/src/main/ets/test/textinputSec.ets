@@ -988,5 +988,532 @@ export default function textinputSec() {
         done()
       }
     })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0100
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to BarState.OFF
+     */
+    it('ArkUX_Stage_TextInput_barState_0100',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0100');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0100 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.OFF");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0100 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0200
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to BarState.AUTO
+     */
+    it('ArkUX_Stage_TextInput_barState_0200',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0200');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0200 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0200 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0300
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to BarState.ON
+     */
+    it('ArkUX_Stage_TextInput_barState_0300',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0300');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0300 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.ON");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0300 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0400
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to BarState.OFF,
+     *               and then set the parameter to BarState.AUTO again
+     */
+    it('ArkUX_Stage_TextInput_barState_0400',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0400');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0400 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0400 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0500
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to 0
+     */
+    it('ArkUX_Stage_TextInput_barState_0500',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0500');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0500 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.OFF");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0500 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0600
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to 10
+     */
+    it('ArkUX_Stage_TextInput_barState_0600',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0600');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0600 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0600 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0700
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to "sfasf"
+     */
+    it('ArkUX_Stage_TextInput_barState_0700',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0700');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0700 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0700 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0800
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to ""
+     */
+    it('ArkUX_Stage_TextInput_barState_0800',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0800');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0800 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0800 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_0900
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to null
+     */
+    it('ArkUX_Stage_TextInput_barState_0900',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_0900');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_0900 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_0900 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_1000
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter of the TextInput component to undefined
+     */
+    it('ArkUX_Stage_TextInput_barState_1000',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_1000');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_1000 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_1000 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_1100
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the barState property parameter of the TextInput component to Outlier undefined,
+     *               and set the parameter BarState.OFF again
+     */
+    it('ArkUX_Stage_TextInput_barState_1100',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_1100');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_1100 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_1100 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_1200
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the barState property parameter of the TextInput component to BarState.OFF,
+     *               and set the parameter again to Outlier undefined
+     */
+    it('ArkUX_Stage_TextInput_barState_1200',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_barState_1200');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_1200 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.ON");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_1200 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_1300
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Do not set the TextInput component barState property
+     */
+    it('ArkUX_Stage_TextInput_barState_1300',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('TextInputInlineNO');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_1300 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.AUTO");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_1300 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_barState_1400
+     * @tc.name      Set TextInput text status
+     * @tc.desc      Set the BarState property parameter to BarState.ON
+     *               when the TextInput component is not in inline mode
+     */
+    it('ArkUX_Stage_TextInput_barState_1400',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('TextInputStyleDefault');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_barState_1400 barState:" + JSON.stringify(obj.$attrs.barState))
+          expect(obj.$attrs.barState).assertEqual("BarState.ON");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_barState_1400 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0100
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to 10
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0100',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0100');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0100 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("10");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0100 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0200
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to 0
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0200',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0200');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0200 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0200 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0300
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to "123"
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0300',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0300');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0300 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0300 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0400
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to -5
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0400',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0400');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0400 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0400 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0500
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to ""
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0500',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0500');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0500 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0500 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0600
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to null
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0600',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0600');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0600 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0600 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0700
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to undefined
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0700',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0700');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0700 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0700 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0800
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the MaxLines property parameter of the TextInput component to 1,
+     *               and then set the parameter to 10 again
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0800',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0800');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0800 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("10");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0800 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_0900
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the maxLines attribute parameter of TextInput component to 10,
+     *               and set the parameter to Outlier again
+     */
+    it('ArkUX_Stage_TextInput_maxLines_0900',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_0900');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_0900 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_0900 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_1000
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the maxLines property parameter of TextInput component to Outlier
+     *               undefined, and set the parameter to 10 again
+     */
+    it('ArkUX_Stage_TextInput_maxLines_1000',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('ArkUX_Stage_TextInput_maxLines_1000');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_1000 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("10");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_1000 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_1100
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Do not set the TextInput component maxLines property
+     */
+    it('ArkUX_Stage_TextInput_maxLines_1100',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('TextInputInlineNO');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_1100 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("3");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_1100 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
+
+    /**
+     * @tc.number    ArkUX_Stage_TextInput_maxLines_1200
+     * @tc.name      Set the maximum number of lines in TextInput text
+     * @tc.desc      Set the TextInput component maxLines property in non inline mode
+     */
+    it('ArkUX_Stage_TextInput_maxLines_1200',0, function (done) {
+      setTimeout(() => {
+        try {
+          let strJson = getInspectorByKey('TextInputStyleDefault');
+          let obj = JSON.parse(strJson);
+          console.log("ArkUX_Stage_TextInput_maxLines_1200 maxLines:" + JSON.stringify(obj.$attrs.maxLines))
+          expect(obj.$attrs.maxLines).assertEqual("1");
+        } catch (err) {
+          console.info('ArkUX_Stage_TextInput_maxLines_1200 ERR  ' + JSON.stringify(err));
+          expect().assertFail();
+        }
+        done()
+      }, 500);
+    })
   })
 }
