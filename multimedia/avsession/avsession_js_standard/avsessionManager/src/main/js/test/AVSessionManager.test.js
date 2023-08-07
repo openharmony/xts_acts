@@ -185,8 +185,8 @@ export default function AVSessionManager() {
                     if (err) {
                         console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
                         expect(err.code == 6600101).assertTrue();
-                        done();
                         currentAVSession.destroy();
+                        done();
                     }
                 });
             } catch (error) {
