@@ -80,6 +80,7 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.POSITION,
       photoKeys.DATE_TRASHED,
       photoKeys.HIDDEN,
+      photoKeys.CAMERA_SHOT_KEY,
     ],
     predicates: predicates
   };
@@ -161,7 +162,7 @@ export async function createUserAlbum(testNum, albumName) : Promise<photoAccessH
     console.info(`Failed to createUserAlbum! error: ${error}`);
     throw error;
   }
-  
+
   return new Promise((resolve, reject) => {
     resolve(album);
   });
