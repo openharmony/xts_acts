@@ -91,8 +91,8 @@ export default function GridRowJsunit() {
       expect(obj.$attrs.columns).assertEqual('12');
       expect(obj.$attrs.breakpoints).assertEqual('12');
       expect(obj.$attrs.direction).assertEqual('12');
-      let x = vp2px(5).toFixed(6);
-      let y = vp2px(10).toFixed(6);
+      let x = vp2px(0).toFixed(6);
+      let y = vp2px(0).toFixed(6);
       let str = '<' + x + ', '+y;
       expect(obj.$attrs.gutter).assertEqual(str);
       console.info('[GridRowJsunit_0200] END');
@@ -124,8 +124,8 @@ export default function GridRowJsunit() {
       expect(obj.$attrs.columns).assertEqual('12');
       expect(obj.$attrs.breakpoints).assertEqual('12');
       expect(obj.$attrs.direction).assertEqual('12');
-      let x = vp2px(5).toFixed(6);
-      let y = vp2px(10).toFixed(6);
+      let x = vp2px(-10).toFixed(6);
+      let y = vp2px(-10).toFixed(6);
       let str = '<' + x + ', '+y;
       expect(obj.$attrs.gutter).assertEqual(str);
       console.info('[GridRowJsunit_0300] END');
