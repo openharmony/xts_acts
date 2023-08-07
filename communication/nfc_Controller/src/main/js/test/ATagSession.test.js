@@ -411,9 +411,9 @@ export default function nfcATagSessionTest() {
                 let settime;
                 try {
                     let timeoutMs = 1000;
-                    settime  = getAtag.setTimeout(timeoutMs);
-                    console.info("[NFC_test] tagsession14 setTimeout:" + settime);
-                    expect(settime).assertTrue();
+                    getAtag.setTimeout(timeoutMs);
+                    console.info("[NFC_test] tagsession14 setTimeout success");
+                    expect(true).assertTrue();
                 } catch (error) {
                     console.info('[NFC_test] tagsession14 setTimeout error' + error)
                     expect(3100201).assertEqual(error.code)

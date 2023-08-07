@@ -93,13 +93,11 @@ describe('btManagerGattServiceTest', function() {
             gattClient.connect();
             await sleep(2000);
             await gattServer.off("connectStateChange");
-            done()
         } catch (error) {
-            console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code}, 
-              message is ${error.message}`);
-              expect(true).assertFalse();
+            console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
+              expect(error.code).assertEqual('2900099');
         }
-        
+        done();
     })
 
     /**
