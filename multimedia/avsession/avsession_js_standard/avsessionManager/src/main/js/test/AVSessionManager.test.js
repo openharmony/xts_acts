@@ -159,8 +159,6 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
 
@@ -181,11 +179,11 @@ export default function AVSessionManager() {
                 console.info(`CreateAVSession 111BusinessError: code: `);
                 let aVCastController;
                 console.info(`CreateAVSession 333BusinessError: code: `);
-                aVCastController = await currentAVSession.getAVCastController((err, data) => {
+                aVCastController = await currentAVSession.getAVCastController(async(err, data) => {
                     if (err) {
                         console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
                         expect(err.code == 6600101).assertTrue();
-                        currentAVSession.destroy();
+                        await currentAVSession.destroy();
                         done();
                     }
                 });
@@ -196,8 +194,6 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
 
@@ -323,8 +319,6 @@ export default function AVSessionManager() {
 
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
         /* *
