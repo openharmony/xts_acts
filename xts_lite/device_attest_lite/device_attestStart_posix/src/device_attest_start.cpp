@@ -20,10 +20,11 @@
 #include "devattest_interface.h"
 
 #define ATTEST_SOFTWARE_RESULT_SIZE 5
+#define ACTS_DEVATTEST_SUCCESS 0
 
 using namespace std;
 using namespace testing::ext;
-	
+
 class DeviceAttestStartTest : public testing::Test {
 protected:
     static void SetUpTestCase(void) {}
@@ -41,8 +42,8 @@ protected:
  */
 HWTEST_F(DeviceAttestStartTest, subDeviceAttestTest0100, Function | MediumTest | Level1)
 {
-    int32_t ret = DEVATTEST_SUCCESS;
+    int32_t ret = ACTS_DEVATTEST_SUCCESS;
     ret = StartDevAttestTask();
     printf("[CLIENT MAIN] StartDevAttestTask ret:%d.\n", ret);
-    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
+    EXPECT_EQ(ret, ACTS_DEVATTEST_SUCCESS);
 }
