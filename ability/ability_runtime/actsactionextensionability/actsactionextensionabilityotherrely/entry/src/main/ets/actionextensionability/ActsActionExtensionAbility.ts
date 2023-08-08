@@ -15,7 +15,7 @@
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
 
-var count = 0;
+let count = 0;
 const TIME_OUT = 500;
 export default class ActsActionExtensionAbility extends ActionExtensionAbility {
   storage: LocalStorage;
@@ -28,18 +28,18 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
   onForeground() {
     console.log('====>ActsActionExtensionAbility onForeground called');
     count++;
-    var options = {
+    let options = {
       parameters: {
         'count': count
       }
-    }
-    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function (){});
+    };
+    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {});
   }
 
   onBackground() {
     console.log('====>ActsActionExtensionAbility onBackground called');
     count++;
-    commonEventManager.publish('ACTS_TEST_BACKGROUND', function (){});
+    commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {});
     setTimeout(() => {
       globalThis.session.terminateSelf();
     }, TIME_OUT);
@@ -61,12 +61,12 @@ export default class ActsActionExtensionAbility extends ActionExtensionAbility {
   onDestroy() {
     console.log('====>ActsActionExtensionAbility onDestroy called');
     count++;
-    var options = {
+    let options = {
       parameters: {
         'count': count
       }
-    }
-    commonEventManager.publish('ACTS_TEST_DESTROY', options, function (){});
+    };
+    commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {});
   }
 
   onSessionDestroy(session) {

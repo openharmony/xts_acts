@@ -13,19 +13,15 @@
  * limitations under the License.
  */
 import ActionExtensionAbility from '@ohos.app.ability.ActionExtensionAbility';
-import wantConstant from '@ohos.app.ability.wantConstant';
-import commonEvent from '@ohos.commonEventManager';
-import hilog from '@ohos.hilog';
 
 export default class UiExtAbility extends ActionExtensionAbility {
   onCreate() {
-    hilog.info(0x0000, 'testTag', 'UIExtAbility onCreate  want: %{public}s');
     console.info('=======>UIExtAbility onCreate======>');
   }
 
   onSessionCreate(want, session) {
     console.log(`want: ${JSON.stringify(want)}}`);
-    var storage: LocalStorage = new LocalStorage({
+    let storage: LocalStorage = new LocalStorage({
       'session': session
     });
     session.loadContent('pages/Page', storage);

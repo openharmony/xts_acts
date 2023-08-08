@@ -25,7 +25,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
 
   onSessionCreate(want, session) {
     console.log(`want: ${JSON.stringify(want)}}`);
-    var storage: LocalStorage = new LocalStorage({
+    let storage: LocalStorage = new LocalStorage({
       'session': session
     });
     session.loadContent('pages/Page', storage);
@@ -42,7 +42,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         }
       }, (error) => {
         console.info('=======>Acts_ActionExtensionAbility_1000 error.code ======>' + error.code);
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             num: error.code
           }
@@ -64,7 +64,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         }
       }).then(() => {
         console.info('=======>Acts_ActionExtensionAbility_1100 UIExtAbility startAbility success ======>');
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             str: 'success'
           }
@@ -74,7 +74,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         });
       }).catch((err) => {
         console.debug('====>Acts_ActionExtensionAbility_1100 UIExtAbility startAbility err:' + JSON.stringify(err));
-      })
+      });
     }
 
     if (want.action === 'Acts_ActionExtensionAbility_1200') {
@@ -88,7 +88,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         }
       }, (error) => {
         console.info('=======>Acts_ActionExtensionAbility_1200 error.code ======>' + error.code);
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             num: error.code
           }
@@ -112,7 +112,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         console.info('=======>Acts_ActionExtensionAbility_1300 error.code ======>' + error.code);
         console.info('=======>Acts_ActionExtensionAbility_1300 data.resultCode ======>' + data.resultCode);
         console.info('=======>Acts_ActionExtensionAbility_1300 data.action ======>' + data.want.parameters.action);
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             num: error.code,
             str: data.want.parameters.action,
@@ -137,7 +137,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
       }).then((data) => {
         console.info('=======>Acts_ActionExtensionAbility_1400 data.resultCode ======>' + data.resultCode);
         console.info('=======>Acts_ActionExtensionAbility_1400 data.action ======>' + data.want.parameters.action);
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             str: data.want.parameters.action,
             result: data.resultCode
@@ -162,7 +162,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         }
       }, (error, data) => {
         console.info('=======>Acts_ActionExtensionAbility_1500  first from own error.code ======>' + error.code);
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             num: error.code
           }
@@ -179,7 +179,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
           parameters: {
             'result': data
           }
-        }
+        };
         commonEvent.publish('setReceiveDataCallback', options, (err) => {
           console.log('Acts_ActionExtensionAbility_1600');
         });
@@ -194,7 +194,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         abilityName: 'ActsActionExtensionAbility'
       }, (error, data) => {
         console.info('=======>Acts_ActionExtensionAbility_1800  first from own error.code ======>' + error.code);
-        var commonEventData = {
+        let commonEventData = {
           parameters: {
             num: error.code
           }
@@ -210,7 +210,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         parameters: {
           'context': this.context
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });
@@ -330,24 +330,24 @@ export default class UiExtAbility extends ActionExtensionAbility {
     }
 
     if (want.action === 'Acts_ActionExtensionAbility_3000') {
-      var moduleContext = this.context.createModuleContext('entry');
+      let moduleContext = this.context.createModuleContext('entry');
       let options = {
         parameters: {
           'bundleName': moduleContext.applicationInfo.name
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });
     }
 
     if (want.action === 'Acts_ActionExtensionAbility_3100') {
-      var moduleContext = this.context.createModuleContext('entry_test');
+      let moduleContext = this.context.createModuleContext('entry_test');
       let options = {
         parameters: {
           'bundleName': moduleContext.applicationInfo.name
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });
@@ -355,7 +355,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
 
     if (want.action === 'Acts_ActionExtensionAbility_3200') {
       try {
-        var moduleContext = this.context.createModuleContext('entry_assist');
+        let moduleContext = this.context.createModuleContext('entry_assist');
       } catch {
         console.log('createModuleContext err');
       }
@@ -363,7 +363,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         parameters: {
           'moduleContext': moduleContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });
@@ -371,7 +371,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
 
     if (want.action === 'Acts_ActionExtensionAbility_3300') {
       try {
-        var moduleContext = this.context.createModuleContext('abc');
+        let moduleContext = this.context.createModuleContext('abc');
       } catch {
         console.log('createModuleContext err');
       }
@@ -379,7 +379,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
         parameters: {
           'moduleContext': moduleContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });
@@ -387,7 +387,7 @@ export default class UiExtAbility extends ActionExtensionAbility {
 
     if (want.action === 'Acts_ActionExtensionAbility_3400') {
       try {
-        var moduleContext = this.context.createModuleContext(undefined);
+        let moduleContext = this.context.createModuleContext(undefined);
       } catch {
         console.log('createModuleContext err');
       }
@@ -395,19 +395,19 @@ export default class UiExtAbility extends ActionExtensionAbility {
         parameters: {
           'moduleContext': moduleContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });
     }
 
     if (want.action === 'Acts_ActionExtensionAbility_3500') {
-      var applicationContext = this.context.getApplicationContext();
+      let applicationContext = this.context.getApplicationContext();
       let options = {
         parameters: {
           'applicationContext': applicationContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ActionExtensionAbility_context');
       });

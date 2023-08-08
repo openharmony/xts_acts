@@ -29,8 +29,8 @@ export default class EntryAbility extends UIAbility {
           'ability.want.params.uiExtensionType': 'action'
         }
       }).catch((err)=>{
-        console.info('====>ActionExtensionAbility_0100 err:'+ JSON.stringify(err));
-      })
+        console.info('====>ActionExtensionAbility_0100 err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'AsyncCallback_0200') {

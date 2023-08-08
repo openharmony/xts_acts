@@ -31,7 +31,7 @@ export default class FeatureActionExtensionAbility extends ActionExtensionAbilit
 
   onSessionCreate(want, session) {
     console.log('====>FeatureActionExtensionAbility onSessionCreate called');
-    commonEventManager.publish('ACTS_FEATURE_CREATE', function (){});
+    commonEventManager.publish('ACTS_FEATURE_CREATE', function () {});
     if (want.action === 'Acts_ActionExtensionAbility_0400') {
       this.context.startAbility({
         bundleName: 'com.example.actsactionextensionabilitytest',
