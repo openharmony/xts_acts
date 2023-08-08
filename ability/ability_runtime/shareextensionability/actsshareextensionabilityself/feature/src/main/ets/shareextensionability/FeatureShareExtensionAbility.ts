@@ -18,6 +18,7 @@ import commonEventManager from '@ohos.commonEventManager';
 export default class FeatureShareExtensionAbility extends ShareExtensionAbility {
   storage: LocalStorage;
   message: string;
+
   onCreate() {
   }
 
@@ -31,7 +32,8 @@ export default class FeatureShareExtensionAbility extends ShareExtensionAbility 
 
   onSessionCreate(want, session) {
     console.log('====>FeatureShareExtensionAbility onSessionCreate called');
-    commonEventManager.publish('ACTS_FEATURE_CREATE', function (){});
+    commonEventManager.publish('ACTS_FEATURE_CREATE', function () {
+    });
     if (want.action === 'Acts_ShareExtensionAbility_0400') {
       this.context.startAbility({
         bundleName: 'com.example.actsshareextensionabilitytest',

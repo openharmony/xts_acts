@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import commonEvent from '@ohos.commonEventManager'
+import commonEvent from '@ohos.commonEventManager';
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 
 let storage = LocalStorage.GetShared();
@@ -21,7 +21,6 @@ let storage = LocalStorage.GetShared();
 @Entry(storage)
 @Component
 struct PageThree {
-
   build() {
     Row() {
       Column() {

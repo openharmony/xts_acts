@@ -14,7 +14,7 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -28,8 +28,8 @@ export default class EntryAbility extends UIAbility {
         parameters: {
           'ability.want.params.uiExtensionType': 'share'
         }
-      }).catch((err)=>{
-        console.info('====>ShareExtensionAbility_0100 err:'+ JSON.stringify(err));
+      }).catch((err) => {
+        console.info('====>ShareExtensionAbility_0100 err:' + JSON.stringify(err));
       })
     }
 

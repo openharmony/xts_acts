@@ -26,6 +26,7 @@ struct Index {
       'ability.want.params.uiExtensionType': 'share'
     }
   }
+
   build() {
     Row() {
       Column() {
@@ -33,9 +34,9 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-          .size({width:'100%',height:'100'})
+          .size({ width: '100%', height: '100' })
           .backgroundColor(Color.Blue)
-          .border({width:5,color:Color.Red})
+          .border({ width: 5, color: Color.Red })
         Button('StartAbilityForResult')
           .fontSize(30)
           .fontWeight(FontWeight.Bold)

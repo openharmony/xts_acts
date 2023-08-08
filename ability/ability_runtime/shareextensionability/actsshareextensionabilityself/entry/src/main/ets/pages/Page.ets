@@ -38,8 +38,8 @@ struct Page {
     let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
     let sendDataEvent = 'ACTS_UIExtension_SendData';
 
-    var subscriber;
-    var subscribeInfo = {
+    let subscriber;
+    let subscribeInfo = {
       events: [terminateSelfWithResultEvent, sendDataEvent]
     };
     commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
@@ -90,9 +90,9 @@ struct Page {
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-        .size({width:'100%',height:'100'})
-        .backgroundColor(Color.Blue)
-        .border({width:5,color:Color.Red})
+          .size({ width: '100%', height: '100' })
+          .backgroundColor(Color.Blue)
+          .border({ width: 5, color: Color.Red })
       }
       .width('100%')
     }

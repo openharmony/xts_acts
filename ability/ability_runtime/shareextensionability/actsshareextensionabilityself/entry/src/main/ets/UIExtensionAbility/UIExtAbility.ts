@@ -208,28 +208,28 @@ export default class UiExtAbility extends ShareExtensionAbility {
     if (want.action === 'Acts_ShareExtensionAbility_context') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_context======>');
 
-        let commonEventData = {
-          parameters: {
-            context: this.context
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_context first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          context: this.context
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_context first publish err:' + JSON.stringify(err));
+      });
 
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2200') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2200======>');
       console.info('Acts_ShareExtensionAbility_2200 resourceManager: ' + this.context.resourceManager);
-        let commonEventData = {
-          parameters: {
-            resourceManager: this.context.resourceManager
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2200 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          resourceManager: this.context.resourceManager
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2200 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2300') {
@@ -237,105 +237,104 @@ export default class UiExtAbility extends ShareExtensionAbility {
       console.info('Acts_ShareExtensionAbility_2300 applicationInfo: ' + this.context.applicationInfo);
       let applicationInfo = this.context.applicationInfo;
 
-      
-      
+
       let commonEventData = {
-          parameters: {
-            name: applicationInfo.name,
-            description_length: applicationInfo.description.length,
-            descriptionId: applicationInfo.descriptionId,
-            label: applicationInfo.label,
-            labelId: applicationInfo.labelId,
-            icon: applicationInfo.icon,
-            iconId: applicationInfo.iconId,
-            codePath: typeof (applicationInfo.codePath)
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2300 first publish err:' + JSON.stringify(err));
-        });
+        parameters: {
+          name: applicationInfo.name,
+          description_length: applicationInfo.description.length,
+          descriptionId: applicationInfo.descriptionId,
+          label: applicationInfo.label,
+          labelId: applicationInfo.labelId,
+          icon: applicationInfo.icon,
+          iconId: applicationInfo.iconId,
+          codePath: typeof (applicationInfo.codePath)
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2300 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2400') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2400======>');
 
-        let commonEventData = {
-          parameters: {
-            cacheDir: this.context.cacheDir
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2400 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          cacheDir: this.context.cacheDir
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2400 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2500') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2500======>');
 
-        let commonEventData = {
-          parameters: {
-            tempDir: this.context.tempDir
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2500 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          tempDir: this.context.tempDir
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2500 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2600') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2600======>');
 
-        let commonEventData = {
-          parameters: {
-            filesDir: this.context.filesDir
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2600 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          filesDir: this.context.filesDir
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2600 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2700') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2700======>');
 
-        let commonEventData = {
-          parameters: {
-            databaseDir: this.context.databaseDir
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2700 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          databaseDir: this.context.databaseDir
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2700 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2800') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2800======>');
 
-        let commonEventData = {
-          parameters: {
-            preferencesDir: this.context.preferencesDir
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2800 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          preferencesDir: this.context.preferencesDir
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2800 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_2900') {
       console.info('=======>UIExtAbility onSessionCreate want.action == Acts_ShareExtensionAbility_2900======>');
 
-        let commonEventData = {
-          parameters: {
-            bundleCodeDir: this.context.bundleCodeDir
-          }
-        };
-        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.debug('====>Acts_ShareExtensionAbility_2900 first publish err:' + JSON.stringify(err));
-        });
+      let commonEventData = {
+        parameters: {
+          bundleCodeDir: this.context.bundleCodeDir
+        }
+      };
+      commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+        console.debug('====>Acts_ShareExtensionAbility_2900 first publish err:' + JSON.stringify(err));
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_3000') {
-      var moduleContext = this.context.createModuleContext('entry');
+      let moduleContext = this.context.createModuleContext('entry');
       let options = {
         parameters: {
           'bundleName': moduleContext.applicationInfo.name
@@ -347,7 +346,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_3100') {
-      var moduleContext = this.context.createModuleContext('entry_test');
+      let moduleContext = this.context.createModuleContext('entry_test');
       let options = {
         parameters: {
           'bundleName': moduleContext.applicationInfo.name
@@ -360,7 +359,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
 
     if (want.action === 'Acts_ShareExtensionAbility_3200') {
       try {
-        var moduleContext = this.context.createModuleContext('entry_assist');
+        let moduleContext = this.context.createModuleContext('entry_assist');
       } catch {
         console.log('createModuleContext err');
       }
@@ -376,7 +375,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
 
     if (want.action === 'Acts_ShareExtensionAbility_3300') {
       try {
-        var moduleContext = this.context.createModuleContext('abc');
+        let moduleContext = this.context.createModuleContext('abc');
       } catch {
         console.log('createModuleContext err');
       }
@@ -392,7 +391,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
 
     if (want.action === 'Acts_ShareExtensionAbility_3400') {
       try {
-        var moduleContext = this.context.createModuleContext(undefined);
+        let moduleContext = this.context.createModuleContext(undefined);
       } catch {
         console.log('createModuleContext err');
       }
@@ -407,7 +406,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_3500') {
-      var applicationContext = this.context.getApplicationContext();
+      let applicationContext = this.context.getApplicationContext();
       let options = {
         parameters: {
           'applicationContext': applicationContext

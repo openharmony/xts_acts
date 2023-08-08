@@ -18,7 +18,6 @@ let storage = LocalStorage.GetShared();
 @Entry(storage)
 @Component
 struct Index3 {
-
   build() {
     Row() {
       Column() {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Want from '@ohos.app.ability.Want';
-import commonEventManager from '@ohos.commonEventManager'
+import commonEventManager from '@ohos.commonEventManager';
 
 @Entry
 @Component
@@ -27,6 +27,7 @@ struct Index {
       'ability.want.params.uiExtensionType': 'share'
     }
   }
+
   build() {
     Row() {
       Column() {
@@ -34,9 +35,9 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
         UIExtensionComponent(this.want)
-          .size({width:'100%',height:'100'})
+          .size({ width: '100%', height: '100' })
           .backgroundColor(Color.Blue)
-          .border({width:5,color:Color.Red})
+          .border({ width: 5, color: Color.Red })
           .onRemoteReady((proxy) => {
             console.log('====>onRemoteReady will send data');
             setTimeout(() => {
@@ -47,7 +48,7 @@ struct Index {
               });
             }, 1000);
           })
-          .onResult((data)=>{
+          .onResult((data) => {
             let onResultEvent = 'ACTS_UIExtension_OnResult';
             let options = {
               parameters: {
@@ -58,7 +59,7 @@ struct Index {
               console.log('ACTS_UIExtension_OnResult');
             });
           })
-          .onReceive((data)=>{
+          .onReceive((data) => {
             let onReceiveEvent = 'ACTS_UIExtension_OnReceive';
             let options = {
               parameters: {
@@ -76,7 +77,8 @@ struct Index {
                 'err': err
               }
             }
-            commonEventManager.publish('ACTS_TEST_START_ERR', options, function (){});
+            commonEventManager.publish('ACTS_TEST_START_ERR', options, function () {
+            });
           })
           .onRelease((releaseCode) => {
             console.log('====>UIExtensionComponent onRelease releaseCode: ' + JSON.stringify(releaseCode));
@@ -85,7 +87,8 @@ struct Index {
                 'releaseCode': releaseCode
               }
             }
-            commonEventManager.publish('ACTS_TEST_RELEASE', options, function (){});
+            commonEventManager.publish('ACTS_TEST_RELEASE', options, function () {
+            });
           })
       }
       .width('100%')

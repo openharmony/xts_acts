@@ -15,11 +15,13 @@
 import ShareExtensionAbility from '@ohos.app.ability.ShareExtensionAbility';
 import commonEventManager from '@ohos.commonEventManager';
 
-var count = 0;
+let count = 0;
 const TIME_OUT = 500;
+
 export default class ActsShareExtensionAbility extends ShareExtensionAbility {
   storage: LocalStorage;
   message: string;
+
   onCreate() {
     console.log('====>ActsShareExtensionAbility onCreate called');
     count++;
@@ -33,13 +35,15 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
         'count': count
       }
     }
-    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function (){});
+    commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {
+    });
   }
 
   onBackground() {
     console.log('====>ActsShareExtensionAbility onBackground called');
     count++;
-    commonEventManager.publish('ACTS_TEST_BACKGROUND', function (){});
+    commonEventManager.publish('ACTS_TEST_BACKGROUND', function () {
+    });
     setTimeout(() => {
       globalThis.session.terminateSelf();
     }, TIME_OUT);
@@ -66,7 +70,8 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
         'count': count
       }
     }
-    commonEventManager.publish('ACTS_TEST_DESTROY', options, function (){});
+    commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {
+    });
   }
 
   onSessionDestroy(session) {
