@@ -45,6 +45,7 @@ struct progressSecTest {
     @State progress_capsule_content_string: string = '下载'
     @State progress_capsule_enableScanEffect_boolean: boolean = false
     @State progress_capsule_showDefaultPercentage_boolean: boolean = false
+    @State progress_capsule_enableSmoothEffect_boolean: boolean = false
 
     @State progress_ring_strokeWidth_number: number = 4
     @State progress_ring_strokeWidth_string: string = '4vp'
@@ -59,8 +60,14 @@ struct progressSecTest {
     @State progress_ring_color_linear_null: LinearGradient = null
     @State progress_ring_color_linear_undefined: LinearGradient = undefined
     @State progress_ring_enableScanEffect_boolean: boolean = false
+    @State progress_ring_enableSmoothEffect_boolean: boolean = false
 
     @State progress_linear_enableScanEffect_boolean: boolean = false
+    @State progress_linear_enableSmoothEffect_boolean: boolean = false
+
+    @State progress_scaleRing_enableSmoothEffect_boolean: boolean = false
+
+    @State progress_eclipse_enableSmoothEffect_boolean: boolean = false
 
     private stateChangCallBack = (eventData) => {
         console.info("progress page state change called:" + JSON.stringify(eventData));
@@ -88,6 +95,7 @@ struct progressSecTest {
         this.progress_capsule_content_string = eventData.data.progress_capsule_content_string;
         this.progress_capsule_enableScanEffect_boolean = eventData.data.progress_capsule_enableScanEffect_boolean;
         this.progress_capsule_showDefaultPercentage_boolean = eventData.data.progress_capsule_showDefaultPercentage_boolean;
+        this.progress_capsule_enableSmoothEffect_boolean = eventData.data.progress_capsule_enableSmoothEffect_boolean;
 
         this.progress_ring_strokeWidth_number = eventData.data.progress_ring_strokeWidth_number;
         this.progress_ring_strokeWidth_string = eventData.data.progress_ring_strokeWidth_string;
@@ -102,8 +110,13 @@ struct progressSecTest {
         this.progress_ring_color_linear_null = eventData.data.progress_ring_color_linear_null;
         this.progress_ring_color_linear_undefined = eventData.data.progress_ring_color_linear_undefined;
         this.progress_ring_enableScanEffect_boolean = eventData.data.progress_ring_enableScanEffect_boolean;
+        this.progress_ring_enableSmoothEffect_boolean = eventData.data.progress_ring_enableSmoothEffect_boolean;
 
         this.progress_linear_enableScanEffect_boolean = eventData.data.progress_linear_enableScanEffect_boolean;
+        this.progress_linear_enableSmoothEffect_boolean = eventData.data.progress_linear_enableSmoothEffect_boolean;
+
+        this.progress_scaleRing_enableSmoothEffect_boolean = eventData.data.progress_scaleRing_enableSmoothEffect_boolean;
+        this.progress_eclipse_enableSmoothEffect_boolean = eventData.data.progress_eclipse_enableSmoothEffect_boolean;
     }
     messageManager:MessageManager = new MessageManager()
     onPageShow() {
@@ -196,7 +209,8 @@ struct progressSecTest {
                     fontColor: this.progress_capsule_fontColor_number,
                     content: this.progress_capsule_content_string,
                     enableScanEffect: this.progress_capsule_enableScanEffect_boolean,
-                    showDefaultPercentage: this.progress_capsule_showDefaultPercentage_boolean
+                    showDefaultPercentage: this.progress_capsule_showDefaultPercentage_boolean,
+                    enableSmoothEffect: this.progress_capsule_enableSmoothEffect_boolean
                 })
 
             Progress({ value: 60, total: 100, type: ProgressType.Capsule })
@@ -285,7 +299,8 @@ struct progressSecTest {
                     strokeWidth: this.progress_ring_strokeWidth_number,
                     shadow: this.progress_ring_shadow_bool,
                     status: this.progress_ring_status_progressStatus,
-                    enableScanEffect: this.progress_ring_enableScanEffect_boolean
+                    enableScanEffect: this.progress_ring_enableScanEffect_boolean,
+                    enableSmoothEffect: this.progress_ring_enableSmoothEffect_boolean
                 })
                 .color(this.progress_ring_color_purity)
 
@@ -381,7 +396,8 @@ struct progressSecTest {
                 .key('progress_linear_color_number')
                 .color(this.progress_ring_color_purity)
                 .style({
-                    enableScanEffect: this.progress_linear_enableScanEffect_boolean
+                    enableScanEffect: this.progress_linear_enableScanEffect_boolean,
+                    enableSmoothEffect: this.progress_linear_enableSmoothEffect_boolean
                 })
 
             Progress({ value: 60, total: 100, type: ProgressType.Linear })
@@ -414,6 +430,9 @@ struct progressSecTest {
             Progress({ value: 60, total: 100, type: ProgressType.Eclipse })
                 .key('progress_eclipse_color_number')
                 .color(this.progress_ring_color_purity)
+                .style({
+                    enableSmoothEffect: this.progress_eclipse_enableSmoothEffect_boolean
+                })
 
             Progress({ value: 60, total: 100, type: ProgressType.Eclipse })
                 .key('progress_eclipse_color_linear_number')
@@ -445,6 +464,9 @@ struct progressSecTest {
             Progress({ value: 60, total: 100, type: ProgressType.ScaleRing })
                 .key('progress_scaleRing_color_number')
                 .color(this.progress_ring_color_purity)
+                .style({
+                    enableSmoothEffect: this.progress_scaleRing_enableSmoothEffect_boolean
+                })
 
             Progress({ value: 60, total: 100, type: ProgressType.ScaleRing })
                 .key('progress_scaleRing_color_linear_number')
