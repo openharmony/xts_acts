@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import datepicker from './DatePicker'
+import ActsDatePickerTest from './DatePicker.test'
 
 export default function testsuite() {
        datepicker()
-
+       ActsDatePickerTest()
 }
