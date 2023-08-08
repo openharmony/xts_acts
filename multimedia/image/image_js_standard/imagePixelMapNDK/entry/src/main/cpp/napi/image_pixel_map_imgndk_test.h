@@ -20,9 +20,10 @@
 #include <string>
 
 #include "napi/native_api.h"
-#include "image_pixel_map_mdk.h"
 #include "image_pixel_map_napi.h"
 
+namespace OHOS {
+namespace Media {
 class ImagePixelMapNDKTest {
 public:
     static napi_value Init(napi_env env, napi_value exports);
@@ -46,4 +47,6 @@ public:
     static napi_value UnAccessPixels(napi_env env, napi_callback_info info);
 private:
 };
+} // namespace Media
+} // namespace OHOS
 #endif
