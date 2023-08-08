@@ -37,7 +37,7 @@ export default class FeatureActionExtensionAbility extends ActionExtensionAbilit
         bundleName: 'com.example.actsactionextensionabilitytest',
         abilityName: 'FeatureAbility',
         action: 'Acts_ActionExtensionAbility_0400'
-      })
+      });
     }
     this.message = want.parameters.shareMessages;
     this.storage = new LocalStorage(
