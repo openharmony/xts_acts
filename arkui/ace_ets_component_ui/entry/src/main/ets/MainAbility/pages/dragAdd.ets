@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import udmf from '@ohos.data.UDMF';
+import udmf from '@ohos.data.unifiedDataChannel';
+import udmfType from '@ohos.data.uniformTypeDescriptor';
 import promptAction from '@ohos.promptAction';
 @Entry
 @Component
@@ -116,7 +117,7 @@ struct Index {
           .draggable(true)
           .margin({left: 15})
           .border({color: Color.Black, width: 1})
-          .allowDrop([udmf.UnifiedDataType.IMAGE])
+          .allowDrop([udmfType.UniformDataType.IMAGE])
           .onDrop((dragEvent: DragEvent)=> {
             this.getDataFromUdmfRetry(dragEvent, (event)=>{
               let records: Array<udmf.UnifiedRecord> = event.getData().getRecords();
@@ -139,7 +140,7 @@ struct Index {
           .height(100)
           .border({color: Color.Black, width: 1})
           .margin(15)
-          .allowDrop([udmf.UnifiedDataType.TEXT])
+          .allowDrop([udmfType.UniformDataType.TEXT])
           .onDrop((dragEvent: DragEvent)=>{
             console.info("the getDisplayX " + dragEvent.getDisplayX());
             console.info("the getDisplayY " + dragEvent.getDisplayY());
@@ -159,13 +160,13 @@ struct Index {
           .width('100%')
           .height(200)
           .controls(true)
-          .allowDrop([udmf.UnifiedDataType.VIDEO])
+          .allowDrop([udmfType.UniformDataType.VIDEO])
 
         Column() {
           Text(this.abstractContent).fontSize(20).width('100%')
           Text(this.textContent).fontSize(15).width('100%')
         }.width('100%').height(100).margin(20).border({color: Color.Black, width: 1})
-        .allowDrop([udmf.UnifiedDataType.PLAIN_TEXT])
+        .allowDrop([udmfType.UniformDataType.PLAIN_TEXT])
         .onDrop((dragEvent)=>{
           this.getDataFromUdmfRetry(dragEvent, event=>{
             let records: Array<udmf.UnifiedRecord> = event.getData().getRecords();
