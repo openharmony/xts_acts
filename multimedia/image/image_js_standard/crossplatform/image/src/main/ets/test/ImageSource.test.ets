@@ -239,7 +239,7 @@ export default function ImageSource() {
             } else {
                 try {
                     console.info(`${testNum} getDelayTimePromise create imagesource success`);
-                    let delayTimes = await imageSourceApi.getDelayTime();
+                    let delayTimes = await imageSourceApi.getDelayTimeList();
                     if (delayTimes != undefined) {
                         console.info(`${testNum} getDelayTimePromise getDelayTime success`);
                         expect(true).assertTrue();
@@ -270,7 +270,7 @@ export default function ImageSource() {
                 done();
             } else {
                 console.info(`${testNum} getDelayTimeCallBack create imagesource success`);
-                imageSourceApi.getDelayTime((err, delayTimes) => {
+                imageSourceApi.getDelayTimeList((err, delayTimes) => {
                     if (err != undefined) {
                         console.info(`${testNum} getDelayTimeCallBack getDelayTime failed err: ${err}`);
                         expect(false).assertTrue();
