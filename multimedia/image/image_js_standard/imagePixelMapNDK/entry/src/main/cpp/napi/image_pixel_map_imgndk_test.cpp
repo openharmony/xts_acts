@@ -15,6 +15,7 @@
 
 #include "image_pixel_map_imgndk_test.h"
 #include "node_api.h"
+#include "image_pixel_map_napi.h"
 
 namespace {
     constexpr uint32_t NUM_0 = 0;
@@ -25,6 +26,8 @@ namespace {
     constexpr uint32_t NUM_5 = 5;
 }
 
+namespace OHOS {
+namespace Media {
 #define STATIC_FUNCTION(n, f) { (n), nullptr, (f), nullptr, nullptr, nullptr, napi_static, nullptr }
 
 napi_value ImagePixelMapNDKTest::Init(napi_env env, napi_value exports)
@@ -160,7 +163,7 @@ napi_value ImagePixelMapNDKTest::CreatePixelMap(napi_env env, napi_callback_info
         return udfVar;
     }
     int32_t res = OH_PixelMap_CreatePixelMap(env, createOps, buffer, bufferSize, &pixelmap);
-    if (res != IMAGE_RESULT_SUCCESS || pixelmap == nullptr) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS || pixelmap == nullptr) {
         return udfVar;
     }
     return pixelmap;
@@ -182,7 +185,7 @@ napi_value ImagePixelMapNDKTest::CreateAlphaPixelMap(napi_env env, napi_callback
         return udfVar;
     }
     int32_t res = OH_PixelMap_CreateAlphaPixelMap(env, argValue[NUM_0], &alphaPixelmap);
-    if (res != IMAGE_RESULT_SUCCESS || alphaPixelmap == nullptr) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS || alphaPixelmap == nullptr) {
         return udfVar;
     }
     return alphaPixelmap;
@@ -210,7 +213,7 @@ napi_value ImagePixelMapNDKTest::InitNativePixelMap(napi_env env, napi_callback_
         return result;
     }
 
-    napi_create_int32(env, IMAGE_RESULT_SUCCESS, &result);
+    napi_create_int32(env, OHOS_IMAGE_RESULT_SUCCESS, &result);
     return result;
 }
 
@@ -226,7 +229,7 @@ napi_value ImagePixelMapNDKTest::GetBytesNumberPerRow(napi_env env, napi_callbac
 
     int32_t rowBytes = NUM_0;
     int32_t res = OH_PixelMap_GetBytesNumberPerRow(native, &rowBytes);
-    if (res != IMAGE_RESULT_SUCCESS || rowBytes == NUM_0) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS || rowBytes == NUM_0) {
         return result;
     }
 
@@ -246,7 +249,7 @@ napi_value ImagePixelMapNDKTest::GetIsEditable(napi_env env, napi_callback_info 
 
     int32_t editable = NUM_0;
     int32_t res = OH_PixelMap_GetIsEditable(native, &editable);
-    if (res != IMAGE_RESULT_SUCCESS) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS) {
         return result;
     }
 
@@ -266,7 +269,7 @@ napi_value ImagePixelMapNDKTest::IsSupportAlpha(napi_env env, napi_callback_info
 
     int32_t supportAlpha = NUM_0;
     int32_t res = OH_PixelMap_IsSupportAlpha(native, &supportAlpha);
-    if (res != IMAGE_RESULT_SUCCESS) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS) {
         return result;
     }
 
@@ -313,7 +316,7 @@ napi_value ImagePixelMapNDKTest::GetDensity(napi_env env, napi_callback_info inf
 
     int32_t density = NUM_0;
     int32_t res = OH_PixelMap_GetDensity(native, &density);
-    if (res != IMAGE_RESULT_SUCCESS) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS) {
         return result;
     }
 
@@ -561,9 +564,9 @@ napi_value ImagePixelMapNDKTest::GetImageInfo(napi_env env, napi_callback_info i
         return result;
     }
 
-    OhosPixelMapInfos pixelmapInfo;
+    OhosPixelMapInfo pixelmapInfo;
     int32_t res = OH_PixelMap_GetImageInfo(native, &pixelmapInfo);
-    if (res != IMAGE_RESULT_SUCCESS) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS) {
         return result;
     }
     napi_create_object(env, &result);
@@ -586,7 +589,7 @@ napi_value ImagePixelMapNDKTest::AccessPixels(napi_env env, napi_callback_info i
 
     void* pixelAddr = nullptr;
     int32_t res = OH_PixelMap_AccessPixels(native, &pixelAddr);
-    if (res != IMAGE_RESULT_SUCCESS || pixelAddr == nullptr) {
+    if (res != OHOS_IMAGE_RESULT_SUCCESS || pixelAddr == nullptr) {
         return result;
     }
     napi_create_int32(env, res, &result);
@@ -630,3 +633,5 @@ __attribute__((constructor)) void RegisterModule(void)
     napi_module_register(&demoModule);
 }
 EXTERN_C_END
+}
+}
