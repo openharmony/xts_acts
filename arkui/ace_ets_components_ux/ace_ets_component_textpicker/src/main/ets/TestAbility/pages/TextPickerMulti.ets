@@ -41,40 +41,30 @@ struct TextPickerMultiTest {
   build() {
     Row() {
       Column() {
-        List({ space: 0, initialIndex: 0 }) {
-          ListItem() {
             TextPicker({ range: this.multi })
               .key('textpicker_1')
               .width('300')
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade })
               .key('textpicker_2')
               .width('300')
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade, selected: [1, 1, 2] })
               .key('textpicker_3')
               .width('300')
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade, value: ["辽宁省", "大连市", "中山区"] })
               .key('textpicker_4')
               .width('300')
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade })
               .key('textpicker_5')
               .selectedIndex([2, 1, 2])
@@ -82,8 +72,6 @@ struct TextPickerMultiTest {
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade, value: ["辽宁省", "大连市", "中山区"], selected: [1, 1, 1] })
               .key('textpicker_6')
               .selectedIndex([0, 1, 2])
@@ -91,8 +79,6 @@ struct TextPickerMultiTest {
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade })
               .key('textpicker_7')
               .selectedIndex([null, 1, 1])
@@ -100,8 +86,6 @@ struct TextPickerMultiTest {
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade })
               .key('textpicker_8')
               .selectedIndex([1, undefined, 1])
@@ -109,8 +93,6 @@ struct TextPickerMultiTest {
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade })
               .key('textpicker_9')
               .selectedIndex([1, 1, ''])
@@ -118,25 +100,18 @@ struct TextPickerMultiTest {
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade, selected: [1, 0, ] })
               .key('textpicker_10')
               .width('300')
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-          ListItem() {
             TextPicker({ range: this.cascade, value: ['辽宁省', '大连市', ] })
               .key('textpicker_11')
               .width('300')
               .onChange((value: string | string[], index: number | number[]) => {
                 console.info('Picker item changed1, value: ' + JSON.stringify(value))
               })
-          }
-        }
-        .alignListItem(ListItemAlign.Center)
       }
       .width('100%')
     }
