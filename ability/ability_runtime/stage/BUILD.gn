@@ -23,7 +23,6 @@ group("stage") {
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",
       "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",
       "actslifecyclesinglehaptest:ActsLifecycleSingleHapTest",
-      "actsstartuptest:startuptest",
       "actsuripermission:ActsUriPermission",
       "actswindowstagelifecyclemultihaptest:ActsWindowStageLifecycleMultiHapTest",
       "actswindowstagelifecyclesinglehaptest:ActsWindowStageLifecycleSingleHapTest",
