@@ -34,7 +34,7 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
       parameters: {
         'count': count
       }
-    }
+    };
     commonEventManager.publish('ACTS_TEST_FOREGROUND', options, function () {
     });
   }
@@ -69,7 +69,7 @@ export default class ActsShareExtensionAbility extends ShareExtensionAbility {
       parameters: {
         'count': count
       }
-    }
+    };
     commonEventManager.publish('ACTS_TEST_DESTROY', options, function () {
     });
   }

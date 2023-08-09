@@ -324,7 +324,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_ShareExtensionAbility_3000') {
       console.info("====>EntryAbility want.action == 'Acts_ShareExtensionAbility_3000':");
       AppStorage.SetOrCreate('want', {
-        action: "Acts_ShareExtensionAbility_3000",
+        action: 'Acts_ShareExtensionAbility_3000',
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
@@ -336,7 +336,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_ShareExtensionAbility_3100') {
       console.info("====>EntryAbility want.action == 'Acts_ShareExtensionAbility_3100':");
       AppStorage.SetOrCreate('want', {
-        action: "Acts_ShareExtensionAbility_3100",
+        action: 'Acts_ShareExtensionAbility_3100',
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
@@ -348,7 +348,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_ShareExtensionAbility_3200') {
       console.info("====>EntryAbility want.action == 'Acts_ShareExtensionAbility_3200':");
       AppStorage.SetOrCreate('want', {
-        action: "Acts_ShareExtensionAbility_3200",
+        action: 'Acts_ShareExtensionAbility_3200',
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
@@ -360,7 +360,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_ShareExtensionAbility_3300') {
       console.info("====>EntryAbility want.action == 'Acts_ShareExtensionAbility_3300':");
       AppStorage.SetOrCreate('want', {
-        action: "Acts_ShareExtensionAbility_3300",
+        action: 'Acts_ShareExtensionAbility_3300',
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
@@ -372,7 +372,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_ShareExtensionAbility_3400') {
       console.info("====>EntryAbility want.action == 'Acts_ShareExtensionAbility_3400':");
       AppStorage.SetOrCreate('want', {
-        action: "Acts_ShareExtensionAbility_3400",
+        action: 'Acts_ShareExtensionAbility_3400',
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
@@ -384,7 +384,7 @@ export default class EntryAbility extends UIAbility {
     if (want.action === 'Acts_ShareExtensionAbility_3500') {
       console.info("====>EntryAbility want.action == 'Acts_ShareExtensionAbility_3500':");
       AppStorage.SetOrCreate('want', {
-        action: "Acts_ShareExtensionAbility_3500",
+        action: 'Acts_ShareExtensionAbility_3500',
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {

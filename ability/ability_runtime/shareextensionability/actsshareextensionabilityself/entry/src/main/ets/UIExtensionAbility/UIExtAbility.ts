@@ -74,7 +74,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         });
       }).catch((err) => {
         console.debug('====>Acts_ShareExtensionAbility_1100 UIExtAbility startAbility err:' + JSON.stringify(err));
-      })
+      });
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_1200') {
@@ -179,7 +179,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
           parameters: {
             'result': data
           }
-        }
+        };
         commonEvent.publish('setReceiveDataCallback', options, (err) => {
           console.log('Acts_ShareExtensionAbility_1600');
         });
@@ -339,7 +339,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         parameters: {
           'bundleName': moduleContext.applicationInfo.name
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ShareExtensionAbility_context');
       });
@@ -351,7 +351,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         parameters: {
           'bundleName': moduleContext.applicationInfo.name
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ShareExtensionAbility_context');
       });
@@ -367,7 +367,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         parameters: {
           'moduleContext': moduleContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ShareExtensionAbility_context');
       });
@@ -383,7 +383,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         parameters: {
           'moduleContext': moduleContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ShareExtensionAbility_context');
       });
@@ -399,7 +399,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         parameters: {
           'moduleContext': moduleContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ShareExtensionAbility_context');
       });
@@ -411,7 +411,7 @@ export default class UiExtAbility extends ShareExtensionAbility {
         parameters: {
           'applicationContext': applicationContext
         }
-      }
+      };
       commonEvent.publish('ACTS_TEST_CONTEXT', options, (err) => {
         console.log('Acts_ShareExtensionAbility_context');
       });

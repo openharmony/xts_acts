@@ -39,7 +39,7 @@ export default class FeatureShareExtensionAbility extends ShareExtensionAbility 
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'FeatureAbility',
         action: 'Acts_ShareExtensionAbility_0400'
-      })
+      });
     }
     this.message = want.parameters.shareMessages;
     this.storage = new LocalStorage(

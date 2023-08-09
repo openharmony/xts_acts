@@ -30,7 +30,7 @@ export default class EntryAbility extends UIAbility {
         }
       }).catch((err) => {
         console.info('====>ShareExtensionAbility_0100 err:' + JSON.stringify(err));
-      })
+      });
     }
 
     if (want.action === 'AsyncCallback_0200') {
