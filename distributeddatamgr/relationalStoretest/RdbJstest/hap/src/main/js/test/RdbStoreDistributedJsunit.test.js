@@ -264,14 +264,15 @@ describe('rdbStoreDistributedTest', function () {
         console.info(TAG + "************* testRdbStoreDistributed0009 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
         try {
-            predicates = predicates.inDevices("1234567890");
-            console.info(TAG + "inDevices success");
-            expect(predicates).assertEqual(predicates);
+            let pr = predicates.inDevices(['1234567890']);
+            console.info(TAG + "inDevices success" + pr);
+            expect(pr !== null).assertTrue();
+            done();
         } catch (err) {
             console.info(TAG + "inDevices failed");
             expect(null).assertFail();
+            done();
         }
-        done();
         console.info(TAG + "************* testRdbStoreDistributed0009 end *************");
     })
 
@@ -303,13 +304,14 @@ describe('rdbStoreDistributedTest', function () {
     it('testRdbStoreDistributed0011', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributed0011 start *************");
         let predicates = new dataRdb.RdbPredicates("employee")
-        predicates = predicates.inDevices("12345678abcd");
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
+        let pr = predicates.inDevices(['12345678abcd']);
+        console.info(TAG + "testRdbStoreDistributed0011" + pr);
+        let push = rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates);
         console.info(TAG + "sync push success");
-        expect(rdbStore).assertEqual(rdbStore);
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates);
+        expect(push !== null).assertTrue();
+        let pull = rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates);
         console.info(TAG + "sync pull success");
-        expect(rdbStore).assertEqual(rdbStore);
+        expect(pull !== null).assertTrue();
         done();
         console.info(TAG + "************* testRdbStoreDistributed0011 end *************");
     })
@@ -325,18 +327,17 @@ describe('rdbStoreDistributedTest', function () {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
         let predicates = new dataRdb.RdbPredicates("employee")
-        predicates = predicates.inDevices("12345678abcd");
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates,(err,ret)=>{
+        let pr = predicates.inDevices(['12345678abcd']);
+        console.info(TAG + " testRdbStoreDistributedCallback0011 pr = " + pr);
+        await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates, async (err,ret)=>{
             console.info(TAG + "sync push success");
-            expect(rdbStore).assertEqual(rdbStore);
-            rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
-                console.info(TAG + "sync push success");
-                expect(rdbStore).assertEqual(rdbStore);
+            expect(err !== null).assertTrue();
+            await rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
+                console.info(TAG + "sync pull success");
+                expect(err !== null).assertTrue();
+                done();
             });
-            done();
         });
-        await sleep(2000)
-        done();
         console.info(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
     })
 
