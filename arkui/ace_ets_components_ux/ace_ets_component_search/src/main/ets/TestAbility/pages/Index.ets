@@ -18,6 +18,7 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 import testsuite from '../../test/List.test'
+import {MessageManager,Callback} from '../../test/MessageManager.ets';
 
 @Entry
 @Component
@@ -101,6 +102,47 @@ struct SliderExample {
         this.textColorNumber = eventData.data.textColorNumber;
         this.textColorString = eventData.data.textColorString;
         this.textColorResource = eventData.data.textColorResource;
+    }
+
+    messageManager:MessageManager = new MessageManager()
+    onPageShow() {
+        console.info('search onPageShow')
+        globalThis.value = {
+            name:'messageManager',message:this.messageManager
+        }
+        let callback:Callback = (message:any) => {
+            console.error('message = ' + message.name + "--" + message.value)
+            if (message.name == 'caretWidthResource') {
+                this.caretWidthResource = message.value
+            }
+            if (message.name == 'caretColorResource') {
+                this.caretColorResource = message.value
+            }
+            if (message.name == 'leftSearchIconColorResource') {
+                this.leftSearchIconColorResource = message.value
+            }
+            if (message.name == 'searchSrcPathResource') {
+                this.searchSrcPathResource = message.value
+            }
+            if (message.name == 'rightCancelIconColorResource') {
+                this.rightCancelIconColorResource  = message.value
+            }
+            if (message.name == 'rightIconSrcPathResource') {
+                this.rightIconSrcPathResource = message.value
+            }
+            if (message.name == 'searchButtonFontSizeResource') {
+                this.searchButtonFontSizeResource = message.value
+            }
+            if (message.name == 'searchButtonFontColorResource') {
+                this.searchButtonFontColorResource = message.value
+            }
+            if (message.name == 'textColorResource') {
+                this.textColorResource = message.value
+            }
+
+
+        }
+        this.messageManager.registerCallback(callback)
     }
 
     aboutToAppear(){
