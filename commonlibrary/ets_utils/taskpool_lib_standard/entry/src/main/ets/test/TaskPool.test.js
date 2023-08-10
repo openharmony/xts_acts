@@ -982,7 +982,7 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass049
+     * @tc.number    : TaskPoolTestClass050
      * @tc.name      : Async Function about priority task
      * @tc.desc      : Execute priority tasks
      * @tc.size      : MEDIUM
@@ -1310,17 +1310,9 @@ describe('ActsAbilityTest', function () {
             "use concurrent"
             return arg + 1;
         }
-        function additionDelay(arg) {
-            "use concurrent"
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 3000) {
-                continue;
-            }
-            return arg + 1;
-        }
         try {
-            let task1 = new taskpool.Task(additionDelay, 100);
-            let task2 = new taskpool.Task(additionDelay, 200);
+            let task1 = new taskpool.Task(addition, 100);
+            let task2 = new taskpool.Task(addition, 200);
             let task3 = new taskpool.Task(addition, 300);
 
             let result1 = taskpool.execute(task1);
@@ -1596,11 +1588,11 @@ describe('ActsAbilityTest', function () {
           duration += taskInfo.duration;
         }
         console.info("task duration is: " + duration);
-        expect(tid != 0);
-        expect(taskId.length != 0);
-        expect(priority != -1);
-        expect(taskId != 0);
-        expect(state != 0);
+        expect(tid != 0).assertTrue();
+        expect(taskIds.length != 0).assertTrue();
+        expect(priority != -1).assertTrue();
+        expect(taskId != 0).assertTrue();
+        expect(state != 0).assertTrue();
         done();
     })
 
@@ -1672,11 +1664,11 @@ describe('ActsAbilityTest', function () {
           duration += taskInfo.duration;
         }
         console.info("task duration is: " + duration);
-        expect(tid != 0);
-        expect(taskId.length != 0);
-        expect(priority != -1);
-        expect(taskId != 0);
-        expect(state != 0);
+        expect(tid != 0).assertTrue();
+        expect(taskIds.length != 0).assertTrue();
+        expect(priority != -1).assertTrue();
+        expect(taskId != 0).assertTrue();
+        expect(state != 0).assertTrue();
         done();
     })
 })
