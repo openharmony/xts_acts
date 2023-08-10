@@ -358,8 +358,9 @@ export default class UiExtAbility extends ShareExtensionAbility {
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_3200') {
+      let moduleContext;
       try {
-        let moduleContext = this.context.createModuleContext('entry_assist');
+        moduleContext = this.context.createModuleContext('entry_assist');
       } catch {
         console.log('createModuleContext err');
       }
@@ -374,8 +375,9 @@ export default class UiExtAbility extends ShareExtensionAbility {
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_3300') {
+      let moduleContext;
       try {
-        let moduleContext = this.context.createModuleContext('abc');
+        moduleContext = this.context.createModuleContext('abc');
       } catch {
         console.log('createModuleContext err');
       }
@@ -390,8 +392,9 @@ export default class UiExtAbility extends ShareExtensionAbility {
     }
 
     if (want.action === 'Acts_ShareExtensionAbility_3400') {
+      let moduleContext;
       try {
-        let moduleContext = this.context.createModuleContext(undefined);
+        moduleContext = this.context.createModuleContext(undefined);
       } catch {
         console.log('createModuleContext err');
       }

@@ -328,7 +328,7 @@ export default class EntryAbility extends UIAbility {
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'action'
+          'ability.want.params.uiExtensionType': 'share'
         }
       });
     }
@@ -340,7 +340,7 @@ export default class EntryAbility extends UIAbility {
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'action'
+          'ability.want.params.uiExtensionType': 'share'
         }
       });
     }
@@ -352,7 +352,7 @@ export default class EntryAbility extends UIAbility {
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'action'
+          'ability.want.params.uiExtensionType': 'share'
         }
       });
     }
@@ -364,7 +364,7 @@ export default class EntryAbility extends UIAbility {
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'action'
+          'ability.want.params.uiExtensionType': 'share'
         }
       });
     }
@@ -376,7 +376,7 @@ export default class EntryAbility extends UIAbility {
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'action'
+          'ability.want.params.uiExtensionType': 'share'
         }
       });
     }
@@ -388,7 +388,7 @@ export default class EntryAbility extends UIAbility {
         bundleName: 'com.example.actsshareextensionabilitytest',
         abilityName: 'UIExtAbility',
         parameters: {
-          'ability.want.params.uiExtensionType': 'action'
+          'ability.want.params.uiExtensionType': 'share'
         }
       });
     }
