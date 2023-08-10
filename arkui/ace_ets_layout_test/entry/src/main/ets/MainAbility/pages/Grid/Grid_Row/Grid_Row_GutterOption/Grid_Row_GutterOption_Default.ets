@@ -54,6 +54,6 @@ struct Grid_Row_GutterOption_Default {
           }.borderColor(color).borderWidth(2).key('GutterOptionChange_' + index)
         })
       }.key('GutterOptionChange_001')
-    }.width('80pv').height(200)
+    }.width('80vp').height(200)
   }
 }

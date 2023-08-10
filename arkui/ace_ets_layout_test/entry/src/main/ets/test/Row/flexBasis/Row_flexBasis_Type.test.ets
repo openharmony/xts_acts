@@ -305,7 +305,10 @@ export default function Row_flexBasis_Type() {
       expect(Math.round(Row_flexBasis_Type_021.top - Row_flexBasis_Type_02.top)).assertEqual(Math.round(Row_flexBasis_Type_02.bottom - Row_flexBasis_Type_021.bottom));
       expect(Math.round(Row_flexBasis_Type_022.top - Row_flexBasis_Type_02.top)).assertEqual(Math.round(Row_flexBasis_Type_02.bottom - Row_flexBasis_Type_022.bottom));
       expect(Math.round(Row_flexBasis_Type_023.top - Row_flexBasis_Type_02.top)).assertEqual(Math.round(Row_flexBasis_Type_02.bottom - Row_flexBasis_Type_023.bottom));
-
+      console.log('Row_flexBasis_Type_021.top - Row_flexBasis_Type_02.top', + Row_flexBasis_Type_021.top - Row_flexBasis_Type_02.top)
+      console.log('Row_flexBasis_Type_022.top - Row_flexBasis_Type_02.top', + Row_flexBasis_Type_022.top - Row_flexBasis_Type_02.top)
+      console.log('Row_flexBasis_Type_023.top - Row_flexBasis_Type_02.top', + Row_flexBasis_Type_023.top - Row_flexBasis_Type_02.top)
+      
       console.log('assert space')
       expect(Math.round(Row_flexBasis_Type_022.left - Row_flexBasis_Type_021.right)).assertEqual(vp2px(10));
       expect(Math.round(Row_flexBasis_Type_023.left - Row_flexBasis_Type_022.right)).assertEqual(vp2px(10));

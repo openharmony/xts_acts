@@ -32,6 +32,6 @@ struct Gutter_Length_Resource {
           }.borderColor(color).borderWidth(2).key('Length_Resource_' + index)
         })
       }.key('Length_Resource001')
-    }.width('80pv').height(200)
+    }.width('80vp').height(200)
   }
 }

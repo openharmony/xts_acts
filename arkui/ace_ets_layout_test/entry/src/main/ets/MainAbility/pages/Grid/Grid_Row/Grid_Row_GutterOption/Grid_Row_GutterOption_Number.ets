@@ -52,6 +52,6 @@ struct Grid_Row_GutterOption_Number {
         })
       }
       .key('Length_Number001')
-    }.width('80pv').height(200)
+    }.width('80vp').height(200)
   }
 }

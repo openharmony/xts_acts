@@ -220,6 +220,9 @@ export default function Row_Space_String() {
       expect(Math.round(Row_Space_String_011.top - Row_Space_String_01.top)).assertEqual(Math.round(Row_Space_String_01.bottom - Row_Space_String_011.bottom));
       expect(Math.round(Row_Space_String_012.top - Row_Space_String_01.top)).assertEqual(Math.round(Row_Space_String_01.bottom - Row_Space_String_012.bottom));
       expect(Math.round(Row_Space_String_013.top - Row_Space_String_01.top)).assertEqual(Math.round(Row_Space_String_01.bottom - Row_Space_String_013.bottom));
+      console.log('Row_Space_String_011.top - Row_Space_String_01.top', + Row_Space_String_011.top - Row_Space_String_01.top)
+      console.log('Row_Space_String_012.top - Row_Space_String_01.top', + Row_Space_String_012.top - Row_Space_String_01.top)
+      console.log('Row_Space_String_013.top - Row_Space_String_01.top', + Row_Space_String_013.top - Row_Space_String_01.top)
 
       console.log('assert space')
       expect(Math.round(Row_Space_String_012.left - Row_Space_String_011.right)).assertEqual(Math.round(lpx2px(70)));
@@ -459,6 +462,9 @@ export default function Row_Space_String() {
       expect(Math.round(Row_Space_String_011.top - Row_Space_String_01.top)).assertEqual(Math.round(Row_Space_String_01.bottom - Row_Space_String_011.bottom));
       expect(Math.round(Row_Space_String_012.top - Row_Space_String_01.top)).assertEqual(Math.round(Row_Space_String_01.bottom - Row_Space_String_012.bottom));
       expect(Math.round(Row_Space_String_013.top - Row_Space_String_01.top)).assertEqual(Math.round(Row_Space_String_01.bottom - Row_Space_String_013.bottom));
+      console.log('Row_Space_String_011.top - Row_Space_String_01.top', + Row_Space_String_011.top - Row_Space_String_01.top)
+      console.log('Row_Space_String_012.top - Row_Space_String_01.top', + Row_Space_String_012.top - Row_Space_String_01.top)
+      console.log('Row_Space_String_013.top - Row_Space_String_01.top', + Row_Space_String_013.top - Row_Space_String_01.top)
 
       console.log('assert space')
       expect(Math.round(Row_Space_String_012.left - Row_Space_String_011.right)).assertEqual(10);
