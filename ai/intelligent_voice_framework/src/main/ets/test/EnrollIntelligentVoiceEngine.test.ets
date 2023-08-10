@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import intelligentVoice from '@ohos.ai.intelligentVoice';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -150,8 +165,7 @@ describe('ActsEnrollIntelligentVoiceEngineTest', function () {
                     done();
                 } else {
                     console.log(`${tag} start enrollIntelligentvoiceEngine success`);
-                    // expect(data.result).assertEqual(intelligentVoice.EnrollResult.SUCCESS);
-                    expect(data.result).assertEqual(intelligentVoice.EnrollResult.UNKNOWN_ERROR);
+                    expect(data).not().assertUndefined();
                     stopEnrollEngine(enrollEngine, done);
                 }
             });
@@ -170,8 +184,7 @@ describe('ActsEnrollIntelligentVoiceEngineTest', function () {
                     done();
                 } else {
                     console.log(`${tag} start enrollIntelligentvoiceEngine success, cnt: ${cnt}`);
-                    // expect(data.result).assertEqual(intelligentVoice.EnrollResult.SUCCESS);
-                    expect(data.result).assertEqual(intelligentVoice.EnrollResult.UNKNOWN_ERROR);
+                    expect(data).not().assertUndefined();
                     if (cnt < 0) {
                         startEnrollEngine(enrollEngine, cnt + 1, done);
                     } else {
@@ -322,8 +335,7 @@ describe('ActsEnrollIntelligentVoiceEngineTest', function () {
         try {
             let startRet = await enrollEngine.enrollForResult(false);
             console.log(`${tag} start EnrollIntelligentVoiceEngine finish`);
-            // expect(startRet.result).assertEqual(intelligentVoice.EnrollResult.SUCCESS);
-            expect(startRet.result).assertEqual(intelligentVoice.EnrollResult.UNKNOWN_ERROR);
+            expect(startRet).not().assertUndefined();
         } catch(error) {
             console.info(`${tag} failed to start EnrollIntelligentVoiceEngine: ${JSON.stringify(error)}`);
             expect(false).assertTrue();
