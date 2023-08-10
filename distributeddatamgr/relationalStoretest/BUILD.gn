@@ -18,6 +18,7 @@ group("relationalStoretest") {
   if (is_standard_system) {
     deps = [
       "RdbJstest/hap:rdb_js_test",
+      "rdbnapitest:ActsRdbNapiEtsTest",
       "relationalStoreJstest/hap:relationalstore_js_test",
       "relationalStoreStagetest:relationalstore_ets_test",
     ]
