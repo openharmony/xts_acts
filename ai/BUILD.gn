@@ -21,6 +21,7 @@ group("ai") {
     deps += [
       "mindspore/mindsporectest:ActsMindSporeTest",
       "mindspore/mindsporejstest:ActsMindsporeJSTest",
+      "intelligent_voice_framework:intelligentvoice_js_hap",
     ]
   }
 }
