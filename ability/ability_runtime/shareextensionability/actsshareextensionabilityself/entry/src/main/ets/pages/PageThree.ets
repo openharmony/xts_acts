@@ -21,7 +21,7 @@ struct Index3 {
   build() {
     Row() {
       Column() {
-        Text('acton')
+        Text('share')
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
       }
