@@ -139,28 +139,29 @@ export default function GridJsunit() {
       // Verify the event of the Grid component
       console.info('[GridJsunit_0400] START');
       await CommonFunc.sleep(1000);
-      
+
       // Verify onScrollIndex event
       let grid2 = CommonFunc.getComponentRect('grid2');
       let top = grid2.top
       let bottom = grid2.bottom
       let left = grid2.left
       let right = grid2.right
-      let driver = await UiDriver.create()
+      let driver = await Driver.create()
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
-      let onScrollIndex1 = await driver.findComponent(BY.key('onScrollIndex'));
+      let onScrollIndex1 = await driver.findComponent(ON.text('onScrollIndex'));
       let text1 = await onScrollIndex1.getText();
       expect(text1).assertEqual('onScrollIndex:10');
       await CommonFunc.sleep(1000);
+
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
-      let onScrollIndex2 = await driver.findComponent(BY.key('onScrollIndex'));
+      let onScrollIndex2 = await driver.findComponent(ON.text('onScrollIndex'));
       let text2 = await onScrollIndex2.getText();
       expect(text2).assertEqual('onScrollIndex:10');
 
       // Verify common attribute click event
-      let button = await driver.findComponent(BY.key('button'));
+      let button = await driver.findComponent(ON.text('button'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('button');
@@ -204,7 +205,7 @@ export default function GridJsunit() {
       let gridItem2 = CommonFunc.getComponentRect('2');
       let top = gridItem2.top
       expect(top > bottom).assertTrue();
-      
+
       // Verify grid componentcan cannot scroll
       let driver = await UiDriver.create()
       let grid_1 = await driver.findComponent(BY.key('grid1'));
@@ -260,6 +261,71 @@ export default function GridJsunit() {
       let result = await grid_1.isScrollable()
       expect(result).assertFalse();
       console.info('[GridJsunit_0900] END');
+      done();
+    });
+    it('GridJsunit_1000', 0, async function (done) {
+      // Verify Neither rowsTemplate nor columnsTemplate is set
+      console.info('[GridJsunit_1000] START');
+
+      let grid2 = CommonFunc.getComponentRect('grid2');
+      let top = grid2.top
+      let bottom = grid2.bottom
+      let left = grid2.left
+      let right = grid2.right
+      let driver = await UiDriver.create()
+      await driver.swipe(Math.round((right - left)), Math.round(bottom - 60), Math.round((right - left)), Math.round(top + 60));
+      await CommonFunc.sleep(200);
+
+      let onReachStartText = await driver.findComponent(BY.key('onReachStartText'));
+      let text3 = await onReachStartText.getText();
+      console.info('[GridJsunit_1000] onReachStartText' + text3);
+      expect(text3).assertEqual('onReachStart:succ');
+      await CommonFunc.sleep(200);
+
+      let onScrollText = await driver.findComponent(BY.key('onScrollText'));
+      let text4 = await onScrollText.getText();
+      console.info('[GridJsunit_1000] onScrollText' + text4);
+      expect(text4).assertEqual('onScroll:succ');
+
+      let onScrollIndexText = await driver.findComponent(BY.key('onScrollIndexText'));
+      let text5 = await onScrollIndexText.getText();
+      console.info('[GridJsunit_1000] onScrollIndexText' + text5);
+      expect(text5).assertEqual('onScrollIndex:succ');
+
+      let onScrollStartText = await driver.findComponent(BY.key('onScrollStartText'));
+      let text6 = await onScrollStartText.getText();
+      console.info('[GridJsunit_1000] onScrollStartText' + text6);
+      expect(text6).assertEqual('onScrollStart:succ');
+      await CommonFunc.sleep(200);
+
+      let onScrollStopText = await driver.findComponent(BY.key('onScrollStopText'));
+      let text7 = await onScrollStopText.getText();
+      console.info('[GridJsunit_1000] onScrollStopText' + text7);
+      expect(text7).assertEqual('onScrollStop:succ');
+      await CommonFunc.sleep(200);
+
+      let onScrollFrameBeginText = await driver.findComponent(BY.key('onScrollFrameBeginText'));
+      let text8 = await onScrollFrameBeginText.getText();
+      console.info('[GridJsunit_1000] nScrollFrameBeginText ' + text8);
+      expect(text8).assertEqual('onScrollFrameBegin:succ');
+      await CommonFunc.sleep(200);
+
+      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
+      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
+      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
+      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
+      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
+      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
+      await CommonFunc.sleep(1000);
+
+      let onReachEndText = await driver.findComponent(BY.key('onReachEndText'));
+      let text9= await onReachEndText.getText();
+      console.info("[GridJsunit_1000] onReachEndText: " + text9);
+      expect(text9).assertEqual('onReachEnd:succ');
+      await CommonFunc.sleep(1000);
+
+      console.info('[GridJsunit_1000] END');
       done();
     });
   })
