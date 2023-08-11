@@ -117,7 +117,19 @@ struct PatternLockPage {
       })
 
       Text(this.passwords.toString()).margin(20).fontSize(15).key('password1')
-      PatternLock(this.patternLockController).key('default')
+      PatternLock(this.patternLockController)
+        .key('default')
+        
+      PatternLock(this.patternLockController)
+        .key('PatternLock')
+        .sideLength(96*3)
+        .circleRadius(6)
+        .regularColor($r('sys.color.ohos_id_color_foreground'))
+        .selectedColor($r('sys.color.ohos_id_color_foreground'))
+        .activeColor($r('sys.color.ohos_id_color_foreground'))
+        .pathColor($r('sys.color.ohos_id_color_fourth'))
+        .pathStrokeWidth(12)
+        .autoReset(true)
     }.width('100%').height('100%')
   }
 }

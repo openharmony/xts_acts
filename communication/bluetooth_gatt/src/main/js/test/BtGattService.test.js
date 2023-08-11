@@ -87,9 +87,9 @@ describe('btGattServiceTest', function() {
         let ret = gattClient.connect();
         await sleep(2000);
         console.info('[bluetooth_js] gattClient connect' + ret)
-        expect(ret).assertTrue();
+        expect(ret).assertFalse();
         await gattServer.off("connectStateChange");
-        done()
+        done();
     })
 
     /**

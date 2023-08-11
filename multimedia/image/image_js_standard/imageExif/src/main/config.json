@@ -49,8 +49,7 @@
             "phone",
             "tablet",
             "tv",
-            "wearable",
-            "2in1"
+            "wearable"
         ],
         "mainAbility": "ohos.acts.multimedia.image.Exif.MainAbility",
         "distro": {

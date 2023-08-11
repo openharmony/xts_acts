@@ -801,6 +801,7 @@ export default function NetworkManagerMdnsTest() {
                                     expect(err).assertEqual(undefined);
                                     setTimeout(() => {
                                         expect(startSearching_status).assertEqual(true);
+                                        discoveryService.off("discoveryStart");
                                         done();
                                     }, delayTime)
                                 }
@@ -843,6 +844,7 @@ export default function NetworkManagerMdnsTest() {
                                     expect(err).assertEqual(undefined);
                                     setTimeout(() => {
                                         expect(stopSearching_status).assertEqual(true);
+                                        discoveryService.off("discoveryStop");
                                         done();
                                     }, delayTime)
                                 }
@@ -884,6 +886,7 @@ export default function NetworkManagerMdnsTest() {
                                     expect(err).assertEqual(undefined);
                                     setTimeout(() => {
                                         expect(startSearching_status).assertEqual(true);
+                                        discoveryService.off("discoveryStart");
                                         done();
                                     }, delayTime)
                                 }
@@ -925,6 +928,7 @@ export default function NetworkManagerMdnsTest() {
                                     expect(err).assertEqual(undefined);
                                     setTimeout(() => {
                                         expect(stopSearching_status).assertEqual(true);
+                                        discoveryService.off("discoveryStop");
                                         done();
                                     }, delayTime)
                                 }
@@ -966,6 +970,7 @@ export default function NetworkManagerMdnsTest() {
                                     expect(err).assertEqual(undefined);
                                     setTimeout(() => {
                                         expect(found_status).assertEqual(true);
+                                        discoveryService.off("serviceFound");
                                         done();
                                     }, delayTime)
                                 }
@@ -1005,6 +1010,7 @@ export default function NetworkManagerMdnsTest() {
                                 expect(err).assertEqual(undefined);
                                 setTimeout(() => {
                                     expect(lost_status).assertEqual(true);
+                                    discoveryService.off("serviceLost");
                                     done();
                                 }, delayTime)
                             }

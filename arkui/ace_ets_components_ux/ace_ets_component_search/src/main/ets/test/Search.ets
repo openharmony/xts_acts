@@ -16,6 +16,7 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
+import {MessageManager,Callback} from './MessageManager';
 
 let emitKey = "emitUserAgent";
 export default function search() {
@@ -298,21 +299,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CaretStyle_0600]: " + JSON.stringify(newJson));
 
       let caretWidthResource = $r('sys.float.ohos_id_text_margin_vertical');
-      try {
-        var eventData = {
-          data: {
-            "caretWidthResource": caretWidthResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_CaretStyle_0600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_CaretStyle_0600] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'caretWidthResource',value:caretWidthResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -660,21 +647,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CaretStyle_1600]: " + JSON.stringify(newJson));
 
       let caretColorResource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "caretColorResource": caretColorResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_CaretStyle_1600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_CaretStyle_1600] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'caretColorResource',value:caretColorResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -1456,21 +1429,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_SearchIcon_1700]: " + JSON.stringify(newJson));
 
       let leftSearchIconColorResource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "leftSearchIconColorResource": leftSearchIconColorResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_SearchIcon_1700] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_SearchIcon_1700] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'leftSearchIconColorResource',value:leftSearchIconColorResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -1794,21 +1753,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_SearchIcon_2600]: " + JSON.stringify(newJson));
 
       let searchSrcPathResource = $r('sys.media.ohos_app_icon');
-      try {
-        var eventData = {
-          data: {
-            "searchSrcPathResource": searchSrcPathResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_SearchIcon_2600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_SearchIcon_2600] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'searchSrcPathResource',value:searchSrcPathResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -2746,21 +2691,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CancelButton_2200]: " + JSON.stringify(newJson));
 
       let rightCancelIconColorResource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "rightCancelIconColorResource": rightCancelIconColorResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_CancelButton_2200] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_CancelButton_2200] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'rightCancelIconColorResource',value:rightCancelIconColorResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -3084,21 +3015,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CancelButton_3100]: " + JSON.stringify(newJson));
 
       let rightIconSrcPathResource = $r('sys.media.ohos_app_icon');
-      try {
-        var eventData = {
-          data: {
-            "rightIconSrcPathResource": rightIconSrcPathResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_CancelButton_3100] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_CancelButton_3100] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'rightIconSrcPathResource',value:rightIconSrcPathResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -3484,21 +3401,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_SearchButton_0700]: " + JSON.stringify(newJson));
 
       let searchButtonFontSizeResource = $r('sys.float.ohos_id_text_paragraph_margin_m');
-      try {
-        var eventData = {
-          data: {
-            "searchButtonFontSizeResource": searchButtonFontSizeResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_SearchButton_0700] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_SearchButton_0700] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'searchButtonFontSizeResource',value:searchButtonFontSizeResource});
       await Utils.sleep(5000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -3846,21 +3749,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_SearchButton_1700]: " + JSON.stringify(newJson));
 
       let searchButtonFontColorResource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "searchButtonFontColorResource": searchButtonFontColorResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_SearchButton_1700] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_SearchButton_1700] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'searchButtonFontColorResource',value:searchButtonFontColorResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');
@@ -4180,21 +4069,7 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_FontColor_0500]: " + JSON.stringify(newJson));
 
       let textColorResource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "textColorResource": textColorResource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Search_FontColor_0500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Search_FontColor_0500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'textColorResource',value:textColorResource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestResource');

@@ -128,7 +128,7 @@ export default function rdbStoreQueryTest() {
       console.info(TAG + "************* testRdbStoreQuery002 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
-      rdbStore.query(predicates, "salary", async (err, resultSet) => {
+      rdbStore.query(predicates, ["salary"], async (err, resultSet) => {
         if (err) {
           console.error(`Query failed, code is ${err.code},message is ${err.message}`);
           expect(!err).assertTrue();
@@ -176,7 +176,7 @@ export default function rdbStoreQueryTest() {
       console.info(TAG + "************* testRdbStoreQuery004 start *************");
       let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("age", 18);
-      let promise = rdbStore.query(predicates, "salary");
+      let promise = rdbStore.query(predicates, ["salary"]);
       promise.then((resultSet) => {
         console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
         expect(true).assertEqual(resultSet.goToFirstRow());

@@ -175,6 +175,149 @@ struct Index {
           .onChange((value: string) => {
             this.text = value
           })
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(BarState.Off)
+          .style(TextContentStyle.INLINE )
+          .key("ArkUX_Stage_TextArea_barState_0100")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(BarState.Auto)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0200")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(BarState.On)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0300")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(BarState.Off)
+          .barState(BarState.Auto)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0400")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(0)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0500")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(10)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0600")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState("sfasf")
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0700")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState("")
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0800")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(null)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_0900")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(undefined)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_barState_1000")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(BarState.On)
+          .barState(undefined)
+          .key("ArkUX_Stage_TextArea_barState_1100")
+          .style(TextContentStyle.INLINE)
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(undefined)
+          .barState(BarState.On)
+          .key("ArkUX_Stage_TextArea_barState_1200")
+          .style(TextContentStyle.INLINE)
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(TextContentStyle.INLINE)
+          .key("TextAreaNO")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .barState(BarState.On)
+          .key("TextAreaStyleDefault")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(TextContentStyle.DEFAULT)
+          .key("ArkUX_Stage_TextArea_Style_0100")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_Style_0200")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(0)
+          .key("ArkUX_Stage_TextArea_Style_0300")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(10)
+          .key("ArkUX_Stage_TextArea_Style_0400")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style("10")
+          .key("ArkUX_Stage_TextArea_Style_0500")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style("")
+          .key("ArkUX_Stage_TextArea_Style_0600")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(null)
+          .key("ArkUX_Stage_TextArea_Style_0700")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(undefined)
+          .key("ArkUX_Stage_TextArea_Style_0800")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(TextContentStyle.DEFAULT)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_Style_0900")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(undefined)
+          .style(TextContentStyle.INLINE)
+          .key("ArkUX_Stage_TextArea_Style_1000")
+        TextArea({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextArea
+        })
+          .style(TextContentStyle.INLINE)
+          .style(undefined)
+          .key("ArkUX_Stage_TextArea_Style_1100")
 
     }.width('100%')
     .margin({ top: 5 })

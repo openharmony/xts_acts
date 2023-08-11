@@ -29,11 +29,11 @@ import StartAbilityTest from "./StartAbility.test";
 import AbilityMonitorTest2 from "./AbilityMonitor2.test";
 import AbilityStageMonitorTest2 from "./AbilityStageMonitor2.test";
 export default function testsuite() {
+  AbilityMonitorTest();
+  AbilityMonitorTest2();
   AbilityStageMonitorTest2();
   abilityTest();
   AbilityDelegatorTest();
-  AbilityMonitorTest();
-  AbilityMonitorTest2();
   GetCurrentTopAbilityTest();
   GetAbilityStateTest();
   AbilityStageMonitorTest();

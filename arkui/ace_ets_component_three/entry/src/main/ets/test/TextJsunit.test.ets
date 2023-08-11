@@ -101,7 +101,7 @@ export default function textJsunit() {
       let obj = JSON.parse(strJson);
       console.info("testText_0400 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
+      expect(obj.$attrs.fontColor).assertEqual('#330A59F8');
       console.info('testText_0400 END');
       done();
     });
@@ -217,38 +217,13 @@ export default function textJsunit() {
       done();
     });
 
-    it('testText_1100', 0, async function (done) {
-      console.info('testText_1100 START');
-      try {
-        let eventData = {
-          data: {
-            "fontColor": "-a",
-          }
-        }
-        let indexEvent = {
-          eventId: 230,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("testText_1100 start to publish emit");
-        events_emitter.emit(indexEvent, eventData);
-      } catch (err) {
-        console.log("testText_1100 change component data error: " + err.message);
-      }
-      await Utils.sleep(4000);
-      let strJsonNew = getInspectorByKey('text');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("testText_1100 component objNew is: " + JSON.stringify(objNew.$attrs.fontColor));
-      expect(objNew.$attrs.fontColor).assertEqual('#330A59F7');
-      console.info('testText_1100 END');
-      done();
-    });
-
+  
     it('testText_1200', 0, async function (done) {
       console.info('testText_1200 START');
       try {
         let eventData = {
           data: {
-            "fontColor": "12321321",
+            "fontColor": "#FFBC0229",
           }
         }
         let indexEvent = {

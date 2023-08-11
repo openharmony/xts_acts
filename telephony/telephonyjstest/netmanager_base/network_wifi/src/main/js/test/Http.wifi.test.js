@@ -67,7 +67,6 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 done();
             }
         });
-        done();
     });
 
     /**
@@ -113,7 +112,6 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 done();
             }
         });
-        done();
     });
 });
 }

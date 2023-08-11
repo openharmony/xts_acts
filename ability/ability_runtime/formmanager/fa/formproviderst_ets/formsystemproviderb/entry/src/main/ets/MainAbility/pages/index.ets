@@ -15,7 +15,6 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import file from '@system.file';
-import { Core, ExpectExtend, ReportExtend } from '@ohos/hypium';
 
 @Entry
 @Component
@@ -24,26 +23,6 @@ struct Index {
 
   aboutToAppear() {
     console.info(`${this.componentName} start run testcase!!!!`);
-
-    featureAbility.getWant()
-      .then((want: any) => {
-        console.info(`${this.componentName} Operation successful. Data: ${JSON.stringify(want)}`);
-        const core = Core.getInstance();
-        const expectExtend = new ExpectExtend({
-          'id': 'extend'
-        });
-        core.addService('expect', expectExtend);
-        const reportExtend = new ReportExtend(file);
-        core.addService('report', reportExtend);
-        core.init();
-        core.subscribeEvent('task', reportExtend);
-        const configService = core.getDefaultService('config');
-        configService.setConfig(want.parameters);
-        core.execute();
-      })
-      .catch((error: any) => {
-        console.error(`${this.componentName} Operation failed. Cause: ${JSON.stringify(error)}`);
-      })
   }
 
   build() {

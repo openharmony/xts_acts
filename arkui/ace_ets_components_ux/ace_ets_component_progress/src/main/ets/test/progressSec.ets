@@ -17,6 +17,7 @@ import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
 import router from '@system.router';
+import {MessageManager,Callback} from './MessageManager';
 
 let emitKey = "emitUserAgent";
 export default function progressSecTest() {
@@ -66,7 +67,8 @@ export default function progressSecTest() {
       let progress_capsule_content_string: string = '下载'
       let progress_capsule_enableScanEffect_boolean: boolean = false
       let progress_capsule_showDefaultPercentage_boolean: boolean = false
-      
+      let progress_capsule_enableSmoothEffect_boolean: boolean = false
+
       let progress_ring_strokeWidth_number: number = 4
       let progress_ring_strokeWidth_string: string = '4vp'
       let progress_ring_strokeWidth_resource: Resource = $r('sys.float.ohos_id_text_margin_vertical')
@@ -80,8 +82,13 @@ export default function progressSecTest() {
       let progress_ring_color_linear_null: LinearGradient = null
       let progress_ring_color_linear_undefined: LinearGradient = undefined
       let progress_ring_enableScanEffect_boolean: boolean = false
+      let progress_ring_enableSmoothEffect_boolean: boolean = false
 
       let progress_linear_enableScanEffect_boolean: boolean = false
+      let progress_linear_enableSmoothEffect_boolean: boolean = false
+
+      let progress_scaleRing_enableSmoothEffect_boolean: boolean = false
+      let progress_eclipse_enableSmoothEffect_boolean: boolean = false
 
       try {
         var eventData = {
@@ -107,6 +114,7 @@ export default function progressSecTest() {
             'progress_capsule_content_string' : progress_capsule_content_string,
             'progress_capsule_enableScanEffect_boolean' : progress_capsule_enableScanEffect_boolean,
             'progress_capsule_showDefaultPercentage_boolean' : progress_capsule_showDefaultPercentage_boolean,
+            'progress_capsule_enableSmoothEffect_boolean' : progress_capsule_enableSmoothEffect_boolean,
 
             'progress_ring_strokeWidth_number' : progress_ring_strokeWidth_number,
             'progress_ring_strokeWidth_string' : progress_ring_strokeWidth_string,
@@ -121,8 +129,13 @@ export default function progressSecTest() {
             'progress_ring_color_linear_null' : progress_ring_color_linear_null,
             'progress_ring_color_linear_undefined' : progress_ring_color_linear_undefined,
             'progress_ring_enableScanEffect_boolean' : progress_ring_enableScanEffect_boolean,
+            'progress_ring_enableSmoothEffect_boolean' : progress_ring_enableSmoothEffect_boolean,
 
             'progress_linear_enableScanEffect_boolean' : progress_linear_enableScanEffect_boolean,
+            'progress_linear_enableSmoothEffect_boolean' : progress_linear_enableSmoothEffect_boolean,
+
+            'progress_scaleRing_enableSmoothEffect_boolean' : progress_scaleRing_enableSmoothEffect_boolean,
+            'progress_eclipse_enableSmoothEffect_boolean' : progress_eclipse_enableSmoothEffect_boolean,
           }
         }
         var innerEvent = {
@@ -319,25 +332,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400] start");
       let newJson = getInspectorByKey('progress_capsule_resource');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(newJson));
-
       let progress_capsule_borderWidth_resource = $r('sys.float.ohos_id_text_margin_vertical');
-      try {
-        var eventData = {
-          data: {
-            "progress_capsule_borderWidth_resource": progress_capsule_borderWidth_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_capsule_borderWidth_resource',value:progress_capsule_borderWidth_resource});
       await Utils.sleep(2000);
-
       let strJson = getInspectorByKey('progress_capsule_resource');
       let strJsonJudge = getInspectorByKey('progress_capsule_resource_judge');
       console.info("[ArkUI_Stage_Progress_Capsule_BorderWidth_0400]: " + JSON.stringify(strJson))
@@ -862,21 +859,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500]: " + JSON.stringify(newJson));
 
       let progress_capsule_borderColor_resource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "progress_capsule_borderColor_resource": progress_capsule_borderColor_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Capsule_BorderColor_0500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_BorderColor_0500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_capsule_borderColor_resource',value:progress_capsule_borderColor_resource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
@@ -1181,21 +1164,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400]: " + JSON.stringify(newJson));
 
       let progress_capsule_fontSize_resource = $r('sys.float.ohos_id_text_margin_vertical');
-      try {
-        var eventData = {
-          data: {
-            "progress_capsule_fontSize_resource": progress_capsule_fontSize_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Capsule_Font_Size_0400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_Font_Size_0400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_capsule_fontSize_resource',value:progress_capsule_fontSize_resource });
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
@@ -2413,22 +2382,9 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_capsule_resource');
       console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500]: " + JSON.stringify(newJson));
 
+
       let progress_capsule_fontColor_resource = $r('sys.color.ohos_id_color_connected');
-      try {
-        var eventData = {
-          data: {
-            "progress_capsule_fontColor_resource": progress_capsule_fontColor_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Capsule_FontColor_0500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Capsule_FontColor_0500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_capsule_fontColor_resource',value:progress_capsule_fontColor_resource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_resource');
@@ -3321,22 +3277,9 @@ export default function progressSecTest() {
       let newJson = getInspectorByKey('progress_ring_resource');
       console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400]: " + JSON.stringify(newJson));
 
+
       let progress_ring_strokeWidth_resource = $r('sys.float.ohos_id_text_margin_vertical');
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_strokeWidth_resource": progress_ring_strokeWidth_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_StrokeWidth_0400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_strokeWidth_resource',value:progress_ring_strokeWidth_resource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_resource');
@@ -4104,21 +4047,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_0300]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_number = new LinearGradient([{color: 0xFFFF0000, offset: 0}, {color: 0xFFFFFFFF, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_number": progress_ring_color_linear_number
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_0300] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0300] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_number',value:progress_ring_color_linear_number});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_number');
@@ -4141,22 +4070,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_0400]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_string = new LinearGradient([{color: '#FFFF9A35', offset: 0}, {color: '#FFFFFFFF', offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_string": progress_ring_color_linear_string
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_0400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_string',value:progress_ring_color_linear_string});
       await Utils.sleep(2000);
+
 
       let strJson = getInspectorByKey('progress_ring_linear_string');
       console.info("[ArkUI_Stage_Progress_Ring_Color_0400]: " + JSON.stringify(strJson))
@@ -4178,21 +4094,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_0500]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_color = new LinearGradient([{color: Color.Red, offset: 0}, {color: Color.White, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_color": progress_ring_color_linear_color
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_0500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_color',value:progress_ring_color_linear_color});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_color');
@@ -4215,21 +4117,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_0600]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_resource = new LinearGradient([{color: $r('sys.color.ohos_id_color_connected'), offset: 0}, {color: $r('sys.color.ohos_id_color_background'), offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_resource": progress_ring_color_linear_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_0600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_0600] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_resource',value:progress_ring_color_linear_resource});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_ring_linear_resource');
@@ -4403,23 +4291,11 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_1300] start");
       let newJson = getInspectorByKey('progress_linear_color_linear_number');
       console.info("[ArkUI_Stage_Progress_Ring_Color_1300]: " + JSON.stringify(newJson));
+     
+
 
       let progress_ring_color_linear_number = new LinearGradient([{color: 0xFFFF0000, offset: 0}, {color: 0xFFFFFFFF, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_number": progress_ring_color_linear_number
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_1300] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1300] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_number',value:progress_ring_color_linear_number })
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_number');
@@ -4442,21 +4318,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_1400]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_string = new LinearGradient([{color: '#FFFF9A35', offset: 0}, {color: '#FFFFFFFF', offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_string": progress_ring_color_linear_string
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_1400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_string',value:progress_ring_color_linear_string})
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_string');
@@ -4479,21 +4341,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_1500]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_color = new LinearGradient([{color: Color.Red, offset: 0}, {color: Color.White, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_color": progress_ring_color_linear_color
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_1500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_color',value:progress_ring_color_linear_color})
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_linear_color_linear_color');
@@ -4516,22 +4364,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_1600]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_resource = new LinearGradient([{color: $r('sys.color.ohos_id_color_connected'), offset: 0}, {color: $r('sys.color.ohos_id_color_background'), offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_resource": progress_ring_color_linear_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_1600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_1600] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_resource',value:progress_ring_color_linear_resource})
       await Utils.sleep(2000);
+
 
       let strJson = getInspectorByKey('progress_linear_color_linear_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
@@ -4708,21 +4543,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_2300]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_number = new LinearGradient([{color: 0xFFFF0000, offset: 0}, {color: 0xFFFFFFFF, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_number": progress_ring_color_linear_number
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_2300] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2300] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_number',value:progress_ring_color_linear_number});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_number');
@@ -4745,21 +4567,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_2400]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_string = new LinearGradient([{color: '#FFFF9A35', offset: 0}, {color: '#FFFFFFFF', offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_string": progress_ring_color_linear_string
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_2400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_string',value:progress_ring_color_linear_string});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_string');
@@ -4782,21 +4591,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_2500]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_color = new LinearGradient([{color: Color.Red, offset: 0}, {color: Color.White, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_color": progress_ring_color_linear_color
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_2500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_color',value:progress_ring_color_linear_color});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_color');
@@ -4819,22 +4615,12 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_2600]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_resource = new LinearGradient([{color: $r('sys.color.ohos_id_color_connected'), offset: 0}, {color: $r('sys.color.ohos_id_color_background'), offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_resource": progress_ring_color_linear_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_2600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_2600] change component data error: " + err.message);
-      }
+
+      globalThis.value.message.notify({name:'progress_ring_color_linear_resource',value:progress_ring_color_linear_resource});
+
       await Utils.sleep(2000);
+
+
 
       let strJson = getInspectorByKey('progress_eclipse_color_linear_resource');
       let strJsonJudge = getInspectorByKey('progress_ring_resource_judge');
@@ -5011,21 +4797,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_3300]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_number = new LinearGradient([{color: 0xFFFF0000, offset: 0}, {color: 0xFFFFFFFF, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_number": progress_ring_color_linear_number
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_3300] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3300] change component data error: " + err.message);
-      }
+
+      globalThis.value.message.notify({name:'progress_ring_color_linear_number',value:progress_ring_color_linear_number});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_number');
@@ -5048,21 +4822,9 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_3400]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_string = new LinearGradient([{color: '#FFFF9A35', offset: 0}, {color: '#FFFFFFFF', offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_string": progress_ring_color_linear_string
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_3400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3400] change component data error: " + err.message);
-      }
+
+      globalThis.value.message.notify({name:'progress_ring_color_linear_string',value:progress_ring_color_linear_string});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_string');
@@ -5085,21 +4847,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_3500]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_color = new LinearGradient([{color: Color.Red, offset: 0}, {color: Color.White, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_color": progress_ring_color_linear_color
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_3500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_color',value:progress_ring_color_linear_color});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_color');
@@ -5122,21 +4871,10 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_3600]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_resource = new LinearGradient([{color: $r('sys.color.ohos_id_color_connected'), offset: 0}, {color: $r('sys.color.ohos_id_color_background'), offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_resource": progress_ring_color_linear_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_3600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_3600] change component data error: " + err.message);
-      }
+
+      globalThis.value.message.notify({name:'progress_ring_color_linear_resource',value:progress_ring_color_linear_resource});
+
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_scaleRing_color_linear_resource');
@@ -5314,21 +5052,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_4300]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_number = new LinearGradient([{color: 0xFFFF0000, offset: 0}, {color: 0xFFFFFFFF, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_number": progress_ring_color_linear_number
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_4300] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4300] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_number',value:progress_ring_color_linear_number});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_number');
@@ -5351,21 +5076,7 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_4400]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_string = new LinearGradient([{color: '#FFFF9A35', offset: 0}, {color: '#FFFFFFFF', offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_string": progress_ring_color_linear_string
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_4400] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4400] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_string',value:progress_ring_color_linear_string});
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_string');
@@ -5388,21 +5099,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_4500]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_color = new LinearGradient([{color: Color.Red, offset: 0}, {color: Color.White, offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_color": progress_ring_color_linear_color
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_4500] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4500] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_color',value:progress_ring_color_linear_color});
+
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_color');
@@ -5425,21 +5123,8 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Ring_Color_4600]: " + JSON.stringify(newJson));
 
       let progress_ring_color_linear_resource = new LinearGradient([{color: $r('sys.color.ohos_id_color_connected'), offset: 0}, {color: $r('sys.color.ohos_id_color_background'), offset: 1}]);
-      try {
-        var eventData = {
-          data: {
-            "progress_ring_color_linear_resource": progress_ring_color_linear_resource
-          }
-        }
-        var innerEvent = {
-          eventId: 183,
-          priority: events_emitter.EventPriority.LOW
-        }
-        console.info("[ArkUI_Stage_Progress_Ring_Color_4600] start to publish emit");
-        events_emitter.emit(innerEvent, eventData);
-      } catch (err) {
-        console.log("[ArkUI_Stage_Progress_Ring_Color_4600] change component data error: " + err.message);
-      }
+      globalThis.value.message.notify({name:'progress_ring_color_linear_resource',value:progress_ring_color_linear_resource});
+      
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('progress_capsule_color_linear_resource');
@@ -5883,6 +5568,831 @@ export default function progressSecTest() {
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500]: " + JSON.stringify(obj.$attrs.linearStyle.enableScanEffect));
       expect(obj.$attrs.linearStyle.enableScanEffect).assertEqual("false");
       console.info("[ArkUI_Stage_Progress_Linear_EnableScanEffect_0500] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100
+     * @tc.name      Tests the ringStyle property of the progress ring component
+     * @tc.desc      Get the default value of enableSmoothEffect
+     */
+    it('ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100] start");
+      let newJson = getInspectorByKey('progress_ring_default');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
+
+      let obj = JSON.parse(newJson);
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200
+     * @tc.name      Tests the ringStyle property of the progress ring component
+     * @tc.desc      Set the value of enableSmoothEffect as true
+     */
+    it('ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] start");
+      let newJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(newJson));
+
+      let progress_ring_enableSmoothEffect_boolean = true;
+      try {
+        var eventData = {
+          data: {
+            "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0200] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300
+     * @tc.name      Tests the ringStyle property of the progress ring component
+     * @tc.desc      Set the value of enableSmoothEffect as false
+     */
+    it('ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] start");
+      let newJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(newJson));
+
+      let progress_ring_enableSmoothEffect_boolean = false;
+      try {
+        var eventData = {
+          data: {
+            "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0300] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400
+     * @tc.name      Tests the ringStyle property of the progress ring component
+     * @tc.desc      Set the value of enableSmoothEffect as null
+     */
+    it('ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] start");
+      let newJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(newJson));
+
+      let progress_ring_enableSmoothEffect_boolean = null;
+      try {
+        var eventData = {
+          data: {
+            "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0400] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500
+     * @tc.name      Tests the ringStyle property of the progress ring component
+     * @tc.desc      Set the value of enableSmoothEffect as undefined
+     */
+    it('ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] start");
+      let newJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(newJson));
+
+      let progress_ring_enableSmoothEffect_boolean = undefined;
+      try {
+        var eventData = {
+          data: {
+            "progress_ring_enableSmoothEffect_boolean": progress_ring_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_ring_number');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0500] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100
+     * @tc.name      Tests the linearStyle property of the progress linear component
+     * @tc.desc      Get the default value of enableSmoothEffect
+     */
+    it('ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100] start");
+      let newJson = getInspectorByKey('progress_linear_color_default');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
+
+      let obj = JSON.parse(newJson);
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0100] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200
+     * @tc.name      Tests the linearStyle property of the progress linear component
+     * @tc.desc      Set the value of enableSmoothEffect as true
+     */
+    it('ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] start");
+      let newJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(newJson));
+
+      let progress_linear_enableSmoothEffect_boolean = true;
+      try {
+        var eventData = {
+          data: {
+            "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0200] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300
+     * @tc.name      Tests the linearStyle property of the progress linear component
+     * @tc.desc      Set the value of enableSmoothEffect as false
+     */
+    it('ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] start");
+      let newJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(newJson));
+
+      let progress_linear_enableSmoothEffect_boolean = false;
+      try {
+        var eventData = {
+          data: {
+            "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0300] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400
+     * @tc.name      Tests the linearStyle property of the progress linear component
+     * @tc.desc      Set the value of enableSmoothEffect as null
+     */
+    it('ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] start");
+      let newJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(newJson));
+
+      let progress_linear_enableSmoothEffect_boolean = null;
+      try {
+        var eventData = {
+          data: {
+            "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0400] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500
+     * @tc.name      Tests the linearStyle property of the progress linear component
+     * @tc.desc      Set the value of enableSmoothEffect as undefined
+     */
+    it('ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] start");
+      let newJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(newJson));
+
+      let progress_linear_enableSmoothEffect_boolean = undefined;
+      try {
+        var eventData = {
+          data: {
+            "progress_linear_enableSmoothEffect_boolean": progress_linear_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_linear_color_number');
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Linear_EnableSmoothEffect_0500] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100
+     * @tc.name      Tests the capsuleStyle property of the progress capsule component
+     * @tc.desc      Get the default value of enableSmoothEffect
+     */
+    it('ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100] start");
+      let newJson = getInspectorByKey('progress_capsule_default');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
+
+      let obj = JSON.parse(newJson);
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0100] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200
+     * @tc.name      Tests the capsuleStyle property of the progress capsule component
+     * @tc.desc      Set the value of enableSmoothEffect as true
+     */
+    it('ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] start");
+      let newJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(newJson));
+
+      let progress_capsule_enableSmoothEffect_boolean = true;
+      try {
+        var eventData = {
+          data: {
+            "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0200] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300
+     * @tc.name      Tests the capsuleStyle property of the progress capsule component
+     * @tc.desc      Set the value of enableSmoothEffect as false
+     */
+    it('ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] start");
+      let newJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(newJson));
+
+      let progress_capsule_enableSmoothEffect_boolean = false;
+      try {
+        var eventData = {
+          data: {
+            "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0300] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400
+     * @tc.name      Tests the capsuleStyle property of the progress capsule component
+     * @tc.desc      Set the value of enableSmoothEffect as null
+     */
+    it('ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] start");
+      let newJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(newJson));
+
+      let progress_capsule_enableSmoothEffect_boolean = null;
+      try {
+        var eventData = {
+          data: {
+            "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0400] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500
+     * @tc.name      Tests the capsuleStyle property of the progress capsule component
+     * @tc.desc      Set the value of enableSmoothEffect as undefined
+     */
+    it('ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] start");
+      let newJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(newJson));
+
+      let progress_capsule_enableSmoothEffect_boolean = undefined;
+      try {
+        var eventData = {
+          data: {
+            "progress_capsule_enableSmoothEffect_boolean": progress_capsule_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_capsule_number');
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Capsule_EnableSmoothEffect_0500] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100
+     * @tc.name      Tests the scaleRingStyle property of the progress scaleRing component
+     * @tc.desc      Get the default value of enableSmoothEffect
+     */
+    it('ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100] start");
+      let newJson = getInspectorByKey('progress_scaleRing_color_default');
+      console.info("[ArkUI_Stage_Progress_Ring_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
+
+      let obj = JSON.parse(newJson);
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0100] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200
+     * @tc.name      Tests the scaleRingStyle property of the progress scaleRing component
+     * @tc.desc      Set the value of enableSmoothEffect as true
+     */
+    it('ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] start");
+      let newJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(newJson));
+
+      let progress_scaleRing_enableSmoothEffect_boolean = true;
+      try {
+        var eventData = {
+          data: {
+            "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0200] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300
+     * @tc.name      Tests the scaleRingStyle property of the progress scaleRing component
+     * @tc.desc      Set the value of enableSmoothEffect as false
+     */
+    it('ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] start");
+      let newJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(newJson));
+
+      let progress_scaleRing_enableSmoothEffect_boolean = false;
+      try {
+        var eventData = {
+          data: {
+            "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0300] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400
+     * @tc.name      Tests the scaleRingStyle property of the progress scaleRing component
+     * @tc.desc      Set the value of enableSmoothEffect as null
+     */
+    it('ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] start");
+      let newJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(newJson));
+
+      let progress_scaleRing_enableSmoothEffect_boolean = null;
+      try {
+        var eventData = {
+          data: {
+            "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0400] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500
+     * @tc.name      Tests the scaleRingStyle property of the progress scaleRing component
+     * @tc.desc      Set the value of enableSmoothEffect as undefined
+     */
+    it('ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] start");
+      let newJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(newJson));
+
+      let progress_scaleRing_enableSmoothEffect_boolean = undefined;
+      try {
+        var eventData = {
+          data: {
+            "progress_scaleRing_enableSmoothEffect_boolean": progress_scaleRing_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_scaleRing_color_number');
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_ScaleRing_EnableSmoothEffect_0500] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100
+     * @tc.name      Tests the eclipseStyle property of the progress eclipse component
+     * @tc.desc      Get the default value of enableSmoothEffect
+     */
+    it('ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100] start");
+      let newJson = getInspectorByKey('progress_eclipse_color_default');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(newJson));
+
+      let obj = JSON.parse(newJson);
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0100] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200
+     * @tc.name      Tests the eclipseStyle property of the progress eclipse component
+     * @tc.desc      Set the value of enableSmoothEffect as true
+     */
+    it('ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] start");
+      let newJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(newJson));
+
+      let progress_eclipse_enableSmoothEffect_boolean = true;
+      try {
+        var eventData = {
+          data: {
+            "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0200] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300
+     * @tc.name      Tests the eclipseStyle property of the progress eclipse component
+     * @tc.desc      Set the value of enableSmoothEffect as false
+     */
+    it('ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] start");
+      let newJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(newJson));
+
+      let progress_eclipse_enableSmoothEffect_boolean = false;
+      try {
+        var eventData = {
+          data: {
+            "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("false");
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0300] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400
+     * @tc.name      Tests the eclipseStyle property of the progress eclipse component
+     * @tc.desc      Set the value of enableSmoothEffect as null
+     */
+    it('ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] start");
+      let newJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(newJson));
+
+      let progress_eclipse_enableSmoothEffect_boolean = null;
+      try {
+        var eventData = {
+          data: {
+            "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0400] end");
+      done();
+    });
+
+    /**
+     * @tc.number    ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500
+     * @tc.name      Tests the eclipseStyle property of the progress eclipse component
+     * @tc.desc      Set the value of enableSmoothEffect as undefined
+     */
+    it('ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500', 0, async function (done) {
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] start");
+      let newJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(newJson));
+
+      let progress_eclipse_enableSmoothEffect_boolean = undefined;
+      try {
+        var eventData = {
+          data: {
+            "progress_eclipse_enableSmoothEffect_boolean": progress_eclipse_enableSmoothEffect_boolean
+          }
+        }
+        var innerEvent = {
+          eventId: 183,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] change component data error: " + err.message);
+      }
+      await Utils.sleep(2000);
+
+      let strJson = getInspectorByKey('progress_eclipse_color_number');
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(strJson))
+      let obj = JSON.parse(strJson);
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500]: " + JSON.stringify(obj.$attrs.enableSmoothEffect));
+      expect(obj.$attrs.enableSmoothEffect).assertEqual("true");
+      console.info("[ArkUI_Stage_Progress_Eclipse_EnableSmoothEffect_0500] end");
       done();
     });
   })

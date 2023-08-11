@@ -29,7 +29,7 @@ struct DragEvent {
   @State abstractContent: string = "abstract";
   @State textContent: string = "";
   @State dragBehavior: string = "dragBehavior";
-  @State dragRet: string = "dragRet";
+  @State dragResult: string = "dragResult";
   @State useCustomDropAnimation1: string = "useCustomDropAnimation";
   @State imgState: Visibility = Visibility.Visible;
 
@@ -46,7 +46,7 @@ struct DragEvent {
     Row() {
       Column() {
         Text(this.dragBehavior).id("dragBehavior").margin(5)
-        Text(this.dragRet).id("dragRet").margin(5)
+        Text(this.dragResult).id("dragResult").margin(5)
         Text(this.useCustomDropAnimation1).id("useCustomDropAnimation").margin(5)
 
         Image($r('app.media.icon')).margin(5)
@@ -57,8 +57,7 @@ struct DragEvent {
           .visibility(this.imgState)
           .onDragStart((event)=>{
             event.dragBehavior = DragBehavior.COPY
-            event.setResult(DragRet.DRAG_SUCCESS);
-
+            event.setResult(DragResult.DRAG_SUCCESSFUL);
           })
           .onDragEnd((event)=>{
             event.dragBehavior = DragBehavior.MOVE
@@ -68,18 +67,18 @@ struct DragEvent {
               this.useCustomDropAnimation1 = "true"
               promptAction.showToast({duration: 100, message: 'useCustomDropAnimation==true'});
             }
-            if (event.getResult() === DragRet.DRAG_SUCCESS) {
-              promptAction.showToast({duration: 100, message: 'Drag Success'});
-            } else if (event.getResult() === DragRet.DRAG_FAILED) {
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+              promptAction.showToast({duration: 100, message: 'Drag DRAG_SUCCESSFUL'});
+            } else if (event.getResult() === DragResult.DRAG_FAILED) {
               promptAction.showToast({duration: 100, message: 'Drag Failed'});
-            } else if (event.getResult() === DragRet.DRAG_CANCELED) {
+            } else if (event.getResult() === DragResult.DRAG_CANCELED) {
               promptAction.showToast({duration: 100, message: 'Drag Canceled'});
-            } else if (event.getResult() === DragRet.DROP_DISABLED) {
+            } else if (event.getResult() === DragResult.DROP_DISABLED) {
               promptAction.showToast({duration: 100, message: 'Drop Disabled'});
-            }else if (event.getResult() === DragRet.DROP_ENABLED) {
+            }else if (event.getResult() === DragResult.DROP_ENABLED) {
               promptAction.showToast({duration: 100, message: 'Drop Enabled'});
             }
-            this.dragRet = event.getResult().toString()
+            this.dragResult = event.getResult().toString()
           })
 
         Button('touch to execute drag')
@@ -93,9 +92,9 @@ struct DragEvent {
                 extraParams: ''
               }
               dragController.executeDrag(this.DraggingBuilder.bind(this), dragInfo, (err, {event, extraParams}) => {
-                if (event.getResult() == DragRet.DRAG_SUCCESS) {
+                if (event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                   // ...
-                } else if (event.getResult() == DragRet.DRAG_FAILED) {
+                } else if (event.getResult() == DragResult.DRAG_FAILED) {
                   // ...
                 }
               })

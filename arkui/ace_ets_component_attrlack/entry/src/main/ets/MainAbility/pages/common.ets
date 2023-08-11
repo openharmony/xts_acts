@@ -36,23 +36,25 @@ struct CommonColorMode {
   }
   onLayout(children, constraint) {
     Log.showInfo(TAG, `onLayout start` + JSON.stringify(children));
-    children[0].borderInfo = {
-      borderWidth: 20,
-      margin: 30,
-      padding: 20
-    }
-    children[0].constraint = {
-      maxWidth: 200
-    }
-    children[0].layout({
-      position: {
-         x:20,
-         y:20
-      },
-      constraint: {
-        maxWidth: 200
+    if (children.length != 0)  {
+        children[0].borderInfo = {
+          borderWidth: 20,
+          margin: 30,
+          padding: 20
+       }
+       children[0].constraint = {
+          maxWidth: 200
       }
-    })
+      children[0].layout({
+         position: {
+            x:20,
+            y:20
+      },
+        constraint: {
+          maxWidth: 200
+        }
+      })
+    }
   }
   onMeasure(children, constraint) {
     Log.showInfo(TAG, `onMeasurestart`)

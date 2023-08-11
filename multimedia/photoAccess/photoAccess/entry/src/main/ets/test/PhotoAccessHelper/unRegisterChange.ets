@@ -32,7 +32,7 @@ export default function unRegisterChangeTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_UNREGISTERCHANGE_0100
      * @tc.name      : unRegisterChange_001
-     * @tc.desc      : unRegister listening motify file displayName
+     * @tc.desc      : unRegister listening motify file title
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0

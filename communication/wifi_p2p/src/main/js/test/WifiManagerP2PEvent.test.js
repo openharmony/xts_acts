@@ -101,6 +101,7 @@ export default function actsWifiManagerEventTest() {
             };
             let wifiP2PConfig = {
                 deviceAddress : "22:9b:e6:48:1f:5c",
+                deviceAddressType : 1,
                 netId : -1,
                 passphrase : "12345678",
                 groupName : "DIRECT-AAAZZZ456",

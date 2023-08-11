@@ -189,7 +189,7 @@ export default function audioManagerTest() {
               console.info(`${index} getSystemVolumeInDb :SUCCESS ${data}`);
             })
             .catch((error) => {
-              if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE') {
+              if (index == 'DEFAULT' || index == 'MAX' || index == 'INVALID' || index == 'NONE' || index == 'WAKEUP') {
                 console.log(`${index} getSystemVolumeInDb :${error.code} ${error.message}`);
               } else {
                 console.log(`${TagFrmwk}:${index} getSystemVolumeInDb : error ${error.message} ${error.code}`);
@@ -223,7 +223,7 @@ export default function audioManagerTest() {
         }).catch((error) => {
           if (error) {
             console.log(`${TagFrmwk}:getSystemVolumeInDb error ${error.message} ${error.code}`);
-            expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+            expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
             done();
           } else {
             expect(false).assertTrue();
@@ -256,7 +256,7 @@ export default function audioManagerTest() {
           .catch((error) => {
             if (error) {
               console.log(`${TagFrmwk}: getSystemVolumeInDb : error ${error.message} ${error.code}`);
-              expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+              expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
               done();
             } else {
               expect(false).assertTrue();
@@ -315,12 +315,12 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0800', 0, async function (done) {
       try {
         await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, -1).then((data) => {
-          console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
-          expect(data).assertEqual(env.DEAFULT_MEDIA_DB);
+          console.info(`getSystemVolumeInDb :SUCCESS ${data}, test fail!`);
+          expect(false).assertTrue();
           done();
         }).catch((error) => {
-          console.log(`${TagFrmwk}:getSystemVolumeInDb : error ${error.message} ${error.code}`);
-          expect(false).assertTrue();
+          console.log(`getSystemVolumeInDb : error ${error.code}, check the error code`);
+          expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
           done();
         });
       } catch (error) {

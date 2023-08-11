@@ -85,14 +85,9 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0100', 0, async function (done) {
       try {
         let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
-        if (bol == false || bol == true) {
-          console.info(`isVolumeUnadjustable SUCCESS, is ${bol}`);
-          expect(true).assertTrue();
-          done();
-        } else {
-          expect(false).assertTrue();
-          done();
-        }
+        console.info(`isVolumeUnadjustable SUCCESS, is ${bol}`);
+        expect(bol).assertEqual(false);
+        done();
       } catch (error) {
         console.log(`isVolumeUnadjustable error: ${error.code}, message ${error.message}`);
         expect(false).assertTrue();
@@ -111,31 +106,12 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200', 0, async function (done) {
       try {
         let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
-        if (bol == false) {
-          let vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-          await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, vol + 1);
-          let vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-          expect(bol).assertEqual(false);
-          expect(vol1).assertEqual(vol + 1);
-          done();
-        } else {
-          let vol2 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-          await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, vol2 + 1).then(() => {
-            console.info(`setVolume SUCCESS !, testcase fail !`);
-          }).catch((error) => {
-            if (error.code == 6800301) {
-              console.log(`${TagFrmwk}: setVolume error:${error.code}, system volume cannot be changed !`);
-              let vol3 = audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-              expect(bol).assertEqual(true);
-              expect(vol3).assertEqual(vol2);
-              done();
-            } else {
-              console.log(`${TagFrmwk}: setVolume error, unkown error: ${error.message} ${error.code}`);
-              expect(false).assertTrue();
-              done();
-            }
-          });
-        }
+        let vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
+        await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, vol + 1);
+        let vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
+        expect(bol).assertEqual(false);
+        expect(vol1).assertEqual(vol + 1);
+        done();
       } catch (error) {
         console.log(`isVolumeUnadjustable error ${error.message} ${error.code}, testcase FAIL !`);
         expect(false).assertTrue();
@@ -154,30 +130,12 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0300', 0, async function (done) {
       try {
         let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
-        if (bol == false) {
-          let Vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-          await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, Vol - 1);
-          let Vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-          expect(bol).assertEqual(false);
-          expect(Vol1).assertEqual(Vol - 1);
-          done();
-        } else {
-          let Vol2 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-          await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, Vol2 - 1).then(() => {
-          }).catch((error) => {
-            if (error.code == 6800301) {
-              console.log(`${TagFrmwk} setVolume error: ${error.code}, system volume cannot be changed!`);
-              let Vol3 = audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
-              expect(bol).assertEqual(true);
-              expect(Vol3).assertEqual(Vol2);
-              done();
-            } else {
-              console.log(`${TagFrmwk}: setVolume : error ${error.code}, unknown error! `);
-              expect(false).assertTrue();
-              done();
-            }
-          });
-        }
+        let Vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
+        await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, Vol - 1);
+        let Vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
+        expect(bol).assertEqual(false);
+        expect(Vol1).assertEqual(Vol - 1);
+        done();
       } catch (error) {
         console.log(`isVolumeUnadjustable unknown error: error ${error.message} ${error.code}`);
         expect(false).assertTrue();
