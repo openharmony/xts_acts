@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 ohos_js_app_suite("resourceschedule_ffrt_js_test") {
-  test_hap = true 
+  test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsFfrtNativeTest"
