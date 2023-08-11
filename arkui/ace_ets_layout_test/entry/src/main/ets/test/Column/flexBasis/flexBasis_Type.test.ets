@@ -283,9 +283,14 @@ export default function flexBasis_Type() {
       let Column_flexBasis_02 = CommonFunc.getComponentRect('Column_flexBasis_02');
       console.log('assert position')
       expect(Math.round(Column_flexBasis_021.left - Column_flexBasis_02.left)).assertEqual(Math.round(Column_flexBasis_02.right - Column_flexBasis_021.right));
+      console.log('Column_flexBasis_021.left - Column_flexBasis_02.left', + Column_flexBasis_021.left - Column_flexBasis_02.left)
       expect(Math.round(Column_flexBasis_022.left - Column_flexBasis_02.left)).assertEqual(Math.round(Column_flexBasis_02.right - Column_flexBasis_022.right));
+      console.log('Column_flexBasis_022.left - Column_flexBasis_02.left', + Column_flexBasis_022.left - Column_flexBasis_02.left)
       expect(Math.round(Column_flexBasis_023.left - Column_flexBasis_02.left)).assertEqual(Math.round(Column_flexBasis_02.right - Column_flexBasis_023.right));
-      expect(Math.round(Column_flexBasis_022.top - Column_flexBasis_021.bottom)).assertEqual(Math.round(Column_flexBasis_023.top - Column_flexBasis_022.bottom))
+      console.log('Column_flexBasis_023.left - Column_flexBasis_02.left', + Column_flexBasis_023.left - Column_flexBasis_02.left)
+      expect(Math.round(Column_flexBasis_022.top - Column_flexBasis_021.bottom)).assertEqual(Math.round(Column_flexBasis_023.top - Column_flexBasis_022.bottom));
+      console.log('Column_flexBasis_022.top - Column_flexBasis_021.bottom', + Column_flexBasis_022.top - Column_flexBasis_021.bottom)
+
       console.log('assert space')
       expect(Math.round(Column_flexBasis_022.top - Column_flexBasis_021.bottom)).assertEqual(vp2px(10));
       expect(Math.round(Column_flexBasis_023.top - Column_flexBasis_022.bottom)).assertEqual(vp2px(10));

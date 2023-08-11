@@ -174,6 +174,9 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_012.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_012.right));
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      console.log('Column_Space_String_011.left - Column_Space_String_01.left', + Column_Space_String_011.left - Column_Space_String_01.left)
+      console.log('Column_Space_String_012.left - Column_Space_String_01.left', + Column_Space_String_012.left - Column_Space_String_01.left)
+      console.log('Column_Space_String_013.left - Column_Space_String_01.left', + Column_Space_String_013.left - Column_Space_String_01.left)
       console.log('assert space')
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(lpx2px(50)));
       expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(Math.round(lpx2px(50)));
@@ -390,6 +393,9 @@ export default function Column_Space_String() {
       expect(Math.round(Column_Space_String_012.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_012.right));
       expect(Math.round(Column_Space_String_013.left - Column_Space_String_01.left)).assertEqual(Math.round(Column_Space_String_01.right - Column_Space_String_013.right));
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom))
+      console.log('Column_Space_String_011.left - Column_Space_String_01.left', + Column_Space_String_011.left - Column_Space_String_01.left)
+      console.log('Column_Space_String_012.left - Column_Space_String_01.left', + Column_Space_String_012.left - Column_Space_String_01.left)
+      console.log('Column_Space_String_013.left - Column_Space_String_01.left', + Column_Space_String_013.left - Column_Space_String_01.left)
       console.log('assert space')
       expect(Math.round(Column_Space_String_012.top - Column_Space_String_011.bottom)).assertEqual(10);
       expect(Math.round(Column_Space_String_013.top - Column_Space_String_012.bottom)).assertEqual(10);

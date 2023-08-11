@@ -32,6 +32,6 @@ struct Grid_Row_Direction_Row {
           }.borderColor(color).borderWidth(2).key('DirectionRow_' + index)
         })
       }.key('DirectionRow_001')
-    }.width('80pv').height(200)
+    }.width('80vp').height(200)
   }
 }
