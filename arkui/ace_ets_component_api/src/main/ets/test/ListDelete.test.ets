@@ -127,7 +127,7 @@ export default function ListDeleteTest() {
       console.info(`${SUITE} ${CASE} START`);
 
       let driver = Driver.create()
-      await driver.delayMs(500)
+      await driver.delayMs(1000)
       let baseKey = 'MyList5_ListItem0'
       let strJson = getInspectorByKey(baseKey);
       let obj = JSON.parse(strJson);
@@ -144,13 +144,11 @@ export default function ListDeleteTest() {
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event, callback);
-
       let rectCenter = getRectCenter(obj.$rect)
-      await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
-
+      await driver.swipe(Math.round(rectCenter[0]), Math.round(rectCenter[1]),
+        0, Math.round(rectCenter[1]))
       console.info(`${SUITE} ${CASE} END`);
     });
-
 
   })
 }
