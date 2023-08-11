@@ -41,7 +41,8 @@
             "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite_0.input -> /data/test",
             "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite_1.input -> /data/test",
             "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite_2.input -> /data/test",
-            "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite0.output -> /data/test"
+            "resource/ai/mindspore/ml_headpose_pb2tflite/ml_headpose_pb2tflite0.output -> /data/test",
+            "resource/ai/mindspore/Kirin_model/tinynet.om.ms -> /data/test"
         ]
     },
     {
