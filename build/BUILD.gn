@@ -18,7 +18,7 @@ group("acts_group") {
   testonly = true
   deps = []
   if (os_level == "standard") {
-    deps += [ "${xts_acts_path}:acts" ]
+    deps += [ "${xts_acts_path}:xts_acts" ]
   }
 }
 

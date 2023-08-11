@@ -14,7 +14,7 @@
 #import("//hit/build/suite.gni")
 import("test_packages.gni")
 if (os_level == "standard") {
-  ohos_test_suite("acts") {
+  ohos_test_suite("xts_acts") {
     deps = selected_packages
   }
 
