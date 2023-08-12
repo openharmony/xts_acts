@@ -12,6 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const Sleep = (ms)=> {
+export const Sleep = (ms: number | undefined)=> {
   return new Promise(resolve=>setTimeout(resolve, ms))
 }
