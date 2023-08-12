@@ -194,6 +194,8 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
+            await sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
 
@@ -319,6 +321,8 @@ export default function AVSessionManager() {
 
                 }
             }
+            sleep(10000);
+            await currentAVSession.destroy();
             done();
         })
         /* *
