@@ -329,10 +329,14 @@ bool compFp32WithTData(float *actualOutputData, const std::string& expectedDataF
   }
   printf("\n");
   if (isquant) {
-    return allclose(actualOutputData, expectedOutputData, data_size, rtol, atol,
+    bool ret = allclose(actualOutputData, expectedOutputData, data_size, rtol, atol,
                     true);
+    free(expectedOutputData);
+    return ret;
   }
-  return allclose(actualOutputData, expectedOutputData, data_size, rtol, atol);
+  bool ret =  allclose(actualOutputData, expectedOutputData, data_size, rtol, atol);
+  free(expectedOutputData);
+  return ret;
 }
 
 bool compUint8WithTData(uint8_t *actualOutputData, const std::string& expectedDataFile,
@@ -357,11 +361,15 @@ bool compUint8WithTData(uint8_t *actualOutputData, const std::string& expectedDa
   }
   printf("\n");
   if (isquant) {
-    return allclose_int8(actualOutputData, expectedOutputData, data_size, rtol,
+    bool ret =  allclose_int8(actualOutputData, expectedOutputData, data_size, rtol,
                          atol, true);
+    free(expectedOutputData);
+    return ret;
   }
-  return allclose_int8(actualOutputData, expectedOutputData, data_size, rtol,
+  bool ret =  allclose_int8(actualOutputData, expectedOutputData, data_size, rtol,
                        atol);
+  free(expectedOutputData);
+  return ret;
 }
 
 /*

@@ -14,6 +14,7 @@
  */
 
 #include <thread>
+#include <random>
 #include <inttypes.h>
 #include <securec.h>
 #include "ohos_common.h"
@@ -66,8 +67,25 @@ bool IsNNRTAvailable() {
     if (desc == nullptr) {
         return false;
     }
-
+    auto type = OH_AI_GetTypeFromNNRTDeviceDesc(desc);
+    if (type != 1) {
+        return false;
+    }
     OH_AI_DestroyAllNNRTDeviceDescs(&desc);
+    return true;
+}
+
+bool IsNPU() {
+    size_t num = 0;
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    if (desc == nullptr) {
+        return false;
+    }
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+    const std::string npu_name_prefix = "NPU_";
+    if (strncmp(npu_name_prefix.c_str(), name, npu_name_prefix.size()) != 0) {
+        return false;
+    }
     return true;
 }
 
@@ -178,6 +196,7 @@ void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_t
             auto imageBuf_nhwc = new char[size1];
             PackNCHWToNHWCFp32(imageBuf, imageBuf_nhwc, shape[0], shape[1] * shape[2], shape[3]);
             memcpy_s(input_data, size1, imageBuf_nhwc, size1);
+            delete[] imageBuf_nhwc;
         } else {
             memcpy_s(input_data, size1, imageBuf, size1);
         }
@@ -223,6 +242,7 @@ void ModelPredict(OH_AI_ModelHandle model, OH_AI_ContextHandle context, string m
         char *graphBuf = ReadFile(graphPath, ptr_size);
         ASSERT_NE(graphBuf, nullptr);
         ret = OH_AI_ModelBuild(model, graphBuf, size, OH_AI_MODELTYPE_MINDIR, context); 
+        delete[] graphBuf;
     } else {
         printf("==========Build model==========\n");
         ret = OH_AI_ModelBuildFromFile(model, graphPath, OH_AI_MODELTYPE_MINDIR, context);
@@ -1930,6 +1950,46 @@ HWTEST(MSLiteTest, OHOS_OfflineModel_0008, Function | MediumTest | Level1) {
     ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     CompareResult(outputs, "ml_ocr_cn");
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：离线模型覆盖NPU
+HWTEST(MSLiteTest, OHOS_OfflineModel_0009, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/tinynet.om.ms",
+        OH_AI_MODELTYPE_MINDIR, context);
+    printf("==========build model return code:%d\n", ret);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    for (size_t i = 0; i < inputs.handle_num; ++i) {
+        OH_AI_TensorHandle tensor = inputs.handle_list[i];
+        float *input_data = reinterpret_cast<float *>(OH_AI_TensorGetMutableData(tensor));
+        size_t element_num = OH_AI_TensorGetElementNum(tensor);
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<float> dis(0.0f,1.0f);
+        for (int z=0;z<element_num;z++) {
+            input_data[z] = dis(gen);
+        }
+    }
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     OH_AI_ModelDestroy(&model);
 }
 
