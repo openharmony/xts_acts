@@ -25,7 +25,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonAttrsGroupDefaultFocusTest") {
   hap_name = "ActsAceEtsComponentCommonAttrsGroupDefaultFocusTest"
 }
 
-ohos_app_scope("ace_ets_component_common_attrss_groupDefaultFocus_app_profile") {
+ohos_app_scope(
+    "ace_ets_component_common_attrss_groupDefaultFocus_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }

@@ -25,16 +25,19 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonAttrsOnVisibleAreaChangeTest") {
   hap_name = "ActsAceEtsComponentCommonAttrsOnVisibleAreaChangeTest"
 }
 
-ohos_app_scope("ace_ets_component_common_attrss_onVisibleAreaChange_app_profile") {
+ohos_app_scope(
+    "ace_ets_component_common_attrss_onVisibleAreaChange_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("ace_ets_component_common_attrss_onVisibleAreaChange_js_assets") {
+ohos_js_assets(
+    "ace_ets_component_common_attrss_onVisibleAreaChange_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("ace_ets_component_common_attrss_onVisibleAreaChange_resources") {
+ohos_resources(
+    "ace_ets_component_common_attrss_onVisibleAreaChange_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":ace_ets_component_common_attrss_onVisibleAreaChange_app_profile" ]
   hap_profile = "entry/src/main/module.json"
