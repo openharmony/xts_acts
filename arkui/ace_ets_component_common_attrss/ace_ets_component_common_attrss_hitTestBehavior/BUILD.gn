@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonAttrsHitTestBehaviorTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-     ":ace_ets_component_common_attrss_hitTestBehavior_js_assets",
-     ":ace_ets_component_common_attrss_hitTestBehavior_resources",
+    ":ace_ets_component_common_attrss_hitTestBehavior_js_assets",
+    ":ace_ets_component_common_attrss_hitTestBehavior_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"

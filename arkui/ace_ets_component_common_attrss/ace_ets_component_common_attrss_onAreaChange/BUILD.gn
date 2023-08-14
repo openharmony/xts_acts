@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsAceEtsComponentCommonAttrsOnAreaChangeTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-     ":ace_ets_component_common_attrss_onAreaChange_js_assets",
-     ":ace_ets_component_common_attrss_onAreaChange_resources",
+    ":ace_ets_component_common_attrss_onAreaChange_js_assets",
+    ":ace_ets_component_common_attrss_onAreaChange_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
