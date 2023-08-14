@@ -1,0 +1,21 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_cellLength",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_Gap",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_GridSize",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_LayoutDirection",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_maxCount",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridChange/Grid_RowCol_PadMar",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemColumnStartEnd",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemContentSize",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemOffset",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemPadMar",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemPosition",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemRowStartEnd",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemVisibility",
+        "MainAbility/pages/Grid/GridTemplatesAllSet/GridTemplateChange/Grid_RowCol_TemplateChange",
+        "MainAbility/pages/Grid/Grid_attribute/GridFrictionPage"
+    ]
+}
