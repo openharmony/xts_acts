@@ -60,6 +60,7 @@ group("ability_runtime") {
       "newwant:newwant",
       "non_concurrent:non_concurrent",
       "registerjserror:registerjserror",
+      "shareextensionability:actsshareextensionability",
       "stage:stage",
       "stopserviceextension:stopserviceextension",
       "want:want",
