@@ -11,6 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
+ohos_app_assist_suite("acts_ffrt_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsFfrtMainTest"
+  part_name = "ffrt"
+  subsystem_name = "resourceschedule"
+}
 ohos_js_app_suite("resourceschedule_ffrt_js_test") {
   test_hap = true
   testonly = true
@@ -18,4 +25,5 @@ ohos_js_app_suite("resourceschedule_ffrt_js_test") {
   hap_name = "ActsFfrtNativeTest"
   part_name = "ffrt"
   subsystem_name = "resourceschedule"
+  deps = [":acts_ffrt_main"]
 }
