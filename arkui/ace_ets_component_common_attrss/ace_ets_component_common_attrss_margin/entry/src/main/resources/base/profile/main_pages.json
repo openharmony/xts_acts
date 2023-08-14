@@ -1,0 +1,8 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/margin/MarginPageLength",
+    "MainAbility/pages/margin/MarginPageString",
+    "MainAbility/pages/margin/MarginPage"
+  ]
+}

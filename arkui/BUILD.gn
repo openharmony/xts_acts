@@ -22,7 +22,7 @@ group("arkui") {
     "ace_ets_component_api_two:ActsAceComponentApi02Test",
     "ace_ets_component_apilack:ActsAceEtsApiLackTest",
     "ace_ets_component_attrlack:ActsAceEtsAttrLackTest",
-    "ace_ets_component_common_attrs:ActsAceEtsComponentCommonAttrsTest",
+    "ace_ets_component_common_attrss:componentAttrssTest",
     "ace_ets_component_completion:componentCompletionTest",
     "ace_ets_component_five:ActsAceEtsComponentFiveTest",
     "ace_ets_component_four:ActsAceEtsComponentFourTest",
