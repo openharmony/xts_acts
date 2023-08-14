@@ -484,7 +484,7 @@ export default function geolocationTest_geo7() {
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation252 promise try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            expect(error.code).assertEqual("401");
         }
         await sleep(1000);
         done();
@@ -560,7 +560,7 @@ export default function geolocationTest_geo7() {
             })
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation272 promise try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            expect(error.code).assertEqual("401");
         }
         await sleep(1000);
         done();
@@ -1135,7 +1135,7 @@ export default function geolocationTest_geo7() {
             geolocationm.on('locationChange', requestInfo2, locationChange2);
         } catch (error) {
             console.info("[lbs_js] locationChangerOn292 try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            expect(error.code).assertEqual("401");
         }
         try {
             geolocationm.off('locationChange', locationChange2);
