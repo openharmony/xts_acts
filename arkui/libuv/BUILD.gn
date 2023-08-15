@@ -208,6 +208,8 @@ ohos_executable("libuvruntest") {
   ]
   sources = [ "//third_party/libuv/test/run-tests.c" ]
   deps = [ ":libuvTestStatic" ]
+  part_name = "libuv"
+  subsystem_name = "thirdparty"
 }
 
 ohos_moduletest_suite("ActsLibuvTest") {
