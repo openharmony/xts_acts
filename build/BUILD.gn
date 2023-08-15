@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,22 +11,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#import("//hit/build/suite.gni")
-import("test_packages.gni")
-if (os_level == "standard") {
-  ohos_test_suite("xts_acts") {
-    deps = selected_packages
-  }
+import("//build/ohos.gni")
+import("//test/xts/acts/xts_acts_config.gni")
 
-  ohos_test_suite("acts_ivi") {
-    deps = selected_packages_ivi
+group("acts_group") {
+  testonly = true
+  deps = []
+  if (os_level == "standard") {
+    deps += [ "${xts_acts_path}:xts_acts" ]
   }
+}
 
-  ohos_test_suite("acts_intellitv") {
-    deps = selected_packages_intellitv
-  }
-
-  ohos_test_suite("acts_wearable") {
-    deps = selected_packages_wearable
+group("acts_lite") {
+  deps = []
+  if (os_level != "standard") {
+    deps += [ "${xts_acts_path}/build_lite:acts" ]
   }
 }
