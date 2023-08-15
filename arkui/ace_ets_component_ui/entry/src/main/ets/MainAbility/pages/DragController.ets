@@ -15,7 +15,7 @@
 
 
 import dragController from "@ohos.arkui.dragController"
-import UDMF from '@ohos.data.UDMF';
+import UDMF from '@ohos.data.unifiedDataChannel';
 import componentSnapshot from '@ohos.arkui.componentSnapshot';
 import image from '@ohos.multimedia.image';
 
