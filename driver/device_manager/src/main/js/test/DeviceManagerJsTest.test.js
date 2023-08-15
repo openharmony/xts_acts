@@ -15,7 +15,6 @@
 
 import deviceManager from '@ohos.driver.deviceManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-
 export default function DeviceManagerJsTest(){
 describe("DeviceManagerJsTest", function () {
     function callback(data) {
