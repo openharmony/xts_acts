@@ -23,11 +23,11 @@ import AVSessionEnum from './AVSessionEnum.test.js'
 
 export default function testsuite() {
     AVSession()
+    AVSessionManager()
     AVSessionCallback()
     AVSessionManagerCallback()
     AVSessionErrorCode()
     AVSessionJSTest ()
     AVSessionControllerJSTest ()
     AVSessionEnum()
-    AVSessionManager()
 }
