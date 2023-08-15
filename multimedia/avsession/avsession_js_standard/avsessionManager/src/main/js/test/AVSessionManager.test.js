@@ -39,7 +39,7 @@ export default function AVSessionManager() {
 
         afterEach(async function () {
             await sleep(5000);
-            if(currentAVSession){
+            if (currentAVSession){
                 await currentAVSession.destroy();
             }
             console.info('TestLog: End testing testcase');
@@ -59,7 +59,7 @@ export default function AVSessionManager() {
             */
         it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0100', 0, async function (done) {
             await avSession.createAVSession(context, tag, type).then((data) => {
-                session = data;
+                currentAVSession = data;
                 if (currentAVSession.sessionId.length === 64) {
                     console.info('TestLog: avSession create successfully');
                     expect(true).assertTrue();
