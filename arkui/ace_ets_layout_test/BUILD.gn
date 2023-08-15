@@ -16,21 +16,18 @@ group("ActsAceEtsLayoutTest") {
   if (is_standard_system) {
     deps = [
       "ace_ets_layout_column_test:ActsAceEtsLayoutColumnTest",
-
-      #"ace_ets_layout_flex_test:ActsAceEtsLayoutFlexTest",
-      #"ace_ets_layout_grid_test:ActsAceEtsLayoutGridTest",
-      #"ace_ets_layout_gridCol_test:ActsAceEtsLayoutGridColTest",
+      "ace_ets_layout_flex_test:ActsAceEtsLayoutFlexTest",
+      "ace_ets_layout_gridCol_test:ActsAceEtsLayoutGridColTest",
       "ace_ets_layout_gridRow_test:ActsAceEtsLayoutGridRowTest",
-
-      #"ace_ets_layout_list_test:ActsAceEtsLayoutListTest",
-      #"ace_ets_layout_relativeContainer_test:ActsAceEtsLayoutRelativeContainerTest",
+      "ace_ets_layout_grid_test:ActsAceEtsLayoutGridTest",
+      "ace_ets_layout_list_test:ActsAceEtsLayoutListTest",
+      "ace_ets_layout_relativeContainer_test:ActsAceEtsLayoutRelativeContainerTest",
       "ace_ets_layout_row_test:ActsAceEtsLayoutRowTest",
-
-      #"ace_ets_layout_scroll_test:ActsAceEtsLayoutScrollTest",
-      #"ace_ets_layout_stack_test:ActsAceEtsLayoutStackTest",
-      #"ace_ets_layout_swiper_test:ActsAceEtsLayoutSwiperTest",
-      #"ace_ets_layout_tabs_test:ActsAceEtsLayoutTabsTest",
-      # "ace_ets_layout_waterflow_test:ActsAceEtsLayoutWaterflowTest",
+      "ace_ets_layout_scroll_test:ActsAceEtsLayoutScrollTest",
+      "ace_ets_layout_stack_test:ActsAceEtsLayoutStackTest",
+      "ace_ets_layout_swiper_test:ActsAceEtsLayoutSwiperTest",
+      "ace_ets_layout_tabs_test:ActsAceEtsLayoutTabsTest",
+      "ace_ets_layout_waterflow_test:ActsAceEtsLayoutWaterflowTest",
     ]
   }
 }
