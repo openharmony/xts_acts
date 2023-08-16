@@ -20,7 +20,6 @@ import fileIOCopyfile from './members/copyFile.test.js'
 import fileIOCreateStream from './members/createStream.test.js'
 import fileIOFdatasync from './members/fdatasync.test.js'
 import fileIOFdOpenStream from './members/fdopenStream.test.js'
-import fileIOFileLock from './members/fileLock.test.js'
 import fileIOFsync from './members/fsync.test.js'
 import fileIOHash from './members/hash.test.js'
 import fileIOListfile from './members/listFile.test.js'
@@ -35,6 +34,8 @@ import fileIOReadtext from './members/readtext.test.js'
 import fileIORename from './members/rename.test.js'
 import fileIORmdir from './members/rmdir.test'
 import fileIOStat from './members/stat.test.js'
+import fileIOFileLock from './class_file/fileLock.test.js'
+import fileIOFileProperties from './class_file/file.test.js'
 import fileIOStreamClose from './class_stream/close.test.js'
 import fileIOStreamFlush from './class_stream/flush.test.js'
 import fileIOStreamRead from './class_stream/read.test.js'
@@ -53,6 +54,7 @@ export default function testsuite() {
     fileIOFdatasync()
     fileIOFdOpenStream()
     fileIOFileLock()
+    fileIOFileProperties()
     fileIOFsync()
     fileIOHash()
     fileIOListfile()
