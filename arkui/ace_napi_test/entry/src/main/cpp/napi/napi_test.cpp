@@ -1968,10 +1968,10 @@ static napi_value napiDefineClass(napi_env env, napi_callback_info info)
 static napi_value napiRunScriptPath(napi_env env, napi_callback_info info)
 {
     napi_value value;
-    const char* path =  "index/page";
+    const char* path =  "pages/index.ets";
     napi_status status = napi_run_script_path(env, path, &value);
     NAPI_ASSERT(env, status == napi_ok, "napi_run_script_path ok");
-    NAPI_ASSERT(env, value == nullptr, "napi_run_script_path fail");
+    NAPI_ASSERT(env, value != nullptr, "napi_run_script_path success");
     
     napi_value _value;
     NAPI_CALL(env, napi_create_int32(env, 0, &_value));
