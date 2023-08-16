@@ -17,8 +17,8 @@ import {describe, it} from "@ohos/hypium"
 import {Sleep} from './Util'
 
 export default function pageImport() {
-  describe("PageImportTest", function () {
-    it('pageImportHar', 0, async function (){
+  describe("PageImportTest", () => {
+    it('pageImportHar', 0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportHar"})
@@ -26,7 +26,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportOhpm', 0, async function (){
+    it('pageImportOhpm', 0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportOhpm"})
@@ -34,7 +34,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportRelative', 0, async function (){
+    it('pageImportRelative', 0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportRelative"})
@@ -42,7 +42,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportAppNapi', 0, async function (){
+    it('pageImportAppNapi', 0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportNapi"})
@@ -50,7 +50,7 @@ export default function pageImport() {
       router.back()
       await Sleep(1000)
     })
-    it('pageImportSystemNapi', 0, async function (){
+    it('pageImportSystemNapi', 0, async () => {
       await Sleep(1000)
       router.clear()
       await router.pushUrl({url: "pages/PageImportSystem"})

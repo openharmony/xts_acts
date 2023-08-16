@@ -16,7 +16,7 @@ import {ohpmRes} from 'har';
 import worker from '@ohos.worker';
 
 let workerPort = worker.workerPort;
-workerPort.onmessage = function(): void {
+workerPort.onmessage = () => {
   if (ohpmRes) {
     workerPort.postMessage('ModuleTest receive data from main thread');
   }

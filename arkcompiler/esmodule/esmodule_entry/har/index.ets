@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export var A = "I am har1";
+export let A = "I am har1";
 export { MainPage } from './src/main/ets/components/mainpage/MainPage';
 export {ohpmRes} from './src/main/ets/ohpm';
 function add(a: number, b: number) {

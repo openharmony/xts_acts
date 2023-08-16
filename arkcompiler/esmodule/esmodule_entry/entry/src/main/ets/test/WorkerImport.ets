@@ -17,52 +17,52 @@ import { describe, it, expect } from "@ohos/hypium"
 import {Sleep} from './Util'
 
 export default function workerImport() {
-  describe("WorkerImportTest", function () {
-    it('importHar', 0, async function () {
+  describe("WorkerImportTest", () => {
+    it('importHar', 0, async () => {
       let workerImportHar = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportHar')
       threadWorker.postMessage("ModuleTest host to worker")
-      threadWorker.onmessage = function () {
+      threadWorker.onmessage = () => {
         workerImportHar = 'success';
       }
       await Sleep(2000)
       expect(workerImportHar).assertEqual('success')
     })
-    it('importOhpm', 0, async function () {
+    it('importOhpm', 0, async () => {
       let workerImportOhpm = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportOhpm')
       threadWorker.postMessage("ModuleTest host to worker")
-      threadWorker.onmessage = function () {
+      threadWorker.onmessage = () => {
         workerImportOhpm = 'success';
       }
       await Sleep(2000)
       expect(workerImportOhpm).assertEqual('success')
     })
-    it('importRelative', 0, async function () {
+    it('importRelative', 0, async () => {
       let workerImportRelative = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportRelative')
       threadWorker.postMessage("ModuleTest host to worker")
-      threadWorker.onmessage = function () {
+      threadWorker.onmessage = () => {
         workerImportRelative = 'success';
       }
       await Sleep(2000)
       expect(workerImportRelative).assertEqual('success')
     })
-    it('importSystemNapi', 0, async function () {
+    it('importSystemNapi', 0, async () => {
       let workerImportSystem = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportSystem')
       threadWorker.postMessage("ModuleTest host to worker")
-      threadWorker.onmessage = function () {
+      threadWorker.onmessage = () => {
         workerImportSystem = 'success';
       }
       await Sleep(2000)
       expect(workerImportSystem).assertEqual('success')
     })
-    it('importAppNapi', 0, async function () {
+    it('importAppNapi', 0, async () => {
       let workerImportNapi = 'failed'
       let threadWorker = new worker.ThreadWorker('entry/ets/workers/workerImportNapi')
       threadWorker.postMessage("ModuleTest host to worker")
-      threadWorker.onmessage = function () {
+      threadWorker.onmessage = () => {
         workerImportNapi = 'success';
       }
       await Sleep(2000)
