@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import contactstage from './contactstage.test'
+import contactStage from './contactstage.test';
 
 export default function testsuite() {
-  contactstage();
+  contactStage();
 }

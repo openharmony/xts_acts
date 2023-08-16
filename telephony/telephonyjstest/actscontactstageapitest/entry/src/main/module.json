@@ -2,7 +2,7 @@
   "module": {
     "name": "entry_test",
     "type": "feature",
-    "description": "$string:MainAbility_label",
+    "description": "$string:module_test_desc",
     "mainElement": "TestAbility",
     "deviceTypes": [
       "tablet",
@@ -17,13 +17,12 @@
       {
         "name": "TestAbility",
         "srcEntrance": "./ets/TestAbility/TestAbility.ets",
-        "description": "$string:MainAbility_label",
+        "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
-        "label": "$string:entry_label",
+        "label": "$string:TestAbility_label",
+        "exported": true,
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
-        "visible": true,
-        "orientation": "portrait",
+        "startWindowBackground": "$color:start_window_background",
         "skills": [
           {
             "entities": [
