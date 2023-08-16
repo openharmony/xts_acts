@@ -20,6 +20,8 @@ import { testPng } from "./testImg";
 export default function addImage() {
     describe("addImage", function () {
         const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+        let incSouce;
+
         beforeAll(async function () {
             console.info("beforeAll case");
         });
@@ -30,6 +32,13 @@ export default function addImage() {
 
         afterEach(async function () {
             console.info("afterEach case");
+            if (incSouce != undefined) {
+                try {
+                    await incSouce.release();
+                } catch (error) {
+                    console.info("incSouce release faile :"+error);
+                }
+            }
         });
 
         afterAll(async function () {
@@ -63,7 +72,6 @@ export default function addImage() {
 
         async function createIncrementalSourcePromise(done, testNum, type, opts) {
             let testimagebuffer = testPng;
-            let incSouce;
             console.info(`${testNum} 0001 ` + testimagebuffer.length);
             let bufferSize = 5000;
             let offset = 0;
@@ -115,7 +123,6 @@ export default function addImage() {
 
         async function createIncrementalSourceCb(done, testNum, type, opts) {
             let testimagebuffer = testPng;
-            let incSouce;
             console.info(`${testNum} 0001 ` + testimagebuffer.length);
             let bufferSize = 5000;
             let offset = 0;
