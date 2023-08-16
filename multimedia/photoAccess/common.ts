@@ -81,6 +81,8 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.DATE_TRASHED,
       photoKeys.HIDDEN,
       photoKeys.CAMERA_SHOT_KEY,
+      photoKeys.USER_COMMENT,
+      'all_exif',
     ],
     predicates: predicates
   };

@@ -39,6 +39,15 @@
             "pre-push": [],
             "push": [
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/01.jpg",
+                "./resource/medialibrary/getExif.jpg ->/storage/media/100/local/temp/getExif.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb01.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb02.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb03.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb04.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro01.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro02.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro03.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro04.jpg",
                 "./resource/medialibrary/01.mp4 ->/storage/media/100/local/temp/01.mp4"
             ]
         },
@@ -126,6 +135,16 @@
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addPro02.jpg",
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/addPro04.jpg",
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/removePro02.jpg",
+
+                "mediatool send /storage/media/100/local/temp/userCommentCb01.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentCb02.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentCb03.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentCb04.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentPro01.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentPro02.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentPro03.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentPro04.jpg",
+                "mediatool send /storage/media/100/local/temp/getExif.jpg",
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "hilog -p off",
                 "hilog -Q pidoff",
