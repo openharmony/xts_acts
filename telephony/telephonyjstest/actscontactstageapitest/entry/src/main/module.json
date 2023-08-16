@@ -22,7 +22,6 @@
         "label": "$string:TestAbility_label",
         "exported": true,
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:white",
         "skills": [
           {
             "entities": [
