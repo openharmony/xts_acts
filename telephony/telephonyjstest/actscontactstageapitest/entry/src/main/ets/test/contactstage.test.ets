@@ -1520,28 +1520,28 @@ export default function ContactInterfaceStageTest() {
     });
 
     /**
-     * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0300
+     * @tc.number SUB_Telephony_ContactsApi_updateContact_test_0400
      * @tc.name contactsApi_query_updateContact error
      * @tc.desc Function test
      */
-    it("SUB_Telephony_ContactsApi_updateContact_test_0300", 0, async function (done) {
+    it("SUB_Telephony_ContactsApi_updateContact_test_0400", 0, async function (done) {
       contact.addContact(globalThis.context, contactData, (err, data) => {
         if (err) {
-          console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
+          console.info("SUB_Telephony_ContactsApi_updateContact_test_0400  err = " + JSON.stringify(err));
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  data = " + JSON.stringify(data));
+        console.info("SUB_Telephony_ContactsApi_updateContact_test_0400  data = " + JSON.stringify(data));
         expect(data > 0).assertTrue();
         contact.isLocalContact(globalThis.context, data, (err, data) => {
           if (err) {
-            console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  err = " + JSON.stringify(err));
+            console.info("SUB_Telephony_ContactsApi_updateContact_test_0400  err = " + JSON.stringify(err));
             expect(false).assertTrue();
             done();
             return;
           }
-          console.info("SUB_Telephony_ContactsApi_updateContact_test_0300  data = " + JSON.stringify(data));
+          console.info("SUB_Telephony_ContactsApi_updateContact_test_0400  data = " + JSON.stringify(data));
           done();
         });
       });
