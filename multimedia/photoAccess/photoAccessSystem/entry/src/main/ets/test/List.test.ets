@@ -20,11 +20,13 @@ import setCoverUriTest from './Album/setCoverUri'
 import createAlbumTest from './createAlbum'
 import createAssetTest from './createAsset'
 import deleteAlbumsTest from './deleteAlbums'
+import getExifTest from './getExif'
 import openTest from './open'
 import publicApiTestWithSystemApiTest from './publicApiTestWithSystemApi'
 import setFavoriteTest from './setFavorite'
 import setHiddenTest from './setHidden'
 import trashAssetsTest from './deleteAssets'
+import setUserCommentTest from './setUserComment'
 
 export default function testsuite () {
   deleteAssetsTest()
@@ -34,9 +36,11 @@ export default function testsuite () {
   createAlbumTest()
   createAssetTest()
   deleteAlbumsTest()
+  getExifTest()
   openTest()
   publicApiTestWithSystemApiTest()
   setFavoriteTest()
   setHiddenTest()
   trashAssetsTest()
+  setUserCommentTest()
 }
