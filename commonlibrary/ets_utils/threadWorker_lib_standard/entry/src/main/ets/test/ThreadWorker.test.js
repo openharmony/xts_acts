@@ -2546,5 +2546,224 @@ describe('threadWorkerTest', function () {
         expect(res == 1).assertTrue();
         done();
     })
+
+    // Check the SharedArrayBuffer with worker.
+    /**
+     * @tc.name: threadWorker_worker_SharedArrayBuffer_test_001
+     * @tc.desc: Check the SharedArrayBuffer with worker is ok.
+     */
+    it('threadWorker_worker_SharedArrayBuffer_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_028.js");
+        let sab = new SharedArrayBuffer(20);
+        let int32 = new Uint32Array(sab);
+
+        let res = 0;
+        let isTerminate = false;
+        ss.onmessage = function (d) {
+            if (d.data == "success") {
+                res = int32[0] + int32[1] + int32[2] + int32[3];
+            }
+            ss.terminate();
+        }
+        ss.onexit = function() {
+            isTerminate = true;
+        }
+        ss.postMessage(int32);
+        while (!isTerminate) {
+            await promiseCase();
+        }
+        expect(res == 1000).assertTrue();
+        done();
+    })
+
+    // Check the listener of worker.
+    /**
+     * @tc.name: threadWorker_worker_listener_test_001
+     * @tc.desc: Check the listener of worker is ok.
+     */
+    it('threadWorker_worker_listener_test_001', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_029.js");
+        let res = undefined;
+        let flag = false;
+        let isTerminate = false;
+
+        ss.on('message', (event) =>{
+          flag = true;
+          let jsonData = JSON.parse(JSON.stringify(event));
+          res = jsonData.data;
+          ss.terminate();
+        });
+
+        ss.on('exit', (code) => {
+          isTerminate = true;
+        })
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("hello worker")
+        done();
+    })
+
+    // Check the listener of worker.
+    /**
+     * @tc.name: threadWorker_worker_listener_test_002
+     * @tc.desc: Check the listener of worker is ok.
+     */
+    it('threadWorker_worker_listener_test_002', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_029.js");
+        let res = 0;
+        let flag = false;
+        let isTerminate = false;
+
+        ss.addEventListener('messageerror', (event) =>{
+            flag = true;
+            res += 1;
+        });
+
+        ss.addEventListener('exit', (code) => {
+          isTerminate = true;
+        })
+
+        try {
+            const data = Symbol();
+            ss.postMessage(data);
+        } catch (error) {
+            while (!flag) {
+                await promiseCase();
+            }
+            ss.terminate();
+            while (!isTerminate) {
+                await promiseCase();
+            }
+        }
+        expect(res).assertEqual(1)
+        done();
+    })
+
+    // Check the listener of worker.
+    /**
+     * @tc.name: threadWorker_worker_listener_test_003
+     * @tc.desc: Check the listener of worker is ok.
+     */
+    it('threadWorker_worker_listener_test_003', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_007.js");
+        let res = undefined;
+        let isTerminate = false;
+
+        ss.addEventListener('error', (event) =>{
+            let jsonData = JSON.parse(JSON.stringify(event));
+            res = jsonData.message;
+            ss.terminate();
+        });
+
+        ss.addEventListener('exit', (code) => {
+            isTerminate = true;
+        })
+        ss.postMessage("123");
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("Error: 123")
+        done();
+    })
+
+    // Check the listener of worker.
+    /**
+     * @tc.name: threadWorker_worker_listener_test_004
+     * @tc.desc: Check the listener of worker is ok.
+     */
+    it('threadWorker_worker_listener_test_004', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_007.js");
+        let res = undefined;
+        let isTerminate = false;
+
+        ss.on('error', (event) =>{
+            let jsonData = JSON.parse(JSON.stringify(event));
+            res = jsonData.message;
+            ss.terminate();
+        });
+
+        ss.on('exit', (code) => {
+            isTerminate = true;
+        })
+        ss.postMessage("123");
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual("Error: 123")
+        done();
+    })
+
+    // Check the listener of worker.
+    /**
+     * @tc.name: threadWorker_worker_listener_test_005
+     * @tc.desc: Check the listener of worker is ok.
+     */
+    it('threadWorker_worker_listener_test_005', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_029.js");
+        let res1 = "";
+        let res2 = "";
+        let flag1 = false;
+        let flag2 = false;
+        let isTerminate = false;
+
+        ss.on('message', (event) =>{
+          flag1 = true;
+          let jsonData = JSON.parse(JSON.stringify(event));
+          res1 = jsonData.data;
+        });
+
+        ss.onmessage = function (d) {
+            flag2 = true;
+            let data = d.data;
+            res2 = data;
+        }
+
+        ss.on('exit', (code) => {
+          isTerminate = true;
+        })
+        ss.postMessage("123");
+        while (!flag1 || !flag2) {
+            await promiseCase();
+        }
+        ss.terminate();
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res1).assertEqual("hello worker")
+        expect(res2).assertEqual("hello worker")
+        done();
+    })
+
+    // Check the listener of worker.
+    /**
+     * @tc.name: threadWorker_worker_listener_test_006
+     * @tc.desc: Check the listener of worker is ok.
+     */
+    it('threadWorker_worker_listener_test_006', 0, async function (done) {
+        let ss = new worker.ThreadWorker("entry/ets/workers/newworker_030.js");
+        let res = 0;
+        let isTerminate = false;
+
+        ss.on('message', (event) =>{
+            res += 1;
+            if (res == 3) {
+                ss.terminate();
+            }
+        });
+        ss.on('exit', (code) => {
+            isTerminate = true;
+        })
+
+        ss.postMessage("123");
+
+        while (!isTerminate) {
+          await promiseCase();
+        }
+        expect(res).assertEqual(3)
+        done();
+    })
 })
 }
