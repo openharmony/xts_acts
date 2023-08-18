@@ -116,15 +116,15 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200', 0, async function (done) {
       try {
         var db1 = new ArrayList<Number>();
-        var db2 = [0.06932847946882248, 0.06932847946882248, 0.08370080590248108, 0.08370080590248108, 0.08370080590248108, 0.06932847946882248, 0.06932847946882248, 0.08370080590248108];
-        for (let index in audio.AudioVolumeType) {
-          await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[index], 3, audio.DeviceType.SPEAKER)
+        var db2 = [0.06932847946882248, 0.08370080590248108, 0.08370080590248108, 0.06932847946882248, 0.06932847946882248, 0.06932847946882248];
+        for (let index = 0; index < env.AudioVolumeType.length; index++) {
+          await audioVolumeGroupManager.getSystemVolumeInDb(env.AudioVolumeType[index], 3, audio.DeviceType.SPEAKER)
             .then((data) => {
-              console.info(`${index} getSystemVolumeInDb :SUCCESS ${data}`);
+              console.info(`${env.AudioVolumeType[index]} getSystemVolumeInDb :SUCCESS ${data}`);
               db1.add(data);
             })
             .catch((error) => {
-              console.log(`${TagFrmwk}: ${index} getSystemVolumeInDb : error ${error}`);
+              console.log(`${TagFrmwk}: ${env.AudioVolumeType[index]} getSystemVolumeInDb : error ${error}`);
               expect(false).assertTrue();
               done();
             });
@@ -520,11 +520,11 @@ export default function audioManagerTest() {
         var db2 = new ArrayList<Number>();
         var device = [audio.DeviceType.SPEAKER, audio.DeviceType.EARPIECE, audio.DeviceType.WIRED_HEADSET];
         for (var deviceIndex = 0; deviceIndex < device.length; deviceIndex++) {
-          for (let typeIndex in audio.AudioVolumeType) {
-            let maxVol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType[typeIndex]);
-            let minVol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType[typeIndex]);
+            for (let typeIndex = 0; typeIndex < env.AudioVolumeType.length; typeIndex++) {
+            let maxVol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[typeIndex]);
+            let minVol = await audioVolumeGroupManager.getMinVolume(env.AudioVolumeType[typeIndex]);
             for (let volIndex = minVol; volIndex <= maxVol; volIndex++) {
-              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err, data) => {
+              await audioVolumeGroupManager.getSystemVolumeInDb(env.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err, data) => {
                 if (err) {
                   console.info(`getSystemVolumeInDb : error ${err.message} ${err.code}`);
                   expect(false).assertTrue();
@@ -533,7 +533,7 @@ export default function audioManagerTest() {
                   db1.add(data);
                 }
               });
-              await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err, data) => {
+              await audioVolumeGroupManager.getSystemVolumeInDb(env.AudioVolumeType[typeIndex], volIndex, device[deviceIndex], (err, data) => {
                 if (err) {
                   console.info(`getSystemVolumeInDb : error ${err.message} ${err.code}`);
                   expect(false).assertTrue();

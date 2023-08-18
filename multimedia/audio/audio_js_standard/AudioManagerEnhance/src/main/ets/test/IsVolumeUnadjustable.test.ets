@@ -106,7 +106,7 @@ export default function audioManagerTest() {
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISVOLUMEUNADJUSTABLE_0200', 0, async function (done) {
       try {
         let bol = await audioVolumeGroupManager.isVolumeUnadjustable();
-        let vol = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
+        let vol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA);
         await audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, vol + 1);
         let vol1 = await audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA);
         expect(bol).assertEqual(false);
