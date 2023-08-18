@@ -590,10 +590,20 @@ export default function getBundleInfoForSelf() {
               expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
               count = count + 15;
               break;
+            case 'share':
+              console.info("share" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.SHARE)
+              count = count + 16;
+              break;
+            case 'action':
+              console.info("action" + JSON.stringify(extensionList[i].extensionAbilityType));
+              expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
+              count = count + 19;
+              break;
           }
           console.info("count" + JSON.stringify(count));
         }
-        expect(count).assertEqual(120);
+        expect(count).assertEqual(155);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
@@ -726,10 +736,20 @@ export default function getBundleInfoForSelf() {
                 expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
                 count = count + 15;
                 break;
+              case 'share':
+                console.info("share" + JSON.stringify(extensionList[i].extensionAbilityType));
+                expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.SHARE)
+                count = count + 16;
+                break;
+              case 'action':
+                console.info("action" + JSON.stringify(extensionList[i].extensionAbilityType));
+                expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
+                count = count + 19;
+                break;
             }
             console.info("count" + JSON.stringify(count));
           }
-          expect(count).assertEqual(120);
+          expect(count).assertEqual(155);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
           expect(data.permissionGrantStates.length).assertEqual(0);
@@ -1381,10 +1401,20 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.PUSH)
             count = count + 15;
             break;
+          case 'share':
+            console.info("share" + JSON.stringify(extensionList[i].extensionAbilityType));
+            expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.SHARE)
+            count = count + 16;
+            break;
+          case 'action':
+            console.info("action" + JSON.stringify(extensionList[i].extensionAbilityType));
+            expect(extensionList[i].extensionAbilityType).assertEqual(bundle.ExtensionAbilityType.ACTION)
+            count = count + 19;
+            break;
         }
         console.info("count" + JSON.stringify(count));
       }
-      expect(count).assertEqual(120);
+      expect(count).assertEqual(155);
       expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
       expect(data.reqPermissionDetails.length).assertEqual(0);
       expect(data.permissionGrantStates.length).assertEqual(0);
