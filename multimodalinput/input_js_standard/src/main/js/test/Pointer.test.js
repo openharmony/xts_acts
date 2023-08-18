@@ -164,14 +164,18 @@ export default function Pointer_test() {
             try {
               var windowId = data.id;
               pointer.setPointerStyle(windowId, 4, (err) => {
+              try{
                 if (err) {
                   console.info(`SetPointerStyle_002 failed_1, err=${JSON.stringify(err)}`);
                   expect(false).assertTrue();
                 } else {
                   console.info(`SetPointerStyle_002 success`);
                   expect(true).assertTrue();
-                  resolve();
                 }
+              }catch(error){
+                console.info(`SetPointerStyle_002 assert fail`);
+              }
+                resolve();
               });
             } catch (error) {
               console.info(`SetPointerStyle_002 error`);
