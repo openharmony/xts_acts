@@ -27,6 +27,7 @@ import setFavoriteTest from './setFavorite'
 import setHiddenTest from './setHidden'
 import trashAssetsTest from './deleteAssets'
 import setUserCommentTest from './setUserComment'
+import getPhotoIndexTest from './getPhotoIndex'
 
 export default function testsuite () {
   deleteAssetsTest()
@@ -43,4 +44,5 @@ export default function testsuite () {
   setHiddenTest()
   trashAssetsTest()
   setUserCommentTest()
+  getPhotoIndexTest()
 }
