@@ -359,8 +359,5 @@ export default function appManagerTest() {
           done();
         })
     })
-
-  })
-}
   })
 }
