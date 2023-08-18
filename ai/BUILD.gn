@@ -19,7 +19,6 @@ group("ai") {
   ]
   if (is_standard_system) {
     deps += [
-      "intelligent_voice_framework:intelligentvoice_js_hap",
       "mindspore/mindsporectest:ActsMindSporeTest",
       "mindspore/mindsporejstest:ActsMindsporeJSTest",
     ]
