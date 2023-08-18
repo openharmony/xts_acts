@@ -16,7 +16,8 @@
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession'
 import commonEventManager from '@ohos.commonEventManager'
 import Logger from '../model/Logger'
-
+import common from '@ohos.app.ability.common';
+let context= getContext(this) as common.UIExtensionContext;
 const TAG: string = '[UIExtAbility]'
 const sleepTimeOne = 1000;
 
@@ -29,6 +30,23 @@ struct Index {
   private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session');
 
   aboutToAppear() {
+	let options = {
+      parameters: {
+        cacheDir: context.cacheDir,
+        tempDir: context.tempDir,
+        filesDir: context.filesDir,
+        databaseDir: context.databaseDir,
+        preferencesDir: context.preferencesDir,
+        bundleCodeDir: context.bundleCodeDir,
+        distributedFilesDir: context.distributedFilesDir,
+        stageMode: context.stageMode,
+        area: context.area,
+        eventHub: context.eventHub
+      }
+    }
+    commonEventManager.publish('0100_UIExtensionAbilityContext', options, (err) => {
+      console.log('SUB_AA_Extension_UIServiceExtensionAbility_Context_0100 commonEventManager 0100_UIExtensionAbilityContext');
+    })
     let appearEvent = 'ACTS_UIExtension_AboutToAppear';
     let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
     let sendDataEvent = 'ACTS_UIExtension_SendData';
