@@ -25,5 +25,5 @@ ohos_js_app_suite("resourceschedule_ffrt_js_test") {
   hap_name = "ActsFfrtNativeTest"
   part_name = "ffrt"
   subsystem_name = "resourceschedule"
-  deps = [":acts_ffrt_main"]
+  deps = [ ":acts_ffrt_main" ]
 }
