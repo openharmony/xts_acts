@@ -191,8 +191,9 @@ export default function abilityTest() {
     it('Acts_RegisterJsErrorCallback_0500',0, async function (done) {
       console.info("====>Acts_RegisterJsErrorCallback_0500 start");
       try {
-        ErrorManager.on("error", undefined);
+        const observerId = ErrorManager.on('error', undefined);
         expect(true).assertTrue();
+        await ErrorManager.off('error', observerId);
         console.info("====>Acts_RegisterJsErrorCallback_0500 end");
         done();
       } catch (err) {
@@ -211,8 +212,9 @@ export default function abilityTest() {
     it('Acts_RegisterJsErrorCallback_0600',0, async function (done) {
       console.info("====>Acts_RegisterJsErrorCallback_0600 start");
       try {
-        ErrorManager.on("error", null);
+        const observerId = ErrorManager.on('error', null);
         expect(true).assertTrue();
+        await ErrorManager.off('error', observerId);
         console.info("====>Acts_RegisterJsErrorCallback_0600 end");
         done();
       } catch (err) {
@@ -231,18 +233,14 @@ export default function abilityTest() {
       console.info("====>Acts_UnregisterJsErrorCallback_0100 start");
       let observerId = ErrorManager.on("error", observer);
       try {
-        ErrorManager.off(undefined, observerId).then(()=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0100 success");
-          expect().assertFail();
-          done();
-        }).catch((err)=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0100 err: " + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
-          done();
-        })
+        await ErrorManager.off(undefined, observerId);
+        console.info("====>Acts_UnregisterJsErrorCallback_0100 success");
+        expect().assertFail();
+        done();
       } catch (err) {
         console.info("====>Acts_UnregisterJsErrorCallback_0100 catch: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
+        await ErrorManager.off('error', observerId);
         console.info("====>Acts_UnregisterJsErrorCallback_0100 end");
         done();
       }
@@ -257,18 +255,14 @@ export default function abilityTest() {
       console.info("====>Acts_UnregisterJsErrorCallback_0200 start");
       let observerId = ErrorManager.on("error", observer);
       try {
-        ErrorManager.off(null, observerId).then(()=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0200 success");
-          expect().assertFail();
-          done();
-        }).catch((err)=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0200 err: " + JSON.stringify(err));
-          expect(err.code).assertEqual(401);
-          done();
-        })
+        await ErrorManager.off(null, observerId);
+        console.info("====>Acts_UnregisterJsErrorCallback_0200 success");
+        expect().assertFail();
+        done();
       } catch (err) {
         console.info("====>Acts_UnregisterJsErrorCallback_0200 catch: " + JSON.stringify(err));
         expect(err.code).assertEqual(401);
+        await ErrorManager.off('error', observerId);
         console.info("====>Acts_UnregisterJsErrorCallback_0200 end");
         done();
       }
@@ -356,15 +350,10 @@ export default function abilityTest() {
       console.info("====>Acts_UnregisterJsErrorCallback_0700 start");
       let observerId = ErrorManager.on("error", observer);
       try {
-        ErrorManager.off("error", observerId).then(()=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0700 end");
-          expect(true).assertTrue();
-          done();
-        }).catch((err)=>{
-          console.info("====>Acts_UnregisterJsErrorCallback_0700 err: " + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
+        await ErrorManager.off('error', observerId);
+        console.info("====>Acts_UnregisterJsErrorCallback_0700 end");
+        expect(true).assertTrue();
+        done();
       } catch (err) {
         console.info("====>Acts_UnregisterJsErrorCallback_0700 catch: " + JSON.stringify(err));
         expect().assertFail();
