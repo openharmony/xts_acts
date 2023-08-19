@@ -252,8 +252,6 @@ static napi_value SubmitQueueFfrtTask(napi_env env, napi_callback_info info)
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OnePlusForTest, NULL, &a, ffrt_function_kind_queue), nullptr);
-    ffrt_queue_cancel(task1);
-    ffrt_queue_wait(task1);
     ffrt_queue_submit(queue_handle,
         ffrt_create_function_wrapper(MulipleForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle,
@@ -269,13 +267,63 @@ static napi_value SubmitQueueFfrtTask(napi_env env, napi_callback_info info)
     return flag;
 }
 
+static napi_value CancelQueueFfrtTask(napi_env env, napi_callback_info info)
+{
+    int a = 0;
+    int b = 0;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_attr_set_qos(&queue_attr, ffrt_qos_default);
+    ffrt_queue_attr_set_callback(&queue_attr,
+        ffrt_create_function_wrapper(OnePlusForTest, NULL, &b, ffrt_function_kind_queue));
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
+    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(OnePlusForTest, NULL, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_cancel(task1);
+    sleep(2);
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "cancel queue task a is %{public}d", a);
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "cancel queue task b is %{public}d", b);
+    napi_value flag = nullptr;
+    napi_create_double(env, a, &flag);
+    ffrt_task_handle_destroy(task1);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+    return flag;
+}
+
+static napi_value WaitQueueFfrtTask(napi_env env, napi_callback_info info)
+{
+    int a = 0;
+    int b = 0;
+    ffrt_queue_attr_t queue_attr;
+    (void)ffrt_queue_attr_init(&queue_attr);
+    ffrt_queue_attr_set_qos(&queue_attr, ffrt_qos_default);
+    ffrt_queue_attr_set_callback(&queue_attr,
+        ffrt_create_function_wrapper(OnePlusForTest, NULL, &b, ffrt_function_kind_queue));
+    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
+    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
+        ffrt_create_function_wrapper(OnePlusForTest, NULL, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_wait(task1);
+    sleep(2);
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "wait queue task a is %{public}d", a);
+    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "wait queue task b is %{public}d", b);
+    napi_value flag = nullptr;
+    napi_create_double(env, a, &flag);
+    ffrt_task_handle_destroy(task1);
+    ffrt_queue_attr_destroy(&queue_attr);
+    ffrt_queue_destroy(queue_handle);
+    return flag;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
         { "submitSimpleFfrtTask", nullptr, SubmitSimpleFfrtTask, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitCondFfrtTask", nullptr, SubmitCondFfrtTask, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitQueueFfrtTask", nullptr, SubmitQueueFfrtTask, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "submitQueueFfrtTask", nullptr, SubmitQueueFfrtTask, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "cancelQueueFfrtTask", nullptr, CancelQueueFfrtTask, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "waitQueueFfrtTask", nullptr, WaitQueueFfrtTask, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

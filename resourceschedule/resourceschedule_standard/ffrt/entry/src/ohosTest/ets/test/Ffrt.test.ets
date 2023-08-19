@@ -16,7 +16,7 @@ import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import ffrtndk from 'libffrtndk.so';
 export default function ffrtTest() {
-  describe('ActsAbilityTest', function () {
+  describe('ActsFfrtTest', function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(function () {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -36,15 +36,35 @@ export default function ffrtTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('assertContain',0, function () {
+    it('submitSimpleFfrtTask',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
       hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       var flag = ffrtndk.submitSimpleFfrtTask();
-      var flag2 = ffrtndk.submitCondFfrtTask();
-      var flag3 = ffrtndk.submitQueueFfrtTask();
       expect(flag).assertEqual(1);
-      expect(flag2).assertEqual(3);
-      expect(flag3).assertEqual(-1);
+    })
+    it('submitCondFfrtTask',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      var flag = ffrtndk.submitCondFfrtTask();
+      expect(flag).assertEqual(3);
+    })
+    it('submitQueueFfrtTask',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      var flag = ffrtndk.submitQueueFfrtTask();
+      expect(flag).assertEqual(9);
+    })
+    it('cancelQueueFfrtTask',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      var flag = ffrtndk.cancelQueueFfrtTask();
+      expect(flag).assertEqual(0);
+    })
+    it('waitQueueFfrtTask',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
+      var flag = ffrtndk.waitQueueFfrtTask();
+      expect(flag).assertEqual(1);
     })
   })
 }
