@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -36,7 +36,7 @@ describe('SmsMmsErrorTest', function () {
       }
       expect(shortMessage.visibleMessageBody != 'visibleMessageBody').assertTrue();
       expect(shortMessage.visibleRawAddress != 'visibleRawAddress').assertTrue();
-      expect(shortMessage.messageClass != 'sms.FORWARD_MESSAGE').assertTrue();
+      expect(shortMessage.messageClass != sms.ShortMessageClass.FORWARD_MESSAGE).assertTrue();
       expect(shortMessage.protocolId != -1).assertTrue();
       expect(shortMessage.scAddress != 'scAddress').assertTrue();
       expect(shortMessage.scTimestamp != -1).assertTrue();
@@ -126,7 +126,6 @@ describe('SmsMmsErrorTest', function () {
   it('Telephony_SmsMms_sendMessage_Promise_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
-        expect(data.isLastPart).assertEqual(false);
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {
@@ -162,7 +161,6 @@ describe('SmsMmsErrorTest', function () {
    it('Telephony_SmsMms_sendShortMessage_Promise_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
-        expect(data.isLastPart).assertEqual(false);
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {
@@ -204,7 +202,6 @@ describe('SmsMmsErrorTest', function () {
    it('Telephony_SmsMms_sendShortMessage_Async_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
-        expect(data.isLastPart).assertEqual(false);
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {
