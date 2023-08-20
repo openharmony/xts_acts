@@ -13,20 +13,18 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import fileio from '@ohos.fileio';
 import {CustomContainer} from '../common/StartExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
-let path = globalThis.dir;
-let path1 = path + '/ExperienceData';
-let PhotosColdPath = path1 + '/HotStartPhotos.log';
+
 @Entry
 @Component
 struct CustomContainerUser {
   @State name: string = 'PhotosHotStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用热启动时延小于600ms则测试通过';
+  @State toSP_daemon: string = 'SP_daemon -editor hotStart com.ohos.photos 图库 ohtest';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：应用热启动时延小于600ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -39,6 +37,8 @@ struct CustomContainerUser {
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
+    globalThis.SendMessage = this.toSP_daemon;
+    globalThis.HideFloatingWindow();
   }
 
   @Builder specificNoParam() {
@@ -51,10 +51,10 @@ struct CustomContainerUser {
                 .fontColor(Color.White).fontSize('24fp')
             }
             Row(){
-              Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入系统桌面`+ '\n' + '\n'
-              + `3.开启图库应用回退到桌面，保证此时后台应用存在` + '\n' + '\n' + `4.工作台运行’点击启动测试.bat‘选择热启动>图库测试`+ '\n' + '\n' +
-              `5.测试应用手动执行热启动返回validator界面` + '\n' + '\n' + '6.点击结束键观察测试结果' + '\n' + '\n'
-              + `7.若所有热启动测试均在规定时延内完成则通过测试` + '\n' + '\n' + '\n' + '\n' )
+              Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入系统桌面`+ '\n' + '\n'
+              + `2.开启图库应用回退到桌面，保证此时后台应用存在` + '\n' + '\n' + `3.再次启动桌面图库应用`+ '\n' + '\n' +
+              `4.测试应用拉起后返回validator界面` + '\n' + '\n' + '5.点击结束键观察测试结果' + '\n' + '\n'
+              + `6.若图库热启动测试在规定时延内完成则通过测试` + '\n' + '\n' + '\n' + '\n' )
                 .fontColor(Color.White).fontSize('20fp')
             }
             Row(){
@@ -66,6 +66,7 @@ struct CustomContainerUser {
                   .enabled(this.StartEnable)
                   .opacity(this.StartEnable? 1 : 0.4)
                   .onClick(async () => {
+                    globalThis.ShowFloatingWindow();
                     this.num = 0;
                     this.StartEnable = !this.StartEnable;
                     let str = {
@@ -87,14 +88,11 @@ struct CustomContainerUser {
                   .enabled(!this.StartEnable)
                   .opacity(!this.StartEnable? 1 : 0.4)
                   .onClick(() => {
-                    this.StartEnable = !this.StartEnable
+                    this.StartEnable = !this.StartEnable;
                     /*
                               photos
                      */
-                    let photosFd = fileio.openSync(PhotosColdPath, 0o100 | 0o2002, 0o664);
-                    let photosBuf = new ArrayBuffer(4096);
-                    fileio.readSync(photosFd,photosBuf);
-                    let photosReport = String.fromCharCode.apply(null,new Uint8Array(photosBuf));
+                    let photosReport = globalThis.resultNum;
                     let photosHead = photosReport.indexOf(':');
                     let photosTime = photosReport.substring(photosHead+1);
                     this.photosNum = parseFloat(photosTime);
@@ -104,6 +102,7 @@ struct CustomContainerUser {
                     if( this.num === 1 ) {
                       this.Vue = true;
                     }
+                    globalThis.HideFloatingWindow();
                   })
               }
             }

@@ -11,12 +11,12 @@ class AudioRenderer {
     private audioRenderer: audio.AudioRenderer = undefined
     private fd: number = undefined
     private offset: number = undefined
-	private length: number = undefined
 
     async createAudioRenderer(){
         let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
+//            channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
@@ -35,10 +35,17 @@ class AudioRenderer {
     async startRenderer(){
         try{
             await this.audioRenderer.start()
+//            await globalThis.abilityContext.resourceManager.getRawFileDescriptor('test_44100_2.wav').then(value => {
+//                this.fd = value.fd
+//                Logger.info(this.tag, `fd : ${this.fd}`)
+//                let fileDescriptor = {fd: value.fd, offset: value.offset, length: value.length};
+//                Logger.info(this.tag, `getRawFileDescriptor success fileDescriptor:` + JSON.stringify(fileDescriptor) )
+//            }).catch(error => {
+//                console.log('case getRawFileDescriptor err: ' + error);
+//            });
             globalThis.abilityContext.resourceManager.getRawFd("test_44100_2.wav").then(value => {
                 this.fd = value.fd
 				this.offset = value.offset
-				this.length = value.length
                 Logger.info(this.tag, `getRawFd fd : ${this.fd}, offset: ${value.offset}, length: ${value.length}`)
             }).catch(err => {
                 console.log(`getRawFd fail err: ${err}, message: ${err.message}, code: ${err.code}`);
@@ -46,7 +53,8 @@ class AudioRenderer {
 
             let bufferSize = await this.audioRenderer.getBufferSize()
             Logger.info(this.tag, `audioRenderer bufferSize:` + JSON.stringify(bufferSize))
-            let len = this.length % bufferSize == 0 ? Math.floor(this.length / bufferSize) : Math.floor(this.length / bufferSize + 1);
+            let stat = await fs.stat(this.fd);
+            let len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
             let buf = new ArrayBuffer(bufferSize);
             while (true) {
                 for (let i = 0;i < len; i++) {
@@ -79,6 +87,11 @@ class AudioRenderer {
         try{
             if (this.audioRenderer){
                 await this.audioRenderer.release()
+//                await globalThis.abilityContext.resourceManager.closeRawFileDescriptor('test_44100_2.wav').then(()=> {
+//                    Logger.info(this.tag, `closeRawFileDescriptor success`)
+//                }).catch(err => {
+//                    Logger.info(this.tag, `closeRawFileDescriptor fail err: ${err}, message: ${err.message}, code: ${err.code}`)
+//                });
                 await globalThis.abilityContext.resourceManager.closeRawFd('test_44100_2.wav').then(()=> {
                     Logger.info(this.tag, `closeRawFileDescriptor success`)
                 }).catch(err => {

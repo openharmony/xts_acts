@@ -28,9 +28,9 @@ struct PinchGuestureTest {
   @Builder specificNoParam() {
     Column(){
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.flower")).height('60%').width('70%')
+        Image($r("app.media.img")).height('60%').width('60%')
       }
-      .height('250vp').width('350vp').padding(20)
+      .height('350vp').width('350vp').padding(20)
       .scale({ x: this.X, y: this.X, z: this.X })
       .gesture(
       PinchGesture()

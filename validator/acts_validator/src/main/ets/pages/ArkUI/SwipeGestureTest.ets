@@ -29,9 +29,9 @@ struct SwipeGestureTest {
   @Builder specificNoParam() {
     Column() {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.flower")).height('60%').width('70%')
+        Image($r("app.media.img")).height('60%').width('60%')
       }
-      .height('250vp').width('350vp').padding(20)
+      .height('350vp').width('350vp').padding(20)
       .rotate({x: 0, y: 0, z: 1, angle: this.X})
       .gesture(
       SwipeGesture({fingers: 1, direction: SwipeDirection.Vertical})

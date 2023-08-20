@@ -65,7 +65,7 @@ struct IndexPage {
     {title:'Player',uri:'pages/Player/Player_index'},
     {title:'Experience',uri:'pages/Experience/Experience_index'},
   ]
-  @State ColorObject : string[] = ['#ff808080','#ff808080','#ff808080','#ff808080','#ff808080']
+  @State ColorObject : string[] = ['#ff000000','#ff000000','#ff000000','#ff000000','#ff000000']
   async onPageShow(){
     let Test = null;
     let context =null;
@@ -173,11 +173,11 @@ struct IndexPage {
           })
         }
       }.width('100%').justifyContent(FlexAlign.SpaceAround).margin({top:'15vp'}).height('6%')
-      List({space:5}){
+      List({}){
         ForEach(this.TestCaseList,(item,index) => {
           ListItem(){
             Row(){
-              Text(item.title).fontSize(16).fontColor(Color.Black)
+              Text(item.title).fontSize(20).fontColor(Color.White)
             }.width('100%').height(50).alignItems(VerticalAlign.Center).backgroundColor(this.ColorObject[index])
             .onClick(()=>{
               router.push({
@@ -194,7 +194,7 @@ struct IndexPage {
             })
           }
         },item  => item.title)
-      }.width('100%').height('92%')
+      }.width('100%').height('92%').divider({strokeWidth:1,color:Color.Grey})
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
   ClearText(){
