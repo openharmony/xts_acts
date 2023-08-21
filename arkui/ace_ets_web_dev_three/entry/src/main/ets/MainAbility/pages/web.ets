@@ -948,6 +948,17 @@ struct Index {
                             }                                                                                                                                     
                             break;
                         }
+
+                        case "emitGetCustomUserAgent":{  
+                            try {
+                                let setUA = "userAgent"
+                                this.controller.setCustomUserAgent(setUA)
+                                Utils.emitEvent(this.controller.getCustomUserAgent(), 522);
+                            } catch (error) {
+                                console.error(`ErrorCode: ${error.code}, Message: ${error.message}`);
+                            }                                                                                                                                     
+                            break;
+                        }
                         
                         
 
