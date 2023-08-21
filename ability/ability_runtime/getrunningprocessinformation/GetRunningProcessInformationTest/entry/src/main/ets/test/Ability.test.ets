@@ -110,6 +110,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0100');
         commonEvent.createSubscriber(ACTS_ProcessState).then((data) => {
           console.debug("====>Acts_ApplicationStateChange_0100 Create Subscribe");
           subscriber = data;
@@ -177,6 +178,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0200');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0200 Create Subscribe");
           subscriber = data;
@@ -243,6 +245,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0300');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0300 Create Subscribe");
           subscriber = data;
@@ -310,6 +313,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0400');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0400 Create Subscribe");
           subscriber = data;
@@ -377,6 +381,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0500');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0500 Create Subscribe");
           subscriber = data;
@@ -444,6 +449,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0600');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0600 Create Subscribe");
           subscriber = data;
@@ -507,6 +513,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0700');
         commonEvent.createSubscriber(ACTS_ProcessState).then((data) => {
           console.debug("====>Acts_ApplicationStateChange_0700 Create Subscribe");
           subscriber = data;
@@ -571,6 +578,7 @@ export default function abilityTest() {
       }
 
       setTimeout(() => {
+        console.log('Acts_ApplicationStateChange_0800');
         commonEvent.createSubscriber(ACTS_ProcessState).then(async (data) => {
           console.debug("====>Acts_ApplicationStateChange_0800 Create Subscribe");
           subscriber = data;
