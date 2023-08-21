@@ -28,6 +28,8 @@ struct PanGestureExample {
   }
   @Builder specificNoParam() {
     Column() {
+        Scroll(){
+          Column(){
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
         Image($r("app.media.img")).height('60%').width('60%')
       }
@@ -48,6 +50,8 @@ struct PanGestureExample {
         })
       )
       Text('偏移坐标x: ' + this.X + '\n' + '偏移坐标y: ' + this.Y)
+          }
+        }
     }.width('100%').height('80%').backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }

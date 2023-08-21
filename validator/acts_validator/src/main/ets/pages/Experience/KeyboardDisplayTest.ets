@@ -89,6 +89,8 @@ struct CustomContainerUser {
                     let time = parseFloat(this.time);
                     if( 0 < time && time < 1000 ) {
                       this.Vue = true;
+                    }else if ( isNaN(this.time )){
+                      this.time = -1000;
                     }
                     globalThis.HideFloatingWindow();
                   })

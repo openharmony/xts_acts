@@ -33,51 +33,55 @@ struct SetCircle {
 
   @Builder specificNoParam() {
     Column() {
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-        Text('Red').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(100, 160, 150, 100);
-            this.FillColor = '#FFFF0000';
-            this.context.fillStyle = this.FillColor;
-            this.context.fillRect(100, 160, 150, 100);
-            this.num1 = 1;
-            if ( this.num1 == this.num3 && this.num2 == 1 ){
-              this.Vue = true;
-            }
-          })
-        Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(100, 160, 150, 100);
-            this.FillColor = '#fffffc3c';
-            this.context.fillStyle = this.FillColor;
-            this.context.fillRect(100, 160, 150, 100);
-            this.num2 = 1;
-            if ( this.num1 == 1 && this.num3 == this.num2 ){
-              this.Vue = true;
-            }
-          })
-        Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(100, 160, 150, 100);
-            this.FillColor = '#ff19fa00';
-            this.context.fillStyle = this.FillColor;
-            this.context.fillRect(100, 160, 150, 100);
-            this.num3 = 1;
-            if ( this.num1 == 1 && this.num3 == this.num2 ){
-              this.Vue = true;
-            }
-          })
-      }.width('70%').height('30%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffffffff')
-          .onReady(() =>{
-            this.context.fillStyle = this.FillColor;
-            this.context.fillRect(100, 160, 150, 100);
-          })
-      }.width('100%').height('70%')
+      Scroll() {
+        Column() {
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+            Text('Red').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(100, 160, 150, 100);
+                this.FillColor = '#FFFF0000';
+                this.context.fillStyle = this.FillColor;
+                this.context.fillRect(100, 160, 150, 100);
+                this.num1 = 1;
+                if ( this.num1 == this.num3 && this.num2 == 1 ){
+                  this.Vue = true;
+                }
+              })
+            Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(100, 160, 150, 100);
+                this.FillColor = '#fffffc3c';
+                this.context.fillStyle = this.FillColor;
+                this.context.fillRect(100, 160, 150, 100);
+                this.num2 = 1;
+                if ( this.num1 == 1 && this.num3 == this.num2 ){
+                  this.Vue = true;
+                }
+              })
+            Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(100, 160, 150, 100);
+                this.FillColor = '#ff19fa00';
+                this.context.fillStyle = this.FillColor;
+                this.context.fillRect(100, 160, 150, 100);
+                this.num3 = 1;
+                if ( this.num1 == 1 && this.num3 == this.num2 ){
+                  this.Vue = true;
+                }
+              })
+          }.width('70%').height('30%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Canvas(this.context)
+              .width('100%')
+              .height('100%')
+              .backgroundColor('#ffffffff')
+              .onReady(() =>{
+                this.context.fillStyle = this.FillColor;
+                this.context.fillRect(100, 160, 150, 100);
+              })
+          }.width('100%').height('70%')
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

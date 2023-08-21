@@ -97,6 +97,8 @@ struct CustomContainerUser {
                     this.setNum = parseFloat(setTime);
                     if( 0 < this.setNum && this.setNum < 2300 ) {
                       this.num++
+                    } else if ( isNaN(this.setNum )){
+                      this.setNum = -1000;
                     }
                     if( this.num === 1 ) {
                       this.Vue = true;

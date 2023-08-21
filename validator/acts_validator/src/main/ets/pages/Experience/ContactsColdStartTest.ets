@@ -97,6 +97,8 @@ struct CustomContainerUser {
                     this.contactsNum = parseFloat(ContactsTime);
                     if( 0 < this.contactsNum && this.contactsNum < 2300 ) {
                       this.num++
+                    } else if ( isNaN(this.contactsNum )){
+                      this.contactsNum = -1000;
                     }
                     if( this.num === 1 ) {
                       this.Vue = true;

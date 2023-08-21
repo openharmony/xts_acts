@@ -98,6 +98,8 @@ struct CustomContainerUser {
                     this.mmsNum = parseFloat(MmsTime);
                     if( 0 < this.mmsNum && this.mmsNum < 600 ) {
                       this.num++
+                    } else if ( isNaN(this.mmsNum )){
+                      this.mmsNum = -1000;
                     }
                     if( this.num === 1 ) {
                       this.Vue = true;

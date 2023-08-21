@@ -37,7 +37,6 @@ struct CustomContainerUser {
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
-    globalThis.resultNum = 'time:-1000';
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
   }
@@ -54,7 +53,8 @@ struct CustomContainerUser {
             Row(){
               Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入系统桌面` + '\n' + '\n'
               + `2.清空后台应用` + '\n' + '\n' + `3.快速点击桌面相机应用` + '\n' + '\n' +`4.测试应用拉起后手动返回validator界面`
-              + '\n' + '\n' + '5.点击结束键观察测试结果' + '\n' + '\n' + `6.若冷启动测试在规定时延内完成则通过测试` + '\n' + '\n' )
+              + '\n' + '\n' + '5.点击结束键观察测试结果' + '\n' + '\n' + `6.若冷启动测试在规定时延内完成则通过测试`
+              + '\n' + '\n' + 'PS:双击悬浮球中断测试,长按悬浮球快速结束测试')
                 .fontColor(Color.White).fontSize('20fp')
             }
             Row(){
@@ -90,15 +90,18 @@ struct CustomContainerUser {
                   .onClick(() => {
 
                     this.StartEnable = !this.StartEnable;
-//                    /*
-//                              camera
-//                     */
+                    /*
+                              camera
+                     */
+                    console.log('result num: ' + globalThis.resultNum);
                     let CameraReport = globalThis.resultNum;
                     let CameraHead = CameraReport.indexOf('time:');
                     let CameraTime = CameraReport.substring(CameraHead+5);
                     this.cameraNum = parseFloat(CameraTime);
                     if( 0 < this.cameraNum && this.cameraNum < 2300 ) {
                       this.num++
+                    } else if ( isNaN(this.cameraNum )){
+                      this.cameraNum = -1000;
                     }
                     if( this.num === 1 ) {
                       this.Vue = true;

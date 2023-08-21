@@ -31,54 +31,58 @@ struct SetCircle {
 
   @Builder specificNoParam() {
     Column() {
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-        Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
-          .translate({ x: this.X, y: 20, z: 5 })
-          .gesture(
-          PanGesture({})
-            .onActionStart((event: GestureEvent) => {
-              console.info('Pan start');
-              this.Vue = true;
-            })
-            .onActionUpdate((event: GestureEvent) => {
-              this.context.clearRect(100, 100, 250, 200);
-              if(event.offsetX>200){
-                event.offsetX = 200;
-              }
-              else if (event.offsetX < 20){
-                event.offsetX = 20;
-              }
-              this.X = event.offsetX;
-              this.context.globalAlpha = (this.X)*0.005;
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalAlpha = (this.X)*0.005;
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(200, 200, 50, 50);
-            })
-            .onActionEnd(() => {
-              console.info('Pan end');
-            })
-          )
+      Scroll() {
+        Column() {
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+            Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
+              .translate({ x: this.X, y: 20, z: 5 })
+              .gesture(
+                PanGesture({})
+                  .onActionStart((event: GestureEvent) => {
+                    console.info('Pan start');
+                    this.Vue = true;
+                  })
+                  .onActionUpdate((event: GestureEvent) => {
+                    this.context.clearRect(100, 100, 250, 200);
+                    if(event.offsetX>200){
+                      event.offsetX = 200;
+                    }
+                    else if (event.offsetX < 20){
+                      event.offsetX = 20;
+                    }
+                    this.X = event.offsetX;
+                    this.context.globalAlpha = (this.X)*0.005;
+                    this.context.fillStyle = 'rgb(255,0,0)';
+                    this.context.fillRect(150, 150, 50, 50);
+                    this.context.globalAlpha = (this.X)*0.005;
+                    this.context.fillStyle = 'rgb(0,0,255)';
+                    this.context.fillRect(200, 200, 50, 50);
+                  })
+                  .onActionEnd(() => {
+                    console.info('Pan end');
+                  })
+              )
 
-      }.width('70%').height('25%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }){
-        Text('透明度: ' + (this.X)*0.005 )
-      }.width('100%').height('20%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffffffff')
-          .onReady(() =>{
-            this.context.globalAlpha = 0.05;
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 50, 50);
-            this.context.globalAlpha = 0.05;
-            this.context.fillStyle = 'rgb(0,0,255)';
-            this.context.fillRect(200, 200, 50, 50);
-          })
-      }.width('100%').height('55%')
+          }.width('70%').height('25%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }){
+            Text('透明度: ' + (this.X)*0.005 )
+          }.width('100%').height('20%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Canvas(this.context)
+              .width('100%')
+              .height('100%')
+              .backgroundColor('#ffffffff')
+              .onReady(() =>{
+                this.context.globalAlpha = 0.05;
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalAlpha = 0.05;
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(200, 200, 50, 50);
+              })
+          }.width('100%').height('55%')
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {
