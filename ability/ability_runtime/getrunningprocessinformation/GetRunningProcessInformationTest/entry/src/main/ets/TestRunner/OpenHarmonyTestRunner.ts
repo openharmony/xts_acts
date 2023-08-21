@@ -14,7 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 
 let abilityDelegator = undefined;
 let abilityDelegatorArguments = undefined;

@@ -17,7 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
 import commonEvent from '@ohos.commonEventManager';
 import appManager from '@ohos.app.ability.appManager';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 let ACTS_ProcessState = {
   events: ["processState"]
