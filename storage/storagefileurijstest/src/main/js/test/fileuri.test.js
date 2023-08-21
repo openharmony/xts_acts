@@ -165,10 +165,10 @@ describe('file_uri_test', function () {
    * @tc.desc Get the FileURI object through an empty string or uri which has no suffix directories.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('FileUri_Parameter_Name_002', 0, async function () {
+  it('FileUri_Parameter_Name_002', 3, async function () {
     try {
       let uri = fileUri.getUriFromPath('');
       let fileUriObject01 = new fileUri.FileUri(uri);
@@ -191,10 +191,10 @@ describe('file_uri_test', function () {
    * @tc.desc Enter the illegal parameter type.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('FileUri_Parameter_Name_003', 0, async function () {
+  it('FileUri_Parameter_Name_003', 3, async function () {
     try {
       new fileUri.FileUri(0);
       expect(false).assertTrue();
