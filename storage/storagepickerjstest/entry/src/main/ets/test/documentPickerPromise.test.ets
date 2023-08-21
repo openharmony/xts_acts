@@ -25,7 +25,7 @@ export default function documentPickerPromise(abilityContext) {
             await sleep(500);
         })
 
-        async function select(testNum, done, dirName, fileName) {
+        async function select(testNum, done) {
             try {
                 let documentPicker = new picker.DocumentViewPicker();
                 documentPicker.select().then((result) => {
@@ -47,7 +47,7 @@ export default function documentPickerPromise(abilityContext) {
             }
         }
 
-        async function selectWithOption(testNum, done, option, dirName?, fileName?) {
+        async function selectWithOption(testNum, done, option) {
             try {
                 let documentPicker = new picker.DocumentViewPicker();
                 documentPicker.select(option).then((result) => {
@@ -91,7 +91,7 @@ export default function documentPickerPromise(abilityContext) {
             }
         }
 
-        async function saveWithOption(testNum, done, option, dirName) {
+        async function saveWithOption(testNum, done, option) {
             try {
                 let documentPicker = new picker.DocumentViewPicker();
                 documentPicker.save(option).then((result) => {
@@ -121,12 +121,10 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_000", 0, async function (done) {
+        it("documentpicker_select_promise_000", 1, async function (done) {
             let testNum = "documentpicker_select_promise_000";
             let option = new picker.DocumentSelectOptions();
-            let dirName = "Pictures";
-            let fileName = "01.jpg";
-            await selectWithOption(testNum, done, option, dirName, fileName);
+            await selectWithOption(testNum, done, option);
         });
 
         /**
@@ -135,125 +133,101 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : select without option
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_001", 0, async function (done) {
+        it("documentpicker_select_promise_001", 1, async function (done) {
             let testNum = "documentpicker_select_promise_001";
-            let dirName = "Pictures";
-            let fileName = "01.jpg";
-            await select(testNum, done, dirName, fileName);
+            await select(testNum, done);
         });
 
         /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0200
          * @tc.name 	 : documentpicker_select_promise_002
-         * @tc.desc 	 : select with option
+         * @tc.desc 	 : select with option maxSelectNumber
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_002", 0, async function (done) {
+        it("documentpicker_select_promise_002", 1, async function (done) {
             let testNum = "documentpicker_select_promise_002";
             let option = new picker.DocumentSelectOptions();
             option.maxSelectNumber = 3;
-            let dirName = "Pictures";
-            await selectWithOption(testNum, done, option, dirName);
+            await selectWithOption(testNum, done, option);
         });
 
         /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0300
          * @tc.name 	 : documentpicker_select_promise_003
-         * @tc.desc 	 : select with option
+         * @tc.desc 	 : select with option defaultFilePathUri
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_003", 0, async function (done) {
+        it("documentpicker_select_promise_003", 1, async function (done) {
             let testNum = "documentpicker_select_promise_003";
             let option = new picker.DocumentSelectOptions();
-            option.defaultFilePathUri = "file://media/file/8";
-            let dirName = "Pictures";
-            await selectWithOption(testNum, done, option, dirName);
+            option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
+            await selectWithOption(testNum, done, option);
         });
 
         /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0400
          * @tc.name 	 : documentpicker_select_promise_004
-         * @tc.desc 	 : select with option
+         * @tc.desc 	 : select with option image fileSuffixFilters
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_004", 0, async function (done) {
+        it("documentpicker_select_promise_004", 1, async function (done) {
             let testNum = "documentpicker_select_promise_004";
             let option = new picker.DocumentSelectOptions();
-            option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1";
-            let dirName = "Pictures";
-            await selectWithOption(testNum, done, option, dirName);
-        });
-
-        /**
-         * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0500
-         * @tc.name 	 : documentpicker_select_promise_005
-         * @tc.desc 	 : select with option
-         * @tc.size 	 : MEDIUM
-         * @tc.type 	 : Function
-         * @tc.level	 : Level 1
-         */
-        it("documentpicker_select_promise_005", 0, async function (done) {
-            let testNum = "documentpicker_select_promise_005";
-            let option = new picker.DocumentSelectOptions();
             option.fileSuffixFilters = ['.png', '.jpg'];
-            let dirName = "Pictures";
-            await selectWithOption(testNum, done, option, dirName);
+            await selectWithOption(testNum, done, option);
         });
 
         /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0500
          * @tc.name 	 : documentpicker_select_promise_005
-         * @tc.desc 	 : select with option
+         * @tc.desc 	 : select with option docs fileSuffixFilters
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_005", 0, async function (done) {
+        it("documentpicker_select_promise_005", 1, async function (done) {
             let testNum = "documentpicker_select_promise_005";
             let option = new picker.DocumentSelectOptions();
             option.fileSuffixFilters = ['.pptx', '.docx', '.xlsx', '.txt'];
-            let dirName = "Documents";
-            await selectWithOption(testNum, done, option, dirName);
+            await selectWithOption(testNum, done, option);
         });
 
         /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0600
          * @tc.name 	 : documentpicker_select_promise_006
-         * @tc.desc 	 : select with option
+         * @tc.desc 	 : select with option video fileSuffixFilters
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_006", 0, async function (done) {
+        it("documentpicker_select_promise_006", 1, async function (done) {
             let testNum = "documentpicker_select_promise_006";
             let option = new picker.DocumentSelectOptions();
             option.fileSuffixFilters = ['.mp4'];
-            let dirName = "Videos";
-            await selectWithOption(testNum, done, option, dirName);
+            await selectWithOption(testNum, done, option);
         });
 
         /**
          * @tc.number	 : SUB_STORAGE_DOCUMENTPICKER_SELECT_PROMISE_0700
          * @tc.name 	 : documentpicker_select_promise_007
-         * @tc.desc 	 : select with option
+         * @tc.desc 	 : select with option audio fileSuffixFilters
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_select_promise_007", 0, async function (done) {
+        it("documentpicker_select_promise_007", 1, async function (done) {
             let testNum = "documentpicker_select_promise_007";
             let option = new picker.DocumentSelectOptions();
             option.fileSuffixFilters = ['.mp3'];
-            let dirName = "Audios";
-            await selectWithOption(testNum, done, option, dirName);
+            await selectWithOption(testNum, done, option);
         });
 
         /**
@@ -268,8 +242,7 @@ export default function documentPickerPromise(abilityContext) {
             let testNum = "documentpicker_save_promise_000";
             let option = new picker.DocumentSaveOptions();
             option.newFileNames = ["DocumentViewPicker01.jpg"];
-            let saveDir = "Pictures";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -280,12 +253,11 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.type 	 : Function
          * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_001", 0, async function (done) {
+        it("documentpicker_save_promise_001", 1, async function (done) {
             let testNum = "documentpicker_save_promise_001";
             let option = new picker.DocumentSaveOptions();
             option.newFileNames = ["DocumentViewPicker01.dat"];
-            let saveDir = "Documents";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -296,12 +268,11 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.type 	 : Function
          * @tc.level	 : Level 3
          */
-        it("documentpicker_save_promise_002", 0, async function (done) {
+        it("documentpicker_save_promise_002", 3, async function (done) {
             let testNum = "documentpicker_save_promise_002";
             let option = new picker.DocumentSaveOptions();
             option.newFileNames = ["DocumentViewPicker01.mp4"];
-            let saveDir = "Videos";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -312,12 +283,11 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.type 	 : Function
          * @tc.level	 : Level 3
          */
-        it("documentpicker_save_promise_003", 0, async function (done) {
+        it("documentpicker_save_promise_003", 3, async function (done) {
             let testNum = "documentpicker_save_promise_003";
             let option = new picker.DocumentSaveOptions();
             option.newFileNames = ["DocumentViewPicker01.mp3"];
-            let saveDir = "Audios";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -326,14 +296,13 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : save uri in Pictures
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_004", 0, async function (done) {
+        it("documentpicker_save_promise_004", 1, async function (done) {
             let testNum = "documentpicker_save_promise_004";
             let option = new picker.DocumentSaveOptions();
-            option.defaultFilePathUri = "file://media/file/8";
-            let saveDir = "Pictures";
-            await saveWithOption(testNum, done, option, saveDir);
+            option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -342,14 +311,13 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : save png in Pictures
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_005", 0, async function (done) {
+        it("documentpicker_save_promise_005", 1, async function (done) {
             let testNum = "documentpicker_save_promise_005";
             let option = new picker.DocumentSaveOptions();
             option.defaultFilePathUri = "file://docs/storage/Users/currentUser/test/test1/202308171505.png";
-            let saveDir = "Pictures";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -358,14 +326,13 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : save suffix in Pictures
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_006", 0, async function (done) {
+        it("documentpicker_save_promise_006", 1, async function (done) {
             let testNum = "documentpicker_save_promise_006";
             let option = new picker.DocumentSaveOptions();
             option.fileSuffixChoices = ['.png', '.jpg'];
-            let saveDir = "Pictures";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -374,14 +341,13 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : save suffix in Documents
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_007", 0, async function (done) {
+        it("documentpicker_save_promise_007", 1, async function (done) {
             let testNum = "documentpicker_save_promise_007";
             let option = new picker.DocumentSaveOptions();
             option.fileSuffixChoices = ['.pptx', '.docx', '.xlsx', '.txt'];
-            let saveDir = "Documents";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -390,14 +356,13 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : save mp4 in Videos
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_008", 0, async function (done) {
+        it("documentpicker_save_promise_008", 1, async function (done) {
             let testNum = "documentpicker_save_promise_008";
             let option = new picker.DocumentSaveOptions();
             option.fileSuffixChoices = ['.mp4'];
-            let saveDir = "Videos";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
 
         /**
@@ -406,14 +371,13 @@ export default function documentPickerPromise(abilityContext) {
          * @tc.desc 	 : save mp3 in Audios
          * @tc.size 	 : MEDIUM
          * @tc.type 	 : Function
-         * @tc.level	 : Level 3
+         * @tc.level	 : Level 1
          */
-        it("documentpicker_save_promise_009", 0, async function (done) {
+        it("documentpicker_save_promise_009", 1, async function (done) {
             let testNum = "documentpicker_save_promise_009";
             let option = new picker.DocumentSaveOptions();
             option.fileSuffixChoices = ['.mp3'];
-            let saveDir = "Audios";
-            await saveWithOption(testNum, done, option, saveDir);
+            await saveWithOption(testNum, done, option);
         });
     });
 }
