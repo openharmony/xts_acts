@@ -54,7 +54,6 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 console.info("NetManager subscribe "+JSON.stringify(data));
                 expect(data.type === "WiFi").assertTrue();
                 expect(data.metered === false).assertTrue();
-                done();
             },
             fail : function(data,code){
                 expect().assertFail();
@@ -64,6 +63,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
         setTimeout(()=>{
             network.unsubscribe();
             console.info("async function unsubscribe end");
+            done();
         },100);
     });
 
@@ -103,7 +103,6 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 console.info("NetManager subscribe 1 "+JSON.stringify(data));
                 expect(data.type === "WiFi").assertTrue();
                 expect(data.metered === false).assertTrue();
-                done();
             },
             fail : function(data,code){
                 expect().assertFail();
@@ -113,6 +112,7 @@ describe("Telephony_NetManager_NetWorkTest", function () {
         setTimeout(()=>{
             network.unsubscribe();
             console.info("async function unsubscribe end");
+            done();
         },100);
     });
 });
