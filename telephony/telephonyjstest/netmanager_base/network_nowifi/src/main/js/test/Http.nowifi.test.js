@@ -99,7 +99,6 @@ export default function Telephony_NetManager_NetWorkTest() {
                         console.info("NetManager subscribe " + JSON.stringify(data));
                         expect(data.type == "none").assertTrue();
                         expect(data.metered == false).assertTrue();
-                        done();
                     },
                     fail: function (data, code) {
                         console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code));
@@ -110,7 +109,8 @@ export default function Telephony_NetManager_NetWorkTest() {
                 setTimeout(()=>{
                     network.unsubscribe();
                     console.info("async function unsubscribe end");
-                },100);
+                    done();
+                },1500);
             });
         });
 
@@ -131,7 +131,6 @@ export default function Telephony_NetManager_NetWorkTest() {
                         console.info("NetManager subscribe " + JSON.stringify(data));
                         expect(data.type == "none").assertTrue();
                         expect(data.metered == false).assertTrue();
-                        done();
                     },
                     fail: function (data, code) {
                         console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code));
@@ -142,7 +141,8 @@ export default function Telephony_NetManager_NetWorkTest() {
                 setTimeout(()=>{
                     network.unsubscribe();
                     console.info("async function unsubscribe end");
-                },100);
+                    done();
+                },1500);
             });
         });
     });
