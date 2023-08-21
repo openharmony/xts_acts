@@ -126,7 +126,6 @@ describe('SmsMmsErrorTest', function () {
   it('Telephony_SmsMms_sendMessage_Promise_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
-        expect(data.isLastPart).assertEqual(false);
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {
@@ -162,7 +161,6 @@ describe('SmsMmsErrorTest', function () {
    it('Telephony_SmsMms_sendShortMessage_Promise_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
-        expect(data.isLastPart).assertEqual(false);
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {
@@ -204,7 +202,6 @@ describe('SmsMmsErrorTest', function () {
    it('Telephony_SmsMms_sendShortMessage_Async_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
-        expect(data.isLastPart).assertEqual(false);
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {

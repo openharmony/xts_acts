@@ -14,6 +14,7 @@
 group("telephonyjstest") {
   testonly = true
   deps = [
+    "actscontactstageapitest:ActsContactStageAPITest",
     "call_manager:call_manager",
     "cellular_data:cellular_data",
     "netmanager_base:netmanager_base",
