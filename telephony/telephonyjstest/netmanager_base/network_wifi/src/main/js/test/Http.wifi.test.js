@@ -18,12 +18,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function Telephony_NetManager_NetWorkTest() {
 
 describe("Telephony_NetManager_NetWorkTest", function () {
-    afterEach(function(){
-        setTimeout(()=>{
-            network.unsubscribe();
-            console.info("async function unsubscribe end");
-        },100);
-    });
 
     /**
      * @tc.number Telephony_NetManager_NetWorkTest_GetType_WiFi_0100
@@ -60,13 +54,17 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 console.info("NetManager subscribe "+JSON.stringify(data));
                 expect(data.type === "WiFi").assertTrue();
                 expect(data.metered === false).assertTrue();
-                done();
             },
             fail : function(data,code){
                 expect().assertFail();
                 done();
             }
         });
+        setTimeout(()=>{
+            network.unsubscribe();
+            console.info("async function unsubscribe end");
+            done();
+        },100);
     });
 
     /**
@@ -105,13 +103,17 @@ describe("Telephony_NetManager_NetWorkTest", function () {
                 console.info("NetManager subscribe 1 "+JSON.stringify(data));
                 expect(data.type === "WiFi").assertTrue();
                 expect(data.metered === false).assertTrue();
-                done();
             },
             fail : function(data,code){
                 expect().assertFail();
                 done();
             }
         });
+        setTimeout(()=>{
+            network.unsubscribe();
+            console.info("async function unsubscribe end");
+            done();
+        },100);
     });
 });
 }

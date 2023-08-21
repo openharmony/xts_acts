@@ -38,7 +38,6 @@ export default function Telephony_NetManager_NetWorkTest() {
                         console.info("NetManager getType " + JSON.stringify(data));
                         expect(data.type == "none").assertTrue();
                         expect(data.metered == false).assertTrue();
-                        network.unsubscribe();
                         done();
                     },
                     fail: function (data, code) {
@@ -69,7 +68,6 @@ export default function Telephony_NetManager_NetWorkTest() {
                         console.info("NetManager getType 1 " + JSON.stringify(data));
                         expect(data.type == "none").assertTrue();
                         expect(data.metered == false).assertTrue();
-                        network.unsubscribe();
                         done();
                         console.info("NetManager Telephony_NetManager_NetWorkTest_GetType_none_1 end");
                     },
@@ -101,16 +99,19 @@ export default function Telephony_NetManager_NetWorkTest() {
                         console.info("NetManager subscribe " + JSON.stringify(data));
                         expect(data.type == "none").assertTrue();
                         expect(data.metered == false).assertTrue();
-                        network.unsubscribe();
-                        done();
                     },
                     fail: function (data, code) {
                         console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code));
                         expect().assertFail();
                         done();
                     }
-                })
-            })
+                });
+                setTimeout(()=>{
+                    network.unsubscribe();
+                    console.info("async function unsubscribe end");
+                    done();
+                },1500);
+            });
         });
 
         /**
@@ -130,16 +131,19 @@ export default function Telephony_NetManager_NetWorkTest() {
                         console.info("NetManager subscribe " + JSON.stringify(data));
                         expect(data.type == "none").assertTrue();
                         expect(data.metered == false).assertTrue();
-                        network.unsubscribe();
-                        done();
                     },
                     fail: function (data, code) {
                         console.log("data:" + JSON.stringify(data) + " code:" + JSON.stringify(code));
                         expect().assertFail();
                         done();
                     }
-                })
-            })
+                });
+                setTimeout(()=>{
+                    network.unsubscribe();
+                    console.info("async function unsubscribe end");
+                    done();
+                },1500);
+            });
         });
     });
 }
