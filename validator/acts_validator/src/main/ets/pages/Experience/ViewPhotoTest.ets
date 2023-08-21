@@ -24,7 +24,7 @@ struct CustomContainerUser {
   @State StepTips: string = '操作步骤：根据操作提示点击图片等待加载'+'\n'+'预期结果：图片响应时延小于150ms测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
-  @State time: string = '0';
+  @State time: number = 0;
   scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
@@ -81,13 +81,16 @@ struct CustomContainerUser {
                   .enabled(!this.StartEnable)
                   .opacity(!this.StartEnable? 1 : 0.4)
                   .onClick(() => {
-                    this.StartEnable = !this.StartEnable
+                    this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
                     let head = report.indexOf(":");
                     this.time = report.substring(head+1);
-                    let time = parseFloat(this.time)
+                    // let time = parseFloat(this.time)
+                    let time = this.time;
                     if( 0 < time && time < 150 ) {
                       this.Vue = true;
+                    } else if ( isNaN(this.time) ){
+                      this.time = -1000;
                     }
                     globalThis.HideFloatingWindow();
                   })
