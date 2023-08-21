@@ -1,0 +1,372 @@
+/*
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import bluetooth from '@ohos.bluetooth.ble';
+import btAccess from '@ohos.bluetooth.access';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+
+export default function btBleServiceTest() {
+describe('btBleServiceTest', function() {
+
+    let gattServer = null;
+    let gattClient = null;
+    function sleep(delay) {
+        return new Promise(resovle => setTimeout(resovle, delay))
+    }
+
+    async function tryToEnableBt() {
+        let sta = btAccess.getState();
+        switch(sta){
+            case 0:
+                console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
+                btAccess.enableBluetooth();
+                await sleep(10000);
+                break;
+            case 1:
+                console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
+                await sleep(3000);
+                break;
+            case 2:
+                console.info('[bluetooth_js] bt turn on:'+ JSON.stringify(sta));
+                break;
+            case 3:
+                console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
+                btAccess.enableBluetooth();
+                await sleep(10000);
+                break;
+            default:
+                console.info('[bluetooth_js] enable success');
+        }
+    }
+    beforeAll(async function (done) {
+        console.info('beforeAll called')
+        await tryToEnableBt()
+        gattServer = bluetooth.createGattServer();
+        console.info('bluetooth ble create gattserver result:' + gattServer);
+        gattClient = bluetooth.createGattClientDevice('04:30:02:01:00:00');
+        console.info('bluetooth ble create gattclientdevice result:' + gattClient);
+        done()
+    })
+    beforeEach(async function(done) {
+        console.info('beforeEach called')
+        await tryToEnableBt()
+        done();
+    })
+    afterEach(function () {
+        console.info('afterEach called')
+    })
+    afterAll(function () {
+        console.info('afterAll called')
+        gattServer.close();
+    })
+
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_GATTSERCONNECT_0100
+     * @tc.name test Server connectStateChange
+     * @tc.desc Test on and off api10 .
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTSERCONNECT_0100', 0, async function (done) {
+        try {
+            function Connected(BLEConnectChangedState) {
+                let deviceId = BLEConnectChangedState.deviceId;
+                let status = BLEConnectChangedState.state;
+                console.info("[bluetooth_js] connectStateChange jsondata:"
+                 +'deviceId:' + deviceId + 'status:' + status);
+                expect(true).assertEqual(BLEConnectChangedState !=null);
+              }
+            gattServer.on("connectStateChange", Connected);
+            gattServer.off("connectStateChange");
+        } catch (error) {
+            console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('2900099');
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0100
+     * @tc.name testAddService
+     * @tc.desc Test AddService api10.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0100', 0, async function (done) {
+        let descriptors = [];
+        let arrayBuffer = new ArrayBuffer(8);
+        let descV = new Uint8Array(arrayBuffer);
+        descV[0] = 11;
+        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+        descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+        descriptors[0] = descriptor;
+        let characteristics = [];
+        let arrayBufferC = new ArrayBuffer(8);
+        let cccV = new Uint8Array(arrayBufferC);
+        cccV[0] = 1;
+        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', 
+        characteristicValue: arrayBufferC, descriptors:descriptors};
+        characteristics[0] = characteristic;
+        let gattService = {serviceUuid:'00001810-0000-1000-8000-00805F9B34FB', isPrimary: false,
+        characteristics:characteristics, includeServices:[]};
+        try {
+            gattServer.addService(gattService);
+        } catch (error) {
+            console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('2900099');
+        }
+        done(); 
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0200
+     * @tc.name testAddService
+     * @tc.desc Test api10 401 - characteristics of service is null.
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADDSERVICE_0200', 0, async function (done) { 
+        try {
+            gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
+        } catch (error) {
+            console.error(`[bluetooth_js]AddService2 failed, code is ${error.code},message is ${error.message}`);
+            expect(true).assertEqual(error.code == '2900099' || error.code == '401');
+        }
+        done(); 
+        
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0100
+     * @tc.name testNotifyCharacteristicChanged callback
+     * @tc.desc Test NotifyCharacteristicChanged api10.
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0100', 0, async function (done) {
+        let descriptors = [];
+        let arrayBuffer = new ArrayBuffer(8);
+        let descV = new Uint8Array(arrayBuffer);
+        descV[0] = 11;
+        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+        descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+        descriptors[0] = descriptor;
+        let arrayBufferC = new ArrayBuffer(8);
+        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
+        let notifyCharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001821-0000-1000-8000-00805F9B34FB', characteristicValue: characteristic.characteristicValue, confirm: false};
+        try {
+            gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic, (err, data) => {
+                console.info('notifyCharacteristicChanged err:' + JSON.stringify(err) + ',notifyCharacteristicChanged data:' + JSON.stringify(data));
+            });
+        } catch (error) {
+            console.error('[bluetooth_js]notifyCharacteristicChanged1 failed, code:'
+            +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
+            expect(error.code).assertEqual('2900099');
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0200
+     * @tc.name testNotifyCharacteristicChanged promise
+     * @tc.desc Test NotifyCharacteristicChanged api10.
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_NOTIFYCHARACTERISTIC_0200', 0, async function (done) {
+        let descriptors = [];
+        let arrayBuffer = new ArrayBuffer(8);
+        let descV = new Uint8Array(arrayBuffer);
+        descV[0] = 11;
+        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+        descriptorUuid: '00002902-0000-1000-8000-00805F9B34FB', descriptorValue: arrayBuffer};
+        descriptors[0] = descriptor;
+        let arrayBufferC = new ArrayBuffer(8);
+        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', characteristicValue: arrayBufferC, descriptors:descriptors};
+        let notifyCharacteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+        characteristicUuid: '00001821-0000-1000-8000-00805F9B34FB', characteristicValue: characteristic.characteristicValue, confirm: false};
+        try {
+            gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic).then(() => {
+                console.info("notifyCharacteristicChanged");
+            }, err => {
+                console.error("notifyCharacteristicChanged:errCode" + err.code + ",errMessage:" + err.message);
+            });
+        } catch (error) {
+            console.error('[bluetooth_js]notifyCharacteristicChanged2 failed, code:'
+            +JSON.stringify(error.code)+'error.message:'+JSON.stringify(error.message));
+            expect(error.code).assertEqual('2900099');
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0100
+     * @tc.name testSendResponse success
+     * @tc.desc Test SendResponse api10.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0100', 0, async function (done) {
+        try {
+            let arrayBuffer = new ArrayBuffer(8);
+            let value =  new Uint8Array(arrayBuffer);
+            value[0] = 1;
+            let ServerResponse = {deviceId: '00:11:22:33:44:55', transId: 1,
+                status: 0, offset: 0, value: arrayBuffer};
+            gattServer.sendResponse(ServerResponse);
+            expect(true).assertFalse();
+            done();
+        } catch (error) {
+            console.error(`[bluetooth_js]sendResponse1 failed, code is ${error.code},
+            message is ${error.message}`);
+            expect(error.code).assertEqual('2900099');
+            done()
+        }
+        
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0200
+     * @tc.name testSendResponse success
+     * @tc.desc Test SendResponse api10.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0200', 0, async function (done) {
+        try {
+            let arrayBuffer = new ArrayBuffer(8);
+            let value =  new Uint8Array(arrayBuffer);
+            value[0] = 1;
+            let ServerResponse = {deviceId: '00:11:22:33:44:55', transId: 1,
+                status: -1, offset: 0, value: arrayBuffer};
+            gattServer.sendResponse(ServerResponse);
+            expect(true).assertFalse();
+            done();
+        } catch (error) {
+            console.error(`[bluetooth_js]sendResponse2 failed, code is ${error.code},
+            message is ${error.message}`);
+            expect(error.code).assertEqual('2900099');
+            done()
+        }
+        
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0300
+     * @tc.name testSendResponse success
+     * @tc.desc Test SendResponse 401 -null parameter.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0300', 0, async function (done) {
+        try {
+            gattServer.sendResponse();
+            expect(true).assertFalse();
+            done();
+        } catch (error) {
+            console.error('[bluetooth_js]sendResponse3 error.code:'+JSON.stringify(error.code)+
+                   'error.message:'+JSON.stringify(error.message));
+            expect(error.code).assertEqual('401');
+            done()
+        }
+        
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0400
+     * @tc.name testSendResponse success
+     * @tc.desc Test SendResponse 401 -error parameter.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_SENDRESPONSE_0400', 0, async function (done) {
+        try {
+            let arrayBuffer = new ArrayBuffer(8);
+            let value =  new Uint8Array(arrayBuffer);
+            value[0] = 1;
+            let ServerResponse = {transId: 1,
+                status: -1, offset: 0, value: arrayBuffer};
+            gattServer.sendResponse(ServerResponse);
+            expect(true).assertFalse();
+            done();
+        } catch (error) {
+            console.error(`[bluetooth_js]sendResponse4 failed, code is ${error.code},
+            message is ${error.message}`);
+            expect(error.code).assertEqual('401');
+            done()
+        }
+        
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0100
+     * @tc.name test gattserver on blemtuchange
+     * @tc.desc test gattserver on blemtuchange api10.
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0100', 0, async function (done) {
+        try {
+            gattServer.on('BLEMtuChange', (err, data)=> {
+                console.info('BLEMtuChange on err ' + JSON.stringify(err));
+                console.info('BLEMtuChange on value' + JSON.stringify(data));
+            })
+        } catch (err) {
+            console.error("bluetooth mtu changed on errCode:" + err.code + ",bluetooth mtu changed on errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
+        }
+        gattServer.off('BLEMtuChange', (err, data)=> {
+            console.info('BLEMtuChange off err ' + JSON.stringify(err));
+            console.info('BLEMtuChange off value' + JSON.stringify(data));
+        })
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0200
+     * @tc.name test gattserver off blemtuchange
+     * @tc.desc test gattserver off blemtuchange api10
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+     it('SUB_COMMUNICATION_BLUETOOTHBLE_MTUCHANGE_0200', 0, async function (done) {
+        gattServer.on('BLEMtuChange', (err, data)=> {
+            console.info('BLEMtuChange on err ' + JSON.stringify(err));
+            console.info('BLEMtuChange on value' + JSON.stringify(data));
+        })
+        try {
+            gattServer.off('BLEMtuChange', (err, data)=> {
+                console.info('BLEMtuChange off err ' + JSON.stringify(err));
+                console.info('BLEMtuChange off value' + JSON.stringify(data));
+            })
+        } catch (err) {
+            console.error("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
+        }
+        done();
+    })
+
+})
+}
+
+
