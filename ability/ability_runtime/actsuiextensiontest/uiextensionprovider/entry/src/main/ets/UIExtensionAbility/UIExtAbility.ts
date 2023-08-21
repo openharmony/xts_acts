@@ -15,12 +15,13 @@
 
 import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility'
 import Logger from '../model/Logger'
-
+import common from '@ohos.app.ability.common';
 const TAG: string = '[UIExtAbility]'
 
 export default class UIExtAbility extends UIExtensionAbility {
     onCreate() {
         Logger.log(TAG, `UIExtAbility onCreate`)
+        let UiExtensionContext:common.UIExtensionContext = this.context;
     }
 
     onForeground() {
