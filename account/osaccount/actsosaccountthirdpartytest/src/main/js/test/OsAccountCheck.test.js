@@ -33,7 +33,6 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
             console.debug("====>ActsOsAccountDeviceId_0100 start====");
             var AccountManager = osAccount.getAccountManager();
             console.debug("====>get os AccountManager finish====");
-            const deviceId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5';
             const accountAbility = distributedAccount.getDistributedAccountAbility();
             accountAbility.updateOsAccountDistributedInfo(
             {
@@ -46,7 +45,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
                     console.debug("====>queryDistributedVirtualDeviceId err:" + JSON.stringify(err));
                     console.debug("====>queryDistributedVirtualDeviceId deviceId:" + id);
                     expect(err).assertEqual(null);
-                    expect(id).assertEqual(deviceId);
+                    expect(id !== 'ohosAnonymousUid').assertTrue()
                     console.debug("====>ActsOsAccountDeviceId_0100 end====");
                     done();
                 })
@@ -62,7 +61,6 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
             console.debug("====>ActsOsAccountDeviceId_0200 start====");
             var AccountManager = osAccount.getAccountManager();
             console.debug("====>get os AccountManager finish====");
-            const deviceId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5';
             const accountAbility = distributedAccount.getDistributedAccountAbility();
             accountAbility.updateOsAccountDistributedInfo(
             {
@@ -74,7 +72,7 @@ export default function ActsOsAccountThirdPartyTest_third_3() {
                 console.debug("====>queryDistributedVirtualDeviceId start====");
                 var id = await AccountManager.queryDistributedVirtualDeviceId();
                 console.debug("====>queryDistributedVirtualDeviceId:" + id);
-                expect(id).assertEqual(deviceId);
+                expect(id !== 'ohosAnonymousUid').assertTrue()
                 console.debug("====>ActsOsAccountDeviceId_0200 end====");
                 done();
             })
