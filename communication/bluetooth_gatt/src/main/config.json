@@ -88,47 +88,27 @@
         "reqPermissions": [
             {
                 "name": "ohos.permission.USE_BLUETOOTH",
-                "reason": "",
-                "usedScene": {
-                    "ability": [
-                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-                    ],
-                    "when": "inuse"
-                }
+                "reason": ""
             },
             {
                 "name": "ohos.permission.MANAGE_BLUETOOTH",
-                "reason": "",
-                "usedScene": {
-                    "ability": [
-                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-                    ],
-                    "when": "inuse"
-                }
+                "reason": ""
             },
             {
                 "name": "ohos.permission.DISCOVER_BLUETOOTH",
-                "reason": "",
-                "usedScene": {
-                    "ability": [
-                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-                    ],
-                    "when": "inuse"
-                }
-            },
-            {
-                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
+                "reason": ""
             },
             {
                 "name": "ohos.permission.LOCATION",
-                "reason": "",
-                "usedScene": {
-                    "ability": [
-                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-                    ],
-                    "when": "inuse"
-                }
+                "reason": ""
+            },
+            {
+                "name": "ohos.permission.ACCESS_BLUETOOTH",
+                "reason": ""
+            },
+            {
+                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+                "reason": ""
             },
             {
                 "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
