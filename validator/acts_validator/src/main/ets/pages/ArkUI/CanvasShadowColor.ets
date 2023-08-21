@@ -33,54 +33,58 @@ struct SetCircle {
   }
   @Builder specificNoParam() {
     Column() {
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-          Text('Blue').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(10, 100, 400, 300);
-            this.context.shadowBlur = 30;
-            this.context.shadowColor = 'rgb(0,0,255)';
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 100, 100);
-            this.num1 = 1;
-            if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
-              this.Vue = true;
-            }
-          })
-          Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(10, 100, 400, 300);
-            this.context.shadowBlur = 30;
-            this.context.shadowColor = '#fffffc3c';
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 100, 100);
-            this.num2 = 1;
-            if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
-              this.Vue = true;
-            }
-          })
-          Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(10, 100, 400, 300);
-            this.context.shadowBlur = 30;
-            this.context.shadowColor = '#ff19fa00';
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 100, 100);
-            this.num3 = 1;
-            if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
-              this.Vue = true;
-            }
-          })
-      }.width('70%').height('30%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffffffff')
-          .onReady(() =>{
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 100, 100);
-          })
-      }.width('100%').height('60%')
+      Scroll() {
+        Column() {
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+            Text('Blue').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(10, 100, 400, 300);
+                this.context.shadowBlur = 30;
+                this.context.shadowColor = 'rgb(0,0,255)';
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 100, 100);
+                this.num1 = 1;
+                if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
+                  this.Vue = true;
+                }
+              })
+            Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(10, 100, 400, 300);
+                this.context.shadowBlur = 30;
+                this.context.shadowColor = '#fffffc3c';
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 100, 100);
+                this.num2 = 1;
+                if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
+                  this.Vue = true;
+                }
+              })
+            Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(10, 100, 400, 300);
+                this.context.shadowBlur = 30;
+                this.context.shadowColor = '#ff19fa00';
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 100, 100);
+                this.num3 = 1;
+                if ( this.num1 == 1 && this.num3 == 1 && this.num2 == 1 ){
+                  this.Vue = true;
+                }
+              })
+          }.width('70%').height('30%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Canvas(this.context)
+              .width('100%')
+              .height('100%')
+              .backgroundColor('#ffffffff')
+              .onReady(() =>{
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 100, 100);
+              })
+          }.width('100%').height('60%')
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

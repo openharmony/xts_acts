@@ -34,6 +34,8 @@ struct SetCircle {
   }
   @Builder specificNoParam() {
     Column() {
+      Scroll() {
+        Column() {
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
         Text('Top').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
           .onClick(()=>{
@@ -125,6 +127,8 @@ struct SetCircle {
             this.context.stroke();
           })
       }.width('100%').height('70%')
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

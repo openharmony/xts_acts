@@ -45,8 +45,9 @@ struct IndexPage {
     { title: 'PlayerAudio', uri: 'pages/Player/PlayAudioList' },
     { title: 'PlayerVideo', uri: 'pages/Player/PlayVideoList' },
   ]
-  @State ColorObject: string[] = VarColor;
-
+  @State ColorObject: Object[] = VarColor;
+  @State ColorTrue : Object[] = [];
+  @State ColorTrue2 : Object[] = [];
   async onPageShow() {
     let Test = null;
     let context = null;
@@ -66,7 +67,7 @@ struct IndexPage {
     if (Test != 1) {
       let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
       for (let i = 0; i < this.TestCaseList.length; i++) {
-        let log = (this.TestCaseList[i].title + ';' + '#ff808080' + ';').toString();
+        let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
         fileio.writeSync(fd, log);
       }
       fileio.closeSync(fd);
@@ -98,12 +99,12 @@ struct IndexPage {
       let name1 = '刚刚点进了哪个用例：' + titles;
       let results = this.result;
       let WriteTitle = (titles).toString();
-      let number = WriteTitle.length + 11;
+      let number = WriteTitle.length + 7;
       let Index = ColorBack.indexOf(WriteTitle);
 
       if (this.result === 'true ') {
-        this.ColorObject[this.current] = '#ff008000';
-        let Log = (titles + ';' + '#ff008000' + ';');
+        this.ColorObject[this.current] = 'true ';
+        let Log = (titles + ';' + 'true ' + ';');
         let key = ColorBack.substring(Index, Index + number);
         let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
         ColorBack = ColorBack.replace(key, Log);
@@ -116,8 +117,8 @@ struct IndexPage {
         filewrite(name1, results, titles)
       }
       else if (this.result === 'false') {
-        this.ColorObject[this.current] = '#ffff0000';
-        let Log = (titles + ';' + '#ffff0000' + ';');
+        this.ColorObject[this.current] = 'false';
+        let Log = (titles + ';' + 'false' + ';');
         let key = ColorBack.substring(Index, Index + number);
         let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
         ColorBack = ColorBack.replace(key, Log);
@@ -129,8 +130,23 @@ struct IndexPage {
         fileio.writeSync(Fd, Report);
         filewrite(name1, results, titles);
       }
-      else if (this.result === 'None') {
+      else {
         this.ColorObject[this.current] = this.ColorObject[this.current];
+      }
+    }
+    for (let i = 0; i < TestList.length; i++){
+      if (this.ColorObject[i] === 'true '){
+        this.ColorTrue[i] = 0x263526
+        this.ColorTrue2[i] = 0x0CB60C
+
+      }
+      else if (this.ColorObject[i] === 'false'){
+        this.ColorTrue[i] = 0x380303
+        this.ColorTrue2[i] = 0xd60a0a
+      }
+      else {
+        this.ColorTrue[i] = 0x000000
+        this.ColorTrue2[i] = 0x000000
       }
     }
   }
@@ -166,7 +182,7 @@ struct IndexPage {
                   action: () => {
                     this.ClearAll = true;
                     this.ColorObject.forEach((value, index) => {
-                      this.ColorObject[index] = '#ff808080';
+                      this.ColorObject[index] = 'none ';
                     });
                     this.ClearText();
                     prompt.showToast({
@@ -220,16 +236,16 @@ struct IndexPage {
       .height('6%')
       .backgroundColor(Color.Black)
 
-      List({ space: 5 }) {
+      List({}) {
         ForEach(this.TestCaseList, (item, index) => {
           ListItem() {
             Row() {
-              Text(item.title).fontSize(16).fontColor(Color.Black)
+              Text(item.title).fontSize(20).fontColor(Color.White)
             }
             .width('100%')
             .height(50)
             .alignItems(VerticalAlign.Center)
-            .backgroundColor(this.count === 0 && this.TEST === 0 ? '#ff808080' : this.ColorObject[index])
+            .linearGradient(this.count===0&&this.TEST===0?{angle: 90,colors: [[0x000000, 0.0],[0x000000, 1.0]]}:{ angle: 90,colors: [[this.ColorTrue[index], 0.0], [this.ColorTrue2[index], 0.618]]})
             .onClick(() => {
               this.count = 1;
               this.ClearAll = false;
@@ -240,7 +256,7 @@ struct IndexPage {
             })
           }
         }, item => item.title)
-      }.width('100%').height('92%')
+      }.width('100%').height('92%').divider({strokeWidth:1,color:Color.Grey})
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
 
@@ -251,7 +267,7 @@ struct IndexPage {
     fileio.openSync(VideoTxtPath, 0o100 | 0o2002, 0o664);
     let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
     for (let i = 0; i < this.TestCaseList.length; i++) {
-      let log = (this.TestCaseList[i].title + ';' + '#ff808080' + ';').toString();
+      let log = (this.TestCaseList[i].title + ';' + 'none ' + ';').toString();
       fileio.writeSync(fd, log);
     }
     FlushData.ResetPlayerAudio();

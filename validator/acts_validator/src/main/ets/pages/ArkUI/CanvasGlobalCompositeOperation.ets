@@ -40,290 +40,294 @@ struct SetCircle {
   }
   @Builder specificNoParam() {
     Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-        Row(){
-          Text('').fontSize(0).border({width:0}).size({width:'0%',height:'2%'})
-        }
-        Row({space:10}){
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('s-over').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-          .onChange(()=>{
-            this.context.clearRect(0, 10, 350, 300);
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 50, 50);
-            this.context.globalCompositeOperation = 'source-over';
-            this.context.fillStyle = 'rgb(0,0,255)';
-            this.context.fillRect(180, 180, 50, 50);
-            this.context.clearRect(0, 10, 350, 300);
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 50, 50);
-            this.context.globalCompositeOperation = 'source-over';
-            this.context.fillStyle = 'rgb(0,0,255)';
-            this.context.fillRect(180, 180, 50, 50);
-            this.num1 = 1;
-            if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-            && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-            && this.num11 == 1 ){
-              this.Vue = true;
+      Scroll() {
+        Column() {
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+            Row(){
+              Text('').fontSize(0).border({width:0}).size({width:'0%',height:'2%'})
             }
-          })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('s-atop').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=>{
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-atop';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num2 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
+            Row({space:10}){
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('s-over').fontSize(13)
               }
-            })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('s-in').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=>{
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-in';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num3 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
+              .size({width:'18%',height:'20%'})
+              .onChange(()=>{
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num1 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('s-atop').fontSize(13)
               }
-            })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('s-out').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=>{
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-out';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num4 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
+              .size({width:'18%',height:'20%'})
+              .onChange(()=>{
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-atop';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num2 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('s-in').fontSize(13)
               }
-            })
-        }
-        Row({space:10}){
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('d-over').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-          .onChange(()=> {
-            this.context.clearRect(0, 10, 350, 300);
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 50, 50);
-            this.context.globalCompositeOperation = 'source-over';
-            this.context.fillStyle = 'rgb(0,0,255)';
-            this.context.fillRect(180, 180, 50, 50);
-            this.context.clearRect(0, 10, 350, 300);
-            this.context.fillStyle = 'rgb(255,0,0)';
-            this.context.fillRect(150, 150, 50, 50);
-            this.context.globalCompositeOperation = 'destination-over';
-            this.context.fillStyle = 'rgb(0,0,255)';
-            this.context.fillRect(180, 180, 50, 50);
-            this.num5 = 1;
-            if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-            && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-            && this.num11 == 1 ){
-              this.Vue = true;
+              .size({width:'18%',height:'20%'})
+              .onChange(()=>{
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-in';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num3 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('s-out').fontSize(13)
+              }
+              .size({width:'18%',height:'20%'})
+              .onChange(()=>{
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-out';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num4 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
             }
-          })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('d-atop').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=> {
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'destination-atop';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num6 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
+            Row({space:10}){
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('d-over').fontSize(13)
               }
-            })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('d-in').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=> {
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'destination-in';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num7 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'destination-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num5 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('d-atop').fontSize(13)
               }
-            })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('d-out').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=> {
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'destination-out';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num8 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'destination-atop';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num6 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('d-in').fontSize(13)
               }
-            })
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'destination-in';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num7 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('d-out').fontSize(13)
+              }
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'destination-out';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num8 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+            }
+            Row({space:10}){
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('lighter').fontSize(13)
+              }
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'lighter';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num9 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('copy').fontSize(13)
+              }
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'copy';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num10 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Toggle({type:ToggleType.Button, isOn:false}){
+                Text('xor').fontSize(13)
+              }
+              .size({width:'18%',height:'20%'})
+              .onChange(()=> {
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'source-over';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.context.clearRect(0, 10, 350, 300);
+                this.context.fillStyle = 'rgb(255,0,0)';
+                this.context.fillRect(150, 150, 50, 50);
+                this.context.globalCompositeOperation = 'xor';
+                this.context.fillStyle = 'rgb(0,0,255)';
+                this.context.fillRect(180, 180, 50, 50);
+                this.num11 = 1;
+                if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
+                && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
+                && this.num11 == 1 ){
+                  this.Vue = true;
+                }
+              })
+              Text('').fontSize(0).border({width:0}).size({width:'18%',height:'20%'})
+            }
+          }.width('90%').height('30%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Canvas(this.context)
+              .width('100%')
+              .height('100%')
+              .backgroundColor('#ffffffff')
+              .onReady(() =>{
+              })
+          }.width('100%').height('70%')
         }
-        Row({space:10}){
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('lighter').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=> {
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'lighter';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num9 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
-              }
-            })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('copy').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=> {
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'copy';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num10 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
-              }
-            })
-          Toggle({type:ToggleType.Button, isOn:false}){
-            Text('xor').fontSize(13)
-          }
-          .size({width:'18%',height:'20%'})
-            .onChange(()=> {
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'source-over';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.context.clearRect(0, 10, 350, 300);
-              this.context.fillStyle = 'rgb(255,0,0)';
-              this.context.fillRect(150, 150, 50, 50);
-              this.context.globalCompositeOperation = 'xor';
-              this.context.fillStyle = 'rgb(0,0,255)';
-              this.context.fillRect(180, 180, 50, 50);
-              this.num11 = 1;
-              if( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1
-              && this.num6 == 1 && this.num7 == 1 && this.num8 == 1 && this.num9 == 1 && this.num10 == 1
-              && this.num11 == 1 ){
-                this.Vue = true;
-              }
-            })
-          Text('').fontSize(0).border({width:0}).size({width:'18%',height:'20%'})
-        }
-      }.width('90%').height('30%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffffffff')
-          .onReady(() =>{
-          })
-      }.width('100%').height('70%')
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {
