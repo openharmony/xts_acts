@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
 import type Window from '@ohos.window';
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 
 let commonStateArr: number[] = [-1, -1, -1, -1];
 let commonEventData = {

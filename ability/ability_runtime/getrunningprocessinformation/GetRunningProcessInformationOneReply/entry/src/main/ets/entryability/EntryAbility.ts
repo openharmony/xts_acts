@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
 import type Window from '@ohos.window';
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 let sequence = 0;

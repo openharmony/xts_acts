@@ -15,7 +15,7 @@
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 import appManager from '@ohos.app.ability.appManager';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
