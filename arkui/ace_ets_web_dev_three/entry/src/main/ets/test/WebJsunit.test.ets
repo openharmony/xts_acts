@@ -646,6 +646,7 @@ export default function webJsunit() {
       Utils.registerEvent("GetCertificateCallback",31,520,done);
       sendEventByKey('webcomponent',10,'');
     })
+    
     /* 
      *tc.number SUB_ACE_BASIC_ETS_API_060                                                                                                                                                              
      *tc.name GetStoredGeolocationPromise                                                                                                                                                                                                                
