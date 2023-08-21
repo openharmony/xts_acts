@@ -67,6 +67,14 @@ struct TransitionEffectExample2 {
           TransitionEffect.IDENTITY
           )
           )
+
+        Image($r('app.media.icon')).width(200).height(200).margin({ top: 100 })
+          .transition(
+          TransitionEffect.asymmetric(
+          TransitionEffect.move(TransitionEdge.START),
+          TransitionEffect.SLIDE
+          )
+          )
       }
     }.width('100%')
   }

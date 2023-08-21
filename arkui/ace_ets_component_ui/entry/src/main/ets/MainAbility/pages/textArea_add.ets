@@ -19,6 +19,21 @@ struct TextAreaExample {
   controller: TextAreaController = new TextAreaController()
   @State value1: string = ''
   @State value2: string = ''
+
+  // 自定义键盘组件
+  @Builder CustomKeyboardBuilder() {
+    Column() {
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item) => {
+          GridItem() {
+            Button(item + "")
+              .width(110)
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Gray)
+  }
+
   build() {
     Column() {
       Text('value1:' + this.value1).fontSize(18).margin(15)
@@ -34,6 +49,7 @@ struct TextAreaExample {
         .enableKeyboardOnFocus(true)
         .selectionMenuHidden(false)
         .margin(20)
+        .customKeyboard(this.CustomKeyboardBuilder())
         .barState(BarState.On)
         .style(TextContentStyle.INLINE)
         .key('textAreaAdd')
