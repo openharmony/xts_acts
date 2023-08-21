@@ -627,6 +627,65 @@ export default function ApiCommponentAddJsunit() {
       done();
     });
 
+     it('apiCommponentAddJsunit_2400', 0, async function (done) {
+      console.info("[apiCommponentAddJsunit_2400] START" );
+      ohosrouter.clear();
+      ohosrouter.pushUrl({
+        url: 'MainAbility/pages/richEditor',
+        params: {
+          data1: 'message',
+          data2: {
+            data3: [123, 456, 789]
+          }
+        }
+      }).then(() => {
+        // success
+      }).catch(err => {
+        console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+      })
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('richEditor');
+      let obj = JSON.parse(strJson);
+      console.info("[apiCommponentAddJsunit_2400'] component obj is: " + obj.$type);
+      expect(obj.$type).assertEqual('RichEditor');
+      done();
+    });
+
+     it('apiCommponentAddJsunit_2500', 0, async function (done) {
+      console.info("[apiCommponentAddJsunit_2500] START" );
+      ohosrouter.clear();
+      ohosrouter.pushUrl({
+        url: 'MainAbility/pages/richEditorCustomKeyBoard',
+        params: {
+          data1: 'message',
+          data2: {
+            data3: [123, 456, 789]
+          }
+        }
+      }).then(() => {
+        // success
+      }).catch(err => {
+        console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+      })
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('richEditor1');
+      let obj = JSON.parse(strJson);
+      console.info("[apiCommponentAddJsunit_2500'] component obj is: " + obj.$type);
+      expect(obj.$type).assertEqual('RichEditor');
+      done();
+    });
+
+    it('apiCommponentAddJsunit_2600', 0, async function (done) {
+      console.info('apiCommponentAddJsunit_2600 START');
+      try {
+         expect(DialogButtonStyle.HIGHLIGHT).assertEqual(1);
+      } catch(err) {
+        console.error("apiCommponentAddJsunit_2600 error " + JSON.stringify(err));
+      }
+      done();
+    });
+
+
   })
 
 

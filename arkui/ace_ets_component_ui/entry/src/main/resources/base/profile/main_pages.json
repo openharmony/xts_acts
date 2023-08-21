@@ -91,6 +91,8 @@
         "MainAbility/pages/RouteType1",
         "MainAbility/pages/RouteType2",
         "MainAbility/pages/navition3",
-        "MainAbility/pages/DragController"
+        "MainAbility/pages/DragController",
+        "MainAbility/pages/richEditor",
+        "MainAbility/pages/richEditorCustomKeyBoard"
     ]
 }

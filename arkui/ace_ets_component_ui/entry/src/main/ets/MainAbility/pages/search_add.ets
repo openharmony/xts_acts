@@ -22,6 +22,21 @@ struct SearchExample {
   @State isHidden:boolean = false
   @State value1: string = ''
   @State value2: string = ''
+
+  // 自定义键盘组件
+  @Builder CustomKeyboardBuilder() {
+    Column() {
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item) => {
+          GridItem() {
+            Button(item + "")
+              .width(110)
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Gray)
+  }
+
   build() {
     Column() {
       Text('onSubmit:' + this.submitValue).fontSize(18).margin(15)
@@ -38,6 +53,7 @@ struct SearchExample {
         .enableKeyboardOnFocus(true)
         .selectionMenuHidden(this.isHidden)
         .placeholderFont({ size: 14, weight: 400 })
+        .customKeyboard(this.CustomKeyboardBuilder())
         .onContentScroll((totalOffsetX: number, totalOffsetY: number) =>{
         })
         .onTextSelectionChange((selectionStart: number, selectionEnd: number)=>{
