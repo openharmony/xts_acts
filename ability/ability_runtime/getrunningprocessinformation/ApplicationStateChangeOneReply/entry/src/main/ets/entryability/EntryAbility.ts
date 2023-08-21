@@ -20,7 +20,7 @@ import commonEvent from '@ohos.commonEventManager';
 let commonStateArr: number[] = [-1, -1, -1, -1];
 let commonEventData = {
   parameters: {
-    commonStateArr: commonStateArr
+    "commonStateArr": commonStateArr
   }
 };
 
