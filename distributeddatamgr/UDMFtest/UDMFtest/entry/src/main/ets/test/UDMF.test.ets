@@ -19,7 +19,7 @@ import uniformTypeDescriptor from '@ohos.data.uniformTypeDescriptor';
 
 export default function UDMFApiTest() {
   describe('UDMFApiTest', function () {
-    console.info('---start UDMFApiTest--');
+    console.info('start UDMFApiTest');
     let text = new unifiedDataChannel.Text();
     text.details = {
       title:"标题",
@@ -191,7 +191,7 @@ export default function UDMFApiTest() {
       console.info('SUB_DistributedData_Udmf_API003 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(link);
       let records = unifiedData.getRecords();
-      let record = <unifiedDataChannel.Link>(records[0]);
+      let record = <unifiedDataChannel.Hyperlink>(records[0]);
       expect(records.length).assertEqual(1);
       expect(record.details.title).assertEqual('标题');
       expect(record.details.content).assertEqual('内容');
@@ -213,7 +213,7 @@ export default function UDMFApiTest() {
       console.info('SUB_DistributedData_Udmf_API004 start');
       let unifiedData = new unifiedDataChannel.UnifiedData(html);
       let records = unifiedData.getRecords();
-      let record = <unifiedDataChannel.Html>(records[0]);
+      let record = <unifiedDataChannel.HTML>(records[0]);
       expect(records.length).assertEqual(1);
       expect(record.details.title).assertEqual('标题');
       expect(record.details.content).assertEqual('内容');
