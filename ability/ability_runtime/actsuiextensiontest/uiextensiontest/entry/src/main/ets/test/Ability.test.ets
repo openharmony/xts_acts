@@ -144,5 +144,466 @@ export default function abilityTest() {
         done();
       })
     })
+    it('ACTS_UIExtension_StartAbility_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbility_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbility_OnResult';
+      let startAbilityEvent = 'ACTS_UIExtension_StartAbility';
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbility - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityEvent, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbility_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbility_001 success');
+              }
+            });
+          } else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+
+      setTimeout(timeout, 10000);
+    })
+
+
+    it('ACTS_UIExtension_StartAbility_Options_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbility_Options_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbility_OnResult';
+      let startAbilityOpsEvent = 'ACTS_UIExtension_StartAbility_Options';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbility_Options - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityOpsEvent, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbility_Options_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbility_Options_001 success');
+              }
+            });
+          } else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          } 
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+
+      setTimeout(timeout, 10000);
+    })
+
+    it('ACTS_UIExtension_StartAbility_Promise_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbility_Promise_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbility_OnResult';
+      let startAbilityEventPromise = 'ACTS_UIExtension_StartAbility_Promise';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbility_Promise - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityEventPromise, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbility_Promise_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbility_Promise_001 success');
+              }
+            });
+          } else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          } 
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+
+      setTimeout(timeout, 10000);
+    })
+    it('ACTS_UIExtension_StartAbility_Options_Promise_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbility_Options_Promise_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbility_OnResult';
+      let startAbilityOpsEventPromise = 'ACTS_UIExtension_StartAbility_Options_Promise';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbility_Options_Promise - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityOpsEventPromise, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbility_Options_Promise_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbility_Options_Promise_001 success');
+              }
+            });
+          } else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          } 
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+        })
+        setTimeout(timeout, 10000);
+    })
+
+    it('ACTS_UIExtension_StartAbilityForResult_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityForResult_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbilityForResult_OnResult';
+      let startAbilityForResultEvent = 'ACTS_UIExtension_StartAbilityForResult';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbilityForResult - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityForResultEvent, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResultEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbilityForResultEvent success');
+              }
+            });
+          }
+          else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      setTimeout(timeout, 10000);
+
+    })
+    it('ACTS_UIExtension_StartAbilityForResult_Options_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityForResult_Options_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbilityForResult_Options_OnResult';
+      let startAbilityForResultOpsEvent = 'ACTS_UIExtension_StartAbilityForResult_Options';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbilityForResult_Options - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityForResultOpsEvent, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_Options_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbilityForResult_Options_001 success');
+              }
+            });
+          }
+          else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      setTimeout(timeout, 10000);
+    })
+    it('ACTS_UIExtension_StartAbilityForResult_Promise_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityForResult_Promise_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbilityForResult_Promise_OnResult';
+      let startAbilityForResultEventPromise = 'ACTS_UIExtension_StartAbilityForResult_Promise';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbilityForResult_Promise - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityForResultEventPromise, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_Promise_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbilityForResult_Promise_001 success');
+              }
+            });
+          }
+          else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      setTimeout(timeout, 10000);
+    })
+
+
+    it('ACTS_UIExtension_StartAbilityForResult_Options_Promise_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityForResult_Options_Promise_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let onResultEvent = 'ACTS_UIExtension_StartAbilityForResult_Options_Promise_OnResult';
+      let startAbilityForResultOpsEventPromise = 'ACTS_UIExtension_StartAbilityForResult_Options_Promise';
+
+      var flag = true
+
+      function UnSubscribeCallback() {
+        console.log(TAG + "UnSubscribeInfoCallback");
+        flag = false;
+        done();
+      }
+
+      function timeout() {
+        if(flag == true) {
+          expect().assertFail();
+          console.debug(TAG + 'StartAbilityForResult_Options_Promise - timeout');
+          commonEventManager.unsubscribe(subscriber, UnSubscribeCallback)
+        }
+      }
+
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, onResultEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        subscriber = data;
+
+        commonEventManager.subscribe(subscriber, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityForResultOpsEventPromise, (err) => {
+              if (err) {
+                console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_Options_Promise_001 failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish ACTS_UIExtension_StartAbilityForResult_Options_Promise_001 success');
+              }
+            });
+          }
+          else if (data.event == onResultEvent) {
+            setTimeout(async () => {
+              commonEventManager.unsubscribe(subscriber, UnSubscribeCallback);
+            }, sleepTimeOne);
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+      setTimeout(timeout, 10000);
+    })
   })
 }
