@@ -10,20 +10,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_app_assist_suite("acts_ffrt_main") {
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsFfrtMainTest"
-  part_name = "ffrt"
-  subsystem_name = "resourceschedule"
-}
-ohos_js_app_suite("resourceschedule_ffrt_js_test") {
-  test_hap = true
-  testonly = true
+
+ohos_js_hap_suite("resourceschedule_ffrt_js_test") {
+  hap_profile = "./src/main/module.json"
+  deps = [
+    ":windowStage_js_assets",
+    ":windowStage_resources",
+  ]
+  ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsFfrtNativeTest"
-  part_name = "ffrt"
   subsystem_name = "resourceschedule"
-  deps = [ ":acts_ffrt_main" ]
+  part_name = "ffrt"
+  shared_libraries = [ "./src/main/cpp:ffrtndk" ]
+}
+ohos_app_scope("windowStage_app_profile") {
+  app_profile = "AppScope/app.json"
+  sources = [ "AppScope/resources" ]
+}
+ohos_js_assets("windowStage_js_assets") {
+  source_dir = "./src/main/ets"
+}
+ohos_resources("windowStage_resources") {
+  sources = [ "./src/main/resources" ]
+  deps = [ ":windowStage_app_profile" ]
+  hap_profile = "./src/main/module.json"
 }
