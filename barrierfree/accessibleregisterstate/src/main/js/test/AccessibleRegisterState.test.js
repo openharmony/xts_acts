@@ -47,8 +47,9 @@ describe('AccessibleRegisterState', function () {
     it('RegisterStateOnOff_0330', 0, async function (done) {
         console.info('RegisterStateOnOff_0330');
         let stateEventType = 'accessibilityStateChange';
-        accessibility.on(stateEventType, (data) => {});
-        accessibility.off(stateEventType, (data) => {});
+        let callbackdata = (data) => {}
+        accessibility.on(stateEventType, callbackdata);
+        accessibility.off(stateEventType, callbackdata);
         expect(true).assertTrue();
         done();
     })
@@ -64,11 +65,12 @@ describe('AccessibleRegisterState', function () {
     it('RegisterStateOnOff_0340', 0, async function (done) {
         console.info('RegisterStateOnOff_0340');
         let stateEventType = 'touchGuideStateChange';
-        accessibility.on(stateEventType, (data) => {});
-        accessibility.off(stateEventType, (data) => {});
+        let callbackdata = (data) => {}
+        
+        accessibility.on(stateEventType, callbackdata);
+        accessibility.off(stateEventType, callbackdata);
 		expect(true).assertTrue();
         done();
     })
 })
-
 }
