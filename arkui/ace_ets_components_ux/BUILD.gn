@@ -17,6 +17,7 @@ group("componentUxTest") {
     deps = [
       "ace_ets_component_badge:ActsAcebadgeTest",
       "ace_ets_component_button:ActsAceButtonTest",
+      "ace_ets_component_calendarpicker:ActsAceCalendarPickerTest",
       "ace_ets_component_checkbox:ActsAceCheckboxTest",
       "ace_ets_component_clickeffect:ActsAceClickEffectTest",
       "ace_ets_component_datapanel:ActsAceDatapanelTest",
