@@ -76,7 +76,7 @@ export default class EntryAbility extends Ability {
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
     setTimeout(() => {
-      globalThis.abilityContext.terminateSelf((err) => {
+      this.context.terminateSelf((err) => {
         console.log('terminateSelf result:' + JSON.stringify(err));
       });
     }, delayTime3000);
