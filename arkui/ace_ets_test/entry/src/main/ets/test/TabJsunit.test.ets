@@ -95,7 +95,7 @@ export default function tabJsunit() {
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Tabs')
       expect(obj.$attrs.barPosition).assertEqual('BarPosition.End')
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Scrollable')
+      expect(obj.$attrs.barMode).assertEqual('BarMode.Scrollable,{"margin":"0.00vp","nonScrollableLayoutStyle":"LayoutStyle.ALWAYS_CENTER"}')
       expect(obj.$attrs.vertical).assertEqual('false')
       expect(obj.$attrs.scrollable).assertFalse()
       console.info('++++++++++++++++ Tab TestCase 3 End ++++++++++++++++');
