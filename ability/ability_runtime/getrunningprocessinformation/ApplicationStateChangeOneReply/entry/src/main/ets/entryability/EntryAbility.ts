@@ -45,9 +45,7 @@ let applicationStateChangeCallbackFir = {
     setTimeout(() => {
       console.info('Enter onApplicationForeground publish!');
       commonEvent.publish('processState', commonEventData, (err) => {
-        console.info('====>processState publish err: ' + JSON.stringify(err) + commonEventData.parameters.commonStateArr[0]
-        + commonEventData.parameters.commonStateArr[1] + commonEventData.parameters.commonStateArr[2]
-        + commonEventData.parameters.commonStateArr[3]);
+        console.info('====>processState publish err: ' + JSON.stringify(err));
       });
     }, delayTime1000);
   },
@@ -150,9 +148,7 @@ export default class EntryAbility extends Ability {
         globalThis.want.action === 'DoubleRegisterOff')) {
       setTimeout(() => {
         commonEvent.publish('processState', commonEventData, (err) => {
-          console.info('====>processState publish err: ' + JSON.stringify(err) + commonEventData.parameters.commonStateArr[0]
-          + commonEventData.parameters.commonStateArr[1] + commonEventData.parameters.commonStateArr[2]
-          + commonEventData.parameters.commonStateArr[3]);
+          console.info('====>processState publish err: ' + JSON.stringify(err));
         });
       }, delayTime2000);
 
