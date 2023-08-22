@@ -15,7 +15,6 @@
 
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-// @ts-ignore
 import print from '@ohos.print'
 
 const DOMAIN: number = 0x0023
@@ -85,6 +84,5 @@ export default function printTest() {
         expect().assertFail();
       }
     })
-
   })
 }
