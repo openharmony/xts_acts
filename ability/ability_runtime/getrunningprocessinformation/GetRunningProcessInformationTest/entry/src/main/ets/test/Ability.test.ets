@@ -101,11 +101,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -168,12 +169,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -236,11 +237,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(1);
             expect(data.parameters.commonStateArr[3]).assertEqual(1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -304,11 +306,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
             expect(data.parameters.commonStateArr[3]).assertEqual(1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -372,11 +375,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -440,11 +444,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
             expect(data.parameters.commonStateArr[3]).assertEqual(1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -504,11 +509,12 @@ export default function abilityTest() {
             expect(data.parameters.commonStateArr[1]).assertEqual(1);
             expect(data.parameters.commonStateArr[2]).assertEqual(-1);
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -569,11 +575,12 @@ export default function abilityTest() {
           console.info("entered assert zone!");
           try {
             expect(data.parameters.commonStateArr).assertEqual(-1);
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -634,11 +641,12 @@ export default function abilityTest() {
             console.info("this is array one");
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
             console.info("this is array one");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
@@ -710,11 +718,12 @@ export default function abilityTest() {
             console.info("this is array one");
             expect(data.parameters.commonStateArr[3]).assertEqual(-1);
             console.info("this is array one");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
           catch (error) {
             console.log("An error is generated");
+            commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
 
