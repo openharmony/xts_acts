@@ -38,37 +38,35 @@ describe('AccessibleRegisterState', function () {
     /*
     * @tc.number  RegisterStateOnOff_0330
     * @tc.name    RegisterStateOnOff_0330
-    * @tc.desc    The parameter input is 'accessibilityStateChange', test the accessibility.on() function,
-    *             and return void.
+    * @tc.desc    on(accessibilityStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0330', 0, async function (done) {
-        console.info('RegisterStateOnOff_0330');
-        let stateEventType = 'accessibilityStateChange';
-        let callbackdata = (data) => {}
-        accessibility.on(stateEventType, callbackdata);
-        accessibility.off(stateEventType, callbackdata);
-        expect(true).assertTrue();
-        done();
+      console.info('RegisterStateOnOff_0330');
+      let callbackdata = (data) => {
+      }
+      accessibility.on('accessibilityStateChange', callbackdata);
+      accessibility.off('accessibilityStateChange', callbackdata);
+      expect(true).assertTrue();
+      done();
     })
 
     /*
     * @tc.number  RegisterStateOnOff_0340
     * @tc.name    RegisterStateOnOff_0340
-    * @tc.desc    The parameter input is 'touchGuideStateChange', test the accessibility.on() function,
-    *             and return void.
+    * @tc.desc    on(touchGuideStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0340', 0, async function (done) {
-        console.info('RegisterStateOnOff_0340');
-        let stateEventType = 'touchGuideStateChange';
-        let callbackdata = (data) => {}
-        accessibility.on(stateEventType, callbackdata);
-        accessibility.off(stateEventType, callbackdata);
-		expect(true).assertTrue();
-        done();
+      console.info('RegisterStateOnOff_0340');
+      let callbackdata = (data) => {
+      }
+      accessibility.on('touchGuideStateChange', callbackdata);
+      accessibility.off('touchGuideStateChange', callbackdata);
+      expect(true).assertTrue();
+      done();
     })
 })
 }
