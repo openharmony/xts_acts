@@ -85,13 +85,11 @@ export default function audioManagerTest() {
       try {
         let maxvol;
         var maxvol1 = new ArrayList<Number>();
-        var maxvol2 = [15, 15, 15, 15, 15, 15, 15];
-        for(let index in audio.AudioVolumeType){
-          maxvol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType[index]);
-          console.info(`${index} max volume : ${maxvol}`);
-          if(index != 'ALL'){
-            maxvol1.add(maxvol);
-          }
+        var maxvol2 = [15, 15, 15, 15, 15, 15];
+        for (let index = 0; index < env.AudioVolumeType.length; index++) {
+          maxvol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[index]);
+          console.info(`${env.AudioVolumeType[index]} max volume : ${maxvol}`);
+          maxvol1.add(maxvol);
         }
         for(let i =0; i < maxvol1.length; i++){
           console.info(`check maxvolume: maxvol1 : ${maxvol1[i]}, maxvol2 : ${maxvol2[i]}`);
@@ -117,13 +115,11 @@ export default function audioManagerTest() {
       try {
         let minvol;
         var minvol1 = new ArrayList<Number>();
-        var minvol2 = [1, 1, 0, 0, 0, 1, 1];
-        for(let index in audio.AudioVolumeType){
-          minvol = await audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType[index]);
-          console.info(`${index} min volume : ${minvol}`);
-          if(index != 'ALL'){
-            minvol1.add(minvol);
-          }
+        var minvol2 = [1, 0, 0, 1, 1, 1];
+        for (let index = 0; index < env.AudioVolumeType.length; index++) {
+          minvol = await audioVolumeGroupManager.getMinVolume(env.AudioVolumeType[index]);
+          console.info(`${env.AudioVolumeType[index]} min volume : ${minvol}`);
+          minvol1.add(minvol);
         }
         for(let i =0; i < minvol1.length; i++){
           console.info(`check minvolume minvol1 : ${minvol1[i]}, minvol2 : ${minvol2[i]}`);

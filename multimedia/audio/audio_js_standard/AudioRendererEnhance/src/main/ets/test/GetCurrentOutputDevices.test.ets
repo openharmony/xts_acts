@@ -140,7 +140,7 @@ export default function audioRendererTest() {
           console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, name:${data.name}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
           expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
           expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
-          expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+          expect(data.id).assertEqual(env.OUTPUT_NUMBER_1);
           done();
         }).catch((error) => {
           console.log("${TagFrmwkRender}: getCurrentOutputDevices error = " + error);
@@ -169,7 +169,7 @@ export default function audioRendererTest() {
           console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
           expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
           expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
-          expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+          expect(data.id).assertEqual(env.OUTPUT_NUMBER_1);
           console.info(`${TagFrmwkRender}: Renderer get current output device SUCCESS, now stop audiorender`);
           audioRen.drain().then(() => {
             console.info(`${TagFrmwkRender}: Renderer drain : SUCCESS, stop audiorender`);
@@ -210,7 +210,7 @@ export default function audioRendererTest() {
           console.info(`${TagFrmwkRender}: deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
           expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
           expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
-          expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+          expect(data.id).assertEqual(env.OUTPUT_NUMBER_1);
           done();
         }
       });
@@ -235,7 +235,7 @@ export default function audioRendererTest() {
           console.info(`${TagFrmwkRender}: getCurrentOutputDevices :deviceRole:${data.deviceRole}, deviceType:${data.deviceType}, id:${data.id}, address:${data.address}, sampleRates:${data.sampleRates}, channelCounts:${data.channelCounts}, channelMasks:${data.channelMasks}`);
           expect(data.deviceRole).assertEqual(audio.DeviceRole.OUTPUT_DEVICE);
           expect(data.deviceType).assertEqual(audio.DeviceType.SPEAKER);
-          expect(data.id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+          expect(data.id).assertEqual(env.OUTPUT_NUMBER_1);
           console.info(`${TagFrmwkRender}: Renderer getCurrentOutputDevices SUCCESS! now stop the audiorenderer`);
           audioRen.drain().then(() => {
             console.info(`${TagFrmwkRender}: Renderer drain, stop the audiorenderer`);
