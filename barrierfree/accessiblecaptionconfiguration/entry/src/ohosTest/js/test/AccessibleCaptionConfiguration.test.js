@@ -41,8 +41,9 @@ describe('AccessibleCaptionConfiguration', function () {
     console.info('CaptionConfiguration_0010');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'enableChange';
-    captionManager.on(stateEventType, (data) => {});
-	captionManager.off(stateEventType, (data) => {});
+    let callbackdata = (data) => {}
+    captionManager.on(stateEventType, callbackdata);
+	captionManager.off(stateEventType, callbackdata);
     expect(true).assertTrue();
     done();
   })
@@ -59,8 +60,9 @@ describe('AccessibleCaptionConfiguration', function () {
     console.info('CaptionConfiguration_0020');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'styleChange';
-    captionManager.on(stateEventType, (data) => {});
-	captionManager.off(stateEventType, (data) => {});
+    let callbackdata = (data) => {}
+    captionManager.on(stateEventType, callbackdata);
+	captionManager.off(stateEventType, callbackdata);
     expect(true).assertTrue();
     done();
   })
