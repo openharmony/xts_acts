@@ -1634,5 +1634,111 @@ export default function ContactInterfaceStageTest() {
       });
       sleep(500);
     });
+
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0100
+     * @tc.name contactsApi_selectContacts error
+     * @tc.desc Function test
+     */
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0100", 0, async function (done) {
+      contact.addContact(globalThis.context, contactData, (err, data) => {
+        if (!err) {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0100  data = " + JSON.stringify(data));
+          expect(data > 0).assertTrue();
+          done();
+          return;
+        }
+        contact.selectContacts((err, data) => {
+          if (err) {
+            console.info("SUB_Telephony_ContactsApi_selectContacts_test_0100  err = " + JSON.stringify(err));
+            expect(false).assertTrue();
+            done();
+            return;
+          }
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0100  data = " + JSON.stringify(data));
+          done();
+        });
+      });
+      sleep(500);
+    });
+
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0200
+     * @tc.name contactsApi_selectContacts error
+     * @tc.desc Function test
+     */
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0200", 0, async function (done) {
+      contact.addContact(globalThis.context, contactData, (err, data) => {
+        if (!err) {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0200  data = " + JSON.stringify(data));
+          expect(data > 0).assertTrue();
+          done();
+          return;
+        }
+        contact.selectContacts().then((data) => {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0200  data = " + JSON.stringify(data));
+          done();
+        }).catch((err) => {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0200  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        });
+      });
+      sleep(500);
+    });
+
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0300
+     * @tc.name contactsApi_selectContacts error
+     * @tc.desc Function test
+     */
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0300", 0, async function (done) {
+      contact.addContact(globalThis.context, contactData, (err, data) => {
+        if (!err) {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0300  data = " + JSON.stringify(data));
+          expect(data > 0).assertTrue();
+          done();
+          return;
+        }
+        contact.selectContacts({isMultiSelect : false}, (err, data) => {
+          if (err) {
+            console.info("SUB_Telephony_ContactsApi_selectContacts_test_0300  err = " + JSON.stringify(err));
+            expect(false).assertTrue();
+            done();
+            return;
+          }
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0300  data = " + JSON.stringify(data));
+          done();
+        });
+      });
+      sleep(500);
+    });
+
+    /**
+     * @tc.number SUB_Telephony_ContactsApi_selectContacts_test_0400
+     * @tc.name contactsApi_selectContacts error
+     * @tc.desc Function test
+     */
+    it("SUB_Telephony_ContactsApi_selectContacts_test_0400", 0, async function (done) {
+      contact.addContact(globalThis.context, contactData, (err, data) => {
+        if (!err) {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0400  data = " + JSON.stringify(data));
+          expect(data > 0).assertTrue();
+          done();
+          return;
+        }
+        contact.selectContacts({isMultiSelect : false}).then((data) => {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0400  data = " + JSON.stringify(data));
+          done();
+        }).catch((err) => {
+          console.info("SUB_Telephony_ContactsApi_selectContacts_test_0400  err = " + JSON.stringify(err));
+          expect(false).assertTrue();
+          done();
+          return;
+        });
+      });
+      sleep(500);
+    });
   });
 }

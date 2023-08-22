@@ -44,6 +44,7 @@ export default function Telephony_NetworkManagerRegisterTest() {
                 });
                 netConn.on('netCapabilitiesChange', function (value) {
                     console.log("netCapabilitiesChange " + JSON.stringify(value));
+                    expect(value.NetHandle !== undefined).assertTrue();
                 });
                 netConn.on('netConnectionPropertiesChange', function (value) {
                     console.log("netConnectionPropertiesChange" + JSON.stringify(value));
