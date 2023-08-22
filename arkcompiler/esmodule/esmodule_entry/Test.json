@@ -5,7 +5,8 @@
         "test-timeout": "1800000",
         "bundle-name": "com.esmodule.acts",
         "module-name": "entry",
-        "shell-timeout": "180000"
+        "shell-timeout": "180000",
+        "compile-mode": "esmodule"
     },
     "kits": [
         {
