@@ -158,16 +158,16 @@ static inline ffrt_function_header_t* ffrt_create_function_wrapper(const ffrt_fu
     return (ffrt_function_header_t*)f;
 }
 
-static inline void ffrt_submit_c(ffrt_function_t func, const ffrt_function_t after_func,
-    void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
+static inline void ffrt_submit_c(ffrt_function_t func, void* arg,
+    const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 {
-    ffrt_submit_base(ffrt_create_function_wrapper(func, after_func, arg), in_deps, out_deps, attr);
+    ffrt_submit_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
 }
 
-static inline ffrt_task_handle_t ffrt_submit_h_c(ffrt_function_t func, const ffrt_function_t after_func,
-    void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
+static inline ffrt_task_handle_t ffrt_submit_h_c(ffrt_function_t func, void* arg,
+    const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 {
-    return ffrt_submit_h_base(ffrt_create_function_wrapper(func, after_func, arg), in_deps, out_deps, attr);
+    return ffrt_submit_h_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
 }
 
 void FfrtCvTask(void* arg)
@@ -184,9 +184,9 @@ void FfrtCvTask(void* arg)
     if (ret != ffrt_success) {
         printf("error\n");
     }
-    ffrt_submit_c(Func1, NULL, &t, NULL, NULL, NULL);
-    ffrt_submit_c(Func2, NULL, &t, NULL, NULL, NULL);
-    ffrt_submit_c(Func3, NULL, &t, NULL, NULL, NULL);
+    ffrt_submit_c(Func1, &t, NULL, NULL, NULL);
+    ffrt_submit_c(Func2, &t, NULL, NULL, NULL);
+    ffrt_submit_c(Func3, &t, NULL, NULL, NULL);
     ffrt_wait();
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -206,7 +206,7 @@ static napi_value SubmitSimpleFfrtTask(napi_env env, napi_callback_info info)
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "qos is %{public}d", ffrt_task_attr_get_qos(&attr));
     ffrt_task_attr_set_qos(&attr, static_cast<ffrt_qos_t>(ffrt_qos_user_initiated));
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "qos2 is %{public}d", ffrt_task_attr_get_qos(&attr));
-    ffrt_submit_c(MyPrint, NULL, NULL, NULL, NULL, &attr);
+    ffrt_submit_c(MyPrint, NULL, NULL, NULL, &attr);
     int result = ffrt_this_task_update_qos(static_cast<ffrt_qos_t>(ffrt_qos_default));
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "update_qos result is %{public}d", result);
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "qos3 is %{public}d", ffrt_task_attr_get_qos(&attr));
@@ -223,8 +223,8 @@ static napi_value SubmitSimpleFfrtTask(napi_env env, napi_callback_info info)
 static napi_value SubmitCondFfrtTask(napi_env env, napi_callback_info info)
 {
     int a = 0;
-    ffrt_submit_c(FfrtCvTask, NULL, &a, NULL, NULL, NULL);
-    ffrt_task_handle_t task1 = ffrt_submit_h_c(MyPrint, NULL, NULL, NULL, NULL, NULL);
+    ffrt_submit_c(FfrtCvTask, &a, NULL, NULL, NULL);
+    ffrt_task_handle_t task1 = ffrt_submit_h_c(MyPrint, NULL, NULL, NULL, NULL);
     ffrt_wait_deps(nullptr);
     ffrt_wait();
     OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "cond task a is %{public}d", a);
