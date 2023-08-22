@@ -13,14 +13,20 @@
  * limitations under the License.
  */
 
+import btAccessTest from './BluetoothAccess.test.js'
+import btManagerSwitchTest from './BtManagerSetSwitch.test.js'
 import btLocalNameTest from './BtSetLocalName.test.js'
 import btSwitchTest from './BtSetSwitch.test.js'
 import btSppTest from './BtSpp.test.js'
 import btSubscBleTest from './BtSysSubscBle.test.js'
 import btManagerSppTest from './BtManagerSpp.test.js'
-import btManagerSwitchTest from './BtManagerSetSwitch.test.js'
+import btSocketTest from './BtSocket.test.js'
+import btConstantTest from './BluetoothConstant.test.js'
 
 export default function testsuite() {
+    btAccessTest()
+    btConstantTest()
+    btSocketTest()
     btLocalNameTest()
     btSwitchTest()
     btSppTest()

@@ -107,10 +107,6 @@
                 }
             },
             {
-                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-                "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
-            },
-            {
                 "name": "ohos.permission.DISCOVER_BLUETOOTH",
                 "reason": "",
                 "usedScene": {
@@ -129,6 +125,24 @@
                     ],
                     "when": "inuse"
                 }
+            },
+            {
+                "name": "ohos.permission.ACCESS_BLUETOOTH",
+                "reason": "",
+                "usedScene": {
+                    "ability": [
+                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+                    ],
+                    "when": "inuse"
+                }
+            },
+            {
+                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+                "reason": ""
+            },
+            {
+                "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
+                "reason": ""
             }
         ],
         "testRunner": {

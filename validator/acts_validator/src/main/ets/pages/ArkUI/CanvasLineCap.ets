@@ -32,64 +32,68 @@ struct SetCircle {
   }
   @Builder specificNoParam() {
     Column() {
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-        Text('butt').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(90, 90, 170, 120);
-            this.context.lineWidth = 8;
-            this.context.beginPath();
-            this.context.lineCap = 'butt';
-            this.context.moveTo(100, 100);
-            this.context.lineTo(250, 100);
-            this.context.stroke();
-            this.num1 = 1;
-            if ( this.num1 == this.num3 && this.num2 == 1 ){
-              this.Vue = true;
-            }
-          })
-        Text('round').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(90, 90, 170, 120);
-            this.context.lineWidth = 8;
-            this.context.beginPath();
-            this.context.lineCap = 'round';
-            this.context.moveTo(100, 100);
-            this.context.lineTo(250, 100);
-            this.context.stroke();
-            this.num2 = 1;
-            if ( this.num1 == 1 && this.num3 == this.num2 ){
-              this.Vue = true;
-            }
-          })
-        Text('square').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
-          .onClick(()=>{
-            this.context.clearRect(90, 90, 170, 120);
-            this.context.lineWidth = 8;
-            this.context.beginPath();
-            this.context.lineCap = 'square';
-            this.context.moveTo(100, 100);
-            this.context.lineTo(250, 100);
-            this.context.stroke();
-            this.num3 = 1;
-            if ( this.num1 == 1 && this.num3 == this.num2 ){
-              this.Vue = true;
-            }
-          })
-      }.width('70%').height('30%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffffffff')
-          .onReady(() =>{
-            this.context.lineWidth = 8;
-            this.context.beginPath();
-            this.context.lineCap = 'round';
-            this.context.moveTo(100, 100);
-            this.context.lineTo(250, 100);
-            this.context.stroke();
-          })
-      }.width('100%').height('70%')
+      Scroll() {
+        Column() {
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+            Text('butt').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(90, 90, 170, 120);
+                this.context.lineWidth = 8;
+                this.context.beginPath();
+                this.context.lineCap = 'butt';
+                this.context.moveTo(100, 100);
+                this.context.lineTo(250, 100);
+                this.context.stroke();
+                this.num1 = 1;
+                if ( this.num1 == this.num3 && this.num2 == 1 ){
+                  this.Vue = true;
+                }
+              })
+            Text('round').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(90, 90, 170, 120);
+                this.context.lineWidth = 8;
+                this.context.beginPath();
+                this.context.lineCap = 'round';
+                this.context.moveTo(100, 100);
+                this.context.lineTo(250, 100);
+                this.context.stroke();
+                this.num2 = 1;
+                if ( this.num1 == 1 && this.num3 == this.num2 ){
+                  this.Vue = true;
+                }
+              })
+            Text('square').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+              .onClick(()=>{
+                this.context.clearRect(90, 90, 170, 120);
+                this.context.lineWidth = 8;
+                this.context.beginPath();
+                this.context.lineCap = 'square';
+                this.context.moveTo(100, 100);
+                this.context.lineTo(250, 100);
+                this.context.stroke();
+                this.num3 = 1;
+                if ( this.num1 == 1 && this.num3 == this.num2 ){
+                  this.Vue = true;
+                }
+              })
+          }.width('70%').height('30%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Canvas(this.context)
+              .width('100%')
+              .height('100%')
+              .backgroundColor('#ffffffff')
+              .onReady(() =>{
+                this.context.lineWidth = 8;
+                this.context.beginPath();
+                this.context.lineCap = 'round';
+                this.context.moveTo(100, 100);
+                this.context.lineTo(250, 100);
+                this.context.stroke();
+              })
+          }.width('100%').height('70%')
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

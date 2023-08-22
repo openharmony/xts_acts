@@ -88,71 +88,73 @@ struct audioOutputRouting {
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
       Column() {
         Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-          Column(){
-            Row(){
-              Text(`是否设备支持TypeC耳机？`).fontColor(Color.White).fontSize('18fp')
-            }
-            Row(){
-              Column(){
-                Button(`不支持`)
-                  .borderRadius(8)
-                  .backgroundColor(0x317aff)
-                  .width('30%')
-                  .enabled(!this.yesEnable)
-                  .opacity(!this.yesEnable? 1 : 0.4)
-                  .onClick(async () => {
-                    this.Vue = true
-                  })
+          Scroll() {
+            Column(){
+              Row(){
+                Text(`是否设备支持TypeC耳机？`).fontColor(Color.White).fontSize('18fp')
               }
-              Column(){
-                Button(`支持`)
-                  .borderRadius(8)
-                  .backgroundColor(0x317aff)
-                  .width('30%')
-                  .onClick(async () => {
-                    this.yesEnable = true
-                    this.playEnable = true
+              Row(){
+                Column(){
+                  Button(`不支持`)
+                    .borderRadius(8)
+                    .backgroundColor(0x317aff)
+                    .width('30%')
+                    .enabled(!this.yesEnable)
+                    .opacity(!this.yesEnable? 1 : 0.4)
+                    .onClick(async () => {
+                      this.Vue = true
+                    })
+                }
+                Column(){
+                  Button(`支持`)
+                    .borderRadius(8)
+                    .backgroundColor(0x317aff)
+                    .width('30%')
+                    .onClick(async () => {
+                      this.yesEnable = true
+                      this.playEnable = true
 
-                  })
+                    })
+                }
               }
-            }
-            Row(){
-              Text('测试目的:\n当设备连接TypeC耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持TypeC外设\n2. 按下播放按钮\n3. 连接TypeC耳机\n4. 拔出TypeC耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持TypeC耳机连接或者插拔TypeC耳机后接收到路由通知、路由显示正确，且连接TypeC后音频通过TypeC耳机播放，则用例pass').fontColor(Color.White).fontSize('18fp')
+              Row(){
+                Text('测试目的:\n当设备连接TypeC耳机时，音频路由是否正确切换\n测试准备:\n断连任何外设，保持设备常亮\n测试步骤：\n1. 验证设备是否支持TypeC外设\n2. 按下播放按钮\n3. 连接TypeC耳机\n4. 拔出TypeC耳机\n5. 按下停止按钮\n测试标准：\n如果设备不支持TypeC耳机连接或者插拔TypeC耳机后接收到路由通知、路由显示正确，且连接TypeC后音频通过TypeC耳机播放，则用例pass').fontColor(Color.White).fontSize('18fp')
 
-            }
-            Row(){
-              Text(`Audio输出路由：${this.outputDevice}`).fontColor(Color.White).fontSize('18fp')
-            }
-            Row(){
-              Column(){
-                Button(`播放`)
-                  .borderRadius(8)
-                  .backgroundColor(0x317aff)
-                  .width('30%')
-                  .enabled(this.playEnable)
-                  .opacity(this.playEnable? 1 : 0.4)
-                  .onClick(async () => {
-                    this.Vue = true
-                    this.stopEnable = true
-                    this.playEnable = false
-                    await AudioRenderer.createAudioRenderer()
-                    await AudioRenderer.startRenderer()
-
-                  })
               }
-              Column(){
-                Button(`停止`)
-                  .borderRadius(8)
-                  .backgroundColor(0x317aff)
-                  .width('30%')
-                  .enabled(this.stopEnable)
-                  .opacity(this.stopEnable? 1 : 0.4)
-                  .onClick(async () => {
-                    await AudioRenderer.stopRenderer()
-                    await AudioRenderer.releaseRenderer()
-                    this.playEnable = true
-                    this.stopEnable = false
-                  })
+              Row(){
+                Text(`Audio输出路由：${this.outputDevice}`).fontColor(Color.White).fontSize('18fp')
+              }
+              Row(){
+                Column(){
+                  Button(`播放`)
+                    .borderRadius(8)
+                    .backgroundColor(0x317aff)
+                    .width('30%')
+                    .enabled(this.playEnable)
+                    .opacity(this.playEnable? 1 : 0.4)
+                    .onClick(async () => {
+                      this.Vue = true
+                      this.stopEnable = true
+                      this.playEnable = false
+                      await AudioRenderer.createAudioRenderer()
+                      await AudioRenderer.startRenderer()
+
+                    })
+                }
+                Column(){
+                  Button(`停止`)
+                    .borderRadius(8)
+                    .backgroundColor(0x317aff)
+                    .width('30%')
+                    .enabled(this.stopEnable)
+                    .opacity(this.stopEnable? 1 : 0.4)
+                    .onClick(async () => {
+                      await AudioRenderer.stopRenderer()
+                      await AudioRenderer.releaseRenderer()
+                      this.playEnable = true
+                      this.stopEnable = false
+                    })
+                }
               }
             }
           }

@@ -14,8 +14,10 @@
  */
 import tabs from './Tabs'
 import tabsSec from './TabsSec'
+import tabsThird from './TabsThird'
 
 export default function testsuite() {
        tabs()
        tabsSec()
+       tabsThird()
 }

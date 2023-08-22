@@ -1,4 +1,4 @@
-# Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+# Copyright (c) 2023 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,31 +11,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/tools/build/suite.gni")
-
-ohos_js_hap_suite("ActsAceEtsLayoutTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":ace_ets_component_flex_js_assets",
-    ":ace_ets_component_flex_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsAceEtsLayoutTest"
-}
-
-ohos_app_scope("ace_ets_component_flex_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("ace_ets_component_flex_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("ace_ets_component_flex_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":ace_ets_component_flex_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+group("ActsAceEtsLayoutTest") {
+  testonly = true
+  if (is_standard_system) {
+    deps = [
+      "ace_ets_layout_column_test:ActsAceEtsLayoutColumnTest",
+      "ace_ets_layout_flex_test:ActsAceEtsLayoutFlexTest",
+      "ace_ets_layout_gridCol_test:ActsAceEtsLayoutGridColTest",
+      "ace_ets_layout_gridRow_test:ActsAceEtsLayoutGridRowTest",
+      "ace_ets_layout_grid_test:ActsAceEtsLayoutGridTest",
+      "ace_ets_layout_list_test:ActsAceEtsLayoutListTest",
+      "ace_ets_layout_relativeContainer_test:ActsAceEtsLayoutRelativeContainerTest",
+      "ace_ets_layout_row_test:ActsAceEtsLayoutRowTest",
+      "ace_ets_layout_scroll_test:ActsAceEtsLayoutScrollTest",
+      "ace_ets_layout_stack_test:ActsAceEtsLayoutStackTest",
+      "ace_ets_layout_swiper_test:ActsAceEtsLayoutSwiperTest",
+      "ace_ets_layout_tabs_test:ActsAceEtsLayoutTabsTest",
+      "ace_ets_layout_waterflow_test:ActsAceEtsLayoutWaterflowTest",
+    ]
+  }
 }

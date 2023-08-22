@@ -548,7 +548,7 @@ export default function geolocationTest_geo7() {
             });
         } catch (error) {
             console.info("[lbs_js] getCurrentLocation271 promise try err." + JSON.stringify(error));
-            expect(true).assertFalse();
+            expect(error.code).assertEqual("401");
         }
         await sleep(1000);
         try {

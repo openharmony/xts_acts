@@ -30,46 +30,50 @@ struct SetCircle {
   @State X: number = 20;
   @Builder specificNoParam() {
     Column() {
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-        Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
-          .translate({ x: this.X, y: 20, z: 5 })
-          .gesture(
-          PanGesture({})
-            .onActionStart((event: GestureEvent) => {
-              console.info('Pan start');
-              this.Vue = true;
-            })
-            .onActionUpdate((event: GestureEvent) => {
-              if(event.offsetX > 200){
-                event.offsetX = 200;
-              }
-              else if(event.offsetX < 20){
-                event.offsetX = 20;
-              }
-              this.context.clearRect(100, 100, 250, 200);
-              this.X = event.offsetX;
-              this.context.lineWidth = (this.X)*0.1;
-              this.context.strokeRect(120, 120, 120, 120);
-            })
-            .onActionEnd(() => {
-              console.info('Pan end');
-            })
-          )
+      Scroll() {
+        Column() {
+          Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
+            Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
+              .translate({ x: this.X, y: 20, z: 5 })
+              .gesture(
+                PanGesture({})
+                  .onActionStart((event: GestureEvent) => {
+                    console.info('Pan start');
+                    this.Vue = true;
+                  })
+                  .onActionUpdate((event: GestureEvent) => {
+                    if(event.offsetX > 200){
+                      event.offsetX = 200;
+                    }
+                    else if(event.offsetX < 20){
+                      event.offsetX = 20;
+                    }
+                    this.context.clearRect(100, 100, 250, 200);
+                    this.X = event.offsetX;
+                    this.context.lineWidth = (this.X)*0.1;
+                    this.context.strokeRect(120, 120, 120, 120);
+                  })
+                  .onActionEnd(() => {
+                    console.info('Pan end');
+                  })
+              )
 
-      }.width('70%').height('30%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Text('边框粗细: ' + (this.X)*0.1 )
-      }.width('100%').height('20%')
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-        Canvas(this.context)
-          .width('100%')
-          .height('100%')
-          .backgroundColor('#ffffffff')
-          .onReady(() =>{
-            this.context.lineWidth = 1;
-            this.context.strokeRect(120, 120, 120, 120);
-          })
-      }.width('100%').height('50%')
+          }.width('70%').height('30%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Text('边框粗细: ' + (this.X)*0.1 )
+          }.width('100%').height('20%')
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+            Canvas(this.context)
+              .width('100%')
+              .height('100%')
+              .backgroundColor('#ffffffff')
+              .onReady(() =>{
+                this.context.lineWidth = 1;
+                this.context.strokeRect(120, 120, 120, 120);
+              })
+          }.width('100%').height('50%')
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

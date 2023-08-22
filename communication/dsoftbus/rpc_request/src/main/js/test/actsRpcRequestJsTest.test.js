@@ -641,7 +641,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00100
         * @tc.name    writeRemoteObject is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00100---------------------------");
@@ -662,7 +662,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00200
         * @tc.name    readRemoteObject is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00200---------------------------");
@@ -684,7 +684,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00300
         * @tc.name    readRemoteObject is proxy or remote object is invalid Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00300", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00300---------------------------");
@@ -705,7 +705,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00400
         * @tc.name    writeInterfaceToken is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00400", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00400---------------------------");
@@ -725,7 +725,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00500
         * @tc.name    readInterfaceToken is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00500", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00500---------------------------");
@@ -746,7 +746,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00600
         * @tc.name    setSize is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00600", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00600---------------------------");
@@ -766,7 +766,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00700
         * @tc.name    setCapacity is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00700", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00700---------------------------");
@@ -786,7 +786,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00800
         * @tc.name    rewindRead is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00800", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00800---------------------------");
@@ -806,7 +806,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00900
         * @tc.name    rewindWrite is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00900", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_00900---------------------------");
@@ -826,7 +826,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01000
         * @tc.name    writeByte is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01000", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01000---------------------------");
@@ -846,7 +846,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01100
         * @tc.name    readByte is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01100---------------------------");
@@ -866,7 +866,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01200
         * @tc.name    writeShort is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01200---------------------------");
@@ -886,7 +886,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01300
         * @tc.name    readShort is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01300", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01300---------------------------");
@@ -907,7 +907,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01400
         * @tc.name    writeInt is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01400", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01400---------------------------");
@@ -927,7 +927,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01500
         * @tc.name    readInt is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01500", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01500---------------------------");
@@ -948,7 +948,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01600
         * @tc.name    writeLong is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01600", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01600---------------------------");
@@ -968,7 +968,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01700
         * @tc.name    readLong is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01700", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01700---------------------------");
@@ -989,7 +989,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01800
         * @tc.name    writeFloat is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01800", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01800---------------------------");
@@ -1009,7 +1009,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01900
         * @tc.name    readFloat is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01900", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_01900---------------------------");
@@ -1030,7 +1030,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02000
         * @tc.name    writeDouble is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02000", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02000---------------------------");
@@ -1050,7 +1050,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02100
         * @tc.name    readDouble is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02100---------------------------");
@@ -1071,7 +1071,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02200
         * @tc.name    writeBoolean is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02200---------------------------");
@@ -1091,7 +1091,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02300
         * @tc.name    readBoolean is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02300", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02300---------------------------");
@@ -1112,7 +1112,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02400
         * @tc.name    writeChar is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02400", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02400---------------------------");
@@ -1132,7 +1132,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02500
         * @tc.name    readChar is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02500", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02500---------------------------");
@@ -1153,7 +1153,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02600
         * @tc.name    writeString is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02600", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02600---------------------------");
@@ -1173,7 +1173,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02700
         * @tc.name    readString is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02700", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02700---------------------------");
@@ -1194,7 +1194,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02800
         * @tc.name    writeParcelable is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02800", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02800---------------------------");
@@ -1215,7 +1215,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02900
         * @tc.name    writeParcelable is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02900", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_02900---------------------------");
@@ -1238,7 +1238,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03000
         * @tc.name    writeByteArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03000", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03000---------------------------");
@@ -1259,7 +1259,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03100
         * @tc.name    readByteArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03100---------------------------");
@@ -1281,7 +1281,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03200
         * @tc.name    writeShortArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03200---------------------------");
@@ -1302,7 +1302,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03300
         * @tc.name    readShortArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03300", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03300---------------------------");
@@ -1324,7 +1324,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03400
         * @tc.name    writeIntArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03400", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03400---------------------------");
@@ -1345,7 +1345,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03500
         * @tc.name    readIntArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03500", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03500---------------------------");
@@ -1367,7 +1367,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03600
         * @tc.name    writeLongArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03600", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03600---------------------------");
@@ -1388,7 +1388,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03700
         * @tc.name    readLongArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03700", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03700---------------------------");
@@ -1410,7 +1410,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03800
         * @tc.name    writeFloatArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03800", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03800---------------------------");
@@ -1431,7 +1431,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03900
         * @tc.name    readFloatArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03900", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_03900---------------------------");
@@ -1453,7 +1453,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04000
         * @tc.name    writeDoubleArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04000", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04000---------------------------");
@@ -1474,7 +1474,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04100
         * @tc.name    readDoubleArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04100---------------------------");
@@ -1496,7 +1496,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04200
         * @tc.name    writeBooleanArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04200---------------------------");
@@ -1517,7 +1517,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04300
         * @tc.name    readBooleanArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04300", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04300---------------------------");
@@ -1539,7 +1539,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04400
         * @tc.name    writeCharArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04400", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04400---------------------------");
@@ -1560,7 +1560,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04500
         * @tc.name    readCharArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04500", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04500---------------------------");
@@ -1582,7 +1582,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04600
         * @tc.name    writeStringArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04600", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04600---------------------------");
@@ -1603,7 +1603,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04700
         * @tc.name    readStringArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04700", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04700---------------------------");
@@ -1625,7 +1625,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04800
         * @tc.name    writeNoException is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04800", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04800---------------------------");
@@ -1645,7 +1645,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04900
         * @tc.name    readException is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04900", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_04900---------------------------");
@@ -1665,7 +1665,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05000
         * @tc.name    writeParcelableArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05000", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05000---------------------------");
@@ -1687,7 +1687,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05100
         * @tc.name    readParcelableArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05100---------------------------");
@@ -1711,7 +1711,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05200
         * @tc.name    writeRemoteObjectArray is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05200---------------------------");
@@ -1744,7 +1744,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05300
         * @tc.name    readRemoteObjectArray is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05300", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05300---------------------------");
@@ -1778,7 +1778,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05400
         * @tc.name    dupFileDescriptor is call os dup function failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05400", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05400---------------------------");
@@ -1796,7 +1796,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05500
         * @tc.name    writeFileDescriptor is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05500", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05500---------------------------");
@@ -1823,7 +1823,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05600
         * @tc.name    readFileDescriptor is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05600", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05600---------------------------");
@@ -1851,7 +1851,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05700
         * @tc.name    writeAshmem is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05700", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05700---------------------------");
@@ -1874,7 +1874,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05800
         * @tc.name     readAshmem is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05800", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05800---------------------------");
@@ -1898,7 +1898,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05900
         * @tc.name    writeRawData is write data to message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05900", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_05900---------------------------");
@@ -1919,7 +1919,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_06000
         * @tc.name    readRawData is read data from message sequence failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_06000", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_MessageSequence_errorcode_06000---------------------------");
@@ -1941,7 +1941,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_IRemoteObject_errorcode_00100
         * @tc.name    registerDeathRecipient is only proxy object permitted Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_IRemoteObject_errorcode_00100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_IRemoteObject_errorcode_00100---------------------------");
@@ -1960,7 +1960,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_IRemoteObject_errorcode_00200
         * @tc.name    unregisterDeathRecipient is only proxy object permitted Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_IRemoteObject_errorcode_00200", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_IRemoteObject_errorcode_00200---------------------------");
@@ -1979,7 +1979,7 @@ export default function actsRpcRequestJsTest() {
         * @tc.number  SUB_Softbus_IPC_Compatibility_Ashmem_errorcode_00100
         * @tc.name    writeAshmem is write to ashmem failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
-        * @tc.level   0   
+        * @tc.level   3   
         */
         it("SUB_Softbus_IPC_Compatibility_Ashmem_errorcode_00100", 0,async function(){
             console.info("---------------------start SUB_Softbus_IPC_Compatibility_Ashmem_errorcode_00100---------------------------");

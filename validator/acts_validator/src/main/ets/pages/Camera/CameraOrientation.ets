@@ -118,50 +118,55 @@ struct cameraOrientation {
         Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
 
-      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+      Scroll() {
         Column() {
-          XComponent({
-            id: 'componentId',
-            type: 'surface',
-            controller: this.mXComponentController
-          })
-            .onLoad(async () => {
-              Logger.info(this.tag, 'onLoad is called')
-			  // @ts-ignore
-              this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
-              Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
-              CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-                this.cameraListFn()
+          Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+            Column() {
+              XComponent({
+                id: 'componentId',
+                type: 'surface',
+                controller: this.mXComponentController
               })
+                .onLoad(async () => {
+                  Logger.info(this.tag, 'onLoad is called')
+                  // @ts-ignore
+                  this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
+                  Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
+                  CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                    this.cameraListFn()
+                  })
+                })
+                .size({ width: '100%', height: '100%' })
+              Text('预览').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: '40%', height: '65%' })
+
+            Column() {
+              Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
+              Text('带旋转角度的图片').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: '40%', height: '65%' })
+          }.width('100%').height('60%')
+
+          Flex({ direction: FlexDirection.Column }) {
+            Text(`Camera: ${this.cameraDeviceIndex}`).fontSize('16fp').fontColor(Color.White)
+            Text(`Orientation: ${this.imageRotation}°`).fontSize('16fp').fontColor(Color.White)
+            Text(`顺时针`).fontSize('16fp').fontColor(Color.White)
+            Text(`提示：`).fontSize('16fp').fontColor(Color.White)
+            Text(`如果左边预览窗口顺时针旋转后与右边窗口相同，选择pass，否则选择fail`)
+              .fontSize('16fp').fontColor(Color.White)
+          }.size({ width: '80%', height: '25%' })
+
+          Button(this.takeFlag ? '拍照' : '下一个')
+            .enabled(this.isEnabled)
+            .opacity(this.isEnabled ? 1 : 0.4)
+            .width('50%')
+            .height('5%')
+            .backgroundColor(0x317aff)
+            .onClick(async () => {
+              this.onChangeTake()
             })
-            .size({ width: '100%', height: '100%' })
-          Text('预览').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '40%', height: '60%' })
+        }
+      }.height('80%')
 
-        Column() {
-          Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-          Text('带旋转角度的图片').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '40%', height: '60%' })
-      }.width('100%').height('50%')
-
-      Flex({ direction: FlexDirection.Column }) {
-        Text(`Camera: ${this.cameraDeviceIndex}`).fontSize('16fp').fontColor(Color.White)
-        Text(`Orientation: ${this.imageRotation}°`).fontSize('16fp').fontColor(Color.White)
-        Text(`顺时针`).fontSize('16fp').fontColor(Color.White)
-        Text(`提示：`).fontSize('16fp').fontColor(Color.White)
-        Text(`如果左边预览窗口顺时针旋转后与右边窗口相同，选择pass，否则选择fail`)
-          .fontSize('16fp').fontColor(Color.White)
-      }.size({ width: '80%', height: '25%' })
-
-      Button(this.takeFlag ? '拍照' : '下一个')
-        .enabled(this.isEnabled)
-        .opacity(this.isEnabled ? 1 : 0.4)
-        .width('50%')
-        .height('5%')
-        .backgroundColor(0x317aff)
-        .onClick(async () => {
-          this.onChangeTake()
-        })
 
       CustomContainer({
         title: this.name,

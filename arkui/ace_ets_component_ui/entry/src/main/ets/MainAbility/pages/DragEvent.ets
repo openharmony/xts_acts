@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import dragController from "@ohos.arkui.dragController"
-import UDMF from '@ohos.data.UDMF'
+import UDMF from '@ohos.data.unifiedDataChannel';
 import promptAction from '@ohos.promptAction';
 
 

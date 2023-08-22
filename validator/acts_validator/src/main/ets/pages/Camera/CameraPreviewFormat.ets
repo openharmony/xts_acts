@@ -131,90 +131,94 @@ struct cameraFormat {
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround, direction: FlexDirection.Column }) {
-        Column() {
-          XComponent({
-            id: 'componentId',
-            type: 'surface',
-            controller: this.mXComponentController
-          })
-            .onLoad(async () => {
-              Logger.info(this.tag, 'onLoad is called')
-			  // @ts-ignore
-              this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
-              Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
-              this.cameraInit()
-            })
-            .size({ width: '100%', height: '100%' })
-          Text('预览').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '80%', height: '70%' })
+        Scroll() {
+          Column() {
+            Column() {
+              XComponent({
+                id: 'componentId',
+                type: 'surface',
+                controller: this.mXComponentController
+              })
+                .onLoad(async () => {
+                  Logger.info(this.tag, 'onLoad is called')
+                  // @ts-ignore
+                  this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
+                  Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
+                  this.cameraInit()
+                })
+                .size({ width: '100%', height: '70%' })
+              Text('预览').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: '80%' })
+            Column() {
+              Row() {
+                Select(this.resolution)
+                  .selected(this.clickFrequency)
+                  .value(this.resolutionSelectVal)
+                  .font({ size: 16, weight: 500 })
+                  .fontColor(Color.White)
+                  .selectedOptionBgColor(Color.Black)
+                  .optionBgColor(Color.Black)
+                  .selectedOptionFont({ size: 16, weight: 400 })
+                  .optionFont({ size: 16, weight: 400 })
+                  .onSelect((index: number, value) => {
+                    let indexOf = value.indexOf('x')
+                    let objW = Number(value.slice(0, indexOf))
+                    let objH = Number(value.slice(indexOf + 1))
+                    let obj = {
+                      format: 1003,
+                      size: {
+                        "width": objW,
+                        "height": objH
+                      }
+                    }
+                    CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
+                    Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
+                  })
+                  .backgroundColor(Color.Black)
+                Select(this.cameraList)
+                  .selected(this.cameraDeviceIndex)
+                  .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
+                  .font({ size: 16, weight: 500 })
+                  .fontColor(Color.White)
+                  .selectedOptionBgColor(Color.Black)
+                  .optionBgColor(Color.Black)
+                  .selectedOptionFont({ size: 16, weight: 400 })
+                  .optionFont({ size: 16, weight: 400 })
+                  .onSelect((index: number) => {
+                    this.cameraDeviceIndex = index
+                    this.cameraInit()
+                  })
+                  .backgroundColor(Color.Black)
+              }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
 
-        Column() {
-          Row() {
-            Select(this.resolution)
-              .selected(this.clickFrequency)
-              .value(this.resolutionSelectVal)
-              .font({ size: 16, weight: 500 })
-              .fontColor(Color.White)
-              .selectedOptionBgColor(Color.Black)
-              .optionBgColor(Color.Black)
-              .selectedOptionFont({ size: 16, weight: 400 })
-              .optionFont({ size: 16, weight: 400 })
-              .onSelect((index: number, value) => {
-                let indexOf = value.indexOf('x')
-                let objW = Number(value.slice(0, indexOf))
-                let objH = Number(value.slice(indexOf + 1))
-                let obj = {
-                  format: 1003,
-                  size: {
-                    "width": objW,
-                    "height": objH
-                  }
-                }
-                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, undefined, undefined, obj)
-                Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
-              })
-              .backgroundColor(Color.Black)
-            Select(this.cameraList)
-              .selected(this.cameraDeviceIndex)
-              .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
-              .font({ size: 16, weight: 500 })
-              .fontColor(Color.White)
-              .selectedOptionBgColor(Color.Black)
-              .optionBgColor(Color.Black)
-              .selectedOptionFont({ size: 16, weight: 400 })
-              .optionFont({ size: 16, weight: 400 })
-              .onSelect((index: number) => {
-                this.cameraDeviceIndex = index
-                this.cameraInit()
-              })
-              .backgroundColor(Color.Black)
-          }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
+              Row() {
+                Select([{ value: 'YUV' }])
+                  .selected(0)
+                  .value('YUV')
+                  .font({ size: 16, weight: 500 })
+                  .fontColor(Color.White)
+                  .selectedOptionBgColor(Color.Black)
+                  .optionBgColor(Color.Black)
+                  .selectedOptionFont({ size: 16, weight: 400 })
+                  .optionFont({ size: 16, weight: 400 })
+                  .onSelect((index: number, value) => {
+                    Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
+                  })
+                  .backgroundColor(Color.Black)
+                Button('下一个')
+                  .borderRadius(8)
+                  .backgroundColor(0x317aff)
+                  .enabled(this.nextEnabled)
+                  .opacity(this.nextEnabled ? 1 : 0.4)
+                  .width('20%')
+                  .onClick(async () => {
+                    this.nextClickFn()
+                  })
+              }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
+            }.size({ width: '100%', height: '20%' })
+          }
 
-          Row() {
-            Select([{ value: 'YUV' }])
-              .selected(0)
-              .value('YUV')
-              .font({ size: 16, weight: 500 })
-              .fontColor(Color.White)
-              .selectedOptionBgColor(Color.Black)
-              .optionBgColor(Color.Black)
-              .selectedOptionFont({ size: 16, weight: 400 })
-              .optionFont({ size: 16, weight: 400 })
-              .onSelect((index: number, value) => {
-                Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
-              })
-              .backgroundColor(Color.Black)
-            Button('下一个')
-              .borderRadius(8)
-              .backgroundColor(0x317aff)
-              .enabled(this.nextEnabled)
-              .opacity(this.nextEnabled ? 1 : 0.4)
-              .width('20%')
-              .onClick(async () => {
-                this.nextClickFn()
-              })
-          }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
-        }.size({ width: '100%', height: '20%' })
+        }
       }.height('80%').width('100%')
 
       CustomContainer({

@@ -242,5 +242,122 @@ export default function appManagerTest() {
           done();
         })
     })
+	
+	
+    /**
+     * @tc.number: System_API_Test_App_Manager_1100
+     * @tc.name: callback form GetProcessMemoryByPid system interface interception test
+     * @tc.desc:  Test the third-party application call GetProcessMemoryByPid will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_App_Manager_1100',0, function (done) {
+      let TAG = 'System_API_Test_App_Manager_1100';
+      let pid = 0;
+      appManager.getProcessMemoryByPid(pid, (err) => {
+        console.log(TAG + "  err.code: " + err.code);
+        expect(err.code).assertEqual(ERROR_CODE);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number: System_API_Test_App_Manager_1200
+     * @tc.name: promise form GetProcessMemoryByPid system interface interception test
+     * @tc.desc:  Test the third-party application call GetProcessMemoryByPid will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_App_Manager_1200',0, function (done) {
+      let TAG = 'System_API_Test_App_Manager_1200';
+      let pid = 0;
+      appManager.getProcessMemoryByPid(pid)
+        .then(err => {
+          console.log(TAG + ` err->${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+        .catch(err => {
+          console.log(TAG + "  err.code: " + err.code);
+          expect(err.code).assertEqual(ERROR_CODE);
+          done();
+        })
+    })
+
+    /**
+     * @tc.number: System_API_Test_App_Manager_1300
+     * @tc.name: callback form getRunningProcessInfoByBundleName system interface interception test
+     * @tc.desc:  Test the third-party application call getRunningProcessInfoByBundleName will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_App_Manager_1300',0, function (done) {
+      let TAG = 'System_API_Test_App_Manager_1300';
+      let bundleName = "com.ohos.application";
+      appManager.getRunningProcessInfoByBundleName(bundleName, (err) => {
+        console.log(TAG + "  err.code: " + err.code);
+        expect(err.code).assertEqual(ERROR_CODE);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number: System_API_Test_App_Manager_1400
+     * @tc.name: promise form getRunningProcessInfoByBundleName system interface interception test
+     * @tc.desc:  Test the third-party application call getRunningProcessInfoByBundleName will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_App_Manager_1400',0, function (done) {
+      let TAG = 'System_API_Test_App_Manager_1400';
+      let bundleName = "com.ohos.application";
+      appManager.getRunningProcessInfoByBundleName(bundleName)
+        .then(err => {
+          console.log(TAG + ` err->${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+        .catch(err => {
+          console.log(TAG + "  err.code: " + err.code);
+          expect(err.code).assertEqual(ERROR_CODE);
+          done();
+        })
+    })
+
+    /**
+     * @tc.number: System_API_Test_App_Manager_1500
+     * @tc.name: callback form getRunningProcessInfoByBundleName system interface interception test
+     * @tc.desc:  Test the third-party application call getRunningProcessInfoByBundleName will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_App_Manager_1500',0, function (done) {
+      let TAG = 'System_API_Test_App_Manager_1500';
+      let bundleName = "com.ohos.application";
+      let userId = 100;
+      appManager.getRunningProcessInfoByBundleName(bundleName, userId, (err) => {
+        console.log(TAG + "  err.code: " + err.code);
+        expect(err.code).assertEqual(ERROR_CODE);
+        done();
+      });
+    })
+
+    /**
+     * @tc.number: System_API_Test_App_Manager_1600
+     * @tc.name: promise form getRunningProcessInfoByBundleName system interface interception test
+     * @tc.desc:  Test the third-party application call getRunningProcessInfoByBundleName will be blocked
+     * @tc.level   3
+     */
+    it('System_API_Test_App_Manager_1600',0, function (done) {
+      let TAG = 'System_API_Test_App_Manager_1600';
+      let bundleName = "com.ohos.application";
+      let userId = 100;
+      appManager.getRunningProcessInfoByBundleName(bundleName, userId)
+        .then(err => {
+          console.log(TAG + ` err->${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        })
+        .catch(err => {
+          console.log(TAG + "  err.code: " + err.code);
+          expect(err.code).assertEqual(ERROR_CODE);
+          done();
+        })
+    })
   })
 }

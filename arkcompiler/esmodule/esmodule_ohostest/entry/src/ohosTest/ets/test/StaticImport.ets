@@ -22,26 +22,26 @@ import app from "@system.app"
 import testNapi from "libentry.so"
 
 export default function staticImport() {
-  describe("StaticImportTest", function () {
-    it('importHar', 0, function () {
+  describe("StaticImportTest", () => {
+    it('importHar', 0, () => {
       expect(add1(2, 3)).assertEqual(5)
     })
-    it('importRelative', 0, function () {
+    it('importRelative', 0, () => {
       expect(add2(2, 3)).assertEqual(5)
     })
-    it('importOhpm', 0, function () {
+    it('importOhpm', 0, () => {
       expect(isLeapYear1(2000)).assertEqual(true)
     })
-    it('importSystemInternal', 0, function () {
+    it('importSystemInternal', 0, () => {
       hilog.info(0x0000, "testTag", 'dexter log: call ohos.hilog')
     })
-    it('importSystemBuiltin', 0, function () {
+    it('importSystemBuiltin', 0, () => {
       app.getInfo()
     })
-    it("harImportOhpm", 0, function () {
+    it("harImportOhpm", 0, () => {
       expect(ohpmRes).assertEqual(true)
     })
-    it("ImportAppNapi", 0, function () {
+    it("ImportAppNapi", 0, () => {
       expect(testNapi.add(2, 3)).assertEqual(5)
     })
   })

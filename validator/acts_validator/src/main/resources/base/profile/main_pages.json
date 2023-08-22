@@ -61,6 +61,7 @@
     "pages/Player/PlayAudio",
     "pages/Player/PlayVideo",
     "pages/Player/PlayAudioList",
-    "pages/Player/PlayVideoList"
+    "pages/Player/PlayVideoList",
+    "pages/model/FloatBall"
   ]
 }

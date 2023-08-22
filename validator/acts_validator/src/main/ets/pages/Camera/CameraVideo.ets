@@ -141,135 +141,140 @@ struct cameraOrientation {
         Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
 
-      Flex({ justifyContent: FlexAlign.SpaceEvenly }) {
-
+      Scroll() {
         Column() {
-          XComponent({
-            id: 'componentId',
-            type: 'surface',
-            controller: this.mXComponentController
-          })
-            .onLoad(async () => {
-              Logger.info(this.tag, 'onLoad is called')
-			  // @ts-ignore
-              this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
-              Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
-              this.cameraInit()
-            })
-            .size({ width: '100%', height: '100%' })
-          Text('视频录制').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '45%', height: '100%' })
+          Flex({ justifyContent: FlexAlign.SpaceEvenly }) {
 
-        Column() {
-	  if(!this.isVideoPlayback){
-	      XComponent({
-		id: '',
-		type: 'surface',
-		controller: this.mXComponentController1
-	      })
-		.onLoad(() => {
-		})
-		.size({ width: '100%', height: '100%' })
-	      Text('视频回放').fontSize('20fp').fontColor(Color.White)
-	  }	  
-        }.size({ width: '45%', height: '100%' })
-
-      }.size({ width: '100%', height: '50%' })
-
-      Column() {
-        Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceEvenly }) {
-          Select(this.resolution)
-            .selected(this.clickFrequency)
-            .value(this.resolutionSelectVal)
-            .font({ size: 16, weight: 500 })
-            .fontColor(Color.White)
-            .margin({ top: 50 })
-            .selectedOptionBgColor(Color.Black)
-            .optionBgColor(Color.Black)
-            .selectedOptionFont({ size: 16, weight: 400 })
-            .optionFont({ size: 16, weight: 400 })
-            .onSelect((index: number, value) => {
-              let indexOf = value.indexOf('x')
-              let objW = Number(value.slice(0, indexOf))
-              let objH = Number(value.slice(indexOf + 1))
-              let obj = {
-                format: 1003,
-                size: {
-                  "width": objW,
-                  "height": objH
-                }
-              }
-              CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
-              Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
-            })
-            .backgroundColor(Color.Black)
-          Select(this.cameraList)
-            .selected(this.cameraDeviceIndex)
-            .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
-            .font({ size: 16, weight: 500 })
-            .fontColor(Color.White)
-            .margin({ top: 50 })
-            .selectedOptionBgColor(Color.Black)
-            .optionBgColor(Color.Black)
-            .selectedOptionFont({ size: 16, weight: 400 })
-            .optionFont({ size: 16, weight: 400 })
-            .onSelect((index: number) => {
-              this.cameraDeviceIndex = index
-              this.cameraInit()
-            })
-            .backgroundColor(Color.Black)
-          Select([{ value: 'YUV' }])
-            .selected(0)
-            .value('YUV')
-            .font({ size: 16, weight: 500 })
-            .fontColor(Color.White)
-            .margin({ top: 50 })
-            .selectedOptionBgColor(Color.Black)
-            .optionBgColor(Color.Black)
-            .selectedOptionFont({ size: 16, weight: 400 })
-            .optionFont({ size: 16, weight: 400 })
-            .onSelect((index: number, value) => {
-              Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
-            })
-            .backgroundColor(Color.Black)
-        }.size({ width: '100%', height: '50%' })
-
-        Row() {
-          Button('录制')
-            .borderRadius(8)
-            .backgroundColor(0x317aff)
-            .margin(15)
-            .enabled(this.testEnabled)
-            .opacity(this.testEnabled ? 1 : 0.4)
-            .size({ width: '30%', height: '40%' })
-            .onClick(async () => {
-              this.testEnabled = false
-              this.nextEnabled = true
-              prompt.showToast({
-                message: '录制中，请等待三秒', duration: 1000
-              });
-              CameraService.startVideo().then(() => {
-                setTimeout(() => {
-				  // @ts-ignore
-                  let sufferID = this.mXComponentController1.getXComponentSurfaceId()
-                  Logger.info(this.tag, `onSelect format sufferID: ${sufferID}`)
-                  mediaPlay.init(sufferID)
-                }, 4000)
+            Column() {
+              XComponent({
+                id: 'componentId',
+                type: 'surface',
+                controller: this.mXComponentController
               })
-            })
-          Button('下一个')
-            .borderRadius(8)
-            .backgroundColor(0x317aff)
-            .margin(15)
-            .enabled(this.nextEnabled)
-            .opacity(this.nextEnabled ? 1 : 0.4)
-            .size({ width: '30%', height: '40%' })
-            .onClick(async () => {
-              this.testEnabled = true
-              this.nextClickFn()
-            })
-        }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
-      }.size({ width: '100%', height: '30%' })
+                .onLoad(async () => {
+                  Logger.info(this.tag, 'onLoad is called')
+                  // @ts-ignore
+                  this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
+                  Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
+                  this.cameraInit()
+                })
+                .size({ width: '100%', height: '100%' })
+              Text('视频录制').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: '45%', height: '100%' })
+
+            Column() {
+              if(!this.isVideoPlayback){
+                XComponent({
+                  id: '',
+                  type: 'surface',
+                  controller: this.mXComponentController1
+                })
+                  .onLoad(() => {
+                  })
+                  .size({ width: '100%', height: '100%' })
+                Text('视频回放').fontSize('20fp').fontColor(Color.White)
+              }
+            }.size({ width: '45%', height: '100%' })
+
+          }.size({ width: '100%', height: '60%' })
+
+          Column() {
+            Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceEvenly }) {
+              Select(this.resolution)
+                .selected(this.clickFrequency)
+                .value(this.resolutionSelectVal)
+                .font({ size: 16, weight: 500 })
+                .fontColor(Color.White)
+                .margin({ top: 50 })
+                .selectedOptionBgColor(Color.Black)
+                .optionBgColor(Color.Black)
+                .selectedOptionFont({ size: 16, weight: 400 })
+                .optionFont({ size: 16, weight: 400 })
+                .onSelect((index: number, value) => {
+                  let indexOf = value.indexOf('x')
+                  let objW = Number(value.slice(0, indexOf))
+                  let objH = Number(value.slice(indexOf + 1))
+                  let obj = {
+                    format: 1003,
+                    size: {
+                      "width": objW,
+                      "height": objH
+                    }
+                  }
+                  CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
+                  Logger.info(this.tag, `onSelect Rotation index: ${index}, value: ${value}, obj: ${obj}`)
+                })
+                .backgroundColor(Color.Black)
+              Select(this.cameraList)
+                .selected(this.cameraDeviceIndex)
+                .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
+                .font({ size: 16, weight: 500 })
+                .fontColor(Color.White)
+                .margin({ top: 50 })
+                .selectedOptionBgColor(Color.Black)
+                .optionBgColor(Color.Black)
+                .selectedOptionFont({ size: 16, weight: 400 })
+                .optionFont({ size: 16, weight: 400 })
+                .onSelect((index: number) => {
+                  this.cameraDeviceIndex = index
+                  this.cameraInit()
+                })
+                .backgroundColor(Color.Black)
+              Select([{ value: 'YUV' }])
+                .selected(0)
+                .value('YUV')
+                .font({ size: 16, weight: 500 })
+                .fontColor(Color.White)
+                .margin({ top: 50 })
+                .selectedOptionBgColor(Color.Black)
+                .optionBgColor(Color.Black)
+                .selectedOptionFont({ size: 16, weight: 400 })
+                .optionFont({ size: 16, weight: 400 })
+                .onSelect((index: number, value) => {
+                  Logger.info(this.tag, `onSelect format index: ${index}, value: ${value}`)
+                })
+                .backgroundColor(Color.Black)
+            }.size({ width: '100%', height: '50%' })
+
+            Row() {
+              Button('录制')
+                .borderRadius(8)
+                .backgroundColor(0x317aff)
+                .margin(15)
+                .enabled(this.testEnabled)
+                .opacity(this.testEnabled ? 1 : 0.4)
+                .size({ width: '30%', height: '40%' })
+                .onClick(async () => {
+                  this.testEnabled = false
+                  this.nextEnabled = true
+                  prompt.showToast({
+                    message: '录制中，请等待三秒', duration: 1000
+                  });
+                  CameraService.startVideo().then(() => {
+                    setTimeout(() => {
+                      // @ts-ignore
+                      let sufferID = this.mXComponentController1.getXComponentSurfaceId()
+                      Logger.info(this.tag, `onSelect format sufferID: ${sufferID}`)
+                      mediaPlay.init(sufferID)
+                    }, 4000)
+                  })
+                })
+              Button('下一个')
+                .borderRadius(8)
+                .backgroundColor(0x317aff)
+                .margin(15)
+                .enabled(this.nextEnabled)
+                .opacity(this.nextEnabled ? 1 : 0.4)
+                .size({ width: '30%', height: '40%' })
+                .onClick(async () => {
+                  this.testEnabled = true
+                  this.nextClickFn()
+                })
+            }.size({ width: '100%', height: '50%' }).justifyContent(FlexAlign.SpaceEvenly)
+          }.size({ width: '100%', height: '30%' })
+        }
+      }.height('80%')
+
 
       CustomContainer({
         title: this.name,

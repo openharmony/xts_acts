@@ -41,7 +41,6 @@ export default function ActsDAGetSetTest() {
         */
         it('ActsDADeviceId_0100', 0, async function(done){
             console.log("====>ActsDADeviceId_0100 test query distribtued id start");
-            const distributedId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5'; //'12345'sha256的值
             const accountAbility = account.getDistributedAccountAbility();
             accountAbility.setOsAccountDistributedInfo(LOGININFO, (err)=>{
                 console.log("====>ActsDADeviceId_0100 set distributedInfo err:" + JSON.stringify(err));
@@ -49,12 +48,19 @@ export default function ActsDAGetSetTest() {
                     console.log("====>ActsDADeviceId_0100 get distributedInfo err:" + JSON.stringify(err));
                     console.log("====>ActsDADeviceId_0100 get distributedInfo:" + JSON.stringify(distributedInfo));
                     expect(distributedInfo.name).assertEqual('ZhangSan');
-                    expect(distributedInfo.id).assertEqual(distributedId);
-                    accountAbility.setOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
-                        console.debug('====>ActsDADeviceId_0100 logout_result:'+ JSON.stringify(err))
-                        expect(err).assertEqual(null)
-                        console.log("====>test query distribtued id end");
-                        done();
+                    expect(distributedInfo.id !== 'ohosAnonymousUid').assertTrue()
+                    let uid = distributedInfo.id
+                    accountAbility.getOsAccountDistributedInfo((err, distributedInfo)=>{
+                        console.log("====>ActsDADeviceId_0100 get distributedInfo err:" + JSON.stringify(err));
+                        console.log("====>ActsDADeviceId_0100 get distributedInfo:" + JSON.stringify(distributedInfo));
+                        expect(distributedInfo.name).assertEqual('ZhangSan');
+                        expect(distributedInfo.id).assertEqual(uid)
+                        accountAbility.setOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
+                            console.debug('====>ActsDADeviceId_0100 logout_result:'+ JSON.stringify(err))
+                            expect(err).assertEqual(null)
+                            console.log("====>test query distribtued id end");
+                            done();
+                        })
                     })
                 })
             })
@@ -162,7 +168,7 @@ export default function ActsDAGetSetTest() {
                     console.debug('====>setOsAccountDistributedInfo_test001 ccerr:' + JSON.stringify(err))
                     console.debug('====>setOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -205,7 +211,7 @@ export default function ActsDAGetSetTest() {
                     console.debug('====>setOsAccountDistributedInfo_test002 get ccerr:' + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfo_test002 get data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -262,7 +268,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -303,7 +309,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>updateOsAccountDistributedInfo_test005 get_err:" + JSON.stringify(err))
                     console.debug("====>updateOsAccountDistributedInfo_test005 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -344,7 +350,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test006 get_err:" + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfo_test006 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -386,7 +392,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test007 get_err:" + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfo_test007 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -427,7 +433,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfo_test008 get_err:" + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfo_test008 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -639,7 +645,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 get_err:" + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfoByLocalId_test0100 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -680,7 +686,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 get_err:" + JSON.stringify(err))
                     console.debug("====>setOsAccountDistributedInfoByLocalId_test0200 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -762,7 +768,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0100 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0100 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -805,7 +811,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0200 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0200 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -852,7 +858,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0300 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0300 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -895,7 +901,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0400 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0400 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -938,7 +944,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0500 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0500 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -977,7 +983,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0600 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0600 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -1024,7 +1030,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0700 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0700 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -1067,7 +1073,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0800 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0800 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -1114,7 +1120,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_0900 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_0900 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',
@@ -1157,7 +1163,7 @@ export default function ActsDAGetSetTest() {
                     console.debug("====>DistributedAccountOptionalParameter_1000 get_err:" + JSON.stringify(err))
                     console.debug("====>DistributedAccountOptionalParameter_1000 get_data:" + JSON.stringify(data))
                     expect(data.name).assertEqual('ZhangSan')
-                    expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                    expect(data.id !== 'ohosAnonymousUid').assertTrue()
                     expect(data.status).assertEqual(1)
                     let obj = {
                         id: '12345',

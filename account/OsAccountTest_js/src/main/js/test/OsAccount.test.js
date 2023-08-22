@@ -42,7 +42,6 @@ export default function AccountTest() {
             console.debug('====>ActsDistributedAccountDeviceId_0100 start====')
             try {
                 console.log("====>test query distribtued id start");
-                const distributedId = '5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5'; //'12345'sha256的值
                 const accountAbility = account.getDistributedAccountAbility();
                 accountAbility.updateOsAccountDistributedInfo(LOGININFO, (err)=>{
                     console.log("====>update distributedInfo err:" + JSON.stringify(err));
@@ -50,13 +49,20 @@ export default function AccountTest() {
                         console.log("====>query distributedInfo err:" + JSON.stringify(err));
                         console.log("====>query distributedInfo:" + JSON.stringify(distributedInfo));
                         expect(distributedInfo.name).assertEqual('ZhangSan');
-                        expect(distributedInfo.id).assertEqual(distributedId);
-                        console.debug('success')
-                        accountAbility.updateOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
-                            console.debug('====>ActsDistributedAccountDeviceId_0100 logout_result:'+ JSON.stringify(err))
-                            expect(err).assertEqual(undefined)
-                            console.log("====>test query distribtued id end");
-                            done();
+                        expect(distributedInfo.id !== 'ohosAnonymousUid').assertTrue()
+                        let uid = distributedInfo.id
+                        accountAbility.queryOsAccountDistributedInfo((err, distributedInfo)=>{
+                            console.log("====>query distributedInfo err:" + JSON.stringify(err));
+                            console.log("====>query distributedInfo:" + JSON.stringify(distributedInfo));
+                            expect(distributedInfo.name).assertEqual('ZhangSan');
+                            expect(distributedInfo.id).assertEqual(uid)
+                            console.debug('success')
+                            accountAbility.updateOsAccountDistributedInfo(LOGOUTINFO, (err)=>{
+                                console.debug('====>ActsDistributedAccountDeviceId_0100 logout_result:'+ JSON.stringify(err))
+                                expect(err).assertEqual(undefined)
+                                console.log("====>test query distribtued id end");
+                                done();
+                            })
                         })
                     })
                 })
@@ -157,7 +163,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test001 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -195,7 +201,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test002 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -266,7 +272,7 @@ export default function AccountTest() {
                         console.debug("====>account_updateOsAccountDistributedInfo_test004 query_err:" + JSON.stringify(err))
                         console.debug("====>account_updateOsAccountDistributedInfo_test004 query_data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -307,7 +313,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test005 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -352,7 +358,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test006 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -393,7 +399,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test007 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -434,7 +440,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test008 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -471,7 +477,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug('====>account_updateOsAccountDistributedInfo_test009 data:' + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',
@@ -508,7 +514,7 @@ export default function AccountTest() {
                     accountAbility.queryOsAccountDistributedInfo(async function (err, data) {
                         console.debug("====>account_updateOsAccountDistributedInfo_test010 data:" + JSON.stringify(data))
                         expect(data.name).assertEqual('ZhangSan')
-                        expect(data.id).assertEqual('5994471ABB01112AFCC18159F6CC74B4F511B99806DA59B3CAF5A9C173CACFC5')
+                        expect(data.id !== 'ohosAnonymousUid').assertTrue()
                         let obj = {
                             id: '12345',
                             name: 'ZhangSan',

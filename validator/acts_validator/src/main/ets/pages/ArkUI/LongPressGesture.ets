@@ -27,10 +27,12 @@ struct LongPressGestureExample {
   }
   @Builder specificNoParam() {
     Column() {
+      Scroll() {
+        Column() {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.flower")).height('60%').width('70%')
+        Image($r("app.media.img")).height('60%').width('60%')
       }
-      .height('250vp').width('350vp').padding(20)
+      .height('350vp').width('350vp').padding(20)
       .gesture(
       LongPressGesture({ repeat: true })
         .onAction((event: GestureEvent) => {
@@ -46,6 +48,8 @@ struct LongPressGestureExample {
         })
       )
       Text('长按动作连续触发:' + this.X).fontColor(Color.Black)
+        }
+      }
     }.width('100%').height('80%').backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }

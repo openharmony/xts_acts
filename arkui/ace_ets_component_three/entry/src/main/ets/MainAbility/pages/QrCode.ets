@@ -114,12 +114,6 @@ struct QrCode {
         .width(197)
         .height(197)
         .key("QrCodeBackgroundColor")
-      QRCode(`${this.qrCodeValue}`)
-        .color($r('sys.color.ohos_id_color_foreground'))
-        .backgroundColor($r('sys.color.ohos_id_color_background'))
-        .width(197)
-        .height(197)
-        .key("QrCodeDefault")
     }
     .width('100%')
     .height('100%')

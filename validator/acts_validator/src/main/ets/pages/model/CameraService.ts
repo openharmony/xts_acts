@@ -150,6 +150,7 @@ class CameraService {
                 Logger.info(this.tag, `previewObj format: ${previewObj.format}`)
             }
             await this.createPreviewOutputFn(previewObj ? previewObj : this.cameraOutputCapability.previewProfiles[0], surfaceId)
+            //            await this.createPhotoOutputFn(this.photoProfileObj)
             await this.createPhotoOutputFn(obj ? obj : this.cameraOutputCapability.photoProfiles[photoIndex?photoIndex:0])
             await this.createCameraInputFn(this.cameras[cameraDeviceIndex])
             await this.cameraInputOpenFn()
@@ -394,6 +395,15 @@ class CameraService {
             await this.captureSession.addOutput(this.videoOutput)
             await this.captureSession.commitConfig()
             await this.captureSession.start()
+            //            await this.videoOutput.on('frameStart', async () => {
+            //                Logger.info(this.tag, `frameStart start`)
+            //                try {
+            //                    await this.videoRecorder.start()
+            //                    Logger.info(this.tag, `frameStart end`)
+            //                } catch (err) {
+            //                    Logger.info(this.tag, `videoRecorder start fail err: ${err}`)
+            //                }
+            //            })
             await this.videoOutput.start()
             await this.videoRecorder.start().then(() => {
                 setTimeout(async () => {

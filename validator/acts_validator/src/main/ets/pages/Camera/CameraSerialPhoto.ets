@@ -116,66 +116,72 @@ struct cameraOrientation {
         Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
 
-      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+      Scroll() {
         Column() {
-          XComponent({
-            id: 'componentId',
-            type: 'surface',
-            controller: this.mXComponentController
-          })
-            .onLoad(async () => {
-              Logger.info(this.tag, 'onLoad is called')
-			  // @ts-ignore
-              this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
-              Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
-              CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-                this.cameraListFn()
+          Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+            Column() {
+              XComponent({
+                id: 'componentId',
+                type: 'surface',
+                controller: this.mXComponentController
               })
+                .onLoad(async () => {
+                  Logger.info(this.tag, 'onLoad is called')
+                  // @ts-ignore
+                  this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
+                  Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
+                  CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                    this.cameraListFn()
+                  })
+                })
+                .size({ width: '100%', height: '100%' })
+              Text('预览').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: '40%', height: '65%' })
+
+            Column() {
+              Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
+              Text('图片').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: '40%', height: '65%' })
+          }.width('100%').height('60%')
+
+          Flex({ direction: FlexDirection.Column }) {
+            Select(this.cameraList)
+              .selected(this.cameraDeviceIndex)
+              .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
+              .font({ size: 16, weight: 500 })
+              .fontColor(Color.White)
+              .selectedOptionBgColor(Color.Black)
+              .optionBgColor(Color.Black)
+              .selectedOptionFont({ size: 16, weight: 400 })
+              .optionFont({ size: 16, weight: 400 })
+              .onSelect((index: number) => {
+                this.cameraDeviceIndex = index
+                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                  this.cameraListFn()
+                })
+              })
+              .backgroundColor(Color.Black)
+            Text(`提示：`).fontSize('16fp').fontColor(Color.White)
+            Text(`期望拍摄${this.cameraListLength*10}张照片，实际拍摄${this.clickSerialPhotoVal}张，如果一致请选择pass，否则选择fail`)
+              .fontSize('16fp').fontColor(Color.White)
+          }.size({ width: '80%', height: '25%' })
+
+          Button('拍照')
+            .enabled(this.isEnabled)
+            .opacity(this.isEnabled ? 1 : 0.4)
+            .width('50%')
+            .height('5%')
+            .backgroundColor(0x317aff)
+            .onClick(async () => {
+              this.isEnabled = false
+              this.timer = setInterval(() => {
+                this.clickSerialPhotoVal++
+              }, 1000)
             })
-            .size({ width: '100%', height: '100%' })
-          Text('预览').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '40%', height: '60%' })
+        }
+      }.height('80%')
 
-        Column() {
-          Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-          Text('图片').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '40%', height: '60%' })
-      }.width('100%').height('50%')
 
-      Flex({ direction: FlexDirection.Column }) {
-        Select(this.cameraList)
-          .selected(this.cameraDeviceIndex)
-          .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
-          .font({ size: 16, weight: 500 })
-          .fontColor(Color.White)
-          .selectedOptionBgColor(Color.Black)
-          .optionBgColor(Color.Black)
-          .selectedOptionFont({ size: 16, weight: 400 })
-          .optionFont({ size: 16, weight: 400 })
-          .onSelect((index: number) => {
-            this.cameraDeviceIndex = index
-            CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-              this.cameraListFn()
-            })
-          })
-          .backgroundColor(Color.Black)
-        Text(`提示：`).fontSize('16fp').fontColor(Color.White)
-        Text(`期望拍摄${this.cameraListLength*10}张照片，实际拍摄${this.clickSerialPhotoVal}张，如果一致请选择pass，否则选择fail`)
-          .fontSize('16fp').fontColor(Color.White)
-      }.size({ width: '80%', height: '25%' })
-
-      Button('拍照')
-        .enabled(this.isEnabled)
-        .opacity(this.isEnabled ? 1 : 0.4)
-        .width('50%')
-        .height('5%')
-        .backgroundColor(0x317aff)
-        .onClick(async () => {
-          this.isEnabled = false
-          this.timer = setInterval(() => {
-            this.clickSerialPhotoVal++
-          }, 1000)
-        })
 
       CustomContainer({
         title: this.name,
