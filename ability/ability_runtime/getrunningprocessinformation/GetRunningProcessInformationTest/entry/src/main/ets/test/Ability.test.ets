@@ -198,6 +198,16 @@ export default function abilityTest() {
               expect(error.code).assertEqual(0);
             })
           }, 3000);
+
+          setTimeout(() => {
+            let abilityDelegator;
+            abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+            let cmd1 = 'aa start -a EntryAbility -b com.example.applicationstatechangeonereply';
+            abilityDelegator.executeShellCommand(cmd1).then(() => {
+              console.info("The abilityone is pushed to foreground again!");
+            });
+          }, 5500)
+          
         })
       }, 700);
     })
