@@ -243,17 +243,17 @@ export default function avVideoRecorderTestOne() {
 
          function getVideoProfile(sizeList, width, height, toList, index) {
             console.log('display width: ' + width + ', height: ' + height);
-            let videoProfile = undefined;
+            let aVvideoProfile = undefined;
             for (let i = 0; i < sizeList.length; i++) {
                 const size = sizeList[i].size;
                 if(isCorrectSize(size, width, height)) {
-                    if(!videoProfile || size.width > videoProfile.size.width) {
-                        videoProfile = sizeList[i];
+                    if(!aVvideoProfile || size.width > aVvideoProfile.size.width) {
+                        aVvideoProfile = sizeList[i];
                     }
                 }
             }
-            toList[index] = videoProfile;
-            console.log('choosen videoProfile: ' + JSON.stringify(videoProfile));
+            toList[index] = aVvideoProfile;
+            console.log('choosen aVvideoProfile: ' + JSON.stringify(aVvideoProfile));
          }
 
          function isCorrectSize(size, standardWidth, standardHeight) {
