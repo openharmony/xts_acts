@@ -250,7 +250,7 @@ export default function openLogicalChanneltest() {
                 if (nfcOmaReaderList == undefined) {
                     console.log("[NFC_test]23 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
-                    nfcOmaChannel.close();
+                    nfcOmaSession.closeChannels();
                     console.info("[NFC_test] 23 The closeChannel test is successfully" );
                     let isChannelClosed = nfcOmaChannel.isClosed();
                     console.info("[NFC_test]23 Check whether the channel is disabled: " + isChannelClosed);
