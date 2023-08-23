@@ -38,7 +38,9 @@ import assemblyCallbackTest from './assemblyCallback.test';
 import ActsGridTest from './Grid.test';
 import ActsListTest from './Listitem.test';
 import ActsSwiperTest from './Swiper.test';
-import ActsRichEditorTest from './richeditor.test'
+import ActsRichEditorTest from './richeditor.test';
+import ActsgetcomponentTest from './getcomponent.test';
+import ActsgetcomponentaddTest from './getcomponentadd.test';
 
 
 export default function testsuite() {
@@ -68,4 +70,6 @@ export default function testsuite() {
   ActsListTest()
   ActsSwiperTest()
   ActsRichEditorTest()
+  ActsgetcomponentTest()
+  ActsgetcomponentaddTest()
 }
