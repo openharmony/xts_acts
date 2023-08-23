@@ -23,490 +23,457 @@ const KEY_TEST_BOOLEAN_ELEMENT = 'key_test_boolean';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const MAX_KEY_LENGTH = 'X'.repeat(80)
 const MAX_VALUE_LENGTH = 'y'.repeat(8192)
-var mPref;
+let mPref;
 
 export default function storagePromiseTest() {
-describe('storagePromiseTest', function () {
-    beforeAll(async function () {
-        console.info('beforeAll')
-        const promise = storage.getStorage(PATH);
-        promise.then((Storage)=>{
-            mPref = Storage;
-        });
-        await promise;
-        done();
-    })
-
-    afterAll(async function (done) {
-        console.info('afterAll')
-        const promise = storage.deleteStorage(PATH);
-        promise.then(()=>{
-            console.info('Delete Storage finish');
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name clear promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Promise_0010
-     * @tc.desc clear promise interface test
-     */
-    it('testClear0011', 0, async function (done) {
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
-        mPref.flushSync();
-        const promise = mPref.clear();
-        promise.then((ret) => {
-            expect("defaultvalue").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name has string interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0020
-     * @tc.desc has string interface test
-     */
-    it('testHasKey0031', 0, async function (done) {
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
-        const promise = mPref.has(KEY_TEST_STRING_ELEMENT);
-        promise.then((ret) => {
-            expect(true).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name has int interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0140
-     * @tc.desc has int interface test
-     */
-    it('testHasKey0032', 0, async function (done) {
-        mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
-        const promise = mPref.has(KEY_TEST_INT_ELEMENT);
-        promise.then((ret) => {
-            expect(true).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name has float interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
-     * @tc.desc has float interface test
-     */
-    it('testHasKey0033', 0, async function (done) {
-        mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 2.0);
-        const promise = mPref.has(KEY_TEST_FLOAT_ELEMENT);
-        promise.then((ret) => {
-            expect(true).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name has boolean interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0160
-     * @tc.desc has boolean interface test
-     */
-    it('testHasKey0034', 0, async function (done) {
-        mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
-        const promise = mPref.has(KEY_TEST_BOOLEAN_ELEMENT);
-        promise.then((ret) => {
-            expect(true).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name has long interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0170
-     * @tc.desc has long interface test
-     */
-    it('testHasKey0035', 0, async function (done) {
-        mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
-        const promise = mPref.has(KEY_TEST_LONG_ELEMENT);
-        promise.then((ret) => {
-            expect(true).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name get string promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0030
-     * @tc.desc get string promise interface test
-     */
-    it('testGetDefValue0061', 0, async function (done) {
-        mPref.clearSync();
-        const promise = mPref.get(KEY_TEST_STRING_ELEMENT, "defaultValue");
-        promise.then((ret) => {
-            expect('defaultValue').assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name get float promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0040
-     * @tc.desc get float promise interface test
-     */
-    it('testGetFloat0071', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
-        const promise = mPref.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
-        promise.then((ret) => {
-            expect(3.0).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name get int promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0050
-     * @tc.desc get int promise interface test
-     */
-    it('testGetInt0081', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
-        const promise = mPref.get(KEY_TEST_INT_ELEMENT, 0.0);
-        promise.then((ret) => {
-            expect(3).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name get long promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0060
-     * @tc.desc get long promise interface test
-     */
-    it('testGetLong0091', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_LONG_ELEMENT, 3);
-        const promise = mPref.get(KEY_TEST_LONG_ELEMENT, 0);
-        promise.then((ret) => {
-            expect(3).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name get String promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0070
-     * @tc.desc get String promise interface test
-     */
-    it('testGetString101', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
-        mPref.flushSync();
-        const promise = mPref.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
-        promise.then((ret) => {
-            expect('test').assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name put boolean promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0090
-     * @tc.desc put boolean promise interface test
-     */
-    it('testPutBoolean0121', 0, async function (done) {
-        mPref.clearSync();
-        const promise = mPref.put(KEY_TEST_BOOLEAN_ELEMENT, true);
-        promise.then((ret) => {
-            expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
-            mPref.flushSync();
-            expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name put float promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0100
-     * @tc.desc put float promise interface test
-     */
-    it('testPutFloat0131', 0, async function (done) {
-        mPref.clearSync();
-        const promise = mPref.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
-        promise.then((ret) => {
-            expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
-            mPref.flushSync();
-            expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name put int promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0110
-     * @tc.desc put int promise interface test
-     */
-    it('testPutInt0141', 0, async function (done) {
-        mPref.clearSync();
-        const promise = mPref.put(KEY_TEST_INT_ELEMENT, 4);
-        promise.then((ret) => {
-            expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
-            mPref.flushSync();
-            expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name put long promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0120
-     * @tc.desc put long promise interface test
-     */
-    it('testPutLong0151', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_LONG_ELEMENT, 4);
-        const promise = mPref.put(KEY_TEST_LONG_ELEMENT, 4);
-        promise.then((ret) => {
-            expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
-            mPref.flushSync();
-            expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name put String promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0130
-     * @tc.desc put String promise interface test
-     */
-    it('testPutString0161', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
-        const promise = mPref.put(KEY_TEST_STRING_ELEMENT, '');
-        promise.then((ret) => {
-            expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-            mPref.flushSync();
-            expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name deleteSync promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
-     * @tc.desc deleteSync promise interface test
-     */
-    it('testPutString0171', 0, async function (done) {
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
-        const promise = mPref.put(KEY_TEST_STRING_ELEMENT, '');
-        promise.then((ret) => {
-            expect('').
-                assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
-            mPref.deleteSync(KEY_TEST_STRING_ELEMENT);
-            expect("default").
-                assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
-        }).catch((err) => {
-            expect('').assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name flush promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0190
-     * @tc.desc flush promise interface test
-     */
-    it('testFlush00181', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
-        const promise = mPref.put(KEY_TEST_STRING_ELEMENT, 'test');
-        promise.then((ret) => {
-            expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-            mPref.flush();
-            expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-    
-    /**
-     * @tc.name Maximum length of key test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0200
-     * @tc.desc Maximum length of key test
-     */
-    it('testMaxLengthofKey0200', 0, async function(done){
-        mPref.clearSync();
-        const promise = mPref.put(MAX_KEY_LENGTH,"value1")
-        promise.then((ret)=>{
-            expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH,"defaultvalue"))
-        }).catch((err)=>{
-            expect(null).assertFail();
+    describe('storagePromiseTest', function () {
+        beforeAll(async function () {
+            console.info('beforeAll')
+            await storage.getStorage(PATH).then((Storage) => {
+                mPref = Storage;
+            });
         })
-        await promise;
-        done();
-    })
 
-    /**
-     * @tc.name Maximum length of value test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0210
-     * @tc.desc Maximum length of value test
-     */
-
-    it('testMaxLengthofValue0210', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync("test", "abc");
-        const promise = mPref.put("test", MAX_VALUE_LENGTH);
-        promise.then((ret) => {
-            expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-    
+        afterAll(async function () {
+            console.info('afterAll')
+            await storage.deleteStorage(PATH).then(() => {
+                console.info('Delete Storage finish');
+            });
+        })
 
         /**
-     * @tc.name Maximum length of value test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0220
-     * @tc.desc Maximum length of value test
-     */
+         * @tc.name clear promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Promise_0010
+         * @tc.desc clear promise interface test
+         */
+        it('testClear0011', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
+            await mPref.flushSync();
+            await mPref.clear().then((ret) => {
+                expect("defaultvalue").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
 
-         it('testMaxLengthofValue0220', 0, async function (done) {
-            mPref.clearSync();
-            mPref.putSync("test",MAX_VALUE_LENGTH)
-            const promise = mPref.put("test", "y".repeat(8192));
-            promise.then((ret) => {
+        /**
+         * @tc.name has string interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0020
+         * @tc.desc has string interface test
+         */
+        it('testHasKey0031', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
+            await mPref.has(KEY_TEST_STRING_ELEMENT).then((ret) => {
+                expect(true).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name has int interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0140
+         * @tc.desc has int interface test
+         */
+        it('testHasKey0032', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_INT_ELEMENT, 1);
+            await mPref.has(KEY_TEST_INT_ELEMENT).then((ret) => {
+                expect(true).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name has float interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
+         * @tc.desc has float interface test
+         */
+        it('testHasKey0033', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 2.0);
+            await mPref.has(KEY_TEST_FLOAT_ELEMENT).then((ret) => {
+                expect(true).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name has boolean interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0160
+         * @tc.desc has boolean interface test
+         */
+        it('testHasKey0034', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_BOOLEAN_ELEMENT, false);
+            await mPref.has(KEY_TEST_BOOLEAN_ELEMENT).then((ret) => {
+                expect(true).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name has long interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0170
+         * @tc.desc has long interface test
+         */
+        it('testHasKey0035', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_LONG_ELEMENT, 0);
+            await mPref.has(KEY_TEST_LONG_ELEMENT).then((ret) => {
+                expect(true).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name get string promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0030
+         * @tc.desc get string promise interface test
+         */
+        it('testGetDefValue0061', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.get(KEY_TEST_STRING_ELEMENT, "defaultValue").then((ret) => {
+                expect('defaultValue').assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name get float promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0040
+         * @tc.desc get float promise interface test
+         */
+        it('testGetFloat0071', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_FLOAT_ELEMENT, 3.0);
+            await mPref.get(KEY_TEST_FLOAT_ELEMENT, 0.0).then((ret) => {
+                expect(3.0).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name get int promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0050
+         * @tc.desc get int promise interface test
+         */
+        it('testGetInt0081', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
+            await mPref.get(KEY_TEST_INT_ELEMENT, 0.0).then((ret) => {
+                expect(3).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name get long promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0060
+         * @tc.desc get long promise interface test
+         */
+        it('testGetLong0091', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_LONG_ELEMENT, 3);
+            await mPref.get(KEY_TEST_LONG_ELEMENT, 0).then((ret) => {
+                expect(3).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name get String promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0070
+         * @tc.desc get String promise interface test
+         */
+        it('testGetString101', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
+            await mPref.flushSync();
+            await mPref.get(KEY_TEST_STRING_ELEMENT, "defaultvalue").then((ret) => {
+                expect('test').assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name put boolean promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0090
+         * @tc.desc put boolean promise interface test
+         */
+        it('testPutBoolean0121', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.put(KEY_TEST_BOOLEAN_ELEMENT, true).then(async (ret) => {
+                expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
+                await mPref.flushSync();
+                expect(true).assertEqual(mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, false));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name put float promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0100
+         * @tc.desc put float promise interface test
+         */
+        it('testPutFloat0131', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.put(KEY_TEST_FLOAT_ELEMENT, 4.0).then(async (ret) => {
+                expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
+                await mPref.flushSync();
+                expect(4.0).assertEqual(mPref.getSync(KEY_TEST_FLOAT_ELEMENT, 0.0));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name put int promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0110
+         * @tc.desc put int promise interface test
+         */
+        it('testPutInt0141', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.put(KEY_TEST_INT_ELEMENT, 4).then((ret) => {
+                expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
+                mPref.flushSync();
+                expect(4).assertEqual(mPref.getSync(KEY_TEST_INT_ELEMENT, 0));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name put long promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0120
+         * @tc.desc put long promise interface test
+         */
+        it('testPutLong0151', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_LONG_ELEMENT, 4);
+            await mPref.put(KEY_TEST_LONG_ELEMENT, 4).then(async (ret) => {
+                expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
+                await mPref.flushSync();
+                expect(4).assertEqual(mPref.getSync(KEY_TEST_LONG_ELEMENT, 0));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name put String promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0130
+         * @tc.desc put String promise interface test
+         */
+        it('testPutString0161', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPref.put(KEY_TEST_STRING_ELEMENT, '').then(async (ret) => {
+                expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+                await mPref.flushSync();
+                expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name deleteSync promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
+         * @tc.desc deleteSync promise interface test
+         */
+        it('testPutString0171', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPref.put(KEY_TEST_STRING_ELEMENT, '').then(async (ret) => {
+                expect('').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+                await mPref.deleteSync(KEY_TEST_STRING_ELEMENT);
+                expect("default").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+                done();
+            }).catch((err) => {
+                expect('').assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name flush promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0190
+         * @tc.desc flush promise interface test
+         */
+        it('testFlush00181', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+            await mPref.put(KEY_TEST_STRING_ELEMENT, 'test').then(async (ret) => {
+                expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+                await mPref.flush();
+                expect('test').assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "defaultvalue"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name Maximum length of key test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0200
+         * @tc.desc Maximum length of key test
+         */
+        it('testMaxLengthofKey0200', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.put(MAX_KEY_LENGTH, "value1").then((ret) => {
+                expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "defaultvalue"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.name Maximum length of value test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0210
+         * @tc.desc Maximum length of value test
+         */
+
+        it('testMaxLengthofValue0210', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync("test", "abc");
+            await mPref.put("test", MAX_VALUE_LENGTH).then((ret) => {
+                expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+
+        /**
+         * @tc.name Maximum length of value test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0220
+         * @tc.desc Maximum length of value test
+         */
+
+        it('testMaxLengthofValue0220', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync("test", MAX_VALUE_LENGTH);
+            await mPref.put("test", "y".repeat(8192)).then((ret) => {
+                expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name delete promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0230
+         * @tc.desc delete promise interface test
+         */
+
+        it('testDelete0230', 0, async function (done) {
+            await mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
+            expect("abc").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+            await mPref.delete(KEY_TEST_STRING_ELEMENT).then((ret) => {
+                expect("default").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
+                done();
+            }).catch((err) => {
+                expect('').assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name Maximum length of key test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0240
+         * @tc.desc Maximum length of key test
+         */
+        it('testMaxLengthofKey0240', 0, async function (done) {
+            await mPref.putSync(MAX_KEY_LENGTH, "value1");
+            expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "default"));
+            await mPref.delete(MAX_KEY_LENGTH).then((ret) => {
+                expect("default").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "default"));
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /**
+         * @tc.name Maximum length of value test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0250
+         * @tc.desc Maximum length of value test
+         */
+
+        it('testMaxLengthofValue0250', 0, async function (done) {
+            await mPref.clearSync();
+            await mPref.putSync("test", MAX_VALUE_LENGTH)
+            await mPref.put("test", "y".repeat(8192)).then((ret) => {
                 expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
+            await mPref.putSync("test", MAX_VALUE_LENGTH)
+            expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
             done();
         })
 
         /**
-     * @tc.name delete promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0230
-     * @tc.desc delete promise interface test
-     */
-
-    it('testDelete0230', 0, async function (done) {
-        mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
-        expect("abc").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT, "default"));
-        const promise = mPref.delete(KEY_TEST_STRING_ELEMENT);
-        promise.then((ret)=>{
-            expect("default").assertEqual(mPref.getSync(KEY_TEST_STRING_ELEMENT,"default"));
-        }).catch((err)=>{
-            expect('').assertFail();
-        });
-        await promise;
-        done();
+         * @tc.name get string promise interface test
+         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0260
+         * @tc.desc get string promise interface test
+         */
+        it('testGetDefValue0260', 0, async function (done) {
+            await mPref.clear();
+            await mPref.get(KEY_TEST_BOOLEAN_ELEMENT, true).then((ret) => {
+                expect(true).assertEqual(ret);
+                done();
+            }).catch((err) => {
+                expect(null).assertFail();
+                done();
+            });
+        })
     })
-
-    /**
-     * @tc.name Maximum length of key test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0240
-     * @tc.desc Maximum length of key test
-     */
-     it('testMaxLengthofKey0240', 0, async function(done){
-        mPref.putSync(MAX_KEY_LENGTH, "value1");
-        expect("value1").assertEqual(mPref.getSync(MAX_KEY_LENGTH, "default"));
-        const promise = mPref.delete(MAX_KEY_LENGTH);
-        promise.then((ret)=>{
-            expect("default").assertEqual(mPref.getSync(MAX_KEY_LENGTH,"default"));
-        }).catch((err)=>{
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-
-    /**
-     * @tc.name Maximum length of value test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0250
-     * @tc.desc Maximum length of value test
-     */
-
-    it('testMaxLengthofValue0250', 0, async function (done) {
-        mPref.clearSync();
-        mPref.putSync("test",MAX_VALUE_LENGTH)
-        const promise = mPref.put("test", "y".repeat(8192));
-        promise.then((ret) => {
-            expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        mPref.putSync("test",MAX_VALUE_LENGTH)
-        expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
-        done();
-    })
-
-    /**
-     * @tc.name get string promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0260
-     * @tc.desc get string promise interface test
-     */
-     it('testGetDefValue0260', 0, async function (done) {
-        await mPref.clear();
-        const promise = mPref.get(KEY_TEST_BOOLEAN_ELEMENT, true);
-        promise.then((ret) => {
-            expect(true).assertEqual(ret);
-        }).catch((err) => {
-            expect(null).assertFail();
-        });
-        await promise;
-        done();
-    })
-})
 }
