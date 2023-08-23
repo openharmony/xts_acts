@@ -177,7 +177,6 @@ export default function abilityTest() {
             console.log("An error is generated");
             commonEvent.unsubscribe(subscriber, unSubscribeCallback);
           }
-          xxxx
         }
       }
 
