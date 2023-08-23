@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import componentUtils from '@ohos.componentUtils';
+import componentUtils from '@ohos.arkui.componentUtils';
 
 @Entry
 @Component
