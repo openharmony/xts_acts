@@ -72,6 +72,7 @@ export default function abilityTest() {
      * @tc.desc: In the same application, the on interface is called once, but the off interface is not called, and the
      *           foreground and background changes can be monitored.
      */
+    /*
     it('Acts_ApplicationStateChange_0100', 0, function (done) {
       let want = {
         "deviceId": "",
@@ -132,14 +133,14 @@ export default function abilityTest() {
         });
       }, 700);
     })
-
+    */
     /*
      * @tc.number: Acts_ApplicationStateChange_0200
      * @tc.name: Register and deregister to monitor the foreground and background changes of this application.
      * @tc.desc: In the same application, the on interface is called once, and the off interface is called, and the
      *           foreground and background changes can be monitored.
      */
-    /*
+
     it('Acts_ApplicationStateChange_0200', 0, async function (done) {
       let want = {
         "deviceId": "",
@@ -201,7 +202,6 @@ export default function abilityTest() {
         })
       }, 700);
     })
-    */
 
     /*
      * @tc.number: Acts_ApplicationStateChange_0300
