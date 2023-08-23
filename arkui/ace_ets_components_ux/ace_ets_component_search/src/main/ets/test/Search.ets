@@ -2375,13 +2375,13 @@ export default function search() {
       await Utils.sleep(2000);
 
       let strJson = getInspectorByKey('searchTestNumber');
+      let strJson2 = getInspectorByKey('searchTestDefaultValue');
       console.info("[ArkUI_Stage_Search_CancelButton_1300]: " + JSON.stringify(strJson))
       let obj = JSON.parse(strJson);
+      let obj2 = JSON.parse(strJson2);
       console.info("[ArkUI_Stage_Search_CancelButton_1300]: " + JSON.stringify(obj.$attrs.cancelButton));
       console.info("[ArkUI_Stage_Search_CancelButton_1300]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
-      let result : number = 0;
-      console.info("[ArkUI_Stage_Search_CancelButton_1300]: " + vp2px(result).toFixed(2));
-      expect(obj.$attrs.cancelButton.icon.size).assertEqual(vp2px(result).toFixed(2) + "px");
+      expect(obj.$attrs.cancelButton.icon.size).assertEqual(obj2.$attrs.cancelButton.icon.size);
       console.info("[ArkUI_Stage_Search_CancelButton_1300] end");
       done();
     });
