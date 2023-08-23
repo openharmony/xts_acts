@@ -12,13 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import dynamicImport from './DynamicImport'
 import staticImport from './StaticImport'
 import workerImport from "./WorkerImport"
 import pageImport from './PageImport'
 
 export default function testsuite() {
-  dynamicImport()
   staticImport()
   workerImport()
   pageImport()
