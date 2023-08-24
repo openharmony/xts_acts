@@ -372,7 +372,17 @@ export default function RdbNdkStoreTest() {
       expect(re == 0).assertTrue();
     })    
 
-
+    /**
+     * @tc.name: SUB_DDM_RDB_3100
+     * @tc.desc: Normal testCase of NDK store for Query with wrong length.
+     * @tc.type: FUNC
+     */
+     it('SUB_DDM_RDB_3100',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3100' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_3100();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    })  
 
   })
 }

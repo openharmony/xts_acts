@@ -156,7 +156,6 @@ static napi_value SUB_DDM_RDB_0100(napi_env env, napi_callback_info info) {
     cursor->isNull(cursor, 5, &isNull);
     NAPI_ASSERT(env, isNull == true, "isNull is fail.");
 
-    
     valueObject->destroy(valueObject);
     valueBucket->destroy(valueBucket);
     predicates->destroy(predicates);
@@ -1597,6 +1596,81 @@ static napi_value SUB_DDM_RDB_3000(napi_env env, napi_callback_info info) {
     return returnCode;
 }
 
+/**
+ * @tc.name: SUB_DDM_RDB_3100
+ * @tc.desc: napi test RDB store for id
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3100(napi_env env, napi_callback_info info) {
+    int errCode = 0;
+    OH_VBucket* valueBucket = OH_Rdb_CreateValuesBucket();
+    valueBucket->putInt64(valueBucket, "id", 1);
+    valueBucket->putText(valueBucket, "data1", "zhangSan");
+    valueBucket->putInt64(valueBucket, "data2", 12800);
+    valueBucket->putReal(valueBucket, "data3", 100.1);
+    uint8_t arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    valueBucket->putBlob(valueBucket, "data4", arr, len);
+    valueBucket->putText(valueBucket, "data5", "ABCDEFG");
+    errCode = OH_Rdb_Insert(storeTestRdbStore_, "test", valueBucket);
+    NAPI_ASSERT(env, errCode == 1, "OH_Rdb_Insert is fail.");
+
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("test");
+    OH_VObject *valueObject = OH_Rdb_CreateValueObject();
+    const char *data1Value = "zhangSan";
+    valueObject->putText(valueObject, data1Value);
+    predicates->equalTo(predicates, "data1", valueObject);
+
+    const char *columnNames[] = {"data1","data2","data3","data4","data5"};
+    OH_Cursor *cursor = OH_Rdb_Query(storeTestRdbStore_, predicates, columnNames, 5);
+    NAPI_ASSERT(env, cursor != NULL, "OH_Rdb_Query is fail.");
+
+    errCode = valueBucket->capability;
+    NAPI_ASSERT(env, errCode == 6, "valueBucket capabilityis fail.");
+
+    int valueObjectID = valueObject->id;
+    int valueBucketID = valueBucket->id;
+    int predicatesID = predicates->id;
+    int cursorID = cursor->id;
+    int rdbID = storeTestRdbStore_->id;
+
+    valueObject->id = 11;
+    valueBucket->id = 12;
+    predicates->id = 13;
+    cursor->id = 14;
+    storeTestRdbStore_->id = 15;
+
+    errCode = valueObject->destroy(valueObject);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "valueObject id is fail.");
+    errCode = valueBucket->destroy(valueBucket);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "valueBucket id is fail.");
+    errCode = predicates->destroy(predicates);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "predicates id is fail.");
+    errCode = cursor->destroy(cursor);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "cursor id is fail.");
+    errCode = OH_Rdb_CloseStore(storeTestRdbStore_);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_INVALID_ARGS, "rdb id is fail."); 
+
+    valueObject->id = valueObjectID;
+    valueBucket->id = valueBucketID;
+    predicates->id = predicatesID;
+    cursor->id = cursorID;
+    storeTestRdbStore_->id = rdbID;
+
+    errCode = valueObject->destroy(valueObject);
+    NAPI_ASSERT(env, errCode ==0, "valueObject id2 is fail.");
+    errCode = valueBucket->destroy(valueBucket);
+    NAPI_ASSERT(env, errCode == 0, "valueBucket id2 is fail.");
+    errCode = predicates->destroy(predicates);
+    NAPI_ASSERT(env, errCode == 0, "predicates id2 is fail.");
+    errCode = cursor->destroy(cursor);
+    NAPI_ASSERT(env, errCode == 0, "cursor id2 is fail.");
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -1631,7 +1705,8 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_2700", nullptr, SUB_DDM_RDB_2700, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_2800", nullptr, SUB_DDM_RDB_2800, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_2900", nullptr, SUB_DDM_RDB_2900, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_3000", nullptr, SUB_DDM_RDB_3000, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"SUB_DDM_RDB_3000", nullptr, SUB_DDM_RDB_3000, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3100", nullptr, SUB_DDM_RDB_3100, nullptr, nullptr, nullptr, napi_default, nullptr}
     };
         
     
