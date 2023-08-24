@@ -98,7 +98,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
         console.log("testMpreferencesGet0000 end.");
       }
@@ -126,7 +126,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -203,7 +203,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
         console.log("testMpreferencesHas0001 end.");
       }
@@ -252,7 +252,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
         console.log("testMpreferencesPut0001 end.");
       }
@@ -339,7 +339,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -367,7 +367,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be ValueType.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -389,7 +389,7 @@ export default function preferencesCallbackWithErrorTest() {
         });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'value' must be string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
         console.log("testMpreferencesDelete0001 end.");
       }

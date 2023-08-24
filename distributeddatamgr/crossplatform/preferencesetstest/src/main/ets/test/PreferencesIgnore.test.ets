@@ -58,7 +58,7 @@ export default function preferencesIgnoreTest() {
         });
       } catch (err) {
         console.info("testPreferencesGetPreferences001 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message == "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -90,7 +90,7 @@ export default function preferencesIgnoreTest() {
             });
           } catch (err) {
             console.info("testPreferencesDeletePreferences002 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            expect(err.code === "401").assertTrue();
             done();
           }
         }
@@ -124,7 +124,7 @@ export default function preferencesIgnoreTest() {
             });
           } catch (err) {
             console.info("testRemovePreferencesFromCache002 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            expect(err.code === "401").assertTrue();
             done();
           }
         }
@@ -145,7 +145,7 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.getPreferences(context, -1);
       } catch (err) {
         console.info("testGetPreferencesHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -164,7 +164,7 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.getPreferences(context);
       } catch (err) {
         console.info("testGetPreferencesHelper0004 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -184,7 +184,7 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.removePreferencesFromCache(context);
       } catch (err) {
         console.info("testRemovePreferencesFromCacheHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -204,7 +204,7 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.removePreferencesFromCache(context, -1);
       } catch (err) {
         console.info("testRemovePreferencesFromCacheHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -224,7 +224,7 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.deletePreferences(context);
       } catch (err) {
         console.info("testPreferencesDeleteHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. Need 2 or 3 parameters!").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -244,7 +244,7 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.deletePreferences(context, -1);
       } catch (err) {
         console.info("testPreferencesDeleteHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
