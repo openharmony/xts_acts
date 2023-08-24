@@ -19,6 +19,7 @@ import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
 var context = abilityFeatureAbility.getContext();
 var contextApplication = context.getApplicationContext()
+var rdbStore = undefined;
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 

@@ -25,6 +25,7 @@ const STORE_CONFIG = {
     securityLevel: data_Rdb.SecurityLevel.S1
 }
 const TEST_BUNDLE_NAME="ohos.acts.relationalstorejstest"
+const TEST_STORE_ID="storeId";
 
 var kvManager = null
 var kvStore = null

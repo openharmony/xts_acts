@@ -26,7 +26,7 @@ const MAX_VALUE_LENGTH = 'y'.repeat(8192)
 var mPref;
 
 export default function storagePromiseTest() {
-describe('storagePromiseTest', function () {
+describe('storagePromiseTest', function (done) {
     beforeAll(async function () {
         console.info('beforeAll')
         const promise = storage.getStorage(PATH);
