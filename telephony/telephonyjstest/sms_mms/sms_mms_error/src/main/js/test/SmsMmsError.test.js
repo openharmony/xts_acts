@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import sms from '@ohos.telephony.sms';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function SmsMmsErrorTest() {
@@ -36,7 +37,7 @@ describe('SmsMmsErrorTest', function () {
       }
       expect(shortMessage.visibleMessageBody != 'visibleMessageBody').assertTrue();
       expect(shortMessage.visibleRawAddress != 'visibleRawAddress').assertTrue();
-      expect(shortMessage.messageClass != 'sms.FORWARD_MESSAGE').assertTrue();
+      expect(shortMessage.messageClass != sms.ShortMessageClass.FORWARD_MESSAGE).assertTrue();
       expect(shortMessage.protocolId != -1).assertTrue();
       expect(shortMessage.scAddress != 'scAddress').assertTrue();
       expect(shortMessage.scTimestamp != -1).assertTrue();
@@ -126,6 +127,7 @@ describe('SmsMmsErrorTest', function () {
   it('Telephony_SmsMms_sendMessage_Promise_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
+        expect(data.isLastPart !== '').assertTrue();
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {
