@@ -18,7 +18,7 @@ import {
   photoKeys,
   photoFetchOption,
   getFileAsset,
-  getPermission
+  getPermission,
 } from '../../../../../../common'
 
 export default function setUserCommentTest () {
@@ -109,7 +109,7 @@ export default function setUserCommentTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_SET_USER_COMMENT_0000
      * @tc.name      : setUserComment_callback_000
-     * @tc.desc      : userComment is string('setUserComment_callback_000')
+     * @tc.desc      : userComment is string('setUserComment_callback_000'), query by get
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -167,9 +167,65 @@ export default function setUserCommentTest () {
     });
 
     /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_SET_USER_COMMENT_0400
+     * @tc.name      : setUserComment_callback_004
+     * @tc.desc      : userComment is string('aaa...aaa'(141))
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('setUserComment_callback_004', 2, async function (done) {
+      const testNum = 'setUserComment_callback_004';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentCb05.jpg');
+      let userComment = '';
+      for (let i = 0; i < 141; i++) {
+        userComment += 'a';
+      }
+      await setUserCommentAbnormalCallback(done, testNum, fetchOps, userComment);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_SET_USER_COMMENT_0500
+     * @tc.name      : setUserComment_callback_005
+     * @tc.desc      : userComment is string('setUserComment_callback_005'), query by getExif
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('setUserComment_callback_005', 2, async function (done) {
+      const testNum = 'setUserComment_callback_005';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentCb06.jpg');
+      const userComment = testNum;
+      try {
+        const asset = await getFileAsset(testNum, fetchOps);
+        asset.setUserComment(userComment, async (err) => {
+          try {
+            if (err !== undefined) {
+              console.info(`${testNum} err: ${err}`);
+              expect(false).assertTrue();
+            } else {
+              const newAsset = await getFileAsset(testNum, fetchOps);
+              const result = await newAsset.getExif();
+              const msg = JSON.parse(result);
+              console.info(`${testNum} curUserComment: ${msg.UserComment}`);
+              expect(msg.UserComment).assertEqual(userComment);
+            }
+          } catch (error) {
+            console.info(`${testNum} error: ${error}`);
+          }
+          done();
+        })
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_SET_USER_COMMENT_0000
      * @tc.name      : setUserComment_promise_000
-     * @tc.desc      : userComment is string('setUserComment_promise_000')
+     * @tc.desc      : userComment is string('setUserComment_promise_000'), query by get
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -191,7 +247,7 @@ export default function setUserCommentTest () {
      */
     it('setUserComment_promise_001', 2, async function (done) {
       const testNum = 'setUserComment_promise_001';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentCb02.jpg');
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentPro02.jpg');
       const userComment = '';
       await setUserCommentPromise(done, testNum, fetchOps, userComment);
     });
@@ -206,7 +262,7 @@ export default function setUserCommentTest () {
      */
     it('setUserComment_promise_002', 2, async function (done) {
       const testNum = 'setUserComment_promise_002';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentCb03.jpg');
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentPro03.jpg');
       const userComment = undefined;
       await setUserCommentAbnormalPromise(done, testNum, fetchOps, userComment);
     });
@@ -221,9 +277,55 @@ export default function setUserCommentTest () {
      */
     it('setUserComment_promise_003', 2, async function (done) {
       const testNum = 'setUserComment_promise_003';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentCb04.jpg');
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentPro04.jpg');
       const userComment = 123;
       await setUserCommentAbnormalPromise(done, testNum, fetchOps, userComment);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_SET_USER_COMMENT_0400
+     * @tc.name      : setUserComment_promise_004
+     * @tc.desc      : userComment is string('bbb...bbb'(141))
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('setUserComment_promise_004', 2, async function (done) {
+      const testNum = 'setUserComment_promise_004';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentPro05.jpg');
+      let userComment = '';
+      for (let i = 0; i < 141; i++) {
+        userComment += 'b';
+      }
+      await setUserCommentAbnormalPromise(done, testNum, fetchOps, userComment);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_SET_USER_COMMENT_0500
+     * @tc.name      : setUserComment_promise_005
+     * @tc.desc      : userComment is string('setUserComment_promise_005'), query by getExif
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('setUserComment_promise_005', 2, async function (done) {
+      const testNum = 'setUserComment_promise_005';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, 'userCommentPro06.jpg');
+      const userComment = testNum;
+      try {
+        const asset = await getFileAsset(testNum, fetchOps);
+        await asset.setUserComment(userComment);
+        const newAsset = await getFileAsset(testNum, fetchOps);
+        const result = await newAsset.getExif();
+        const msg = JSON.parse(result);
+        console.info(`${testNum} curUserComment: ${msg.UserComment}`);
+        expect(msg.UserComment).assertEqual(userComment);
+        done();
+      } catch (error) {
+        console.info(`${testNum} failed; error: ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
     });
   })
 }

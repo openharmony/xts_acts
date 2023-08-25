@@ -39,15 +39,20 @@
             "pre-push": [],
             "push": [
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/01.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/noExif.jpg",
                 "./resource/medialibrary/getExif.jpg ->/storage/media/100/local/temp/getExif.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb01.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb02.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb03.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb04.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb05.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentCb06.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro01.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro02.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro03.jpg",
                 "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro04.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro05.jpg",
+                "./resource/medialibrary/01.jpg ->/storage/media/100/local/temp/userCommentPro06.jpg",
                 "./resource/medialibrary/01.mp4 ->/storage/media/100/local/temp/01.mp4"
             ]
         },
@@ -140,11 +145,16 @@
                 "mediatool send /storage/media/100/local/temp/userCommentCb02.jpg",
                 "mediatool send /storage/media/100/local/temp/userCommentCb03.jpg",
                 "mediatool send /storage/media/100/local/temp/userCommentCb04.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentCb05.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentCb06.jpg",
                 "mediatool send /storage/media/100/local/temp/userCommentPro01.jpg",
                 "mediatool send /storage/media/100/local/temp/userCommentPro02.jpg",
                 "mediatool send /storage/media/100/local/temp/userCommentPro03.jpg",
                 "mediatool send /storage/media/100/local/temp/userCommentPro04.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentPro05.jpg",
+                "mediatool send /storage/media/100/local/temp/userCommentPro06.jpg",
                 "mediatool send /storage/media/100/local/temp/getExif.jpg",
+                "mediatool send /storage/media/100/local/temp/noExif.jpg",
 
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/getPhotoIndex01.jpg",
                 "cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/getPhotoIndex02.jpg",
@@ -173,7 +183,7 @@
                 "hilog -Q domainoff",
                 "hilog -b D -D 0xD002B70",
                 "scanner",
-                "sleep 5"
+                "sleep 10"
             ],
             "teardown-command": [
                 "power-shell setmode 600",

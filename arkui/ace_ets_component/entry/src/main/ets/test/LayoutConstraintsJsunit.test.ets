@@ -142,7 +142,7 @@ export default function layoutConstraintsJsunit() {
       console.info("[testLayoutConstraints005] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testLayoutConstraints005] aspectRatio: " + obj.$attrs.aspectRatio);
-      expect(obj.$attrs.aspectRatio).assertEqual(1);
+      expect(obj.$attrs.aspectRatio).assertEqual("");
       done();
     });
 

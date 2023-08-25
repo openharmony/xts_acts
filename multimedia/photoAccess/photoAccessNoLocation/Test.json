@@ -1,0 +1,84 @@
+{
+    "description": "Configuration for photoAccess Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "180000",
+        "bundle-name": "ohos.acts.multimedia.photoaccess",
+        "module-name": "phone",
+        "shell-timeout": "600000",
+        "testcase-timeout": 10000
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "pre-push": [],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/Audios/*",
+                "rm -rf /storage/media/100/local/files/Audios/.*",
+                "rm -rf /storage/media/100/local/files/Camera/*",
+                "rm -rf /storage/media/100/local/files/Camera/.*",
+                "rm -rf /storage/media/100/local/files/Documents/*",
+                "rm -rf /storage/media/100/local/files/Documents/.*",
+                "rm -rf /storage/media/100/local/files/Download/*",
+                "rm -rf /storage/media/100/local/files/Download/.*",
+                "rm -rf /storage/media/100/local/files/Pictures/*",
+                "rm -rf /storage/media/100/local/files/Pictures/.*",
+                "rm -rf /storage/media/100/local/files/Videos/*",
+                "rm -rf /storage/media/100/local/files/Videos/.*",
+                "sleep 5",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "scanner",
+                "sleep 5",
+                "mkdir /storage/media/100/local/temp",
+                "param set persist.ace.testmode.enabled 1"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                "./resource/medialibrary/getExif.jpg ->/storage/media/100/local/temp/getExif.jpg"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mediatool send /storage/media/100/local/temp/getExif.jpg",
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "hilog -p off",
+                "hilog -Q pidoff",
+                "hilog -Q domainoff",
+                "hilog -b D -D 0xD002B70",
+                "scanner",
+                "sleep 10"
+            ],
+            "teardown-command": [
+                "power-shell setmode 600",
+                "rm -rf /storage/media/100/local/files/Audios/*",
+                "rm -rf /storage/media/100/local/files/Audios/.*",
+                "rm -rf /storage/media/100/local/files/Camera/*",
+                "rm -rf /storage/media/100/local/files/Camera/.*",
+                "rm -rf /storage/media/100/local/files/Documents/*",
+                "rm -rf /storage/media/100/local/files/Documents/.*",
+                "rm -rf /storage/media/100/local/files/Download/*",
+                "rm -rf /storage/media/100/local/files/Download/.*",
+                "rm -rf /storage/media/100/local/files/Pictures/*",
+                "rm -rf /storage/media/100/local/files/Pictures/.*",
+                "rm -rf /storage/media/100/local/files/Videos/*",
+                "rm -rf /storage/media/100/local/files/Videos/.*",
+                "sleep 5",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "kill -9 `pidof com.ohos.medialibrary.medialibrarydata`",
+                "scanner"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsPhotoAccessNoLocationTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
