@@ -2,11 +2,10 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
+        "test-timeout": "600000",
         "bundle-name": "com.actsffrt.napitest",
-        "module-name": "entry_test",
-        "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "package-name": "com.actsffrt.napitest",
+        "shell-timeout": "600000"
     },
     "kits": [
         {
@@ -16,6 +15,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ] 
+    ]
 }
-
