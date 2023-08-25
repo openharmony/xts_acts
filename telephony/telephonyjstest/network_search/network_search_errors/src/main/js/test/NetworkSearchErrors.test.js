@@ -23,34 +23,6 @@ describe('ActsNetworkSearchTest', function () {
     const SLOT_0 = 0;
     const SLOT_2 = -1;
 
-    function sleep(timeout) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                console.info(`Telephony_NetworkSearch_CellInformation sleep ${timeout}ms`);
-                resolve();
-            }, timeout);
-        })
-    }
-
-    async function turnOnRadio() {
-        let isOn = await radio.isRadioOn();
-        if (!isOn) {
-            await radio.turnOnRadio();
-            console.info('Telephony_NetworkSearch_CellInformation turnOnRadio success');
-            await sleep(5000);
-        }
-    }
-
-    beforeAll(async function () {
-        await radio.setPreferredNetwork(SLOT_0, radio.PREFERRED_NETWORK_MODE_AUTO);
-        await turnOnRadio();
-    })
-
-    afterAll(async function () {
-        await radio.setPreferredNetwork(SLOT_0, radio.PREFERRED_NETWORK_MODE_AUTO);
-        await turnOnRadio();
-    })
-
     afterEach(async function () {
         try {
             expect(radio.RadioTechnology.RADIO_TECHNOLOGY_UNKNOWN === 0).assertTrue();
