@@ -93,6 +93,7 @@
         "MainAbility/pages/navition3",
         "MainAbility/pages/DragController",
         "MainAbility/pages/richEditor",
-        "MainAbility/pages/richEditorCustomKeyBoard"
+        "MainAbility/pages/richEditorCustomKeyBoard",
+        "MainAbility/pages/DialogPage"
     ]
 }
