@@ -2,16 +2,13 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "300000",
-        "testcase-timeout": "300000",
-        "shell-timeout": "300000",
         "bundle-name": "com.example.actsvalidator",
         "package-name": "com.example.actsvalidator"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsValidatorTest.hap"
+                "validator.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
@@ -20,6 +17,107 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff"
+            ]
+        },
+        {
+            "type":"CommandKit",
+            "shell": [
+                {
+                    "name": "shell",
+                    "value": "SP_daemon"
+                },
+                {
+                    "name": "shell",
+                    "value": "mkdir /storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "shell",
+                    "value": "mkdir /storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "picture->/storage/media/100/local/files/Pictures"
+                },
+                {
+                    "name": "push",
+                    "value": "AAC160001.aac->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "AAC48000321.aac->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "FLAC48000321.flac->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "MP348000321.mp3->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "MPEG448000321.m4a->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "OGG480001.ogg->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "vorbis48000321.wav->/storage/media/100/local/files/Audios/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "h263Mp3.mkv->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "h263Mp3.mp4->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "h263Mp3.ts->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "h264Mp3.mkv->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "h264Mp3.mp4->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "mpeg2AAC.mp4->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "mpeg2AAC.ts->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "mpeg2Mp3.mkv->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "mpeg4AAC.mkv->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "mpeg4AAC.ts->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "push",
+                    "value": "VP8VORBIS.webm->/storage/media/100/local/files/Videos/ValidatorData"
+                },
+                {
+                    "name": "install",
+                    "value": "ActsValidatorTest.hap"
+                },
+                {
+                    "name": "shell",
+                    "value": "scanner"
+                }
             ]
         }
     ]
