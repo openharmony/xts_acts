@@ -25,8 +25,8 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = 'key_test_number_array';
 const KEY_TEST_STRING_ARRAY_ELEMENT = 'key_test_string_array';
 const KEY_TEST_BOOL_ARRAY_ELEMENT = 'key_test_bool_array';
-var mPreferences;
-var context;
+let mPreferences;
+let context;
 
 export default function preferencesPromiseTest(){
     describe('preferencesPromiseTest', function () {
@@ -49,20 +49,16 @@ export default function preferencesPromiseTest(){
         it('testPreferencesPutStringArray0131', 0, async function (done) {
             await mPreferences.clear();
             var stringArr = ['1', '2', '3'];
-            let promise1 = mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
-            await promise1;
-            let promise2 = mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ['123', '321']);
-            promise2.then((pre) => {
+            await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
+            await mPreferences.get(KEY_TEST_STRING_ARRAY_ELEMENT, ['123', '321']).then((pre) => {
                 for (let i = 0; i < stringArr.length; i++) {
                     expect(stringArr[i]).assertEqual(pre[i]);
                 }
-
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise2;
-
-            done();
         });
 
         /**
@@ -73,19 +69,16 @@ export default function preferencesPromiseTest(){
         it('testPreferencesPutNumberArray0132', 0, async function (done) {
             await mPreferences.clear();
             var numberArr = [11, 22, 33, 44, 55];
-            let promise1 = mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
-            await promise1;
-            let promise2 = mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]);
-            promise2.then((pre) => {
+            await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr);
+            await mPreferences.get(KEY_TEST_NUMBER_ARRAY_ELEMENT, [123, 321]).then((pre) => {
                 for (let i = 0; i < numberArr.length; i++) {
                     expect(numberArr[i]).assertEqual(pre[i]);
                 }
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise2;
-
-            done();
         });
 
         /**
@@ -96,19 +89,16 @@ export default function preferencesPromiseTest(){
         it('testPreferencesPutBoolArray0133', 0, async function (done) {
             await mPreferences.clear();
             var boolArr = [true, true, false];
-            let promise1 = mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
-            await promise1;
-            let promise2 = mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]);
-            promise2.then((pre) => {
+            await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
+            await mPreferences.get(KEY_TEST_BOOL_ARRAY_ELEMENT, [false, true]).then((pre) => {
                 for (let i = 0; i < boolArr.length; i++) {
                     expect(boolArr[i]).assertEqual(pre[i]);
                 }
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise2;
-
-            done();
         });
 
         /**
@@ -130,8 +120,7 @@ export default function preferencesPromiseTest(){
 
             await mPreferences.flush();
 
-            let promise = mPreferences.getAll();
-            promise.then((obj) => {
+            await mPreferences.getAll().then((obj) => {
                 expect(false).assertEqual(obj.key_test_boolean);
                 expect("123").assertEqual(obj.key_test_string);
                 expect(123.1).assertEqual(obj.key_test_float);
@@ -149,12 +138,11 @@ export default function preferencesPromiseTest(){
                 for (let i = 0; i < nArr.length; i++) {
                     expect(nArr[i]).assertEqual(doubleArr[i]);
                 }
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             })
-            await promise;
-
-            done();
         })
 
         /**
@@ -165,15 +153,14 @@ export default function preferencesPromiseTest(){
         it('testPreferencesClear0011', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.flush();
-            const promise = mPreferences.clear();
-            promise.then(async (ret) => {
+            await mPreferences.clear().then(async (ret) => {
                 let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
                 expect("defaultvalue").assertEqual(per);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -183,14 +170,13 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesHasKey0031', 0, async function (done) {
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            const promise = mPreferences.has(KEY_TEST_STRING_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_STRING_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -200,13 +186,13 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesHasKey0032', 0, async function (done) {
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 1);
-            const promise = mPreferences.has(KEY_TEST_INT_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_INT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
             done();
         })
 
@@ -217,14 +203,13 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesHasKey0033', 0, async function (done) {
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 2.0);
-            const promise = mPreferences.has(KEY_TEST_FLOAT_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_FLOAT_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -234,14 +219,13 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesHasKey0034', 0, async function (done) {
             await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, false);
-            const promise = mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_BOOLEAN_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -251,14 +235,14 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesHasKey0035', 0, async function (done) {
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 0);
-            const promise = mPreferences.has(KEY_TEST_LONG_ELEMENT);
-            promise.then((ret) => {
+            await mPreferences.has(KEY_TEST_LONG_ELEMENT).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
+
         })
 
         /**
@@ -268,14 +252,13 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesGetDefValue0061', 0, async function (done) {
             await mPreferences.clear();
-            const promise = mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue");
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultValue").then((ret) => {
                 expect('defaultValue').assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -286,14 +269,13 @@ export default function preferencesPromiseTest(){
         it('testPreferencesGetFloat0071', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
-            const promise = mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0).then((ret) => {
                 expect(3.0).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -304,14 +286,13 @@ export default function preferencesPromiseTest(){
         it('testPreferencesGetInt0081', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
-            const promise = mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0).then((ret) => {
                 expect(3).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -322,14 +303,13 @@ export default function preferencesPromiseTest(){
         it('testPreferencesGetLong0091', 0, async function (done) {
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
-            const promise = mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0).then((ret) => {
                 expect(3).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -341,14 +321,13 @@ export default function preferencesPromiseTest(){
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
             await mPreferences.flush();
-            const promise = mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue").then((ret) => {
                 expect('test').assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
 
         /**
@@ -358,8 +337,7 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesPutBoolean0121', 0, async function (done) {
             await mPreferences.clear();
-            let promise = mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
-            await promise;
+            await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true);
             let per = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
             expect(true).assertEqual(per);
             await mPreferences.flush();
@@ -375,8 +353,7 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesPutFloat0131', 0, async function (done) {
             await mPreferences.clear();
-            const promise = mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
-            await promise;
+            await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0);
             let per = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
             expect(4.0).assertEqual(per);
             await mPreferences.flush();
@@ -392,8 +369,7 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesPutInt0141', 0, async function (done) {
             await mPreferences.clear();
-            let promise = mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
-            await promise;
+            await mPreferences.put(KEY_TEST_INT_ELEMENT, 4);
             let per = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
             expect(4).assertEqual(per);
             await mPreferences.flush();
@@ -408,8 +384,7 @@ export default function preferencesPromiseTest(){
          * @tc.desc put long promise interface test
          */
         it('testPreferencesPutLong0151', 0, async function (done) {
-            let promise = mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
-            await promise;
+            await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
             let per = await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0);
             expect(4).assertEqual(per);
             await mPreferences.flush();
@@ -424,8 +399,7 @@ export default function preferencesPromiseTest(){
          * @tc.desc put String promise interface test
          */
         it('testPreferencesPutString0161', 0, async function (done) {
-            let promise = mPreferences.put(KEY_TEST_STRING_ELEMENT, '');
-            await promise;
+            await mPreferences.put(KEY_TEST_STRING_ELEMENT, '');
             let per = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue")
             expect('').assertEqual(per);
             await mPreferences.flush();
@@ -441,14 +415,13 @@ export default function preferencesPromiseTest(){
          */
         it('testPreferencesGetDefValue00162', 0, async function (done) {
             await mPreferences.clear();
-            let promise = mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true);
-            promise.then((ret) => {
+            await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true).then((ret) => {
                 expect(true).assertEqual(ret);
+                done();
             }).catch((err) => {
                 expect(null).assertFail();
+                done();
             });
-            await promise;
-            done();
         })
     })
 }
