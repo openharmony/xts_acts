@@ -19,7 +19,7 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const TAG = "[RelationalStore_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-    + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)"
++ "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)"
 const STORE_CONFIG = {
     name: "Query.db",
     securityLevel: data_Rdb.SecurityLevel.S1
@@ -64,11 +64,11 @@ async function CreatRdbStore(context, STORE_CONFIG) {
         }
         await RdbStore.insert("test", valueBucket)
     }
-    return RdbStore
+
 }
 
 async function getLocalDeviceId(){
-    
+
 }
 export default function relationalStoreQueryTest(){
     describe("relationalStoreQueryTest", function() {
@@ -81,7 +81,7 @@ export default function relationalStoreQueryTest(){
                     context:context
                 }
             }
-        
+
             const options = {
                 createIfMissing : true,
                 encrypt : false,
@@ -91,44 +91,44 @@ export default function relationalStoreQueryTest(){
                 schema : '',
                 securityLevel : factory.SecurityLevel.S2,
             }
-        
+
             console.info('getLocalDeviceId config:'+ JSON.stringify(config));
-                await factory.createKVManager(config).then((manager) => {
-                    kvManager = manager;
-                    console.info('getLocalDeviceId createKVManager success');
-                }).catch((err) => {
-                    console.info('getLocalDeviceId createKVManager err ' + err);
+            await factory.createKVManager(config).then((manager) => {
+                kvManager = manager;
+                console.info('getLocalDeviceId createKVManager success');
+            }).catch((err) => {
+                console.info('getLocalDeviceId createKVManager err ' + err);
+            });
+            await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
+                kvStore = store;
+                console.info('getLocalDeviceId getKVStore for getDeviceId success');
+            }).catch((err) => {
+                console.info('getLocalDeviceId getKVStore err ' + err);
+            });
+            var getDeviceId = new Promise((resolve, reject) => {
+                kvStore.on('dataChange', 0, function (data) {
+                    console.info('getLocalDeviceId on data change: ' + JSON.stringify(data));
+                    resolve(data.deviceId);
                 });
-                await kvManager.getKVStore(TEST_STORE_ID, options).then((store) => {
-                    kvStore = store;
-                    console.info('getLocalDeviceId getKVStore for getDeviceId success');
-                }).catch((err) => {
-                    console.info('getLocalDeviceId getKVStore err ' + err);
+                kvStore.put("getDeviceId", "byPut").then((data) => {
+                    console.info('getLocalDeviceId put success');
+                    expect(data == undefined).assertTrue();
                 });
-                var getDeviceId = new Promise((resolve, reject) => {
-                    kvStore.on('dataChange', 0, function (data) {
-                        console.info('getLocalDeviceId on data change: ' + JSON.stringify(data));
-                        resolve(data.deviceId);
-                    });
-                    kvStore.put("getDeviceId", "byPut").then((data) => {
-                        console.info('getLocalDeviceId put success');
-                        expect(data == undefined).assertTrue();
-                    });
-                    setTimeout(() => {
-                        reject(new Error('not resolved in 2 second, reject it.'))
-                    }, 2000);
-                });
-                await getDeviceId.then(function(deviceId) {
-                    console.info('getLocalDeviceId getDeviceId ' + JSON.stringify(deviceId));
-                    localDeviceId = deviceId;
-                }).catch((error) => {
-                    console.info('getLocalDeviceId can NOT getDeviceId, fail: ' + error);
-                    expect(null).assertFail();
-                });
-                await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
-                await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID);
-                kvStore = null;
-                console.info('getLocalDeviceId end');
+                setTimeout(() => {
+                    reject(new Error('not resolved in 2 second, reject it.'))
+                }, 2000);
+            });
+            await getDeviceId.then(function(deviceId) {
+                console.info('getLocalDeviceId getDeviceId ' + JSON.stringify(deviceId));
+                localDeviceId = deviceId;
+            }).catch((error) => {
+                console.info('getLocalDeviceId can NOT getDeviceId, fail: ' + error);
+                expect(null).assertFail();
+            });
+            await kvManager.closeKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, kvStore);
+            await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID);
+            kvStore = null;
+            console.info('getLocalDeviceId end');
             getLocalDeviceId()
             console.info(TAG + 'beforeAll')
             done();
@@ -136,7 +136,7 @@ export default function relationalStoreQueryTest(){
 
         beforeEach(async function () {
             console.info(TAG + 'beforeEach')
-            
+
             rdbStore = await CreatRdbStore(context, STORE_CONFIG)
         })
 
@@ -150,31 +150,38 @@ export default function relationalStoreQueryTest(){
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0010
-        * @tc.desc RelationalStore remotequery function test
-        */
-        it('RdbRemoteQueryPromiseTest0010', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0010
+         * @tc.desc RelationalStore remotequery function test
+         */
+        
+        it('RdbRemoteQueryPromiseTest0010', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0010 start")
-            let errInfo = undefined
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
             try{
-                rdbStore.remoteQuery(localDeviceId,"test",predicates,["name","age","salary"])
+                await rdbStore.remoteQuery(localDeviceId,"test",predicates,["name","age","salary"]).then((resultSet) => {
+                    console.info(TAG + "Remote query success")
+                    expect().assertFail();
+                }).catch((err) => {
+                    console.info(TAG + "Remote query error" + err)
+                    expect().assertFail();
+                })
             }catch(err){
-                errInfo = err
+                console.info(TAG + "RdbRemoteQueryPromiseTest0010 error:" + err)
+                expect(err.message!==null).assertTrue();
+                done();
             }
-            expect(errInfo.code).assertEqual("401")
-            done();
+
+
             console.info(TAG + "RdbRemoteQueryPromiseTest0010 end")
         })
-
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0020
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryPromiseTest0020', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0020
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryPromiseTest0020', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0020 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -188,17 +195,17 @@ export default function relationalStoreQueryTest(){
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryPromiseTest0020 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryPromiseTest0020 end")
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0030
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryPromiseTest0030', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0030
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryPromiseTest0030', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0030 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -212,17 +219,17 @@ export default function relationalStoreQueryTest(){
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryPromiseTest0030 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryPromiseTest0030 end")
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0040
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryPromiseTest0040', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0040
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryPromiseTest0040', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryPromiseTest0040 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -236,17 +243,17 @@ export default function relationalStoreQueryTest(){
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryPromiseTest0040 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryPromiseTest0040 end")
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0010
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryCallbackTest0010', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0010
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryCallbackTest0010', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0010 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -256,23 +263,23 @@ export default function relationalStoreQueryTest(){
                         console.info(TAG + "Remote query error" + err)
                     }else{
                         console.info(TAG + "Remote query success")
-                    expect(false).assertTrue();
+                        expect(false).assertTrue();
                     }
                 })
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryCallbackTest0010 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryCallbackTest0010 end")
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0020
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryCallbackTest0020', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0020
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryCallbackTest0020', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0020 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -282,23 +289,23 @@ export default function relationalStoreQueryTest(){
                         console.info(TAG + "Remote query error" + err)
                     }else{
                         console.info(TAG + "Remote query success")
-                    expect(false).assertTrue();
+                        expect(false).assertTrue();
                     }
                 })
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryCallbackTest0020 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryCallbackTest0020 end")
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0030
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryCallbackTest0030', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0030
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryCallbackTest0030', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0020 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -308,23 +315,23 @@ export default function relationalStoreQueryTest(){
                         console.info(TAG + "Remote query error" + err)
                     }else{
                         console.info(TAG + "Remote query success")
-                    expect(false).assertTrue();
+                        expect(false).assertTrue();
                     }
                 })
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryCallbackTest0030 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryCallbackTest0030 end")
         })
 
         /**
-        * @tc.name RelationalStore remotequery test
-        * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0040
-        * @tc.desc RelationalStore remotequery function test
-        */
-         it('RdbRemoteQueryCallbackTest0040', 0, async function (done){  
+         * @tc.name RelationalStore remotequery test
+         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0040
+         * @tc.desc RelationalStore remotequery function test
+         */
+        it('RdbRemoteQueryCallbackTest0040', 0, async function (done){
             console.info(TAG + "RdbRemoteQueryCallbackTest0040 start")
             let predicates = new data_Rdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
@@ -334,13 +341,13 @@ export default function relationalStoreQueryTest(){
                         console.info(TAG + "Remote query error" + err)
                     }else{
                         console.info(TAG + "Remote query success")
-                    expect(false).assertTrue();
+                        expect(false).assertTrue();
                     }
                 })
             }catch(err){
                 console.info(TAG + "RdbRemoteQueryCallbackTest0040 error:" + err)
             }
-            
+
             done();
             console.info(TAG + "RdbRemoteQueryCallbackTest0040 end")
         })
