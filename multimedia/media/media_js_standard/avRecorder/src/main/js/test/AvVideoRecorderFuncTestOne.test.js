@@ -211,7 +211,7 @@ export default function avVideoRecorderTestOne() {
             myProfile = availableVideoProfileList[0];
             let configs = [avConfig, avConfigMpeg, avConfigMpegAac, avConfigH264, avConfigH264Aac]
             for (let i = 0; i < configs.length; i++) {
-                isRkDevice(configs[i])
+                checkDevice(configs[i])
             }
             avConfigH264.profile.videoBitrate = 280000;
             avConfigH264Aac.profile.videoBitrate = 280000;
@@ -260,7 +260,7 @@ export default function avVideoRecorderTestOne() {
             return (size.width <= standardWidth) && (size.height <= standardHeight);
          }
 
-        function isRkDevice(avConfig) {
+        function checkDevice(avConfig) {
             if (deviceInfo.deviceType === 'default') {
                 avConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES
             } else {
@@ -2692,7 +2692,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -2743,7 +2743,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -2794,7 +2794,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -2845,7 +2845,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -4187,7 +4187,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -4239,7 +4239,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -4293,7 +4293,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -4349,7 +4349,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -4403,7 +4403,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // setAvRecorderCallback
                 CREATE_PROMISE_EVENT, SETONCALLBACK_EVENT,
@@ -5194,7 +5194,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // init avRecorder
                 CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
@@ -5241,7 +5241,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // init avRecorder
                 CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
@@ -5288,7 +5288,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // init avRecorder
                 CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
@@ -5335,7 +5335,7 @@ export default function avVideoRecorderTestOne() {
             fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
-            isRkDevice(avNewConfig)
+            checkDevice(avNewConfig)
             let mySteps = new Array(
                 // init avRecorder
                 CREATE_CALLBACK_EVENT, SETONCALLBACK_EVENT, PREPARE_CALLBACK_EVENT,
