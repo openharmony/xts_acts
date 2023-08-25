@@ -98,7 +98,7 @@ export default function ListJsunit() {
       let gridRight = CommonFunc.getComponentRect('list');
       let right = gridRight.right
       let driver = await UiDriver.create()
-      await driver.swipe(Math.round(top + 50), Math.round(right - 50), Math.round(bottom - 50), Math.round(right - 50));
+      await driver.swipe(Math.round(top + 50), Math.round(right - 50), 20, Math.round(right - 50));
       await CommonFunc.sleep(1000);
       
       let onScrollText = await driver.findComponent(BY.key('onScrollText'));
@@ -135,12 +135,12 @@ export default function ListJsunit() {
       expect(text5).assertEqual('onScrollStop');
 
       // Verify the functions of onReachEnd
-      await driver.swipe(Math.round(bottom - 50), Math.round(right - 50), Math.round(top + 50), Math.round(right - 50));
-      await driver.swipe(Math.round(bottom - 50), Math.round(right - 50), Math.round(top + 50), Math.round(right - 50));
+      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
+      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(bottom - 50), Math.round(right - 50), Math.round(top + 50), Math.round(right - 50));
-      await driver.swipe(Math.round(bottom - 50), Math.round(right - 50), Math.round(top + 50), Math.round(right - 50));
-      await driver.swipe(Math.round(bottom - 50), Math.round(right - 50), Math.round(top + 50), Math.round(right - 50));
+      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
+      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
+      await driver.swipe(Math.round(right), Math.round(top -100), 10, Math.round(top - 100));
       await CommonFunc.sleep(1000);
       let onReachEndText = await driver.findComponent(BY.key('onReachEndText'));
       let text= await onReachEndText.getText();
