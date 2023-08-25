@@ -870,7 +870,6 @@ export default function publicApiTestWithSystemApiTest () {
           console.info(`${testNum} changeData: ${JSON.stringify(changeData)}`);
           expect(changeData.type).assertEqual(NOTIFY_REMOVE);
           expect(changeData.uris[0]).assertEqual(albumUri);
-          done();
         });
         await sleep(550);
         await helper.deleteAlbums([album]);
