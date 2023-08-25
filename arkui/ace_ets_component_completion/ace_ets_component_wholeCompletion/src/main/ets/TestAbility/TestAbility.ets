@@ -51,8 +51,11 @@ export default class TestAbility extends Ability {
                 return;
             }
             windowClass = data;
-
-            globalThis.uiContent = windowClass.getUIContext();
+            try{
+                globalThis.uiContent = windowClass.getUIContext();
+            } catch(err){
+                console.info("windowClass getUIContext is error" + JSON.stringify(err))
+            }
             console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
         });
     }
