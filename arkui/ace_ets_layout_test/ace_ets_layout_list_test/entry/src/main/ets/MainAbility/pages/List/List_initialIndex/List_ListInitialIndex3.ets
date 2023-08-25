@@ -31,6 +31,7 @@ struct List_ListInitialIndex3{
           .key('List_ListInitialIndex3_'+ item)
         }, item => item)
       }
+      .cachedCount(0)
       .width(300)
       .height(500)
       .listDirection(Axis.Vertical)
