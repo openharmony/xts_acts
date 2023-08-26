@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import sms from '@ohos.telephony.sms';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function SmsMmsErrorTest() {
@@ -126,6 +127,7 @@ describe('SmsMmsErrorTest', function () {
   it('Telephony_SmsMms_sendMessage_Promise_0100', 0, async function (done) {
     try {
       let sendCallback = function (err, data) {
+        expect(data.isLastPart !== '').assertTrue();
         console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
       }
       let deliveryCallback = function (err, data) {

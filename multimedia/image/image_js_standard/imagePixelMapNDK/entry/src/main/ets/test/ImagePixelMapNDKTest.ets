@@ -20,6 +20,7 @@ import ndkTest from 'libImagePixelMapNDKTest.so'
 
 export default function ImagePixelMapNDKTest() {
     describe('ImagePixelMapNDKTest', function () {
+        let globalpixelmap;
         const RESULT_SUCCESS = 0;
         const BYTESNUMBER = 16;
         function logger(caseName) {
@@ -57,7 +58,17 @@ export default function ImagePixelMapNDKTest() {
 
         beforeEach(function () { console.info('beforeEach case'); })
 
-        afterEach(function () { console.info('afterEach case'); })
+        afterEach(async function () {
+            if (globalpixelmap != undefined) {
+                console.info('globalpixelmap release start');
+                try {
+                    await globalpixelmap.release();
+                } catch (error) {
+                    console.info('globalpixelmap release fail');
+                }
+            }
+            console.info('afterEach case');
+        })
 
         afterAll(function () { console.info('afterAll case'); })
 
@@ -100,6 +111,7 @@ export default function ImagePixelMapNDKTest() {
                     done();
                     return;
                 }
+                globalpixelmap = pixelmap;
                 let testFunction1 = functionTest(log, res, pixelmap);
                 testFunction1.test(pixelMapInterface,
                     (value) => {
@@ -125,6 +137,7 @@ export default function ImagePixelMapNDKTest() {
                     done();
                     return;
                 }
+                globalpixelmap = pixelmap;
                 let testFunction1 = functionTest(log, res, pixelmap);
                 testFunction1.test(pixelMapInterface,
                     (value) => {
@@ -156,6 +169,7 @@ export default function ImagePixelMapNDKTest() {
                 if (pixelmap == undefined) {
                     return;
                 }
+                globalpixelmap = pixelmap;
                 expect(true).assertTrue();
                 done();
             } catch (error) {

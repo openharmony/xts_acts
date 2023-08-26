@@ -38,6 +38,7 @@ export async function driveFn(num) {
     console.info(`UiDriver start`)
     for (let i = 0; i < num; i++) {
         let button = await driver.findComponent(BY.text('允许'))
+        if(button == null) continue;
         console.info(`button is ${JSON.stringify(button)}`)
         await msleepAsync(2000)
         await button.click()
