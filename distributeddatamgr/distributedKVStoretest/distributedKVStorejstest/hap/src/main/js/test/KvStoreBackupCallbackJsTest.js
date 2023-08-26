@@ -66,6 +66,7 @@ function publicCloseKvStore() {
                     reject(err);
                 }
                 console.info('Test deleteKVStore data = ' + data);
+                resolve(data);
             });
         });
     })
