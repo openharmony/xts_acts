@@ -136,6 +136,7 @@ function publicDeleteBackup(kvStore,files){
         })
     } catch (e) {
         console.log("111Test deleteBackup err information: " + e );
+        reject(e);
     }
     })
 }
@@ -179,8 +180,6 @@ const optionLock = {
     kvStoreType: distributedData.KVStoreType.SINGLE_VERSION,
     securityLevel: distributedData.SecurityLevel.S1,
 }
-
-var file = '';
 
 var files =new Array();
 export default function kvStoreBackupCallbackJsunittest(){
