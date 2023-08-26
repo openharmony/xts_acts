@@ -31,6 +31,8 @@ const DIR2 = "/data/app/el1/bundle/public/com.example.myapplication2/com.example
 const DIR3 = "/data/app/el1/bundle/public/com.example.myapplication2/com.example.myapplication1"
 const DESCRIPTION = "$string:mainability_description"
 const APPLICATION_DESCRIPTION = "$string:entry_description"
+const FLAGONE = "1"
+const FLAGTWO = "2"
 let userId = 0;
 
 export default function ActsBundleManagerTest() {
@@ -676,7 +678,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                 expect(data[i].appInfo.supportedModes).assertEqual(0);
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
             }
@@ -1103,7 +1105,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                     expect(data[i].appInfo.supportedModes).assertEqual(0);
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
                 }
@@ -1235,7 +1237,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                 expect(data[i].appInfo.supportedModes).assertEqual(0);
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
             }
@@ -1260,7 +1262,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                 expect(data[i].appInfo.supportedModes).assertEqual(0);
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
             }
@@ -1286,7 +1288,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                     expect(data[i].appInfo.supportedModes).assertEqual(0);
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
                 }
@@ -1312,7 +1314,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                     expect(data[i].appInfo.supportedModes).assertEqual(0);
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
                 }
@@ -1337,7 +1339,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                 expect(data[i].appInfo.supportedModes).assertEqual(0);
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
             }
@@ -1361,7 +1363,7 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+            if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                 expect(data[i].appInfo.supportedModes).assertEqual(0);
                 expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
             }
@@ -1385,7 +1387,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                if (data[i].appInfo.codePath != FLAGONE && data[i].appInfo.codePath != FLAGTWO) {
                     expect(data[i].appInfo.supportedModes).assertEqual(0);
                     expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
                 }
