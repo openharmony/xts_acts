@@ -212,7 +212,7 @@ export default function kvStoreBackupCallbackJsunittest(){
             'which is executed after the test suite is executed');
             await publicCloseKvStore();
             kvManager = null;
-            console.info("Test kvstore = " + kvStore)
+            console.info("Test kvstore = " + kvStore);
         })
 
         /**
