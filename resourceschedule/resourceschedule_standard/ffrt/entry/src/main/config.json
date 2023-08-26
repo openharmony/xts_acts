@@ -7,9 +7,9 @@
       "name": "1.0.0"
     },
     "apiVersion": {
-      "compatible": 9,
+      "compatible": 10,
       "releaseType": "Release",
-      "target": 9
+      "target": 10
     }
   },
   "deviceConfig": {},
@@ -20,7 +20,8 @@
 
     "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "phone"
     ],
     "distro": {
       "deliveryWithInstall": true,

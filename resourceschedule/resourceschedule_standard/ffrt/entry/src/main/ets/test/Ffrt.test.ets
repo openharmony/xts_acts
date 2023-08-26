@@ -12,8 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import ffrtndk from 'libffrtndk.so';
 export default function ffrtTest() {
   describe('ActsAbilityTest', function () {
@@ -38,7 +37,6 @@ export default function ffrtTest() {
     })
     it('assertContain',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
       var flag = ffrtndk.submitSimpleFfrtTask();
       var flag2 = ffrtndk.submitCondFfrtTask();
       var flag3 = ffrtndk.submitQueueFfrtTask();
