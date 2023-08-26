@@ -124,6 +124,8 @@ struct richeditor2 {
           })
           .key('richEditor')
           .bindSelectionMenu(RichEditorSpanType.TEXT,this.SubMenu(),ResponseType.RightClick)
+          .bindSelectionMenu(RichEditorSpanType.IMAGE,this.SubMenu(),ResponseType.RightClick)
+          .bindSelectionMenu(RichEditorSpanType.MIXED,this.SubMenu(),ResponseType.RightClick)
           .onSelect((value: RichEditorSelection) => {
             [this.start, this.end] = value.selection;
             this.message = "[" + this.start + ", " + this.end + "]"
