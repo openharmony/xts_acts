@@ -15,36 +15,32 @@
 
 @Entry
 @Component
-struct DatePickerDialogOptions0 {
-  @State isLunar: boolean = false
-  selectedDate: Date = new Date("2023-7-24")
+struct TextPickerDialogExample {
+  private select: number | number[] = 2
+  private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5']
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('TextPickerDialog')
         .margin(20)
         .onClick(() => {
-          DatePickerDialog.show({
+          TextPickerDialog.show({
+            range: this.fruits,
+            selected: this.select,
             alignment: DialogAlignment.TopStart,
             offset: { dx: 10, dy: 100 },
             maskRect: { x: 0, y: 90, width: 1000, height: 250  },
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            lunar: this.isLunar,
-            showTime:true,
-            useMilitaryTime:false,
-            onDateAccept: (value: Date)=> {
-              this.selectedDate = value
-              console.info("DatePickerDialog:onDateAccept()" + value.toString())
+            onAccept: (value: TextPickerResult)=> {
+              this.select = value.index
+              console.info("TextPickerDialog: onAccept()" + JSON.stringify(value))
             },
             onCancel:()=> {
-              console.info("DatePickerDialog: onCancel()")
+              console.info("TextPickerDialog: onCancel()")
             },
-            onDateChange: (value: Date)=> {
-              console.info("DatePickerDialog: onChange()" + value.toString())
+            onChange: (value: TextPickerResult)=> {
+              console.info("TextPickerDialog: onChange()" + JSON.stringify(value))
             }
-          }).key('DatePickerDialog')
+          }).key('TextPickerDialog')
         })
     }.width('100%')
   }

@@ -94,6 +94,13 @@
         "MainAbility/pages/DragController",
         "MainAbility/pages/richEditor",
         "MainAbility/pages/richEditorCustomKeyBoard",
-        "MainAbility/pages/DialogPage"
+        "MainAbility/pages/DialogPage",
+		"MainAbility/pages/ActionSheetOptions",
+		"MainAbility/pages/AlertDialogParam",
+		"MainAbility/pages/ShowDialogOptions",
+		"MainAbility/pages/TextPickerDialogOptions",
+		"MainAbility/pages/TimePickerDialogOptions",
+		"MainAbility/pages/overlay",
+		"MainAbility/pages/Panel"
     ]
 }
