@@ -57,7 +57,7 @@ struct CalendarPickerExample {
 
     build() {
         Column() {
-            CalendarPicker({hintRadius:16,selected: this.selectedDate})
+            CalendarPicker({selected: this.selectedDate})
                 .textStyle(this.textStyle)
                 .edgeAlign(this.edgeAlign)
                 .onChange((value) => {
@@ -72,7 +72,7 @@ struct CalendarPickerExample {
                 })
                 .key('CalendarPickerDefault')
             
-            CalendarPicker({hintRadius:10,selected: this.selectedDate})
+            CalendarPicker({selected: this.selectedDate})
                 .textStyle(this.textStyle)
                 .edgeAlign(CalendarAlign.START,{dx: 5,dy: 5})
                 .onChange((value) => {

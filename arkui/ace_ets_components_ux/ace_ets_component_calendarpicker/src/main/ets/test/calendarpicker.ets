@@ -24,29 +24,6 @@ export default function calendarpicker() {
       done();
     })
 
-    afterEach(async function (done) {
-      console.info("CalendarPicker afterEach start");
-      try {
-          var eventData = {
-            data: {
-              "textStyle": {color:Color.Black,font:{size:8,weight:FontWeight.Lighter}},
-              "edgeAlign": CalendarAlign.END,
-              "hintRadius": 16
-            }
-          }
-          var innerEvent = {
-            eventId: 185,
-            priority: events_emitter.EventPriority.LOW
-          }
-          console.info("[CalendarPicker_afterEach] start to publish emit");
-          events_emitter.emit(innerEvent, eventData);
-        } catch (err) {
-          console.log("[CalendarPicker_afterEach] change component data error: " + err.message);
-        }
-        console.info("[ArkUI_Stage_CalendarPicker_textStyle_0100] data" + JSON.stringify(data));
-        done();
-    })
-
     /*
      * @tc.number       ArkUI_Stage_CalendarPicker_textStyle_0100     
      * @tc.name         Tests the textStyle property of the CalendarCalendarPicker component
@@ -440,18 +417,19 @@ export default function calendarpicker() {
       expect(obj.$attrs.edgeAlign.offset.dy).assertEqual('-10.00vp');
       done();
     });
-
+    
     /*
      * @tc.number       ArkUI_Stage_CalendarPicker_hintRadius_0100
      * @tc.name         Tests the hintRadius property of the CalendarPicker component
      * @tc.desc         get the property of the hintRadius
      */
-    it('ArkUI_Stage_CalendarPicker_hintRadius_0100', 0, async function (done) { 
+	  it('ArkUI_Stage_CalendarPicker_hintRadius_0100', 0, async function (done) { 
       let strJson = getInspectorByKey('CalendarPicker');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Stage_CalendarPicker_hintRadius_0100] hintRadius:" + obj.$attrs.hintRadius);
-      expect(obj.$attrs.hintRadius).assertEqual('undefined');
+      expect(obj.$attrs.hintRadius).assertEqual(undefined);
       done();
     });
+    
   })
 }
