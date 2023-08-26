@@ -36,7 +36,6 @@ export default function selectmenuTest() {
         } catch (err) {
           console.error("push SelectMenu page error " + JSON.stringify(err));
         }
-        await sleep(2)
         done()
       });
 

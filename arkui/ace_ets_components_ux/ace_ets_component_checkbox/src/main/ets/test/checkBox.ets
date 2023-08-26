@@ -34,7 +34,6 @@ export default function checkBoxTest() {
       } catch (err) {
         console.error("push checkBox page error " + JSON.stringify(err));
       }
-      await sleep(2)
       done()
     });
 
