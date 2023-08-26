@@ -113,25 +113,25 @@ function publicBackup(kvStore,file){
 
 function publicDeleteBackup(kvStore,files){
     console.log(`Test deleteBackup ${JSON.stringify(files)}`)
+    return new Promise(function(resolve, reject) {
     try{
-        return new Promise(function(resolve, reject) {
-            kvStore.deleteBackup(files, function(err, data){
-                console.log("Test deleteBackup BackUpInfo =" + data);
-                if (err != undefined) {
-                    console.log("Test deleteBackup err information: " + err );
-                    reject(err);
-                }else{
-                    var devices =new Array();
-                    devices = data;
-                    delresult = devices;
-                    console.log("Test deleteBackup pass ");
-                    resolve(data);
-                }
-            })
+        kvStore.deleteBackup(files, function(err, data){
+            console.log("Test deleteBackup BackUpInfo =" + data);
+            if (err != undefined) {
+                console.log("Test deleteBackup err information: " + err );
+                reject(err);
+            }else{
+                var devices =new Array();
+                devices = data;
+                delresult = devices;
+                console.log("Test deleteBackup pass ");
+                resolve(data);
+            }
         })
     } catch (e) {
         console.log("111Test deleteBackup err information: " + e );
     }
+    }) 
 }
 
 function publicRestoreSp(kvStore,file){
@@ -190,7 +190,12 @@ export default function kvStoreBackupPromiseJsunittest(){
         afterEach( async function () {
             console.info('afterEach: Test case-level clearance conditions, ' +
             'which are executed after each test case is executed.');
-            await publicDeleteBackup(kvStore,files);
+            try{
+                await publicDeleteBackup(kvStore,files);
+            }catch(e){
+                console.log("222Test deleteBackup err information: " + e );
+            }
+            
         })
         afterAll( async function () {
             console.info('afterAll: Test suite-level cleanup condition, ' +
@@ -213,11 +218,11 @@ export default function kvStoreBackupPromiseJsunittest(){
 
                 publicRestore(kvStore).then((data) => {
                     console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100 going restore = " + JSON.stringify(data));
-                    expect(true).assertEqual(data == 'code数字');
+                    expect().assertFail();
                     done();
                 }).catch((err) => {
                     console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100 Manualrestore fail 1" + err);
-                    expect(true).assertEqual(JSON.stringify(err) == '{}');
+                    expect(err.code == "401" ).assertEqual(true);
                     done();
                 })
             } catch (e) {

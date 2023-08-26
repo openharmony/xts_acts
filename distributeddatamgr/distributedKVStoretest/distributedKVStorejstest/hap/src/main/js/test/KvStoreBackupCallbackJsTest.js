@@ -118,25 +118,25 @@ function publicBackup(kvStore,file){
 
 function publicDeleteBackup(kvStore,files){
     console.log(`Test deleteBackup ${JSON.stringify(files)}`)
+    return new Promise(function(resolve, reject) {
     try{
-        return new Promise(function(resolve, reject) {
-            kvStore.deleteBackup(files, function(err, data){
-                console.log("Test deleteBackup BackUpInfo =" + data);
-                if (err != undefined) {
-                    console.log("Test deleteBackup err information: " + err );
-                    reject(err);
-                }else{
-                     var devices =new Array();
-                     devices = data;
-                     delresult = devices;
-                     console.log("Test deleteBackup pass ");
-                     resolve(data);
-                }
-            })
+        kvStore.deleteBackup(files, function(err, data){
+            console.log("Test deleteBackup BackUpInfo =" + data);
+            if (err != undefined) {
+                console.log("Test deleteBackup err information: " + err );
+                reject(err);
+            }else{
+                var devices =new Array();
+                devices = data;
+                delresult = devices;
+                console.log("Test deleteBackup pass ");
+                resolve(data);
+            }
         })
     } catch (e) {
-    console.log("111Test deleteBackup err information: " + e );
+        console.log("111Test deleteBackup err information: " + e );
     }
+    })
 }
 
 function publicRestoreSp(kvStore,file){
@@ -198,7 +198,12 @@ export default function kvStoreBackupCallbackJsunittest(){
         afterEach( async function () {
             console.info('afterEach: Test case-level clearance conditions, ' +
             'which are executed after each test case is executed.');
-            await publicDeleteBackup(kvStore,files);
+            try{
+                await publicDeleteBackup(kvStore,files);
+            }catch(e){
+                console.log("222Test deleteBackup err information: " + e );
+            };
+            
             await publicCloseKvStore();
             files = []
         })
@@ -225,7 +230,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                     done();
                 }).catch((err) => {
                     console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_CALLBACK_0100 Manualrestore fail 1" + err);
-                    expect(err.code == 401 ).assertEqual(true);
+                    expect(err.code == "401" ).assertEqual(true);
                     done();
                 })
             } catch (e) {
