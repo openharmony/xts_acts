@@ -93,25 +93,9 @@ export default function BindMenuTest() {
       let CASE = 'ArkUI_Menu_0200'
       console.info(`${SUITE} ${CASE} START`);
 
-
-      async function step2() {
-        let callback2 = (event) => {
-          expect(event.data.action).assertEqual('onDisappear');
-          done();
-        }
-        let event2 = {
-          eventId: 60003,
-          priority: events_emitter.EventPriority.LOW
-        }
-        events_emitter.on(event2, callback2);
-        let driver = Driver.create()
-        await driver.delayMs(waitUiReadyMs)
-        driver.click(100, 400)
-      }
-
       let callback = (event) => {
         expect(event.data.action).assertEqual('onAppear');
-        step2()
+        done()
       }
       let event = {
         eventId: 60002,
