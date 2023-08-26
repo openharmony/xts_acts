@@ -60,7 +60,7 @@ describe('relationalStorePredicatesJoinTest', function () {
 
     afterEach(async function () {
         console.info(TAG + 'afterEach')
-        await data_Rdb.deleteRdbStore(context, "InsertTest.db");
+        await data_Rdb.deleteRdbStore(context, "RdbJoinTest.db");
         rdbStore = null
         console.info(TAG + 'afterEach end')
     })
