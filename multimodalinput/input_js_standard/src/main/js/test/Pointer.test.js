@@ -437,6 +437,16 @@ export default function Pointer_test() {
       expect(pointer.PointerStyle.CURSOR_CIRCLE == 41).assertTrue();
     })
 
+    it('Pointer_PointerStyle_Loading_test', 0, function () {
+      console.info('Pointer_LOADING_test = ' + pointer.PointerStyle.LOADING);
+      expect(pointer.PointerStyle.LOADING == 42).assertTrue();
+    })
+
+    it('Pointer_PointerStyle_Running_test', 0, function () {
+      console.info('Pointer_RUNNING_test = ' + pointer.PointerStyle.RUNNING);
+      expect(pointer.PointerStyle.RUNNING == 43).assertTrue();
+    })
+
     it('Touchpad_RightClickType_test', 0, function () {
       console.info('Touchpad_TOUCHPAD_RIGHT_BUTTON_test = ' + pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON);
       expect(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON == 1).assertTrue();
