@@ -51,10 +51,10 @@ function makehuksOptionsFinish(srcKeyAliesFirst){
 function makehuksOptionsDerive(srcKeyAliesFirst){
   let huksOptionsFinish = {
     properties: new Array(
-      HuksAgreeDH.HuksKeyALGORITHMAES,
-      HuksAgreeDH.HuksKeySIZE256,
+      HuksAgreeDH.HuksKeyALGORITHMAES, 
       HuksAgreeDH.HuksKeyPurposeDERIVE,
       HuksAgreeDH.HuksKeyDIGESTSHA256,
+      HuksAgreeDH.HuksKeySIZE256,
       HuksAgreeDH.HuksKeyPADDINGNONE,
       HuksAgreeDH.HuksKeyBLOCKMODEECB,
       {
@@ -73,9 +73,9 @@ function makehuksOptionsHmac(srcKeyAliesFirst){
   let huksOptionsFinish = {
     properties: new Array(
       HuksAgreeDH.HuksKeyALGORITHMHMAC,
-      HuksAgreeDH.HuksKeySIZE256,
       HuksAgreeDH.HuksKeyPurposeMAC,
       HuksAgreeDH.HuksKeyDIGESTSHA256,
+      HuksAgreeDH.HuksKeySIZE256,
       HuksAgreeDH.HuksKeyPADDINGNONE,
       HuksAgreeDH.HuksKeyBLOCKMODEECB,
       {

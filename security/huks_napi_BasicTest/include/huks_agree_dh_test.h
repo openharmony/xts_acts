@@ -65,7 +65,7 @@ static struct OH_Huks_Param g_agreeParams01Init001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_DH_KEY_SIZE_2048
+        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
     }
 };
 static struct OH_Huks_Param g_agreeParams01Finish001[] = {
@@ -107,7 +107,7 @@ static struct OH_Huks_Param g_agreeParams02Init001[] = {
         .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_DH_KEY_SIZE_2048
+        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
     }
 };
 static struct OH_Huks_Param g_agreeParams02Finish001[] = {

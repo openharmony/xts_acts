@@ -166,6 +166,7 @@ async function publicAgreeFunc(
   thirdInderfaceName
 ) {
   try {
+    
     await publicAgreeGenFunc(srcKeyAliesFrist, HuksOptions);
     await publicAgreeGenFunc(srcKeyAliesSecond, HuksOptions);
     await publicAgreeExport1Func(srcKeyAliesFrist, HuksOptions, 1);
@@ -178,7 +179,10 @@ async function publicAgreeFunc(
       HuksOptions.properties.splice(5, 1);
     }
 
-    await publicAgreeInitFunc(srcKeyAliesFrist, HuksOptions);
+    let HuksOptionsInit = JSON.parse(JSON.stringify(HuksOptions));
+    HuksOptionsInit.properties.splice(2,1,HuksOptionsFinish.properties[3])
+
+    await publicAgreeInitFunc(srcKeyAliesFrist, HuksOptionsInit);
     await publicAgreeUpdateFunc(HuksOptions, 1);
     await publicAgreeFinishAbortFunc(HuksOptionsFinish, thirdInderfaceName);
 
@@ -189,7 +193,7 @@ async function publicAgreeFunc(
       value: stringToUint8Array(srcKeyAliesSecond + 'final'),
     });
 
-    await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptions);
+    await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptionsInit);
     await publicAgreeUpdateFunc(HuksOptions, 2);
     await publicAgreeFinishAbortFunc(HuksOptionsFinishSecond, thirdInderfaceName);
 
