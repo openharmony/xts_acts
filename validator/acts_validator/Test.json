@@ -112,7 +112,7 @@
                 },
                 {
                     "name": "install",
-                    "value": "ActsValidatorTest.hap"
+                    "value": "validator.hap"
                 },
                 {
                     "name": "shell",
