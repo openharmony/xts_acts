@@ -31,13 +31,11 @@ config("public_config") {
 
 ohos_shared_library("ffrtndk") {
   sources = [ "./ffrtndk.cpp" ]
-  if (!(product_name == "m40")) {
-    libs = [ rebase_path(libcxx_ndk_shared_file) ]
-  }
+  libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
   include_dirs = [
     "./",
-    "//foundation/resourceschedule/ffrt/interfaces/kits",
+    "../../../../../../../../../../foundation/resourceschedule/ffrt/interfaces/kits",
   ]
   configs = [ ":config" ]
 
@@ -48,9 +46,9 @@ ohos_shared_library("ffrtndk") {
     "hilog:libhilog",
     "napi:ace_napi",
   ]
-  
+
   deps = [
-    "//foundation/resourceschedule/ffrt:ffrt_ndk",
+    "../../../../../../../../../../foundation/resourceschedule/ffrt:ffrt_ndk",
   ]
 
   output_extension = "so"
