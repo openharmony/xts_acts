@@ -150,7 +150,7 @@ function publicRestoreSp(kvStore,file){
 function publicRestore(kvStore){
     console.log(`Test restore `)
     return new Promise(function(resolve, reject) {
-        kvStore.restore.then((data) => {
+        kvStore.restore().then((data) => {
             console.log("Test restore backupinfo information: " + JSON.stringify(data) );
             resolve(data);
         }).catch((err) => {
