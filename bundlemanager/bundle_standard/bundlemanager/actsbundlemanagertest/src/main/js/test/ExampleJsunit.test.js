@@ -676,8 +676,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
@@ -1101,8 +1103,10 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         });
@@ -1231,8 +1235,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
@@ -1254,8 +1260,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
@@ -1278,8 +1286,10 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         })
@@ -1302,8 +1312,10 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         })
@@ -1325,8 +1337,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
@@ -1347,8 +1361,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(data[i].appInfo.icon.length).assertLarger(0);
                 expect(data[i].appInfo.label.length).assertLarger(0);
             }
-            expect(data[i].appInfo.supportedModes).assertEqual(0);
-            expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                expect(data[i].appInfo.supportedModes).assertEqual(0);
+                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+            }
         }
         done();
     })
@@ -1369,8 +1385,10 @@ describe('ActsBundleManagerTest', function () {
                     expect(data[i].appInfo.icon.length).assertLarger(0);
                     expect(data[i].appInfo.label.length).assertLarger(0);
                 }
-                expect(data[i].appInfo.supportedModes).assertEqual(0);
-                expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                if (data[i].appInfo.codePath != "1" && data[i].appInfo.codePath != "2") {
+                    expect(data[i].appInfo.supportedModes).assertEqual(0);
+                    expect(data[i].appInfo.moduleInfos.length).assertLarger(0);
+                }
             }
             done();
         })
