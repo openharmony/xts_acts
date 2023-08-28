@@ -82,7 +82,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0200 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("check permission deny, need to request ohos.permission.REQUIRE_FORM or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS.");
+                expect(data.data).assertEqual("Permissions denied.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0200"));
                 console.info(`FMS_acquireForm_0200 end`);
                 done();
@@ -123,7 +123,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0300 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0300"));
                 console.info(`FMS_acquireForm_0300 end`);
                 done();
@@ -164,7 +164,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0400 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0400"));
                 console.info(`FMS_acquireForm_0400 end`);
                 done();
@@ -205,7 +205,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0500 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0500"));
                 console.info(`FMS_acquireForm_0500 end`);
                 done();
@@ -246,7 +246,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0600 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0600"));
                 console.info(`FMS_acquireForm_0600 end`);
                 done();
@@ -287,7 +287,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_0700 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_0700"));
                 console.info(`FMS_acquireForm_0700 end`);
                 done();
@@ -328,7 +328,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_1000 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_1000"));
                 console.info(`FMS_acquireForm_1000 end`);
                 done();
@@ -547,7 +547,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_1400 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("the requested form id is not existed on fms.");
+                expect(data.data).assertEqual("The ID of the form to be operated does not exist");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallBackCache("FMS_acquireForm_1400"));
                 var commonEventPublishData = {
                     data: formId
@@ -1259,7 +1259,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_2100 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallBackCache("FMS_acquireForm_2100"));
                 var commonEventPublishData = {
                     data: formId

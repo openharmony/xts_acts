@@ -85,7 +85,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_3800 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => {
                     console.info(`FMS_acquireForm_3800 unsubscribe callback`);
                     done();
@@ -127,7 +127,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_3900 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("invalid params received on operating form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => {
                     console.info(`FMS_acquireForm_3900 unsubscribe callback`);
                     done();
@@ -172,7 +172,7 @@ export default function test() {
                 console.info("!!!====>FMS_acquireForm_4000 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
                 commonEvent.unsubscribe(subscriberOnError, () => unsubscribeOnErrorCallback("FMS_acquireForm_4000"));
-                expect(data.data).assertEqual("the form id and form config are not matched.");
+                expect(data.data).assertEqual("The ID of the form to be operated does not exist");
 
                 console.info(`FMS_acquireForm_4000 end`);
                 var commonEventPublishData = {
@@ -371,7 +371,7 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4400 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("the dimension not exist in the form.");
+                expect(data.data).assertEqual("Parameter error.");
                 commonEvent.unsubscribe(subscriberOnError, () => {
                     console.info(`FMS_acquireForm_4400 unsubscribe callback`);
                     done();
