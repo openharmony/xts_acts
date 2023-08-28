@@ -117,6 +117,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'window_off_windowSizeChange_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let baseWndType = 1;
@@ -132,10 +133,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       expect(!!tempWnd).assertTrue();
       tempWnd.on('windowSizeChange', () => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('windowSizeChange', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       await tempWnd.show().catch((err) => {
@@ -161,8 +164,9 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         await tempWnd.destroyWindow();
         done();
       })
+      console.error(msgStr + 'num : ' + num);
       await sleep(500);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       }
@@ -245,6 +249,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'window_off_avoidAreaChange_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let tempWnd = null
@@ -257,14 +262,19 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('avoidAreaChange', () => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('avoidAreaChange', (data) => {
         console.info(msgStr + 'second listener trigger');
+        num++
         secondListenFlag = true
       });
       await tempWnd.setFullScreen(true).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setFullScreen(true)', done);
+      });
+      await tempWnd.setSystemBarEnable(['status']).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
       await sleep(1000);
       tempWnd.off('avoidAreaChange');
@@ -277,7 +287,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
     })
@@ -346,6 +356,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'window_off_screenshot_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let windowId = 'window_off_screenshot_Test_001';
@@ -368,10 +379,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('screenshot', (data) => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('screenshot', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       // 截屏代码
@@ -397,7 +410,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       } else {
@@ -490,6 +503,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'window_off_dialogTargetTouch_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let windowId = 'window_off_dialogTargetTouch_Test_001';
@@ -512,10 +526,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('dialogTargetTouch', (data) => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('dialogTargetTouch', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       // 点击模态窗口
@@ -536,7 +552,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       })
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       }
@@ -618,6 +634,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'window_off_keyboardHeightChange_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let windowId = 'window_off_keyboardHeightChange_Test_001';
@@ -643,10 +660,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       tempWnd.on('keyboardHeightChange', (data) => {
         console.info(msgStr + "first listener trigger");
+        num++
         firstListenFlag = true
       });
       tempWnd.on('keyboardHeightChange', (data) => {
         console.info(msgStr + "second listener trigger");
+        num++
         secondListenFlag = true
       });
       await inputClick('pageTwoinput', msgStr).catch(async err => {
@@ -666,7 +685,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         done();
       })
       await sleep(2000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await tempWnd.destroyWindow();
         done();
       }
@@ -754,16 +773,18 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'windowStage_off_windowStageEvent_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
-
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -783,7 +804,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.show', done);
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
     })
@@ -828,7 +849,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       windowStage.off("windowStageEvent");
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
@@ -843,6 +864,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'display_off_add_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let screenClass = null;
@@ -850,11 +872,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -900,7 +924,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'screen.makeExpand', done);
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await screen.destroyVirtualScreen(screenClass_two.id)
         done();
       }
@@ -975,7 +999,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       display.off("add")
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
@@ -989,6 +1013,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'display_off_remove_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let screenClass = null;
@@ -996,11 +1021,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -1047,7 +1074,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       await screen.destroyVirtualScreen(screenClass_two.id)
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
       }
     })
@@ -1121,7 +1148,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       display.off('remove')
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
@@ -1135,17 +1162,20 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'display_off_change_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
+      let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
       let screenClass = null;
 
       function firstCall() {
         console.log(msgStr + "first listener trigger")
+        num++
         firstListenFlag = true
       }
 
       function secondCall() {
         console.log(msgStr + "second listener trigger")
+        num++
         secondListenFlag = true
       }
 
@@ -1179,7 +1209,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'screenClass.setOrientation', done);
       });
       await sleep(1000);
-      if (firstListenFlag === false && secondListenFlag === false) {
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         await screen.destroyVirtualScreen(screenClass.id)
         done();
       }
@@ -1241,7 +1271,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       display.off('change')
       if (!firstListenFlag && secondListenFlag) {
         done();
-      }else{
+      } else {
         expect(TRUE_FLAG).assertFail();
         done();
       }
@@ -1254,7 +1284,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('getUIContext_Test_001', 0, async function (done) {
       let caseName = 'getUIContext_Test_001';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let uiContext=null;
+      let uiContext = null;
       console.log(msgStr + 'begin');
       let mainWindow = null
       mainWindow = await windowStage.getMainWindow().catch((err) => {
@@ -1264,7 +1294,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       // 获取UIContext实例。
       uiContext = mainWindow.getUIContext();
       expect(!!uiContext).assertTrue();
-      console.log(msgStr + 'after uiContext: '+JSON.stringify(uiContext));
+      console.log(msgStr + 'after uiContext: ' + JSON.stringify(uiContext));
       done();
     })
 
