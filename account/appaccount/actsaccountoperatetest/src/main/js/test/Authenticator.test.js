@@ -20,6 +20,7 @@ const NAMELIMIT = 512;
 const LENGTHLIMIT = 1024;
 const name = 'zhangsan'
 const owner = 'com.example.accountauthenticator'
+const self_owner = 'com.example.actsaccountoperatetest'
 const createAccountOptions = {customData:{age:'12'}}
 export default function ActsAccountAppAccess() {
     describe('ActsAccountAuthenticator', function () {
@@ -46,7 +47,7 @@ export default function ActsAccountAppAccess() {
         beforeEach(async (done)=>{
             console.debug("====>afterEach start====");
             var appAccountManager = account.createAppAccountManager();
-            var accounts = await appAccountManager.getAccountsByOwner(owner)
+            var accounts = await appAccountManager.getAccountsByOwner(self_owner)
             for (var i=0;i<accounts.length;i++){
                 var localName = accounts[i].name
                 if(localName == 'zhangsan'){
