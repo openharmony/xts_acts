@@ -22,7 +22,6 @@ export default function abilityTest() {
   describe('ACTS_UIExtension', function () {
     let TAG = "";
     let sleepTimeOne = 1000;
-    let abilityContext = globalThis.abilityContext;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(function () {
       // Presets an action, which is performed only once before all test cases of the test suite start.

@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "UIExtensionTest.hap",
-				"UIextensionProvider.hap",
+				"UIExtensionProvider.hap",
                 "StartAbilityByUIContentSession.hap"
             ],
             "type": "AppInstallKit",

@@ -18,8 +18,6 @@ import commonEventManager from '@ohos.commonEventManager'
 import Logger from '../model/Logger'
 import common from '@ohos.app.ability.common';
 let context= getContext(this) as common.UIExtensionContext;
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 
 const TAG: string = '[UIExtAbility]'
 const sleepTimeOne = 1000;
