@@ -278,7 +278,7 @@ export default function ListJsunit() {
       expect(obj.$attrs.divider.color).assertEqual('#FF00000A');
       expect(obj.$attrs.divider.startMargin).assertEqual('0.00vp');
       expect(obj.$attrs.divider.endMargin).assertEqual('-10.00vp');
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off');
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto');
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.cachedCount).assertEqual('1');
       expect(obj.$attrs.edgeEffect).assertEqual('EdgeEffect.None');
