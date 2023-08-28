@@ -72,7 +72,7 @@ export default function ListDeleteTest() {
       expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
       expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
 
-      let rectCenter = getRectCenterVp(obj.$rect)
+      let rectCenter = getRectCenter(obj.$rect)
       let driver = Driver.create()
       await driver.swipe(rectCenter[0], rectCenter[1], 0, rectCenter[1])
 
@@ -102,9 +102,12 @@ export default function ListDeleteTest() {
       expect(obj.$attrs.startDeleteAreaDistance).assertEqual("0.00vp");
       expect(obj.$attrs.endDeleteAreaDistance).assertEqual("0.00vp");
 
-      let rectCenter = getRectCenterVp(obj.$rect)
+      let rectCenter = getRectCenter(obj.$rect)
       let driver = Driver.create()
-      await driver.swipe(rectCenter[0] - 200, rectCenter[1], rectCenter[0] + 200, rectCenter[1])
+      await driver.swipe(Math.round(rectCenter[0] - 200), 
+        Math.round(rectCenter[1]), 
+        Math.round(rectCenter[0] + 200), 
+        Math.round(rectCenter[1]))
 
       let strJsonButtonDel = getInspectorByKey(baseKey + '_Button_Del');
       let objButtonDel = JSON.parse(strJsonButtonDel);
@@ -145,7 +148,7 @@ export default function ListDeleteTest() {
       }
       events_emitter.on(event, callback);
       let rectCenter = getRectCenter(obj.$rect)
-      await driver.swipe(Math.round(rectCenter[0]) + 200, Math.round(rectCenter[1]),
+      await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
         0, Math.round(rectCenter[1]))
       console.info(`${SUITE} ${CASE} END`);
     });
