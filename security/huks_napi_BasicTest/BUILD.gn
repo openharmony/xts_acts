@@ -37,7 +37,6 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
   part_name = "huks"
 
   sources = [
-    "src/huks_agree_dh_test.cpp",
     "src/huks_agree_ecdh_test.cpp",
     "src/huks_agree_ecdh_test_common.cpp",
     "src/huks_agree_x25519_test.cpp",
@@ -71,6 +70,7 @@ ohos_moduletest_suite("ActsHuksNAPITest") {
       "src/huks_attest_test.cpp",
       "src/huks_attest_test_common.cpp",
       "src/huks_signverify_dsa_test.cpp",
+      "src/huks_agree_dh_test.cpp",
     ]
   }
 
