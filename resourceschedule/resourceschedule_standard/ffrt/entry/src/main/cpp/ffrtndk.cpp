@@ -14,18 +14,18 @@
  */
 #include "napi/native_api.h"
 #include "hilog/log.h"
-#include "ffrt/task.h"
-#include "ffrt/type_def.h"
-#include "ffrt/condition_variable.h"
-#include "ffrt/mutex.h"
-#include "ffrt/queue.h"
-#include "ffrt/sleep.h"
+#include "c/task.h"
+#include "c/type_def.h"
+#include "c/condition_variable.h"
+#include "c/mutex.h"
+#include "c/queue.h"
+#include "c/sleep.h"
 #include <string>
 #include <unistd.h>
 
 void MyPrint(void* arg)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "%{public}s", "hello ffrt\n");
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "%{public}s", "hello ffrt\n");
 }
 
 void OnePlusForTest(void* arg)
@@ -192,25 +192,28 @@ void FfrtCvTask(void* arg)
     ffrt_mutex_destroy(&lock_);
 }
 
+/**
+ * add simple ffrt task submit example
+*/
 static napi_value SubmitSimpleFfrtTask(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "%{public}s", "ffrt start\n");
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "%{public}s", "ffrt start\n");
     ffrt_task_attr_t attr;
     ffrt_task_attr_init(&attr);
     ffrt_task_attr_set_qos(&attr, static_cast<ffrt_qos_t>(ffrt_qos_background));
     ffrt_task_attr_set_name(&attr, "ffrt_testA");
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "task delay is %{public}d", ffrt_task_attr_get_delay(&attr));
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "task name is %{public}s", ffrt_task_attr_get_name(&attr));
+    ffrt_task_attr_get_delay(&attr);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "task name is %{public}s", ffrt_task_attr_get_name(&attr));
     ffrt_task_attr_set_delay(&attr, 1000);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "task delay2 is %{public}d", ffrt_task_attr_get_delay(&attr));
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "qos is %{public}d", ffrt_task_attr_get_qos(&attr));
+    ffrt_task_attr_get_delay(&attr);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "qos is %{public}d", ffrt_task_attr_get_qos(&attr));
     ffrt_task_attr_set_qos(&attr, static_cast<ffrt_qos_t>(ffrt_qos_user_initiated));
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "qos2 is %{public}d", ffrt_task_attr_get_qos(&attr));
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "qos2 is %{public}d", ffrt_task_attr_get_qos(&attr));
     ffrt_submit_c(MyPrint, NULL, NULL, NULL, &attr);
     int result = ffrt_this_task_update_qos(static_cast<ffrt_qos_t>(ffrt_qos_default));
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "update_qos result is %{public}d", result);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "qos3 is %{public}d", ffrt_task_attr_get_qos(&attr));
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "task id is %{public}d", ffrt_this_task_get_id());
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "update_qos result is %{public}d", result);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "qos3 is %{public}d", ffrt_task_attr_get_qos(&attr));
+    ffrt_this_task_get_id();
     ffrt_usleep(10000);
     ffrt_yield();
     ffrt_task_attr_destroy(&attr);
@@ -227,13 +230,16 @@ static napi_value SubmitCondFfrtTask(napi_env env, napi_callback_info info)
     ffrt_task_handle_t task1 = ffrt_submit_h_c(MyPrint, NULL, NULL, NULL, NULL);
     ffrt_wait_deps(nullptr);
     ffrt_wait();
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "cond task a is %{public}d", a);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "cond task a is %{public}d", a);
     napi_value flag = nullptr;
     napi_create_double(env, a, &flag);
     ffrt_task_handle_destroy(task1);
     return flag;
 }
 
+/**
+ * add simple ffrt queue task submit example
+*/
 static napi_value SubmitQueueFfrtTask(napi_env env, napi_callback_info info)
 {
     int a = 0;
@@ -241,11 +247,10 @@ static napi_value SubmitQueueFfrtTask(napi_env env, napi_callback_info info)
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_attr_set_qos(&queue_attr, ffrt_qos_default);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task qos is %{public}d",
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task qos is %{public}d",
         ffrt_queue_attr_get_qos(&queue_attr));
     ffrt_queue_attr_set_timeout(&queue_attr, 10000);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task time is %{public}d",
-        ffrt_queue_attr_get_timeout(&queue_attr));
+    ffrt_queue_attr_get_timeout(&queue_attr);
     ffrt_queue_attr_set_callback(&queue_attr,
         ffrt_create_function_wrapper(OnePlusForTest, NULL, &b, ffrt_function_kind_queue));
     ffrt_queue_attr_get_callback(&queue_attr);
@@ -257,8 +262,8 @@ static napi_value SubmitQueueFfrtTask(napi_env env, napi_callback_info info)
     ffrt_queue_submit(queue_handle,
         ffrt_create_function_wrapper(SubForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
     sleep(2);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task a is %{public}d", a);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task b is %{public}d", b);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task a is %{public}d", a);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "queue task b is %{public}d", b);
     napi_value flag = nullptr;
     napi_create_double(env, a, &flag);
     ffrt_task_handle_destroy(task1);
@@ -281,8 +286,8 @@ static napi_value CancelQueueFfrtTask(napi_env env, napi_callback_info info)
         ffrt_create_function_wrapper(OnePlusForTest, NULL, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_cancel(task1);
     sleep(2);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "cancel queue task a is %{public}d", a);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "cancel queue task b is %{public}d", b);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "cancel queue task a is %{public}d", a);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "cancel queue task b is %{public}d", b);
     napi_value flag = nullptr;
     napi_create_double(env, a, &flag);
     ffrt_task_handle_destroy(task1);
@@ -305,8 +310,8 @@ static napi_value WaitQueueFfrtTask(napi_env env, napi_callback_info info)
         ffrt_create_function_wrapper(OnePlusForTest, NULL, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_wait(task1);
     sleep(2);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "wait queue task a is %{public}d", a);
-    OH_LOG_Print(LOG_APP, LOG_INFO, 1, "testFFRT", "wait queue task b is %{public}d", b);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "wait queue task a is %{public}d", a);
+    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "wait queue task b is %{public}d", b);
     napi_value flag = nullptr;
     napi_create_double(env, a, &flag);
     ffrt_task_handle_destroy(task1);
