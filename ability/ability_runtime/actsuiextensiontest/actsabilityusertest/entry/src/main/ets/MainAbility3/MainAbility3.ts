@@ -63,7 +63,7 @@ export default class MainAbility3 extends Ability {
       {
         resultCode:1,
         want:{
-         action:'ACTION'
+          action:'ACTION'
         }
       }, ()=>{
         console.debug('====>terminateSelfWithResult success====>');

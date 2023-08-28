@@ -18,7 +18,7 @@ import commonEventManager from '@ohos.commonEventManager';
 const sleepTimeOne = 1000;
 
 function publishCallBack() {
-  console.log('====>Publish CallBack ACTS_StartAbility_0100_CommonEvent====>');
+  console.log('====>Publish CallBack ACTS_StartAbilityEvent====>');
   globalThis.ability2Context.terminateSelf().then(()=>{
     console.log('====>terminateSelf success====>');
   });
