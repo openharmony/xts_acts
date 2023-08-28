@@ -118,7 +118,7 @@ static struct OH_Huks_Param g_pbkdf2FinishParams001[] = {
         .uint32Param = OH_HUKS_ALG_AES
     }, {
         .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = DERIVE_KEY_SIZE_32
+        .uint32Param = 256
     }, {
         .tag = OH_HUKS_TAG_PURPOSE,
         .uint32Param = OH_HUKS_KEY_PURPOSE_DERIVE
