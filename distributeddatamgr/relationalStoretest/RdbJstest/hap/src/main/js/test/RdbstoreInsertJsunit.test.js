@@ -36,7 +36,7 @@ describe('rdbstoreInsertTest', function () {
         console.info(TAG + 'beforeAll')
         rdbStore = await dataRdb.getRdbStore(STORE_CONFIG, 1);
         await rdbStore.executeSql(CREATE_TABLE_TEST, null)
-        await rdbStore.executeSql(CREATE_TABLE_BATCHINSERT_TEST, null);
+        
     })
 
     beforeEach(async function () {

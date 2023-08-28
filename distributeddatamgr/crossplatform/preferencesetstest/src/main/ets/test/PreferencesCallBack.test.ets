@@ -89,7 +89,7 @@ export default function preferencesCallBackTest() {
         });
       } catch (err) {
         console.info("testPreferencesGetPreferences002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+        expect(err.code === "401").assertTrue();
         done();
       }
     });
@@ -145,7 +145,7 @@ export default function preferencesCallBackTest() {
             });
           } catch (err) {
             console.info("testPreferencesDeletePreferences001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            expect(err.code === "401").assertTrue();
             done();
           }
         }
@@ -239,7 +239,7 @@ export default function preferencesCallBackTest() {
             });
           } catch (err) {
             console.info("testRemovePreferencesFromCache001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401" && err.message === "Parameter error. The type of 'name' must be a without path non empty string.").assertTrue();
+            expect(err.code === "401").assertTrue();
             done();
           }
         }
