@@ -72,7 +72,6 @@ export default function abilityTest() {
      * @tc.desc: In the same application, the on interface is called once, but the off interface is not called, and the
      *           foreground and background changes can be monitored.
      */
-    /*
     it('Acts_ApplicationStateChange_0100', 0, function (done) {
       let want = {
         "deviceId": "",
@@ -133,14 +132,13 @@ export default function abilityTest() {
         });
       }, 700);
     })
-    */
+
     /*
      * @tc.number: Acts_ApplicationStateChange_0200
      * @tc.name: Register and deregister to monitor the foreground and background changes of this application.
      * @tc.desc: In the same application, the on interface is called once, and the off interface is called, and the
      *           foreground and background changes can be monitored.
      */
-
     it('Acts_ApplicationStateChange_0200', 0, async function (done) {
       let want = {
         "deviceId": "",
@@ -197,17 +195,7 @@ export default function abilityTest() {
               console.log("auxiliary ability error.code = " + error.code);
               expect(error.code).assertEqual(0);
             })
-          }, 3000);
-
-          setTimeout(() => {
-            let abilityDelegator;
-            abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            let cmd1 = 'aa start -a EntryAbility -b com.example.applicationstatechangeonereply';
-            abilityDelegator.executeShellCommand(cmd1).then(() => {
-              console.info("The abilityone is pushed to foreground again!");
-            });
-          }, 5500)
-          
+          }, 3000);         
         })
       }, 700);
     })
@@ -218,7 +206,6 @@ export default function abilityTest() {
      * @tc.desc: In the same application, the on interface is called many times, but the off interface is not called,
      *           and the foreground and background changes can be monitored.
      */
-    /*
     it('Acts_ApplicationStateChange_0300', 0, async function (done) {
       let want = {
         "deviceId": "",
@@ -279,7 +266,6 @@ export default function abilityTest() {
         })
       }, 700);
     })
-    */
 
     /*
      * @tc.number: Acts_ApplicationStateChange_0400
@@ -287,7 +273,6 @@ export default function abilityTest() {
      * @tc.desc: In the same application, the on interface is called many times, and the off interface is called
      *           (Callback is specified), and the foreground and background changes can be monitored.
      */
-    /*
     it('Acts_ApplicationStateChange_0400', 0, async function (done) {
       let abilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -350,7 +335,6 @@ export default function abilityTest() {
         })
       }, 700)
     })
-    */
 
     /*
      * @tc.number: Acts_ApplicationStateChange_0500
@@ -358,7 +342,6 @@ export default function abilityTest() {
      * @tc.desc: In the different application, the on interface is called many times, and the off interface is called,
      *           and the foreground and background changes can be monitored.
      */
-    /*
     it('Acts_ApplicationStateChange_0500', 0, async function (done) {
       let abilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -421,7 +404,6 @@ export default function abilityTest() {
         })
       }, 700);
     })
-    */
 
     /*
      * @tc.number: Acts_ApplicationStateChange_0600
@@ -429,7 +411,6 @@ export default function abilityTest() {
      * @tc.desc: In the same application, the on interface is called many times, and the off interface is called
      *           (Callback is not specified), and the foreground and background changes can be monitored.
      */
-    /*
     it('Acts_ApplicationStateChange_0600', 0, async function (done) {
       let abilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -492,7 +473,6 @@ export default function abilityTest() {
         })
       }, 700);
     })
-    */
 
     /*
      * @tc.number: Acts_ApplicationStateChange_0700
@@ -500,7 +480,6 @@ export default function abilityTest() {
      * @tc.desc: In the same application, call on interface, call off interface and then call on again., and the
      *           foreground and background changes can be monitored.
      */
-    /*
     it('Acts_ApplicationStateChange_0700', 0, function (done) {
       let want = {
         "deviceId": "",
@@ -561,7 +540,6 @@ export default function abilityTest() {
         })
       }, 700);
     })
-    */
 
     /*
      * @tc.number: Acts_ApplicationStateChange_0800
@@ -569,7 +547,6 @@ export default function abilityTest() {
      * @tc.desc: In the same application, start multiple abilities, call the on interface, and not all the application
      *           abilities can't be monitored in the background.
      */
-    /*
     it('Acts_ApplicationStateChange_0800', 0, async function (done) {
       let want = {
         "deviceId": "",
@@ -627,7 +604,6 @@ export default function abilityTest() {
         })
       }, 700);
     })
-    */
 
     /*
      * @tc.number: Acts_GetRunningProcessInformation_AsyncCallback_0100
@@ -635,7 +611,6 @@ export default function abilityTest() {
      * @tc.desc: When the application obtains and does not obtain the focus, it can get the process information by
      *           calling the getRunningProcessInformation interface in AsyncCallback mode.
      */
-    /*
     it('Acts_GetRunningProcessInformation_AsyncCallback_0100', 0, async function (done) {
       let TAG = 'getRunningProcess'
       console.info("=====>Acts_GetRunningProcessInformation_AsyncCallback_0100 start<=====")
@@ -706,7 +681,6 @@ export default function abilityTest() {
         })
       }, 1000);
     })
-    */
 
     /*
      * @tc.number: Acts_GetRunningProcessInformation_Promise_0100
@@ -714,7 +688,6 @@ export default function abilityTest() {
      * @tc.desc: When the application obtains and does not obtain the focus, it can get the process information by
      *           calling the getRunningProcessInformation interface in promise mode.
      */
-    /*
     it('Acts_GetRunningProcessInformation_Promise_0100', 0, async function (done) {
       let TAG = 'getRunningProcess'
       console.info("=====>Acts_GetRunningProcessInformation_AsyncCallback_0100 start<=====")
@@ -784,9 +757,6 @@ export default function abilityTest() {
           }, 3000);
         })
       }, 1000);
-
     })
-    */
-
   })
 }
