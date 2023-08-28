@@ -16,12 +16,22 @@ import Ability from '@ohos.app.ability.UIAbility'
 import commonEventManager from '@ohos.commonEventManager'
 
 function PublishCallBackOne() {
-    console.debug("====>Publish CallBack ACTS_StartAbility_0100_CommonEvent====>");
+    console.log("====>Publish CallBack ACTS_StartAbility_0100_CommonEvent====>");
     globalThis.ability2Context.terminateSelf().then(()=>{
-      console.debug("====>publish ACTS_TerminateSelf_CommonEvent finish====>")
+        console.log("====>terminateSelf success====>");
     });
-    console.debug("====>terminateSelf succese====>")
 }
+
+function timeout() {
+    globalThis.ability2Context.startAbility(
+    {
+        bundleName: 'com.example.uiextensiontest',
+        abilityName: 'TestAbility',
+    }
+    ).then(()=>{
+        console.log("====>start com.example.uiextensiontest.TestAbility finish====>")
+    });
+  }
 
 export default class MainAbility2 extends Ability {
 
@@ -38,9 +48,6 @@ export default class MainAbility2 extends Ability {
         // Main window is created, set main page for this ability
         console.log("MainAbility2 onWindowStageCreate");
         windowStage.setUIContent(this.context, "pages/index2", null);
-        let onResultEvent = 'ACTS_UIExtension_StartAbility_OnResult';
-        globalThis.ability2Context = this.context;
-        commonEventManager.publish(onResultEvent, PublishCallBackOne);
     }
 
     onWindowStageDestroy() {
@@ -51,10 +58,14 @@ export default class MainAbility2 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("MainAbility2 onForeground");
+        globalThis.ability2Context = this.context;
+        setTimeout(timeout, 1000);
     }
 
     onBackground() {
         // Ability has back to background
         console.log("MainAbility2 onBackground");
+        let onResultEvent = 'ACTS_UIExtension_StartAbility_OnResult';
+        commonEventManager.publish(onResultEvent, PublishCallBackOne);
     }
 };

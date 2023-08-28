@@ -13,10 +13,17 @@
             "test-file-name": [
                 "UIExtensionTest.hap",
 				"UIextensionProvider.hap",
-                "ActsAmsStartAbilityUser.hap"
+                "StartAbilityByUIContentSession.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

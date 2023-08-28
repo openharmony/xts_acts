@@ -14,6 +14,17 @@
  */
 import Ability from '@ohos.app.ability.UIAbility'
 
+function timeout() {
+    globalThis.ability3Context.startAbility(
+    {
+        bundleName: 'com.example.uiextensiontest',
+        abilityName: 'TestAbility',
+    }
+    ).then(()=>{
+        console.log("====>start com.example.uiextensiontest.TestAbility finish====>")
+    });
+  }
+
 export default class MainAbility3 extends Ability {
 
     onCreate(want, launchParam) {
@@ -29,17 +40,6 @@ export default class MainAbility3 extends Ability {
         // Main window is created, set main page for this ability
         console.log("MainAbility3 onWindowStageCreate");
         windowStage.setUIContent(this.context, "pages/index3", null);
-        globalThis.abilityContext3 = this.context;
-        globalThis.abilityContext3.terminateSelfWithResult(
-          {
-            resultCode:1,
-            want:{
-            action:'ACTION'
-           }
-          },()=>{
-          console.debug("====>terminateSelfWithResult succese====>")
-        });
-          console.debug("====>terminateSelf end====>")
     }
 
     onWindowStageDestroy() {
@@ -50,10 +50,22 @@ export default class MainAbility3 extends Ability {
     onForeground() {
         // Ability has brought to foreground
         console.log("MainAbility3 onForeground");
+        globalThis.ability3Context = this.context;
+        setTimeout(timeout, 1000);
+        
     }
 
     onBackground() {
         // Ability has back to background
         console.log("MainAbility3 onBackground");
+        globalThis.ability3Context.terminateSelfWithResult(
+        {
+            resultCode:1,
+            want:{
+            action:'ACTION'
+        }
+        },()=>{
+            console.debug("====>terminateSelfWithResult success====>")
+        });
     }
 };

@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAmsStartAbilityUser.hap"
+                "StartAbilityByUIContentSession.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
