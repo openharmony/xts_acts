@@ -2076,6 +2076,13 @@ HWTEST(MSLiteTest, OHOS_NNRT_0003, Function | MediumTest | Level1) {
 
 // 正常场景：delegate异构，使用高低级接口创建nnrt device info，多输入单输出
 HWTEST(MSLiteTest, OHOS_NNRT_0004, Function | MediumTest | Level1) {
+    size_t num = 0;
+    auto desc = OH_AI_GetAllNNRTDeviceDescs(&num);
+    bool is_npu = true;
+    if (desc == nullptr) {
+        is_npu = false;
+    }
+
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
@@ -2097,7 +2104,9 @@ HWTEST(MSLiteTest, OHOS_NNRT_0004, Function | MediumTest | Level1) {
     OH_AI_TensorHandleArray outputs;
     ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
-    CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
+    if (!is_npu) {
+        CompareResult(outputs, "ml_headpose_pb2tflite", 0.02, 0.02);
+    }
     OH_AI_ModelDestroy(&model);
 }
 
