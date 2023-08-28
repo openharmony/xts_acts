@@ -31,6 +31,7 @@ const PROFILE_JSON_STRING = "{\"src\":[\"MainAbility/pages/index/index\",\"MainA
 const ERROR_ABILITY_NOT_EXIST = 17700003
 const ERROR_PROFILE_NOT_EXIST = 17700024
 const ERROR_MODULE_NOT_EXIST = 17700002
+const PARAM_ERROR_CODE = 401;
 
 export default function getProfileByExtensionAbility() {
   describe('getProfileByExtensionAbility', function () {
@@ -419,6 +420,161 @@ export default function getProfileByExtensionAbility() {
         expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
         done();
       });
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0047
+    * @tc.name: getProfileByExtensionAbilitySyncSuccess
+    * @tc.desc: profile is json (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncSuccess', 0, async function (done) {
+      try {
+          let data = manager.getProfileByExtensionAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME3);
+          console.info("getProfileByExtensionAbilitySync success" + JSON.stringify(data));
+          expect(Array.isArray(data)).assertTrue();
+          expect(data.length).assertEqual(1);
+          expect(typeof data[0]).assertEqual("string");
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncSuccessTest failed" + JSON.stringify(err));
+        expect(err).assertFail();
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0048
+    * @tc.name: getProfileByExtensionAbilitySyncSuccessEmptyMetaData
+    * @tc.desc: Check the empty metadataName
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncSuccessEmptyMetaData', 0, async function (done) {
+      try {
+          let data = manager.getProfileByExtensionAbilitySync(MODULE_NAME, ABILITY_NAME, '');
+          console.info("getProfileByExtensionAbilitySyncSuccessEmptyMetaData success" + JSON.stringify(data));
+          expect(Array.isArray(data)).assertTrue();
+          expect(data.length).assertEqual(3);
+          expect(typeof data[0]).assertEqual("string");
+          expect(data[0]).assertEqual(PROFILE_JSON_STRING);
+          expect(typeof data[1]).assertEqual("string");
+          expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+          expect(typeof data[2]).assertEqual("string");
+          expect(data[2]).assertEqual(PROFILE_JSON_STRING);
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncSuccessEmptyMetaData failed" + JSON.stringify(err));
+        expect(err).assertFail();
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0049
+    * @tc.name: getProfileByExtensionAbilitySyncByEmptyModuleName
+    * @tc.desc: Check the empty moduleName (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncByEmptyModuleName', 0, async function (done) {
+      try {
+          manager.getProfileByExtensionAbilitySync('', ABILITY_NAME, METADATA_NAME);
+          expect().assertFail();
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncByEmptyModuleName failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_MODULE_NOT_EXIST);
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0050
+    * @tc.name: getProfileByExtensionAbilitySyncByEmptyModuleName
+    * @tc.desc: Check the invalid moduleName (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncByInvalidModuleName', 0, async function (done) {
+      try {
+          manager.getProfileByExtensionAbilitySync('INVALID_NAME', ABILITY_NAME, METADATA_NAME);
+          expect().assertFail();
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncByInvalidModuleName failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0051
+    * @tc.name: getProfileByExtensionAbilitySyncByEmptyAbilityName
+    * @tc.desc: Check the empty abilityName (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncByEmptyAbilityName', 0, async function (done) {
+      try {
+          manager.getProfileByExtensionAbilitySync(MODULE_NAME_TEST, '', METADATA_NAME);
+          expect().assertFail();
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncByEmptyAbilityName failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0052
+    * @tc.name: getProfileByExtensionAbilitySyncByEmptyAbilityName
+    * @tc.desc: Check the invalid abilityName (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncByInvalidAbilityName', 0, async function (done) {
+      try {
+          manager.getProfileByExtensionAbilitySync(MODULE_NAME_TEST, 'INVALID_NAME', METADATA_NAME);
+          expect().assertFail();
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncByInvalidAbilityName failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0053
+    * @tc.name: getProfileByExtensionAbilitySyncNoProfile
+    * @tc.desc: Check resource has no prefix (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncNoProfile', 0, async function (done) {
+      try {
+          manager.getProfileByExtensionAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME2);
+          expect().assertFail();
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncNoProfile failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
+        done();
+      }
+    })
+
+   /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0054
+    * @tc.name: getProfileByExtensionAbilitySyncParamError
+    * @tc.desc: Check param number is failed (by sync)
+    * @tc.level   0
+    */
+    it('getProfileByExtensionAbilitySyncParamError', 0, async function (done) {
+      try {
+          manager.getProfileByExtensionAbilitySync(null, null);
+          expect().assertFail();
+          done();
+      } catch (err) {
+        console.info("getProfileByExtensionAbilitySyncParamError failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
     })
   })
 }
