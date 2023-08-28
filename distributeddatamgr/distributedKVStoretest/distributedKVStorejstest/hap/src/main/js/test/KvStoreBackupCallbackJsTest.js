@@ -181,7 +181,8 @@ const optionLock = {
     securityLevel: distributedData.SecurityLevel.S1,
 }
 
-var files =new Array();
+let file = '';
+let files =new Array(file);
 export default function kvStoreBackupCallbackJsunittest(){
     describe('kvStoreBackupCallbackJsunittest', function () {
         beforeAll( async function () {
