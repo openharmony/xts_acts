@@ -99,12 +99,12 @@ export default function DefaultFocusTest() {
         //Confirm if the focus is on the target component
         let firstComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] firstComponent.$attrs.content: ' + firstComponent.$attrs.content);
-        expect(firstComponent.$attrs.content).assertEqual('');
+        expect(firstComponent.$attrs.content).assertEqual('onFocus');
         //Confirm if the focus is on the reference component
         let firstReferenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] firstReferenceComponent.$attrs.label: ' +
         firstReferenceComponent.$attrs.label);
-        expect(firstReferenceComponent.$attrs.label).assertEqual('onFocus');
+        expect(firstReferenceComponent.$attrs.label).assertEqual('');
         //Confirm target component attribute values
         let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] DefaultFocus is ' + viewObj.$attrs.defaultFocus + ' ');
@@ -121,12 +121,12 @@ export default function DefaultFocusTest() {
         //Confirm if the focus is on the target component
         let secondComponent = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] secondComponent.$attrs.content: ' + secondComponent.$attrs.content);
-        expect(secondComponent.$attrs.content).assertEqual('')
+        expect(secondComponent.$attrs.content).assertEqual('onFocus')
         //Confirm if the focus is on the reference component
         let secondReferenceComponent = Utils.getComponentByKey(data.pageConfig.referenceComponentKey);
         console.info('[' + data.caseTag + '] secondReferenceComponent.$attrs.label: ' +
         secondReferenceComponent.$attrs.label);
-        expect(secondReferenceComponent.$attrs.label).assertEqual('onFocus');
+        expect(secondReferenceComponent.$attrs.label).assertEqual('');
         //Confirm target component attribute values
         viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] DefaultFocus is ' + viewObj.$attrs.defaultFocus + ' ');
@@ -136,7 +136,7 @@ export default function DefaultFocusTest() {
         //Confirm if the focus is on the target component
         let component = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] component.$attrs.content: ' + component.$attrs.content);
-        expect(component.$attrs.content).assertEqual('');
+        expect(component.$attrs.content).assertEqual('onFocus');
 
         let viewObj = Utils.getComponentByKey(data.pageConfig.componentKey);
         console.info('[' + data.caseTag + '] DefaultFocus is ' + viewObj.$attrs.defaultFocus + ' ');
