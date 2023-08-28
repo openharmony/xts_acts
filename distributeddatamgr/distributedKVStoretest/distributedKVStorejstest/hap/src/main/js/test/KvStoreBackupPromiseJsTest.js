@@ -175,7 +175,8 @@ const optionLock = {
 }
 
 
-var files =new Array();
+let file = '';
+let files =new Array(file);
 export default function kvStoreBackupPromiseJsunittest(){
     describe('kvStoreBackupPromiseJsunittest', function () {
         beforeAll( async function () {
