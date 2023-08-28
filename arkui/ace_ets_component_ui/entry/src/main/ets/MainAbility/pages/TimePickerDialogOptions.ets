@@ -15,36 +15,31 @@
 
 @Entry
 @Component
-struct DatePickerDialogOptions0 {
-  @State isLunar: boolean = false
-  selectedDate: Date = new Date("2023-7-24")
+struct TimePickerDialogExample {
+  private selectTime: Date = new Date('2020-12-25T08:30:00')
+
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
-          DatePickerDialog.show({
+          TimePickerDialog.show({
+            selected: this.selectTime,
             alignment: DialogAlignment.TopStart,
             offset: { dx: 10, dy: 100 },
             maskRect: { x: 0, y: 90, width: 1000, height: 250  },
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            lunar: this.isLunar,
-            showTime:true,
-            useMilitaryTime:false,
-            onDateAccept: (value: Date)=> {
-              this.selectedDate = value
-              console.info("DatePickerDialog:onDateAccept()" + value.toString())
+            onAccept: (value: TimePickerResult)=> {
+              this.selectTime.setHours(value.hour, value.minute)
+              console.info("TimePickerDialog: onAccept()" + JSON.stringify(value))
             },
             onCancel:()=> {
-              console.info("DatePickerDialog: onCancel()")
+              console.info("TimePickerDialog: onCancel()")
             },
-            onDateChange: (value: Date)=> {
-              console.info("DatePickerDialog: onChange()" + value.toString())
+            onChange: (value: TimePickerResult)=> {
+              console.info("TimePickerDialog: onChange()" + JSON.stringify(value))
             }
-          }).key('DatePickerDialog')
+          }).key('TimePickerDialog')
         })
     }.width('100%')
   }
