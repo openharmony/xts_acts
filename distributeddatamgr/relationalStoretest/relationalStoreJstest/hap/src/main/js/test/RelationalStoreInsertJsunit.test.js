@@ -1337,7 +1337,7 @@ describe('relationalStoreInsertTest', function () {
         console.log(TAG + " ************* InsertWithConflictResolution_0005 end   *************");
     })
 
-        /**
+    /**
      * @tc.name rdb inserttWithConflictResolution test
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0006
      * @tc.desc rdb insertWithConflictResolution test
@@ -1430,9 +1430,8 @@ describe('relationalStoreInsertTest', function () {
             }
     
             console.log(TAG + " ************* InsertWithConflictResolution0007 end   *************");
-        })
-
-
+         })
+    
     console.info(TAG + " *************Unit Test End*************");
 })
 }
