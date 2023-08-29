@@ -333,6 +333,7 @@ export default function abilityTest() {
       } catch (err) {
         console.debug('ACTS_ThirdPartyStartAbility_0800 - timeout');
       }
+      await sleep(2000)
     })
 
     /*
@@ -341,6 +342,7 @@ export default function abilityTest() {
      * @tc.desc    : Starting mainability3 with startAbilityForResult succeeded.(promise)
      */
     it('ACTS_ThirdPartyStartAbilityForResult_0100', 0, async function (done) {
+      await sleep (2000)
       var flag = true
       function timeout() {
         if(flag == true) {
@@ -654,7 +656,7 @@ export default function abilityTest() {
       }
 
       setTimeout(timeout, START_ABILITY_TIMEOUT);
-
+      await sleep(2000)
     })
 
     /*
