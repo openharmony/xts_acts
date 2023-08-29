@@ -18,6 +18,7 @@ import commonEventManager from '@ohos.commonEventManager'
 import Logger from '../model/Logger'
 import common from '@ohos.app.ability.common';
 let context= getContext(this) as common.UIExtensionContext;
+
 const TAG: string = '[UIExtAbility]'
 const sleepTimeOne = 1000;
 
@@ -50,10 +51,24 @@ struct Index {
     let appearEvent = 'ACTS_UIExtension_AboutToAppear';
     let terminateSelfWithResultEvent = 'ACTS_UIExtension_TerminateSelfWithResult';
     let sendDataEvent = 'ACTS_UIExtension_SendData';
+    let startAbilityEvent1 = 'ACTS_UIExtension_StartAbility_001';
+    let startAbilityEvent2 = 'ACTS_UIExtension_StartAbility_002';
+    let startAbilityEvent3 = 'ACTS_UIExtension_StartAbility_003';
+    let startAbilityEvent4 = 'ACTS_UIExtension_StartAbility_004';
+
+    let startAbilityForResultEvent1 = 'ACTS_UIExtension_StartAbilityForResult_001';
+    let startAbilityForResultEvent2 = 'ACTS_UIExtension_StartAbilityForResult_002';
+    let startAbilityForResultEvent3 = 'ACTS_UIExtension_StartAbilityForResult_003';
+    let startAbilityForResultEvent4 = 'ACTS_UIExtension_StartAbilityForResult_004';
 
     var subscriber;
+    var startresult = false;
     var subscribeInfo = {
-      events: [terminateSelfWithResultEvent, sendDataEvent]
+      events: [startAbilityEvent1, startAbilityEvent2, startAbilityEvent3,
+                    startAbilityEvent4, startAbilityForResultEvent1, 
+                    startAbilityForResultEvent2, startAbilityForResultEvent3,
+                    startAbilityForResultEvent4, 
+                    terminateSelfWithResultEvent, sendDataEvent]
     }
     commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
       console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -100,7 +115,154 @@ struct Index {
           }).catch((err)=>{
             console.log(TAG + "setWindowPrivacyModeFalsePromise : " + JSON.stringify(err));
           })
+        } else if(data.event == startAbilityEvent1) {
+          this.session.startAbility(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility2',
+            }, () => {
+            console.log(TAG + "====>startAbilityEvent1 end====>" );
+            });
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityEvent2) {
+          this.session.startAbility(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility2',
+            },
+            {
+              windowMode: 0
+            }, () => {
+            console.log(TAG + "====>startAbilityEvent2 end====>" );
+            });
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityEvent3) {
+          this.session.startAbility(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility2',
+            }).then((data)=>{
+              console.log(TAG + "====>startAbilityEvent3 end====>");
+              console.log(TAG + "====>data is====>" + JSON.stringify(data));
+            }); 
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityEvent4) {
+          this.session.startAbility(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility2',
+            },
+            {
+              windowMode: 0
+           }).then((data)=>{
+              console.log(TAG + "====>startAbilityEvent4 end====>");
+              console.log(TAG + "====>data is====>" + JSON.stringify(data));
+            });
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityForResultEvent1) {
+          var flag = true
+          this.session.startAbilityForResult(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility3'
+            }, (err,data) => {
+              console.log(TAG +  "====>startAbilityForResultEvent1 end====>" + JSON.stringify(data));
+              if(data.resultCode == 1 && data.want.action=='ACTION') {
+                commonEventManager.publish('ACTS_UIExtension_StartAbilityForResult_001_OnResult', (err) => {
+                if (err) {
+                  console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_001_OnResult failed,
+                    code is ${err.code}, message is ${err.message}`);
+                } else {
+                  console.log(TAG + 'ACTS_UIExtension_StartAbilityForResult_001_OnResult success');
+                }
+              });
+              }
+            })
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityForResultEvent2) {
+          var flag = true
+          this.session.startAbilityForResult(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility3'
+            },
+            {
+              windowMode: 0
+            }, (err,data) => {
+              console.log(TAG +  "====>startAbilityForResultEvent2 end====>" + JSON.stringify(data));
+              if(data.resultCode == 1 && data.want.action=='ACTION') {
+                commonEventManager.publish('ACTS_UIExtension_StartAbilityForResult_002_OnResult', (err) => {
+                if (err) {
+                  console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_002_OnResult failed,
+                    code is ${err.code}, message is ${err.message}`);
+                } else {
+                  console.log(TAG + 'ACTS_UIExtension_StartAbilityForResult_002_OnResult success');
+                }
+              });
+              }
+            })
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityForResultEvent3) {
+          var flag = true
+          this.session.startAbilityForResult(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility3'
+            }).then((data) => {
+              console.log(TAG +  "====>startAbilityForResultEvent3 end====>" + JSON.stringify(data));
+              if(data.resultCode == 1 && data.want.action=='ACTION') {
+                commonEventManager.publish('ACTS_UIExtension_StartAbilityForResult_003_OnResult', (err) => {
+                if (err) {
+                  console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_003_OnResult failed,
+                    code is ${err.code}, message is ${err.message}`);
+                } else {
+                  console.log(TAG + 'ACTS_UIExtension_StartAbilityForResult_003_OnResult success');
+                }
+              });
+            }
+            })
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
+        } else if(data.event == startAbilityForResultEvent4) {
+          var flag = true
+          this.session.startAbilityForResult(
+            {
+              bundleName: 'com.example.actsabilityusertest',
+              abilityName: 'MainAbility3'
+            },
+            {
+              windowMode: 0
+            }).then((data) => {
+              console.log(TAG +  "====>startAbilityForResultEvent4 end====>" + JSON.stringify(data));
+              if(data.resultCode == 1 && data.want.action=='ACTION') {
+                commonEventManager.publish('ACTS_UIExtension_StartAbilityForResult_004_OnResult', (err) => {
+                if (err) {
+                  console.log(TAG + `publish ACTS_UIExtension_StartAbilityForResult_004_OnResult failed,
+                    code is ${err.code}, message is ${err.message}`);
+                } else {
+                  console.log(TAG + 'ACTS_UIExtension_StartAbilityForResult_004_OnResult success');
+                }
+              });
+              }
+            })
+            commonEventManager.unsubscribe(subscriber, async (err, data) => {
+              console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+            });
         }
+        
       });
     }).catch((error) => {
       console.log(TAG + "createSubscriber error : " + JSON.stringify(error));
