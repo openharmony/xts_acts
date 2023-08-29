@@ -446,6 +446,8 @@ export default function test() {
                 done();
             });
             console.info(`FMS_acquireForm_1100 featureAbility.startAbility end`);
+            await sleepTime(3000);
+            done();
         });
 
         /**
@@ -1246,6 +1248,8 @@ export default function test() {
             });
 
             console.info(`FMS_acquireForm_1900 featureAbility.startAbility end`);
+            await sleepTime(3000);
+            done();
         });
         /**
          * @tc.number: FMS_acquireForm_2100

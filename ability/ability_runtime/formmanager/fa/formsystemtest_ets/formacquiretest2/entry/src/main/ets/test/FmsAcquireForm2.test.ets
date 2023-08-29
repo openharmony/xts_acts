@@ -318,6 +318,8 @@ export default function test() {
             });
 
             console.info(`FMS_acquireForm_4200 featureAbility.startAbility end`);
+            await sleep(3000);
+            done();
         });
 
         /**
