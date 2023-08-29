@@ -59,7 +59,6 @@ group("ability_runtime") {
       "freeinstalltest:freeinstalltest",
       "getrunningprocessinformation:getrunningprocessinformation",
       "newwant:newwant",
-      "non_concurrent:non_concurrent",
       "registerjserror:registerjserror",
       "shareextensionability:actsshareextensionability",
       "stage:stage",
