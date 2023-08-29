@@ -1431,6 +1431,107 @@ describe('relationalStoreInsertTest', function () {
     
             console.log(TAG + " ************* InsertWithConflictResolution0007 end   *************");
          })
+
+                 /**
+         * @tc.name rdb insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0100
+         * @tc.desc rdb insert test
+         */
+        it('SUB_DDM_AppDataFWK_JSRDB_Insert_0100', 0, async function (done) {
+            console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Insert_0100 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            {
+                const valueBucket = {
+                    "id": 1,
+                    "name": "zhangsan",
+                    "age": null,
+                    "salary": undefined,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket);
+            }
+
+            {
+                const valueBucket = {
+                    "id": 2,
+                    "name": "lisi",
+                    "age": 19,
+                    "salary": 200.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket);
+            }
+            let predicates = new data_Rdb.RdbPredicates("test");
+            let resultSet = await rdbStore.query(predicates);
+            try {
+                done()
+                expect(true).assertEqual(resultSet.goToFirstRow());
+                expect(true).assertEqual(resultSet.isColumnNull(resultSet.getColumnIndex("age")));
+                expect(true).assertEqual(resultSet.isColumnNull(resultSet.getColumnIndex("salary")));
+            } catch (err) {
+                console.log("query error" + err);
+                expect().assertFail()
+            }
+
+            {
+                const valueBucket = {
+                    "age": null,
+                    "salary": undefined,
+                }
+                predicates.equalTo("name", "lisi")
+                await rdbStore.update(valueBucket, predicates)
+            }
+
+            predicates.clear();
+            resultSet = await rdbStore.query(predicates);
+            try {
+                done();
+                expect(true).assertEqual(resultSet.goToFirstRow());
+                expect(true).assertEqual(resultSet.goToNextRow());
+                expect(true).assertEqual(resultSet.isColumnNull(resultSet.getColumnIndex("age")));
+                expect(200.5).assertEqual(resultSet.getDouble(resultSet.getColumnIndex("salary")));
+            } catch (err) {
+                console.log("query error" + err);
+                expect().assertFail()
+            }
+
+            resultSet.close()
+            resultSet = null
+            console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Insert_0100 end  *************");
+        })
+
+        /**
+         * @tc.name rdb insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0200
+         * @tc.desc rdb insert test
+         */
+        it('SUB_DDM_AppDataFWK_JSRDB_Insert_0200', 0, async function (done) {
+            console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Insert_0200 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            {
+                const valueBucket = {
+                    "name": "zhangsan",
+                    "age": new Date(),
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                try {
+                    let insertPromise = rdbStore.insert("test", valueBucket)
+                    insertPromise.then(async (ret) => {
+                        done();
+                        expect().assertFail()
+                    }).catch((err) => {
+                        done();
+                        expect().assertFail()
+                    })
+                } catch (err) {
+                    done();
+                    console.log("catch err: failed, err: code=" + err.code + " message=" + err.message)
+                    expect('401').assertEqual(err.code)
+                }
+            }
+            console.log(TAG + "************* SUB_DDM_AppDataFWK_JSRDB_Insert_0200 end  *************");
+        })
     
     console.info(TAG + " *************Unit Test End*************");
 })
