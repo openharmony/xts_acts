@@ -101,6 +101,8 @@
 		"MainAbility/pages/TextPickerDialogOptions",
 		"MainAbility/pages/TimePickerDialogOptions",
 		"MainAbility/pages/overlay",
-		"MainAbility/pages/Panel"
+		"MainAbility/pages/Panel",
+		"MainAbility/pages/GridCallbackPage"
+		
     ]
 }
