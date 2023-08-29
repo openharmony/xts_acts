@@ -49,9 +49,6 @@ function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
 
-function checkWifiPowerOn(){
-    console.info("[wifi_test]wifi status:" + wifiMg.isWifiActive());
-}
 function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
@@ -65,7 +62,6 @@ export default function actsWifiErrorCode201Test() {
         })
 
         beforeEach(function () {
-            checkWifiPowerOn();
         })
         afterEach(function () {
         })
