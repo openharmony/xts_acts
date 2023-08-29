@@ -123,6 +123,7 @@ let mMETERINGPointInvalidRB = {
 }
 
 let mEnableCheckInvalidMETERINGPoint = false;
+let receiver;
 
 export default function cameraSessionExposureTest() {
 
@@ -172,7 +173,7 @@ export default function cameraSessionExposureTest() {
 
     async function getPhotoReceiverSurface() {
         console.log(TAG + 'Entering getPhotoReceiverSurface')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')

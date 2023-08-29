@@ -68,6 +68,7 @@ let mVideoConfig = {
     maxSize: 100,
     maxDuration: 500
 }
+let receiver;
 
 export default function cameraSessionTest() {
 
@@ -117,7 +118,7 @@ export default function cameraSessionTest() {
 
     async function getPhotoReceiverSurface() {
         console.log(TAG + 'Entering getPhotoReceiverSurface')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')
