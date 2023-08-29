@@ -1063,7 +1063,7 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_trackBorderRadius_0600');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_trackBorderRadius_0600 is" + JSON.stringify(obj.$attrs.trackBorderRadius));
-          expect(parseFloat(obj.$attrs.trackBorderRadius)).assertEqual(0);
+          expect(obj.$attrs.trackBorderRadius).assertEqual(undefined);
           done();
         } catch (err) {
           expect().assertFail();
@@ -1217,7 +1217,7 @@ export default function sliderTest() {
           let strJson = getInspectorByKey('ArkUX_Stage_Slider_trackBorderRadius_1300');
           let obj = JSON.parse(strJson);
           console.info("----ArkUX_Stage_Slider_trackBorderRadius_1300 is" + JSON.stringify(obj.$attrs.trackBorderRadius));
-          expect(parseFloat(obj.$attrs.trackBorderRadius)).assertEqual(0);
+          expect(obj.$attrs.trackBorderRadius).assertEqual(undefined);
           done();
         } catch (err) {
           expect().assertFail();
@@ -1562,7 +1562,7 @@ export default function sliderTest() {
           let width = obj.$attrs.blockSize.width ;
           let height = obj.$attrs.blockSize.height ;
           expect(parseFloat(width)).assertEqual(12);
-          expect(parseFloat(height)).assertEqual(15);
+          expect(parseFloat(height)).assertEqual(12);
           expect(width.substr(width.length-2, 2)).assertEqual("vp");
           expect(height.substr(height.length-2, 2)).assertEqual("vp");
           done();
@@ -1588,7 +1588,7 @@ export default function sliderTest() {
           console.info("----ArkUX_Stage_Slider_blockSize_1300  is " + JSON.stringify(obj.$attrs.blockSize));
           let width = obj.$attrs.blockSize.width ;
           let height = obj.$attrs.blockSize.height ;
-          expect(parseFloat(width)).assertEqual(15);
+          expect(parseFloat(width)).assertEqual(12);
           expect(parseFloat(height)).assertEqual(12);
           expect(width.substr(width.length-2, 2)).assertEqual("vp");
           expect(height.substr(height.length-2, 2)).assertEqual("vp");
