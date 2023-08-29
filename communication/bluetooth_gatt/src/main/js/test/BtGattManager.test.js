@@ -63,6 +63,7 @@ describe('btGattManagerTest', function() {
     })
     afterAll(async function (done) {
         console.info('afterAll called')
+        gattServer.close();
         gattClient.close();
         done()
     })
@@ -136,7 +137,7 @@ describe('btGattManagerTest', function() {
      it('SUB_COMMUNICATION_BLUETOOTH_GETRSSIVALUE_0100', 0, async function (done) {
         gattClient.connect();
         try {
-            await gattClient.getRssiValue().then((data) => {
+            gattClient.getRssiValue().then((data) => {
                 console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(data));
                 let rssiLength = Object.keys(data).length;
                 expect(rssiLength).assertEqual(0);
@@ -207,7 +208,7 @@ describe('btGattManagerTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_GETDEVICENAME_0100', 0, async function (done) {
         try {
             gattClient.connect();
-            await gattClient.getDeviceName().then((data) => {
+            gattClient.getDeviceName().then((data) => {
                 console.info('[bluetooth_js] device name' + JSON.stringify(data))
                 expect(true).assertEqual(data != null);
                 done();
@@ -260,7 +261,7 @@ describe('btGattManagerTest', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_GETSERVICE_0100', 0, async function (done) {
         try {
             gattClient.connect();
-            await gattClient.getServices().then((GattService) => {
+            gattClient.getServices().then((GattService) => {
                 console.info('[bluetooth_js] getServices successfully:'+JSON.stringify(GattService));
                 expect(GattService).assertNull();
                 done();
@@ -469,11 +470,9 @@ describe('btGattManagerTest', function() {
             console.info('[bluetooth_js] sendResponse ret : ' + ret);
             expect(ret).assertEqual(false);
         }     
-        let gattServer = bluetooth.BLE.createGattServer();
         await gattServer.on("characteristicRead", ReadCharacteristicReq);
         await gattServer.off("characteristicRead");
-        gattServer.close();
-        done()
+        done();
     })
 
     /**
@@ -565,11 +564,9 @@ describe('btGattManagerTest', function() {
                 'serviceUuid:' + DescriptorReadReq.serviceUuid);
                 expect(true).assertEqual(DescriptorReadReq !=null);
         }
-        let gattServer = bluetooth.BLE.createGattServer();
         await gattServer.on("descriptorRead", ReadDescriptorReq);
         await gattServer.off("descriptorRead");
-        gattServer.close();
-        done()
+        done();
     })
 
     /**
@@ -639,11 +636,9 @@ describe('btGattManagerTest', function() {
             console.info('[bluetooth_js] sendResponse ret : ' + ret);
             expect(ret).assertEqual(false);
         }    
-        let gattServer = bluetooth.BLE.createGattServer();
         gattServer.on("characteristicWrite", WriteCharacteristicReq);
         gattServer.off("characteristicWrite");
-        gattServer.close();
-        done()
+        done();
     })
 
     /**
@@ -711,11 +706,9 @@ describe('btGattManagerTest', function() {
             needRsp + 'isPrep:' +isPrep );
             expect(true).assertEqual(DescriptorWriteReq !=null);
         }    
-        let gattServer = bluetooth.BLE.createGattServer();
         gattServer.on("descriptorWrite", WriteDescriptorReq);
         gattServer.off("descriptorWrite");
-        gattServer.close();
-        done()
+        done();
     })
 
     /**
@@ -857,8 +850,8 @@ describe('btGattManagerTest', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_GATTCLOSE_0100', 0, async function (done) {
-        let gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
-        let ret = gattClient.close();
+        let gattClients = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
+        let ret = gattClients.close();
         console.info('[bluetooth_js] gattClient close ret:' + ret);
         expect(ret).assertEqual(true);
         done();

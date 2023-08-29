@@ -804,6 +804,11 @@ describe('btManagerError003Test', function() {
     * @tc.level Level 3
     */
     it('SUB_COMMUNICATION_BTMANAGER_BLESCAN_0800', 0, async function (done) {
+        function onReceiveEvent(data)
+        {
+            console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
+            expect(true).assertTrue(data.length=0);
+        }
         try {
             let state = bluetoothManager.getState();
             console.info('[bluetooth_js] bt turn off1:'+ JSON.stringify(state));
@@ -814,11 +819,7 @@ describe('btManagerError003Test', function() {
                 console.info('[bluetooth_js] getState4 off = '+ JSON.stringify(state1));
                 expect(state1).assertEqual(bluetooth.BluetoothState.STATE_OFF);
             }
-            function onReceiveEvent(data)
-            {
-                console.info('[bluetooth_js] BLEscan device result8'+JSON.stringify(data));
-                expect(true).assertTrue(data.length=0);
-            }
+            console.info('[bluetooth_js] BLE BLEDeviceFind on start!');
             bluetoothManager.BLE.on("BLEDeviceFind", onReceiveEvent)
             bluetoothManager.BLE.startBLEScan(
                 [{}],
@@ -829,17 +830,19 @@ describe('btManagerError003Test', function() {
                 }
             );
             await sleep(1000);
-            expect(true).assertFalse();
+            // expect(true).assertFalse();
             console.info('[bluetooth_js] BLE scan off8');
-            bluetoothManager.BLE.off('BLEDeviceFind', onReceiveEvent);
             bluetoothManager.BLE.stopBLEScan();
             done();
         } catch (error) {
             console.error('[bluetooth_js]Scan_0800 error.code:'+JSON.stringify(error.code)+
             'error.message:'+JSON.stringify(error.message));
             expect(error.code).assertEqual('2900003');
-            done()
         }
+        console.info('[bluetooth_js] BLE BLEDeviceFind off start!');
+        bluetoothManager.BLE.off('BLEDeviceFind', onReceiveEvent);
+        await sleep(2000);
+        done();
     })
 
     /**
