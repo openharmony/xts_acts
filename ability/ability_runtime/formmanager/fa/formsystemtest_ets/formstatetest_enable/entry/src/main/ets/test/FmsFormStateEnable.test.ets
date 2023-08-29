@@ -480,7 +480,7 @@ export default function test() {
 
             function onFormEnableCallBack(_, data) {
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
-                console.debug("====>FMS_enableFormsUpdate_0900 onFormEnableCallBack====>" + JSON.stringify(data));
+                console.info("====>FMS_enableFormsUpdate_0900 onFormEnableCallBack====>" + JSON.stringify(data));
                 expect(data.parameters.formId).assertEqual(formIds[0]);
                 expect(data.parameters.kind).assertEqual("enable");
                 commonEvent.unsubscribe(subscriberOnState, () => unsubscribeSupplyCallback("FMS_enableFormsUpdate_0900"));
@@ -488,7 +488,7 @@ export default function test() {
 
             async function onFormDisableCallBack(_, data) {
                 expect(data.event).assertEqual("FMS_FormOnState_commonEvent");
-                console.debug("====>FMS_enableFormsUpdate_0900 onFormDisableCallBack====>" + JSON.stringify(data));
+                console.info("====>FMS_enableFormsUpdate_0900 onFormDisableCallBack====>" + JSON.stringify(data));
                 expect(data.parameters.formId).assertEqual(formIds[0]);
                 expect(data.parameters.kind).assertEqual("disable");
                 commonEvent.unsubscribe(subscriberOnState, () => unsubscribeSupplyCallback("FMS_enableFormsUpdate_0900"));
@@ -523,7 +523,7 @@ export default function test() {
                         done();
                     });
                     console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbility notifyVisible end`);
-                }, 10000);
+                }, 1000);
             }
 
             async function onAcquiredCallBack(_, data) {
@@ -584,6 +584,9 @@ export default function test() {
                 done();
             });
             console.log(`FMS_enableFormsUpdate_0900 featureAbility.startAbility servicea end`);
+
+            await sleep(5000);
+            done();
         });
 
         /**
@@ -731,6 +734,9 @@ export default function test() {
                 done();
             });
             console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility servicea end`);
+
+            await sleep(5000);
+            done();
         });
 
         /**
@@ -933,6 +939,9 @@ export default function test() {
                 done();
             });
             console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbility servicea end`);
+
+            await sleep(5000);
+            done();
         });
     });
 }
