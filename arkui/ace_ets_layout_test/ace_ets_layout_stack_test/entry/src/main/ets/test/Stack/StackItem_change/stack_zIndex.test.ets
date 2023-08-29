@@ -133,16 +133,24 @@ export default function Stack_ZIndex() {
       let theTop = Stack_ZIndex_012.top;
       let num = await imageComparisonAssert(0,theTop);
       await CommonFunc.sleep(1000);
+      console.log('num is',+num);
       expect(num).assertEqual(true);
+      console.log('Stack_ZIndex_01.left is',+Stack_ZIndex_01.left);
       expect(Stack_ZIndex_01.left).assertEqual(Stack_ZIndex_011.left);
       expect(Stack_ZIndex_01.left).assertEqual(Stack_ZIndex_012.left);
+      console.log('Stack_ZIndex_011.top - Stack_ZIndex_01.top is',+Stack_ZIndex_011.top - Stack_ZIndex_01.top);
       expect(Math.round(Stack_ZIndex_011.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_011.bottom));
+      console.log('Stack_ZIndex_012.top - Stack_ZIndex_01.top is',+Stack_ZIndex_012.top - Stack_ZIndex_01.top);
       expect(Math.round(Stack_ZIndex_012.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_012.bottom));
+      console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
       expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
       expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
       expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
       expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
       console.info('[testStackZIndexWithAlignmentStart] END');
       done();
@@ -168,18 +176,27 @@ export default function Stack_ZIndex() {
       let theLeft = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft,theTop);
       await CommonFunc.sleep(1000);
+      console.log('num is',+num);
       expect(num).assertEqual(true);
+      console.log('Stack_ZIndex_011.left - Stack_ZIndex_01.left is',+Stack_ZIndex_011.left - Stack_ZIndex_01.left);
       expect(Math.round(Stack_ZIndex_011.left - Stack_ZIndex_01.left))
         .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_011.right));
+      console.log('Stack_ZIndex_012.left - Stack_ZIndex_01.left is',+Stack_ZIndex_012.left - Stack_ZIndex_01.left);
       expect(Math.round(Stack_ZIndex_012.left - Stack_ZIndex_01.left))
         .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_012.right));
+      console.log('Stack_ZIndex_011.top - Stack_ZIndex_01.top is',+Stack_ZIndex_011.top - Stack_ZIndex_01.top);
       expect(Math.round(Stack_ZIndex_011.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_011.bottom));
+      console.log('Stack_ZIndex_012.top - Stack_ZIndex_01.top is',+Stack_ZIndex_012.top - Stack_ZIndex_01.top);
       expect(Math.round(Stack_ZIndex_012.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_012.bottom));
+      console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
       expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
       expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
       expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
       expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
       console.info('[testStackZIndexWithAlignmentCenter] END');
       done();
@@ -205,16 +222,24 @@ export default function Stack_ZIndex() {
       let theLeft = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft,theTop);
       await CommonFunc.sleep(1000);
+      console.log('num is',+num);
       expect(num).assertEqual(true);
+      console.log('Stack_ZIndex_01.right is',+Stack_ZIndex_01.right);
       expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_011.right);
       expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_012.right);
+      console.log('Stack_ZIndex_011.top - Stack_ZIndex_01.top is',+Stack_ZIndex_011.top - Stack_ZIndex_01.top);
       expect(Math.round(Stack_ZIndex_011.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_011.bottom));
+      console.log('Stack_ZIndex_012.top - Stack_ZIndex_01.top is',+Stack_ZIndex_012.top - Stack_ZIndex_01.top);
       expect(Math.round(Stack_ZIndex_012.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_012.bottom));
+      console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
       expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
       expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
       expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
       expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
       console.info('[testStackZIndexWithAlignmentEnd] END');
       done();
@@ -239,14 +264,21 @@ export default function Stack_ZIndex() {
       let theTop = Stack_ZIndex_012.top;
       let num = await imageComparisonAssert(0,theTop);
       await CommonFunc.sleep(1000);
+      console.log('num is',+num);
       expect(num).assertEqual(true);
+      console.log('Stack_ZIndex_01.left is',+Stack_ZIndex_01.left);
       expect(Stack_ZIndex_01.left).assertEqual(Stack_ZIndex_011.left);
       expect(Stack_ZIndex_01.left).assertEqual(Stack_ZIndex_012.left);
+      console.log('Stack_ZIndex_01.bottom is',+Stack_ZIndex_01.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_011.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_012.bottom);
+      console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
       expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
       expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
       expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
       expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
       console.info('[testStackZIndexWithAlignmentBottomStart] END');
       done();
@@ -271,17 +303,25 @@ export default function Stack_ZIndex() {
       let theTop = Stack_ZIndex_012.top;
       let theLeft = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft,theTop);
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(3000);
+      console.log('num is',+num);
       expect(num).assertEqual(true);
+      console.log('Stack_ZIndex_01.bottom is',+Stack_ZIndex_01.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_011.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_012.bottom);
+      console.log('Stack_ZIndex_011.left - Stack_ZIndex_01.left is',+Stack_ZIndex_011.left - Stack_ZIndex_01.left);
       expect(Math.round(Stack_ZIndex_011.left - Stack_ZIndex_01.left))
         .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_011.right));
+      console.log('Stack_ZIndex_012.left - Stack_ZIndex_01.left is',+Stack_ZIndex_012.left - Stack_ZIndex_01.left);
       expect(Math.round(Stack_ZIndex_012.left - Stack_ZIndex_01.left))
         .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_012.right));
+      console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
       expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
       expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
       expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
       expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
       console.info('[testStackZIndexWithAlignmentBottom] END');
       done();
@@ -307,14 +347,21 @@ export default function Stack_ZIndex() {
       let theLeft = Stack_ZIndex_012.left;
       let num = await imageComparisonAssert(theLeft,theTop);
       await CommonFunc.sleep(3000);
+      console.log('num is',+num);
       expect(num).assertEqual(true);
+      console.log('Stack_ZIndex_01.bottom is',+Stack_ZIndex_01.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_011.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_012.bottom);
+      console.log('Stack_ZIndex_01.right is',+Stack_ZIndex_01.right);
       expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_011.right);
       expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_012.right);
+      console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
       expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
       expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
       expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
       expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
       console.info('[testStackZIndexWithAlignmentBottomEnd] END');
       done();
