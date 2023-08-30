@@ -43,11 +43,12 @@ export default function abilityTest() {
             var Subscriber;
             var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 
-            function SubscribeCallBack(err, data) {
+            async function SubscribeCallBack(err, data) {
                 console.debug("ACTS_GetCurrentTopAbility_0100====>Subscribe CallBack data:====>" 
                 + JSON.stringify(data));
                 expect(data.event == 'GetCurrentTopAbilityB').assertTrue();
                 if (data.event == 'GetCurrentTopAbilityB') {
+                  await sleep(1000);
                     AbilityDelegator.getCurrentTopAbility((err, data) => {
                         console.log("ACTS_GetCurrentTopAbility_0100 and");
                         console.debug("====>thisTopAbility_0100====>" + JSON.stringify(data));
