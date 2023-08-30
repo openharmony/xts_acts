@@ -44,12 +44,14 @@ export default class MainAbility3 extends Ability {
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("[Demo] MainAbility3 onForeground")
-        globalThis.abilitydelegator.getCurrentTopAbility().then((data)=>{
+        console.log("[Demo] MainAbility3 onForeground");
+        setTimeout(() => {
+          globalThis.abilitydelegator.getCurrentTopAbility().then((data)=>{
             globalThis.ability3 = data
             console.debug("====>MainAbility getCurrentTopAbility:====>" + JSON.stringify(globalThis.ability3));
             commonEvent.publish("ACTS_DoAbility_Event", PublishCallBackOne);
         })
+        }, 1000);
     }
 
     onBackground() {
