@@ -14,7 +14,9 @@
  */
 
 import contactStage from './contactstage.test';
+import ObjectInterfaceTest from './ObjectInterface_test';
 
 export default function testsuite() {
   contactStage();
+  ObjectInterfaceTest();
 }
