@@ -1730,7 +1730,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedDigitFont));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_0300 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontSize).assertEqual("48.00%");
+          expect(obj2.selectedFontSize).assertEqual("14.00fp");
           expect(obj2.selectedFontWeight).assertEqual("900");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0300 END ');
           done();
@@ -1854,7 +1854,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.selectedDigitFont));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_SelectedDigitFont_0700 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.selectedFontSize).assertEqual("1000.00%");
+          expect(obj2.selectedFontSize).assertEqual("14.00fp");
           expect(obj2.selectedFontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Swiper_SelectedDigitFont_0700 END ');
           done();
@@ -2074,7 +2074,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.digitFont));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_0300 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontSize).assertEqual("48.00%");
+          expect(obj2.fontSize).assertEqual("14.00fp");
           expect(obj2.fontWeight).assertEqual("900");
           console.info('ArkUX_Stage_Swiper_DigitFont_0300 END ');
           done();
@@ -2198,7 +2198,7 @@ export default function swiperTest() {
           JSON.stringify(obj.$attrs.digitFont));
           let obj2 = JSON.parse(obj.$attrs.indicator);
           console.info("ArkUX_Stage_Swiper_DigitFont_0700 component obj2 is: " + JSON.stringify(obj2));
-          expect(obj2.fontSize).assertEqual("1000.00%");
+          expect(obj2.fontSize).assertEqual("14.00fp");
           expect(obj2.fontWeight).assertEqual("FontWeight.Normal");
           console.info('ArkUX_Stage_Swiper_DigitFont_0700 END ');
           done();
