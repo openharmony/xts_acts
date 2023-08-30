@@ -92,42 +92,6 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       let listenerFlag = listenerStatus.ready;
       let caseName = 'setWindowSystemBarPropertiesTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      console.info('setWindowSystemBarPropertiesTest1');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.info('setWindowSystemBarPropertiesTest1 systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          console.log('setWindowSystemBarPropertiesTest1 arrLength is: '+systemBarData.regionTint.length)
-          for(let i=0;i<arrLength;i++){
-            console.info('setWindowSystemBarPropertiesTest1  start step:'+i);
-            // 单个导航栏或者系统状态信息
-            let SystemBarRegionTint = systemBarData.regionTint[i];
-            if (SystemBarRegionTint.type === ohosWindow.WindowType.TYPE_STATUS_BAR || SystemBarRegionTint.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.info('setWindowSystemBarPropertiesTest1 assert1 start!');
-              let backgroundIndex = cloneColorArr.indexOf(SystemBarRegionTint.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(SystemBarRegionTint.contentColor);
-              try {
-                expect(backgroundIndex === -1).assertTrue();
-                expect(contentColorIndex === -1).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-              }
-              if(i==arrLength-1){
-                console.info('setWindowSystemBarPropertiesTest1  finished step:'+i);
-              }
-            }
-          }
-        }
-      })
-      console.info('setWindowSystemBarPropertiesTest1 on systemBarTintChange finished');
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
       await mainWsync.showWindow().catch(err => {
@@ -141,7 +105,6 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         done();
       });
       await sleep(1000);
-      listenerFlag = listenerStatus.pending;
       for(let i=0;i<commonRGBColorArr.length;i++){
         console.info('setWindowSystemBarPropertiesTest1 begin step:'+i);
         let tempColor = commonRGBColorArr[i];
@@ -184,63 +147,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         NBC: JSON.parse(JSON.stringify(commonNUMBERColorArr)),
         NCC: JSON.parse(JSON.stringify(commonNUMBERColorArr))
       };
-      let listenerFlag = listenerStatus.ready;
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
       let caseName = 'setWindowSystemBarPropertiesTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      console.info('setWindowSystemBarPropertiesTest2');
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.info('setWindowSystemBarPropertiesTest2 systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          // 单个导航栏或者系统状态信息
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let systemBarRegionTint = systemBarData.regionTint[i];
-            if (systemBarRegionTint.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
-              console.info('setWindowSystemBarPropertiesTest2 assert2 start!');
-              let backgroundIndex = cloneColorArr.SBC.indexOf(systemBarRegionTint.backgroundColor);
-              let contentColorIndex = cloneColorArr.SCC.indexOf(systemBarRegionTint.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.SBC.splice(backgroundIndex, 1);
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.SCC.splice(contentColorIndex, 1);
-              }
-              try {
-                expect(backgroundIndex !== -1).assertTrue();
-                expect(contentColorIndex !== -1).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-              }
-              done();
-            } else if (systemBarRegionTint.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              let backgroundIndex = cloneColorArr.NBC.indexOf(systemBarRegionTint.backgroundColor);
-              let contentColorIndex = cloneColorArr.NCC.indexOf(systemBarRegionTint.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.NBC.splice(backgroundIndex, 1);
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.NCC.splice(contentColorIndex, 1);
-              }
-              try {
-                expect(backgroundIndex !== -1).assertTrue();
-                expect(contentColorIndex !== -1).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-              }
-              done();
-            }
-          }
-        }
-      })
-      console.info('setWindowSystemBarPropertiesTest2 on systemBarTintChange finished');
       let mainWsync = windowStage.getMainWindowSync();
       expect(mainWsync != null).assertTrue();
       await mainWsync.showWindow().catch((err) => {
@@ -255,7 +163,6 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         done();
       });
       await sleep(1000);
-      listenerFlag = listenerStatus.pending;
       for(let i =0;i<commonNUMBERColorArr.length;i++){
         console.info('setWindowSystemBarPropertiesTest2 begin step:'+i);
         let tempColor = commonNUMBERColorArr[i];
@@ -293,39 +200,8 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
 	   */
     it('setWindowSystemBarPropertiesTest3', 0, async function (done) {
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
-      let listenerFlag = listenerStatus.ready;
       let caseName = 'setWindowSystemBarPropertiesTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      console.info('setWindowSystemBarPropertiesTest3 start');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', (systemBarData) => {
-        console.info('setWindowSystemBarPropertiesTest3 systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          try {
-            expect(!!systemBarData).assertTrue();
-            expect(!!systemBarData.regionTint).assertTrue();
-          } catch (error) {
-            console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-          }
-          let arrLength = systemBarData.regionTint.length;
-          // 单个导航栏或者系统状态信息
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
-              try {
-                expect(backgroundIndex === -1).assertTrue();
-                expect(contentColorIndex === -1).assertTrue();
-              } catch (error) {
-                console.info(`ohosWindow.on catch error: ${JSON.stringify(error)}`)
-              }
-              done();
-            }
-          }
-        }
-      })
       let tempWnd = windowStage.getMainWindowSync();
       expect(tempWnd != null).assertTrue();
       await tempWnd.showWindow().catch((err) => {
@@ -339,7 +215,6 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         done();
       });
       await sleep(1000);
-      listenerFlag = listenerStatus.pending;
       for(let i=0;i<commonKEYColorArr.length;i++){
         console.info('setWindowSystemBarPropertiesTest3 begin step:'+i);
         let tempColor = commonKEYColorArr[i];

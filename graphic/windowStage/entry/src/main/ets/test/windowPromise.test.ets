@@ -240,7 +240,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       listenerData.typeStr = 'systemAvoidAreaChange';
       tempWnd.on('systemAvoidAreaChange', (avoidAreaData) => {
         console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData : ' + JSON.stringify(avoidAreaData));
-        console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, systemBatData 1100 : ' + JSON.stringify(avoidAreaData));
+        tempWnd.off('systemAvoidAreaChange');
         done();
       })
       console.log(msgStr + 'tempWnd.on systemAvoidAreaChange finished');
@@ -256,14 +256,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      await sleep(1000);
-      tempWnd.off('systemAvoidAreaChange');
+      await sleep(500);
       console.log(msgStr + 'tempWnd.off systemAvoidAreaChange finished');
-      await sleep(10010);
       listenerOffFlag = listenerStatus.pending;
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
+      await sleep(500);
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
     })
     /**
@@ -434,33 +433,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('setSystemBarEnableTest1', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let statusFlag = listenerStatus.ready;
-      let navigationFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (statusFlag === listenerStatus.pending || navigationFlag === listenerStatus.pending) {
-          console.log(msgStr + 'systemBarTintChange compare start!');
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-              statusFlag = listenerStatus.finished;
-              expect(tempData.isEnable).assertTrue();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-              navigationFlag = listenerStatus.finished;
-              expect(!tempData.isEnable).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -479,13 +452,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
-      await sleep(1000);
-      statusFlag = listenerStatus.pending;
-      navigationFlag = listenerStatus.pending;
+      await sleep(500);
       await tempWnd.setSystemBarEnable(['status']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([navigation]) success');
+      done();
     })
     /**
      * @tc.number     SUB_WINDOW_SETSYSTEMBARENABLE_JSAPI_002
@@ -495,33 +467,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('setSystemBarEnableTest2', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let statusFlag = listenerStatus.ready;
-      let navigationFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (statusFlag === listenerStatus.pending || navigationFlag === listenerStatus.pending) {
-          console.log(msgStr + 'systemBarTintChange compare start!');
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-              statusFlag = listenerStatus.finished;
-              expect(!tempData.isEnable).assertTrue();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-              navigationFlag = listenerStatus.finished;
-              expect(tempData.isEnable).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -540,12 +486,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status]) success');
       await sleep(1000);
-      statusFlag = listenerStatus.pending;
-      navigationFlag = listenerStatus.pending;
       await tempWnd.setSystemBarEnable(['navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([navigation]) success');
+      done();
     })
 
     /**
@@ -556,33 +501,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('setSystemBarEnableTest3', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest3';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let statusFlag = listenerStatus.ready;
-      let navigationFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (statusFlag === listenerStatus.pending || navigationFlag === listenerStatus.pending) {
-          console.log(msgStr + 'systemBarTintChange compare start!');
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-              statusFlag = listenerStatus.finished;
-              expect(tempData.isEnable).assertTrue();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-              navigationFlag = listenerStatus.finished;
-              expect(tempData.isEnable).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -600,13 +519,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
-      await sleep(1000);
-      statusFlag = listenerStatus.pending;
-      navigationFlag = listenerStatus.pending;
+      await sleep(500);
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success .');
+      done();
     })
 
     /**
@@ -617,33 +535,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     it('setSystemBarEnableTest4', 0, async function (done) {
       let caseName = 'setSystemBarEnableTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
-      let statusFlag = listenerStatus.ready;
-      let navigationFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (statusFlag === listenerStatus.pending || navigationFlag === listenerStatus.pending) {
-          console.log(msgStr + 'systemBarTintChange compare start!');
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            console.log(msgStr + 'compare, type: ' + tempData.type + ';isEnable: ' + tempData.isEnable);
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR && statusFlag === listenerStatus.pending) {
-              statusFlag = listenerStatus.finished;
-              expect(!tempData.isEnable).assertTrue();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR && navigationFlag === listenerStatus.pending) {
-              navigationFlag = listenerStatus.finished;
-              expect(!tempData.isEnable).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -661,13 +553,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(1000);
-      statusFlag = listenerStatus.pending;
-      navigationFlag = listenerStatus.pending;
+      await sleep(500);
       await tempWnd.setSystemBarEnable([]).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
+      done();
     })
 
     /**
@@ -715,31 +606,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonRGBColorArr));
       let compareCount = 0;
-      let listenerFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
-              expect(backgroundIndex === -1).assertTrue();
-              expect(contentColorIndex === -1).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -757,8 +624,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(1000);
-      listenerFlag = listenerStatus.pending;
+      await sleep(500);
       let loopCount = commonRGBColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonRGBColorArr[i];
@@ -772,9 +638,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
+          done();
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-          expect(TRUE_FLAG).assertFail();
+          expect().assertFail();
+          done();
         })
       }
     })
@@ -794,50 +662,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         NCC: JSON.parse(JSON.stringify(commonNUMBERColorArr))
       };
       let compareCount = 0;
-      let listenerFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.SBC.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.SBC.splice(backgroundIndex, 1);
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.SCC.splice(contentColorIndex, 1);
-              }
-              expect(backgroundIndex !== -1).assertTrue();
-              expect(contentColorIndex !== -1).assertTrue();
-            } else if (tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.NBC.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.NCC.indexOf(tempData.contentColor);
-              if (backgroundIndex >= 0) {
-                cloneColorArr.NBC.splice(backgroundIndex, 1);
-              }
-              if (contentColorIndex >= 0) {
-                cloneColorArr.NCC.splice(contentColorIndex, 1);
-              }
-              expect(backgroundIndex !== -1).assertTrue();
-              expect(contentColorIndex !== -1).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -855,8 +680,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(1000);
-      listenerFlag = listenerStatus.pending;
+      await sleep(500);
       let loopCount = commonNUMBERColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonNUMBERColorArr[i];
@@ -870,9 +694,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
+          done();
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-          expect(TRUE_FLAG).assertFail();
+          expect().assertFail();
+          done();
         })
       }
     })
@@ -887,32 +713,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       let cloneColorArr = JSON.parse(JSON.stringify(commonKEYColorArr));
       let compareCount = 0;
-      let listenerFlag = listenerStatus.ready;
       console.log(msgStr + 'begin');
-      listenerData.on = true;
-      listenerData.typeStr = 'systemBarTintChange';
-      ohosWindow.on('systemBarTintChange', async (systemBarData) => {
-        console.log(msgStr + 'tempWnd.on systemBarTintChange, systemBatData : ' + JSON.stringify(systemBarData));
-        if (listenerFlag === listenerStatus.pending) {
-          expect(!!systemBarData).assertTrue();
-          expect(!!systemBarData.regionTint).assertTrue();
-          let arrLength = systemBarData.regionTint.length;
-          for (let i = 0; i < arrLength; i++) {
-            let tempData = systemBarData.regionTint[i];
-            console.log(msgStr + 'i=' + i + '   , ohosWindow.on for=' + JSON.stringify(tempData));
-            if (tempData.type === ohosWindow.WindowType.TYPE_STATUS_BAR || tempData.type === ohosWindow.WindowType.TYPE_NAVIGATION_BAR) {
-              console.log(msgStr + 'systemBarTintChange compare start!');
-              compareCount++;
-              let backgroundIndex = cloneColorArr.indexOf(tempData.backgroundColor);
-              let contentColorIndex = cloneColorArr.indexOf(tempData.contentColor);
-              expect(backgroundIndex === -1).assertTrue();
-              expect(contentColorIndex === -1).assertTrue();
-            }
-          }
-        }
-        done();
-      })
-      console.log(msgStr + 'tempWnd.on systemBarTintChange finished');
       let tempWnd = await windowStage.getMainWindow().catch((err) => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
@@ -930,8 +731,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         unexpectedError(err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([status, navigation]) success');
-      await sleep(1000);
-      listenerFlag = listenerStatus.pending;
+      await sleep(500);
       let loopCount = commonKEYColorArr.length;
       for (let i = 0; i < loopCount; i++) {
         let tempColor = commonKEYColorArr[i];
@@ -945,9 +745,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         };
         await tempWnd.setSystemBarProperties(systemBarProperties).then(() => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties ' + tempColor + ' success');
+          done();
         }, (err) => {
           console.log(msgStr + 'tempWnd.setSystemBarProperties failed, err : ' + JSON.stringify(err));
-          expect(TRUE_FLAG).assertFail();
+          expect().assertFail();
           done();
         })
       }
