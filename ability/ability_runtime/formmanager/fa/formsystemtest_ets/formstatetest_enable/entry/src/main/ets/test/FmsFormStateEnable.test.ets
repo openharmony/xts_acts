@@ -674,7 +674,7 @@ export default function test() {
                         done();
                     });
                     console.log(`FMS_enableFormsUpdate_1000 featureAbility.startAbility notifyVisible end`);
-                }, 10000);
+                }, 1000);
             }
 
             function onAcquiredCallBack(_, data) {
@@ -842,7 +842,7 @@ export default function test() {
                         done();
                     });
                     console.log(`FMS_enableFormsUpdate_1200 featureAbility.startAbility notifyVisible end`);
-                }, 10000);
+                }, 1000);
             }
 
             async function onSecondAcquiredCallBack(_, data) {
