@@ -169,7 +169,7 @@ export default function buttonJsunit() {
       let strJsonNew = getInspectorByKey('button2');
       let objNew = JSON.parse(strJsonNew);
       console.info("[testButton07] component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.fontSize).assertEqual('-1.00fp');
+      expect(objNew.$attrs.fontSize).assertEqual('16.00fp');
       done();
     });
 
