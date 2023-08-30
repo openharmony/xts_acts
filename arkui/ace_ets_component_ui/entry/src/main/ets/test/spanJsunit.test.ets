@@ -187,7 +187,8 @@ export default function spanJsunit() {
       let strJson = getInspectorByKey('testSpan');
       let obj = JSON.parse(strJson);
       console.info('spanJsunit_0900 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFFFCCCC"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFFFCCCC",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       done();
     }); 
   })
