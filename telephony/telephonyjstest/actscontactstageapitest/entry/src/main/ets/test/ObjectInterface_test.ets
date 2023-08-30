@@ -32,26 +32,36 @@ export default function ObjectInterfaceTest() {
             }
         }
 
-        async function driveFn() {
-            console.info("come in driveFn");
-            let driver = await UiDriver.create();
-            console.info("driver is " + JSON.stringify(driver));
-            sleep(2000);
-            let button = await driver.findComponent(BY.text('允许'));
-            console.info("button is " + JSON.stringify(button));
-            await button.click();
-            sleep(5000);
-        }
-
-        beforeAll(async function () {
-            var permissions = ["ohos.permission.WRITE_CONTACTS", "ohos.permission.READ_CONTACTS"];
-            featureAbility.getContext().requestPermissionsFromUser(permissions, 0, () => {
-                console.info("start requestPermissionsFromUser");
-            });
-            for (let i = 0; i < 2; i++) {
-                await driveFn();
-                console.log("get user_grant permission");
+        beforeAll( async function () {
+        console.info("beforeAll case");
+        try {
+            let permissions = ["ohos.permission.WRITE_CONTACTS", "ohos.permission.READ_CONTACTS"];
+            let atManager = abilityAccessCtrl.createAtManager();
+            atManager.requestPermissionsFromUser(globalThis.context, permissions, (err, result) => {
+            if (err) {
+                console.info('getPermission failed: ' + JSON.stringify(err));
+            } else {
+                console.info('getPermission suc: ' + JSON.stringify(result));
             }
+            });
+
+            let driver = await uitest.Driver.create();
+            sleep(500);
+
+            for (let i = 0; i < 5; i++) {
+            await sleep(500);
+            console.info("driver is " + JSON.stringify(driver));
+            let button = await driver.findComponent(uitest.ON.text('允许'));
+            if (button != undefined) {
+                console.info("button is " + JSON.stringify(button));
+                await button.click();
+            }
+            }
+            console.info("getPermission end");
+        } catch (error) {
+            console.info(`getPermission failed, error: ${error}`);
+        }
+        sleep(3000);
         });
 
         afterAll(async function () {
