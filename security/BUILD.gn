@@ -27,6 +27,7 @@ group("security") {
       "cryptoFramework/js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
       "cryptoFramework/js_api_test_one:ActsCryptoFrameworkJSNormalTest",
       "huks_napi_BasicTest:ActsHuksNAPITest",
+      "security_component:ActsSecComponentTest",
       "security_huks_basic",
       "security_huks_reformed_test",
     ]
