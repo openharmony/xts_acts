@@ -212,7 +212,8 @@ export default function textJsunit() {
       console.info("testText_1000 component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("testText_1000 component obj is: " + JSON.stringify(obj.$attrs.decoration));
-      expect(obj.$attrs.decoration).assertEqual("{\"type\":\"TextDecorationType.None\",\"color\":\"#FFFF0000\"}");
+      expect(obj.$attrs.decoration).assertEqual("{\"type\":\"TextDecorationType.None\",\"color\":\"#FFFF0000\"," +
+      "\"style\":\"TextDecorationStyle.SOLID\"}");
       console.info('testText_1000 END');
       done();
     });

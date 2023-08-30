@@ -53,7 +53,8 @@ export default function spanJsunit() {
       expect(obj.$attrs.textCase).assertEqual('TextCase.Normal');
       expect(obj.$attrs.letterSpacing).assertEqual('10.00fp');
       expect(obj.$attrs.fontSize).assertEqual('12.00fp');
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Underline","color":"#FFFFCCEE"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Underline","color":"#FFFFCCEE",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       console.info('spanJsunit_0100 END');
       done();
     });
@@ -128,7 +129,8 @@ export default function spanJsunit() {
       let strJson = getInspectorByKey('testSpan');
       let obj = JSON.parse(strJson);
       console.info('spanJsunit_0600 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFFFAACC"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.None","color":"#FFFFAACC",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       done();
     }); 
 
@@ -141,13 +143,15 @@ export default function spanJsunit() {
       let strJson = getInspectorByKey('testSpan');
       let obj = JSON.parse(strJson);
       console.info('spanJsunit_0700 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Overline","color":"#FFFFAACC"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.Overline","color":"#FFFFAACC",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       globalThis.value.message.notify({name:'type',value:TextDecorationType.LineThrough})
       await CommonFunc.sleep(300);
       let strJson2 = getInspectorByKey('testSpan');
       let obj2 = JSON.parse(strJson2);
       console.info('spanJsunit_0700 component obj2 is: ' + obj2.$attrs.decoration);
-      expect(obj2.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FFFFAACC"}');
+      expect(obj2.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FFFFAACC",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       done();
     }); 
     
@@ -160,13 +164,15 @@ export default function spanJsunit() {
       let strJson = getInspectorByKey('testSpan');
       let obj = JSON.parse(strJson);
       console.info('spanJsunit_0800 component obj is: ' + obj.$attrs.decoration);
-      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FF008000"}');
+      expect(obj.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FF008000",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       globalThis.value.message.notify({name:'color',value:'rgb(238, 130, 238)'})
       await CommonFunc.sleep(300);
       let strJson2 = getInspectorByKey('testSpan');
       let obj2 = JSON.parse(strJson2);
       console.info('spanJsunit_0800 component obj2 is: ' + obj2.$attrs.decoration);
-      expect(obj2.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FFEE82EE"}');
+      expect(obj2.$attrs.decoration).assertEqual('{"type":"TextDecorationType.LineThrough","color":"#FFEE82EE",' +
+      '"style":"TextDecorationStyle.SOLID"}');
       done();
     }); 
      
