@@ -213,20 +213,19 @@ describe('btManagerGattManagerTest', function() {
     it('SUB_COMMUNICATION_BTMANAGER_GETDEVICENAME_0100', 0, async function (done) {  
         try {
             gattClient.connect();
-            let deviceName = gattClient.getDeviceName().then((data) => {
+            await gattClient.getDeviceName().then((data) => {
                 console.info('[bluetooth_js] getDeviceName data info:' + JSON.stringify(data));
             })
-            console.info('[bluetooth_js] deviceName:' + deviceName);
-            // }).catch(err => {
-            //     console.error('[bluetooth_js] bluetooth getDeviceName has error: '+ JSON.stringify(err));
-            //     expect(err.code).assertEqual(2900099);
-            //     done();
-            // });
             done();
         } catch (error) {
             console.error(`[bluetooth_js]GetDeviceName_0100 failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            if (error.code == '2900099') {
+                expect(error.code).assertEqual('2900099');
+            } else {
+                expect(error.code).assertEqual(2900099);
+            }
         }
+        gattClient.disconnect();
         done();
     })
 

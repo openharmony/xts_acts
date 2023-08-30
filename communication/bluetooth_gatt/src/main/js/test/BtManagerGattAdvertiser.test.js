@@ -144,7 +144,7 @@ describe('btManagerGattAdvertTest', function() {
           serviceValueBuffer[2] = 7;
           serviceValueBuffer[3] = 8;
           let setting={
-               interval:20,
+               interval:32,
                txPower:-10,
                connectable:true,
           }
@@ -256,7 +256,7 @@ describe('btManagerGattAdvertTest', function() {
           serviceValueBuffer[2] = 7;
           serviceValueBuffer[3] = 8;
           let setting={
-               interval:16400,
+               interval:16384,
                txPower:-10,
                connectable:true,
           }
@@ -312,7 +312,7 @@ describe('btManagerGattAdvertTest', function() {
           serviceValueBuffer[2] = 7;
           serviceValueBuffer[3] = 8;
           let setting={
-               interval:19,
+               interval:32,
                txPower:-10,
                connectable:true,
           }

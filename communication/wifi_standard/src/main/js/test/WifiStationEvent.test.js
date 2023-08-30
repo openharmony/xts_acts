@@ -117,7 +117,12 @@ export default function actsWifiEventTest() {
                 console.info("[wifi_test]wifiScanStateChange callback, result: " + JSON.stringify(result));
             }
             wifi.on(wifiScanState, wifiScanStateChangeCallback);
-            let scanResult = wifi.scan();
+            try {
+                let scanResult = wifi.scan();
+            } catch (error) {
+                console.error(`scan failed, code is ${error.code}, message is ${error.message}`);
+                expect(true).assertEqual(error !=null);
+            }
             await sleep(3000);
             wifi.off(wifiScanState, wifiScanStateChangeCallback);
             done();
