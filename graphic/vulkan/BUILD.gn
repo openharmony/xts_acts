@@ -1,0 +1,53 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//test/xts/tools/build/suite.gni")
+
+import("//foundation/graphic/graphic_2d/graphic_config.gni")
+
+group("ActsVkTest") {
+  testonly= true
+  deps = [
+    "src/texture/build0001:ActsTextureTestSuite0001",
+    "src/texture/build0002:ActsTextureTestSuite0002",
+    "src/texture/build0003:ActsTextureTestSuite0003",
+    "src/texture/build0004:ActsTextureTestSuite0004",
+    "src/texture/build0005:ActsTextureTestSuite0005",
+    "src/texture/build0006:ActsTextureTestSuite0006",
+    "src/texture/build0007:ActsTextureTestSuite0007",
+    "src/texture/build0008:ActsTextureTestSuite0008",
+    "src/texture/build0009:ActsTextureTestSuite0009",
+    "src/texture/build0010:ActsTextureTestSuite0010",
+    "src/texture/build0011:ActsTextureTestSuite0011",
+    "src/ubo/build0001:ActsUboTestSuite0001",
+    "src/ubo/build0002:ActsUboTestSuite0002",
+    "src/ubo/build0003:ActsUboTestSuite0003",
+    "src/ubo/build0004:ActsUboTestSuite0004",
+    "src/ubo/build0005:ActsUboTestSuite0005",
+    "src/ubo/build0006:ActsUboTestSuite0006",
+    "src/ubo/build0007:ActsUboTestSuite0007",
+    "src/ubo/build0008:ActsUboTestSuite0008",
+  ]
+}
+
+action("cpvktest") {
+  testonly = true
+  script = "cpvkTest.sh"
+  outputs = [ "${target_out_dir}/cpVktest.log" ]
+  root_vkgl_path = rebase_path("//")
+  args = ["$root_vkgl_path"]
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute", 
+    ":ActsVkTest", 
+  ]
+}
