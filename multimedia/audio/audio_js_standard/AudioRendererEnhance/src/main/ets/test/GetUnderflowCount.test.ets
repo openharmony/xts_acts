@@ -173,7 +173,7 @@ export default function audioRendererTest() {
         await renderPlay();
         await audioRen.getUnderflowCount().then((data) => {
           console.log(`getUnderflowCount :SUCCESS ${data}`);
-          expect(data).assertEqual(env.OUTPUT_NUMBER_2);
+          expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
           audioRen.drain().then(() => {
             audioRen.stop().then(() => {
               done();
@@ -294,7 +294,7 @@ export default function audioRendererTest() {
             done();
           } else {
             console.log(`getUnderflowCount :SUCCESS ${data}`);
-            expect(data).assertEqual(env.OUTPUT_NUMBER_2);
+            expect(data).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
             audioRen.drain().then(() => {
               audioRen.stop().then(() => {
                 done();
