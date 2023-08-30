@@ -26,11 +26,13 @@ export default function getExifNoLocation(abilityContext) {
             try {
                 let permissions = ["ohos.permission.READ_MEDIA"];
                 let atManager = abilityAccessCtrl.createAtManager();
+                let permissionCheck = false;
                 atManager.requestPermissionsFromUser(abilityContext, permissions, (err, result) => {
                     if (err) {
                         console.info('getPermission failed: ' + JSON.stringify(err));
                     } else {
                         console.info('getPermission suc: ' + JSON.stringify(result));
+                        permissionCheck = true;
                     }
                 });
             
@@ -38,6 +40,9 @@ export default function getExifNoLocation(abilityContext) {
                 await sleep(500);
             
                 for (let i = 0; i < 10; i++) {
+                    if (permissionCheck) {
+                        break;
+                    }
                     await sleep(500);
                     let button = await driver.findComponent(uitest.ON.text('允许'));
                     if (button != undefined) {
