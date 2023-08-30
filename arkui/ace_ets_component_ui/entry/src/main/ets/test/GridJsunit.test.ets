@@ -152,7 +152,7 @@ export default function GridJsunit() {
       let strJson2 = getInspectorByKey('grid2');
       let obj2 = JSON.parse(strJson2);
       console.info("[GridJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
-      expect(obj2.$attrs.scrollBar).assertEqual('BarState.Off');
+      expect(obj2.$attrs.scrollBar).assertEqual('BarState.Auto');
       expect(obj2.$attrs.scrollBarColor).assertEqual('#FF000000');
       expect(obj2.$attrs.scrollBarWidth).assertEqual('4.00vp');
       console.info('[GridJsunit_0300] END');
