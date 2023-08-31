@@ -419,7 +419,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0100
-         * @tc.name      : setAlphaAble
+         * @tc.name      : setAlphaAble_1
          * @tc.desc      : 1.createPixelMap
          *               : 2.setAlphaAble
          * @tc.size      : MEDIUM
@@ -433,7 +433,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0200
-         * @tc.name      : setAlphaAble
+         * @tc.name      : setAlphaAble_2
          * @tc.desc      : 1.createPixelMap
          *               : 2.setAlphaAble
          * @tc.size      : MEDIUM
@@ -447,7 +447,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0300
-         * @tc.name      : setAlphaAble
+         * @tc.name      : setAlphaAble_3
          * @tc.desc      : 1.createPixelMap
          *               : 2.setAlphaAble
          * @tc.size      : MEDIUM
@@ -462,7 +462,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0400
-        * @tc.name      : setDensity
+        * @tc.name      : setDensity_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.setDensity
         * @tc.size      : MEDIUM
@@ -476,7 +476,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0500
-        * @tc.name      : setDensity
+        * @tc.name      : setDensity_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.setDensity
         * @tc.size      : MEDIUM
@@ -491,7 +491,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0600
-        * @tc.name      : setDensity
+        * @tc.name      : setDensity_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.setDensity
         * @tc.size      : MEDIUM
@@ -505,7 +505,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0700
-        * @tc.name      : setOpacity
+        * @tc.name      : setOpacity_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.setOpacity
         * @tc.size      : MEDIUM
@@ -519,7 +519,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0800
-        * @tc.name      : setOpacity
+        * @tc.name      : setOpacity_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.setOpacity
         * @tc.size      : MEDIUM
@@ -533,7 +533,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_0900
-        * @tc.name      : setOpacity
+        * @tc.name      : setOpacity_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.setOpacity
         * @tc.size      : MEDIUM
@@ -548,7 +548,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1000
-        * @tc.name      : scale
+        * @tc.name      : scale_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.scale
         * @tc.size      : MEDIUM
@@ -563,7 +563,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1100
-        * @tc.name      : scale
+        * @tc.name      : scale_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.scale
         * @tc.size      : MEDIUM
@@ -577,7 +577,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1200
-        * @tc.name      : scale
+        * @tc.name      : scale_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.scale
         * @tc.size      : MEDIUM
@@ -591,7 +591,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1300
-        * @tc.name      : translate
+        * @tc.name      : translate_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.translate
         * @tc.size      : MEDIUM
@@ -606,7 +606,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1400
-        * @tc.name      : translate
+        * @tc.name      : translate_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.translate
         * @tc.size      : MEDIUM
@@ -620,7 +620,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1500
-        * @tc.name      : translate
+        * @tc.name      : translate_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.translate
         * @tc.size      : MEDIUM
@@ -634,7 +634,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1600
-        * @tc.name      : rotate
+        * @tc.name      : rotate_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.rotate
         * @tc.size      : MEDIUM
@@ -648,7 +648,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1700
-        * @tc.name      : rotate
+        * @tc.name      : rotate_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.rotate
         * @tc.size      : MEDIUM
@@ -662,7 +662,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1800
-        * @tc.name      : rotate
+        * @tc.name      : rotate_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.rotate
         * @tc.size      : MEDIUM
@@ -676,7 +676,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_1900
-        * @tc.name      : flip
+        * @tc.name      : flip_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.flip
         * @tc.size      : MEDIUM
@@ -690,7 +690,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_2000
-        * @tc.name      : flip
+        * @tc.name      : flip_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.flip
         * @tc.size      : MEDIUM
@@ -704,7 +704,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_2100
-        * @tc.name      : flip
+        * @tc.name      : flip_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.flip
         * @tc.size      : MEDIUM
@@ -718,7 +718,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_2200
-        * @tc.name      : crop
+        * @tc.name      : crop_1
         * @tc.desc      : 1.createPixelMap
         *               : 2.crop
         * @tc.size      : MEDIUM
@@ -732,7 +732,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_2300
-        * @tc.name      : crop
+        * @tc.name      : crop_2
         * @tc.desc      : 1.createPixelMap
         *               : 2.crop
         * @tc.size      : MEDIUM
@@ -747,7 +747,7 @@ export default function ImagePixelMapNDKTest() {
 
         /**
         * @tc.number    : SUB_GRAPHIC_IMAGE_PIXELMAPNDK_ERR_2400
-        * @tc.name      : crop
+        * @tc.name      : crop_3
         * @tc.desc      : 1.createPixelMap
         *               : 2.crop
         * @tc.size      : MEDIUM

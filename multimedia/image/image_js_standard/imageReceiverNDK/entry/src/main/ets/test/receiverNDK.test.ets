@@ -90,7 +90,7 @@ export default function ImageReceiverNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0100
-         * @tc.name      : createImageReceiver
+         * @tc.name      : createImageReceiver_1
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
@@ -103,7 +103,7 @@ export default function ImageReceiverNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0200
-         * @tc.name      : createImageReceiver
+         * @tc.name      : createImageReceiver_2
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
@@ -117,7 +117,7 @@ export default function ImageReceiverNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0300
-         * @tc.name      : createImageReceiver
+         * @tc.name      : createImageReceiver_3
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
@@ -130,7 +130,7 @@ export default function ImageReceiverNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_ERR_0400
-         * @tc.name      : createImageReceiver
+         * @tc.name      : createImageReceiver_4
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          * @tc.size      : MEDIUM
@@ -143,7 +143,7 @@ export default function ImageReceiverNDKTest() {
 
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVERNDK_0200
-         * @tc.name      : createImageReceiver
+         * @tc.name      : createImageReceiver_5
          * @tc.desc      : 1.set width,height,format,capacity
          *               : 2.createImageReceiver
          *               : 3.getSize,getFormat,getCapacity
