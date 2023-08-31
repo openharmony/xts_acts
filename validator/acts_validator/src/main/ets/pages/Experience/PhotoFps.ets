@@ -24,7 +24,7 @@ struct CustomContainerUser {
   @State StepTips: string = '操作步骤：根据操作提示滑动图库测试帧率'+'\n'+'预期结果：帧率大于或等于55帧测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
-  @State Fps: string = '0';
+  @State Fps: number = 0;
   scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
@@ -39,13 +39,14 @@ struct CustomContainerUser {
         Scroll(this.scroller) {
           Column(){
             Row(){
-              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
                 .fontColor(Color.White).fontSize('24fp')
             }
             Row(){
-              Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.在图库中预置500张图片`+ '\n' + '\n' + `2.点击开始键进入图库`
-              + '\n' + '\n' + `3.滑动图库缩略图界面连续10s以上` + '\n' + '\n' + '4.回到PhotoFps测试项点击结束键' + '\n' + '\n' +
-              `5.若测试最高帧率大于或等于55帧则通过测试` + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' + '\n' )
+              Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.在图库中预置500张图片` + '\n' + '\n' + '2.点击开始键进入图库'+ '\n' + '\n' +
+              `3.点击悬浮球开始测试` + '\n' + '\n' + '4.滑动图库缩略图界面连续10s以上' + '\n' + '\n' + `5.待悬浮球倒计时结束显示为done后返回validator应用` + '\n' + '\n' +
+              `6.点击结束观察测试结果`  + '\n' + '\n' + `7.若测试最高帧率大于或等于55帧则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
+              `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n')
                 .fontColor(Color.White).fontSize('20fp')
             }
             Row(){
@@ -85,11 +86,16 @@ struct CustomContainerUser {
                     let report = globalThis.resultNum;
                     let reg = /fps:(\d+)/g;
                     let matches = report.match(reg);
-                    let fpsValues = matches.map(match => parseInt(match.substring(4)));
-                    let maxFps = Math.max(...fpsValues);
-                    this.Fps = maxFps.toString();
-                    if(maxFps >= 55) {
-                      this.Vue = true;
+                    if (matches == null) {
+                      this.Fps = 0;
+                    }
+                    else {
+                      let fpsValues = matches.map(match => parseInt(match.substring(4)));
+                      let maxFps = Math.max(...fpsValues);
+                      this.Fps = maxFps;
+                      if(maxFps >= 55) {
+                        this.Vue = true;
+                      }
                     }
                     globalThis.HideFloatingWindow();
                   })
