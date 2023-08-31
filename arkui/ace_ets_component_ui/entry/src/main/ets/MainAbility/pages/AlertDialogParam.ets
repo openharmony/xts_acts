@@ -40,8 +40,9 @@ struct AlertDialogExample {
                 console.info('Closed callbacks')
               }
             }
-          ).key('AlertDialog')
-        })
+          )
+        }).key('AlertDialog')
+	
         .backgroundColor(0x317aff)
       Button('two button dialog')
         .onClick(() => {
@@ -67,7 +68,8 @@ struct AlertDialogExample {
               }
             }
           )
-        }).backgroundColor(0x317aff)
+        }).key('AlertDialog2')
+		.backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
   }
 }

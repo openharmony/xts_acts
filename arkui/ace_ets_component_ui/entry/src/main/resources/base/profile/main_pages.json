@@ -102,7 +102,8 @@
 		"MainAbility/pages/TimePickerDialogOptions",
 		"MainAbility/pages/overlay",
 		"MainAbility/pages/Panel",
-		"MainAbility/pages/GridCallbackPage"
+		"MainAbility/pages/GridCallbackPage",
+		"MainAbility/pages/aboutToRecycleiamge"
 		
     ]
 }

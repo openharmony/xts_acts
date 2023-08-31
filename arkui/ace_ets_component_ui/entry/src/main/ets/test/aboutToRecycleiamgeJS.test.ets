@@ -18,42 +18,42 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
-export default function PanelJsunit() {
-  describe('PanelJsunit', function () {
+export default function aboutToRecycleiamge() {
+  describe('aboutToRecycleiamge', function () {
     beforeEach(async function (done) {
-      console.info("Panel beforeEach start");
+      console.info("aboutToRecycleiamge beforeEach start");
       let options = {
-        uri: 'MainAbility/pages/Panel',
+        uri: 'MainAbility/pages/aboutToRecycleiamge',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get Panel state pages: " + JSON.stringify(pages));
-        if (!("Panel" == pages.name)) {
-          console.info("get Panel state pages.name:" + JSON.stringify(pages.name));
+        console.info("get aboutToRecycleiamge state pages: " + JSON.stringify(pages));
+        if (!("aboutToRecycleiamge" == pages.name)) {
+          console.info("get aboutToRecycleiamge state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
-          console.info("push Panel page result:" + JSON.stringify(result));
+          console.info("push aboutToRecycleiamge page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push Panel page error:" + err);
+        console.error("push aboutToRecycleiamge page error:" + err);
       }
       done()
     });
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("Panel after each called");
+      console.info("aboutToRecycleiamge after each called");
     });
 
-    it('PanelJsunit_0100', 0, async function (done) {
-      console.info('[PanelJsunit_0100] START');
+    it('aboutToRecycleiamge_0100', 0, async function (done) {
+      console.info('[aboutToRecycleiamge_0100] START');
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('PanelText');
+      let strJson = getInspectorByKey('aboutToRecyclImage');
       let obj = JSON.parse(strJson);
-      console.info("[PanelJsunit_0100] obj is: " + JSON.stringify(obj.$attrs.customHeight));
-      expect(obj.$attrs.customHeight).assertEqual("0.00px");
-      console.info('[PanelJsunit_0100] END');
+      console.info("[aboutToRecycleiamge_0100] obj is: " + JSON.stringify(obj.$attrs.height));
+      expect(obj.$attrs.height).assertEqual("50.00vp");
+      console.info('[aboutToRecycleiamge_0100] END');
       done();
     });
 

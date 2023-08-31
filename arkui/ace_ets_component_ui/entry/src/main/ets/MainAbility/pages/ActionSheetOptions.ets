@@ -55,8 +55,9 @@ struct ActionSheetExample {
                 }
               }
             ]
-          }).key('ActionSheet')
-        })
+          })
+        }).key('ActionSheet')
+		
     }.width('100%')
     .height('100%')
   }
