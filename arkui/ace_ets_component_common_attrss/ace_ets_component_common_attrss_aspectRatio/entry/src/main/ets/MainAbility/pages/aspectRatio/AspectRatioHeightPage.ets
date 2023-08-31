@@ -108,7 +108,7 @@ struct AspectRatioHeightPage {
       } else if (this.targetView == 'Menu') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-        }.backgroundColor(Color.Pink).commonStyle()
+        }.backgroundColor(Color.Pink).commonStyle().constraintSize({minWidth: 0})
       } else if (this.targetView == 'MenuItem') {
         Menu() {
           MenuItem({ startIcon: $r('app.media.icon'), content: 'MenuItem' }).backgroundColor(Color.Pink).commonStyle()
