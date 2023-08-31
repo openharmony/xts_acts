@@ -125,7 +125,7 @@ export default function GroupDefaultFocusTest() {
         //Second confirmation of target component focus
         let textComponentTwo = Utils.getComponentByKey(data.pageConfig.textComponentKey);
         console.info('[' + data.caseTag + '] textComponentTwo.$attrs.content: ' + textComponentTwo.$attrs.content);
-        expect(textComponentTwo.$attrs.content).assertEqual('onBlur');
+        expect(textComponentTwo.$attrs.content).assertEqual('onFocus');
 
       } else if ('SetFalse' == data.testValue.describe) {
         //Confirmation of target component focus
