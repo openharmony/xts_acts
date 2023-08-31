@@ -201,8 +201,6 @@ ohos_static_library("libubofunc0004") {
   ]
 
   configs = [ ":deqp_platform_ohos_config" ]
-
-  # public_deps = [ "//foundation/ace/ace_engine/build/external_config/flutter/skia:ace_skia_ohos" ]
 }
 
 ohos_moduletest_suite("ActsUboTestSuite0004") {
