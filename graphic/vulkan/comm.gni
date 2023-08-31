@@ -15,7 +15,7 @@ import("//test/xts/tools/build/suite.gni")
 
 common_include = [
   ".",
-  "//test/xts/acts/graphic/vkwithstar/src",
+  "//test/xts/acts/graphic/vulkan/src",
   "//foundation/graphic/graphic_2d/rosen/modules/2d_graphics/include",
   "//foundation/graphic/graphic_2d/rosen/modules/2d_graphics/src",
   "//foundation/graphic/graphic_2d/rosen/modules/render_service_base/src",
