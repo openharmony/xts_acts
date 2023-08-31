@@ -43,6 +43,7 @@ struct Index {
           })
           .allowUpdate(this.allowUpate)
           .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
+          .size({width:360,height:180})
           .onAcquired((form) => {
             console.log("[FormComponent.FormHostAbility] get form, form id:" + form.id);
             globalThis.formId21 = form.id
