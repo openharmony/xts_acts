@@ -6,7 +6,7 @@
         "shell": [
             {
                 "name": "shell",
-                "value": "SP_deamon"
+                "value": "SP_daemon"
             }
         ]
        }
