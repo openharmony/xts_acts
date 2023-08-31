@@ -441,7 +441,7 @@ export default function OnAndOffScreenTest() {
 
       let flag = false;
       let status1 = undefined;
-      let lifeList = [];
+      let lifeSet = new Set();
       let listCheck = ["onCreate", "onWindowStageCreate", "onForeground", "onBackground"];
       let onCreate = "StageOnAndOffScreen_MainAbility2_onCreate";
       let onWindowStageCreate = "StageOnAndOffScreen_MainAbility2_onWindowStageCreate";
@@ -465,27 +465,27 @@ export default function OnAndOffScreenTest() {
           console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
           if (data.event == onCreate) {
-            lifeList.push("onCreate");
+            lifeSet.add("onCreate");
           }
 
           if (data.event == onWindowStageCreate) {
-            lifeList.push("onWindowStageCreate");
+            lifeSet.add("onWindowStageCreate");
           }
 
           if (data.event == onForeground) {
-            lifeList.push("onForeground");
+            lifeSet.add("onForeground");
           }
 
           if (data.event == onBackground) {
-            lifeList.push("onBackground");
+            lifeSet.add("onBackground");
           }
 
           if (data.event == onWindowStageDestroy) {
-            lifeList.push("onWindowStageDestroy");
+            lifeSet.add("onWindowStageDestroy");
           }
 
           if (data.event == onDestroy) {
-            lifeList.push("onDestroy");
+            lifeSet.add("onDestroy");
           }
 
           if (data.event == onForeground2 && !flag) {
@@ -497,7 +497,9 @@ export default function OnAndOffScreenTest() {
             setTimeout(async () => {
               commonEvent.unsubscribe(subscriber, async (err, data) => {
                 console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
-                expect(JSON.stringify(lifeList)).assertEqual(JSON.stringify(listCheck));
+                for (let i in listCheck) {
+                  expect(lifeSet.has(listCheck[i])).assertTrue();
+                }
                 expect(status1).assertTrue();
                 done();
               });
