@@ -18,7 +18,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import { UiDriver, BY } from '@ohos.UiTest'
 export default function audioCapturerInterrupt() {
-    describe("AudioCapturerInterruptUnitTest", function () {
+    describe("AudioRenderCapturerInterruptUnitTest", function () {
         async function getPermission() {
             let permissions = ['ohos.permission.MICROPHONE'];
             featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
