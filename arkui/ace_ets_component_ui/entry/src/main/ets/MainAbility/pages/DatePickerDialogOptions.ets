@@ -44,8 +44,9 @@ struct DatePickerDialogOptions0 {
             onDateChange: (value: Date)=> {
               console.info("DatePickerDialog: onChange()" + value.toString())
             }
-          }).key('DatePickerDialog')
-        })
+          })
+        }).key('DatePickerDialog')
+		
     }.width('100%')
   }
 }

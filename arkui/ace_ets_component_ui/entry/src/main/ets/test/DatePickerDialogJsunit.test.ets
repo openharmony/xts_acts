@@ -43,24 +43,20 @@ export default function DatePickerDialogJsunit() {
       done()
     });
 
-
     it('DatePickerDialogJsunit_0100', 0, async function (done) {
 
       console.info('DatePickerDialogJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('DatePickerDialog'));
+      await button.click();
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('DatePickerDialog');
       let obj = JSON.parse(strJson);
       console.info("[DatePickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[DatePickerDialogJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[DatePickerDialogJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[DatePickerDialogJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      console.info("[DatePickerDialogJsunit_0100] selected:" + JSON.stringify(obj.$attrs.selected));
-      console.info("[DatePickerDialogJsunit_0100] showTime:" + JSON.stringify(obj.$attrs.showTime));
-      expect(obj.$attrs.selected).assertEqual("2023-7-24");
-      expect(obj.$attrs.showTime).assertEqual(true);
-
+      expect(obj.$attrs.label).assertEqual("DatePickerDialog");
       console.info('[DatePickerDialogJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 

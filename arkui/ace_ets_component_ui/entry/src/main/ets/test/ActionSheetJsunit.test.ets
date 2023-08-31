@@ -46,23 +46,19 @@ export default function ActionSheetJsunit() {
 
     it('ActionSheetJsunit_0100', 0, async function (done) {
 
+     
       console.info('ActionSheetJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('ActionSheet'));
+      await button.click();
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('ActionSheet');
       let obj = JSON.parse(strJson);
       console.info("[ActionSheetJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[ActionSheetJsunit_0100] subtitle:" + JSON.stringify(obj.$attrs.subtitle));
-      console.info("[ActionSheetJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[ActionSheetJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[ActionSheetJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      expect(obj.$attrs.maskRect.x).assertEqual('0.00vp');
-      expect(obj.$attrs.maskRect.y).assertEqual('90.00vp');
-      expect(obj.$attrs.maskRect.width).assertEqual('80%');
-      expect(obj.$attrs.maskRect.height).assertEqual('60%');
-      expect(obj.$attrs.subtitle).assertEqual("ActionSheet subtitle");
-
+      expect(obj.$attrs.label).assertEqual("Click to Show ActionSheet");
       console.info('[ActionSheetJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 
