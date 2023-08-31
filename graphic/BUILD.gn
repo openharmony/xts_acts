@@ -27,7 +27,7 @@ group("graphic") {
       "windowstandard:window_hap_test",
     ]
     if (!(product_name == "ohcore")) {
-      deps += [ 
+      deps += [
         "vkgl:cpvkgl",
         "vulkan:cpvktest",
       ]
