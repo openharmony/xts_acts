@@ -31,7 +31,7 @@ export struct CustomContainer {
   Url : string = '';
   @Link StartEnable : boolean
   @Link Vue : boolean;
-  @Link Fps : string;
+  @Link Fps : number;
   @BuilderParam content: () => void;
   @Builder
   PassBtn(text: Resource, isFullScreen: boolean) {
