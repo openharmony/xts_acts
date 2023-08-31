@@ -100,8 +100,9 @@ common_externl_deps = [
   "graphic_2d:2d_graphics",
   "graphic_2d:librender_service_base",
   "graphic_2d:librender_service_client",
-  "window_manager:libwm",
   "window_manager:libdm",
+  "window_manager:libwm",
+
   # "window_manager:libdms",
   # "window_manager:libwms"
 ]
@@ -123,6 +124,5 @@ common_src = [
   "../../ActsApp.cpp",
 ]
 
-import("//third_party/vk-gl-cts/vk_gl_cts.gni")
 import("//foundation/graphic/graphic_2d/graphic_config.gni")
-
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
