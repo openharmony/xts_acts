@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 import("//foundation/graphic/graphic_2d/graphic_config.gni")
 
 group("ActsVkTest") {
-  testonly= true
+  testonly = true
   deps = [
     "src/texture/build0001:ActsTextureTestSuite0001",
     "src/texture/build0002:ActsTextureTestSuite0002",
@@ -45,9 +45,9 @@ action("cpvktest") {
   script = "cpvkTest.sh"
   outputs = [ "${target_out_dir}/cpVktest.log" ]
   root_vkgl_path = rebase_path("//")
-  args = ["$root_vkgl_path"]
+  args = [ "$root_vkgl_path" ]
   deps = [
-    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute", 
-    ":ActsVkTest", 
+    ":ActsVkTest",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
   ]
 }
