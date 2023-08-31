@@ -155,7 +155,7 @@ struct IndexPage {
           .onClick(() => {
             this.SaveXml();
             AlertDialog.show({
-              message: "报告已生成，如需查看通过命令行输入'hdc_std file recv hdc_std file recv /data/app/el2/100/base/com.example.actsvalidator/haps/entry/files/Test.xml -本地路径'",
+              message: "报告已生成，请将设备连接pc，通过run.bat确认测试已结束，获取可视化报告",
               confirm:{
                 value:'OK',
                 action:()=>{
