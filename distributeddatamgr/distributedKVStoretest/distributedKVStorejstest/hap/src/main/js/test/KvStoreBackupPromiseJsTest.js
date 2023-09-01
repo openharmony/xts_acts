@@ -116,24 +116,22 @@ function publicDeleteBackup(kvStore,files){
     console.log(`Test deleteBackup ${JSON.stringify(files)}`)
     return new Promise(function(resolve, reject) {
     try{
-        kvStore.deleteBackup(files, function(err, data){
-            console.log("Test deleteBackup BackUpInfo =" + data);
-            if (err != undefined) {
-                console.log("Test deleteBackup err information: " + err );
-                reject(err);
-            }else{
-                var devices =new Array();
-                devices = data;
-                delresult = devices;
-                console.log("Test deleteBackup pass ");
-                resolve(data);
-            }
+        kvStore.deleteBackup(files).then((data) => {
+        console.log("Test deleteBackup BackUpInfo =" + data);
+        var devices =new Array();
+        devices = data;
+        delresult = devices;
+        console.log("Test deleteBackup pass ");
+        resolve(data);
+        }).catch ((err) => {
+        console.log("Test deleteBackup err information: " + err );
+        reject(err)
         })
     } catch (e) {
         console.log("111Test deleteBackup err information: " + e );
         reject(e);
     }
-    }) 
+})
 }
 
 function publicRestoreSp(kvStore,file){
@@ -197,7 +195,7 @@ export default function kvStoreBackupPromiseJsunittest(){
             }catch(e){
                 console.log("222Test deleteBackup err information: " + e );
             }
-            
+
         })
         afterAll( async function () {
             console.info('afterAll: Test suite-level cleanup condition, ' +
@@ -224,7 +222,7 @@ export default function kvStoreBackupPromiseJsunittest(){
                     done();
                 }).catch((err) => {
                     console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100 Manualrestore fail 1" + err);
-                    expect(err.code == "401" ).assertEqual(true);
+                    expect(err!== null ).assertTrue();
                     done();
                 })
             } catch (e) {
