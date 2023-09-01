@@ -27,7 +27,10 @@ group("graphic") {
       "windowstandard:window_hap_test",
     ]
     if (!(product_name == "ohcore")) {
-      deps += [ "vkgl:cpvkgl" ]
+      deps += [
+        "vkgl:cpvkgl",
+        #"vulkan:cpvktest",
+      ]
     }
   } else {
     deps = [
