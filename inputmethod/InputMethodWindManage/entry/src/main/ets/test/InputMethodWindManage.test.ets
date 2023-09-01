@@ -40,7 +40,7 @@ export default function inputMethodWindManageAbility() {
 
     beforeAll(async (done)=>{
       display_info = display.getDefaultDisplaySync()
-      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${display_info.height*0.5}`
+      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${ Math.round(display_info.height*0.4) }`
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
       inputServer.packageName = inputM.packageName;

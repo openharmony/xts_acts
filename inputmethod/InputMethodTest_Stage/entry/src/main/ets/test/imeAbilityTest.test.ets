@@ -28,25 +28,28 @@ export default function imeAbilityTest(abilityContext) {
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeAll(function () {
+    beforeAll(function (done) {
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
       prop.packageName = inputM.packageName;
       prop.methodId = inputM.methodId;
       prop.name = inputM.packageName;
       prop.id = inputM.methodId;
+      done();
     });
 
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterAll(async function () {
+    afterAll(async function (done) {
       console.info('====>afterAll: switchInputMethod to origionInput.' + JSON.stringify(prop));
       await inputMethod.switchInputMethod(prop).then((data)=>{
         console.info('====>afterAll switchInputMethod to origionInput :' + data);
         expect(data == true).assertTrue();
+        done();
       }).catch(err =>{
         console.info('====>afterAll switchInputMethod to origionInput error: ' + err);
+        done();
       })
     });
 

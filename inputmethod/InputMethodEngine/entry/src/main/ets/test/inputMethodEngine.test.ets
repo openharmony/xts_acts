@@ -79,8 +79,8 @@ export default function inputMethodEngineJSUnit() {
     })
 
     let dis = display.getDefaultDisplaySync();
-    let w = dis.width / 2;
-    let h = dis.height /2;
+    let w = dis.width * 0.5;
+    let h =  Math.round(dis.height * 0.4);
     let getFocusCmd = `uinput -T -c ${w} ${h}`;
     let abilityDelegator;
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
