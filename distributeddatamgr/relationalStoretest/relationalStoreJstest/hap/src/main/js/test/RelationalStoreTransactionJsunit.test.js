@@ -29,414 +29,415 @@ const STORE_CONFIG = {
 var rdbStore = undefined;
 
 export default function relationalStoreTransactionTest() {
-describe('relationalStoreTransactionTest', function () {
-    beforeAll(function () {
-        console.info(TAG + 'beforeAll')
-    })
+    describe('relationalStoreTransactionTest', function () {
+        beforeAll(function () {
+            console.info(TAG + 'beforeAll')
+        })
 
-    beforeEach(async function () {
-        console.info(TAG + 'beforeEach')
-        rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
-        await rdbStore.executeSql(CREATE_TABLE_TEST, null);
-    })
+        beforeEach(async function () {
+            console.info(TAG + 'beforeEach')
+            rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+            await rdbStore.executeSql(CREATE_TABLE_TEST, null);
+        })
 
-    afterEach(async function () {
-        console.info(TAG + 'afterEach')
-        await rdbStore.executeSql("DELETE FROM test");
-        rdbStore = null
-        await data_Rdb.deleteRdbStore(context, "rdbstoreTransactionTest.db");
-    })
+        afterEach(async function () {
+            console.info(TAG + 'afterEach')
+            await rdbStore.executeSql("DELETE FROM test");
+            rdbStore = null
+            await data_Rdb.deleteRdbStore(context, "rdbstoreTransactionTest.db");
+        })
 
-    afterAll(async function () {
-        console.info(TAG + 'afterAll')
-    })
+        afterAll(async function () {
+            console.info(TAG + 'afterAll')
+        })
 
-    console.info(TAG + "*************Unit Test Begin*************");
+        console.info(TAG + "*************Unit Test Begin*************");
 
-    /**
-     * @tc.name RelationalStore transaction insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_testRdbTransactionInsert0001
-     * @tc.desc RelationalStore transaction insert & commit, the result comes out is 3 items;
-     */
-    it('testRdbTransactionInsert0001', 0, async function (done) {
-        console.info(TAG + "************* testRdbStoreInsert0001 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            rdbStore.beginTransaction()
-            const valueBucket = {
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket)
+        /**
+         * @tc.name RelationalStore transaction insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_testRdbTransactionInsert0001
+         * @tc.desc RelationalStore transaction insert & commit, the result comes out is 3 items;
+         */
+        it('testRdbTransactionInsert0001', 0, async function (done) {
+            console.info(TAG + "************* testRdbStoreInsert0001 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                rdbStore.beginTransaction()
+                const valueBucket = {
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
 
-            await rdbStore.commit()
+                await rdbStore.commit()
 
-            let predicates = new data_Rdb.RdbPredicates("test");
-            let resultSet = await rdbStore.query(predicates)
-            console.info(TAG + "testRdbTransactionInsert0001 result count " + resultSet.rowCount)
-            expect(1).assertEqual(resultSet.rowCount)
-            resultSet.close()
-//            resultSet == null;
-        } catch (e) {
-            console.info(TAG + e);
-            expect(null).assertFail()
-            console.info(TAG + "testRdbTransactionInsert0001 failed");
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionInsert0001 end *************");
-    })
-
-    /**
-     * @tc.name RelationalStore transaction insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_testRdbTransactionInsert0002
-     * @tc.desc RelationalStore transaction insert & commit, the result comes out is 3 items;
-     */
-    it('testRdbTransactionInsert0002', 0, async function (done) {
-        console.info(TAG + "************* testRdbStoreInsert0002 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket)
-
-            const valueBucket1 = {
-                "name": "zhangsan",
-                "age": 20,
-                "salary": 9.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket1)
-
-
-            const valueBucket2 = {
-                "name": "wangwu",
-                "age": 16,
-                "salary": 99,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket2)
-
-            await rdbStore.commit()
-
-            let predicates = new data_Rdb.RdbPredicates("test");
-            let resultSet = await rdbStore.query(predicates)
-            expect(3).assertEqual(resultSet.rowCount)
-          resultSet.close()
-//            resultSet == null;
-        } catch (e) {
-            expect(null).assertFail()
-            console.info(TAG + "testRdbTransactionInsert0002 failed");
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionInsert0002 end *************");
-    })
-
-
-    /**
-     * @tc.name RelationalStore transaction insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_testRdbTransactionInsert0003
-     * @tc.desc while using transaction to insert values, querying the db,
-     *     the result comes out is 0;
-     */
-    it('testRdbTransactionInsert0003', 0, async function (done) {
-        console.info(TAG + "************* testRdbTransactionInsert0003 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket)
-
-            const valueBucket1 = {
-                "name": "zhangsan",
-                "age": 20,
-                "salary": 9.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket1)
-
-            let predicates = new data_Rdb.RdbPredicates("test");
-            let resultSet = await rdbStore.query(predicates)
-            expect(0).assertEqual(resultSet.rowCount)
-                      resultSet.close()
-//            resultSet == null;
-            const valueBucket2 = {
-                "name": "wangwu",
-                "age": 16,
-                "salary": 99,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket2)
-
-            await rdbStore.commit()
-        } catch (e) {
-            expect(null).assertFail()
-            console.info(TAG + "testRdbTransactionInsert0003 failed");
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionInsert0003 end *************");
-    })
-
-    /**
-     * @tc.name RelationalStore insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RollBack_0001
-     * @tc.desc the classical transaction scenario, when we insert or commit the value,
-     *     db returns an exception, we need to catch exception and rollback.
-     */
-    it('testRdbTransactionRollBack0001', 0, async function (done) {
-        console.info(TAG + "************* testRdbTransactionRollBack0001 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "id": 1,
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket)
-            await rdbStore.insert("test", valueBucket)
-
-            await rdbStore.commit()
-        } catch (e) {
-            await rdbStore.rollBack()
-            let predicates = new data_Rdb.RdbPredicates("test");
-            let resultSet = await rdbStore.query(predicates)
-            console.info(TAG + "testRdbTransactionRollBack0001 result count " + resultSet.rowCount);
-            expect(0).assertEqual(resultSet.rowCount)
-            resultSet.close()
-//            resultSet == null;
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionRollBack0001 end *************");
-    })
-
-    /**
-     * @tc.name RelationalStore insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Multi_0001
-     * @tc.desc the classical transaction scenario, when we insert or commit the value,
-     *     db returns an exception, we need to catch exception and rollback.
-     */
-    it('testRdbTransactionMulti0001', 0, async function (done) {
-        console.info(TAG + "************* testRdbTransactionMulti0001 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "id": 1,
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket)
-
-            await rdbStore.beginTransaction()
-            const valueBucket1 = {
-                "name": "zhangsan",
-                "age": 20,
-                "salary": 220.5,
-                "blobType": u8,
-            }
-            let num = rdbStore.insert("test", valueBucket1)
-            num.then(async (ret) => {
-                console.info(TAG + "testRdbTransactionMulti0001 * insert result " + ret);
-                expect(2).assertEqual(ret)
-            })
-
-            await rdbStore.commit()
-            await rdbStore.commit()
-
-            let predicates = new data_Rdb.RdbPredicates("test");
-            num =  rdbStore.query(predicates)
-            num.then(async (ret) => {
-                expect(2).assertEqual(ret.rowCount)
-                ret.close()
-            })
-        } catch (e) {
-            console.info(TAG + "testRdbTransactionMulti0001 fail ***** ");
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionMulti0001 end *************");
-    })
-
-    /**
-     * @tc.name RelationalStore insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Multi_0002
-     * @tc.desc the classical transaction scenario, when we insert or commit the value,
-     *     db returns an exception, we need to catch exception and rollback.
-     */
-    it('testRdbTransactionMulti0002', 0, async function (done) {
-        console.info(TAG + "************* testRdbTransactionMulti0002 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "id": 1,
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket, function (err, ret){
-
-            });
-
-            await rdbStore.beginTransaction()
-            const valueBucket1 = {
-                "name": "zhangsan",
-                "age": 20,
-                "salary": 220.5,
-                "blobType": u8,
-            }
-            let num = rdbStore.insert("test", valueBucket1)
-            num.then(async (ret) => {
-                console.info(TAG + "testRdbTransactionMulti0002 * insert result " + ret);
-                expect(2).assertEqual(ret)
-                ret.close()
-            })
-
-            await rdbStore.rollBack()
-
-            await rdbStore.commit()
-
-            let predicates = new data_Rdb.RdbPredicates("test");
-            num =  rdbStore.query(predicates)
-            num.then(async (ret) => {
-                console.info(TAG + "testRdbTransactionMulti0002 * final query " + ret.rowCount);
-                expect(1).assertEqual(ret.rowCount)
-                ret.close()
-            })
-        } catch (e) {
-            console.info(TAG + "testRdbTransactionMulti0002 fail ***** ");
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionMulti0002 end *************");
-    })
-
-    /**
-     * @tc.name RelationalStore insert test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Multi_0003
-     * @tc.desc the classical transaction scenario, when we insert or commit the value,
-     *     db returns an exception, we need to catch exception and rollback.
-     */
-    it('testRdbTransactionMulti0003', 0, async function (done) {
-        console.info(TAG + "************* testRdbTransactionMulti0003 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "id": 1,
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket, function (err, ret){
-
-            });
-
-            await rdbStore.beginTransaction()
-            const valueBucket1 = {
-                "name": "zhangsan",
-                "age": 20,
-                "salary": 220.5,
-                "blobType": u8,
-            }
-            let num = await rdbStore.insert("test", valueBucket1)
-
-            await rdbStore.rollBack()
-
-            await rdbStore.insert("test", valueBucket)
-            await rdbStore.commit()
-
-            let predicates = new data_Rdb.RdbPredicates("test");
-            num =  rdbStore.query(predicates)
-            num.then(async (ret) => {
-                console.info(TAG + "testRdbTransactionMulti0003 * final query " + ret.rowCount);
-                expect(1).assertEqual(ret.rowCount)
-                ret.close()
-            })
-        } catch (e) {
-            await rdbStore.rollBack()
-            console.info(TAG + "testRdbTransactionMulti0003 rollback ***** ");
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionMulti0003 end *************");
-    })
-
-    /**
-     * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Transaction_Delete_0010
-     * @tc.desc the classical transaction scenario, when we delete or commit the value,
-     *     db returns an exception, we need to catch exception and rollback.
-     */
-    it('testRdbTransactionDelete0001', 0, async function (done) {
-        console.info(TAG + "************* testRdbTransactionDelete0001 start *************");
-        var u8 = new Uint8Array([1, 2, 3])
-        try {
-            await rdbStore.beginTransaction()
-            const valueBucket = {
-                "name": "lisi",
-                "age": 18,
-                "salary": 100.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket)
-
-            const valueBucket1 = {
-                "name": "zhangsan",
-                "age": 20,
-                "salary": 9.5,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket1)
-
-            let predicates = new data_Rdb.RdbPredicates("test");
-            let resultSet = await rdbStore.query(predicates)
-            expect(0).assertEqual(resultSet.rowCount)
-            resultSet.close()
-//            resultSet == null;
-            const valueBucket2 = {
-                "name": "wangwu",
-                "age": 16,
-                "salary": 99,
-                "blobType": u8,
-            }
-            await rdbStore.insert("test", valueBucket2)
-
-            await rdbStore.commit()
-        } catch (e) {
-            expect(null).assertFail()
-            console.info(TAG + "testRdbTransactionInsert0003 failed");
-        }
-        //删除
-        {
-            let predicates = await new data_Rdb.RdbPredicates("test")
-            let deletePromise = rdbStore.delete(predicates)
-            deletePromise.then(async (ret) => {
-                expect(3).assertEqual(ret)
-                console.info(TAG + "Delete done: " + ret)
-            }).catch((err) => {
+                let predicates = new data_Rdb.RdbPredicates("test");
+                let resultSet = await rdbStore.query(predicates)
+                console.info(TAG + "testRdbTransactionInsert0001 result count " + resultSet.rowCount)
+                expect(1).assertEqual(resultSet.rowCount)
+                resultSet.close()
+                //            resultSet == null;
+            } catch (e) {
+                console.info(TAG + e);
                 expect(null).assertFail()
-            })
-            await deletePromise
-        }
-        done()
-        console.info(TAG + "************* testRdbTransactionDelete0001 end *************");
-    })
+                console.info(TAG + "testRdbTransactionInsert0001 failed");
+            }
+            done()
+            console.info(TAG + "************* testRdbTransactionInsert0001 end *************");
+        })
 
-    console.info(TAG + "*************Unit Test End*************");
-})}
+        /**
+         * @tc.name RelationalStore transaction insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_testRdbTransactionInsert0002
+         * @tc.desc RelationalStore transaction insert & commit, the result comes out is 3 items;
+         */
+        it('testRdbTransactionInsert0002', 0, async function (done) {
+            console.info(TAG + "************* testRdbStoreInsert0002 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
+
+                const valueBucket1 = {
+                    "name": "zhangsan",
+                    "age": 20,
+                    "salary": 9.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket1)
+
+
+                const valueBucket2 = {
+                    "name": "wangwu",
+                    "age": 16,
+                    "salary": 99,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket2)
+
+                await rdbStore.commit()
+
+                let predicates = new data_Rdb.RdbPredicates("test");
+                let resultSet = await rdbStore.query(predicates)
+                expect(3).assertEqual(resultSet.rowCount)
+                resultSet.close()
+                //            resultSet == null;
+            } catch (e) {
+                expect(null).assertFail()
+                console.info(TAG + "testRdbTransactionInsert0002 failed");
+            }
+            done()
+            console.info(TAG + "************* testRdbTransactionInsert0002 end *************");
+        })
+
+
+        /**
+         * @tc.name RelationalStore transaction insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_testRdbTransactionInsert0003
+         * @tc.desc while using transaction to insert values, querying the db,
+         *     the result comes out is 0;
+         */
+        it('testRdbTransactionInsert0003', 0, async function (done) {
+            console.info(TAG + "************* testRdbTransactionInsert0003 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
+
+                const valueBucket1 = {
+                    "name": "zhangsan",
+                    "age": 20,
+                    "salary": 9.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket1)
+
+                let predicates = new data_Rdb.RdbPredicates("test");
+                let resultSet = await rdbStore.query(predicates)
+                expect(0).assertEqual(resultSet.rowCount)
+                resultSet.close()
+                //            resultSet == null;
+                const valueBucket2 = {
+                    "name": "wangwu",
+                    "age": 16,
+                    "salary": 99,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket2)
+
+                await rdbStore.commit()
+            } catch (e) {
+                expect(null).assertFail()
+                console.info(TAG + "testRdbTransactionInsert0003 failed");
+            }
+            done()
+            console.info(TAG + "************* testRdbTransactionInsert0003 end *************");
+        })
+
+        /**
+         * @tc.name RelationalStore insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_RollBack_0001
+         * @tc.desc the classical transaction scenario, when we insert or commit the value,
+         *     db returns an exception, we need to catch exception and rollback.
+         */
+        it('testRdbTransactionRollBack0001', 0, async function (done) {
+            console.info(TAG + "************* testRdbTransactionRollBack0001 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "id": 1,
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
+                await rdbStore.insert("test", valueBucket)
+
+                await rdbStore.commit()
+            } catch (e) {
+                await rdbStore.rollBack()
+                let predicates = new data_Rdb.RdbPredicates("test");
+                let resultSet = await rdbStore.query(predicates)
+                console.info(TAG + "testRdbTransactionRollBack0001 result count " + resultSet.rowCount);
+                expect(0).assertEqual(resultSet.rowCount)
+                resultSet.close()
+                //            resultSet == null;
+            }
+            done()
+            console.info(TAG + "************* testRdbTransactionRollBack0001 end *************");
+        })
+
+        /**
+         * @tc.name RelationalStore insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Multi_0001
+         * @tc.desc the classical transaction scenario, when we insert or commit the value,
+         *     db returns an exception, we need to catch exception and rollback.
+         */
+        it('testRdbTransactionMulti0001', 0, async function (done) {
+            console.info('ttt' + "************* testRdbTransactionMulti0001 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "id": 1,
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
+
+                await rdbStore.beginTransaction()
+                const valueBucket1 = {
+                    "name": "zhangsan",
+                    "age": 20,
+                    "salary": 220.5,
+                    "blobType": u8,
+                }
+                let num = rdbStore.insert("test", valueBucket1)
+                num.then(async (ret1) => {
+                    console.info('ttt' + "testRdbTransactionMulti0001 * insert result " + ret1);
+                    expect(2).assertEqual(ret1)
+                })
+
+                await rdbStore.commit()
+                await rdbStore.commit()
+
+                let predicates = new data_Rdb.RdbPredicates("test");
+                await rdbStore.query(predicates).then(async (ret2) => {
+                    console.info('ttt' + "testRdbTransactionMulti0001 ret.rowCount =  " + ret2.rowCount);
+                    expect(2).assertEqual(ret2.rowCount)
+                    done()
+                    console.info('ttt' + "************* testRdbTransactionMulti0001 end *************");
+                    ret2.close()
+                })
+            } catch (e) {
+                console.info('ttt' + "testRdbTransactionMulti0001 fail ***** ");
+            }
+        })
+
+        /**
+         * @tc.name RelationalStore insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Multi_0002
+         * @tc.desc the classical transaction scenario, when we insert or commit the value,
+         *     db returns an exception, we need to catch exception and rollback.
+         */
+        it('testRdbTransactionMulti0002', 0, async function (done) {
+            console.info(TAG + "************* testRdbTransactionMulti0002 start *************");
+            let u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "id": 1,
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
+
+                await rdbStore.beginTransaction()
+                const valueBucket1 = {
+                    "name": "zhangsan",
+                    "age": 20,
+                    "salary": 220.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket1, async function (err, ret1){
+                    console.info(TAG + "testRdbTransactionMulti0002 * insert result " + ret1);
+                    expect(2).assertEqual(ret1);
+                    
+                    await rdbStore.rollBack()
+
+                    await rdbStore.commit()
+
+                    let predicates = new data_Rdb.RdbPredicates("test");
+                    await rdbStore.query(predicates).then(async (ret2) => {
+                        console.info(TAG + "testRdbTransactionMulti0002 * final query " + ret2.rowCount);
+                        expect(1).assertEqual(ret2.rowCount)
+                        done()
+                        console.info(TAG + "************* testRdbTransactionMulti0002 end *************");
+                        ret2.close()
+                    })
+                })
+
+            } catch (e) {
+                console.info(TAG + "testRdbTransactionMulti0002 fail ***** ");
+                expect().assertFail();
+                done();
+            }
+        })
+        /**
+         * @tc.name RelationalStore insert test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Multi_0003
+         * @tc.desc the classical transaction scenario, when we insert or commit the value,
+         *     db returns an exception, we need to catch exception and rollback.
+         */
+        it('testRdbTransactionMulti0003', 0, async function (done) {
+            console.info(TAG + "************* testRdbTransactionMulti0003 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "id": 1,
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket);
+
+                await rdbStore.beginTransaction();
+                const valueBucket2 = {
+                    "name": "zhangsan",
+                    "age": 20,
+                    "salary": 220.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket2);
+
+                await rdbStore.rollBack();
+
+                const valueBucket3 = {
+                    "name": "wangwu",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket3);
+                await rdbStore.commit();
+
+                let predicates = new data_Rdb.RdbPredicates("test");
+                await rdbStore.query(predicates).then(async (ret) => {
+                    console.info(TAG + "testRdbTransactionMulti0003 * final query " + ret.rowCount);
+                    expect(2).assertEqual(ret.rowCount);
+                    done();
+                    console.info(TAG + "************* testRdbTransactionMulti0003 end *************");
+                    ret.close();
+                })
+            } catch (e) {
+                await rdbStore.rollBack()
+                console.info(TAG + "testRdbTransactionMulti0003 rollback ***** ");
+            }
+
+        })
+
+        /**
+         * @tc.name RelationalStore delete test
+         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Transaction_Delete_0010
+         * @tc.desc the classical transaction scenario, when we delete or commit the value,
+         *     db returns an exception, we need to catch exception and rollback.
+         */
+        it('testRdbTransactionDelete0001', 0, async function (done) {
+            console.info(TAG + "************* testRdbTransactionDelete0001 start *************");
+            var u8 = new Uint8Array([1, 2, 3])
+            try {
+                await rdbStore.beginTransaction()
+                const valueBucket = {
+                    "name": "lisi",
+                    "age": 18,
+                    "salary": 100.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket)
+
+                const valueBucket1 = {
+                    "name": "zhangsan",
+                    "age": 20,
+                    "salary": 9.5,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket1)
+
+                let predicates = new data_Rdb.RdbPredicates("test");
+                let resultSet = await rdbStore.query(predicates)
+                expect(0).assertEqual(resultSet.rowCount)
+                resultSet.close()
+                //            resultSet == null;
+                const valueBucket2 = {
+                    "name": "wangwu",
+                    "age": 16,
+                    "salary": 99,
+                    "blobType": u8,
+                }
+                await rdbStore.insert("test", valueBucket2)
+
+                await rdbStore.commit()
+            } catch (e) {
+                expect(null).assertFail()
+                console.info(TAG + "testRdbTransactionInsert0003 failed");
+            }
+            //删除
+            {
+                let predicates = await new data_Rdb.RdbPredicates("test")
+                await rdbStore.delete(predicates).then(async (ret) => {
+                    expect(3).assertEqual(ret);
+                    done()
+                    console.info(TAG + "************* testRdbTransactionDelete0001 end *************");
+                    console.info(TAG + "Delete done: " + ret)
+                }).catch((err) => {
+                    expect(null).assertFail();
+                    done();
+                })
+            }
+
+        })
+
+        console.info(TAG + "*************Unit Test End*************");
+    })}

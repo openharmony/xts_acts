@@ -501,7 +501,7 @@ export default function relationalStoreAssetResultSetTest() {
                 done();
             } catch (e) {
                 console.log(TAG + "testGetAssetUndefined get error" + JSON.stringify(e));
-                expect(14800000).assertEqual(e.code)
+                expect('401').assertEqual(e.code)
                 done();
             }
         })
@@ -531,7 +531,7 @@ export default function relationalStoreAssetResultSetTest() {
                 done();
             } catch (e) {
                 console.log(TAG + "testGetAssetNull get error" + JSON.stringify(e));
-                expect(14800000).assertEqual(e.code)
+                expect('401').assertEqual(e.code)
                 done();
             }
         })
