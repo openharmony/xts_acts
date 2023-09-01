@@ -13,7 +13,9 @@
             "test-file-name": [
                 "UIExtensionTest.hap",
 				"UIExtensionProvider.hap",
-                "StartAbilityByUIContentSession.hap"
+                "StartAbilityByUIContentSession.hap",
+                "UIextensionProvider2.hap",
+                "UIExtensionService.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -1,6 +1,7 @@
 {
   "src": [
     "TestAbility/pages/index",
-    "TestAbility/pages/p1"
+    "TestAbility/pages/p1",
+    "TestAbility/pages/p2"
   ]
 }

@@ -19,6 +19,8 @@ group("actsuiextensiontest") {
     deps = [
       "actsabilityusertest:StartAbilityByUIContentSession",
       "uiextensionprovider:UIExtensionProvider",
+      "uiextensionprovider2:UIExtensionProvider2",
+      "uiextensionservice:UIExtensionService",
       "uiextensiontest:UIExtensionTest",
     ]
   }
