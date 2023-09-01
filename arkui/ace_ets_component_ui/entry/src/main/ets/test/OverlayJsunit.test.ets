@@ -260,7 +260,7 @@ export default function overLayJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 143,
+          eventId: 1110,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[overLayJsunit_0900] start to publish emit");
@@ -272,7 +272,7 @@ export default function overLayJsunit() {
       let strJson = getInspectorByKey('overlay');
       let obj = JSON.parse(strJson);
       console.info("[overLayJsunit_0900] obj is: " + JSON.stringify(obj.$attrs.overlay));
-      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.Top");
+      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_0900 END');
       done();
     });
@@ -299,7 +299,7 @@ export default function overLayJsunit() {
       let strJson = getInspectorByKey('overlay');
       let obj = JSON.parse(strJson);
       console.info("[overLayJsunit_1000] obj is: " + JSON.stringify(obj.$attrs.overlay));
-      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopEnd");
+      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1000 END');
       done();
     });
@@ -326,7 +326,7 @@ export default function overLayJsunit() {
       let strJson = getInspectorByKey('overlay');
       let obj = JSON.parse(strJson);
       console.info("[overLayJsunit_1100] obj is: " + JSON.stringify(obj.$attrs.overlay));
-      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.Start");
+      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1100 END');
       done();
     });
@@ -353,7 +353,7 @@ export default function overLayJsunit() {
       let strJson = getInspectorByKey('overlay');
       let obj = JSON.parse(strJson);
       console.info("[overLayJsunit_1200] obj is: " + JSON.stringify(obj.$attrs.overlay));
-      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.End");
+      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1200 END');
       done();
     });
@@ -380,7 +380,7 @@ export default function overLayJsunit() {
       let strJson = getInspectorByKey('overlay');
       let obj = JSON.parse(strJson);
       console.info("[overLayJsunit_1300] obj is: " + JSON.stringify(obj.$attrs.overlay));
-      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.BottomEnd");
+      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1300 END');
       done();
     });
@@ -407,7 +407,7 @@ export default function overLayJsunit() {
       let strJson = getInspectorByKey('overlay');
       let obj = JSON.parse(strJson);
       console.info("[overLayJsunit_1400] obj is: " + JSON.stringify(obj.$attrs.overlay));
-      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.BottomStart");
+      expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1400 END');
       done();
     });

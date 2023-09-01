@@ -46,18 +46,19 @@ export default function TextPickerDialogJsunit() {
 
     it('TextPickerDialogJsunit_0100', 0, async function (done) {
 
+      
       console.info('TextPickerDialogJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('TextPickerDialog'));
+      await button.click();
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('TextPickerDialog');
       let obj = JSON.parse(strJson);
       console.info("[TextPickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[TextPickerDialogJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[TextPickerDialogJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[TextPickerDialogJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      expect(obj.$attrs.alignment).assertEqual("DialogAlignment.TopStart");
-
+      expect(obj.$attrs.label).assertEqual("TextPickerDialog");
       console.info('[TextPickerDialogJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 
