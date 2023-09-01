@@ -1053,7 +1053,7 @@ export default function AVSessionCallback() {
                 }
             })
             await sleep(500);
-            session = avSession.createAVSession(context,tag,type);
+            session = await avSession.createAVSession(context,tag,type);
             done();
         })
 
@@ -1239,7 +1239,7 @@ export default function AVSessionCallback() {
                 console.info('TestLog: Session destroyed failed');
                 expect(false).assertTrue();
             }
-            session = avSession.createAVSession(context,tag,type);
+            session = await avSession.createAVSession(context,tag,type);
             done();
         })
     })
