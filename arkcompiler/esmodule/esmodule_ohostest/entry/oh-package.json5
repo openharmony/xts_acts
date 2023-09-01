@@ -14,7 +14,9 @@
 */
 {
   "license": "",
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/libentry.so": "file:./src/ohosTest/cpp/types/libentry"
+  },
   "author": "",
   "name": "entry",
   "description": "Please describe the basic information.",

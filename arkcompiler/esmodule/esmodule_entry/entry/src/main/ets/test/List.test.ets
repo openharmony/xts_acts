@@ -13,11 +13,13 @@
  * limitations under the License.
  */
 import staticImport from './StaticImport'
+import dynamicImport from './DynamicImport'
 import workerImport from "./WorkerImport"
 import pageImport from './PageImport'
 
 export default function testsuite() {
   staticImport()
+  dynamicImport()
   workerImport()
   pageImport()
 }
