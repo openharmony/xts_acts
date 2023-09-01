@@ -77,6 +77,485 @@ export default function fileIOMoveDir() {
     }
 
   /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0000
+   * @tc.name fileIO_test_moveDir_sync_000
+   * @tc.desc Test moveDirSync() interface.
+   * There is no target folder(src) under path dest.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_000', 0, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_000';
+    let ddpath1 = dpath + '/srcDir';
+    let ddpath2 = dpath + '/destDir';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    let fpath2 = ddpath1 + '/srcFile_first_02';
+    let dddpath = ddpath1 + '/srcDir_first';
+    let ffpath1 = dddpath + '/srcFile_second_01';
+    let ffpath2 = dddpath + '/srcFile_second_02';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+    expect(prepareFile(fpath2, randomString(15))).assertTrue();
+    expect(prepareFile(ffpath1, randomString(20))).assertTrue();
+    expect(prepareFile(ffpath2, randomString(25))).assertTrue();
+
+    try {
+      let stat1 = fileIO.statSync(fpath1);
+      let stat2 = fileIO.statSync(ffpath1);
+      fileIO.moveDirSync(ddpath1, ddpath2);
+      expect(fileIO.accessSync(ddpath1)).assertFalse();
+      expect(fileIO.accessSync(ddpath2 + '/srcDir/srcFile_first_01')).assertTrue();
+      expect(fileIO.accessSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01')).assertTrue();
+      let stat3 = fileIO.statSync(ddpath2 + '/srcDir/srcFile_first_01');
+      expect(stat1.size == stat3.size).assertTrue();
+      let stat4 = fileIO.statSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01');
+      expect(stat2.size == stat4.size).assertTrue();
+      fileIO.rmdirSync(dpath);
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_000 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0100
+   * @tc.name fileIO_test_moveDir_sync_001
+   * @tc.desc Test moveDirSync() interface.
+   * There is a target folder(src) under path dest but it is empty.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_001', 0, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_001';
+    let ddpath1 = dpath + '/srcDir';
+    let ddpath2 = dpath + '/destDir';
+    let dddpath2 = ddpath2 + '/srcDir';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    let fpath2 = ddpath1 + '/srcFile_first_02';
+    let dddpath1 = ddpath1 + '/srcDir_first';
+    let ffpath1 = dddpath1 + '/srcFile_second_01';
+    let ffpath2 = dddpath1 + '/srcFile_second_02';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath1);
+    fileIO.mkdirSync(dddpath2);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+    expect(prepareFile(fpath2, randomString(15))).assertTrue();
+    expect(prepareFile(ffpath1, randomString(20))).assertTrue();
+    expect(prepareFile(ffpath2, randomString(25))).assertTrue();
+
+    try {
+      let stat1 = fileIO.statSync(fpath1);
+      let stat2 = fileIO.statSync(ffpath1);
+      fileIO.moveDirSync(ddpath1, ddpath2);
+      expect(fileIO.accessSync(ddpath1)).assertFalse();
+      expect(fileIO.accessSync(ddpath2 + '/srcDir/srcFile_first_01')).assertTrue();
+      expect(fileIO.accessSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01')).assertTrue();
+      let stat3 = fileIO.statSync(ddpath2 + '/srcDir/srcFile_first_01');
+      expect(stat1.size == stat3.size).assertTrue();
+      let stat4 = fileIO.statSync(ddpath2 + '/srcDir/srcDir_first/srcFile_second_01');
+      expect(stat2.size == stat4.size).assertTrue();
+      fileIO.rmdirSync(dpath);
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_001 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0200
+   * @tc.name fileIO_test_moveDir_sync_002
+   * @tc.desc Test moveDirSync() interface.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_REPLACE.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_002', 0, async function () {
+    let dpath = await readyFiles('fileIO_test_moveDir_sync_002');
+
+    try {
+      let stat1 = fileIO.statSync(dpath.srcDir + '/srcFile_first_01');
+      let stat2 = fileIO.statSync(dpath.srcDir + '/srcDir_first/srcFile_second_01');
+      let dirent1 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirent1.length == 4).assertTrue();
+      fileIO.moveDirSync(dpath.srcDir, dpath.destDir, DIRMODE_DIRECTORY_REPLACE);
+      expect(fileIO.accessSync(dpath.srcDir)).assertFalse();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/destFile_second_01')).assertFalse();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/srcDir_first/destFile_third_01')).assertFalse();
+      let stat3 = fileIO.statSync(dpath.destDir + '/srcDir/srcFile_first_01');
+      expect(stat1.size == stat3.size).assertTrue();
+      let stat4 = fileIO.statSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_01');
+      expect(stat2.size == stat4.size).assertTrue();
+      let dirent2 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirent2.length == 6).assertTrue();
+      fileIO.rmdirSync(dpath.baseDir);
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_002 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0300
+   * @tc.name fileIO_test_moveDir_sync_003
+   * @tc.desc Test moveDirSync() interface.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_REPLACE.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_003', 0, async function () {
+    let dpath = await readyFiles('fileIO_test_moveDir_sync_003');
+
+    try {
+      let stat1 = fileIO.statSync(dpath.destDir + '/srcDir/srcFile_first_01');
+      let stat2 = fileIO.statSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_01');
+      let dirent1 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirent1.length == 4).assertTrue();
+      fileIO.moveDirSync(dpath.srcDir, dpath.destDir, DIRMODE_FILE_REPLACE);
+      expect(fileIO.accessSync(dpath.srcDir)).assertFalse();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/destFile_second_01')).assertTrue();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/srcDir_first/destFile_third_01')).assertTrue();
+      let stat3 = fileIO.statSync(dpath.destDir + '/srcDir/srcFile_first_01');
+      expect(stat1.size != stat3.size && stat3.size == 10).assertTrue();
+      let stat4 = fileIO.statSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_01');
+      expect(stat2.size != stat4.size && stat4.size == 30).assertTrue();
+      let dirent2 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirent2.length == 8).assertTrue();
+      fileIO.rmdirSync(dpath.baseDir);
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_003 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0400
+   * @tc.name fileIO_test_moveDir_sync_004
+   * @tc.desc Test moveDirSync() interface.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_THROW_ERR.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_004', 0, async function () {
+    let dpath = await readyFiles('fileIO_test_moveDir_async_008');
+
+    try {
+      let dirnet1 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirnet1.length == 4).assertTrue();
+      fileIO.moveDirSync(dpath.srcDir, dpath.destDir, DIRMODE_FILE_THROW_ERR);
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_004 has failed for ' + e.message + ', code: ' + e.code);
+      let stat1 = fileIO.statSync(dpath.srcDir + '/srcFile_first_01');
+      let stat2 = fileIO.statSync(dpath.srcDir + '/srcDir_first/srcFile_second_01');
+      let stat3 = fileIO.statSync(dpath.destDir + '/srcDir/srcFile_first_01');
+      expect(stat1.size != stat3.size && stat3.size == 20).assertTrue();
+      let stat4 = fileIO.statSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_01');
+      expect(stat2.size != stat4.size && stat4.size == 50).assertTrue();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/srcFile_first_02')).assertTrue();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_02')).assertTrue();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/destFile_second_01')).assertTrue();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/srcDir_first/destFile_third_01')).assertTrue();
+      expect(fileIO.accessSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_01')).assertTrue();
+      let dirent2 = fileIO.listFileSync(dpath.destDir, {recursion : true});
+      expect(dirent2.length == 8).assertTrue();
+      fileIO.rmdirSync(dpath.baseDir);
+      expect(e.code == 13900015 && e.message == 'File exists').assertTrue();
+      expect(e.data.length == 2).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0500
+   * @tc.name fileIO_test_moveDir_sync_005
+   * @tc.desc Test moveDirSync() interface.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_005', 0, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_005';
+    let ddpath1 = dpath + '/srcDir';
+    let ddpath2 = dpath + '/destDir';
+    let dddpath1 = ddpath1 + '/srcDir_first';
+    let dddpath2 = ddpath2 + '/srcDir';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    let fpath2 = ddpath1 + '/srcFile_first_02';
+    let fpath3 = dddpath2 + '/srcFile_first_01';
+    let fpath4 = dddpath2 + '/destFile_first_01';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath1);
+    fileIO.mkdirSync(dddpath2);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+    expect(prepareFile(fpath2, randomString(15))).assertTrue();
+    expect(prepareFile(fpath3, randomString(20))).assertTrue();
+    expect(prepareFile(fpath4, randomString(25))).assertTrue();
+
+    try {
+      fileIO.moveDirSync(ddpath1, ddpath2, DIRMODE_DIRECTORY_THROW_ERR);
+      expect(false).assertTrue();
+    } catch (err) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_moveDir_sync_005 has failed for ' + err.message + ', code: ' + err.code);
+      expect(err.code == 13900032 && err.message == 'Directory not empty').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0600
+   * @tc.name fileIO_test_moveDir_sync_006
+   * @tc.desc Test moveDirSync() interface.
+   * Src is empty and there is a target folder(src) under path dest but it is empty.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_006', 3, async function () {
+    let dpath = await nextFileName('fileIO_test_moveDir_sync_006');
+    let fpath = dpath + '/file_006.txt';
+    let ddpath = dpath + '/dir_006';
+    let ddpath2 = dpath + '/dir2_006';
+    let ffpath3 = ddpath2 + '/new.txt';
+    let dddpath3= ddpath2 + '/dir_006';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath3);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath3, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.moveDirSync(ddpath, ddpath2, DIRMODE_FILE_REPLACE);
+      expect(fileIO.accessSync(ddpath)).assertFalse();
+      fileIO.rmdirSync(dpath);
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_006 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0700
+   * @tc.name fileIO_test_moveDir_sync_007
+   * @tc.desc Test moveDirSync() interface.
+   * Src is empty and there is no target folder(src) under path dest.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_007', 3, async function () {
+    let dpath = await nextFileName('fileIO_test_moveDir_sync_007');
+    let fpath = dpath + '/file_007.txt';
+    let ddpath = dpath + '/dir_007';
+    let ddpath2 = dpath + '/dir2_007';
+    let ffpath3 = ddpath2 + '/new.txt';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    fileIO.mkdirSync(ddpath2);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    expect(prepareFile(ffpath3, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.moveDirSync(ddpath, ddpath2, DIRMODE_FILE_REPLACE);
+      expect(fileIO.accessSync(ddpath)).assertFalse();
+      fileIO.rmdirSync(dpath);
+    } catch (e) {
+      console.log('fileIO_test_moveDir_sync_007 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0800
+   * @tc.name fileIO_test_moveDir_sync_008
+   * @tc.desc Test moveDirSync() interface.
+   * Invalid mode.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_008', 3, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_008';
+    let ddpath1 = dpath + '/srcDir';
+    let ddpath2 = dpath + '/destDir';
+    let dddpath1 = ddpath1 + '/srcDir_first';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath1);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+
+    try {
+      const INVALIDE_MODE = -1;
+      fileIO.moveDirSync(ddpath1, ddpath2, INVALIDE_MODE);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_moveDir_sync_008 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0900
+   * @tc.name fileIO_test_moveDir_sync_009
+   * @tc.desc Test moveDirSync() interface.
+   * The path point to a file, not a directory.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_009', 3, async function () {
+    let dpath = await nextFileName('fileIO_test_moveDir_sync_009');
+    let fpath = dpath + '/file_000.txt';
+    let ddpath = dpath + '/dir_000';
+    let ffpath = ddpath + '/file_000.txt';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath);
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      fileIO.moveDirSync(fpath, ffpath);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_moveDir_sync_009 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1000
+   * @tc.name fileIO_test_moveDir_sync_010
+   * @tc.desc Test moveDirSync() interface.
+   * Invalid path. Can not move the same path.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_010', 3, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_010';
+    let ddpath1 = dpath + '/srcDir';
+    let ddpath2 = dpath + '/destDir';
+    let dddpath1 = ddpath1 + '/srcDir_first';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath1);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+
+    try {
+      fileIO.moveDirSync(ddpath1, ddpath1, DIRMODE_FILE_THROW_ERR);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_moveDir_sync_010 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1100
+   * @tc.name fileIO_test_moveDir_sync_011
+   * @tc.desc Test moveDirSync() interface.
+   * Invalid path. Can not move subPath.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_011', 3, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_011';
+    let ddpath1 = dpath + '/srcDir';
+    let dddpath1 = ddpath1 + '/srcDir_first';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    let fpath2 = ddpath1 + '/srcFile_first_02';
+    let ffpath1 = dddpath1 + '/srcFile_second_01';
+    let ffpath2 = dddpath1 + '/srcFile_second_02';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(dddpath1);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+    expect(prepareFile(fpath2, randomString(15))).assertTrue();
+    expect(prepareFile(ffpath1, randomString(20))).assertTrue();
+    expect(prepareFile(ffpath2, randomString(25))).assertTrue();
+
+    try {
+      fileIO.moveDirSync(ddpath1, dddpath1, DIRMODE_FILE_THROW_ERR);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_moveDir_sync_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1200
+   * @tc.name fileIO_test_moveDir_sync_012
+   * @tc.desc Test moveDirSync() interface.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_moveDir_sync_012', 3, async function () {
+    let dpath = await featureAbility.getContext().getFilesDir() + '/fileIO_test_moveDir_sync_012';
+    let ddpath1 = dpath + '/srcDir';
+    let ddpath2 = dpath + '/destDir';
+    let dddpath1 = ddpath1 + '/srcDir_first';
+    let dddpath2 = ddpath2 + '/srcDir';
+    let fpath1 = ddpath1 + '/srcFile_first_01';
+    let fpath2 = ddpath1 + '/srcFile_first_02';
+    let fpath3 = dddpath2 + '/srcFile_first_01';
+    let fpath4 = dddpath2 + '/destFile_first_01';
+    fileIO.mkdirSync(dpath);
+    fileIO.mkdirSync(ddpath1);
+    fileIO.mkdirSync(ddpath2);
+    fileIO.mkdirSync(dddpath1);
+    fileIO.mkdirSync(dddpath2);
+    expect(prepareFile(fpath1, randomString(10))).assertTrue();
+    expect(prepareFile(fpath2, randomString(15))).assertTrue();
+    expect(prepareFile(fpath3, randomString(20))).assertTrue();
+    expect(prepareFile(fpath4, randomString(25))).assertTrue();
+
+    try {
+      fileIO.moveDirSync(ddpath1, ddpath2, DIRMODE_DIRECTORY_THROW_ERR);
+      expect(false).assertTrue();
+    } catch (err) {
+      fileIO.rmdirSync(dpath);
+      console.log('fileIO_test_moveDir_sync_012 has failed for ' + err.message + ', code: ' + err.code);
+      expect(err.code == 13900032 && err.message == 'Directory not empty').assertTrue();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0000
    * @tc.name fileIO_test_moveDir_async_000
    * @tc.desc Test moveDir() interface.Promise.
@@ -282,7 +761,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0400
    * @tc.name fileIO_test_moveDir_async_004
    * @tc.desc Test moveFile() interface.Promise.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_DIRECTORY_REPLACE.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_REPLACE.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -318,7 +797,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0500
    * @tc.name fileIO_test_moveDir_async_005
    * @tc.desc Test moveFile() interface.Callback.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_DIRECTORY_REPLACE.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_REPLACE.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -359,7 +838,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0600
    * @tc.name fileIO_test_moveDir_async_006
    * @tc.desc Test moveFile() interface.Promise.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_FILE_REPLACE.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_REPLACE.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -371,7 +850,6 @@ export default function fileIOMoveDir() {
     try {
       let stat1 = fileIO.statSync(dpath.destDir + '/srcDir/srcFile_first_01');
       let stat2 = fileIO.statSync(dpath.destDir + '/srcDir/srcDir_first/srcFile_second_01');
-
       let dirent1 = fileIO.listFileSync(dpath.destDir, {recursion : true});
       expect(dirent1.length == 4).assertTrue();
       await fileIO.moveDir(dpath.srcDir, dpath.destDir, DIRMODE_FILE_REPLACE);
@@ -396,7 +874,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIR_ASYNC_0700
    * @tc.name fileIO_test_moveDir_async_007
    * @tc.desc Test moveFile() interface.Callback.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_FILE_REPLACE.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_REPLACE.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -437,7 +915,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0800
    * @tc.name fileIO_test_moveDir_async_008
    * @tc.desc Test moveFile() interface.Promise.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_FILE_THROW_ERR.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_THROW_ERR.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -477,7 +955,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_0900
    * @tc.name fileIO_test_moveDir_async_009
    * @tc.desc Test moveFile() interface.Callback.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_FILE_THROW_ERR.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_FILE_THROW_ERR.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -520,7 +998,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1000
    * @tc.name fileIO_test_moveDir_async_010
    * @tc.desc Test moveFile() interface.Promise.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_DIRECTORY_THROW_ERR.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -544,7 +1022,7 @@ export default function fileIOMoveDir() {
    * @tc.number SUB_DF_FILEIO_MOVEDIRSYNC_1100
    * @tc.name fileIO_test_moveDir_async_011
    * @tc.desc Test moveFile() interface.Callback.
-   * There is a target folder(src) under path dest and it is not empty.Mode is DIRMODE_DIRECTORY_THROW_ERR.
+   * There is a target folder(src) under path dest and it is not empty. Mode is DIRMODE_DIRECTORY_THROW_ERR.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
