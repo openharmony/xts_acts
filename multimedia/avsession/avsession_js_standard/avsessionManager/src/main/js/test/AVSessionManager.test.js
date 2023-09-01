@@ -90,7 +90,7 @@ export default function AVSessionManager() {
                 expect(true).assertTrue();
             });
             sleep(200);
-            currentAVSession = avSession.createAVSession(context,tag,"audio");
+            currentAVSession = await avSession.createAVSession(context,tag,"audio");
             done();
         })
 
@@ -110,7 +110,7 @@ export default function AVSessionManager() {
                 expect(true).assertTrue();
             });
             sleep(200);
-            currentAVSession = avSession.createAVSession(context,tag,"audio");
+            currentAVSession = await avSession.createAVSession(context,tag,"audio");
             done();
         })
 
