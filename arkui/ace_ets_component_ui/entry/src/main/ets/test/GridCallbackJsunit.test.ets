@@ -52,6 +52,7 @@ export default function GridCallbackJsunit() {
       let bottom = grid2.bottom
       let left = grid2.left
       let right = grid2.right
+      console.log('[GridCallbackJsunit_1000] grid 2 top:' + top +" bottom:" + bottom + "left: " + left + " right:" + right)
       let driver = await UiDriver.create()
       await driver.swipe(Math.round((right - left)), Math.round(bottom - 60), Math.round((right - left)), Math.round(top + 60));
       await CommonFunc.sleep(200);
@@ -91,18 +92,13 @@ export default function GridCallbackJsunit() {
       expect(text7).assertEqual('onScrollFrameBegin:succ');
       await CommonFunc.sleep(200);
 
-      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
-      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
-      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
-      await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
-      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
-      await driver.swipe(Math.round((right - left)), Math.round(top + 60), Math.round((right - left)), Math.round(bottom - 60));
-      await CommonFunc.sleep(1000);
-
+      let bottomButton = await driver.findComponent(BY.key('bottom'));
+      await bottomButton.click()
+      await CommonFunc.sleep(2000)
       let onReachEndText = await driver.findComponent(BY.key('onReachEndText'));
       let text9 = await onReachEndText.getText();
       console.info("[GridCallbackJsunit_1000] onReachEndText: " + text9);
+
       expect(text9).assertEqual('onReachEnd:succ');
       await CommonFunc.sleep(1000);
 
