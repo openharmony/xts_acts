@@ -89,6 +89,8 @@ export default function AVSessionManager() {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
                 expect(true).assertTrue();
             });
+            sleep(200);
+            currentAVSession = avSession.createAVSession(context,tag,"audio");
             done();
         })
 
@@ -107,7 +109,8 @@ export default function AVSessionManager() {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
                 expect(true).assertTrue();
             });
-
+            sleep(200);
+            currentAVSession = avSession.createAVSession(context,tag,"audio");
             done();
         })
 
