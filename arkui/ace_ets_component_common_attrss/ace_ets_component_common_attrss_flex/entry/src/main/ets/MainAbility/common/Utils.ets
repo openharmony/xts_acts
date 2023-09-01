@@ -15,6 +15,7 @@
 
 import router from '@ohos.router';
 import { AttrsManager } from './AttrsManager';
+import display from '@ohos.display';
 
 export default class Utils {
   public static instance;
@@ -111,7 +112,19 @@ export default class Utils {
     console.info(JSON.stringify(rect_value));
     return rect_value;
   }
+  
+  static getDensityDPI() {
+    let displayClass = null;
+    let densityDPI;
+    try {
+         displayClass = display.getDefaultDisplaySync();
+         densityDPI = displayClass.densityDPI;
+    } catch (exception) {
+         console.error('Failed to obtain the default display object. Code: ' + JSON.stringify(exception));
+    }
+    return densityDPI;
 
+  }
   static getComponentByKey(componentKey) {
     let strJson = getInspectorByKey(componentKey);
     let obj = JSON.parse(strJson);
