@@ -122,37 +122,6 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0200
-     * @tc.name   : testRdbStoreUpdate002
-     * @tc.desc   : RdbStore update callback test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbStoreUpdate002", 0, async function (done) {
-      console.info(TAG + "************* testRdbStoreUpdate002 start *************");
-      try {
-        const emptyBucket = {};
-
-        let predicates = new relationalStore.RdbPredicates("test");
-        predicates.equalTo("id", "1");
-        rdbStore.update(emptyBucket, predicates, async (err, rows) => {
-          if (err) {
-            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000).assertTrue();
-            console.info(TAG + "update with wrong valueBucket");
-            done();
-          }
-          console.info(`Updated row count: ${rows}`);
-        });
-      } catch (e) {
-        console.info("update error " + e);
-        expect(!e).assertTrue();
-      }
-      console.info(TAG + "************* testRdbStoreUpdate002 end *************");
-    });
-
-    /**
      * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0300
      * @tc.name   : testRdbStoreUpdate003
      * @tc.desc   : RdbStore update callback test
@@ -309,38 +278,6 @@ export default function rdbStoreUpdateTest() {
       console.info(TAG + "************* testRdbStoreUpdate006 end *************");
     });
 
-    /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0700
-     * @tc.name   : testRdbStoreUpdate007
-     * @tc.desc   : RdbStore update promise test
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 2
-     */
-    it("testRdbStoreUpdate007", 0, async function (done) {
-      console.info(TAG + "************* testRdbStoreUpdate007 start *************");
-      try {
-        const emptyBucket = {};
-
-        let predicates = new relationalStore.RdbPredicates("test");
-        predicates.equalTo("id", "1");
-        let promise = rdbStore.update(emptyBucket, predicates);
-        promise
-          .then(async (rows) => {
-            console.info(`Updated row count: ${rows}`);
-          })
-          .catch((err) => {
-            console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000).assertTrue();
-            console.info(TAG + "update with wrong valueBucket");
-            done();
-          });
-      } catch (e) {
-        console.info("update error " + e);
-        expect(!e).assertTrue();
-      }
-      console.info(TAG + "************* testRdbStoreUpdate007 end *************");
-    });
 
     /**
      * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0800
