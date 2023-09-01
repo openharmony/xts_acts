@@ -22,12 +22,12 @@ import btManagerGattServiceTest from './BtManagerGattService.test.js'
 import btBleManagerTest from './BtBleManager.test.js'
 import btBleServiceTest from './BtBleService.test.js'
 export default function testsuite() {
+    btManagerGattServiceTest()
     btBleManagerTest()
     btBleServiceTest()
-    btManagerGattManagerTest()
-    btManagerGattServiceTest()
-    btGattServiceTest()
     btGattManagerTest()
+    btGattServiceTest()
     btManagerGattAdvertTest()
     btGattAdvertTest()
+    btManagerGattManagerTest()
 }
