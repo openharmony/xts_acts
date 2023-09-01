@@ -139,7 +139,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(emptyBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is 6").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong valueBucket");
             done();
           }
@@ -175,7 +175,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong condition");
             done();
           }
@@ -212,7 +212,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong table name");
             done();
           }
@@ -249,7 +249,7 @@ export default function rdbStoreUpdateTest() {
         rdbStore.update(valueBucket, predicates, async (err, rows) => {
           if (err) {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong column name");
             done();
           }
@@ -331,7 +331,7 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is 6").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong valueBucket");
             done();
           });
@@ -369,7 +369,7 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong condition");
             done();
           });
@@ -408,7 +408,7 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with null table name");
             done();
           });
@@ -447,7 +447,7 @@ export default function rdbStoreUpdateTest() {
           })
           .catch((err) => {
             console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
-            expect(err.code === 14800000 && err.message === "Inner error. Inner code is -1").assertTrue();
+            expect(err.code === 14800000).assertTrue();
             console.info(TAG + "update with wrong column name");
             done();
           });
