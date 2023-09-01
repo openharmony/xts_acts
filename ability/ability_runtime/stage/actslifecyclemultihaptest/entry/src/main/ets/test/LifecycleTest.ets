@@ -331,8 +331,6 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_005", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_005 start-------------");
       TAG = "Multihap_LifecycleTest_005";
-      listKeyTemp = [];
-      listKeyTemp1 = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -361,31 +359,31 @@ export default function abilityTest() {
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility7 startAbility success, err: " + JSON.stringify(error) +
           ",data: " + JSON.stringify(data));
-          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
+          let setTemp = new Set();
+          let setTemp1 = new Set();
+          for (var i = 0; i < globalThis.mainAbility4ListKey.length; i++) {
             if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
+              setTemp.add(globalThis.mainAbility4ListKey[i]);
+              console.log(TAG + " setTemp entry is :" + JSON.stringify(globalThis.mainAbility4ListKey[i]));
             } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility7") {
-              listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
+              setTemp1.add(globalThis.mainAbility4ListKey[i]);
+              console.log(TAG + " setTemp1 entry is :" + JSON.stringify(globalThis.mainAbility4ListKey[i]));
             }
           }
-          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
-          console.log(TAG + "listKeyTemp1 is :" + listKeyTemp1);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility6 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility6 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility6 onAbilityBackground");
-          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
-          expect(transferStr0.indexOf("Hap2MainAbility6 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility6 onAbilityDestroy")!=-1).assertTrue();
+          expect(setTemp.has("Hap2MainAbility6 onAbilityCreate")).assertTrue();
+          expect(setTemp.has("Hap2MainAbility6 onWindowStageCreate")).assertTrue();
+          expect(setTemp.has("Hap2MainAbility6 onAbilityForeground")).assertTrue();
+          expect(setTemp.has("Hap2MainAbility6 onAbilityBackground")).assertTrue();
+          expect(setTemp.has("Hap2MainAbility6 onWindowStageDestroy")).assertTrue();
+          expect(setTemp.has("Hap2MainAbility6 onAbilityDestroy")).assertTrue();
 
-          expect(listKeyTemp1[0]).assertEqual("Hap2MainAbility7 onAbilityCreate");
-          expect(listKeyTemp1[1]).assertEqual("Hap2MainAbility7 onWindowStageCreate");
-          expect(listKeyTemp1[2]).assertEqual("Hap2MainAbility7 onAbilityForeground");
-          expect(listKeyTemp1[3]).assertEqual("Hap2MainAbility7 onAbilityBackground");
-          var transferStr0 = listKeyTemp1[4] + listKeyTemp1[5];
-          expect(transferStr0.indexOf("Hap2MainAbility7 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility7 onAbilityDestroy")!=-1).assertTrue();
+          expect(setTemp1.has("Hap2MainAbility7 onAbilityCreate")).assertTrue();
+          expect(setTemp1.has("Hap2MainAbility7 onWindowStageCreate")).assertTrue();
+          expect(setTemp1.has("Hap2MainAbility7 onAbilityForeground")).assertTrue();
+          expect(setTemp1.has("Hap2MainAbility7 onAbilityBackground")).assertTrue();
+          expect(setTemp1.has("Hap2MainAbility7 onWindowStageDestroy")).assertTrue();
+          expect(setTemp1.has("Hap2MainAbility7 onAbilityDestroy")).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
