@@ -67,9 +67,12 @@ describe('btBleServiceTest', function() {
     afterEach(function () {
         console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll called')
         gattServer.close();
+        gattClient.close();
+        await sleep(3000);
+        done();
     })
 
 

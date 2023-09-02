@@ -69,6 +69,7 @@ describe('btBleManagerTest', function() {
     afterAll(async function (done) {
         console.info('afterAll called')
         gattClient.close();
+        gattServer.close();
         done();
     })
 
