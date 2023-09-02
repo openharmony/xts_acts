@@ -178,10 +178,10 @@ struct GridCallbackPage {
 
       Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
       Grid(this.scroller) {
-        ForEach(this.Number, (day: string) => {
-          ForEach(this.Number, (day: string) => {
+        ForEach(this.Number, (row: string) => {
+          ForEach(this.Number, (column: string) => {
             GridItem() {
-              Text(day)
+              Text(row +"-"+ column)
                 .fontSize(16)
                 .backgroundColor(0xF9CF93)
                 .width('100%')
@@ -235,12 +235,20 @@ struct GridCallbackPage {
         return { offsetRemain: offset }
       })
 
-      Button(this.buttonName)
-        .key('button')
-        .onClick(() => { // 点击后滑到下一页
-          this.buttonName = 'clicked'
-          this.scroller.scrollPage({ next: true })
-        })
+       Row(){
+        Button("scoll to bottom")
+          .key("bottom")
+          .onClick(() => { // 滑动到底部
+            console.log("滑动到底部")
+            this.scroller.scrollTo({xOffset:0,yOffset:2000})
+          })
+        Button(this.buttonName)
+          .key('button')
+          .onClick(() => { // 点击后滑到下一页
+            this.buttonName = 'clicked'
+            this.scroller.scrollPage({ next: true })
+          })
+      }
       Text('onScrollIndex:' + this.onScrollIndex).key('onScrollIndex')
       Text(this.onItemDragStart).key('onItemDragStart')
       Text(this.onItemDragEnter).key('onItemDragEnter')
