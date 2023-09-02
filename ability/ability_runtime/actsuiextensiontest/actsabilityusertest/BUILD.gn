@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("StartAbilityByUIContentSession") {
+ohos_hap_assist_suite("StartAbilityByUIContentSession") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
