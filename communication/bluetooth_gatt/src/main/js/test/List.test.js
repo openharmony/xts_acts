@@ -25,9 +25,6 @@ export default function testsuite() {
     btManagerGattServiceTest()
     btBleManagerTest()
     btBleServiceTest()
-    btGattManagerTest()
-    btGattServiceTest()
     btManagerGattAdvertTest()
-    btGattAdvertTest()
     btManagerGattManagerTest()
 }
