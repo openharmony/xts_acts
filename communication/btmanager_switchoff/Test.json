@@ -19,7 +19,9 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "svc bluetooth disable"
+                "power-shell setmode 602",
+                "svc bluetooth enable"
+                
             ]
         }
     ]

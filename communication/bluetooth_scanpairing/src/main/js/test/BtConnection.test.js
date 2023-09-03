@@ -16,6 +16,7 @@
 import bluetooth from '@ohos.bluetooth.connection';
 import btAccess from '@ohos.bluetooth.access';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btConnectionTest() {
 describe('btConnectionTest', function() {
@@ -28,11 +29,40 @@ describe('btConnectionTest', function() {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
 
+    async function openPhone() {
+        try{
+            let drivers = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ drivers);            
+            await drivers.delayMs(1000);
+            await drivers.wakeUpDisplay();
+            await drivers.delayMs(5000);
+            await drivers.swipe(1500, 1000, 1500, 100);
+            await drivers.delayMs(10000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
+    async function clickTheWindow() {
+        try{
+            let driver = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ driver);            
+            await driver.delayMs(1000);
+            await driver.click(950, 2550);
+            await driver.delayMs(5000);
+            await driver.click(950, 2550);
+            await driver.delayMs(3000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
     async function tryToEnableBt() {
         let sta = btAccess.getState();
         switch (sta) {
             case 0:
                 btAccess.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 let sta1 = btAccess.getState();
                 console.info('[bluetooth_js] bt turn off:' + JSON.stringify(sta1));
@@ -46,6 +76,7 @@ describe('btConnectionTest', function() {
                 break;
             case 3:
                 btAccess.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 let sta2 = btAccess.getState();
                 console.info('[bluetooth_js] bt turning off:' + JSON.stringify(sta2));
@@ -54,8 +85,10 @@ describe('btConnectionTest', function() {
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
+        done();
     })
     beforeEach(async function (done) {
         console.info('beforeEach called')
