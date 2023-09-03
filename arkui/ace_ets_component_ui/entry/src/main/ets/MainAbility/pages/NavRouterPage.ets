@@ -21,6 +21,7 @@ struct NavRouterPage {
   @State isActive: boolean = false
   @State dex: number = 0
   @State stateChange: string = ''
+  @State routerState: string = ''
   messageManager: MessageManager = new MessageManager()
 
   onPageShow() {
@@ -78,8 +79,14 @@ struct NavRouterPage {
                 .title(`NavDestination${item + 1}`)
               }.key('NavRouter' + (item + 1).toString())
               .onStateChange((isActivated: boolean) => {
-                this.stateChange = "stateChange " + isActivated.toString()
-                this.dex = index
+                if (isActivated) {
+                  this.dex = index;
+                }
+                if (index == 1) {
+                  this.stateChange = 'stateChange ' + isActivated;
+                } else {
+                  this.routerState = 'stateChange ' + isActivated;
+                }
               })
             }
           }, item => item)
@@ -92,6 +99,7 @@ struct NavRouterPage {
       .hideToolBar(true)
       .height('80%')
     Text(this.stateChange).fontSize(20).margin(10).key('testT')
+    Text(this.routerState).fontSize(20).margin(10).key('TestRouter')
     }.height('100%')
   }
 }
