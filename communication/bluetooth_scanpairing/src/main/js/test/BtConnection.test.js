@@ -485,8 +485,8 @@ describe('btConnectionTest', function() {
             let result = bluetooth.getProfileConnectionState(1);
             expect(true).assertEqual(result == 0 || result == 1 || result == 2 || result == 3);
         } catch (err) {
-            console.error("getProfileConnectionState errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("getProfileConnectionState errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('401');
         }
         done();
     })

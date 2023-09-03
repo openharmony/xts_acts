@@ -103,7 +103,6 @@ describe('btGattServiceTest', function() {
         console.info('[bluetooth_js]gattClient close success');
         await gattServer.close();
         console.info('[bluetooth_js]gattServer close success');
-        await sleep(5000);
         done();
     })
 
