@@ -23,14 +23,14 @@ struct PageTwo {
         Text(`${this.content}`)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        TextInput({ placeholder: '请点击' })
+        TextInput()
           .key('pageTwoinput')
           .width(400)
           .height(50)
           .margin(10)
           .borderRadius(0)
           .style(TextInputStyle.Inline)
-        TextInput({ placeholder: '请点击' })
+        TextInput()
           .key('pageTwoinputSecond')
           .width(400)
           .height(50)
@@ -54,7 +54,7 @@ struct PageTwo {
       .height('100%')
     }.width('100%')
     .height('100%')
-    .backgroundColor("#ccc")
+    .backgroundColor("#ffefcdcd")
 
   }
 }

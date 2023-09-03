@@ -649,7 +649,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.loadContent', done);
       });
-      await tempWnd.resize(800, 1000).catch((err) => {
+      let current_display_Class = display.getDefaultDisplaySync();
+      await tempWnd.resize(800, current_display_Class.height).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.resetSize', done);
       });
       await tempWnd.moveWindowTo(0, 0).catch((err) => {
@@ -724,7 +725,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       await tempWnd.loadContent('MainAbility/pages/second/pageTwo').catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.loadContent', done);
       });
-      await tempWnd.resize(800, 1000).catch((err) => {
+      let current_display_Class = display.getDefaultDisplaySync();
+      await tempWnd.resize(800, current_display_Class.height).catch((err) => {
         unexpectedError(err, caseName, 'tempWnd.resetSize', done);
       });
       await tempWnd.moveWindowTo(0, 0).catch((err) => {
@@ -1165,8 +1167,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let num = 0
       let firstListenFlag = false
       let secondListenFlag = false
-      let screenClass = null;
-
       function firstCall() {
         console.log(msgStr + "first listener trigger")
         num++
@@ -1181,36 +1181,30 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       display.on('change', firstCall);
       display.on('change', secondCall);
-      screenClass = await screen.createVirtualScreen({
-        name: 'change01',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', done);
+      let mainWindow = null
+      mainWindow = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-                                 screenId: 0, startX: 0, startY: 0
-                               }, {
-                                 screenId: screenClass.id, startX: 1080, startY: 0
-                               }]).catch((err) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', done);
-      });
-      await screenClass.setOrientation(screen.Orientation.HORIZONTAL).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      expect(!!mainWindow).assertTrue();
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       await sleep(1000);
       display.off('change')
       firstListenFlag = false
       secondListenFlag = false
-      await screenClass.setOrientation(screen.Orientation.UNSPECIFIED).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect(TRUE_FLAG).assertFail();
+        done();
       });
       await sleep(1000);
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
-        await screen.destroyVirtualScreen(screenClass.id)
+        done();
+      }else {
+        expect(TRUE_FLAG).assertFail();
         done();
       }
     })
@@ -1239,35 +1233,26 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
 
       display.on('change', firstCall);
       display.on('change', secondCall);
-      screenClass = await screen.createVirtualScreen({
-        name: 'change02',
-        width: 1080,
-        height: 2340,
-        density: 2,
-        surfaceId: ''
-      }).catch((err) => {
-        unexpectedError(err, caseName, 'screen.createVirtualScreen', done);
+      let mainWindow = null
+      mainWindow = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
-      expect(!!screenClass).assertTrue();
-      await screen.makeExpand([{
-                                 screenId: 0, startX: 0, startY: 0
-                               }, {
-                                 screenId: screenClass.id, startX: 1080, startY: 0
-                               }]).catch((err) => {
-        unexpectedError(err, caseName, 'screen.makeExpand', done);
-      });
-      await screenClass.setOrientation(screen.Orientation.HORIZONTAL).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      expect(!!mainWindow).assertTrue();
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.PORTRAIT_INVERTED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       await sleep(1000);
       display.off('change', firstCall)
       firstListenFlag = false
       secondListenFlag = false
-      await screenClass.setOrientation(screen.Orientation.UNSPECIFIED).catch((err) => {
-        unexpectedError(err, caseName, 'screenClass.setOrientation', done);
+      await mainWindow.setPreferredOrientation(ohosWindow.Orientation.UNSPECIFIED).catch((err)=>{
+        console.error(msgStr+'Failed to set the window orientation. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
       });
       await sleep(1000);
-      await screen.destroyVirtualScreen(screenClass.id)
       display.off('change')
       if (!firstListenFlag && secondListenFlag) {
         done();
