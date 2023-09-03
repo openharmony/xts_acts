@@ -90,7 +90,7 @@ describe('btAccessTest', function() {
             bluetooth.enableBluetooth();
             await clickTheWindow();
             await sleep(10000);
-        } catch {
+        } catch (error) {
             console.error(`[bluetooth_js] enable StateChange error, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
@@ -124,7 +124,7 @@ describe('btAccessTest', function() {
             bluetooth.disableBluetooth();
             await clickTheWindow();
             await sleep(10000);
-        } catch {
+        } catch (error) {
             console.error(`[bluetooth_js] disable StateChange error, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
@@ -145,8 +145,8 @@ describe('btAccessTest', function() {
         try {
             let state = bluetooth.getState();
             expect(true).assertTrue(0 <= state <= 6);
-        } catch {
-            console.error("[bluetooth_js] bluetooth getState errCode:" + err.code + ",bluetooth getState errMessage:" + err.message);
+        } catch (error) {
+            console.error("[bluetooth_js] bluetooth getState errCode:" + error.code + ",bluetooth getState errMessage:" + error.message);
             expect(error.code).assertEqual('2900099');
         }
         done();
