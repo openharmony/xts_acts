@@ -814,6 +814,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         });
       } catch (exception) {
         console.error(msgStr + 'Failed to set the brightness. catch Cause: ' + JSON.stringify(exception));
+        expect(exception.code).assertEqual(401);
+        done();
       }
     })
     /**
@@ -1995,7 +1997,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let windowConfig = {
         name: windowId, windowType: 1, ctx: context
       };
-      let windowClass;
+      let windowClass=null;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
         console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
         expect().assertFail();
@@ -2011,6 +2013,8 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
           done();
         }).catch((err) => {
           console.error('Failed to set the system bar to be invisible. Cause:' + JSON.stringify(err));
+          expect(err.code).assertEqual(1300002);
+          done();
         });
       } catch (exception) {
         console.error('Failed to set the system bar to be invisible. catch Cause:' + JSON.stringify(exception));
