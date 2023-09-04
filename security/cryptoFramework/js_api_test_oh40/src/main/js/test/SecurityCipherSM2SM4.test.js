@@ -13,14 +13,7 @@
  * limitations under the License.
  */
 
-import {
-  describe,
-  beforeAll,
-  afterEach,
-  it,
-  expect,
-  afterAll,
-} from "@ohos/hypium";
+import { describe, beforeAll, afterEach, it, expect, afterAll, } from "@ohos/hypium";
 import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import * as symPromise from "./utils/symmetric/publicSymmetricPromise";
@@ -29,23 +22,35 @@ import * as asyCommon from "./utils/asymmetric/publicAsymmetricCommon";
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SecurityCipherSM2SM4Jsunit() {
-  describe("SecurityCipherSM2SM4Jsunit", function () {
-    console.log("##########start SecurityCipherSM2SM4Jsunit##########");
-    var symKeyPairSM4;
-    beforeAll(async function () {
-      async function genSymKeyPair() {
-        try {
-          let symGenerator = asyCommon.createSymKeyGenerator("SM4_128");
-          let symKeyPair = await symGenerator.generateSymKey();
-          return symKeyPair;
-        } catch (err) {
-          return err;
-        }
-      }
-      symKeyPairSM4 = await genSymKeyPair();
-    });
+    describe("SecurityCipherSM2SM4Jsunit", function () {
+        console.log("##########start SecurityCipherSM2SM4Jsunit##########");
+        var symKeyPairSM4;
+        beforeAll(async function () {
 
-    afterAll(function () {});
+            async function genSymKeyPair() {
+                try {
+                    let symGenerator = asyCommon.createSymKeyGenerator("SM4_128");
+                    let symKeyPair = await symGenerator.generateSymKey();
+                    return symKeyPair;
+                } catch (err) {
+                    return err;
+                }
+            }
+
+            async function sleep(ms) {
+                let timeoutID;
+                await new Promise(resolve => {
+                    timeoutID = setTimeout(resolve, ms)
+                });
+                clearTimeout(timeoutID);
+            }
+
+            await sleep(3000);
+            symKeyPairSM4 = await genSymKeyPair();
+        });
+
+        afterAll(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_CipherSMX_Func_0100
