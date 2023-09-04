@@ -116,6 +116,7 @@ describe('btSppTest', function() {
             done();
         }
         bluetooth.sppListen('server1', SppOption, serverSocket);
+        done();
     })
 
     /**
@@ -140,6 +141,7 @@ describe('btSppTest', function() {
              done();
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
+        done();
     })
 
     /**
@@ -189,6 +191,7 @@ describe('btSppTest', function() {
              done();
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
+        done();
     })
 
     /**
@@ -199,17 +202,42 @@ describe('btSppTest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_SPP_0500', 0, async function (done) {
-        function acceptClientSocket(code, number) {
-            
-            if (code) {
-                console.log('[bluetooth_js] error code05: ' + JSON.stringify(code));
-            }else{
-                console.log('[bluetooth_js] clientSocket Number:' + JSON.stringify(number));
-                expect(true).assertEqual(number!=null);
-            }
-            done();
+        let SppOption = {
+            uuid: '00001810-0000-1000-8000-00805F9B34FB',
+            secure: true, type: bluetooth.SppType.SPP_RFCOMM
+        };
+        let serverNumber = -1;
+        function sppCreatePromise() {
+            return new Promise((resolve, reject) => {
+                bluetooth.sppListen('serverAccept', SppOption, (err, number) => {
+                    if (err == null) {
+                        console.log('bluetooth serverSocket Number05:' + JSON.stringify(number));
+                        serverNumber = number;
+                        expect(true).assertEqual(serverNumber != -1);
+                        resolve(null);
+                    } else {
+                        console.log('bluetooth error code05: ' + err.code);
+                        resolve(null);
+                    }
+                })
+            })
         }
-        bluetooth.sppAccept(0, acceptClientSocket);
+        await sppCreatePromise();
+
+        function acceptClientSocket(code, number) {
+            console.log('bluetooth error code05: ' + code.code);
+            if (code.code == 0) {
+                console.log('bluetooth clientSocket Number05: ' + number);
+                expect(true).assertEqual(number != null);
+            }
+        }
+        try {
+            bluetooth.sppAccept(serverNumber, acceptClientSocket);
+        } catch (error) {
+            console.error(`[bluetooth_js]SPPAccept error05, code is ${error.code},message is ${error.message}`);
+            expect(error.code).assertEqual('401');
+        }
+        done();
     })
 
     /**
