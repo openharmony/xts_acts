@@ -15,16 +15,16 @@
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 function createAsyKeyGeneratorBySpec(asyKeySpec) {
-  try {
-    let rsaGenerator = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeySpec);
-    console.log(
-      "Security_CryptoFramework rsaGenerator algName: " + rsaGenerator.algName
-    );
-    return rsaGenerator;
-  } catch (err) {
-    console.log("Security_CryptoFramework rsaGenerator error:" + err);
-    return null;
-  }
+    try {
+        let rsaGenerator = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeySpec);
+        console.log(
+            "Security_CryptoFramework rsaGenerator algName: " + rsaGenerator.algName
+        );
+        return rsaGenerator;
+    } catch (err) {
+        console.log("Security_CryptoFramework rsaGenerator error:" + err);
+        throw err;
+    }
 }
 
 export { createAsyKeyGeneratorBySpec };

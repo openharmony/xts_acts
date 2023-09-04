@@ -18,10 +18,12 @@ import * as asyRandomCommon from "./utils/securityrandom/publicSecurityRandomCom
 import cryptoFrameworks from "@ohos.security.cryptoFramework";
 
 export default function SecurityRandomSyncJsunit() {
-  describe("SecurityRandomSyncJsunit", function () {
-    console.log("##########start SecurityRandomSyncJsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("SecurityRandomSyncJsunit", function () {
+        console.log("##########start SecurityRandomSyncJsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_RandomSync_Func_0100

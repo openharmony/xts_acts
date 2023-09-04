@@ -22,24 +22,35 @@ import * as symPromise from "./utils/symmetric/publicSymmetricPromise";
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SecurityCipherJsunit() {
-  describe("SecurityCipherJsunit", function () {
-    console.log("##########start SecurityCipherJsunit##########");
-    var gKeyPairSpec;
-    beforeAll(async function () {
-      async function genRsa2048KeyPairSpec() {
-        try {
-          let asyKeySpec = common.genRsa2048KeyPairSpec();
-          let specGenerator = asyCommon.createAsyKeyGeneratorBySpec(asyKeySpec);
-          let specKeyPair = await specGenerator.generateKeyPair();
-          return specKeyPair;
-        } catch (err) {
-          return err;
-        }
-      }
+    describe("SecurityCipherJsunit", function () {
+        console.log("##########start SecurityCipherJsunit##########");
+        var gKeyPairSpec;
+        beforeAll(async function () {
 
-      gKeyPairSpec = await genRsa2048KeyPairSpec();
-    });
-    afterEach(async function () {});
+            async function genRsa2048KeyPairSpec() {
+                try {
+                    let asyKeySpec = common.genRsa2048KeyPairSpec();
+                    let specGenerator = asyCommon.createAsyKeyGeneratorBySpec(asyKeySpec);
+                    let specKeyPair = await specGenerator.generateKeyPair();
+                    return specKeyPair;
+                } catch (err) {
+                    return err;
+                }
+            }
+
+            async function sleep(ms) {
+                let timeoutID;
+                await new Promise(resolve => {
+                    timeoutID = setTimeout(resolve, ms)
+                });
+                clearTimeout(timeoutID);
+            }
+
+            await sleep(5000);
+            gKeyPairSpec = await genRsa2048KeyPairSpec();
+        });
+        afterEach(async function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_Cipher_Func_0100
