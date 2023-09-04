@@ -570,6 +570,8 @@ export default function objectStoreTest() {
             console.info(TAG + "watch success");
             console.info(TAG + "start call unwatch status");
             objectTest.off("status", statusCallback1);
+            objectTest.off("status", statusCallback2);
+            objectTest.off("status", statusCallback3);
             console.info(TAG + "unwatch success");
             objectTest.setSessionId("");
             done();
@@ -592,7 +594,7 @@ export default function objectStoreTest() {
             objectTest.on("status", statusCallback3);
             console.info(TAG + "watch success");
             console.info(TAG + "start call unwatch status");
-            objectTest.off("status", statusCallback1);
+            objectTest.off("status");
             console.info(TAG + "unwatch success");
             objectTest.setSessionId("");
             done();
