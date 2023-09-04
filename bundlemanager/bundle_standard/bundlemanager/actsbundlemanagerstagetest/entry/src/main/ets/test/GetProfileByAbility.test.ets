@@ -35,12 +35,12 @@ const PARAM_ERROR_CODE = 401;
 
 export default function getProfileByAbility() {
   describe('getProfileByAbility', function () {
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0011
-    * @tc.name: getProfileByAbilityInvalidModulePro
-    * @tc.desc: Check the invalid moduleName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0011
+     * @tc.name: getProfileByAbilityInvalidModulePro
+     * @tc.desc: Check the invalid moduleName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityInvalidModulePro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME_TEST, ABILITY_NAME, METADATA_NAME).then(data => {
         console.info("getProfileByAbilityInvalidModulePro success" + JSON.stringify(data))
@@ -53,12 +53,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0015
-    * @tc.name: getProfileByAbilityEmptyModulePro
-    * @tc.desc: Check the empty moduleName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0015
+     * @tc.name: getProfileByAbilityEmptyModulePro
+     * @tc.desc: Check the empty moduleName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityEmptyModulePro', 0, async function (done) {
       await manager.getProfileByAbility('', ABILITY_NAME, METADATA_NAME).then(data => {
         console.info("getProfileByAbilityEmptyModulePro success" + JSON.stringify(data))
@@ -71,12 +71,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0017
-    * @tc.name: getProfileByAbilityInvalidModuleCall
-    * @tc.desc: Check the invalid moduleName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0017
+     * @tc.name: getProfileByAbilityInvalidModuleCall
+     * @tc.desc: Check the invalid moduleName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityInvalidModuleCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME_TEST, ABILITY_NAME, METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
@@ -85,12 +85,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0034
-    * @tc.name: getProfileByAbilityEmptyModuleCall
-    * @tc.desc: Check the empty moduleName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0034
+     * @tc.name: getProfileByAbilityEmptyModuleCall
+     * @tc.desc: Check the empty moduleName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityEmptyModuleCall', 0, async function (done) {
       manager.getProfileByAbility('', ABILITY_NAME, METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_MODULE_NOT_EXIST);
@@ -99,12 +99,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0012
-    * @tc.name: getProfileByAbilityInvalidAbilityPro
-    * @tc.desc: Check the invalid abilityName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0012
+     * @tc.name: getProfileByAbilityInvalidAbilityPro
+     * @tc.desc: Check the invalid abilityName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityInvalidAbilityPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME_TEST, METADATA_NAME).then(data => {
         console.info("getProfileByAbilityInvalidAbilityPro success" + JSON.stringify(data))
@@ -117,12 +117,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
-    * @tc.name: getProfileByAbilityEmptyAbilityPro
-    * @tc.desc: Check the empty abilityName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
+     * @tc.name: getProfileByAbilityEmptyAbilityPro
+     * @tc.desc: Check the empty abilityName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityEmptyAbilityPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, '', METADATA_NAME).then(data => {
         console.info("getProfileByAbilityEmptyAbilityPro success" + JSON.stringify(data))
@@ -135,12 +135,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0022
-    * @tc.name: getProfileByAbilityInvalidAbilityCall
-    * @tc.desc: Check the invalid abilityName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0022
+     * @tc.name: getProfileByAbilityInvalidAbilityCall
+     * @tc.desc: Check the invalid abilityName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityInvalidAbilityCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME_TEST, METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
@@ -149,12 +149,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
-    * @tc.name: getProfileByAbilityEmptyAbilityCall
-    * @tc.desc: Check the empty abilityName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
+     * @tc.name: getProfileByAbilityEmptyAbilityCall
+     * @tc.desc: Check the empty abilityName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityEmptyAbilityCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, '', METADATA_NAME, (err, data) => {
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
@@ -163,12 +163,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0024
-    * @tc.name: getProfileByAbilityCallback
-    * @tc.desc: Check the valid metadataName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0024
+     * @tc.name: getProfileByAbilityCallback
+     * @tc.desc: Check the valid metadataName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityCallback', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME, (err, data) => {
         console.info('[getProfileByAbilityCallback] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -180,12 +180,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0026
-    * @tc.name: getProfileByAbilityInvalidMetaDataCall
-    * @tc.desc: Check the invalid metadataName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0026
+     * @tc.name: getProfileByAbilityInvalidMetaDataCall
+     * @tc.desc: Check the invalid metadataName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityInvalidMetaDataCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST, (err, data) => {
         expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
@@ -194,12 +194,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0036
-    * @tc.name: getProfileByAbilityEmptyMetaDataCall
-    * @tc.desc: Check the empty metadataName (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0036
+     * @tc.name: getProfileByAbilityEmptyMetaDataCall
+     * @tc.desc: Check the empty metadataName (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityEmptyMetaDataCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, '', (err, data) => {
         console.info('[getProfileByAbilityEmptyMetaDataCall] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -215,12 +215,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0002
-    * @tc.name: getProfileByAbilityPromise
-    * @tc.desc: Check the valid metadataName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0002
+     * @tc.name: getProfileByAbilityPromise
+     * @tc.desc: Check the valid metadataName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityPromise', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME).then(data => {
         console.info('[getProfileByAbilityPromise] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -236,12 +236,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0004
-    * @tc.name: getProfileByAbilityInvalidMetaDataPro
-    * @tc.desc: Check the invalid metadataName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0004
+     * @tc.name: getProfileByAbilityInvalidMetaDataPro
+     * @tc.desc: Check the invalid metadataName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityInvalidMetaDataPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST).then(data => {
         console.info('[getProfileByAbilityInvalidMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -253,12 +253,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0030
-    * @tc.name: getProfileByAbilityEmptyMetaDataPro
-    * @tc.desc: Check the empty metadataName (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0030
+     * @tc.name: getProfileByAbilityEmptyMetaDataPro
+     * @tc.desc: Check the empty metadataName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityEmptyMetaDataPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, '').then(data => {
         console.info('[getProfileByAbilityEmptyMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -277,13 +277,13 @@ export default function getProfileByAbility() {
         done();
       })
     })
-  
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0009
-    * @tc.name: getProfileByAbilityNoMetaDataPro
-    * @tc.desc: without metadataName (by promise)
-    * @tc.level   0
-    */
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0009
+     * @tc.name: getProfileByAbilityNoMetaDataPro
+     * @tc.desc: without metadataName (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNoMetaDataPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME).then(data => {
         console.info('[getProfileByAbilityNoMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -303,12 +303,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0048
-    * @tc.name: getProfileByAbilityNoProfilePro
-    * @tc.desc: no profile configured under the ability (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0048
+     * @tc.name: getProfileByAbilityNoProfilePro
+     * @tc.desc: no profile configured under the ability (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNoProfilePro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME1).then(data => {
         console.info('[getProfileByAbilityNoProfilePro] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -321,12 +321,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0045
-    * @tc.name: getProfileByAbilityNotPrefixPro
-    * @tc.desc: resource has no prefix '$profile:' (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0045
+     * @tc.name: getProfileByAbilityNotPrefixPro
+     * @tc.desc: resource has no prefix '$profile:' (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNotPrefixPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2).then(data => {
         console.info('[getProfileByAbilityNotPrefixPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -339,12 +339,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0044
-    * @tc.name: getProfileByAbilityNotPrefixCall
-    * @tc.desc: resource has no prefix '$profile:' (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0044
+     * @tc.name: getProfileByAbilityNotPrefixCall
+     * @tc.desc: resource has no prefix '$profile:' (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNotPrefixCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2, (err, data) => {
         expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
@@ -353,12 +353,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0007
-    * @tc.name: getProfileByAbilityNotSuffixPro
-    * @tc.desc: profile is .txt suffix (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0007
+     * @tc.name: getProfileByAbilityNotSuffixPro
+     * @tc.desc: profile is .txt suffix (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNotSuffixPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3).then(data => {
         console.info('[getProfileByAbilityNotSuffixPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -373,12 +373,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0040
-    * @tc.name: getProfileByAbilityNotSuffixCall
-    * @tc.desc: profile is .txt suffix (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0040
+     * @tc.name: getProfileByAbilityNotSuffixCall
+     * @tc.desc: profile is .txt suffix (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNotSuffixCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3, (err, data) => {
         console.info('[getProfileByAbilityNotSuffixCall] getProfileByAbility callback data is: ' + JSON.stringify(data));
@@ -389,12 +389,12 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0008
-    * @tc.name: getProfileByAbilityNoJsonPro
-    * @tc.desc: profile is invalid json format (by promise)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0008
+     * @tc.name: getProfileByAbilityNoJsonPro
+     * @tc.desc: profile is invalid json format (by promise)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNoJsonPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME4).then(data => {
         console.info('[getProfileByAbilityNoJsonPro] data is: ' + JSON.stringify(data));
@@ -407,12 +407,12 @@ export default function getProfileByAbility() {
       })
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0046
-    * @tc.name: getProfileByAbilityNoJsonCall
-    * @tc.desc: profile is invalid json format (by callback)
-    * @tc.level   0
-    */
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0046
+     * @tc.name: getProfileByAbilityNoJsonCall
+     * @tc.desc: profile is invalid json format (by callback)
+     * @tc.level   0
+     */
     it('getProfileByAbilityNoJsonCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME4, (err, data) => {
         console.info('[getProfileByAbilityNoJsonCall] err: ' + JSON.stringify(err));
@@ -421,137 +421,101 @@ export default function getProfileByAbility() {
       });
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0047
-    * @tc.name: getProfileByAbilitySyncSuccess
-    * @tc.desc: profile is json (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncSuccess', 0, async function (done) {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0064
+     * @tc.name: testGetProfileByAbilitySyncSuccess
+     * @tc.desc: profile is json (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncSuccess', 0, async function (done) {
       try {
-          let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME);
-          console.info("getProfileByAbilitySync success" + JSON.stringify(data));
-          expect(Array.isArray(data)).assertTrue();
-          expect(data.length).assertEqual(1);
-          expect(typeof data[0]).assertEqual("string");
-          expect(data[0]).assertEqual(PROFILE_JSON_STRING);
-          done();
+        let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME);
+        console.info("testGetProfileByAbilitySyncSuccess success" + JSON.stringify(data));
+        expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
+        expect(typeof data[0]).assertEqual("string");
+        expect(data[0]).assertEqual(PROFILE_JSON_STRING);
+        done();
       } catch (err) {
-        console.info("getProfileByAbilitySyncSuccessTest failed" + JSON.stringify(err));
+        console.info("testGetProfileByAbilitySyncSuccess failed" + JSON.stringify(err));
         expect(err).assertFail();
         done();
       }
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0048
-    * @tc.name: getProfileByAbilitySyncSuccessEmptyMetaData
-    * @tc.desc: profile is json (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncSuccessEmptyMetaData', 0, async function (done) {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0065
+     * @tc.name: testGetProfileByAbilitySyncWithoutMetaData
+     * @tc.desc: profile is json (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncWithoutMetaData', 0, async function (done) {
       try {
-          let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, '');
-          console.info("getProfileByAbilitySyncSuccessEmptyMetaData success" + JSON.stringify(data));
-          expect(Array.isArray(data)).assertTrue();
-          expect(data.length).assertEqual(3);
-          expect(typeof data[0]).assertEqual("string");
-          expect(data[0]).assertEqual(PROFILE_JSON_STRING);
-          expect(typeof data[1]).assertEqual("string");
-          expect(data[1]).assertEqual(PROFILE_JSON_STRING);
-          expect(typeof data[2]).assertEqual("string");
-          expect(data[2]).assertEqual(PROFILE_JSON_STRING);
-          done();
+        let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME);
+        console.info("testGetProfileByAbilitySyncWithoutMetaData success" + JSON.stringify(data));
+        expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
+        expect(typeof data[0]).assertEqual("string");
+        expect(data[0]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[1]).assertEqual("string");
+        expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
+        done();
       } catch (err) {
-        console.info("getProfileByAbilitySyncSuccessEmptyMetaData failed" + JSON.stringify(err));
+        console.info("testGetProfileByAbilitySyncWithoutMetaData failed" + JSON.stringify(err));
         expect(err).assertFail();
         done();
       }
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0049
-    * @tc.name: getProfileByAbilitySyncByEmptyModuleName
-    * @tc.desc: Check the empty moduleName (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncByEmptyModuleName', 0, async function (done) {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0066
+     * @tc.name: testGetProfileByAbilitySyncByEmptyModuleName
+     * @tc.desc: Check the invalid moduleName (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncByEmptyModuleName', 0, async function (done) {
       try {
-          manager.getProfileByAbilitySync('', ABILITY_NAME, METADATA_NAME);
-          expect().assertFail();
-          done();
-      } catch (err) {
-        console.info("getProfileByAbilitySyncByEmptyModuleName failed" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_MODULE_NOT_EXIST);
+        manager.getProfileByAbilitySync('INVALID_NAME', ABILITY_NAME, METADATA_NAME);
+        expect().assertFail();
         done();
-      }
-    })
-
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0050
-    * @tc.name: getProfileByAbilitySyncByEmptyModuleName
-    * @tc.desc: Check the invalid moduleName (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncByInvalidModuleName', 0, async function (done) {
-      try {
-          manager.getProfileByAbilitySync('INVALID_NAME', ABILITY_NAME, METADATA_NAME);
-          expect().assertFail();
-          done();
       } catch (err) {
-        console.info("getProfileByAbilitySyncByInvalidModuleName failed" + JSON.stringify(err));
+        console.info("testGetProfileByAbilitySyncByEmptyModuleName failed" + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
         done();
       }
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0051
-    * @tc.name: getProfileByAbilitySyncByEmptyAbilityName
-    * @tc.desc: Check the empty abilityName (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncByEmptyAbilityName', 0, async function (done) {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0067
+     * @tc.name: testGetProfileByAbilitySyncByInvalidAbilityName
+     * @tc.desc: Check the invalid abilityName (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncByInvalidAbilityName', 0, async function (done) {
       try {
-          manager.getProfileByAbilitySync(MODULE_NAME_TEST, '', METADATA_NAME);
-          expect().assertFail();
-          done();
+        manager.getProfileByAbilitySync(MODULE_NAME_TEST, 'INVALID_NAME', METADATA_NAME);
+        expect().assertFail();
+        done();
       } catch (err) {
-        console.info("getProfileByAbilitySyncByEmptyAbilityName failed" + JSON.stringify(err));
+        console.info("testGetProfileByAbilitySyncByInvalidAbilityName failed" + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
         done();
       }
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0052
-    * @tc.name: getProfileByAbilitySyncByEmptyAbilityName
-    * @tc.desc: Check the invalid abilityName (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncByInvalidAbilityName', 0, async function (done) {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0068
+     * @tc.name: testGetProfileByAbilitySyncInvalidMetaData
+     * @tc.desc: Check resource has no prefix (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncInvalidMetaData', 0, async function (done) {
       try {
-          manager.getProfileByAbilitySync(MODULE_NAME_TEST, 'INVALID_NAME', METADATA_NAME);
-          expect().assertFail();
-          done();
-      } catch (err) {
-        console.info("getProfileByAbilitySyncByInvalidAbilityName failed" + JSON.stringify(err));
-        expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
+        manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST);
+        expect().assertFail();
         done();
-      }
-    })
-
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0053
-    * @tc.name: getProfileByAbilitySyncNoProfile
-    * @tc.desc: Check resource has no prefix (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncNoProfile', 0, async function (done) {
-      try {
-          manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, METADATA_NAME2);
-          expect().assertFail();
-          done();
       } catch (err) {
         console.info("getProfileByAbilitySyncNoProfile failed" + JSON.stringify(err));
         expect(err.code).assertEqual(ERROR_PROFILE_NOT_EXIST);
@@ -559,22 +523,193 @@ export default function getProfileByAbility() {
       }
     })
 
-   /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0054
-    * @tc.name: getProfileByAbilitySyncParamError
-    * @tc.desc: Check param number is failed (by sync)
-    * @tc.level   0
-    */
-    it('getProfileByAbilitySyncParamError', 0, async function (done) {
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0070
+     * @tc.name: testGetProfileByAbilitySyncByEmptyModuleName
+     * @tc.desc: Check the empty moduleName (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncByEmptyModuleName', 0, async function (done) {
       try {
-          manager.getProfileByAbilitySync(null, null);
-          expect().assertFail();
-          done();
+        manager.getProfileByAbilitySync('', ABILITY_NAME, METADATA_NAME);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("getProfileByAbilitySyncByEmptyModuleName failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_MODULE_NOT_EXIST);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0071
+     * @tc.name: testGetProfileByAbilitySyncByEmptyAbilityName
+     * @tc.desc: Check the empty abilityName (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncByEmptyAbilityName', 0, async function (done) {
+      try {
+        manager.getProfileByAbilitySync(MODULE_NAME_TEST, '', METADATA_NAME);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("getProfileByAbilitySyncByEmptyAbilityName failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(ERROR_ABILITY_NOT_EXIST);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0072
+     * @tc.name: testGetProfileByAbilitySyncSuccessEmptyMetaData
+     * @tc.desc: profile is json (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncSuccessEmptyMetaData', 0, async function (done) {
+      try {
+        let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, '');
+        console.info("testGetProfileByAbilitySyncSuccessEmptyMetaData success" + JSON.stringify(data));
+        expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
+        expect(typeof data[0]).assertEqual("string");
+        expect(data[0]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[1]).assertEqual("string");
+        expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
+        done();
+      } catch (err) {
+        console.info("testGetProfileByAbilitySyncSuccessEmptyMetaData failed" + JSON.stringify(err));
+        expect(err).assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0073
+     * @tc.name: testGetProfileByAbilitySyncNullModule
+     * @tc.desc: Check param number is failed (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncNullModule', 0, async function (done) {
+      try {
+        manager.getProfileByAbilitySync(null, ABILITY_NAME, METADATA_NAME);
+        expect().assertFail();
+        done();
       } catch (err) {
         console.info("getProfileByAbilitySyncParamError failed" + JSON.stringify(err));
         expect(err.code).assertEqual(PARAM_ERROR_CODE);
         done();
       }
     })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0074
+     * @tc.name: testGetProfileByAbilitySyncNullAbility
+     * @tc.desc: Check param number is failed (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncNullAbility', 0, async function (done) {
+      try {
+        manager.getProfileByAbilitySync(MODULE_NAME, null, METADATA_NAME);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("testGetProfileByAbilitySyncNullAbility failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0075
+     * @tc.name: testGetProfileByAbilitySyncSuccessNullMetaData
+     * @tc.desc: profile is json (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncSuccessNullMetaData', 0, async function (done) {
+      try {
+        let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, null);
+        console.info("testGetProfileByAbilitySyncSuccessEmptyMetaData success" + JSON.stringify(data));
+        expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
+        expect(typeof data[0]).assertEqual("string");
+        expect(data[0]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[1]).assertEqual("string");
+        expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
+        done();
+      } catch (err) {
+        console.info("testGetProfileByAbilitySyncSuccessNullMetaData failed" + JSON.stringify(err));
+        expect(err).assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0076
+     * @tc.name: testGetProfileByAbilitySyncUndefinedModule
+     * @tc.desc: Check param number is failed (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncUndefinedModule', 0, async function (done) {
+      try {
+        manager.getProfileByAbilitySync(undefined, ABILITY_NAME, METADATA_NAME);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("testGetProfileByAbilitySyncUndefinedModule failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0077
+     * @tc.name: testGetProfileByAbilitySyncUndefinedAbility
+     * @tc.desc: Check param number is failed (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncUndefinedAbility', 0, async function (done) {
+      try {
+        manager.getProfileByAbilitySync(MODULE_NAME, undefined, METADATA_NAME);
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("testGetProfileByAbilitySyncUndefinedAbility failed" + JSON.stringify(err));
+        expect(err.code).assertEqual(PARAM_ERROR_CODE);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0078
+     * @tc.name: testGetProfileByAbilitySyncUndefinedMetaData
+     * @tc.desc: profile is json (by sync)
+     * @tc.level   0
+     */
+    it('testGetProfileByAbilitySyncUndefinedMetaData', 0, async function (done) {
+      try {
+        let data = manager.getProfileByAbilitySync(MODULE_NAME, ABILITY_NAME, undefined);
+        console.info("testGetProfileByAbilitySyncUndefinedMetaData success" + JSON.stringify(data));
+        expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
+        expect(typeof data[0]).assertEqual("string");
+        expect(data[0]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[1]).assertEqual("string");
+        expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
+        done();
+      } catch (err) {
+        console.info("testGetProfileByAbilitySyncUndefinedMetaData failed" + JSON.stringify(err));
+        expect(err).assertFail();
+        done();
+      }
+    })
+
+
+
   })
 }
