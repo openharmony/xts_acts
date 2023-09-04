@@ -14,7 +14,6 @@
  */
 
 import { describe, beforeAll, afterEach, it, expect, afterAll, } from "@ohos/hypium";
-import * as asyPromise from "./utils/asymmetric/publicAsymmetricPromise";
 import * as asyCallback from "./utils/asymmetric/publicAsymmetricCallback";
 import * as asyCommon from "./utils/asymmetric/publicAsymmetricCommon";
 import cryptoFramework from "@ohos.security.cryptoFramework";
@@ -38,6 +37,15 @@ export default function SecuritySignatureVerificationSM2Jsunit() {
                 }
             }
 
+            async function sleep(ms) {
+                let timeoutID;
+                await new Promise(resolve => {
+                    timeoutID = setTimeout(resolve, ms)
+                });
+                clearTimeout(timeoutID);
+            }
+
+            await sleep(5000);
             asyKeyPair = await genAsyKeyPair();
         });
         afterAll(function () {
