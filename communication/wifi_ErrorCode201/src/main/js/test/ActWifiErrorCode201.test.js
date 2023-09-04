@@ -67,13 +67,13 @@ export default function actsWifiErrorCode201Test() {
         })
 
         /**
-        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0038
+        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0100
         * @tc.name testIsWifiActive
         * @tc.desc Test isWifiActive API ErrorCode 201.
         * @tc.type Function
         * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_XTS_ErrorCode_0038', 0, async function (done) {
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0100', 0, async function (done) {
             try {
                 let isWifiActive = wifiMg.isWifiActive();
                 await sleep(3000);
