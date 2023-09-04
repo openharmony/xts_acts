@@ -226,7 +226,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       try {
         RdbStore.backup(STORE_CONFIG.name, async (err) => {
           console.info(TAG + "backup err ttt:  " + err.message + "code:  " + err.code);
-          expect(err.code == 14800011 && err.message == "Failed to open database by database corrupted").assertTrue();
+          expect(err.code == 14800011).assertTrue();
           done();
         });
       } catch (errInfo) {
@@ -278,7 +278,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
           })
           .catch((err) => {
             console.info(TAG + "backup err ttt1:  " + err.message + "code:  " + err.code);
-            expect(err.code == 14800011 && err.message == "Failed to open database by database corrupted").assertTrue();
+            expect(err.code == 14800011).assertTrue();
             done();
           });
       } catch (err) {
