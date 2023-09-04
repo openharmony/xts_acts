@@ -725,7 +725,7 @@ describe('btManagerMError401Test', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_', 0, async function(done) {      
+    it('SUB_COMMUNICATION_BTMANAGER_READCHARACTERISTIC_ERROR_1700', 0, async function(done) {
         try {
             gattClient.readCharacteristicValue();
             expect(true).assertFalse();
@@ -1642,7 +1642,7 @@ describe('btManagerMError401Test', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1600', 0, function () {
+    it('SUB_COMMUNICATION_BTMANAGER_WRITECHARACTERISTIC_ERROR_1700', 0, function () {
         try {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
