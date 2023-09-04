@@ -218,7 +218,7 @@ export default function nfcATagSessionTest() {
                     console.info("[NFC_test] tagsession6 getMaxSendLength:" + gettime);
                     expect(gettime).assertInstanceOf('Number')
                 } catch (error) {
-                    console.info('[NFC_test] tagsession6 getMaxSendLength error' + error)
+                    console.info('[NFC_test] tagsession6 getMaxSendLength error1' + error)
                     expect().assertFail();
                 }
             } else {
@@ -245,7 +245,7 @@ export default function nfcATagSessionTest() {
                     done();
                 }).catch((err)=> {
                     console.info("[NFC_test] tagsession7 nfcAtage sendData1 err: " + err);
-                    expect().assertFail();
+                    expect('3100201').assertEqual(err.code)
                     done();
                 });
                 sleep(3500);
@@ -270,7 +270,7 @@ export default function nfcATagSessionTest() {
                 getAtag.sendData(sendDatas, (err, data)=> {
                     if (err) {
                         console.info("[NFC_test] tagsession8 nfcAtage sendData2 data err: " + err);
-                        expect().assertFail();
+                        expect("3100201").assertEqual(err.code)
                         done();
                     } else {
                         sleep(2500);
@@ -344,7 +344,7 @@ export default function nfcATagSessionTest() {
                 done();
             }).catch((err)=> {
                 console.info("[NFC_test] tagsession11 nfcAtage sendData1 err: " + err);
-                expect().assertFail();
+                expect('3100201').assertEqual(err.code)
                 done();
             });
             sleep(3500);
@@ -364,7 +364,7 @@ export default function nfcATagSessionTest() {
             tag.getNfcATag(aTag).transmit(sendDatas, (err, data)=> {
                 if (err) {
                     console.info("[NFC_test] tagsession12 nfcAtage sendData2 data err: " + err);
-                    expect().assertFail();
+                    expect('3100201').assertEqual(err.code)
                     done();
                 } else {
                     sleep(2500);
