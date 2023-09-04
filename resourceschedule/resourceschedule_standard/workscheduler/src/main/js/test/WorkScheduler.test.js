@@ -26,9 +26,11 @@ describe("WorkSchedulerJsTest", function () {
     }
 
     function workStart(workInfo, callback) {
-        let result = null
+        workScheduler.startWork(workInfo);
+        let WorkSchedulerExtensionContext = this.context;
+        let result = null;
         try{
-            WorkSchedulerExtensionAbility.onWorkStart(workInfo)
+            WorkSchedulerExtensionAbility.onWorkStart(workInfo);
             result = true
         } catch(err) {
             result = err
@@ -37,9 +39,10 @@ describe("WorkSchedulerJsTest", function () {
     }
 
     function workStop(workInfo, callback) {
-        let result = null
+        workScheduler.stopWork(workInfo);
+        let result = null;
         try{
-            WorkSchedulerExtensionAbility.onWorkStop(workInfo)
+            WorkSchedulerExtensionAbility.onWorkStop(workInfo);
             result = true
         } catch(err) {
             result = err
@@ -47,11 +50,6 @@ describe("WorkSchedulerJsTest", function () {
         callback(result)
     }
     beforeAll(function() {
-
-        workStart(workInfo,function(data) {
-            let WorkSchedulerExtensionContext = this.context;
-            console.info("onWorkStart finish,result: " + data)
-        })
         /*
          * @tc.setup: setup invoked before all testcases
          */
@@ -59,10 +57,6 @@ describe("WorkSchedulerJsTest", function () {
     })
 
     afterAll(function() {
-        
-        workStop(workInfo, function(data) {
-            console.info("onWorkStop finish,result: " + data)
-        })
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
