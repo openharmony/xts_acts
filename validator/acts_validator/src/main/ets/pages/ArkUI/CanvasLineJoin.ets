@@ -35,7 +35,9 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('round').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('round').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(90, 90, 170, 120);
                 this.context.beginPath();
@@ -50,7 +52,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('bevel').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('bevel').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(90, 90, 170, 120);
                 this.context.beginPath();
@@ -65,7 +69,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('miter').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('miter').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(90, 90, 170, 120);
                 this.context.beginPath();
