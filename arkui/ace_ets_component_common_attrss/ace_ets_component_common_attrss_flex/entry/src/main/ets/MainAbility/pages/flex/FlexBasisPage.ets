@@ -76,7 +76,7 @@ struct FlexBasisPage {
     } else if (this.targetView == 'Menu') {
       Menu() {
         MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu' })
-      }.commonStyle()
+      }.commonStyle().constraintSize({minWidth: 0})
     } else if (this.targetView == 'Navigation') {
       Navigation().commonStyle()
     } else if (this.targetView == 'NavRouter') {
@@ -115,7 +115,7 @@ struct FlexBasisPage {
         .commonStyle()
     } else if (this.targetView == 'Select') {
       Select([{ value: 'aaa', icon: '/common/public_icon.svg' },
-        { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle()
+        { value: 'bbb', icon: '/common/public_icon.svg' }]).commonStyle().constraintSize({minWidth: 0})
     } else if (this.targetView == 'Slider') {
       Slider({ value: 50, style: SliderStyle.OutSet, direction: Axis.Vertical })
         .blockColor('#191970')
