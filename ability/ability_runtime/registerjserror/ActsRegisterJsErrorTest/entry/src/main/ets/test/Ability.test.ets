@@ -185,8 +185,7 @@ export default function abilityTest() {
     /*
      * @tc.number: Acts_RegisterJsErrorCallback_0500
      * @tc.name: JsError callback enhancement
-     * @tc.desc: When registering JS exception listening interface parameter observer is undefined, no abnormal
-     *           error in interface execution.
+     * @tc.desc: When registering JS exception listening interface parameter observer is undefined, throw error.
      */
     it('Acts_RegisterJsErrorCallback_0500',0, async function (done) {
       console.info("====>Acts_RegisterJsErrorCallback_0500 start");
@@ -198,7 +197,7 @@ export default function abilityTest() {
         done();
       } catch (err) {
         console.info("====>Acts_RegisterJsErrorCallback_0500 catch " + JSON.stringify(err));
-        expect().assertFail();
+        expect(err.code).assertEqual(401);
         done();
       }
     })
@@ -206,8 +205,7 @@ export default function abilityTest() {
     /*
      * @tc.number: Acts_RegisterJsErrorCallback_0600
      * @tc.name: JsError callback enhancement
-     * @tc.desc: When registering JS exception listening interface parameter observer is null, no abnormal
-     *           error in interface execution.
+     * @tc.desc: When registering JS exception listening interface parameter observer is null, throw error.
      */
     it('Acts_RegisterJsErrorCallback_0600',0, async function (done) {
       console.info("====>Acts_RegisterJsErrorCallback_0600 start");
@@ -219,7 +217,155 @@ export default function abilityTest() {
         done();
       } catch (err) {
         console.info("====>Acts_RegisterJsErrorCallback_0600 catch " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_RegisterJsErrorCallback_0700
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: Js registers onUnhandledException callback to listen. There is a callback notification when
+     *           JS is abnormal.
+     */
+    it('Acts_RegisterJsErrorCallback_0700',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      console.info("====>Acts_RegisterJsErrorCallback_0700 start");
+      commonEvent.createSubscriber(ACTS_Register).then(async (data) => {
+        console.debug("====>Acts_RegisterJsErrorCallback_0700 Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.actsregisterjserrorrely",
+            abilityName: "EntryAbility",
+            action: "Acts_RegisterJsErrorCallback_0700"
+          },(err)=>{
+          console.debug("====>Acts_RegisterJsErrorCallback_0700 startAbility err: "+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        console.debug("====>Acts_RegisterJsErrorCallback_0700 subscribeCallBack data: " + JSON.stringify(data));
+        if(data.event == "ACTS_RegisterEvent_First") {
+          flag = true;
+          expect(data.parameters.message).assertContain("Error message:Cannot read property terminateSelf");
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        console.debug("====>Acts_RegisterJsErrorCallback_0700 unSubscribeCallback");
+        setTimeout(()=>{
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_RegisterJsErrorCallback_0800
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: Js registers onUnhandledException and onException callback to listen. There is a callback
+     *           notification when JS is abnormal.
+     */
+    it('Acts_RegisterJsErrorCallback_0800',0, async function (done) {
+      let subscriber;
+      let flag = false;
+      console.info("====>Acts_RegisterJsErrorCallback_0800 start")
+      commonEvent.createSubscriber(ACTS_Register).then(async (data) => {
+        console.debug("====>Acts_RegisterJsErrorCallback_0800 Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.actsregisterjserrorrely",
+            abilityName: "EntryAbility",
+            action: "Acts_RegisterJsErrorCallback_0800"
+          },(err)=>{
+          console.debug("====>Acts_RegisterJsErrorCallback_0800 startAbility err: "+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      var msg = {"ACTS_RegisterEvent_First": false, "ACTS_RegisterEvent_Second": false}
+      function subscribeCallBack(err, data) {
+        if (data.event === 'ACTS_RegisterEvent_First') {
+          console.debug("====>Acts_RegisterJsErrorCallback_0800 subscribeCallBack First data: " + JSON.stringify(data));
+          expect(data.parameters.message).assertContain("Error message:Cannot read property terminateSelf");
+          msg["ACTS_RegisterEvent_First"] = true;
+        } else if (data.event === 'ACTS_RegisterEvent_Second') {
+          console.debug("====>Acts_RegisterJsErrorCallback_0800 subscribeCallBack Second data: " +
+            JSON.stringify(data));
+          expect(data.parameters.message.name).assertEqual("TypeError");
+          expect(data.parameters.message.message).assertEqual("Cannot read property terminateSelf of undefined");
+          expect(data.parameters.message.stack).assertContain("at anonymous");
+          msg["ACTS_RegisterEvent_Second"] = true;
+        }
+
+        if (msg["ACTS_RegisterEvent_First"] == true && msg["ACTS_RegisterEvent_Second"] == true) {
+          flag = true;
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(()=>{
+          console.debug("====>Acts_RegisterJsErrorCallback_0800 unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        if(flag==false){
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_RegisterJsErrorCallback_0900
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When registering JS exception listening interface parameter observer is undefined, throw error.
+     */
+    it('Acts_RegisterJsErrorCallback_0900',0, async function (done) {
+      console.info("====>Acts_RegisterJsErrorCallback_0900 start");
+      try {
+        ErrorManager.on("errorEvent", undefined);
         expect().assertFail();
+        console.info("====>Acts_RegisterJsErrorCallback_0900 end");
+        done();
+      } catch (err) {
+        console.info("====>Acts_RegisterJsErrorCallback_0900 catch " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_RegisterJsErrorCallback_1000
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When registering JS exception listening interface parameter observer is null, throw error.
+     */
+    it('Acts_RegisterJsErrorCallback_1000',0, async function (done) {
+      console.info("====>Acts_RegisterJsErrorCallback_1000 start");
+      try {
+        ErrorManager.on("errorEvent", null);
+        expect().assertFail();
+        console.info("====>Acts_RegisterJsErrorCallback_1000 end");
+        done();
+      } catch (err) {
+        console.info("====>Acts_RegisterJsErrorCallback_1000 catch " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
         done();
       }
     })
@@ -369,9 +515,11 @@ export default function abilityTest() {
      */
     it('Acts_UnregisterJsErrorCallback_0800',0, async function (done) {
       let subscriber;
-      let flag = false;
       console.info("====>Acts_UnregisterJsErrorCallback_0800 start")
-      commonEvent.createSubscriber(ACTS_Register).then(async (data) => {
+      var eventMap = {
+        events: ["ACTS_UnregisterEvent_Fail", "ACTS_UnregisterEvent_Success"]
+      };
+      commonEvent.createSubscriber(eventMap).then(async (data) => {
         console.debug("====>Acts_UnregisterJsErrorCallback_0800 Create Subscribe");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
@@ -386,24 +534,14 @@ export default function abilityTest() {
         })
       })
 
-      var msg = {"ACTS_RegisterEvent_First": false, "ACTS_RegisterEvent_Second": false}
       function subscribeCallBack(err, data) {
-        if (data.event === 'ACTS_RegisterEvent_First') {
-          console.debug("====>Acts_UnregisterJsErrorCallback_0800 subscribeCallBack First data: " +
-            JSON.stringify(data));
-          expect(data.parameters.message).assertContain("Error message:Cannot read property terminateSelf");
-          msg["ACTS_RegisterEvent_First"] = true;
-        } else if (data.event === 'ACTS_RegisterEvent_Second') {
-          console.debug("====>Acts_UnregisterJsErrorCallback_0800 subscribeCallBack Second data: " +
-            JSON.stringify(data));
-          expect(data.parameters.message.name).assertEqual("TypeError");
-          expect(data.parameters.message.message).assertEqual("Cannot read property terminateSelf of undefined");
-          expect(data.parameters.message.stack).assertContain("at anonymous");
-          msg["ACTS_RegisterEvent_Second"] = true;
-        }
-
-        if (msg["ACTS_RegisterEvent_First"] == true && msg["ACTS_RegisterEvent_Second"] == true) {
-          flag = true;
+        if (data.event === 'ACTS_UnregisterEvent_Fail') {
+          console.debug("====>Acts_UnregisterJsErrorCallback_0800 ACTS_UnregisterEvent_Fail");
+          expect().assertFail();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        } else if (data.event === 'ACTS_UnregisterEvent_Success') {
+          console.debug("====>Acts_UnregisterJsErrorCallback_0800 ACTS_UnregisterEvent_Success");
+          expect(true).assertTrue();
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
       }
@@ -416,10 +554,157 @@ export default function abilityTest() {
       }
 
       setTimeout(()=>{
-        if(flag==false){
+        expect().assertFail();
+        commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+      },CASE_TIME_OUT)
+    })
+
+    /*
+     * @tc.number: Acts_UnregisterJsErrorCallback_0900
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When unregistering JS exception listening interface parameter observerId is undefined, throw error.
+     */
+    it('Acts_UnregisterJsErrorCallback_0900',0, async function (done) {
+      console.info("====>Acts_UnregisterJsErrorCallback_0900 start");
+      try {
+        ErrorManager.off("errorEvent", undefined);
+        console.info("====>Acts_UnregisterJsErrorCallback_0900 success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>Acts_UnregisterJsErrorCallback_0900 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_UnregisterJsErrorCallback_1000
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When unregistering JS exception listening interface parameter observerId is null, throw error.
+     */
+    it('Acts_UnregisterJsErrorCallback_1000',0, async function (done) {
+      console.info("====>Acts_UnregisterJsErrorCallback_1000 start");
+      try {
+        ErrorManager.off("errorEvent", null);
+        console.info("====>Acts_UnregisterJsErrorCallback_1000 success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>Acts_UnregisterJsErrorCallback_1000 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_UnregisterJsErrorCallback_1100
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When unregistering JS exception listening interface parameter observerId is -1, throw error.
+     */
+    it('Acts_UnregisterJsErrorCallback_1100',0, async function (done) {
+      console.info("====>Acts_UnregisterJsErrorCallback_1100 start");
+      try {
+        ErrorManager.off("errorEvent", -1);
+        console.info("====>Acts_UnregisterJsErrorCallback_1100 success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>Acts_UnregisterJsErrorCallback_1100 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(16000050);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_UnregisterJsErrorCallback_1200
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When unregistering JS exception listening interface parameter observerId is 10000, throw error.
+     */
+    it('Acts_UnregisterJsErrorCallback_1200',0, async function (done) {
+      console.info("====>Acts_UnregisterJsErrorCallback_1200 start");
+      try {
+        ErrorManager.off("errorEvent", 10000);
+        console.info("====>Acts_UnregisterJsErrorCallback_1200 success");
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info("====>Acts_UnregisterJsErrorCallback_1200 err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(16000050);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_UnregisterJsErrorCallback_1300
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When the parameter objectId of the unregistered JS exception listening interface is the correct
+     *           registered value, the interface executes correctly.
+     */
+    it('Acts_UnregisterJsErrorCallback_1300',0, async function (done) {
+      console.info("====>Acts_UnregisterJsErrorCallback_1300 start");
+      let observerId = ErrorManager.on("errorEvent", observer);
+      try {
+        ErrorManager.off("errorEvent", observerId);
+        console.info("====>Acts_UnregisterJsErrorCallback_1300 end");
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.info("====>Acts_UnregisterJsErrorCallback_1300 catch: " + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Acts_UnregisterJsErrorCallback_1400
+     * @tc.name: JsError callback enhancement
+     * @tc.desc: When unregistered as the correct registered value, the interface executes correctly and the JS
+     *           layer does not trigger an exception error callback.
+     */
+    it('Acts_UnregisterJsErrorCallback_1400',0, async function (done) {
+      let subscriber;
+      console.info("====>Acts_UnregisterJsErrorCallback_1400 start")
+      var eventMap = {
+        events: ["ACTS_UnregisterEvent_Fail", "ACTS_UnregisterEvent_Success"]
+      };
+      commonEvent.createSubscriber(eventMap).then(async (data) => {
+        console.debug("====>Acts_UnregisterJsErrorCallback_1400 Create Subscribe");
+        subscriber = data;
+        commonEvent.subscribe(subscriber, subscribeCallBack);
+        globalThis.abilityContext.startAbility(
+          {
+            bundleName: "com.example.actsregisterjserrorrely",
+            abilityName: "EntryAbility",
+            action: "Acts_UnregisterJsErrorCallback_1400"
+          },(err)=>{
+          console.debug("====>Acts_UnregisterJsErrorCallback_1400 startAbility err: "+JSON.stringify(err));
+          expect(err.code).assertEqual(0);
+        })
+      })
+
+      function subscribeCallBack(err, data) {
+        if (data.event === 'ACTS_UnregisterEvent_Fail') {
+          console.debug("====>Acts_UnregisterJsErrorCallback_1400 ACTS_UnregisterEvent_Fail");
           expect().assertFail();
           commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        } else if (data.event === 'ACTS_UnregisterEvent_Success') {
+          console.debug("====>Acts_UnregisterJsErrorCallback_1400 ACTS_UnregisterEvent_Success");
+          expect(true).assertTrue();
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
         }
+      }
+
+      function unSubscribeCallback() {
+        setTimeout(() => {
+          console.debug("====>Acts_UnregisterJsErrorCallback_1400 unSubscribeCallback");
+          done();
+        }, 800);
+      }
+
+      setTimeout(()=>{
+        expect().assertFail();
+        commonEvent.unsubscribe(subscriber, unSubscribeCallback);
       },CASE_TIME_OUT)
     })
   })
