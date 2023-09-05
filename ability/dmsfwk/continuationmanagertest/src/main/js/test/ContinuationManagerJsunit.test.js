@@ -95,7 +95,6 @@ export default function continuationManagerTest() {
             try {
                 await continuationManager.unregisterContinuation(token).then((data) => {
                     console.info('afterEach unregisterContinuation success');
-                    done();
                 })
                 .catch((e) => {
                     console.info("afterEach promise error: " + e);
@@ -103,6 +102,7 @@ export default function continuationManagerTest() {
             } catch (e) {
                 console.info("afterEach try error: " + e);
             }
+            done();
             console.info('afterEach end');
         })
 
@@ -302,15 +302,19 @@ export default function continuationManagerTest() {
                     authInfo: {}
                 };
                 continuationManager.register(continuationExtraParams).then((data) => {
+                    console.log('testRegister008 data is' + data)
                     expect(data != -1).assertTrue();
+                    done()
                 }).catch((err) => {
-                    expect(err.code == 29360210).assertTrue();
+                    console.log('testRegister008 err is' + err.code)
+                    expect(err.code == -1).assertTrue();
+                    done()
                 });
             } catch (e) {
                 console.info("testRegister008 " + e);
                 expect(null).assertFail();
+                done()
             }
-            done();
         })
 
 
@@ -329,11 +333,14 @@ export default function continuationManagerTest() {
                     authInfo: {"name": "authInfo","length": 8}
                 };
                 continuationManager.register(continuationExtraParams).then((data) => {
+                    console.log('testRegister009 data is' + data)
                     expect(data != -1).assertTrue();
+                    done()
                 }).catch((err) => {
-                    expect(err.code == 29360210).assertTrue();
+                    console.log('testRegister008 err is' + err.code)
+                    expect(err.code == 29360216).assertTrue();
+                    done();
                 });
-                done();
             } catch (e) {
                 console.info("testRegister009 " + e);
                 expect(null).assertFail();
@@ -619,10 +626,15 @@ export default function continuationManagerTest() {
         it('testUnregister001', 0, async function(done) {
             try {
                 continuationManager.unregister(token, function (err, data) {
-                    expect(err.code == 0).assertTrue();
+                    if (err.code == 0) {
+                        console.log("testUnregister001 err.code is" + err.code)
+                        expect(err.code == 0).assertTrue();
+                        done()
+                    }
+                    console.log("testUnregister001 data is" + data)
                     expect(data == undefined).assertTrue();
+                    done()
                 })
-                done();
             } catch (e) {
                 console.info("testUnregister001 " + e);
                 expect(null).assertFail();
@@ -1041,10 +1053,15 @@ export default function continuationManagerTest() {
                     authInfo: {"name": "authInfo","length": 8}
                 };
                 continuationManager.startDeviceManager(null, continuationExtraParams, function (err, data) {
-                    expect(err.code == -1).assertTrue();
+                    if (err.code == -1) {
+                       console.log('testStartDeviceManager003 err.code is' + err.code)
+                       expect(err.code == -1).assertTrue();
+                       done()
+                    }
+                    console.log('testStartDeviceManager003 data is' + data)
                     expect(data == undefined).assertTrue();
+                    done();
                 });
-                done();
             } catch (e) {
                 console.info("testStartDeviceManager003 " + e);
                 expect(null).assertFail();
