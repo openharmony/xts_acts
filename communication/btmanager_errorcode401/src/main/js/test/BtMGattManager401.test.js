@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-//import bluetooth from '@ohos.bluetooth';
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
@@ -44,9 +43,9 @@ describe('btManagerMError401Test', function() {
             let driver = Driver.create();
             console.info('[bluetooth_js] bt driver create:'+ driver);            
             await driver.delayMs(1000);
-            await driver.click(950, 2550);
+            await driver.click(860, 2490);
             await driver.delayMs(5000);
-            await driver.click(950, 2550);
+            await driver.click(860, 2490);
             await driver.delayMs(3000);
         } catch (error) {
             console.info('[bluetooth_js] driver error info:'+ error);

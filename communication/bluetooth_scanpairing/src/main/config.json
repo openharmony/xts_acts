@@ -7,8 +7,8 @@
             "name": "1.0.0"
         },
         "apiVersion": {
-            "compatible": 4,
-            "target": 5
+            "compatible": 7,
+            "target": 9
         }
     },
     "deviceConfig": {},
@@ -107,6 +107,16 @@
                 }
             },
             {
+                "name": "ohos.permission.APPROXIMATELY_LOCATION",
+                "reason": "",
+                "usedScene": {
+                    "ability": [
+                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+                    ],
+                    "when": "inuse"
+                }
+            },
+            {
                 "name": "ohos.permission.DISCOVER_BLUETOOTH",
                 "reason": "",
                 "usedScene": {
@@ -125,24 +135,6 @@
                     ],
                     "when": "inuse"
                 }
-            },
-            {
-                "name": "ohos.permission.ACCESS_BLUETOOTH",
-                "reason": "",
-                "usedScene": {
-                    "ability": [
-                        "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-                    ],
-                    "when": "inuse"
-                }
-            },
-            {
-                "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-                "reason": ""
-            },
-            {
-                "name": "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS",
-                "reason": ""
             }
         ],
         "testRunner": {
