@@ -33,7 +33,7 @@
 #include "oh_value_object.h"
 #include "oh_values_bucket.h"
 
-char RDB_TEST_PATH[] =  "/data/storage/el2/database/";
+char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
@@ -50,6 +50,28 @@ static void InitRdbConfig()
     config_.isEncrypt = false;
     config_.selfSize = sizeof(OH_Rdb_Config);
 }
+
+
+static napi_value RdbFilePath(napi_env env, napi_callback_info info) {
+    int errCode = 0;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    size_t bufferSize = 0;
+    napi_get_value_string_latin1(env, args[0], nullptr, 0, &bufferSize);
+
+    char *buffer = (char*)malloc((bufferSize) + 1);
+    napi_get_value_string_utf8(env, args[0], buffer, bufferSize+1, &bufferSize);  
+
+    RDB_TEST_PATH = (char*)malloc((bufferSize) + 1);
+    sprintf(RDB_TEST_PATH, "%s", buffer);
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
 static napi_value RdbstoreSetUpTestCase(napi_env env, napi_callback_info info) {
 
     InitRdbConfig();
@@ -1671,9 +1693,72 @@ static napi_value SUB_DDM_RDB_3100(napi_env env, napi_callback_info info) {
     return returnCode;
 }
 
+/**
+ * @tc.name: SUB_DDM_RDB_3200
+ * @tc.desc: napi test RDB store for dataBaseDir wrong
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3200(napi_env env, napi_callback_info info) {
+
+    char RDB_TEST_PATH2[] =  "/data";
+    char RDB_STORE_NAME2[] =  "rdb_store_test2.db";
+
+    OH_Rdb_Config config2_;
+    config2_.dataBaseDir = RDB_TEST_PATH2;
+    config2_.storeName = RDB_STORE_NAME2;
+    config2_.bundleName = BUNDLE_NAME;
+    config2_.moduleName = MODULE_NAME;
+    config2_.securityLevel = OH_Rdb_SecurityLevel::S1;
+    config2_.isEncrypt = false;
+    config2_.selfSize = sizeof(OH_Rdb_Config);  
+
+    mkdir(config2_.dataBaseDir, 0770);
+
+    int errCode = 0;
+    OH_Rdb_GetOrOpen(&config2_, &errCode);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_CREATE_FOLDER_FAIL  , "OH_Rdb_GetOrOpen is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
+/**
+ * @tc.name: SUB_DDM_RDB_3300
+ * @tc.desc: napi test RDB store for dataBaseDir wrong
+ * @tc.type: FUNC
+ */
+static napi_value SUB_DDM_RDB_3300(napi_env env, napi_callback_info info) {
+
+    char RDB_TEST_PATH3[] =  "";
+    char RDB_STORE_NAME3[] =  "rdb_store_test3.db";
+
+    OH_Rdb_Config config3_;
+    config3_.dataBaseDir = RDB_TEST_PATH3;
+    config3_.storeName = RDB_STORE_NAME3;
+    config3_.bundleName = BUNDLE_NAME;
+    config3_.moduleName = MODULE_NAME;
+    config3_.securityLevel = OH_Rdb_SecurityLevel::S1;
+    config3_.isEncrypt = false;
+    config3_.selfSize = sizeof(OH_Rdb_Config);  
+
+    mkdir(config3_.dataBaseDir, 0770);
+
+    int errCode = 0;
+    OH_Rdb_GetOrOpen(&config3_, &errCode);
+    NAPI_ASSERT(env, errCode == OH_Rdb_ErrCode::RDB_E_CREATE_FOLDER_FAIL , "OH_Rdb_GetOrOpen is fail.");
+    errCode = 0;
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
+        {"RdbFilePath", nullptr, RdbFilePath, nullptr, nullptr, nullptr, napi_default, nullptr},        
         {"RdbstoreSetUpTestCase", nullptr, RdbstoreSetUpTestCase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"RdbstoreTearDownTestCase", nullptr, RdbstoreTearDownTestCase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_0100", nullptr, SUB_DDM_RDB_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1706,7 +1791,10 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"SUB_DDM_RDB_2800", nullptr, SUB_DDM_RDB_2800, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_2900", nullptr, SUB_DDM_RDB_2900, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_3000", nullptr, SUB_DDM_RDB_3000, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"SUB_DDM_RDB_3100", nullptr, SUB_DDM_RDB_3100, nullptr, nullptr, nullptr, napi_default, nullptr}
+        {"SUB_DDM_RDB_3100", nullptr, SUB_DDM_RDB_3100, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3200", nullptr, SUB_DDM_RDB_3200, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"SUB_DDM_RDB_3300", nullptr, SUB_DDM_RDB_3300, nullptr, nullptr, nullptr, napi_default, nullptr}
+
     };
         
     

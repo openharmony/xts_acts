@@ -20,8 +20,16 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 const TAG = "[RdbNdkStoreTest]";
 
 export default function RdbNdkStoreTest() {
-  describe('RdbNdkStoreTest', function () {
-    beforeAll(function () {
+  describe('RdbNdkStoreTest', async function () {
+    beforeAll(async function () {
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir success. data: '+ data , 'aa');
+        testNapi.RdbFilePath(data);
+      }).catch((err) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
+      })
+      
     })
     beforeEach(function () {
       hilog.info(0x0000, TAG, 'testTag RdbstoreSetUpTestCase' , ' begin');      
@@ -384,5 +392,28 @@ export default function RdbNdkStoreTest() {
       expect(re == 0).assertTrue();
     })  
 
+    /**
+     * @tc.name: SUB_DDM_RDB_3200
+     * @tc.desc: Normal testCase of NDK store for dataBaseDir wrong
+     * @tc.type: FUNC
+     */
+    it('SUB_DDM_RDB_3200',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3200' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_3200();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    }) 
+
+  /**
+   * @tc.name: SUB_DDM_RDB_3300
+   * @tc.desc: Normal testCase of NDK store for dataBaseDir wrong.
+   * @tc.type: FUNC
+   */
+    it('SUB_DDM_RDB_3300',0, async function () {
+      hilog.info(0x0000, TAG, 'testTag SUB_DDM_RDB_3300' , ' begin');
+      let re = testNapi.SUB_DDM_RDB_3300();
+      hilog.info(0x0000, TAG, 'testTag errorCode is : '+ re , 'aa');
+      expect(re == 0).assertTrue();
+    }) 
   })
 }

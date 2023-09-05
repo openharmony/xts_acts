@@ -15,14 +15,21 @@
 import hilog from '@ohos.hilog';
 import testNapi from 'libcursor.so'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index';
-
+import featureAbility from '@ohos.ability.featureAbility';
 const TAG = "[RdbNdkStoreTest]";
 
 export default function RdbNdkStoreCursorTest() {
-  describe('RdbNdkStoreCursorTest', function () {
+  describe('RdbNdkStoreCursorTest', async function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
-
+    beforeAll(async function () {
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir success. data: '+ data , 'aa');
+        testNapi.RdbFilePath(data);
+      }).catch((err) => {
+        hilog.info(0x0000, TAG, 'testTag getFilesDir fail. err: ' + err.code + err.message , 'aa');
+      })
+      
     })
     beforeEach(function () {
       hilog.info(0x0000, TAG, 'testTag CursorSetUpTestCase' , ' begin');      
