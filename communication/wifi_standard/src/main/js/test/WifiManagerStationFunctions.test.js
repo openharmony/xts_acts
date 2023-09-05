@@ -311,7 +311,7 @@ export default function actsWifiManagerFunctionsTest() {
                 let scanResult = wifiMg.scan();
             }catch(error){
                 console.info("[error] it's the scan fail reason: "+JSON.stringify(error));
-                expect(true).assert(error.code=='2501000');
+                expect(true).assertEqual(error.code=='2501000');
             }
             await sleep(3000);
             let getScanInfoListResult = wifiMg.getScanResultsSync();
