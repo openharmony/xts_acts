@@ -89,21 +89,25 @@ struct CustomContainerUser {
                   .enabled(!this.StartEnable)
                   .opacity(!this.StartEnable? 1 : 0.4)
                   .onClick(() => {
-                    this.StartEnable = !this.StartEnable
+                    this.StartEnable = !this.StartEnable;
                     /*
                               mms
                      */
                     let MmsReport = globalThis.resultNum;
-                    let MmsHead = MmsReport.indexOf(':');
-                    let MmsTime = MmsReport.substring(MmsHead+1);
-                    this.mmsNum = parseFloat(MmsTime);
-                    if( 0 < this.mmsNum && this.mmsNum < 600 ) {
-                      this.num++
-                    } else if ( isNaN(this.mmsNum )){
+                    if (MmsReport == undefined ){
                       this.mmsNum = -1000;
-                    }
-                    if( this.num === 1 ) {
-                      this.Vue = true;
+                    } else {
+                      let MmsHead = MmsReport.indexOf(':');
+                      let MmsTime = MmsReport.substring(MmsHead+1);
+                      this.mmsNum = parseFloat(MmsTime);
+                      if( 0 < this.mmsNum && this.mmsNum < 600 ){
+                        this.num++
+                      } else if ( isNaN(this.mmsNum )){
+                        this.mmsNum = -1000;
+                      }
+                      if( this.num === 1 ) {
+                        this.Vue = true;
+                      }
                     }
                     globalThis.HideFloatingWindow();
                   })

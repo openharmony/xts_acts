@@ -93,16 +93,20 @@ struct CustomContainerUser {
                               Contacts
                      */
                     let ContactsReport = globalThis.resultNum;
-                    let ContactsHead = ContactsReport.indexOf(':');
-                    let ContactsTime = ContactsReport.substring(ContactsHead+1);
-                    this.contactsNum = parseFloat(ContactsTime);
-                    if( 0 < this.contactsNum && this.contactsNum < 600 ) {
-                      this.num++
-                    } else if ( isNaN(this.contactsNum )){
+                    if ( ContactsReport == undefined ) {
                       this.contactsNum = -1000;
-                    }
-                    if( this.num === 1 ) {
-                      this.Vue = true;
+                    } else {
+                      let ContactsHead = ContactsReport.indexOf(':');
+                      let ContactsTime = ContactsReport.substring(ContactsHead+1);
+                      this.contactsNum = parseFloat(ContactsTime);
+                      if( 0 < this.contactsNum && this.contactsNum < 600 ) {
+                        this.num++
+                      } else if ( isNaN(this.contactsNum )){
+                        this.contactsNum = -1000;
+                      }
+                      if( this.num === 1 ) {
+                        this.Vue = true;
+                      }
                     }
                     globalThis.HideFloatingWindow();
                   })
