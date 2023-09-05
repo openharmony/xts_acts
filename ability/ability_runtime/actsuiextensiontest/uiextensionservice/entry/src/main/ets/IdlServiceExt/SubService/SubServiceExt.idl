@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
 interface OHOS.SubServiceExt {
     int Sub([in] int num1,[in] int num2);
 }

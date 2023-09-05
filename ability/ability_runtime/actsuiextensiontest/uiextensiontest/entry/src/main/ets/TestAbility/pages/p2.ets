@@ -32,28 +32,6 @@ struct P1 {
           bundleName: 'com.acts.uiextensionprovider2',
           abilityName: 'UIExtAbility'
         }).width('100%').height('35%')
-          .onResult((data)=>{
-            let onResultEvent = 'ACTS_UIExtension_OnResult';
-            let options = {
-              parameters: {
-                'result': data
-              }
-            }
-            commonEventManager.publish(onResultEvent, options, (err) => {
-              console.log(TAG + 'ACTS_UIExtension_OnResult');
-            });
-          })
-          .onReceive((data)=>{
-            let onReceiveEvent = 'ACTS_UIExtension_OnReceive';
-            let options = {
-              parameters: {
-                'result': data
-              }
-            }
-            commonEventManager.publish(onReceiveEvent, options, (err) => {
-              console.log(TAG + 'ACTS_UIExtension_OnReceive');
-            });
-          })
       }
       .width('100%')
     }

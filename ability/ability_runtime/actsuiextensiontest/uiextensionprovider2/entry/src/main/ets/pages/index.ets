@@ -33,9 +33,10 @@ struct Index {
     let appearEvent = 'ACTS_UIExtension_AboutToAppear';
     let differentAppEvent007 = 'ACTS_UIExtension_DifferentApp007';
     let differentAppEvent009 = 'ACTS_UIExtension_DifferentApp009';
+    let differentAppEvent010 = 'ACTS_UIExtension_DifferentApp010';
     var subscriber;
     var subscribeInfo = {
-      events: [differentAppEvent007,differentAppEvent009]
+      events: [differentAppEvent007,differentAppEvent009,differentAppEvent010]
     }
     commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
       console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -54,8 +55,12 @@ struct Index {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDifferentAppEvent009();
+        } else if (data.event == differentAppEvent010) { 
+          commonEventManager.unsubscribe(subscriber, async (err, data) => {
+            console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+          });
+          this.doDifferentAppEvent010();
         } 
-    
       });
     }).catch((error) => {
       console.log(TAG + "createSubscriber error : " + JSON.stringify(error));
@@ -147,9 +152,29 @@ struct Index {
         bundleName: 'com.acts.uiextensionprovider2',
         abilityName: 'MainAbility'
       })
+    await this.sleep(1000);
     let connectid = globalThis.context2.connectServiceExtensionAbility(want, options);
     connectid = globalThis.context2.connectServiceExtensionAbility(wantUnvisible, optionsUnvisible);
     await this.sleep(400);
+  }
+
+  doDifferentAppEvent010(){
+    let successDifferentAppEvent010_ext2 = 'ACTS_UIExtension_DifferentApp010_ext2_Success';
+    console.log(TAG + "recv connectAbilityEvent");
+    let want = {
+      "bundleName": "com.acts.uiextensionservice",
+      "abilityName": "TestServiceExtAbility"
+    };
+    let options = {
+      onConnect(elementName, remote) {
+        commonEventManager.publish(successDifferentAppEvent010_ext2, (err) => { }); 
+      },
+      onDisconnect(elementName) {
+      },
+      onFailed(code) {
+      }
+    }
+    globalThis.context2.connectServiceExtensionAbility(want, options);
   }
 
   sleep(ms: number): Promise<void> {

@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEventManager from '@ohos.commonEventManager'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import router from '@ohos.router'
 import Utils from './Utils'
 
@@ -24,6 +25,7 @@ export default function abilityTest() {
     let TAG = "";
     let sleepTimeOne = 1000;
     let globalscribe = undefined
+    let globalId = 0
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(function () {
       // Presets an action, which is performed only once before all test cases of the test suite start.
@@ -42,9 +44,24 @@ export default function abilityTest() {
       } catch (err) {
         console.error("ACTS_UIExtension push page error: " + err);
       }
+      globalId +=1;
+      let id = globalId;
+      console.log("start globalId="+globalId);
+      setTimeout(async () => {
+        console.log("id ="+id + "globalId="+globalId);
+        if(id == globalId){
+          console.log("unsubscribe start"+globalscribe + "globalId="+globalId);
+          Utils.unsubscribe(globalscribe)
+          console.log("unsubscribe done"+globalscribe + "globalId="+globalId);
+          expect().assertFail();
+          done()
+        }
+      }, 8000); // max wait 8s
+
       done()
     });
     afterEach(async function (done) {
+      console.log("done globalId="+globalId);
       Utils.unsubscribe(globalscribe)
       router.back()
       await Utils.sleep(500);
@@ -647,11 +664,13 @@ export default function abilityTest() {
 
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let successConnectEvent = 'ACTS_UIExtension_SuccessConnect';
+      let successConnectEvent2 = 'ACTS_UIExtension_SuccessConnect2';
       let failConnectEvent = 'ACTS_UIExtension_FailConnect';
       let connectAbilityEvent = 'ACTS_UIExtension_ConnectAbility';
-
+      let conn = false;
+      let disconn = false;
       var subscribeInfo = {
-        events: [appearEvent, successConnectEvent,failConnectEvent]
+        events: [appearEvent, successConnectEvent,failConnectEvent,successConnectEvent2]
       }
       await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -669,12 +688,72 @@ export default function abilityTest() {
               }
             });
           } else if (data.event == successConnectEvent) {
-            console.log(TAG + "connectAbility success");
-            done()
+            conn = true
+            console.info("___" + conn + " "+ disconn )
+            if(disconn == true){
+              done()
+            }
+          } else if (data.event == successConnectEvent2) {
+            disconn = true
+            console.info("___" + conn + " "+ disconn )
+            if(conn == true){
+              done()
+            }
           }else if (data.event == failConnectEvent) {
             console.log(TAG + "connectAbility fail");
             expect().assertFail();
             done()
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_MoreParamater_001
+     * @tc.name    : UIExtension Connect MoreParamater
+     * @tc.desc    : test UIExtension connect and disconnect serviceAbility with more paramater
+     */
+    it('ACTS_UIExtension_MoreParamater_001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_MoreParamater_001 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successConnectMoreParamater = 'ACTS_UIExtension_Connect_More_Paramater';
+      let successDisconnectMoreParamater = 'ACTS_UIExtension_Disconnect_More_Paramater';
+      let MoreParamaterEvent = 'ACTS_UIExtension_MoreParamaterEvent';
+      let recvCount = 0;
+      var subscribeInfo = {
+        events: [appearEvent, successConnectMoreParamater,successDisconnectMoreParamater]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(MoreParamaterEvent, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == successConnectMoreParamater) {
+            recvCount +=1;
+            if(recvCount == 2){
+              done()
+            }
+          }else if (data.event == successDisconnectMoreParamater) {
+            recvCount +=1;
+            if(recvCount == 2){
+              done()
+            }
           }
         });
       }).catch((error) => {
@@ -788,10 +867,15 @@ export default function abilityTest() {
       console.log(TAG + "begin");
       let appearEvent = 'ACTS_UIExtension_AboutToAppear';
       let successSameAppEvent = 'ACTS_UIExtension_SameApp_Success';
+      let successSameAppEvent2 = 'ACTS_UIExtension_SameApp_Success2';
+      let successSameAppEvent3 = 'ACTS_UIExtension_SameApp_Success3';
       let failSameAppEvent = 'ACTS_UIExtension_SameApp_Fail';
       let sameAppEvent = 'ACTS_UIExtension_SameApp';
+      let flag1 = false;
+      let flag2 = false;
+      let flag3 = false;
       var subscribeInfo = {
-        events: [appearEvent, successSameAppEvent,failSameAppEvent]
+        events: [appearEvent, successSameAppEvent,failSameAppEvent,successSameAppEvent2,successSameAppEvent3]
       }
       await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
         console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -807,8 +891,23 @@ export default function abilityTest() {
               }
             });
           } else if (data.event == successSameAppEvent) {
-            console.log(TAG + "connectAbility success");
-            done()
+            flag1 = true;
+            console.info("___" + flag1 + " "+ flag2 + " "+flag3)
+            if(flag2 && flag3){
+              done()
+            }
+          } else if (data.event == successSameAppEvent2) {
+            flag2 = true;
+            console.info("___" + flag1 + " "+ flag2 + " "+flag3)
+            if(flag1 && flag3){
+              done()
+            }
+          } else if (data.event == successSameAppEvent3) {
+            flag3 = true;
+            console.info("___" + flag1 + " "+ flag2 + " "+flag3)
+            if(flag1 && flag2){
+              done()
+            }
           }else if (data.event == failSameAppEvent) {
             console.log(TAG + "connectAbility fail");
             expect().assertFail();
@@ -1273,6 +1372,240 @@ export default function abilityTest() {
             if(recvCount == 2){
               done()
             }
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_DifferentApp_010
+     * @tc.name    : test UIExtension in DifferentApp 010
+     * @tc.desc    : different UIExtension connect same service
+     */      
+    it('ACTS_UIExtension_DifferentApp_010',0, async function (done) {
+      TAG = 'ACTS_UIExtension_DifferentApp_010 == ';
+      console.log(TAG + "begin");
+
+      router.back() 
+      await Utils.sleep(500);
+      let options = {
+        url: 'TestAbility/pages/p3',
+      }
+      let result;
+      try {
+        result = await router.pushUrl(options);
+        await Utils.sleep(500);
+        console.info("ACTS_UIExtension push page result: " + JSON.stringify(result));
+      } catch (err) {
+        console.error("ACTS_UIExtension push page error: " + err);
+      }
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successDifferentAppEvent010_ext1 = 'ACTS_UIExtension_DifferentApp010_ext1_Success';
+      let successDifferentAppEvent010_ext2 = 'ACTS_UIExtension_DifferentApp010_ext2_Success';
+      let differentAppEvent010 = 'ACTS_UIExtension_DifferentApp010';
+      let recvCount = 0;
+      var subscribeInfo = {
+        events: [appearEvent, successDifferentAppEvent010_ext1,successDifferentAppEvent010_ext2]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(differentAppEvent010, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == successDifferentAppEvent010_ext1) {
+            recvCount +=1;
+            if(recvCount == 2){
+              done()
+            }
+          }else if (data.event == successDifferentAppEvent010_ext2) {
+            recvCount +=1;
+            if(recvCount == 2){
+              done()
+            }
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_DifferentApp_011
+     * @tc.name    : test UIExtension in DifferentApp 011
+     * @tc.desc    : UIExtension connect service visable and invisible with START_ABILITY_ABILITY and START_ABILITIES_FROM_BACKGROUND Permission in background
+     */      
+    it('ACTS_UIExtension_DifferentApp_011',0, async function (done) {
+      TAG = 'ACTS_UIExtension_DifferentApp_011 == ';
+      console.log(TAG + "begin");
+
+      router.back() 
+      await Utils.sleep(500);
+      let options = {
+        url: 'TestAbility/pages/p4',
+      }
+      let result;
+      try {
+        result = await router.pushUrl(options);
+        await Utils.sleep(500);
+        console.info("ACTS_UIExtension push page result: " + JSON.stringify(result));
+      } catch (err) {
+        console.error("ACTS_UIExtension push page error: " + err);
+      }
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successDifferentAppEvent011_visible = 'ACTS_UIExtension_DifferentApp011_visibleSuccess';
+      let successDifferentAppEvent011_unvisible = 'ACTS_UIExtension_DifferentApp011_unvisibleSuccess';
+      let differentAppEvent011 = 'ACTS_UIExtension_DifferentApp011';
+      let recvCount = 0;
+      var subscribeInfo = {
+        events: [appearEvent, successDifferentAppEvent011_visible,successDifferentAppEvent011_unvisible]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(differentAppEvent011, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == successDifferentAppEvent011_visible) {
+            recvCount +=1;
+            if(recvCount == 2){
+              done()
+            }
+          }else if (data.event == successDifferentAppEvent011_unvisible) {
+            recvCount +=1;
+            if(recvCount == 2){
+              done()
+            }
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_Device_01
+     * @tc.name    : test UIExtension back to desktop
+     * @tc.desc    : UIExtension connect service successful back to desktop
+     */      
+    it('ACTS_UIExtension_Device_01',0, async function (done) {
+      TAG = 'ACTS_UIExtension_Device_01 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successBackToDesktop = 'ACTS_UIExtension_Success_Back_To_Desktop';
+      let failBackToDesktop = 'ACTS_UIExtension_Fail_Back_To_Desktop';
+      let deviceEvent01 = 'ACTS_UIExtension_Device_Event_01';
+      let canBackToDesktop = 'ACTS_UIExtension_Can_Back_To_Desktop';
+      var subscribeInfo = {
+        events: [appearEvent, successBackToDesktop,failBackToDesktop,canBackToDesktop]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(deviceEvent01, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == canBackToDesktop) {
+            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+            await abilityDelegator.executeShellCommand("uinput -T -d 564 2759 -m 564 2759 633 2335 -u 633 2335").then((data)=>{
+              console.log(TAG + '___back to desktop');
+            }).catch((error)=>{
+              console.log(TAG + '___back to desktop error');
+            })
+          } else if (data.event == successBackToDesktop) {
+            done()
+          }else if (data.event == failBackToDesktop) {
+            expect().assertFail();
+            done()
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_Device_02
+     * @tc.name    : test UIExtension off the screen
+     * @tc.desc    : UIExtension connect service successful then off the screen
+     */      
+    it('ACTS_UIExtension_Device_02',0, async function (done) {
+      TAG = 'ACTS_UIExtension_Device_02 == ';
+      console.log(TAG + "begin");
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successOffTheScreen = 'ACTS_UIExtension_Success_Off_The_Screen';
+      let failOffTheScreen = 'ACTS_UIExtension_Fail_Off_The_Screen';
+      let deviceEvent02 = 'ACTS_UIExtension_Device_Event_02';
+      let canOffTheScreen = 'ACTS_UIExtension_Can_Off_The_Screen';
+      var subscribeInfo = {
+        events: [appearEvent, successOffTheScreen,failOffTheScreen,canOffTheScreen]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(deviceEvent02, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == canOffTheScreen) {
+            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+            await abilityDelegator.executeShellCommand("uinput -K -d 18 -u 18").then((data)=>{
+              console.log(TAG + '___screen off');
+            }).catch((error)=>{
+              console.log(TAG + '___screen off error');
+            })
+          } else if (data.event == successOffTheScreen) {
+            done()
+          }else if (data.event == failOffTheScreen) {
+            expect().assertFail();
+            done()
           }
         });
       }).catch((error) => {

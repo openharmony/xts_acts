@@ -20,6 +20,7 @@ group("actsuiextensiontest") {
       "actsabilityusertest:StartAbilityByUIContentSession",
       "uiextensionprovider:UIExtensionProvider",
       "uiextensionprovider2:UIExtensionProvider2",
+      "uiextensionprovider3:UIExtensionProvider3",
       "uiextensionservice:UIExtensionService",
       "uiextensiontest:UIExtensionTest",
     ]
