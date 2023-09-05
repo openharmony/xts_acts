@@ -42,7 +42,7 @@ struct CustomContainerUser {
         Scroll(this.scroller) {
           Column(){
             Row(){
-              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n')
+              Text(`根据以下操作步骤完成测试`+ '\n' + '\n' )
                 .fontColor(Color.White).fontSize('24fp')
             }
             Row(){

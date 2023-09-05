@@ -37,7 +37,9 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('start').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('start').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -52,7 +54,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('end').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('end').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -66,7 +70,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('left').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('left').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -80,7 +86,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('center').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('center').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;
@@ -94,7 +102,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('right').fontSize(13).border({width:2}).size({width:'18%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('right').fontSize(13)
+            }.size({width:'19%',height:'20%'})
               .onClick(()=> {
                 this.context.clearRect(0, 10, 500, 500);
                 this.context.lineWidth = 2;

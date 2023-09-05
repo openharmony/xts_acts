@@ -35,7 +35,9 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('Red').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Red').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(90, 150, 170, 120);
                 this.FillColor = '#FFFF0000';
@@ -47,7 +49,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('Yellow').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Yellow').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(90, 150, 170, 120);
                 this.FillColor = '#fffffc3c';
@@ -59,7 +63,9 @@ struct SetCircle {
                   this.Vue = true;
                 }
               })
-            Text('Green').fontSize(16).border({width:2}).size({width:'25%',height:'20%'})
+            Toggle({ type: ToggleType.Button, isOn: false }) {
+              Text('Green').fontSize(16)
+            }.size({width:'25%',height:'20%'})
               .onClick(()=>{
                 this.context.clearRect(90, 150, 170, 120);
                 this.FillColor = '#ff19fa00';
