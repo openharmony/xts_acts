@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//test/xts/acts/graphic/vkwithstar/comm.gni")
+import("//test/xts/acts/graphic/vulkan/comm.gni")
 
 config("deqp_platform_ohos_config") {
   cflags_cc = deqp_common_cflags_cc
@@ -201,8 +201,6 @@ ohos_static_library("libimagefunc0010") {
   ]
 
   configs = [ ":deqp_platform_ohos_config" ]
-
-  # public_deps = [ "//foundation/ace/ace_engine/build/external_config/flutter/skia:ace_skia_ohos" ]
 }
 
 ohos_moduletest_suite("ActsImageTestSuite0010") {
