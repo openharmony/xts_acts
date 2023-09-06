@@ -61,7 +61,7 @@ describe('audioCapturerChange', function () {
         await sleep(1000);
     })
 
-    afterEach(function () {
+    afterEach(async function () {
         console.info(`${Tag}:  afterEach: Test case-level clearance conditions`);
     })
 
@@ -983,7 +983,7 @@ describe('audioCapturerChange', function () {
 
         await sleep(100);
 
-        await audioStreamManagerCB.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
+        await audioStreamManagerCB.getCurrentAudioCapturerInfoArray().then(async function (AudioCapturerChangeInfoArray) {
             console.info(`AFCapturerChangeLog: [GET_CAP_STA_1_PR] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -995,8 +995,16 @@ describe('audioCapturerChange', function () {
                     if (devDescriptor != null) {
                         audioStreamManagerCB.off('audioCapturerChange');
                         console.info(`audioCapturerChange off Success `);
-                        expect(true).assertTrue();
-                        done();
+                        await audioCap.release().then(function () {
+                            console.info(`${Tag}: Capturer release : SUCCESS`);
+                            expect(true).assertTrue();
+                            done();
+                        }).catch((err) => {
+                            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
+                            expect(false).assertTrue();
+                            done();
+                        });
+                       
                     }
                 }
             }
@@ -1006,13 +1014,7 @@ describe('audioCapturerChange', function () {
             done();
         });
 
-        await audioCap.release().then(function () {
-            console.info(`${Tag}: Capturer release : SUCCESS`);
-        }).catch((err) => {
-            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
-            expect(false).assertTrue();
-            done();
-        });
+        
     })
 
     /**
@@ -1073,7 +1075,7 @@ describe('audioCapturerChange', function () {
 
         await sleep(100);
 
-        await audioStreamManager.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
+        await audioStreamManager.getCurrentAudioCapturerInfoArray().then(async function (AudioCapturerChangeInfoArray) {
             console.info(`${Tag}: [GET_CAPTURER_STATE_2_PROMISE] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -1084,8 +1086,16 @@ describe('audioCapturerChange', function () {
                     }
                     if (devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
-                        expect(true).assertTrue();
+                        await audioCap.release().then(function () {
+                            console.info(`${Tag}: Capturer release : SUCCESS`);
+                            expect(true).assertTrue();
                         done();
+                        }).catch((err) => {
+                            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
+                            expect(false).assertTrue();
+                            done();
+                        });
+                        
                     }
                 }
             }
@@ -1095,13 +1105,7 @@ describe('audioCapturerChange', function () {
             done();
         });
 
-        await audioCap.release().then(function () {
-            console.info(`${Tag}: Capturer release : SUCCESS`);
-        }).catch((err) => {
-            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
-            expect(false).assertTrue();
-            done();
-        });
+        
     })
 
     /**
@@ -1168,7 +1172,7 @@ describe('audioCapturerChange', function () {
 
         await sleep(100);
 
-        await audioStreamManager.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
+        await audioStreamManager.getCurrentAudioCapturerInfoArray().then(async function (AudioCapturerChangeInfoArray) {
             console.info(`${Tag}: [GET_CAPTURER_STATE_3_PROMISE] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -1179,8 +1183,16 @@ describe('audioCapturerChange', function () {
                     }
                     if (devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
-                        expect(true).assertTrue();
-                        done();
+                        await audioCap.release().then(function () {
+                            console.info(`${Tag}: Capturer release : SUCCESS`);
+                            expect(true).assertTrue();
+                            done();
+                        }).catch((err) => {
+                            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
+                            expect(false).assertTrue();
+                            done();
+                        });
+                        
                     }
                 }
             }
@@ -1190,13 +1202,7 @@ describe('audioCapturerChange', function () {
             done();
         });
 
-        await audioCap.release().then(function () {
-            console.info(`${Tag}: Capturer release : SUCCESS`);
-        }).catch((err) => {
-            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
-            expect(false).assertTrue();
-            done();
-        });
+        
     })
 
     /**
@@ -1226,7 +1232,6 @@ describe('audioCapturerChange', function () {
             capturerInfo: AudioCapturerInfo
         }
 
-        let resultFlag = false;
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
@@ -1247,7 +1252,7 @@ describe('audioCapturerChange', function () {
 
         await sleep(100);
 
-        await audioStreamManagerCB.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
+        await audioStreamManagerCB.getCurrentAudioCapturerInfoArray().then(async function (AudioCapturerChangeInfoArray) {
             console.info(`AFCapturerChangeLog: [GET_CAP_DD_PR] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -1262,25 +1267,29 @@ describe('audioCapturerChange', function () {
                         console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                             audioStreamManagerCB.off('audioCapturerChange');
-                            expect(true).assertTrue();
+                            await audioCap.release().then(function () {
+                                console.info(`${Tag}: Capturer release : SUCCESS`);
+                                expect(true).assertTrue();
                             done();
+                            }).catch((err) => {
+                                console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
+                                expect(false).assertTrue();
+                            done();
+                            });
+                            
                         }
                     }
                 }
             }
         }).catch((err) => {
             console.log(`${Tag}: getCurrentAudioCapturerInfoArray :ERROR:${err.message}`);
-            resultFlag = false;
-        });
-
-        await audioCap.release().then(function () {
-            console.info(`${Tag}: Capturer release : SUCCESS`);
-        }).catch((err) => {
-            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
-        });
-
-        expect(resultFlag).assertTrue();
+            expect(false).assertTrue();
         done();
+        });
+
+
+
+        
     })
 
     /**
