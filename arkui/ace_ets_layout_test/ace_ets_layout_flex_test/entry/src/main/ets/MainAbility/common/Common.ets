@@ -14,13 +14,13 @@
  */
 
 export default class CommonFunc {
-  static rect_left;
-  static rect_top;
-  static rect_right;
-  static rect_bottom;
-  static rect_value;
+  static rect_left: any;
+  static rect_top: any;
+  static rect_right: any;
+  static rect_bottom: any;
+  static rect_value: any;
   
-  static sleep(time){
+  static sleep(time: number){
         return new Promise((resolve,reject)=>{
             setTimeout(()=>{
                 resolve("ok")
@@ -30,7 +30,7 @@ export default class CommonFunc {
         })
   }
   
- static getComponentRect(key) {
+ static getComponentRect(key: string) {
     let strJson = getInspectorByKey(key);
     let obj = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
