@@ -199,6 +199,9 @@ struct IndexPage {
                       this.ColorObject[index] =  'none ';
                     });
                     this.ClearText();
+                    router.replaceUrl({
+                      url:'pages/ArkUI/ArkUI_index',
+                    })
                     prompt.showToast({
                       message: '结果已删除', duration: 1000
                     });

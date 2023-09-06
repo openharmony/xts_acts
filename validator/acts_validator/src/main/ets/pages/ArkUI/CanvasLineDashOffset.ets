@@ -33,36 +33,34 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
-              .translate({ x: this.X, y: 20, z: 5 })
-              .gesture(
-                PanGesture({})
-                  .onActionStart((event: GestureEvent) => {
-                    console.info('Pan start');
+            Row() {
+              Slider({
+                value: this.X,
+                min: 0,
+                max: 100,
+                style: SliderStyle.OutSet,
+              })
+                .trackColor('#4DCB26')
+                .selectedColor('#00A7FA')
+                .trackThickness('8vp')
+                .blockBorderColor('#07B9A2')
+                .blockBorderWidth('1vp')
+                .onChange((value: number, mode: SliderChangeMode) => {
+                  this.X = value;
+                  this.context.clearRect(100, 90, 250, 200);
+                  this.context.setLineDash([20,30]);
+                  this.context.beginPath();
+                  this.context.arc(180, 150, 50, 0, 6.28);
+                  this.context.lineDashOffset = (this.X) * 0.4;
+                  this.context.stroke();
+                  if ( value >= 100 ){
                     this.Vue = true;
-                  })
-                  .onActionUpdate((event: GestureEvent) => {
-                    if(event.offsetX > 200){
-                      event.offsetX = 200;
-                    }
-                    else if(event.offsetX < 20){
-                      event.offsetX = 20;
-                    }
-                    this.X = event.offsetX;
-                    this.context.clearRect(100, 90, 250, 200);
-                    this.context.setLineDash([20,30]);
-                    this.context.beginPath();
-                    this.context.arc(180, 150, 50, 0, 6.28);
-                    this.context.lineDashOffset = (this.X) * 0.2;
-                    this.context.stroke();
-                  })
-                  .onActionEnd(() => {
-                    console.info('Pan end');
-                  })
-              )
+                  }
+                })
+            }
           }.width('70%').height('25%')
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-            Text('虚线偏移量: ' + (this.X)*0.2 )
+            Text('虚线偏移量: ' + (this.X)*0.4 )
           }.width('100%').height('20%')
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)

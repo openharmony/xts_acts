@@ -33,36 +33,31 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
-              .translate({ x: this.X, y: 20, z: 5 })
-              .gesture(
-                PanGesture({})
-                  .onActionStart((event: GestureEvent) => {
-                    this.context.shadowColor = 'rgb(0,0,0)';
-                    this.context.fillStyle = 'rgb(255,0,0)';
-                    this.context.fillRect(150, 150, 100, 100);
-                    console.info('Pan start');
+            Row() {
+              Slider({
+                value: this.X,
+                min: 0,
+                max: 100,
+                style: SliderStyle.OutSet,
+              })
+                .trackColor('#4DCB26')
+                .selectedColor('#00A7FA')
+                .trackThickness('8vp')
+                .blockBorderColor('#07B9A2')
+                .blockBorderWidth('1vp')
+                .onChange((value: number, mode: SliderChangeMode) => {
+                  this.context.clearRect(10, 50, 400, 300);
+                  this.X = value;
+                  this.context.shadowBlur = 10;
+                  this.context.shadowOffsetY = (this.X)*0.1;
+                  this.context.shadowColor = 'rgb(0,0,0)';
+                  this.context.fillStyle = 'rgb(255,0,0)';
+                  this.context.fillRect(150, 150, 100, 100);
+                  if ( value >= 100 ){
                     this.Vue = true;
-                  })
-                  .onActionUpdate((event: GestureEvent) => {
-                    if(event.offsetX > 200){
-                      event.offsetX = 200;
-                    }
-                    else if(event.offsetX < 20){
-                      event.offsetX = 20;
-                    }
-                    this.context.clearRect(10, 50, 400, 300);
-                    this.X = event.offsetX;
-                    this.context.shadowBlur = 10;
-                    this.context.shadowOffsetY = (this.X)*0.05;
-                    this.context.shadowColor = 'rgb(0,0,0)';
-                    this.context.fillStyle = 'rgb(255,0,0)';
-                    this.context.fillRect(150, 150, 100, 100);
-                  })
-                  .onActionEnd(() => {
-                    console.info('Pan end');
-                  })
-              )
+                  }
+                })
+            }
           }.width('70%').height('25%')
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }){
             Text('阴影偏移: ' + (this.X)*0.05 )
