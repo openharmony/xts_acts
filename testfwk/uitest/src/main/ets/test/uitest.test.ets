@@ -135,6 +135,7 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let Button3 = await driver.findComponent(ON.text('jump'))
             expect(Button3 == null).assertTrue()
+            await driver.click(center.x, center.y)
             await stopApplication('com.uitestScene.acts')
         })
 
