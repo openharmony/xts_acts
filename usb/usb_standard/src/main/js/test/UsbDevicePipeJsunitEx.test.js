@@ -23,17 +23,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function UsbDevicePipeJsFunctionsTestEx() {
 describe('UsbDevicePipeJsFunctionsTestEx', function () {
 
-  var gDeviceList
-  var gPipe
-  var portCurrentMode
+  var gDeviceList;
+  var gPipe;
+  var portCurrentMode;
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestEx Begin*************');
-    var Version = usbManager.getVersion()
-    console.info('usb unit begin test getversion :' + Version)
+    var Version = usbManager.getVersion();
+    console.info('usb unit begin test getversion :' + Version);
 
     // version > 17  host currentMode = 2 device currentMode = 1
-    var usbPortList = usbManager.getPorts()
+    var usbPortList = usbManager.getPorts();
     if (usbPortList == undefined) {
       portCurrentMode = 1;
       return
@@ -43,22 +43,22 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       if (gDeviceList.length > 0) {
         if (usbPortList[0].status.currentMode == 1) {
           usbManager.setPortRoles(usbPortList[0].id, usbManager.SOURCE, usbManager.HOST).then(data => {
-            portCurrentMode = 2
+            portCurrentMode = 2;
             console.info('usb case setPortRoles  return: ' + data);
           }).catch(error => {
             console.info('usb case setPortRoles  error : ' + error);
           });
   
           console.log('*************Usb Unit switch to host Ex Begin*************');
-          CheckEmptyUtils.sleep(8000)
+          CheckEmptyUtils.sleep(8000);
         }
+
+        gPipe = usbManager.connectDevice(gDeviceList[0]);
+        console.info('usb unit connectDevice  gPipe ret : ' + JSON.stringify(gPipe));
       } else {
-        portCurrentMode = 1
+        portCurrentMode = 1;
       }
     }
-
-    gPipe = usbManager.connectDevice(gDeviceList[0])
-    console.info('usb unit connectDevice  gPipe ret : ' + JSON.stringify(gPipe));
   })
   beforeEach(function () {
     console.info('beforeEach: *************Usb Unit Test Ex Case*************');
@@ -67,7 +67,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
     console.info('afterEach: *************Usb Unit Test Ex Case*************');
   })
   afterAll(function () {
-    var isPipClose = usbManager.closePipe(gPipe)
+    var isPipClose = usbManager.closePipe(gPipe);
     console.info('usb unit close gPipe ret : ' + isPipClose);
     console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestEx End*************');
   })
