@@ -84,17 +84,21 @@ struct CustomContainerUser {
                   .onClick(() => {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
-                    let reg = /fps:(\d+)/g;
-                    let matches = report.match(reg);
-                    if (matches == null) {
+                    if ( report == undefined ) {
                       this.Fps = 0;
-                    }
-                    else {
-                      let fpsValues = matches.map(match => parseInt(match.substring(4)));
-                      let maxFps = Math.max(...fpsValues);
-                      this.Fps = maxFps;
-                      if(maxFps >= 55) {
-                        this.Vue = true;
+                    } else {
+                      let reg = /fps:(\d+)/g;
+                      let matches = report.match(reg);
+                      if (matches == null) {
+                        this.Fps = 0;
+                      }
+                      else {
+                        let fpsValues = matches.map(match => parseInt(match.substring(4)));
+                        let maxFps = Math.max(...fpsValues);
+                        this.Fps = maxFps;
+                        if(maxFps >= 55) {
+                          this.Vue = true;
+                        }
                       }
                     }
                     globalThis.HideFloatingWindow();

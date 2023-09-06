@@ -94,16 +94,20 @@ struct CustomContainerUser {
                               photos
                      */
                     let photosReport = globalThis.resultNum;
-                    let photosHead = photosReport.indexOf('time:');
-                    let photosTime = photosReport.substring(photosHead+5);
-                    this.photosNum = parseFloat(photosTime);
-                    if( 0 < this.photosNum && this.photosNum < 2300 ) {
-                      this.num++
-                    } else if ( isNaN(this.photosNum )){
+                    if ( photosReport == undefined ) {
                       this.photosNum = -1000;
-                    }
-                    if( this.num === 1 ) {
-                      this.Vue = true;
+                    } else {
+                      let photosHead = photosReport.indexOf('time:');
+                      let photosTime = photosReport.substring(photosHead+5);
+                      this.photosNum = parseFloat(photosTime);
+                      if( 0 < this.photosNum && this.photosNum < 2300 ) {
+                        this.num++
+                      } else if ( isNaN(this.photosNum )){
+                        this.photosNum = -1000;
+                      }
+                      if( this.num === 1 ) {
+                        this.Vue = true;
+                      }
                     }
                     globalThis.HideFloatingWindow();
                   })

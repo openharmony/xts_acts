@@ -89,23 +89,25 @@ struct CustomContainerUser {
                   .enabled(!this.StartEnable)
                   .opacity(!this.StartEnable? 1 : 0.4)
                   .onClick(() => {
-
                     this.StartEnable = !this.StartEnable;
                     /*
                               camera
                      */
-                    console.log('result num: ' + globalThis.resultNum);
                     let CameraReport = globalThis.resultNum;
-                    let CameraHead = CameraReport.indexOf('time:');
-                    let CameraTime = CameraReport.substring(CameraHead+5);
-                    this.cameraNum = parseFloat(CameraTime);
-                    if( 0 < this.cameraNum && this.cameraNum < 2300 ) {
-                      this.num++
-                    } else if ( isNaN(this.cameraNum )){
+                    if ( CameraReport == undefined ) {
                       this.cameraNum = -1000;
-                    }
-                    if( this.num === 1 ) {
-                      this.Vue = true;
+                    } else{
+                      let CameraHead = CameraReport.indexOf('time:');
+                      let CameraTime = CameraReport.substring(CameraHead+5);
+                      this.cameraNum = parseFloat(CameraTime);
+                      if( 0 < this.cameraNum && this.cameraNum < 2300 ) {
+                        this.num++
+                      } else if ( isNaN(this.cameraNum )){
+                        this.cameraNum = -1000;
+                      }
+                      if( this.num === 1 ) {
+                        this.Vue = true;
+                      }
                     }
                     globalThis.HideFloatingWindow();
                   })
