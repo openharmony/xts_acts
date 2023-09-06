@@ -62,7 +62,7 @@ struct SetCircle {
             }
           }.width('70%').height('25%')
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }){
-            Text('透明度: ' + (this.X)*0.005 )
+            Text('透明度: ' + (this.X)*0.01 )
           }.width('100%').height('20%')
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
             Canvas(this.context)
