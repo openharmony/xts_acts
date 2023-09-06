@@ -40,6 +40,15 @@ async function stopApplication(bundleName: string) {
 export default function UiTest() {
     
     describe('UiTest_API10', function () {
+        beforeAll(async function () {
+            let driver = Driver.create()
+            await driver.delayMs(500)
+            let btn = await driver.findComponent(ON.id('ScreenLock-Accounts_Image_userIcon'))
+            if (btn != null) {
+            await btn.click()
+            }
+        })
+        
         afterEach(async function () {
             await stopApplication('com.uitestScene.acts')
         })
