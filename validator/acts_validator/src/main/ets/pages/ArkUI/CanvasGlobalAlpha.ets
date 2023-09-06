@@ -21,7 +21,7 @@ struct SetCircle {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State FillColor: string = '#FF000000';
-  @State X: number = 0;
+  @State X: number = 5;
   @State name: string = 'CanvasGlobalAlpha';
   @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：透明度随着拖拽距离而改变，并显示透明度';
   @State Vue: boolean = false;
