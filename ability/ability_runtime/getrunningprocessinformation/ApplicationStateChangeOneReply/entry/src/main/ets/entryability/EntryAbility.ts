@@ -15,12 +15,12 @@
 import hilog from '@ohos.hilog';
 import Ability from '@ohos.app.ability.UIAbility';
 import type Window from '@ohos.window';
-import commonEvent from '@ohos.commonEventManager';
+import commonEvent from '@ohos.commonEvent';
 
 let commonStateArr: number[] = [-1, -1, -1, -1];
 let commonEventData = {
   parameters: {
-    "commonStateArr": commonStateArr
+    commonStateArr: commonStateArr
   }
 };
 
@@ -40,7 +40,6 @@ let applicationStateChangeCallbackFir = {
   onApplicationForeground() {
     console.log(tag, 'applicationStateChangeCallbackFir onApplicationForeground');
     commonEventData.parameters.commonStateArr[zero] = defineTag;
-    console.log(tag, 'commonEventData.parameters.commonStateArr[0] = 1');
 
     setTimeout(() => {
       console.info('Enter onApplicationForeground publish!');
@@ -65,12 +64,10 @@ let applicationStateChangeCallbackSec = {
   onApplicationForeground() {
     console.log(tag, 'applicationStateChangeCallbackSec onApplicationForeground');
     commonEventData.parameters.commonStateArr[two] = defineTag;
-    console.log(tag, 'commonEventData.parameters.commonStateArr[2] = 1');
   },
   onApplicationBackground() {
     console.log(tag, 'applicationStateChangeCallbackSec onApplicationBackground');
     commonEventData.parameters.commonStateArr[three] = defineTag;
-    console.log(tag, 'commonEventData.parameters.commonStateArr[3] = 1');
     if (globalThis.want.action === 'doubleNeedBackGroundOff') {
       setTimeout(() => {
         globalThis.applicationContext.off('applicationStateChange', applicationStateChangeCallbackSec);
@@ -99,7 +96,6 @@ export default class EntryAbility extends Ability {
     globalThis.want = want;
     globalThis.applicationContext = this.context.getApplicationContext();
     if (globalThis.want.action === 'RegisterOnOffOn') {
-      console.log("globalThis.want.action === 'RegisterOnOffOn'")
       globalThis.applicationContext.on('applicationStateChange', applicationStateChangeCallbackFir);
       globalThis.applicationContext.off('applicationStateChange', applicationStateChangeCallbackFir);
     }
