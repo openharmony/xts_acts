@@ -21,7 +21,7 @@ struct SetCircle {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   @State FillColor: string = '#FF000000';
-  @State X: number = 20;
+  @State X: number = 0;
   @State name: string = 'CanvasGlobalAlpha';
   @State StepTips: string = '操作步骤：拖动滑块向右移动'+'\n'+'预期结果：透明度随着拖拽距离而改变，并显示透明度';
   @State Vue: boolean = false;
@@ -34,35 +34,32 @@ struct SetCircle {
       Scroll() {
         Column() {
           Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }){
-            Text('→').fontSize(16).border({width:2}).size({width:'20%',height:'20%'})
-              .translate({ x: this.X, y: 20, z: 5 })
-              .gesture(
-                PanGesture({})
-                  .onActionStart((event: GestureEvent) => {
-                    console.info('Pan start');
+            Row() {
+              Slider({
+                value: this.X,
+                min: 0,
+                max: 100,
+                style: SliderStyle.OutSet,
+              })
+                .trackColor('#4DCB26')
+                .selectedColor('#00A7FA')
+                .trackThickness('8vp')
+                .blockBorderColor('#07B9A2')
+                .blockBorderWidth('1vp')
+                .onChange((value: number, mode: SliderChangeMode) => {
+                  this.X = value;
+                  this.context.clearRect(100, 100, 250, 200);
+                  this.context.globalAlpha = (this.X)*0.01;
+                  this.context.fillStyle = 'rgb(255,0,0)';
+                  this.context.fillRect(150, 150, 50, 50);
+                  this.context.globalAlpha = (this.X)*0.01;
+                  this.context.fillStyle = 'rgb(0,0,255)';
+                  this.context.fillRect(200, 200, 50, 50);
+                  if ( value >= 100 ){
                     this.Vue = true;
-                  })
-                  .onActionUpdate((event: GestureEvent) => {
-                    this.context.clearRect(100, 100, 250, 200);
-                    if(event.offsetX>200){
-                      event.offsetX = 200;
-                    }
-                    else if (event.offsetX < 20){
-                      event.offsetX = 20;
-                    }
-                    this.X = event.offsetX;
-                    this.context.globalAlpha = (this.X)*0.005;
-                    this.context.fillStyle = 'rgb(255,0,0)';
-                    this.context.fillRect(150, 150, 50, 50);
-                    this.context.globalAlpha = (this.X)*0.005;
-                    this.context.fillStyle = 'rgb(0,0,255)';
-                    this.context.fillRect(200, 200, 50, 50);
-                  })
-                  .onActionEnd(() => {
-                    console.info('Pan end');
-                  })
-              )
-
+                  }
+                })
+            }
           }.width('70%').height('25%')
           Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }){
             Text('透明度: ' + (this.X)*0.005 )

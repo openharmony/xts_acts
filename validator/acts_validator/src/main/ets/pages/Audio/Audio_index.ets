@@ -181,6 +181,9 @@ struct IndexPage {
                       this.ColorObject[index] =  'none ';
                     });
                     this.ClearText();
+                    router.replaceUrl({
+                      url:'pages/Audio/Audio_index',
+                    })
                     prompt.showToast({
                       message: '结果已删除', duration: 1000
                     });
