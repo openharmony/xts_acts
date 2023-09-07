@@ -58,6 +58,15 @@
         "label": "$string:MainAbility4_label",
         "visible": true,
         "launchType": "singleton"
+      },
+      {
+        "name": "MainAbility5",
+        "srcEntrance": "./ets/MainAbility5/MainAbility5.ts",
+        "description": "$string:MainAbility5_desc",
+        "icon": "$media:icon",
+        "label": "$string:MainAbility5_label",
+        "visible": true,
+        "launchType": "singleton"
       }
     ],
     "requestPermissions": [
