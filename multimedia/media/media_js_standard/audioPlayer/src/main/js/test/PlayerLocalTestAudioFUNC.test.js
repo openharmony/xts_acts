@@ -387,6 +387,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
                 console.info('case loop step 1');
                 seekCount++;
                 expect(testAudioPlayer.state).assertEqual('playing');
+                mediaTestBase.msleep(2000);
                 testAudioPlayer.seek(DURATION_TIME - 1000);
             } else if ((seekDoneTime == (DURATION_TIME - 1000)) && seekCount == 1) {
                 console.info('case loop step 2');
