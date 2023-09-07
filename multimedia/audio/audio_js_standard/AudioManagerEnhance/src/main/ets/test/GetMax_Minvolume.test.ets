@@ -26,8 +26,8 @@ export default function audioManagerTest() {
     let TagFrmwk = "audioManagerEnhanceTest";
     beforeAll(async function () {
       console.info('TestLog: Start Testing audioManagerTest Interfaces\n');
-      await getPermission();
-      await sleep(3000);
+      // await getPermission();
+      // await sleep(3000);
     })
     beforeEach(async function () {
       console.info(`${TagFrmwk}: beforeEach: Prerequisites at the test case level`);
