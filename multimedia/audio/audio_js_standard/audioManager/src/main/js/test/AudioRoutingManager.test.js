@@ -88,7 +88,7 @@ describe("AudioRoutingManagerJsTest", function () {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0200 parameter check ERROR: ${JSON.stringify(data)}`);
         expect().assertFail();
       } catch(e) {
-        if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
+        if (e.code != 401) {
           console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0200 ERROR: ${e.message}`);
           expect().assertFail();
           done();
@@ -114,7 +114,7 @@ describe("AudioRoutingManagerJsTest", function () {
       console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETPREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 parameter check ERROR: `+JSON.stringify(data));
       expect().assertFail();
     } catch(e) {
-      if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
+      if (e.code != 401) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0300 ERROR: ${e.message}`);
         expect().assertFail();
         done();
@@ -141,7 +141,7 @@ describe("AudioRoutingManagerJsTest", function () {
       console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0400 parameter check ERROR: `+JSON.stringify(data));
       expect().assertFail();
     } catch(e) {
-      if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
+      if (e.code != 401) {
         console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0400 ERROR: ${e.message}`);
         expect().assertFail();
         done();
@@ -189,16 +189,28 @@ describe("AudioRoutingManagerJsTest", function () {
      */
   it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600", 0, async function (done) {
     let routingManager = audio.getAudioManager().getRoutingManager();
+    try {
       routingManager.getPreferOutputDeviceForRendererInfo(numberParameter, (e, data)=>{
-        if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
+        if (e.code != 401) {
           console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 ERROR: ${e.message}`);
-          expect().assertFail();
+          expect(false).assertTrue();
           done();
         }
-        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 check number parameter PASS`);
-        expect(true).assertTrue();
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 check number parameter fail`);
+        expect(false).assertTrue();
         done();
       });
+    } catch (error) {
+      if (error.code != 401) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 ERROR: ${error.message},${error.code}`);
+         expect(false).assertTrue();
+        done();
+      }
+      console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0600 check number parameter PASS,${error.code}`);
+      expect(true).assertTrue();
+      done();
+    }
+      
   })
 
   /**
@@ -211,16 +223,28 @@ describe("AudioRoutingManagerJsTest", function () {
      */
   it("SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700", 0, async function (done) {
     let routingManager = audio.getAudioManager().getRoutingManager();
+    try {
       routingManager.getPreferOutputDeviceForRendererInfo(stringParameter, (e, data)=>{
-        if (e.code != audio.AudioErrors.ERROR_INVALID_PARAM) {
+        if (e.code != 401) {
           console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700 ERROR: ${e.message}`);
-          expect().assertFail();
+          expect(false).assertTrue();
           done();
         }
-        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700 check string parameter PASS`);
-        expect(true).assertTrue();
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700 check string parameter fail`);
+        expect(false).assertTrue();
         done();
       });
+    } catch (error) {
+      if (error.code != 401) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700 ERROR: ${error.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+      console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0700 check string parameter PASS,${error.code}`);
+      expect(true).assertTrue();
+      done();
+    }
+      
   })
 
   /**
