@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("main") {
+ohos_hap_assist_suite("ActsuiExtensionForResultRely") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
@@ -22,7 +22,7 @@ ohos_hap_assist_suite("main") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "main"
+  hap_name = "ActsuiExtensionForResultRely"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }

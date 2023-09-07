@@ -13,31 +13,31 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("forresulttestnopermission") {
+ohos_hap_assist_suite("ActsForResultTestRely") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":forresulttestnopermission_js_assets",
-    ":forresulttestnopermission_resources",
+    ":forresulttest_js_assets",
+    ":forresulttest_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "forresulttestnopermission"
+  hap_name = "ActsForResultTestRely"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 
-ohos_app_scope("forresulttestnopermission_app_profile") {
+ohos_app_scope("forresulttest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("forresulttestnopermission_js_assets") {
+ohos_js_assets("forresulttest_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("forresulttestnopermission_resources") {
+ohos_resources("forresulttest_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":forresulttestnopermission_app_profile" ]
+  deps = [ ":forresulttest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

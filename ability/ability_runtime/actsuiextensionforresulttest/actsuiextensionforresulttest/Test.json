@@ -9,16 +9,6 @@
         "testcase-timeout": 25000
     },
     "kits": [
-		{
-            "test-file-name": [
-                "forresulttest.hap",
-                "forresulttestnopermission.hap",
-                "main.hap",
-                "maintest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
-        },
         {
             "type": "ShellKit",
             "run-command": [
@@ -27,6 +17,26 @@
                 "power-shell wakeup",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
                 "power-shell setmode 602"
+            ]
+        },
+		{
+            
+            "test-file-name": [
+                "ActsForResultTestRely.hap",
+                "ActsForResultTestNoPermissionRely.hap",
+                "ActsuiExtensionForResultRely.hap",
+                "ActsuiExtensionForResultTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -Q domainoff",
+                "hilog -b D",
+                "setenforce 0"
             ],
             "teardown-command": [
                 "param set persist.sys.suspend_manager_enabled true",

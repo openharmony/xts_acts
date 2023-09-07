@@ -13,14 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("actsforresult") {
+group("actsuiextensionforresulttest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "forresulttest:forresulttest",
-      "forresulttestnopermission:forresulttestnopermission",
-      "main:main",
-      "maintest:maintest",
+      "actsforresulttestnopermissionrely:ActsForResultTestNoPermissionRely",
+      "actsforresulttestrely:ActsForResultTestRely",
+      "actsuiextensionforresultrely:ActsuiExtensionForResultRely",
+      "actsuiextensionforresulttest:ActsuiExtensionForResultTest",
     ]
   }
 }
