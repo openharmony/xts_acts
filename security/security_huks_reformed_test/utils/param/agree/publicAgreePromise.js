@@ -14,8 +14,8 @@
  */
 import huks from '@ohos.security.huks';
 import { HksTag, HksKeyStorageType, HksKeyAlg } from '../publicParam';
-import { HuksAgreeECDH } from './publicAgreeParam.js';
-import { stringToUint8Array } from '../publicFunc.js';
+import { HuksAgreeECDH } from './publicAgreeParam';
+import { stringToUint8Array } from '../publicFunc';
 import { expect } from 'deccjsunit/index';
 let exportKeyFrist;
 let exportKeySecond;
@@ -158,18 +158,17 @@ async function publicAgreeDeleteFunc(srcKeyAlies, HuksOptions) {
   }
 }
 
-async function publicAgreeFunc(
-  srcKeyAliesFrist,
+async function publicAgreeFunc(srcKeyAliesFirst,
   srcKeyAliesSecond,
   HuksOptions,
   HuksOptionsFinish,
-  thirdInderfaceName
+  thirdInderfaceName,
+  isDeleteFinalKeys,
 ) {
   try {
-    
-    await publicAgreeGenFunc(srcKeyAliesFrist, HuksOptions);
+    await publicAgreeGenFunc(srcKeyAliesFirst, HuksOptions);
     await publicAgreeGenFunc(srcKeyAliesSecond, HuksOptions);
-    await publicAgreeExport1Func(srcKeyAliesFrist, HuksOptions, 1);
+    await publicAgreeExport1Func(srcKeyAliesFirst, HuksOptions, 1);
     await publicAgreeExport1Func(srcKeyAliesSecond, HuksOptions, 2);
 
     if (HuksOptions.properties[0].value == HksKeyAlg.HKS_ALG_ECC) {
@@ -180,12 +179,19 @@ async function publicAgreeFunc(
     }
 
     let HuksOptionsInit = JSON.parse(JSON.stringify(HuksOptions));
-    HuksOptionsInit.properties.splice(2,1,HuksOptionsFinish.properties[3])
+    HuksOptionsInit.properties.splice(2, 1, HuksOptionsFinish.properties[3])
 
-    await publicAgreeInitFunc(srcKeyAliesFrist, HuksOptionsInit);
+    //1st Agree
+    HuksOptionsFinish.properties.splice(6, 1, {
+      tag: HksTag.HKS_TAG_KEY_ALIAS,
+      value: stringToUint8Array(srcKeyAliesFirst + 'final'),
+    });
+
+    await publicAgreeInitFunc(srcKeyAliesFirst, HuksOptionsInit);
     await publicAgreeUpdateFunc(HuksOptions, 1);
     await publicAgreeFinishAbortFunc(HuksOptionsFinish, thirdInderfaceName);
 
+    //2nd Agree
     let tempHuksOptionsFinish = HuksOptionsFinish;
     let HuksOptionsFinishSecond = tempHuksOptionsFinish;
     HuksOptionsFinishSecond.properties.splice(6, 1, {
@@ -196,15 +202,17 @@ async function publicAgreeFunc(
     await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptionsInit);
     await publicAgreeUpdateFunc(HuksOptions, 2);
     await publicAgreeFinishAbortFunc(HuksOptionsFinishSecond, thirdInderfaceName);
-
-    await publicAgreeDeleteFunc(srcKeyAliesFrist, HuksOptions);
-    if (thirdInderfaceName == 'finish') {
+    await publicAgreeDeleteFunc(srcKeyAliesFirst, HuksOptions);
+    await publicAgreeDeleteFunc(srcKeyAliesSecond, HuksOptions);
+    // do not delete this one
+    if (thirdInderfaceName == 'finish' && isDeleteFinalKeys) {
+      //   console.info('come to there');
+      await publicAgreeDeleteFunc(srcKeyAliesFirst + 'final', HuksOptions);
       await publicAgreeDeleteFunc(srcKeyAliesSecond + 'final', HuksOptions);
     }
-    await publicAgreeDeleteFunc(srcKeyAliesSecond, HuksOptions);
-  } catch (e) {
+  } catch (error) {
+    console.error(`dont know`);
     expect(null).assertFail();
   }
 }
-
 export { publicAgreeFunc };

@@ -56,7 +56,7 @@ describe('SecurityHuksECDHBasicAbort63KBCallbackJsunit', function () {
       ),
       inData: srcData63Kb,
     };
-    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort', true);
     done();
   });
 });

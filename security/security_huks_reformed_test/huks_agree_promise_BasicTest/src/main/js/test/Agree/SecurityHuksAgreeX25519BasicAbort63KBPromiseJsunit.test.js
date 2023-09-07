@@ -32,7 +32,7 @@ let HuksOptions63kb = {
     HuksKeyAlgX25519.HuksKeyPADDING,
     HuksKeyAlgX25519.HuksKeyBLOCKMODE
   ),
-  inData: srcData63Kb,
+  // inData: srcData63Kb,
 };
 
 export default function SecurityHuksAgreeX25519BasicAbort63KBPromiseJsunit() {
@@ -55,9 +55,9 @@ describe('SecurityHuksAgreeX25519BasicAbort63KBPromiseJsunit', function () {
         HuksKeyAlgX25519.HuksKeyPADDINGNONE,
         HuksKeyAlgX25519.HuksKeyBLOCKMODEECB
       ),
-      inData: srcData63Kb,
+      // inData: srcData63Kb,
     };
-    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
+    await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort', true);
     done();
   });
 });

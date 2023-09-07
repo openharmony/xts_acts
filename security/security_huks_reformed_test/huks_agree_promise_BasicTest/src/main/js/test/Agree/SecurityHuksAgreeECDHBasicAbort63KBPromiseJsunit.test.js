@@ -19,6 +19,7 @@ import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
 import { HuksAgreeECDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../utils/param/publicParam';
+import { checkAESChiper } from '../../../../../../utils/param/checkAES';
 
 let srcData63 = Data.Date63KB;
 let srcData63Kb = stringToUint8Array(srcData63);
@@ -36,7 +37,7 @@ describe('SecurityHuksAgreeECDHBasicAbort63KBPromiseJsunit', function () {
         HuksAgreeECDH.HuksKeyECCPADDING,
         HuksAgreeECDH.HuksKeyECCBLOCKMODE
       ),
-      inData: srcData63Kb,
+      // inData: srcData63Kb,
     };
     console.info('test beforeEach called');
   });
@@ -58,7 +59,7 @@ describe('SecurityHuksAgreeECDHBasicAbort63KBPromiseJsunit', function () {
         HuksAgreeECDH.HuksKeyPADDINGNONE,
         HuksAgreeECDH.HuksKeyBLOCKMODEECB
       ),
-      inData: srcData63Kb,
+      // inData: srcData63Kb,
     };
     await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');
     done();
