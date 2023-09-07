@@ -29,7 +29,7 @@ var context;
 
 const TAG = '[1111TEST_PREFERENCES_SUPPLEMENT]'
 
-export default function preferencesFlushTest(){
+export default function preferencesSupplementTest(){
     describe('preferencesPromise_supplement', function (){
         beforeAll(async function(){
             console.info('beforeAll');
@@ -40,7 +40,7 @@ export default function preferencesFlushTest(){
             console.info('afterAll');
             await dataPreferences.deletePreferences(context, NAME);
         })
-         /**
+        /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0100
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
@@ -85,7 +85,7 @@ export default function preferencesFlushTest(){
                 console.log(TAG + "get res2 failed error message = " + err + "error code = " + err.code);
             })
         })
-         /**
+        /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0200
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
@@ -129,7 +129,7 @@ export default function preferencesFlushTest(){
                 console.log(TAG + "get res2 failed error message = " + err + "error code = " + err.code);
             })
         })
-         /**
+        /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0300
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
@@ -173,7 +173,7 @@ export default function preferencesFlushTest(){
                 console.log(TAG + "get res2 failed error message = " + err + "error code = " + err.code);
             })
         })
-         /**
+        /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0400
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
@@ -217,7 +217,7 @@ export default function preferencesFlushTest(){
                 console.log(TAG + "get res2 failed error message = " + err + "error code = " + err.code);
             })
         })
-         /**
+        /**
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
          * @tc.number testPreferences_put_flush_remove_get_0500
          * @tc.name put，get，flush，removePreferencesFromCache，get promise interface test
@@ -226,7 +226,7 @@ export default function preferencesFlushTest(){
             console.log(TAG + "start_test_0500");
             await mPreferences.clear();
             await mPreferences.put(KEY_TEST_STRING_ELEMENT, 'abc').then(() => {
-               console.log(TAG + "put succeed");
+                console.log(TAG + "put succeed");
             }).catch((err) => {
                 console.log(TAG + "put failed error message = " + err + "error code = " + err.code);
             })
@@ -262,6 +262,80 @@ export default function preferencesFlushTest(){
             })
         })
 
+        /**
+         * @tc.name put，getAll，flush，removePreferencesFromCache，getAll promise interface test
+         * @tc.number testPreferences_put_flush_remove_get_0600
+         * @tc.name put，getAll，flush，removePreferencesFromCache，getAll promise interface test
+         */
+
+        it('testPreferences_put_flush_remove_get_0600', 0, async function (done){
+            console.log(TAG + "start_test_0600");
+            await mPreferences.clear();
+            let numberArr = [11, 22, 33];
+            let stringArr = ['11', '22', '33'];
+            let boolArr = [true, false, false, true];
+            await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, numberArr).then(() => {
+                console.log(TAG + "put numberArr succeed");
+            }).catch((err) => {
+                console.log(TAG + "put failed error message = " + err + "error code = " + err.code);
+            })
+            await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr).then(() => {
+                console.log(TAG + "put stringArr numberArr succeed");
+            }).catch((err) => {
+                console.log(TAG + "put failed error message = " + err + "error code = " + err.code);
+            })
+            await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr).then(() => {
+                console.log(TAG + "put boolArr numberArr succeed");
+            }).catch((err) => {
+                console.log(TAG + "put failed error message = " + err + "error code = " + err.code);
+            })
+
+            await mPreferences.getAll().then((obj1) => {
+                for (let i = 0; i < obj1.key_test_number_array.length; i++) {
+                    expect(numberArr[i]).assertEqual(obj1.key_test_number_array[i]);
+                }
+                for (let i = 0; i < obj1.key_test_string_array.length; i++) {
+                    expect(stringArr[i]).assertEqual(obj1.key_test_string_array[i]);
+                }
+                for (let i = 0; i < obj1.key_test_bool_array.length; i++) {
+                    expect(boolArr[i]).assertEqual(obj1.key_test_bool_array[i]);
+                }
+                console.log(TAG + "obj1 = " + obj1 + "get res1 succeed");
+            }).catch((err) => {
+                console.log(TAG + "get obj1 failed error message = " + err + "error code = " + err.code);
+            })
+
+            await mPreferences.flush().then(() => {
+                console.log(TAG + "flush succeed");
+            }).catch((err) => {
+                console.log(TAG + "flush failed error message = " + err + "error code = " + err.code);
+            })
+
+            await dataPreferences.removePreferencesFromCache(context, NAME).then(() => {
+                console.log(TAG + "remove succeed");
+            }).catch((err) => {
+                console.log(TAG + "remove failed error message = " + err + "error code = " + err.code);
+            })
+
+            mPreferences = null;
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+
+            await mPreferences.getAll().then((obj2) => {
+                for (let i = 0; i < numberArr.length; i++) {
+                    expect(numberArr[i]).assertEqual(obj2.key_test_number_array[i]);
+                }
+                for (let i = 0; i < stringArr.length; i++) {
+                    expect(stringArr[i]).assertEqual(obj2.key_test_string_array[i]);
+                }
+                for (let i = 0; i < boolArr.length; i++) {
+                    expect(boolArr[i]).assertEqual(obj2.key_test_bool_array[i]);
+                }
+                console.log(TAG + "obj2 = " + obj2 + "get res1 succeed");
+                done();
+            }).catch((err) => {
+                console.log(TAG + "get obj2 failed error message = " + err + "error code = " + err.code);
+            })
+        })
 
     })
 }
