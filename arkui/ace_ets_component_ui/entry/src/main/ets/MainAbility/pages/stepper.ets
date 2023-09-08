@@ -136,10 +136,10 @@ struct StepperExample {
        this.currentIndex = index
     })
     .onNext((index:number,pendingIndex:number) => {
-        this.currentIndex = index
+        this.currentIndex = pendingIndex
     })
     .onPrevious((index:number,pendingIndex:number) => {
-       this.currentIndex = index
+       this.currentIndex = pendingIndex
 
     }).key('stepkey').width('100%').height('80%')
   }
