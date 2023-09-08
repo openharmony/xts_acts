@@ -24,39 +24,51 @@ function sleep(delay) { // delay x ms
     }
 }
 
+let Service = null;
+let Reader = null;
+let Session = null;
+let getReader = null;
 let nfcSEService = null;
-let nfcESEReader = null;
-let nfcOmaSession = null;
-let nfcOmaReaderList = [];
+
+async function getSEService() {
+    return new Promise((resolve, reject) => {
+        Service = secureElement.newSEService("serviceState", (state) => {
+            if (state == secureElement.ServiceState.DISCONNECTED) {
+                console.info("[nfc_test] getSEService newService state is Disconnected");
+                let err = null;
+                err.code = -1;
+                err.message = "newSEService failed, service is not connected"
+                reject(err);
+            } else {
+                console.info("[nfc_test] getSEService newService state is Connected");
+                resolve(Service);
+            }
+        });
+    });
+}
 
 export default function openSessionTest() {
     describe('openSessionTest', function () {
-        beforeAll(function () {
-            try {
-                nfcSEService = secureElement.newSEService("serviceState", (state) => {
-                    if (state == secureElement.ServiceState.DISCONNECTED) {
-                        console.info("[nfc_test] beforeAll Se_session state is Disconnected");
-                    } else {
-                        console.info("[nfc_test] beforeAll Se_session state is Connected");
+        beforeAll(async function (done) {
+            await getSEService().then(async (data) => {
+                Service = data;
+                let seIsConnected = Service.isConnected();
+                console.info("[NFC_test] SEService isConnected The connection status is: " + seIsConnected);
+                if (seIsConnected) {
+                    getReader = Service.getReaders();
+                    Reader = getReader[0];
+                    let readerIsPresent = Reader.isSecureElementPresent();
+                    console.info("[NFC_test] Reader isConnected The connection status is: " + readerIsPresent);
+                    if (readerIsPresent) {
+                        Session = Reader.openSession();
+                        let sessionIsClosed = Session.isClosed();
+                        console.info("[NFC_test] Session isConnected The connection status is: " + sessionIsClosed);
                     }
-                    expect(state instanceof Object).assertTrue();
-                    console.info("[nfc_test] beforeAll Se_session state is getReaders" + state);
-                });
-                sleep(1000);
-                nfcOmaReaderList = nfcSEService.getReaders();
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]This function is not supported because the phone NFC chip is ST chip.");
-                } else {
-                    console.info("[nfc_test] beforeAll Se_session Result of getReaders:" + nfcOmaReaderList.length);
-                    nfcESEReader = nfcOmaReaderList[0];
-                    console.info("[nfc_test] beforeAll Se_session getReaders results list 0 is" + nfcESEReader);
-                    nfcOmaSession = nfcESEReader.openSession();
-                    console.info("[nfc_test] beforeAll Se_session openSession The result is" + nfcOmaSession);
-                    sleep(3000);
                 }
-            } catch (e) {
-                console.info("[nfc_test] beforeAll Se_session occurs exception:" + e.message);
-            }
+            }).catch((err) =>{
+                console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
+            })
+            done();
         })
         beforeEach(function() {
             console.info('beforeEach called');
@@ -79,10 +91,10 @@ export default function openSessionTest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0600', 0, function () {
             try {
-                if (nfcOmaReaderList == undefined) {
+                if (getReader == undefined) {
                     console.info("[NFC_test]6 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
-                    let getNfcreader = nfcOmaSession.getReader();
+                    let getNfcreader = Session.getReader();
                     console.info("[NFC_test]6 Reader result of this session: " + getNfcreader);
                     expect(getNfcreader instanceof Object).assertTrue();
                 }
@@ -101,10 +113,10 @@ export default function openSessionTest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0700', 0, function ()  {
             try {
-                if (nfcOmaReaderList == undefined) {
+                if (getReader == undefined) {
                     console.info("[NFC_test]7 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
-                    let nfcGetart = nfcOmaSession.getATR();
+                    let nfcGetart = Session.getATR();
                     expect(nfcGetart).assertInstanceOf('Array');
                     expect(!nfcGetart == false ).assertTrue();
                     console.info("[NFC_test]7 Get the ATR of this SE: " + nfcGetart);
@@ -124,16 +136,16 @@ export default function openSessionTest() {
          */
         it('SUB_Communication_NFC_secureElement_js_0800', 0, function ()  {
             try {
-                if (nfcOmaReaderList == undefined) {
+                if (getReader == undefined) {
                     console.info("[NFC_test]8 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
-                    let isopenSession = nfcOmaSession.isClosed();
+                    let isopenSession = Session.isClosed();
                     console.info("[NFC_test]8 Check the first one session is open: " + isopenSession);
                     expect(isopenSession).assertFalse();
-                    nfcOmaSession.close();
+                    Session.close();
                     sleep(3000)
                     console.info("[NFC_test]8 second session is closed successfully");
-                    let iscloseSession = nfcOmaSession.isClosed();
+                    let iscloseSession = Session.isClosed();
                     console.info("[NFC_test]8 After close Check the first one session is open: " + iscloseSession);
                     expect(iscloseSession).assertTrue();
                 }

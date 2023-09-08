@@ -15,6 +15,7 @@
 
 import bluetooth from '@ohos.bluetoothManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btManagerGattManagerTest() {
 describe('btManagerGattManagerTest', function() {
@@ -24,12 +25,41 @@ describe('btManagerGattManagerTest', function() {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
 
+    async function openPhone() {
+        try{
+            let drivers = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ drivers);            
+            await drivers.delayMs(1000);
+            await drivers.wakeUpDisplay();
+            await drivers.delayMs(5000);
+            await drivers.swipe(1500, 1000, 1500, 100);
+            await drivers.delayMs(10000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
+    async function clickTheWindow() {
+        try{
+            let driver = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ driver);            
+            await driver.delayMs(1000);
+            await driver.click(950, 2550);
+            await driver.delayMs(5000);
+            await driver.click(950, 2550);
+            await driver.delayMs(3000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
     async function tryToEnableBt() {
         let sta = bluetooth.getState();
         switch(sta){
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             case 1:
@@ -42,18 +72,21 @@ describe('btManagerGattManagerTest', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
         gattServer = bluetooth.BLE.createGattServer();
         console.info('[bluetooth_js]bmgm gattServer create info:' + gattServer);
         gattClient = bluetooth.BLE.createGattClientDevice('92:3A:C0:3A:4C:28');
         console.info('[bluetooth_js]bmgm gattClient create info:' + gattClient);
+        done();
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')

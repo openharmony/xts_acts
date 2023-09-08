@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -24,41 +24,55 @@ function sleep(delay) { // delay x ms
     }
 }
 
+async function getSEService() {
+    return new Promise((resolve, reject) => {
+        Service = secureElement.newSEService("serviceState", (state) => {
+            if (state == secureElement.ServiceState.DISCONNECTED) {
+                console.info("[nfc_test] getSEService newService state is Disconnected");
+                let err = null;
+                err.code = -1;
+                err.message = "newSEService failed, service is not connected"
+                reject(err);
+            } else {
+                console.info("[nfc_test] getSEService newService state is Connected");
+                resolve(Service);
+            }
+        });
+    });
+}
+
+let Service = null;
+let Reader = null;
+let Session = null;
+let getReader = null;
 let nfcSEService = null;
-let nfcESEReader = null;
-let nfcOmaSession = null;
-let nfcOmaReaderList = [];
 let aidArray = [160, 0, 0, 1, 81, 0, 0, 0];
 let p2 = 0x00;
 let command = [128, 202, 159, 127, 0];
 
 export default function channelCallbacktest() {
     describe('channelCallbacktest', function () {
-        beforeAll(function () {
-            try {
-                nfcSEService = secureElement.newSEService("serviceState", (state) => {
-                    if (state == secureElement.ServiceState.DISCONNECTED) {
-                        console.info("[nfc_test] beforeAll Se_channel state is Disconnected");
-                    } else {
-                        console.info("[nfc_test] beforeAll Se_channel state is Connected");
+        beforeAll(async function (done) {
+            await getSEService().then(async (data) => {
+                Service = data;
+                let seIsConnected = Service.isConnected();
+                console.info("[NFC_test] Logical SEService isConnected The connection status is: " + seIsConnected);
+                if (seIsConnected) {
+                    getReader = Service.getReaders();
+                    Reader = getReader[0];
+                    let readerIsPresent = Reader.isSecureElementPresent();
+                    console.info("[NFC_test] Logical Reader isConnected The connection status is: " + readerIsPresent);
+                    if (readerIsPresent) {
+                        Session = Reader.openSession();
+                        let sessionIsClosed = Session.isClosed();
+                        console.info("[NFC_test] Logical Session isConnected The connection status is: " + sessionIsClosed);
                     }
-                    expect(state instanceof Object).assertTrue();
-                    console.info("[nfc_test] beforeAll Se_channel state is getReaders" + state);
-                });
-                sleep(1000);
-                nfcOmaReaderList = nfcSEService.getReaders();
-                if (nfcOmaReaderList.length === 0) {
-                    console.info("[NFC_test]This function is not supported because the phone NFC chip is ST chip.");
-                } else {
-                    console.info("[nfc_test] beforeAll Se_channel Result of getReaders:" + nfcOmaReaderList.length);
-                    nfcESEReader = nfcOmaReaderList[0];
-                    console.info("[nfc_test] beforeAll Se_channel getReaders results list 0 is" + nfcESEReader);
-                    nfcOmaSession = nfcESEReader.openSession();
-                    console.info("[nfc_test] beforeAll Se_channel openSession The result is" + nfcOmaSession);
                 }
-            } catch (e) {
-                console.info("[nfc_test] beforeAll Se_channel occurs exception:" + e.message);
-            }
+            }).catch((err) =>{
+                console.info("[NFC_test] getSEService err.code " + err.code + "err.message " + err.message);
+            })
+            done();
+            console.info('beforeAll called');
         })
 
         beforeEach(function() {
@@ -66,7 +80,8 @@ export default function channelCallbacktest() {
         })
 
         afterEach(function () {
-            console.info('shutdown success');
+
+            console.info('afterEach success');
         })
 
         afterAll(function () {
@@ -76,32 +91,33 @@ export default function channelCallbacktest() {
         })
 
        /**
-         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2400
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_0900
          * @tc.name Test isBasicChannel
          * @tc.desc open BasicChannel Check whether the channel is a basic channel.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_2400', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_0900', 0, async function (done) {
             try {
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]24 This function is not supported because the phone NFC chip is ST chip.");
+                if (getReader == undefined) {
+                    console.info("[NFC_test]09 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     function P2BasicChannel_callback(){
                         return new Promise((resolve, reject) => {
-                            nfcOmaSession.openBasicChannel(aidArray, p2,
+                            Session.openBasicChannel(aidArray, p2,
                                 (err, result) => {
                                     if(err) {
-                                        console.info("[NFC_test]24 openBasicChannel data == null" + err);
-                                        expect().assertFail();
+                                        console.info("[NFC_test]09 openBasicChannel data == null" + err.code + "---" + err);
+                                        expect(3300103).assertEqual(err.code);
+                                    } else {
+                                        console.info("[NFC_test]09 openBasicChannel data != null " + result);
+                                        let P2BasicChannel = result;
+                                        let isBasic = P2BasicChannel.isBasicChannel();
+                                        console.info("[NFC_test]09 Check whether the channel is a basic channel: " + isBasic);
+                                        expect(isBasic).assertTrue();
+                                        P2BasicChannel.close();
+                                        console.info("[NFC_test]09 Data received by the application select command: " );
                                     }
-                                    console.info("[NFC_test]24 openBasicChannel data != null " + result);
-                                    let P2BasicChannel = result;
-                                    let isBasic = P2BasicChannel.isBasicChannel();
-                                    console.info("[NFC_test]24 Check whether the channel is a basic channel: " + isBasic);
-                                    expect(isBasic).assertTrue();
-                                    P2BasicChannel.close();
-                                    console.info("[NFC_test]24 Data received by the application select command: " );
                                     resolve();
                                 });
                         });
@@ -109,7 +125,7 @@ export default function channelCallbacktest() {
                     await P2BasicChannel_callback();
                 }
             } catch (error) {
-                console.info("[NFC_test]24 openBasicChannel_p2_callback occurs exception:" + error);
+                console.info("[NFC_test]09 openBasicChannel_p2_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
             sleep(3000);
@@ -117,32 +133,33 @@ export default function channelCallbacktest() {
         })
 
         /**
-         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2500
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1000
          * @tc.name Test isClosed
          * @tc.desc open LogicalChannel Check whether the channel is closed.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_2500', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1000', 0, async function (done) {
             try {
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]25 This function is not supported because the phone NFC chip is ST chip.");
+                if (getReader == undefined) {
+                    console.info("[NFC_test]10 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     function LogicalChannel_callback(){
                         return new Promise((resolve, reject) => {
-                            nfcOmaSession.openLogicalChannel(aidArray, p2,
+                            Session.openLogicalChannel(aidArray, p2,
                                 (err, result) => {
                                     if(err) {
-                                        console.info("[NFC_test]25 openLogicalChannel data == null" + err);
-                                        expect().assertFail();
+                                        console.info("[NFC_test]10 openLogicalChannel data == null" + err);
+                                        expect(3300103).assertEqual(err.code);
+                                    } else {
+                                        console.info("[NFC_test]10 openLogicalChannel data == null" + result);
+                                        let P2LogicalChannel = result;
+                                        P2LogicalChannel.close();
+                                        console.info("[NFC_test]10 Data received by the application select command: " );
+                                        let isChannelClosed = P2LogicalChannel.isClosed();
+                                        console.info("[NFC_test]10 Check whether the channel is closed: " + isChannelClosed);
+                                        expect(isChannelClosed).assertTrue();                                        
                                     }
-                                    console.info("[NFC_test]25 openLogicalChannel data == null" + result);
-                                    let P2LogicalChannel = result;
-                                    P2LogicalChannel.close();
-                                    console.info("[NFC_test]25 Data received by the application select command: " );
-                                    let isChannelClosed = P2LogicalChannel.isClosed();
-                                    console.info("[NFC_test]25 Check whether the channel is closed: " + isChannelClosed);
-                                    expect(isChannelClosed).assertTrue();
                                     resolve();
                                 });
                         });
@@ -150,7 +167,7 @@ export default function channelCallbacktest() {
                     await LogicalChannel_callback();
                 }
             } catch (error) {
-                console.info("[NFC_test]25 openLogicalChannel_P2_callback occurs exception:" + error);
+                console.info("[NFC_test]10 openLogicalChannel_P2_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
             sleep(3000);
@@ -159,32 +176,33 @@ export default function channelCallbacktest() {
 
 
         /**
-         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2600
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1100
          * @tc.name Test getSelectResponse
          * @tc.desc open BasicChannel Returns the data received from the application selection command.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_2600', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1100', 0, async function (done) {
             try {
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]26 This function is not supported because the phone NFC chip is ST chip.");
+                if (getReader == undefined) {
+                    console.info("[NFC_test]11 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     function BasicChannel_callback(){
                         return new Promise((resolve, reject) => {
-                            nfcOmaSession.openBasicChannel(aidArray,
+                            Session.openBasicChannel(aidArray,
                                 (err, result) => {
                                     if(err) {
-                                        console.info("[NFC_test]26 to get openBasicChannel:" + JSON.stringify(err));
-                                        expect().assertFail();
+                                        console.info("[NFC_test]11 to get openBasicChannel:" + JSON.stringify(err));
+                                        expect(3300103).assertEqual(err.code);
+                                    } else {
+                                        console.info("[NFC_test]11 openBasicChannel data != null " + result);
+                                        let nfcBasicChannel = result;
+                                        let getResponse = nfcBasicChannel.getSelectResponse();
+                                        console.info("[NFC_test]11 getSelectResponse data: " + getResponse);
+                                        nfcBasicChannel.close();
+                                        console.info("[NFC_test]11 Data received by the application select command: " );
+                                        expect(getResponse).assertInstanceOf('Array');                                        
                                     }
-                                    console.info("[NFC_test]26 openBasicChannel data != null " + result);
-                                    let nfcBasicChannel = result;
-                                    let getResponse = nfcBasicChannel.getSelectResponse();
-                                    console.info("[NFC_test]26 getSelectResponse data: " + getResponse);
-                                    nfcBasicChannel.close();
-                                    console.info("[NFC_test]26 Data received by the application select command: " );
-                                    expect(getResponse).assertInstanceOf('Array');
                                     resolve();
                                 });
                         });
@@ -192,7 +210,7 @@ export default function channelCallbacktest() {
                     await BasicChannel_callback();
             }
             } catch (error) {
-                console.info("[NFC_test]26 openBasicChannel_callback occurs exception:" + error);
+                console.info("[NFC_test]11 openBasicChannel_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
             sleep(5000);
@@ -200,39 +218,40 @@ export default function channelCallbacktest() {
         })
 
         /**
-         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2700
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1200
          * @tc.name Test transmit
          * @tc.desc open LogicalChannel Send an APDU command to the SE 
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_2700', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1200', 0, async function (done) {
             try {
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]27 This function is not supported because the phone NFC chip is ST chip.");
+                if (getReader == undefined) {
+                    console.info("[NFC_test]12 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
                     function LogicalChannel_callback(){
                         return new Promise((resolve, reject) => {
-                            nfcOmaSession.openLogicalChannel(aidArray,
+                            Session.openLogicalChannel(aidArray,
                                 (err, result) => {
                                     if(err) {
-                                        console.info("[NFC_test]27 failed to get openLogicalChannel:" + JSON.stringify(err));
-                                        expect().assertFail();
+                                        console.info("[NFC_test]12 failed to get openLogicalChannel:" + JSON.stringify(err));
+                                        expect(3300103).assertEqual(err.code);
+                                    } else {
+                                        console.info("[NFC_test]12 openLogicalChannel data != null " + result);
+                                        let nfcLogicalChannel = result;
+                                        nfcLogicalChannel.transmit(command, (err, data) => {
+                                            if (err) {
+                                                console.info("[NFC_test]12 Send error an APDU command to the SE: " + err);
+                                                expect().assertFail();
+                                            } else {
+                                                console.info("[NFC_test]12 Send an APDU command to the SE: " + data);
+                                                expect(data).assertInstanceOf('Array');
+                                            }
+                                        });
+                                        sleep(5000);
+                                        nfcLogicalChannel.close();
+                                        console.info("[NFC_test]12 Data received by the application select command: " );                                        
                                     }
-                                    console.info("[NFC_test]27 openLogicalChannel data != null " + result);
-                                    let nfcLogicalChannel = result;
-                                    nfcLogicalChannel.transmit(command, (err, data) => {
-                                        if (err) {
-                                            console.info("[NFC_test]27 Send error an APDU command to the SE: " + err);
-                                            expect().assertFail();
-                                        } else {
-                                            console.info("[NFC_test]27 Send an APDU command to the SE: " + data);
-                                            expect(data).assertInstanceOf('Array');
-                                        }
-                                    });
-                                    sleep(5000);
-                                    nfcLogicalChannel.close();
-                                    console.info("[NFC_test]27 Data received by the application select command: " );
                                     resolve();
                                 });
                         });
@@ -240,7 +259,7 @@ export default function channelCallbacktest() {
                     await LogicalChannel_callback();
                 }
             } catch (error) {
-                console.info("[NFC_test]27 openLogicalChannel_callback occurs exception:" + error);
+                console.info("[NFC_test]12 openLogicalChannel_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
             sleep(3000);
@@ -248,75 +267,154 @@ export default function channelCallbacktest() {
         })
 
        /**
-         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2800
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1300
          * @tc.name Test transmit
          * @tc.desc open LogicalChannel Send an APDU command to the SE 
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_2800', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1300', 0, async function (done) {
             try {
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]28 This function is not supported because the phone NFC chip is ST chip.");
+                if (getReader == undefined) {
+                    console.info("[NFC_test]13 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
-                    let getPromise = nfcOmaSession.openBasicChannel(aidArray);
+                    let getPromise = Session.openBasicChannel(aidArray);
                     await getPromise.then((data) => {
-                        console.info("[NFC_test]28 openBasicChannel openBasicChannel data: " + data);
+                        console.info("[NFC_test]13 openBasicChannel openBasicChannel data: " + data);
                         if ( data != undefined && data != null){
-                            console.info("[NFC_test]28 openBasicChannel data != null");
+                            console.info("[NFC_test]13 openBasicChannel data != null");
                             let OmaBasicChannel = data;
                             OmaBasicChannel.close();
-                            console.info("[NFC_test]28 Data received by the application select command: " );
+                            console.info("[NFC_test]13 Data received by the application select command: " );
                         }
                         else {
-                            console.info("[NFC_test]28 openBasicChannel data == null");
+                            console.info("[NFC_test]13 openBasicChannel data == null");
                         }
                     }).catch((error)=> {
-                        console.info("[NFC_test]28 openBasicChannel catch error" + error);
-                        expect().assertFail();
+                        console.info("[NFC_test]13 openBasicChannel catch error" + error);
+                        expect(3300103).assertEqual(error.code)
                     });
                     sleep(5000);
                 }
             } catch (error) {
-                console.info("[NFC_test]28 openBasicChannel_Promise occurs exception:" + error);
+                console.info("[NFC_test]13 openBasicChannel_Promise occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
             done();
         })
 
         /**
-         * @tc.number SUB_Communication_Ese_LogicalChannel_js_2900
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1400
+         * @tc.name Test isClosed
+         * @tc.desc open LogicalChannel Check whether the channel is a basic channel.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_1400', 0, async function (done) {
+            try {
+                if (getReader == undefined) {
+                    console.info("[NFC_test]14 This function is not supported because the phone NFC chip is ST chip.");
+                } else {
+                    let getPromise = Session.openLogicalChannel(aidArray);
+                    await getPromise.then((data) => {
+                        console.info("[NFC_test]14  openLogicalChannel data: " + data);
+                        if ( data != undefined && data != null){
+                            console.info("[NFC_test]14 openLogicalChannel data != null");
+                            let OmaLogicalChannel = data;
+                            OmaLogicalChannel.close();
+                            let isChannelClosed = OmaLogicalChannel.isClosed();
+                            console.info("[NFC_test]14 Check whether the channel is disabled: " + isChannelClosed);
+                            expect(isChannelClosed).assertTrue();
+                        }
+                        else {
+                            console.info("[NFC_test]14 openLogicalChannel data == null");
+                        }
+                    }).catch((error)=> {
+                        console.info("[NFC_test]14 openLogicalChannel catch error" + error.code + "---" + error);
+                        expect(3300103).assertEqual(error.code)
+                    });
+                    sleep(5000);
+                }
+            } catch (error) {
+                console.info("[NFC_test]14 openLogicalChannel_Promise occurs exception:" + error);
+                expect().assertFail();
+            }
+            done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1500
+         * @tc.name Test isClosed
+         * @tc.desc open BasicChannel Check whether the channel is a basic channel.
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('SUB_Communication_Ese_LogicalChannel_js_1500', 0, async function (done) {
+            try {
+                if (getReader == undefined) {
+                    console.info("[NFC_test]15 This function is not supported because the phone NFC chip is ST chip.");
+                } else {
+                    let getPromise = Session.openBasicChannel(aidArray,p2);
+                    await getPromise.then((data) => {
+                        console.info("[NFC_test]15  openBasicChannel data: " + data);
+                        if ( data != undefined && data != null){
+                            console.info("[NFC_test]15 openBasicChannel data != null");
+                            let OmaLogicalChannel = data;
+                            OmaLogicalChannel.close();
+                            let isChannelClosed = OmaLogicalChannel.isClosed();
+                            console.info("[NFC_test]15 Check whether the channel is disabled: " + isChannelClosed);
+                            expect(isChannelClosed).assertTrue();
+                        }
+                        else {
+                            console.info("[NFC_test]15 openBasicChannel data == null");
+                        }
+                    }).catch((error)=> {
+                        console.info("[NFC_test]15 openBasicChannel catch error" + error.code + "---" + error);
+                        expect(3300103).assertEqual(error.code)
+                    });
+                    sleep(5000);
+                }
+            } catch (error) {
+                console.info("[NFC_test]15 openBasicChannel occurs exception:" + error);
+                expect().assertFail();
+            }
+            done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_Ese_LogicalChannel_js_1600
          * @tc.name Test isClosed
          * @tc.desc Check whether the channel is closed.
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_Ese_LogicalChannel_js_2900', 0, async function (done) {
+        it('SUB_Communication_Ese_LogicalChannel_js_1600', 0, async function (done) {
             try {
-                if (nfcOmaReaderList == undefined) {
-                    console.info("[NFC_test]29 This function is not supported because the phone NFC chip is ST chip.");
+                if (getReader == undefined) {
+                    console.info("[NFC_test]16 This function is not supported because the phone NFC chip is ST chip.");
                 } else {
-                    let getPromise = nfcOmaSession.openLogicalChannel(aidArray);
+                    let getPromise = Session.openLogicalChannel(aidArray,p2);
                     await getPromise.then((data) => {
-                        console.info("[NFC_test]29  openLogicalChannel data: " + data);
+                        console.info("[NFC_test]16  openLogicalChannel data: " + data);
                         if ( data != undefined && data != null){
-                            console.info("[NFC_test]29 openLogicalChannel data != null");
+                            console.info("[NFC_test]16 openLogicalChannel data != null");
                             let OmaLogicalChannel = data;
+                            OmaLogicalChannel.close();
                             let isChannelClosed = OmaLogicalChannel.isClosed();
-                            console.info("[NFC_test]29 Check whether the channel is disabled: " + isChannelClosed);
-                            expect(isChannelClosed).assertFalse();
+                            console.info("[NFC_test]16 Check whether the channel is disabled: " + isChannelClosed);
+                            expect(isChannelClosed).assertTrue();
                         }
                         else {
-                            console.info("[NFC_test]29 openLogicalChannel data == null");
+                            console.info("[NFC_test]16 openLogicalChannel data == null");
                         }
                     }).catch((error)=> {
-                        console.info("[NFC_test]29 openLogicalChannel catch error" + error);
-                        expect().assertFail();
+                        console.info("[NFC_test]16 openLogicalChannel catch error" + error.code + "---" + error);
+                        expect(3300103).assertEqual(error.code)
                     });
                     sleep(5000);
                 }
             } catch (error) {
-                console.info("[NFC_test]29 openLogicalChannel_Promise occurs exception:" + error);
+                console.info("[NFC_test]16 openLogicalChannel_Promise occurs exception:" + error);
                 expect().assertFail();
             }
             done();

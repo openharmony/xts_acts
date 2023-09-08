@@ -15,14 +15,46 @@
 
 import bluetooth from '@ohos.bluetooth.access';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btAccessTest() {
 describe('btAccessTest', function() {
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
-    beforeAll(function () {
+
+    async function openPhone() {
+        try{
+            let drivers = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ drivers);            
+            await drivers.delayMs(1000);
+            await drivers.wakeUpDisplay();
+            await drivers.delayMs(5000);
+            await drivers.swipe(1500, 1000, 1500, 100);
+            await drivers.delayMs(10000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
+    async function clickTheWindow() {
+        try{
+            let driver = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ driver);            
+            await driver.delayMs(1000);
+            await driver.click(950, 2550);
+            await driver.delayMs(5000);
+            await driver.click(950, 2550);
+            await driver.delayMs(3000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+    
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
+        done();
     })
     beforeEach(function() {
         console.info('beforeEach called')
@@ -46,6 +78,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] bluetooth state = '+ JSON.stringify(state));
         if(state != bluetooth.BluetoothState.STATE_OFF) {
             bluetooth.disableBluetooth();
+            await clickTheWindow();
             await sleep(10000);
             let closeSt = bluetooth.getState();
             console.info('[bluetooth_js] bluetooth disable state ='+ JSON.stringify(closeSt));
@@ -55,6 +88,7 @@ describe('btAccessTest', function() {
         } 
         try {
             bluetooth.enableBluetooth();
+            await clickTheWindow();
             await sleep(10000);
         } catch {
             console.error(`[bluetooth_js] enable StateChange error, code is ${error.code},message is ${error.message}`);
@@ -78,6 +112,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] bluetooth state = '+ JSON.stringify(state));
         if(state != bluetooth.BluetoothState.STATE_ON) {
             bluetooth.enableBluetooth();
+            await clickTheWindow();
             await sleep(10000);
             let openSt = bluetooth.getState();
             console.info('[bluetooth_js] bluetooth enable state ='+ JSON.stringify(openSt));
@@ -87,6 +122,7 @@ describe('btAccessTest', function() {
         } 
         try {
             bluetooth.disableBluetooth();
+            await clickTheWindow();
             await sleep(10000);
         } catch {
             console.error(`[bluetooth_js] disable StateChange error, code is ${error.code},message is ${error.message}`);
@@ -133,6 +169,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] get bluetooth state' + JSON.stringify(state));
         if (state != bluetooth.BluetoothState.STATE_ON) {
             let enable = bluetooth.enableBluetooth();
+            await clickTheWindow();
             await sleep(10000);
             console.info('[bluetooth_js] bluetooth enable' + JSON.stringify(enable));
             expect(enable).assertTrue();
@@ -167,6 +204,7 @@ describe('btAccessTest', function() {
         console.info('[bluetooth_js] get bluetooth state001' + JSON.stringify(state));
         if (state != bluetooth.BluetoothState.STATE_OFF) {
             let disable = bluetooth.disableBluetooth();
+            await clickTheWindow();
             await sleep(10000);
             console.info('[bluetooth_js] bluetooth disable001' + JSON.stringify(disable));
             expect(disable).assertTrue();
