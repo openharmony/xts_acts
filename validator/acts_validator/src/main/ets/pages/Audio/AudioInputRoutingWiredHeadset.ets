@@ -16,7 +16,7 @@ import {CustomContainer} from '../common/AudioContainer';
 import FirstDialog from '../model/FirstDialog';
 import AudioCapturer from '../model/AudioCapturer'
 import Logger from '../model/Logger'
-import prompt from '@ohos.prompt';
+import promptAction from '@ohos.promptAction';
 import audio from '@ohos.multimedia.audio'
 import router from '@ohos.router';
 import mediaPlay from '../model/mediaPlay'

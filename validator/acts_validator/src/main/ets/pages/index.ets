@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import prompt from '@ohos.prompt';
+import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
-import fileio from '@ohos.fileio';
+import fs from '@ohos.file.fs';
 import xml from '@ohos.xml';
-import fileIO from '@ohos.fileio';
 import util from '@ohos.util';
 import DateTimeUtil from './model/DateTimeUtil';
 import data_preferences from '@ohos.data.preferences';
@@ -38,15 +37,15 @@ let PlayerColorBackPath = path + '/PlayerColorBack.txt';
 let PlayerAudioColorBackPath = path4 + '/PlayerAudioColorBack.txt';
 let PlayerVideoColorBackPath = path4 + '/PlayerVideoColorBack.txt';
 let ExperienceColorBackPath = path + '/ExperienceColorBack.txt';
-fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
-fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
+fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(PlayerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+fs.openSync(ExperienceColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let TimePath = path + '/Time.txt';
-fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let xmlPath = path + '/Test.xml';
-fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
+fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let path11 = path1 + '/ArkUIReport.txt';
 let path22 = path2 + '/AudioReport.txt';
 let path33 = path3 + '/CameraReport.txt';
@@ -82,13 +81,13 @@ struct IndexPage {
       console.info("Succeeded in getting value of 'index'. Data: " + data);
     });
     if(Test != 1) {
-      fileio.mkdirSync(path1);
-      fileio.mkdirSync(path2);
-      fileio.mkdirSync(path3);
-      fileio.mkdirSync(path4);
-      fileio.mkdirSync(path5);
-      fileio.mkdirSync(picturePath);
-      fileio.mkdirSync(ExperienceDataPath);
+      fs.mkdirSync(path1);
+      fs.mkdirSync(path2);
+      fs.mkdirSync(path3);
+      fs.mkdirSync(path4);
+      fs.mkdirSync(path5);
+      fs.mkdirSync(picturePath);
+      fs.mkdirSync(ExperienceDataPath);
 
       let promise = preferences.put('index', 1);
       promise.then(() => {
@@ -99,15 +98,15 @@ struct IndexPage {
         console.info("Succeeded in flushing.");
       });
     }
-    fileio.openSync(path11, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path22, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path33, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path44, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path55, 0o100 | 0o2002, 0o664);
+    fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
   build(){
     Column(){
@@ -129,7 +128,7 @@ struct IndexPage {
                   value: 'Yes',
                   action: () => {
                     this.ClearText();
-                    prompt.showToast({
+                    promptAction.showToast({
                       message: '结果已删除', duration: 1000
                     });
                   }
@@ -159,13 +158,13 @@ struct IndexPage {
               confirm:{
                 value:'OK',
                 action:()=>{
-                  prompt.showToast({
+                  promptAction.showToast({
                     message: '总报告已生成', duration: 1000
                   })
                 }
               },
               cancel: () => {
-                prompt.showToast({
+                promptAction.showToast({
                   message: '总报告已生成', duration: 1000
                 });
               }
@@ -186,11 +185,11 @@ struct IndexPage {
               let dateTimeUtil = new DateTimeUtil();
               let time = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
               let TimePath = path + "/Time.txt";
-              let OP = fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+              let OP = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
               let buf = new ArrayBuffer(4096);
-              fileio.readSync(OP,buf);
+              fs.readSync(OP.fd,buf);
               let Log = (time + ";").toString();
-              fileio.writeSync(OP,Log);
+              fs.writeSync(OP.fd,Log);
             })
           }
         },item  => item.title)
@@ -198,42 +197,42 @@ struct IndexPage {
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
   ClearText(){
-    fileio.unlinkSync(TimePath);
-    fileio.unlinkSync(xmlPath);
-    fileio.unlinkSync(path11);
-    fileio.unlinkSync(path22);
-    fileio.unlinkSync(path33);
-    fileio.unlinkSync(path44);
-    fileio.unlinkSync(PlayerAudioTxtPath);
-    fileio.unlinkSync(PlayerVideoTxtPath);
-    fileio.unlinkSync(path55);
-    fileio.unlinkSync(ArkUIColorBackPath);
-    fileio.unlinkSync(AudioColorBackPath);
-    fileio.unlinkSync(CameraColorBackPath);
-    fileio.unlinkSync(PlayerColorBackPath);
-    fileio.unlinkSync(PlayerAudioColorBackPath);
-    fileio.unlinkSync(PlayerVideoColorBackPath);
-    fileio.unlinkSync(ExperienceColorBackPath);
-    fileio.rmdirSync(picturePath);
-    fileio.mkdirSync(picturePath);
-    fileio.rmdirSync(ExperienceDataPath);
-    fileio.mkdirSync(ExperienceDataPath);
-    fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(xmlPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path11, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path22, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path33, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path44, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoTxtPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(path55, 0o100 | 0o2002, 0o664);
-    fileio.openSync(ArkUIColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(AudioColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(CameraColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerAudioColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(PlayerVideoColorBackPath, 0o100 | 0o2002, 0o664);
-    fileio.openSync(ExperienceColorBackPath, 0o100 | 0o2002, 0o664);
+    fs.unlinkSync(TimePath);
+    fs.unlinkSync(xmlPath);
+    fs.unlinkSync(path11);
+    fs.unlinkSync(path22);
+    fs.unlinkSync(path33);
+    fs.unlinkSync(path44);
+    fs.unlinkSync(PlayerAudioTxtPath);
+    fs.unlinkSync(PlayerVideoTxtPath);
+    fs.unlinkSync(path55);
+    fs.unlinkSync(ArkUIColorBackPath);
+    fs.unlinkSync(AudioColorBackPath);
+    fs.unlinkSync(CameraColorBackPath);
+    fs.unlinkSync(PlayerColorBackPath);
+    fs.unlinkSync(PlayerAudioColorBackPath);
+    fs.unlinkSync(PlayerVideoColorBackPath);
+    fs.unlinkSync(ExperienceColorBackPath);
+    fs.rmdirSync(picturePath);
+    fs.mkdirSync(picturePath);
+    fs.rmdirSync(ExperienceDataPath);
+    fs.mkdirSync(ExperienceDataPath);
+    fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoTxtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(ArkUIColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(AudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(CameraColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerAudioColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(PlayerVideoColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.openSync(ExperienceColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     FlushData.ResetArkUI();
     FlushData.ResetAudio();
     FlushData.ResetCamera();
@@ -245,9 +244,9 @@ struct IndexPage {
   SaveXml() {
     let dateTimeUtil = new DateTimeUtil();
     let endtime = `${dateTimeUtil.getFullYear()}-${dateTimeUtil.getMonth()}-${dateTimeUtil.getDay()} ${dateTimeUtil.getHour()}:${dateTimeUtil.getMinute()}:${dateTimeUtil.getSecond()}`;
-    let fd = fileio.openSync(TimePath, 0o100 | 0o2002, 0o664);
+    let fd = fs.openSync(TimePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf = new ArrayBuffer(40960);
-    fileio.readSync(fd,buf);
+    fs.readSync(fd.fd,buf);
     let StartTime = String.fromCharCode.apply(null, new Uint8Array(buf));
     let Index = StartTime.indexOf(';');
     let starttime = StartTime.substring(0,Index);
@@ -262,9 +261,9 @@ struct IndexPage {
     /*
      * ArkUI
      */
-    let OP1 = fileio.openSync(path11, 0o100 | 0o2002, 0o664);
+    let OP1 = fs.openSync(path11, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf1 = new ArrayBuffer(40960);
-    fileio.readSync(OP1,buf1);
+    fs.readSync(OP1.fd,buf1);
     ArkUIReport = String.fromCharCode.apply(null, new Uint8Array(buf1));
     let str1 = ArkUIReport.split(";");
     let title1 = [];
@@ -276,9 +275,9 @@ struct IndexPage {
     /*
      * Audio
      */
-    let OP2 = fileio.openSync(path22, 0o100 | 0o2002, 0o664);
+    let OP2 = fs.openSync(path22, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf2 = new ArrayBuffer(40960);
-    fileio.readSync(OP2,buf2);
+    fs.readSync(OP2.fd,buf2);
     AudioReport = String.fromCharCode.apply(null, new Uint8Array(buf2));
     let str2 = AudioReport.split(";");
     let title2 = [];
@@ -290,9 +289,9 @@ struct IndexPage {
     /*
      * Camera
      */
-    let OP3 = fileio.openSync(path33, 0o100 | 0o2002, 0o664);
+    let OP3 = fs.openSync(path33, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf3 = new ArrayBuffer(40960);
-    fileio.readSync(OP3,buf3);
+    fs.readSync(OP3.fd,buf3);
     CameraReport = String.fromCharCode.apply(null, new Uint8Array(buf3));
     let str3 = CameraReport.split(";");
     let title3 = [];
@@ -304,9 +303,9 @@ struct IndexPage {
     /*
  * Player
  */
-    let OP4 = fileio.openSync(path44, 0o100 | 0o2002, 0o664);
+    let OP4 = fs.openSync(path44, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf4 = new ArrayBuffer(40960);
-    fileio.readSync(OP4,buf4);
+    fs.readSync(OP4.fd,buf4);
     PlayerReport = String.fromCharCode.apply(null, new Uint8Array(buf4));
     let str4 = PlayerReport.split(";");
     let title4 = [];
@@ -318,9 +317,9 @@ struct IndexPage {
     /*
  * Experience
  */
-    let OP5 = fileio.openSync(path55, 0o100 | 0o2002, 0o664);
+    let OP5 = fs.openSync(path55, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buf5 = new ArrayBuffer(40960);
-    fileio.readSync(OP5,buf5);
+    fs.readSync(OP5.fd,buf5);
     ExperienceReport = String.fromCharCode.apply(null, new Uint8Array(buf5));
     let str5 = ExperienceReport.split(";");
     let title5 = [];
@@ -599,12 +598,12 @@ struct IndexPage {
     console.info(xmlPath);
     try {
       console.error(TAG, "write xmlPath =" + xmlPath);
-      var xmlfd = fileIO.openSync(xmlPath, 0o102, 0o666);
-      fileIO.writeSync(xmlfd, serializerStr);
+      var xmlfd = fs.openSync(xmlPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      fs.writeSync(xmlfd.fd, serializerStr);
     } catch (err) {
       console.error(TAG, "read xmlPath =" + xmlPath + "error:" + err);
     } finally {
-      fileIO.closeSync(xmlfd);
+      fs.closeSync(xmlfd);
     }
   }
 }
