@@ -27,7 +27,7 @@ const KEY_TEST_BOOL_ARRAY_ELEMENT = 'key_test_bool_array';
 var mPreferences;
 var context;
 
-const TAG = '[1111TEST_PREFERENCES_SUPPLEMENT]'
+const TAG = '[TEST_PREFERENCES_FLUSH]'
 
 export default function preferencesFlushTest(){
     describe('preferencesFlushTest', function (){
