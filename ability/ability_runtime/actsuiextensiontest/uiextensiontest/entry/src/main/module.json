@@ -32,6 +32,25 @@
             ]
           }
         ]
+      }, {
+        "name": "EntryAbility",
+        "srcEntrance": "./ets/TestAbility/EntryAbility.ts",
+        "description": "$string:TestAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:TestAbility_label",
+        "visible": true,
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:white",
+        "skills": [
+          {
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
+          }
+        ]
       }
     ]
   }
