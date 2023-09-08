@@ -384,9 +384,9 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_set_timeout½Ó¿ÚattrÎªÒì³£Öµ
+    // ffrt_queue_attr_set_timeoutæ¥å£atträ¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_attr_set_timeout(nullptr, 10000);
     uint64_t time = ffrt_queue_attr_get_timeout(&queue_attr);
     if (time != 0) {
@@ -396,7 +396,7 @@ static napi_value QueueDfxTest001(napi_env env, napi_callback_info info)
     if (queue_handle == nullptr) {
         result = 2;
     }
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -407,9 +407,9 @@ static napi_value QueueDfxTest001(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest002(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_get_timeout½Ó¿ÚattrÎªÒì³£Öµ
+    // ffrt_queue_attr_get_timeoutæ¥å£atträ¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_attr_set_timeout(&queue_attr, 10000);
     uint64_t time = ffrt_queue_attr_get_timeout(nullptr);
     if (time != 0) {
@@ -424,7 +424,7 @@ static napi_value QueueDfxTest002(napi_env env, napi_callback_info info)
         result = 3;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -435,17 +435,17 @@ static napi_value QueueDfxTest002(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest003(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_set_timeoutCb½Ó¿ÚattrÎªÒì³£Öµ
+    // ffrt_queue_attr_set_timeoutCbæ¥å£atträ¸ºå¼‚å¸¸å€¼
 
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_attr_set_callback(nullptr, ffrt_create_function_wrapper(MyPrint, NULL, NULL, ffrt_function_kind_queue));
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -457,7 +457,7 @@ static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
 {
     int result = 0;
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_attr_set_callback(&queue_attr, ffrt_create_function_wrapper(MyPrint, NULL, NULL, ffrt_function_kind_queue));
     ffrt_function_header_t* func = ffrt_queue_attr_get_callback(nullptr);
     if (func != nullptr) {
@@ -472,7 +472,7 @@ static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
         result = 3;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_destroy(queue_handle);
     ffrt_queue_attr_destroy(&queue_attr);
     napi_value flag = nullptr;
@@ -483,15 +483,15 @@ static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_create½Ó¿ÚtypeÎªÒì³£Öµ
+    // ffrt_queue_createæ¥å£typeä¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_max, "test_queue", &queue_attr);
     if (queue_handle != nullptr) {
         result = 3;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -502,16 +502,16 @@ static napi_value QueueApiTest001(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest002(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_create½Ó¿ÚnameÎª¿Õ
+    // ffrt_queue_createæ¥å£nameä¸ºç©º
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, nullptr, &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
     }
 
     int a = 0;
-    // Ê¹ÓÃ¼ò»¯½Ó¿ÚÌá½»£¬²»Ö§³ÖÉèÖÃÊ±ÑÓºÍÈÎÎñÃû³Æ£¬²»·µ»Øtask_handle£¬²»Ö§³ÖÈ¡ÏûÈÎÎñºÍµÈ´ıÈÎÎñ
+    // ä½¿ç”¨ç®€åŒ–æ¥å£æäº¤ï¼Œä¸æ”¯æŒè®¾ç½®æ—¶å»¶å’Œä»»åŠ¡åç§°ï¼Œä¸è¿”å›task_handleï¼Œä¸æ”¯æŒå–æ¶ˆä»»åŠ¡å’Œç­‰å¾…ä»»åŠ¡
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
 
     sleep(1);
@@ -519,7 +519,7 @@ static napi_value QueueApiTest002(napi_env env, napi_callback_info info)
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -552,23 +552,23 @@ static napi_value QueueApiTest004(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest005(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_destroy½Ó¿ÚattrÎªÒì³£Öµ
+    // ffrt_queue_attr_destroyæ¥å£atträ¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
     }
     
     int a = 0;
-    // Ê¹ÓÃ¼ò»¯½Ó¿ÚÌá½»£¬²»Ö§³ÖÉèÖÃÊ±ÑÓºÍÈÎÎñÃû³Æ£¬²»·µ»Øtask_handle£¬²»Ö§³ÖÈ¡ÏûÈÎÎñºÍµÈ´ıÈÎÎñ
+    // ä½¿ç”¨ç®€åŒ–æ¥å£æäº¤ï¼Œä¸æ”¯æŒè®¾ç½®æ—¶å»¶å’Œä»»åŠ¡åç§°ï¼Œä¸è¿”å›task_handleï¼Œä¸æ”¯æŒå–æ¶ˆä»»åŠ¡å’Œç­‰å¾…ä»»åŠ¡
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
     sleep(1);
     if (a != 1) {
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(nullptr);
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
@@ -580,17 +580,17 @@ static napi_value QueueApiTest005(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest006(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_set_qos½Ó¿ÚattrÎªÒì³£Öµ
+    // ffrt_queue_attr_set_qosæ¥å£atträ¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
-    ffrt_queue_attr_set_qos(nullptr, static_cast<int>(ffrt_qos_utility)); // ÉèÖÃ¶ÓÁĞµÄÓÅÏÈ¼¶£¬·Ç±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
+    ffrt_queue_attr_set_qos(nullptr, static_cast<int>(ffrt_qos_utility)); // è®¾ç½®é˜Ÿåˆ—çš„ä¼˜å…ˆçº§ï¼Œéå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
     }
 
     int a = 0;
-    // Ê¹ÓÃ¼ò»¯½Ó¿ÚÌá½»£¬²»Ö§³ÖÉèÖÃÊ±ÑÓºÍÈÎÎñÃû³Æ£¬²»·µ»Øtask_handle£¬²»Ö§³ÖÈ¡ÏûÈÎÎñºÍµÈ´ıÈÎÎñ
+    // ä½¿ç”¨ç®€åŒ–æ¥å£æäº¤ï¼Œä¸æ”¯æŒè®¾ç½®æ—¶å»¶å’Œä»»åŠ¡åç§°ï¼Œä¸è¿”å›task_handleï¼Œä¸æ”¯æŒå–æ¶ˆä»»åŠ¡å’Œç­‰å¾…ä»»åŠ¡
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
 
     sleep(1);
@@ -598,7 +598,7 @@ static napi_value QueueApiTest006(napi_env env, napi_callback_info info)
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -609,8 +609,8 @@ static napi_value QueueApiTest006(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest007(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_set_qos½Ó¿ÚqosÎªÒì³£Öµ
-    // ÉèÖÃqosÎª-1
+    // ffrt_queue_attr_set_qosæ¥å£qosä¸ºå¼‚å¸¸å€¼
+    // è®¾ç½®qosä¸º-1
     ffrt_queue_attr_t queue_attr;
     ffrt_queue_t queue_handle;
     (void)ffrt_queue_attr_init(&queue_attr);
@@ -633,7 +633,7 @@ static napi_value QueueApiTest007(napi_env env, napi_callback_info info)
     ffrt_task_handle_destroy(handle);
     ffrt_queue_destroy(queue_handle);
     
-    // ÉèÖÃqosÎª-2
+    // è®¾ç½®qosä¸º-2
     ffrt_queue_attr_set_qos(&queue_attr, (ffrt_qos_t)(-2));
     ret = ffrt_queue_attr_get_qos(&queue_attr);
     if (ret != -1) {
@@ -661,10 +661,10 @@ static napi_value QueueApiTest007(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest008(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_attr_get_qos½Ó¿ÚattrÎªÒì³£Öµ
+    // ffrt_queue_attr_get_qosæ¥å£atträ¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
-    ffrt_queue_attr_set_qos(&queue_attr, static_cast<int>(ffrt_qos_utility)); // ÉèÖÃ¶ÓÁĞµÄÓÅÏÈ¼¶£¬·Ç±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
+    ffrt_queue_attr_set_qos(&queue_attr, static_cast<int>(ffrt_qos_utility)); // è®¾ç½®é˜Ÿåˆ—çš„ä¼˜å…ˆçº§ï¼Œéå¿…é¡»
     int ret = ffrt_queue_attr_get_qos(nullptr);
     if (ret != 2) {
         result = 2;
@@ -679,14 +679,14 @@ static napi_value QueueApiTest008(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    // Ê¹ÓÃ¼ò»¯½Ó¿ÚÌá½»£¬²»Ö§³ÖÉèÖÃÊ±ÑÓºÍÈÎÎñÃû³Æ£¬²»·µ»Øtask_handle£¬²»Ö§³ÖÈ¡ÏûÈÎÎñºÍµÈ´ıÈÎÎñ
+    // ä½¿ç”¨ç®€åŒ–æ¥å£æäº¤ï¼Œä¸æ”¯æŒè®¾ç½®æ—¶å»¶å’Œä»»åŠ¡åç§°ï¼Œä¸è¿”å›task_handleï¼Œä¸æ”¯æŒå–æ¶ˆä»»åŠ¡å’Œç­‰å¾…ä»»åŠ¡
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
     sleep(1);
     if (a != 1) {
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -697,23 +697,23 @@ static napi_value QueueApiTest008(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest009(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_destroy½Ó¿ÚqueueÎªÒì³£Öµ
+    // ffrt_queue_destroyæ¥å£queueä¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
     }
 
     int a = 0;
-    // Ê¹ÓÃ¼ò»¯½Ó¿ÚÌá½»£¬²»Ö§³ÖÉèÖÃÊ±ÑÓºÍÈÎÎñÃû³Æ£¬²»·µ»Øtask_handle£¬²»Ö§³ÖÈ¡ÏûÈÎÎñºÍµÈ´ıÈÎÎñ
+    // ä½¿ç”¨ç®€åŒ–æ¥å£æäº¤ï¼Œä¸æ”¯æŒè®¾ç½®æ—¶å»¶å’Œä»»åŠ¡åç§°ï¼Œä¸è¿”å›task_handleï¼Œä¸æ”¯æŒå–æ¶ˆä»»åŠ¡å’Œç­‰å¾…ä»»åŠ¡
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
     sleep(1);
     if (a != 1) {
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(nullptr);
     ffrt_queue_destroy(queue_handle);
@@ -725,16 +725,16 @@ static napi_value QueueApiTest009(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest010(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_submit½Ó¿Úqueue»òfÎªÒì³£Öµ
+    // ffrt_queue_submitæ¥å£queueæˆ–fä¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
     }
 
     int a = 0;
-    // Ê¹ÓÃ¼ò»¯½Ó¿ÚÌá½»£¬²»Ö§³ÖÉèÖÃÊ±ÑÓºÍÈÎÎñÃû³Æ£¬²»·µ»Øtask_handle£¬²»Ö§³ÖÈ¡ÏûÈÎÎñºÍµÈ´ıÈÎÎñ
+    // ä½¿ç”¨ç®€åŒ–æ¥å£æäº¤ï¼Œä¸æ”¯æŒè®¾ç½®æ—¶å»¶å’Œä»»åŠ¡åç§°ï¼Œä¸è¿”å›task_handleï¼Œä¸æ”¯æŒå–æ¶ˆä»»åŠ¡å’Œç­‰å¾…ä»»åŠ¡
     ffrt_queue_submit(nullptr, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle, nullptr, nullptr);
     ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
@@ -744,7 +744,7 @@ static napi_value QueueApiTest010(napi_env env, napi_callback_info info)
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -755,9 +755,9 @@ static napi_value QueueApiTest010(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest011(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_submit_h½Ó¿Úqueue»òfÎªÒì³£Öµ
+    // ffrt_queue_submit_hæ¥å£queueæˆ–fä¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
@@ -781,7 +781,7 @@ static napi_value QueueApiTest011(napi_env env, napi_callback_info info)
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_task_handle_destroy(handle);
     ffrt_queue_destroy(queue_handle);
@@ -793,9 +793,9 @@ static napi_value QueueApiTest011(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest012(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_wait½Ó¿ÚhandleÎªÒì³£Öµ
+    // ffrt_queue_waitæ¥å£handleä¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
@@ -811,7 +811,7 @@ static napi_value QueueApiTest012(napi_env env, napi_callback_info info)
         result = 1;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_task_handle_destroy(handle);
     ffrt_queue_destroy(queue_handle);
@@ -823,15 +823,15 @@ static napi_value QueueApiTest012(napi_env env, napi_callback_info info)
 static napi_value QueueApiTest013(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ffrt_queue_cancel½Ó¿ÚhandleÎªÒì³£Öµ
+    // ffrt_queue_cancelæ¥å£handleä¸ºå¼‚å¸¸å€¼
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
 
     int a = 0;
     ffrt_task_attr_t task_attr;
-    (void)ffrt_task_attr_init(&task_attr); // ³õÊ¼»¯taskÊôĞÔ£¬±ØĞë
-    ffrt_task_attr_set_delay(&task_attr, 1000000); // ÉèÖÃÈÎÎñ1sºó²ÅÖ´ĞĞ
+    (void)ffrt_task_attr_init(&task_attr); // åˆå§‹åŒ–taskå±æ€§ï¼Œå¿…é¡»
+    ffrt_task_attr_set_delay(&task_attr, 1000000); // è®¾ç½®ä»»åŠ¡1såæ‰æ‰§è¡Œ
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), &task_attr);
 
@@ -848,9 +848,9 @@ static napi_value QueueApiTest013(napi_env env, napi_callback_info info)
     }
 
     ffrt_task_attr_destroy(&task_attr);
-    ffrt_task_handle_destroy(task1); // Ïú»Ùtask_handle£¬±ØĞë
+    ffrt_task_handle_destroy(task1); // é”€æ¯task_handleï¼Œå¿…é¡»
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     if (a != 0) {
@@ -864,15 +864,15 @@ static napi_value QueueApiTest013(napi_env env, napi_callback_info info)
 static napi_value QueueCancelTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // cancelÒ»¸ödelayµÄÎ´Ö´ĞĞtask
+    // cancelä¸€ä¸ªdelayçš„æœªæ‰§è¡Œtask
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
 
     int a = 0;
     ffrt_task_attr_t task_attr;
-    (void)ffrt_task_attr_init(&task_attr); // ³õÊ¼»¯taskÊôĞÔ£¬±ØĞë
-    ffrt_task_attr_set_delay(&task_attr, 1000000); // ÉèÖÃÈÎÎñ1sºó²ÅÖ´ĞĞ
+    (void)ffrt_task_attr_init(&task_attr); // åˆå§‹åŒ–taskå±æ€§ï¼Œå¿…é¡»
+    ffrt_task_attr_set_delay(&task_attr, 1000000); // è®¾ç½®ä»»åŠ¡1såæ‰æ‰§è¡Œ
     ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), &task_attr);
 
@@ -885,9 +885,9 @@ static napi_value QueueCancelTest001(napi_env env, napi_callback_info info)
     }
 
     ffrt_task_attr_destroy(&task_attr);
-    ffrt_task_handle_destroy(task1); // Ïú»Ùtask_handle£¬±ØĞë
+    ffrt_task_handle_destroy(task1); // é”€æ¯task_handleï¼Œå¿…é¡»
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     if (a != 0) {
@@ -901,9 +901,9 @@ static napi_value QueueCancelTest001(napi_env env, napi_callback_info info)
 static napi_value QueueCancelTest003(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // cancelÒ»¸öÖ´ĞĞÖĞtask,ffrtµÄsleep
+    // cancelä¸€ä¸ªæ‰§è¡Œä¸­task,ffrtçš„sleep
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
 
     int a = 0;
@@ -918,12 +918,12 @@ static napi_value QueueCancelTest003(napi_env env, napi_callback_info info)
     if (a != 0) {
         result = 3;
     }
-    ffrt_task_handle_destroy(task1); // Ïú»Ùtask_handle£¬±ØĞë
+    ffrt_task_handle_destroy(task1); // é”€æ¯task_handleï¼Œå¿…é¡»
     if (a != 0) {
         result = 4;
     }
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     if (a != 1) {
@@ -937,9 +937,9 @@ static napi_value QueueCancelTest003(napi_env env, napi_callback_info info)
 static napi_value QueueCancelTest004(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // cancelÒ»¸öÒÑÖ´ĞĞµÄtask
+    // cancelä¸€ä¸ªå·²æ‰§è¡Œçš„task
     ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
+    (void)ffrt_queue_attr_init(&queue_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
 
     int a = 0;
@@ -960,10 +960,10 @@ static napi_value QueueCancelTest004(napi_env env, napi_callback_info info)
     if (a != 2) {
         result = 4;
     }
-    ffrt_task_handle_destroy(task1); // Ïú»Ùtask_handle£¬±ØĞë
-    ffrt_task_handle_destroy(task2); // Ïú»Ùtask_handle£¬±ØĞë
+    ffrt_task_handle_destroy(task1); // é”€æ¯task_handleï¼Œå¿…é¡»
+    ffrt_task_handle_destroy(task2); // é”€æ¯task_handleï¼Œå¿…é¡»
 
-    // Ïú»Ù¶ÓÁĞ
+    // é”€æ¯é˜Ÿåˆ—
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
     napi_value flag = nullptr;
@@ -1280,11 +1280,11 @@ static napi_value SubmitIn0Ou0WaitNullTask1Test(napi_env env, napi_callback_info
 static napi_value DelayCTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    // ÑéÖ¤delayµÄsetºÍdelay c½Ó¿Ú
+    // éªŒè¯delayçš„setå’Œdelay cæ¥å£
     int a = 0;
     ffrt_task_attr_t task_attr;
-    (void)ffrt_task_attr_init(&task_attr); // ³õÊ¼»¯ÊôĞÔ£¬±ØĞë
-    ffrt_task_attr_set_delay(&task_attr, 5000); // ÉèÖÃÈÎÎñ5msºó²ÅÖ´ĞĞ£¬ ·Ç±ØĞë
+    (void)ffrt_task_attr_init(&task_attr); // åˆå§‹åŒ–å±æ€§ï¼Œå¿…é¡»
+    ffrt_task_attr_set_delay(&task_attr, 5000); // è®¾ç½®ä»»åŠ¡5msåæ‰æ‰§è¡Œï¼Œ éå¿…é¡»
 
     double t;
     auto start = std::chrono::high_resolution_clock::now();
@@ -1308,7 +1308,7 @@ static napi_value DelayCTest001(napi_env env, napi_callback_info info)
         result = 3;
     }
     ffrt_task_attr_destroy(&task_attr);
-    ffrt_task_handle_destroy(task); // Ïú»Ùtask_handle£¬±ØĞë
+    ffrt_task_handle_destroy(task); // é”€æ¯task_handleï¼Œå¿…é¡»
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -1394,7 +1394,7 @@ static napi_value QosSetPthreadTest(napi_env env, napi_callback_info info)
         };
 
         auto threadQueryFunc = [&]() {
-            usleep(sleepTime); // ±£Ö¤setÏß³ÌÏÈÖ´ĞĞ
+            usleep(sleepTime); // ä¿è¯setçº¿ç¨‹å…ˆæ‰§è¡Œ
             lock.lock();
             int queryVal = int(ffrt_task_attr_get_qos(attr));
             if (queryVal != qosVal) {
@@ -1433,7 +1433,7 @@ static napi_value AttrSetThreadTest(napi_env env, napi_callback_info info)
     };
 
     auto threadDestroyFunc = [&]() {
-        usleep(sleepTime); // ±£Ö¤setÏß³ÌÏÈÖ´ĞĞ
+        usleep(sleepTime); // ä¿è¯setçº¿ç¨‹å…ˆæ‰§è¡Œ
         lock.lock();
         ffrt_task_attr_destroy(attr);
         lock.unlock();
