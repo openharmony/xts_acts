@@ -29,8 +29,8 @@ var context;
 
 const TAG = '[1111TEST_PREFERENCES_SUPPLEMENT]'
 
-export default function preferencesSupplementTest(){
-    describe('preferencesPromise_supplement', function (){
+export default function preferencesFlushTest(){
+    describe('preferencesFlushTest', function (){
         beforeAll(async function(){
             console.info('beforeAll');
             context = featureAbility.getContext();
