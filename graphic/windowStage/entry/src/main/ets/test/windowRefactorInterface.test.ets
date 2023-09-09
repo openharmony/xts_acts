@@ -42,31 +42,12 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
       pending: 'pending',
       finished: 'finished'
     };
-    var listenerData = {
-      on: false,
-      typeStr: '',
-    };
-    var newWindowObj = null;
-
     beforeAll(function () {
       console.info('jsunittest beforeall ohosWindow.WindowType=' + JSON.stringify(ohosWindow.WindowType));
       systemWindowTypeDicArr = Object.keys(systemWindowTypeDic);
       console.info('jsunittest beforeall systemWindowTypeDicArr=' + JSON.stringify(systemWindowTypeDicArr) + '   ,length=' + systemWindowTypeDicArr.length);
     })
     beforeEach(function () {
-    })
-    afterEach(async function (done) {
-      if (listenerData.on) {
-        listenerData.on = false;
-        console.info('jsunittest afterEach listener off, listenerData:' + JSON.stringify(listenerData));
-        if (listenerData.typeStr === 'systemBarTintChange') {
-          ohosWindow.off(listenerData.typeStr);
-        } else if (newWindowObj) {
-          newWindowObj.off(listenerData.typeStr);
-        }
-        await sleep(3000);
-      }
-      done();
     })
     afterAll(function () {
     })
