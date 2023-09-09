@@ -103,7 +103,8 @@
 		"MainAbility/pages/overlay",
 		"MainAbility/pages/Panel",
 		"MainAbility/pages/GridCallbackPage",
-		"MainAbility/pages/aboutToRecycleiamge"
+		"MainAbility/pages/aboutToRecycleiamge",
+        "MainAbility/pages/lifecycle"
 		
     ]
 }
