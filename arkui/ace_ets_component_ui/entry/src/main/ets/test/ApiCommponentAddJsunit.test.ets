@@ -704,8 +704,8 @@ export default function ApiCommponentAddJsunit() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('S1');
       let obj = JSON.parse(strJson);
-      console.info("[apiCommponentAddJsunit_2700'] component obj is: " + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('S1);
+      console.info("[apiCommponentAddJsunit_2700] component obj is: " + obj.$attrs.content);
+      expect(obj.$attrs.content).assertEqual('S1');
       done();
     });
 
