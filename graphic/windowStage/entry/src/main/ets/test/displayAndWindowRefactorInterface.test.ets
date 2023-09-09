@@ -48,11 +48,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       pending: 'pending',
       finished: 'finished'
     };
-    var listenerData = {
-      on: false,
-      typeStr: '',
-    };
-    var newWindowObj = null;
     const WINDOW_NAME = 'windowName';
 
     beforeAll(function () {
@@ -67,20 +62,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       }
     })
     beforeEach(function () {
-    })
-    afterEach(async function (done) {
-      windowCount++;
-      if (listenerData.on) {
-        listenerData.on = false;
-        console.log('jsunittest afterEach listener off, listenerData:' + JSON.stringify(listenerData));
-        if (listenerData.typeStr === 'systemBarTintChange') {
-          ohosWindow.off(listenerData.typeStr);
-        } else if (newWindowObj) {
-          newWindowObj.off(listenerData.typeStr);
-        }
-        await sleep(3000);
-      }
-      done();
     })
     afterAll(function () {
     })
