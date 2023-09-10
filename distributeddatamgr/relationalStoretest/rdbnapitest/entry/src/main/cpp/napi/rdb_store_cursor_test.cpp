@@ -35,7 +35,7 @@
 
 OH_Rdb_Store *cursorTestRdbStore_ = NULL;
 
-char RDB_TEST_PATH[] =  "/data/storage/el2/database/";
+char *RDB_TEST_PATH =  NULL;
 char RDB_STORE_NAME[] =  "rdb_store_cursor_test.db";
 char BUNDLE_NAME[] =  "com.acts.rdb.napitest";
 char MODULE_NAME[] =  "com.acts.rdb.napitest";
@@ -50,6 +50,26 @@ static void InitRdbConfig()
     config_.securityLevel = OH_Rdb_SecurityLevel::S1;
     config_.isEncrypt = false;
     config_.selfSize = sizeof(OH_Rdb_Config);
+}
+
+static napi_value RdbFilePath(napi_env env, napi_callback_info info) {
+    int errCode = 0;
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+
+    size_t bufferSize = 0;
+    napi_get_value_string_latin1(env, args[0], nullptr, 0, &bufferSize);
+
+    char *buffer = (char*)malloc((bufferSize) + 1);
+    napi_get_value_string_utf8(env, args[0], buffer, bufferSize+1, &bufferSize);  
+
+    RDB_TEST_PATH = (char*)malloc((bufferSize) + 1);
+    sprintf(RDB_TEST_PATH, "%s", buffer);
+
+    napi_value returnCode;
+    napi_create_double(env, errCode, &returnCode);
+    return returnCode; 
 }
 
 static napi_value CursorSetUpTestCase(napi_env env, napi_callback_info info) {
@@ -727,6 +747,7 @@ static napi_value SUB_DDM_RDB_CURSOR_1800(napi_env env, napi_callback_info info)
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
+        {"RdbFilePath", nullptr, RdbFilePath, nullptr, nullptr, nullptr, napi_default, nullptr}, 
         {"CursorSetUpTestCase", nullptr, CursorSetUpTestCase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"CursorTearDownTestCase", nullptr, CursorTearDownTestCase, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"SUB_DDM_RDB_CURSOR_0100", nullptr, SUB_DDM_RDB_CURSOR_0100, nullptr, nullptr, nullptr, napi_default, nullptr},
