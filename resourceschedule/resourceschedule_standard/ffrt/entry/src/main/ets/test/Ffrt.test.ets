@@ -360,5 +360,40 @@ export default function ffrtTest() {
       var flag = ffrtndk.taskAttrAbnormalTest();
       expect(flag).assertEqual(0);
     })
+    it('basicHTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.basicHTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHBasicTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHBasicTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHInDependEmptyTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHInDependEmptyTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHInDependNullptrTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHInDependNullptrTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHOuDependEmptyTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHOuDependEmptyTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHOuDependNullptrTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHOuDependNullptrTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHIODependAttrBasicTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHIODependAttrBasicTest();
+      expect(flag).assertEqual(0);
+    })
   })
 }
