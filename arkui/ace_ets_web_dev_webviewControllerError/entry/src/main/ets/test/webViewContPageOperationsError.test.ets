@@ -72,7 +72,7 @@ export default function webViewContPageOperationsError() {
     it('testAccessForwardInitErr',0,async function(done){
       emitKey="emitForwardInitErr";
       Utils.registerEvent("testAccessForwardInitErr","17100001",630,done);
-      Utils.registerEvent("testAccessForwardInitErr","Init error. The WebviewController must be associated with a Web component.",631,done);
+      Utils.registerEvent("testAccessForwardInitErr","Init error. The WebviewController must be associated with a Web component",631,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -83,7 +83,7 @@ export default function webViewContPageOperationsError() {
     it('testForwardInitErr',0,async function(done){
       emitKey="emitAccessBackwardInitErr";
       Utils.registerEvent("testForwardInitErr","17100001",632,done);
-      Utils.registerEvent("testForwardInitErr","Init error. The WebviewController must be associated with a Web component.",633,done);
+      Utils.registerEvent("testForwardInitErr","Init error. The WebviewController must be associated with a Web component",633,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -94,7 +94,7 @@ export default function webViewContPageOperationsError() {
     it('testAccessBackwardInitErr',0,async function(done){
       emitKey="emitBackwardInitErr";
       Utils.registerEvent("testAccessBackwardInitErr","17100001",634,done);
-      Utils.registerEvent("testAccessBackwardInitErr","Init error. The WebviewController must be associated with a Web component.",635,done);
+      Utils.registerEvent("testAccessBackwardInitErr","Init error. The WebviewController must be associated with a Web component",635,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -105,7 +105,7 @@ export default function webViewContPageOperationsError() {
     it('testBackwardInitErr',0,async function(done){
       emitKey="emitOnActiveInitErr";
       Utils.registerEvent("testBackwardInitErr","17100001",636,done);
-      Utils.registerEvent("testBackwardInitErr","Init error. The WebviewController must be associated with a Web component.",637,done);
+      Utils.registerEvent("testBackwardInitErr","Init error. The WebviewController must be associated with a Web component",637,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -116,7 +116,7 @@ export default function webViewContPageOperationsError() {
     it('testOnActiveInitErr',0,async function(done){
       emitKey="emitOnInactiveInitErr";
       Utils.registerEvent("testOnActiveInitErr","17100001",638,done);
-      Utils.registerEvent("testOnActiveInitErr","Init error. The WebviewController must be associated with a Web component.",639,done);
+      Utils.registerEvent("testOnActiveInitErr","Init error. The WebviewController must be associated with a Web component",639,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -127,7 +127,7 @@ export default function webViewContPageOperationsError() {
     it('testOnInactiveInitErr',0,async function(done){
       emitKey="emitRefreshInitErr";
       Utils.registerEvent("testOnInactiveInitErr","17100001",640,done);
-      Utils.registerEvent("testOnInactiveInitErr","Init error. The WebviewController must be associated with a Web component.",641,done);
+      Utils.registerEvent("testOnInactiveInitErr","Init error. The WebviewController must be associated with a Web component",641,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -138,7 +138,7 @@ export default function webViewContPageOperationsError() {
     it('testRefreshInitErr',0,async function(done){
       emitKey="emitAccessStepInitErr";
       Utils.registerEvent("testRefreshInitErr","17100001",642,done);
-      Utils.registerEvent("testRefreshInitErr","Init error. The WebviewController must be associated with a Web component.",643,done);
+      Utils.registerEvent("testRefreshInitErr","Init error. The WebviewController must be associated with a Web component",643,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -149,7 +149,7 @@ export default function webViewContPageOperationsError() {
     it('testAccessStepInitErr',0,async function(done){
       emitKey="emitClearHistoryInitErr";
       Utils.registerEvent("testAccessStepInitErr","17100001",644,done);
-      Utils.registerEvent("testAccessStepInitErr","Init error. The WebviewController must be associated with a Web component.",645,done);
+      Utils.registerEvent("testAccessStepInitErr","Init error. The WebviewController must be associated with a Web component",645,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -160,7 +160,7 @@ export default function webViewContPageOperationsError() {
     it('testClearHistoryInitErr',0,async function(done){
       emitKey="emitGetHitTestInitErr";
       Utils.registerEvent("testClearHistoryInitErr","17100001",646,done);
-      Utils.registerEvent("testClearHistoryInitErr","Init error. The WebviewController must be associated with a Web component.",647,done);
+      Utils.registerEvent("testClearHistoryInitErr","Init error. The WebviewController must be associated with a Web component",647,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
     /*
@@ -171,7 +171,7 @@ export default function webViewContPageOperationsError() {
     it('testGetHitTestInitErr',0,async function(done){
       emitKey="emitGetHitTestInitErr";
       Utils.registerEvent("testGetHitTestInitErr","17100001",648,done);
-      Utils.registerEvent("testGetHitTestInitErr","Init error. The WebviewController must be associated with a Web component.",649,done);
+      Utils.registerEvent("testGetHitTestInitErr","Init error. The WebviewController must be associated with a Web component",649,done);
       sendEventByKey('webViewContPageOperationsError',10,'');
     })
   })
