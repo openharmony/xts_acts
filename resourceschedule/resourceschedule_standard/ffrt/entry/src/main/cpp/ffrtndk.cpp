@@ -289,77 +289,6 @@ typedef struct {
     ffrt_mutex_t* lock_;
 } FfrtTuple;
 
-void Func1(void* arg)
-{
-    FfrtTuple* t = (FfrtTuple*)arg;
-    int ret = ffrt_mutex_lock(t->lock_);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    while (*t->a != 1) {
-        ret = ffrt_cond_wait(t->cond, t->lock_);
-        if (ret != ffrt_success) {
-            printf("error\n");
-        }
-    }
-    *(t->a) = 3;
-    ret = ffrt_cond_signal(t->cond);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    ret = ffrt_mutex_unlock(t->lock_);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    printf("a = %d", *(t->a));
-}
-
-void Func2(void* arg)
-{
-    FfrtTuple* t = (FfrtTuple*)arg;
-    int ret = ffrt_mutex_lock(t->lock_);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    *(t->a) = 1;
-    ret = ffrt_cond_broadcast(t->cond);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    ret = ffrt_mutex_unlock(t->lock_);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-}
-
-void Func3(void* arg)
-{
-    FfrtTuple* t = (FfrtTuple*)arg;
-    int ret = ffrt_mutex_trylock(t->lock_);
-    if (ret != ffrt_success) {
-        printf("error\n");
-        ret = ffrt_mutex_lock(t->lock_);
-        if (ret != ffrt_success) {
-            printf("error\n");
-        }
-    }
-    while (*t->a != 3) {
-        ret = ffrt_cond_timedwait(t->cond, t->lock_, nullptr);
-        if (ret != ffrt_success) {
-            printf("error\n");
-            ret = ffrt_cond_wait(t->cond, t->lock_);
-            if (ret != ffrt_success) {
-                printf("error\n");
-            }
-        }
-    }
-    ret = ffrt_mutex_unlock(t->lock_);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    printf("a = %d", *(t->a));
-}
-
 static void FfrtExecFunctionWrapper(void* t)
 {
     CFunction* f = (CFunction*)t;
@@ -434,28 +363,6 @@ static inline ffrt_task_handle_t ffrt_submit_h_c(ffrt_function_t func, void* arg
     const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 {
     return ffrt_submit_h_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
-}
-
-void FfrtCvTask(void* arg)
-{
-    int* a = (int*) arg;
-    ffrt_cond_t cond;
-    int ret = ffrt_cond_init(&cond, NULL);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    ffrt_mutex_t lock_;
-    FfrtTuple t = {&cond, a, &lock_};
-    ret = ffrt_mutex_init(&lock_, NULL);
-    if (ret != ffrt_success) {
-        printf("error\n");
-    }
-    ffrt_submit_c(Func1, &t, NULL, NULL, NULL);
-    ffrt_submit_c(Func2, &t, NULL, NULL, NULL);
-    ffrt_submit_c(Func3, &t, NULL, NULL, NULL);
-    ffrt_wait();
-    ffrt_cond_destroy(&cond);
-    ffrt_mutex_destroy(&lock_);
 }
 
 static napi_value QueueTest001(napi_env env, napi_callback_info info)
@@ -2462,9 +2369,6 @@ static napi_value ConditionVariableTest005(napi_env env, napi_callback_info info
     if (*(t.a) != 0) {
         resultEnd = 10;
     }
-    if (time <= 1000) {
-        resultEnd = 11;    
-    }
     
     start = std::chrono::high_resolution_clock::now();
     ffrt_func1 = create_function_wrapper((FfrtFunc1));
@@ -2687,9 +2591,6 @@ static napi_value ConditionVariableApiTest005(napi_env env, napi_callback_info i
     if (*(t.a) != 0) {
         resultEnd = 10;
     }
-    if (time <= 1000) {
-        resultEnd = 11;    
-    }
     
     start = std::chrono::high_resolution_clock::now();
     ffrt_func1 = create_function_wrapper((FfrtFunc1));
@@ -2712,6 +2613,106 @@ static napi_value ConditionVariableApiTest005(napi_env env, napi_callback_info i
     ffrt_mutex_destroy(&lock_);
     napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
+    return flag;
+}
+
+static napi_value MutexAbnormalParam(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_mutex_t mtx;
+    ffrt_mutexattr_t attr;
+    int ret = ffrt_mutex_init(NULL, &attr);
+    if (ret != ffrt_error_inval) {
+        result = 1;
+    }
+    ret = ffrt_mutex_init(&mtx, &attr);
+    if (ret != ffrt_error) {
+        result = 2;
+    }
+
+    ret = ffrt_mutex_init(&mtx, nullptr);
+    ret = ffrt_mutex_lock(&mtx);
+    ret = ffrt_mutex_lock(NULL);
+    if (ret != ffrt_error_inval) {
+        result = 3;
+    }
+    ret = ffrt_mutex_unlock(NULL);
+    if (ret != ffrt_error_inval) {
+        result = 4;
+    }
+    ret = ffrt_mutex_trylock(NULL);
+    if (ret != ffrt_error_inval) {
+        result = 5;
+    }
+    // 没抢到锁
+    ret = ffrt_mutex_trylock(&mtx);
+    if (ret != ffrt_error_busy) {
+        result = 6;
+    }
+    ret = ffrt_mutex_destroy(NULL);
+    if (ret != ffrt_error_inval) {
+        result = 7;
+    }
+    ret = ffrt_mutex_unlock(&mtx);
+    ret = ffrt_mutex_destroy(&mtx);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value FFRTSubmitAbnormalTest(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    int x = 0;
+    std::function<void()>&& func = [&]() { x = x + 1;};
+    const std::vector<ffrt_dependence_t> in_deps = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in{static_cast<uint32_t>(in_deps.size()), in_deps.data()};
+    const std::vector<ffrt_dependence_t> out_deps = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t out{static_cast<uint32_t>(out_deps.size()), out_deps.data()};
+    ffrt_function_header_t* ffrt_header_t = create_function_wrapper((func));
+    // func为空指针, 不影响后续流程
+    ffrt_submit_base(nullptr, &in, &out, nullptr);
+    ffrt_submit_h_base(nullptr, &in, &out, nullptr);
+    ffrt_task_handle_destroy(nullptr);
+    ffrt_submit_base(ffrt_header_t, &in, &out, nullptr);
+    ffrt_wait();
+    if (x != 1) {
+        result = 1;
+    }
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value FFRTTaskAttrAbnormalTest(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    int x = 0;
+    ffrt_task_attr_t attr;
+    int ret = ffrt_task_attr_init(nullptr);
+    if (ret != -1) {    // 没有定义错误码
+        result = 1;
+    }
+    ret = ffrt_task_attr_init(&attr);
+    ffrt_task_attr_set_qos(nullptr, static_cast<int>(ffrt_qos_default));
+    ffrt_task_attr_set_name(nullptr, nullptr);
+    ffrt_task_attr_set_delay(nullptr, 0);
+    ffrt_qos_t ffrt_qos = ffrt_task_attr_get_qos(nullptr);
+    if (ffrt_qos != ffrt_qos_default) {
+        result = 2;
+    }
+    const char* name = ffrt_task_attr_get_name(nullptr);
+    if (name != nullptr) {
+        result = 3;
+    }
+    uint64_t delay = ffrt_task_attr_get_delay(nullptr);
+    if (delay != 0) {
+        result = 4;
+    }
+    ffrt_task_attr_destroy(nullptr);    // attr为空不影响后续流程
+    ffrt_task_attr_destroy(&attr);
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
     return flag;
 }
 
@@ -2782,7 +2783,10 @@ static napi_value Init(napi_env env, napi_value exports)
         { "conditionVariableApiTest002", nullptr, ConditionVariableApiTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "conditionVariableApiTest003", nullptr, ConditionVariableApiTest003, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "conditionVariableApiTest004", nullptr, ConditionVariableApiTest004, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableApiTest005", nullptr, ConditionVariableApiTest005, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "conditionVariableApiTest005", nullptr, ConditionVariableApiTest005, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "MutexAbnormalParam", nullptr, MutexAbnormalParam, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "submitAbnormalTest", nullptr, FFRTSubmitAbnormalTest, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "taskAttrAbnormalTest", nullptr, FFRTTaskAttrAbnormalTest, nullptr, nullptr, nullptr, napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -345,5 +345,20 @@ export default function ffrtTest() {
       var flag = ffrtndk.conditionVariableApiTest004();
       expect(flag).assertEqual(0);
     })
+    it('mutexAbnormalParam',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.mutexAbnormalParam();
+      expect(flag).assertEqual(0);
+    })
+    it('submitAbnormalTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitAbnormalTest();
+      expect(flag).assertEqual(0);
+    })
+    it('taskAttrAbnormalTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.taskAttrAbnormalTest();
+      expect(flag).assertEqual(0);
+    })
   })
 }

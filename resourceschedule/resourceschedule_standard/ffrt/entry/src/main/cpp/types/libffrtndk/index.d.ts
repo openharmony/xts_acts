@@ -62,3 +62,6 @@ export const conditionVariableApiTest002: () => number;
 export const conditionVariableApiTest003: () => number;
 export const conditionVariableApiTest004: () => number;
 export const conditionVariableApiTest005: () => number;
+export const mutexAbnormalParam: () => number;
+export const submitAbnormalTest: () => number;
+export const taskAttrAbnormalTest: () => number;
