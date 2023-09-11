@@ -16,8 +16,12 @@
 //public invalid
 export const OUTPUT_NUMBER_0 = 0;
 export const OUTPUT_NUMBER_1 = 1;
+export const OUTPUT_NUMBER_2 = 2;
 
 //--------------------------------------------------------------
 export const INVALID_INPUT_PARAMETER_401 = 401;
 export const INVALID_INPUT_PARAMETER_6800101 = 6800101;
 export const UNSUPORTED_OPTION_6800104 = 6800104;
+
+//----------------StreamUsage: not streamapi--------------------
+export const StreamUsage = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13];
