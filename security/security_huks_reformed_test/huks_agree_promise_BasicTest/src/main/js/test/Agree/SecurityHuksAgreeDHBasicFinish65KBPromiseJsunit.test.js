@@ -12,15 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { describe, it,beforeAll  } from '@ohos/hypium';
+import { describe, it, beforeAll, expect } from '@ohos/hypium';
 import * as Data from '../../../../../../utils/data.json';
 import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { HuksAgreeDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../utils/param/publicParam';
+import { checkAESChiper } from '../../../../../../utils/param/checkAES';
+
 let srcData65 = Data.Date65KB;
 let srcData65Kb = stringToUint8Array(srcData65);
+let srcData63 = Data.Date63KB;
+let srcData63Kb = stringToUint8Array(srcData63);
 let useSoftware = true;
 
 let HuksOptions2048 = {
@@ -42,7 +45,7 @@ function makehuksOptionsFinish(srcKeyAliesFirst) {
         value: stringToUint8Array(srcKeyAliesFirst),
       },
       HuksAgreeDH.HuksKeyPADDINGNONE,
-      HuksAgreeDH.HuksKeyBLOCKMODEECB
+      HuksAgreeDH.HuksKeyBLOCKMODECBC
     ),
     inData: srcData65Kb,
   };
@@ -57,7 +60,7 @@ function makehuksOptionsDerive(srcKeyAliesFirst) {
       HuksAgreeDH.HuksKeyDIGESTSHA256,
       HuksAgreeDH.HuksKeySIZE256,
       HuksAgreeDH.HuksKeyPADDINGNONE,
-      HuksAgreeDH.HuksKeyBLOCKMODEECB,
+      HuksAgreeDH.HuksKeyBLOCKMODECBC,
       {
         tag: HksTag.HKS_TAG_KEY_ALIAS,
         value: stringToUint8Array(srcKeyAliesFirst),
@@ -78,7 +81,7 @@ function makehuksOptionsHmac(srcKeyAliesFirst) {
       HuksAgreeDH.HuksKeyDIGESTSHA256,
       HuksAgreeDH.HuksKeySIZE256,
       HuksAgreeDH.HuksKeyPADDINGNONE,
-      HuksAgreeDH.HuksKeyBLOCKMODEECB,
+      HuksAgreeDH.HuksKeyBLOCKMODECBC,
       {
         tag: HksTag.HKS_TAG_KEY_ALIAS,
         value: stringToUint8Array(srcKeyAliesFirst),
@@ -97,12 +100,61 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
+
+    it('testReformedAgreeDH101', 0, async function (done) {
+      const srcKeyAliesFirst = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_01_101';
+      const srcKeyAliesSecond = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_02_101';
+      let HuksOptions63kb = {
+        properties: new Array(HuksAgreeDH.HuksKeyAlgDH, HuksAgreeDH.HuksKeyPurposeDH, HuksAgreeDH.HuksKeyDHSize2048),
+        // inData: srcData63Kb,
+      };
+
+      let huksOptionsFinish = {
+        properties: new Array(
+          HuksAgreeDH.HuksKeySTORAGE,
+          HuksAgreeDH.HuksKeyISKEYALIAS,
+          HuksAgreeDH.HuksKeyALGORITHMAES,
+          HuksAgreeDH.HuksKeySIZE256,
+          HuksAgreeDH.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksAgreeDH.HuksKeyDIGESTNONE,
+          {
+            tag: HksTag.HKS_TAG_KEY_ALIAS,
+            value: stringToUint8Array(srcKeyAliesFirst),
+          },
+          HuksAgreeDH.HuksKeyPADDINGNONE,
+          HuksAgreeDH.HuksKeyBLOCKMODECBC,
+        ),
+        // inData: srcData63Kb,
+      };
+      if (useSoftware) {
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
+      };
+
+      //AES check
+      // use the final key to cipher test
+      let IV = '0000000000000000';
+      let huksOptionsCipher = {
+        properties: new Array(
+          HuksAgreeDH.HuksKeyALGORITHMAES,
+          HuksAgreeDH.HuksKeySIZE256,
+          HuksAgreeDH.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksAgreeDH.HuksKeyDIGESTNONE,
+          HuksAgreeDH.HuksKeyPADDINGNONE,
+          HuksAgreeDH.HuksKeyBLOCKMODECBC,
+          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) },
+        ),
+      };
+      let res = await checkAESChiper(srcKeyAliesFirst+ 'final', srcKeyAliesSecond + 'final',huksOptionsCipher);
+      expect(res).assertTrue();
+      done();
+    });
+
     it('testReformedAgreeDH103', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_02_101';
       let huksOptionsFinish = makehuksOptionsFinish(srcKeyAliesFirst);
       if (useSoftware) {
-        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions2048, huksOptionsFinish, 'finish');
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions2048, huksOptionsFinish, 'finish', true);
       };
       done();
     });
@@ -112,7 +164,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_02_108';
       let huksOptionsFinish = makehuksOptionsDerive(srcKeyAliesFirst);
       if (useSoftware) {
-        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions2048, huksOptionsFinish, 'finish');
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions2048, huksOptionsFinish, 'finish', true);
       };
       done();
     });
@@ -122,7 +174,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_02_130';
       let huksOptionsFinish = makehuksOptionsHmac(srcKeyAliesFirst);
       if (useSoftware) {
-        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions2048, huksOptionsFinish, 'finish');
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions2048, huksOptionsFinish, 'finish', true);
       };
       done();
     });

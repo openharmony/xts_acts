@@ -14,7 +14,7 @@
  */
 import { expect } from 'deccjsunit/index';
 import huks from '@ohos.security.huks';
-import * as paramPublic from './publicDeriveParam.js';
+import * as paramPublic from './publicDeriveParam';
 import { HksTag, HksKeyStorageType } from '../publicParam';
 let handle;
 async function publicDeriveGenFunc(srcKeyAlies, HuksOptions) {

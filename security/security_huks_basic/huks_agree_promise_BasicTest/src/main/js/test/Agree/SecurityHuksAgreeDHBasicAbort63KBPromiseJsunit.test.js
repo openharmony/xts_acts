@@ -13,19 +13,19 @@
  * limitations under the License.
  */
 
-import { describe, it, beforeAll } from '@ohos/hypium';
-import * as Data from '../../../../../../utils/data.json';
+
+import { describe, it, beforeAll, beforeEach, expect} from '@ohos/hypium';
 import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { HuksAgreeDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../utils/param/publicParam';
-let srcData63 = Data.Date63KB;
-let srcData63Kb = stringToUint8Array(srcData63);
+import { checkAESChiper } from '../../../../../../utils/param/checkAES';
+
+
 let useSoftware = true;
 
 let HuksOptions63kb = {
   properties: new Array(HuksAgreeDH.HuksKeyAlgDH, HuksAgreeDH.HuksKeyPurposeDH, HuksAgreeDH.HuksKeyDHSize2048),
-  inData: srcData63Kb,
 };
 
 export default function SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit() {
@@ -52,7 +52,6 @@ export default function SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit() {
           HuksAgreeDH.HuksKeyPADDINGNONE,
           HuksAgreeDH.HuksKeyBLOCKMODEECB
         ),
-        inData: srcData63Kb,
       };
       if (useSoftware) {
         await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'abort');

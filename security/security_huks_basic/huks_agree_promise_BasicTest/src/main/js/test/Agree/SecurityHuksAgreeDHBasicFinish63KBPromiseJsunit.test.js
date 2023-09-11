@@ -13,18 +13,17 @@
  * limitations under the License.
  */
 
-import { describe, it, beforeAll } from '@ohos/hypium';
-import * as Data from '../../../../../../utils/data.json';
+import { describe, it, beforeAll, beforeEach, expect} from '@ohos/hypium';
 import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { HuksAgreeDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../utils/param/publicParam';
-let srcData63 = Data.Date63KB;
-let srcData63Kb = stringToUint8Array(srcData63);
+import { checkAESChiper } from '../../../../../../utils/param/checkAES';
+
+ 
 let useSoftware = true;
 let HuksOptions63kb = {
   properties: new Array(HuksAgreeDH.HuksKeyAlgDH, HuksAgreeDH.HuksKeyPurposeDH, HuksAgreeDH.HuksKeyDHSize2048),
-  inData: srcData63Kb,
 };
 
 export default function SecurityHuksAgreeDHBasicFinish63KBPromiseJsunit() {
@@ -49,13 +48,28 @@ export default function SecurityHuksAgreeDHBasicFinish63KBPromiseJsunit() {
             value: stringToUint8Array(srcKeyAliesFirst),
           },
           HuksAgreeDH.HuksKeyPADDINGNONE,
-          HuksAgreeDH.HuksKeyBLOCKMODEECB
+          HuksAgreeDH.HuksKeyBLOCKMODECBC
         ),
-        inData: srcData63Kb,
+
       };
       if (useSoftware) {
-        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish');
+        await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
       };
+      // AES Check
+      let IV = '0000000000000000';
+      let huksOptionsCipher = {
+        properties: new Array(
+          HuksAgreeDH.HuksKeyALGORITHMAES,
+          HuksAgreeDH.HuksKeySIZE256,
+          HuksAgreeDH.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksAgreeDH.HuksKeyDIGESTNONE,
+          HuksAgreeDH.HuksKeyPADDINGNONE,
+          HuksAgreeDH.HuksKeyBLOCKMODECBC,
+          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) },
+        ),
+      };
+      let res = await checkAESChiper(srcKeyAliesFirst+ 'final', srcKeyAliesSecond + 'final',huksOptionsCipher);
+      expect(res).assertTrue();
       done();
     });
   });
