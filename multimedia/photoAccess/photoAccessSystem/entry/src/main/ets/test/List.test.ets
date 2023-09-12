@@ -28,8 +28,11 @@ import setHiddenTest from './setHidden'
 import trashAssetsTest from './deleteAssets'
 import setUserCommentTest from './setUserComment'
 import getPhotoIndexTest from './getPhotoIndex'
+import setPendingTest from './setPending'
+import getPhotoAccessHelperAsyncTest from './getPhotoAccessHelperAsync'
 
 export default function testsuite () {
+  getPhotoAccessHelperAsyncTest()
   deleteAssetsTest()
   recoverAssetsTest()
   // setCoverUriTest()
@@ -45,4 +48,5 @@ export default function testsuite () {
   trashAssetsTest()
   setUserCommentTest()
   getPhotoIndexTest()
+  setPendingTest()
 }
