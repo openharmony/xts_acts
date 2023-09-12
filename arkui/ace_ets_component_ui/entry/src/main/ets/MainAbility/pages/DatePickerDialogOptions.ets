@@ -31,6 +31,7 @@ struct DatePickerDialogOptions0 {
             start: new Date("2000-1-1"),
             end: new Date("2100-12-31"),
             selected: this.selectedDate,
+            lunarSwitch:true,
             lunar: this.isLunar,
             showTime:true,
             useMilitaryTime:false,
