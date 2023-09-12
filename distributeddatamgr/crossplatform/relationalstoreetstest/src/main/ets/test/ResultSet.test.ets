@@ -98,6 +98,7 @@ export default function rdbResultSetTest() {
       {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
+        console.info("testResultSetColumnNames001 columnNames: " + JSON.stringify(resultSet.columnNames));
         expect(JSON.stringify(COLOUNM_NAMES)).assertEqual(JSON.stringify(resultSet.columnNames));
         resultSet.close();
         resultSet = null;
@@ -119,6 +120,7 @@ export default function rdbResultSetTest() {
       {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
+        console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
         expect(5).assertEqual(resultSet.columnCount);
         resultSet.close();
         resultSet = null;
@@ -141,6 +143,7 @@ export default function rdbResultSetTest() {
         let predicates = await new relationalStore.RdbPredicates("test");
         predicates.equalTo("name", "wangwu");
         let resultSet = await rdbStore.query(predicates);
+        console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
         expect(0).assertEqual(resultSet.columnCount);
         resultSet.close();
         resultSet = null;
@@ -161,6 +164,7 @@ export default function rdbResultSetTest() {
       console.info(TAG + "************* testResultSetRowCount001 start *************");
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       expect(3).assertEqual(resultSet.rowCount);
       resultSet.close();
       resultSet = null;
@@ -181,6 +185,7 @@ export default function rdbResultSetTest() {
       let predicates = await new relationalStore.RdbPredicates("test");
       predicates.equalTo("name", "wangwu");
       let resultSet = await rdbStore.query(predicates);
+      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       expect(-1).assertEqual(resultSet.rowCount);
       resultSet.close();
       resultSet = null;
@@ -201,6 +206,7 @@ export default function rdbResultSetTest() {
       let predicates = await new relationalStore.RdbPredicates("test");
       predicates.equalTo("data1", "hello");
       let resultSet = await rdbStore.query(predicates);
+      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       expect(1).assertEqual(resultSet.rowCount);
       resultSet.close();
       resultSet = null;
@@ -222,6 +228,7 @@ export default function rdbResultSetTest() {
       predicates.equalTo("data1", "hello");
       predicates.equalTo("data2", 3);
       let resultSet = await rdbStore.query(predicates);
+      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       expect(0).assertEqual(resultSet.rowCount);
       resultSet.close();
       resultSet = null;
@@ -243,6 +250,16 @@ export default function rdbResultSetTest() {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToFirstRow());
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("hello").assertEqual(data1);
+        expect(10).assertEqual(data2);
+        expect(1.0).assertEqual(data3);
+        expect(1).assertEqual(data4[0]);
+        expect(2).assertEqual(data4[1]);
+        expect(3).assertEqual(data4[2]);
         expect(0).assertEqual(resultSet.rowIndex);
         resultSet.close();
         resultSet = null;
@@ -265,6 +282,12 @@ export default function rdbResultSetTest() {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToLastRow());
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        expect("hello world").assertEqual(data1);
+        expect(3).assertEqual(data2);
+        expect(1.8).assertEqual(data3);
         expect(2).assertEqual(resultSet.rowIndex);
         resultSet.close();
         resultSet = null;
@@ -288,6 +311,16 @@ export default function rdbResultSetTest() {
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(true).assertEqual(resultSet.isAtFirstRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("hello").assertEqual(data1);
+        expect(10).assertEqual(data2);
+        expect(1.0).assertEqual(data3);
+        expect(1).assertEqual(data4[0]);
+        expect(2).assertEqual(data4[1]);
+        expect(3).assertEqual(data4[2]);
         resultSet.close();
         resultSet = null;
         done();
@@ -332,6 +365,16 @@ export default function rdbResultSetTest() {
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(true).assertEqual(resultSet.goToNextRow());
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("2").assertEqual(data1);
+        expect(-5).assertEqual(data2);
+        expect(2.5).assertEqual(data3);
+        expect(3).assertEqual(data4[0]);
+        expect(4).assertEqual(data4[1]);
+        expect(5).assertEqual(data4[2]);
         expect(false).assertEqual(resultSet.isAtFirstRow);
         resultSet.close();
         resultSet = null;
@@ -354,6 +397,12 @@ export default function rdbResultSetTest() {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToLastRow());
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        expect("hello world").assertEqual(data1);
+        expect(3).assertEqual(data2);
+        expect(1.8).assertEqual(data3);
         expect(false).assertEqual(resultSet.isAtFirstRow);
         resultSet.close();
         resultSet = null;
@@ -378,6 +427,16 @@ export default function rdbResultSetTest() {
         resultSet.goToRow(1);
         resultSet.goToRow(0);
         expect(true).assertEqual(resultSet.isAtFirstRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("hello").assertEqual(data1);
+        expect(10).assertEqual(data2);
+        expect(1.0).assertEqual(data3);
+        expect(1).assertEqual(data4[0]);
+        expect(2).assertEqual(data4[1]);
+        expect(3).assertEqual(data4[2]);
         resultSet.close();
         resultSet = null;
         done();
@@ -401,6 +460,16 @@ export default function rdbResultSetTest() {
         resultSet.goToRow(1);
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(true).assertEqual(resultSet.isAtFirstRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("hello").assertEqual(data1);
+        expect(10).assertEqual(data2);
+        expect(1.0).assertEqual(data3);
+        expect(1).assertEqual(data4[0]);
+        expect(2).assertEqual(data4[1]);
+        expect(3).assertEqual(data4[2]);
         resultSet.close();
         resultSet = null;
         done();
@@ -423,6 +492,12 @@ export default function rdbResultSetTest() {
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToLastRow());
         expect(true).assertEqual(resultSet.isAtLastRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        expect("hello world").assertEqual(data1);
+        expect(3).assertEqual(data2);
+        expect(1.8).assertEqual(data3);
         resultSet.close();
         resultSet = null;
         done();
@@ -468,6 +543,16 @@ export default function rdbResultSetTest() {
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(true).assertEqual(resultSet.goToNextRow());
         expect(false).assertEqual(resultSet.isAtLastRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("2").assertEqual(data1);
+        expect(-5).assertEqual(data2);
+        expect(2.5).assertEqual(data3);
+        expect(3).assertEqual(data4[0]);
+        expect(4).assertEqual(data4[1]);
+        expect(5).assertEqual(data4[2]);
         resultSet.close();
         resultSet = null;
         done();
@@ -490,6 +575,16 @@ export default function rdbResultSetTest() {
         let resultSet = await rdbStore.query(predicates);
         expect(true).assertEqual(resultSet.goToFirstRow());
         expect(false).assertEqual(resultSet.isAtLastRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("hello").assertEqual(data1);
+        expect(10).assertEqual(data2);
+        expect(1.0).assertEqual(data3);
+        expect(1).assertEqual(data4[0]);
+        expect(2).assertEqual(data4[1]);
+        expect(3).assertEqual(data4[2]);
         resultSet.close();
         resultSet = null;
         done();
@@ -507,17 +602,27 @@ export default function rdbResultSetTest() {
      */
     it("testResultSetIsAtLastRow005", 0, async function (done) {
       console.info(TAG + "************* testResultSetIsAtLastRow005 start *************");
-      {
+      try {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
         resultSet.goToRow(1);
         resultSet.goToRow(2);
         expect(true).assertEqual(resultSet.isAtLastRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        expect("hello world").assertEqual(data1);
+        expect(3).assertEqual(data2);
+        expect(1.8).assertEqual(data3);
         resultSet.close();
         resultSet = null;
         done();
-        console.info(TAG + "************* testResultSetIsAtLastRow005 end *************");
+      } catch (e) {
+        expect(!e).assertTrue();
+        console.info(TAG + " querry failed: " + e);
+        done();
       }
+      console.info(TAG + "************* testResultSetIsAtLastRow005 end *************");
     });
 
     /**
@@ -530,17 +635,26 @@ export default function rdbResultSetTest() {
      */
     it("testResultSetIsAtLastRow006", 0, async function (done) {
       console.info(TAG + "************* testResultSetIsAtLastRow006 start *************");
-      {
+      try {
         let predicates = await new relationalStore.RdbPredicates("test");
         let resultSet = await rdbStore.query(predicates);
         resultSet.goToRow(1);
         expect(true).assertEqual(resultSet.goToLastRow());
         expect(true).assertEqual(resultSet.isAtLastRow);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        expect("hello world").assertEqual(data1);
+        expect(3).assertEqual(data2);
+        expect(1.8).assertEqual(data3);
         resultSet.close();
         resultSet = null;
         done();
-        console.info(TAG + "************* testResultSetIsAtLastRow006 end *************");
+      } catch (e) {
+        expect(!e).assertTrue();
+        console.info(TAG + " querry failed: " + e);
       }
+      console.info(TAG + "************* testResultSetIsAtLastRow006 end *************");
     });
 
     /**
@@ -552,14 +666,29 @@ export default function rdbResultSetTest() {
      * @tc.level  : Level 2
      */
     it("testResultSetIsEnded001", 0, async function (done) {
-      console.info(TAG + "************* testResultSetIsEnded001 start *************");
-      let predicates = await new relationalStore.RdbPredicates("test");
-      let resultSet = await rdbStore.query(predicates);
-      expect(true).assertEqual(resultSet.goToFirstRow());
-      expect(false).assertEqual(resultSet.isEnded);
-      resultSet.close();
-      resultSet = null;
-      done();
+      try {
+        console.info(TAG + "************* testResultSetIsEnded001 start *************");
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet = await rdbStore.query(predicates);
+        expect(true).assertEqual(resultSet.goToFirstRow());
+        expect(false).assertEqual(resultSet.isEnded);
+        const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+        const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+        const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+        const data4 = resultSet.getBlob(resultSet.getColumnIndex("data4"));
+        expect("hello").assertEqual(data1);
+        expect(10).assertEqual(data2);
+        expect(1.0).assertEqual(data3);
+        expect(1).assertEqual(data4[0]);
+        expect(2).assertEqual(data4[1]);
+        expect(3).assertEqual(data4[2]);
+        resultSet.close();
+        resultSet = null;
+        done();
+      } catch (e) {
+        expect(!e).assertTrue();
+        console.info(TAG + " testResultSetIsEnded001 execute failed: " + e);
+      }
       console.info(TAG + "************* testResultSetIsEnded001 end *************");
     });
 
@@ -577,6 +706,12 @@ export default function rdbResultSetTest() {
       let resultSet = await rdbStore.query(predicates);
       expect(true).assertEqual(resultSet.goToLastRow());
       expect(false).assertEqual(resultSet.isEnded);
+      const data1 = resultSet.getString(resultSet.getColumnIndex("data1"));
+      const data2 = resultSet.getLong(resultSet.getColumnIndex("data2"));
+      const data3 = resultSet.getDouble(resultSet.getColumnIndex("data3"));
+      expect("hello world").assertEqual(data1);
+      expect(3).assertEqual(data2);
+      expect(1.8).assertEqual(data3);
       resultSet.close();
       resultSet = null;
       done();
@@ -908,6 +1043,7 @@ export default function rdbResultSetTest() {
           expect(true).assertEqual(resultSet.goToFirstRow());
           resultSet.goTo(1);
           expect(1).assertEqual(resultSet.rowIndex);
+          expect("2").assertEqual(resultSet.getString(0));
           resultSet.close();
         }
         resultSet = null;
@@ -959,6 +1095,7 @@ export default function rdbResultSetTest() {
           expect(true).assertEqual(resultSet.goToNextRow());
           resultSet.goTo(1);
           expect(2).assertEqual(resultSet.rowIndex);
+          expect("3").assertEqual(resultSet.getString(0));
           resultSet.close();
         }
         resultSet = null;
@@ -984,6 +1121,7 @@ export default function rdbResultSetTest() {
           expect(true).assertEqual(resultSet.goToLastRow());
           resultSet.goTo(5);
           expect(3).assertEqual(resultSet.rowIndex);
+          expect(5).assertEqual(resultSet.columnCount);
           resultSet.close();
         }
         resultSet = null;
@@ -991,6 +1129,7 @@ export default function rdbResultSetTest() {
         console.info(TAG + "************* testResultSetGoTo004 end *************");
       }
     });
+
 
     /**
      * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_ROW_0100
@@ -1009,9 +1148,11 @@ export default function rdbResultSetTest() {
           expect(true).assertEqual(resultSet.goToFirstRow());
           resultSet.goToRow(1);
           expect(1).assertEqual(resultSet.rowIndex);
+          expect("2").assertEqual(resultSet.getString(0));
           resultSet.close();
         }
         resultSet = null;
+        expect(resultSet == null).assertTrue();
         done();
         console.info(TAG + "************* testResultSetGoToRow001 end *************");
       }
@@ -1034,9 +1175,11 @@ export default function rdbResultSetTest() {
         {
           resultSet.goToRow(1);
           expect(-1).assertEqual(resultSet.rowIndex);
+          expect(0).assertEqual(resultSet.columnCount);
           resultSet.close();
         }
         resultSet = null;
+        expect(resultSet == null).assertTrue();
         done();
         console.info(TAG + "************* testResultSetGoToRow002 end *************");
       }
@@ -1061,9 +1204,11 @@ export default function rdbResultSetTest() {
           expect(true).assertEqual(resultSet.goToNextRow());
           resultSet.goToRow(1);
           expect(1).assertEqual(resultSet.rowIndex);
+          expect("2").assertEqual(resultSet.getString(0));
           resultSet.close();
         }
         resultSet = null;
+        expect(resultSet == null).assertTrue();
         done();
         console.info(TAG + "************* testResultSetGoToRow003 end *************");
       }
@@ -1086,13 +1231,16 @@ export default function rdbResultSetTest() {
           expect(true).assertEqual(resultSet.goToLastRow());
           resultSet.goToRow(5);
           expect(3).assertEqual(resultSet.rowIndex);
+          expect(5).assertEqual(resultSet.columnCount);
           resultSet.close();
         }
         resultSet = null;
+        expect(resultSet == null).assertTrue();
         done();
         console.info(TAG + "************* testResultSetGoToRow004 end *************");
       }
     });
+
 
     /**
      * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_FIRST_ROW_0100
@@ -1109,6 +1257,7 @@ export default function rdbResultSetTest() {
       let resultSet = await rdbStore.query(predicates);
       expect(true).assertEqual(resultSet.goToFirstRow());
       expect(true).assertEqual(resultSet.isAtFirstRow);
+      expect("1").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1154,6 +1303,7 @@ export default function rdbResultSetTest() {
       expect(true).assertEqual(resultSet.goToNextRow());
       expect(true).assertEqual(resultSet.goToFirstRow());
       expect(true).assertEqual(resultSet.isAtFirstRow);
+      expect("1").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1175,6 +1325,7 @@ export default function rdbResultSetTest() {
       let resultSet = await rdbStore.query(predicates);
       expect(true).assertEqual(resultSet.goToLastRow());
       expect(true).assertEqual(resultSet.isAtLastRow);
+      expect("3").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1220,6 +1371,7 @@ export default function rdbResultSetTest() {
       expect(true).assertEqual(resultSet.goToFirstRow());
       expect(true).assertEqual(resultSet.goToLastRow());
       expect(true).assertEqual(resultSet.isAtLastRow);
+      expect("3").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1240,6 +1392,7 @@ export default function rdbResultSetTest() {
       let predicates = await new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
       expect(true).assertEqual(resultSet.goToNextRow());
+      expect("1").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1284,6 +1437,7 @@ export default function rdbResultSetTest() {
       expect(true).assertEqual(resultSet.goToNextRow());
       expect(true).assertEqual(resultSet.goToNextRow());
       expect(2).assertEqual(resultSet.rowIndex);
+      expect("3").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1369,6 +1523,7 @@ export default function rdbResultSetTest() {
       expect(true).assertEqual(resultSet.goToNextRow());
       expect(true).assertEqual(resultSet.goToPreviousRow());
       expect(0).assertEqual(resultSet.rowIndex);
+      expect("1").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1391,6 +1546,7 @@ export default function rdbResultSetTest() {
       expect(true).assertEqual(resultSet.goToLastRow());
       expect(true).assertEqual(resultSet.goToPreviousRow());
       expect(1).assertEqual(resultSet.rowIndex);
+      expect("2").assertEqual(resultSet.getString(0));
       resultSet.close();
       resultSet = null;
       done();
@@ -1461,6 +1617,7 @@ export default function rdbResultSetTest() {
       console.info(TAG + "************* testResultSetGetBlob002 end *************");
     });
 
+
     /**
      * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_STRING_0100
      * @tc.name   : testResultSetGetString001
@@ -1479,6 +1636,11 @@ export default function rdbResultSetTest() {
         expect("hello").assertEqual(data1);
         resultSet.close();
       }
+      resultSet = null;
+      predicates.equalTo("name", "wangwu");
+      resultSet = await rdbStore.query(predicates);
+      expect(false).assertEqual(resultSet.goToPreviousRow());
+      resultSet.close();
       resultSet = null;
       done();
       console.info(TAG + "************* testResultSetGetString001 end *************");
@@ -1503,6 +1665,11 @@ export default function rdbResultSetTest() {
         resultSet.close();
       }
       resultSet = null;
+      predicates.equalTo("name", "wangwu");
+      resultSet = await rdbStore.query(predicates);
+      expect(false).assertEqual(resultSet.goToPreviousRow());
+      resultSet.close();
+      resultSet = null;
       done();
       console.info(TAG + "************* testResultSetGetString002 end *************");
     });
@@ -1525,6 +1692,11 @@ export default function rdbResultSetTest() {
         expect("2.5").assertEqual(data3);
         resultSet.close();
       }
+      resultSet = null;
+      predicates.equalTo("name", "wangwu");
+      resultSet = await rdbStore.query(predicates);
+      expect(false).assertEqual(resultSet.goToPreviousRow());
+      resultSet.close();
       resultSet = null;
       done();
       console.info(TAG + "************* testResultSetGetString003 end *************");
@@ -1552,6 +1724,11 @@ export default function rdbResultSetTest() {
         expect("1.8").assertEqual(data3);
         resultSet.close();
       }
+      resultSet = null;
+      predicates.equalTo("name", "wangwu");
+      resultSet = await rdbStore.query(predicates);
+      expect(false).assertEqual(resultSet.goToPreviousRow());
+      resultSet.close();
       resultSet = null;
       done();
       console.info(TAG + "************* testResultSetGetString004 end *************");
@@ -1643,6 +1820,94 @@ export default function rdbResultSetTest() {
       resultSet = null;
       done();
       console.info(TAG + "************* testResultSetGetLong003 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0400
+     * @tc.name   : testResultSetGetLong004
+     * @tc.desc   : ResultSet getLong test null
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetGetLong004", 0, async function (done) {
+      console.info(TAG + "************* testResultSetGetLong004 start *************");
+      let predicates = await new relationalStore.RdbPredicates("test");
+      let resultSet = await rdbStore.query(predicates);
+      try {
+        {
+          expect(true).assertEqual(resultSet.goToFirstRow());
+          const data2 = resultSet.getLong(null);
+          expect(!data2).assertTrue();
+        }
+      } catch (e) {
+        console.info(TAG + "************* testResultSetGetLong004 err " + e);
+        expect('401').assertEqual(e.code);
+      }
+      resultSet.close();
+      expect(true).assertEqual(resultSet.isClosed);
+      resultSet = null;
+      done();
+      console.info(TAG + "************* testResultSetGetLong004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0500
+     * @tc.name   : testResultSetGetLong005
+     * @tc.desc   : ResultSet getLong test err parameter
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetGetLong005", 0, async function (done) {
+      console.info(TAG + "************* testResultSetGetLong005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("test");
+      let resultSet = await rdbStore.query(predicates);
+      try {
+        {
+          expect(true).assertEqual(resultSet.goToFirstRow());
+          const data2 = resultSet.getLong(100);
+          expect(!data2).assertTrue();
+        }
+      } catch (e) {
+        console.info(TAG + "************* testResultSetGetLong005 err " + e);
+        expect(e.code == 14800000).assertTrue();
+      }
+      resultSet.close();
+      expect(true).assertEqual(resultSet.isClosed);
+      resultSet = null;
+      done();
+      console.info(TAG + "************* testResultSetGetLong005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0600
+     * @tc.name   : testResultSetGetLong006
+     * @tc.desc   : ResultSet getLong test err typr parameter
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetGetLong006", 0, async function (done) {
+      console.info(TAG + "************* testResultSetGetLong006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("test");
+      let resultSet = await rdbStore.query(predicates);
+      try {
+        {
+          expect(true).assertEqual(resultSet.goToFirstRow());
+          let errType = "errType";
+          const data2 = resultSet.getLong(errType);
+          expect(!data2).assertTrue();
+        }
+      } catch (e) {
+        console.info(TAG + "************* testResultSetGetLong006 err " + e);
+        expect('401').assertEqual(e.code);
+      }
+      resultSet.close();
+      expect(true).assertEqual(resultSet.isClosed);
+      resultSet = null;
+      done();
+      console.info(TAG + "************* testResultSetGetLong006 end *************");
     });
 
     /**
@@ -1746,6 +2011,102 @@ export default function rdbResultSetTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0500
+     * @tc.name   : testResultSetGetDouble005
+     * @tc.desc   : ResultSet getDouble test null
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetGetDouble005", 0, async function (done) {
+      console.info(TAG + "************* testResultSetGetDouble005 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet = await rdbStore.query(predicates);
+        {
+          resultSet.goToRow(0);
+          try {
+            const data = resultSet.getDouble(null);
+            expect(!data).assertTrue();
+          } catch (e) {
+            console.info(TAG + "************* testResultSetGetDouble005 err " + e);
+            expect('401').assertEqual(e.code);
+          }
+          expect(resultSet !== null).assertTrue();
+          resultSet.close();
+        }
+        resultSet = null;
+        expect(resultSet == null).assertTrue();
+        done();
+        console.info(TAG + "************* testResultSetGetDouble005 end *************");
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0600
+     * @tc.name   : testResultSetGetDouble006 err parameter
+     * @tc.desc   : ResultSet getDouble test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetGetDouble006", 0, async function (done) {
+      console.info(TAG + "************* testResultSetGetDouble006 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet = await rdbStore.query(predicates);
+        {
+          resultSet.goToRow(0);
+          try {
+            const data = resultSet.getDouble(100);
+            expect(!data).assertTrue();
+          } catch (e) {
+            console.info(TAG + "************* testResultSetGetDouble006 err " + e);
+            expect(e.code == 14800000).assertTrue();
+          }
+          expect(resultSet !== null).assertTrue();
+          resultSet.close();
+        }
+        resultSet = null;
+        expect(resultSet == null).assertTrue();
+        done();
+        console.info(TAG + "************* testResultSetGetDouble006 end *************");
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0700
+     * @tc.name   : testResultSetGetDouble007
+     * @tc.desc   : ResultSet getDouble test err type parameter
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetGetDouble007", 0, async function (done) {
+      console.info(TAG + "************* testResultSetGetDouble007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet = await rdbStore.query(predicates);
+        let errType = "errType";
+        {
+          resultSet.goToRow(0);
+          try {
+            const data = resultSet.getDouble(errType);
+            expect(!data).assertTrue();
+          } catch (e) {
+            console.info(TAG + "************* testResultSetGetDouble007 err " + e);
+            expect('401').assertEqual(e.code);
+          }
+          expect(resultSet !== null).assertTrue();
+          resultSet.close();
+        }
+        resultSet = null;
+        done();
+        console.info(TAG + "************* testResultSetGetDouble007 end *************");
+      }
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0100
      * @tc.name   : testResultSetIsColumnNull001
      * @tc.desc   : ResultSet isColumnNull test
@@ -1757,11 +2118,13 @@ export default function rdbResultSetTest() {
       console.info(TAG + "************* testResultSetIsColumnNull001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("test");
-        let resultSet = await rdbStore.query(predicates);
+        let resultSet: relationalStore.ResultSet = await rdbStore.query(predicates);
         {
           resultSet.goToRow(2);
           const isColumnNull1 = resultSet.isColumnNull(resultSet.getColumnIndex("data1"));
           expect(false).assertEqual(isColumnNull1);
+          console.info(TAG + "************* testResultSetIsColumnNull001 " + resultSet.getString(resultSet.getColumnIndex("data1")));
+          expect("hello world").assertEqual(resultSet.getString(resultSet.getColumnIndex("data1")));
           resultSet.close();
         }
         resultSet = null;
@@ -1811,11 +2174,107 @@ export default function rdbResultSetTest() {
         {
           resultSet.goToRow(2);
           expect(false).assertEqual(resultSet.isColumnNull(1));
+          console.info(TAG + "************* testResultSetIsColumnNull001 " + resultSet.getString(1));
+          expect("hello world").assertEqual(resultSet.getString(1));
           resultSet.close();
         }
         resultSet = null;
         done();
         console.info(TAG + "************* testResultSetIsColumnNull003 end *************");
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0400
+     * @tc.name   : testResultSetIsColumnNull003
+     * @tc.desc   : ResultSet isColumnNull test null
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetIsColumnNull004", 0, async function (done) {
+      console.info(TAG + "************* testResultSetIsColumnNull004 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet: relationalStore.ResultSet = await rdbStore.query(predicates);
+        {
+          resultSet.goToRow(2);
+          try {
+            const data = resultSet.isColumnNull(null);
+            expect(!data).assertTrue();
+          } catch (e) {
+            console.info(TAG + "************* testResultSetIsColumnNull004 err " + e);
+            expect('401').assertEqual(e.code);
+          }
+          expect(resultSet !== null).assertTrue();
+          resultSet.close();
+        }
+        resultSet = null;
+        done();
+        console.info(TAG + "************* testResultSetIsColumnNull004 end *************");
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0500
+     * @tc.name   : testResultSetIsColumnNull005
+     * @tc.desc   : ResultSet isColumnNull test err parameter
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetIsColumnNull005", 0, async function (done) {
+      console.info(TAG + "************* testResultSetIsColumnNull005 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet: relationalStore.ResultSet = await rdbStore.query(predicates);
+        {
+          resultSet.goToRow(2);
+          try {
+            const data = resultSet.isColumnNull(100);
+            expect(!data).assertTrue();
+          } catch (e) {
+            console.info(TAG + "************* testResultSetIsColumnNull005 err " + e);
+            expect(e.code == 14800000).assertTrue();
+          }
+          expect(resultSet !== null).assertTrue();
+          resultSet.close();
+        }
+        resultSet = null;
+        done();
+        console.info(TAG + "************* testResultSetIsColumnNull005 end *************");
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0600
+     * @tc.name   : testResultSetIsColumnNull006
+     * @tc.desc   : ResultSet isColumnNull test err type parameter
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testResultSetIsColumnNull006", 0, async function (done) {
+      console.info(TAG + "************* testResultSetIsColumnNull006 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("test");
+        let resultSet: relationalStore.ResultSet = await rdbStore.query(predicates);
+        let errType: any = "errType";
+        {
+          resultSet.goToRow(2);
+          try {
+            const data = resultSet.isColumnNull(errType);
+            expect(!data).assertTrue();
+          } catch (e) {
+            console.info(TAG + "************* testResultSetIsColumnNull005 err " + e);
+            expect('401').assertEqual(e.code);
+          }
+          expect(resultSet !== null).assertTrue();
+          resultSet.close();
+        }
+        resultSet = null;
+        done();
+        console.info(TAG + "************* testResultSetIsColumnNull006 end *************");
       }
     });
 

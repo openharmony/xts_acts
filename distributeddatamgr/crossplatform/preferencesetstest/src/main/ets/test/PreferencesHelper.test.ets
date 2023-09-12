@@ -20,6 +20,7 @@ const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 let mPreferences;
 let context;
+
 export default function preferencesHelperTest() {
   describe("preferencesHelperTest", function () {
     beforeAll(async function () {
@@ -135,6 +136,68 @@ export default function preferencesHelperTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0500
+     * @tc.name   : testRemovePreferencesFromCacheHelper0005
+     * @tc.desc   : RemovePreferencesFromCache interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCacheHelper0005", 0, async function (done) {
+      let preferences = null;
+      preferences = await dataPreferences.getPreferences(context, {
+        name: NAME
+      });
+      const promise = dataPreferences.removePreferencesFromCache(context, {
+        name: NAME
+      });
+      promise
+        .then(() => {
+          console.info("Succeeded in removing preferences.");
+          expect("{}").assertEqual(JSON.stringify(preferences));
+          done();
+        })
+        .catch((err) => {
+          expect(!err).assertTrue();
+        });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0600
+     * @tc.name   : testRemovePreferencesFromCacheHelper0006
+     * @tc.desc   : RemovePreferencesFromCache interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCacheHelper0006", 0, async function (done) {
+      let preferences = null;
+      preferences = await dataPreferences.getPreferences(context, {
+        name: NAME
+      });
+      await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+        expect("test").assertEqual(ret);
+      });
+      dataPreferences
+        .removePreferencesFromCache(context, {
+          name: "test_preferences1"
+        })
+        .then(() => {
+          console.info("Succeeded in removing preferences.");
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+            expect("test").assertEqual(pre);
+            done();
+          });
+        })
+        .catch((err) => {
+          console.info("Remove preferences from cache error: " + err);
+          expect(!err).assertTrue();
+          done();
+        });
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0100
      * @tc.name   : testPreferencesDeleteHelper0001
      * @tc.desc   : DeletePreferences interface test
@@ -175,6 +238,69 @@ export default function preferencesHelperTest() {
       });
       dataPreferences
         .deletePreferences(context, "test_preferences1")
+        .then(() => {
+          console.info("Succeeded in deleting preferences.");
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+            expect("test").assertEqual(pre);
+            done();
+          });
+        })
+        .catch((err) => {
+          console.info("Delete preferences err: " + err);
+          expect(!err).assertTrue();
+          done();
+        });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0500
+     * @tc.name   : testPreferencesDeleteHelper0005
+     * @tc.desc   : DeletePreferences interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeleteHelper0005", 0, async function (done) {
+      let preferences = null;
+      preferences = await dataPreferences.getPreferences(context, {
+        name: NAME
+      });
+      const promise = dataPreferences.deletePreferences(context, {
+        name: NAME
+      });
+      promise
+        .then(() => {
+          console.info("Succeeded in deleting preferences.");
+          expect("{}").assertEqual(JSON.stringify(preferences));
+          done();
+        })
+        .catch((err) => {
+          console.info("Delete preferences err: " + err);
+          expect(!err).assertTrue();
+        });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0600
+     * @tc.name   : testPreferencesDeleteHelper0006
+     * @tc.desc   : DeletePreferences interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeleteHelper0006", 0, async function (done) {
+      let preferences = null;
+      preferences = await dataPreferences.getPreferences(context, {
+        name: NAME
+      });
+      await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+      preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+        expect("test").assertEqual(ret);
+      });
+      dataPreferences
+        .deletePreferences(context, {
+          name: "test_preferences1"
+        })
         .then(() => {
           console.info("Succeeded in deleting preferences.");
           preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
@@ -253,9 +379,10 @@ export default function preferencesHelperTest() {
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
         mPreferences.on("change");
+        expect().assertFail();
       } catch (err) {
         console.info("Failed to testPreferencesOn002. code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
       }
     });
 
@@ -275,9 +402,10 @@ export default function preferencesHelperTest() {
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
         mPreferences.on(null, observer);
+        expect().assertFail();
       } catch (err) {
         console.info("Failed to testPreferencesOn003. code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
       }
     });
 
@@ -297,9 +425,10 @@ export default function preferencesHelperTest() {
           expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
         };
         mPreferences.on("", observer);
+        expect().assertFail();
       } catch (err) {
         console.info("Failed to testPreferencesOn004. code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
       }
     });
 
@@ -377,9 +506,10 @@ export default function preferencesHelperTest() {
         };
         mPreferences.on("change", observer);
         mPreferences.off(null);
+        expect().assertFail();
       } catch (err) {
         console.info("Failed to testPreferencesOff003. code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
       }
     });
 
@@ -401,9 +531,10 @@ export default function preferencesHelperTest() {
         };
         mPreferences.on("change", observer);
         mPreferences.off("");
+        expect().assertFail();
       } catch (err) {
         console.info("Failed to testPreferencesOff004. code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
       }
     });
   });

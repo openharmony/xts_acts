@@ -231,7 +231,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
         });
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreBackup002 error: " + errInfo);
-        expect(!errInfo).assertTrue();
+        expect(!errInfo).assertFail();
         done();
       }
       console.info(TAG + "************* testRdbStoreBackup002 end *************");
@@ -274,6 +274,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
         promiseBackup
           .then(() => {
             console.info(`Backup success.`);
+            expect(promiseBackup !== null).assertEqual(true);
             done();
           })
           .catch((err) => {
@@ -283,10 +284,41 @@ export default function RdbStoreBackupRestoreCallbackTest() {
           });
       } catch (err) {
         console.info(TAG + "testRdbStoreBackup004 error:  " + err.message + "code:  " + err.code);
-        expect(!err).assertTrue();
+        expect(!err).assertFail();
         done();
       }
       console.info(TAG + "************* testRdbStoreBackup004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0500
+     * @tc.name   : testRdbStoreBackup005
+     * @tc.desc   : RdbStore backup promise test: param type error
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreBackup005", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreBackup005 start *************");
+      try {
+        let promiseBackup = RdbStore.backup(123);
+        promiseBackup
+          .then(() => {
+            console.info(`Backup success.`);
+            expect(promiseBackup !== null).assertEqual(true);
+            done();
+          })
+          .catch((err) => {
+            console.info(TAG + "backup err ttt1:  " + err.message + "code:  " + err.code);
+            expect(err.code == 14800011).assertTrue();
+            done();
+          });
+      } catch (err) {
+        console.info(TAG + "testRdbStoreBackup005 param type error:  " + err.message + "code:  " + err.code);
+        expect('401').assertEqual(err.code);
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreBackup005 end *************");
     });
 
     /**
@@ -336,7 +368,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
         });
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore002 error: " + errInfo);
-        expect(!errInfo).assertTrue();
+        expect(!errInfo).assertFail();
       }
       console.info(TAG + "************* testRdbStoreRestore002 end *************");
     });
@@ -355,6 +387,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       await RdbStore.backup(backupName);
       try {
         await RdbStore.retore("");
+        expect(RdbStore !== null).assertEqual(true);
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore003 error: " + errInfo);
@@ -379,6 +412,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
       await RdbStore.backup(backupName);
       try {
         await RdbStore.retore(STORE_CONFIG.name);
+        expect(RdbStore !== null).assertEqual(true);
         done();
       } catch (errInfo) {
         console.info(TAG + "testRdbStoreRestore004 error: " + errInfo);
@@ -387,6 +421,31 @@ export default function RdbStoreBackupRestoreCallbackTest() {
         done();
       }
       console.info(TAG + "************* testRdbStoreRestore004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0500
+     * @tc.name   : testRdbStoreRestore005
+     * @tc.desc   : RdbStore retore promise test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreRestore005", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreRestore005 start *************");
+      let backupName = "BackupTest003.db";
+      await RdbStore.backup(backupName);
+      try {
+        let promise = await RdbStore.retore();
+        expect(promise === null).assertEqual(true);
+        done();
+      } catch (errInfo) {
+        console.info(TAG + "testRdbStoreRestore005 error: " + errInfo);
+        console.info(`Restore err: file name wrong.`);
+        expect(errInfo == "TypeError: is not callable").assertTrue();
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreRestore005 end *************");
     });
   });
 }

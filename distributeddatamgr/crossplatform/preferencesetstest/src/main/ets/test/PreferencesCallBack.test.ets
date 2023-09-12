@@ -29,6 +29,7 @@ let mPreferences;
 let context;
 
 const TAG = "[PREFERENCES_CALLBACK_JSUNIT_TEST]";
+
 export default function preferencesCallBackTest() {
   describe("preferencesCallBackTest", function () {
     beforeAll(async function () {
@@ -78,18 +79,62 @@ export default function preferencesCallBackTest() {
     it("testPreferencesGetPreferences002", 0, async function (done) {
       try {
         dataPreferences.getPreferences(context, null, (err, preferences) => {
-          if (err) {
-            console.info(TAG + "Get preferences err: " + JSON.stringify(err));
-            expect(!err).assertTrue();
-            done();
-          } else {
-            console.info(TAG + "Get preferences success" + preferences);
-            done();
-          }
+          expect(!err).assertFail();
+          done();
         });
       } catch (err) {
         console.info("testPreferencesGetPreferences002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0300
+     * @tc.name   : testPreferencesGetPreferences003
+     * @tc.desc   : GetPreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferences003", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, async (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success" + preferences);
+          await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+          preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+            expect("test").assertEqual(ret);
+          });
+          await dataPreferences.deletePreferences(context, NAME1);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0400
+     * @tc.name   : testPreferencesGetPreferences004
+     * @tc.desc   : GetPreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferences004", 0, async function (done) {
+      try {
+        dataPreferences.getPreferences(context, {
+          name: null
+        }, (err, preferences) => {
+          expect(!err).assertFail();
+          done();
+        });
+      } catch (err) {
+        console.info("testPreferencesGetPreferences004 fail: " + err.message + "code: " + err.code);
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -131,21 +176,20 @@ export default function preferencesCallBackTest() {
       dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
-          expect(!err).assertTrue();
+          expect(!err).assertFail();
         } else {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
             dataPreferences.deletePreferences(context, null, (err) => {
-              if (err) {
-                console.info(TAG + "Delete preferences err: " + err);
-                expect(!err).assertTrue();
-                done();
-              }
+              expect(!err).assertFail();
+              done();
             });
+            expect(!err).assertFail();
+            done();
           } catch (err) {
             console.info("testPreferencesDeletePreferences001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401").assertTrue();
+            expect('401').assertEqual(err.code);
             done();
           }
         }
@@ -165,6 +209,7 @@ export default function preferencesCallBackTest() {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
+          done();
         } else {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
@@ -179,8 +224,118 @@ export default function preferencesCallBackTest() {
                 done();
               });
             });
+            expect(preferences !== null).assertTrue();
+            done();
           } catch (err) {
             console.info("testPreferencesDeletePreferences003 fail: " + err.message + "code: " + err.code);
+            expect(!err).assertTrue();
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0400
+     * @tc.name   : testPreferencesDeletePreferences004
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences004", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          dataPreferences.deletePreferences(context, {
+            name: NAME1
+          }, (err) => {
+            console.info(TAG + "Delete preferences success");
+            expect(!err).assertTrue();
+            done();
+          });
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0500
+     * @tc.name   : testPreferencesDeletePreferences005
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences005", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            dataPreferences.deletePreferences(context, {
+              name: null
+            }, (err) => {
+              expect(!err).assertFail();
+              done();
+            });
+            expect(!err).assertFail();
+            done();
+          } catch (err) {
+            console.info("testPreferencesDeletePreferences005 fail: " + err.message + "code: " + err.code);
+            expect('401').assertEqual(err.code);
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0600
+     * @tc.name   : testPreferencesDeletePreferences006
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences006", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+          done();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+              expect("test").assertEqual(ret);
+            });
+            dataPreferences.deletePreferences(context, {
+              name: "getPreferencesTest1"
+            }, (err) => {
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                expect("test").assertEqual(pre);
+                done();
+              });
+            });
+            expect(preferences !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info("testPreferencesDeletePreferences006 fail: " + err.message + "code: " + err.code);
             expect(!err).assertTrue();
             done();
           }
@@ -233,13 +388,15 @@ export default function preferencesCallBackTest() {
             dataPreferences.removePreferencesFromCache(context, null, (err) => {
               if (err) {
                 console.info(TAG + "Remove preferences from cache error: " + err);
-                expect(!err).assertTrue();
+                expect(!err).assertFail();
                 done();
               }
             });
+            expect(!err).assertFail();
+            done();
           } catch (err) {
             console.info("testRemovePreferencesFromCache001 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401").assertTrue();
+            expect('401').assertEqual(err.code);
             done();
           }
         }
@@ -259,6 +416,7 @@ export default function preferencesCallBackTest() {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
+          done();
         } else {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
@@ -266,6 +424,7 @@ export default function preferencesCallBackTest() {
             preferences.put(KEY_TEST_STRING_ELEMENT, "test");
             preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
               expect("test").assertEqual(ret);
+              done();
             });
             dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
               preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
@@ -275,6 +434,111 @@ export default function preferencesCallBackTest() {
             });
           } catch (err) {
             console.info("testRemovePreferencesFromCache003 fail: " + err.message + "code: " + err.code);
+            expect(!err).assertTrue();
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0400
+     * @tc.name   : testRemovePreferencesFromCache004
+     * @tc.desc   : RemovePreferencesFromCache callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCache004", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          dataPreferences.removePreferencesFromCache(context, {
+            name: NAME
+          }, (err) => {
+            console.info(TAG + "Remove preferences from cache success");
+            expect(!err).assertTrue();
+            done();
+          });
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0500
+     * @tc.name   : testRemovePreferencesFromCache005
+     * @tc.desc   : RemovePreferencesFromCache callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCache005", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME
+      }, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            dataPreferences.removePreferencesFromCache(context, {
+              name: null
+            }, (err) => {
+              expect(!err).assertFail();
+              done();
+            });
+            expect(!err).assertFail();
+            done();
+          } catch (err) {
+            console.info("testRemovePreferencesFromCache005 fail: " + err.message + "code: " + err.code);
+            expect("401").assertEqual(err.code);
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0600
+     * @tc.name   : testRemovePreferencesFromCache006
+     * @tc.desc   : RemovePreferencesFromCache callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRemovePreferencesFromCache006", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+              expect("test").assertEqual(ret);
+            });
+            dataPreferences.removePreferencesFromCache(context, {
+              name: "getPreferencesTest1"
+            }, (err) => {
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
+                expect("test").assertEqual(pre);
+                done();
+              });
+            });
+            done();
+          } catch (err) {
+            console.info("testRemovePreferencesFromCache006 fail: " + err.message + "code: " + err.code);
             expect(!err).assertTrue();
             done();
           }

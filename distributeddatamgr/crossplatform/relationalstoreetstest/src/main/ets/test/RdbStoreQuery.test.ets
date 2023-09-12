@@ -187,5 +187,37 @@ export default function rdbStoreQueryTest() {
       });
       console.info(TAG + "************* testRdbStoreQuery004 end *************");
     });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_0500
+     * @tc.name   : testRdbStoreQuery005
+     * @tc.desc   : RdbStore query callback test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreQuery005", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreQuery005 start *************");
+      let predicates = new relationalStore.RdbPredicates("test");
+      try {
+        rdbStore.query(async (err, resultSet) => {
+          if (err) {
+            console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).assertTrue();
+            done();
+          }
+          console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+          expect(!err).assertFail();
+          resultSet.close();
+          done();
+        });
+        expect(rdbStore !== null).assertTrue();
+      } catch (e) {
+        console.info(TAG + " query failed.", e);
+        expect(e !== null).assertTrue();
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreQuery005 end *************");
+    });
   });
 }

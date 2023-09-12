@@ -18,13 +18,15 @@ import relationalStore from "@ohos.data.relationalStore";
 const TAG = "[RDB_JSKITS _TEST]";
 const CREATE_TABLE_ALL_DATA_TYPE_SQL =
   "CREATE TABLE IF NOT EXISTS AllDataType " +
-  "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-  "integerValue INTEGER , longValue INTEGER , shortValue INTEGER , booleanValue INTEGER , " +
-  "doubleValue REAL , floatValue REAL , stringValue TEXT , blobValue BLOB , clobValue TEXT , " +
-  "byteValue INTEGER , dateValue INTEGER , timeValue INTEGER , timestampValue INTEGER , " +
-  "calendarValue INTEGER , characterValue TEXT , primIntValue INTEGER , primLongValue INTEGER , " +
-  "primShortValue INTEGER , primFloatValue REAL , primDoubleValue REAL , " +
-  "primBooleanValue INTEGER , primByteValue INTEGER , primCharValue TEXT, `order` INTEGER);";
+  "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL , " +
+  "integerValue INTEGER NOT NULL , longValue INTEGER NOT NULL , shortValue INTEGER NOT NULL , " +
+  "booleanValue INTEGER DEFAULT 0 , doubleValue REAL NOT NULL , floatValue REAL NOT NULL, " +
+  "stringValue CHAR(50) DEFAULT NULL , blobValue BLOB , clobValue TEXT DEFAULT NULL , byteValue INTEGER DEFAULT 0 , " +
+  "dateValue INTEGER DEFAULT 0 , timeValue INTEGER DEFAULT 0 , timestampValue INTEGER DEFAULT 0 , " +
+  "calendarValue INTEGER DEFAULT 0 , characterValue TEXT DEFAULT NULL , primIntValue INTEGER DEFAULT 0 , " +
+  "primLongValue INTEGER DEFAULT NULL , primShortValue INTEGER DEFAULT 0 , primFloatValue REAL DEFAULT 0 , " +
+  "primDoubleValue REAL DEFAULT 0 , primBooleanValue INTEGER DEFAULT 0 , primByteValue INTEGER DEFAULT 0 , " +
+  "primCharValue CHAR(50) DEFAULT NULL , `order` INTEGER DEFAULT 0 );";
 
 const STORE_CONFIG = {
   name: "Predicates.db",
@@ -32,6 +34,7 @@ const STORE_CONFIG = {
 };
 let rdbStore = undefined;
 let DOUBLE_MAX = 9223372036854775807;
+
 export default function rdbPredicatesTest() {
   describe("rdbPredicatesTest", function () {
     beforeAll(async function () {
@@ -155,6 +158,50 @@ export default function rdbPredicatesTest() {
       result.close();
       done();
       console.info(TAG + "************* testRdbPredicatesConstructor002 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0300
+     * @tc.name   : testRdbPredicatesConstructor003
+     * @tc.desc   : Test the constructor() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesConstructor003", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesConstructor003 start *************");
+      try {
+        let predicates = await new relationalStore.RdbPredicates(null);
+        let result = await rdbStore.query(predicates);
+        result.close();
+        expect(result.rowCount >= 0).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesConstructor003 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0400
+     * @tc.name   : testRdbPredicatesConstructor004
+     * @tc.desc   : Test the constructor() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesConstructor004", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesConstructor004 start *************");
+      try {
+        let predicates = await new relationalStore.RdbPredicates(undefined);
+        let result = await rdbStore.query(predicates);
+        result.close();
+        expect(result.rowCount >= 0).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesConstructor004 end *************");
     });
 
     /**
@@ -335,6 +382,148 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0900
+     * @tc.name   : testRdbPredicatesEqualTo009
+     * @tc.desc   : Test the equalTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEqualTo009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEqualTo009 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo(null, null);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEqualTo009 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1000
+     * @tc.name   : testRdbPredicatesEqualTo010
+     * @tc.desc   : Test the equalTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEqualTo010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEqualTo010 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo(undefined, undefined);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEqualTo010 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1100
+     * @tc.name   : testRdbPredicatesEqualTo011
+     * @tc.desc   : Test the equalTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEqualTo011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEqualTo011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo('1', 1);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEqualTo011 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1200
+     * @tc.name   : testRdbPredicatesEqualTo012
+     * @tc.desc   : Test the equalTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEqualTo012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEqualTo012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo('floatValue', '-0.123');
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        expect(true).assertEqual(result.goToFirstRow());
+        expect(1).assertEqual(result.getLong(0));
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEqualTo012 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1300
+     * @tc.name   : testRdbPredicatesEqualTo013
+     * @tc.desc   : Test the equalTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEqualTo013", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEqualTo013 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo('floatValue', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEqualTo013 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1500
+     * @tc.name   : testRdbPredicatesEqualTo015
+     * @tc.desc   : Test the equalTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEqualTo015", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEqualTo015 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo('ss', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEqualTo015 end   *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0100
      * @tc.name   : testRdbPredicatesNotEqualTo001
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
@@ -512,6 +701,147 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0900
+     * @tc.name   : testRdbPredicatesNotEqualTo009
+     * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotEqualTo009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo009 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.notEqualTo(null, null);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo009 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1000
+     * @tc.name   : testRdbPredicatesNotEqualTo010
+     * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotEqualTo010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo010 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.notEqualTo(undefined, undefined);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo010 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1100
+     * @tc.name   : testRdbPredicatesNotEqualTo011
+     * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotEqualTo011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notEqualTo('1', 1);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo011 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1200
+     * @tc.name   : testRdbPredicatesNotEqualTo012
+     * @tc.desc   : Test the testRdbPredicatesNotEqualTo012() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotEqualTo012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notEqualTo('floatValue', '-0.123');
+        let result = await rdbStore.query(predicates);
+        expect(2).assertEqual(result.rowCount);
+        expect(true).assertEqual(result.goToFirstRow());
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo012 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1300
+     * @tc.name   : testRdbPredicatesNotEqualTo013
+     * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotEqualTo013", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo013 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notEqualTo('floatValue', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo013 end   *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1500
+     * @tc.name   : testRdbPredicatesNotEqualTo015
+     * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotEqualTo015", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo015 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notEqualTo('ss', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotEqualTo015 end   *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0100
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap001
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
@@ -523,7 +853,12 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo("integerValue", 1).or().equalTo("integerValue", 2147483647).endWrap();
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .equalTo("integerValue", 1)
+          .or()
+          .equalTo("integerValue", 2147483647)
+          .endWrap();
         let result = await rdbStore.query(predicates);
         expect(2).assertEqual(result.rowCount);
         result.close();
@@ -622,6 +957,132 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0600
+     * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap006
+     * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginWrapAndEndWrap006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap006 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        try {
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo(null, "中").endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0700
+     * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap007
+     * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginWrapAndEndWrap007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        try {
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo(undefined, undefined).endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0800
+     * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap008
+     * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginWrapAndEndWrap008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap008 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        try {
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo('ss', "中").endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(-1).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0900
+     * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap009
+     * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginWrapAndEndWrap009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap009 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo('floatValue', '-0.123').endWrap();
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_1000
+     * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap010
+     * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginWrapAndEndWrap010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap010 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        try {
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo('floatValue', "ss").endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginWrapAndEndWrap010 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0100
      * @tc.name   : testRdbPredicatesOr001
      * @tc.desc   : Test the or() method of class RdbPredicates.
@@ -633,7 +1094,12 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesOr001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").beginWrap().equalTo("integerValue", 1).or().equalTo("integerValue", 2147483647).endWrap();
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .equalTo("integerValue", 1)
+          .or()
+          .equalTo("integerValue", 2147483647)
+          .endWrap();
         let result = await rdbStore.query(predicates);
         expect(2).assertEqual(result.rowCount);
         result.close();
@@ -641,6 +1107,153 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesOr001 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0200
+     * @tc.name   : testRdbPredicatesOr002
+     * @tc.desc   : Test the or() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesOr002", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesOr002 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .equalTo("integerValue", '1')
+          .or()
+          .equalTo("integerValue", '2147483647')
+          .endWrap();
+        let result = await rdbStore.query(predicates);
+        expect(2).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesOr002 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0300
+     * @tc.name   : testRdbPredicatesOr003
+     * @tc.desc   : Test the or() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesOr003", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesOr003 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .equalTo("integerValue", '1')
+          .or()
+          .equalTo("integerValue", 'ss')
+          .endWrap();
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesOr003 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0400
+     * @tc.name   : testRdbPredicatesOr004
+     * @tc.desc   : Test the or() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesOr004", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesOr004 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+            .beginWrap()
+            .equalTo(null, '1')
+            .or()
+            .equalTo("integerValue", '2147483647')
+            .endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesOr004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0500
+     * @tc.name   : testRdbPredicatesOr005
+     * @tc.desc   : Test the or() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesOr005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesOr005 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+            .beginWrap()
+            .equalTo(undefined, undefined)
+            .or()
+            .equalTo("integerValue", '2147483647')
+            .endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesOr005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0600
+     * @tc.name   : testRdbPredicatesOr006
+     * @tc.desc   : Test the or() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesOr006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesOr006 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+            .beginWrap()
+            .equalTo('ss', 'ss')
+            .or()
+            .equalTo("integerValue", '2147483647')
+            .endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(-1).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesOr006 end *************");
     });
 
     /**
@@ -663,6 +1276,144 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesAnd001 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0200
+     * @tc.name   : testRdbPredicatesAnd002
+     * @tc.desc   : Test the or() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesAnd002", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesAnd002 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .and()
+          .equalTo("integerValue", '1')
+          .endWrap();
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesAnd002 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0300
+     * @tc.name   : testRdbPredicatesAnd003
+     * @tc.desc   : Test the and() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesAnd003", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesAnd003 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .and()
+          .equalTo("integerValue", 'ss')
+          .endWrap();
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesAnd003 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0400
+     * @tc.name   : testRdbPredicatesAnd004
+     * @tc.desc   : Test the and() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesAnd004", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesAnd004 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+            .beginWrap()
+            .equalTo(null, '1')
+            .and()
+            .equalTo("integerValue", '2147483647')
+            .endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesAnd004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0500
+     * @tc.name   : testRdbPredicatesAnd005
+     * @tc.desc   : Test the and() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesAnd005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesAnd005 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+            .beginWrap()
+            .equalTo(undefined, undefined)
+            .and()
+            .equalTo("integerValue", '2147483647')
+            .endWrap();
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesAnd005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0600
+     * @tc.name   : testRdbPredicatesAnd006
+     * @tc.desc   : Test the and() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesAnd006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesAnd006 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates = predicates.equalTo("stringValue", "ABCDEFGHIJKLMN")
+          .beginWrap()
+          .equalTo('ss', 'ss')
+          .and()
+          .equalTo("integerValue", '2147483647')
+          .endWrap();
+        expect(predicates !== null).assertTrue();
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesAnd006 end *************");
     });
 
     /**
@@ -746,6 +1497,163 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0500
+     * @tc.name   : testRdbPredicatesContains005
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.contains("characterValue", "");
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesContains005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0600
+     * @tc.name   : testRdbPredicatesContains006
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.contains("characterValue", null);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesContains006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0700
+     * @tc.name   : testRdbPredicatesContains007
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains007 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.contains("characterValue", undefined);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesContains007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0800
+     * @tc.name   : testRdbPredicatesContains008
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains008 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.contains('ss', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesContains008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0900
+     * @tc.name   : testRdbPredicatesContains009
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains009 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.contains('integerValue', '1');
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+
+      done();
+      console.info(TAG + "************* testRdbPredicatesContains009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_1000
+     * @tc.name   : testRdbPredicatesContains010
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains010 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.contains(null, null);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesContains010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_1100
+     * @tc.name   : testRdbPredicatesContains011
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesContains011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesContains011 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.contains(undefined, undefined);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesContains011 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0100
      * @tc.name   : testRdbPredicatesBeginsWith001
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
@@ -823,6 +1731,162 @@ export default function rdbPredicatesTest() {
       result = null;
       done();
       console.info(TAG + "************* testRdbPredicatesBeginsWith004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0500
+     * @tc.name   : testRdbPredicatesBeginsWith005
+     * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.beginsWith("characterValue", "");
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginsWith005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0600
+     * @tc.name   : testRdbPredicatesBeginsWith006
+     * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.beginsWith("characterValue", null);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesBeginsWith006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0700
+     * @tc.name   : testRdbPredicatesBeginsWith007
+     * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith007 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.beginsWith("characterValue", undefined);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesBeginsWith007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0800
+     * @tc.name   : testRdbPredicatesBeginsWith008
+     * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith008 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.beginsWith('ss', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginsWith008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0900
+     * @tc.name   : testRdbPredicatesBeginsWith009
+     * @tc.desc   : Test the contains() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith009 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.beginsWith('integerValue', '1');
+      let result = await rdbStore.query(predicates);
+      expect(1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginsWith009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_1000
+     * @tc.name   : testRdbPredicatesBeginsWith010
+     * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith010 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.beginsWith(null, null);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginsWith010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_1100
+     * @tc.name   : testRdbPredicatesBeginsWith011
+     * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBeginsWith011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBeginsWith011 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.beginsWith(undefined, undefined);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBeginsWith011 end *************");
     });
 
     /**
@@ -906,6 +1970,162 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0500
+     * @tc.name   : testRdbPredicatesEndsWith005
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.endsWith("characterValue", "");
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesEndsWith005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0600
+     * @tc.name   : testRdbPredicatesEndsWith006
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.endsWith("characterValue", null);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesEndsWith006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0700
+     * @tc.name   : testRdbPredicatesEndsWith007
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith007 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.endsWith("characterValue", undefined);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesEndsWith007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0800
+     * @tc.name   : testRdbPredicatesEndsWith008
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith008 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.endsWith('ss', 'ss');
+        let result = await rdbStore.query(predicates);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEndsWith008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0900
+     * @tc.name   : testRdbPredicatesEndsWith009
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith009 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.endsWith('integerValue', '1');
+      let result = await rdbStore.query(predicates);
+      expect(1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesEndsWith009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_1000
+     * @tc.name   : testRdbPredicatesEndsWith010
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith010 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.endsWith(null, null);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEndsWith010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_1100
+     * @tc.name   : testRdbPredicatesEndsWith011
+     * @tc.desc   : Test the endsWith() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesEndsWith011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesEndsWith011 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.endsWith(undefined, undefined);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesEndsWith011 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0100
      * @tc.name   : testRdbPredicatesIsNull001
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
@@ -983,6 +2203,89 @@ export default function rdbPredicatesTest() {
       result = null;
       done();
       console.info(TAG + "************* testRdbPredicatesIsNull004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0500
+     * @tc.name   : testRdbPredicatesIsNull005
+     * @tc.desc   : Test the isNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNull005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNull005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.isNull("ss");
+      let result = await rdbStore.query(predicates);
+      expect(-1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNull005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0600
+     * @tc.name   : testRdbPredicatesIsNull006
+     * @tc.desc   : Test the isNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNull006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNull006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.isNull("");
+        expect(predicates !== null).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesIsNull006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0700
+     * @tc.name   : testRdbPredicatesIsNull007
+     * @tc.desc   : Test the isNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNull007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNull007 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates = predicates.isNull(null);
+        expect(predicates !== null).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNull007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0800
+     * @tc.name   : testRdbPredicatesIsNull008
+     * @tc.desc   : Test the isNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNull008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNull008 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.isNull(undefined);
+        expect(predicates !== null).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNull008 end *************");
     });
 
     /**
@@ -1066,6 +2369,98 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0500
+     * @tc.name   : testRdbPredicatesIsNotNull005
+     * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNotNull005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNotNull005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.isNotNull("ss");
+      let result = await rdbStore.query(predicates);
+      expect(-1).assertEqual(result.rowCount);
+      result.close();
+      result = null;
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNotNull005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0600
+     * @tc.name   : testRdbPredicatesIsNotNull006
+     * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNotNull006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNotNull006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.isNotNull("");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNotNull006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0700
+     * @tc.name   : testRdbPredicatesIsNotNull007
+     * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNotNull007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNotNull007 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.isNotNull(null);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNotNull007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0800
+     * @tc.name   : testRdbPredicatesIsNotNull008
+     * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIsNotNull008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIsNotNull008 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.isNotNull(undefined);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesIsNotNull008 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0100
      * @tc.name   : testRdbPredicatesLike001
      * @tc.desc   : Test the like() method of class RdbPredicates.
@@ -1146,6 +2541,150 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0500
+     * @tc.name   : testRdbPredicatesLike005
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike005 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.like("ss", "%#%");
+      let result = await rdbStore.query(predicates);
+      expect(-1).assertEqual(result.rowCount);
+      result.close();
+      done();
+      console.info(TAG + "************* testRdbPredicatesLike005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0600
+     * @tc.name   : testRdbPredicatesLike006
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike006 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates.like("", "%#%");
+        let result = await rdbStore.query(predicates);
+        expect(result !== null).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLike006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0700
+     * @tc.name   : testRdbPredicatesLike007
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike007 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.like('integerValue', "%1%");
+      let result = await rdbStore.query(predicates);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      done();
+      console.info(TAG + "************* testRdbPredicatesLike007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0800
+     * @tc.name   : testRdbPredicatesLike008
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike008 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try{
+        predicates.like('integerValue', null);
+        expect().assertFail();
+        done();
+      }catch(err){
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesLike008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0900
+     * @tc.name   : testRdbPredicatesLike009
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike009 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates = predicates.like(null, '%%');
+        expect(predicates != null).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesLike009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_1000
+     * @tc.name   : testRdbPredicatesLike010
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike010 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      try {
+        predicates = predicates.like(undefined, '%%');
+        expect(predicates != null).assertFail();
+      } catch (e) {
+        expect('401').assertEqual(e.code);
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesLike010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_1100
+     * @tc.name   : testRdbPredicatesLike011
+     * @tc.desc   : Test the like() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLike011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLike011 start *************");
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.like('integerValue', '%' + Number.MAX_VALUE + 1 + '%');
+      let result = await rdbStore.query(predicates);
+      expect(0).assertEqual(result.rowCount);
+      result.close();
+      done();
+      console.info(TAG + "************* testRdbPredicatesLike011 end *************");
+    });
+
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0100
      * @tc.name   : testRdbPredicatesGlob001
      * @tc.desc   : Test the glob() method of class RdbPredicates.
@@ -1158,7 +2697,7 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesGlob001 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.glob("stringValue", "ABCDEFGHIJKLM?");
+        predicates.glob('stringValue', "ABCDEFGHIJKLM?");
         let result = await rdbStore.query(predicates);
         expect(3).assertEqual(result.rowCount);
         result.close();
@@ -1281,6 +2820,129 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesGlob006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0700
+     * @tc.name   : testRdbPredicatesGlob007
+     * @tc.desc   : Test the glob() method of class RdbPredicates.
+     * End with ? by glob.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGlob007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGlob007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.glob("stringValue", "国");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGlob007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0800
+     * @tc.name   : testRdbPredicatesGlob008
+     * @tc.desc   : Test the glob() method of class RdbPredicates.
+     * End with ? by glob.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGlob008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGlob008 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.glob("integerValue", "2147483648");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGlob008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0900
+     * @tc.name   : testRdbPredicatesGlob009
+     * @tc.desc   : Test the glob() method of class RdbPredicates.
+     * End with ? by glob.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGlob009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGlob009 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.glob(null, null);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+          done();
+        }
+      }
+      console.info(TAG + "************* testRdbPredicatesGlob009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_1000
+     * @tc.name   : testRdbPredicatesGlob010
+     * @tc.desc   : Test the glob() method of class RdbPredicates.
+     * End with ? by glob.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGlob010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGlob010 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.glob(undefined, undefined);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+          done();
+        }
+      }
+      console.info(TAG + "************* testRdbPredicatesGlob010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_1100
+     * @tc.name   : testRdbPredicatesGlob011
+     * @tc.desc   : Test the glob() method of class RdbPredicates.
+     * Begin and end with * by glob.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGlob011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGlob011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.glob("integerValue", "*FGHI*");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGlob011 end *************");
     });
 
     /**
@@ -1460,6 +3122,315 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0900
+     * @tc.name   : testRdbPredicatesBetween009
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween009 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("stringValue", 1, 2);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1000
+     * @tc.name   : testRdbPredicatesBetween010
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween010 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates = predicates.between(null, 0, 1);
+          expect(predicates !== null).assertFail();
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+          done();
+        }
+      }
+      console.info(TAG + "************* testRdbPredicatesBetween010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1100
+     * @tc.name   : testRdbPredicatesBetween011
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("doubleValue", 3, 4);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween011 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1200
+     * @tc.name   : testRdbPredicatesBetween012
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("doubleValue", 0.0, DOUBLE_MAX + 1);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween012 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1300
+     * @tc.name   : testRdbPredicatesBetween013
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween013", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween013 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("integerValue", "ABB", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween013 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1400
+     * @tc.name   : testRdbPredicatesBetween014
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween014", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween014 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("integerValue", 0, Number.MAX_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(2).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween014 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1500
+     * @tc.name   : testRdbPredicatesBetween015
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween015", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween015 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("integerValue", 0, Number.MIN_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween015 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1600
+     * @tc.name   : testRdbPredicatesBetween016
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween016", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween016 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("integerValue", 0, Number.NaN);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween016 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1700
+     * @tc.name   : testRdbPredicatesBetween017
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween017", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween017 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("integerValue", 0, Number.NEGATIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween017 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1800
+     * @tc.name   : testRdbPredicatesBetween018
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween018", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween018 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("integerValue", 0, Number.POSITIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(2).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween018 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1900
+     * @tc.name   : testRdbPredicatesBetween004
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween019", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween019 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("longValue", 2.0, 3.0);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween019 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_2000
+     * @tc.name   : testRdbPredicatesBetween020
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween020", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween020 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("longValue", 0, 0);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween020 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_2100
+     * @tc.name   : testRdbPredicatesBetween021
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween021", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween021 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("characterValue", 2, -1);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween021 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_2200
+     * @tc.name   : testRdbPredicatesBetween022
+     * @tc.desc   : Test the between() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesBetween022", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesBetween022 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.between("longValue", "ABC", "ABD");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesBetween022 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0100
      * @tc.name   : testRdbPredicatesNotBetween001
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
@@ -1546,6 +3517,363 @@ export default function rdbPredicatesTest() {
       done();
       console.info(TAG + "************* testRdbPredicatesNotBetween004 end *************");
     });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0500
+     * @tc.name   : testRdbPredicatesNotBetween005
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween005 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("stringValue", 1, 2);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0600
+     * @tc.name   : testRdbPredicatesNotBetween006
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween006 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.notBetween(null, 1, 2);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0700
+     * @tc.name   : testRdbPredicatesNotBetween007
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("doubleValue", 7, 8);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0800
+     * @tc.name   : testRdbPredicatesNotBetween008
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween008 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("doubleValue", 0.0, DOUBLE_MAX + 1);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0900
+     * @tc.name   : testRdbPredicatesNotBetween009
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween009 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("integerValue", "ABB", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1000
+     * @tc.name   : testRdbPredicatesNotBetween010
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween010 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("integerValue", 0, Number.MAX_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1100
+     * @tc.name   : testRdbPredicatesNotBetween011
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("integerValue", 0, Number.MIN_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween011 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1200
+     * @tc.name   : testRdbPredicatesNotBetween012
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("integerValue", 0, Number.NaN);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween012 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1300
+     * @tc.name   : testRdbPredicatesNotBetween013
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween013", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween013 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("integerValue", 0, Number.NEGATIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween013 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1400
+     * @tc.name   : testRdbPredicatesNotBetween014
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween014", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween014 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("integerValue", 0, Number.POSITIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween014 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1500
+     * @tc.name   : testRdbPredicatesNotBetween015
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween015", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween015 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("longValue", "3", "4");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween015 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1600
+     * @tc.name   : testRdbPredicatesNotBetween016
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween016", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween016 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("longValue", 0, 0);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween016 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1700
+     * @tc.name   : testRdbPredicatesNotBetween017
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween017", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween017 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("longValue", "ABC", "ABD");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween017 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1700
+     * @tc.name   : testRdbPredicatesNotBetween017
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween017", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween017 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("longValue", "ABC", "ABD");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween017 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1900
+     * @tc.name   : testRdbPredicatesNotBetween019
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween019", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween019 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("characterValue", 0, 2);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween019 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_2000
+     * @tc.name   : testRdbPredicatesNotBetween020
+     * @tc.desc   : Test the notBetween() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotBetween020", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotBetween020 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.notBetween("longValue", 2, 1);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotBetween020 end *************");
+    });
+
 
     /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0100
@@ -1724,6 +4052,230 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0900
+     * @tc.name   : testRdbPredicatesGreaterThan009
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan009 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("stringValue", 1);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1000
+     * @tc.name   : testRdbPredicatesGreaterThan010
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan010 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.greaterThan(null, 1);
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1100
+     * @tc.name   : testRdbPredicatesGreaterThan011
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("integerValue", "A");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan011 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1200
+     * @tc.name   : testRdbPredicatesGreaterThan012
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("integerValue", Number.MAX_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan012 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1300
+     * @tc.name   : testRdbPredicatesGreaterThan013
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan013", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan013 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("integerValue", Number.MIN_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(2).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan013 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1400
+     * @tc.name   : testRdbPredicatesGreaterThan014
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan014", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan014 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("integerValue", Number.NaN);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan014 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1500
+     * @tc.name   : testRdbPredicatesGreaterThan015
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan015", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan015 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("integerValue", Number.NEGATIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan015 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1600
+     * @tc.name   : testRdbPredicatesGreaterThan016
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan016", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan016 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("integerValue", Number.POSITIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan016 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1800
+     * @tc.name   : testRdbPredicatesGreaterThan018
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan018", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan018 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("floatValue", -999);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan018 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1900
+     * @tc.name   : testRdbPredicatesGreaterThan019
+     * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThan019", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThan019 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThan("longValue", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThan019 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0100
      * @tc.name   : testRdbPredicatesLessThan001
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
@@ -1823,9 +4375,9 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesLessThan005 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.lessThan("stringValue", "ABD");
+        predicates.lessThan("doubleValue", 1.0);
         let result = await rdbStore.query(predicates);
-        expect(3).assertEqual(result.rowCount);
+        expect(1).assertEqual(result.rowCount);
         result.close();
         result = null;
       }
@@ -1845,9 +4397,9 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesLessThan006 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.lessThan("doubleValue", 1.0);
+        predicates.lessThan("integerValue", -2147483648);
         let result = await rdbStore.query(predicates);
-        expect(1).assertEqual(result.rowCount);
+        expect(0).assertEqual(result.rowCount);
         result.close();
         result = null;
       }
@@ -1867,7 +4419,7 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesLessThan007 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.lessThan("integerValue", -2147483648);
+        predicates.lessThan("longValue", -9223372036854775808);
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
         result.close();
@@ -1889,7 +4441,7 @@ export default function rdbPredicatesTest() {
       console.info(TAG + "************* testRdbPredicatesLessThan008 start *************");
       {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
-        predicates.lessThan("longValue", -9223372036854775808);
+        predicates.lessThan("stringValue", 1);
         let result = await rdbStore.query(predicates);
         expect(0).assertEqual(result.rowCount);
         result.close();
@@ -1897,6 +4449,76 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesLessThan008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0900
+     * @tc.name   : testRdbPredicatesLessThan009
+     * @tc.desc   : Test the lessThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThan009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThan009 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.lessThan(null, "ABD");
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThan009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_1000
+     * @tc.name   : testRdbPredicatesLessThan010
+     * @tc.desc   : Test the lessThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThan010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThan010 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThan("longValue", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThan010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_1200
+     * @tc.name   : testRdbPredicatesLessThan012
+     * @tc.desc   : Test the lessThan() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThan012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThan012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThan("stringValue", -9223372036854775808);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThan012 end *************");
     });
 
     /**
@@ -1988,6 +4610,50 @@ export default function rdbPredicatesTest() {
     });
 
     /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0500
+     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo005
+     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThanOrEqualTo005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo005 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThanOrEqualTo("longValue", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0700
+     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo007
+     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThanOrEqualTo007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThanOrEqualTo("characterValue", 1);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo007 end *************");
+    });
+
+    /**
      * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0100
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo001
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
@@ -2007,6 +4673,54 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo001 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0500
+     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo005
+     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThanOrEqualTo005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo005 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.greaterThanOrEqualTo("stringValue", 1);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0600
+     * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo006
+     * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGreaterThanOrEqualTo006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo006 start *************");
+      {
+        try {
+          let predicates = await new relationalStore.RdbPredicates("AllDataType");
+          predicates.greaterThanOrEqualTo(null, "ABC");
+          let result = await rdbStore.query(predicates);
+          expect(0).assertEqual(result.rowCount);
+          result.close();
+          result = null;
+        } catch (e) {
+          expect('401').assertEqual(e.code);
+        }
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesGreaterThanOrEqualTo006 end *************");
     });
 
     /**
@@ -2073,6 +4787,295 @@ export default function rdbPredicatesTest() {
       }
       done();
       console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0500
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo005
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo005 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("integerValue", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0600
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo006
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo006 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("integerValue", Number.MAX_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0700
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo007
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo007", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo007 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("integerValue", Number.MIN_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0800
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo008
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo008", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo008 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("integerValue", Number.NaN);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0900
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo009
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo009", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo009 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("integerValue", Number.NEGATIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo009 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1000
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo010
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo010", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo010 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("integerValue", Number.POSITIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo010 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1100
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo011
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo011", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo011 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValue", "ABC");
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo011 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1200
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo012
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo012", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo012 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValue", Number.MAX_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo012 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1300
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo013
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo013", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo013 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValue", Number.MIN_VALUE);
+        let result = await rdbStore.query(predicates);
+        expect(1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo013 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1400
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo014
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo014", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo014 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValue", Number.NaN);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo014 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1500
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo015
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo015", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo015 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValue", Number.NEGATIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo015 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1600
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo016
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo016", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo016 start *************");
+      {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValue", Number.POSITIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(3).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo016 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1700
+     * @tc.name   : testRdbPredicatesLessThanOrEqualTo017
+     * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesLessThanOrEqualTo017", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo017 start *************");
+      try {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.lessThanOrEqualTo("longValueX", Number.POSITIVE_INFINITY);
+        let result = await rdbStore.query(predicates);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+        result = null;
+      } catch (e) {
+        console.info(TAG + "lessThanOrEqualTo call failed.", e);
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbPredicatesLessThanOrEqualTo017 end *************");
     });
 
     /**
@@ -2368,6 +5371,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").limitAs(3).offsetAs(-1);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesOffsetAs004 rowCount: " + result.rowCount);
       expect(3).assertEqual(result.rowCount);
       result.close();
       result = null;
@@ -2388,6 +5392,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValue"]);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesGroupBy001 rowCount: " + result.rowCount);
       expect(3).assertEqual(result.rowCount);
       result.close();
       result = null;
@@ -2408,11 +5413,37 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.like("stringValue", "ABCDEFGHIJKLMN").groupBy(["characterValueX"]);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesGroupBy002 rowCount: " + result.rowCount);
       expect(-1).assertEqual(result.rowCount);
       result.close();
       result = null;
       done();
       console.info(TAG + "************* testRdbPredicatesGroupBy002 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GROUP_BY_0300
+     * @tc.name   : testRdbPredicatesGroupBy003
+     * @tc.desc   : Test the groupBy() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesGroupBy003", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesGroupBy003 start *************");
+      try {
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.like("", "").groupBy(["characterValueX"]);
+        let result = await rdbStore.query(predicates);
+        console.info("testRdbPredicatesGroupBy003 rowCount: " + result.rowCount);
+        expect(-1).assertEqual(result.rowCount);
+        result.close();
+      } catch (err) {
+        console.info(TAG + "err = " + err);
+        expect(err.code).assertEqual("401");
+        done();
+      }
+      console.info(TAG + "************* testRdbPredicatesGroupBy003 end *************");
     });
 
     /**
@@ -2423,7 +5454,6 @@ export default function rdbPredicatesTest() {
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    //
     it("testIndexedBy0001", 0, async function (done) {
       console.info(TAG + "************* testIndexedBy0001 start *************");
       await rdbStore.executeSql("CREATE INDEX index_name ON AllDataType (characterValue);", null);
@@ -2431,12 +5461,13 @@ export default function rdbPredicatesTest() {
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
         predicates.indexedBy("index_name");
         let result = await rdbStore.query(predicates);
+        console.info("testIndexedBy0001 rowCount: " + result.rowCount);
         expect(3).assertEqual(result.rowCount);
         result.close();
         done();
       } catch (err) {
         console.info(TAG + "err = " + err);
-        expect(err.code).assertEqual("401");
+        expect().assertFail();
       }
       console.info(TAG + "************* testIndexedBy0001 end *************");
     });
@@ -2455,7 +5486,7 @@ export default function rdbPredicatesTest() {
         await rdbStore.executeSql("CREATE INDEX index_name ON AllDataType (characterValueX);", null);
         let predicates = await new relationalStore.RdbPredicates("AllDataType");
         predicates.indexedBy("index_name");
-        expect().assertFail();
+        expect(predicates !== null).assertFail();
       } catch (errInfo) {
         expect(errInfo != null).assertTrue();
         console.info(TAG + "testRdbPredicatesIndexedBy002 error: " + errInfo);
@@ -2478,6 +5509,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.in("doubleValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesIn001 rowCount: " + result.rowCount);
       expect(1).assertEqual(result.rowCount);
       result.close();
       done();
@@ -2498,6 +5530,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.in("doubleValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesIn002 rowCount: " + result.rowCount);
       expect(1).assertEqual(result.rowCount);
       result.close();
       done();
@@ -2518,6 +5551,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.in("doubleValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesIn003 rowCount: " + result.rowCount);
       expect(1).assertEqual(result.rowCount);
       result.close();
       done();
@@ -2538,10 +5572,58 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.in("doubleValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesIn004 rowCount: " + result.rowCount);
       expect(3).assertEqual(result.rowCount);
       result.close();
       done();
       console.info(TAG + "************* testRdbPredicatesIn004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0500
+     * @tc.name   : testRdbPredicatesIn005
+     * @tc.desc   : Test the in() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIn005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIn005 start *************");
+      var values = [Number.MIN_VALUE.toString(), "10.0", DOUBLE_MAX.toString()];
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.in("doubleValueX", values);
+      let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesIn005 rowCount: " + result.rowCount);
+      expect(-1).assertEqual(result.rowCount);
+      result.close();
+      done();
+      console.info(TAG + "************* testRdbPredicatesIn005 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0600
+     * @tc.name   : testRdbPredicatesIn006
+     * @tc.desc   : Test the in() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesIn006", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesIn006 start *************");
+      try {
+        var values = [""];
+        let predicates = await new relationalStore.RdbPredicates("AllDataType");
+        predicates.in("doubleValue", values);
+        let result = await rdbStore.query(predicates);
+        console.info("testRdbPredicatesIn006 rowCount: " + result.rowCount);
+        expect(0).assertEqual(result.rowCount);
+        result.close();
+        done();
+      } catch (err) {
+        console.info(TAG + "err = " + err);
+        expect(err.code).assertEqual("401");
+      }
+      console.info(TAG + "************* testRdbPredicatesIn006 end *************");
     });
 
     /**
@@ -2558,6 +5640,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.notIn("integerValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesNotIn001 rowCount: " + result.rowCount);
       expect(1).assertEqual(result.rowCount);
       result.close();
       done();
@@ -2578,6 +5661,7 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.notIn("integerValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesNotIn002 rowCount: " + result.rowCount);
       expect(1).assertEqual(result.rowCount);
       result.close();
       done();
@@ -2598,10 +5682,53 @@ export default function rdbPredicatesTest() {
       let predicates = await new relationalStore.RdbPredicates("AllDataType");
       predicates.notIn("integerValue", values);
       let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesNotIn003 rowCount: " + result.rowCount);
       expect(1).assertEqual(result.rowCount);
       result.close();
       done();
       console.info(TAG + "************* testRdbPredicatesNotIn003 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0400
+     * @tc.name   : testRdbPredicatesNotIn004
+     * @tc.desc   : Test the notIn() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotIn004", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotIn004 start *************");
+      var values = [];
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.notIn("integerValue", values);
+      let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesNotIn004 rowCount: " + result.rowCount);
+      expect(3).assertEqual(result.rowCount);
+      result.close();
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotIn004 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0500
+     * @tc.name   : testRdbPredicatesNotIn005
+     * @tc.desc   : Test the notIn() method of class RdbPredicates.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbPredicatesNotIn005", 0, async function (done) {
+      console.info(TAG + "************* testRdbPredicatesNotIn005 start *************");
+      var values = [-2147483648, 2147483647];
+      let predicates = await new relationalStore.RdbPredicates("AllDataType");
+      predicates.notIn("integerValueX", values);
+      let result = await rdbStore.query(predicates);
+      console.info("testRdbPredicatesNotIn005 rowCount: " + result.rowCount);
+      expect(-1).assertEqual(result.rowCount);
+      result.close();
+      done();
+      console.info(TAG + "************* testRdbPredicatesNotIn005 end *************");
     });
   });
 }

@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import dataPreferences from "@ohos.data.preferences";
 
 const NAME = "test_preferences";
+const NAME1 = "getPreferencesTest";
 const KEY_TEST_INT_ELEMENT = "key_test_int";
 const KEY_TEST_LONG_ELEMENT = "key_test_long";
 const KEY_TEST_FLOAT_ELEMENT = "key_test_float";
@@ -24,6 +25,7 @@ const KEY_TEST_STRING_ELEMENT = "key_test_string";
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = "key_test_number_array";
 const KEY_TEST_STRING_ARRAY_ELEMENT = "key_test_string_array";
 const KEY_TEST_BOOL_ARRAY_ELEMENT = "key_test_bool_array";
+const TAG = "[PREFERENCES_PROMISE_JSUNIT_TEST]";
 let mPreferences;
 let context;
 
@@ -38,6 +40,170 @@ export default function preferencesPromiseTest() {
     afterAll(async function () {
       console.info("afterAll");
       await dataPreferences.deletePreferences(context, NAME);
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_PROMISE_0100
+     * @tc.name   : testPreferencesGetPreferencesPromise001
+     * @tc.desc   : GetPreferences promise interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferencesPromise001", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1).then(async (preferences) => {
+        console.info(TAG + "Get preferences success" + preferences);
+        await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+          expect("test").assertEqual(ret);
+        });
+        await dataPreferences.deletePreferences(context, NAME1);
+        done();
+      }).catch((err) => {
+        console.info(TAG + "Get preferences err: " + err);
+        expect(!err).assertTrue();
+      })
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_PROMISE_0200
+     * @tc.name   : testPreferencesGetPreferencesPromise002
+     * @tc.desc   : GetPreferences promise interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferencesPromise002", 0, async function (done) {
+      try {
+        dataPreferences.getPreferences(context, null).then(async (preferences) => {
+          console.info(TAG + "Get preferences success" + preferences);
+          expect().assertFail();
+          done();
+        }).catch((err) => {
+          console.info(TAG + "Get preferences err: " + JSON.stringify(err));
+          expect(!err).assertFalse();
+          done();
+        })
+      } catch (err) {
+        console.info("testPreferencesGetPreferencesPromise002 fail: " + err.message + "code: " + err.code);
+        expect(err.code === "401")
+          .assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_PROMISE_0300
+     * @tc.name   : testPreferencesGetPreferencesPromise003
+     * @tc.desc   : GetPreferences promise interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferencesPromise003", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }).then(async (preferences) => {
+        console.info(TAG + "Get preferences success" + preferences);
+        await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+          expect("test").assertEqual(ret);
+        });
+        await dataPreferences.deletePreferences(context, NAME1);
+        done();
+      }).catch((err) => {
+        console.info(TAG + "Get preferences err: " + err);
+        expect(!err).assertTrue();
+      })
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_PROMISE_0400
+     * @tc.name   : testPreferencesGetPreferencesPromise004
+     * @tc.desc   : GetPreferences promise interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesGetPreferencesPromise004", 0, async function (done) {
+      try {
+        dataPreferences.getPreferences(context, {
+          name: NAME1
+        }).then(async (preferences) => {
+          console.info(TAG + "Get preferences success" + preferences);
+          expect(preferences !== null).assertTrue();
+          done();
+        }).catch((err) => {
+          console.info(TAG + "Get preferences err: " + JSON.stringify(err));
+          expect(!err).assertFail();
+          done();
+        })
+      } catch (err) {
+        console.info("testPreferencesGetPreferencesPromise004 fail: " + err.message + "code: " + err.code);
+        expect(!err).assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_PROMISE_0100
+     * @tc.name   : testPreferencesDeletePreferencesPromise001
+     * @tc.desc   : DeletePreferences promise interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferencesPromise001", 0, async function (done) {
+      dataPreferences.getPreferences(context, {
+        name: NAME1
+      }).then(async (preferences) => {
+        console.info(TAG + "Get preferences success" + preferences);
+        await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
+        preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+          expect("test").assertEqual(ret);
+        });
+        await dataPreferences.deletePreferences(context, {
+          name: NAME1
+        });
+        done();
+      }).catch((err) => {
+        console.info(TAG + "Get preferences err: " + err);
+        expect(!err).assertTrue();
+      })
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_PROMISE_0200
+     * @tc.name   : testPreferencesDeletePreferencesPromise002
+     * @tc.desc   : DeletePreferences promise interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferencesPromise002", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            dataPreferences.deletePreferences(context, {
+              name: null
+            }).then(async () => {
+              expect().assertFail();
+            }).catch(err => {
+              console.info("testPreferencesDeletePreferencesPromise002 fail1: " + err);
+              expect(!err).assertFail();
+            });
+          } catch (err) {
+            console.info("testPreferencesDeletePreferencesPromise002 fail2: " + err);
+            expect('401').assertEqual(err.code);
+            done();
+          }
+        }
+      });
     });
 
     /**
@@ -1183,9 +1349,9 @@ export default function preferencesPromiseTest() {
         expect("test").assertEqual(per);
         done();
       })
-      .catch((err) => {
-        expect(!err).assertTrue();
-      });
+        .catch((err) => {
+          expect(!err).assertTrue();
+        });
     });
   });
 }

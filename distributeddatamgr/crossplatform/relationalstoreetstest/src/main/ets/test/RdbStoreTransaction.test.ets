@@ -74,7 +74,12 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.insert("test", valueBucket);
       await rdbStore.commit();
       let predicates = new relationalStore.RdbPredicates("test");
-      let resultSet = await rdbStore.query(predicates);
+      let resultSet = await rdbStore.query(predicates, ["name", "age"]);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(1).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -119,6 +124,11 @@ export default function rdbstoreTransactionTest() {
       await rdbStore.commit();
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(3).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -190,6 +200,11 @@ export default function rdbstoreTransactionTest() {
 
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(2).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -230,6 +245,11 @@ export default function rdbstoreTransactionTest() {
 
       let predicates = new relationalStore.RdbPredicates("test");
       let resultSet = await rdbStore.query(predicates);
+      resultSet.goToFirstRow();
+      const name = resultSet.getString(resultSet.getColumnIndex("name"));
+      const age = resultSet.getString(resultSet.getColumnIndex("age"));
+      expect(name == "zhangsan").assertTrue();
+      expect(age == 18).assertTrue();
       expect(1).assertEqual(resultSet.rowCount);
       resultSet.close();
       done();
@@ -255,10 +275,12 @@ export default function rdbstoreTransactionTest() {
           salary: 100.5,
           blobType: new Uint8Array([1, 2, 3]),
         };
+
         await rdbStore.insert("test", valueBucket);
         await rdbStore.insert("test", valueBucket);
 
         await rdbStore.commit();
+        expect(rdbStore !== null).assertTrue();
       } catch (e) {
         await rdbStore.rollBack();
         let predicates = new relationalStore.RdbPredicates("test");
