@@ -53,19 +53,12 @@ export default function RdbStoreIgnore() {
       console.info(TAG + "beforeEach");
       context = globalThis.abilityContext;
       rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.info(TAG + "beforeEach1");
       await rdbStore.executeSql(CREATE_TABLE_ALL_DATA_TYPE_SQL, null);
-      console.info(TAG + "beforeEach2");
       await rdbStore.executeSql(CREATE_TABLE_TEST, null);
-      console.info(TAG + "beforeEach3");
       await buildAllDataType1();
-      console.info(TAG + "beforeEach4");
       await buildAllDataType2();
-      console.info(TAG + "beforeEach5");
       await buildAllDataType3();
-      console.info(TAG + "beforeEach6");
       await createTest();
-      console.info(TAG + "beforeEach7");
     });
 
     afterEach(async function () {
