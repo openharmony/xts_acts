@@ -38,6 +38,7 @@ group("ActsVkTest") {
     "src/image/build0018:ActsImageTestSuite0018",
     "src/image/build0019:ActsImageTestSuite0019",
     "src/image/build0020:ActsImageTestSuite0020",
+    "src/robustness/build0001:ActsRobustnessTestSuite0001",
     "src/subgroups/build0001:ActsSubgroupsTestSuite0001",
     "src/subgroups/build0002:ActsSubgroupsTestSuite0002",
     "src/subgroups/build0003:ActsSubgroupsTestSuite0003",
