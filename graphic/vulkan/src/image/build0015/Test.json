@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsImage0015TS test cases",
+    "description": "Config for ActsImageTestSuite0015 test cases",
     "driver": {
-        "module-name": "ActsImage0015TS",
+        "module-name": "ActsImageTestSuite0015",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -23,7 +23,7 @@
                 "cp /data/local/tmp/libskia_canvaskit* /system/lib"
             ],
             "push": [
-                "ActsImage0015TS->/data/local/tmp/ActsImage0015TS",
+                "ActsImageTestSuite0015->/data/local/tmp/ActsImageTestSuite0015",
                 "vulkandata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vulkandata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "vulkandata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",

@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsUbo0005TS test cases",
+    "description": "Config for ActsUboTestSuite0005 test cases",
     "driver": {
-        "module-name": "ActsUbo0005TS",
+        "module-name": "ActsUboTestSuite0005",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -23,7 +23,7 @@
                 "cp /data/local/tmp/libskia_canvaskit* /system/lib"
             ],
             "push": [
-                "ActsUbo0005TS->/data/local/tmp/ActsUbo0005TS",
+                "ActsUboTestSuite0005->/data/local/tmp/ActsUboTestSuite0005",
                 "vulkandata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vulkandata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "vulkandata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
