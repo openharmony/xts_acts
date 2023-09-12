@@ -155,7 +155,7 @@ export default function addContextAndAbilityJsunit() {
                 var context = ability_featureAbility.getContext();
                 context.printDrawnCompleted((error, data) => {
                     var endTime = Utils.getNowTime();
-                    Utils.getDurationTime(TAG_TEST_0300, startTime, endTime)
+                    Utils.getDurationTime(TAG_TEST_0400, startTime, endTime)
                     detailed = data;
                     console.info(TAG_TEST_0400 + ' callBack succeeded. data is:' + JSON.stringify(data));
                 });
@@ -206,7 +206,7 @@ export default function addContextAndAbilityJsunit() {
             var startTime = await Utils.getNowTime();
             abilityManager.getAppMemorySize((error, data) => {
                 var endTime = Utils.getNowTime();
-                Utils.getDurationTime(TAG_TEST_0500, startTime, endTime)
+                Utils.getDurationTime(TAG_TEST_0600, startTime, endTime)
                 console.info(TAG_TEST_0600 + ' callBack error is: ' + JSON.stringify(error));
                 console.info(TAG_TEST_0600 + ' callBack data is:' + JSON.stringify(data));
                 expect(typeof (data)).assertEqual("number");
@@ -228,7 +228,7 @@ export default function addContextAndAbilityJsunit() {
             var startTime = await Utils.getNowTime();
             await abilityManager.isRamConstrainedDevice().then((data) => {
                 var endTime = Utils.getNowTime();
-                Utils.getDurationTime(TAG_TEST_0500, startTime, endTime)
+                Utils.getDurationTime(TAG_TEST_0700, startTime, endTime)
                 console.info(TAG_TEST_0700 + ' promise data is:' + JSON.stringify(data));
                 detailed = data;
             }).catch((error) => {
@@ -252,7 +252,7 @@ export default function addContextAndAbilityJsunit() {
             var startTime = await Utils.getNowTime();
             abilityManager.isRamConstrainedDevice((error, data) => {
                 var endTime = Utils.getNowTime();
-                Utils.getDurationTime(TAG_TEST_0500, startTime, endTime)
+                Utils.getDurationTime(TAG_TEST_0800, startTime, endTime)
                 console.info(TAG_TEST_0800 + ' callBack error is:' + error);
                 console.info(TAG_TEST_0800 + ' callBack data is:' + JSON.stringify(data));
                 expect(typeof (data)).assertEqual("boolean");

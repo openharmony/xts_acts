@@ -58,7 +58,7 @@ export default function actsStServiceAbilityTest() {
                     clearTimeout(currentAlertTimeout);
                     console.log('ACTS_AExecuteShellCommand_Callback_0100 data: ' + JSON.stringify(data))
 
-                    result = data.stdResult.replace(/[\r\n]/g,"");
+                    result = data.stdResult.replace(/[\r\n]/g, "");
                     console.log('ACTS_AExecuteShellCommand_Callback_0100 stdResult = ' + data.stdResult)
                     expect(result).assertEqual('test');
 
@@ -89,7 +89,7 @@ export default function actsStServiceAbilityTest() {
             try {
                 currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
                 function mySetTimeout() {
-                    console.log('ACTS_AExecuteShellCommand_Callback_0200====<end mySetTimeout')
+                    console.log('ACTS_AExecuteShellCommand_Callback_0100====<end mySetTimeout')
                     done();
                 }
                 var cmd = 'echo test'
@@ -98,7 +98,7 @@ export default function actsStServiceAbilityTest() {
                     clearTimeout(currentAlertTimeout);
                     console.log('ACTS_AExecuteShellCommand_Promise_0100 - executeShellCommand: start ')
 
-                    result = data.stdResult.replace(/[\r\n]/g,"");
+                    result = data.stdResult.replace(/[\r\n]/g, "");
                     console.log('ACTS_AExecuteShellCommand_Promise_0100 stdResult = ' + data.stdResult)
                     expect(result).assertEqual('test');
 
@@ -108,8 +108,8 @@ export default function actsStServiceAbilityTest() {
                 })
             } catch (error) {
                 clearTimeout(currentAlertTimeout);
-                console.log("ACTS_AExecuteShellCommand_Callback_0200 : error = " + error);
-                console.debug('ACTS_AExecuteShellCommand_Callback_0200====<end catch (error)');
+                console.log("ACTS_AExecuteShellCommand_Callback_0100 : error = " + error);
+                console.debug('ACTS_AExecuteShellCommand_Callback_0100====<end catch (error)');
                 done();
             }
         })

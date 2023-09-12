@@ -110,7 +110,7 @@ export default function abilityStageMonitorTest() {
          * @tc.level: 3
          */
     it('SUB_AA_AbilityStageMonitor_0200', 0, async function (done) {
-      console.log("SUB_AA_AbilityStage_0100 begin")
+      console.log("SUB_AA_AbilityStage_0200 begin")
 
       monitor = {
         moduleName: "feature_assistd",
@@ -370,7 +370,7 @@ export default function abilityStageMonitorTest() {
       await abilityDelegator.waitAbilityStageMonitor(monitor).then((abilityStage) => {
         console.info("stageMonitor waitAbilityStageMonitor callback, abilityStage: " + JSON.stringify(abilityStage));
       }).catch((err) => {
-        console.info("SUB_AA_AbilityStageMonitor_0600 waitAbilityStageMonitor err: " + JSON.stringify(err));
+        console.info("SUB_AA_AbilityStageMonitor_0700 waitAbilityStageMonitor err: " + JSON.stringify(err));
         expect(err.code).assertEqual(-1)
       })
 
@@ -424,7 +424,7 @@ export default function abilityStageMonitorTest() {
       await abilityDelegator.waitAbilityStageMonitor(monitor).then((abilityStage) => {
         console.info("stageMonitor waitAbilityStageMonitor callback, abilityStage: " + JSON.stringify(abilityStage));
       }).catch((err) => {
-        console.info("SUB_AA_AbilityStageMonitor_0600 waitAbilityStageMonitor err: " + JSON.stringify(err));
+        console.info("SUB_AA_AbilityStageMonitor_0800 waitAbilityStageMonitor err: " + JSON.stringify(err));
         expect(err.code).assertEqual(-1)
       })
 
