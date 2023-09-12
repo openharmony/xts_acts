@@ -251,8 +251,8 @@ describe("SensorJsTest_sensor_2", function () {
      */
     it('SensorGeomagenticAlgorithmJSTest005', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------SensorGeomagenticAlgorithmJSTest005-------------------------");
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
-        3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+        -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticField({ 'latitude': Number.MAX_VALUE, 'longitude': 0, 'altitude': 0 },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -284,8 +284,8 @@ describe("SensorJsTest_sensor_2", function () {
      */
     it('SensorGeomagenticAlgorithmJSTest006', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------SensorGeomagenticAlgorithmJSTest006-------------------------");
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
-        3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+        -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticField({ 'latitude': Number.NaN, 'longitude': 0, 'altitude': 0 }, timeMillis[0],
             (error, data) => {
                 if (error) {
@@ -317,8 +317,8 @@ describe("SensorJsTest_sensor_2", function () {
      */
     it('SensorGeomagenticAlgorithmJSTest007', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------SensorGeomagenticAlgorithmJSTest007-------------------------");
-        let geomagneticComponent = [14425.57421875, -17156.767578125, -52023.21484375, -66.69005584716797,
-        -49.94255447387695, 22415.4375, 56646.859375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+        -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticField({ 'latitude': Number.NEGATIVE_INFINITY, 'longitude': 0, 'altitude': 0 },
             timeMillis[0], (error, data) => {
                 if (error) {
@@ -915,8 +915,8 @@ describe("SensorJsTest_sensor_2", function () {
      */
     it("SensorGeomagenticAlgorithmJSTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('------------------SensorGeomagenticAlgorithmJSTest029------------------');
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
-        3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+		-12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticField({ 'latitude': Number.MAX_VALUE, 'longitude': 0, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest029 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -943,8 +943,8 @@ describe("SensorJsTest_sensor_2", function () {
      */
     it("SensorGeomagenticAlgorithmJSTest030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('------------------SensorGeomagenticAlgorithmJSTest030------------------');
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422,
-        3.6568238735198975, 1827.8634033203125, 56757.21484375]
+		let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+		-12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticField({ 'latitude': Number.NaN, 'longitude': 0, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest030 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
@@ -971,8 +971,8 @@ describe("SensorJsTest_sensor_2", function () {
      */
     it("SensorGeomagenticAlgorithmJSTest031", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('------------------SensorGeomagenticAlgorithmJSTest031------------------');
-        let geomagneticComponent = [14425.57421875, -17156.767578125, -52023.21484375, -66.69005584716797,
-        -49.94255447387695, 22415.4375, 56646.859375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+        -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticField({ 'latitude': Number.NEGATIVE_INFINITY, 'longitude': 0, 'altitude': 0 },
             timeMillis[0]).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest031 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
