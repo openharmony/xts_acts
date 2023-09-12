@@ -55,7 +55,7 @@ export default function abilityTest() {
      */
     it('ACTS_NFC_SelectTypes_0100', 0, async (done) => {
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: '',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -95,7 +95,7 @@ export default function abilityTest() {
      */
     it('ACTS_NFC_SelectTypes_0200', 0, async (done) => {
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: 'tag-tech/NFcA',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -134,7 +134,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_0300', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 begin');
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: '',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -166,7 +166,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_0400', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 begin');
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: 'tag-tech/NFcA',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -288,7 +288,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_0700', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 begin');
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: 'tag-tech/NFcA',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -326,7 +326,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_0800' ,0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 begin');
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type:'tag-tech/NFcA',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -408,7 +408,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_1000', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1000 begin');
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: '',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -458,7 +458,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_1100', 0, async (done) => {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1100 begin');
       let want = {
-        action: 'ohos.nfc.tag.action.TAG_FOUND',
+        action: 'ohos.nfc.tag.test.action',
         type: 'tag-tech/Single',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -506,7 +506,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_1200',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1200 begin');
       let want = {
-        action: "ohos.nfc.tag.action.TAG_FOUND",
+        action: "ohos.nfc.tag.test.action",
         type: '',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -542,7 +542,7 @@ export default function abilityTest() {
     it('ACTS_NFC_SelectTypes_1300',0, async function (done) {
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_1300 begin');
       let wantSingle = {
-        action: "ohos.nfc.tag.action.TAG_FOUND",
+        action: "ohos.nfc.tag.test.action",
         type: '',
         parameters: {
           'ohos.ability.params.uriTypes': [
@@ -551,7 +551,7 @@ export default function abilityTest() {
         }
       };
       let wantStandard = {
-        action: "ohos.nfc.tag.action.TAG_FOUND",
+        action: "ohos.nfc.tag.test.action",
         type: '',
         parameters: {
           'ohos.ability.params.uriTypes': [
