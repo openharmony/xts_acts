@@ -24,6 +24,7 @@
 #include <thread>
 #include <string>
 #include <unistd.h>
+#include <pthread.h>
 
 void MyPrint(void* arg)
 {
@@ -63,189 +64,189 @@ typedef struct {
     int* b;
     ffrt_mutex_t* lock_;
     int* dur;
-    int* ret_;
-} cv_mutex;
+    int* ret;
+} CvMutex;
 
-void func_wait1(void* arg)
+void FuncWait1(void* arg)
 {
-    cv_mutex* t = (cv_mutex*) arg;
+    CvMutex* t = (CvMutex*) arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     
     while (*t->a != 1) {
         ret = ffrt_cond_wait(t->cond, t->lock_);
         if (ret != ffrt_success) {
-            *t->ret_ = 2;
+            *t->ret = 2;
         }
     }
     *t->b += 1;
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_wait2(void* arg)
+void FuncWait2(void* arg)
 {
-    cv_mutex* t = (cv_mutex*) arg;
+    CvMutex* t = (CvMutex*) arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     
     while (*t->a != 1) {
         ret = ffrt_cond_wait(t->cond, t->lock_);
         if (ret != ffrt_success) {
-            *t->ret_ = 2;
+            *t->ret = 2;
         }
     }
     *t->b += 1;
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_wait_timeout(void* arg)
+void FuncWaitTimeout(void* arg)
 {
-    cv_mutex* t = (cv_mutex*)arg;
+    CvMutex* t = (CvMutex*)arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
-    ts.tv_sec+= 1;
+    ts.tv_sec += 1;
     
     ret = ffrt_cond_timedwait(t->cond, t->lock_, &ts);
-    *t->ret_ = ret;
+    *t->ret = ret;
     if (ret == ffrt_success) {
         *(t->a) *= 10;
     }
     ret = ffrt_mutex_unlock(t->lock_);
 }
 
-void func_signal(void* arg)
+void FuncSignal(void* arg)
 {
     ffrt_usleep(30000);
-    cv_mutex* t = (cv_mutex*)arg;
+    CvMutex* t = (CvMutex*)arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     *(t->a) = 1;
     ret = ffrt_cond_signal(t->cond);
     if (ret != ffrt_success) {
-        *t->ret_ = 2;
+        *t->ret = 2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_broadcast(void* arg)
+void FuncBroadcast(void* arg)
 {
     ffrt_usleep(100000);
-    cv_mutex* t = (cv_mutex*)arg;
+    CvMutex* t = (CvMutex*)arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
-    *(t->a) =1;
+    *(t->a) = 1;
     ret = ffrt_cond_broadcast(t->cond);
     if (ret != ffrt_success) {
-        *t->ret_ = 2;
+        *t->ret = 2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_signal_api(void* arg)
+void FuncSignalApi(void* arg)
 {
     ffrt_usleep(30000);
-    cv_mutex* t = (cv_mutex*)arg;
+    CvMutex* t = (CvMutex*)arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     *(t->a) = 1;
     ret = ffrt_cond_signal(nullptr);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 4;
+        *t->ret = 4;
     }
     ret = ffrt_cond_signal(t->cond);
     if (ret != ffrt_success) {
-        *t->ret_ = 2;
+        *t->ret = 2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_broadcast_api(void* arg)
+void FuncBroadcastApi(void* arg)
 {
     ffrt_usleep(100000);
-    cv_mutex* t = (cv_mutex*)arg;
+    CvMutex* t = (CvMutex*)arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
-    *(t->a) =1;
+    *(t->a) = 1;
     ret = ffrt_cond_broadcast(nullptr);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 4;
+        *t->ret = 4;
     }
     ret = ffrt_cond_broadcast(t->cond);
     if (ret != ffrt_success) {
-        *t->ret_ = 2;
+        *t->ret = 2;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_wait_api(void* arg)
+void FuncWaitApi(void* arg)
 {
-    cv_mutex* t = (cv_mutex*) arg;
+    CvMutex* t = (CvMutex*) arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     
     ret = ffrt_cond_wait(nullptr, t->lock_);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 4;
+        *t->ret = 4;
     }
     ret = ffrt_cond_wait(t->cond, nullptr);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 5;
+        *t->ret = 5;
     }
     while (*t->a != 1) {
         ret = ffrt_cond_wait(t->cond, t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 2;
+        *t->ret = 2;
     }
     }
     *t->b += 1;
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
-void func_wait_timeout_api(void* arg)
+void FuncWaitTimeoutApi(void* arg)
 {
-    cv_mutex* t = (cv_mutex*) arg;
+    CvMutex* t = (CvMutex*) arg;
     int ret = ffrt_mutex_lock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 1;
+        *t->ret = 1;
     }
     timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
@@ -253,26 +254,26 @@ void func_wait_timeout_api(void* arg)
     
     ret = ffrt_cond_timedwait(nullptr, t->lock_, &ts);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 4;
+        *t->ret = 4;
     }
     ret = ffrt_cond_timedwait(t->cond, nullptr, &ts);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 5;
+        *t->ret = 5;
     }
     ret = ffrt_cond_timedwait(t->cond, t->lock_, nullptr);
     if (ret != ffrt_error_inval) {
-        *t->ret_ = 6;
+        *t->ret = 6;
     }
     clock_gettime(CLOCK_MONOTONIC, &ts);
     ts.tv_sec += *t->dur;
     ret = ffrt_cond_timedwait(t->cond, t->lock_, &ts);
-    *t->ret_ = ret;
+    *t->ret = ret;
     if (ret == ffrt_success) {
         *(t->a) *= 10;
     }
     ret = ffrt_mutex_unlock(t->lock_);
     if (ret != ffrt_success) {
-        *t->ret_ = 3;
+        *t->ret = 3;
     }
 }
 
@@ -315,24 +316,24 @@ static inline ffrt_function_header_t* ffrt_create_function_wrapper(const ffrt_fu
 }
 
 template<class T>
-struct function {
+struct Function {
     template<class CT>
-    function(ffrt_function_header_t h, CT&& c) : header(h), closure(std::forward<CT>(c)) {}
+    Function(ffrt_function_header_t h, CT&& c) : header(h), closure(std::forward<CT>(c)) {}
     ffrt_function_header_t header;
     T closure;
 };
 
 template<class T>
-void exec_function_wrapper(void* t)
+void ExecFunctionWrapper(void* t)
 {
-    auto f = reinterpret_cast<function<std::decay_t<T>>*>(t);
+    auto f = reinterpret_cast<Function<std::decay_t<T>>*>(t);
     f->closure();
 }
 
 template<class T>
-void destroy_function_wrapper(void* t)
+void DestroyFunctionWrapper(void* t)
 {
-    auto f = reinterpret_cast<function<std::decay_t<T>>*>(t);
+    auto f = reinterpret_cast<Function<std::decay_t<T>>*>(t);
     f->closure = nullptr;
 }
 
@@ -340,10 +341,10 @@ template<class T>
 static inline ffrt_function_header_t* create_function_wrapper(T&& func,
     ffrt_function_kind_t kind = ffrt_function_kind_general)
 {
-    using function_type = function<std::decay_t<T>>;
+    using function_type = Function<std::decay_t<T>>;
     auto p = ffrt_alloc_auto_managed_function_storage_base(kind);
     auto f =
-        new (p)function_type({ exec_function_wrapper<T>, destroy_function_wrapper<T>, { 0 } }, std::forward<T>(func));
+        new (p)function_type({ ExecFunctionWrapper<T>, DestroyFunctionWrapper<T>, { 0 } }, std::forward<T>(func));
     return reinterpret_cast<ffrt_function_header_t*>(f);
 }
 
@@ -353,15 +354,24 @@ static inline void ffrt_submit_c(ffrt_function_t func, void* arg,
     ffrt_submit_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
 }
 
+static inline ffrt_task_handle_t ffrt_submit_h_c(ffrt_function_t func, void* arg,
+    const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
+{
+    return ffrt_submit_h_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
+}
+
 static napi_value QueueTest001(napi_env env, napi_callback_info info)
 {
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     int result = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &result, ffrt_function_kind_queue), nullptr);
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(MultipleForTest, nullptr, &result, ffrt_function_kind_queue), nullptr);
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(SubForTest, nullptr, &result, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &result,
+        ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(MultipleForTest, nullptr, &result,
+        ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(SubForTest, nullptr, &result,
+        ffrt_function_kind_queue), nullptr);
     napi_value flag = nullptr;
     sleep(2);
     napi_create_double(env, result, &flag);
@@ -392,7 +402,7 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
     }
     for (int num = 0; num < maxNum; num++) {
         ffrt_queue_wait(task[num][9]);
-        HiLogPrint(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "result in queue task %{public}d is %{public}d", num, result[num]);
+        HiLogPrint(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "result in queue %{public}d is %{public}d", num, result[num]);
         if (result[num] != 10) {
             a = 1;
         }
@@ -402,8 +412,9 @@ static napi_value QueueTest002(napi_env env, napi_callback_info info)
             ffrt_task_handle_destroy(task[num][i]);
         }
     }
-    for (int num =0; num < maxNum; num++) {
-        HiLogPrint(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "qos in queue task %{public}d is %{public}d", num, ffrt_queue_attr_get_qos(&queue_attr[num]));
+    for (int num = 0; num < maxNum; num++) {
+        HiLogPrint(LOG_APP, LOG_INFO, 1, "FFRT QUEUE", "qos in queue task %{public}d is %{public}d", num,
+            ffrt_queue_attr_get_qos(&queue_attr[num]));
         if (ffrt_queue_attr_get_qos(&queue_attr[num]) != num) {
             a = 1;
         }
@@ -492,7 +503,8 @@ static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
     int result = 0;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_callback(&queue_attr, ffrt_create_function_wrapper(MyPrint, NULL, NULL, ffrt_function_kind_queue));
+    ffrt_queue_attr_set_callback(&queue_attr, ffrt_create_function_wrapper(MyPrint, NULL, NULL,
+        ffrt_function_kind_queue));
     ffrt_function_header_t* func = ffrt_queue_attr_get_callback(nullptr);
     if (func != nullptr) {
         result = 1;
@@ -545,7 +557,8 @@ static napi_value QueueApiTest002(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
 
     sleep(1);
     if (a != 1) {
@@ -594,7 +607,8 @@ static napi_value QueueApiTest005(napi_env env, napi_callback_info info)
     }
     
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
     sleep(1);
     if (a != 1) {
         result = 1;
@@ -626,7 +640,8 @@ static napi_value QueueApiTest006(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
 
     sleep(1);
     if (a != 1) {
@@ -654,7 +669,7 @@ static napi_value QueueApiTest007(napi_env env, napi_callback_info info)
     if (ret != static_cast<int>(ffrt_qos_inherit)) {
         result = 1;
     }
-    queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue",&queue_attr);
+    queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
 
     int a = 0;
     ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle,
@@ -674,7 +689,7 @@ static napi_value QueueApiTest007(napi_env env, napi_callback_info info)
     if (ret != static_cast<int>(ffrt_qos_inherit)) {
         result = 1;
     }
-    queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue",&queue_attr);
+    queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
 
     handle = ffrt_queue_submit_h(queue_handle,
         ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
@@ -714,7 +729,8 @@ static napi_value QueueApiTest008(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
     sleep(1);
     if (a != 1) {
         result = 1;
@@ -740,7 +756,8 @@ static napi_value QueueApiTest009(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
     sleep(1);
     if (a != 1) {
         result = 1;
@@ -767,9 +784,11 @@ static napi_value QueueApiTest010(napi_env env, napi_callback_info info)
     }
 
     int a = 0;
-    ffrt_queue_submit(nullptr, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(nullptr, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
     ffrt_queue_submit(queue_handle, nullptr, nullptr);
-    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a, ffrt_function_kind_queue), nullptr);
+    ffrt_queue_submit(queue_handle, ffrt_create_function_wrapper(OnePlusForTest, nullptr, &a,
+        ffrt_function_kind_queue), nullptr);
 
     sleep(1);
     if (a != 1) {
@@ -1321,7 +1340,7 @@ static napi_value DelayCTest001(napi_env env, napi_callback_info info)
     if (a != 1) {
         result = 1;
     }
-    if (t <= 5000 || t>=20000) {
+    if (t <= 5000 || t >= 20000) {
         result = 2;
     }
 
@@ -1346,7 +1365,7 @@ static napi_value QosQueryTest(napi_env env, napi_callback_info info)
         result = 1;
     }
     int qosVal = ffrt_task_attr_get_qos(&attr);
-    if (qosVal != 2) {
+    if (qosVal != ffrt_qos_default) {
         result = 2;
     }
     ffrt_task_attr_destroy(&attr);
@@ -1476,10 +1495,13 @@ static napi_value QueueDelay001(napi_env env, napi_callback_info info)
     if (a != 1) {
         result = 1;
     }
-    if (t <= 5000 || t>= 10000) {
+    if (t <= 5000 || t >= 10000) {
         result = 2;
     }
-
+    uint64_t delay = ffrt_task_attr_get_delay(&task_attr);
+    if (delay != 5000) {
+        result = 3;
+    }
     ffrt_task_attr_destroy(&task_attr);
     ffrt_task_handle_destroy(task1);
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1526,10 +1548,13 @@ static napi_value QueueDelay005(napi_env env, napi_callback_info info)
     if (a != 10) {
         result = 3;
     }
-    
+    uint64_t delay = ffrt_task_attr_get_delay(&task_attr);
+    if (delay != 5000000) {
+        result = 4;
+    }
     ffrt_task_attr_destroy(&task_attr);
     ffrt_task_handle_destroy(task1);
-    ffrt_task_handle_destroy(task2); 
+    ffrt_task_handle_destroy(task2);
 
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
@@ -1563,42 +1588,6 @@ static napi_value QueueWait001(napi_env env, napi_callback_info info)
     ffrt_task_attr_destroy(&task_attr);
     ffrt_task_handle_destroy(task1);
 
-    // 销毁队列
-    ffrt_queue_attr_destroy(&queue_attr);
-    ffrt_queue_destroy(queue_handle);
-    napi_value flag = nullptr;
-    napi_create_double(env, result, &flag);
-    return flag;
-}
-
-static napi_value Queue002(napi_env env, napi_callback_info info)
-{
-    int result = 0;
-    // 空串行队列提交一个task可以快速调度
-    ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_qos(&queue_attr, static_cast<int>(ffrt_qos_default));
-    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
-
-    sleep(1);
-    int a = 0;
-    double t;
-    auto start = std::chrono::high_resolution_clock::now();
-    std::function<void()>&& OnePlusFunc = [&a]() { OnePlusForTest((void *)(&a)); };
-    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), nullptr);
-    ffrt_queue_wait(task1);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed = end-start;
-    t = elapsed.count();
-    if (a != 1) {
-        result = 1;
-    }
-    if (t >= 5) {
-        result = 2;
-    }
-
-    ffrt_task_handle_destroy(task1);
     // 销毁队列
     ffrt_queue_attr_destroy(&queue_attr);
     ffrt_queue_destroy(queue_handle);
@@ -1651,159 +1640,67 @@ static napi_value Queue003(napi_env env, napi_callback_info info)
     return flag;
 }
 
-static napi_value QueueDestroy003(napi_env env, napi_callback_info info)
+static napi_value FfrtYieldC0001(napi_env env, napi_callback_info info)
 {
-    int resultEnd = 0;
-    // 队列有一个执行中的任务时destroy队列，再destroy handle
-    ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
-
     int result = 0;
-    std::function<void()>&& OnePlusFfrtSleepFunc = [&result]() { OnePlusSleepForTest((void *)(&result)); };
-    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(OnePlusFfrtSleepFunc, ffrt_function_kind_queue), nullptr);
-    
-    sleep(1);
-    // 销毁队列
-    ffrt_queue_destroy(queue_handle);
-    if (result != 1) {
-        resultEnd = 1;
+    int x = 0;
+    pthread_mutex_t lock;
+    int ret = (pthread_mutex_init(&lock, nullptr));
+    if (ret != 0) {
+        result = 1;
     }
-    ffrt_task_handle_destroy(task1);
-    ffrt_queue_attr_destroy(&queue_attr);
-    napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
-}
-
-static napi_value QueueDestroy005(napi_env env, napi_callback_info info)
-{
-    int resultEnd = 0;
-    // 队列有delay的任务时destroy队列，再destroy handle
-    ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
-
-    int result = 0;
-    ffrt_task_attr_t task_attr;
-    (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 5000000);
-    std::function<void()>&& OnePlusFunc = [&result]() { OnePlusForTest((void *)(&result)); };
-    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr);
-    
-    sleep(1);
-    // 销毁队列
-    ffrt_queue_destroy(queue_handle);
-    if (result != 0) {
-        resultEnd = 1;
-    }
-    ffrt_task_handle_destroy(task1);
-    ffrt_queue_attr_destroy(&queue_attr);
-    ffrt_task_attr_destroy(&task_attr);
-    napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
-}
-
-static napi_value QueueDestroy007(napi_env env, napi_callback_info info)
-{
-    int resultEnd = 0;
-    // 两次destroy同一个handle
-    ffrt_queue_attr_t queue_attr;
-    (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_qos(&queue_attr, static_cast<int>(ffrt_qos_default));
-    ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
-
-    int result = 0;
-    ffrt_task_attr_t task_attr;
-    (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 10000);
-    ffrt_task_attr_set_name(&task_attr, "test1");
-    std::function<void()>&& OnePlusFunc = [&result]() { OnePlusForTest((void *)(&result)); };
-    ffrt_task_handle_t task1 = ffrt_queue_submit_h(queue_handle,
-        create_function_wrapper(OnePlusFunc, ffrt_function_kind_queue), &task_attr);
-    
-    sleep(1);
-    // 销毁队列
-    ffrt_queue_destroy(queue_handle);
-    if (result != 1) {
-        resultEnd = 1;
-    }
-    ffrt_task_handle_destroy(task1);
-    ffrt_queue_attr_destroy(&queue_attr);
-    ffrt_task_attr_destroy(&task_attr);
-    napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
-}
-
-static napi_value FFRTYieldSubmitThreadTest(napi_env env, napi_callback_info info)
-{
-    int resultEnd = 0;
-    auto func1 = [&]() {
-        std::function<void()>&& func = [&]() {
-        ffrt_yield();
-        };
-        ffrt_submit_base(create_function_wrapper(func), nullptr, nullptr, nullptr);
-        ffrt_wait();
-    };
-    std::vector<std::thread> ts;
-    const int loopNum = 10;
-    for (auto i = 0; i < loopNum; i++) {
-        ts.emplace_back(func1);
-    }
-    for (auto& t : ts) {
-        t.join();
-    }
-    napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
-}
-
-static napi_value FFRTYieldSubmitLoopTest(napi_env env, napi_callback_info info)
-{
-    int resultEnd = 0;
-    const int setTime = 5000;
     std::function<void()>&& func1 = [&]() {
-        ffrt_usleep(setTime);
-        ffrt_yield();
+        while (true) {
+            int ret = (pthread_mutex_lock(&lock));
+            if (ret != 0) {
+                result = 2;
+            }
+            if (x == 1) {
+                int ret = (pthread_mutex_unlock(&lock));
+                if (ret != 0) {
+                    result = 3;
+                }
+                return;
+            } else {
+                int ret = (pthread_mutex_unlock(&lock));
+                if (ret != 0) {
+                    result = 4;
+                }
+                usleep(1000);
+                ffrt_yield();
+            }
+        }
     };
     std::function<void()>&& func2 = [&]() {
-        ffrt_yield();
-        ffrt_usleep(setTime);
-        ffrt_submit_base(create_function_wrapper(func1), nullptr, nullptr, nullptr);
-        ffrt_wait();
-    };
-    
-    ffrt_submit_base(create_function_wrapper(func2), nullptr, nullptr, nullptr);
-    std::function<void()>&& func3 = [&]() {
-        ffrt_usleep(setTime);
-        ffrt_yield();
-    };
-    ffrt_submit_base(create_function_wrapper(func3), nullptr, nullptr, nullptr);
-    ffrt_wait();
-    napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
-    return flag;
-}
-
-static napi_value FFRTYieldBasicTest(napi_env env, napi_callback_info info)
-{
-    int resultEnd = 0;
-    const long pidBase = gettid();
-    const int loopNum = 100;
-    long pidItera = 0;
-    for (int i = 0; i < loopNum; i++) {
-        ffrt_yield();
-        pidItera = gettid();
-        if (pidBase != pidItera) {
-            resultEnd = 1;
+        int ret = (pthread_mutex_lock(&lock));
+        if (ret != 0) {
+            result = 5;
         }
+        x++;
+        ret = (pthread_mutex_unlock(&lock));
+        if (ret != 0) {
+            result = 6;
+        }
+    };
+    ffrt_task_handle_t task = ffrt_submit_h_base(create_function_wrapper(func1), nullptr, nullptr, nullptr);
+    for (int i = 0; i < 20; i++) {
+        ffrt_submit_base(create_function_wrapper(func1), nullptr, nullptr, nullptr);
     }
+    ffrt_submit_base(create_function_wrapper(func2), nullptr, nullptr, nullptr);
+    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
+    ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
+    ffrt_wait_deps(&wait);
+    if (x != 1) {
+        result = 7;
+    }
+    ffrt_wait();
+    if (x != 1) {
+        result = 8;
+    }
+    ffrt_task_handle_destroy(task);
+    pthread_mutex_destroy(&lock);
     napi_value flag = nullptr;
-    napi_create_double(env, resultEnd, &flag);
+    napi_create_double(env, result, &flag);
     return flag;
 }
 
@@ -1910,7 +1807,7 @@ static napi_value SleepForTest000(napi_env env, napi_callback_info info)
     };
     ffrt_submit_base(create_function_wrapper(func), nullptr, nullptr, nullptr);
     ffrt_wait();
-    if (t <= 0) {
+    if (t <= 0 || t > 10) {
         resultEnd = 1;
     }
     napi_value flag = nullptr;
@@ -1932,7 +1829,7 @@ static napi_value SleepForTest001(napi_env env, napi_callback_info info)
     };
     ffrt_submit_base(create_function_wrapper(func), nullptr, nullptr, nullptr);
     ffrt_wait();
-    if (t <= 1) {
+    if (t <= 1 || t > 10) {
         resultEnd = 1;
     }
     napi_value flag = nullptr;
@@ -1975,7 +1872,7 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     if (result != 1) {
         resultEnd = 1;
     }
-   if (t <= 2000 || t >= 3000) {
+    if (t <= 2000 || t >= 3000) {
         resultEnd = 2;
     }
 
@@ -1986,7 +1883,7 @@ static napi_value QueueDelayTest001(napi_env env, napi_callback_info info)
     if (result != 0) {
         resultEnd = 3;
     }
-   if (t <= 5000 || t >= 6000) {
+    if (t <= 5000 || t >= 6000) {
         resultEnd = 4;
     }
     ffrt_task_handle_destroy(handle1);
@@ -2027,22 +1924,12 @@ static napi_value MutexTest006(napi_env env, napi_callback_info info)
             resultEnd = 5;
         }
     };
-    auto thread1Func = [&]() {
-        const std::vector<ffrt_dependence_t> in_deps = {{ffrt_dependence_data, &x}};
-        ffrt_deps_t in{static_cast<uint32_t>(in_deps.size()), in_deps.data()};
-        ffrt_task_attr_t attr;
-        ffrt_task_attr_init(&attr);
-        ffrt_task_attr_set_name(&attr, "t2");
-        ffrt_submit_base(create_function_wrapper(func1), &in, nullptr, &attr);
-        ffrt_wait();
-    };
-
     std::function<void()>&& func2 = [&]() {
         int res = ffrt_mutex_lock(&lock);
         if (res != ffrt_success) {
             resultEnd = 6;
         }
-        ffrt_usleep(110 * 1000);
+        ffrt_usleep(50 * 1000);
         if (x != 0) {
             resultEnd = 7;
         }
@@ -2054,20 +1941,83 @@ static napi_value MutexTest006(napi_env env, napi_callback_info info)
             resultEnd = 8;
         }
     };
-    auto thread2Func = [&]() {
-        const std::vector<ffrt_dependence_t> in_deps = {{ffrt_dependence_data, &x}};
-        ffrt_deps_t in{static_cast<uint32_t>(in_deps.size()), in_deps.data()};
-        ffrt_task_attr_t attr;
-        ffrt_task_attr_init(&attr);
-        ffrt_task_attr_set_name(&attr, "t1");
-        ffrt_submit_base(create_function_wrapper(func2), &in, nullptr, &attr);
-        ffrt_wait();
+    const std::vector<ffrt_dependence_t> in_deps1 = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in1{static_cast<uint32_t>(in_deps1.size()), in_deps1.data()};
+    ffrt_task_attr_t attr1;
+    ffrt_task_attr_init(&attr1);
+    ffrt_task_attr_set_name(&attr1, "t2");
+    const std::vector<ffrt_dependence_t> in_deps2 = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in2{static_cast<uint32_t>(in_deps2.size()), in_deps2.data()};
+    ffrt_task_attr_t attr2;
+    ffrt_task_attr_init(&attr2);
+    ffrt_task_attr_set_name(&attr2, "t1");
+    ffrt_submit_base(create_function_wrapper(func1), &in1, nullptr, &attr1);
+    ffrt_submit_base(create_function_wrapper(func2), &in2, nullptr, &attr2);
+    ffrt_wait();
+    ffrt_mutex_destroy(&lock);
+    napi_value flag = nullptr;
+    napi_create_double(env, resultEnd, &flag);
+    return flag;
+}
+
+static napi_value MutexTest007(napi_env env, napi_callback_info info)
+{
+    int resultEnd = 0;
+    int x = 0;
+    ffrt_mutex_t lock;
+    int ret = ffrt_mutex_init(&lock, nullptr);
+    if (ret != ffrt_success) {
+        resultEnd = 1;
+    }
+    std::function<void()>&& func1 = [&]() {
+        ffrt_usleep(110 * 1000);
+        int res = ffrt_mutex_lock(&lock);
+        if (res != ffrt_success) {
+            resultEnd = 2;
+        }
+        if (x != 6) {
+            resultEnd = 3;
+        }
+        x = x / 2;
+        x = x - 2;
+        x--;
+        if (x != 0) {
+            resultEnd = 4;
+        }
+        res = ffrt_mutex_unlock(&lock);
+        if (res != ffrt_success) {
+            resultEnd = 5;
+        }
     };
-    
-    std::thread t1{thread1Func};
-    std::thread t2{thread2Func};
-    t1.join();
-    t2.join();
+    std::function<void()>&& func2 = [&]() {
+        int res = ffrt_mutex_lock(&lock);
+        if (res != ffrt_success) {
+            resultEnd = 6;
+        }
+        if (x != 0) {
+            resultEnd = 7;
+        }
+        x++;
+        x = x + 2;
+        x = x * 2;
+        res = ffrt_mutex_unlock(&lock);
+        if (res != ffrt_success) {
+            resultEnd = 8;
+        }
+    };
+    const std::vector<ffrt_dependence_t> in_deps1 = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in1{static_cast<uint32_t>(in_deps1.size()), in_deps1.data()};
+    ffrt_task_attr_t attr1;
+    ffrt_task_attr_init(&attr1);
+    ffrt_task_attr_set_name(&attr1, "t2");
+    const std::vector<ffrt_dependence_t> in_deps2 = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in2{static_cast<uint32_t>(in_deps2.size()), in_deps2.data()};
+    ffrt_task_attr_t attr2;
+    ffrt_task_attr_init(&attr2);
+    ffrt_task_attr_set_name(&attr2, "t1");
+    ffrt_submit_base(create_function_wrapper(func1), &in1, nullptr, &attr1);
+    ffrt_submit_base(create_function_wrapper(func2), &in2, nullptr, &attr2);
+    ffrt_wait();
     ffrt_mutex_destroy(&lock);
     napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
@@ -2087,8 +2037,8 @@ static napi_value MutexTest008(napi_env env, napi_callback_info info)
     }
     std::function<void()>&& func1 = [&]() {
         usleep(30 * 1000);
-        while(true) {
-            if(!ffrt_mutex_trylock(&lock)) {
+        while (true) {
+            if (!ffrt_mutex_trylock(&lock)) {
                 if (x != 1) {
                     resultEnd = 2;
                 }
@@ -2106,15 +2056,6 @@ static napi_value MutexTest008(napi_env env, napi_callback_info info)
             }
         }
     };
-    auto thread1Func = [&]() {
-        const std::vector<ffrt_dependence_t> in_deps = {{ffrt_dependence_data, &x}};
-        ffrt_deps_t in{static_cast<uint32_t>(in_deps.size()), in_deps.data()};
-        ffrt_task_attr_t attr;
-        ffrt_task_attr_init(&attr);
-        ffrt_task_attr_set_name(&attr, "t2");
-        ffrt_submit_base(create_function_wrapper(func1), &in, nullptr, &attr);
-        ffrt_wait();
-    };
     std::function<void()>&& func2 = [&]() {
         int res = ffrt_mutex_lock(&lock);
         if (res != ffrt_success) {
@@ -2127,20 +2068,19 @@ static napi_value MutexTest008(napi_env env, napi_callback_info info)
             resultEnd = 6;
         }
     };
-    auto thread2Func = [&]() {
-        const std::vector<ffrt_dependence_t> in_deps = {{ffrt_dependence_data, &x}};
-        ffrt_deps_t in{static_cast<uint32_t>(in_deps.size()), in_deps.data()};
-        ffrt_task_attr_t attr;
-        ffrt_task_attr_init(&attr);
-        ffrt_task_attr_set_name(&attr, "t1");
-        ffrt_submit_base(create_function_wrapper(func2), &in, nullptr, &attr);
-        ffrt_wait();
-    };
-    
-    std::thread t1{thread1Func};
-    std::thread t2{thread2Func};
-    t1.join();
-    t2.join();
+    const std::vector<ffrt_dependence_t> in_deps1 = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in1{static_cast<uint32_t>(in_deps1.size()), in_deps1.data()};
+    ffrt_task_attr_t attr1;
+    ffrt_task_attr_init(&attr1);
+    ffrt_task_attr_set_name(&attr1, "t2");
+    const std::vector<ffrt_dependence_t> in_deps2 = {{ffrt_dependence_data, &x}};
+    ffrt_deps_t in2{static_cast<uint32_t>(in_deps2.size()), in_deps2.data()};
+    ffrt_task_attr_t attr2;
+    ffrt_task_attr_init(&attr2);
+    ffrt_task_attr_set_name(&attr2, "t1");
+    ffrt_submit_base(create_function_wrapper(func1), &in1, nullptr, &attr1);
+    ffrt_submit_base(create_function_wrapper(func2), &in2, nullptr, &attr2);
+    ffrt_wait();
     ffrt_mutex_destroy(&lock);
     napi_value flag = nullptr;
     napi_create_double(env, resultEnd, &flag);
@@ -2160,24 +2100,24 @@ static napi_value ConditionVariableTest001(napi_env env, napi_callback_info info
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc2 = [&t]() { func_signal((void * )(&t)); };
+    std::function<void()>&& FfrtFunc2 = [&t]() { FuncSignal((void *)(&t)); };
     ffrt_function_header_t* ffrt_func2 = create_function_wrapper((FfrtFunc2));
     ffrt_submit_base(ffrt_func2, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 1) {
         resultEnd = 9;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2199,24 +2139,24 @@ static napi_value ConditionVariableTest002(napi_env env, napi_callback_info info
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc3 = [&t]() { func_broadcast((void * )(&t)); };
+    std::function<void()>&& FfrtFunc3 = [&t]() { FuncBroadcast((void *)(&t)); };
     ffrt_function_header_t* ffrt_func3 = create_function_wrapper((FfrtFunc3));
     ffrt_submit_base(ffrt_func3, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 1) {
         resultEnd = 9;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2238,27 +2178,27 @@ static napi_value ConditionVariableTest003(napi_env env, napi_callback_info info
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc2 = [&t]() { func_wait2((void * )(&t)); };
+    std::function<void()>&& FfrtFunc2 = [&t]() { FuncWait2((void *)(&t)); };
     ffrt_function_header_t* ffrt_func2 = create_function_wrapper((FfrtFunc2));
     ffrt_submit_base(ffrt_func2, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc3 = [&t]() { func_broadcast((void * )(&t)); };
+    std::function<void()>&& FfrtFunc3 = [&t]() { FuncBroadcast((void *)(&t)); };
     ffrt_function_header_t* ffrt_func3 = create_function_wrapper((FfrtFunc3));
     ffrt_submit_base(ffrt_func3, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 2) {
         resultEnd = 9;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2280,22 +2220,22 @@ static napi_value ConditionVariableTest004(napi_env env, napi_callback_info info
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc2 = [&t]() { func_wait2((void * )(&t)); };
+    std::function<void()>&& FfrtFunc2 = [&t]() { FuncWait2((void *)(&t)); };
     ffrt_function_header_t* ffrt_func2 = create_function_wrapper((FfrtFunc2));
     ffrt_submit_base(ffrt_func2, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc3 = [&t]() { func_signal((void * )(&t)); };
+    std::function<void()>&& FfrtFunc3 = [&t]() { FuncSignal((void *)(&t)); };
     ffrt_function_header_t* ffrt_func3 = create_function_wrapper((FfrtFunc3));
     ffrt_task_handle_t task3 = ffrt_submit_h_base(ffrt_func3, nullptr, nullptr, nullptr);
-    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task,task3}};
+    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task3}};
     ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
     ffrt_wait_deps(&wait);
     ffrt_usleep(100000);
@@ -2309,8 +2249,8 @@ static napi_value ConditionVariableTest004(napi_env env, napi_callback_info info
     if (*(t.b) != 2) {
         resultEnd = 9;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
 
     ffrt_cond_destroy(&cond);
@@ -2339,24 +2279,24 @@ static napi_value ConditionVariableApiTest001(napi_env env, napi_callback_info i
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 9;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc2 = [&t]() { func_signal((void * )(&t)); };
+    std::function<void()>&& FfrtFunc2 = [&t]() { FuncSignal((void *)(&t)); };
     ffrt_function_header_t* ffrt_func2 = create_function_wrapper((FfrtFunc2));
     ffrt_submit_base(ffrt_func2, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 1) {
         resultEnd = 10;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2378,24 +2318,24 @@ static napi_value ConditionVariableApiTest002(napi_env env, napi_callback_info i
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc2 = [&t]() { func_signal_api((void * )(&t)); };
+    std::function<void()>&& FfrtFunc2 = [&t]() { FuncSignalApi((void *)(&t)); };
     ffrt_function_header_t* ffrt_func2 = create_function_wrapper((FfrtFunc2));
     ffrt_submit_base(ffrt_func2, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 1) {
         resultEnd = 10;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2417,24 +2357,24 @@ static napi_value ConditionVariableApiTest003(napi_env env, napi_callback_info i
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait1((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWait1((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc3 = [&t]() { func_broadcast_api((void * )(&t)); };
+    std::function<void()>&& FfrtFunc3 = [&t]() { FuncBroadcastApi((void *)(&t)); };
     ffrt_function_header_t* ffrt_func3 = create_function_wrapper((FfrtFunc3));
     ffrt_submit_base(ffrt_func3, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 1) {
         resultEnd = 10;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2456,24 +2396,24 @@ static napi_value ConditionVariableApiTest004(napi_env env, napi_callback_info i
     int a = 0;
     int b = 0;
     ffrt_mutex_t lock_;
-    cv_mutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
+    CvMutex t = {&cond, &a, &b, &lock_, nullptr, nullptr};
     ret = ffrt_mutex_init(&lock_, nullptr);
     if (ret != ffrt_success) {
         resultEnd = 8;
     }
     
-    std::function<void()>&& FfrtFunc1 = [&t]() { func_wait_api((void * )(&t)); };
+    std::function<void()>&& FfrtFunc1 = [&t]() { FuncWaitApi((void *)(&t)); };
     ffrt_function_header_t* ffrt_func1 = create_function_wrapper((FfrtFunc1));
     ffrt_submit_base(ffrt_func1, nullptr, nullptr, nullptr);
-    std::function<void()>&& FfrtFunc2 = [&t]() { func_signal((void * )(&t)); };
+    std::function<void()>&& FfrtFunc2 = [&t]() { FuncSignal((void *)(&t)); };
     ffrt_function_header_t* ffrt_func2 = create_function_wrapper((FfrtFunc2));
     ffrt_submit_base(ffrt_func2, nullptr, nullptr, nullptr);
     ffrt_wait();
     if (*(t.b) != 1) {
         resultEnd = 10;
     }
-    if (t.ret_ != nullptr) {
-        resultEnd = *(t.ret_);
+    if (t.ret != nullptr) {
+        resultEnd = *(t.ret);
     }
     ffrt_cond_destroy(&cond);
     ffrt_mutex_destroy(&lock_);
@@ -2586,9 +2526,9 @@ static napi_value FFRTSubmitHBasicTest(napi_env env, napi_callback_info info)
     int result = 0;
     const uint32_t sleepTime = 5 * 1000;
     int a = 0;
-    ffrt_task_attr_t* attr = (ffrt_task_attr_t *) malloc(sizeof(ffrt_task_attr_t));
-    ffrt_task_attr_init(attr);
-    ffrt_task_handle_t task = ffrt_submit_h_c(OnePlusForTest, &a, NULL, NULL, attr);
+    ffrt_task_attr_t attr;
+    ffrt_task_attr_init(&attr);
+    ffrt_task_handle_t task = ffrt_submit_h_c(OnePlusForTest, &a, NULL, NULL, &attr);
     const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
     ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
     ffrt_wait_deps(&wait);
@@ -2596,10 +2536,8 @@ static napi_value FFRTSubmitHBasicTest(napi_env env, napi_callback_info info)
     if (a != 1) {
         result = 3;
     }
-    ffrt_task_attr_destroy(attr);
+    ffrt_task_attr_destroy(&attr);
     ffrt_task_handle_destroy(task);
-    free(attr);
-    attr = nullptr;
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -2616,7 +2554,7 @@ static napi_value FFRTBasicHTest(napi_env env, napi_callback_info info)
     ffrt_deps_t out{static_cast<uint32_t>(out_deps.size()), out_deps.data()};
     ffrt_function_header_t* ffrt_header_t = create_function_wrapper((func));
     ffrt_task_handle_t task = ffrt_submit_h_base(ffrt_header_t, &in, &out, nullptr);
-    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
+    const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_data, &x}};
     ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
     ffrt_wait_deps(&wait);
     if (x != 1) {
@@ -2830,14 +2768,14 @@ static napi_value SubmitHIODependAttrBasicTest(napi_env env, napi_callback_info 
             result = 4;
         }
     };
-    ffrt_task_attr_t* attr1 = (ffrt_task_attr_t *) malloc(sizeof(ffrt_task_attr_t));
-    ffrt_task_attr_init(attr1);
-    ffrt_task_attr_t* attr2 = (ffrt_task_attr_t *) malloc(sizeof(ffrt_task_attr_t));
-    ffrt_task_attr_init(attr2);
-    ffrt_task_attr_set_qos(attr2, static_cast<int>(ffrt_qos_default));
-    ffrt_task_attr_t* attr3 = (ffrt_task_attr_t *) malloc(sizeof(ffrt_task_attr_t));
-    ffrt_task_attr_init(attr3);
-    ffrt_task_attr_set_qos(attr3, static_cast<int>(ffrt_qos_background));
+    ffrt_task_attr_t attr1;
+    ffrt_task_attr_init(&attr1);
+    ffrt_task_attr_t attr2;
+    ffrt_task_attr_init(&attr2);
+    ffrt_task_attr_set_qos(&attr2, static_cast<int>(ffrt_qos_default));
+    ffrt_task_attr_t attr3;
+    ffrt_task_attr_init(&attr3);
+    ffrt_task_attr_set_qos(&attr3, static_cast<int>(ffrt_qos_background));
     ffrt_function_header_t* basic1Func_ht = create_function_wrapper((basic1Func));
     ffrt_function_header_t* basic2Func_ht = create_function_wrapper((basic2Func));
     ffrt_function_header_t* basic3Func_ht = create_function_wrapper((basic3Func));
@@ -2851,9 +2789,9 @@ static napi_value SubmitHIODependAttrBasicTest(napi_env env, napi_callback_info 
     ffrt_deps_t ou2{static_cast<uint32_t>(ou2_deps.size()), ou2_deps.data()};
     const std::vector<ffrt_dependence_t> ou3_deps = {{ffrt_dependence_data, &y}};
     ffrt_deps_t ou3{static_cast<uint32_t>(ou3_deps.size()), ou3_deps.data()};
-    ffrt_task_handle_t task1 = ffrt_submit_h_base(basic1Func_ht, &in1, &ou1, attr1);
-    ffrt_task_handle_t task2 = ffrt_submit_h_base(basic2Func_ht, &in2, &ou2, attr2);
-    ffrt_task_handle_t task3 = ffrt_submit_h_base(basic3Func_ht, &in2, &ou3, attr3);
+    ffrt_task_handle_t task1 = ffrt_submit_h_base(basic1Func_ht, &in1, &ou1, &attr1);
+    ffrt_task_handle_t task2 = ffrt_submit_h_base(basic2Func_ht, &in2, &ou2, &attr2);
+    ffrt_task_handle_t task3 = ffrt_submit_h_base(basic3Func_ht, &in2, &ou3, &attr3);
     const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task3}};
     ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
 
@@ -2864,15 +2802,9 @@ static napi_value SubmitHIODependAttrBasicTest(napi_env env, napi_callback_info 
     if (y != 1) {
         result = 6;
     }
-    ffrt_task_attr_destroy(attr1);
-    free(attr1);
-    attr1 = nullptr;
-    ffrt_task_attr_destroy(attr2);
-    free(attr2);
-    attr2 = nullptr;
-    ffrt_task_attr_destroy(attr3);
-    free(attr3);
-    attr3 = nullptr;
+    ffrt_task_attr_destroy(&attr1);
+    ffrt_task_attr_destroy(&attr2);
+    ffrt_task_attr_destroy(&attr3);
     ffrt_task_handle_destroy(task1);
     ffrt_task_handle_destroy(task2);
     ffrt_task_handle_destroy(task3);
@@ -2907,14 +2839,20 @@ static napi_value Init(napi_env env, napi_value exports)
         { "queueCancelTest001", nullptr, QueueCancelTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueCancelTest003", nullptr, QueueCancelTest003, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueCancelTest004", nullptr, QueueCancelTest004, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "basicTest", nullptr, FFRTBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr },    
+        { "basicTest", nullptr, FFRTBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitBasicTest", nullptr, FFRTSubmitBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitInDependEmptyTest", nullptr, FFRTSubmitInDependEmptyTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitInDependNullptrTest", nullptr, SubmitInDependNullptrTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitOuDependEmptyTest", nullptr, SubmitOuDependEmptyTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitOuDependNullptrTest", nullptr, SubmitOuDependNullptrTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitIODependAttrBasicTest", nullptr, SubmitIODependAttrBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitIn0Ou0WaitNullTask1Test", nullptr, SubmitIn0Ou0WaitNullTask1Test, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "submitInDependEmptyTest", nullptr, FFRTSubmitInDependEmptyTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitInDependNullptrTest", nullptr, SubmitInDependNullptrTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitOuDependEmptyTest", nullptr, SubmitOuDependEmptyTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitOuDependNullptrTest", nullptr, SubmitOuDependNullptrTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitIODependAttrBasicTest", nullptr, SubmitIODependAttrBasicTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitIn0Ou0WaitNullTask1Test", nullptr, SubmitIn0Ou0WaitNullTask1Test, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
         { "delayCTest001", nullptr, DelayCTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "qosQueryTest", nullptr, QosQueryTest, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "qosSetTest", nullptr, QosSetTest, nullptr, nullptr, nullptr, napi_default, nullptr },
@@ -2924,39 +2862,47 @@ static napi_value Init(napi_env env, napi_value exports)
         { "queueDelay001", nullptr, QueueDelay001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueDelay005", nullptr, QueueDelay005, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueWait001", nullptr, QueueWait001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "queue002", nullptr, Queue002, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queue003", nullptr, Queue003, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "queueDestroy003", nullptr, QueueDestroy003, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "queueDestroy005", nullptr, QueueDestroy005, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "queueDestroy007", nullptr, QueueDestroy007, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "yieldSubmitThreadTest", nullptr, FFRTYieldSubmitThreadTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "yieldSubmitLoopTest", nullptr, FFRTYieldSubmitLoopTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "yieldBasicTest", nullptr, FFRTYieldBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueDfx001", nullptr, QueueDfx001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueDfx002", nullptr, QueueDfx002, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "ffrtYieldC0001", nullptr, FfrtYieldC0001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "sleepForTest000", nullptr, SleepForTest000, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "sleepForTest001", nullptr, SleepForTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "queueDelayTest001", nullptr, QueueDelayTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexTest006", nullptr, MutexTest006, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "mutexTest007", nullptr, MutexTest007, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexTest008", nullptr, MutexTest008, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableTest001", nullptr, ConditionVariableTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableTest002", nullptr, ConditionVariableTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableTest003", nullptr, ConditionVariableTest003, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableTest004", nullptr, ConditionVariableTest004, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableApiTest001", nullptr, ConditionVariableApiTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableApiTest002", nullptr, ConditionVariableApiTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableApiTest003", nullptr, ConditionVariableApiTest003, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "conditionVariableApiTest004", nullptr, ConditionVariableApiTest004, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "conditionVariableTest001", nullptr, ConditionVariableTest001, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableTest002", nullptr, ConditionVariableTest002, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableTest003", nullptr, ConditionVariableTest003, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableTest004", nullptr, ConditionVariableTest004, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableApiTest001", nullptr, ConditionVariableApiTest001, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableApiTest002", nullptr, ConditionVariableApiTest002, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableApiTest003", nullptr, ConditionVariableApiTest003, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "conditionVariableApiTest004", nullptr, ConditionVariableApiTest004, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
         { "mutexAbnormalParam", nullptr, MutexAbnormalParam, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitAbnormalTest", nullptr, FFRTSubmitAbnormalTest, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "taskAttrAbnormalTest", nullptr, FFRTTaskAttrAbnormalTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "basicHTest", nullptr, FFRTBasicHTest, nullptr, nullptr, nullptr, napi_default, nullptr },    
+        { "basicHTest", nullptr, FFRTBasicHTest, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "submitHBasicTest", nullptr, FFRTSubmitHBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitHInDependEmptyTest", nullptr, FFRTSubmitHInDependEmptyTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitHInDependNullptrTest", nullptr, SubmitHInDependNullptrTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitHOuDependEmptyTest", nullptr, SubmitHOuDependEmptyTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitHOuDependNullptrTest", nullptr, SubmitHOuDependNullptrTest, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "submitHIODependAttrBasicTest", nullptr, SubmitHIODependAttrBasicTest, nullptr, nullptr, nullptr, napi_default, nullptr }
+        { "submitHInDependEmptyTest", nullptr, FFRTSubmitHInDependEmptyTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitHInDependNullptrTest", nullptr, SubmitHInDependNullptrTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitHOuDependEmptyTest", nullptr, SubmitHOuDependEmptyTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitHOuDependNullptrTest", nullptr, SubmitHOuDependNullptrTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr },
+        { "submitHIODependAttrBasicTest", nullptr, SubmitHIODependAttrBasicTest, nullptr, nullptr, nullptr,
+            napi_default, nullptr }
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

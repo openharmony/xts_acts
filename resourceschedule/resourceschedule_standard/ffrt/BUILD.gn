@@ -25,7 +25,16 @@ ohos_js_hap_suite("resourceschedule_ffrt_js_test") {
   hap_name = "ActsFfrtNativeTest"
   subsystem_name = "resourceschedule"
   part_name = "ffrt"
-  shared_libraries = [ "./entry/src/main/cpp:ffrtndk" ]
+  shared_libraries = [
+    "./entry/src/main/cpp:bundlendk",
+    ":libcppsharedso",
+  ]
+}
+
+ohos_prebuilt_shared_library("libcppsharedso") {
+  source = rebase_path(libcxx_ndk_shared_file)
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 
 ohos_js_assets("ace_third_ets_assets") {
