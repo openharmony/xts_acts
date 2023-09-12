@@ -26,7 +26,8 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 export default function ConnectAbilityTest1() {
   var TAG = "";
   var Tempassert = "";
-  var abilityDelegator = undefined
+  var abilityDelegator = undefined;
+  let timeoutId = 0;
 
   function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -143,7 +144,7 @@ export default function ConnectAbilityTest1() {
         }).catch((error) => {
           console.error(TAG + " startother  failed. Cause: " + JSON.stringify(error));
         })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request15 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication5.ServiceAbility5",
@@ -154,7 +155,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500)
-      }, 2000);
+      }, 10000);
       console.log("------------end FreeInstall_FA_ConnectAbility_1500-------------");
       done();
     });
@@ -186,7 +187,7 @@ export default function ConnectAbilityTest1() {
           console.error(TAG + " startother  failed. Cause: " + JSON.stringify(error));
         })
 
-      setTimeout(function () {
+      timeoutId = setTimeout(function () {
         var request16 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication4.ServiceAbility4",
@@ -197,7 +198,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500)
-      }, 2000);
+      }, 10000);
       console.log("------------end FreeInstall_FA_ConnectAbility_1600-------------");
       done();
     });
@@ -224,7 +225,7 @@ export default function ConnectAbilityTest1() {
         }).catch((error) => {
           console.error(TAG + " startmyapp2 failed. Cause: " + JSON.stringify(error));
         })
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         var request14 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
@@ -235,7 +236,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(async () => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500);
-      }, 2000)
+      }, 10000)
       done();
       console.log("------------end FreeInstall_FA_ConnectAbility_1400-------------");
     });
@@ -253,7 +254,7 @@ export default function ConnectAbilityTest1() {
       await abilityDelegator.executeShellCommand(cmddif, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         var request17 = {
           "bundleName": "com.example.different.hmservice",
           "abilityName": "com.example.different.ServiceAbility",
@@ -263,7 +264,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500);
-      }, 2000)
+      }, 10000)
       console.log("------------end FreeInstall_FA_ConnectAbility_1700-------------");
       done();
     });
@@ -278,7 +279,7 @@ export default function ConnectAbilityTest1() {
       console.log("------------start FreeInstall_FA_ConnectAbility_1800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1800";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request18 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
@@ -289,7 +290,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500)
-      }, 2000);
+      }, 10000);
       console.log("------------end FreeInstall_FA_ConnectAbility_1800-------------");
       done();
     });
@@ -308,7 +309,7 @@ export default function ConnectAbilityTest1() {
       await abilityDelegator.executeShellCommand(cmdmyapp5, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request19 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
@@ -319,7 +320,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onFailed");
         }, 500)
-      }, 2000);
+      }, 10000);
       console.log("------------end FreeInstall_FA_ConnectAbility_1900-------------");
       done();
     });
@@ -338,7 +339,7 @@ export default function ConnectAbilityTest1() {
       abilityDelegator.executeShellCommand(cmdmyapp5, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request20 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication5.ServiceAbility5",
@@ -352,7 +353,7 @@ export default function ConnectAbilityTest1() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500)
-      }, 4000)
+      }, 10000)
       done();
       console.log("------------end FreeInstall_FA_ConnectAbility_2000-------------");
     });

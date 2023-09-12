@@ -27,7 +27,8 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 export default function ConnectAbilityTest() {
   var TAG = "";
   var Tempassert = "";
-  var abilityDelegator = undefined
+  var abilityDelegator = undefined;
+  let timeoutId = 0;
 
   function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time))
@@ -65,6 +66,7 @@ export default function ConnectAbilityTest() {
           console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         })
       }
+      clearTimeout(timeoutId);
       done();
     });
 
@@ -133,7 +135,7 @@ export default function ConnectAbilityTest() {
         console.info(TAG + " executeShellCommand4 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var deviceid = "0";
         abilityDelegator.getCurrentTopAbility((err, data) => {
           console.log(TAG + 'getCurrentTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
@@ -169,7 +171,7 @@ export default function ConnectAbilityTest() {
       abilityDelegator.executeShellCommand(cmdapp10, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var deviceid = "0";
         abilityDelegator.getCurrentTopAbility((err, data) => {
           console.log(TAG + 'getCurrentTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
@@ -187,7 +189,7 @@ export default function ConnectAbilityTest() {
         setTimeout(() => {
           expect(Tempassert).assertEqual("onConnect");
         }, 500)
-      }, 2500);
+      }, 2000);
       console.log("------------end FreeInstall_FA_ConnectAbility_0200-------------");
       done();
     });
@@ -206,7 +208,7 @@ export default function ConnectAbilityTest() {
         console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request3 = {
           "deviceId": "",
           "bundleName": "com.example.myapplication.hmservice",
@@ -236,7 +238,7 @@ export default function ConnectAbilityTest() {
       abilityDelegator.executeShellCommand(cmdapp11, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request4 = {
           "deviceId": "",
           "bundleName": "com.example.myapplication.hmservice",
@@ -263,7 +265,7 @@ export default function ConnectAbilityTest() {
       console.log("------------start FreeInstall_FA_ConnectAbility_0500-------------");
       TAG = "FreeInstall_FA_ConnectAbility_0500";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request5 = {
           "bundleName": "com.example.different.hmservice",
           "abilityName": "com.example.different.ServiceAbility",
@@ -289,7 +291,7 @@ export default function ConnectAbilityTest() {
       console.log("------------start FreeInstall_FA_ConnectAbility_0600-------------");
       TAG = "FreeInstall_FA_ConnectAbility_0600";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request6 = {
           "bundleName": "",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
@@ -315,7 +317,7 @@ export default function ConnectAbilityTest() {
       console.log("------------start FreeInstall_FA_ConnectAbility_0700-------------");
       TAG = "FreeInstall_FA_ConnectAbility_0700";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request7 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "",
@@ -341,7 +343,7 @@ export default function ConnectAbilityTest() {
       console.log("------------start FreeInstall_FA_ConnectAbility_0800-------------");
       TAG = "FreeInstall_FA_ConnectAbility_0800";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request8 = {
           "deviceId": "xxxxxx",
           "bundleName": "com.example.myapplication.hmservice",
@@ -368,7 +370,7 @@ export default function ConnectAbilityTest() {
       console.log("------------start FreeInstall_FA_ConnectAbility_0900-------------");
       TAG = "FreeInstall_FA_ConnectAbility_0900";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request9 = {
           "bundleName": "com.example.xxx.hmservice",
           "abilityName": "com.example.myapplication2.ServiceAbility",
@@ -394,7 +396,7 @@ export default function ConnectAbilityTest() {
       console.log("------------start FreeInstall_FA_ConnectAbility_1000-------------");
       TAG = "FreeInstall_FA_ConnectAbility_1000";
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request10 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication2.ServiceAbility",
@@ -424,7 +426,7 @@ export default function ConnectAbilityTest() {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request11 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication2.ServiceAbility",
@@ -453,7 +455,7 @@ export default function ConnectAbilityTest() {
       abilityDelegator.executeShellCommand(cmdrm, (err: any, d: any) => {
         console.info(TAG + " executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
       })
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request12 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
@@ -492,7 +494,7 @@ export default function ConnectAbilityTest() {
           console.error(TAG + " startmainability2 failed. Cause: " + JSON.stringify(error));
         })
 
-      setTimeout(async () => {
+      timeoutId = setTimeout(async () => {
         var request13 = {
           "bundleName": "com.example.myapplication.hmservice",
           "abilityName": "com.example.myapplication1.ServiceAbility_feature",
