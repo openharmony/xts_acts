@@ -1,7 +1,7 @@
 {
-    "description": "Config for ActsSubgroupsTS0004 test cases",
+    "description": "Config for ActsSubgroupsTestSuite0004 test cases",
     "driver": {
-        "module-name": "ActsSubgroupsTS0004",
+        "module-name": "ActsSubgroupsTestSuite0004",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
@@ -23,7 +23,7 @@
                 "cp /data/local/tmp/libskia_canvaskit* /system/lib"
             ],
             "push": [
-                "ActsSubgroupsTS0004->/data/local/tmp/ActsSubgroupsTS0004",
+                "ActsSubgroupsTestSuite0004->/data/local/tmp/ActsSubgroupsTestSuite0004",
                 "vulkandata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vulkandata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
                 "vulkandata/libdeqp_spirv.z.so->/data/local/tmp/libdeqp_spirv.z.so",
