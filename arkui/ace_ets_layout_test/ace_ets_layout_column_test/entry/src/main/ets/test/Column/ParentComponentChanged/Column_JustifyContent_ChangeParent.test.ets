@@ -72,17 +72,17 @@ export default function column_JustifyContent_ChangeParent() {
       expect(Math.round(locationText3.left - locationColumn.left))
         .assertEqual(Math.round(locationColumn.right - locationText3.right));
       expect(Math.round((locationColumn.right - locationText1.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(locationText1.top - locationColumn.top)).assertEqual(vp2px(20));
-      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(locationText1.top - locationColumn.top)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnJustifyContentChangeParentFlexAlignCenter END');
       done();
     });
@@ -111,17 +111,17 @@ export default function column_JustifyContent_ChangeParent() {
       expect(Math.round(locationText3.left - locationColumn.left))
         .assertEqual(Math.round(locationColumn.right - locationText3.right));
       expect(Math.round((locationColumn.right - locationText1.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(locationText1.top - locationColumn.top)).assertEqual(vp2px(40));
+      expect(Math.round(locationText1.top - locationColumn.top)).assertEqual(Math.round(vp2px(40)));
       expect(locationText3.bottom).assertEqual(locationColumn.bottom);
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnJustifyContentChangeParentFlexAlignEnd END');
       done();
     });
@@ -154,14 +154,14 @@ export default function column_JustifyContent_ChangeParent() {
       expect(locationText3.bottom).assertEqual(locationColumn.bottom);
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(50)));
       //Known issues with use case notes
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceBetween END');
       done();
     });
@@ -197,12 +197,12 @@ export default function column_JustifyContent_ChangeParent() {
       expect(Math.round(locationText1.top - locationColumn.top))
         .assertEqual(Math.round(locationColumn.bottom - locationText3.bottom));
       expect(Math.round(locationText1.top - locationColumn.top)).assertEqual(Math.round(vp2px(50/3)));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.floor(locationText3.bottom - locationText3.top)).assertEqual(Math.floor(vp2px(150)));
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceAround END');
       done();
     });
@@ -238,12 +238,12 @@ export default function column_JustifyContent_ChangeParent() {
       expect(Math.round(locationText1.top - locationColumn.top))
         .assertEqual(Math.round(locationText2.top - locationText1.bottom));//Known issues with use case notes
       expect(Math.round((locationText1.top - locationColumn.top)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnJustifyContentChangeParentFlexAlignSpaceEvenly END');
       done();
     });

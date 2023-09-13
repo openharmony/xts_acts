@@ -73,16 +73,16 @@ export default function column_Margin_ChangeParent() {
         .assertEqual(Math.round(locationColumn.right - locationText3.right));
       expect(Math.round((locationColumn.right - locationText1.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
       expect(Math.round(locationText1.top - locationColumn.top)).assertEqual(vp2px(0));
-      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(vp2px(40));
+      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(40)));
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnMarginChangeParent END');
       done();
     });

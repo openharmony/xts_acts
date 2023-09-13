@@ -64,20 +64,20 @@ export default function rowNesting_Space() {
       expect(Math.round(rowNesting_Space_013.top - rowNesting_Space_01.top)).assertEqual(Math.round(rowNesting_Space_01.bottom - rowNesting_Space_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(rowNesting_Space_012.left - rowNesting_Space_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(rowNesting_Space_013.left - rowNesting_Space_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(rowNesting_Space_012.left - rowNesting_Space_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(rowNesting_Space_013.left - rowNesting_Space_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('rowNesting_Space_012.left - rowNesting_Space_011.right', + rowNesting_Space_012.left - rowNesting_Space_011.right)
       console.log('rowNesting_Space_013.left - rowNesting_Space_012.right', + rowNesting_Space_013.left - rowNesting_Space_012.right)
 
 
       console.log('assert height')
-      expect(Math.round(rowNesting_Space_011.bottom - rowNesting_Space_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(rowNesting_Space_012.bottom - rowNesting_Space_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(rowNesting_Space_013.bottom - rowNesting_Space_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(rowNesting_Space_011.bottom - rowNesting_Space_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(rowNesting_Space_012.bottom - rowNesting_Space_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(rowNesting_Space_013.bottom - rowNesting_Space_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('assert weight')
-      expect(Math.round(rowNesting_Space_011.right - rowNesting_Space_011.left)).assertEqual(vp2px(50));
-      expect(Math.round(rowNesting_Space_012.right - rowNesting_Space_012.left)).assertEqual(vp2px(100));
-      expect(Math.round(rowNesting_Space_013.right - rowNesting_Space_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(rowNesting_Space_011.right - rowNesting_Space_011.left)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(rowNesting_Space_012.right - rowNesting_Space_012.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(rowNesting_Space_013.right - rowNesting_Space_013.left)).assertEqual(Math.round(vp2px(150)));
       console.info('[SUB_ACE_rowNesting_Space_TEST_0100] END');
       done();
     });

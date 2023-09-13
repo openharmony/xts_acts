@@ -65,8 +65,8 @@ export default function Row_flexShrink_Part() {
       expect(Math.round(Row_flexShrink_Part_013.top - Row_flexShrink_Part_01.top)).assertEqual(Math.round(Row_flexShrink_Part_01.bottom - Row_flexShrink_Part_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right', + Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right)
       console.log('Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right', + Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right)
 
@@ -107,8 +107,8 @@ export default function Row_flexShrink_Part() {
       expect(Math.round(Row_flexShrink_Part_013.top - Row_flexShrink_Part_01.top)).assertEqual(Math.round(Row_flexShrink_Part_01.bottom - Row_flexShrink_Part_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right', + Row_flexShrink_Part_012.left - Row_flexShrink_Part_011.right)
       console.log('Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right', + Row_flexShrink_Part_013.left - Row_flexShrink_Part_012.right)
 

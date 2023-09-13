@@ -71,28 +71,28 @@ export default function list_ListInitialIndex2Test() {
 
       expect(firstListItem.top).assertEqual(firstListItem.top);
       expect(firstListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(firstListItem.right - firstListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(firstListItem.bottom - firstListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(firstListItem.right - firstListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(firstListItem.bottom - firstListItem.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(secondListItem.top - firstListItem.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(secondListItem.top - firstListItem.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(secondListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(secondListItem.right - secondListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(secondListItem.bottom - secondListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(secondListItem.right - secondListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondListItem.bottom - secondListItem.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(thirdListItem.top - secondListItem.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(thirdListItem.top - secondListItem.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(thirdListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(thirdListItem.right - thirdListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(thirdListItem.bottom - thirdListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(thirdListItem.right - thirdListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdListItem.bottom - thirdListItem.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(fourthListItem.top - thirdListItem.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(fourthListItem.top - thirdListItem.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(fourthListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(fourthListItem.right - fourthListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(fourthListItem.bottom - fourthListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(fourthListItem.right - fourthListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(fourthListItem.bottom - fourthListItem.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(fifthListItem.top - fourthListItem.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(fifthListItem.top - fourthListItem.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(fifthListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(fifthListItem.right - fifthListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(fifthListItem.bottom - fifthListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(fifthListItem.right - fifthListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(fifthListItem.bottom - fifthListItem.top)).assertEqual(Math.round(vp2px(100)));
 
       expect(Math.round(sixthListItem.right - sixthListItem.left)).assertEqual(vp2px(0));
       expect(Math.round(sixthListItem.bottom - sixthListItem.top)).assertEqual(vp2px(0));
@@ -125,15 +125,15 @@ export default function list_ListInitialIndex2Test() {
       seventhListItem = CommonFunc.getComponentRect('List_ListInitialIndex2_7');
       listContainer = CommonFunc.getComponentRect('List_ListInitialIndex2_Container01');
 
-      expect(Math.round(sixthListItem.top - fifthListItem.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(sixthListItem.top - fifthListItem.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(sixthListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(sixthListItem.right - sixthListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(sixthListItem.bottom - sixthListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(sixthListItem.right - sixthListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(sixthListItem.bottom - sixthListItem.top)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(seventhListItem.top - sixthListItem.bottom)).assertEqual(vp2px(20));
+      expect(Math.round(seventhListItem.top - sixthListItem.bottom)).assertEqual(Math.round(vp2px(20)));
       expect(seventhListItem.left).assertEqual(listContainer.left);
-      expect(Math.round(seventhListItem.right - seventhListItem.left)).assertEqual(vp2px(100));
-      expect(Math.round(seventhListItem.bottom - seventhListItem.top)).assertEqual(vp2px(100));
+      expect(Math.round(seventhListItem.right - seventhListItem.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(seventhListItem.bottom - seventhListItem.top)).assertEqual(Math.round(vp2px(100)));
       console.info('[testListInitialIndexToZeroWithOneLane] END');
       done();
     });

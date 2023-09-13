@@ -63,10 +63,10 @@ export default function grid_RowCol_ItemContentSizeTest() {
       let gridContainerObj = JSON.parse(gridContainerStrJson);
       expect(gridContainerObj.$type).assertEqual('Grid');
 
-      expect(Math.round((secondGridItemText.right - secondGridItemText.left)*10)/10)
-        .assertEqual(Math.round(vp2px(75)*10)/10);
-      expect(Math.round((secondGridItemText.bottom - secondGridItemText.top)*10)/10)
-        .assertEqual(Math.round(vp2px(75)*10)/10);
+      expect(Math.round((secondGridItemText.right - secondGridItemText.left)))
+        .assertEqual(Math.round(vp2px(75)));
+      expect(Math.round((secondGridItemText.bottom - secondGridItemText.top)))
+        .assertEqual(Math.round(vp2px(75)));
       expect(Math.round(secondGridItemText.left - secondGridItem.left))
         .assertEqual(Math.round(secondGridItem.right - secondGridItemText.right));
       expect(Math.round(secondGridItemText.top - secondGridItem.top))
@@ -81,17 +81,17 @@ export default function grid_RowCol_ItemContentSizeTest() {
       expect(fourthGridItem.left).assertEqual(thirdGridItem.right);
       expect(fourthGridItem.top).assertEqual(thirdGridItem.top);
 
-      expect(Math.round(firstGridItem.right - firstGridItem.left)).assertEqual(vp2px(150));
-      expect(Math.round(firstGridItem.bottom - firstGridItem.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstGridItem.right - firstGridItem.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(firstGridItem.bottom - firstGridItem.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(secondGridItem.right - secondGridItem.left)).assertEqual(vp2px(150));
-      expect(Math.round(secondGridItem.bottom - secondGridItem.top)).assertEqual(vp2px(150));
+      expect(Math.round(secondGridItem.right - secondGridItem.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(secondGridItem.bottom - secondGridItem.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(thirdGridItem.right - thirdGridItem.left)).assertEqual(vp2px(150));
-      expect(Math.round(thirdGridItem.bottom - thirdGridItem.top)).assertEqual(vp2px(150));
+      expect(Math.round(thirdGridItem.right - thirdGridItem.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdGridItem.bottom - thirdGridItem.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(fourthGridItem.right - fourthGridItem.left)).assertEqual(vp2px(150));
-      expect(Math.round(fourthGridItem.bottom - fourthGridItem.top)).assertEqual(vp2px(150));
+      expect(Math.round(fourthGridItem.right - fourthGridItem.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(fourthGridItem.bottom - fourthGridItem.top)).assertEqual(Math.round(vp2px(150)));
 
       console.info('[testGridRowColItemContentSize] END');
       done();

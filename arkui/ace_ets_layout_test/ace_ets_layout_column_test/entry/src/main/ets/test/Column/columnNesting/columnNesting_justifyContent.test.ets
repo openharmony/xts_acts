@@ -93,31 +93,31 @@ export default function columnNesting_justifyContent() {
 
       console.log('assert height')
       console.log('column_01 assert height')
-      expect(Math.round(columnNesting_justifyContent_011.bottom - columnNesting_justifyContent_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(columnNesting_justifyContent_012.bottom - columnNesting_justifyContent_012.top)).assertEqual(vp2px(50));
-      expect(Math.round(columnNesting_justifyContent_013.bottom - columnNesting_justifyContent_013.top)).assertEqual(vp2px(50));
+      expect(Math.round(columnNesting_justifyContent_011.bottom - columnNesting_justifyContent_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(columnNesting_justifyContent_012.bottom - columnNesting_justifyContent_012.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(columnNesting_justifyContent_013.bottom - columnNesting_justifyContent_013.top)).assertEqual(Math.round(vp2px(50)));
 
       console.log('column_02 assert height')
-      expect(Math.round(columnNesting_justifyContent_021.bottom - columnNesting_justifyContent_021.top)).assertEqual(vp2px(50));
-      expect(Math.round(columnNesting_justifyContent_022.bottom - columnNesting_justifyContent_022.top)).assertEqual(vp2px(50));
-      expect(Math.round(columnNesting_justifyContent_023.bottom - columnNesting_justifyContent_023.top)).assertEqual(vp2px(50));
+      expect(Math.round(columnNesting_justifyContent_021.bottom - columnNesting_justifyContent_021.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(columnNesting_justifyContent_022.bottom - columnNesting_justifyContent_022.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(columnNesting_justifyContent_023.bottom - columnNesting_justifyContent_023.top)).assertEqual(Math.round(vp2px(50)));
 
-      expect(Math.round(columnNesting_justifyContent_01.bottom - columnNesting_justifyContent_01.top)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_justifyContent_02.bottom - columnNesting_justifyContent_02.top)).assertEqual(vp2px(300));
+      expect(Math.round(columnNesting_justifyContent_01.bottom - columnNesting_justifyContent_01.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_justifyContent_02.bottom - columnNesting_justifyContent_02.top)).assertEqual(Math.round(vp2px(300)));
 
       console.log('assert weight')
       console.log('column_01 assert weight')
-      expect(Math.round(columnNesting_justifyContent_011.right - columnNesting_justifyContent_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_justifyContent_012.right - columnNesting_justifyContent_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_justifyContent_013.right - columnNesting_justifyContent_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(columnNesting_justifyContent_011.right - columnNesting_justifyContent_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_justifyContent_012.right - columnNesting_justifyContent_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_justifyContent_013.right - columnNesting_justifyContent_013.left)).assertEqual(Math.round(vp2px(300)));
 
       console.log('column_02 assert weight')
-      expect(Math.round(columnNesting_justifyContent_021.right - columnNesting_justifyContent_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_justifyContent_022.right - columnNesting_justifyContent_022.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_justifyContent_023.right - columnNesting_justifyContent_023.left)).assertEqual(vp2px(300));
+      expect(Math.round(columnNesting_justifyContent_021.right - columnNesting_justifyContent_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_justifyContent_022.right - columnNesting_justifyContent_022.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_justifyContent_023.right - columnNesting_justifyContent_023.left)).assertEqual(Math.round(vp2px(300)));
 
-      expect(Math.round(columnNesting_justifyContent_01.right - columnNesting_justifyContent_01.left)).assertEqual(vp2px(350));
-      expect(Math.round(columnNesting_justifyContent_02.right - columnNesting_justifyContent_02.left)).assertEqual(vp2px(350));
+      expect(Math.round(columnNesting_justifyContent_01.right - columnNesting_justifyContent_01.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(columnNesting_justifyContent_02.right - columnNesting_justifyContent_02.left)).assertEqual(Math.round(vp2px(350)));
 
       console.info('[SUB_ACE_columnNesting_justifyContent_TEST_0100] END');
       done();
