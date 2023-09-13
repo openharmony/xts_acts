@@ -45,19 +45,19 @@ export default class TestAbility extends Ability {
                 JSON.stringify(data) ?? '');
         });
         let windowClass = null;
-        windowStage.getMainWindow((err, data) => {
-            if (err.code) {
-                console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
-                return;
-            }
-            windowClass = data;
-            try{
+          try{
+            windowStage.getMainWindow((err, data) => {
+                if (err.code) {
+                    console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+                    return;
+                }
+                windowClass = data;
                 globalThis.uiContent = windowClass.getUIContext();
-            } catch(err){
-                console.info("windowClass getUIContext is error" + JSON.stringify(err))
-            }
-            console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-        });
+                console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+            });
+        } catch(err){
+            console.info("windowClass getUIContext is error" + JSON.stringify(err))
+        }
     }
 
     onWindowStageDestroy() {
