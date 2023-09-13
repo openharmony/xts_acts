@@ -62,20 +62,20 @@ export default function flex_NoWrap_PositionTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
       expect(secondText.top).assertEqual(flexContainer.top);
       expect(secondText.left).assertEqual(flexContainer.left);
       expect(secondText.top).assertEqual(thirdText.top);
       expect(secondText.right).assertEqual(thirdText.left);
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(200));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(200)));
       expect(thirdText.bottom).assertEqual(flexContainer.bottom);
 
-      expect(Math.round(firstText.top-flexContainer.top)).assertEqual(vp2px(40));
-      expect(Math.round(firstText.left-flexContainer.left)).assertEqual(vp2px(20));
+      expect(Math.round(firstText.top-flexContainer.top)).assertEqual(Math.round(vp2px(40)));
+      expect(Math.round(firstText.left-flexContainer.left)).assertEqual(Math.round(vp2px(20)));
       console.info('[testWrapNoWrapTextPosition] END');
       done();
     });

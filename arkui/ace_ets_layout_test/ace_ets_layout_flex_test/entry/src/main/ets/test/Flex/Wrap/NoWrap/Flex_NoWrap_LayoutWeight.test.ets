@@ -69,9 +69,9 @@ export default function flex_NoWrap_LayoutWeightTest() {
       expect(firstText.right).assertEqual(secondText.left);
       expect(secondText.right).assertEqual(thirdText.left);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
       expect(thirdText.bottom).assertEqual(flexContainer.bottom);
       expect(firstText.left).assertEqual(flexContainer.left);

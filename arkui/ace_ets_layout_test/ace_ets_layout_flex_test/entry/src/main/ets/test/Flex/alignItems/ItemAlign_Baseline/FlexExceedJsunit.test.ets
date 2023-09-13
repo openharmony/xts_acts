@@ -60,22 +60,22 @@ export default function flexExceed_BaselineJsunit() {
       let textExceed02 = CommonFunc.getComponentRect('textExceed02');
       let textExceed03 = CommonFunc.getComponentRect('textExceed03');
       let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
-      expect(Math.round(textExceed01.left - flexExceed01.left)).assertEqual(vp2px(10))
+      expect(Math.round(textExceed01.left - flexExceed01.left)).assertEqual(Math.round(vp2px(10)))
       expect(textExceed01.right).assertEqual(textExceed02.left)
       expect(textExceed02.right).assertEqual(textExceed03.left)
-      expect(Math.round(flexExceed01.right - textExceed03.right)).assertEqual(vp2px(40))
+      expect(Math.round(flexExceed01.right - textExceed03.right)).assertEqual(Math.round(vp2px(40)))
 
-      expect(Math.round(textExceed01.top - flexExceed01.top)).assertEqual(vp2px(60))
-      expect(Math.round(textExceed03.top - flexExceed01.top)).assertEqual(vp2px(10))
+      expect(Math.round(textExceed01.top - flexExceed01.top)).assertEqual(Math.round(vp2px(60)))
+      expect(Math.round(textExceed03.top - flexExceed01.top)).assertEqual(Math.round(vp2px(10)))
       expect(textExceed01.top - textExceed03.top).assertEqual(textExceed03.bottom - textExceed01.bottom)
       expect(textExceed02.top - textExceed03.top).assertEqual(textExceed03.bottom - textExceed02.bottom)
 
-      expect(Math.round(textExceed01.bottom - textExceed01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textExceed02.bottom - textExceed02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textExceed03.bottom - textExceed03.top)).assertEqual(vp2px(150))
-      expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(vp2px(150))
-      expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(vp2px(150))
-      expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(vp2px(150))
+      expect(Math.round(textExceed01.bottom - textExceed01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(textExceed02.bottom - textExceed02.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(textExceed03.bottom - textExceed03.top)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(Math.round(vp2px(150)))
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Baseline')
       console.info('new testFlexItemAlignBaselineSetMarPad END');
@@ -98,19 +98,19 @@ export default function flexExceed_BaselineJsunit() {
       let textExceed02 = CommonFunc.getComponentRect('textExceed02');
       let textExceed03 = CommonFunc.getComponentRect('textExceed03');
       let flexExceed01 = CommonFunc.getComponentRect('flexExceed01');
-      expect(Math.round(textExceed01.left - flexExceed01.left)).assertEqual(vp2px(30))
+      expect(Math.round(textExceed01.left - flexExceed01.left)).assertEqual(Math.round(vp2px(30)))
       expect(textExceed01.right).assertEqual(textExceed02.left)
       expect(textExceed02.right).assertEqual(textExceed03.left)
-      expect(Math.round(flexExceed01.right - textExceed03.right)).assertEqual(vp2px(30))
+      expect(Math.round(flexExceed01.right - textExceed03.right)).assertEqual(Math.round(vp2px(30)))
 
-      expect(Math.round(textExceed01.top - flexExceed01.top)).assertEqual(vp2px(80))
-      expect(Math.round(textExceed03.top - flexExceed01.top)).assertEqual(vp2px(30))
+      expect(Math.round(textExceed01.top - flexExceed01.top)).assertEqual(Math.round(vp2px(80)))
+      expect(Math.round(textExceed03.top - flexExceed01.top)).assertEqual(Math.round(vp2px(30)))
       expect(textExceed01.top - textExceed03.top).assertEqual(textExceed03.bottom - textExceed01.bottom)
       expect(textExceed02.top - textExceed03.top).assertEqual(textExceed03.bottom - textExceed02.bottom)
 
-      expect(Math.round(textExceed01.bottom - textExceed01.top)).assertEqual(vp2px(50))
-      expect(Math.round(textExceed02.bottom - textExceed02.top)).assertEqual(vp2px(100))
-      expect(Math.round(textExceed03.bottom - textExceed03.top)).assertEqual(vp2px(150))
+      expect(Math.round(textExceed01.bottom - textExceed01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(textExceed02.bottom - textExceed02.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(textExceed03.bottom - textExceed03.top)).assertEqual(Math.round(vp2px(150)))
       expect(Math.round(textExceed01.right - textExceed01.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(Math.round(textExceed02.right - textExceed02.left)).assertEqual(Math.round(vp2px(440/3)))
       expect(Math.round(textExceed03.right - textExceed03.left)).assertEqual(Math.round(vp2px(440/3)))

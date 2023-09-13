@@ -71,12 +71,12 @@ export default function AlignCenter_AddAlign() {
         .assertEqual(Math.round(vp2px(25)*10)/10);
       expect(Math.round((Center_AddAlign_01.right - Center_AddAlign_013.right)*10)/10)
         .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(Center_AddAlign_011.right - Center_AddAlign_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAlign_012.right - Center_AddAlign_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAlign_013.right - Center_AddAlign_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddAlign_011.bottom - Center_AddAlign_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddAlign_012.bottom - Center_AddAlign_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddAlign_013.bottom - Center_AddAlign_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddAlign_011.right - Center_AddAlign_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Center_AddAlign_012.right - Center_AddAlign_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Center_AddAlign_013.right - Center_AddAlign_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Center_AddAlign_011.bottom - Center_AddAlign_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Center_AddAlign_012.bottom - Center_AddAlign_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Center_AddAlign_013.bottom - Center_AddAlign_013.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testFlexAlignCenterAlignBottomEnd] END');
       done()
     });

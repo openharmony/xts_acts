@@ -74,8 +74,8 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest()   {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
 
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10));
-      expect(Math.round(flexContainer.left - columnContainer.left)).assertEqual(vp2px(10)); //margin =10
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(flexContainer.left - columnContainer.left)).assertEqual(Math.round(vp2px(10))); //margin =10
       expect(Math.round(flexContainer.top - columnContainer.top))
         .assertEqual(Math.round(firstText.top - columnContainer.top));
 
@@ -86,16 +86,16 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest()   {
       expect(firstText.top).assertEqual(secondText.top);
       expect(secondText.top).assertEqual(thirdText.top);
       
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(vp2px(150))
+      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(150)))
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
       expect(flexContainer.bottom).assertEqual(thirdText.bottom);
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(50)));
       console.info('[testWrapNoWrapFlexMarTextPad] END');
       done();
     });
@@ -119,26 +119,26 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest()   {
       let flexContainerObj = JSON.parse(flexContainerStrJson);
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10));
-      expect(Math.round(flexContainer.left - columnContainer.left)).assertEqual(vp2px(10)); //flex_margin =10
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(flexContainer.left - columnContainer.left)).assertEqual(Math.round(vp2px(10))); //flex_margin =10
       
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10));
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(secondText.left - firstText.right));
       
       expect(secondText.top).assertEqual(thirdText.top);
       expect(secondText.right).assertEqual(thirdText.left);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
       expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
 
       expect(flexContainer.bottom).assertEqual(thirdText.bottom);
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(30));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(30)));
       console.info('[testWrapNoWrapFlexMarTextMar] END');
       done();
     });
@@ -168,27 +168,27 @@ export default function flex_NoWrap_FlexMar_TextMarPadTest()   {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.NoWrap');
       
-      expect(Math.round(flexContainer.left - columnContainer.left)).assertEqual(vp2px(10));
-      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(vp2px(10));
+      expect(Math.round(flexContainer.left - columnContainer.left)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(flexContainer.top - columnContainer.top)).assertEqual(Math.round(vp2px(10)));
       
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(vp2px(10));
+      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(10)));
       expect(firstText.top).assertEqual(secondText.top);
       expect(secondText.top).assertEqual(thirdText.top);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10));
-      expect(Math.round(secondText.left - firstText.right)).assertEqual(vp2px(20));
-      expect(Math.round(thirdText.left - secondText.right)).assertEqual(vp2px(20));
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(secondText.left - firstText.right)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(thirdText.left - secondText.right)).assertEqual(Math.round(vp2px(20)));
 
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(440) / 3));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(10));
-      expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(thirdText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(10)));
       console.info('[testWrapNoWrapFlexMarTextMarPad] END');
       done();
     });

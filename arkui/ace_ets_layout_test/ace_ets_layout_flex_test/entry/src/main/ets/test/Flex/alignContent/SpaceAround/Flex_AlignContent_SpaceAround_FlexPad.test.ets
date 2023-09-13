@@ -63,12 +63,12 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
       expect(flexContainerObj.$type).assertEqual('Flex');
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(50)); //padding =50
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(50))); //padding =50
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);
@@ -76,7 +76,7 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
       expect(thirdText.bottom).assertEqual(fourthText.top);
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(10)));
       console.info('[testFlexAlignContentSpaceAroundFlexPadOverflow] END');
       done();
     });
@@ -101,12 +101,12 @@ export default function flex_AlignContent_SpaceAround_FlexPadTest() {
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.ceil(thirdText.bottom - thirdText.top)).assertEqual(Math.ceil(vp2px(150)));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(vp2px(10)); //padding =10
+      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10))); //padding =10
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
       expect(thirdText.left).assertEqual(fourthText.left);

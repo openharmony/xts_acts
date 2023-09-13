@@ -72,10 +72,10 @@ export default function flexVisibility_EndJsunit() {
           expect(textVisible02.bottom).assertEqual(textVisible03.bottom)
           expect(textVisible03.bottom).assertEqual(flexVisible.bottom)
 
-          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
-          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
+          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(Math.round(vp2px(100)))
+          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(Math.round(vp2px(150)))
           expect(obj1.$attrs.visibility).assertEqual("Visibility.Visible");
           expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
           expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
@@ -112,12 +112,12 @@ export default function flexVisibility_EndJsunit() {
           expect(textVisible02.bottom).assertEqual(textVisible03.bottom)
           expect(textVisible03.bottom).assertEqual(flexVisible.bottom)
 
-          expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(vp2px(50))
-          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
-          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
+          expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(Math.round(vp2px(50)))
+          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(Math.round(vp2px(100)))
+          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(Math.round(vp2px(150)))
           expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
           expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.End')
        } catch (err) {

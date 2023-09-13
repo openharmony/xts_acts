@@ -67,15 +67,15 @@ export default function AlignStart_AddPadding() {
       expect(Start_AddPadding_012.top).assertEqual(Start_AddPadding_013.top);
       expect(Start_AddPadding_012.left).assertEqual(Start_AddPadding_011.right);
       expect(Start_AddPadding_013.left).assertEqual(Start_AddPadding_012.right);
-      expect(Math.round(Start_AddPadding_011.left - Start_AddPadding_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(Start_AddPadding_01.right - Start_AddPadding_013.right)).assertEqual(vp2px(30));
-      expect(Math.round(Start_AddPadding_011.top - Start_AddPadding_01.top)).assertEqual(vp2px(30));
+      expect(Math.round(Start_AddPadding_011.left - Start_AddPadding_01.left)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Start_AddPadding_01.right - Start_AddPadding_013.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Start_AddPadding_011.top - Start_AddPadding_01.top)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(Start_AddPadding_011.right - Start_AddPadding_011.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(Start_AddPadding_012.right - Start_AddPadding_012.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(Start_AddPadding_013.right - Start_AddPadding_013.left)).assertEqual(Math.round(vp2px(440/3)));
-      expect(Math.round(Start_AddPadding_011.bottom - Start_AddPadding_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Start_AddPadding_012.bottom - Start_AddPadding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Start_AddPadding_013.bottom - Start_AddPadding_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Start_AddPadding_011.bottom - Start_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Start_AddPadding_012.bottom - Start_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Start_AddPadding_013.bottom - Start_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testFlexAlignStartFlexPadOverflow] END');
       done();
     });
@@ -102,15 +102,15 @@ export default function AlignStart_AddPadding() {
       expect(Start_AddPadding_012.top).assertEqual(Start_AddPadding_013.top)
       expect( Start_AddPadding_012.left ).assertEqual(Start_AddPadding_011.right)
       expect( Start_AddPadding_013.left ).assertEqual(Start_AddPadding_012.right)
-      expect(Math.round(Start_AddPadding_011.left - Start_AddPadding_01.left)).assertEqual(vp2px(20));
-      expect(Math.round(Start_AddPadding_01.right - Start_AddPadding_013.right)).assertEqual(vp2px(30));
-      expect(Math.round(Start_AddPadding_011.top - Start_AddPadding_01.top)).assertEqual(vp2px(20));
-      expect(Math.round(Start_AddPadding_011.right - Start_AddPadding_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddPadding_012.right - Start_AddPadding_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddPadding_013.right - Start_AddPadding_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Start_AddPadding_011.bottom - Start_AddPadding_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Start_AddPadding_012.bottom - Start_AddPadding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Start_AddPadding_013.bottom - Start_AddPadding_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Start_AddPadding_011.left - Start_AddPadding_01.left)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(Start_AddPadding_01.right - Start_AddPadding_013.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Start_AddPadding_011.top - Start_AddPadding_01.top)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(Start_AddPadding_011.right - Start_AddPadding_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Start_AddPadding_012.right - Start_AddPadding_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Start_AddPadding_013.right - Start_AddPadding_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Start_AddPadding_011.bottom - Start_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Start_AddPadding_012.bottom - Start_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Start_AddPadding_013.bottom - Start_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testFlexAlignStartFlexPadMeet] END');
       done();
     });
