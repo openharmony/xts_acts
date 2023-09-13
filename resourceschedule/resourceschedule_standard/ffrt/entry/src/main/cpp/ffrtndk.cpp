@@ -26,11 +26,6 @@
 #include <unistd.h>
 #include <pthread.h>
 
-void MyPrint(void* arg)
-{
-    HiLogPrint(LOG_APP, LOG_INFO, 1, "testFFRT", "%{public}s", "hello ffrt\n");
-}
-
 void OnePlusForTest(void* arg)
 {
     (*static_cast<int*>(arg)) += 1;
@@ -46,15 +41,9 @@ void SubForTest(void* arg)
     (*static_cast<int*>(arg)) -= 1;
 }
 
-void SleepAfterOnePlusTest(void* arg)
-{
-    (*static_cast<int*>(arg)) += 1;
-    usleep(20000);
-}
-
 void OnePlusSleepForTest(void* arg)
 {
-    sleep(5);
+    ffrt_usleep(2000 * 1000);
     (*static_cast<int*>(arg)) += 1;
 }
 
@@ -346,18 +335,6 @@ static inline ffrt_function_header_t* create_function_wrapper(T&& func,
     auto f =
         new (p)function_type({ ExecFunctionWrapper<T>, DestroyFunctionWrapper<T>, { 0 } }, std::forward<T>(func));
     return reinterpret_cast<ffrt_function_header_t*>(f);
-}
-
-static inline void ffrt_submit_c(ffrt_function_t func, void* arg,
-    const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
-{
-    ffrt_submit_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
-}
-
-static inline ffrt_task_handle_t ffrt_submit_h_c(ffrt_function_t func, void* arg,
-    const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
-{
-    return ffrt_submit_h_base(ffrt_create_function_wrapper(func, NULL, arg), in_deps, out_deps, attr);
 }
 
 static napi_value ConditionVariableTest001(napi_env env, napi_callback_info info)
@@ -702,7 +679,7 @@ static napi_value DelayCTest001(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t task_attr;
     (void)ffrt_task_attr_init(&task_attr);
-    ffrt_task_attr_set_delay(&task_attr, 5000); // 设置任务5ms后才执行， 非必须
+    ffrt_task_attr_set_delay(&task_attr, 5000);
 
     double t;
     auto start = std::chrono::high_resolution_clock::now();
@@ -786,40 +763,46 @@ static napi_value MutexAbnormalParamTest(napi_env env, napi_callback_info info)
     int result = 0;
     ffrt_mutex_t mtx;
     ffrt_mutexattr_t attr;
-    int ret = ffrt_mutex_init(NULL, &attr);
-    if (ret != ffrt_error_inval) {
-        result = 1;
-    }
-    ret = ffrt_mutex_init(&mtx, &attr);
-    if (ret != ffrt_error) {
-        result = 2;
-    }
-
-    ret = ffrt_mutex_init(&mtx, nullptr);
-    ret = ffrt_mutex_lock(&mtx);
-    ret = ffrt_mutex_lock(NULL);
-    if (ret != ffrt_error_inval) {
-        result = 3;
-    }
-    ret = ffrt_mutex_unlock(NULL);
-    if (ret != ffrt_error_inval) {
-        result = 4;
-    }
-    ret = ffrt_mutex_trylock(NULL);
-    if (ret != ffrt_error_inval) {
-        result = 5;
-    }
-    // 没抢到锁
-    ret = ffrt_mutex_trylock(&mtx);
-    if (ret != ffrt_error_busy) {
-        result = 6;
-    }
-    ret = ffrt_mutex_destroy(NULL);
-    if (ret != ffrt_error_inval) {
-        result = 7;
-    }
-    ret = ffrt_mutex_unlock(&mtx);
-    ret = ffrt_mutex_destroy(&mtx);
+    int ret = ffrt_mutex_init(&mtx, nullptr);
+    std::function<void()>&& func = [&]() {
+        ret = ffrt_mutex_init(NULL, &attr);
+        if (ret != ffrt_error_inval) {
+            result = 1;
+        }
+        ret = ffrt_mutex_init(&mtx, &attr);
+        if (ret != ffrt_error) {
+            result = 2;
+        }
+        ret = ffrt_mutex_lock(&mtx);
+        ret = ffrt_mutex_lock(NULL);
+        if (ret != ffrt_error_inval) {
+            result = 3;
+        }
+        ret = ffrt_mutex_unlock(NULL);
+        if (ret != ffrt_error_inval) {
+            result = 4;
+        }
+        ret = ffrt_mutex_trylock(NULL);
+        if (ret != ffrt_error_inval) {
+            result = 5;
+        }
+        // 没抢到锁
+        ret = ffrt_mutex_trylock(&mtx);
+        if (ret != ffrt_error_busy) {
+            result = 6;
+        }
+        ret = ffrt_mutex_destroy(NULL);
+        if (ret != ffrt_error_inval) {
+            result = 7;
+        }
+        ret = ffrt_mutex_unlock(&mtx);
+        if (ret != ffrt_success) {
+            result = 8;
+        }
+    };
+    ffrt_submit_base(create_function_wrapper(func), nullptr, nullptr, nullptr);
+    ffrt_wait();
+    ffrt_mutex_destroy(&mtx);
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -1662,10 +1645,10 @@ static napi_value QueueDfxTest003(napi_env env, napi_callback_info info)
 {
     int result = 0;
     // ffrt_queue_attr_set_callback接口attr为异常值
-
+    int x = 0;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_callback(nullptr, ffrt_create_function_wrapper(MyPrint, NULL, NULL, ffrt_function_kind_queue));
+    ffrt_queue_attr_set_callback(nullptr, ffrt_create_function_wrapper(OnePlusForTest, NULL, &x, ffrt_function_kind_queue));
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
@@ -1682,9 +1665,10 @@ static napi_value QueueDfxTest003(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
 {
     int result = 0;
+    int x = 0;
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_callback(&queue_attr, ffrt_create_function_wrapper(MyPrint, NULL, NULL,
+    ffrt_queue_attr_set_callback(&queue_attr, ffrt_create_function_wrapper(OnePlusForTest, NULL, &x,
         ffrt_function_kind_queue));
     ffrt_function_header_t* func = ffrt_queue_attr_get_callback(nullptr);
     if (func != nullptr) {
@@ -1989,7 +1973,7 @@ static napi_value SubmitBasicTest002(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t attr;
     ffrt_task_attr_init(&attr);
-    ffrt_submit_c(OnePlusForTest, &a, NULL, NULL, &attr);
+    ffrt_submit_base(ffrt_create_function_wrapper(OnePlusForTest, NULL, &a), NULL, NULL, &attr);
     ffrt_wait();
     usleep(sleepTime);
     if (a != 1) {
@@ -2406,7 +2390,8 @@ static napi_value SubmitHBasicTest002(napi_env env, napi_callback_info info)
     int a = 0;
     ffrt_task_attr_t attr;
     ffrt_task_attr_init(&attr);
-    ffrt_task_handle_t task = ffrt_submit_h_c(OnePlusForTest, &a, NULL, NULL, &attr);
+    ffrt_task_handle_t task = ffrt_submit_h_base(
+        ffrt_create_function_wrapper(OnePlusForTest, NULL, &a), NULL, NULL, &attr);
     const std::vector<ffrt_dependence_t> wait_deps = {{ffrt_dependence_task, task}};
     ffrt_deps_t wait{static_cast<uint32_t>(wait_deps.size()), wait_deps.data()};
     ffrt_wait_deps(&wait);
