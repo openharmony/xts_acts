@@ -758,51 +758,77 @@ static napi_value FfrtYieldC0001(napi_env env, napi_callback_info info)
     return flag;
 }
 
-static napi_value MutexAbnormalParamTest(napi_env env, napi_callback_info info)
+static napi_value MutexAbnormalParamTest001(napi_env env, napi_callback_info info)
 {
     int result = 0;
     ffrt_mutex_t mtx;
     ffrt_mutexattr_t attr;
+    int ret = ffrt_mutex_init(NULL, &attr);
+    if (ret != ffrt_error_inval) {
+        result = 1;
+    }
+    ret = ffrt_mutex_init(&mtx, &attr);
+    if (ret != ffrt_error) {
+        result = 2;
+    }
+    ret = ffrt_mutex_init(&mtx, nullptr);
+    if (ret != ffrt_success) {
+        result = 3;
+    }
+    ret = ffrt_mutex_destroy(NULL);
+    if (ret != ffrt_error_inval) {
+        result = 4;
+    }
+    ret = ffrt_mutex_destroy(&mtx);
+    if (ret != ffrt_success) {
+        result = 5;
+    }
+    napi_value flag = nullptr;
+    napi_create_double(env, result, &flag);
+    return flag;
+}
+
+static napi_value MutexAbnormalParamTest002(napi_env env, napi_callback_info info)
+{
+    int result = 0;
+    ffrt_mutex_t mtx;
     int ret = ffrt_mutex_init(&mtx, nullptr);
+    if (ret != ffrt_success) {
+        result = 1;
+    }
     std::function<void()>&& func = [&]() {
-        ret = ffrt_mutex_init(NULL, &attr);
+        ret = ffrt_mutex_lock(NULL);
         if (ret != ffrt_error_inval) {
-            result = 1;
-        }
-        ret = ffrt_mutex_init(&mtx, &attr);
-        if (ret != ffrt_error) {
             result = 2;
         }
         ret = ffrt_mutex_lock(&mtx);
-        ret = ffrt_mutex_lock(NULL);
+        ret = ffrt_mutex_unlock(NULL);
         if (ret != ffrt_error_inval) {
             result = 3;
         }
-        ret = ffrt_mutex_unlock(NULL);
+        ret = ffrt_mutex_trylock(NULL);
         if (ret != ffrt_error_inval) {
             result = 4;
         }
-        ret = ffrt_mutex_trylock(NULL);
-        if (ret != ffrt_error_inval) {
-            result = 5;
-        }
-        // 没抢到锁
-        ret = ffrt_mutex_trylock(&mtx);
+        ret = ffrt_mutex_trylock(&mtx);   // 没抢到锁
         if (ret != ffrt_error_busy) {
-            result = 6;
+            result = 5;
         }
         ret = ffrt_mutex_destroy(NULL);
         if (ret != ffrt_error_inval) {
-            result = 7;
+            result = 6;
         }
         ret = ffrt_mutex_unlock(&mtx);
         if (ret != ffrt_success) {
-            result = 8;
+            result = 7;
         }
     };
     ffrt_submit_base(create_function_wrapper(func), nullptr, nullptr, nullptr);
     ffrt_wait();
-    ffrt_mutex_destroy(&mtx);
+    ret = ffrt_mutex_destroy(&mtx);
+    if (ret != ffrt_success) {
+        result = 8;
+    }
     napi_value flag = nullptr;
     napi_create_double(env, result, &flag);
     return flag;
@@ -1645,10 +1671,13 @@ static napi_value QueueDfxTest003(napi_env env, napi_callback_info info)
 {
     int result = 0;
     // ffrt_queue_attr_set_callback接口attr为异常值
-    int x = 0;
+    int end = 0;
+    std::function<void()> cbOne = [&end]() {
+        end++;
+    };
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_callback(nullptr, ffrt_create_function_wrapper(OnePlusForTest, NULL, &x, ffrt_function_kind_queue));
+    ffrt_queue_attr_set_callback(nullptr, create_function_wrapper(cbOne, ffrt_function_kind_queue));
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     if (queue_handle == nullptr) {
         result = 3;
@@ -1665,11 +1694,13 @@ static napi_value QueueDfxTest003(napi_env env, napi_callback_info info)
 static napi_value QueueDfxTest004(napi_env env, napi_callback_info info)
 {
     int result = 0;
-    int x = 0;
+    int end = 0;
+    std::function<void()> cbOne = [&end]() {
+        end++;
+    };
     ffrt_queue_attr_t queue_attr;
     (void)ffrt_queue_attr_init(&queue_attr);
-    ffrt_queue_attr_set_callback(&queue_attr, ffrt_create_function_wrapper(OnePlusForTest, NULL, &x,
-        ffrt_function_kind_queue));
+    ffrt_queue_attr_set_callback(&queue_attr, create_function_wrapper(cbOne, ffrt_function_kind_queue));
     ffrt_function_header_t* func = ffrt_queue_attr_get_callback(nullptr);
     if (func != nullptr) {
         result = 1;
@@ -1706,7 +1737,7 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     ffrt_queue_t queue_handle = ffrt_queue_create(ffrt_queue_serial, "test_queue", &queue_attr);
     std::function<void()>&& basicFunc1 = [&] {
         x++;
-        usleep(20000);
+        usleep(500 * 1000);
     };
     ffrt_task_handle_t handle = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc1, ffrt_function_kind_queue), nullptr);
@@ -1720,7 +1751,7 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     
     std::function<void()>&& basicFunc2 = [&] {
         x++;
-        ffrt_usleep(20000);
+        ffrt_usleep(500 * 1000);
     };
     ffrt_task_handle_t handle1 = ffrt_queue_submit_h(queue_handle,
         create_function_wrapper(basicFunc2, ffrt_function_kind_queue), nullptr);
@@ -1728,10 +1759,10 @@ static napi_value QueueDfxTest005(napi_env env, napi_callback_info info)
     if (x != 2) {
         resultEnd = 3;
     }
-    if (x != 2) {
+    if (end != 2) {
         resultEnd = 4;
     }
-    
+
     ffrt_task_handle_destroy(handle);
     ffrt_task_handle_destroy(handle1);
     ffrt_queue_attr_destroy(&queue_attr);
@@ -2763,7 +2794,8 @@ static napi_value Init(napi_env env, napi_value exports)
             napi_default, nullptr },
         { "delayCTest001", nullptr, DelayCTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "ffrtYieldC0001", nullptr, FfrtYieldC0001, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "mutexAbnormalParamTest", nullptr, MutexAbnormalParamTest, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "mutexAbnormalParamTest001", nullptr, MutexAbnormalParamTest001, nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "mutexAbnormalParamTest002", nullptr, MutexAbnormalParamTest002, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexTest006", nullptr, MutexTest006, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexTest007", nullptr, MutexTest007, nullptr, nullptr, nullptr, napi_default, nullptr },
         { "mutexTest008", nullptr, MutexTest008, nullptr, nullptr, nullptr, napi_default, nullptr },
