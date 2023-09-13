@@ -26,15 +26,15 @@ ohos_js_hap_suite("resourceschedule_ffrt_js_test") {
   subsystem_name = "resourceschedule"
   part_name = "ffrt"
   shared_libraries = [
-    "./entry/src/main/cpp:bundlendk",
+    "./entry/src/main/cpp:ffrtndk",
     ":libcppsharedso",
   ]
 }
 
 ohos_prebuilt_shared_library("libcppsharedso") {
   source = rebase_path(libcxx_ndk_shared_file)
-  subsystem_name = "bundlemanager"
-  part_name = "bundle_framework"
+  subsystem_name = "resourceschedule"
+  part_name = "ffrt"
 }
 
 ohos_js_assets("ace_third_ets_assets") {

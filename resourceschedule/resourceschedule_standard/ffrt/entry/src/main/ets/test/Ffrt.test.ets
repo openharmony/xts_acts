@@ -35,34 +35,74 @@ export default function ffrtTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     })
-    it('queueTest001',0, function () {
+    it('conditionVariableTest001',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueTest001();
-      expect(flag).assertEqual(9);
-    })
-    it('queueTest002',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueTest002();
+      var flag = ffrtndk.conditionVariableTest001();
       expect(flag).assertEqual(0);
     })
-    it('queueDfxTest001',0, function () {
+    it('conditionVariableTest002',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDfxTest001();
+      var flag = ffrtndk.conditionVariableTest002();
       expect(flag).assertEqual(0);
     })
-    it('queueDfxTest002',0, function () {
+    it('conditionVariableTest003',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDfxTest002();
+      var flag = ffrtndk.conditionVariableTest003();
       expect(flag).assertEqual(0);
     })
-    it('queueDfxTest003',0, function () {
+    it('conditionVariableTest004',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDfxTest003();
+      var flag = ffrtndk.conditionVariableTest004();
       expect(flag).assertEqual(0);
     })
-    it('queueDfxTest004',0, function () {
+    it('conditionVariableApiTest001',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDfxTest004();
+      var flag = ffrtndk.conditionVariableApiTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('conditionVariableApiTest002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.conditionVariableApiTest002();
+      expect(flag).assertEqual(0);
+    })
+    it('conditionVariableApiTest003',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.conditionVariableApiTest003();
+      expect(flag).assertEqual(0);
+    })
+    it('conditionVariableApiTest004',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.conditionVariableApiTest004();
+      expect(flag).assertEqual(0);
+    })
+    it('delayCTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.delayCTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('ffrtYieldC0001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.ffrtYieldC0001();
+      expect(flag).assertEqual(0);
+    })
+    it('mutexAbnormalParamTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.mutexAbnormalParamTest();
+      expect(flag).assertEqual(0);
+    })
+    it('mutexTest006',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.mutexTest006();
+      expect(flag).assertEqual(0);
+    })
+    it('mutexTest007',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.mutexTest007();
+      expect(flag).assertEqual(0);
+    })
+    it('mutexTest008',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.mutexTest008();
       expect(flag).assertEqual(0);
     })
     it('queueApiTest001',0, function () {
@@ -145,14 +185,84 @@ export default function ffrtTest() {
       var flag = ffrtndk.queueCancelTest004();
       expect(flag).assertEqual(0);
     })
-    it('basicTest',0, function () {
+    it('queueDelayTest001',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.basicTest();
+      var flag = ffrtndk.queueDelayTest001();
       expect(flag).assertEqual(0);
     })
-    it('submitBasicTest',0, function () {
+    it('queueDelayTest002',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.submitBasicTest();
+      var flag = ffrtndk.queueDelayTest002();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDelayTest005',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDelayTest005();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDfxTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDfxTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDfxTest002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDfxTest002();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDfxTest003',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDfxTest003();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDfxTest004',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDfxTest004();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDfxTest005',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDfxTest005();
+      expect(flag).assertEqual(0);
+    })
+    it('queueDfxTest006',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueDfxTest006();
+      expect(flag).assertEqual(0);
+    })
+    it('queueTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueTest001();
+      expect(flag).assertEqual(9);
+    })
+    it('queueTest002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueTest002();
+      expect(flag).assertEqual(0);
+    })
+    it('queueTest003',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueTest003();
+      expect(flag).assertEqual(0);
+    })
+    it('queueWaitTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.queueWaitTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('submitAbnormalTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitAbnormalTest();
+      expect(flag).assertEqual(0);
+    })
+    it('submitBasicTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitBasicTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('submitBasicTest002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitBasicTest002();
       expect(flag).assertEqual(0);
     })
     it('submitInDependEmptyTest',0, function () {
@@ -175,9 +285,14 @@ export default function ffrtTest() {
       var flag = ffrtndk.submitOuDependNullptrTest();
       expect(flag).assertEqual(0);
     })
-    it('submitIODependAttrBasicTest',0, function () {
+    it('submitIODependTest001',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.submitIODependAttrBasicTest();
+      var flag = ffrtndk.submitIODependTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('submitIODependTest002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitIODependTest002();
       expect(flag).assertEqual(0);
     })
     it('submitIn0Ou0WaitNullTask1Test',0, function () {
@@ -185,164 +300,14 @@ export default function ffrtTest() {
       var flag = ffrtndk.submitIn0Ou0WaitNullTask1Test();
       expect(flag).assertEqual(0);
     })
-    it('delayCTest001',0, function () {
+    it('submitHBasicTest001',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.delayCTest001();
+      var flag = ffrtndk.submitHBasicTest001();
       expect(flag).assertEqual(0);
     })
-    it('qosQueryTest',0, function () {
+    it('submitHBasicTest002',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.qosQueryTest();
-      expect(flag).assertEqual(0);
-    })
-    it('qosSetTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.qosSetTest();
-      expect(flag).assertEqual(0);
-    })
-    it('qosIllegalTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.qosIllegalTest();
-      expect(flag).assertEqual(0);
-    })
-    it('qosSetPthreadTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.qosSetPthreadTest();
-      expect(flag).assertEqual(0);
-    })
-    it('qosSetNameTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.qosSetNameTest();
-      expect(flag).assertEqual(0);
-    })
-    it('queueDelay001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDelay001();
-      expect(flag).assertEqual(0);
-    })
-    it('queueDelay005',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDelay005();
-      expect(flag).assertEqual(0);
-    })
-    it('queueWait001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueWait001();
-      expect(flag).assertEqual(0);
-    })
-    it('queue003',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queue003();
-      expect(flag).assertEqual(0);
-    })
-    it('queueDfx001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDfx001();
-      expect(flag).assertEqual(0);
-    })
-    it('queueDfx002',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDfx002();
-      expect(flag).assertEqual(0);
-    })
-    it('ffrtYieldC0001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.ffrtYieldC0001();
-      expect(flag).assertEqual(0);
-    })
-    it('sleepForTest000',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.sleepForTest000();
-      expect(flag).assertEqual(0);
-    })
-    it('sleepForTest001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.sleepForTest001();
-      expect(flag).assertEqual(0);
-    })
-    it('queueDelayTest001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.queueDelayTest001();
-      expect(flag).assertEqual(0);
-    })
-    it('mutexTest006',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.mutexTest006();
-      expect(flag).assertEqual(0);
-    })
-    it('mutexTest007',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.mutexTest007();
-      expect(flag).assertEqual(0);
-    })
-    it('mutexTest008',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.mutexTest008();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableTest001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableTest001();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableTest002',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableTest002();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableTest003',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableTest003();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableTest004',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableTest004();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableApiTest001',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableApiTest001();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableApiTest002',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableApiTest002();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableApiTest003',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableApiTest003();
-      expect(flag).assertEqual(0);
-    })
-    it('conditionVariableApiTest004',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.conditionVariableApiTest004();
-      expect(flag).assertEqual(0);
-    })
-    it('mutexAbnormalParam',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.mutexAbnormalParam();
-      expect(flag).assertEqual(0);
-    })
-    it('submitAbnormalTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.submitAbnormalTest();
-      expect(flag).assertEqual(0);
-    })
-    it('taskAttrAbnormalTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.taskAttrAbnormalTest();
-      expect(flag).assertEqual(0);
-    })
-    it('basicHTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.basicHTest();
-      expect(flag).assertEqual(0);
-    })
-    it('submitHBasicTest',0, function () {
-      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.submitHBasicTest();
+      var flag = ffrtndk.submitHBasicTest002();
       expect(flag).assertEqual(0);
     })
     it('submitHInDependEmptyTest',0, function () {
@@ -365,9 +330,49 @@ export default function ffrtTest() {
       var flag = ffrtndk.submitHOuDependNullptrTest();
       expect(flag).assertEqual(0);
     })
-    it('submitHIODependAttrBasicTest',0, function () {
+    it('submitHIODependTest001',0, function () {
       // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-      var flag = ffrtndk.submitHIODependAttrBasicTest();
+      var flag = ffrtndk.submitHIODependTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('submitHIODependTest002',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.submitHIODependTest002();
+      expect(flag).assertEqual(0);
+    })
+    it('sleepForTest000',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.sleepForTest000();
+      expect(flag).assertEqual(0);
+    })
+    it('sleepForTest001',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.sleepForTest001();
+      expect(flag).assertEqual(0);
+    })
+    it('taskAttrAbnormalTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.taskAttrAbnormalTest();
+      expect(flag).assertEqual(0);
+    })
+    it('taskAttrQosIllegalTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.taskAttrQosIllegalTest();
+      expect(flag).assertEqual(0);
+    })
+    it('taskAttrQosQueryTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.taskAttrQosQueryTest();
+      expect(flag).assertEqual(0);
+    })
+    it('taskAttrSetNameTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.taskAttrSetNameTest();
+      expect(flag).assertEqual(0);
+    })
+    it('taskAttrSetQosTest',0, function () {
+      // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
+      var flag = ffrtndk.taskAttrSetQosTest();
       expect(flag).assertEqual(0);
     })
   })
