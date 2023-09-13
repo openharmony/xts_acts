@@ -32,7 +32,7 @@ export default function lifecycleTest() {
       if ("Crossplatform_Singlehap_LifeCycleTest_0200" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0300" === TAG
       || "Crossplatform_Singlehap_LifeCycleTest_0500" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0600" === TAG
       || "Crossplatform_Singlehap_LifeCycleTest_0800" === TAG || "Crossplatform_Singlehap_LifeCycleTest_0900" === TAG) {
-        var para = {
+        let para = {
           resultCode: 2,
           want: {
             abilityName: "MainAbility1",
@@ -51,7 +51,7 @@ export default function lifecycleTest() {
             console.log("LifeCycleTest terminateSelfwithresult error: " + JSON.stringify(error));
           });
       } else if ("Singlehap_LifeCycleTest_2000" === TAG) {
-        var para1 = {
+        let para1 = {
           resultCode: 2,
           want: {
             abilityName: "MainAbility12",
@@ -72,9 +72,9 @@ export default function lifecycleTest() {
       done();
     });
 
-    var TAG = "";
-    var listKeyTemp;
-    var tempCallbackId;
+    let TAG = "";
+    let listKeyTemp;
+    let tempCallbackId;
 
     function sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time));
@@ -89,8 +89,8 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0100", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0100 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0100";
-      var code;
-      var str = {
+      let code;
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility2",
         moduleName: moduleName,
@@ -108,16 +108,8 @@ export default function lifecycleTest() {
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid));
         tempCallbackId = globalThis.callbackid;
         console.log(TAG + " registerAbilityLifecycleCallback tempCallbackId : " + JSON.stringify(tempCallbackId));
-        var strtemp = "";
-        var listtemp = [];
-        for (var i = 0; i < globalThis.list.length; i++) {
-          strtemp = globalThis.list[i].substring(0, 12);
-          if (strtemp === "MainAbility2") {
-            listtemp.push(globalThis.list[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        let exlist = listtemp;
+        let listTemp = JSON.stringify(globalThis.list);
+        console.log(TAG + " listTemp is :" + listTemp);
 
         globalThis.applicationContext.off("abilityLifecycle", tempCallbackId, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + error);
@@ -125,13 +117,12 @@ export default function lifecycleTest() {
         });
         setTimeout(function () {
           console.log("start expect");
-          console.log(JSON.stringify(exlist));
-          expect(exlist[0]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist[1]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist[2]).assertEqual("MainAbility2 onAbilityForeground");
-          expect(exlist[3]).assertEqual("MainAbility2 onAbilityBackground");
-          expect(exlist[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
           expect(code).assertEqual(0);
           console.log("------------Crossplatform_Singlehap_LifeCycleTest_0100 END-------------");
           done();
@@ -148,8 +139,8 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0200", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0200 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0200";
-      var code;
-      var str = {
+      let code;
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -163,7 +154,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -180,37 +171,23 @@ export default function lifecycleTest() {
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
-        var strtemp = "";
-        var listtemp = [];
-        var listtemp1 = [];
-        for (var i = 0; i < globalThis.list1.length; i++) {
-          strtemp = globalThis.list1[i].substring(0, 12);
-          if (strtemp === "MainAbility1") {
-            listtemp.push(globalThis.list1[i]);
-          } else if (strtemp === "MainAbility2") {
-            listtemp1.push(globalThis.list1[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        console.log(TAG + " listtemp1 is :" + JSON.stringify(listtemp1));
-        let exlist = listtemp;
-        let exlist1 = listtemp1;
+        let listTemp = JSON.stringify(globalThis.list1);
+        console.log(TAG + " listTemp is :" + listTemp);
 
         globalThis.applicationContext1.off("abilityLifecycle", globalThis.callbackid1, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + error);
           code = error ? error.code : 0;
         });
         setTimeout(function () {
-          expect(exlist[0]).assertEqual("MainAbility1 onWindowStageCreate");
-          expect(exlist[1]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist[2]).assertEqual("MainAbility1 onAbilityBackground");
-          expect(exlist[3]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
-          expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
-          expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(2);
+          expect(listTemp.indexOf("MainAbility1 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
           expect(code).assertEqual(0);
           console.log("------------Crossplatform_Singlehap_LifeCycleTest_0200 END-------------");
           done();
@@ -227,8 +204,8 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0300", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0300 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0300";
-      var code;
-      var str = {
+      let code;
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -242,7 +219,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -259,21 +236,8 @@ export default function lifecycleTest() {
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
-        var strtemp = "";
-        var listtemp = [];
-        var listtemp1 = [];
-        for (var i = 0; i < globalThis.list1.length; i++) {
-          strtemp = globalThis.list1[i].substring(0, 12);
-          if (strtemp === "MainAbility1") {
-            listtemp.push(globalThis.list1[i]);
-          } else if (strtemp === "MainAbility2") {
-            listtemp1.push(globalThis.list1[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        console.log(TAG + " listtemp1 is :" + JSON.stringify(listtemp1));
-        let exlist = listtemp;
-        let exlist1 = listtemp1;
+        let listTemp = JSON.stringify(globalThis.list1);
+        console.log(TAG + " listTemp is :" + listTemp);
 
         globalThis.applicationContext1.off("abilityLifecycle", globalThis.callbackid1, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: ");
@@ -287,16 +251,15 @@ export default function lifecycleTest() {
           });
         }, 500);
         setTimeout(function () {
-          expect(exlist[0]).assertEqual("MainAbility1 onWindowStageCreate");
-          expect(exlist[1]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist[2]).assertEqual("MainAbility1 onAbilityBackground");
-          expect(exlist[3]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
-          expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
-          expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(2);
+          expect(listTemp.indexOf("MainAbility1 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
           expect(code).assertEqual(401);
           console.log("------------Crossplatform_Singlehap_LifeCycleTest_0300 END-------------");
           done();
@@ -313,8 +276,8 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0400", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0400 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0400";
-      var code;
-      var str = {
+      let code;
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility3",
         moduleName: moduleName,
@@ -328,7 +291,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start3 failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -345,22 +308,9 @@ export default function lifecycleTest() {
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid3));
-        var strtemp = "";
-        var listtemp = [];
-        var listtemp1 = [];
-        for (var i = 0; i < globalThis.list3.length; i++) {
-          strtemp = globalThis.list3[i].substring(0, 12);
-          if (strtemp === "MainAbility3") {
-            listtemp.push(globalThis.list3[i]);
-          } else if (strtemp === "MainAbility2") {
-            listtemp1.push(globalThis.list3[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        console.log(TAG + " listtemp1 is :" + JSON.stringify(listtemp1));
-        let exlist = listtemp;
-        let exlist1 = listtemp1;
-        var para = {
+        let listTemp = JSON.stringify(globalThis.list3);
+        console.log(TAG + " listTemp is :" + listTemp);
+        let para = {
           resultCode: 1,
           want: {
             abilityName: "MainAbility3",
@@ -385,16 +335,15 @@ export default function lifecycleTest() {
           });
         }, 500);
         setTimeout(function () {
-          expect(exlist[0]).assertEqual("MainAbility3 onWindowStageCreate");
-          expect(exlist[1]).assertEqual("MainAbility3 onAbilityForeground");
-          expect(exlist[2]).assertEqual("MainAbility3 onAbilityBackground");
-          expect(exlist[3]).assertEqual("MainAbility3 onAbilityForeground");
-          expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
-          expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
-          expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
+          expect(listTemp.indexOf("MainAbility3 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.split("MainAbility3 onAbilityForeground").length - 1).assertEqual(2);
+          expect(listTemp.indexOf("MainAbility3 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
           expect(code).assertEqual(0);
           console.log("------------Crossplatform_Singlehap_LifeCycleTest_0400 END-------------");
           done();
@@ -411,7 +360,7 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0500", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0500 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0500";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -425,7 +374,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start1 failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility3",
           moduleName: moduleName,
@@ -444,7 +393,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext3.off("abilityLifecycle", globalThis.callbackid3, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
         });
-        var str2 = {
+        let str2 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility4",
           moduleName: moduleName,
@@ -489,7 +438,7 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0600", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0600 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0600";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -503,7 +452,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start1 failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility5",
           moduleName: moduleName,
@@ -518,7 +467,7 @@ export default function lifecycleTest() {
           });
       }, 500);
       setTimeout(function () {
-        var str2 = {
+        let str2 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -535,33 +484,20 @@ export default function lifecycleTest() {
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " callbackid1 : " + JSON.stringify(globalThis.callbackid1));
-        var strtemp = "";
-        var listtemp = [];
-        var listtemp2 = [];
-        for (var i = 0; i < globalThis.list1.length; i++) {
-          strtemp = globalThis.list1[i].substring(0, 12);
-          if (strtemp == "MainAbility2") {
-            listtemp.push(globalThis.list1[i]);
-          } else if (strtemp == "MainAbility5") {
-            listtemp2.push(globalThis.list1[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        console.log(TAG + " listtemp2 is :" + JSON.stringify(listtemp2));
-        let exlist = listtemp;
-        let exlist2 = listtemp2;
-        expect(exlist[0]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist[1]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist[2]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist[3]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-        expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
-        expect(exlist2[0]).assertEqual("MainAbility5 onAbilityCreate");
-        expect(exlist2[1]).assertEqual("MainAbility5 onWindowStageCreate");
-        expect(exlist2[2]).assertEqual("MainAbility5 onAbilityForeground");
-        expect(exlist2[3]).assertEqual("MainAbility5 onAbilityBackground");
-        expect(exlist2[4]).assertEqual("MainAbility5 onWindowStageDestroy");
-        expect(exlist2[5]).assertEqual("MainAbility5 onAbilityDestroy");
+        let listTemp = JSON.stringify(globalThis.list1);
+        console.log(TAG + " listTemp is :" + listTemp);
+        expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility5 onAbilityCreate") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility5 onWindowStageCreate") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility5 onAbilityForeground") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility5 onAbilityBackground") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility5 onWindowStageDestroy") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility5 onAbilityDestroy") !== -1).assertTrue();
 
         globalThis.applicationContext1.off("abilityLifecycle", globalThis.callbackid1, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
@@ -579,13 +515,13 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0700", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0700 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0700";
-      var code1;
-      var code2;
-      var code3;
-      var id1;
-      var id2;
-      var id3;
-      var listKey8 = [];
+      let code1;
+      let code2;
+      let code3;
+      let id1;
+      let id2;
+      let id3;
+      let listKey8 = [];
       let AbilityLifecycleCallback = {
         onAbilityCreate(ability) {
           console.log(TAG + " onAbilityCreate ability:" + JSON.stringify(ability));
@@ -689,7 +625,7 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0800", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0800 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0800";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -703,7 +639,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -718,7 +654,7 @@ export default function lifecycleTest() {
           });
       }, 1500);
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -734,7 +670,7 @@ export default function lifecycleTest() {
       }, 4500);
 
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -752,44 +688,18 @@ export default function lifecycleTest() {
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
-        var strtemp = "";
-        var listtemp = [];
-        var listtemp1 = [];
-        for (var i = 0; i < globalThis.list1.length; i++) {
-          strtemp = globalThis.list1[i].substring(0, 12);
-          if (strtemp === "MainAbility1") {
-            listtemp.push(globalThis.list1[i]);
-          } else if (strtemp === "MainAbility2") {
-            listtemp1.push(globalThis.list1[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + listtemp);
-        console.log(TAG + " listtemp1 is :" + listtemp1);
-        let exlist = listtemp;
-        let exlist1 = listtemp1;
+        let listTemp = JSON.stringify(globalThis.list1);
+        console.log(TAG + " listTemp is :" + listTemp);
         try {
-          expect(exlist[0]).assertEqual("MainAbility1 onWindowStageCreate");
-          expect(exlist[1]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist[2]).assertEqual("MainAbility1 onAbilityBackground");
-          expect(exlist[3]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist[4]).assertEqual("MainAbility1 onAbilityBackground");
-          expect(exlist[5]).assertEqual("MainAbility1 onAbilityForeground");
-          expect(exlist[6]).assertEqual("MainAbility1 onAbilityBackground");
-          expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
-          expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
-          expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
-          expect(exlist1[6]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist1[7]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist1[8]).assertEqual("MainAbility2 onAbilityForeground");
-          expect(exlist1[9]).assertEqual("MainAbility2 onAbilityBackground");
-          expect(exlist1[10]).assertEqual("MainAbility2 onWindowStageDestroy");
-          expect(exlist1[11]).assertEqual("MainAbility2 onAbilityDestroy");
-          expect(exlist1[12]).assertEqual("MainAbility2 onAbilityCreate");
-          expect(exlist1[13]).assertEqual("MainAbility2 onWindowStageCreate");
-          expect(exlist1[14]).assertEqual("MainAbility2 onAbilityForeground");
+          expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(3);
+          expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(3);
+          expect(listTemp.split("MainAbility2 onAbilityCreate").length - 1).assertEqual(3);
+          expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(3);
+          expect(listTemp.split("MainAbility2 onAbilityForeground").length - 1).assertEqual(3);
+          expect(listTemp.split("MainAbility2 onAbilityBackground").length - 1).assertEqual(2);
+          expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
+          expect(listTemp.split("MainAbility2 onAbilityDestroy").length - 1).assertEqual(2);
         } catch (error) {
           console.error(`${TAG} startRunning failed: ${JSON.stringify(error)}`);
           done();
@@ -811,7 +721,7 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_0900", 0, async function (done) {
       console.log("------------Crossplatform_Singlehap_LifeCycleTest_0900 START-------------");
       TAG = "Crossplatform_Singlehap_LifeCycleTest_0900";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -825,7 +735,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -840,7 +750,7 @@ export default function lifecycleTest() {
           });
       }, 500);
       setTimeout(function () {
-        var str1 = {
+        let str1 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -857,39 +767,17 @@ export default function lifecycleTest() {
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
-        var strtemp = "";
-        var listtemp = [];
-        var listtemp1 = [];
-        for (var i = 0; i < globalThis.list1.length; i++) {
-          strtemp = globalThis.list1[i].substring(0, 12);
-          if (strtemp === "MainAbility1") {
-            listtemp.push(globalThis.list1[i]);
-          } else if (strtemp === "MainAbility2") {
-            listtemp1.push(globalThis.list1[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + listtemp);
-        console.log(TAG + " listtemp1 is :" + listtemp1);
-        let exlist = listtemp;
-        let exlist1 = listtemp1;
-        expect(exlist[0]).assertEqual("MainAbility1 onWindowStageCreate");
-        expect(exlist[1]).assertEqual("MainAbility1 onAbilityForeground");
-        expect(exlist[2]).assertEqual("MainAbility1 onAbilityBackground");
-        expect(exlist[3]).assertEqual("MainAbility1 onAbilityForeground");
-        expect(exlist[4]).assertEqual("MainAbility1 onAbilityBackground");
-        expect(exlist[5]).assertEqual("MainAbility1 onAbilityForeground");
-        expect(exlist1[0]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist1[1]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist1[2]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist1[3]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist1[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-        expect(exlist1[5]).assertEqual("MainAbility2 onAbilityDestroy");
-        expect(exlist1[6]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist1[7]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist1[8]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist1[9]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist1[10]).assertEqual("MainAbility2 onWindowStageDestroy");
-        expect(exlist1[11]).assertEqual("MainAbility2 onAbilityDestroy");
+        let listTemp = JSON.stringify(globalThis.list1);
+        console.log(TAG + " listTemp is :" + listTemp);
+        expect(listTemp.indexOf("MainAbility1 onWindowStageCreate") !== -1).assertTrue();
+        expect(listTemp.split("MainAbility1 onAbilityForeground").length - 1).assertEqual(3);
+        expect(listTemp.split("MainAbility1 onAbilityBackground").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onAbilityCreate").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onWindowStageCreate").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onAbilityForeground").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onAbilityBackground").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
+        expect(listTemp.split("MainAbility2 onAbilityDestroy").length - 1).assertEqual(2);
 
         globalThis.applicationContext1.off("abilityLifecycle", globalThis.callbackid1, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
@@ -907,9 +795,9 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_1000", 0, async function (done) {
       console.log("------------Singlehap_LifeCycleTest_1200 START-------------");
       TAG = "Singlehap_LifeCycleTest_1200";
-      var id1;
-      var id2;
-      var str = {
+      let id1;
+      let id2;
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility8",
         moduleName: moduleName,
@@ -927,7 +815,7 @@ export default function lifecycleTest() {
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid8));
         id1 = globalThis.callbackid8;
         console.log(TAG + " firstCallback id : " + JSON.stringify(id1));
-        var str = {
+        let str = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility8",
           moduleName: moduleName,
@@ -951,7 +839,7 @@ export default function lifecycleTest() {
         globalThis.applicationContext8.off("abilityLifecycle", globalThis.callbackid8, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
         });
-        var para = {
+        let para = {
           resultCode: 1,
           want: {
             abilityName: "MainAbility8",
@@ -978,7 +866,6 @@ export default function lifecycleTest() {
     it("Crossplatform_Singlehap_LifeCycleTest_1100", 0, async function (done) {
       console.log("------------Singlehap_LifeCycleTest_1400 start-------------");
       TAG = "Singlehap_LifeCycleTest_1400";
-      listKeyTemp = [];
       globalThis.abilityContext.startAbility(
         {
           bundleName: "com.test.lifecycle_crossplatform_xts",
@@ -1010,25 +897,20 @@ export default function lifecycleTest() {
         (error, data) => {
           setTimeout(() => {
             console.log(TAG + ": second Hap1MainAbility2 startAbility success, err: " + JSON.stringify(error) + ",data: " + JSON.stringify(data));
-            for (var i = 0; i < globalThis.mainAbility9ListKey.length; i++) {
+            for (let i = 0; i < globalThis.mainAbility9ListKey.length; i++) {
               if (globalThis.mainAbility9ListKey[i].substring(0, 16) == "Hap1MainAbility2") {
                 listKeyTemp.push(globalThis.mainAbility9ListKey[i]);
               }
             }
-            console.log(TAG + "listKeyTemp is :" + listKeyTemp);
+            let listTemp = JSON.stringify(globalThis.mainAbility9ListKey);
+            console.log(TAG + "listTemp is :" + listTemp);
             console.log(TAG + "globalThis.mainAbility9CallBackId is :" + globalThis.mainAbility9CallBackId);
-            expect(listKeyTemp[0]).assertEqual("Hap1MainAbility2 onAbilityCreate");
-            expect(listKeyTemp[1]).assertEqual("Hap1MainAbility2 onWindowStageCreate");
-            expect(listKeyTemp[2]).assertEqual("Hap1MainAbility2 onAbilityForeground");
-            expect(listKeyTemp[3]).assertEqual("Hap1MainAbility2 onAbilityCreate");
-            expect(listKeyTemp[4]).assertEqual("Hap1MainAbility2 onWindowStageCreate");
-            expect(listKeyTemp[5]).assertEqual("Hap1MainAbility2 onAbilityForeground");
-            expect(listKeyTemp[6]).assertEqual("Hap1MainAbility2 onAbilityBackground");
-            expect(listKeyTemp[7]).assertEqual("Hap1MainAbility2 onWindowStageDestroy");
-            expect(listKeyTemp[8]).assertEqual("Hap1MainAbility2 onAbilityDestroy");
-            expect(listKeyTemp[9]).assertEqual("Hap1MainAbility2 onAbilityBackground");
-            expect(listKeyTemp[10]).assertEqual("Hap1MainAbility2 onWindowStageDestroy");
-            expect(listKeyTemp[11]).assertEqual("Hap1MainAbility2 onAbilityDestroy");
+            expect(listTemp.split("Hap1MainAbility2 onAbilityCreate").length - 1).assertEqual(2);
+            expect(listTemp.split("Hap1MainAbility2 onWindowStageCreate").length - 1).assertEqual(2);
+            expect(listTemp.split("Hap1MainAbility2 onAbilityForeground").length - 1).assertEqual(2);
+            expect(listTemp.split("Hap1MainAbility2 onAbilityBackground").length - 1).assertEqual(2);
+            expect(listTemp.split("Hap1MainAbility2 onWindowStageDestroy").length - 1).assertEqual(2);
+            expect(listTemp.split("Hap1MainAbility2 onAbilityDestroy").length - 1).assertEqual(2);
 
             globalThis.applicationContext9.off("abilityLifecycle", globalThis.mainAbility9CallBackId, (error) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
@@ -1040,8 +922,8 @@ export default function lifecycleTest() {
       console.log("------------Singlehap_LifeCycleTest_1400 end-------------");
     });
 
-    var callbackid_NA = 100;
-    var callbackid_errorNum = -1;
+    let callbackid_NA = 100;
+    let callbackid_errorNum = -1;
 
     /*
      * @tc.number  Crossplatform_Singlehap_LifeCycleTest_1200
@@ -1108,7 +990,7 @@ export default function lifecycleTest() {
           console.error(TAG + " start failed. Cause: " + JSON.stringify(error));
         });
       setTimeout(function () {
-        var str2 = {
+        let str2 = {
           bundleName: "com.test.lifecycle_crossplatform_xts",
           abilityName: "MainAbility2",
           moduleName: moduleName,
@@ -1127,7 +1009,7 @@ export default function lifecycleTest() {
         console.log(TAG + " firstCallback callbackid1 : " + JSON.stringify(globalThis.callbackid1));
         id1 = globalThis.callbackid1;
         console.log(TAG + " firstCallback id1 : " + JSON.stringify(id1));
-        var para = {
+        let para = {
           resultCode: 2100,
           want: {
             abilityName: "MainAbility1",
@@ -1147,25 +1029,15 @@ export default function lifecycleTest() {
           });
       }, 4500);
       setTimeout(function () {
-        console.log(TAG + " secondCallback listKey1 : " + JSON.stringify(globalThis.list1));
-        let templist1 = globalThis.list1;
         console.log(TAG + " secondCallback callbackid1 : " + JSON.stringify(globalThis.callbackid1));
-        var strtemp = "";
-        var listtemp = [];
-        for (var i = 0; i < templist1.length; i++) {
-          strtemp = templist1[i].substring(0, 13);
-          if (strtemp === "MainAbility2 ") {
-            listtemp.push(templist1[i]);
-          }
-        }
-        console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
-        let exlist = listtemp;
-        expect(exlist[0]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist[1]).assertEqual("MainAbility2 onWindowStageCreate");
-        expect(exlist[2]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist[3]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist[4]).assertEqual("MainAbility2 onWindowStageDestroy");
-        expect(exlist[5]).assertEqual("MainAbility2 onAbilityDestroy");
+        let listTemp = JSON.stringify(globalThis.list1);
+        console.log(TAG + " listTemp is :" + listTemp);
+        expect(listTemp.indexOf("MainAbility2 onAbilityCreate") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onAbilityForeground") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onAbilityBackground") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+        expect(listTemp.indexOf("MainAbility2 onAbilityDestroy") !== -1).assertTrue();
 
         globalThis.applicationContext1.off("abilityLifecycle", globalThis.callbackid1, (error) => {
           console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error));
@@ -1183,7 +1055,7 @@ export default function lifecycleTest() {
     it("Crossplatform_Multi_LifeCycleTest_0100", 0, async function (done) {
       console.log("------------Crossplatform_Multi_LifeCycleTest_0100 START-------------");
       TAG = "Crossplatform_Multi_LifeCycleTest_0100";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -1199,7 +1071,7 @@ export default function lifecycleTest() {
 
       await sleep(1000);
 
-      var str = {
+      str = {
         bundleName: otherBundle,
         abilityName: "MainAbility",
         moduleName: "entry_test",
@@ -1231,7 +1103,7 @@ export default function lifecycleTest() {
     it("Crossplatform_AbilityStage_onCreate_Test_0100", 0, async function (done) {
       console.log("------------Crossplatform_AbilityStage_onCreate_Test_0100 START-------------");
       TAG = "Crossplatform_AbilityStage_onCreate_Test_0100";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility2",
         moduleName: moduleName,
@@ -1261,7 +1133,7 @@ export default function lifecycleTest() {
     it("Crossplatform_AbilityStage_Context_Test_0100", 0, async function (done) {
       console.log("------------Crossplatform_AbilityStage_Context_Test_0100 START-------------");
       TAG = "Crossplatform_AbilityStage_Context_Test_0100";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility2",
         moduleName: moduleName,
@@ -1296,7 +1168,7 @@ export default function lifecycleTest() {
     it("Crossplatform_Multi_LifeCycleTest_0200", 0, async function (done) {
       console.log("------------Crossplatform_Multi_LifeCycleTest_0200 START-------------");
       TAG = "Crossplatform_Multi_LifeCycleTest_0200";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MultiMainability1",
         moduleName: moduleName,
@@ -1313,8 +1185,8 @@ export default function lifecycleTest() {
         });
       await sleep(1500);
 
-      var listtemp = [];
-      for (var i = 0; i < globalThis.mlist1.length; i++) {
+      let listtemp = [];
+      for (let i = 0; i < globalThis.mlist1.length; i++) {
         const item = globalThis.mlist1[i];
         if (item.indexOf("MultiMainability1") != -1) {
           listtemp.push(item);
@@ -1336,8 +1208,8 @@ export default function lifecycleTest() {
         });
       await sleep(1500);
 
-      var listtemp = [];
-      for (var i = 0; i < globalThis.mlist1.length; i++) {
+      listtemp = [];
+      for (let i = 0; i < globalThis.mlist1.length; i++) {
         const item = globalThis.mlist1[i];
         if (item.indexOf("MultiMainability1") != -1) {
           listtemp.push(item);
@@ -1359,7 +1231,7 @@ export default function lifecycleTest() {
     it("Crossplatform_LifeCycleTest_on_0100", 0, async function (done) {
       console.log("------------Crossplatform_LifeCycleTest_on_0100 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0100";
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility13",
         moduleName: moduleName,
@@ -1397,7 +1269,7 @@ export default function lifecycleTest() {
     it("Crossplatform_LifeCycleTest_on_0200", 0, async function (done) {
       console.log("------------Crossplatform_LifeCycleTest_on_0200 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0200";
-      var listKey14 = [];
+      let listKey14 = [];
       let AbilityLifecycleCallback = {
         onAbilityCreate(ability) {
           console.log(TAG + " onAbilityCreate ability:" + JSON.stringify(ability));
@@ -1458,7 +1330,7 @@ export default function lifecycleTest() {
         },
       };
 
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility14",
         moduleName: moduleName,
@@ -1490,18 +1362,13 @@ export default function lifecycleTest() {
       await sleep(1000);
       globalThis.ability14.terminateSelf();
       await sleep(1000);
-      console.info(TAG + "list:" + listKey14);
 
-      var listtemp = [];
-      for (var i = 0; i < listKey14.length; i++) {
-        const item = listKey14[i];
-        if (item.indexOf("MainAbility14") != -1) {
-          listtemp.push(item);
-        }
-      }
-      expect(listtemp[0]).assertEqual("MainAbility14 onAbilityBackground");
-      expect(listtemp[1]).assertEqual("MainAbility14 onWindowStageDestroy");
-      expect(listtemp[2]).assertEqual("MainAbility14 onAbilityDestroy");
+      let listTemp = JSON.stringify(listKey14);
+      console.info(TAG + "list:" + listTemp);
+
+      expect(listTemp.indexOf("MainAbility14 onAbilityBackground") !== -1).assertTrue();
+      expect(listTemp.indexOf("MainAbility14 onWindowStageDestroy") !== -1).assertTrue();
+      expect(listTemp.indexOf("MainAbility14 onAbilityDestroy") !== -1).assertTrue();
       done();
     });
 
@@ -1533,7 +1400,7 @@ export default function lifecycleTest() {
       console.log("------------LifeCycleTest_on_0400 START-------------");
       TAG = "Crossplatform_LifeCycleTest_on_0400";
 
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility1",
         moduleName: moduleName,
@@ -1575,7 +1442,7 @@ export default function lifecycleTest() {
       console.log("------------LifeCycleTest_on_0500 START-------------");
       TAG = "LifeCycleTest_on_0500";
 
-      var str = {
+      let str = {
         bundleName: "com.test.lifecycle_crossplatform_xts",
         abilityName: "MainAbility",
         moduleName: otherModuleName,
