@@ -60,10 +60,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.left).assertEqual(stackSizeKey01.left)
-      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
-      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackLargerAlignContentTopStart END');
@@ -85,11 +85,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(vp2px(50))
+      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(Math.round(vp2px(50)))
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
-      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackLargerAlignContentTop END');
@@ -112,10 +112,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
-      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
-      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackLargerAlignContentTopEnd END');
@@ -138,10 +138,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.left).assertEqual(stackSizeKey01.left)
-      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackLargerAlignContentStart END');
@@ -163,11 +163,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackLargerAlignContentCenter END');
@@ -190,10 +190,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
-      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.bottom - stackSizeKey01.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackLargerAlignContentEnd END');
@@ -216,10 +216,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.left).assertEqual(stackSizeKey01.left)
-      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackLargerAlignContentBottomStart END');
@@ -241,11 +241,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.right - stackSizeKey01.right)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackLargerAlignContentBottom END');
@@ -267,11 +267,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey01.left - stackSizeKey.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
-      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey01.top - stackSizeKey.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackLargerAlignContentBottomEnd END');
@@ -297,7 +297,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackEqualAlignContentBottomTopStart END');
@@ -323,7 +323,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackEqualAlignContentBottomTop END');
@@ -349,7 +349,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackEqualAlignContentBottomTopEnd END');
@@ -375,7 +375,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackEqualAlignContentBottomStart END');
@@ -401,7 +401,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackEqualAlignContentCenter END');
@@ -427,7 +427,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackEqualAlignContentEnd END');
@@ -453,7 +453,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackEqualAlignContentBottomStart END');
@@ -479,7 +479,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackEqualAlignContentBottom END');
@@ -505,7 +505,7 @@ export default function stackSizeChange() {
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackEqualAlignContentBottomEnd END');
@@ -528,10 +528,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.left).assertEqual(stackSizeKey01.left)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
-      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackLessAlignContentTopStart END');
@@ -553,11 +553,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(vp2px(50))
+      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(Math.round(vp2px(50)))
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
-      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackLessAlignContentTop END');
@@ -580,10 +580,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
-      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.top).assertEqual(stackSizeKey01.top)
-      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackLessAlignContentTopEnd END');
@@ -606,10 +606,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.left).assertEqual(stackSizeKey01.left)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackLessAlignContentStart END');
@@ -631,11 +631,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackLessAlignContentCenter END');
@@ -658,10 +658,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
-      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.bottom - stackSizeKey.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackLessAlignContentEnd END');
@@ -684,10 +684,10 @@ export default function stackSizeChange() {
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
       expect(stackSizeKey.left).assertEqual(stackSizeKey01.left)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackLessAlignContentBottomStart END');
@@ -709,11 +709,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey.right)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackLessAlignContentBottom END');
@@ -735,11 +735,11 @@ export default function stackSizeChange() {
       let obj = JSON.parse(strJson);
       let stackSizeKey = CommonFunc.getComponentRect('stackSizeKey');
       let stackSizeKey01 = CommonFunc.getComponentRect('stackSizeKey01');
-      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey.left - stackSizeKey01.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.right).assertEqual(stackSizeKey01.right)
-      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackSizeKey.top - stackSizeKey01.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackSizeKey.bottom).assertEqual(stackSizeKey01.bottom)
-      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackSizeKey01.right - stackSizeKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackLessAlignContentBottomEnd END');

@@ -79,15 +79,15 @@ export default function Grid_RowCol_TemplateChange() {
       expect(GridTemplateChange_Grid_014.bottom).assertEqual(GridTemplateChange_Grid_01.bottom);
 
 
-      expect(Math.round(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left)).assertEqual(vp2px(150));
+      expect(Math.round(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top)).assertEqual(vp2px(150));
-      expect(Math.round(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top)).assertEqual(vp2px(150));
-      expect(Math.round(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top)).assertEqual(vp2px(150));
+      expect(Math.round(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testGridRowColTemplateChange01] END');
       done();
     });
@@ -125,15 +125,15 @@ export default function Grid_RowCol_TemplateChange() {
       expect(GridTemplateChange_Grid_011.bottom).assertEqual(GridTemplateChange_Grid_012.bottom);
       expect(GridTemplateChange_Grid_011.bottom).assertEqual(GridTemplateChange_Grid_013.bottom);
 
-      expect(Math.round(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left)).assertEqual(vp2px(100));
-      expect(Math.round(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left)).assertEqual(vp2px(100));
-      expect(Math.round(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left)).assertEqual(vp2px(100));
-      expect(Math.round(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left)).assertEqual(vp2px(100));
+      expect(Math.round(GridTemplateChange_Grid_011.right - GridTemplateChange_Grid_011.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(GridTemplateChange_Grid_012.right - GridTemplateChange_Grid_012.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(GridTemplateChange_Grid_013.right - GridTemplateChange_Grid_013.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(GridTemplateChange_Grid_014.right - GridTemplateChange_Grid_014.left)).assertEqual(Math.round(vp2px(100)));
 
-      expect(Math.round(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top)).assertEqual(vp2px(100));
-      expect(Math.round(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top)).assertEqual(vp2px(100));
-      expect(Math.round(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top)).assertEqual(vp2px(100));
+      expect(Math.round(GridTemplateChange_Grid_011.bottom - GridTemplateChange_Grid_011.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(GridTemplateChange_Grid_012.bottom - GridTemplateChange_Grid_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(GridTemplateChange_Grid_013.bottom - GridTemplateChange_Grid_013.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(GridTemplateChange_Grid_014.bottom - GridTemplateChange_Grid_014.top)).assertEqual(Math.round(vp2px(100)));
       console.info('[testGridRowColTemplateChange02] END');
       done();
     });

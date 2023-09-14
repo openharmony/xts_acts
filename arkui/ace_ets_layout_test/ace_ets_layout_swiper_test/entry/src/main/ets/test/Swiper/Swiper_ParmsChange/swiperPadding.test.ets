@@ -33,9 +33,11 @@ export default function swiperPadding() {
           let result = await router.push(options)
           console.info("push swiperPadding page success " + JSON.stringify(result));
         }
+
       } catch (err) {
         console.error("push swiperPadding page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
@@ -61,10 +63,10 @@ export default function swiperPadding() {
       let swiperPadding06 = CommonFunc.getComponentRect('swiperPadding06');
       // Before flipping the page
       console.info("Before page turning , swiperPadding01.left - swiperPadding.left value is " + JSON.stringify(swiperPadding01.left - swiperPadding.left));
-      expect(swiperPadding01.left - swiperPadding.left).assertEqual(vp2px(20))
-      expect(swiperPadding.right - swiperPadding01.right).assertEqual(vp2px(20))
-      expect(swiperPadding01.top - swiperPadding.top).assertEqual(vp2px(20))
-      expect(swiperPadding.bottom - swiperPadding01.bottom).assertEqual(vp2px(20))
+      expect(swiperPadding01.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)))
+      expect(swiperPadding.right - swiperPadding01.right).assertEqual(Math.round(vp2px(20)))
+      expect(swiperPadding01.top - swiperPadding.top).assertEqual(Math.round(vp2px(20)))
+      expect(swiperPadding.bottom - swiperPadding01.bottom).assertEqual(Math.round(vp2px(20)))
       // Page turning.
       let driver = await Driver.create();
       await CommonFunc.sleep(500);
@@ -80,10 +82,10 @@ export default function swiperPadding() {
       swiperPadding06 = CommonFunc.getComponentRect('swiperPadding06');
       // After flipping the page.
       console.info("After page turning, swiperPadding02.left - swiperPadding.left value is " + JSON.stringify(swiperPadding02.left - swiperPadding.left));
-      expect(swiperPadding02.left - swiperPadding.left).assertEqual(vp2px(20));
-      expect(swiperPadding.right - swiperPadding02.right).assertEqual(vp2px(20));
-      expect(swiperPadding02.top - swiperPadding.top).assertEqual(vp2px(20));
-      expect(swiperPadding.bottom - swiperPadding02.bottom).assertEqual(vp2px(20));
+      expect(swiperPadding02.left - swiperPadding.left).assertEqual(Math.round(vp2px(20)));
+      expect(swiperPadding.right - swiperPadding02.right).assertEqual(Math.round(vp2px(20)));
+      expect(swiperPadding02.top - swiperPadding.top).assertEqual(Math.round(vp2px(20)));
+      expect(swiperPadding.bottom - swiperPadding02.bottom).assertEqual(Math.round(vp2px(20)));
       console.info("The type value is " + JSON.stringify(obj.$type));
       console.info("The indicator value is " + JSON.stringify(obj.$attrs.indicator));
       console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));

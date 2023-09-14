@@ -58,12 +58,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignPaddingAlignTopStart END');
@@ -86,10 +86,10 @@ export default function stackPaddingChange() {
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
       expect(Math.round((stackPaddingKey01.left - stackPaddingKey.left)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.right - stackPaddingKey01.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignPaddingAlignTop END');
@@ -110,12 +110,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignPaddingAlignTopEnd END');
@@ -136,12 +136,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(40))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(40)))
       expect(stackPaddingKey01.top - stackPaddingKey.top).assertEqual(vp2px(25))
       expect(stackPaddingKey.bottom - stackPaddingKey01.bottom).assertEqual(vp2px(25))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignPaddingAlignStart END');
@@ -166,8 +166,8 @@ export default function stackPaddingChange() {
       expect(Math.round((stackPaddingKey.right - stackPaddingKey01.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey01.top - stackPaddingKey.top)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignPaddingAlignCenter END');
@@ -188,12 +188,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(10))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(10)))
       expect(stackPaddingKey01.top - stackPaddingKey.top).assertEqual(vp2px(25))
       expect(stackPaddingKey.bottom - stackPaddingKey01.bottom).assertEqual(vp2px(25))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignPaddingAlignEnd END');
@@ -214,12 +214,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignPaddingAlignBottomStart END');
@@ -242,10 +242,10 @@ export default function stackPaddingChange() {
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
       expect(Math.round((stackPaddingKey01.left - stackPaddingKey.left)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.right - stackPaddingKey01.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignPaddingAlignBottom END');
@@ -266,12 +266,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(40))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(10))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(40)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(10)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignPaddingAlignBottomEnd END');
@@ -292,12 +292,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackAlignPaddingExceedAlignTopStart END');
@@ -320,10 +320,10 @@ export default function stackPaddingChange() {
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
       expect(Math.round((stackPaddingKey01.left - stackPaddingKey.left)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.right - stackPaddingKey01.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackAlignPaddingExceedAlignTop END');
@@ -344,12 +344,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackAlignPaddingExceedAlignTopEnd END');
@@ -370,12 +370,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(20))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(20)))
       expect(Math.round((stackPaddingKey01.top - stackPaddingKey.top)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackAlignPaddingExceedAlignStart END');
@@ -400,8 +400,8 @@ export default function stackPaddingChange() {
       expect(Math.round((stackPaddingKey.right - stackPaddingKey01.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey01.top - stackPaddingKey.top)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackAlignPaddingExceedAlignCenter END');
@@ -422,12 +422,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(30))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(30)))
       expect(Math.round((stackPaddingKey01.top - stackPaddingKey.top)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.bottom - stackPaddingKey01.bottom)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackAlignPaddingExceedAlignEnd END');
@@ -448,12 +448,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackAlignPaddingExceedAlignBottomStart END');
@@ -476,10 +476,10 @@ export default function stackPaddingChange() {
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
       expect(Math.round((stackPaddingKey01.left - stackPaddingKey.left)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
       expect(Math.round((stackPaddingKey.right - stackPaddingKey01.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10)
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackAlignPaddingExceedAlignBottom END');
@@ -500,12 +500,12 @@ export default function stackPaddingChange() {
       let obj = JSON.parse(strJson);
       let stackPaddingKey = CommonFunc.getComponentRect('stackPaddingKey');
       let stackPaddingKey01 = CommonFunc.getComponentRect('stackPaddingKey01');
-      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(vp2px(20))
-      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(vp2px(250))
-      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(vp2px(300))
+      expect(Math.round(stackPaddingKey01.left - stackPaddingKey.left)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey01.right)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey01.top - stackPaddingKey.top)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(stackPaddingKey.bottom - stackPaddingKey01.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(stackPaddingKey01.right - stackPaddingKey01.left)).assertEqual(Math.round(vp2px(250)))
+      expect(Math.round(stackPaddingKey.right - stackPaddingKey.left)).assertEqual(Math.round(vp2px(300)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackAlignPaddingExceedAlignBottomEnd END');

@@ -67,8 +67,8 @@ export default function Gutter_Length_Resource() {
       expect(secondLengthResource.top).assertEqual(LengthResource_1.top);
       expect(firstLengthResource.left).assertEqual(LengthResource_1.left);
 
-      expect(Math.round(secondLengthResource.left - firstLengthResource.right)).assertEqual(vp2px(10));
-      expect(Math.round(thirdLengthResource.top - firstLengthResource.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(secondLengthResource.left - firstLengthResource.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(thirdLengthResource.top - firstLengthResource.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('SUB_ACE_GridRowGutterLength_RESOURCE_0100 END');
       done();

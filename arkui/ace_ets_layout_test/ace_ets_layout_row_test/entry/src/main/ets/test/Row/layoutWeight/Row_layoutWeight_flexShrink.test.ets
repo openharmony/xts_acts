@@ -66,20 +66,20 @@ export default function Row_layoutWeight_flexShrink() {
       expect(Math.round(Row_layoutWeight_flexShrink_013.top - Row_layoutWeight_flexShrink_01.top)).assertEqual(Math.round(Row_layoutWeight_flexShrink_01.bottom - Row_layoutWeight_flexShrink_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right', + Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)
       console.log('Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right', + Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)
 
 
       console.log('assert height')
-      expect(Math.round(Row_layoutWeight_flexShrink_011.bottom - Row_layoutWeight_flexShrink_011.top)).assertEqual(vp2px(100));
-      expect(Math.round(Row_layoutWeight_flexShrink_012.bottom - Row_layoutWeight_flexShrink_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Row_layoutWeight_flexShrink_013.bottom - Row_layoutWeight_flexShrink_013.top)).assertEqual(vp2px(100));
+      expect(Math.round(Row_layoutWeight_flexShrink_011.bottom - Row_layoutWeight_flexShrink_011.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Row_layoutWeight_flexShrink_012.bottom - Row_layoutWeight_flexShrink_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Row_layoutWeight_flexShrink_013.bottom - Row_layoutWeight_flexShrink_013.top)).assertEqual(Math.round(vp2px(100)));
       console.log('assert weight')
-      expect(Math.round(Row_layoutWeight_flexShrink_011.right - Row_layoutWeight_flexShrink_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Row_layoutWeight_flexShrink_012.right - Row_layoutWeight_flexShrink_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Row_layoutWeight_flexShrink_013.right - Row_layoutWeight_flexShrink_013.left)).assertEqual(vp2px(150));
+      expect(Math.round(Row_layoutWeight_flexShrink_011.right - Row_layoutWeight_flexShrink_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Row_layoutWeight_flexShrink_012.right - Row_layoutWeight_flexShrink_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Row_layoutWeight_flexShrink_013.right - Row_layoutWeight_flexShrink_013.left)).assertEqual(Math.round(vp2px(150)));
       console.info('[SUB_ACE_Row_layoutWeight_flexShrink_TEST_0100] END');
       done();
     });
@@ -106,8 +106,8 @@ export default function Row_layoutWeight_flexShrink() {
       expect(Math.round(Row_layoutWeight_flexShrink_013.top - Row_layoutWeight_flexShrink_01.top)).assertEqual(Math.round(Row_layoutWeight_flexShrink_01.bottom - Row_layoutWeight_flexShrink_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right', + Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)
       console.log('Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right', + Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)
 
@@ -146,8 +146,8 @@ export default function Row_layoutWeight_flexShrink() {
       expect(Math.round(Row_layoutWeight_flexShrink_013.top - Row_layoutWeight_flexShrink_01.top)).assertEqual(Math.round(Row_layoutWeight_flexShrink_01.bottom - Row_layoutWeight_flexShrink_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right', + Row_layoutWeight_flexShrink_012.left - Row_layoutWeight_flexShrink_011.right)
       console.log('Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right', + Row_layoutWeight_flexShrink_013.left - Row_layoutWeight_flexShrink_012.right)
 

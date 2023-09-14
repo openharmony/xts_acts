@@ -65,8 +65,8 @@ export default function Grid_Row_Direction_RowReverse() {
       expect(firstDirectionRowReverse.top).assertEqual(DirectionRowReverse_1.top);
       expect(firstDirectionRowReverse.right).assertEqual(DirectionRowReverse_1.right);
 
-      expect(Math.round(firstDirectionRowReverse.left - secondDirectionRowReverse.right)).assertEqual(vp2px(10));
-      expect(Math.round(thirdDirectionRowReverse.top - firstDirectionRowReverse.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(firstDirectionRowReverse.left - secondDirectionRowReverse.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(thirdDirectionRowReverse.top - firstDirectionRowReverse.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('SUB_ACE_GridRowDirection_RowReverse_0100 END');
       done();

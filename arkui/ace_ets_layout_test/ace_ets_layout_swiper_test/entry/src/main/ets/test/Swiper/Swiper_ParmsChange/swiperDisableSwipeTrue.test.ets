@@ -36,6 +36,7 @@ export default function swiperDisableSwipeTrue() {
       } catch (err) {
         console.error("push swiperDisableSwipeTrue page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

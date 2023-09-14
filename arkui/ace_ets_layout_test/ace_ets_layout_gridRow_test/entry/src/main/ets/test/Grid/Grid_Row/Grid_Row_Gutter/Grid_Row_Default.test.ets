@@ -64,7 +64,7 @@ export default function Gutter_Length_Default() {
       expect(firstLengthNoSet.top).assertEqual(LengthNoSet_1.top);
       expect(firstLengthNoSet.left).assertEqual(LengthNoSet_1.left);
 
-      expect(Math.round(secondLengthNoSet.top - firstLengthNoSet.bottom)).assertEqual(vp2px(0));
+      expect(Math.round(secondLengthNoSet.top - firstLengthNoSet.bottom)).assertEqual(Math.round(vp2px(0)));
 
       console.info('SUB_ACE_GridRowGutterLength_Default_0100 END');
       done();

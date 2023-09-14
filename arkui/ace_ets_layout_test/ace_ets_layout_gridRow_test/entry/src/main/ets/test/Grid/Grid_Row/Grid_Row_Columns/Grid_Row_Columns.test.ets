@@ -67,13 +67,13 @@ export default function Grid_Row_Columns() {
       let Grid_Row_Columns_07 = CommonFunc.getComponentRect('Grid_Row_Columns_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Columns_01.top - Grid_Row_Columns_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_02.top - Grid_Row_Columns_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_03.top - Grid_Row_Columns_02.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_03.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_05.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_06.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_01.top - Grid_Row_Columns_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_02.top - Grid_Row_Columns_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_03.top - Grid_Row_Columns_02.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_03.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_04.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_05.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_06.bottom)).assertEqual(Math.round(vp2px(10)));
 
 
       console.info('[SUB_ACE_Grid_Row_Columns_TEST_0100] END');
@@ -103,19 +103,19 @@ export default function Grid_Row_Columns() {
       let Grid_Row_Columns_07 = CommonFunc.getComponentRect('Grid_Row_Columns_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_02.top - Grid_Row_Columns_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_03.top - Grid_Row_Columns_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_02.top - Grid_Row_Columns_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_03.top - Grid_Row_Columns_01.bottom)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_02.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_03.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_02.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_03.bottom)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_04.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_05.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_04.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_05.bottom)).assertEqual(Math.round(vp2px(10)));
 
 
       console.info('[SUB_ACE_Grid_Row_Columns_TEST_0200] END');
@@ -143,14 +143,14 @@ export default function Grid_Row_Columns() {
       let Grid_Row_Columns_06 = CommonFunc.getComponentRect('Grid_Row_Columns_06');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_04.left - Grid_Row_Columns_03.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_04.left - Grid_Row_Columns_03.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_03.top - Grid_Row_Columns_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_02.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_03.top - Grid_Row_Columns_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_02.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Columns_TEST_0300] END');
       done();
@@ -178,17 +178,17 @@ export default function Grid_Row_Columns() {
       let Grid_Row_Columns_07 = CommonFunc.getComponentRect('Grid_Row_Columns_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_06.left - Grid_Row_Columns_05.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_06.left - Grid_Row_Columns_05.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_02.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_03.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_04.top - Grid_Row_Columns_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_02.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_03.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Columns_TEST_0400] END');
       done();
@@ -216,16 +216,16 @@ export default function Grid_Row_Columns() {
       let Grid_Row_Columns_07 = CommonFunc.getComponentRect('Grid_Row_Columns_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_04.left - Grid_Row_Columns_03.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_06.left - Grid_Row_Columns_05.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_04.left - Grid_Row_Columns_03.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_06.left - Grid_Row_Columns_05.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_01.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_02.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_05.top - Grid_Row_Columns_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_02.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Columns_TEST_0500] END');
       done();
@@ -253,15 +253,15 @@ export default function Grid_Row_Columns() {
       let Grid_Row_Columns_07 = CommonFunc.getComponentRect('Grid_Row_Columns_07');
 
       console.log('assert space')
-      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_04.left - Grid_Row_Columns_03.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_01.left - Grid_Row_Columns_00.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_02.left - Grid_Row_Columns_01.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_03.left - Grid_Row_Columns_02.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_04.left - Grid_Row_Columns_03.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_05.left - Grid_Row_Columns_04.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.left - Grid_Row_Columns_06.right)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_00.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_01.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Grid_Row_Columns_06.top - Grid_Row_Columns_00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Grid_Row_Columns_07.top - Grid_Row_Columns_01.bottom)).assertEqual(Math.round(vp2px(10)));
 
       console.info('[SUB_ACE_Grid_Row_Columns_TEST_0600] END');
       done();

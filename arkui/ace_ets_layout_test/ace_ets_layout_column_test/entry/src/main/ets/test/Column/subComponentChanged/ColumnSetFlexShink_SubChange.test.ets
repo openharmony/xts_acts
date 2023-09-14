@@ -58,9 +58,9 @@ export default function ColumnSetFlexShink_SubChange() {
       let columnSetFlexShink = CommonFunc.getComponentRect('columnSetFlexShink');
 
       expect(columnSetFlexShink.top).assertEqual(columnSetFlexShink_1.top)
-      expect(Math.round(columnSetFlexShink_2.top - columnSetFlexShink_1.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnSetFlexShink_3.top - columnSetFlexShink_2.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnSetFlexShink.bottom - columnSetFlexShink_3.bottom)).assertEqual(vp2px(40))
+      expect(Math.round(columnSetFlexShink_2.top - columnSetFlexShink_1.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(columnSetFlexShink_3.top - columnSetFlexShink_2.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(columnSetFlexShink.bottom - columnSetFlexShink_3.bottom)).assertEqual(Math.round(vp2px(40)))
       console.info('new testColumnSetFlexShink END');
       done();
     });

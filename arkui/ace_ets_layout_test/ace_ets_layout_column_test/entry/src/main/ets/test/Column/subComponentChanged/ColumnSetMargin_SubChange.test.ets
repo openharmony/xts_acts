@@ -56,13 +56,13 @@ export default function ColumnSetMargin_SubChange() {
       let columnSetMargin_2 = CommonFunc.getComponentRect('columnSetMargin_2');
       let columnSetMargin_3 = CommonFunc.getComponentRect('columnSetMargin_3');
       let columnSetMargin = CommonFunc.getComponentRect('columnSetMargin');
-      expect(Math.round(columnSetMargin_1.top - columnSetMargin.top)).assertEqual(vp2px(20))
-      expect(Math.round(columnSetMargin_2.top - columnSetMargin_1.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(columnSetMargin_3.top - columnSetMargin_2.bottom)).assertEqual(vp2px(30))
+      expect(Math.round(columnSetMargin_1.top - columnSetMargin.top)).assertEqual(Math.round(vp2px(20)))
+      expect(Math.round(columnSetMargin_2.top - columnSetMargin_1.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(columnSetMargin_3.top - columnSetMargin_2.bottom)).assertEqual(Math.round(vp2px(30)))
       expect(columnSetMargin.bottom).assertEqual(columnSetMargin_3.bottom)
-      expect(Math.round(columnSetMargin_1.right - columnSetMargin_1.left)).assertEqual(vp2px(300))
-      expect(Math.round(columnSetMargin_2.right - columnSetMargin_2.left)).assertEqual(vp2px(300))
-      expect(Math.round(columnSetMargin_3.right - columnSetMargin_3.left)).assertEqual(vp2px(300))
+      expect(Math.round(columnSetMargin_1.right - columnSetMargin_1.left)).assertEqual(Math.round(vp2px(300)))
+      expect(Math.round(columnSetMargin_2.right - columnSetMargin_2.left)).assertEqual(Math.round(vp2px(300)))
+      expect(Math.round(columnSetMargin_3.right - columnSetMargin_3.left)).assertEqual(Math.round(vp2px(300)))
       console.info('new testColumnParentMarginPadSubMarPad END');
       done();
     });

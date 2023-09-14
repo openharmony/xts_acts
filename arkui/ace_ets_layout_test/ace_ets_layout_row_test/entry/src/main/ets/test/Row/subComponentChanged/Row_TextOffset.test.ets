@@ -66,16 +66,16 @@ export default function row_TextOffsetTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(100));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(secondText.right- secondText.left));
       expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(thirdText.right- thirdText.left));
 
-      expect(Math.round(firstText.left -firstTextLeft)).assertEqual(vp2px(10));
-      expect(Math.round(firstText.top -firstTextTop)).assertEqual(vp2px(10));
+      expect(Math.round(firstText.left -firstTextLeft)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(firstText.top -firstTextTop)).assertEqual(Math.round(vp2px(10)));
 
       expect(secondText.top).assertEqual(secondTextTop);
       expect(secondText.left).assertEqual(secondTextLeft);
@@ -85,9 +85,9 @@ export default function row_TextOffsetTest() {
       expect(Math.round(thirdText.top - rowContainer.top))
         .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom));
 
-      expect(Math.round(thirdText.left - secondText.right)).assertEqual(vp2px(10));
+      expect(Math.round(thirdText.left - secondText.right)).assertEqual(Math.round(vp2px(10)));
 
-      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(vp2px(30));
+      expect(Math.round(rowContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(30)));
       console.info('[testRowTextOffset] END');
       done();
     });

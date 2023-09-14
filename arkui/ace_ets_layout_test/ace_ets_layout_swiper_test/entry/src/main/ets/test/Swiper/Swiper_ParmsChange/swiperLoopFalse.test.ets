@@ -33,14 +33,15 @@ export default function swiperLoopFalse() {
           let result = await router.push(options)
           console.info("push swiperLoopFalse page success " + JSON.stringify(result));
         }
+
+
       } catch (err) {
         console.error("push swiperLoopFalse page error " + JSON.stringify(err));
       }
+      done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'swiperLoop', value: true});
-      globalThis.value.message.notify({name:'index', value: 0});
       console.info("swiperVertical after each called");
     });
 

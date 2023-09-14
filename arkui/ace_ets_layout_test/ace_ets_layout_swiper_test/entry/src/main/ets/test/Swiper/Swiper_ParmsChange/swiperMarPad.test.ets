@@ -36,6 +36,7 @@ export default function swiperMarPad() {
       } catch (err) {
         console.error("push swiperMarPad page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
@@ -61,10 +62,10 @@ export default function swiperMarPad() {
       let swiperMarPad06 = CommonFunc.getComponentRect('swiperMarPad06');
       // Before flipping the page
       console.info("Before page turning , swiperMarPad01.left - swiperMarPad.left value is " + JSON.stringify(swiperMarPad01.left - swiperMarPad.left));
-      expect(swiperMarPad01.left - swiperMarPad.left).assertEqual(vp2px(20));
-      expect(swiperMarPad.right - swiperMarPad01.right).assertEqual(vp2px(20));
-      expect(swiperMarPad01.top - swiperMarPad.top).assertEqual(vp2px(20));
-      expect(swiperMarPad.bottom - swiperMarPad01.bottom).assertEqual(vp2px(20));
+      expect(swiperMarPad01.left - swiperMarPad.left).assertEqual(Math.round(vp2px(20)));
+      expect(swiperMarPad.right - swiperMarPad01.right).assertEqual(Math.round(vp2px(20)));
+      expect(swiperMarPad01.top - swiperMarPad.top).assertEqual(Math.round(vp2px(20)));
+      expect(swiperMarPad.bottom - swiperMarPad01.bottom).assertEqual(Math.round(vp2px(20)));
       // Page turning.
       let driver = await Driver.create();
       await CommonFunc.sleep(500)
@@ -80,10 +81,10 @@ export default function swiperMarPad() {
       swiperMarPad06 = CommonFunc.getComponentRect('swiperMarPad06');
       // After flipping the page.
       console.info("After page turning, swiperMarPad02.left - swiperMarPad.left value is " + JSON.stringify(swiperMarPad02.left - swiperMarPad.left));
-      expect(swiperMarPad02.left - swiperMarPad.left).assertEqual(vp2px(20));
-      expect(swiperMarPad.right - swiperMarPad02.right).assertEqual(vp2px(20));
-      expect(swiperMarPad02.top - swiperMarPad.top).assertEqual(vp2px(20));
-      expect(swiperMarPad.bottom - swiperMarPad02.bottom).assertEqual(vp2px(20));
+      expect(swiperMarPad02.left - swiperMarPad.left).assertEqual(Math.round(vp2px(20)));
+      expect(swiperMarPad.right - swiperMarPad02.right).assertEqual(Math.round(vp2px(20)));
+      expect(swiperMarPad02.top - swiperMarPad.top).assertEqual(Math.round(vp2px(20)));
+      expect(swiperMarPad.bottom - swiperMarPad02.bottom).assertEqual(Math.round(vp2px(20)));
       console.info("The type value is " + JSON.stringify(obj.$type));
       console.info("The indicator value is " + JSON.stringify(obj.$attrs.indicator));
       console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));

@@ -74,16 +74,16 @@ export default function column_WidthHeight_ChangeParent() {
         .assertEqual(Math.round(locationColumn.right - locationText3.right));
       expect(Math.round((locationColumn.right - locationText1.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
       expect(locationText1.top).assertEqual(locationColumn.top);
-      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(vp2px(40));
+      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(40)));
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnWidthHeightChangeParentHeightInRange END');
       done();
     });
@@ -114,16 +114,16 @@ export default function column_WidthHeight_ChangeParent() {
         .assertEqual(Math.round(locationColumn.right - locationText3.right));
       expect(Math.round((locationColumn.right - locationText1.right)*10)/10).assertEqual(Math.round(vp2px(25)*10)/10);
       expect(locationText1.top).assertEqual(locationColumn.top);
-      expect(Math.round(locationText3.bottom - locationColumn.bottom)).assertEqual(vp2px(60));
+      expect(Math.round(locationText3.bottom - locationColumn.bottom)).assertEqual(Math.round(vp2px(60)));
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnWidthHeightChangeParentHeightOutRange END');
       done();
     });
@@ -145,25 +145,25 @@ export default function column_WidthHeight_ChangeParent() {
       let locationText2 = CommonFunc.getComponentRect('WidthHeight_Test2');
       let locationText3 = CommonFunc.getComponentRect('WidthHeight_Test3');
       let locationColumn = CommonFunc.getComponentRect('ColumnWidthHeightChange1');
-      expect(Math.round(locationColumn.left - locationText1.left)).assertEqual(vp2px(50));
+      expect(Math.round(locationColumn.left - locationText1.left)).assertEqual(Math.round(vp2px(50)));
       expect(Math.round(locationColumn.left - locationText1.left))
         .assertEqual(Math.round(locationText1.right - locationColumn.right));
       expect(Math.round(locationColumn.left - locationText2.left))
         .assertEqual(Math.round(locationText2.right - locationColumn.right));
       expect(Math.round(locationColumn.left - locationText3.left))
         .assertEqual(Math.round(locationText3.right - locationColumn.right));
-      expect(Math.round(locationText1.right - locationColumn.right)).assertEqual(vp2px(50));
+      expect(Math.round(locationText1.right - locationColumn.right)).assertEqual(Math.round(vp2px(50)));
       expect(locationText1.top).assertEqual(locationColumn.top);
-      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(vp2px(40));
+      expect(Math.round(locationColumn.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(40)));
       expect(Math.round(locationText2.top - locationText1.bottom))
         .assertEqual(Math.round(locationText3.top - locationText2.bottom));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(30));
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
       console.info('new testColumnWidthHeightChangeParentWidthOutRange END');
       done();
     });
