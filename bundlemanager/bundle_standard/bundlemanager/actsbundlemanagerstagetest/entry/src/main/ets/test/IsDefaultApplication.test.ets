@@ -16,6 +16,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import defaultAppMgr from '@ohos.bundle.defaultAppManager'
 
+const PARAM_ERROR_CODE = 401;
+
 export default function isDefaultApplicationTest() {
     describe('isDefaultApplicationTest', function() {
   
@@ -91,6 +93,56 @@ export default function isDefaultApplicationTest() {
             expect(typeof (defaultAppMgr.ApplicationType.PPT)).assertEqual("string");
             expect(defaultAppMgr.ApplicationType.PPT).assertEqual("PPT Viewer");
             done()
+        });
+
+
+        /**
+          * @tc.number: SUB_BMS_DEFAULTAPP_QUERY_0052
+          * @tc.name: testIsDefaultApplicationNotExistedType
+          * @tc.desc: The parameter type is correct, the string format is incorrect, return false
+          */
+        it('testIsDefaultApplicationNotExistedType', 0, async function (done) {
+            try {
+                let data = defaultAppMgr.isDefaultApplicationSync("abc");
+                expect(data).assertFalse();
+                done();
+            } catch (err) {
+                expect().assertFail();
+                done();
+            }
+        });
+
+        /**
+          * @tc.number: SUB_BMS_DEFAULTAPP_QUERY_0053
+          * @tc.name: testIsDefaultApplicationNullType
+          * @tc.desc: The parameter type is null, the string format is incorrect, return false
+          */
+        it('testIsDefaultApplicationNullType', 0, async function (done) {
+            try {
+                let data = defaultAppMgr.isDefaultApplicationSync(null);
+                expect(data).assertFail();
+                done();
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR_CODE);
+                done();
+            }
+        });
+
+        /**
+          * @tc.number: SUB_BMS_DEFAULTAPP_QUERY_0053
+          * @tc.name: testIsDefaultApplicationUndefinedType
+          * @tc.desc: The parameter type is undefined, the string format is incorrect, return false
+          */
+        it('testIsDefaultApplicationUndefinedType', 0, async function (done) {
+
+            try {
+                let data = defaultAppMgr.isDefaultApplicationSync(undefined);
+                expect(data).assertFail();
+                done();
+            } catch (err) {
+                expect(err.code).assertEqual(PARAM_ERROR_CODE);
+                done();
+            }
         });
     })
   }

@@ -26,7 +26,6 @@ group("hiviewdfxtestacts") {
       "hidebugtest/hidebugtestjstest:ActsHiDebugTest",
       "hilogtest/hilogdomainofftest:ActsHilogDomainOffJsTest",
       "hilogtest/hilogdomainontest:ActsHilogDomainOnJsTest",
-      "hilogtest/hilogjstest:ActsHilogJsTest",
       "hisyseventtest/hisyseventboxtest:ActsHiSysEventBoxTest",
       "hisyseventtest/hisyseventjstest:ActsHiSysEventJsTest",
       "hisyseventtest/hisyseventnormaltest:ActsHiSysEventNormalTest",

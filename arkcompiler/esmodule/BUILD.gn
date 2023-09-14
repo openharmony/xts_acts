@@ -19,6 +19,7 @@ group("esmodule") {
     deps = [
       "esmodule_entry:ActsEsmoduleEntryTest",
       "esmodule_ohostest:ActsEsmoduleOhostestTest",
+      "esmodule_ohostestlib:ActsEsmoduleOhostestLib",
     ]
   }
 }

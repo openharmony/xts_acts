@@ -109,7 +109,7 @@ export default function SelectJsunit() {
       console.info("[SelectJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selected).assertEqual('2');
       expect(obj.$attrs.value).assertEqual('testButton');
-      expect(obj.$attrs.font).assertEqual('{"size":"16.00fp","weight":"500","family":"","style":"FontStyle.Normal"}');
+      expect(obj.$attrs.font).assertEqual('{"size":"16.00fp","weight":"FontWeight.Medium","family":"","style":"FontStyle.Normal"}');
       expect(obj.$attrs.selectedOptionBgColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.selectedOptionFont).assertEqual('{"size":"16.00fp","weight":"400","family":"","style":"FontStyle.Normal"}');
       expect(obj.$attrs.selectedOptionFontColor).assertEqual('#FFFFFF00');
@@ -186,7 +186,7 @@ export default function SelectJsunit() {
       console.info("[SelectJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selected).assertEqual('0');
       expect(obj.$attrs.value).assertEqual('10');
-      expect(obj.$attrs.font).assertEqual('{"size":"16.00fp","weight":"500","family":"","style":"FontStyle.Normal"}');
+      expect(obj.$attrs.font).assertEqual('{"size":"16.00fp","weight":"FontWeight.Medium","family":"","style":"FontStyle.Normal"}');
       expect(obj.$attrs.fontColor).assertEqual('#FF00007B');
       expect(obj.$attrs.selectedOptionBgColor).assertEqual('#FF0000FF');
       expect(obj.$attrs.selectedOptionFont).assertEqual('{"size":"16.00fp","weight":"400","family":"","style":"FontStyle.Normal"}');

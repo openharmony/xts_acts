@@ -35,8 +35,6 @@ struct badgeTest {
   build() {
     Row() {
       Column() {
-        List({space: 0, initialIndex: 0 }){
-          ListItem(){
             Badge({
               count: 1,
               maxCount: 99,
@@ -50,8 +48,7 @@ struct badgeTest {
             }
             .width(100).height(50)
             .key("ArkUX_Stage_Badge_FontWeight_0100")
-          }
-          ListItem(){
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -63,8 +60,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0200")
             .width(100).height(50)
-          }
-          ListItem(){
+
             Badge({
               value: 'new',
               style: { badgeSize: 6, badgeColor: '#FA2A2D', fontWeight: 100 }
@@ -75,8 +71,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0300")
             .width(100).height(50)
-          }
-          ListItem(){
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -90,8 +85,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0400")
             .width(100).height(50)
-          }
-          ListItem(){
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -105,8 +99,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0500")
             .width(100).height(50)
-          }
-          ListItem(){
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -120,8 +113,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0600")
             .width(100).height(50)
-          }
-          ListItem(){
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -136,8 +128,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0700")
             .width(100).height(50)
-          }
-          ListItem() {
+          
             Badge({
               count: 1,
               maxCount: 99,
@@ -151,8 +142,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0800")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -166,8 +156,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_0900")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -181,8 +170,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_1000")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -196,8 +184,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_1100")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -211,8 +198,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_1200")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -226,8 +212,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_1300")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -242,8 +227,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_1400")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -258,8 +242,7 @@ struct badgeTest {
             }
             .key("ArkUX_Stage_Badge_FontWeight_1500")
             .width(100).height(50)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -274,8 +257,7 @@ struct badgeTest {
             .key("ArkUX_Stage_Badge_FontWeight_1600")
             .width(100).height(50)
             .layoutWeight(null)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -288,8 +270,7 @@ struct badgeTest {
                 .width(200).height(50).backgroundColor(0x317aff)
             }
             .key("ArkUX_Stage_Badge_BorderColor_0100").height(20)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -303,8 +284,7 @@ struct badgeTest {
                 .width(200).height(50).backgroundColor(0x317aff)
             }
             .key("ArkUX_Stage_Badge_BorderColor_0200").height(20)
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -321,8 +301,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -338,8 +317,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -356,8 +334,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -374,8 +351,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -392,8 +368,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -410,8 +385,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -428,8 +402,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -447,8 +420,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -466,8 +438,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -486,8 +457,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -503,8 +473,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -520,8 +489,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -538,8 +506,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -555,8 +522,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -572,8 +538,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -589,8 +554,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -607,8 +571,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -625,8 +588,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -642,8 +604,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -661,8 +622,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -678,8 +638,7 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
+
             Badge({
               count: 1,
               maxCount: 99,
@@ -696,8 +655,6 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-          ListItem() {
             Badge({
               count: 1,
               maxCount: 99,
@@ -714,8 +671,6 @@ struct badgeTest {
             .margin({
               top: 10
             })
-          }
-        }
       }
       .width('100%')
     }

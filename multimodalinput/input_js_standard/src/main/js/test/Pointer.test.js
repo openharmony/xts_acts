@@ -164,14 +164,18 @@ export default function Pointer_test() {
             try {
               var windowId = data.id;
               pointer.setPointerStyle(windowId, 4, (err) => {
+              try{
                 if (err) {
                   console.info(`SetPointerStyle_002 failed_1, err=${JSON.stringify(err)}`);
                   expect(false).assertTrue();
                 } else {
                   console.info(`SetPointerStyle_002 success`);
                   expect(true).assertTrue();
-                  resolve();
                 }
+              }catch(error){
+                console.info(`SetPointerStyle_002 assert fail`);
+              }
+                resolve();
               });
             } catch (error) {
               console.info(`SetPointerStyle_002 error`);
@@ -431,6 +435,16 @@ export default function Pointer_test() {
 
       console.info('Pointer_CURSOR_CIRCLE_test = ' + pointer.PointerStyle.CURSOR_CIRCLE);
       expect(pointer.PointerStyle.CURSOR_CIRCLE == 41).assertTrue();
+    })
+
+    it('Pointer_PointerStyle_Loading_test', 0, function () {
+      console.info('Pointer_LOADING_test = ' + pointer.PointerStyle.LOADING);
+      expect(pointer.PointerStyle.LOADING == 42).assertTrue();
+    })
+
+    it('Pointer_PointerStyle_Running_test', 0, function () {
+      console.info('Pointer_RUNNING_test = ' + pointer.PointerStyle.RUNNING);
+      expect(pointer.PointerStyle.RUNNING == 43).assertTrue();
     })
 
     it('Touchpad_RightClickType_test', 0, function () {

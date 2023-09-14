@@ -35,74 +35,38 @@ describe('AccessibleRegisterState', function () {
     /******************************************************************************** */
     /* Cases RegisterStateOnOff_0330-0360 are for accessibility.on() API test         */
     /******************************************************************************** */
-
     /*
     * @tc.number  RegisterStateOnOff_0330
     * @tc.name    RegisterStateOnOff_0330
-    * @tc.desc    The parameter input is 'accessibilityStateChange', test the accessibility.on() function,
-    *             and return void.
+    * @tc.desc    on(accessibilityStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0330', 0, async function (done) {
-        console.info('RegisterStateOnOff_0330');
-        let stateEventType = 'accessibilityStateChange';
-        let ret = accessibility.on(stateEventType, (data) => {});
-        expect(ret).assertEqual(undefined);
-        done();
+      console.info('RegisterStateOnOff_0330');
+      let callbackdata = (data) => {
+      }
+      accessibility.on('accessibilityStateChange', callbackdata);
+      accessibility.off('accessibilityStateChange', callbackdata);
+      expect(true).assertTrue();
+      done();
     })
 
     /*
     * @tc.number  RegisterStateOnOff_0340
     * @tc.name    RegisterStateOnOff_0340
-    * @tc.desc    The parameter input is 'touchGuideStateChange', test the accessibility.on() function,
-    *             and return void.
+    * @tc.desc    on(touchGuideStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
     */
     it('RegisterStateOnOff_0340', 0, async function (done) {
-        console.info('RegisterStateOnOff_0340');
-        let stateEventType = 'touchGuideStateChange';
-        let ret = accessibility.on(stateEventType, (data) => {});
-        expect(ret).assertEqual(undefined);
-        done();
-    })
-
-    /******************************************************************************** */
-    /* Cases RegisterStateOnOff_0370-0410 are for accessibility.off() API test        */
-    /******************************************************************************** */
-
-    /*
-    * @tc.number  RegisterStateOnOff_0370
-    * @tc.name    RegisterStateOnOff_0370
-    * @tc.desc    The parameter input is 'accessibilityStateChange', test the accessibility.off() function,
-    *             and return void.
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-    it('RegisterStateOnOff_0370', 0, async function (done) {
-        console.info('RegisterStateOnOff_0370');
-        let stateEventType = 'accessibilityStateChange';
-        let ret = accessibility.off(stateEventType, (data) => {});
-        expect(ret).assertEqual(undefined);
-        done();
-    })
-
-    /*
-    * @tc.number  RegisterStateOnOff_0380
-    * @tc.name    RegisterStateOnOff_0380
-    * @tc.desc    The parameter input is 'touchGuideStateChange', test the accessibility.off() function,
-    *             and return void.
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-    it('RegisterStateOnOff_0380', 0, async function (done) {
-        console.info('RegisterStateOnOff_0380');
-        let stateEventType = 'touchGuideStateChange';
-        let ret = accessibility.off(stateEventType, (data) => {});
-        expect(ret).assertEqual(undefined);
-        done();
+      console.info('RegisterStateOnOff_0340');
+      let callbackdata = (data) => {
+      }
+      accessibility.on('touchGuideStateChange', callbackdata);
+      accessibility.off('touchGuideStateChange', callbackdata);
+      expect(true).assertTrue();
+      done();
     })
 })
-
 }

@@ -237,32 +237,29 @@ export default function relationalStoreUpdateTest() {
                 {
                     let predicates = await new data_Rdb.RdbPredicates("test")
                     await predicates.equalTo("aaa", "null")
-                    let updatePromise = rdbStore.update(valueBucket, predicates)
-                    updatePromise.then(async (ret) => {
+                    await rdbStore.update(valueBucket, predicates).then(async (ret) => {
                         console.info(TAG + "update done: " + ret);
                         expect(null).assertFail();
                     }).catch((err) => {
+                        expect(err !== null).assertTrue();
                         console.info(TAG + "update with wrong condition");
                     })
-                    //await updatePromise
                 }
                 {
-                    const emptyBucket = {};
                     let predicates = await new data_Rdb.RdbPredicates("test")
                     await predicates.equalTo("name", "zhangsan")
                     await predicates.equalTo("age", 18)
                     await predicates.equalTo("null", 100.5)
-                    let updatePromise = rdbStore.update(valueBucket, predicates)
-                    updatePromise.then(async (ret) => {
+                    await rdbStore.update(valueBucket, predicates).then(async (ret) => {
                         console.info(TAG + "update done: " + ret);
-                        expect(null).assertFail();
+                        expect(ret).assertEqual(0);
+                        done();
+                        console.info(TAG + "************* testRdbStoreUpdate0004 end   *************");
                     }).catch((err) => {
                         console.info(TAG + "update with wrong condition");
                     })
                 }
             }
-            done();
-            console.info(TAG + "************* testRdbStoreUpdate0004 end   *************");
         })
 
         /**
@@ -329,7 +326,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(2).assertEqual(blobType[1]);
                         await expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(true).assertEqual(resultSet.goToNextRow())
                         const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
@@ -346,7 +343,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(8).assertEqual(blobType_1[1]);
                         await expect(9).assertEqual(blobType_1[2]);
                         console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-                            + salary_1 + ", blobType=" + blobType_1);
+                        + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
                         resultSet.close()
@@ -401,59 +398,58 @@ export default function relationalStoreUpdateTest() {
                 }
                 let predicates = await new data_Rdb.RdbPredicates("test")
                 await predicates.equalTo("age", "19")
-                let updatePromise = rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_NONE);
-                updatePromise.then(async (ret) => {
-                    await console.log(TAG + "testRdbStoreUpdateWithConflictResolution0002 done: " + ret);
-                    expect(null).assertFail();
+                await rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_NONE).then(async (ret) => {
+                    console.log(TAG + "testRdbStoreUpdateWithConflictResolution0002 done: " + ret);
+                    expect().assertFail();
                 }).catch((err) => {
-                    console.log(TAG + "testRdbStoreUpdateWithConflictResolution0002 error");
-                    expect(null).assertFail();
+                    console.log(TAG + "testRdbStoreUpdateWithConflictResolution0002 error" + err);
+                    expect(err !== null).assertTrue();
                 })
-                done()
             }
 
             {
                 let predicates = await new data_Rdb.RdbPredicates("test")
-                let resultSet = await rdbStore.query(predicates)
+                await rdbStore.query(predicates).then(async (resultSet)=>{
+                    expect(true).assertEqual(resultSet.goToFirstRow())
+                    const id = await resultSet.getLong(resultSet.getColumnIndex("id"))
+                    const name = await resultSet.getString(resultSet.getColumnIndex("name"))
+                    const age = await resultSet.getLong(resultSet.getColumnIndex("age"))
+                    const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                    const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                expect(true).assertEqual(resultSet.goToFirstRow())
-                const id = await resultSet.getLong(resultSet.getColumnIndex("id"))
-                const name = await resultSet.getString(resultSet.getColumnIndex("name"))
-                const age = await resultSet.getLong(resultSet.getColumnIndex("age"))
-                const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
-
-                await expect(1).assertEqual(id);
-                await expect("zhangsan").assertEqual(name);
-                await expect(18).assertEqual(age);
-                await expect(100.5).assertEqual(salary);
-                await expect(1).assertEqual(blobType[0]);
-                await expect(2).assertEqual(blobType[1]);
-                await expect(3).assertEqual(blobType[2]);
-                console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
+                    expect(1).assertEqual(id);
+                    expect("zhangsan").assertEqual(name);
+                    expect(18).assertEqual(age);
+                    expect(100.5).assertEqual(salary);
+                    expect(1).assertEqual(blobType[0]);
+                    expect(2).assertEqual(blobType[1]);
+                    expect(3).assertEqual(blobType[2]);
+                    console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
                     + salary + ", blobType=" + blobType);
 
-                await expect(true).assertEqual(resultSet.goToNextRow())
-                const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
-                const name_1 = await resultSet.getString(resultSet.getColumnIndex("name"))
-                const age_1 = await resultSet.getLong(resultSet.getColumnIndex("age"))
-                const salary_1 = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                const blobType_1 = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+                    expect(true).assertEqual(resultSet.goToNextRow())
+                    const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
+                    const name_1 = await resultSet.getString(resultSet.getColumnIndex("name"))
+                    const age_1 = await resultSet.getLong(resultSet.getColumnIndex("age"))
+                    const salary_1 = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                    const blobType_1 = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                await expect(2).assertEqual(id_1);
-                await expect("lisi").assertEqual(name_1);
-                await expect(19).assertEqual(age_1);
-                await expect(200.5).assertEqual(salary_1);
-                await expect(4).assertEqual(blobType_1[0]);
-                await expect(5).assertEqual(blobType_1[1]);
-                await expect(6).assertEqual(blobType_1[2]);
-                console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
+                    expect(2).assertEqual(id_1);
+                    expect("lisi").assertEqual(name_1);
+                    expect(19).assertEqual(age_1);
+                    expect(200.5).assertEqual(salary_1);
+                    expect(4).assertEqual(blobType_1[0]);
+                    expect(5).assertEqual(blobType_1[1]);
+                    expect(6).assertEqual(blobType_1[2]);
+                    console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
                     + salary_1 + ", blobType=" + blobType_1);
-                await expect(false).assertEqual(resultSet.goToNextRow())
+                    expect(false).assertEqual(resultSet.goToNextRow())
 
-                resultSet.close()
-                done()
-                console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0002 end   *************");
+                    resultSet.close();
+                    resultSet = null;
+                    done()
+                    console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0002 end   *************");
+                })
             }
         })
 
@@ -497,10 +493,9 @@ export default function relationalStoreUpdateTest() {
                 }
                 let predicates = await new data_Rdb.RdbPredicates("test")
                 await predicates.equalTo("age", "19")
-                let updatePromise = rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_ROLLBACK);
-                updatePromise.then(async (ret) => {
-                    await expect(1).assertEqual(ret);
-                    await console.log(TAG + "testRdbStoreUpdateWithConflictResolution0003 done: " + ret);
+                await rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_ROLLBACK).then(async (ret) => {
+                    expect(1).assertEqual(ret);
+                    console.log(TAG + "testRdbStoreUpdateWithConflictResolution0003 done: " + ret);
                     {
                         let predicates = await new data_Rdb.RdbPredicates("test")
                         let resultSet = await rdbStore.query(predicates)
@@ -512,33 +507,33 @@ export default function relationalStoreUpdateTest() {
                         const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
                         const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                        await expect(1).assertEqual(id);
-                        await expect("zhangsan").assertEqual(name);
-                        await expect(18).assertEqual(age);
-                        await expect(100.5).assertEqual(salary);
-                        await expect(1).assertEqual(blobType[0]);
-                        await expect(2).assertEqual(blobType[1]);
-                        await expect(3).assertEqual(blobType[2]);
+                        expect(1).assertEqual(id);
+                        expect("zhangsan").assertEqual(name);
+                        expect(18).assertEqual(age);
+                        expect(100.5).assertEqual(salary);
+                        expect(1).assertEqual(blobType[0]);
+                        expect(2).assertEqual(blobType[1]);
+                        expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
-                        await expect(true).assertEqual(resultSet.goToNextRow())
+                        expect(true).assertEqual(resultSet.goToNextRow())
                         const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
                         const name_1 = await resultSet.getString(resultSet.getColumnIndex("name"))
                         const age_1 = await resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary_1 = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
                         const blobType_1 = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                        await expect(3).assertEqual(id_1);
-                        await expect("wangjing").assertEqual(name_1);
-                        await expect(20).assertEqual(age_1);
-                        await expect(300.5).assertEqual(salary_1);
-                        await expect(7).assertEqual(blobType_1[0]);
-                        await expect(8).assertEqual(blobType_1[1]);
-                        await expect(9).assertEqual(blobType_1[2]);
+                        expect(3).assertEqual(id_1);
+                        expect("wangjing").assertEqual(name_1);
+                        expect(20).assertEqual(age_1);
+                        expect(300.5).assertEqual(salary_1);
+                        expect(7).assertEqual(blobType_1[0]);
+                        expect(8).assertEqual(blobType_1[1]);
+                        expect(9).assertEqual(blobType_1[2]);
                         console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-                            + salary_1 + ", blobType=" + blobType_1);
-                        await expect(false).assertEqual(resultSet.goToNextRow())
+                        + salary_1 + ", blobType=" + blobType_1);
+                        expect(false).assertEqual(resultSet.goToNextRow())
 
                         resultSet.close()
                         done();
@@ -593,59 +588,58 @@ export default function relationalStoreUpdateTest() {
                 }
                 let predicates = await new data_Rdb.RdbPredicates("test")
                 await predicates.equalTo("age", "19")
-                let updatePromise = rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_ROLLBACK);
-                updatePromise.then(async (ret) => {
-                    aexpect(null).assertFail();
+                await rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_ROLLBACK).then(async (ret) => {
+                    expect(null).assertFail();
                     await console.log(TAG + "testRdbStoreUpdateWithConflictResolution0004 done: " + ret);
                 }).catch((err) => {
-                    expect(null).assertFail();
+                    expect(err !== null).assertTrue();
                     console.log(TAG + "testRdbStoreUpdateWithConflictResolution0004 error");
                 })
-                done()
+//                done()
             }
 
             {
                 let predicates = await new data_Rdb.RdbPredicates("test")
-                let resultSet = await rdbStore.query(predicates)
+                await rdbStore.query(predicates).then(async (resultSet)=>{
+                    expect(true).assertEqual(resultSet.goToFirstRow())
+                    const id = await resultSet.getLong(resultSet.getColumnIndex("id"))
+                    const name = await resultSet.getString(resultSet.getColumnIndex("name"))
+                    const age = await resultSet.getLong(resultSet.getColumnIndex("age"))
+                    const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                    const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                expect(true).assertEqual(resultSet.goToFirstRow())
-                const id = await resultSet.getLong(resultSet.getColumnIndex("id"))
-                const name = await resultSet.getString(resultSet.getColumnIndex("name"))
-                const age = await resultSet.getLong(resultSet.getColumnIndex("age"))
-                const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
-
-                await expect(1).assertEqual(id);
-                await expect("zhangsan").assertEqual(name);
-                await expect(18).assertEqual(age);
-                await expect(100.5).assertEqual(salary);
-                await expect(1).assertEqual(blobType[0]);
-                await expect(2).assertEqual(blobType[1]);
-                await expect(3).assertEqual(blobType[2]);
-                console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
+                    expect(1).assertEqual(id);
+                    expect("zhangsan").assertEqual(name);
+                    expect(18).assertEqual(age);
+                    expect(100.5).assertEqual(salary);
+                    expect(1).assertEqual(blobType[0]);
+                    expect(2).assertEqual(blobType[1]);
+                    expect(3).assertEqual(blobType[2]);
+                    console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
                     + salary + ", blobType=" + blobType);
 
-                await expect(true).assertEqual(resultSet.goToNextRow())
-                const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
-                const name_1 = await resultSet.getString(resultSet.getColumnIndex("name"))
-                const age_1 = await resultSet.getLong(resultSet.getColumnIndex("age"))
-                const salary_1 = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                const blobType_1 = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
+                    expect(true).assertEqual(resultSet.goToNextRow())
+                    const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
+                    const name_1 = await resultSet.getString(resultSet.getColumnIndex("name"))
+                    const age_1 = await resultSet.getLong(resultSet.getColumnIndex("age"))
+                    const salary_1 = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
+                    const blobType_1 = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                await expect(2).assertEqual(id_1);
-                await expect("lisi").assertEqual(name_1);
-                await expect(19).assertEqual(age_1);
-                await expect(200.5).assertEqual(salary_1);
-                await expect(4).assertEqual(blobType_1[0]);
-                await expect(5).assertEqual(blobType_1[1]);
-                await expect(6).assertEqual(blobType_1[2]);
-                console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
+                    expect(2).assertEqual(id_1);
+                    expect("lisi").assertEqual(name_1);
+                    expect(19).assertEqual(age_1);
+                    expect(200.5).assertEqual(salary_1);
+                    expect(4).assertEqual(blobType_1[0]);
+                    expect(5).assertEqual(blobType_1[1]);
+                    expect(6).assertEqual(blobType_1[2]);
+                    console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
                     + salary_1 + ", blobType=" + blobType_1);
-                await expect(false).assertEqual(resultSet.goToNextRow())
+                    expect(false).assertEqual(resultSet.goToNextRow())
 
-                resultSet.close()
-                done()
-                console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0004 end   *************");
+                    resultSet.close()
+                    done()
+                    console.log(TAG + "************* testRdbStoreUpdateWithConflictResolution0004 end   *************");
+                })
             }
         })
 
@@ -689,10 +683,9 @@ export default function relationalStoreUpdateTest() {
                 }
                 let predicates = await new data_Rdb.RdbPredicates("test")
                 await predicates.equalTo("age", "19")
-                let updatePromise = rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_REPLACE);
-                updatePromise.then(async (ret) => {
-                    await expect(1).assertEqual(ret);
-                    await console.log(TAG + "testRdbStoreUpdateWithConflictResolution0005 done: " + ret);
+                await rdbStore.update(valueBucket, predicates, data_Rdb.ConflictResolution.ON_CONFLICT_REPLACE).then(async (ret) => {
+                    expect(1).assertEqual(ret);
+                    console.log(TAG + "testRdbStoreUpdateWithConflictResolution0005 done: " + ret);
                     {
                         let predicates = await new data_Rdb.RdbPredicates("test")
                         let resultSet = await rdbStore.query(predicates)
@@ -704,33 +697,33 @@ export default function relationalStoreUpdateTest() {
                         const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
                         const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                        await expect(1).assertEqual(id);
-                        await expect("zhangsan").assertEqual(name);
-                        await expect(18).assertEqual(age);
-                        await expect(100.5).assertEqual(salary);
-                        await expect(1).assertEqual(blobType[0]);
-                        await expect(2).assertEqual(blobType[1]);
-                        await expect(3).assertEqual(blobType[2]);
+                        expect(1).assertEqual(id);
+                        expect("zhangsan").assertEqual(name);
+                        expect(18).assertEqual(age);
+                        expect(100.5).assertEqual(salary);
+                        expect(1).assertEqual(blobType[0]);
+                        expect(2).assertEqual(blobType[1]);
+                        expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
-                        await expect(true).assertEqual(resultSet.goToNextRow())
+                        expect(true).assertEqual(resultSet.goToNextRow())
                         const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
                         const name_1 = await resultSet.getString(resultSet.getColumnIndex("name"))
                         const age_1 = await resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary_1 = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
                         const blobType_1 = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                        await expect(3).assertEqual(id_1);
-                        await expect("wangjing").assertEqual(name_1);
-                        await expect(20).assertEqual(age_1);
-                        await expect(300.5).assertEqual(salary_1);
-                        await expect(7).assertEqual(blobType_1[0]);
-                        await expect(8).assertEqual(blobType_1[1]);
-                        await expect(9).assertEqual(blobType_1[2]);
+                        expect(3).assertEqual(id_1);
+                        expect("wangjing").assertEqual(name_1);
+                        expect(20).assertEqual(age_1);
+                        expect(300.5).assertEqual(salary_1);
+                        expect(7).assertEqual(blobType_1[0]);
+                        expect(8).assertEqual(blobType_1[1]);
+                        expect(9).assertEqual(blobType_1[2]);
                         console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-                            + salary_1 + ", blobType=" + blobType_1);
-                        await expect(false).assertEqual(resultSet.goToNextRow())
+                        + salary_1 + ", blobType=" + blobType_1);
+                        expect(false).assertEqual(resultSet.goToNextRow())
 
                         resultSet.close()
                         done()
@@ -801,7 +794,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(5).assertEqual(blobType[1]);
                         await expect(6).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(false).assertEqual(resultSet.goToNextRow())
                         resultSet.close()
@@ -881,7 +874,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(2).assertEqual(blobType[1]);
                         await expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(true).assertEqual(resultSet.goToNextRow())
                         const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
@@ -898,7 +891,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(8).assertEqual(blobType_1[1]);
                         await expect(9).assertEqual(blobType_1[2]);
                         console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-                            + salary_1 + ", blobType=" + blobType_1);
+                        + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
                         resultSet.close()
@@ -970,7 +963,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(5).assertEqual(blobType[1]);
                         await expect(6).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(false).assertEqual(resultSet.goToNextRow())
                         resultSet.close()
@@ -1049,7 +1042,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(2).assertEqual(blobType[1]);
                         await expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(true).assertEqual(resultSet.goToNextRow())
                         const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
@@ -1066,7 +1059,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(8).assertEqual(blobType_1[1]);
                         await expect(9).assertEqual(blobType_1[2]);
                         console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-                            + salary_1 + ", blobType=" + blobType_1);
+                        + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
                         resultSet.close()
@@ -1138,7 +1131,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(2).assertEqual(blobType[1]);
                         await expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(true).assertEqual(resultSet.goToNextRow())
                         resultSet.close()
@@ -1217,7 +1210,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(2).assertEqual(blobType[1]);
                         await expect(3).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(true).assertEqual(resultSet.goToNextRow())
                         const id_1 = await resultSet.getLong(resultSet.getColumnIndex("id"))
@@ -1234,7 +1227,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(8).assertEqual(blobType_1[1]);
                         await expect(9).assertEqual(blobType_1[2]);
                         console.log(TAG + "{id=" + id_1 + ", name=" + name_1 + ", age=" + age_1 + ", salary="
-                            + salary_1 + ", blobType=" + blobType_1);
+                        + salary_1 + ", blobType=" + blobType_1);
                         await expect(false).assertEqual(resultSet.goToNextRow())
 
                         resultSet.close()
@@ -1306,7 +1299,7 @@ export default function relationalStoreUpdateTest() {
                         await expect(5).assertEqual(blobType[1]);
                         await expect(6).assertEqual(blobType[2]);
                         console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary="
-                            + salary + ", blobType=" + blobType);
+                        + salary + ", blobType=" + blobType);
 
                         await expect(false).assertEqual(resultSet.goToNextRow())
                         resultSet.close()

@@ -72,7 +72,7 @@ export default function webViewContJavaScriptError() {
     it('testRegisterJavaScriptProxyInitErr',0,async function(done){
       emitKey="emitRunJavaScriptCallbackInitErr";
       Utils.registerEvent("testRegisterJavaScriptProxyInitErr","17100001",650,done);
-      Utils.registerEvent("testRegisterJavaScriptProxyInitErr","Init error. The WebviewController must be associated with a Web component.",651,done);
+      Utils.registerEvent("testRegisterJavaScriptProxyInitErr","Init error. The WebviewController must be associated with a Web component",651,done);
       sendEventByKey('webViewContJavaScriptError',10,'');
     })
     /*
@@ -83,7 +83,7 @@ export default function webViewContJavaScriptError() {
     it('testRunJavaScriptCallbackInitErr',0,async function(done){
       emitKey="emitRunJavaScriptPromiseInitErr";
       Utils.registerEvent("testRunJavaScriptCallbackInitErr","17100001",652,done);
-      Utils.registerEvent("testRunJavaScriptCallbackInitErr","Init error. The WebviewController must be associated with a Web component.",653,done);
+      Utils.registerEvent("testRunJavaScriptCallbackInitErr","Init error. The WebviewController must be associated with a Web component",653,done);
       sendEventByKey('webViewContJavaScriptError',10,'');
     })
     /*
@@ -94,7 +94,7 @@ export default function webViewContJavaScriptError() {
     it('testRunJavaScriptPromiseInitErr',0,async function(done){
       emitKey="emitRunJavaScriptExtCallbackInitErr";
       Utils.registerEvent("testRunJavaScriptPromiseInitErr","17100001",654,done);
-      Utils.registerEvent("testRunJavaScriptPromiseInitErr","Init error. The WebviewController must be associated with a Web component.",655,done);
+      Utils.registerEvent("testRunJavaScriptPromiseInitErr","Init error. The WebviewController must be associated with a Web component",655,done);
       sendEventByKey('webViewContJavaScriptError',10,'');
     })
     /*
@@ -105,7 +105,7 @@ export default function webViewContJavaScriptError() {
     it('testRunJavaScriptExtCallbackInitErr',0,async function(done){
       emitKey="emitRunJavaScriptExtPromiseInitErr";
       Utils.registerEvent("testRunJavaScriptExtCallbackInitErr","17100001",656,done);
-      Utils.registerEvent("testRunJavaScriptExtCallbackInitErr","Init error. The WebviewController must be associated with a Web component.",657,done);
+      Utils.registerEvent("testRunJavaScriptExtCallbackInitErr","Init error. The WebviewController must be associated with a Web component",657,done);
       sendEventByKey('webViewContJavaScriptError',10,'');
     })
     /*
@@ -116,7 +116,7 @@ export default function webViewContJavaScriptError() {
     it('testRunJavaScriptExtPromiseInitErr',0,async function(done){
       emitKey="emitDeleteJavaScriptRegisterInitErr";
       Utils.registerEvent("testRunJavaScriptExtPromiseInitErr","17100001",658,done);
-      Utils.registerEvent("testRunJavaScriptExtPromiseInitErr","Init error. The WebviewController must be associated with a Web component.",659,done);
+      Utils.registerEvent("testRunJavaScriptExtPromiseInitErr","Init error. The WebviewController must be associated with a Web component",659,done);
       sendEventByKey('webViewContJavaScriptError',10,'');
     })
     /*
@@ -127,7 +127,7 @@ export default function webViewContJavaScriptError() {
     it('testDeleteJavaScriptRegisterInitErr',0,async function(done){
       emitKey="emitDeleteJavaScriptRegisterNameErr";
       Utils.registerEvent("testDeleteJavaScriptRegisterInitErr","17100001",660,done);
-      Utils.registerEvent("testDeleteJavaScriptRegisterInitErr","Init error. The WebviewController must be associated with a Web component.",661,done);
+      Utils.registerEvent("testDeleteJavaScriptRegisterInitErr","Init error. The WebviewController must be associated with a Web component",661,done);
       sendEventByKey('webViewContJavaScriptError',10,'');
     })
     /*

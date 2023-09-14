@@ -51,8 +51,8 @@ export default function audioCapturer() {
             await button.click();
         }
         beforeAll(async function () {
-            await getPermission();
-            await driveFn();
+            // await getPermission();
+            // await driveFn();
             console.info('TestLog: Start Testing AudioPlaybackCapturer Interfaces');
         })
 
@@ -154,9 +154,15 @@ export default function audioCapturer() {
             totalSize = totalSize - 44;
             console.info(`${Tag}: File size : Removing header: ${totalSize}`);
             let rlen = 0;
+            let readSync = 0
             while (rlen < totalSize) {
                 let buf = new ArrayBuffer(bufferSize);
                 rlen += ss.readSync(buf);
+                readSync = ss.readSync(buf);
+                if(readSync <= 0){
+                    console.info(`${Tag}:BufferAudioFramework: readSync: ${readSync}`);
+                    break;
+                }
                 console.info(`${Tag}:BufferAudioFramework: bytes read from file: ${rlen}`);
                 await audioRen.write(buf);
             }

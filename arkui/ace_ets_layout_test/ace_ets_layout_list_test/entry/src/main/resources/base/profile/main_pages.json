@@ -1,0 +1,30 @@
+{
+    "src": [
+        "MainAbility/pages/index/index",
+        "MainAbility/pages/List/List_attribute/ListFrictionPage",
+        "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex1",
+        "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex2",
+        "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex3",
+        "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex4",
+        "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex5",
+        "MainAbility/pages/List/List_initialIndex/List_ListInitialIndex6",
+        "MainAbility/pages/List/List_Space/ListChange/List_alignListItem",
+        "MainAbility/pages/List/List_Space/ListChange/List_divider",
+        "MainAbility/pages/List/List_Space/ListChange/List_lanes",
+        "MainAbility/pages/List/List_Space/ListChange/List_ListDirection",
+        "MainAbility/pages/List/List_Space/ListChange/List_ListSize",
+        "MainAbility/pages/List/List_Space/ListChange/List_Margin",
+        "MainAbility/pages/List/List_Space/ListChange/List_Padding",
+        "MainAbility/pages/List/List_Space/ListChange/List_PadMar",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_InSertChange",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Margin",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Offset",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Padding",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_PadMar",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Position",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_SizeChange",
+        "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Visibility",
+        "MainAbility/pages/List/List_SpaceChange/List_SpaceChange"
+       
+    ]
+}

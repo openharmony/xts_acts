@@ -43,6 +43,10 @@
     {
       "name": "Indicator_Space",
       "value": "10vp"
+    },
+    {
+      "name": "BottomTabBarStyleLabelStyle_family_Test",
+      "value": "HarmonyOS Sans"
     }
   ]
 }

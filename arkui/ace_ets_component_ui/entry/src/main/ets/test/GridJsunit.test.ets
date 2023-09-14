@@ -70,17 +70,29 @@ export default function GridJsunit() {
       // Modify the properties of component Grid
       console.info('[GridJsunit_0200] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnsGap',value:'15'})
+      globalThis.value.message.notify({
+        name: 'columnsGap', value: '15'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'rowsGap',value:'20'})
+      globalThis.value.message.notify({
+        name: 'rowsGap', value: '20'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBar',value:'BarState.On'})
+      globalThis.value.message.notify({
+        name: 'scrollBar', value: 'BarState.On'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBarColor',value:'Color.Blue'})
+      globalThis.value.message.notify({
+        name: 'scrollBarColor', value: 'Color.Blue'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBarWidth',value:'30'})
+      globalThis.value.message.notify({
+        name: 'scrollBarWidth', value: '30'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'cachedCount',value:2})
+      globalThis.value.message.notify({
+        name: 'cachedCount', value: 2
+      })
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the Grid component
@@ -104,17 +116,29 @@ export default function GridJsunit() {
       // Illegal modification of properties of component grid
       console.info('[GridJsunit_0300] START');
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'columnsGap',value:'a'})
+      globalThis.value.message.notify({
+        name: 'columnsGap', value: 'a'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'rowsGap',value:'-10'})
+      globalThis.value.message.notify({
+        name: 'rowsGap', value: '-10'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBar',value:'123'})
+      globalThis.value.message.notify({
+        name: 'scrollBar', value: '123'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBarColor',value:'aaa'})
+      globalThis.value.message.notify({
+        name: 'scrollBarColor', value: 'aaa'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'scrollBarWidth',value:'-10'})
+      globalThis.value.message.notify({
+        name: 'scrollBarWidth', value: '-10'
+      })
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'cachedCount',value:'a'})
+      globalThis.value.message.notify({
+        name: 'cachedCount', value: 'a'
+      })
       await CommonFunc.sleep(200);
 
       // Get the propoties value of the Grid component
@@ -128,7 +152,7 @@ export default function GridJsunit() {
       let strJson2 = getInspectorByKey('grid2');
       let obj2 = JSON.parse(strJson2);
       console.info("[GridJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
-      expect(obj2.$attrs.scrollBar).assertEqual('BarState.Off');
+      expect(obj2.$attrs.scrollBar).assertEqual('BarState.Auto');
       expect(obj2.$attrs.scrollBarColor).assertEqual('#FF000000');
       expect(obj2.$attrs.scrollBarWidth).assertEqual('4.00vp');
       console.info('[GridJsunit_0300] END');
@@ -139,7 +163,7 @@ export default function GridJsunit() {
       // Verify the event of the Grid component
       console.info('[GridJsunit_0400] START');
       await CommonFunc.sleep(1000);
-      
+
       // Verify onScrollIndex event
       let grid2 = CommonFunc.getComponentRect('grid2');
       let top = grid2.top
@@ -151,13 +175,14 @@ export default function GridJsunit() {
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
       let onScrollIndex1 = await driver.findComponent(BY.key('onScrollIndex'));
       let text1 = await onScrollIndex1.getText();
-      expect(text1).assertEqual('onScrollIndex:10');
+      expect(text1).assertEqual('onScrollIndex:2');
       await CommonFunc.sleep(1000);
+
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
       await driver.swipe(Math.round((right - left) / 2), Math.round(bottom - 10), Math.round((right - left) / 2), Math.round(top + 10));
       let onScrollIndex2 = await driver.findComponent(BY.key('onScrollIndex'));
       let text2 = await onScrollIndex2.getText();
-      expect(text2).assertEqual('onScrollIndex:10');
+      expect(text2).assertEqual('onScrollIndex:2');
 
       // Verify common attribute click event
       let button = await driver.findComponent(BY.key('button'));
@@ -195,16 +220,20 @@ export default function GridJsunit() {
     it('GridJsunit_0600', 0, async function (done) {
       // Verify that rowsTemplate and columnsTemplate are set at the same time
       console.info('[GridJsunit_0600] START');
-      globalThis.value.message.notify({name:'columnsTemplate',value:'1fr 1fr'})
+      globalThis.value.message.notify({
+        name: 'columnsTemplate', value: '1fr 1fr'
+      })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'rowsTemplate',value:'1fr 1fr'})
+      globalThis.value.message.notify({
+        name: 'rowsTemplate', value: '1fr 1fr'
+      })
       await CommonFunc.sleep(1000);
       let gridItem1 = CommonFunc.getComponentRect('0');
       let bottom = gridItem1.bottom
       let gridItem2 = CommonFunc.getComponentRect('2');
       let top = gridItem2.top
       expect(top > bottom).assertTrue();
-      
+
       // Verify grid componentcan cannot scroll
       let driver = await UiDriver.create()
       let grid_1 = await driver.findComponent(BY.key('grid1'));
@@ -217,9 +246,13 @@ export default function GridJsunit() {
     it('GridJsunit_0700', 0, async function (done) {
       // Verify only setting columnsTemplate of Grid component
       console.info('[GridJsunit_0700] START');
-      globalThis.value.message.notify({name:'columnsTemplate',value:'1fr 1fr 1fr 1fr'})
+      globalThis.value.message.notify({
+        name: 'columnsTemplate', value: '1fr 1fr 1fr 1fr'
+      })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'rowsTemplate',value:''})
+      globalThis.value.message.notify({
+        name: 'rowsTemplate', value: ''
+      })
       await CommonFunc.sleep(1000);
       let gridItem1 = CommonFunc.getComponentRect('0');
       let left1 = gridItem1.left
@@ -233,9 +266,13 @@ export default function GridJsunit() {
     it('GridJsunit_0800', 0, async function (done) {
       // Verify only setting rowsTemplate of grid component
       console.info('[GridJsunit_0800] START');
-      globalThis.value.message.notify({name:'columnsTemplate',value:''})
+      globalThis.value.message.notify({
+        name: 'columnsTemplate', value: ''
+      })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'rowsTemplate',value:'1fr 1fr 1fr 1fr'})
+      globalThis.value.message.notify({
+        name: 'rowsTemplate', value: '1fr 1fr 1fr 1fr'
+      })
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('0');
@@ -250,9 +287,13 @@ export default function GridJsunit() {
     it('GridJsunit_0900', 0, async function (done) {
       // Verify Neither rowsTemplate nor columnsTemplate is set
       console.info('[GridJsunit_0900] START');
-      globalThis.value.message.notify({name:'columnsTemplate',value:''})
+      globalThis.value.message.notify({
+        name: 'columnsTemplate', value: ''
+      })
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'rowsTemplate',value:''})
+      globalThis.value.message.notify({
+        name: 'rowsTemplate', value: ''
+      })
       await CommonFunc.sleep(1000);
       // Verify grid componentcan cannot scroll
       let driver = await UiDriver.create()

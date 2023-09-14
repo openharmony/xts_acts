@@ -27,18 +27,22 @@ struct TapGestureExample {
   }
   @Builder specificNoParam() {
     Column() {
-      Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.flower")).height('60%').width('70%')
+      Scroll() {
+        Column() {
+          Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+            Image($r("app.media.img")).height('60%').width('60%')
+          }
+          .height('350vp').width('350vp').padding(20)
+          .gesture(
+            TapGesture({ count: 2 })
+              .onAction(() => {
+                this.value = 'TapGesture onAction';
+                this.Vue = true;
+              })
+          )
+          Text(this.value)
+        }
       }
-      .height('250vp').width('350vp').padding(20)
-      .gesture(
-      TapGesture({ count: 2 })
-        .onAction(() => {
-          this.value = 'TapGesture onAction';
-          this.Vue = true;
-        })
-      )
-      Text(this.value)
     }.width('100%').height('80%').backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }

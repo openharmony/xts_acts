@@ -1,9 +1,10 @@
 {
-    "description": "Configuration for aceceshi Tests",
+    "description": "Configuration for ActsAceStandardTest Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "2500000",
-        "package": "com.example.aceceshi",
+        "bundle-name": "com.example.aceceshi",
+        "package-name": "com.example.aceceshi",
         "shell-timeout": "1800000"
     },
     "kits": [

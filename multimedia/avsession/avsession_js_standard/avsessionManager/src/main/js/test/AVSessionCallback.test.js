@@ -645,9 +645,10 @@ export default function AVSessionCallback() {
                     console.info('TestLog: Set metadata : successfully');
                     expect(false).assertTrue();
                 }
-                done();
             })
             await sleep(500);
+            session = await avSession.createAVSession(context,tag,type);
+            done();
         })
 
         /* *
@@ -1050,9 +1051,10 @@ export default function AVSessionCallback() {
                     console.info('TestLog: Set playbackState successfully');
                     expect(false).assertTrue();
                 }
-                done();
             })
             await sleep(500);
+            session = await avSession.createAVSession(context,tag,type);
+            done();
         })
 
         /* *
@@ -1237,6 +1239,7 @@ export default function AVSessionCallback() {
                 console.info('TestLog: Session destroyed failed');
                 expect(false).assertTrue();
             }
+            session = await avSession.createAVSession(context,tag,type);
             done();
         })
     })

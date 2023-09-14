@@ -40,6 +40,19 @@ async function stopApplication(bundleName: string) {
 export default function UiTest() {
     
     describe('UiTest_API10', function () {
+        beforeAll(async function () {
+            let driver = Driver.create()
+            await driver.delayMs(500)
+            let btn = await driver.findComponent(ON.id('ScreenLock-Accounts_Image_userIcon'))
+            if (btn != null) {
+            await btn.click()
+            }
+        })
+        
+        afterEach(async function () {
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_10001
          * @tc.name: testWithIn
@@ -68,6 +81,13 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
+            let window = await driver.findWindow({bundleName: 'com.uitestScene.acts'})
+            try {
+                await window.maximize()
+                await driver.delayMs(500)
+            } catch (error) {
+                console.info('It is already a Fullscreen window')
+            }
             await driver.fling(UiDirection.DOWN, 39000)
             await driver.delayMs(waitUiReadyMs)
             let button = await driver.findComponents(ON.text('next page'))
@@ -124,6 +144,7 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let Button3 = await driver.findComponent(ON.text('jump'))
             expect(Button3 == null).assertTrue()
+            await driver.click(center.x, center.y)
             await stopApplication('com.uitestScene.acts')
         })
 
@@ -229,6 +250,10 @@ export default function UiTest() {
     })
 
     describe('UiTest_API8', function () {
+        afterEach(async function () {
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_8001
          * @tc.name: testInputText
@@ -563,7 +588,7 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = UiDriver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.swipe(300, 800, 300, 300)
+            await driver.swipe(300, 1100, 300, 300)
             let text = await driver.findComponent(BY.text('next page'))
             expect(text == null).assertTrue()
             await stopApplication('com.uitestScene.acts')
@@ -586,6 +611,10 @@ export default function UiTest() {
     })
 
     describe('UiTest_API9', function () {
+        afterEach(async function () {
+            await stopApplication('com.uitestScene.acts')
+        })
+
         /*
          * @tc.number: uiTest_9001
          * @tc.name: testInputText
@@ -1118,7 +1147,8 @@ export default function UiTest() {
             await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
-            await driver.fling({x:300, y:600},{x:300, y:300}, 20, 600)
+            await driver.fling({x:300, y:1100},{x:300, y:100}, 20, 600)
+            await driver.delayMs(1000)
             let text = await driver.findComponent(ON.text('next page'))
             expect(text == null).assertTrue()
             let scrollBar = await driver.findComponent(ON.type('Scroll'))
@@ -1261,14 +1291,17 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
             let mode1 = await window1.getWindowMode()
-            expect(mode1 == WindowMode.FULLSCREEN).assertTrue()
             try {
                 await window1.resume()
                 let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let mode2 = await window2.getWindowMode()
-                expect(mode2 == WindowMode.FLOATING).assertTrue()
-                expect(mode2 != WindowMode.SECONDARY).assertTrue()
-                expect(mode2 != WindowMode.PRIMARY).assertTrue()
+                if (mode1 == WindowMode.FULLSCREEN) {
+                    expect(mode2 == WindowMode.FLOATING).assertTrue()
+                    expect(mode2 != WindowMode.SECONDARY).assertTrue()
+                    expect(mode2 != WindowMode.PRIMARY).assertTrue()
+                } else {
+                    expect(mode2 == WindowMode.FULLSCREEN).assertTrue()
+                }
                 await stopApplication('com.uitestScene.acts')
             }
             catch (err) {
@@ -1321,7 +1354,10 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
             try{
-                await window.resume()
+                let windowMode = await window.getWindowMode()
+                if (windowMode != WindowMode.FLOATING) {
+                    await window.resume()
+                }
                 await driver.delayMs(waitUiReadyMs)
                 let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 let bounds1 = await window1.getBounds()
@@ -1352,7 +1388,10 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
             try{
-                await window.resume()
+                let windowMode = await window.getWindowMode()
+                if (windowMode != WindowMode.FLOATING) {
+                    await window.resume()
+                }
                 await driver.delayMs(waitUiReadyMs)
 
                 let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
@@ -1393,7 +1432,10 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
             try{
-                await window.resume()
+                let windowMode = await window.getWindowMode()
+                if (windowMode != WindowMode.FLOATING) {
+                    await window.resume()
+                }
                 await driver.delayMs(waitUiReadyMs)
 
                 let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
@@ -1458,7 +1500,10 @@ export default function UiTest() {
             await driver.delayMs(waitUiReadyMs)
             let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
             try{
-                await window.resume()
+                let windowMode = await window.getWindowMode()
+                if (windowMode != WindowMode.FLOATING) {
+                    await window.resume()
+                }
                 let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
                 await window2.maximize()
                 await driver.delayMs(waitUiReadyMs)

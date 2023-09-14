@@ -13,15 +13,14 @@
  * limitations under the License.
  */
 
-import { describe, it, beforeEach } from '@ohos/hypium';
-import * as Data from '../../../../../../utils/data.json';
-import { stringToUint8Array } from '../../../../../../utils/param/publicFunc';
+
+import { describe, it, beforeAll, beforeEach, expect} from '@ohos/hypium';
+import { stringToUint8Array, checkSoftware } from '../../../../../../utils/param/publicFunc';
 import { HuksAgreeECDH } from '../../../../../../utils/param/agree/publicAgreeParam';
 import { publicAgreeFunc } from '../../../../../../utils/param/agree/publicAgreePromise';
 import { HksTag } from '../../../../../../utils/param/publicParam';
+import { checkAESChiper } from '../../../../../../utils/param/checkAES';
 
-let srcData63 = Data.Date63KB;
-let srcData63Kb = stringToUint8Array(srcData63);
 let HuksOptions63kb = {};
 
 export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
@@ -36,7 +35,7 @@ export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
           HuksAgreeECDH.HuksKeyECCPADDING,
           HuksAgreeECDH.HuksKeyECCBLOCKMODE
         ),
-        inData: srcData63Kb,
+          
       };
       console.info('test beforeEach called');
     });
@@ -57,11 +56,27 @@ export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
             value: stringToUint8Array(srcKeyAliesFirst),
           },
           HuksAgreeECDH.HuksKeyPADDINGNONE,
-          HuksAgreeECDH.HuksKeyBLOCKMODEECB
+          HuksAgreeECDH.HuksKeyBLOCKMODECBC
         ),
-        inData: srcData63Kb,
+          
       };
-      await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish');
+      await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
+
+      // AES Check
+      let IV = '0000000000000000';
+      let huksOptionsCipher = {
+        properties: new Array(
+          HuksAgreeECDH.HuksKeyALGORITHMAES,
+          HuksAgreeECDH.HuksKeySIZE256,
+          HuksAgreeECDH.HuksKeyPurposeENCRYPTDECRYPT,
+          HuksAgreeECDH.HuksKeyDIGESTNONE,
+          HuksAgreeECDH.HuksKeyPADDINGNONE,
+          HuksAgreeECDH.HuksKeyBLOCKMODECBC,
+          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) },
+        ),
+      };
+      let res = await checkAESChiper(srcKeyAliesFirst+ 'final', srcKeyAliesSecond + 'final',huksOptionsCipher);
+      expect(res).assertTrue();
       done();
     });
   });

@@ -80,7 +80,7 @@ parse_cmdline()
         shift
     done
     if [ "$SYSTEM_SIZE" = "standard" ]; then
-       BUILD_TARGET=${BUILD_TARGET:-"acts"}
+       BUILD_TARGET=${BUILD_TARGET:-"test/xts/acts:xts_acts"}
        PRODUCT_NAME=${PRODUCT_NAME:-"Hi3516DV300"}
     else
        BUILD_TARGET=${BUILD_TARGET:-"acts acts_ivi acts_intellitv acts_wearable"}
@@ -103,7 +103,7 @@ do_make()
                         MUSL_ARGS="--gn-args use_musl=false --gn-args use_custom_libcxx=true --gn-args use_custom_clang=true"			
 		    fi
         fi
-       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH
+       ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target $BUILD_TARGET --build-target "deploy_testtools" --gn-args is_standard_system=true $MUSL_ARGS --target-cpu $TARGET_ARCH --get-warning-list=false --stat-ccache=true --compute-overlap-rate=false --deps-guard=false --generate-ninja-trace=false --gn-args skip_generate_module_list_file=true
     else
        if [ "$BUILD_TARGET" = "acts acts_ivi acts_intellitv acts_wearable" ]; then
          ./build.sh --product-name $PRODUCT_NAME --gn-args build_xts=true --build-target "acts" --build-target "acts_ivi" --build-target "acts_intellitv" --build-target "acts_wearable" --build-target "deploy_testtools"

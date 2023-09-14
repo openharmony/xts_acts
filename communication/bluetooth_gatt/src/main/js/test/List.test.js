@@ -13,18 +13,15 @@
  * limitations under the License.
  */
 
-import btGattAdvertTest from './BtGattAdvertiser.test.js'
-import btGattManagerTest from './BtGattManager.test.js'
-import btGattServiceTest from './BtGattService.test.js'
 import btManagerGattAdvertTest from './BtManagerGattAdvertiser.test.js'
 import btManagerGattManagerTest from './BtManagerGattManager.test.js'
 import btManagerGattServiceTest from './BtManagerGattService.test.js'
+import btBleManagerTest from './BtBleManager.test.js'
+import btBleServiceTest from './BtBleService.test.js'
 export default function testsuite() {
-    btGattAdvertTest()
     btManagerGattServiceTest()
-    btGattServiceTest()
+    btBleManagerTest()
+    btBleServiceTest()
     btManagerGattAdvertTest()
     btManagerGattManagerTest()
-    btGattManagerTest()
-
 }

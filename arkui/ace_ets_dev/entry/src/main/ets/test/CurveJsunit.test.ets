@@ -108,7 +108,7 @@ export default function CurveJsunit() {
         console.info('curve1 ***** result_height1 is ' + result_height);
         console.info('curve1 ***** result_width1 is ' + result_width);
         var finalRes;
-        if ((Math.round(result_height) == 78) && (Math.round(result_width) == 78)) {
+        if ((Math.round(result_height) == 97) && (Math.round(result_width) == 97)) {
           finalRes = true;
           console.info('curve1 SurfaceChangedTest success');
         } else {

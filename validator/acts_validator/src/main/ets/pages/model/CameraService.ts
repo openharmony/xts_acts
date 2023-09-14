@@ -2,13 +2,13 @@
 
 import camera from '@ohos.multimedia.camera'
 import deviceInfo from '@ohos.deviceInfo'
-import fileio from '@ohos.fileio'
+import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image'
 import media from '@ohos.multimedia.media'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import Logger from '../model/Logger'
 import MediaUtils from '../model/MediaUtils'
-import prompt from '@ohos.prompt';
+import promptAction from '@ohos.promptAction';
 import fs from '@ohos.file.fs';
 
 const CameraSize = {
@@ -121,7 +121,7 @@ class CameraService {
             Logger.info(this.tag, `photoUri = ${imgPhotoUri}`)
             let imgFd = await this.mediaUtil.getFdPath(imgFileAsset)
             Logger.info(this.tag, `fd = ${imgFd}`)
-            await fileio.write(imgFd, buffer)
+            await fs.write(imgFd.fd, buffer)
             await imgFileAsset.close(imgFd)
             await img.release()
             Logger.info(this.tag, 'save image done')
@@ -150,6 +150,7 @@ class CameraService {
                 Logger.info(this.tag, `previewObj format: ${previewObj.format}`)
             }
             await this.createPreviewOutputFn(previewObj ? previewObj : this.cameraOutputCapability.previewProfiles[0], surfaceId)
+            //            await this.createPhotoOutputFn(this.photoProfileObj)
             await this.createPhotoOutputFn(obj ? obj : this.cameraOutputCapability.photoProfiles[photoIndex?photoIndex:0])
             await this.createCameraInputFn(this.cameras[cameraDeviceIndex])
             await this.cameraInputOpenFn()
@@ -164,7 +165,7 @@ class CameraService {
         try {
             let status = this.captureSession.isExposureModeSupported(ind)
             Logger.info(this.tag, `isExposureModeSupported success: ${status}`)
-            prompt.showToast({
+            promptAction.showToast({
                 message: status ? '支持此模式' : '不支持此模式',
                 duration: 2000,
                 bottom: '60%'
@@ -217,7 +218,7 @@ class CameraService {
             // 检测对焦模式是否支持
             let status = this.captureSession.isFocusModeSupported(ind)
             Logger.info(this.tag, `isFocusModeSupported success: ${status}`)
-            prompt.showToast({
+            promptAction.showToast({
                 message: status ? '支持此模式' : '不支持此模式',
                 duration: 2000,
                 bottom: '60%'
@@ -254,7 +255,7 @@ class CameraService {
             // 检测闪光灯模式是否支持
             let status1 = this.captureSession.isFlashModeSupported(ind)
             Logger.info(this.tag, `isFlashModeSupported success: ${status1}`)
-            prompt.showToast({
+            promptAction.showToast({
                 message: status1 ? '支持此模式' : '不支持此模式',
                 duration: 2000,
                 bottom: '60%'
@@ -292,7 +293,7 @@ class CameraService {
             // 查询是否支持指定的视频防抖模式
             let isSupported = this.captureSession.isVideoStabilizationModeSupported(ind)
             Logger.info(this.tag, `isVideoStabilizationModeSupported success: ${isSupported}`)
-            prompt.showToast({
+            promptAction.showToast({
                 message: isSupported ? '支持此模式' : '不支持此模式',
                 duration: 2000,
                 bottom: '60%'
@@ -394,6 +395,15 @@ class CameraService {
             await this.captureSession.addOutput(this.videoOutput)
             await this.captureSession.commitConfig()
             await this.captureSession.start()
+            //            await this.videoOutput.on('frameStart', async () => {
+            //                Logger.info(this.tag, `frameStart start`)
+            //                try {
+            //                    await this.videoRecorder.start()
+            //                    Logger.info(this.tag, `frameStart end`)
+            //                } catch (err) {
+            //                    Logger.info(this.tag, `videoRecorder start fail err: ${err}`)
+            //                }
+            //            })
             await this.videoOutput.start()
             await this.videoRecorder.start().then(() => {
                 setTimeout(async () => {

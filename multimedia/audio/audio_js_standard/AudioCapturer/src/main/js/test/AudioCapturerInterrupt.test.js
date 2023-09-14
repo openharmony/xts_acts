@@ -67,6 +67,10 @@ export default function audioCapturerInterrupt() {
             'VOICE_COMMUNICATION': {
                 source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
                 capturerFlags: 0,
+            },
+            'PLAYBACK_CAPTURE': {
+                source: audio.SourceType.SOURCE_TYPE_PLAYBACK_CAPTURE,
+                capturerFlags: 0,
             }
         }
 
@@ -121,6 +125,31 @@ export default function audioCapturerInterrupt() {
                 usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
                 rendererFlags: 0
             },
+            'VOICE_MESSAGE': {
+                content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+                usage: audio.StreamUsage.STREAM_USAGE_VOICE_MESSAGE,
+                rendererFlags: 0
+            },
+        
+            'GAME': {
+                content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+                usage: audio.StreamUsage.STREAM_USAGE_GAME,
+                rendererFlags: 0
+            },
+            'NAVIGATION': {
+                content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+                usage: audio.StreamUsage.STREAM_USAGE_NAVIGATION,
+                rendererFlags: 0
+            },
+            'NOTIFICATION': {
+                content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+                usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION,
+                rendererFlags: 0
+            }
+          
+
+
+
         }
 
         let streamInfo = {
@@ -1422,82 +1451,621 @@ export default function audioCapturerInterrupt() {
             await renderRelease(render, done)
             done()
         })
+      
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0081
+         *@tc.name      : AudioCapturer PLAYBACK_CAPTURE INTERRUPT MIC
+         *@tc.desc      : AudioCapturer PLAYBACK_CAPTURE INTERRUPT MIC 
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_081', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
+            await capturerStart(capture1, done)
+            capture1.on("audioInterrupt", async (eventAction) => {
+                flag1 = true;
+                console.log("081  capture1.eventAction:" + JSON.stringify(eventAction))
+            })
 
-        // it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_008', 0, async function (done) {
-        //     let flag1 = false;
-        //     let flag2 = false;
-        //     let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
-        //     await capturerStart(capture, done)
-        //     capture.on("audioInterrupt", async (eventAction) => {
-        //         console.log("08 capture.eventAction:" + JSON.stringify(eventAction))
-        //         flag1 = true;
-        //     })
+            let capture2 = await createAudioCapturer(capturerInfo['PLAYBACK_CAPTURE'], streamInfo['16000'])
+            await capturerStartFail(capture2, done, capture1)
+            capture2.on("audioInterrupt", async (eventAction) => {
+                flag2 = true;
+                console.log("081 capture2.eventAction:" + JSON.stringify(eventAction))
+            })
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture1, done)
+            await capturerRelease(capture2, done)
+            done()
+        })
 
-        //     let render = await createAudioRenderer(renderInfo['ULTRASONIC'], streamInfo['44100'])
-        //     await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-        //     await renderStart(render, done)
-        //     render.on("audioInterrupt", async (eventAction) => {
-        //         console.log("08 render.eventAction:" + JSON.stringify(eventAction))
-        //         flag2 = true;
-        //     })
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_085
+         *@tc.name      : AudioCapturer PLAYBACK_CAPTURE INTERRUPT VOICE_COMMUNICATION
+         *@tc.desc      : AudioCapturer PLAYBACK_CAPTURE INTERRUPT VOICE_COMMUNICATION 
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_085', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture1 = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
+            await capturerStart(capture1, done)
+            capture1.on("audioInterrupt", async (eventAction) => {
+                flag1 = true;
+                console.log("085 capture1.eventAction:" + JSON.stringify(eventAction))
+            })
 
-        //     await sleep(500)
-        //     console.info('flag1 is '+ flag1);
-        //     console.info('flag2 is '+ flag2);
-        //     expect(flag1 == false && flag2 == false).assertTrue()
-        //     await capturerRelease(capture, done)
-        //     await renderRelease(render, done)
-        //     done()
-        // })
+            let capture2 = await createAudioCapturer(capturerInfo['PLAYBACK_CAPTURE'], streamInfo['16000'])
+            await capturerStartFail(capture2, done, capture1)
+            capture2.on("audioInterrupt", async (eventAction) => {
+                flag2 = true;
+                console.log("085 capture2.eventAction:" + JSON.stringify(eventAction))
+            })
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture1, done)
+            await capturerRelease(capture2, done)
+            done()
+        })
 
-        // it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_021', 0, async function (done) {
-        //     let flag1 = false;
-        //     let flag2 = false;
-        //     let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
-        //     await capturerStart(capture, done)
-        //     capture.on("audioInterrupt", async (eventAction) => {
-        //         console.log("17 capture.eventAction:" + JSON.stringify(eventAction))
-        //         flag1 = true;
-        //     })
+      
 
-        //     let render = await createAudioRenderer(renderInfo['ULTRASONIC'], streamInfo['44100'])
-        //     await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-        //     await renderStart(render, done)
-        //     render.on("audioInterrupt", async (eventAction) => {
-        //         console.log("17 render.eventAction:" + JSON.stringify(eventAction))
-        //         flag2 = true;
-        //     })
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_088
+        *@tc.name      : AudioCapturer PLAYBACK_CAPTURE INTERRUPT VOICE_RECOGNITION
+        *@tc.desc      : AudioCapturer PLAYBACK_CAPTURE INTERRUPT VOICE_RECOGNITION 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_088', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture1 = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
+            await capturerStart(capture1, done)
+            capture1.on("audioInterrupt", async (eventAction) => {
+                flag1 = true;
+                console.log("88 capture1.eventAction:" + JSON.stringify(eventAction))
+            })
 
-        //     await sleep(500)
-        //     expect(flag1 == false && flag2 == false).assertTrue()
-        //     await capturerRelease(capture, done)
-        //     await renderRelease(render, done)
-        //     done()
-        // })
+            let capture2 = await createAudioCapturer(capturerInfo['PLAYBACK_CAPTURE'], streamInfo['16000'])
+            await capturerStartFail(capture2, done, capture1)
+            capture2.on("audioInterrupt", async (eventAction) => {
+                flag2 = true;
+                console.log("88 capture2.eventAction:" + JSON.stringify(eventAction))
+            })
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture1, done)
+            await capturerRelease(capture2, done)
+            done()
+        })
 
-        // it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_034', 0, async function (done) {
-        //     let flag1 = false;
-        //     let flag2 = false;
-        //     let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
-        //     await capturerStart(capture, done)
-        //     capture.on("audioInterrupt", async (eventAction) => {
-        //         console.log("28 capture.eventAction:" + JSON.stringify(eventAction))
-        //         flag1 = true;
-        //     })
+      
 
-        //     let render = await createAudioRenderer(renderInfo['ULTRASONIC'], streamInfo['44100'])
-        //     await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
-        //     await renderStart(render, done)
-        //     render.on("audioInterrupt", async (eventAction) => {
-        //         console.log("08 render.eventAction:" + JSON.stringify(eventAction))
-        //         flag2 = true;
-        //     })
 
-        //     await sleep(500)
-        //     expect(flag1 == false && flag2 == false).assertTrue()
-        //     await capturerRelease(capture, done)
-        //     await renderRelease(render, done)
-        //     done()
-        // })
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_099
+        *@tc.name      : AudioCapturer VOICE_MESSAGE INTERRUPT MIC
+        *@tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT MIC 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_099', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("099 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['VOICE_MESSAGE'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("099 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+       
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0101
+        *@tc.name      : AudioCapturer GAME INTERRUPT MIC
+        *@tc.desc      : AudioCapturer GAME INTERRUPT MIC 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0101', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0101 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['GAME'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0101 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0102
+        *@tc.name      : AudioCapturer NAVIGATION INTERRUPT MIC
+        *@tc.desc      : AudioCapturer NAVIGATION INTERRUPT MIC 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0102', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0102 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NAVIGATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0102 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0103
+        *@tc.name      : AudioCapturer NOTIFICATION INTERRUPT MIC
+        *@tc.desc      : AudioCapturer NOTIFICATION INTERRUPT MIC 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0103', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0103 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NOTIFICATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0103 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+       
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0107
+        *@tc.name      : AudioCapturer VOICE_MESSAGE INTERRUPT PLAYBACK_CAPTURE
+        *@tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT PLAYBACK_CAPTURE 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0107', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['PLAYBACK_CAPTURE'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0107 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['VOICE_MESSAGE'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0107 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0108
+        *@tc.name      : AudioCapturer GAME INTERRUPT PLAYBACK_CAPTURE
+        *@tc.desc      : AudioCapturer GAME INTERRUPT PLAYBACK_CAPTURE 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0108', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['PLAYBACK_CAPTURE'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0108 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['GAME'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0108 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0109
+        *@tc.name      : AudioCapturer NAVIGATION INTERRUPT PLAYBACK_CAPTURE
+        *@tc.desc      : AudioCapturer NAVIGATION INTERRUPT PLAYBACK_CAPTURE 
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 0
+        */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0109', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['PLAYBACK_CAPTURE'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0109 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NAVIGATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0109 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+       
+
+
+        /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0121
+       *@tc.name      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_COMMUNICATION
+       *@tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_COMMUNICATION 
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0121', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0121 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['VOICE_MESSAGE'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0121 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+
+       
+
+        /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0123
+       *@tc.name      : AudioCapturer GAME INTERRUPT VOICE_COMMUNICATION
+       *@tc.desc      : AudioCapturer GAME INTERRUPT VOICE_COMMUNICATION 
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0123', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0123 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['GAME'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0123 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0124
+       *@tc.name      : AudioCapturer NAVIGATION INTERRUPT VOICE_COMMUNICATION
+       *@tc.desc      : AudioCapturer NAVIGATION INTERRUPT VOICE_COMMUNICATION 
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0124', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0124 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NAVIGATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0124 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0125
+     *@tc.name      : AudioCapturer NOTIFICATION INTERRUPT VOICE_COMMUNICATION
+     *@tc.desc      : AudioCapturer NOTIFICATION INTERRUPT VOICE_COMMUNICATION 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0125', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_COMMUNICATION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0125 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NOTIFICATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0125 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+       
+
+
+
+        /**
+   *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0129
+   *@tc.name      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_RECOGNITION
+   *@tc.desc      : AudioCapturer VOICE_MESSAGE INTERRUPT VOICE_RECOGNITION 
+   *@tc.size      : MEDIUM
+   *@tc.type      : Function
+   *@tc.level     : Level 0
+   */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0129', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0129 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['VOICE_MESSAGE'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0129 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+
+    
+
+
+        /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0131
+       *@tc.name      : AudioCapturer GAME INTERRUPT VOICE_RECOGNITION
+       *@tc.desc      : AudioCapturer GAME INTERRUPT VOICE_RECOGNITION 
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0131', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0131 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['GAME'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0131 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+       *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0132
+       *@tc.name      : AudioCapturer NAVIGATION INTERRUPT VOICE_RECOGNITION
+       *@tc.desc      : AudioCapturer NAVIGATION INTERRUPT VOICE_RECOGNITION 
+       *@tc.size      : MEDIUM
+       *@tc.type      : Function
+       *@tc.level     : Level 0
+       */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0132', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0132 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NAVIGATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0132 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+        /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0133
+     *@tc.name      : AudioCapturer NOTIFICATION INTERRUPT VOICE_RECOGNITION
+     *@tc.desc      : AudioCapturer NOTIFICATION INTERRUPT VOICE_RECOGNITION 
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0133', 0, async function (done) {
+            let flag1 = false;
+            let flag2 = false;
+            let capture = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
+            await capturerStart(capture, done)
+            capture.on("audioInterrupt", async (eventAction) => {
+                console.log("0133 capture.eventAction:" + JSON.stringify(eventAction))
+                flag1 = true;
+            })
+
+            let render = await createAudioRenderer(renderInfo['NOTIFICATION'], streamInfo['44100'])
+            await render.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE)
+            await renderStart(render, done)
+            render.on("audioInterrupt", async (eventAction) => {
+                console.log("0133 render.eventAction:" + JSON.stringify(eventAction))
+                flag2 = true;
+            })
+
+            await sleep(500)
+            expect(flag1 == false && flag2 == false).assertTrue()
+            await capturerRelease(capture, done)
+            await renderRelease(render, done)
+            done()
+        })
+
+
+
+
+
     })
 }

@@ -13,5 +13,8 @@
 
 group("applications") {
   testonly = true
-  deps = [ "settingsdata:settingsdata" ]
+  deps = [
+    "print_fwk:print_fwk",
+    "settingsdata:settingsdata",
+  ]
 }

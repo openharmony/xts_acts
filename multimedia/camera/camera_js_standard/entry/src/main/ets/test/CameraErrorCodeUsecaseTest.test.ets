@@ -75,6 +75,7 @@ let fileAsset;
 let fdNumber;
 let metadataOutput;
 let mMetadataObjectTypeArray;
+let receiver;
 
 export default function CameraErrorCodeUsecaseTest() {
     function sleep(ms) {
@@ -183,7 +184,7 @@ export default function CameraErrorCodeUsecaseTest() {
 
     async function getPhotoReceiverSurface() {
         console.log(TAG + 'Entering getPhotoReceiverSurface')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')

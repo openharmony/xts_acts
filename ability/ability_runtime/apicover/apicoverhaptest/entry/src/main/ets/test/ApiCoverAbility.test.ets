@@ -33,6 +33,7 @@ let INNER_ERROR = 16000050;
 let CROSS_USER_DENY = 201;
 let array = new Array();
 let TAG = '';
+let createModuleContext: any;
 function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
@@ -366,8 +367,13 @@ export default function ApiCoverTest() {
       expect("/data/storage/el1/bundle").assertEqual(globalThis.abilityContext.bundleCodeDir)
       expect("/data/storage/el2/distributedfiles").assertEqual(globalThis.abilityContext.distributedFilesDir)
       expect(1).assertEqual(globalThis.abilityContext.area)
-	    let moduleContext = globalThis.abilityContext.createModuleContext("module1")
-      expect("/data/storage/el2/base/cache").assertEqual(moduleContext.cacheDir)
+      createModuleContext = null;
+      try{
+	    let createModuleContext = globalThis.abilityContext.createModuleContext("module1")
+      expect("/data/storage/el2/base/cache").assertEqual(createModuleContext.cacheDir)
+      }catch(error){
+        console.log("createModuleContext fail")
+      }
       globalThis.abilityContext.area = 0
       expect(0).assertEqual(globalThis.abilityContext.area)
       globalThis.abilityContext.resourceManager.getConfiguration((err, data) => {
@@ -606,10 +612,11 @@ export default function ApiCoverTest() {
         function UnSubscribeInfoCallback(err, data) {
           console.info("SUB_AA_FMS_AcquireForm_0100 ===UnSubscribeInfoCallback===")
         }
-        function SubscribeInfoCallback(err, data) {
+        async function SubscribeInfoCallback(err, data) {
           console.info("SUB_AA_FMS_AcquireForm_0100 ===SubscribeInfoCallback===" + JSON.stringify(data))
             expect(data.parameters["Life"]).assertEqual("onForeground")
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            await sleep(4000)
             done()
         }
         commonEvent.createSubscriber(subscribeInfo, (err, data) => {

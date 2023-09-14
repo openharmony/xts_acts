@@ -34,7 +34,6 @@ export default function checkBoxGroupTest() {
       } catch (err) {
         console.error("push CheckBoxGroup page error " + JSON.stringify(err));
       }
-      await sleep(2)
       done()
     });
 

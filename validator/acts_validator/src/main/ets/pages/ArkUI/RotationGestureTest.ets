@@ -27,10 +27,12 @@ struct RotationGuestureTest {
   }
   @Builder specificNoParam() {
     Column(){
+      Scroll() {
+        Column() {
       Flex({direction:FlexDirection.Column,alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-        Image($r("app.media.flower")).height('60%').width('70%')
+        Image($r("app.media.img")).height('60%').width('60%')
       }
-      .height('250vp').width('350vp').padding(20)
+      .height('350vp').width('350vp').padding(20)
       .rotate({ x:1, y:1, z:1, angle: this.X })
       .margin(80)
       .gesture(
@@ -41,6 +43,8 @@ struct RotationGuestureTest {
         })
       )
       Text('旋转角度:' + this.X)
+        }
+      }
     }.height('80%').width('100%').backgroundColor(Color.White)
   }
   build() {

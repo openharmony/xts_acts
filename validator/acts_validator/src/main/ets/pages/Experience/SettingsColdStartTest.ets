@@ -13,20 +13,17 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import fileio from '@ohos.fileio';
 import {CustomContainer} from '../common/StartExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
 
 let abilityContext = getContext(this) as context.UIAbilityContext;
-let path = globalThis.dir;
-let path1 = path + '/ExperienceData';
-let SettingsColdPath = path1 + '/ColdStartSetting.log';
+
 @Entry
 @Component
 struct CustomContainerUser {
   @State name: string = 'SettingsColdStart';
-  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：所有应用冷启动时延小于2300ms则测试通过';
+  @State StepTips: string = '操作步骤：根据操作提示运行脚本文件，启动应用'+'\n'+'预期结果：应用冷启动时延小于2300ms则测试通过';
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State num: number = 0;
@@ -35,10 +32,13 @@ struct CustomContainerUser {
   @State mmsNum: number = 0;
   @State cameraNum: number = 0;
   @State contactsNum: number = 0;
+  @State toSP_daemon: string = 'SP_daemon -editor coldStartHM com.ohos.settings 设置 ohtest';
   scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
     this.Vue = false;
+    globalThis.SendMessage = this.toSP_daemon;
+    globalThis.HideFloatingWindow();
   }
 
   @Builder specificNoParam() {
@@ -51,10 +51,11 @@ struct CustomContainerUser {
                 .fontColor(Color.White).fontSize('24fp')
             }
             Row(){
-              Text(`测试步骤:`+ '\n' + '\n' + '1.测试设备通过USB连接工作台' + '\n' + '\n' + `2.点击开始键进入系统桌面` + '\n' + '\n'
-              + `3.清空后台应用,将底层任务栏中应用拖至桌面` + '\n' + '\n' + `4.工作台运行‘点击启动测试.bat’选择冷启动>设置测试，回车执行`
-              + '\n' + '\n' +`5.测试应用自动执行冷启动后手动返回validator界面` + '\n' + '\n' + '6.点击结束键观察测试结果'
-              + '\n' + '\n' + `7.若冷启动测试在规定时延内完成则通过测试` + '\n' + '\n' )
+              Text(`测试步骤:`+ '\n' + '\n' + '\n' + '\n' + `1.点击开始键进入系统桌面` + '\n' + '\n'
+              + `2.清空除validator外的后台应用` + '\n' + '\n' + `3.点击悬浮球开始测试` + '\n' + '\n' +`4.快速点击桌面设置应用`
+              + '\n' + '\n' + '5.待悬浮球倒计时结束显示为done后返回validator应用' + '\n' + '\n' + `6.点击结束观察测试结果`
+              + '\n' + '\n' + `7.若冷启动在规定时间内完成则通过测试` + '\n' + '\n' + `注意事项:` + '\n' + '\n' +
+              `※1.若悬浮球显示连接失败，需重启设备并在run.bat中输入run validator拉起测试` + '\n' + '\n' + `※2.双击悬浮球中断测试，长按悬浮球提前结束测试` + '\n' + '\n')
                 .fontColor(Color.White).fontSize('20fp')
             }
             Row(){
@@ -66,6 +67,7 @@ struct CustomContainerUser {
                   .enabled(this.StartEnable)
                   .opacity(this.StartEnable? 1 : 0.4)
                   .onClick(async () => {
+                    globalThis.ShowFloatingWindow();
                     this.num = 0;
                     this.StartEnable = !this.StartEnable;
                     let str = {
@@ -87,23 +89,27 @@ struct CustomContainerUser {
                   .enabled(!this.StartEnable)
                   .opacity(!this.StartEnable? 1 : 0.4)
                   .onClick(() => {
-                    this.StartEnable = !this.StartEnable
+                    this.StartEnable = !this.StartEnable;
                     /*
                               settings
                      */
-                    let setFd = fileio.openSync(SettingsColdPath, 0o100 | 0o2002, 0o664);
-                    let setBuf = new ArrayBuffer(4096);
-                    fileio.readSync(setFd,setBuf);
-                    let setReport = String.fromCharCode.apply(null,new Uint8Array(setBuf));
-                    let setHead = setReport.indexOf('time:');
-                    let setTime = setReport.substring(setHead+5);
-                    this.setNum = parseFloat(setTime);
-                    if( 0 < this.setNum && this.setNum < 2300 ) {
-                      this.num++
+                    let setReport = globalThis.resultNum;
+                    if ( setReport == undefined ) {
+                      this.setNum = -1000;
+                    } else {
+                      let setHead = setReport.indexOf('time:');
+                      let setTime = setReport.substring(setHead+5);
+                      this.setNum = parseFloat(setTime);
+                      if( 0 < this.setNum && this.setNum < 2300 ) {
+                        this.num++
+                      } else if ( isNaN(this.setNum )){
+                        this.setNum = -1000;
+                      }
+                      if( this.num === 1 ) {
+                        this.Vue = true;
+                      }
                     }
-                    if( this.num === 1 ) {
-                      this.Vue = true;
-                    }
+                    globalThis.HideFloatingWindow();
                   })
               }
             }

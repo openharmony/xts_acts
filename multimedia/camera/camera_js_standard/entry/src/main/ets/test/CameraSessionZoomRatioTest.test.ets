@@ -75,6 +75,7 @@ let mVideoConfig = {
 
 let mPicWidthMax = 8192;
 let mPicHeightMax = 8192;
+let receiver;
 
 export default function cameraSessionZoomRatioTest() {
 
@@ -124,7 +125,7 @@ export default function cameraSessionZoomRatioTest() {
 
     async function getPhotoReceiverSurface() {
         console.log(TAG + 'Entering getPhotoReceiverSurface')
-        let receiver = image.createImageReceiver(640, 480, 4, 8)
+        receiver = image.createImageReceiver(640, 480, 4, 8)
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')

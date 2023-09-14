@@ -13,18 +13,20 @@
 
 #import("//hit/build/suite.gni")
 import("test_packages.gni")
-ohos_test_suite("acts") {
-  deps = selected_packages
-}
+if (os_level == "standard") {
+  ohos_test_suite("xts_acts") {
+    deps = selected_packages
+  }
 
-ohos_test_suite("acts_ivi") {
-  deps = selected_packages_ivi
-}
+  ohos_test_suite("acts_ivi") {
+    deps = selected_packages_ivi
+  }
 
-ohos_test_suite("acts_intellitv") {
-  deps = selected_packages_intellitv
-}
+  ohos_test_suite("acts_intellitv") {
+    deps = selected_packages_intellitv
+  }
 
-ohos_test_suite("acts_wearable") {
-  deps = selected_packages_wearable
+  ohos_test_suite("acts_wearable") {
+    deps = selected_packages_wearable
+  }
 }

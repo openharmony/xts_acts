@@ -35,7 +35,6 @@ export default function textpickermultiTest() {
         } catch (err) {
           console.error("push TextPickerMulti page error " + JSON.stringify(err));
         }
-        await sleep(2)
         done()
       });
 

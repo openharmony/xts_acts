@@ -40,6 +40,13 @@ struct GridPage {
   @State onItemDragMove: string = 'onItemDragMove'
   @State onItemDragLeave: string = 'onItemDragLeave'
   @State onItemDrop: string = 'onItemDrop'
+  @State onScrollText: string = 'onScroll'
+  @State onScrollIndexText: string = 'onScrollIndex'
+  @State onReachStartText: string = 'onReachStart'
+  @State onReachEndText: string = 'onReachEnd'
+  @State onScrollStartText: string = 'onScrollStart'
+  @State onScrollStopText: string = 'onScrollStop'
+  @State onScrollFrameBeginText: string = 'onScrollFrameBegin'
   @State myKey: number = 0
   scroller: Scroller = new Scroller()
   messageManager:MessageManager = new MessageManager()
@@ -144,7 +151,8 @@ struct GridPage {
       .width('90%')
       .key('grid1')
       .backgroundColor(0xFAEEE0)
-      .height(200)
+      .height(150)
+      .edgeEffect(EdgeEffect.Spring)
       .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
         this.onItemDragStart = 'onItemDragStart:succ'
         console.info('DragInfo_x: ' + event.x + ' DragInfo_y: ' + event.y)
@@ -195,7 +203,36 @@ struct GridPage {
       })
       .width('90%')
       .backgroundColor(0xFAEEE0)
-      .height(250)
+      .height(200)
+      .onScroll((scrollOffset: number, scrollState: ScrollState) => {
+          this.onScrollText = 'onScroll:succ'
+          console.info('onScroll scrollOffset:' + scrollOffset.toString() + ' ScrollState:' + ScrollState.toString())
+        })
+      .onScrollIndex((first: number,last: number) => {
+          this.onScrollIndexText = "onScrollIndex:succ"
+          console.info("onScrollIndex first:" + first.toString() + " last:" + last.toString())
+        })
+      .onReachStart(() => {
+          this.onReachStartText = 'onReachStart:succ'
+          console.info('onReachStart !')
+        })
+      .onReachEnd(() => {
+          this.onReachEndText = 'onReachEnd:succ'
+          console.info('onReachEnd !')
+        })
+      .onScrollStart(() => {
+          this.onScrollStartText = 'onScrollStart:succ'
+          console.info('onScrollStart !')
+        })
+      .onScrollStop(() => {
+          this.onScrollStopText = 'onScrollStop:succ'
+          console.info('onScrollStop !')
+        })
+      .onScrollFrameBegin((offset: number, state: ScrollState) => {
+          this.onScrollFrameBeginText = 'onScrollFrameBegin:succ'
+          console.info('onScrollFrameBegin offset:' + offset +' state:' + state)
+          return { offsetRemain: offset }
+        })
 
       Button(this.buttonName)
         .key('button')
@@ -209,6 +246,22 @@ struct GridPage {
       Text(this.onItemDragMove).key('onItemDragMove')
       Text(this.onItemDragLeave).key('onItemDragLeave')
       Text(this.onItemDrop).key('onItemDrop')
+      Row()
+      {
+        Text(this.onScrollText).margin({right:10}).key('onScrollText')
+        Text(this.onReachStartText).key('onReachStartText')
+      }
+      Row()
+      {
+        Text(this.onReachEndText).margin({right:10}).key('onReachEndText')
+        Text(this.onScrollStartText).key('onScrollStartText')
+      }
+      Row()
+      {
+        Text(this.onScrollIndexText).margin({right:10}).key('onScrollIndexText')
+        Text(this.onScrollStopText).key('onScrollStopText')
+      }
+      Text(this.onScrollFrameBeginText).key('onScrollFrameBeginText')
     }.width('100%').margin({ top: 5 })
   }
 }

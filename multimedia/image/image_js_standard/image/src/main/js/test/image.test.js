@@ -26,6 +26,8 @@ export default function imageJsTest() {
         let filePath;
         let fdNumber;
         let globalpixelmap;
+        let globalimageSource;
+        let globalpacker;
         class MySequence1 {
             pixel_map;
             constructor(pixelmap) {
@@ -88,6 +90,22 @@ export default function imageJsTest() {
                     await globalpixelmap.release();
                 } catch (error) {
                     console.info('globalpixelmap release fail');
+                }
+            }
+            if (globalimageSource != undefined) {
+                console.info('globalimageSource release start');
+                try {
+                    await globalimageSource.release();
+                } catch (error) {
+                    console.info('globalimageSource release fail');
+                }
+            }
+            if (globalpacker != undefined) {
+                console.info('globalpacker release start');
+                try {
+                    await globalpacker.release();
+                } catch (error) {
+                    console.info('globalpacker release fail');
                 }
             }
             console.info('afterEach case');
@@ -1094,7 +1112,7 @@ export default function imageJsTest() {
                             expect(false).assertTrue()
                             done();
                         }
-                        if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
+                        if (imageInfo.size.height == 6 && imageInfo.size.width == 8) {
                             console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100 success ');
                             expect(true).assertTrue()
                             done();
@@ -1305,6 +1323,7 @@ export default function imageJsTest() {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(filePath);
+                globalimageSource = imageSourceApi;
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100 success');
                 done();
@@ -1329,6 +1348,7 @@ export default function imageJsTest() {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(filePath);
+                globalimageSource = imageSourceApi;
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_UR_0200 success');
                 done();
@@ -1353,6 +1373,7 @@ export default function imageJsTest() {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(filePath);
+                globalimageSource = imageSourceApi;
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300 success');
                 done();
@@ -1378,6 +1399,7 @@ export default function imageJsTest() {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(filePath);
+                globalimageSource = imageSourceApi;
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400 success');
                 done();
@@ -1408,6 +1430,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         if (err){
                             console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 create pixelmap failed: ' + err);
@@ -1441,6 +1464,7 @@ export default function imageJsTest() {
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100', 0, async function (done) {
             try {
                 const imageSourceApi = image.createImageSource('file:///multimedia/test.jpg');
+                globalimageSource = imageSourceApi;
                 expect(imageSourceApi == undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100 success');
                 done();
@@ -1470,6 +1494,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
@@ -1508,6 +1533,7 @@ export default function imageJsTest() {
          */
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0200', 0, async function (done) {
             const imageSourceApi = image.createImageSource(-2);
+            globalimageSource = imageSourceApi;
             expect(imageSourceApi == undefined).assertTrue();
             console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0200 success');
             done();
@@ -1531,6 +1557,7 @@ export default function imageJsTest() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalimageSource = imageSourceApi;
                 imageSourceApi.getImageInfo((err, imageInfo) => {
                     console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0300 imageInfo');
                     expect(imageInfo != undefined).assertTrue();
@@ -1552,6 +1579,7 @@ export default function imageJsTest() {
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0400', 0, async function (done) {
             const data = new ArrayBuffer(0);
             const imageSourceApi = image.createImageSource(data);
+            globalimageSource = imageSourceApi;
             expect(imageSourceApi == undefined).assertTrue();
             console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0400 success');
             done();
@@ -1576,6 +1604,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release().then(() => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100 success');
                         expect(true).assertTrue();
@@ -1612,6 +1641,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release(() => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_JPG_0100 Success');
                         expect(true).assertTrue();
@@ -1645,6 +1675,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
@@ -1692,6 +1723,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200 imageInfo.size.height:' + imageInfo.size.height);
@@ -1725,6 +1757,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300 imageInfo.size.height:' + imageInfo.size.height);
@@ -1758,6 +1791,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
@@ -1804,6 +1838,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500 imageInfo.size.height:' + imageInfo.size.height);
@@ -1837,6 +1872,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600 imageInfo.size.height:' + imageInfo.size.height);
@@ -1870,6 +1906,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
                         console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700 imageInfo.size.height:' + imageInfo.size.height);
@@ -1904,6 +1941,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
@@ -1950,6 +1988,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(1, (err, imageInfo) => {
                         if (imageInfo == undefined) {
                             expect(true).assertTrue();
@@ -1986,6 +2025,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(-1, (err, imageInfo) => {
                         expect(imageInfo == undefined).assertTrue();
                         done();
@@ -2017,6 +2057,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             expect(imageInfo != undefined).assertTrue();
@@ -2056,6 +2097,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             expect(imageInfo != undefined).assertTrue();
@@ -2095,6 +2137,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             expect(imageInfo != undefined).assertTrue();
@@ -2134,6 +2177,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             if (imageInfo != undefined && imageInfo != null) {
@@ -2178,6 +2222,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(1)
                         .then(() => {
                             console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100 failed');
@@ -2215,6 +2260,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.getImageInfo(-1)
                         .then(() => {
                             console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200 failed');
@@ -2253,6 +2299,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100 success ');
@@ -2291,6 +2338,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         if(err){
                             console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100 err: ' + err);
@@ -2328,6 +2376,7 @@ export default function imageJsTest() {
                 let bufferSize = testimagebuffer.length;
                 let offset = 0;
                 const incSouce = image.CreateIncrementalSource(new ArrayBuffer(1));
+                globalimageSource = incSouce;
                 let ret;
                 let isFinished = false;
                 while (offset < testimagebuffer.length) {
@@ -2381,6 +2430,7 @@ export default function imageJsTest() {
                 let bufferSize = testimagebuffer.length;
                 let offset = 0;
                 const incSouce = image.CreateIncrementalSource(new ArrayBuffer(1));
+                globalimageSource = incSouce;
                 let isFinished = false;
                 let ret;
                 while (offset < testimagebuffer.length) {
@@ -2435,6 +2485,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release().then(() => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100 success');
                         expect(true).assertTrue();
@@ -2471,6 +2522,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release(async (err) => {
                         if (err) {
                             console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100 err:' + err);
@@ -2510,6 +2562,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release().then(() => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200 success');
                         expect(true).assertTrue();
@@ -2546,6 +2599,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release(async () => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0200 Success');
                         expect(true).assertTrue();
@@ -2578,6 +2632,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release().then(() => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300 success');
                         expect(true).assertTrue();
@@ -2614,6 +2669,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.release(() => {
                         console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0300 Success');
                         expect(true).assertTrue();
@@ -2647,6 +2703,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800 success ');
@@ -2685,6 +2742,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1200 success ');
@@ -2719,6 +2777,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900 success ');
@@ -2757,6 +2816,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1300 success ');
@@ -2791,6 +2851,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000 success');
@@ -2829,6 +2890,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400 success');
@@ -2861,6 +2923,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalimageSource = imageSourceApi;
                     expect(imageSourceApi.supportedFormats != undefined).assertTrue();
                     console.info(imageSourceApi.supportedFormats);
                     console.info('SUB_GRAPHIC_IMAGE_IMAGESOURCE_SUPPORTEDFORMATS_0100 success ');
@@ -2889,6 +2952,7 @@ export default function imageJsTest() {
                 expect(false).assertTrue();
                 done();
             } else {
+                globalpacker = imagePackerApi;
                 expect(imagePackerApi.supportedFormats != undefined).assertTrue();
                 console.info(imagePackerApi.supportedFormats);
                 console.info('SUB_GRAPHIC_IMAGE_IMAGEPACKER_SUPPORTEDFORMATS_0100 success ');
@@ -2915,6 +2979,7 @@ export default function imageJsTest() {
                     expect(false).assertTrue();
                     done();
                 } else {
+                    globalpixelmap = pixelmap;
                     expect(pixelmap.isEditable == true).assertTrue();
                     console.info('SUB_GRAPHIC_IMAGE_ISEDITABLE_0100 success ');
                     done();
@@ -2939,6 +3004,7 @@ export default function imageJsTest() {
             let edit = true;
             let opts = { editable: true, pixelFormat: 1, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0100 editable: ' + pixelmap.isEditable);
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
@@ -2965,6 +3031,7 @@ export default function imageJsTest() {
             let edit = false;
             let opts = { editable: false, pixelFormat: 1, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0200 editable: ' + pixelmap.isEditable);
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
@@ -2993,6 +3060,7 @@ export default function imageJsTest() {
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
                     console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0100 editable: ' + pixelmap.isEditable);
+                    globalpixelmap = pixelmap;
                     expect(pixelmap != undefined).assertTrue();
                     expect(pixelmap.isEditable == opts.editable).assertTrue();
                     expect(pixelmap.isEditable == edit).assertTrue();
@@ -3024,6 +3092,7 @@ export default function imageJsTest() {
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
                     console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0200 editable: ' + pixelmap.isEditable);
+                    globalpixelmap = pixelmap;
                     expect(pixelmap != undefined).assertTrue();
                     expect(pixelmap.isEditable == opts.editable).assertTrue();
                     expect(pixelmap.isEditable == edit).assertTrue();
@@ -3065,6 +3134,7 @@ export default function imageJsTest() {
             let pixelMap;
             await image.createPixelMap(color, opts).then((pixelmap) => {
                 pixelMap = pixelmap;
+                globalpixelmap = pixelmap;
                 console.info('SUB_GRAPHIC_IMAGE_MARSHALLING_AND_UNMARSHALLIGN_PROMISE_EDITABLE_0100 editable: ' + pixelmap.isEditable);
             })
             let parcelable = new MySequence1(pixelMap);

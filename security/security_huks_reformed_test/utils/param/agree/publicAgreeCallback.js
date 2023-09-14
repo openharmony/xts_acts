@@ -14,8 +14,8 @@
  */
 import huks from '@ohos.security.huks';
 import { HksTag, HksKeyStorageType, HksKeyAlg } from '../publicParam';
-import { HuksAgreeECDH } from './publicAgreeParam.js';
-import { stringToUint8Array } from '../publicFunc.js';
+import { HuksAgreeECDH } from './publicAgreeParam';
+import { stringToUint8Array } from '../publicFunc';
 import { expect } from 'deccjsunit/index';
 let exportKeyFrist;
 let exportKeySecond;
@@ -269,7 +269,8 @@ async function publicAgreeFunc(
   srcKeyAliesSecond,
   HuksOptions,
   HuksOptionsFinish,
-  thirdInderfaceName
+  thirdInderfaceName,
+  isDeleteFinalKeys,
 ) {
   try {
     await publicAgreeGenFunc(srcKeyAliesFrist, HuksOptions);
@@ -284,10 +285,19 @@ async function publicAgreeFunc(
       HuksOptions.properties.splice(5, 1);
     }
 
-    await publicAgreeInitFunc(srcKeyAliesFrist, HuksOptions);
+    let HuksOptionsInit = JSON.parse(JSON.stringify(HuksOptions));
+    HuksOptionsInit.properties.splice(2 ,1 , HuksOptionsFinish.properties[3])
+
+    //1st Agree
+    HuksOptionsFinish.properties.splice(6, 1, {
+      tag: HksTag.HKS_TAG_KEY_ALIAS,
+      value: stringToUint8Array(srcKeyAliesFrist + 'final'),
+    });
+    await publicAgreeInitFunc(srcKeyAliesFrist, HuksOptionsInit);
     await publicAgreeUpdateFunc(HuksOptions, 1);
     await publicAgreeFinishAbortFunc(HuksOptionsFinish, thirdInderfaceName);
 
+    //2nd Agree
     let tempHuksOptionsFinish = HuksOptionsFinish;
     let HuksOptionsFinishSecond = tempHuksOptionsFinish;
     HuksOptionsFinishSecond.properties.splice(6, 1, {
@@ -295,12 +305,13 @@ async function publicAgreeFunc(
       value: stringToUint8Array(srcKeyAliesSecond + 'final'),
     });
 
-    await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptions);
+    await publicAgreeInitFunc(srcKeyAliesSecond, HuksOptionsInit);
     await publicAgreeUpdateFunc(HuksOptions, 2);
     await publicAgreeFinishAbortFunc(HuksOptionsFinishSecond, thirdInderfaceName);
-
     await publicAgreeDeleteFunc(srcKeyAliesFrist, HuksOptions);
-    if (thirdInderfaceName == 'finish') {
+    //delete the final keys or not?
+    if (thirdInderfaceName == 'finish' && isDeleteFinalKeys) {
+      await publicAgreeDeleteFunc(srcKeyAliesFirst + 'final', HuksOptions);
       await publicAgreeDeleteFunc(srcKeyAliesSecond + 'final', HuksOptions);
     }
     await publicAgreeDeleteFunc(srcKeyAliesSecond, HuksOptions);

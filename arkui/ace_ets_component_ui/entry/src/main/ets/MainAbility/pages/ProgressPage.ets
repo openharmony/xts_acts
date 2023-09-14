@@ -69,6 +69,7 @@ struct ProgressPage {
         .color(this.color)
         .value(this.value)
         .width(200)
+
         .backgroundColor(this.backColor)
         .key('pro1')
       Progress({ value: 10 }).width(100).key('pro2')
@@ -100,6 +101,12 @@ struct ProgressPage {
       Row({ space: 40 }) {
         Progress({ value: 10, type: ProgressType.Capsule }).width(100).height(50)
         Progress({ value: this.value, total: 150, type: ProgressType.Capsule })
+          .color(this.color)
+          .value(50)
+          .width(100)
+          .height(50)
+        Progress({ value: this.value, total: 150, type: ProgressType.Linear})
+          .style({ strokeWidth: 20, scaleCount: 30, scaleWidth: 20 ,strokeRadius:2})
           .color(this.color)
           .value(50)
           .width(100)

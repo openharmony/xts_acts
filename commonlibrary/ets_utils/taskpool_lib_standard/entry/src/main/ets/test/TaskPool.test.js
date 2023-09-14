@@ -982,7 +982,7 @@ describe('ActsAbilityTest', function () {
     })
 
     /**
-     * @tc.number    : TaskPoolTestClass049
+     * @tc.number    : TaskPoolTestClass050
      * @tc.name      : Async Function about priority task
      * @tc.desc      : Execute priority tasks
      * @tc.size      : MEDIUM
@@ -1310,17 +1310,9 @@ describe('ActsAbilityTest', function () {
             "use concurrent"
             return arg + 1;
         }
-        function additionDelay(arg) {
-            "use concurrent"
-            let start = new Date().getTime();
-            while (new Date().getTime() - start < 3000) {
-                continue;
-            }
-            return arg + 1;
-        }
         try {
-            let task1 = new taskpool.Task(additionDelay, 100);
-            let task2 = new taskpool.Task(additionDelay, 200);
+            let task1 = new taskpool.Task(addition, 100);
+            let task2 = new taskpool.Task(addition, 200);
             let task3 = new taskpool.Task(addition, 300);
 
             let result1 = taskpool.execute(task1);
@@ -1596,11 +1588,11 @@ describe('ActsAbilityTest', function () {
           duration += taskInfo.duration;
         }
         console.info("task duration is: " + duration);
-        expect(tid != 0);
-        expect(taskId.length != 0);
-        expect(priority != -1);
-        expect(taskId != 0);
-        expect(state != 0);
+        expect(tid != 0).assertTrue();
+        expect(taskIds.length != 0).assertTrue();
+        expect(priority != -1).assertTrue();
+        expect(taskId != 0).assertTrue();
+        expect(state != 0).assertTrue();
         done();
     })
 
@@ -1672,11 +1664,66 @@ describe('ActsAbilityTest', function () {
           duration += taskInfo.duration;
         }
         console.info("task duration is: " + duration);
-        expect(tid != 0);
-        expect(taskId.length != 0);
-        expect(priority != -1);
-        expect(taskId != 0);
-        expect(state != 0);
+        expect(tid != 0).assertTrue();
+        expect(taskIds.length != 0).assertTrue();
+        expect(priority != -1).assertTrue();
+        expect(taskId != 0).assertTrue();
+        expect(state != 0).assertTrue();
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass068
+     * @tc.name      : SharedArrayBuffer with taskpool
+     * @tc.desc      : transfer SharedArrayBuffer with taskpool
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass068', 0,  async function (done) {
+        let sab = new SharedArrayBuffer(20);
+        let int32 = new Uint32Array(sab);
+        function testTransfer(arg1) {
+            "use concurrent"
+            arg1[0] = 100;
+            arg1[1] = 200;
+            arg1[2] = 300;
+            arg1[3] = 400;
+            return "success";
+        }
+        let task = new taskpool.Task(testTransfer, int32);
+        taskpool.execute(task).then((res)=> {
+            let val = int32[0] + int32[1] + int32[2] + int32[3];
+            expect(val).assertEqual(1000);
+        });
+        done();
+    })
+
+    /**
+     * @tc.number    : TaskPoolTestClass069
+     * @tc.name      : SharedArrayBuffer and Atomics  with taskpool
+     * @tc.desc      : transfer SharedArrayBuffer and Atomics with taskpool
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass069', 0,  async function (done) {
+        let sab = new SharedArrayBuffer(20);
+        let int32 = new Int32Array(sab);
+        function testTransfer(arg1) {
+          "use concurrent"
+          console.info("wait begin::");
+          let res = Atomics.wait(arg1, 0, 0, 3000);
+          return res;
+        }
+
+        let task = new taskpool.Task(testTransfer, int32);
+        taskpool.execute(task).then((res) => {
+            expect(res).assertEqual("ok");
+        });
+        setTimeout(() => {
+          Atomics.notify(int32, 0, 1);
+        }, 1000);
         done();
     })
 })

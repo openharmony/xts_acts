@@ -246,7 +246,7 @@ export default function SearchJsunit() {
       expect(obj.$attrs.icon).assertEqual('resource:///ohos_search.svg');
       expect(obj.$attrs.searchButton).assertEqual('search');
       expect(obj.$attrs.placeholderColor).assertEqual('#FF00000A');
-      expect(obj.$attrs.value).assertEqual('');
+      expect(obj.$attrs.value).assertEqual('hello');
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"14.00fp","weight":"400","fontFamily":"sans-serif"}');
       expect(obj.$attrs.textFont).assertEqual('{"fontSize":"14.00fp","fontStyle":"FontStyle.Normal","fontWeight":"400","fontFamily":"HarmonyOS Sans"}');
       expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');

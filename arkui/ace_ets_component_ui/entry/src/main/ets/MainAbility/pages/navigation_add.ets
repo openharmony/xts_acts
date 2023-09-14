@@ -157,6 +157,11 @@ struct NavigationExample2 {
         .onClick(() => { // 点击后滑到下一页
           this.navPathStack.getIndexByName("navidesnation_add")
         }).margin({ top: 400, left: 20 })
+      Button('pushPaht')
+        .height('5%')
+        .onClick(() => { // 点击后滑到下一页
+          this.navPathStack.pushPath(new NavPathInfo("",""))
+        }).margin({ top: 400, left: 20 })
 
 
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)

@@ -652,8 +652,18 @@ export default function webJsunit() {
      *tc.desic Save current page
      */
     it('GetStoredGeolocationPromise',0,async function(done){
-      emitKey="emitGetStoredGeolocationPromise";
+      emitKey="emitGetCustomUserAgent";
       Utils.registerEvent("GetStoredGeolocationPromise","file:///",521,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+      *tc.number SUB_ACE_BASIC_ETS_API_061                                                                                                                                                              
+      *tc.name getCustomUserAgent                                                                                                                                                                                                                
+      *tc.desic Save current page
+      */
+    it('GetCustomUserAgent',0,async function(done){
+      emitKey="emitGetCustomUserAgent";
+      Utils.registerEvent("GetCustomUserAgent","userAgent",522,done);
       sendEventByKey('webcomponent',10,'');
     })
   })

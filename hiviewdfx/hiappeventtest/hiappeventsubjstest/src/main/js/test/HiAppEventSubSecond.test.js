@@ -410,7 +410,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4200
-     * @tc.name 验证调用write接口，事件名称大写字母开头，打点错误，返回错误码11101002
+     * @tc.name 验证调用write接口，事件名称数字开头，打点错误，返回错误码11101002
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub42', 3, async function (done) {
@@ -418,7 +418,7 @@ describe('HiAppEventSubSecondTest', function () {
         try{
             HiAppEventV9.write({
                 domain: "test_domain",
-                name: "Test_event",
+                name: "9Test_event",
                 eventType: HiAppEventV9.EventType.FAULT,
                 params: {
                     int_data: 100,
@@ -643,7 +643,7 @@ describe('HiAppEventSubSecondTest', function () {
 
     /**
      * @tc.number DFX_DFT_HiAppEvent_Sub_4900
-     * @tc.name 验证调用write接口，事件参数名称大写字母开头，忽略相关事件参数，返回错误码11101005
+     * @tc.name 验证调用write接口，事件参数名称数字开头，忽略相关事件参数，返回错误码11101005
      * @tc.desc HiAppEvent write interface test.
      */
     it('HiAppEventSub49', 3, async function (done) {
@@ -654,7 +654,7 @@ describe('HiAppEventSubSecondTest', function () {
                 name: "test_event",
                 eventType: HiAppEventV9.EventType.FAULT,
                 params: {
-                    Int_data: 100,
+                    "9Int_data": 100,
                     str_data: "strValue"
                 }
             }, (err) => {

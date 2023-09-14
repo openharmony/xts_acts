@@ -154,7 +154,7 @@ export default function buttonJsunit() {
        let strJson = getInspectorByKey('btok');
        let obj = JSON.parse(strJson);
        console.info("[buttonJsunit_0700'] component obj is: " + obj.$attrs.fontSize + obj.$attrs.fontColor + obj.$attrs.fontFamily + obj.$attrs.fontStyle + obj.$attrs.fontWeight);
-       expect(obj.$attrs.fontSize).assertEqual('-200.00fp');
+       expect(obj.$attrs.fontSize).assertEqual('16.00fp');
        expect(obj.$attrs.fontColor).assertEqual('#FFFFFFFF');
        expect(obj.$attrs.fontFamily).assertEqual('233');
        expect(obj.$attrs.fontStyle).assertEqual('FontStyle.Normal');

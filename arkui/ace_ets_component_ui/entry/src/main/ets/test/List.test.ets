@@ -60,8 +60,21 @@ import ApiCommponentAddJsunit from './ApiCommponentAddJsunit.test.ets';
 import fontJsunit from './fontJsunit.test.ets';
 import PanGestureEventJsunit from './PanGestureEventJsunit.test.ets';
 import RenderFitJsunit from './RenderFitJsunit.test.ets';
+import DialogJsunit from './DialogJsunit.test.ets';
+import ActionSheetJsunit from './ActionSheetJsunit.test.ets';
+import AlertDialogJsunit from './AlertDialogJsunit.test.ets';
+import CustomDialogJsunit from './CustomDialogJsunit.test.ets';
+import DatePickerDialogJsunit from './DatePickerDialogJsunit.test.ets';
+import ShowDialogJsunit from './ShowDialogJsunit.test.ets';
+import TextPickerDialogJsunit from './TextPickerDialogJsunit.test.ets';
+import TimePickerDialogJsunit from './TimePickerDialogJsunit.test.ets';
+import OverlayJsunit from './OverlayJsunit.test.ets';
+import PanelJsunit from './PanelJsunit.test.ets';
+import GridCallbackJsunit from './GridCallbackJsunit.test.ets';
+import aboutToRecycleiamge from './aboutToRecycleiamgeJS.test.ets'
 
 export default function testsuite() {
+  DialogJsunit();
   blankJsunit();
   buttonJsunit();
   checkBoxGroupUIJsunit();
@@ -109,4 +122,15 @@ export default function testsuite() {
   ApiCommponentAddJsunit();
   PanGestureEventJsunit();
   RenderFitJsunit();
+  ActionSheetJsunit();
+  AlertDialogJsunit();
+  CustomDialogJsunit();
+  DatePickerDialogJsunit();
+  ShowDialogJsunit();
+  TextPickerDialogJsunit();
+  TimePickerDialogJsunit();
+  OverlayJsunit();
+  PanelJsunit();
+  GridCallbackJsunit();
+  aboutToRecycleiamge();
 }

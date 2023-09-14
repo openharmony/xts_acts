@@ -25,7 +25,9 @@ ohos_js_hap_suite("ActsAceStandardTest") {
   part_name = "ace_engine"
 }
 ohos_js_assets("ace_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("ace_resources") {
   sources = [ "./src/main/resources" ]

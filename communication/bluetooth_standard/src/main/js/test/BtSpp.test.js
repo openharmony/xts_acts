@@ -15,12 +15,40 @@
 
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
-
+import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 export default function btSppTest() {
 describe('btSppTest', function() {
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
+    }
+
+    async function openPhone() {
+        try{
+            let drivers = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ drivers);            
+            await drivers.delayMs(1000);
+            await drivers.wakeUpDisplay();
+            await drivers.delayMs(5000);
+            await drivers.swipe(1500, 1000, 1500, 100);
+            await drivers.delayMs(10000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
+    }
+
+    async function clickTheWindow() {
+        try{
+            let driver = Driver.create();
+            console.info('[bluetooth_js] bt driver create:'+ driver);            
+            await driver.delayMs(1000);
+            await driver.click(950, 2550);
+            await driver.delayMs(5000);
+            await driver.click(950, 2550);
+            await driver.delayMs(3000);
+        } catch (error) {
+            console.info('[bluetooth_js] driver error info:'+ error);
+        }
     }
 
     async function tryToEnableBt() {
@@ -29,6 +57,7 @@ describe('btSppTest', function() {
             case 0:
                 console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             case 1:
@@ -41,14 +70,17 @@ describe('btSppTest', function() {
             case 3:
                 console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
+                await clickTheWindow();
                 await sleep(10000);
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
-    beforeAll(function () {
+    beforeAll(async function (done) {
         console.info('beforeAll called')
+        await openPhone();
+        done();
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -81,9 +113,9 @@ describe('btSppTest', function() {
                 serverNumber = number;
                 expect(true).assertEqual(number!=null);
             }
+            done();
         }
-        await bluetooth.sppListen('server1', SppOption, serverSocket);
-        done()
+        bluetooth.sppListen('server1', SppOption, serverSocket);
     })
 
     /**
@@ -105,9 +137,9 @@ describe('btSppTest', function() {
                 serverNumber = number;
                 expect(true).assertEqual(number!=null);
              }
+             done();
         }
-        await bluetooth.sppListen('server1', sppOption, serverSocket);
-        done();
+        bluetooth.sppListen('server1', sppOption, serverSocket);
     })
 
     /**
@@ -154,9 +186,9 @@ describe('btSppTest', function() {
                 serverNumber = number;
                 expect(true).assertEqual(serverNumber!=null);
              }
+             done();
         }
-        await bluetooth.sppListen('server1', sppOption, serverSocket);
-        done();
+        bluetooth.sppListen('server1', sppOption, serverSocket);
     })
 
     /**
@@ -175,9 +207,9 @@ describe('btSppTest', function() {
                 console.log('[bluetooth_js] clientSocket Number:' + JSON.stringify(number));
                 expect(true).assertEqual(number!=null);
             }
+            done();
         }
-        await bluetooth.sppAccept(0, acceptClientSocket);
-        done();
+        bluetooth.sppAccept(0, acceptClientSocket);
     })
 
     /**

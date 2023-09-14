@@ -29,7 +29,6 @@ export default function imageYuv() {
         });
 
         beforeEach(function () {
-            isTimeOut = false;
             console.info("beforeEach case");
         });
 

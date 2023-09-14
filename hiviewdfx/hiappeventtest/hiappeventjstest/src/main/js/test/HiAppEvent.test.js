@@ -46,6 +46,28 @@ describe('HiAppEventApiTest', function () {
     })
 
     /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_0200
+     * @tc.name testHiAppEventApi02
+     * @tc.desc 验证write(API7)接口，使用Promise异步回调可打点32以内各类型参数的事件，可调用成功，无返回错误码.
+     */
+    it('testHiAppEventApi02', 1, async function (done) {
+        console.info('testHiAppEventApi02 start')
+        HiAppEvent.write("write", HiAppEvent.EventType.FAULT, {"key_int": 100, "key_string": "demo",
+            "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
+            "key_array_str": ["a", "b", "c"], "key_array_bool": [true, false],"key_array_int2": [1, 2, 3],
+            "key_arr_float2": [1.1, 2.2, 3.3], "key_arr_str2": ["a", "b", "c"], "key_array_bool2": [true, false]
+        }).then((value) => {
+            console.log(`testHiAppEventApi02 success to write event: ${value}`);
+            expect(value == 0).assertTrue();
+            done();
+        }).catch((err) =>{
+            console.error(`testHiAppEventApi02 failed to write event because ${err.code}`);
+            expect().assertFail();
+            done();
+        });
+    })
+
+    /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_0300
      * @tc.name testHiAppEventApi03
      * @tc.desc HiAppEvent write EventType of STATISTIC.
@@ -615,9 +637,11 @@ describe('HiAppEventApiTest', function () {
             }
         }).then((value) => {
             console.log(`success to write event: ${value}`);
+            expect(value == 0).assertTrue()
             done();
         }).catch((err) =>{
             console.error(`failed to write event because ${err.code}`);
+            expect().assertFail()
         });
         console.info('testHiAppEventApi26 end')
     })
@@ -642,12 +666,172 @@ describe('HiAppEventApiTest', function () {
         }, (err, value) => {
             if (err) {
                 console.error(`failed to write event because ${err.code}`);
+                expect().assertFail();
                 done();
             }
             console.log(`success to write event: ${value}`)
+            expect(value == 0).assertTrue()
             done();
         });
         console.info('testHiAppEventApi27 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2800
+     * @tc.name testHiAppEventApi28
+     * @tc.desc 验证Write(API9)接口传入参数为特殊number，中文字符，可调用成功，无返回错误码.
+     */
+    it('testHiAppEventApi28', 2, async function (done) {
+        console.info('testHiAppEventApi28 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "test_event",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_max": Number.MAX_VALUE, "key_min": Number.MIN_VALUE, "key_chinese": "中文"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi28 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi28 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi28 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2900
+     * @tc.name testHiAppEventApi29
+     * @tc.desc 验证Write(API9)接口成功，传入参数名称可以符合规格.
+     */
+    it('testHiAppEventApi29', 2, async function (done) {
+        console.info('testHiAppEventApi29 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "test_event",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "kEy9_int": 100, "KEy99_strinG_KEY": "demo", "$kEy9_bool9":true
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi29 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi29 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi29 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3000
+     * @tc.name testHiAppEventApi30
+     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，大写字母为开头和结尾.
+     */
+    it('testHiAppEventApi30', 2, async function (done) {
+        console.info('testHiAppEventApi30 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "TEst9_evenT",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi30 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi30 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi30 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3100
+     * @tc.name testHiAppEventApi31
+     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，小写字母为开头和结尾.
+     */
+    it('testHiAppEventApi31', 2, async function (done) {
+        console.info('testHiAppEventApi31 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "tEst9_event",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi31 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi31 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi31 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3200
+     * @tc.name testHiAppEventApi32
+     * @tc.desc 验证Write(API9)接口成功，传入事件名称大写字母、小写字母、数字、_为中间字符，$开头,以数字结尾，长度48字符.
+     */
+    it('testHiAppEventApi32', 2, async function (done) {
+        console.info('testHiAppEventApi32 start')
+        HiAppEventV9.write({
+            domain: "test_domain",
+            name: "$tEst9_event9_tEst9_event9_tEst9_event9_tEst9_e9",
+            eventType: HiAppEventV9.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo"
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`testHiAppEventApi32 failed to write event because ${err.code}`);
+                expect().assertFail();
+                done();
+            }
+            console.log(`testHiAppEventApi32 success to write event: ${value}`)
+            expect(value == 0).assertTrue()
+            done();
+        });
+        console.info('testHiAppEventApi32 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_3300
+     * @tc.name testHiAppEventApi33
+     * @tc.desc HiAppEvent configure interface with disable option set false.
+     */
+    it('testHiAppEventApi33', 3, async function (done) {
+        console.info('testHiAppEventApi33 start')
+        try {
+            HiAppEventV9.configure({disable: true});
+            HiAppEventV9.configure({});
+            HiAppEventV9.configure({disable: false});
+            HiAppEventV9.configure({
+                maxStorage: '100M'
+            })
+            expect(true).assertTrue()
+        } catch (err) {
+            console.info(`testHiAppEventApi33 err ,err code is ${err.code}, err message is ${err.message}`)
+            expect().assertFail();
+        }
+        console.info('testHiAppEventApi33 end')
+        done()
     })
 })
 }

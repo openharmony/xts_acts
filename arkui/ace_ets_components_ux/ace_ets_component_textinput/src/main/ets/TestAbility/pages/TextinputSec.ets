@@ -172,6 +172,158 @@ struct Index {
           .height(40)
           .margin(20)
 
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(BarState.Off)
+          .style(TextInputStyle.Inline )
+          .key("ArkUX_Stage_TextInput_barState_0100")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(BarState.Auto)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0200")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(BarState.On)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0300")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(BarState.Off)
+          .barState(BarState.Auto)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0400")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(0)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0500")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(10)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0600")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState("sfasf")
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0700")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState("")
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0800")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(null)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_0900")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(undefined)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_barState_1000")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(BarState.On)
+          .barState(undefined)
+          .key("ArkUX_Stage_TextInput_barState_1100")
+          .style(TextInputStyle.Inline)
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(undefined)
+          .barState(BarState.On)
+          .key("ArkUX_Stage_TextInput_barState_1200")
+          .style(TextInputStyle.Inline)
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .style(TextInputStyle.Inline)
+          .key("TextInputInlineNO")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .barState(BarState.On)
+          .maxLines(10)
+          .style(TextInputStyle.Default)
+          .key("TextInputStyleDefault")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(10)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0100")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(0)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0200")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines("123")
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0300")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(-5)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0400")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines("")
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0500")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(null)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0600")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(undefined)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0700")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(1)
+          .maxLines(10)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0800")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(10)
+          .maxLines(undefined)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_0900")
+        TextInput({
+          text: "test",placeholder: 'input your word...',controller: this.controllerTextInput
+        })
+          .maxLines(undefined)
+          .maxLines(10)
+          .style(TextInputStyle.Inline)
+          .key("ArkUX_Stage_TextInput_maxLines_1000")
+
+
     }.width('100%')
     .margin({ top: 5 })
   }

@@ -26,9 +26,10 @@ export default function inputMethodNormalJSUnit() {
       let getFocusCmd = '';
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       display_info = display.getDefaultDisplaySync();
-      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${display_info.height*0.5}`;
+      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${ Math.round(display_info.height*0.4) }`;
       console.debug('====>runCmd info:' + getFocusCmd);
       await abilityDelegator.executeShellCommand(getFocusCmd);
+      done();
     })
 
     /*

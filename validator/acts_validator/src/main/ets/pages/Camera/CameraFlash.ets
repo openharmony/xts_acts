@@ -104,17 +104,21 @@ struct cameraOrientation {
       }.size({ width: '10%', height: '30%' })
 
       Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start, direction: FlexDirection.Column }) {
-        // Text(`提示：` + this.isFlash).fontSize('16fp').fontColor(Color.White)
-        Text(`提示：如果设备存在闪光灯，选择开启，否则选择无闪光灯`)
-          .fontSize('16fp').fontColor(Color.White).margin('20fp')
-        Row() {
-          Button(this.flashChange ? '关闭' : '开启').onClick(() => {
-            this.openFlash()
-          })
-          Button('无闪光灯').onClick(() => {
-            this.Vue = true
-          })
-        }.justifyContent(FlexAlign.SpaceEvenly).width('100%').margin('20fp')
+        Scroll() {
+          Column() {
+            // Text(`提示：` + this.isFlash).fontSize('16fp').fontColor(Color.White)
+            Text(`提示：如果设备存在闪光灯，选择开启，否则选择无闪光灯`)
+              .fontSize('16fp').fontColor(Color.White).margin('20fp')
+            Row() {
+              Button(this.flashChange ? '关闭' : '开启').onClick(() => {
+                this.openFlash()
+              })
+              Button('无闪光灯').onClick(() => {
+                this.Vue = true
+              })
+            }.justifyContent(FlexAlign.SpaceEvenly).width('100%').margin('20fp')
+          }
+        }
       }.width('80%').height('50%')
 
 

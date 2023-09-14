@@ -21,7 +21,7 @@ export default function AVSessionManager() {
     describe('AVSessionManager', function () {
         let tag = 'ApplicationA';
         let type = 'audio';
-        let session;
+        let currentAVSession;
         let context = featureAbility.getContext();
 
         function sleep(ms) {
@@ -37,18 +37,16 @@ export default function AVSessionManager() {
             console.info('TestLog: Start testing testcase');
         })
 
-        afterEach(function () {
+        afterEach(async function () {
+            await sleep(5000);
+            if (currentAVSession){
+                await currentAVSession.destroy();
+            }
             console.info('TestLog: End testing testcase');
         })
 
         afterAll(function () {
-            console.info('TestLog: Destroy Session And Controller');
-            session.destroy().then(() => {
-                console.info('TestLog: Session destroy success');
-            }).catch((err) => {
-                console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            console.info('TestLog: End testing describe');
         })
 
         /* *
@@ -61,8 +59,8 @@ export default function AVSessionManager() {
             */
         it('SUB_MULTIMEDIA_AVSESSION_CREATEAVSESSION_PROMISE_0100', 0, async function (done) {
             await avSession.createAVSession(context, tag, type).then((data) => {
-                session = data;
-                if (session.sessionId.length === 64) {
+                currentAVSession = data;
+                if (currentAVSession.sessionId.length === 64) {
                     console.info('TestLog: avSession create successfully');
                     expect(true).assertTrue();
                 }
@@ -72,12 +70,6 @@ export default function AVSessionManager() {
                 }
             }).catch((err) => {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
             done();
@@ -97,6 +89,8 @@ export default function AVSessionManager() {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
                 expect(true).assertTrue();
             });
+            sleep(200);
+            currentAVSession = await avSession.createAVSession(context,tag,"audio");
             done();
         })
 
@@ -115,7 +109,8 @@ export default function AVSessionManager() {
                 console.info(`TestLog: avSession create error: code: ${err.code}, message: ${err.message}`);
                 expect(true).assertTrue();
             });
-
+            sleep(200);
+            currentAVSession = await avSession.createAVSession(context,tag,"audio");
             done();
         })
 
@@ -130,10 +125,6 @@ export default function AVSessionManager() {
         * @tc.level     : Level2
         */
         it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_CALLBACK_0100', 0, async function (done) {
-            let currentAVSession;
-            let tag = "createNewSession";
-            let context = featureAbility.getContext();
-
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -146,20 +137,17 @@ export default function AVSessionManager() {
                 currentAVSession.getAVCastController().then((avcontroller) => {
                     aVCastController = avcontroller;
                     console.info(`getAVCastController : SUCCESS : sessionid : ${aVCastController.sessionId}`);
-                }).catch((err) => {
+                }).catch(async(err) => {
                     console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
                     expect(err.code == 6600101).assertTrue();
-                    done();
                 });
             } catch (error) {
                 console.info(`getAVCastController failed: code: ${error.code}, message: ${error.message}`);
                 if (error.message == "Cannot read property then of undefined") {
-                    console.info(`getAVCastController callback pass`);
+                    console.info(`getAVCastController callback successfully`);
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
 
@@ -172,32 +160,24 @@ export default function AVSessionManager() {
         * @tc.level     : Level2
         */
         it('SUB_MULTIMEDIA_AVSESSION_GETAVCASTCONTROLLER_PROMISE_0100', 0, async function (done) {
-            let currentAVSession;
-            let tag = "createNewSession";
-            let context = featureAbility.getContext();
-
             try {
-
                 currentAVSession = await avSession.createAVSession(context, tag, "audio");
                 console.info(`CreateAVSession 111BusinessError: code: `);
                 let aVCastController;
                 console.info(`CreateAVSession 333BusinessError: code: `);
-                aVCastController = await currentAVSession.getAVCastController((err, data) => {
+                aVCastController = await currentAVSession.getAVCastController(async(err, data) => {
                     if (err) {
                         console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
                         expect(err.code == 6600101).assertTrue();
-                        done();
                     }
                 });
             } catch (error) {
                 console.error(`getAVCastController BusinessError: code: ${error.code}, message: ${error.message}`);
                 if (error.message == "Cannot read property catch of undefined") {
-                    console.info(`getAVCastController promise pass`);
+                    console.info(`getAVCastController promise successfully`);
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
 
@@ -212,13 +192,7 @@ export default function AVSessionManager() {
         * @tc.level     : Level2
         */
         it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_CALLBACK_0100', 0, async function (done) {
-            let currentAVSession;
-            let tag = "createNewSession";
-            let context = featureAbility.getContext();
-
             try {
-
-
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
                     console.info(`CreateAVSession : SUCCESS : sessionId = ${currentAVSession.sessionId}`);
@@ -237,13 +211,10 @@ export default function AVSessionManager() {
             } catch (error) {
                 console.info(`stopCasting BusinessError2: code: ${error.code}, message: ${error.message}`);
                 if (error.message == "Cannot read property catch of undefined") {
-                    console.info(`stopCasting callback pass`);
+                    console.info(`stopCasting callback successfully`);
                     expect(true).assertTrue()
                 }
             }
-
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -255,10 +226,6 @@ export default function AVSessionManager() {
     * @tc.level     : Level2
     */
         it('SUB_MULTIMEDIA_AVSESSION_STOPCASTING_PROMISE_0100', 0, async function (done) {
-            let currentAVSession;
-            let tag = "createNewSession";
-            let context = featureAbility.getContext();
-
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -276,12 +243,10 @@ export default function AVSessionManager() {
             } catch (error) {
                 console.error(`stopCasting BusinessError2: code: ${error.code}, message: ${error.message}`)
                 if (error.message == "Cannot read property then of undefined") {
-                    console.info(`stopCasting promise pass`);
+                    console.info(`stopCasting promise successfully`);
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -293,10 +258,6 @@ export default function AVSessionManager() {
         * @tc.level     : Level2
         */
         it('SUB_MULTIMEDIA_AVSESSION_GETCURRENTITEM_CALLBACK_0100', 0, async function (done) {
-            let currentAVSession;
-            let tag = "createNewSession";
-            let context = featureAbility.getContext();
-
             try {
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
@@ -315,21 +276,17 @@ export default function AVSessionManager() {
                             console.info(`getCurrentItem successfully`);
                         }
                     });
-                }).catch((err) => {
+                }).catch(async(err) => {
                     console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
                     expect(err.code == 6600101).assertTrue();
-                    done();
                 });
             } catch (error) {
                 console.error(`getCurrentItem BusinessError2: code: ${error.code}, message: ${error.message}`)
                 if (error.message == "Cannot read property then of undefined") {
-                    console.info(`getCurrentItem callback pass`);
+                    console.info(`getCurrentItem callback successfully`);
                     expect(true).assertTrue()
-
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -341,12 +298,7 @@ export default function AVSessionManager() {
         * @tc.level     : Level2
         */
         it('SUB_MULTIMEDIA_AVSESSION_GETCURRENTITEM_PROMISE_0100', 0, async function (done) {
-            let currentAVSession;
-            let tag = "createNewSession";
-            let context = featureAbility.getContext();
-
             try {
-
                 await avSession.createAVSession(context, tag, "audio").then((data) => {
                     currentAVSession = data;
                     console.info(`CreateAVSession : SUCCESS : sessionId = ${currentAVSession.sessionId}`);
@@ -362,20 +314,17 @@ export default function AVSessionManager() {
                     }).catch((err) => {
                         console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
                     });
-                }).catch((err) => {
+                }).catch(async(err) => {
                     console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
                     expect(err.code == 6600101).assertTrue();
-                    done();
                 });
             } catch (error) {
                 console.error(`getAVCastController BusinessError2: code: ${error.code}, message: ${error.message}`);
                 if (error.message == "Cannot read property then of undefined") {
-                    console.info(`getCurrentItem promise pass`);
+                    console.info(`getCurrentItem promise successfully`);
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
-            await currentAVSession.destroy();
             done();
         })
     })

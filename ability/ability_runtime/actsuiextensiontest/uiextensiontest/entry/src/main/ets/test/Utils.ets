@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import commonEventManager from '@ohos.commonEventManager'
 export default class Utils {
     static sleep(time) {
       return new Promise<void>((resolve, reject) => {
@@ -23,4 +23,13 @@ export default class Utils {
         console.info(`sleep ${time} over...`)
       })
     }
+
+    static unsubscribe(subscriber) {
+      if(subscriber != undefined){
+        commonEventManager.unsubscribe(subscriber, async (err, data) => {
+          console.log("UnSubscribeInfoCallback : " + JSON.stringify(data));
+        });
+      }
+    }
+
   }

@@ -20,6 +20,7 @@ import {
   photoFetchOption,
   getFileAsset,
   getPermission,
+  sleep,
 } from '../../../../../../common'
 
 export default function openTest() {
@@ -30,14 +31,17 @@ export default function openTest() {
     })
 
     async function rwOpenCallback(done, testNum, fetchOp, assetBytes) {
+      let asset;
+      let fd;
       try {
-        const asset = await getFileAsset(testNum, fetchOp);
-        asset.open('rw', async (err, fd) => {
+        asset = await getFileAsset(testNum, fetchOp);
+        asset.open('rw', async (err, data) => {
           try {
             if (err) {
               console.info(`${testNum} err: ${err}`);
               expect(false).assertTrue();
             } else {
+              fd = data;
               console.info(`${testNum} fd: ${fd}`);
               let buf = new ArrayBuffer(4096);
               let res = await fileio.read(fd, buf);
@@ -49,72 +53,109 @@ export default function openTest() {
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
           }
-          await asset.close(fd);
           done();
         });
+        await sleep(50);
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
+      } finally {
+        if (asset) {
+          await asset.close(fd);
+        }
       }
     };
 
     async function rOpenCallback(done, testNum, fetchOp, assetBytes) {
+      let asset;
+      let fd;
       try {
-        const asset = await getFileAsset(testNum, fetchOp);
-        asset.open('r', async (err, fd) => {
+        asset = await getFileAsset(testNum, fetchOp);
+        asset.open('r', async (err, data) => {
           try {
             if (err) {
               console.info(`${testNum} err: ${err}`);
               expect(false).assertTrue();
             } else {
+              fd = data;
               console.info(`${testNum} fd: ${fd}`);
               let buf = new ArrayBuffer(4096);
-              let res = await fileio.read(fd, buf);
-              expect(res.bytesRead).assertEqual(assetBytes);
-              console.info(`${testNum} read suc`);
-              await fileio.write(fd, testNum);
-              expect(false).assertTrue();
+              fileio.read(fd, buf).then((result) => {
+                expect(result.bytesRead).assertEqual(assetBytes);
+              }).catch((rErr) => {
+                console.info(`${testNum} rErr: ${rErr}`);
+                expect(false).assertTrue();
+              })
+              await sleep(50);
+              fileio.write(fd, testNum).then((result) => {
+                expect(false).assertTrue();
+              }).catch((wErr) => {
+                console.info(`${testNum} wErr: ${wErr}`);
+              })
+              await sleep(50);
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
+            expect(false).assertTrue();
           }
-          await asset.close(fd);
           done();
         });
+        await sleep(50);
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
+      } finally {
+        if (asset) {
+          await asset.close(fd);
+        }
       }
     };
 
     async function wOpenCallback(done, testNum, fetchOp) {
+      let asset;
+      let fd;
       try {
-        const asset = await getFileAsset(testNum, fetchOp);
-        asset.open('w', async (err, fd) => {
+        asset = await getFileAsset(testNum, fetchOp);
+        asset.open('w', async (err, data) => {
           try {
             if (err) {
               console.info(`${testNum} err: ${err}`);
               expect(false).assertTrue();
             } else {
-              let write = await fileio.write(fd, testNum);
-              expect(write).assertEqual(testNum.length);
-
+              fd = data;
+              console.info(`${testNum} fd: ${fd}`);
+              fileio.write(fd, testNum).then((result) => {
+                expect(result).assertEqual(testNum.length);
+              }).catch((wErr) => {
+                console.info(`${testNum} wErr: ${wErr}`);
+                expect(false).assertTrue();
+              })
+              await sleep(50);
               let buf = new ArrayBuffer(4096);
-              await fileio.read(fd, buf);
-              expect(false).assertTrue();
+              fileio.read(fd, buf).then((result) => {
+                expect(false).assertTrue();
+              }).catch((rErr) => {
+                console.info(`${testNum} rErr: ${rErr}`);
+              })
+              await sleep(50);
             }
           } catch (error) {
             console.info(`${testNum} error: ${error}`);
+            expect(false).assertTrue();
           }
-          await asset.close(fd);
           done();
         });
+        await sleep(50);
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
+      } finally {
+        if (asset) {
+          await asset.close(fd);
+        }
       }
     };
 

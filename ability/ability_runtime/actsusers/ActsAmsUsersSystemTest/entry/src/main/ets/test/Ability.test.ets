@@ -588,7 +588,7 @@ export default function abilityTest() {
       var flag = true
       var terminateresult = false
       function SubscribeCallBack (err, data) {
-        expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
+        expect(data.event == "ACTS_InterfaceMultiUsers_0300_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         console.debug(TAG + "====>0300 Subscribe CallBack data:====>" + JSON.stringify(data));
         if(data.event == "ACTS_TerminateSelf_CommonEvent"){
           terminateresult = true
@@ -763,7 +763,7 @@ export default function abilityTest() {
       })
       setTimeout(() => {
         appManager.getProcessRunningInfos().then((data) => {
-          console.info(TAG + '====>ACTS_KillProcess_0100 getProcessRunningInfos=====>' + JSON.stringify(data))
+          console.info(TAG + '====>ACTS_KillProcess_0200 getProcessRunningInfos=====>' + JSON.stringify(data))
           for (var i = 0; i < data.length; i++) {
             if (data[i].processName == 'com.acts.killprocessthirdhap2') {
               console.info('====>has com.acts.killprocessthirdhap2=====>')
@@ -778,7 +778,7 @@ export default function abilityTest() {
       },1000)
       setTimeout(() => {
         appManager.getProcessRunningInfos().then((data) => {
-          console.info(TAG + '====>ACTS_KillProcess_0100 getProcessRunningInfos2=====>' + JSON.stringify(data))
+          console.info(TAG + '====>ACTS_KillProcess_0200 getProcessRunningInfos2=====>' + JSON.stringify(data))
           for (var i = 0; i < data.length; i++) {
             if (data[i].processName == 'com.acts.killprocessthirdhap2') {
               break

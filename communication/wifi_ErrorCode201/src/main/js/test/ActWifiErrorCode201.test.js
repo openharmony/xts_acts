@@ -26,7 +26,7 @@ async function applyPermission() {
     console.info("=== getAccountManager finish");
     let localId = await osAccountManager.getOsAccountLocalIdFromProcess();
     console.info("LocalId is :" + localId);
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.wifiMg.wifidevice', 0, localId);
+    let appInfo = await bundle.getApplicationInfo('ohos.acts.communication.wifi.wifidevice', 0, localId);
     let atManager = abilityAccessCtrl.createAtManager();
     if (atManager != null) {
         let tokenID = appInfo.accessTokenId;
@@ -40,15 +40,15 @@ async function applyPermission() {
     } else {
         console.info('[permission] case apply permission failed, createAtManager failed');
     }
+
+
+
 }
 
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
 
-function checkWifiPowerOn(){
-    console.info("[wifi_test]wifi status:" + wifiMg.isWifiActive());
-}
 function resolveIP(ip) {
     return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF) + "." + (ip>>8 & 0xFF) + "." + (ip & 0xFF);
 }
@@ -62,7 +62,6 @@ export default function actsWifiErrorCode201Test() {
         })
 
         beforeEach(function () {
-            checkWifiPowerOn();
         })
         afterEach(function () {
         })

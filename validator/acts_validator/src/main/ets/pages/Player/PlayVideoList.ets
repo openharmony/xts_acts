@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import prompt from '@ohos.prompt';
+import promptAction from '@ohos.promptAction';
 import router from '@ohos.router';
-import fileio from '@ohos.fileio';
+import fs from '@ohos.file.fs';
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
 import data_preferences from '@ohos.data.preferences';
 import MediaUtils from '../model/MediaUtils'
@@ -61,12 +61,12 @@ struct videoNew {
     this.TestCaseList = await this.MediaLib.getFileAssetsAlbum('Videos/ValidatorData/');
 
     if (Test != 1) {
-      let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+      let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
       for (let i = 0; i < this.TestCaseList.length; i++) {
         let log = (this.TestCaseList[i].displayName + ';' + '#ff808080' + ';').toString();
-        fileio.writeSync(fd, log);
+        fs.writeSync(fd.fd, log);
       }
-      fileio.closeSync(fd);
+      fs.closeSync(fd);
     }
     promise = preferences.put('PlayerVideo', 1);
     promise.then(() => {
@@ -78,15 +78,15 @@ struct videoNew {
     });
     this.TEST = Test;
 
-    let opt = fileio.openSync(ColorBackPath, 0o100 | 0o2002, 0o664);
+    let opt = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     let buff = new ArrayBuffer(40960);
-    fileio.readSync(opt, buff);
+    fs.readSync(opt.fd, buff);
     let ColorBack = String.fromCharCode.apply(null, new Uint8Array(buff));
     let TestList = ColorBack.split(';');
     for (let i = 0; i < Math.floor(TestList.length / 2); i++) {
       VarColor[i] = TestList[i * 2+1];
     }
-    fileio.closeSync(opt);
+    fs.closeSync(opt);
 
     if (this.count === 1) {
       this.result = router.getParams()['result'];
@@ -101,28 +101,28 @@ struct videoNew {
         this.ColorObject[this.current] = '#ff008000';
         let Log = (titles + ';' + '#ff008000' + ';');
         let key = ColorBack.substring(Index, Index + number);
-        let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        let FD = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         ColorBack = ColorBack.replace(key, Log);
         let buffer = new ArrayBuffer(4096);
-        let rd = fileio.readSync(FD, buffer);
+        let rd = fs.readSync(FD.fd, buffer);
         let Report = ColorBack.substring(0, rd);
-        fileio.closeSync(FD);
-        let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
-        fileio.writeSync(Fd, Report);
+        fs.closeSync(FD);
+        let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(Fd.fd, Report);
         filewrite(name1, results, titles);
       }
       else if (this.result === 'false') {
         this.ColorObject[this.current] = '#ffff0000';
         let Log = (titles + ';' + '#ffff0000' + ';');
         let key = ColorBack.substring(Index, Index + number);
-        let FD = fileio.openSync(ColorBackPath, 0o102, 0o666);
+        let FD = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
         ColorBack = ColorBack.replace(key, Log);
         let buffer = new ArrayBuffer(4096);
-        let rd = fileio.readSync(FD, buffer);
+        let rd = fs.readSync(FD.fd, buffer);
         let Report = ColorBack.substring(0, rd);
-        fileio.closeSync(FD);
-        let Fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
-        fileio.writeSync(Fd, Report);
+        fs.closeSync(FD);
+        let Fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fs.writeSync(Fd.fd, Report);
         filewrite(name1, results, titles);
       }
       else if (this.result === 'None') {
@@ -172,7 +172,7 @@ struct videoNew {
                       this.ColorObject[index] = '#ff808080';
                     });
                     this.ClearText();
-                    prompt.showToast({
+                    promptAction.showToast({
                       message: '结果已删除', duration: 1000
                     });
                   }
@@ -240,7 +240,7 @@ struct videoNew {
             params: { result: 'true ', title: this.name,
             }
           })
-          prompt.showToast({
+          promptAction.showToast({
             message: '通过', duration: 1000
           });
         })
@@ -256,7 +256,7 @@ struct videoNew {
             }
           })
           console.log('wwwwwwwwww' + this.Url)
-          prompt.showToast({
+          promptAction.showToast({
             message: '失败', duration: 1000
           });
         })
@@ -267,13 +267,13 @@ struct videoNew {
   }
 
   ClearText() {
-    fileio.unlinkSync(txtPath);
-    fileio.unlinkSync(ColorBackPath);
-    fileio.openSync(txtPath, 0o100 | 0o2002, 0o664);
-    let fd = fileio.openSync(ColorBackPath, 0o102, 0o666);
+    fs.unlinkSync(txtPath);
+    fs.unlinkSync(ColorBackPath);
+    fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     for (let i = 0; i < this.TestCaseList.length; i++) {
       let log = (this.TestCaseList[i].displayName + ';' + '#ff808080' + ';').toString();
-      fileio.writeSync(fd, log);
+      fs.writeSync(fd.fd, log);
     }
   }
 
@@ -285,9 +285,9 @@ struct videoNew {
 }
 
 function filewrite(name1, results, titles) {
-  let fd = fileio.openSync(txtPath, 0o100 | 0o2002, 0o664);
+  let fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   let buf = new ArrayBuffer(4096);
-  let RD = fileio.readSync(fd, buf);
+  let RD = fs.readSync(fd.fd, buf);
   console.info("RRRRRRRRRRd" + RD);
   let report = String.fromCharCode.apply(null, new Uint8Array(buf));
   let WriteTitle = (titles).toString();
@@ -296,17 +296,17 @@ function filewrite(name1, results, titles) {
   let Index = report.indexOf(WriteTitle);
   let Log = (titles + ";" + results + ";").toString();
   if (Index == -1) {
-    fileio.writeSync(fd, Log);
+    fs.writeSync(fd.fd, Log);
   }
   else if (Index != -1) {
     let key = report.substring(Index, Index + number);
-    let FD = fileio.openSync(txtPath, 0o102, 0o666);
+    let FD = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     report = report.replace(key, Log);
     let buffer = new ArrayBuffer(4096);
-    let rd = fileio.readSync(FD, buffer);
+    let rd = fs.readSync(FD.fd, buffer);
     let Report = report.substring(0, rd);
-    fileio.closeSync(FD);
-    let Fd = fileio.openSync(txtPath, 0o102, 0o666);
-    fileio.writeSync(Fd, Report);
+    fs.closeSync(FD);
+    let Fd = fs.openSync(txtPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.writeSync(Fd.fd, Report);
   }
 }

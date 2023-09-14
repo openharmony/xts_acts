@@ -84,9 +84,15 @@ export default class EntryAbility extends Ability {
                 }
             }
 
-            ErrorManager.on("error", observer);
+            let observerId = ErrorManager.on("error", observer);
             setTimeout(() => {
                 globalThis.contest.terminateSelf();
+                ErrorManager.off("error", observerId).then(()=>{
+                    console.info("====>Acts_RegisterJsErrorCallback_0100 rely off end");
+                }).catch((err)=>{
+                    console.info("====>Acts_RegisterJsErrorCallback_0100 rely off err: " +
+                    JSON.stringify(err));
+                });
             }, 300);
         } else if (globalThis.want.action == "Acts_RegisterJsErrorCallback_0200") {
             observer = {
@@ -115,50 +121,196 @@ export default class EntryAbility extends Ability {
                     })
                 }
             }
-            ErrorManager.on("error", observer);
+            let observerId = ErrorManager.on("error", observer);
             setTimeout(() => {
                 globalThis.contest.terminateSelf();
+                ErrorManager.off("error", observerId).then(()=>{
+                    console.info("====>Acts_RegisterJsErrorCallback_0200 rely off end");
+                }).catch((err)=>{
+                    console.info("====>Acts_RegisterJsErrorCallback_0200 rely off err: " +
+                    JSON.stringify(err));
+                });
             }, 300);
-        } else if (globalThis.want.action == "Acts_UnregisterJsErrorCallback_0800") {
+        } else if (globalThis.want.action == "Acts_RegisterJsErrorCallback_0700") {
+            observer = {
+                onUnhandledException(strMsg){
+                    commonEventData.parameters.message = strMsg;
+                    console.info("====>Acts_RegisterJsErrorCallback_0700 onUnhandledException Message: " + strMsg);
+                    commonEvent.publish("ACTS_RegisterEvent_First", commonEventData, (err) => {
+                        console.info("====>Acts_RegisterJsErrorCallback_0700 publish err: " + JSON.stringify(err));
+                        setTimeout(()=>{
+                            globalThis.context.terminateSelf().then(()=>{
+                                console.info("====>Acts_RegisterJsErrorCallback_0700 rely terminateSelf end");
+                            }).catch((err)=>{
+                                console.info("====>Acts_RegisterJsErrorCallback_0700 rely terminateSelf err: " +
+                                JSON.stringify(err));
+                            });
+                        }, 100);
+                    })
+                }
+            }
+
+            let observerId = ErrorManager.on("errorEvent", observer);
+            setTimeout(() => {
+                globalThis.contest.terminateSelf();
+                ErrorManager.off("errorEvent", observerId);
+            }, 300);
+        } else if (globalThis.want.action == "Acts_RegisterJsErrorCallback_0800") {
             observer = {
                 onUnhandledException(strMsg: String){
                     commonEventData.parameters.message = strMsg;
-                    console.info("====>Acts_UnregisterJsErrorCallback_0800 onUnhandledException Message: " + strMsg);
+                    console.info("====>Acts_RegisterJsErrorCallback_0800 onUnhandledException Message: " + strMsg);
                     commonEvent.publish("ACTS_RegisterEvent_First", commonEventData, (err) => {
-                        console.info("====>Acts_UnregisterJsErrorCallback_0800 onUnhandledException publish err: " +
-                        JSON.stringify(err));
+                        console.info("====>Acts_RegisterJsErrorCallback_0800 onUnhandledException publish err: " +
+                            JSON.stringify(err));
                     })
                 },
                 onException(errObject: Error){
                     commonEventData.parameters.message = errObject;
-                    console.info("====>Acts_UnregisterJsErrorCallback_0800 onException Message: " + JSON.stringify(errObject));
+                    console.info("====>Acts_RegisterJsErrorCallback_0800 onException Message: " + JSON.stringify(errObject));
                     commonEvent.publish("ACTS_RegisterEvent_Second", commonEventData, (err) => {
-                        console.info("====>Acts_UnregisterJsErrorCallback_0800 onException publish err: " +
-                        JSON.stringify(err));
+                        console.info("====>Acts_RegisterJsErrorCallback_0800 onException publish err: " +
+                            JSON.stringify(err));
                         setTimeout(()=>{
                             globalThis.context.terminateSelf().then(()=>{
-                                console.info("====>Acts_UnregisterJsErrorCallback_0800 rely terminateSelf end");
+                                console.info("====>Acts_RegisterJsErrorCallback_0800 rely terminateSelf end");
                             }).catch((err)=>{
-                                console.info("====>Acts_UnregisterJsErrorCallback_0800 rely terminateSelf err: " +
-                                JSON.stringify(err));
+                                console.info("====>Acts_RegisterJsErrorCallback_0800 rely terminateSelf err: " +
+                                    JSON.stringify(err));
                             })
                         }, 100)
                     })
                 }
             }
-            ErrorManager.on("error", observer);
+            let observerId = ErrorManager.on("errorEvent", observer);
+            setTimeout(() => {
+                globalThis.contest.terminateSelf();
+                ErrorManager.off("errorEvent", observerId);
+            }, 300);
+        } else if (globalThis.want.action == "Acts_UnregisterJsErrorCallback_0800") {
+            let observerFlag = false;
+            let observer2Flag = false;
+            observer = {
+                onUnhandledException(strMsg: String){
+                    commonEventData.parameters.message = strMsg;
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 observer, onUnhandledException Message: " + strMsg);
+                    observerFlag = true;
+                },
+                onException(errObject: Error){
+                    commonEventData.parameters.message = errObject;
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 observer, onException Message: " + JSON.stringify(errObject));
+                    observerFlag = true;
+                }
+            }
+            let observer2 = {
+                onUnhandledException(strMsg: String){
+                    commonEventData.parameters.message = strMsg;
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 observer2, onUnhandledException Message: " + strMsg);
+                    observer2Flag = true;
+                },
+                onException(errObject: Error){
+                    commonEventData.parameters.message = errObject;
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 observer2, onException Message: " + JSON.stringify(errObject));
+                    observer2Flag = true;
+                }
+            }
             let observerId = ErrorManager.on("error", observer);
+            let observerId2 = ErrorManager.on("error", observer2);
             ErrorManager.off("error", observerId).then(()=>{
-                console.info("====>Acts_UnregisterJsErrorCallback_0800 rely off end");
+                console.info("====>Acts_UnregisterJsErrorCallback_0800 observer rely off end");
             }).catch((err)=>{
-                console.info("====>Acts_UnregisterJsErrorCallback_0800 rely off err: " +
+                console.info("====>Acts_UnregisterJsErrorCallback_0800 observer rely off err: " +
                 JSON.stringify(err));
             })
             setTimeout(() => {
                 globalThis.contest.terminateSelf();
+                ErrorManager.off("error", observerId2).then(()=>{
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 observer2 rely off end");
+                }).catch((err)=>{
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 observer2 rely off err: " +
+                    JSON.stringify(err));
+                })
             }, 300);
+            setTimeout(() => {
+                let retEvent = "ACTS_UnregisterEvent_Fail";
+                if (observerFlag == false && observer2Flag == true) {
+                    retEvent = "ACTS_UnregisterEvent_Success";
+                }
+                commonEvent.publish(retEvent, commonEventData, (err) => {
+                    console.info("====>Acts_UnregisterJsErrorCallback_0800 publish err: " +
+                    JSON.stringify(err));
+                })
+                setTimeout(()=>{
+                    globalThis.context.terminateSelf().then(()=>{
+                        console.info("====>Acts_UnregisterJsErrorCallback_0800 rely terminateSelf end");
+                    }).catch((err)=>{
+                        console.info("====>Acts_UnregisterJsErrorCallback_0800 rely terminateSelf err: " +
+                            JSON.stringify(err));
+                    })
+                }, 100)
+            }, 500);
+        } else if (globalThis.want.action == "Acts_UnregisterJsErrorCallback_1400") {
+            let observerFlag = false;
+            let observer2Flag = false;
+            observer = {
+                onUnhandledException(strMsg: String){
+                    commonEventData.parameters.message = strMsg;
+                    console.info("====>Acts_UnregisterJsErrorCallback_1400 observer, onUnhandledException Message: " + strMsg);
+                    observerFlag = true;
+                },
+                onException(errObject: Error){
+                    commonEventData.parameters.message = errObject;
+                    console.info("====>Acts_UnregisterJsErrorCallback_1400 observer, onException Message: " + JSON.stringify(errObject));
+                    observerFlag = true;
+                }
+            }
+            let observer2 = {
+                onUnhandledException(strMsg: String){
+                    commonEventData.parameters.message = strMsg;
+                    console.info("====>Acts_UnregisterJsErrorCallback_1400 observer2, onUnhandledException Message: " + strMsg);
+                    observer2Flag = true;
+                },
+                onException(errObject: Error){
+                    commonEventData.parameters.message = errObject;
+                    console.info("====>Acts_UnregisterJsErrorCallback_1400 observer2, onException Message: " + JSON.stringify(errObject));
+                    observer2Flag = true;
+                }
+            }
+            let observerId = ErrorManager.on("errorEvent", observer);
+            let observerId2 = ErrorManager.on("errorEvent", observer2);
+            try {
+                ErrorManager.off("errorEvent", observerId);
+            } catch (err) {
+                console.info("====>Acts_UnregisterJsErrorCallback_1400 observer rely off err: " + JSON.stringify(err));
+            }
+            setTimeout(() => {
+                globalThis.contest.terminateSelf();
+                try {
+                    ErrorManager.off("errorEvent", observerId2);
+                } catch (err) {
+                    console.info("====>Acts_UnregisterJsErrorCallback_1400 observer2 rely off err: " + JSON.stringify(err));
+                }
+            }, 300);
+            setTimeout(() => {
+                let retEvent = "ACTS_UnregisterEvent_Fail";
+                if (observerFlag == false && observer2Flag == true) {
+                    retEvent = "ACTS_UnregisterEvent_Success";
+                }
+                commonEvent.publish(retEvent, commonEventData, (err) => {
+                    console.info("====>Acts_UnregisterJsErrorCallback_1400 publish err: " +
+                    JSON.stringify(err));
+                })
+                setTimeout(()=>{
+                    globalThis.context.terminateSelf().then(()=>{
+                        console.info("====>Acts_UnregisterJsErrorCallback_1400 rely terminateSelf end");
+                    }).catch((err)=>{
+                        console.info("====>Acts_UnregisterJsErrorCallback_1400 rely terminateSelf err: " +
+                            JSON.stringify(err));
+                    })
+                }, 100)
+            }, 500);
         }
-    }
+    } 
 
     onBackground() {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);

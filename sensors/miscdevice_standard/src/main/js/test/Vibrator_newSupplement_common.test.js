@@ -48,9 +48,6 @@ describe("VibratorJsTest_misc_3", function () {
          * @tc.teardown: teardown invoked after each testcases
          */
         console.info('afterEach called')
-		vibrator.stop("preset");
-        vibrator.stop("time");
-        console.info('afterEach called')
     })
 
     const DEVICE_OPERATION_FAILED = 14600101; 
@@ -84,6 +81,7 @@ describe("VibratorJsTest_misc_3", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -179,6 +177,7 @@ describe("VibratorJsTest_misc_3", function () {
         }).catch((error)=>{
             expect(false).assertTrue();
         });
+        await vibrator.stopVibration();
         done();
     })
 
@@ -304,6 +303,7 @@ describe("VibratorJsTest_misc_3", function () {
         }, ()=>{
             console.info("VibratorJsTest023 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 
@@ -331,6 +331,7 @@ describe("VibratorJsTest_misc_3", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
     /*
@@ -420,6 +421,7 @@ describe("VibratorJsTest_misc_3", function () {
                 done();
             }, 500);
         });
+        await vibrator.stopVibration();
     })
 
    /*
@@ -517,6 +519,7 @@ describe("VibratorJsTest_misc_3", function () {
 			console.info("VibratorJsTest031 error :" + error);
             expect(false).assertTrue();
         });
+        await vibrator.stopVibration();
         done();
     })
 
@@ -651,6 +654,7 @@ describe("VibratorJsTest_misc_3", function () {
         }, ()=>{
             console.info("VibratorJsTest035 reject");
         })
+        await vibrator.stopVibration();
         done();
     })
 

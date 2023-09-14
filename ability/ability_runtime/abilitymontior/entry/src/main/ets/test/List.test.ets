@@ -13,7 +13,9 @@
 * limitations under the License.
 */
 import abilityTest from './Ability.test'
+import abilityTestSync from './Ability.Synctest'
 
 export default function testsuite() {
-  abilityTest()
+  //abilityTest()
+  abilityTestSync()
 }

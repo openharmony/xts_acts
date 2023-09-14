@@ -116,7 +116,12 @@ export default function actsWifiManagerEventTest() {
                 console.info("[wifi_test]wifiScanStateChange callback, result: " + JSON.stringify(result));
             }
             wifiMg.on(wifiScanState, wifiScanStateChangeCallback);
-            let scanResult = wifiMg.scan();
+            try {
+                let scanResult = wifiMg.scan();
+            } catch (error) {
+                console.error(`scan failed, code is ${error.code}, message is ${error.message}`);
+                expect(true).assertEqual(error !=null);
+            }
             await sleep(3000);
             wifiMg.off(wifiScanState, wifiScanStateChangeCallback);
             done();

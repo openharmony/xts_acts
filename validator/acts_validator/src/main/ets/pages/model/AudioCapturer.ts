@@ -1,6 +1,5 @@
 import audio from '@ohos.multimedia.audio'
 import deviceInfo from '@ohos.deviceInfo'
-import fileio from '@ohos.fileio'
 import image from '@ohos.multimedia.image'
 import media from '@ohos.multimedia.media'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
