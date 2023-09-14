@@ -15,7 +15,7 @@
 
 @Entry
 @Component
-struct ParticleOptions {
+struct ParticleOptions1 {
   build() {
     Stack() {
       Text()
