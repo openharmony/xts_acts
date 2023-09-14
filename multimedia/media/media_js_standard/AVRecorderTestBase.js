@@ -129,7 +129,9 @@ export async function startCallback(avRecorder, recorderTime) {
             expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
             console.info('start AVRecorder success');
             if (recorderTime != undefined) {
-                sleep(recorderTime);
+                setTimeout(() => {
+                    console.info('startCallback setTimeout success');
+                }, recorderTime);
             }
         } else {
             console.info('start AVRecorder failed and error is ' + err.message);
@@ -145,14 +147,13 @@ export async function startPromise(avRecorder, recorderTime) {
         expect(avRecorder.state).assertEqual(AV_RECORDER_STATE.STARTED);
         console.info('start success');
         if (recorderTime != undefined) {
-            sleep(recorderTime);
+            setTimeout(() => {
+                console.info('startPromise setTimeout success');
+            }, recorderTime);
         }
     }).catch((err) => {
         console.info('start failed and catch error is ' + err.message);
     });
-    if (recorderTime != undefined) {
-         await sleep(recorderTime);
-    }
 }
 
 export async function pauseCallback(avRecorder) {
@@ -1682,21 +1683,23 @@ export async function getInputSurfaceTest35(avConfig, avRecorder, recorderTime, 
             case AV_RECORDER_STATE.PREPARED:
                 console.info(`case getInputSurfaceTest35 state is PREPARED`);
                 expect(avRecorder.state).assertEqual('prepared');
-                getInputSurfacePromise(avRecorder)
-                startPromise(avRecorder)
+                await getInputSurfacePromise(avRecorder)
+                await startPromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.STARTED:
                 console.info(`case getInputSurfaceTest35 state is started`)
                 expect(avRecorder.state).assertEqual('started');
-                await sleep(recorderTime);
-                pausePromise(avRecorder)
+                setTimeout(() => {
+                    console.info('getInputSurfaceTest35 setTimeout success');
+                    await pausePromise(avRecorder)
+                }, recorderTime);
                 break;
             case AV_RECORDER_STATE.PAUSED:
                 console.info(`case getInputSurfaceTest35 state is paused`)
                 expect(avRecorder.state).assertEqual('paused');
-                resumePromise(avRecorder)
-                getInputSurfacePromise(avRecorder)
-                releasePromise(avRecorder)
+                await resumePromise(avRecorder)
+                await getInputSurfacePromise(avRecorder)
+                await releasePromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.RELEASED:
                 console.info(`case getInputSurfaceTest35 state is released`);
@@ -1731,20 +1734,23 @@ export async function getInputSurfaceTest36(avConfig, avRecorder, recorderTime, 
             case AV_RECORDER_STATE.PREPARED:
                 console.info(`case getInputSurfaceTest36 state is PREPARED`);
                 expect(avRecorder.state).assertEqual('prepared');
-                getInputSurfacePromise(avRecorder)
-                startPromise(avRecorder)
+                await getInputSurfacePromise(avRecorder)
+                await startPromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.STARTED:
                 console.info(`case getInputSurfaceTest36 state is started`)
                 expect(avRecorder.state).assertEqual('started');
                 await sleep(recorderTime);
-                stopPromise(avRecorder)
+                setTimeout(() => {
+                    console.info('getInputSurfaceTest37 setTimeout success');
+                    await stopPromise(avRecorder)
+                }, recorderTime);
                 break;
             case AV_RECORDER_STATE.STOPPED:
                 console.info(`case getInputSurfaceTest36 state is stopped`)
                 expect(avRecorder.state).assertEqual('stopped');
-                getInputSurfacePromise(avRecorder)
-                releasePromise(avRecorder)
+                await getInputSurfacePromise(avRecorder)
+                await releasePromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.RELEASED:
                 console.info(`case getInputSurfaceTest36 state is released`);
@@ -1779,20 +1785,22 @@ export async function getInputSurfaceTest37(avConfig, avRecorder, recorderTime, 
             case AV_RECORDER_STATE.IDLE:
                 console.info(`case getInputSurfaceTest37 state is idle`);
                 expect(avRecorder.state).assertEqual("idle");
-                getInputSurfacePromise(avRecorder)
-                releasePromise(avRecorder)
+                await getInputSurfacePromise(avRecorder)
+                await releasePromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.PREPARED:
                 console.info(`case getInputSurfaceTest37 state isPREPARED`);
                 expect(avRecorder.state).assertEqual('prepared');
-                getInputSurfacePromise(avRecorder)
-                startPromise(avRecorder)
+                await getInputSurfacePromise(avRecorder)
+                await startPromise(avRecorder)
                 break;
             case AV_RECORDER_STATE.STARTED:
                 console.info(`case getInputSurfaceTest37 state isstarted`)
                 expect(avRecorder.state).assertEqual('started');
-                await sleep(recorderTime);
-                resetPromise(avRecorder)
+                setTimeout(() => {
+                    console.info('getInputSurfaceTest37 setTimeout success');
+                    await resetPromise(avRecorder)
+                }, recorderTime);
                 break;
             case AV_RECORDER_STATE.RELEASED:
                 console.info(`case getInputSurfaceTest37 state is released`);
