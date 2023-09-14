@@ -22,6 +22,7 @@ let mPreferences;
 let context;
 
 const TAG = "[PREFERENCES_IGNORE_TEST]";
+
 export default function preferencesIgnoreTest() {
   describe("preferencesIgnoreTest", function () {
     beforeAll(async function () {
@@ -49,16 +50,17 @@ export default function preferencesIgnoreTest() {
         await dataPreferences.getPreferences(context, -1, (err, preferences) => {
           if (err) {
             console.info(TAG + "Get preferences err: " + err);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
             done();
           } else {
             console.info(TAG + "Get preferences success" + preferences);
+            expect(!err).assertFail();
             done();
           }
         });
       } catch (err) {
         console.info("testPreferencesGetPreferences001 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -84,13 +86,53 @@ export default function preferencesIgnoreTest() {
             dataPreferences.deletePreferences(context, -1, (err) => {
               if (err) {
                 console.info(TAG + "Delete preferences err: " + err);
-                expect(!err).assertTrue();
+                expect(!err).assertFail();
                 done();
               }
+              expect(!err).assertFail();
+              done();
             });
           } catch (err) {
             console.info("testPreferencesDeletePreferences002 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401").assertTrue();
+            expect("401").assertEqual(err.code);
+            done();
+          }
+        }
+      });
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0300
+     * @tc.name   : testPreferencesDeletePreferences003
+     * @tc.desc   : DeletePreferences callback interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeletePreferences003", 0, async function (done) {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
+        if (err) {
+          console.info(TAG + "Get preferences err: " + err);
+          expect(!err).assertTrue();
+        } else {
+          console.info(TAG + "Get preferences success");
+          expect(preferences !== null).assertTrue();
+          try {
+            // @ts-ignore
+            dataPreferences.deletePreferences(context, {
+              name: -1
+            }, (err) => {
+              if (err) {
+                console.info(TAG + "Delete preferences err: " + err);
+                expect(!err).assertFail();
+                done();
+              }
+              expect(!err).assertFail();
+              done();
+            });
+          } catch (err) {
+            console.info("testPreferencesDeletePreferences003 fail: " + err.message + "code: " + err.code);
+            expect("401").assertEqual(err.code);
             done();
           }
         }
@@ -118,13 +160,14 @@ export default function preferencesIgnoreTest() {
             dataPreferences.removePreferencesFromCache(context, -1, (err) => {
               if (err) {
                 console.info(TAG + "Remove preferences from cache error: " + err);
-                expect(!err).assertTrue();
+                expect(!err).assertFail();
                 done();
               }
+              expect(!err).assertFail();
             });
           } catch (err) {
             console.info("testRemovePreferencesFromCache002 fail: " + err.message + "code: " + err.code);
-            expect(err.code === "401").assertTrue();
+            expect("401").assertEqual(err.code);
             done();
           }
         }
@@ -142,10 +185,12 @@ export default function preferencesIgnoreTest() {
     it("testGetPreferencesHelper0003", 0, async function (done) {
       try {
         // @ts-ignore
-        await dataPreferences.getPreferences(context, -1);
+        let perference = await dataPreferences.getPreferences(context, -1);
+        expect(perference !== null).assertFail();
+        done();
       } catch (err) {
         console.info("testGetPreferencesHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -161,10 +206,12 @@ export default function preferencesIgnoreTest() {
     it("testGetPreferencesHelper0004", 0, async function (done) {
       try {
         // @ts-ignore
-        await dataPreferences.getPreferences(context);
+        let perference = await dataPreferences.getPreferences(context);
+        expect(perference !== null).assertFail();
+        done();
       } catch (err) {
         console.info("testGetPreferencesHelper0004 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -181,10 +228,12 @@ export default function preferencesIgnoreTest() {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
-        await dataPreferences.removePreferencesFromCache(context);
+        let perference = await dataPreferences.removePreferencesFromCache(context);
+        expect(perference !== null).assertFail();
+        done();
       } catch (err) {
         console.info("testRemovePreferencesFromCacheHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -201,10 +250,12 @@ export default function preferencesIgnoreTest() {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
-        await dataPreferences.removePreferencesFromCache(context, -1);
+        let perference = await dataPreferences.removePreferencesFromCache(context, -1);
+        expect(perference !== null).assertFail();
+        done();
       } catch (err) {
         console.info("testRemovePreferencesFromCacheHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -221,10 +272,12 @@ export default function preferencesIgnoreTest() {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
-        await dataPreferences.deletePreferences(context);
+        let perference = await dataPreferences.deletePreferences(context);
+        expect(perference !== null).assertFail();
+        done();
       } catch (err) {
         console.info("testPreferencesDeleteHelper0002 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -241,10 +294,36 @@ export default function preferencesIgnoreTest() {
       try {
         await dataPreferences.getPreferences(context, NAME);
         // @ts-ignore
-        await dataPreferences.deletePreferences(context, -1);
+        let perference = await dataPreferences.deletePreferences(context, -1);
+        expect(perference !== null).assertFail();
+        done();
       } catch (err) {
         console.info("testPreferencesDeleteHelper0003 fail: " + err.message + "code: " + err.code);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0400
+     * @tc.name   : testPreferencesDeleteHelper0004
+     * @tc.desc   : DeletePreferences interface test
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testPreferencesDeleteHelper0004", 0, async function (done) {
+      try {
+        await dataPreferences.getPreferences(context, NAME);
+        // @ts-ignore
+        let perference = await dataPreferences.deletePreferences(context, {
+          name: -1
+        });
+        expect(perference !== null).assertFail();
+        done();
+      } catch (err) {
+        console.info("testPreferencesDeleteHelper0004 fail: " + err.message + "code: " + err.code);
+        expect("401").assertEqual(err.code);
         done();
       }
     });
