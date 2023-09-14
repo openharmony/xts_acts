@@ -34,7 +34,6 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/ability_lite/ability_hal:ActsAbilityMgrTest",
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
-
         #"//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
         "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
         "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
@@ -48,6 +47,9 @@ lite_component("acts_component") {
         "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
         "//test/xts/acts/xts_lite/device_attest_lite/device_attestStart_hal:ActsDeviceAttestTest",
       ]
+      if (enable_ohos_bundle_manager_service == true) {
+        all_features += ["//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest"]
+      }
     } else if (ohos_kernel_type == "uniproton") {
       all_features += [
         "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
