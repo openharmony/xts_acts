@@ -68,12 +68,12 @@ export default function flex_NoWrap_DisplayPriorityTest() {
       expect(secondText.top).assertEqual(flexContainer.top);
       expect(secondText.right).assertEqual(thirdText.left);
 
-      expect(Math.round(secondText.right - secondText.left)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(250));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(250)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(100));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(100)));
       expect(flexContainer.bottom).assertEqual(thirdText.bottom);
       console.info('[testWrapNoWrapTextDisplayPriority] END');
       done();

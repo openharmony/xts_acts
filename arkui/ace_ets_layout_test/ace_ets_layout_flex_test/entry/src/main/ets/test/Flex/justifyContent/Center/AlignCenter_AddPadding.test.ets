@@ -67,12 +67,12 @@ export default function AlignCenter_AddPadding() {
       expect(Center_AddPadding_012.top).assertEqual(Center_AddPadding_013.top);
       expect(Center_AddPadding_012.left).assertEqual(Center_AddPadding_011.right);
       expect(Center_AddPadding_013.left).assertEqual(Center_AddPadding_012.right);
-      expect(Math.round(Center_AddPadding_011.left - Center_AddPadding_01.left)).assertEqual(vp2px(30));
-      expect(Math.round(Center_AddPadding_01.right - Center_AddPadding_013.right)).assertEqual(vp2px(30));
-      expect(Math.round(Center_AddPadding_011.top - Center_AddPadding_01.top)).assertEqual(vp2px(30));
-      expect(Math.round(Center_AddPadding_011.bottom - Center_AddPadding_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddPadding_012.bottom - Center_AddPadding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddPadding_013.bottom - Center_AddPadding_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddPadding_011.left - Center_AddPadding_01.left)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Center_AddPadding_01.right - Center_AddPadding_013.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Center_AddPadding_011.top - Center_AddPadding_01.top)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(Center_AddPadding_011.bottom - Center_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Center_AddPadding_012.bottom - Center_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Center_AddPadding_013.bottom - Center_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(Center_AddPadding_011.right - Center_AddPadding_011.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(Center_AddPadding_012.right - Center_AddPadding_012.left)).assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(Center_AddPadding_013.right - Center_AddPadding_013.left)).assertEqual(Math.round(vp2px(440/3)));
@@ -102,17 +102,17 @@ export default function AlignCenter_AddPadding() {
       expect(Center_AddPadding_012.top).assertEqual(Center_AddPadding_013.top);
       expect(Center_AddPadding_012.left) .assertEqual(Center_AddPadding_011.right);
       expect(Center_AddPadding_013.left) .assertEqual(Center_AddPadding_012.right);
-      expect(Math.round(Center_AddPadding_011.top - Center_AddPadding_01.top)).assertEqual(vp2px(20));
+      expect(Math.round(Center_AddPadding_011.top - Center_AddPadding_01.top)).assertEqual(Math.round(vp2px(20)));
       expect(Math.round((Center_AddPadding_011.left - Center_AddPadding_01.left)*10)/10)
         .assertEqual(Math.round(vp2px(25)*10)/10);
       expect(Math.round((Center_AddPadding_01.right - Center_AddPadding_013.right)*10)/10)
         .assertEqual(Math.round(vp2px(25)*10)/10);
-      expect(Math.round(Center_AddPadding_011.right - Center_AddPadding_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddPadding_012.right - Center_AddPadding_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddPadding_013.right - Center_AddPadding_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Center_AddPadding_011.bottom - Center_AddPadding_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(Center_AddPadding_012.bottom - Center_AddPadding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(Center_AddPadding_013.bottom - Center_AddPadding_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Center_AddPadding_011.right - Center_AddPadding_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Center_AddPadding_012.right - Center_AddPadding_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Center_AddPadding_013.right - Center_AddPadding_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Center_AddPadding_011.bottom - Center_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(Center_AddPadding_012.bottom - Center_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Center_AddPadding_013.bottom - Center_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testFlexAlignCenterFlexPadMeet] END');
       done();
     });

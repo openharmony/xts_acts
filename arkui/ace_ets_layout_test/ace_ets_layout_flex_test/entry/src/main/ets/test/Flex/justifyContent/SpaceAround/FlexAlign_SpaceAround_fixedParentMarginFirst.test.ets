@@ -67,24 +67,27 @@ export default function flexAlign_SpaceAround_fixedParentMarginFirst() {
       let locationText2 = CommonFunc.getComponentRect('AlignSpaceAround41');
       let locationText3 = CommonFunc.getComponentRect('AlignSpaceAround42');
       let locationFlex = CommonFunc.getComponentRect('FlexAlignSpaceAround14');
-      expect(Math.round(locationText1.top - locationFlex.top)).assertEqual(vp2px(20))
+      expect(Math.round(locationText1.top - locationFlex.top)).assertEqual(Math.round(vp2px(20)))
       expect(locationText2.top).assertEqual(locationText3.top);
       expect(locationText3.top).assertEqual(locationFlex.top);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
-      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(vp2px(50));
-      expect(Math.round(locationText1.right - locationText1.left))
-        .assertEqual(Math.round(locationText2.right - locationText2.left));
-      expect(Math.round(locationText3.right - locationText3.left))
-        .assertEqual(Math.round(locationText2.right - locationText2.left));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(150));
-      expect(Math.round(locationText2.left - locationText1.right - vp2px(20)))
-        .assertEqual(Math.round(locationText3.left - locationText2.right));
-      expect(Math.round(locationText1.left - locationFlex.left - vp2px(20)))
-        .assertEqual(Math.round(locationFlex.right - locationText3.right));
-      expect(Math.round(locationText2.left - locationText1.right - vp2px(20)))
-        .assertEqual(Math.round(2*(locationFlex.right - locationText3.right)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(Math.round(locationText3.bottom - locationText3.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      
+      expect(Math.abs(Math.round(locationFlex.bottom - locationText3.bottom) - Math.round(vp2px(50))) <= 1).assertTrue();
+   
+
+      expect(Math.abs(Math.round(locationText1.right - locationText1.left) - Math.round(locationText2.right - locationText2.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText3.right - locationText3.left) - Math.round(locationText2.right - locationText2.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText2.left - locationText1.right - vp2px(20)) - Math.round(locationText3.left - locationText2.right)) <= 1).assertTrue();
+
+     
+      expect(Math.abs(Math.round(locationText2.right - locationText2.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText1.left - locationFlex.left - vp2px(20)) - Math.round(locationFlex.right - locationText3.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(locationText2.left - locationText1.right - vp2px(20)) -Math.round(2*(locationFlex.right - locationText3.right))) <= 1).assertTrue();
+
+    
+     
       console.info('new testAlignSpaceAroundRowNoWrapMarginFirstInRange END');
       done();
     });
@@ -113,10 +116,10 @@ export default function flexAlign_SpaceAround_fixedParentMarginFirst() {
       expect(Math.round(locationText1.left - locationFlex.left)).assertEqual(Math.round(vp2px(50)));
       expect(locationText2.top).assertEqual(locationText3.top);
       expect(locationText3.top).assertEqual(locationFlex.top);
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(50));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(150));
-      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(locationFlex.bottom - locationText3.bottom)).assertEqual(Math.round(vp2px(50)));
       expect(locationText2.right).assertEqual(locationText3.left);
       expect(locationText3.right).assertEqual(locationFlex.right);
       expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(400/3)));

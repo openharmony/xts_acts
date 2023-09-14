@@ -64,10 +64,10 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(70));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(70)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
       expect(firstText.left).assertEqual(secondText.left);
       expect(secondText.left).assertEqual(thirdText.left);
@@ -105,10 +105,10 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
 
       expect(flexContainerObj.$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(flexContainerObj.$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceAround');
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(200));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
       expect(firstText.bottom).assertEqual(secondText.top);
       expect(secondText.bottom).assertEqual(thirdText.top);
@@ -120,7 +120,7 @@ export default function flex_AlignContent_SpaceAround_TextSizeTest() {
       expect(fourthText.left).assertEqual(flexContainer.left);
 
       expect(firstText.top).assertEqual(flexContainer.top);
-      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(fourthText.bottom - flexContainer.bottom)).assertEqual(Math.round(vp2px(50)));
       console.info('[testFlexAlignContentSpaceAroundTextSizeOverflow] END');
       done();
     });
