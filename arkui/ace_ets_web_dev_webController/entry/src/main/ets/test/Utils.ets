@@ -42,7 +42,7 @@ export default class Utils {
                 eventId:eventId,
                 priority:events_emitter.EventPriority.LOW
             }
-            events_emitter.on(innerEvent,callBack)
+            events_emitter.once(innerEvent,callBack)
         }catch(err){
             console.info(`[${testCaseName}] err:`+JSON.stringify(err));
         }
