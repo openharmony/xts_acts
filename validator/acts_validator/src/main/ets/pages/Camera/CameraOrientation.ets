@@ -14,9 +14,8 @@
  */
 
 // @ts-ignore
-import camera from '@ohos.multimedia.camera'
-import Logger from '../model/Logger'
-import CameraService from '../model/CameraService'
+import Logger from '../model/Logger';
+import CameraService from '../model/CameraService';
 import { CustomContainer } from '../common/CameraOrientationContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
@@ -27,7 +26,7 @@ struct cameraOrientation {
   @State FillColor: string = '#FF000000';
   @State name: string = 'CameraOrientation';
   @State StepTips: string = '测试目的：用于测试相机预览和拍照旋转能力\n-左侧显示预览窗口\n-右侧显示指定旋转角度的拍照图片\n-对于前置摄像头会有镜像效果' + '\n' + '预期结果：拍照图片与预览窗口的画面一致';
-  private tag: string = 'qlw CameraOrientation'
+  private tag: string = 'CameraOrientation'
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
   @State cameraDeviceIndex: number = 0
@@ -41,6 +40,10 @@ struct cameraOrientation {
   @State isEnabled: boolean = true
   @State takeSelect: number = 0
   @State clickFrequency: number = 0
+  @State resolution: SelectOption[] = [] // 分辨率
+  @State screensObj: object = null
+  @State XWidth: string = '1%'
+  @State XHeight: string = '1%'
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -61,8 +64,8 @@ struct cameraOrientation {
       this.imageRotation = this.imageRotation + 90
       if (this.imageRotation > 270 && this.clickFrequency > 3) {
         this.imageRotation = 0
-	  }
-	  if (this.cameraListLength > 1){
+      }
+      if (this.cameraListLength > 1) {
         this.cameraDeviceIndex = 1
         CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex)
       }
@@ -71,14 +74,37 @@ struct cameraOrientation {
 
   cameraListFn() {
     this.cameraListLength = CameraService.cameras.length
-	Logger.info(this.tag, `cameraListFn cameraListLength: ${this.cameraListLength}`)
+    Logger.info(this.tag, `cameraListFn cameraListLength: ${this.cameraListLength}`)
     this.testingFrequency = this.cameraListLength * 4
-	Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
+    Logger.info(this.tag, `cameraListFn testingFrequency: ${this.testingFrequency}`)
     for (let index = 0; index < this.cameraListLength; index++) {
       this.cameraList.push({
         value: `Camera ${index}`
       })
     }
+  }
+
+  // 设置宽高
+  // XWidth XHeight 左右布局的宽高
+  // screensObj  width height 屏幕宽高
+  // resolution 拍照分辨率
+  setXComponent() {
+    let res = String(this.resolution[this.clickFrequency].value)
+    let indexOf = res.indexOf('x')
+    let objW = Number(res.slice(0, indexOf)) // 拍照分辨率
+    let objH = Number(res.slice(indexOf + 1)) // 拍照分辨率
+    Logger.info(this.tag, `setXComponent screensObj w` + JSON.stringify(this.screensObj))
+    // @ts-ignore
+    Logger.info(this.tag, `setXComponent this.screensObj.width  w` + JSON.stringify(this.screensObj[0].width))
+    Logger.info(this.tag, `setXComponent objW` + JSON.stringify(objW))
+    // @ts-ignore
+    let w = (this.screensObj[this.screensObj.length-1].width * 0.4) / objW
+    Logger.info(this.tag, `setXComponent w` + JSON.stringify(w))
+    // @ts-ignore
+    this.XWidth = String(this.screensObj[this.screensObj.length-1].width * 0.4) + "px"
+    Logger.info(this.tag, `setXComponent XWidth` + JSON.stringify(this.XWidth))
+    this.XHeight = String(objH * w) + "px"
+    Logger.info(this.tag, `setXComponent XHeight` + JSON.stringify(this.XHeight))
   }
 
   handleTakePicture = (assetUri: string) => {
@@ -91,7 +117,7 @@ struct cameraOrientation {
     // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-	  Logger.info(this.tag, `onPageShow initCamera start`)
+      Logger.info(this.tag, `onPageShow initCamera start`)
       this.cameraListFn()
     })
   }
@@ -133,17 +159,20 @@ struct cameraOrientation {
                   this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
                   Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
                   CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                    this.screensObj = CameraService.screensObj
+                    this.resolution = CameraService.photoResolution
                     this.cameraListFn()
+                    this.setXComponent()
                   })
                 })
                 .size({ width: '100%', height: '100%' })
               Text('预览').fontSize('20fp').fontColor(Color.White)
-            }.size({ width: '40%', height: '65%' })
+            }.size({ width: this.XWidth, height: this.XHeight })
 
             Column() {
-              Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
+              Image(this.assetUri || '').size({ width: '100%', height: '100%' }).objectFit(ImageFit.Fill)
               Text('带旋转角度的图片').fontSize('20fp').fontColor(Color.White)
-            }.size({ width: '40%', height: '65%' })
+            }.size({ width: this.XWidth, height: this.XHeight })
           }.width('100%').height('60%')
 
           Flex({ direction: FlexDirection.Column }) {
@@ -167,7 +196,6 @@ struct cameraOrientation {
         }
       }.height('80%')
 
-
       CustomContainer({
         title: this.name,
         Url: 'pages/Camera/Camera_index',
@@ -181,9 +209,10 @@ struct cameraOrientation {
       }).height('10%').width('100%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Camera/Camera_index',
+      url: 'pages/Camera/Camera_index',
     })
   }
 }
