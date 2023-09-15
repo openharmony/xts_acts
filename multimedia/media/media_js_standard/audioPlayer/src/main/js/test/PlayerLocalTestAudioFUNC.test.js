@@ -459,7 +459,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, waitForDone);
         await mediaTestBase.msleepAsync(1000).then(
             () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-        playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, done);
+        playAudioSource(fileDescriptor, DURATION_TIME, PLAY_TIME, true, done);
     })
 })
 }
