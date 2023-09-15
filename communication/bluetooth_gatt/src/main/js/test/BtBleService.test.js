@@ -122,10 +122,11 @@ describe('btBleServiceTest', function() {
                 let status = BLEConnectChangedState.state;
                 console.info("[bluetooth_js] connectStateChange jsondata:"
                  +'deviceId:' + deviceId + 'status:' + status);
-                expect(true).assertEqual(BLEConnectChangedState !=null);
+                expect(true).assertEqual(BLEConnectChangedState != null);
               }
             gattServer.on("connectStateChange", Connected);
             gattServer.off("connectStateChange");
+            done();
         } catch (error) {
             console.error(`[bluetooth_js]Connect_0100 failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
@@ -210,6 +211,7 @@ describe('btBleServiceTest', function() {
         try {
             gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic, (err, data) => {
                 console.info('notifyCharacteristicChanged err:' + JSON.stringify(err) + ',notifyCharacteristicChanged data:' + JSON.stringify(data));
+                done();
             });
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged1 failed, code:'
@@ -243,8 +245,10 @@ describe('btBleServiceTest', function() {
         try {
             gattServer.notifyCharacteristicChanged('00:11:22:33:44:55', notifyCharacteristic).then(() => {
                 console.info("notifyCharacteristicChanged");
+                done();
             }, err => {
                 console.error("notifyCharacteristicChanged:errCode" + err.code + ",errMessage:" + err.message);
+                done();
             });
         } catch (error) {
             console.error('[bluetooth_js]notifyCharacteristicChanged2 failed, code:'
@@ -275,9 +279,8 @@ describe('btBleServiceTest', function() {
             console.error(`[bluetooth_js]sendResponse1 failed, code is ${error.code},
             message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
-            done()
+            done();
         }
-        
     })
 
     /**
@@ -301,9 +304,8 @@ describe('btBleServiceTest', function() {
             console.error(`[bluetooth_js]sendResponse2 failed, code is ${error.code},
             message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
-            done()
+            done();
         }
-        
     })
 
     /**
@@ -322,9 +324,8 @@ describe('btBleServiceTest', function() {
             console.error('[bluetooth_js]sendResponse3 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
             expect(error.code).assertEqual('401');
-            done()
+            done();
         }
-        
     })
 
     /**
@@ -348,9 +349,8 @@ describe('btBleServiceTest', function() {
             console.error(`[bluetooth_js]sendResponse4 failed, code is ${error.code},
             message is ${error.message}`);
             expect(error.code).assertEqual('401');
-            done()
-        }
-        
+            done();
+        } 
     })
 
     /**
@@ -365,6 +365,7 @@ describe('btBleServiceTest', function() {
             gattServer.on('BLEMtuChange', (err, data)=> {
                 console.info('BLEMtuChange on err ' + JSON.stringify(err));
                 console.info('BLEMtuChange on value' + JSON.stringify(data));
+                done();
             })
         } catch (err) {
             console.error("bluetooth mtu changed on errCode:" + err.code + ",bluetooth mtu changed on errMessage:" + err.message);
@@ -373,6 +374,7 @@ describe('btBleServiceTest', function() {
         gattServer.off('BLEMtuChange', (err, data)=> {
             console.info('BLEMtuChange off err ' + JSON.stringify(err));
             console.info('BLEMtuChange off value' + JSON.stringify(data));
+            done();
         })
         done();
     })
@@ -388,11 +390,13 @@ describe('btBleServiceTest', function() {
         gattServer.on('BLEMtuChange', (err, data)=> {
             console.info('BLEMtuChange on err ' + JSON.stringify(err));
             console.info('BLEMtuChange on value' + JSON.stringify(data));
+            done();
         })
         try {
             gattServer.off('BLEMtuChange', (err, data)=> {
                 console.info('BLEMtuChange off err ' + JSON.stringify(err));
                 console.info('BLEMtuChange off value' + JSON.stringify(data));
+                done();
             })
         } catch (err) {
             console.error("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
@@ -403,5 +407,3 @@ describe('btBleServiceTest', function() {
 
 })
 }
-
-
