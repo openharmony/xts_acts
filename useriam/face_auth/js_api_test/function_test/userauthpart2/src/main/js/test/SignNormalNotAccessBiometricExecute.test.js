@@ -38,8 +38,8 @@ export default function signNormalNotAccessBiometricExecute() {
       console.info("Security_IAM_UserAuthInstance_Func_0042 start");
       try {
         const userAuthInstance = userAuth.getUserAuthInstance(authParamDefault, widgetParamDefault);
-        userAuthInstance.on("result", { callback: (result) => {} });
-        userAuthInstance.off("result", { callback: (result) => {} });
+        userAuthInstance.on("result", { onResult: (result) => {} });
+        userAuthInstance.off("result", { onResult: (result) => {} });
         console.info("Security_IAM_UserAuthInstance_Func_0042 success");
         expect(userAuthInstance).not().assertNull();
       } catch (e) {

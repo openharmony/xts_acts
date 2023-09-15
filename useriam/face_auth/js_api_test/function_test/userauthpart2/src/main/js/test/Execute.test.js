@@ -32,8 +32,8 @@ export default function signNormalAccessBiometricExecute() {
         try {
           const userAuthInstance = userAuth.getUserAuthInstance(args[0], args[1]);
           userAuthInstance.on('result', {
-            callback: (onResult) => {
-              console.info(`${args[2]} callback ${onResult}`);
+            onResult: (onResult) => {
+              console.info(`${args[2]} onResult ${onResult}`);
               console.info('onResult.token is ' + onResult.token);
               console.info('onResult.authType is ' + onResult.authType);
               expect(onResult.result).assertEqual(args[3]);
