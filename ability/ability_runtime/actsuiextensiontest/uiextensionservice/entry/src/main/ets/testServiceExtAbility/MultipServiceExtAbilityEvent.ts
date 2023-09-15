@@ -48,7 +48,7 @@ export default class MultipServiceExtAbilityEvent extends ServiceExtension {
   }
 
   onDestroy() {
-    // commonEventManager.publish(multiServiceDestroyEvent, (err) => { });
+    commonEventManager.publish(multiServiceDestroyEvent, (err) => { });
     Logger.info(`MultipServiceExtAbilityEvent___onDestroy`)
   }
 }
