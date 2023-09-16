@@ -50,7 +50,7 @@ export default class TestServiceExtAbilityEvent extends ServiceExtension {
   }
 
   onDestroy() {
+    commonEventManager.publish(testServiceDestroyEvent, (err) => { });
     Logger.info(`TestServiceExtAbilityEvent___onDestroy`)
-    // commonEventManager.publish(testServiceDestroyEvent, (err) => { });
   }
 }

@@ -48,7 +48,7 @@ export default class SubServiceExtAbilityEvent extends ServiceExtension {
   }
 
   onDestroy() {
-    // commonEventManager.publish(subServiceDestroyEvent, (err) => { });
+    commonEventManager.publish(subServiceDestroyEvent, (err) => { });
     Logger.info(`SubServiceExtAbilityEvent___onDestroy`)
   }
 }
