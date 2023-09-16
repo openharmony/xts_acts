@@ -72,7 +72,7 @@ import OverlayJsunit from './OverlayJsunit.test.ets';
 import PanelJsunit from './PanelJsunit.test.ets';
 import GridCallbackJsunit from './GridCallbackJsunit.test.ets';
 import aboutToRecycleiamge from './aboutToRecycleiamgeJS.test.ets'
-import ParticlePropertyJsunit from './ParticlePropertyJsunit.test.ets'
+import SwiperNextPrevMarginAddJsunit from './SwiperNextPrevMarginAddJsunit.test.ets'
 
 export default function testsuite() {
   DialogJsunit();
@@ -135,4 +135,5 @@ export default function testsuite() {
   GridCallbackJsunit();
   aboutToRecycleiamge();
   ParticlePropertyJsunit();
+  SwiperNextPrevMarginAddJsunit();
 }
