@@ -17,6 +17,7 @@ group("stage") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsapplicationlifecyclehaptest:ActsApplicationLifecycleHapTest",
       "actsdebuggabletest:actsdebuggabletest",
       "actsgetgroupdirtest:actsgetgroupdirtest",
       "actslifecyclemultihap2:ActsLifecycleMultiHap2",
