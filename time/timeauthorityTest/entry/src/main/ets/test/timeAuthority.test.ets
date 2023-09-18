@@ -62,7 +62,6 @@ export default function systemTimeAuthorityJsunit() {
           if(err){
             console.info("====>SUB_systemTime_setTime_JS_API_0100 setTime fail: " + JSON.stringify(err));
             expect().assertFail();
-            done();
           }
           console.info('====>SUB_systemTime_setTime_JS_API_0100 success');
           expect(true).assertTrue();
@@ -85,23 +84,16 @@ export default function systemTimeAuthorityJsunit() {
      */
     it('SUB_systemTime_setTime_JS_API_0200', 0, async function (done) {
       console.info("====>SUB_systemTime_setTime_JS_API_0200 start");
-      try{
-        systemTime.setTime(15222).then(() => {
-          console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime fail')
-          expect().assertFail();
-          done();
-        }).catch((err)=>{
-          console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err))
-          console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err.code))
-          expect(err.code).assertEqual(-1);
-          console.debug('====>SUB_systemTime_setTime_JS_API_0200 end');
-          done();
-        })
-      }catch(err){
-        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime throw_err' + JSON.stringify(err))
-        expect(err.code).assertEqual(401);
+      systemTime.setTime(15222).then(() => {
+        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime fail')
+        expect().assertFail();
+      }).catch((err)=>{
+        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err))
+        console.debug('====>SUB_systemTime_setTime_JS_API_0200 setTime err:' + JSON.stringify(err.code))
+        expect(err.code).assertEqual(-1);
+        console.debug('====>SUB_systemTime_setTime_JS_API_0200 end');
         done();
-      }
+      })
     });
 
     /**
@@ -137,21 +129,16 @@ export default function systemTimeAuthorityJsunit() {
      */
     it('SUB_systemTime_setTime_JS_API_0400', 0, async function (done) {
       console.info("====>SUB_systemTime_setTime_JS_API_0400 start");
-      try{
-        systemTime.setTime(18, (err) => {
-          try {
-            expect(err.code).assertEqual(-1);
-            console.info("====>SUB_systemTime_setTime_JS_API_0400 error: " + err);
-            console.info('====>SUB_systemTime_setTime_JS_API_0400 end');
-          } catch (err) {
-            console.info('====>SUB_systemTime_setTime_JS_API_0400 err: ' + JSON.stringify(err));
-          }
-          done();
-        })
-      }catch(err) {
-        expect().assertFail();
+      systemTime.setTime(18, (err) => {
+        try {
+          expect(err.code).assertEqual(-1);
+          console.info("====>SUB_systemTime_setTime_JS_API_0400 error: " + err);
+          console.info('====>SUB_systemTime_setTime_JS_API_0400 end');
+        } catch (err) {
+          console.info('====>SUB_systemTime_setTime_JS_API_0400 err: ' + JSON.stringify(err));
+        }
         done();
-      };
+      })
     });
 
     /**

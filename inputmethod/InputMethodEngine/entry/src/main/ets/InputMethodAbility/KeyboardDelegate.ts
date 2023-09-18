@@ -1522,7 +1522,7 @@ export class KeyboardDelegate {
                         let t1 = setInterval(async () => {;
                             await InputClient.selectByRange(range);
                             timeCount += 1;
-                            console.info(TAG + '====>Sub_Misc_inputMethod_offSelectByMovement_0140 this.softKeyboardPanel.hide setInterval timeCount: ' +  timeCount);
+                            console.info(TAG + '====>Sub_Misc_inputMethod_offSelectByRange_0130 this.softKeyboardPanel.hide setInterval timeCount: ' +  timeCount);
                             if(timeCount === 2){
                                 clearInterval(t1);
                             }

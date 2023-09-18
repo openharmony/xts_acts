@@ -152,25 +152,13 @@ export class KeyboardController {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_offHide_0200 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_offHide_0200();
                     break;
-                case 201:
-                    console.debug(TAG + '====>Sub_Misc_inputMethod_onImeShow_0201 event:' + data.event);
-                    that.Sub_Misc_inputMethod_onImeShow_0201();
-                    break;
-                case 202:
-                    console.debug(TAG + '====>Sub_Misc_inputMethod_onImeHide_0202 event:' + data.event);
-                    that.Sub_Misc_inputMethod_onImeHide_0202();
-                    break;
-                case 203:
-                    console.debug(TAG + '====>Sub_Misc_inputMethod_offImeShow_0203 event:' + data.event);
-                    that.Sub_Misc_inputMethod_offImeShow_0203();
-                    break;
-                case 204:
-                    console.debug(TAG + '====>Sub_Misc_inputMethod_offImeHide_0204 event:' + data.event);
-                    that.Sub_Misc_inputMethod_offImeHide_0204();
-                    break;
                 case 210:
                     console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_changeFlag_0210 event:' + data.event);
                     that.Sub_Misc_inputMethod_Panel_changeFlag_0210();
+                    break;
+                case 211:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_Panel_changeFlag_0211 event:' + data.event);
+                    that.Sub_Misc_inputMethod_Panel_changeFlag_0211();
                     break;
 
             }
@@ -960,86 +948,6 @@ export class KeyboardController {
         }
     }
 
-    private async Sub_Misc_inputMethod_onImeShow_0201(): Promise<void>  {
-        console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeShow_0201 success');
-        try{
-            if (this.softKeyboardPanel !== null){
-                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
-                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
-                this.softKeyboardPanel.changeFlag(fla_fixed);
-                await this.softKeyboardPanel.hide();
-                console.info('====>Sub_Misc_inputMethod_onImeShow_0201 show panel');
-                await this.softKeyboardPanel.show();
-                console.info('====>Sub_Misc_inputMethod_onImeShow_0201 hide panel');
-                this.softKeyboardPanel.changeFlag(fla_floating);
-            }else{
-                console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeShow_0201 this.softKeyboardPanel is null');
-            }
-        }catch(error){
-            console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeShow_0201 catch error: ' + JSON.stringify(error));
-        }
-    }
-
-    private async Sub_Misc_inputMethod_onImeHide_0202(): Promise<void>  {
-        console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeHide_0202 success');
-        try{
-            if (this.softKeyboardPanel !== null){
-                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
-                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
-                this.softKeyboardPanel.changeFlag(fla_fixed);
-                await this.softKeyboardPanel.show();
-                console.info('====>Sub_Misc_inputMethod_onImeHide_0202 show panel');
-                await this.softKeyboardPanel.hide();
-                console.info('====>Sub_Misc_inputMethod_onImeHide_0202 hide panel');
-                this.softKeyboardPanel.changeFlag(fla_floating);
-            }else{
-                console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeHide_0202 this.softKeyboardPanel is null');
-            }
-        }catch(error){
-            console.info(TAG + '====>receive Sub_Misc_inputMethod_onImeHide_0202 catch error: ' + JSON.stringify(error));
-        }
-    }
-
-    private async Sub_Misc_inputMethod_offImeShow_0203(): Promise<void>  {
-        console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeShow_0203 success');
-        try{
-            if (this.softKeyboardPanel !== null){
-                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
-                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
-                this.softKeyboardPanel.changeFlag(fla_fixed);
-                await this.softKeyboardPanel.hide();
-                console.info('====>Sub_Misc_inputMethod_offImeShow_0203 show panel');
-                await this.softKeyboardPanel.show();
-                console.info('====>Sub_Misc_inputMethod_offImeShow_0203 hide panel');
-                this.softKeyboardPanel.changeFlag(fla_floating);
-            }else{
-                console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeShow_0203 this.softKeyboardPanel is null');
-            }
-        }catch(error){
-            console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeShow_0203 catch error: ' + JSON.stringify(error));
-        }
-    }
-
-    private async Sub_Misc_inputMethod_offImeHide_0204(): Promise<void>  {
-        console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeHide_0204 success');
-        try{
-            if (this.softKeyboardPanel !== null){
-                let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
-                let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
-                this.softKeyboardPanel.changeFlag(fla_fixed);
-                await this.softKeyboardPanel.show();
-                console.info('====>Sub_Misc_inputMethod_offImeHide_0204 show panel');
-                await this.softKeyboardPanel.hide();
-                console.info('====>Sub_Misc_inputMethod_offImeHide_0204 hide panel');
-                this.softKeyboardPanel.changeFlag(fla_floating);
-            }else{
-                console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeHide_0204 this.softKeyboardPanel is null');
-            }
-        }catch(error){
-            console.info(TAG + '====>receive Sub_Misc_inputMethod_offImeHide_0204 catch error: ' + JSON.stringify(error));
-        }
-    }
-
     private Sub_Misc_inputMethod_Panel_changeFlag_0210(): void {
         let commonEventPublishData = {
             data: "FAILED"
@@ -1054,7 +962,7 @@ export class KeyboardController {
                     };
                     commoneventmanager.publish("Sub_Misc_inputMethod_Panel_changeFlag_0210", commonEventPublishData, this.publishCallback);
                 }catch(err){
-                    console.error("====>SUB_REQUEST_UPLOAD_API_CALLBACK_0001 throw_error: " + err);
+                    console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0210 throw_error: " + err);
                 }
 
             }else{
@@ -1073,6 +981,34 @@ export class KeyboardController {
         }
     }
 
-
+    private Sub_Misc_inputMethod_Panel_changeFlag_0211(): void {
+        let commonEventPublishData = {
+            data: "FAILED"
+        };
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_changeFlag_0211 success');
+        try{
+            if (this.softKeyboardPanel !== null){
+                try{
+                    let fla_fixed = inputmethodengine.PanelFlag.FLG_FIXED;
+                    let fla_floating = inputmethodengine.PanelFlag.FLG_FLOATING;
+                    this.softKeyboardPanel.changeFlag(fla_fixed);
+                    console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 switch to fla_fixed');
+                    this.softKeyboardPanel.changeFlag(fla_floating);
+                    console.info('====>Sub_Misc_inputMethod_Panel_changeFlag_0211 switch to fla_floating');
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }catch(err){
+                    console.info("====>Sub_Misc_inputMethod_Panel_changeFlag_0211 throw_error: " + err);
+                }
+            }else{
+                console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_changeFlag_0211 this.softKeyboardPanel is null');
+            }
+            commoneventmanager.publish("Sub_Misc_inputMethod_Panel_changeFlag_0211", commonEventPublishData, this.publishCallback);
+        }catch(error){
+            console.info(TAG + '====>receive Sub_Misc_inputMethod_Panel_changeFlag_0211 catch error: ' + JSON.stringify(error));
+            commoneventmanager.publish("Sub_Misc_inputMethod_Panel_changeFlag_0211", commonEventPublishData, this.publishCallback);
+        }
+    }
 
 }
