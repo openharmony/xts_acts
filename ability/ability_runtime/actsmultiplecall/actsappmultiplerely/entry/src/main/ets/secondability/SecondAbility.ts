@@ -13,42 +13,42 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import type Window from '@ohos.window';
 
 class MyParcelable {
-    num: number = 0;
-    str: String = "";
-    result: boolean = false;
+  num: number = 0;
+  str: String = '';
+  result: boolean = false;
 
-    constructor(num, string, result) {
-        this.num = num;
-        this.str = string;
-        this.result = result;
-    }
+  constructor(num, string, result) {
+    this.num = num;
+    this.str = string;
+    this.result = result;
+  }
 
-    MyParcelable(num, string, result) {
-        this.num = num;
-        this.str = string;
-        this.result = result;
-    }
+  MyParcelable(num, string, result) {
+    this.num = num;
+    this.str = string;
+    this.result = result;
+  }
 
-    marshalling(messageParcel) {
-        messageParcel.writeInt(this.num);
-        messageParcel.writeString(this.str);
-        messageParcel.writeBoolean(this.result);
-        return true;
-    }
+  marshalling(messageParcel) {
+    messageParcel.writeInt(this.num);
+    messageParcel.writeString(this.str);
+    messageParcel.writeBoolean(this.result);
+    return true;
+  }
 
-    unmarshalling(messageParcel) {
-        this.num = messageParcel.readInt();
-        this.str = messageParcel.readString();
-        this.result = messageParcel.readBoolean();
-        return true;
-    }
+  unmarshalling(messageParcel) {
+    this.num = messageParcel.readInt();
+    this.str = messageParcel.readString();
+    this.result = messageParcel.readBoolean();
+    return true;
+  }
 }
 
-function sendMsgCallback(data) {
+function sendMsgCallback(data): MyParcelable {
   console.log('====>Callee sendMsgCallback called');
   let receivedData = new MyParcelable(0, '', false);
   data.readParcelable(receivedData);
@@ -62,9 +62,7 @@ export default class SecondAbility extends Ability {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-
-    console.info("====> secondAbility")
-    this.callee.on('call', sendMsgCallback)
+    this.callee.on('call', sendMsgCallback);
   }
 
   onDestroy() {
