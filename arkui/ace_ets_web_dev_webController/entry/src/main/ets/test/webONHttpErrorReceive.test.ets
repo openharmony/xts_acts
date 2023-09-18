@@ -76,7 +76,7 @@ export default function webONHttpErrorReceive() {
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc",false,466,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc",false,468,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","GET",470,done);
-      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","",472,done);
+      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc",'""',472,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","utf-8",474,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc","text/html",476,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgentWebc",403,478,done);
