@@ -27,8 +27,8 @@ export default function abilityTest() {
     afterEach(async function (done) {
       console.info('LifeCycleTest after each called');
       if ("Multihap_LifecycleTest_007" != TAG || "Multihap_LifecycleTest_011" != TAG
-      || "Multihap_LifecycleTest_006" != TAG) {
-        var para = {
+        || "Multihap_LifecycleTest_006" != TAG) {
+        let para = {
           resultCode: 2,
           want: {
             "abilityName": "MainAbility4",
@@ -46,10 +46,7 @@ export default function abilityTest() {
       done();
     });
 
-    var TAG;
-    var listKeyTemp = [];
-    var listKeyTemp1 = [];
-
+    let TAG;
 
     function sleep(time) {
       return new Promise((resolve) => setTimeout(resolve, time))
@@ -61,17 +58,16 @@ export default function abilityTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("Multihap_LifecycleTest_001", 0, async function (done) {
+    it("Multihap_LifecycleTest_001", 0, async (done) => {
       console.info("---------------Multihap_LifecycleTest_001 is start---------------")
       TAG = "Multihap_LifecycleTest_001";
-      listKeyTemp = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -82,26 +78,21 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": Hap2MainAbility3 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
-          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility3") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }
-          }
-          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
+            ",data: " + JSON.stringify(data));
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(TAG + "listTemp is :" + listTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility3 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility3 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility3 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility3 onAbilityBackground");
-          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
-          expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility3 onAbilityDestroy")!=-1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility3 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility3 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility3 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility3 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility3 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility3 onAbilityDestroy") !== -1).assertTrue();
           console.info(TAG + "globalThis.ApplicationContext4 is :" + JSON.stringify(globalThis.ApplicationContext4));
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               done();
             });
@@ -119,14 +110,13 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_002", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_002 start-------------");
       TAG = "Multihap_LifecycleTest_002";
-      listKeyTemp = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -136,7 +126,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility4"
       }, (error, data) => {
         console.log(TAG + ":first Hap2MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -147,25 +137,20 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
-          for (var i = 0; i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility4") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }
-          }
-          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
+            ",data: " + JSON.stringify(data));
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(TAG + "listTemp is :" + listTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility4 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility4 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility4 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility4 onAbilityBackground");
-          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
-          expect(transferStr0.indexOf("Hap2MainAbility4 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility4 onAbilityDestroy")!=-1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility4 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility4 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility4 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility4 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility4 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility4 onAbilityDestroy") !== -1).assertTrue();
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               done();
             });
@@ -183,14 +168,13 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_003", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_003 start-------------");
       TAG = "Multihap_LifecycleTest_003";
-      listKeyTemp = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -200,7 +184,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility5"
       }, (error, data) => {
         console.log(TAG + ":first Hap2MainAbility5 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -211,32 +195,20 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility5 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
-          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility5") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }
-          }
-          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
+            ",data: " + JSON.stringify(data));
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(TAG + "listTemp is :" + listTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility5 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility5 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility5 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility5 onAbilityCreate");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility5 onWindowStageCreate");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility5 onAbilityForeground");
-          expect(listKeyTemp[6]).assertEqual("Hap2MainAbility5 onAbilityBackground");
-          var transferStr0 = listKeyTemp[7] + listKeyTemp[8];
-          expect(transferStr0.indexOf("Hap2MainAbility5 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility5 onAbilityDestroy")!=-1).assertTrue();
-          expect(listKeyTemp[9]).assertEqual("Hap2MainAbility5 onAbilityBackground");
-          var transferStr0 = listKeyTemp[10] + listKeyTemp[11];
-          expect(transferStr0.indexOf("Hap2MainAbility5 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility5 onAbilityDestroy")!=-1).assertTrue();
+          expect(listTemp.split("Hap2MainAbility5 onAbilityCreate").length - 1).assertEqual(2);
+          expect(listTemp.split("Hap2MainAbility5 onWindowStageCreate").length - 1).assertEqual(2);
+          expect(listTemp.split("Hap2MainAbility5 onAbilityForeground").length - 1).assertEqual(2);
+          expect(listTemp.split("Hap2MainAbility5 onAbilityBackground").length - 1).assertEqual(2);
+          expect(listTemp.split("Hap2MainAbility5 onWindowStageDestroy").length - 1).assertEqual(2);
+          expect(listTemp.split("Hap2MainAbility5 onAbilityDestroy").length - 1).assertEqual(2);
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               done();
             });
@@ -254,15 +226,13 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_004", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_004 start-------------");
       TAG = "Multihap_LifecycleTest_004";
-      listKeyTemp = [];
-      listKeyTemp1 = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -272,7 +242,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility6"
       }, (error, data) => {
         console.log(TAG + ":first Hap2MainAbility6 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -283,37 +253,28 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap3MainAbility2 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
-          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap3MainAbility2") {
-              listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
-            }
-          }
-          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
-          console.log(TAG + "listKeyTemp1 is :" + listKeyTemp1);
-          console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility6 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility6 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility6 onAbilityBackground");
-          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
-          expect(transferStr0.indexOf("Hap2MainAbility6 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility6 onAbilityDestroy")!=-1).assertTrue();
+            ",data: " + JSON.stringify(data));
 
-          expect(listKeyTemp1[0]).assertEqual("Hap3MainAbility2 onAbilityCreate");
-          expect(listKeyTemp1[1]).assertEqual("Hap3MainAbility2 onWindowStageCreate");
-          expect(listKeyTemp1[2]).assertEqual("Hap3MainAbility2 onAbilityForeground");
-          expect(listKeyTemp1[3]).assertEqual("Hap3MainAbility2 onAbilityBackground");
-          var transferStr0 = listKeyTemp1[4] + listKeyTemp1[5];
-          expect(transferStr0.indexOf("Hap3MainAbility2 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap3MainAbility2 onAbilityDestroy")!=-1).assertTrue();
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(TAG + "listTemp is :" + listTemp);
+          console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility2 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility2 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility2 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility2 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility2 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility2 onAbilityDestroy") !== -1).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               done();
             });
@@ -337,7 +298,7 @@ export default function abilityTest() {
         abilityName: "MainAbility4"
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(500);
@@ -347,7 +308,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility6"
       }, (error, data) => {
         console.log(TAG + ":first Hap2MainAbility6 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(500);
@@ -358,37 +319,27 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility7 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
-          let setTemp = new Set();
-          let setTemp1 = new Set();
-          for (var i = 0; i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
-              setTemp.add(globalThis.mainAbility4ListKey[i]);
-              console.log(TAG + " setTemp entry is :" + JSON.stringify(globalThis.mainAbility4ListKey[i]));
-            } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility7") {
-              setTemp1.add(globalThis.mainAbility4ListKey[i]);
-              console.log(TAG + " setTemp1 entry is :" + JSON.stringify(globalThis.mainAbility4ListKey[i]));
-            }
-          }
+            ",data: " + JSON.stringify(data));
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(`${TAG} listTemp is: ${listTemp}`)
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(setTemp.has("Hap2MainAbility6 onAbilityCreate")).assertTrue();
-          expect(setTemp.has("Hap2MainAbility6 onWindowStageCreate")).assertTrue();
-          expect(setTemp.has("Hap2MainAbility6 onAbilityForeground")).assertTrue();
-          expect(setTemp.has("Hap2MainAbility6 onAbilityBackground")).assertTrue();
-          expect(setTemp.has("Hap2MainAbility6 onWindowStageDestroy")).assertTrue();
-          expect(setTemp.has("Hap2MainAbility6 onAbilityDestroy")).assertTrue();
-
-          expect(setTemp1.has("Hap2MainAbility7 onAbilityCreate")).assertTrue();
-          expect(setTemp1.has("Hap2MainAbility7 onWindowStageCreate")).assertTrue();
-          expect(setTemp1.has("Hap2MainAbility7 onAbilityForeground")).assertTrue();
-          expect(setTemp1.has("Hap2MainAbility7 onAbilityBackground")).assertTrue();
-          expect(setTemp1.has("Hap2MainAbility7 onWindowStageDestroy")).assertTrue();
-          expect(setTemp1.has("Hap2MainAbility7 onAbilityDestroy")).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility7 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility7 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility7 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility7 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility7 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility7 onAbilityDestroy") !== -1).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               done();
             });
@@ -407,17 +358,15 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_006", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_006 start-------------");
       TAG = "Multihap_LifecycleTest_006";
-      listKeyTemp = [];
-      listKeyTemp1 = [];
-      var firstCallbackId;
-      var secondCallbackId;
+      let firstCallbackId;
+      let secondCallbackId;
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility7"
       }, (error, data) => {
         console.log(TAG + ": first MainAbility7 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(500);
@@ -428,7 +377,7 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(function () {
           console.log(TAG + ": first Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
+            ",data: " + JSON.stringify(data));
           console.log(TAG + "first globalThis.mainAbility7CallBackId is :" + globalThis.mainAbility7CallBackId);
           firstCallbackId = globalThis.mainAbility7CallBackId;
           console.log(TAG + "firstCallbackId is : " + firstCallbackId);
@@ -442,7 +391,7 @@ export default function abilityTest() {
         abilityName: "MainAbility7"
       }, (error, data) => {
         console.log(TAG + ": second MainAbility7 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(1000);
@@ -453,12 +402,7 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": second Hap2MainAbility8 startAbility success, err: " + JSON.stringify(error) +
-          ",data: " + JSON.stringify(data));
-          for (var i = 0;i < globalThis.mainAbility7ListKey.length; i++) {
-            if (globalThis.mainAbility7ListKey[i].substring(0, 16) == "Hap2MainAbility8") {
-              listKeyTemp1.push(globalThis.mainAbility7ListKey[i]);
-            }
-          }
+            ",data: " + JSON.stringify(data));
           console.log(TAG + "second globalThis.mainAbility7CallBackId is :" + globalThis.mainAbility7CallBackId);
           secondCallbackId = globalThis.mainAbility7CallBackId;
           console.log(TAG + "secondCallbackId is : " + secondCallbackId);
@@ -467,7 +411,7 @@ export default function abilityTest() {
             globalThis.ApplicationContext7
               .unregisterAbilityLifecycleCallback(globalThis.mainAbility7CallBackId, (error, data) => {
                 console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
                 expect(error.code).assertEqual(0);
                 done();
               });
@@ -488,18 +432,16 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_007", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_007 start-------------");
       TAG = "Multihap_LifecycleTest_007";
-      listKeyTemp = [];
-      listKeyTemp1 = [];
-      var callBackId1;
-      var callBackId2;
-      var flag;
+      let callBackId1;
+      let callBackId2;
+      let flag;
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility6"
       }, (error, data) => {
         console.log(TAG + ": first MainAbility6 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       setTimeout(function () {
@@ -509,29 +451,24 @@ export default function abilityTest() {
         }, (error, data) => {
           setTimeout(() => {
             console.log(TAG + ":first Hap2MainAbility9 startAbility success, err: " +
-            JSON.stringify(error) + ",data: " + JSON.stringify(data));
+              JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-            for (var i = 0;i < globalThis.mainAbility6ListKey.length; i++) {
-              if (globalThis.mainAbility6ListKey[i].substring(0, 16) == "Hap2MainAbility9") {
-                listKeyTemp.push(globalThis.mainAbility6ListKey[i]);
-              }
-            }
-            console.log(TAG + "listKeyTemp is :" + listKeyTemp);
+            let listTemp = JSON.stringify(globalThis.mainAbility6ListKey);
+            console.log(TAG + "listTemp is :" + listTemp);
             console.log(TAG + "first globalThis.mainAbility6CallBackId is :" + globalThis.mainAbility6CallBackId);
-            callBackId1 = globalThis.mainAbility6CallBackId
+            callBackId1 = globalThis.mainAbility6CallBackId;
             console.log(TAG + "callBackId1 is :" + callBackId1);
-            expect(listKeyTemp[0]).assertEqual("Hap2MainAbility9 onAbilityCreate");
-            expect(listKeyTemp[1]).assertEqual("Hap2MainAbility9 onWindowStageCreate");
-            expect(listKeyTemp[2]).assertEqual("Hap2MainAbility9 onAbilityForeground");
-            expect(listKeyTemp[3]).assertEqual("Hap2MainAbility9 onAbilityBackground");
-            var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
-            expect(transferStr0.indexOf("Hap2MainAbility9 onWindowStageDestroy")!=-1).assertTrue();
-            expect(transferStr0.indexOf("Hap2MainAbility9 onAbilityDestroy")!=-1).assertTrue();
+            expect(listTemp.indexOf("Hap2MainAbility9 onAbilityCreate") !== -1).assertTrue();
+            expect(listTemp.indexOf("Hap2MainAbility9 onWindowStageCreate") !== -1).assertTrue();
+            expect(listTemp.indexOf("Hap2MainAbility9 onAbilityForeground") !== -1).assertTrue();
+            expect(listTemp.indexOf("Hap2MainAbility9 onAbilityBackground") !== -1).assertTrue();
+            expect(listTemp.indexOf("Hap2MainAbility9 onWindowStageDestroy") !== -1).assertTrue();
+            expect(listTemp.indexOf("Hap2MainAbility9 onAbilityDestroy") !== -1).assertTrue();
 
             globalThis.ApplicationContext6
               .unregisterAbilityLifecycleCallback(globalThis.mainAbility6CallBackId, (error, data) => {
                 console.log(TAG + ": first unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                ",data: " + JSON.stringify(data));
+                  ",data: " + JSON.stringify(data));
                 expect(error.code).assertEqual(0);
                 flag = error.code;
                 console.log(TAG + "flag is:" + flag);
@@ -549,7 +486,7 @@ export default function abilityTest() {
             abilityName: "MainAbility6"
           }, (error, data) => {
             console.log(TAG + ": first MainAbility6 startAbility success, err: " + JSON.stringify(error) +
-            ",data: " + JSON.stringify(data));
+              ",data: " + JSON.stringify(data));
           });
 
           setTimeout(function () {
@@ -560,30 +497,25 @@ export default function abilityTest() {
 
               setTimeout(() => {
                 console.log(TAG + ":second Hap2MainAbility9 startAbility success, err: " +
-                JSON.stringify(error) + ",data: " + JSON.stringify(data));
+                  JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-                for (var i = 0;i < globalThis.mainAbility6ListKey.length; i++) {
-                  if (globalThis.mainAbility6ListKey[i].substring(0, 16) == "Hap2MainAbility9") {
-                    listKeyTemp1.push(globalThis.mainAbility6ListKey[i]);
-                  }
-                }
-                console.log(TAG + "listKeyTemp1 is :" + listKeyTemp1);
+                let listTemp1 = JSON.stringify(globalThis.mainAbility6ListKey);
+                console.log(TAG + "listTemp1 is :" + listTemp1);
                 console.log(TAG + "second globalThis.mainAbility6CallBackId is :" + globalThis.mainAbility6CallBackId);
-                callBackId2 = globalThis.mainAbility6CallBackId
+                callBackId2 = globalThis.mainAbility6CallBackId;
                 console.log(TAG + "callBackId2 is :" + callBackId2);
-                expect(callBackId2).assertEqual(callBackId1 + 1)
-                expect(listKeyTemp1[0]).assertEqual("Hap2MainAbility9 onAbilityCreate");
-                expect(listKeyTemp1[1]).assertEqual("Hap2MainAbility9 onWindowStageCreate");
-                expect(listKeyTemp1[2]).assertEqual("Hap2MainAbility9 onAbilityForeground");
-                expect(listKeyTemp1[3]).assertEqual("Hap2MainAbility9 onAbilityBackground");
-                var transferStr0 = listKeyTemp1[4] + listKeyTemp1[5];
-                expect(transferStr0.indexOf("Hap2MainAbility9 onWindowStageDestroy")!=-1).assertTrue();
-                expect(transferStr0.indexOf("Hap2MainAbility9 onAbilityDestroy")!=-1).assertTrue();
+                expect(callBackId2).assertEqual(callBackId1 + 1);
+                expect(listTemp1.indexOf("Hap2MainAbility9 onAbilityCreate") !== -1).assertTrue();
+                expect(listTemp1.indexOf("Hap2MainAbility9 onWindowStageCreate") !== -1).assertTrue();
+                expect(listTemp1.indexOf("Hap2MainAbility9 onAbilityForeground") !== -1).assertTrue();
+                expect(listTemp1.indexOf("Hap2MainAbility9 onAbilityBackground") !== -1).assertTrue();
+                expect(listTemp1.indexOf("Hap2MainAbility9 onWindowStageDestroy") !== -1).assertTrue();
+                expect(listTemp1.indexOf("Hap2MainAbility9 onAbilityDestroy") !== -1).assertTrue();
 
                 globalThis.ApplicationContext6
                   .unregisterAbilityLifecycleCallback(globalThis.mainAbility6CallBackId, (error, data) => {
                     console.log(TAG + ": second unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-                    ",data: " + JSON.stringify(data));
+                      ",data: " + JSON.stringify(data));
                     expect(error.code).assertEqual(0);
                     done();
                   });
@@ -606,14 +538,13 @@ export default function abilityTest() {
     it("Multihap_LifecycleTest_008", 0, async function (done) {
       console.log("------------Multihap_LifecycleTest_008 start-------------");
       TAG = "Multihap_LifecycleTest_008";
-      listKeyTemp = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " + JSON.stringify(error) +
-        ",data: " + JSON.stringify(data));
+          ",data: " + JSON.stringify(data));
       });
 
       await sleep(500);
@@ -624,32 +555,27 @@ export default function abilityTest() {
       }, (error, data) => {
         setTimeout(() => {
           console.log(TAG + ": Hap2MainAbility6 startAbility success, err: " +
-          JSON.stringify(error) + ",data: " + JSON.stringify(data));
+            JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap2MainAbility6") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            }
-          }
-          console.log(TAG + "listKeyTemp is :" + listKeyTemp);
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(TAG + "listTemp is :" + listTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility6 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility6 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility6 onAbilityBackground");
-          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
-          expect(transferStr0.indexOf("Hap2MainAbility6 onWindowStageDestroy")!=-1).assertTrue();
-          expect(transferStr0.indexOf("Hap2MainAbility6 onAbilityDestroy")!=-1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityForeground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityBackground") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onWindowStageDestroy") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility6 onAbilityDestroy") !== -1).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": first unregisterAbilityLifecycleCallback, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               globalThis.ApplicationContext4
                 .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
                   console.log(TAG + ": second unregisterAbilityLifecycleCallback, err: " + JSON.stringify(error) +
-                  ",data: " + JSON.stringify(data));
+                    ",data: " + JSON.stringify(data));
                   expect(error.code).assertEqual(1);
                   done()
                 });
@@ -668,15 +594,13 @@ export default function abilityTest() {
     it('Multihap_LifecycleTest_010', 0, async function (done) {
       console.info("---------------Multihap_LifecycleTest_010 is start---------------")
       TAG = "Multihap_LifecycleTest_010";
-      listKeyTemp = [];
-      listKeyTemp1 = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4",
       }, (error, data) => {
         console.log(TAG + ": MainAbility4 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
 
       await sleep(1000)
@@ -685,7 +609,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility10",
       }, (error, data) => {
         console.log(TAG + ": first Hap2MainAbility10 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
 
       await sleep(1000)
@@ -694,7 +618,7 @@ export default function abilityTest() {
         abilityName: "Hap3MainAbility3",
       }, (error, data) => {
         console.log(TAG + ": first Hap3MainAbility3 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
 
       await sleep(1000)
@@ -703,7 +627,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility10",
       }, (error, data) => {
         console.log(TAG + ": second Hap2MainAbility10 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
 
       await sleep(1000)
@@ -712,7 +636,7 @@ export default function abilityTest() {
         abilityName: "Hap3MainAbility3",
       }, (error, data) => {
         console.log(TAG + ": second Hap3MainAbility3 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
 
 
@@ -722,7 +646,7 @@ export default function abilityTest() {
         abilityName: "Hap2MainAbility10",
       }, (error, data) => {
         console.log(TAG + ": third Hap2MainAbility10 startAbility success, err: " +
-        JSON.stringify(error) + ",data: " + JSON.stringify(data));
+          JSON.stringify(error) + ",data: " + JSON.stringify(data));
       })
 
       await sleep(1000)
@@ -733,40 +657,24 @@ export default function abilityTest() {
 
         setTimeout(() => {
           console.log(TAG + ": third Hap3MainAbility3 startAbility success, err: " +
-          JSON.stringify(error) + ",data: " + JSON.stringify(data));
+            JSON.stringify(error) + ",data: " + JSON.stringify(data));
 
-          for (var i = 0;i < globalThis.mainAbility4ListKey.length; i++) {
-            if (globalThis.mainAbility4ListKey[i].substring(0, 17) == "Hap2MainAbility10") {
-              listKeyTemp.push(globalThis.mainAbility4ListKey[i]);
-            } else if (globalThis.mainAbility4ListKey[i].substring(0, 16) == "Hap3MainAbility3") {
-              listKeyTemp1.push(globalThis.mainAbility4ListKey[i]);
-            }
-          }
-          console.log(TAG + " listKeyTemp is :" + listKeyTemp);
-          console.log(TAG + " listKeyTemp1 is :" + listKeyTemp1);
+          let listTemp = JSON.stringify(globalThis.mainAbility4ListKey);
+          console.log(TAG + " listTemp is :" + listTemp);
           console.log(TAG + " globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility10 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility10 onWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility10 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility10 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility10 onAbilityForeground");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility10 onAbilityBackground");
-          expect(listKeyTemp[6]).assertEqual("Hap2MainAbility10 onAbilityForeground");
-          expect(listKeyTemp[7]).assertEqual("Hap2MainAbility10 onAbilityBackground");
-
-          expect(listKeyTemp1[0]).assertEqual("Hap3MainAbility3 onAbilityCreate");
-          expect(listKeyTemp1[1]).assertEqual("Hap3MainAbility3 onWindowStageCreate");
-          expect(listKeyTemp1[2]).assertEqual("Hap3MainAbility3 onAbilityForeground");
-          expect(listKeyTemp1[3]).assertEqual("Hap3MainAbility3 onAbilityBackground");
-          expect(listKeyTemp1[4]).assertEqual("Hap3MainAbility3 onAbilityForeground");
-          expect(listKeyTemp1[5]).assertEqual("Hap3MainAbility3 onAbilityBackground");
-          expect(listKeyTemp1[6]).assertEqual("Hap3MainAbility3 onAbilityForeground");
+          expect(listTemp.indexOf("Hap2MainAbility10 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap2MainAbility10 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.split("Hap2MainAbility10 onAbilityForeground").length - 1).assertEqual(3);
+          expect(listTemp.split("Hap2MainAbility10 onAbilityBackground").length - 1).assertEqual(3);
+          expect(listTemp.indexOf("Hap3MainAbility3 onAbilityCreate") !== -1).assertTrue();
+          expect(listTemp.indexOf("Hap3MainAbility3 onWindowStageCreate") !== -1).assertTrue();
+          expect(listTemp.split("Hap3MainAbility3 onAbilityForeground").length - 1).assertEqual(3);
+          expect(listTemp.split("Hap3MainAbility3 onAbilityBackground").length - 1).assertEqual(2);
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
-              ",data: " + JSON.stringify(data));
+                ",data: " + JSON.stringify(data));
               expect(error.code).assertEqual(0);
               done();
             });
@@ -785,7 +693,7 @@ export default function abilityTest() {
     it('Multihap_LifecycleTest_011', 0, async function (done) {
       console.info("---------------Multihap_LifecycleTest_011 is start---------------")
       TAG = "Multihap_LifecycleTest_011";
-      listKeyTemp = [];
+      let listKeyTemp = [];
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",

@@ -31,7 +31,7 @@ struct cameraOrientation {
   private mXComponentController: XComponentController = new XComponentController()
   @State surfaceId: number = 0;
   @State cameraDeviceIndex: number = 0
-  @State assetUri: string = undefined
+  @State assetUri: string = ''
   @State Vue: boolean = false
   @State imageRotation: number = 0
   @State cameraListLength: number = undefined
@@ -46,6 +46,9 @@ struct cameraOrientation {
   @State resolution: SelectOption[] = [] // 分辨率
   @State testingFrequency: number = undefined // 测试总数
   @State isCameraChange: boolean = false
+  @State screensObj: object = null
+  @State XWidth: string = '1%'
+  @State XHeight: string = '1%'
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -68,9 +71,33 @@ struct cameraOrientation {
     Logger.info(this.tag, `takePicture end, assetUri: ${this.assetUri}`)
   }
 
+  // 设置宽高
+  // XWidth XHeight 左右布局的宽高
+  // screensObj  width height 屏幕宽高
+  // resolution 拍照分辨率
+  setXComponent() {
+    let res = String(this.resolution[this.clickFrequency].value)
+    let indexOf = res.indexOf('x')
+    let objW = Number(res.slice(0, indexOf)) // 拍照分辨率
+    let objH = Number(res.slice(indexOf + 1)) // 拍照分辨率
+    Logger.info(this.tag, `setXComponent screensObj w` + JSON.stringify(this.screensObj))
+    // @ts-ignore
+    Logger.info(this.tag, `setXComponent this.screensObj.width  w` + JSON.stringify(this.screensObj[0].width))
+    Logger.info(this.tag, `setXComponent objW` + JSON.stringify(objW))
+    // @ts-ignore
+    let w = (this.screensObj[this.screensObj.length-1].width * 0.4) / objW
+    Logger.info(this.tag, `setXComponent w` + JSON.stringify(w))
+    // @ts-ignore
+    this.XWidth = String(this.screensObj[this.screensObj.length-1].width * 0.4) + "px"
+    Logger.info(this.tag, `setXComponent XWidth` + JSON.stringify(this.XWidth))
+    this.XHeight = String(objH * w) + "px"
+    Logger.info(this.tag, `setXComponent XHeight` + JSON.stringify(this.XHeight))
+
+  }
+
   onPageShow() {
     Logger.info(this.tag, `takePicture end, assetUri`)
-	// @ts-ignore
+    // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
       this.cameraListFn()
@@ -81,7 +108,11 @@ struct cameraOrientation {
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex, obj, this.clickFrequency).then(() => {
       this.resolution = CameraService.photoResolution
       this.resolutionSelectVal = String(this.resolution[this.clickFrequency].value)
+      Logger.info(this.tag, `resolution ` + JSON.stringify(this.resolution))
+      this.screensObj = CameraService.screensObj
+      Logger.info(this.tag, ` this.screensObj success view` + JSON.stringify(this.screensObj))
       this.cameraListFn()
+      this.setXComponent()
     })
   }
 
@@ -89,6 +120,7 @@ struct cameraOrientation {
     CameraService.releaseCamera()
     Logger.info(this.tag, `onPageHide releaseCamera end`)
   }
+
   // 对分辨率数据处理 获取到需要的格式
   dealWithResolutionFn(arr) {
     let newResolution = []
@@ -143,14 +175,16 @@ struct cameraOrientation {
                 })
                 .size({ width: '100%', height: '100%' })
               Text('预览').fontSize('20fp').fontColor(Color.White)
-            }.size({ width: '40%', height: '65%' })
+
+            }.size({ width: this.XWidth, height: this.XHeight })
 
             Column() {
-              Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
+              Image(this.assetUri || '')
+                .size({ width: '100%', height: '100%' })
+                .objectFit(ImageFit.Fill)
               Text('图片').fontSize('20fp').fontColor(Color.White)
-            }.size({ width: '40%', height: '65%' })
-          }.width('100%').height('60%')
-
+            }.size({ width: this.XWidth, height: this.XHeight })
+          }.width('100%').height('50%')
 
           Flex({ direction: FlexDirection.Column }) {
             Row() {
@@ -198,7 +232,7 @@ struct cameraOrientation {
 
             Text(`提示：不同拍照分辨率下进行拍摄，图片拍摄成功且与预览画面一致则选择pass，否则选择fail`)
               .fontSize('16fp').fontColor(Color.White).margin({ top: 20 })
-          }.size({ width: '80%', height: '25%' })
+          }.size({ width: '80%', height: '20%' })
 
           Row() {
             Button('拍照')
@@ -220,8 +254,8 @@ struct cameraOrientation {
                 this.clickFrequency++
                 Logger.info(this.tag, `nextClickFn new clickFrequency: ${this.clickFrequency}`)
 
-                if (this.resolution.length == this.clickFrequency || this.resolution.length < this.clickFrequency){
-                  if (this.isCameraChange){
+                if (this.resolution.length == this.clickFrequency || this.resolution.length < this.clickFrequency) {
+                  if (this.isCameraChange) {
                     this.Vue = true
                     this.isEnabled = false
                     this.isNextEnabled = true
@@ -242,7 +276,7 @@ struct cameraOrientation {
                 }
                 this.isEnabled = true
                 this.isNextEnabled = true
-                if (this.clickFrequency){
+                if (this.clickFrequency) {
                   let newResolution = this.dealWithResolutionFn(this.resolution)
                   Logger.info(this.tag, `nextClickFn new Resolution: ${newResolution}`)
                   this.cameraInit(newResolution[this.clickFrequency])
@@ -255,8 +289,6 @@ struct cameraOrientation {
         }
       }.height('80%')
 
-
-
       CustomContainer({
         title: this.name,
         Url: 'pages/Camera/Camera_index',
@@ -267,9 +299,10 @@ struct cameraOrientation {
       }).height('10%').width('100%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Camera/Camera_index',
+      url: 'pages/Camera/Camera_index',
     })
   }
 }

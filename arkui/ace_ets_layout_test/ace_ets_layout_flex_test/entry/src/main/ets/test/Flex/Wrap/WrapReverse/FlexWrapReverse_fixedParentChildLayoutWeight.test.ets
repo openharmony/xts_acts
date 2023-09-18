@@ -69,12 +69,12 @@ export default function flexWrapReverse_fixedParentChildLayoutWeight() {
       expect(locationText1.top).assertEqual(locationFlexParent.top)
       expect(locationText1.top).assertEqual(locationText2.top)
       expect(locationText2.top).assertEqual(locationText3.top)
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(100))
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(150))
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(200))
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(150));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(100));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(100));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(200)))
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(locationText2.right - locationText2.left))
         .assertEqual(Math.round(locationText3.right - locationText3.left))
       expect(Math.round((locationText1.right - locationText1.left)*100)/100)

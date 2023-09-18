@@ -36,6 +36,7 @@ export default function swiperItemSpace() {
       } catch (err) {
         console.error("push swiperItemSpace page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
@@ -93,7 +94,7 @@ export default function swiperItemSpace() {
 
       expect(itemspacekey.top).assertEqual(itemspacekey03.top);
       expect(itemspacekey.bottom).assertEqual(itemspacekey03.bottom);
-      expect(Math.round(itemspacekey03.left - itemspacekey02.right)).assertEqual(vp2px(20));
+      expect(Math.round(itemspacekey03.left - itemspacekey02.right)).assertEqual(Math.round(vp2px(20)));
       expect(itemspacekey.right).assertEqual(itemspacekey03.right)
       console.info("The type value is " + JSON.stringify(obj.$type));
       console.info("The loop value is " + JSON.stringify(obj.$attrs.loop));

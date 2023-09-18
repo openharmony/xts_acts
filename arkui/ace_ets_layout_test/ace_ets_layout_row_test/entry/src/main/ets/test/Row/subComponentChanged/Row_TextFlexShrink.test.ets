@@ -61,13 +61,13 @@ export default function row_TextFlexShrinkTest() {
       let rowContainerObj = JSON.parse(rowContainerStrJson);
       expect(rowContainerObj.$type).assertEqual('Row');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(50));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
-      expect(Math.round(secondText.right- secondText.left)).assertEqual(vp2px(90));
-      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(vp2px(90));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(secondText.right- secondText.left)).assertEqual(Math.round(vp2px(90)));
+      expect(Math.round(thirdText.right- thirdText.left)).assertEqual(Math.round(vp2px(90)));
 
       expect(Math.round(firstText.top - rowContainer.top))
         .assertEqual(Math.round(rowContainer.bottom - firstText.bottom));
@@ -77,7 +77,7 @@ export default function row_TextFlexShrinkTest() {
         .assertEqual(Math.round(rowContainer.bottom - thirdText.bottom));
 
       expect(firstText.left).assertEqual(rowContainer.left);
-      expect(Math.round(secondText.left - firstText.right)).assertEqual(vp2px(10));
+      expect(Math.round(secondText.left - firstText.right)).assertEqual(Math.round(vp2px(10)));
       expect(Math.round(secondText.left - firstText.right)).assertEqual(Math.round(thirdText.left - secondText.right));
 
       expect(rowContainer.right).assertEqual(thirdText.right);

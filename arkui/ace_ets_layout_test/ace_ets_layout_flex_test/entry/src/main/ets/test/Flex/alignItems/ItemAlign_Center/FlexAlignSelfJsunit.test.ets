@@ -61,20 +61,20 @@ export default function flexAlignSelf_CenterJsunit() {
       let alignSelf03 = CommonFunc.getComponentRect('textAlignSelf03');
       let flexAlignSelf01 = CommonFunc.getComponentRect('flexAlignSelf');
       expect(alignSelf01.bottom).assertEqual(flexAlignSelf01.bottom)
-      expect(Math.round(alignSelf01.bottom - alignSelf01.top)).assertEqual(vp2px(50))
-      expect(Math.round(alignSelf01.right - alignSelf01.left)).assertEqual(vp2px(150))
-      expect(Math.round(alignSelf02.bottom - alignSelf02.top)).assertEqual(vp2px(100))
-      expect(Math.round(alignSelf02.right - alignSelf02.left)).assertEqual(vp2px(150))
-      expect(Math.round(alignSelf03.bottom - alignSelf03.top)).assertEqual(vp2px(150))
-      expect(Math.round(alignSelf03.right - alignSelf03.left)).assertEqual(vp2px(150))
+      expect(Math.round(alignSelf01.bottom - alignSelf01.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(alignSelf01.right - alignSelf01.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(alignSelf02.bottom - alignSelf02.top)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(alignSelf02.right - alignSelf02.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(alignSelf03.bottom - alignSelf03.top)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(alignSelf03.right - alignSelf03.left)).assertEqual(Math.round(vp2px(150)))
       expect(alignSelf02.top - flexAlignSelf01.top).assertEqual(flexAlignSelf01.bottom - alignSelf02.bottom)
       expect(alignSelf03.top - flexAlignSelf01.top).assertEqual(flexAlignSelf01.bottom - alignSelf03.bottom)
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Center')
       expect(obj2.$attrs.alignSelf).assertEqual("ItemAlign.End");
-      expect(Math.round(alignSelf03.right - alignSelf03.left)).assertEqual(vp2px(150))
-      expect(Math.round(alignSelf02.right - alignSelf02.left)).assertEqual(vp2px(150))
-      expect(Math.round(flexAlignSelf01.right - alignSelf03.right)).assertEqual(vp2px(50))
+      expect(Math.round(alignSelf03.right - alignSelf03.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(alignSelf02.right - alignSelf02.left)).assertEqual(Math.round(vp2px(150)))
+      expect(Math.round(flexAlignSelf01.right - alignSelf03.right)).assertEqual(Math.round(vp2px(50)))
       console.info('new testFlexItemAlignCenterSetAlignSelf END');
       done();
     });

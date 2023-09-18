@@ -67,10 +67,10 @@ export default function AlignSpaceEvenly_AddPadding() {
       expect( SpaceEvenly_AddPadding_012.top ).assertEqual(SpaceEvenly_AddPadding_013.top);
       expect( SpaceEvenly_AddPadding_012.left ).assertEqual(SpaceEvenly_AddPadding_011.right);
       expect( SpaceEvenly_AddPadding_013.left ).assertEqual(SpaceEvenly_AddPadding_012.right);
-      expect(Math.round(SpaceEvenly_AddPadding_011.top - SpaceEvenly_AddPadding_01.top)).assertEqual(vp2px(30));
-      expect(Math.round(SpaceEvenly_AddPadding_011.bottom - SpaceEvenly_AddPadding_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(SpaceEvenly_AddPadding_012.bottom - SpaceEvenly_AddPadding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddPadding_013.bottom - SpaceEvenly_AddPadding_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(SpaceEvenly_AddPadding_011.top - SpaceEvenly_AddPadding_01.top)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(SpaceEvenly_AddPadding_011.bottom - SpaceEvenly_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(SpaceEvenly_AddPadding_012.bottom - SpaceEvenly_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(SpaceEvenly_AddPadding_013.bottom - SpaceEvenly_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(SpaceEvenly_AddPadding_011.right - SpaceEvenly_AddPadding_011.left))
         .assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(SpaceEvenly_AddPadding_012.right - SpaceEvenly_AddPadding_012.left))
@@ -78,8 +78,8 @@ export default function AlignSpaceEvenly_AddPadding() {
       expect(Math.round(SpaceEvenly_AddPadding_013.right - SpaceEvenly_AddPadding_013.left))
         .assertEqual(Math.round(vp2px(440/3)));
       expect(Math.round(SpaceEvenly_AddPadding_011.left - SpaceEvenly_AddPadding_01.left))
-        .assertEqual(vp2px(30));
-      expect(Math.round(SpaceEvenly_AddPadding_01.right - SpaceEvenly_AddPadding_013.right)).assertEqual(vp2px(30));
+        .assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(SpaceEvenly_AddPadding_01.right - SpaceEvenly_AddPadding_013.right)).assertEqual(Math.round(vp2px(30)));
       console.info('[testAlignSpaceEvenlyFlexPadMeet] END');
       done();
     });
@@ -102,23 +102,23 @@ export default function AlignSpaceEvenly_AddPadding() {
       let SpaceEvenly_AddPadding_012 = CommonFunc.getComponentRect('SpaceEvenly_AddPadding_012');
       let SpaceEvenly_AddPadding_013 = CommonFunc.getComponentRect('SpaceEvenly_AddPadding_013');
       let SpaceEvenly_AddPadding_01 = CommonFunc.getComponentRect('SpaceEvenly_AddPadding_01');
-      expect(SpaceEvenly_AddPadding_011.top).assertEqual(SpaceEvenly_AddPadding_012.top);
-      expect(SpaceEvenly_AddPadding_012.top).assertEqual(SpaceEvenly_AddPadding_013.top);
-      expect(Math.round(SpaceEvenly_AddPadding_011.top - SpaceEvenly_AddPadding_01.top)).assertEqual(vp2px(20));
-      expect(Math.round(SpaceEvenly_AddPadding_011.right - SpaceEvenly_AddPadding_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddPadding_012.right - SpaceEvenly_AddPadding_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddPadding_013.right - SpaceEvenly_AddPadding_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(SpaceEvenly_AddPadding_011.bottom - SpaceEvenly_AddPadding_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(SpaceEvenly_AddPadding_012.bottom - SpaceEvenly_AddPadding_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(SpaceEvenly_AddPadding_013.bottom - SpaceEvenly_AddPadding_013.top)).assertEqual(vp2px(150));
-      expect(Math.round((SpaceEvenly_AddPadding_013.left - SpaceEvenly_AddPadding_012.right)*100)/100)
-        .assertEqual(Math.round(vp2px(2.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddPadding_012.left - SpaceEvenly_AddPadding_011.right)*100)/100)
-        .assertEqual(Math.round(vp2px(2.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddPadding_011.left - SpaceEvenly_AddPadding_01.left)*100)/100)
-        .assertEqual(Math.round(vp2px(22.5)*100)/100);
-      expect(Math.round((SpaceEvenly_AddPadding_01.right - SpaceEvenly_AddPadding_013.right)*100)/100)
-        .assertEqual(Math.round(vp2px(22.5)*100)/100);
+      expect(Math.round(SpaceEvenly_AddPadding_011.top)).assertEqual(Math.round(SpaceEvenly_AddPadding_012.top));
+      expect(Math.round(SpaceEvenly_AddPadding_012.top)).assertEqual(Math.round(SpaceEvenly_AddPadding_013.top));
+      expect(Math.round(SpaceEvenly_AddPadding_011.top - SpaceEvenly_AddPadding_01.top)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(SpaceEvenly_AddPadding_011.right - SpaceEvenly_AddPadding_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(SpaceEvenly_AddPadding_012.right - SpaceEvenly_AddPadding_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(SpaceEvenly_AddPadding_013.right - SpaceEvenly_AddPadding_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(SpaceEvenly_AddPadding_011.bottom - SpaceEvenly_AddPadding_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(SpaceEvenly_AddPadding_012.bottom - SpaceEvenly_AddPadding_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(SpaceEvenly_AddPadding_013.bottom - SpaceEvenly_AddPadding_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(SpaceEvenly_AddPadding_013.left - SpaceEvenly_AddPadding_012.right))
+        .assertEqual(Math.round(vp2px(2.5)));
+      expect(Math.round(SpaceEvenly_AddPadding_012.left - SpaceEvenly_AddPadding_011.right))
+        .assertEqual(Math.round(vp2px(2.5)));
+      expect(Math.round(SpaceEvenly_AddPadding_011.left - SpaceEvenly_AddPadding_01.left))
+        .assertEqual(Math.round(vp2px(22.5)));
+      expect(Math.round(SpaceEvenly_AddPadding_01.right - SpaceEvenly_AddPadding_013.right))
+        .assertEqual(Math.round(vp2px(22.5)));
       console.info('[testAlignSpaceEvenlyFlexPadOverflow] END');
       done();
     });

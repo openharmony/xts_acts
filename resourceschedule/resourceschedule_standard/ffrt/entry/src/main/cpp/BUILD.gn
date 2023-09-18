@@ -31,7 +31,10 @@ config("public_config") {
 
 ohos_shared_library("ffrtndk") {
   sources = [ "./ffrtndk.cpp" ]
-  libs = [ rebase_path(libcxx_ndk_shared_file) ]
+  if (use_musl) {
+    libs = [ rebase_path(libcxx_ndk_shared_file) ]
+    stl = "c++_shared"
+  }
 
   include_dirs = [
     "./",

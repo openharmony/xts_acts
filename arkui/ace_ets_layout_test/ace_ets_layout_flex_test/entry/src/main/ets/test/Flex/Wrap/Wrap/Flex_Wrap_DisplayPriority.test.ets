@@ -69,18 +69,18 @@ export default function flex_Wrap_DisplayPriorityTest() {
       expect(firstText.top).assertEqual(secondText.top);
       expect(firstText.top).assertEqual(flexContainer.top);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(vp2px(150));
-      expect(Math.round(secondText.right - secondText.left)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(vp2px(300));
+      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.right - thirdText.left)).assertEqual(Math.round(vp2px(300)));
 
-      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(vp2px(200));
+      expect(Math.round(flexContainer.right - secondText.right)).assertEqual(Math.round(vp2px(200)));
       expect(thirdText.left).assertEqual(flexContainer.left);
       expect(thirdText.top).assertEqual(secondText.bottom);
-      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(vp2px(50));
+      expect(Math.round(flexContainer.bottom - thirdText.bottom)).assertEqual(Math.round(vp2px(50)));
       console.info('[testWrapWrapTextDisplayPriority] END');
       done();
     });

@@ -93,31 +93,31 @@ export default function columnNesting_alignItems() {
 
       console.log('assert height')
       console.log('column_01 assert height')
-      expect(Math.round(columnNesting_alignItems_011.bottom - columnNesting_alignItems_011.top)).assertEqual(vp2px(50));
-      expect(Math.round(columnNesting_alignItems_012.bottom - columnNesting_alignItems_012.top)).assertEqual(vp2px(100));
-      expect(Math.round(columnNesting_alignItems_013.bottom - columnNesting_alignItems_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(columnNesting_alignItems_011.bottom - columnNesting_alignItems_011.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(columnNesting_alignItems_012.bottom - columnNesting_alignItems_012.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(columnNesting_alignItems_013.bottom - columnNesting_alignItems_013.top)).assertEqual(Math.round(vp2px(150)));
 
       console.log('column_02 assert height')
-      expect(Math.round(columnNesting_alignItems_021.bottom - columnNesting_alignItems_021.top)).assertEqual(vp2px(50));
-      expect(Math.round(columnNesting_alignItems_022.bottom - columnNesting_alignItems_022.top)).assertEqual(vp2px(100));
-      expect(Math.round(columnNesting_alignItems_023.bottom - columnNesting_alignItems_023.top)).assertEqual(vp2px(150));
+      expect(Math.round(columnNesting_alignItems_021.bottom - columnNesting_alignItems_021.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(columnNesting_alignItems_022.bottom - columnNesting_alignItems_022.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(columnNesting_alignItems_023.bottom - columnNesting_alignItems_023.top)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(columnNesting_alignItems_01.bottom - columnNesting_alignItems_01.top)).assertEqual(vp2px(400));
-      expect(Math.round(columnNesting_alignItems_02.bottom - columnNesting_alignItems_02.top)).assertEqual(vp2px(400));
+      expect(Math.round(columnNesting_alignItems_01.bottom - columnNesting_alignItems_01.top)).assertEqual(Math.round(vp2px(400)));
+      expect(Math.round(columnNesting_alignItems_02.bottom - columnNesting_alignItems_02.top)).assertEqual(Math.round(vp2px(400)));
 
       console.log('assert weight')
       console.log('column_01 assert weight')
-      expect(Math.round(columnNesting_alignItems_011.right - columnNesting_alignItems_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_alignItems_012.right - columnNesting_alignItems_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_alignItems_013.right - columnNesting_alignItems_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(columnNesting_alignItems_011.right - columnNesting_alignItems_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_alignItems_012.right - columnNesting_alignItems_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_alignItems_013.right - columnNesting_alignItems_013.left)).assertEqual(Math.round(vp2px(300)));
 
       console.log('column_02 assert weight')
-      expect(Math.round(columnNesting_alignItems_021.right - columnNesting_alignItems_021.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_alignItems_022.right - columnNesting_alignItems_022.left)).assertEqual(vp2px(300));
-      expect(Math.round(columnNesting_alignItems_023.right - columnNesting_alignItems_023.left)).assertEqual(vp2px(300));
+      expect(Math.round(columnNesting_alignItems_021.right - columnNesting_alignItems_021.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_alignItems_022.right - columnNesting_alignItems_022.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(columnNesting_alignItems_023.right - columnNesting_alignItems_023.left)).assertEqual(Math.round(vp2px(300)));
 
-      expect(Math.round(columnNesting_alignItems_01.right - columnNesting_alignItems_01.left)).assertEqual(vp2px(350));
-      expect(Math.round(columnNesting_alignItems_02.right - columnNesting_alignItems_02.left)).assertEqual(vp2px(350));
+      expect(Math.round(columnNesting_alignItems_01.right - columnNesting_alignItems_01.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(columnNesting_alignItems_02.right - columnNesting_alignItems_02.left)).assertEqual(Math.round(vp2px(350)));
 
       console.info('[SUB_ACE_columnNesting_alignItems_TEST_0100] END');
       done();

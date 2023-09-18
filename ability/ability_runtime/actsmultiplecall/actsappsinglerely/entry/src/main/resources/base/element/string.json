@@ -19,6 +19,14 @@
     {
       "name": "SecondAbility_label",
       "value": "label"
+    },
+    {
+      "name": "ThirdAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "ThirdAbility_label",
+      "value": "label"
     }
   ]
 }

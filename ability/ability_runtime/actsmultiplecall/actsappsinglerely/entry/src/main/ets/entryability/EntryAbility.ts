@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import type Window from '@ohos.window';
 
 class MyParcelable {
   num: number = 0;
-  str: String = "";
+  str: String = '';
   result: boolean = false;
 
   constructor(num, string, result) {
@@ -48,8 +48,8 @@ class MyParcelable {
   }
 }
 
-function callWithResult(data) {
-  console.log('====>Callee callWithResult called')
+function callWithResult(data): MyParcelable {
+  console.log('====>Callee callWithResult called');
   let recvSequence = new MyParcelable(0, '', false);
   data.readParcelable(recvSequence);
   let result = true;

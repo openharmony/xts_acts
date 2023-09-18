@@ -63,10 +63,10 @@ export default function Grid_RowCol_Gap() {
       expect(Grid_RowCol_Gap_011.left).assertEqual(Grid_RowCol_Gap_01.left);
       expect(Grid_RowCol_Gap_013.left).assertEqual(Grid_RowCol_Gap_01.left);
 
-      expect(Math.round((Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.round((Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right)))
+        .assertEqual(Math.round(vp2px(5)));
+      expect(Math.round((Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right)))
+        .assertEqual(Math.round(vp2px(5)));
 
       expect(Grid_RowCol_Gap_012.right).assertEqual(Grid_RowCol_Gap_01.right);
       expect(Grid_RowCol_Gap_014.right).assertEqual(Grid_RowCol_Gap_01.right);
@@ -92,10 +92,10 @@ export default function Grid_RowCol_Gap() {
       expect(Math.round((Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left)*100)/100)
         .assertEqual(Math.round(vp2px(147.5)*100)/100);
 
-      expect(Math.round(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_Gap_012.bottom - Grid_RowCol_Gap_012.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_Gap_013.bottom - Grid_RowCol_Gap_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_Gap_014.bottom - Grid_RowCol_Gap_014.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testGridColGap] END');
       done();
     });
@@ -135,15 +135,15 @@ export default function Grid_RowCol_Gap() {
       expect(Grid_RowCol_Gap_013.top).assertEqual(Grid_RowCol_Gap_014.top);
       expect(Grid_RowCol_Gap_011.bottom).assertEqual(Grid_RowCol_Gap_012.bottom);
 
-      expect(Math.round((Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.round((Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom)))
+        .assertEqual(Math.round(vp2px(5)));
+      expect(Math.round((Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom)))
+        .assertEqual(Math.round(vp2px(5)));
 
-      expect(Math.round(Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_Gap_012.right - Grid_RowCol_Gap_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_Gap_013.right - Grid_RowCol_Gap_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_Gap_014.right - Grid_RowCol_Gap_014.left)).assertEqual(Math.round(vp2px(150)));
 
       expect(Math.round((Grid_RowCol_Gap_011.bottom - Grid_RowCol_Gap_011.top)*100)/100)
         .assertEqual(Math.round(vp2px(147.5)*100)/100);
@@ -189,15 +189,15 @@ export default function Grid_RowCol_Gap() {
       expect(Grid_RowCol_Gap_013.top).assertEqual(Grid_RowCol_Gap_014.top);
       expect(Grid_RowCol_Gap_011.bottom).assertEqual(Grid_RowCol_Gap_012.bottom);
 
-      expect(Math.round((Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.round((Grid_RowCol_Gap_013.top - Grid_RowCol_Gap_011.bottom)))
+        .assertEqual(Math.round(vp2px(5)));
+      expect(Math.round((Grid_RowCol_Gap_014.top - Grid_RowCol_Gap_012.bottom)))
+        .assertEqual(Math.round(vp2px(5)));
 
-      expect(Math.round((Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
-      expect(Math.round((Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right)*10)/10)
-        .assertEqual(Math.round(vp2px(5)*10)/10);
+      expect(Math.round((Grid_RowCol_Gap_012.left - Grid_RowCol_Gap_011.right)))
+        .assertEqual(Math.round(vp2px(5)));
+      expect(Math.round((Grid_RowCol_Gap_014.left - Grid_RowCol_Gap_013.right)))
+        .assertEqual(Math.round(vp2px(5)));
 
       expect(Math.round((Grid_RowCol_Gap_011.right - Grid_RowCol_Gap_011.left)*100)/100)
         .assertEqual(Math.round(vp2px(147.5)*100)/100);

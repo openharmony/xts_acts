@@ -74,10 +74,10 @@ export default function GridRow_onBreakpoint() {
       expect(thirdBreakpoint.top).assertEqual(thirdBreakpoint.top);
       expect(firstBreakpoint.left).assertEqual(Breakpoint_1.left);
 
-      expect(Math.round(secondBreakpoint.left - firstBreakpoint.right)).assertEqual(vp2px(30));
-      expect(Math.round(thirdBreakpoint.left - secondBreakpoint.right)).assertEqual(vp2px(30));
-      expect(Math.round(fourthBreakpoint.left - thirdBreakpoint.right)).assertEqual(vp2px(30));
-      expect(Math.round(seventhBreakpoint.top - firstBreakpoint.bottom)).assertEqual(vp2px(30));
+      expect(Math.round(secondBreakpoint.left - firstBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(thirdBreakpoint.left - secondBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(fourthBreakpoint.left - thirdBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.round(seventhBreakpoint.top - firstBreakpoint.bottom)).assertEqual(Math.round(vp2px(30)));
 
       console.info('SUB_ACE_GridRow_onBreakPointChange_0100 END');
       done();

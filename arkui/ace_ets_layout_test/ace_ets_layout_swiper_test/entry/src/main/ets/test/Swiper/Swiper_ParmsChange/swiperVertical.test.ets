@@ -33,9 +33,11 @@ export default function swiperVertical() {
           let result = await router.push(options)
           console.info("push swiperVertical page success " + JSON.stringify(result));
         }
+
       } catch (err) {
         console.error("push swiperVertical page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

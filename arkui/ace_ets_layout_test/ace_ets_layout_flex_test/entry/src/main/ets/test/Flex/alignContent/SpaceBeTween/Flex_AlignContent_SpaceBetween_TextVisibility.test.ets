@@ -72,9 +72,9 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.Hidden");
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
         expect(secondText.left).assertEqual(thirdText.left);
         expect(thirdText.left).assertEqual(fourthText.left);
@@ -119,9 +119,9 @@ export default function flex_AlignContent_SpaceBetween_TextVisibilityTest() {
         let firstTextObj = JSON.parse(firstTextStrJson);
         expect(firstTextObj.$attrs.visibility).assertEqual("Visibility.None");
 
-        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(100));
-        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(50));
-        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(vp2px(100));
+        expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
+        expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
 
         expect(secondText.left).assertEqual(thirdText.left);
         expect(thirdText.left).assertEqual(fourthText.left);

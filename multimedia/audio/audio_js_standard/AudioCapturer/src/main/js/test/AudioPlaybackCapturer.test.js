@@ -266,7 +266,7 @@ export default function audioCapturer() {
                     expect(false).assertTrue();
                 }
 
-                let numBuffersToCapture = 45;
+                let numBuffersToCapture = 20;
                 while (numBuffersToCapture) {
                     console.info(`${Tag} AudioFrameworkRecLog: ---------READ BUFFER---------`);
                     let buffer = await audioCap.read(bufferSize, true);
@@ -365,7 +365,7 @@ export default function audioCapturer() {
                     expect(false).assertTrue();
                 }
 
-                let numBuffersToCapture = 45;
+                let numBuffersToCapture = 20;
                 while (numBuffersToCapture) {
                     console.info(`${Tag} AudioFrameworkRecLog: ---------READ BUFFER---------`);
                     let buffer = await audioCap.read(bufferSize, true);

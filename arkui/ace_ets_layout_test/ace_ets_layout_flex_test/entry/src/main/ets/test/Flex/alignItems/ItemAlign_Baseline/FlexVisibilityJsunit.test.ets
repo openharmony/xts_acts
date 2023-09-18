@@ -70,11 +70,11 @@ export default function flexVisibility_BaselineJsunit() {
           expect(textVisible01.right).assertEqual(textVisible02.left)
           expect(textVisible02.right).assertEqual(textVisible03.left)
 
-          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
-          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
-          expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(vp2px(200))
+          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(Math.round(vp2px(100)))
+          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(Math.round(vp2px(200)))
 
           expect(textVisible02.top - textVisible03.top).assertEqual(textVisible03.bottom - textVisible02.bottom)
           expect(obj1.$attrs.visibility).assertEqual("Visibility.Visible");
@@ -112,19 +112,19 @@ export default function flexVisibility_BaselineJsunit() {
           expect(textVisible01.right).assertEqual(textVisible02.left)
           expect(textVisible02.right).assertEqual(textVisible03.left)
 
-          expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(vp2px(50))
-          expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(vp2px(100))
-          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(vp2px(150))
-          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(vp2px(150))
+          expect(Math.round(textVisible01.bottom - textVisible01.top)).assertEqual(Math.round(vp2px(50)))
+          expect(Math.round(textVisible01.right - textVisible01.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible02.bottom - textVisible02.top)).assertEqual(Math.round(vp2px(100)))
+          expect(Math.round(textVisible02.right - textVisible02.left)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible03.bottom - textVisible03.top)).assertEqual(Math.round(vp2px(150)))
+          expect(Math.round(textVisible03.right - textVisible03.left)).assertEqual(Math.round(vp2px(150)))
 
           expect(textVisible01.top - textVisible03.top).assertEqual(textVisible03.bottom - textVisible01.bottom)
           expect(textVisible02.top - textVisible03.top).assertEqual(textVisible03.bottom - textVisible02.bottom)
 
           expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row')
           expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Baseline')
-          expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(vp2px(50))
+          expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(Math.round(vp2px(50)))
        } catch (err) {
           console.error('[testFlexItemAlignBaselineSubSetVisibilityHidden] failed');
           expect().assertFail();

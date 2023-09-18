@@ -33,9 +33,11 @@ export default function swiperItemPadMar() {
           let result = await router.push(options)
           console.info("push swiperItemPadMar page success " + JSON.stringify(result));
         }
+
       } catch (err) {
         console.error("push swiperItemPadMar page error " + JSON.stringify(err));
       }
+      done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

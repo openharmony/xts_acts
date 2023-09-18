@@ -79,15 +79,15 @@ export default function Grid_RowCol_maxCount() {
       expect(Grid_RowCol_maxCount_014.bottom).assertEqual(Grid_RowCol_maxCount_01.bottom);
 
 
-      expect(Math.round(Grid_RowCol_maxCount_011.right - Grid_RowCol_maxCount_011.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_maxCount_012.right - Grid_RowCol_maxCount_012.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_maxCount_013.right - Grid_RowCol_maxCount_013.left)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_maxCount_014.right - Grid_RowCol_maxCount_014.left)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_maxCount_011.right - Grid_RowCol_maxCount_011.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_maxCount_012.right - Grid_RowCol_maxCount_012.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_maxCount_013.right - Grid_RowCol_maxCount_013.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_maxCount_014.right - Grid_RowCol_maxCount_014.left)).assertEqual(Math.round(vp2px(150)));
 
-      expect(Math.round(Grid_RowCol_maxCount_011.bottom - Grid_RowCol_maxCount_011.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_maxCount_012.bottom - Grid_RowCol_maxCount_012.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_maxCount_013.bottom - Grid_RowCol_maxCount_013.top)).assertEqual(vp2px(150));
-      expect(Math.round(Grid_RowCol_maxCount_014.bottom - Grid_RowCol_maxCount_014.top)).assertEqual(vp2px(150));
+      expect(Math.round(Grid_RowCol_maxCount_011.bottom - Grid_RowCol_maxCount_011.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_maxCount_012.bottom - Grid_RowCol_maxCount_012.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_maxCount_013.bottom - Grid_RowCol_maxCount_013.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(Grid_RowCol_maxCount_014.bottom - Grid_RowCol_maxCount_014.top)).assertEqual(Math.round(vp2px(150)));
       console.info('[testGridRowColGridMaxCount] END');
       done();
     });

@@ -134,15 +134,22 @@ export default function rdbStoreDeleteTest() {
      */
     it("testRdbStoreDelete002", 0, async function (done) {
       console.info(TAG + "************* testRdbStoreDelete002 start *************");
-      let predicates = await new relationalStore.RdbPredicates("test");
+      let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("aaa id", 1);
       rdbStore.delete(predicates, async (err, rows) => {
         if (err) {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
           expect(err.code === 14800000).assertTrue();
           console.info(TAG + "delete with wrong conditions");
+          let predicates = new relationalStore.RdbPredicates("test");
+          predicates.equalTo("age", 18);
+          let resultSet = await rdbStore.query(predicates);
+          expect(1).assertEqual(resultSet.rowCount);
+          resultSet.close();
           done();
+          return;
         }
+        expect(!err).assertFail();
       });
       console.info(TAG + "************* testRdbStoreDelete002 end *************");
     });
@@ -167,6 +174,11 @@ export default function rdbStoreDeleteTest() {
         }
         console.info(`Delete rows: ${rows}`);
         expect(2).assertEqual(rows);
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("age", 28);
+        let resultSet = await rdbStore.query(predicates);
+        expect(0).assertEqual(resultSet.rowCount);
+        resultSet.close();
         done();
       });
       console.info(TAG + "************* testRdbStoreDelete003 end *************");
@@ -216,17 +228,23 @@ export default function rdbStoreDeleteTest() {
      */
     it("testRdbStoreDelete005", 0, async function (done) {
       console.info(TAG + "************* testRdbStoreDelete005 start *************");
-      let predicates = await new relationalStore.RdbPredicates("test");
+      let predicates = new relationalStore.RdbPredicates("test");
       predicates.equalTo("aaa id", 1);
       rdbStore
         .delete(predicates)
         .then(async (ret) => {
           console.info(TAG + "Delete done: " + ret);
+          expect(ret !== null).assertFail();
         })
-        .catch((err) => {
+        .catch(async (err) => {
           console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
           expect(err.code === 14800000).assertTrue();
           console.info(TAG + "delete with wrong conditions");
+          let predicates = new relationalStore.RdbPredicates("test");
+          predicates.equalTo("age", 18);
+          let resultSet = await rdbStore.query(predicates);
+          expect(1).assertEqual(resultSet.rowCount);
+          resultSet.close();
           done();
         });
       console.info(TAG + "************* testRdbStoreDelete005 end *************");
@@ -249,6 +267,11 @@ export default function rdbStoreDeleteTest() {
         .then(async (ret) => {
           expect(2).assertEqual(ret);
           console.info(TAG + "Delete done: " + ret);
+          let predicates = new relationalStore.RdbPredicates("test");
+          predicates.equalTo("age", 28);
+          let resultSet = await rdbStore.query(predicates);
+          expect(0).assertEqual(resultSet.rowCount);
+          resultSet.close();
           done();
         })
         .catch((err) => {
@@ -256,6 +279,138 @@ export default function rdbStoreDeleteTest() {
           expect(!err).assertTrue();
         });
       console.info(TAG + "************* testRdbStoreDelete006 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0700
+     * @tc.name   : testRdbStoreDelete007
+     * @tc.desc   : RdbStore delete callback test: parameter missing
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreDelete007", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreDelete007 start *************");
+      let predicates = new relationalStore.RdbPredicates("test");
+      predicates.equalTo("age", 18);
+      let resultSet = await rdbStore.query(predicates);
+      expect(1).assertEqual(resultSet.rowCount);
+      resultSet.close();
+      try {
+        rdbStore.delete(async (err, rows) => {
+          if (err) {
+            console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+            expect(!err).asserFail();
+          }
+          console.info(`Delete rows: ${rows}`);
+          expect(0).assertEqual(rows);
+          let predicates = new relationalStore.RdbPredicates("test");
+          predicates.equalTo("age", 18);
+          let resultSet = await rdbStore.query(predicates);
+          expect(1).assertEqual(resultSet.rowCount);
+          resultSet.close();
+        });
+      } catch (e) {
+        console.info(TAG + "delete param error.", e);
+        expect('401').assertEqual(e.code);
+      }
+      done();
+      console.info(TAG + "************* testRdbStoreDelete007 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_0800
+     * @tc.name   : testRdbStoreDelete008
+     * @tc.desc   : RdbStore delete callback test: predicate nonexistence
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreDelete008", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreDelete008 start *************");
+      let predicates = new relationalStore.RdbPredicates("test");
+      predicates.equalTo("age", 88);
+      let resultSet = await rdbStore.query(predicates);
+      expect(0).assertEqual(resultSet.rowCount);
+      resultSet.close();
+      rdbStore.delete(predicates, async (err, rows) => {
+        if (err) {
+          console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
+          expect(!err).assertTrue();
+        }
+        console.info(`Delete rows: ${rows}`);
+        expect(0).assertEqual(rows);
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("age", 18);
+        let resultSet = await rdbStore.query(predicates);
+        expect(0).assertEqual(resultSet.rowCount);
+        resultSet.close();
+      });
+      done();
+      console.info(TAG + "************* testRdbStoreDelete008 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_ERROR_0100
+     * @tc.name   : testRdbStoreDeleteError001
+     * @tc.desc   : RdbStore delete callback test: undefined
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreDeleteError001", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreDeleteError001 start *************");
+      try {
+        rdbStore.delete(undefined, async (err, rows) => {
+          console.info(`testRdbStoreDeleteError001 Delete failed`);
+          expect(err).assertFail();
+          done();
+        });
+      } catch (err) {
+        console.info(TAG + "testRdbStoreDeleteError001 catch error: " + err);
+        expect(err.code).assertEqual('401');
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("age", 18);
+        let resultSet = await rdbStore.query(predicates);
+        expect(1).assertEqual(resultSet.rowCount);
+        resultSet.close();
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreDeleteError001 end *************");
+    });
+
+    /**
+     * @tc.number : SUB_DDM_TEST_RDB_STORE_DELETE_ERROR_0500
+     * @tc.name   : testRdbStoreDeleteError005
+     * @tc.desc   : RdbStore delete promise test: undefined
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
+     */
+    it("testRdbStoreDeleteError005", 0, async function (done) {
+      console.info(TAG + "************* testRdbStoreDeleteError005 start *************");
+      try {
+        rdbStore
+          .delete(undefined)
+          .then(async (ret) => {
+            console.info(TAG + "Delete done: " + ret);
+            expect().asserFail();
+          })
+          .catch(async (err) => {
+            console.error('testRdbStoreDeleteError005');
+            done();
+          });
+      } catch (err) {
+        console.info(TAG + "testRdbStoreDeleteError005 catch error: " + err);
+        expect(err.code).assertEqual('401');
+        let predicates = new relationalStore.RdbPredicates("test");
+        predicates.equalTo("age", 18);
+        let resultSet = await rdbStore.query(predicates);
+        expect(1).assertEqual(resultSet.rowCount);
+        resultSet.close();
+        done();
+      }
+      console.info(TAG + "************* testRdbStoreDeleteError005 end *************");
     });
   });
 }

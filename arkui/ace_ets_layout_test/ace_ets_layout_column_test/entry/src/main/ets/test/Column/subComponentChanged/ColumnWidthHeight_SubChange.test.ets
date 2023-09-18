@@ -61,9 +61,9 @@ export default function ColumnWidthHeight_SubChange() {
       let columnWidthHeight_3 = CommonFunc.getComponentRect('columnWidthHeight_3');
       let columnWidthHeight = CommonFunc.getComponentRect('columnWidthHeight');
       expect(columnWidthHeight.top).assertEqual(columnWidthHeight_1.top)
-      expect(Math.round(columnWidthHeight_2.top - columnWidthHeight_1.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnWidthHeight_3.top - columnWidthHeight_2.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnWidthHeight.bottom - columnWidthHeight_3.bottom)).assertEqual(vp2px(10))
+      expect(Math.round(columnWidthHeight_2.top - columnWidthHeight_1.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(columnWidthHeight_3.top - columnWidthHeight_2.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(columnWidthHeight.bottom - columnWidthHeight_3.bottom)).assertEqual(Math.round(vp2px(10)))
       console.info('new testColumnSubcomponentModifyHeight END');
       done();
     });
@@ -83,9 +83,9 @@ export default function ColumnWidthHeight_SubChange() {
       let columnWidthHeight_3 = CommonFunc.getComponentRect('columnWidthHeight_3');
       let columnWidthHeight = CommonFunc.getComponentRect('columnWidthHeight');
       expect(columnWidthHeight.top).assertEqual(columnWidthHeight_1.top)
-      expect(Math.round(columnWidthHeight_2.top - columnWidthHeight_1.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnWidthHeight_3.top - columnWidthHeight_2.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(columnWidthHeight.bottom - columnWidthHeight_3.bottom)).assertEqual(vp2px(40))
+      expect(Math.round(columnWidthHeight_2.top - columnWidthHeight_1.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(columnWidthHeight_3.top - columnWidthHeight_2.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(columnWidthHeight.bottom - columnWidthHeight_3.bottom)).assertEqual(Math.round(vp2px(40)))
       console.info('new testColumnSubcomponentModifyWidth END');
       done();
     });

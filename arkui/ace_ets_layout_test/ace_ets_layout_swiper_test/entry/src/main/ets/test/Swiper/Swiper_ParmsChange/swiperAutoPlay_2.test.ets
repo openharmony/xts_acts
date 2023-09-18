@@ -33,9 +33,11 @@ export default function swiperAutoPlay_2() {
           let result = await router.push(options)
           console.info("push swiperAutoPlay_2 page success " + JSON.stringify(result));
         }
+
       } catch (err) {
         console.error("push swiperAutoPlay_2 page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       console.info("swiperAutoPlay_2 after each called");

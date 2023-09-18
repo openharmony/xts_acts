@@ -79,22 +79,22 @@ export default function listItem_Visibility() {
       expect(locationText1.left).assertEqual(locationText1.right);
       expect(locationText1.top).assertEqual(locationText1.bottom);
 
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(0));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(0));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(vp2px(120));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(Math.round(vp2px(120)));
 
       expect(Math.round(locationText1.top - locationList.top)).assertEqual(vp2px(0));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationList.bottom - locationText4.bottom)).assertEqual(vp2px(80));
-      expect(Math.round(locationList.right - locationList.left)).assertEqual(vp2px(350));
-      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(vp2px(500));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationList.bottom - locationText4.bottom)).assertEqual(Math.round(vp2px(80)));
+      expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again = CommonFunc.getComponentRect('ListItemTest44');
@@ -132,23 +132,23 @@ export default function listItem_Visibility() {
       expect(locationText2.left).assertEqual(locationText2.right);
       expect(locationText2.top).assertEqual(locationText2.bottom);
 
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(0));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(0));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(vp2px(120));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(Math.round(vp2px(120)));
 
-      expect(Math.round(locationText1.top - locationList.top)).assertEqual(vp2px(0));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationList.bottom - locationText4.bottom)).assertEqual(vp2px(80));
+      expect(Math.round(locationText1.top - locationList.top)).assertEqual(Math.round(vp2px(0)));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationList.bottom - locationText4.bottom)).assertEqual(Math.round(vp2px(80)));
 
-      expect(Math.round(locationList.right - locationList.left)).assertEqual(vp2px(350));
-      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(vp2px(500));
+      expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       let locationText4Again = CommonFunc.getComponentRect('ListItemTest44');
@@ -184,23 +184,23 @@ export default function listItem_Visibility() {
       expect(locationText4.left).assertEqual(locationList.left);
       expect(locationText1.top).assertEqual(locationList.top);
 
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(vp2px(120));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(Math.round(vp2px(120)));
 
-      expect(Math.round(locationText2.top - locationList.top)).assertEqual(vp2px(140));
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText4.bottom - locationList.bottom)).assertEqual(vp2px(40));
+      expect(Math.round(locationText2.top - locationList.top)).assertEqual(Math.round(vp2px(140)));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText4.bottom - locationList.bottom)).assertEqual(Math.round(vp2px(40)));
 
-      expect(Math.round(locationList.right - locationList.left)).assertEqual(vp2px(350));
-      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(vp2px(500));      
+      expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       await CommonFunc.sleep(1000);
@@ -239,22 +239,22 @@ export default function listItem_Visibility() {
       expect(locationText4.left).assertEqual(locationList.left);
       expect(locationText1.top).assertEqual(locationList.top);
 
-      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(vp2px(120));
-      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(vp2px(300));
-      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(vp2px(120));
+      expect(Math.round(locationText1.right - locationText1.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText1.bottom - locationText1.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText2.right - locationText2.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText2.bottom - locationText2.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText3.right - locationText3.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText3.bottom - locationText3.top)).assertEqual(Math.round(vp2px(120)));
+      expect(Math.round(locationText4.right - locationText4.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(locationText4.bottom - locationText4.top)).assertEqual(Math.round(vp2px(120)));
 
-      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(vp2px(20));
-      expect(Math.round(locationText4.bottom - locationList.bottom)).assertEqual(vp2px(40));
+      expect(Math.round(locationText2.top - locationText1.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText3.top - locationText2.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText4.top - locationText3.bottom)).assertEqual(Math.round(vp2px(20)));
+      expect(Math.round(locationText4.bottom - locationList.bottom)).assertEqual(Math.round(vp2px(40)));
 
-      expect(Math.round(locationList.right - locationList.left)).assertEqual(vp2px(350));
-      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(vp2px(500));
+      expect(Math.round(locationList.right - locationList.left)).assertEqual(Math.round(vp2px(350)));
+      expect(Math.round(locationList.bottom - locationList.top)).assertEqual(Math.round(vp2px(500)));
       let driver = await Driver.create();
       await driver.swipe(360, 690, 360, 30);
       await CommonFunc.sleep(1000);

@@ -65,8 +65,8 @@ export default function Row_flexShrink_Default() {
       expect(Math.round(Row_flexShrink_Default_013.top - Row_flexShrink_Default_01.top)).assertEqual(Math.round(Row_flexShrink_Default_01.bottom - Row_flexShrink_Default_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right', + Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)
       console.log('Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right', + Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)
 
@@ -107,8 +107,8 @@ export default function Row_flexShrink_Default() {
       expect(Math.round(Row_flexShrink_Default_013.top - Row_flexShrink_Default_01.top)).assertEqual(Math.round(Row_flexShrink_Default_01.bottom - Row_flexShrink_Default_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right', + Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)
       console.log('Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right', + Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)
 
@@ -149,8 +149,8 @@ export default function Row_flexShrink_Default() {
       expect(Math.round(Row_flexShrink_Default_013.top - Row_flexShrink_Default_01.top)).assertEqual(Math.round(Row_flexShrink_Default_01.bottom - Row_flexShrink_Default_013.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)).assertEqual(Math.round(vp2px(10)));
       console.log('Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right', + Row_flexShrink_Default_012.left - Row_flexShrink_Default_011.right)
       console.log('Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right', + Row_flexShrink_Default_013.left - Row_flexShrink_Default_012.right)
 
@@ -188,21 +188,21 @@ export default function Row_flexShrink_Default() {
       expect(Math.round(Row_flexShrink_Default_023.top - Row_flexShrink_Default_02.top)).assertEqual(Math.round(Row_flexShrink_Default_02.bottom - Row_flexShrink_Default_023.bottom));
 
       console.log('assert space')
-      expect(Math.round(Row_flexShrink_Default_022.left - Row_flexShrink_Default_021.right)).assertEqual(vp2px(10));
-      expect(Math.round(Row_flexShrink_Default_023.left - Row_flexShrink_Default_022.right)).assertEqual(vp2px(10));
+      expect(Math.round(Row_flexShrink_Default_022.left - Row_flexShrink_Default_021.right)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Row_flexShrink_Default_023.left - Row_flexShrink_Default_022.right)).assertEqual(Math.round(vp2px(10)));
 
 
       console.log('assert height')
-      expect(Math.round(Row_flexShrink_Default_021.bottom - Row_flexShrink_Default_021.top)).assertEqual(vp2px(100));
+      expect(Math.round(Row_flexShrink_Default_021.bottom - Row_flexShrink_Default_021.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Row_flexShrink_Default_021.bottom - Row_flexShrink_Default_021.top', + Row_flexShrink_Default_021.bottom - Row_flexShrink_Default_021.top)
-      expect(Math.round(Row_flexShrink_Default_022.bottom - Row_flexShrink_Default_022.top)).assertEqual(vp2px(100));
+      expect(Math.round(Row_flexShrink_Default_022.bottom - Row_flexShrink_Default_022.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Row_flexShrink_Default_022.bottom - Row_flexShrink_Default_022.top', + Row_flexShrink_Default_022.bottom - Row_flexShrink_Default_022.top)
-      expect(Math.round(Row_flexShrink_Default_023.bottom - Row_flexShrink_Default_023.top)).assertEqual(vp2px(100));
+      expect(Math.round(Row_flexShrink_Default_023.bottom - Row_flexShrink_Default_023.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Row_flexShrink_Default_023.bottom - Row_flexShrink_Default_023.top', + Row_flexShrink_Default_023.bottom - Row_flexShrink_Default_023.top)
       console.log('assert weight')
-      expect(Math.round(Row_flexShrink_Default_021.right - Row_flexShrink_Default_021.left)).assertEqual(vp2px(200));
-      expect(Math.round(Row_flexShrink_Default_022.right - Row_flexShrink_Default_022.left)).assertEqual(vp2px(100));
-      expect(Math.round(Row_flexShrink_Default_023.right - Row_flexShrink_Default_023.left)).assertEqual(vp2px(100));
+      expect(Math.round(Row_flexShrink_Default_021.right - Row_flexShrink_Default_021.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.round(Row_flexShrink_Default_022.right - Row_flexShrink_Default_022.left)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(Row_flexShrink_Default_023.right - Row_flexShrink_Default_023.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[SUB_ACE_Row_flexShrink_Default_TEST_0400] END');
       done();
     });

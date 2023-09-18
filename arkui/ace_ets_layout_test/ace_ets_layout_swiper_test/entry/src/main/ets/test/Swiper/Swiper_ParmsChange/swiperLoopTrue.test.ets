@@ -36,6 +36,7 @@ export default function swiperLoopTrue() {
       } catch (err) {
         console.error("push swiperLoopTrue page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

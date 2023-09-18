@@ -61,8 +61,8 @@ export default function ColumnSetLayoutWeight_SubChange() {
       let setLayoutWeight = CommonFunc.getComponentRect('setLayoutWeight');
 
       expect(setLayoutWeight1.top).assertEqual(setLayoutWeight.top)
-      expect(Math.round(setLayoutWeight2.top - setLayoutWeight1.bottom)).assertEqual(vp2px(30))
-      expect(Math.round(setLayoutWeight3.top - setLayoutWeight2.bottom)).assertEqual(vp2px(30))
+      expect(Math.round(setLayoutWeight2.top - setLayoutWeight1.bottom)).assertEqual(Math.round(vp2px(30)))
+      expect(Math.round(setLayoutWeight3.top - setLayoutWeight2.bottom)).assertEqual(Math.round(vp2px(30)))
       expect(setLayoutWeight.bottom).assertEqual(setLayoutWeight3.bottom)
 
       expect(Math.round(setLayoutWeight1.bottom - setLayoutWeight1.top)).assertEqual(Math.round(vp2px(510/3)))

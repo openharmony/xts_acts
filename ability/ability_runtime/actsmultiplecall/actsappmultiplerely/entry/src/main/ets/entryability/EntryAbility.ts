@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import commonEvent from '@ohos.commonEventManager'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEventManager';
+import type Window from '@ohos.window';
 
 export default class EntryAbility extends Ability {
   onCreate(want, launchParam) {
@@ -23,23 +23,23 @@ export default class EntryAbility extends Ability {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     hilog.info(0x0000, 'testTag', '%{public}s', 'want param:' + JSON.stringify(want) ?? '');
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
-    if (want.action === 'Acts_MultipleInstancesCallFunction_0200') {
+    if (want.action === 'Acts_SingleInstanceCallFunction_0600') {
       this.context.startAbilityByCall({
         bundleName: 'com.acts.thirdpartyapprely',
         abilityName: 'SecondAbility',
       }).then((caller) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0200 startAbilityByCall caller:" +
-          JSON.stringify(caller));
+        console.info('====>Acts_SingleInstanceCallFunction_0600 startAbilityByCall caller:' +
+        JSON.stringify(caller));
       }).catch((err) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0200 startAbilityByCall err:" + JSON.stringify(err));
-        let commonEventData ={
-          parameters:{
+        console.info('====>Acts_SingleInstanceCallFunction_0600 startAbilityByCall err:' + JSON.stringify(err));
+        let commonEventData = {
+          parameters: {
             num: err.code,
             str: '',
           }
-        }
+        };
         commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-          console.log('====>Acts_MultipleInstancesCallFunction_0200 publish err:' + JSON.stringify(err));
+          console.log('====>Acts_SingleInstanceCallFunction_0600 publish err:' + JSON.stringify(err));
         })
       })
     }

@@ -60,9 +60,9 @@ export default function stackMarginChange() {
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
       expect(stackMarginKey01.left) .assertEqual (stackMarginKey.left)
       expect(stackMarginKey01.top) .assertEqual (stackMarginKey.top)
-      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopStart')
       console.info('new testStackMarginAlignContentTopStart END');
@@ -83,11 +83,11 @@ export default function stackMarginChange() {
       let obj = JSON.parse(strJson);
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
-      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(vp2px(50))
+      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(Math.round(vp2px(50)))
       expect(stackMarginKey01.top) .assertEqual (stackMarginKey.top)
-      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Top')
       console.info('new testStackMarginAlignContentTop END');
@@ -108,11 +108,11 @@ export default function stackMarginChange() {
       let obj = JSON.parse(strJson);
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
-      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackMarginKey01.right) .assertEqual (stackMarginKey.right)
       expect(stackMarginKey01.top) .assertEqual (stackMarginKey.top)
-      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(vp2px(100))
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.TopEnd')
       console.info('new testStackMarginAlignContentTopEnd END');
@@ -134,10 +134,10 @@ export default function stackMarginChange() {
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
       expect(stackMarginKey01.left) .assertEqual (stackMarginKey.left)
-      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Start')
       console.info('new testStackMarginAlignContentStart END');
@@ -158,11 +158,11 @@ export default function stackMarginChange() {
       let obj = JSON.parse(strJson);
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
-      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Center')
       console.info('new testStackMarginAlignContentCenter END');
@@ -183,11 +183,11 @@ export default function stackMarginChange() {
       let obj = JSON.parse(strJson);
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
-      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackMarginKey01.right) .assertEqual (stackMarginKey.right)
-      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey.bottom - stackMarginKey01.bottom)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.End')
       console.info('new testStackMarginAlignContentEnd END');
@@ -209,10 +209,10 @@ export default function stackMarginChange() {
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
       expect(stackMarginKey01.left) .assertEqual (stackMarginKey.left)
-      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(vp2px(100))
-      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(Math.round(vp2px(100)))
+      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackMarginKey01.bottom) .assertEqual (stackMarginKey.bottom)
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomStart')
       console.info('new testStackMarginAlignContentBottomStart END');
@@ -233,11 +233,11 @@ export default function stackMarginChange() {
       let obj = JSON.parse(strJson);
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
-      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(vp2px(50))
-      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey.right - stackMarginKey01.right)).assertEqual(Math.round(vp2px(50)))
+      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackMarginKey01.bottom) .assertEqual (stackMarginKey.bottom)
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.Bottom')
       console.info('new testStackMarginAlignContentBottom END');
@@ -258,11 +258,11 @@ export default function stackMarginChange() {
       let obj = JSON.parse(strJson);
       let stackMarginKey = CommonFunc.getComponentRect('stackMarginKey');
       let stackMarginKey01 = CommonFunc.getComponentRect('stackMarginKey01');
-      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(vp2px(100))
+      expect(Math.round(stackMarginKey01.left - stackMarginKey.left)).assertEqual(Math.round(vp2px(100)))
       expect(stackMarginKey01.right) .assertEqual (stackMarginKey.right)
-      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(vp2px(100))
+      expect(Math.round(stackMarginKey01.top - stackMarginKey.top)).assertEqual(Math.round(vp2px(100)))
       expect(stackMarginKey01.bottom) .assertEqual (stackMarginKey.bottom)
-      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(vp2px(200))
+      expect(Math.round(stackMarginKey01.right - stackMarginKey01.left)).assertEqual(Math.round(vp2px(200)))
       expect(obj.$type).assertEqual('Stack')
       expect(obj.$attrs.alignContent).assertEqual('Alignment.BottomEnd')
       console.info('new testStackMarginAlignContentBottomEnd END');

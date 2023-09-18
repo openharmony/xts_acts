@@ -1021,7 +1021,8 @@ export default function abilityTest() {
       let subServiceDestroyEvent = 'subServiceDestroyEvent';
       let multiServiceDestroyEvent = 'multiServiceDestroyEvent';
       let differentAppEvent003 = 'ACTS_UIExtension_DifferentApp003';
-      let recvCount = 0;
+      let subRecvCount = 0;
+      let multiRecvCount = 0;
       var subscribeInfo = {
         events: [appearEvent, subServiceDestroyEvent,multiServiceDestroyEvent]
       }
@@ -1040,14 +1041,14 @@ export default function abilityTest() {
               }
             });
           } else if (data.event == subServiceDestroyEvent) {
-            recvCount +=1;
-            if(recvCount == 2){
+            subRecvCount = 1;
+            if(subRecvCount == 1 && multiRecvCount == 1){
               done()
             }
             console.log(TAG + "subServiceDestroy success");
           }else if (data.event == multiServiceDestroyEvent) {
-            recvCount +=1;
-            if(recvCount == 2){
+            multiRecvCount = 1;
+            if(subRecvCount == 1 && multiRecvCount == 1){
               done()
             }
             console.log(TAG + "multiServiceDestroy success");

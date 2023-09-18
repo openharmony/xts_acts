@@ -20,6 +20,7 @@ const KEY_TEST_INT_ELEMENT = "key_test_int";
 const KEY_TEST_STRING_ELEMENT = "key_test_string";
 let mPreference;
 let context;
+
 export default function preferencesPromiseWithErrorTest() {
   describe("preferencesPromiseWithErrorTest", async function () {
     beforeAll(async function () {
@@ -59,11 +60,11 @@ export default function preferencesPromiseWithErrorTest() {
             mPreference
               .put(KEY_TEST_INT_ELEMENT, 123)
               .then(async (ret) => {
-                 mPreference
+                mPreference
                   .get(KEY_TEST_INT_ELEMENT, 123)
                   .then(async (pre) => {
                     expect(123).assertEqual(pre);
-                     mPreference
+                    mPreference
                       .flush()
                       .then(async () => {
                         mPreference
@@ -119,15 +120,16 @@ export default function preferencesPromiseWithErrorTest() {
         mPreference
           .get(1233)
           .then((ret) => {
-            console.log("get err");
+            console.log("testMpreferencesGetPromise0001++++ get err");
+            expect(mPreference !== null).assertFail();
           })
           .catch((err) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
         console.log("testMpreferencesGetPromise0001 end.");
       }
@@ -148,16 +150,18 @@ export default function preferencesPromiseWithErrorTest() {
         mPreference
           .get(-1, KEY_TEST_INT_ELEMENT)
           .then((ret) => {
-            done();
+            expect(mPreference !== null).assertFail();
             console.log("testMpreferencesGetPromise0002 end.");
+            done();
           })
           .catch((err) => {
             console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
+            done();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -187,6 +191,7 @@ export default function preferencesPromiseWithErrorTest() {
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
+        expect(!err).assertTrue();
         done();
       }
     });
@@ -203,9 +208,11 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesGetSyncWithError0001 begin.");
       try {
         mPreference.getSync(1233);
+        expect(mPreference !== null).assertFail();
+        done();
       } catch (err) {
         console.log("trycatch1 err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
         console.log("testMpreferencesGetSyncWithError0001 end.");
       }
@@ -224,9 +231,11 @@ export default function preferencesPromiseWithErrorTest() {
       try {
         await mPreference.put(KEY_TEST_STRING_ELEMENT, "123");
         mPreference.getSync(-1, KEY_TEST_INT_ELEMENT);
+        expect(mPreference !== null).assertFail();
+        done();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -296,14 +305,15 @@ export default function preferencesPromiseWithErrorTest() {
           .has(123)
           .then((val) => {
             console.log("has err");
+            expect(mPreference !== null).assertFail();
           })
           .catch((err) => {
             console.log("has err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
         console.log("testMpreferencesHasPromise0001 end.");
       }
@@ -351,14 +361,15 @@ export default function preferencesPromiseWithErrorTest() {
           .put(1233)
           .then(() => {
             console.log("put err");
+            expect(mPreference !== null).assertFail();
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
         console.log("testMpreferencesPutPromise0001 end.");
       }
@@ -441,17 +452,18 @@ export default function preferencesPromiseWithErrorTest() {
         mPreference
           .put(-1, 123)
           .then(() => {
+            expect(mPreference !== null).assertFail();
             done();
             console.log("testMpreferencesPutPromise0004 end.");
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
             done();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -470,17 +482,18 @@ export default function preferencesPromiseWithErrorTest() {
         mPreference
           .put(KEY_TEST_STRING_ELEMENT, null)
           .then(() => {
+            expect(mPreference !== null).assertFail();
             done();
             console.log("testMpreferencesPutPromise0005 end.");
           })
           .catch((err) => {
             console.log("put err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
             done();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -497,9 +510,11 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesPutSyncWithError0001 begin.");
       try {
         mPreference.putSync(1233);
+        expect(mPreference !== null).assertFail();
+        done();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
         console.log("testMpreferencesPutSyncWithError0001 end.");
       }
@@ -563,9 +578,11 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesPutSyncWithError0004 begin.");
       try {
         mPreference.putSync(-1, 123);
+        expect(mPreference !== null).assertFail();
+        done();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -582,9 +599,11 @@ export default function preferencesPromiseWithErrorTest() {
       console.log("testMpreferencesPutSyncWithError0005 begin.");
       try {
         mPreference.putSync(KEY_TEST_STRING_ELEMENT, null);
+        expect(mPreference !== null).assertFail();
+        done();
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
       }
     });
@@ -604,14 +623,15 @@ export default function preferencesPromiseWithErrorTest() {
           .delete(1233)
           .then(() => {
             console.log("delete err");
+            expect(mPreference !== null).assertFail();
           })
           .catch((err) => {
             console.log("delete err =" + err + ", code =" + err.code + ", message =" + err.message);
-            expect(!err).assertTrue();
+            expect(!err).assertFail();
           });
       } catch (err) {
         console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message);
-        expect(err.code === "401").assertTrue();
+        expect("401").assertEqual(err.code);
         done();
         console.log("testMpreferencesDeletePromise0001 end.");
       }

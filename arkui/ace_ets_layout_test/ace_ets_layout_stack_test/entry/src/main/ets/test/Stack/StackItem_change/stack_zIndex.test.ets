@@ -145,13 +145,13 @@ export default function Stack_ZIndex() {
       expect(Math.round(Stack_ZIndex_012.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_012.bottom));
       console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackZIndexWithAlignmentStart] END');
       done();
     });
@@ -191,13 +191,13 @@ export default function Stack_ZIndex() {
       expect(Math.round(Stack_ZIndex_012.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_012.bottom));
       console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackZIndexWithAlignmentCenter] END');
       done();
     });
@@ -234,13 +234,13 @@ export default function Stack_ZIndex() {
       expect(Math.round(Stack_ZIndex_012.top - Stack_ZIndex_01.top))
         .assertEqual(Math.round(Stack_ZIndex_01.bottom - Stack_ZIndex_012.bottom));
       console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackZIndexWithAlignmentEnd] END');
       done();
     });
@@ -273,13 +273,13 @@ export default function Stack_ZIndex() {
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_011.bottom);
       expect(Stack_ZIndex_01.bottom).assertEqual(Stack_ZIndex_012.bottom);
       console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackZIndexWithAlignmentBottomStart] END');
       done();
     });
@@ -316,13 +316,13 @@ export default function Stack_ZIndex() {
       expect(Math.round(Stack_ZIndex_012.left - Stack_ZIndex_01.left))
         .assertEqual(Math.round(Stack_ZIndex_01.right - Stack_ZIndex_012.right));
       console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackZIndexWithAlignmentBottom] END');
       done();
     });
@@ -356,13 +356,13 @@ export default function Stack_ZIndex() {
       expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_011.right);
       expect(Stack_ZIndex_01.right).assertEqual(Stack_ZIndex_012.right);
       console.log('Stack_ZIndex_011.bottom - Stack_ZIndex_011.top is',+Stack_ZIndex_011.bottom - Stack_ZIndex_011.top);
-      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.bottom - Stack_ZIndex_011.top)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.bottom - Stack_ZIndex_012.top is',+Stack_ZIndex_012.bottom - Stack_ZIndex_012.top);
-      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.bottom - Stack_ZIndex_012.top)).assertEqual(Math.round(vp2px(100)));
       console.log('Stack_ZIndex_011.right - Stack_ZIndex_011.left is',+Stack_ZIndex_011.right - Stack_ZIndex_011.left);
-      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(vp2px(200));
+      expect(Math.round(Stack_ZIndex_011.right - Stack_ZIndex_011.left)).assertEqual(Math.round(vp2px(200)));
       console.log('Stack_ZIndex_012.right - Stack_ZIndex_012.left is',+Stack_ZIndex_012.right - Stack_ZIndex_012.left);
-      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(vp2px(100));
+      expect(Math.round(Stack_ZIndex_012.right - Stack_ZIndex_012.left)).assertEqual(Math.round(vp2px(100)));
       console.info('[testStackZIndexWithAlignmentBottomEnd] END');
       done();
     });

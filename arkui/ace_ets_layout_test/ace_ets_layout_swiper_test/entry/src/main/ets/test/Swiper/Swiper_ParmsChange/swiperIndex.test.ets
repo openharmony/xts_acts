@@ -36,6 +36,7 @@ export default function swiperIndex() {
       } catch (err) {
         console.error("push swiperIndex page error " + JSON.stringify(err));
       }
+        done();
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);

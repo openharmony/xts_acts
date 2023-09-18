@@ -105,7 +105,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
       rdbStore.executeSql("DELETE FROM test WHERE name = 'zhangsan'", async (err) => {
         if (err) {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
-          expect(!err).assertTrue();
+          expect(!err).assertFail();
           done();
         }
         console.info(`Delete table done.`);
@@ -130,7 +130,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
       rdbStore.executeSql("DELETE FROM test WHERE age = ? OR age = ?", ["18", "28"], async (err) => {
         if (err) {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
-          expect(!err).assertTrue();
+          expect(!err).assertFail();
           done();
         }
         console.info(`Delete table done.`);
@@ -163,7 +163,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
         })
         .catch((err) => {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
-          expect(!err).assertTrue();
+          expect(!err).assertFail();
         });
       console.info(TAG + "************* testRdbStoreExecuteSql003 end *************");
     });
@@ -189,7 +189,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
         })
         .catch((err) => {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
-          expect(!err).assertTrue();
+          expect(!err).assertFail();
         });
       console.info(TAG + "************* testRdbStoreExecuteSql004 end *************");
     });

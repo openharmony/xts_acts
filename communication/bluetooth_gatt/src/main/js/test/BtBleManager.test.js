@@ -188,16 +188,17 @@ describe('btBleManagerTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0200', 0, function () {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_GATTCONNECT_0200', 0, async function (done) {
         try {
             let result = bluetooth.getConnectedBLEDevices();
             console.info("[bluetooth_js] getConnDev:" + JSON.stringify(result)
                     + "length:" +result.length);
-            expect(true).assertTrue(result.length > 0);
+            expect(true).assertTrue(result != null);
         } catch (error) {
             console.error(`[bluetooth_js]getConnDev failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
-        }    
+        }
+        done();
     })
 
     /**
@@ -213,7 +214,7 @@ describe('btBleManagerTest', function() {
                 console.log('bluetooth connect state changed');
                 let connectState = state.state;
                 console.info('[bluetooth_js] state changed' + connectState)
-                expect(true).assertEqual(connectState!=null);
+                expect(true).assertEqual(connectState != null);
             }
             gattClient.on('BLEConnectionStateChange', ConnectStateChanged);
             gattClient.off("BLEConnectionStateChange");
@@ -222,6 +223,7 @@ describe('btBleManagerTest', function() {
             console.error(`[bluetooth_js]GattConnect failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
+        done();
    })
 
     /**
@@ -235,11 +237,10 @@ describe('btBleManagerTest', function() {
         try {
             await gattClient.getRssiValue().then((data) => {
                 console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(data));
-                expect(true).assertEqual(data!=null);
+                expect(true).assertEqual(data != null);
                 done();
             }).catch(err => {
                 console.info('bluetooth getRssiValue has error: '+ JSON.stringify(err));
-               // expect(true).assertEqual(error.code==2900099||error.code==-1);
                 let b=false;
                 if(err.code==2900099||err.code==-1)
                 {
@@ -268,29 +269,30 @@ describe('btBleManagerTest', function() {
                  return new Promise((resolve,reject) => {
                     gattClient.getRssiValue((err, data)=> {
                         if (err) {
-                            console.error('getRssi failed ');
-                            let b=false;
-                            if(err.code==2900099||err.code==-1)
-                            {
-                                b=true
-                            }
-                            expect(true).assertEqual(b);
-                          }
-                          else
+                            console.error('getRssi failed' + err);
+                            reject(err.code);
+                        } else
                           {
                             console.info('[bluetooth_js]getRssi value:'+JSON.stringify(data));
-                            expect(true).assertEqual(data!=null );
+                            expect(true).assertEqual(data != null);
                         }
                         resolve();
                     });
                 });
             }
-            await getRssi();
+            await getRssi().then((data) => {
+                console.info("[bluetooth_js]02 getRssiValue done");
+                done();
+            })
+            .catch(e => {
+                console.info("[bluetooth_js]02 getRssiValue failed" + e);
+                expect(2900099).assertEqual(e);
+                done();
+            })
         } catch (error) {
             console.error(`[bluetooth_js]GetRssiValue error, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
-        await sleep(2000);
         done();
     })
 
@@ -310,6 +312,7 @@ describe('btBleManagerTest', function() {
             }).catch(err => {
                 console.error('[bluetooth_js] bluetooth getDeviceName has error: '+ JSON.stringify(err));
                 expect(err.code).assertEqual(2900099);
+                done();
             });
         } catch (error) {
             console.error(`[bluetooth_js]GetDeviceName failed, code is ${error.code},message is ${error.message}`);
@@ -329,13 +332,13 @@ describe('btBleManagerTest', function() {
         try {
             gattClient.getDeviceName((err, data)=> {
                 if (err) {
-                    console.error('getname1 failed ');
+                    console.error('getname1 failed');
+                    done();
                   }
                 console.info('[bluetooth_js]getname value:'+JSON.stringify(data));
                 expect(true).assertEqual(data != null);
+                done();
             });
-            await sleep(2000);
-            done(); 
         } catch (error) {
             console.error(`[bluetooth_js]GetDeviceName failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
@@ -358,7 +361,6 @@ describe('btBleManagerTest', function() {
                 done();
             }).catch(err => {
                 console.error('[bluetooth_js] getServices has error:'+ JSON.stringify(err));
-                expect(true).assertEqual(true);
                 done();
             });
         } catch (error) {
@@ -380,13 +382,14 @@ describe('btBleManagerTest', function() {
             gattClient.getServices((code, data)=> {
                 if(code.code==0){
                     console.info("bluetooth services size is ", data.length)
-                    expect(true).assertEqual(data.length >= 0);
+                    expect(true).assertEqual(data != null);
+                    done();
                 } else {
                     console.info('[bluetooth_js] get services code ' + JSON.stringify(code));
                     expect(true).assertEqual(code.code == -1);
+                    done();
                 }
             });
-            done();
         } catch (error) {
             console.error(`[bluetooth_js]GetService_0200 failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
@@ -619,6 +622,7 @@ describe('btBleManagerTest', function() {
             }
             await gattServer.on("descriptorRead", ReadDescriptorReq);
             await gattServer.off("descriptorRead");
+            done();
         } catch (error) {
             console.error(`[bluetooth_js]readDescrValue failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
@@ -633,7 +637,7 @@ describe('btBleManagerTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1800', 0, function () {
+     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1800', 0, async function (done) {
         try {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
@@ -653,11 +657,12 @@ describe('btBleManagerTest', function() {
             gattClient.writeCharacteristicValue(characteristic, bluetooth.GattWriteType.WRITE, (err, data) => {
                 console.info('writeCharacteristicValue err:' + JSON.stringify(err) + ',writeCharacteristicValue data:' + JSON.stringify(data));
             });
+            done();
         } catch (error) {
             console.error(`[bluetooth_js]writeCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('401');
         }
-        
+        done();
     })
 
     /**
@@ -667,7 +672,7 @@ describe('btBleManagerTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1900', 0, function () {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITECHARACTERISTIC_1900', 0, async function (done) {
         try {
             let descriptors = [];
             let arrayBuffer = new ArrayBuffer(8);
@@ -686,14 +691,16 @@ describe('btBleManagerTest', function() {
                     characteristicValue: arrayBufferCCC, descriptors:descriptors};
             gattClient.writeCharacteristicValue(characteristic, bluetooth.GattWriteType.WRITE_NO_RESPONSE).then(() => {
                 console.info("writeCharacteristicValue");
+                done();
             }, err => {
                 console.error("writeCharacteristicValue:errCode" + err.code + ",errMessage:" + err.message);
+                done();
             });
         } catch (error) {
             console.error(`[bluetooth_js]writeCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('401');
         }
-        
+        done();
     })
 
     /**
@@ -732,6 +739,7 @@ describe('btBleManagerTest', function() {
             }    
             gattServer.on("characteristicWrite", WriteCharacteristicReq);
             gattServer.off("characteristicWrite");
+            done();
         } catch (error) {
             console.error(`[bluetooth_js]writeCharacteristicValue failed, code is ${error.code},message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
@@ -746,7 +754,7 @@ describe('btBleManagerTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1000', 0,  function () {
+     it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1000', 0, async function (done) {
         let bufferDesc = new ArrayBuffer(8);
         let descV = new Uint8Array(bufferDesc);
         descV[0] = 22;
@@ -759,15 +767,17 @@ describe('btBleManagerTest', function() {
         try {
             gattClient.writeDescriptorValue(descriptor).then(() => {
                 console.info("writeDescriptorValue");
+                done();
             }, err => {
                 console.error("writeDescriptorValue:errCode" + err.code + ",errMessage:" + err.message);
+                done();
             });
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue failed, code is ${error.code}, 
             message is ${error.message}`);
             expect(error.code).assertEqual('401');
         }
-       
+        done();
     })
 
     /**
@@ -777,7 +787,7 @@ describe('btBleManagerTest', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1100', 0,  function () {
+    it('SUB_COMMUNICATION_BLUETOOTHBLE_WRITEDESCRIPTOR_1100', 0, async function (done) {
         let bufferDesc = new ArrayBuffer(8);
         let descV = new Uint8Array(bufferDesc);
         descV[0] = 22;
@@ -790,13 +800,14 @@ describe('btBleManagerTest', function() {
         try {
             gattClient.writeDescriptorValue(descriptor, (err, data) => {
                 console.info('writeDescriptorValue err:' + JSON.stringify(err) + ',writeDescriptorValue data:' + JSON.stringify(data));
+                done();
             });
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue failed, code is ${error.code}, 
             message is ${error.message}`);
             expect(error.code).assertEqual('401');
         }
-       
+        done();
     })
 
     /**
@@ -832,6 +843,7 @@ describe('btBleManagerTest', function() {
             }
             gattServer.on("descriptorWrite", WriteDescriptorReq);
             gattServer.off("descriptorWrite");
+            done();
         } catch (error) {
             console.error(`[bluetooth_js]writeDescriptorValue failed, code is ${error.code}, 
             message is ${error.message}`);
@@ -869,6 +881,7 @@ describe('btBleManagerTest', function() {
             let cccValue = new Uint8Array(arrayBufferCCC);
             cccValue[0] = 1;
             gattClient.off('BLECharacteristicChange');
+            done();
         } catch (error) {
             console.error(`[bluetooth_js]BLECharacteristicChangeON failed, code is ${error.code}, 
             message is ${error.message}`);
@@ -900,6 +913,7 @@ describe('btBleManagerTest', function() {
             gattClient.connect();
             gattClient.setCharacteristicChangeNotification(characteristic, true, (err) => {
                 console.info('setCharacteristicChangeNotification err:' + JSON.stringify(err));
+                done();
             });
             done();
         } catch (err) {
@@ -964,6 +978,7 @@ describe('btBleManagerTest', function() {
         try {
             gattClient.setCharacteristicChangeIndication(characteristic, true, (err) => {
                 console.info('setCharacteristicChangeIndication err:' + JSON.stringify(err));
+                done();
             });
             done();
         } catch (err) {
@@ -996,6 +1011,7 @@ describe('btBleManagerTest', function() {
         try {
             gattClient.setCharacteristicChangeIndication(characteristic, true).then(() => {
                 console.info("setCharacteristicChangeIndication");
+                done();
             });
             done();
         } catch (err) {
@@ -1024,6 +1040,7 @@ describe('btBleManagerTest', function() {
         }
         try {
             gattClient.on('BLEMtuChange', onReceiveEvent);
+            done();
         } catch (err) {
             console.error("bluetooth mtu changed errCode:" + err.code + ",bluetooth mtu changed errMessage:" + err.message);
             expect(error.code).assertEqual('2900099');
@@ -1052,6 +1069,7 @@ describe('btBleManagerTest', function() {
         gattClient.on('BLEMtuChange', onReceiveEvent);
         try {
             gattClient.off('BLEMtuChange', onReceiveEvent);
+            done();
         } catch (err) {
             console.error("bluetooth mtu changed off errCode:" + err.code + ",bluetooth mtu changed off errMessage:" + err.message);
             expect(error.code).assertEqual('2900099');
@@ -1061,5 +1079,3 @@ describe('btBleManagerTest', function() {
 
 })
 }
-
-

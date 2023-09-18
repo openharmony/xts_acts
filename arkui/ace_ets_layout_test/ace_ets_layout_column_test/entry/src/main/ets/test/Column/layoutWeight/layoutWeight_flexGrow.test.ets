@@ -62,23 +62,23 @@ export default function layoutWeight_flexGrow() {
       expect(Math.round(Column_layoutWeight_013.left - Column_layoutWeight_01.left)).assertEqual(Math.round(Column_layoutWeight_01.right - Column_layoutWeight_013.right));
       expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)).assertEqual(Math.round(vp2px(10)));
       console.log('Column_layoutWeight_012.top - Column_layoutWeight_011.bottom', + Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)
       console.log('Column_layoutWeight_013.top - Column_layoutWeight_012.bottom', + Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)
       expect(Column_layoutWeight_01.top).assertEqual(Column_layoutWeight_011.top);
       expect(Column_layoutWeight_013.bottom).assertEqual(Column_layoutWeight_01.bottom);
       console.log('assert height')
-      expect(Math.round(Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_011.bottom - Column_layoutWeight_011.top', + Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)
-      expect(Math.round(Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_012.bottom - Column_layoutWeight_012.top', + Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)
-      expect(Math.round(Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_013.bottom - Column_layoutWeight_013.top', + Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)
       console.log('assert weight')
-      expect(Math.round(Column_layoutWeight_011.right - Column_layoutWeight_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_012.right - Column_layoutWeight_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_013.right - Column_layoutWeight_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_layoutWeight_011.right - Column_layoutWeight_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_layoutWeight_012.right - Column_layoutWeight_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_layoutWeight_013.right - Column_layoutWeight_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0100] END');
       done();
     });
@@ -101,23 +101,23 @@ export default function layoutWeight_flexGrow() {
       expect(Math.round(Column_layoutWeight_013.left - Column_layoutWeight_01.left)).assertEqual(Math.round(Column_layoutWeight_01.right - Column_layoutWeight_013.right));
       expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)).assertEqual(Math.round(vp2px(10)));
       console.log('Column_layoutWeight_012.top - Column_layoutWeight_011.bottom', + Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)
       console.log('Column_layoutWeight_013.top - Column_layoutWeight_012.bottom', + Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)
       expect(Column_layoutWeight_01.top).assertEqual(Column_layoutWeight_011.top);
       expect(Column_layoutWeight_013.bottom).assertEqual(Column_layoutWeight_01.bottom);
       console.log('assert height')
-      expect(Math.round(Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_011.bottom - Column_layoutWeight_011.top', + Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)
-      expect(Math.round(Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_012.bottom - Column_layoutWeight_012.top', + Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)
-      expect(Math.round(Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_013.bottom - Column_layoutWeight_013.top', + Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)
       console.log('assert weight')
-      expect(Math.round(Column_layoutWeight_011.right - Column_layoutWeight_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_012.right - Column_layoutWeight_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_013.right - Column_layoutWeight_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_layoutWeight_011.right - Column_layoutWeight_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_layoutWeight_012.right - Column_layoutWeight_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_layoutWeight_013.right - Column_layoutWeight_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0200] END');
       done();
     });
@@ -140,23 +140,23 @@ export default function layoutWeight_flexGrow() {
       expect(Math.round(Column_layoutWeight_013.left - Column_layoutWeight_01.left)).assertEqual(Math.round(Column_layoutWeight_01.right - Column_layoutWeight_013.right));
       expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom))
       console.log('assert space')
-      expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(vp2px(10));
-      expect(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)).assertEqual(vp2px(10));
+      expect(Math.round(Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.round(Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)).assertEqual(Math.round(vp2px(10)));
       console.log('Column_layoutWeight_012.top - Column_layoutWeight_011.bottom', + Column_layoutWeight_012.top - Column_layoutWeight_011.bottom)
       console.log('Column_layoutWeight_013.top - Column_layoutWeight_012.bottom', + Column_layoutWeight_013.top - Column_layoutWeight_012.bottom)
       expect(Column_layoutWeight_01.top).assertEqual(Column_layoutWeight_011.top);
       expect(Column_layoutWeight_013.bottom).assertEqual(Column_layoutWeight_01.bottom);
       console.log('assert height')
-      expect(Math.round(Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_011.bottom - Column_layoutWeight_011.top', + Column_layoutWeight_011.bottom - Column_layoutWeight_011.top)
-      expect(Math.round(Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_012.bottom - Column_layoutWeight_012.top', + Column_layoutWeight_012.bottom - Column_layoutWeight_012.top)
-      expect(Math.round(Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)).assertEqual(vp2px(150));
+      expect(Math.round(Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)).assertEqual(Math.round(vp2px(150)));
       console.log('Column_layoutWeight_013.bottom - Column_layoutWeight_013.top', + Column_layoutWeight_013.bottom - Column_layoutWeight_013.top)
       console.log('assert weight')
-      expect(Math.round(Column_layoutWeight_011.right - Column_layoutWeight_011.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_012.right - Column_layoutWeight_012.left)).assertEqual(vp2px(300));
-      expect(Math.round(Column_layoutWeight_013.right - Column_layoutWeight_013.left)).assertEqual(vp2px(300));
+      expect(Math.round(Column_layoutWeight_011.right - Column_layoutWeight_011.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_layoutWeight_012.right - Column_layoutWeight_012.left)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.round(Column_layoutWeight_013.right - Column_layoutWeight_013.left)).assertEqual(Math.round(vp2px(300)));
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0300] END');
       done();
     });

@@ -58,17 +58,17 @@ export default function flexOffset_AutoJsunit() {
       let textOffset03 = CommonFunc.getComponentRect('textOffset03');
       let flexOffset = CommonFunc.getComponentRect('flexOffset');
       expect(Math.round((textOffset01.right - textOffset02.left)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10);
-      expect(Math.round(textOffset01.top - flexOffset.top)).assertEqual(vp2px(30));
+      expect(Math.round(textOffset01.top - flexOffset.top)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round((textOffset01.left - flexOffset.left)*10)/10).assertEqual(Math.round(vp2px(15)*10)/10);
       expect(textOffset02.top).assertEqual(textOffset03.top);
       expect(textOffset03.top).assertEqual(flexOffset.top);
 
-      expect(Math.round(textOffset01.bottom - textOffset01.top)).assertEqual(vp2px(50));
-      expect(Math.round(textOffset02.bottom - textOffset02.top)).assertEqual(vp2px(100));
-      expect(Math.round(textOffset03.bottom - textOffset03.top)).assertEqual(vp2px(150));
-      expect(Math.round(textOffset01.right - textOffset01.left)).assertEqual(vp2px(150));
-      expect(Math.round(textOffset02.right - textOffset02.left)).assertEqual(vp2px(150));
-      expect(Math.round(textOffset03.right - textOffset03.left)).assertEqual(vp2px(150));
+      expect(Math.round(textOffset01.bottom - textOffset01.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.round(textOffset02.bottom - textOffset02.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(textOffset03.bottom - textOffset03.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(textOffset01.right - textOffset01.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(textOffset02.right - textOffset02.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(textOffset03.right - textOffset03.left)).assertEqual(Math.round(vp2px(150)));
       expect(obj1.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       expect(obj1.$attrs.constructor.alignItems).assertEqual('ItemAlign.Auto');
       console.info('new testFlexItemAlignAutoFlexOffset END');

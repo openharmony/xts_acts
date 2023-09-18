@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 import hilog from '@ohos.hilog';
-import Ability from '@ohos.app.ability.UIAbility'
-import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import commonEvent from '@ohos.commonEventManager'
-import Window from '@ohos.window'
+import Ability from '@ohos.app.ability.UIAbility';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import commonEvent from '@ohos.commonEventManager';
+import type Window from '@ohos.window';
 
 class MyParcelable {
   num: number = 0;
@@ -60,9 +60,9 @@ export default class EntryAbility extends Ability {
     globalThis.terminate = () => {
       setTimeout(() => {
         this.context.terminateSelf().then(() => {
-          console.debug("====>terminateSelf end");
+          console.debug('====>terminateSelf end');
         }).catch((err) => {
-          console.debug("====>terminateSelf err:" + JSON.stringify(err));
+          console.debug('====>terminateSelf err:' + JSON.stringify(err));
         });
       }, 50)
     };
@@ -75,17 +75,17 @@ export default class EntryAbility extends Ability {
         let param = new MyParcelable(100, 'Acts_SingleInstanceCallFunction_0100', false);
         caller.callWithResult('call', param).then((data) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0100 call success');
-          var result = new MyParcelable(0, '', false);
+          let result = new MyParcelable(0, '', false);
           data.readParcelable(result);
           caller.release();
           console.debug('====>Acts_SingleInstanceCallFunction_0100 callWithResult result:' + JSON.stringify(result));
           let commonEventData = {
-            parameters:{
+            parameters: {
               num: result.num,
               str: result.str,
               result: result.result
             }
-          }
+          };
           commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
             console.debug('====>Acts_SingleInstanceCallFunction_0100 publish err:' + JSON.stringify(err));
             globalThis.terminate();
@@ -107,10 +107,10 @@ export default class EntryAbility extends Ability {
       }).catch((err) => {
         console.debug('====>Acts_SingleInstanceCallFunction_0200 startAbilityByCall err:' + JSON.stringify(err));
         let commonEventData = {
-          parameters:{
+          parameters: {
             num: err.code,
           }
-        }
+        };
         commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0200 publish err:' + JSON.stringify(err));
           globalThis.terminate();
@@ -119,18 +119,19 @@ export default class EntryAbility extends Ability {
     }
 
     globalThis.singleCallFunction_0300 = () => {
-      function releaseCallback(data) {
+      function releaseCallback(data): void {
         console.debug('====>Acts_SingleInstanceCallFunction_0300 releaseCallBack:' + data);
         let commonEventData = {
-          parameters:{
+          parameters: {
             str: data,
             result: true
           }
-        }
+        };
         commonEvent.publish('ACTS_RELEASE_EVENT', commonEventData, (err) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0300 onRelease event publish err:' + JSON.stringify(err));
         })
       }
+
       this.context.startAbilityByCall({
         bundleName: 'com.acts.callapprely',
         abilityName: 'EntryAbility',
@@ -139,16 +140,16 @@ export default class EntryAbility extends Ability {
         let param = new MyParcelable(300, 'Acts_SingleInstanceCallFunction_0300', false);
         caller.callWithResult('call', param).then((data) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0300 call success');
-          var result = new MyParcelable(0, '', false);
+          let result = new MyParcelable(0, '', false);
           data.readParcelable(result);
           console.debug('====>Acts_SingleInstanceCallFunction_0300 callWithResult result:' + JSON.stringify(result));
           let commonEventData = {
-            parameters:{
+            parameters: {
               num: result.num,
               str: result.str,
               result: result.result
             }
-          }
+          };
           commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
             console.debug('====>Acts_SingleInstanceCallFunction_0300 call event publish err:' + JSON.stringify(err));
             globalThis.terminate();
@@ -163,42 +164,43 @@ export default class EntryAbility extends Ability {
     }
 
     globalThis.singleCallFunction_0400 = () => {
-      var caller;
-      function releaseCallback(data) {
+      let caller;
+      function releaseCallback(data): void {
         console.debug('====>Acts_SingleInstanceCallFunction_0400 releaseCallBack:' + data);
-        let commonEventData={
-          parameters:{
+        let commonEventData = {
+          parameters: {
             str: data,
             result: true
           }
-        }
+        };
         commonEvent.publish('ACTS_RELEASE_EVENT', commonEventData, (err) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0400 onRelease event publish err:' + JSON.stringify(err));
         })
       }
+
       this.context.startAbilityByCall({
         bundleName: 'com.acts.callapprely',
         abilityName: 'EntryAbility'
       }).then((data) => {
-        caller= data;
+        caller = data;
         caller.onRelease(releaseCallback);
         let param = new MyParcelable(400, 'Acts_SingleInstanceCallFunction_0400', false);
         caller.callWithResult('call', param).then((data) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0400 call success');
-          var result = new MyParcelable(0, '', false);
+          let result = new MyParcelable(0, '', false);
           data.readParcelable(result);
           console.debug('====>Acts_SingleInstanceCallFunction_0400 callWithResult result:' + JSON.stringify(result));
           let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-          let pkillCmd = "pkill -f com.acts.callapprely";
+          let pkillCmd = 'pkill -f com.acts.callapprely';
           abilityDelegator.executeShellCommand(pkillCmd, (err, data) => {
-            console.debug("====>Acts_SingleInstanceCallFunction_0400 pkillCmd err:" + JSON.stringify(err));
+            console.debug('====>Acts_SingleInstanceCallFunction_0400 pkillCmd err:' + JSON.stringify(err));
             let commonEventData = {
-              parameters:{
+              parameters: {
                 num: result.num,
                 str: result.str,
                 result: result.result
               }
-            }
+            };
             commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
               console.debug('====>Acts_SingleInstanceCallFunction_0400 call event publish err:' + JSON.stringify(err));
               globalThis.terminate();
@@ -217,28 +219,28 @@ export default class EntryAbility extends Ability {
         bundleName: 'com.acts.thirdpartyapprely',
         abilityName: 'SecondAbility',
       }).then((caller) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0100 startAbilityByCall data:"+JSON.stringify(caller));
-        let param = new MyParcelable(0, 'Acts_MultipleInstancesCallFunction_0100', false);
+        console.info('====>Acts_SingleInstanceCallFunction_0500 startAbilityByCall data:' + JSON.stringify(caller));
+        let param = new MyParcelable(0, 'Acts_SingleInstanceCallFunction_0500', false);
         caller.callWithResult('call', param).then((data2) => {
           this.context.startAbilityByCall({
             bundleName: 'com.acts.thirdpartyapprely',
             abilityName: 'SecondAbility'
           }).then((caller2) => {
-            var receivedData1 = new MyParcelable(0, '', false);
+            let receivedData1 = new MyParcelable(0, '', false);
             data2.readParcelable(receivedData1);
             caller2.callWithResult('call', receivedData1).then((data3) => {
-              console.info("====>  Acts_MultipleInstancesCallFunction_0100 call_result:" + JSON.stringify(data3));
-              var receivedData = new MyParcelable(0, '', false);
+              console.info('====>Acts_SingleInstanceCallFunction_0500 call_result:' + JSON.stringify(data3));
+              let receivedData = new MyParcelable(0, '', false);
               data3.readParcelable(receivedData);
               caller2.release();
               let commonEventData = {
-                parameters:{
+                parameters: {
                   num: receivedData.num,
                   str: receivedData.str,
                 }
-              }
+              };
               commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-                console.log('====>Acts_MultipleInstancesCallFunction_0100 publish err:' + JSON.stringify(err));
+                console.log('====>Acts_SingleInstanceCallFunction_0500 publish err:' + JSON.stringify(err));
                 globalThis.terminate();
               })
             })
@@ -246,29 +248,28 @@ export default class EntryAbility extends Ability {
           caller.release()
         }
         ).catch((err) => {
-          console.info("====>Acts_MultipleInstancesCallFunction_0100 callWithResult err:" + JSON.stringify(err));
+          console.info('====>Acts_SingleInstanceCallFunction_0500 callWithResult err:' + JSON.stringify(err));
         })
       }).catch((err) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0100 startAbilityByCall err:" + JSON.stringify(err));
+        console.info('====>Acts_SingleInstanceCallFunction_0500 startAbilityByCall err:' + JSON.stringify(err));
       })
     }
-
 
     globalThis.MultipleCallFunction_0300 = () => {
       this.context.startAbilityByCall({
         bundleName: 'com.acts.thirdpartyapprely',
         abilityName: 'SecondAbility',
       }).then((caller) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0300 startAbilityByCall caller:" +
-          JSON.stringify(caller));
-        let param = new MyParcelable(0, 'Acts_MultipleInstancesCallFunction_0300', false);
+        console.info('====>Acts_SingleInstanceCallFunction_0700 startAbilityByCall caller:' +
+        JSON.stringify(caller));
+        let param = new MyParcelable(0, 'Acts_SingleInstanceCallFunction_0700', false);
         caller.callWithResult('call', param).then((data2) => {
-          var receivedData1 = new MyParcelable(0, '', false);
-          data2.readParcelable(receivedData1)
+          let receivedData1 = new MyParcelable(0, '', false);
+          data2.readParcelable(receivedData1);
           caller.onRelease((err) => {
-            if(err === 'release'){
-              console.info("====>Acts_MultipleInstancesCallFunction_0300  first onrelease :" + JSON.stringify(err));
-              receivedData1.str = "release the first caller successful";
+            if (err === 'release') {
+              console.info('====>Acts_SingleInstanceCallFunction_0700  first onrelease :' + JSON.stringify(err));
+              receivedData1.str = 'release the first caller successful';
             }
           })
           caller.release();
@@ -277,52 +278,52 @@ export default class EntryAbility extends Ability {
             abilityName: 'SecondAbility'
           }).then((caller2) => {
             caller2.callWithResult('call', receivedData1).then((data3) => {
-              console.info("====>Acts_MultipleInstancesCallFunction_0300 call_result:" + JSON.stringify(data3));
-              var receivedData = new MyParcelable(0, '', false);
+              console.info('====>Acts_SingleInstanceCallFunction_0700 call_result:' + JSON.stringify(data3));
+              let receivedData = new MyParcelable(0, '', false);
               data3.readParcelable(receivedData);
               caller2.onRelease((err) => {
-                if(err === 'release'){
+                if (err === 'release') {
                   receivedData.str = `${receivedData.str}, release the second caller successful.`
                 }
               })
-              caller2.release()
+              caller2.release();
               let commonEventData = {
-                parameters:{
+                parameters: {
                   num: receivedData.num,
                   str: receivedData.str
                 }
-              }
+              };
               commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-                console.log('====>Acts_MultipleInstancesCallFunction_0300 publish err:' + JSON.stringify(err));
+                console.log('====>Acts_SingleInstanceCallFunction_0700 publish err:' + JSON.stringify(err));
                 globalThis.terminate();
               })
             })
           })
         }
         ).catch((err) => {
-          console.info("====>Acts_MultipleInstancesCallFunction_0300 callWithResult err:" + JSON.stringify(err));
+          console.info('====>Acts_SingleInstanceCallFunction_0700 callWithResult err:' + JSON.stringify(err));
         })
       }).catch((err) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0300 startAbilityByCall err:" + JSON.stringify(err));
+        console.info('====>Acts_SingleInstanceCallFunction_0700 startAbilityByCall err:' + JSON.stringify(err));
       })
     }
 
     globalThis.MultipleCallFunction_0400 = () => {
       let count = 0;
-      console.info("====>Acts_MultipleInstancesCallFunction_0400 entryability data:")
+      console.info('====>Acts_SingleInstanceCallFunction_0800 entryability data:');
       this.context.startAbilityByCall({
         bundleName: 'com.acts.thirdpartyapprely',
         abilityName: 'SecondAbility',
       }).then((caller) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0400 startAbilityByCall caller:" +
-          JSON.stringify(caller));
-        let param = new MyParcelable(0, 'Acts_MultipleInstancesCallFunction_0400', false);
+        console.info('====>Acts_SingleInstanceCallFunction_0800 startAbilityByCall caller:' +
+        JSON.stringify(caller));
+        let param = new MyParcelable(0, 'Acts_SingleInstanceCallFunction_0800', false);
         caller.callWithResult('call', param).then((data2) => {
-          var receivedData1 = new MyParcelable(0, '', false);
+          let receivedData1 = new MyParcelable(0, '', false);
           data2.readParcelable(receivedData1);
           caller.onRelease((err) => {
-            if(err == 'died'){
-              console.info("====>Acts_MultipleInstancesCallFunction_0400 first onRelease :" + JSON.stringify(err));
+            if (err == 'died') {
+              console.info('====>Acts_SingleInstanceCallFunction_0800 first onRelease :' + JSON.stringify(err));
               count++;
               receivedData1.num = count;
             }
@@ -332,106 +333,204 @@ export default class EntryAbility extends Ability {
             abilityName: 'SecondAbility',
           }).then((caller2) => {
             caller2.callWithResult('call', receivedData1).then((data3) => {
-              console.info("====>Acts_MultipleInstancesCallFunction_0400 call_result:" + JSON.stringify(data3))
-              var receivedData = new MyParcelable(0, '', false)
-              data3.readParcelable(receivedData)
+              console.info('====>Acts_SingleInstanceCallFunction_0800 call_result:' + JSON.stringify(data3));
+              let receivedData = new MyParcelable(0, '', false);
+              data3.readParcelable(receivedData);
               caller2.onRelease((err) => {
-                if(err == 'died'){
+                if (err == 'died') {
                   count++;
                   receivedData.num = count;
-                  console.info("====>Acts_MultipleInstancesCallFunction_0400 second onRelease:" + receivedData.str);
+                  console.info('====>Acts_SingleInstanceCallFunction_0800 second onRelease:' + receivedData.str);
                 }
               })
               let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-              let pkillCmd = "pkill -f com.acts.thirdpartyapprely";
+              let pkillCmd = 'pkill -f com.acts.thirdpartyapprely';
               abilityDelegator.executeShellCommand(pkillCmd, (err, data) => {
-                console.info("====>Acts_MultipleInstancesCallFunction_0400 pkillCmd err:" + JSON.stringify(err));
+                console.info('====>Acts_SingleInstanceCallFunction_0800 pkillCmd err:' + JSON.stringify(err));
                 let commonEventData = {
-                  parameters:{
+                  parameters: {
                     num: receivedData.num,
                     str: receivedData.str,
                   }
-                }
+                };
                 commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-                  console.log('====>Acts_MultipleInstancesCallFunction_0400 publish err:' + JSON.stringify(err))
+                  console.log('====>Acts_SingleInstanceCallFunction_0800 publish err:' + JSON.stringify(err));
                   globalThis.terminate();
                 })
               })
             })
           })
         }).catch((err) => {
-          console.info("====>Acts_MultipleInstancesCallFunction_0400 callWithResult err:" + JSON.stringify(err));
+          console.info('====>Acts_SingleInstanceCallFunction_0800 callWithResult err:' + JSON.stringify(err));
         })
       }).catch((err) => {
-        console.info("====>Acts_MultipleInstancesCallFunction_0400 startAbilityByCall err:" + JSON.stringify(err));
+        console.info('====>Acts_SingleInstanceCallFunction_0800 startAbilityByCall err:' + JSON.stringify(err));
       })
     }
 
     globalThis.multipleAndSingleCallFunction_0100 = () => {
-      var firstCaller;
-      var secondCaller;
-      var thirdCaller;
+      let firstCaller;
+      let secondCaller;
+      let thirdCaller;
       this.context.startAbilityByCall({
         bundleName: 'com.acts.callapprely',
         abilityName: 'EntryAbility',
       }).then((caller) => {
         firstCaller = caller;
-        let param = new MyParcelable(100, 'Acts_MultipleAndSingleAndInstanceCallFunction_0100', false);
+        let num = 100;
+        let param = new MyParcelable(num, 'Acts_SingleInstanceCallFunction_0900', false);
         firstCaller.callWithResult('call', param).then((data) => {
-          console.debug('====>Acts_MultipleAndSingleAndInstanceCallFunction_0100 call success');
-          var result = new MyParcelable(0, '', false);
+          console.debug('====>Acts_SingleInstanceCallFunction_0900 call success');
+          let result = new MyParcelable(0, '', false);
           data.readParcelable(result);
-          console.debug('====>Acts_MultipleAndSingleAndInstanceCallFunction_0100 callWithResult result:' +
-            JSON.stringify(result));
+          console.debug('====>Acts_SingleInstanceCallFunction_0900 callWithResult result:' +
+          JSON.stringify(result));
           let commonEventData = {
-            parameters:{
+            parameters: {
               num: result.num,
               str: result.str,
               result: result.result
             }
-          }
+          };
           commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
-            console.debug('====>Acts_MultipleAndSingleAndInstanceCallFunction_0100 publish err:' + JSON.stringify(err));
+            console.debug('====>Acts_SingleInstanceCallFunction_0900 publish err:' + JSON.stringify(err));
           })
           this.context.startAbilityByCall({
-            bundleName: 'com.acts.thirdpartyapprely',
+            bundleName: 'com.acts.callapprely',
             abilityName: 'SecondAbility',
+            action: 'multipleAndSingleCallFunction_0100'
           }).then((caller) => {
             secondCaller = caller;
-            console.info("====>Acts_MultipleAndSingleAndInstanceCallFunction_0100 startAbilityByCall data:" +
-              JSON.stringify(secondCaller));
-            let param = new MyParcelable(0, 'Acts_MultipleAndSingleAndInstanceCallFunction_0100', false);
+            console.info('====>Acts_SingleInstanceCallFunction_0900 startAbilityByCall data:' +
+            JSON.stringify(secondCaller));
+            let param = new MyParcelable(0, 'Acts_SingleInstanceCallFunction_0900', false);
             secondCaller.callWithResult('call', param).then((data2) => {
               this.context.startAbilityByCall({
-                bundleName: 'com.acts.thirdpartyapprely',
-                abilityName: 'SecondAbility'
+                bundleName: 'com.acts.callapprely',
+                abilityName: 'SecondAbility',
+                action: 'multipleAndSingleCallFunction_0100'
               }).then((caller) => {
                 thirdCaller = caller;
-                var receivedData1 = new MyParcelable(0, '', false);
+                let receivedData1 = new MyParcelable(0, '', false);
                 data2.readParcelable(receivedData1);
                 thirdCaller.callWithResult('call', receivedData1).then((data3) => {
-                  var receivedData = new MyParcelable(0, '', false);
+                  let receivedData = new MyParcelable(0, '', false);
                   data3.readParcelable(receivedData);
-                  console.info("====>Acts_MultipleAndSingleAndInstanceCallFunction_0100 receivedData:" +
-                    JSON.stringify(receivedData));
+                  console.info('====>Acts_SingleInstanceCallFunction_0900 receivedData:' +
+                  JSON.stringify(receivedData));
                   let commonEventData = {
-                    parameters:{
+                    parameters: {
                       num: receivedData.num,
                       str: receivedData.str,
                     }
-                  }
+                  };
                   commonEvent.publish('ACTS_SECOND_CALL_EVENT', commonEventData, (err) => {
-                    console.log('====>Acts_MultipleAndSingleAndInstanceCallFunction_0100 publish err:' +
-                      JSON.stringify(err));
+                    console.log('====>Acts_SingleInstanceCallFunction_0900 publish err:' +
+                    JSON.stringify(err));
                     thirdCaller.release();
                     secondCaller.release();
                     firstCaller.release();
                     globalThis.terminate();
                   })
                 })
+              }).catch((err) => {
+                console.info('====>Acts_SingleInstanceCallFunction_0900 multiple second err: ' + JSON.stringify(err));
               })
             })
+          }).catch((err) => {
+            console.info('====>Acts_SingleInstanceCallFunction_0900 multiple first err:' + JSON.stringify(err));
           })
+        })
+      })
+    }
+
+    globalThis.Acts_SingleInstanceCallFunction_1000 = () => {
+      console.info('====>Acts_SingleInstanceCallFunction_1000 entryability data:');
+      this.context.startAbilityByCall({
+        bundleName: 'com.acts.thirdpartyapprely',
+        abilityName: 'SecondAbility',
+      }).then((caller) => {
+        console.info('====>Acts_SingleInstanceCallFunction_1000 startAbilityByCall caller:' +
+        JSON.stringify(caller));
+        let param = new MyParcelable(0, 'Acts_SingleInstanceCallFunction_1000 single', false);
+        caller.callWithResult('call', param).then((data) => {
+          console.info('====>Acts_SingleInstanceCallFunction_1000 startAbilityByCall caller2:' +
+          JSON.stringify(data));
+          let receivedData = new MyParcelable(0, '', false);
+          data.readParcelable(receivedData);
+          let commonEventData = {
+            parameters: {
+              num: receivedData.num,
+              str: receivedData.str,
+            }
+          };
+          commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+            console.log('====>Acts_SingleInstanceCallFunction_1000 publish err:' + JSON.stringify(err));
+            globalThis.terminate();
+          })
+        }).catch((err) => {
+          console.info('====>Acts_SingleInstanceCallFunction_1000 callWithResult err:' + JSON.stringify(err));
+        })
+      }).catch((err) => {
+        console.info('====>Acts_SingleInstanceCallFunction_1000 startAbilityByCall err:' + JSON.stringify(err));
+      })
+    }
+
+    globalThis.Acts_SingleInstanceCallFunction_1100 = () => {
+      console.info('====>Acts_SingleInstanceCallFunction_1100 entryability data:');
+      this.context.startAbilityByCall({
+        bundleName: 'com.acts.callapprely',
+        abilityName: 'SecondAbility',
+        action: 'Acts_SingleInstanceCallFunction_1100'
+      }).then((caller) => {
+        console.info('====>Acts_SingleInstanceCallFunction_1100 actscallfunction startAbilityByCall caller:' +
+        JSON.stringify(caller));
+        let param = new MyParcelable(0, 'Acts_SingleInstanceCallFunction_1100 callerA', false);
+        console.info('====>Acts_SingleInstanceCallFunction_1100 startAbilityByCall2 caller:' +
+        JSON.stringify(caller));
+        caller.callWithResult('call', param).then((data) => {
+          console.info('====>Acts_SingleInstanceCallFunction_1100 actscallfunction callWithResult caller:' +
+          JSON.stringify(data));
+          let receivedData = new MyParcelable(0, '', false);
+          data.readParcelable(receivedData);
+          let commonEventData = {
+            parameters: {
+              num: receivedData.num,
+              str: receivedData.str,
+            }
+          };
+          commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+            console.log('====>Acts_SingleInstanceCallFunction_1100 actscallfunction publish err:' +
+            JSON.stringify(err));
+          })
+        }).catch((err) => {
+          console.info('====>Acts_SingleInstanceCallFunction_1100 callWithResult err:' + JSON.stringify(err));
+        })
+      }).catch((err) => {
+        console.info('====>Acts_SingleInstanceCallFunction_1100 startAbilityByCall err:' + JSON.stringify(err));
+      })
+      globalThis.terminate();
+    }
+
+    globalThis.Acts_SingleInstanceCallFunction_1200 = () => {
+      console.info('====>Acts_SingleInstanceCallFunction_1200 entryability data:');
+      this.context.startAbilityByCall({
+        bundleName: 'com.acts.callapprely',
+        abilityName: 'ThirdAbility'
+      }).then((caller) => {
+        console.info('====>Acts_SingleInstanceCallFunction_1200 actscallfunction startAbilityByCall caller:' +
+        JSON.stringify(caller));
+      }).catch((err) => {
+        console.info('====>Acts_SingleInstanceCallFunction_1200 actscallfunction startAbilityByCall caller err:' +
+        JSON.stringify(err));
+        let commonEventData = {
+          parameters: {
+            num: err
+          }
+        };
+        commonEvent.publish('ACTS_CALL_EVENT', commonEventData, (err) => {
+          console.log('====>Acts_SingleInstanceCallFunction_1200 publish err:' + JSON.stringify(err));
+          globalThis.terminate();
         })
       })
     }
@@ -448,17 +547,26 @@ export default class EntryAbility extends Ability {
     if (want.action === 'Acts_SingleInstanceCallFunction_0400') {
       globalThis.singleCallFunction_0400();
     }
-    if (want.action === 'Acts_MultipleInstancesCallFunction_0100') {
+    if (want.action === 'Acts_SingleInstanceCallFunction_0500') {
       globalThis.MultipleCallFunction_0100();
     }
-    if (want.action === 'Acts_MultipleInstancesCallFunction_0300') {
+    if (want.action === 'Acts_SingleInstanceCallFunction_0700') {
       globalThis.MultipleCallFunction_0300();
     }
-    if (want.action === 'Acts_MultipleInstancesCallFunction_0400') {
+    if (want.action === 'Acts_SingleInstanceCallFunction_0800') {
       globalThis.MultipleCallFunction_0400();
     }
-    if (want.action === 'Acts_MultipleAndSingleAndInstanceCallFunction_0100') {
+    if (want.action === 'Acts_SingleInstanceCallFunction_0900') {
       globalThis.multipleAndSingleCallFunction_0100();
+    }
+    if (want.action === 'Acts_SingleInstanceCallFunction_1000') {
+      globalThis.Acts_SingleInstanceCallFunction_1000();
+    }
+    if (want.action === 'Acts_SingleInstanceCallFunction_1100') {
+      globalThis.Acts_SingleInstanceCallFunction_1100();
+    }
+    if (want.action === 'Acts_SingleInstanceCallFunction_1200') {
+      globalThis.Acts_SingleInstanceCallFunction_1200();
     }
   }
 

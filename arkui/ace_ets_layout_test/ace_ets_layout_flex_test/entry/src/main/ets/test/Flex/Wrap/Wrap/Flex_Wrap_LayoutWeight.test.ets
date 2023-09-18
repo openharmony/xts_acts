@@ -71,15 +71,15 @@ export default function flex_Wrap_LayoutWeightTest() {
       expect(firstText.top).assertEqual(secondText.top);
       expect(secondText.top).assertEqual(thirdText.top);
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(vp2px(100));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(vp2px(150));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(vp2px(200));
+      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(200)));
 
-      expect(Math.round(firstText.right- firstText.left)).assertEqual(vp2px(150));
+      expect(Math.round(firstText.right- firstText.left)).assertEqual(Math.round(vp2px(150)));
       expect(Math.round(secondText.right - secondText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
       expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
 
-      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(vp2px(50));
+      expect(Math.round(flexContainer.right - thirdText.right)).assertEqual(Math.round(vp2px(50)));
       expect(thirdText.bottom).assertEqual(flexContainer.bottom);
       console.info('[testWrapWrapTextLayoutWeight] END');
       done();
