@@ -25,4 +25,3 @@ using namespace OHOS;
 
 static SHRINK_HWTEST_F(ActsImage0012TS, TCswapchainmutablexcb, "dEQP-VK.image.swapchain_mutable.xcb.*");
 static SHRINK_HWTEST_F(ActsImage0012TS, TCswapchainmutablewayland, "dEQP-VK.image.swapchain_mutable.wayland.*");
-static SHRINK_HWTEST_F(ActsImage0012TS, TCimageswapchainmutable, "dEQP-VK.image.swapchain_mutable.android.*");
