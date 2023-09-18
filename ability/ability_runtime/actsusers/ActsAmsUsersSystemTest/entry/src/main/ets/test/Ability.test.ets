@@ -588,7 +588,7 @@ export default function abilityTest() {
       var flag = true
       var terminateresult = false
       function SubscribeCallBack (err, data) {
-        expect(data.event == "ACTS_InterfaceMultiUsers_0300_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
+        expect(data.event == "ACTS_InterfaceMultiUsers_0100_Start_CommonEvent" || data.event == "ACTS_TerminateSelf_CommonEvent").assertTrue();
         console.debug(TAG + "====>0300 Subscribe CallBack data:====>" + JSON.stringify(data));
         if(data.event == "ACTS_TerminateSelf_CommonEvent"){
           terminateresult = true
