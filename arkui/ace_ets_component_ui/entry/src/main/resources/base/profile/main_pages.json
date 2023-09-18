@@ -106,6 +106,10 @@
 		"MainAbility/pages/aboutToRecycleiamge",
         "MainAbility/pages/lifecycle",
         "MainAbility/pages/ParticleOptions",
-        "MainAbility/pages/ParticleProperty"		
+        "MainAbility/pages/ParticleProperty",
+	 "MainAbility/pages/swiperNextPrevMarginDuplicate",
+        "MainAbility/pages/swiperNextPrevMarginNoMargin",
+        "MainAbility/pages/swiperNextPrevMargin",
+		"MainAbility/pages/swiperNextPrevMarginString"		
     ]
 }
