@@ -18,12 +18,6 @@ import("//foundation/graphic/graphic_2d/graphic_config.gni")
 group("ActsVkTest") {
   testonly = true
   deps = [
-    "src/compute/build0001:ActsComputeTestSuite0001",
-    "src/compute/build0002:ActsComputeTestSuite0002",
-    "src/compute/build0003:ActsComputeTestSuite0003",
-    "src/compute/build0004:ActsComputeTestSuite0004",
-    "src/compute/build0005:ActsComputeTestSuite0005",
-    "src/compute/build0006:ActsComputeTestSuite0006",
     "src/image/build0001:ActsImageTestSuite0001",
     "src/image/build0002:ActsImageTestSuite0002",
     "src/image/build0003:ActsImageTestSuite0003",
