@@ -26,11 +26,13 @@ group("ActsVkTest") {
     "src/compute/build0006:ActsComputeTestSuite0006",
     "src/image/build0001:ActsImageTestSuite0001",
     "src/image/build0002:ActsImageTestSuite0002",
+
     #"src/image/build0003:ActsImageTestSuite0003",
     #"src/image/build0004:ActsImageTestSuite0004",
     #"src/image/build0005:ActsImageTestSuite0005",
     #"src/image/build0006:ActsImageTestSuite0006",
     "src/image/build0007:ActsImageTestSuite0007",
+
     #"src/image/build0008:ActsImageTestSuite0008",
     #"src/image/build0009:ActsImageTestSuite0009",
     #"src/image/build0010:ActsImageTestSuite0010",
@@ -59,6 +61,7 @@ group("ActsVkTest") {
     "src/subgroups/build0005:ActsSubgroupsTestSuite0005",
     "src/subgroups/build0006:ActsSubgroupsTestSuite0006",
     "src/subgroups/build0007:ActsSubgroupsTestSuite0007",
+
     #"src/subgroups/build0008:ActsSubgroupsTestSuite0008",
     "src/subgroups/build0009:ActsSubgroupsTestSuite0009",
     "src/subgroups/build0010:ActsSubgroupsTestSuite0010",
@@ -66,6 +69,7 @@ group("ActsVkTest") {
     "src/subgroups/build0012:ActsSubgroupsTestSuite0012",
     "src/subgroups/build0013:ActsSubgroupsTestSuite0013",
     "src/subgroups/build0014:ActsSubgroupsTestSuite0014",
+
     #"src/subgroups/build0015:ActsSubgroupsTestSuite0015",
     #"src/subgroups/build0016:ActsSubgroupsTestSuite0016",
     #"src/subgroups/build0017:ActsSubgroupsTestSuite0017",
