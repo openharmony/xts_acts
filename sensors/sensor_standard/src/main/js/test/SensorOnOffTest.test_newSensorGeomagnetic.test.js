@@ -192,7 +192,8 @@ describe("SensorJsTest_sensor_60", function () {
     */
     it('Sensor_GetGeomagneticInfo_004', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_004----------------------------------");
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422, 3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125,
+            -27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticInfo({'latitude':Number.MAX_VALUE, 'longitude':0, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
                 console.info('Sensor_GetGeomagneticInfo_004 failed');
@@ -221,7 +222,8 @@ describe("SensorJsTest_sensor_60", function () {
     */
     it('Sensor_GetGeomagneticInfo_005', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_005----------------------------------");
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422, 3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125,
+            -27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticInfo({'latitude':Number.NaN, 'longitude':0, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
                 console.info('Sensor_GetGeomagneticInfo_005 failed');
@@ -250,7 +252,8 @@ describe("SensorJsTest_sensor_60", function () {
     */
     it('Sensor_GetGeomagneticInfo_006', 0, async function (done) {
         console.info("---------------------------Sensor_GetGeomagneticInfo_006----------------------------------");
-        let geomagneticComponent = [14425.57421875, -17156.767578125, -52023.21484375, -66.69005584716797, -49.94255447387695, 22415.4375, 56646.859375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+        -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticInfo({'latitude':Number.NEGATIVE_INFINITY, 'longitude':0, 'altitude':0}, timeMillis[0], (error, data) => {
             if (error) {
                 console.info('Sensor_GetGeomagneticInfo_006 failed');
@@ -731,7 +734,8 @@ describe("SensorJsTest_sensor_60", function () {
     */
     it("Sensor_GetGeomagneticInfo_027", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_027---------------------------');
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422, 3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125,
+            -27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticInfo({'latitude':Number.MAX_VALUE, 'longitude':0, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_027 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
@@ -755,7 +759,8 @@ describe("SensorJsTest_sensor_60", function () {
     */
     it("Sensor_GetGeomagneticInfo_028", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_028---------------------------');
-        let geomagneticComponent = [1824.141845703125, 116.58167266845703, 56727.7734375, 88.15447235107422, 3.6568238735198975, 1827.8634033203125, 56757.21484375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125,
+            -27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticInfo({'latitude':Number.NaN, 'longitude':0, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_028 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
@@ -779,7 +784,8 @@ describe("SensorJsTest_sensor_60", function () {
     */
     it("Sensor_GetGeomagneticInfo_029", 0, async function (done) {
         console.info('----------------------Sensor_GetGeomagneticInfo_029---------------------------');
-        let geomagneticComponent = [14425.57421875, -17156.767578125, -52023.21484375, -66.69005584716797, -49.94255447387695, 22415.4375, 56646.859375]
+        let geomagneticComponent = [27779.234375, -6214.9794921875, -14924.6611328125, -27.667943954467773,
+        -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticInfo({'latitude':Number.NEGATIVE_INFINITY, 'longitude':0, 'altitude':0}, timeMillis[0]).then((data) => {
             console.info('Sensor_GetGeomagneticInfo_029 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity + ',totalIntensity: ' + data.totalIntensity)
@@ -2594,7 +2600,7 @@ describe("SensorJsTest_sensor_60", function () {
         })
     })
 
-    var getGeomagneticDipResult = [ 0.8760581016540527, 0.862170, -Infinity, 44330]
+    var getGeomagneticDipResult = [ 0.8760581016540527, 0.862170, 0, 44330]
 
     /*
     * @tc.name:Sensor_GetGeomagneticDip_001
