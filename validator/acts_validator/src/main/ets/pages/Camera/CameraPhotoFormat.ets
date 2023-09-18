@@ -287,7 +287,7 @@ struct cameraOrientation {
           }.width('100%').justifyContent(FlexAlign.SpaceEvenly)
           .height('10%')
         }
-      }.height('80%')
+      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
 
       CustomContainer({
         title: this.name,
