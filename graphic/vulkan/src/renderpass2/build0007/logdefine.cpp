@@ -16,5 +16,5 @@
 #include "logdefine.h"
 
 namespace OHOS {
-    tcu::TestLog Logdefine::tcutestlog("/data/local/tmp/ActsRenderpass2TS0007.qpa", 0);
+    tcu::TestLog Logdefine::tcutestlog("/data/local/tmp/ActsRenderpass2TestSuite0007.qpa", 0);
 } // OHOS
