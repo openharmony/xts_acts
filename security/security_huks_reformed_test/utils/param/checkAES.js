@@ -17,7 +17,7 @@ import { describe, it, expect, beforeAll } from '@ohos/hypium';
 import huks from '@ohos.security.huks';
 import { HuksCipherAES } from './cipher/publicCipherParam';
 import { HksTag } from './publicParam';
-import { stringToUint8Array, uint8ArrayToString, checkSoftwar, arrayEqual} from './publicFunc';
+import { stringToUint8Array, uint8ArrayToString, checkSoftwar, arrayEqual } from './publicFunc';
 import { Data64b } from '../data.json';
 let IV = '0000000000000000';
 let AAD = '0000000000000000';
@@ -188,24 +188,24 @@ async function publicCipherFunc(srcKeyAlies, HuksOptions, thirdInderfaceName, is
   }
 }
 
-
 async function checkAESChiper(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions) {
+  updateResult = new Array();
   HuksOptions.inData = srcData64Kb;
   HuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyPurposeDECRYPT);
-  if (useSoftware) {
-    //加密
-    await publicCipherFunc(srcKeyAliesFirst, HuksOptions, 'finish', true);
-    //解密
-    HuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
-    HuksOptions.inData = new Uint8Array(updateResult);
-    await publicCipherFunc(srcKeyAliesSecond, HuksOptions, 'finish', false);
-    // let arrayEqualRes = false;
-    let arrayEqualRes = arrayEqual(Array.from(updateResult), Array.from(srcData64Kb))
-    // console.info('arrayEqualRes is ' + arrayEqualRes);
-    if (!arrayEqualRes){ // if not success then res comes to false
-      res = false;
-    }
+  
+  //加密
+  await publicCipherFunc(srcKeyAliesFirst, HuksOptions, 'finish', true);
+  //解密
+  HuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyPurposeENCRYPT);
+  HuksOptions.inData = new Uint8Array(updateResult);
+  await publicCipherFunc(srcKeyAliesSecond, HuksOptions, 'finish', false);
+  // let arrayEqualRes = false;
+  let arrayEqualRes = arrayEqual(Array.from(updateResult), Array.from(srcData64Kb))
+  // console.info('arrayEqualRes is ' + arrayEqualRes);
+  if (!arrayEqualRes) { // if not success then res comes to false
+    res = false;
   }
+
   // console.info('res before return is ' + res);
   return res;
 }
