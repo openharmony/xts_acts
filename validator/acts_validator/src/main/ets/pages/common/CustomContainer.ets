@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import prompt from '@ohos.prompt';
-import fileio from '@ohos.fileio';
+import promptAction from '@ohos.promptAction';
+import fs from '@ohos.file.fs';
 import router from '@ohos.router';
 import screenshot from '@ohos.screenshot';
 import image from '@ohos.multimedia.image';
@@ -52,7 +52,7 @@ export struct CustomContainer {
           }
         })
         this.getScreen(isFullScreen);
-        prompt.showToast({
+        promptAction.showToast({
           message: '通过', duration: 1000
         });
       })
@@ -70,7 +70,7 @@ export struct CustomContainer {
         }
       })
       this.getScreen(isFullScreen);
-      prompt.showToast({
+      promptAction.showToast({
         message: '失败', duration: 1000
       });
     })
@@ -125,14 +125,14 @@ export struct CustomContainer {
     let dirPath = path + '/screenshot' + '/' + displayName;
     let imagePackerApi = image.createImagePacker();
     let arrayBuffer = await imagePackerApi.packing(data, packOpts);
-    let fd = fileio.openSync(dirPath,0o102,0o666);
+    let fd = fs.openSync(dirPath,fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
     imagePackerApi.release();
     try {
-      await fileio.write(fd, arrayBuffer);
+      await fs.write(fd.fd, arrayBuffer);
     } catch (err) {
       Logger.error(`write failed, code is ${err.code}, message is ${err.message}`);
     }
-    await fileio.close(fd);
+    await fs.close(fd);
     Logger.info(TAG, `write done`);
 
   }

@@ -1,5 +1,4 @@
 import audio from '@ohos.multimedia.audio'
-import fileio from '@ohos.fileio'
 import Logger from '../model/Logger'
 // @ts-ignore
 import fs from '@ohos.file.fs';
@@ -11,12 +10,13 @@ class AudioRenderer {
     private audioRenderer: audio.AudioRenderer = undefined
     private fd: number = undefined
     private offset: number = undefined
-	private length: number = undefined
+    private length: number = undefined
 
     async createAudioRenderer(){
         let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
+//            channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
@@ -37,8 +37,8 @@ class AudioRenderer {
             await this.audioRenderer.start()
             globalThis.abilityContext.resourceManager.getRawFd("test_44100_2.wav").then(value => {
                 this.fd = value.fd
-				this.offset = value.offset
-				this.length = value.length
+				        this.offset = value.offset
+                this.length = value.length
                 Logger.info(this.tag, `getRawFd fd : ${this.fd}, offset: ${value.offset}, length: ${value.length}`)
             }).catch(err => {
                 console.log(`getRawFd fail err: ${err}, message: ${err.message}, code: ${err.code}`);
