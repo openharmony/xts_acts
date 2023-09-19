@@ -138,7 +138,7 @@ struct SetCircle {
           })
       }.width('100%').height('70%')
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {

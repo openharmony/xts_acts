@@ -118,7 +118,7 @@ struct cameraOrientation {
               })
             }.justifyContent(FlexAlign.SpaceEvenly).width('100%').margin('20fp')
           }
-        }
+        }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
       }.width('80%').height('50%')
 
 

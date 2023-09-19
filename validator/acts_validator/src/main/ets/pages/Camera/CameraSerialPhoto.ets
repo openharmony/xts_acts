@@ -209,7 +209,7 @@ struct cameraOrientation {
               }, 1000)
             })
         }
-      }.height('80%')
+      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
 
       CustomContainer({
         title: this.name,

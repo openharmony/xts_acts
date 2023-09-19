@@ -157,7 +157,7 @@ struct audioOutputRouting {
                 }
               }
             }
-          }
+          }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
 
         }
       }.width('100%').height('80%').backgroundColor(Color.Black)

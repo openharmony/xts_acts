@@ -218,7 +218,7 @@ struct cameraFormat {
             }.size({ width: '100%', height: '20%' })
           }
 
-        }
+        }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
       }.height('80%').width('100%')
 
       CustomContainer({

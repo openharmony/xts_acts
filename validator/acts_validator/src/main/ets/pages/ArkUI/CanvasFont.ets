@@ -64,7 +64,7 @@ struct SetCircle {
               }
               .size({width:'24%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num1 = 1;
@@ -81,7 +81,7 @@ struct SetCircle {
               }
               .size({width:'24%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'italic normal 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num2 = 1;
@@ -101,7 +101,7 @@ struct SetCircle {
               }
               .size({width:'16%',height:'18%'})
               .onChange(() => {
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num3 = 1;
@@ -118,7 +118,7 @@ struct SetCircle {
               }
               .size({width:'16%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal bold 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num4 = 1;
@@ -135,7 +135,7 @@ struct SetCircle {
               }
               .size({width:'16%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal bolder 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num5 = 1;
@@ -152,7 +152,7 @@ struct SetCircle {
               }
               .size({width:'16%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal lighter 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num6 = 1;
@@ -171,7 +171,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 100 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num7 = 1;
@@ -188,7 +188,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 200 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num8 = 1;
@@ -205,7 +205,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 300 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num9 = 1;
@@ -222,7 +222,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 400 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num10 = 1;
@@ -239,7 +239,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 500 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num11 = 1;
@@ -256,7 +256,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 600 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num12 = 1;
@@ -273,7 +273,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 700 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num13 = 1;
@@ -290,7 +290,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 800 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num14 = 1;
@@ -307,7 +307,7 @@ struct SetCircle {
               }
               .size({ width: '10%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal 900 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num15 = 1;
@@ -327,7 +327,7 @@ struct SetCircle {
               }
               .size({width:'24%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num16 = 1;
@@ -344,7 +344,7 @@ struct SetCircle {
               }
               .size({width:'24%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 80px serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num17 = 1;
@@ -361,7 +361,7 @@ struct SetCircle {
               }
               .size({width:'24%',height:'18%'})
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 80px monospace';
                 this.context.fillText("Hello World", 40, 180);
                 this.num18 = 1;
@@ -381,7 +381,7 @@ struct SetCircle {
               }
               .size({ width: '18%', height: '18%' })
               .onChange(() => {
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 10px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num19 = 1;
@@ -398,7 +398,7 @@ struct SetCircle {
               }
               .size({ width: '18%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 50px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num20 = 1;
@@ -415,7 +415,7 @@ struct SetCircle {
               }
               .size({ width: '18%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 80px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num21 = 1;
@@ -432,7 +432,7 @@ struct SetCircle {
               }
               .size({ width: '18%', height: '18%' })
               .onChange(()=>{
-                this.context.clearRect(0, 10, 600, 600);
+                this.context.clearRect(0, 10, 1200, 1200);
                 this.context.font = 'normal normal 120px sans-serif';
                 this.context.fillText("Hello World", 40, 180);
                 this.num22 = 1;
@@ -455,7 +455,7 @@ struct SetCircle {
               })
           }.width('100%').height('70%')
         }
-      }
+      }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
     }.width('100%').height('80%').backgroundColor(Color.White)
   }
   build() {
