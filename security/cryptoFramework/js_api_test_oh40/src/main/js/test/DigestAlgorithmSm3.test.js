@@ -18,16 +18,15 @@ import * as DigPromise from "./utils/digestalgorithm/publicDigestPromise";
 import * as DigCallback from "./utils/digestalgorithm/publicDigestCallback";
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
-import {
-  stringTouInt8Array,
-  uInt8ArrayToShowStr,
-} from "./utils/common/publicDoString";
+import { stringTouInt8Array, uInt8ArrayToShowStr, } from "./utils/common/publicDoString";
 
 export default function DigestAlgorithmSm3Jsunit() {
-  describe("DigestAlgorithmSm3Jsunit", function () {
-    console.info("##########start DigestAlgorithmSm3Jsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("DigestAlgorithmSm3Jsunit", function () {
+        console.info("##########start DigestAlgorithmSm3Jsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_MDSM3_Func_0100
@@ -64,23 +63,25 @@ export default function DigestAlgorithmSm3Jsunit() {
       done();
     });
 
-    /**
-     * @tc.number Security_CryptoFramework_MDSM3_Func_0300
-     * @tc.name Summary Calculation scenario testing
-     * @tc.desc the asyAlgoName is "SM3", Use the async Style of Interface
-     * @tc.desc the asyAlgoName is "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz" take 10000 characters,
-     * Use the async Style of Interface
-     */
-    it("Security_CryptoFramework_MDSM3_Func_0300", 0, async function (done) {
-      let globalMd;
-      let globalText;
-      let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      let n = t.length;
-      for (let i = 0; i < 10000; i++) {
-        globalText += t.charAt(Math.floor(Math.random() * n));
-      }
-      console.log("Datablob = " + globalText);
-      let ginBlob = { data: stringTouInt8Array(globalText) };
+        /**
+         * @tc.number Security_CryptoFramework_MDSM3_Func_0300
+         * @tc.name Summary Calculation scenario testing
+         * @tc.desc the asyAlgoName is "SM3", Use the async Style of Interface
+         * @tc.desc the asyAlgoName is "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz" take 10000 characters,
+         * Use the async Style of Interface
+         */
+        it("Security_CryptoFramework_MDSM3_Func_0300", 0, async function (done) {
+            let globalMd;
+            let globalText;
+            let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let n = t.length;
+            for (let i = 0; i < 10000; i++) {
+                globalText += t.charAt(Math.floor(Math.random() * n));
+            }
+            console.log("Datablob = " + globalText);
+            let ginBlob = {
+                data: stringTouInt8Array(globalText)
+            };
 
       try {
         let result = await new Promise((resolve, reject) => {
@@ -331,59 +332,61 @@ export default function DigestAlgorithmSm3Jsunit() {
       done();
     });
 
-    /**
-     * @tc.number Security_CryptoFramework_HMACSM3_Func_0700
-     * @tc.name Calculate message authentication code scenario testing
-     * @tc.desc the asyAlgoName is "SM3", Use the async Style of Interface
-     * @tc.desc the asyAlgoName is "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz" take 10000 characters,
-     * Use the async Style of Interface
-     */
-    it("Security_CryptoFramework_HMACSM3_Func_0700", 0, async function (done) {
-      let globalHMAC;
-      let globalText;
-      let globalsymKeyGenerator;
-      let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz";
-      let n = t.length;
-      for (let i = 0; i < 10000; i++) {
-        globalText += t.charAt(Math.floor(Math.random() * n));
-      }
-      console.log("Datablob = " + globalText);
-      let ginBlob = { data: stringTouInt8Array(globalText) };
-      try {
-        let result = await new Promise((resolve, reject) => {
-          globalHMAC = cryptoFramework.createMac("SM3");
-          globalsymKeyGenerator =
-            cryptoFramework.createSymKeyGenerator("AES128");
-          globalsymKeyGenerator
-            .generateSymKey()
-            .then((symKey) => {
-              return globalHMAC.init(symKey);
-            })
-            .then((initData) => {
-              return globalHMAC.update(ginBlob);
-            })
-            .then((updateData) => {
-              return globalHMAC.doFinal();
-            })
-            .then((doFinalBlob) => {
-              let mdLen = globalHMAC.getMacLength();
-              console.log("HMAC HMAC len: " + mdLen);
-              if (doFinalBlob != null && mdLen != 0 && mdLen != null) {
-                resolve(true);
-              } else {
-                resolve(false);
-              }
-            })
-            .catch((err) => {
-              reject(err);
-            });
+        /**
+         * @tc.number Security_CryptoFramework_HMACSM3_Func_0700
+         * @tc.name Calculate message authentication code scenario testing
+         * @tc.desc the asyAlgoName is "SM3", Use the async Style of Interface
+         * @tc.desc the asyAlgoName is "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz" take 10000 characters,
+         * Use the async Style of Interface
+         */
+        it("Security_CryptoFramework_HMACSM3_Func_0700", 0, async function (done) {
+            let globalHMAC;
+            let globalText;
+            let globalsymKeyGenerator;
+            let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefhijklmnopqrstuvwxyz";
+            let n = t.length;
+            for (let i = 0; i < 10000; i++) {
+                globalText += t.charAt(Math.floor(Math.random() * n));
+            }
+            console.log("Datablob = " + globalText);
+            let ginBlob = {
+                data: stringTouInt8Array(globalText)
+            };
+            try {
+                let result = await new Promise((resolve, reject) => {
+                    globalHMAC = cryptoFramework.createMac("SM3");
+                    globalsymKeyGenerator =
+                    cryptoFramework.createSymKeyGenerator("AES128");
+                    globalsymKeyGenerator
+                        .generateSymKey()
+                        .then((symKey) => {
+                            return globalHMAC.init(symKey);
+                        })
+                        .then((initData) => {
+                            return globalHMAC.update(ginBlob);
+                        })
+                        .then((updateData) => {
+                            return globalHMAC.doFinal();
+                        })
+                        .then((doFinalBlob) => {
+                            let mdLen = globalHMAC.getMacLength();
+                            console.log("HMAC HMAC len: " + mdLen);
+                            if (doFinalBlob != null && mdLen != 0 && mdLen != null) {
+                                resolve(true);
+                            } else {
+                                resolve(false);
+                            }
+                        })
+                        .catch((err) => {
+                            reject(err);
+                        });
+                });
+                expect(result).assertTrue();
+            } catch (err) {
+                expect(null).assertFail();
+            }
+            done();
         });
-        expect(result).assertTrue();
-      } catch (err) {
-        expect(null).assertFail();
-      }
-      done();
-    });
 
     /**
      * @tc.number Security_CryptoFramework_HMACSM3_Func_0800
@@ -427,22 +430,24 @@ export default function DigestAlgorithmSm3Jsunit() {
       done();
     });
 
-    /**
-     * @tc.number Security_CryptoFramework_HMACSM3_Func_0900
-     * @tc.name Calculate Message Authentication Code scenario testing
-     * @tc.desc The mac object was not initialized, and the data is "Mac test data"
-     * was passed in as a Callback to be called
-     * @tc.desc Call it as a promise without passing in parameters
-     * @tc.desc Pass in an exception parameter null and call it as a Callback
-     * @tc.desc Pass in two exception parameters "Mac test data" and "Mac test data"
-     * and call them as Callback
-     */
-    it("Security_CryptoFramework_HMACSM3_Func_0900", 0, async function (done) {
-      let globalText = "Mac test data";
-      let ginBlob = { data: stringTouInt8Array(globalText) };
-      let globalHMAC = cryptoFramework.createMac("SM3");
-      let globalsymKeyGenerator =
-        cryptoFramework.createSymKeyGenerator("SM4_128");
+        /**
+         * @tc.number Security_CryptoFramework_HMACSM3_Func_0900
+         * @tc.name Calculate Message Authentication Code scenario testing
+         * @tc.desc The mac object was not initialized, and the data is "Mac test data"
+         * was passed in as a Callback to be called
+         * @tc.desc Call it as a promise without passing in parameters
+         * @tc.desc Pass in an exception parameter null and call it as a Callback
+         * @tc.desc Pass in two exception parameters "Mac test data" and "Mac test data"
+         * and call them as Callback
+         */
+        it("Security_CryptoFramework_HMACSM3_Func_0900", 0, async function (done) {
+            let globalText = "Mac test data";
+            let ginBlob = {
+                data: stringTouInt8Array(globalText)
+            };
+            let globalHMAC = cryptoFramework.createMac("SM3");
+            let globalsymKeyGenerator =
+            cryptoFramework.createSymKeyGenerator("SM4_128");
 
       let globalsymKey;
       await new Promise((resolve, reject) => {
