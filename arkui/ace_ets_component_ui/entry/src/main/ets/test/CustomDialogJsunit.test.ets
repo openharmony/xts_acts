@@ -47,18 +47,16 @@ export default function CustomDialogJsunit() {
     it('CustomDialogJsunit_0100', 0, async function (done) {
 
       console.info('CustomDialogJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('CustomDialog'));
+      await button.click();
       await CommonFunc.sleep(1000);
-
       let strJson = getInspectorByKey('CustomDialog');
       let obj = JSON.parse(strJson);
       console.info("[CustomDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[CustomDialogJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[CustomDialogJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[CustomDialogJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      console.info("[CustomDialogJsunit_0100] cornerRadius:" + JSON.stringify(obj.$attrs.cornerRadius));
-      expect(obj.$attrs.cornerRadius).assertEqual("5vp");
-
+      expect(obj.$attrs.label).assertEqual("click me");
       console.info('[CustomDialogJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 

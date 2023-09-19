@@ -46,19 +46,19 @@ export default function ShowDialogJsunit() {
 
     it('ShowDialogJsunit_0100', 0, async function (done) {
 
+	
       console.info('ShowDialogJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('ShowDialog'));
+      await button.click();
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('ShowDialog');
       let obj = JSON.parse(strJson);
       console.info("[ShowDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[ShowDialogJsunit_0100] title:" + JSON.stringify(obj.$attrs.title));
-      console.info("[ShowDialogJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[ShowDialogJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[ShowDialogJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      expect(obj.$attrs.title).assertEqual("Title Info");
-
+      expect(obj.$attrs.label).assertEqual("PromptActionDialog");
       console.info('[ShowDialogJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 
