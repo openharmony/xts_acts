@@ -17,6 +17,7 @@ group("actsuiextensiontest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsabilityusertest:StartAbilityByUIContentSession",
       "uiextensionprovider:UIExtensionProvider",
       "uiextensiontest:UIExtensionTest",
     ]
