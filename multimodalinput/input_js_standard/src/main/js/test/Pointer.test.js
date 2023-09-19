@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Copyright (c) 2022-2023 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -30,6 +30,56 @@ export default function Pointer_test() {
       PARAMETER_WINDOWID_TYPE_MSG: `Parameter error. The type of windowId must be number.`,
       PARAMETER_CALLBACK_TYPE_MSG: `Parameter error. The type of callback must be function.`
     }
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_001
+     * @tc.name MultimodalInputDevice_SetPointerVisibleSync_Test_001
+     * @tc.desc Pointer interface SetPointerVisibleSync test
+     */
+    it('Pointer_SetPointerVisibleSync_Test_001', 0, async function (done) {
+      console.info(`Pointer_SetPointerVisibleSync_Test_001 enter`);
+      try {
+        pointer.setPointerVisibleSync(true);
+      } catch (error) {
+        expect(false).assertTrue();
+        console.log(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_002
+     * @tc.name MultimodalInputDevice_IsPointerVisibleSync_Test_002
+     * @tc.desc Pointer interface isPointerVisibleSync test
+     */
+    it('Pointer_IsPointerVisibleSync_Test_002', 0, async function (done) {
+      console.info(`Pointer_IsPointerVisibleSync_Test_002 enter`);
+      try {
+        let visible = pointer.isPointerVisibleSync();
+        console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+      } catch (error) {
+        expect(false).assertTrue();
+        console.log(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      }
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_003
+     * @tc.name MultimodalInputDevice_GetPointerStyleSyncTest_Test_003
+     * @tc.desc Pointer interface getPointerStyleSync test
+     */
+    it('Pointer_GetPointerStyleSync_Test_003', 0, async function (done) {
+      console.info(`Pointer_GetPointerStyleSync_Test_003 enter`);
+      try {
+        let style = pointer.getPointerStyleSync(-1);
+        console.log(`getPointerStyleSync success, style: ${JSON.stringify(style)}`);
+      } catch (error) {
+        expect(false).assertTrue();
+        console.log(`getPointerStyleSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      }
+      done();
+    })
 
     it('Pointer_PointerVisibleTest_001', 0, async function (done) {
       console.info(`Pointer_SetPointerVisibleTest_001 enter`);
