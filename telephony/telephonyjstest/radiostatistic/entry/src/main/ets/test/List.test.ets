@@ -19,6 +19,7 @@ import radioSecondJsunit from './RadioSecondJsunit.test';
 import smsUiJsunit from './SmsMmsJsunit.test';
 import callJsunit from './CallJsunit.test';
 import dataJsunit from './DataJsunit.test';
+import telSyncTest from './TelSyncTest.test';
 
 export default function testsuite() {
   dataJsunit();
@@ -26,4 +27,5 @@ export default function testsuite() {
   radioJsunit();
   radioSecondJsunit();
   callJsunit();
+  telSyncTest();
 }
