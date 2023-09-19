@@ -632,5 +632,23 @@ export default function Pointer_test() {
       console.info(`Pointer_PointerStyleTest_Exception_Test_002 exit`);
       done();
     })
+
+    /**
+     * @tc.number MultimodalInputPointer_Test_007
+     * @tc.name Pointer_PointerStyleSyncTest_Test_001
+     * @tc.desc Pointer interface PointerStyle exception test
+     */
+    it('Pointer_SetPointerStyleSyncTest_Test_001', 0, async function (done) {
+      console.info(`Pointer_SetPointerStyleSyncTest_Test_001 enter`);
+      try {
+        pointer.setPointerStyleSync(10, 10);
+      } catch (error) {
+        console.info(`Pointer_SetPointerStyleSyncTest_Test_001 success`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_WINDOWID_TYPE_MSG);
+      }
+      console.info(`Pointer_SetPointerStyleSyncTest_Test_001 exit`);
+      done();
+    })
   })
 }
