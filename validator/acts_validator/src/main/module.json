@@ -59,6 +59,9 @@
       },
       {
         "name": "ohos.permission.START_INVISIBLE_ABILITY"
+      },
+      {
+        "name": "ohos.permission.SYSTEM_FLOAT_WINDOW"
       }
     ]
   }

@@ -42,6 +42,10 @@ struct cameraOrientation {
   @State resolutionSelectVal: string = '' // 下拉框默认value
   @State @Watch('onChangeClickSerialPhotoVal') clickSerialPhotoVal: number = 0
   @State timer: number = -1
+  @State resolution: SelectOption[] = [] // 分辨率
+  @State screensObj: object = null
+  @State XWidth: string = '1%'
+  @State XHeight: string = '1%'
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.StepTips, this.name);
@@ -55,7 +59,7 @@ struct cameraOrientation {
       if (this.clickSerialPhotoVal == 10) {
         this.onChangeCamera()
       }
-      if (this.clickSerialPhotoVal == 10 * this.cameraListLength){
+      if (this.clickSerialPhotoVal == 10 * this.cameraListLength) {
         clearInterval(this.timer)
         this.Vue = true
       }
@@ -63,8 +67,8 @@ struct cameraOrientation {
     }
   }
 
-  onChangeCamera(){
-    if (this.cameraListLength > 1){
+  onChangeCamera() {
+    if (this.cameraListLength > 1) {
       this.cameraDeviceIndex = Number(!this.cameraDeviceIndex)
       CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
         this.cameraListFn()
@@ -80,6 +84,29 @@ struct cameraOrientation {
     }
   }
 
+  // 设置宽高
+  // XWidth XHeight 左右布局的宽高
+  // screensObj  width height 屏幕宽高
+  // resolution 拍照分辨率
+  setXComponent() {
+    let res = String(this.resolution[this.clickFrequency].value)
+    let indexOf = res.indexOf('x')
+    let objW = Number(res.slice(0, indexOf)) // 拍照分辨率
+    let objH = Number(res.slice(indexOf + 1)) // 拍照分辨率
+    Logger.info(this.tag, `setXComponent screensObj w` + JSON.stringify(this.screensObj))
+    // @ts-ignore
+    Logger.info(this.tag, `setXComponent this.screensObj.width  w` + JSON.stringify(this.screensObj[0].width))
+    Logger.info(this.tag, `setXComponent objW` + JSON.stringify(objW))
+    // @ts-ignore
+    let w = (this.screensObj[this.screensObj.length-1].width * 0.4) / objW
+    Logger.info(this.tag, `setXComponent w` + JSON.stringify(w))
+    // @ts-ignore
+    this.XWidth = String(this.screensObj[this.screensObj.length-1].width * 0.4) + "px"
+    Logger.info(this.tag, `setXComponent XWidth` + JSON.stringify(this.XWidth))
+    this.XHeight = String(objH * w) + "px"
+    Logger.info(this.tag, `setXComponent XHeight` + JSON.stringify(this.XHeight))
+  }
+
   handleTakePicture = (assetUri: string) => {
     this.assetUri = assetUri
     Logger.info(this.tag, `takePicture end, assetUri: ${this.assetUri}`)
@@ -87,7 +114,7 @@ struct cameraOrientation {
 
   onPageShow() {
     Logger.info(this.tag, `takePicture end, assetUri`)
-	// @ts-ignore
+    // @ts-ignore
     this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
     CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
       this.cameraListFn()
@@ -116,66 +143,73 @@ struct cameraOrientation {
         Text('hello').fontColor(Color.White).visibility(Visibility.Hidden)
       }.backgroundColor(Color.Black).height('10%').width('100%').justifyContent(FlexAlign.SpaceBetween)
 
-      Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+      Scroll() {
         Column() {
-          XComponent({
-            id: 'componentId',
-            type: 'surface',
-            controller: this.mXComponentController
-          })
-            .onLoad(async () => {
-              Logger.info(this.tag, 'onLoad is called')
-			  // @ts-ignore
-              this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
-              Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
-              CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-                this.cameraListFn()
+          Flex({ alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+            Column() {
+              XComponent({
+                id: 'componentId',
+                type: 'surface',
+                controller: this.mXComponentController
               })
+                .onLoad(async () => {
+                  Logger.info(this.tag, 'onLoad is called')
+                  // @ts-ignore
+                  this.surfaceId = this.mXComponentController.getXComponentSurfaceId()
+                  Logger.info(this.tag, `onLoad surfaceId: ${this.surfaceId}`)
+                  CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                    this.screensObj = CameraService.screensObj
+                    this.resolution = CameraService.photoResolution
+                    this.cameraListFn()
+                    this.setXComponent()
+                  })
+                })
+                .size({ width: '100%', height: '100%' })
+              Text('预览').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: this.XWidth, height: this.XHeight })
+
+            Column() {
+              Image(this.assetUri || '').size({ width: '100%', height: '100%' }).objectFit(ImageFit.Fill)
+              Text('图片').fontSize('20fp').fontColor(Color.White)
+            }.size({ width: this.XWidth, height: this.XHeight })
+          }.width('100%').height('50%')
+
+          Flex({ direction: FlexDirection.Column }) {
+            Select(this.cameraList)
+              .selected(this.cameraDeviceIndex)
+              .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
+              .font({ size: 16, weight: 500 })
+              .fontColor(Color.White)
+              .selectedOptionBgColor(Color.Black)
+              .optionBgColor(Color.Black)
+              .selectedOptionFont({ size: 16, weight: 400 })
+              .optionFont({ size: 16, weight: 400 })
+              .onSelect((index: number) => {
+                this.cameraDeviceIndex = index
+                CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
+                  this.cameraListFn()
+                })
+              })
+              .backgroundColor(Color.Black)
+            Text(`提示：`).fontSize('16fp').fontColor(Color.White)
+            Text(`期望拍摄${this.cameraListLength * 10}张照片，实际拍摄${this.clickSerialPhotoVal}张，如果一致请选择pass，否则选择fail`)
+              .fontSize('16fp').fontColor(Color.White)
+          }.size({ width: '80%', height: '25%' })
+
+          Button('拍照')
+            .enabled(this.isEnabled)
+            .opacity(this.isEnabled ? 1 : 0.4)
+            .width('50%')
+            .height('5%')
+            .backgroundColor(0x317aff)
+            .onClick(async () => {
+              this.isEnabled = false
+              this.timer = setInterval(() => {
+                this.clickSerialPhotoVal++
+              }, 1000)
             })
-            .size({ width: '100%', height: '100%' })
-          Text('预览').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '40%', height: '60%' })
-
-        Column() {
-          Image(this.assetUri || '').size({ width: '100%', height: '100%' }).border({ width: 1 })
-          Text('图片').fontSize('20fp').fontColor(Color.White)
-        }.size({ width: '40%', height: '60%' })
-      }.width('100%').height('50%')
-
-      Flex({ direction: FlexDirection.Column }) {
-        Select(this.cameraList)
-          .selected(this.cameraDeviceIndex)
-          .value(this.cameraDeviceIndex ? 'Camera 1' : 'Camera 0')
-          .font({ size: 16, weight: 500 })
-          .fontColor(Color.White)
-          .selectedOptionBgColor(Color.Black)
-          .optionBgColor(Color.Black)
-          .selectedOptionFont({ size: 16, weight: 400 })
-          .optionFont({ size: 16, weight: 400 })
-          .onSelect((index: number) => {
-            this.cameraDeviceIndex = index
-            CameraService.initCamera(this.surfaceId, this.cameraDeviceIndex).then(() => {
-              this.cameraListFn()
-            })
-          })
-          .backgroundColor(Color.Black)
-        Text(`提示：`).fontSize('16fp').fontColor(Color.White)
-        Text(`期望拍摄${this.cameraListLength*10}张照片，实际拍摄${this.clickSerialPhotoVal}张，如果一致请选择pass，否则选择fail`)
-          .fontSize('16fp').fontColor(Color.White)
-      }.size({ width: '80%', height: '25%' })
-
-      Button('拍照')
-        .enabled(this.isEnabled)
-        .opacity(this.isEnabled ? 1 : 0.4)
-        .width('50%')
-        .height('5%')
-        .backgroundColor(0x317aff)
-        .onClick(async () => {
-          this.isEnabled = false
-          this.timer = setInterval(() => {
-            this.clickSerialPhotoVal++
-          }, 1000)
-        })
+        }
+      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
 
       CustomContainer({
         title: this.name,
@@ -187,9 +221,10 @@ struct cameraOrientation {
       }).height('10%').width('100%')
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
-  onBackPress(){
+
+  onBackPress() {
     router.replaceUrl({
-      url:'pages/Camera/Camera_index',
+      url: 'pages/Camera/Camera_index',
     })
   }
 }
