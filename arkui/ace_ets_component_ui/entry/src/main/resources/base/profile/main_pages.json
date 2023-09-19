@@ -103,7 +103,6 @@
 		"MainAbility/pages/overlay",
 		"MainAbility/pages/Panel",
 		"MainAbility/pages/GridCallbackPage",
-		"MainAbility/pages/lifecycle"
 		
     ]
 }
