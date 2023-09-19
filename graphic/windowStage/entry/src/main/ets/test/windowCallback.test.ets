@@ -57,7 +57,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       on: false,
       typeStr: '',
     };
-    var newWindowObj = null;
     beforeAll(function () {
       appWindowTypeArr = Object.keys(appWindowTypeDic);
       systemWindowTypeArr = Object.keys(systemWindowTypeDic);
@@ -68,24 +67,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       console.log('beforeall ohosWindow.windowType' + JSON.stringify(ohosWindow.WindowType))
     })
     beforeEach(function () {
-    })
-    afterEach(async function (done) {
-      windowCount++;
-      console.log('jsunittest afterEach listenerData:' + JSON.stringify(listenerData));
-      if (listenerData.on) {
-        listenerData.on = false;
-        if (listenerData.typeStr === 'systemBarTintChange') {
-          console.log('jsunittest systemBarTintChange start on');
-          console.log('jsunittest systemBarTintChange end off listenerData.typeStr==' + JSON.stringify(listenerData.typeStr));
-          ohosWindow.off(listenerData.typeStr);
-          console.log('jsunittest systemBarTintChange end off');
-        } else if (newWindowObj) {
-          newWindowObj.off(listenerData.typeStr);
-          console.log('jsunittest newWindowObj listenerData.typeStr:' + JSON.stringify(listenerData.typeStr));
-        }
-        await sleep(3000);
-      }
-      done();
     })
     afterAll(function () {
     })
@@ -1008,6 +989,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
      * @tc.desc Verify whether the change of avoidance area and change monitoring can be turned on normally
      */
     it('listenerTest5', 0, async function (done) {
+      await sleep(1000)
       let caseName = 'listenerTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let listenerOnFlag = false;
@@ -1044,6 +1026,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         expect().assertFail()
       });
       expect(!!tempWnd).assertTrue();
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err) => {
+        console.error('Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
       tempWnd.on('systemAvoidAreaChange', avoidAreaData => {
         if (listenerOnFlag === true) {
           console.log(msgStr + 'tempWnd.on systemAvoidAreaChange, listenerOnFlag : ' + listenerOnFlag);
@@ -1078,7 +1065,6 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let baseWndType = 1;
       let windowId = 'setWindowTypeTest3';
       console.log(msgStr + 'begin');
-      console.log(msgStr + 'newWindowObj 2: ' + JSON.stringify(newWindowObj));
       let tempWnd = null
       let loopCount1 = systemWindowTypeArr;
       console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
