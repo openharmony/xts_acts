@@ -22,4 +22,4 @@
 using namespace std;
 using namespace testing::ext;
 using namespace OHOS;
-static  SHRINK_HWTEST_F(ActsTexture0006TS, TCswizzlecomponentmapping "dEQP-VK.texture.swizzle.component_mapping.*");
+static  SHRINK_HWTEST_F(ActsTexture0006TS, TCswizzlecomponentmapping, "dEQP-VK.texture.swizzle.component_mapping.*");
