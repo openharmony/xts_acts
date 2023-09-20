@@ -128,24 +128,23 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       };
       if (useSoftware) {
         await publicAgreeFunc(srcKeyAliesFirst, srcKeyAliesSecond, HuksOptions63kb, huksOptionsFinish, 'finish', false);
+        //AES check
+        // use the final key to cipher test
+        let IV = '0000000000000000';
+        let huksOptionsCipher = {
+          properties: new Array(
+            HuksAgreeDH.HuksKeyALGORITHMAES,
+            HuksAgreeDH.HuksKeySIZE256,
+            HuksAgreeDH.HuksKeyPurposeENCRYPTDECRYPT,
+            HuksAgreeDH.HuksKeyDIGESTNONE,
+            HuksAgreeDH.HuksKeyPADDINGNONE,
+            HuksAgreeDH.HuksKeyBLOCKMODECBC,
+            { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) },
+          ),
+        };
+        let res = await checkAESChiper(srcKeyAliesFirst + 'final', srcKeyAliesSecond + 'final', huksOptionsCipher);
+        expect(res).assertTrue();
       };
-
-      //AES check
-      // use the final key to cipher test
-      let IV = '0000000000000000';
-      let huksOptionsCipher = {
-        properties: new Array(
-          HuksAgreeDH.HuksKeyALGORITHMAES,
-          HuksAgreeDH.HuksKeySIZE256,
-          HuksAgreeDH.HuksKeyPurposeENCRYPTDECRYPT,
-          HuksAgreeDH.HuksKeyDIGESTNONE,
-          HuksAgreeDH.HuksKeyPADDINGNONE,
-          HuksAgreeDH.HuksKeyBLOCKMODECBC,
-          { tag: HksTag.HKS_TAG_IV, value: stringToUint8Array(IV) },
-        ),
-      };
-      let res = await checkAESChiper(srcKeyAliesFirst+ 'final', srcKeyAliesSecond + 'final',huksOptionsCipher);
-      expect(res).assertTrue();
       done();
     });
 
