@@ -194,7 +194,7 @@ struct cameraOrientation {
               this.onChangeTake()
             })
         }
-      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
+      }.height('80%')
 
       CustomContainer({
         title: this.name,
