@@ -459,7 +459,7 @@ export default function audioCapturer() {
             await sleep(100);
             await button.click();
         }
-    
+
         beforeAll(async function () {
             await getPermission();
             await driveFn();
@@ -867,6 +867,57 @@ export default function audioCapturer() {
                 expect(audioCapPromise.state).assertEqual(4);
             } catch (err) {
                 console.log(`${Tag} err : ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_SYNC_0100
+         *@tc.name      : AudioCapturer-get_buffer_size_sync
+         *@tc.desc      : AudioCapturer with state stopped
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 2
+         */
+        it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_SYNC_0100', 2, async function (done) {
+            let AudioStreamInfo = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_2,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+            let AudioCapturerInfo = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: AudioStreamInfo,
+                capturerInfo: AudioCapturerInfo
+            }
+            let audioCapPromise;
+            try {
+                audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
+            } catch (err) {
+                console.log(`${Tag} createAudioCapturer err : ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+            try {
+                await audioCapPromise.start();
+                expect(audioCapPromise.state).assertEqual(audio.AudioState.STATE_RUNNING);
+                let bufferSize = audioCapPromise.getBufferSizeSync();
+                console.info(`${Tag} AudioFrameworkRecLog: buffer size:  ${JSON.stringify(bufferSize)}`);
+            } catch (err) {
+                console.log(`${Tag} start-getBufferSizeSync err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            try {
+                await audioCapPromise.release();
+                expect(audioCapPromise.state).assertEqual(audio.AudioState.STATE_RELEASED);
+            } catch (err) {
+                console.log(`${Tag} release err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             }
             done();
@@ -2103,6 +2154,56 @@ export default function audioCapturer() {
         })
 
         /**
+                 *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_SYNC_0100
+                 *@tc.name      : AudioCapturer-GET_AUDIO_TIME_SYNC
+                 *@tc.desc      : AudioCapturer GET_AUDIO_TIME_SYNC
+                 *@tc.size      : MEDIUM
+                 *@tc.type      : Function
+                 *@tc.level     : Level 2
+                 */
+        it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_SYNC_0100', 2, async function (done) {
+            let AudioStreamInfo = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_2,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+            let AudioCapturerInfo = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: AudioStreamInfo,
+                capturerInfo: AudioCapturerInfo
+            }
+
+            let audioCapPromise;
+            try {
+                audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
+            } catch (err) {
+                console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+                return done();
+            }
+            try {
+                await audioCapPromise.start();
+                let audioTime = audioCapPromise.getAudioTimeSync();
+                console.log(`${Tag} audioTime: ${JSON.stringify(audioTime)}`)
+                expect(audioTime).assertLarger(0);
+            } catch (err) {
+                console.log(`${Tag} start-getAudioTimeSync err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            try {
+                await audioCapPromise.release();
+            } catch (err) {
+                console.log(`${Tag} err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+
+        /**
          *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_0100
          *@tc.name      : AudioCapturer-GET_AUDIO_TIME
          *@tc.desc      : AudioCapturer createAudioCapturer->stop->release
@@ -2199,6 +2300,56 @@ export default function audioCapturer() {
             } catch (err) {
                 console.log(`${Tag} re-release err: ${JSON.stringify(err)}`);
                 expect(true).assertTrue();
+            }
+            done();
+        })
+/**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_SYNC_0100
+         *@tc.name      : getStreamInfoSync
+         *@tc.desc      : record audio with parameter set 1
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 2
+         */
+         it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_SYNC_0100', 2, async function (done) {
+            let audioStreamInfo44100 = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_2,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+
+            let audioCapturerInfo44100 = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: audioStreamInfo44100,
+                capturerInfo: audioCapturerInfo44100,
+            }
+
+            let audioCap;
+            try {
+                audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+            } catch (err) {
+                console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+                return done();
+            }
+
+            try {
+                let audioParamsGet = audioCap.getStreamInfoSync();
+                console.info(`${Tag} AudioFrameworkRecLog: Capturer getStreamInfoSync:${JSON.stringify(audioParamsGet)}`);
+            } catch (err) {
+                console.log(`${Tag} getStreamInfoSync err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+
+            try {
+                await audioCap.release();
+            } catch (err) {
+                console.log(`${Tag} release err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
             }
             done();
         })
@@ -2445,6 +2596,58 @@ export default function audioCapturer() {
             try {
                 let audioParamsGet = await audioCap.getCapturerInfo();
                 console.info(`${Tag} AudioFrameworkRecLog: Capturer CapturerInfo: ${JSON.stringify(audioParamsGet)}`);
+            } catch (err) {
+                console.log(`${Tag} getStreamInfo err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+
+            try {
+                await audioCap.release();
+            } catch (err) {
+                console.log(`${Tag} release err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            done();
+        })
+
+        /**
+                 *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO__SYNC_0400
+                 *@tc.name      : getCapturerInfoSync
+                 *@tc.desc      : getCapturerInfoSync
+                 *@tc.size      : MEDIUM
+                 *@tc.type      : Function
+                 *@tc.level     : Level 2
+                 */
+        it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO__SYNC_0400', 2, async function (done) {
+            let audioStreamInfo44100 = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_2,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+
+            let audioCapturerInfo44100 = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: audioStreamInfo44100,
+                capturerInfo: audioCapturerInfo44100,
+            }
+
+            let audioCap;
+            try {
+                audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+            } catch (err) {
+                console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+                return done();
+            }
+
+            try {
+                let audioParamsGet = audioCap.getCapturerInfoSync();
+                console.info(`${Tag} AudioFrameworkRecLog: Capturer CapturerInfo: ${JSON.stringify(audioParamsGet)}`);
+                expect(true).assertTrue();
             } catch (err) {
                 console.log(`${Tag} getStreamInfo err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
@@ -3114,6 +3317,50 @@ export default function audioCapturer() {
                 console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
                 expect(false).assertTrue();
             }
+            done();
+        })
+
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_SYNC_0300
+         *@tc.name      : AudioCapturer - getAudioStreamIdSync
+         *@tc.desc      : AudioCapturer - getAudioStreamIdSync
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GET_AUDIO_STREAM_ID_SYNC_0300', 0, async function (done) {
+            let AudioStreamInfo = {
+                samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+                channels: audio.AudioChannel.CHANNEL_1,
+                sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+                encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+            }
+            let AudioCapturerInfo = {
+                source: audio.SourceType.SOURCE_TYPE_MIC,
+                capturerFlags: 0
+            }
+            let AudioCapturerOptions = {
+                streamInfo: AudioStreamInfo,
+                capturerInfo: AudioCapturerInfo
+            }
+            let audioCapPromise = null;
+            try {
+                await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
+                     audioCapPromise = data;
+                    console.info('AudioCapturer Created : Success : Stream Type: SUCCESS');
+                    let StreamIdSync = audioCapPromise.getAudioStreamIdSync();
+                    console.info(`${Tag}: getAudioStreamId : Converted: ${StreamIdSync}`);
+                    expect(true).assertTrue();
+                }).catch((err) => {
+                    console.error(`AudioCapturer Created : ERROR : ${err}`);
+                    expect(false).assertTrue();
+                });
+
+            } catch (err) {
+                console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
+                expect(false).assertTrue();
+            }
+            await audioCapPromise.release();
             done();
         })
     })

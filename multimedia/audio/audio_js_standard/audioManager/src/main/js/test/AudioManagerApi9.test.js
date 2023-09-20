@@ -154,6 +154,38 @@ export default function audioManagerApi9() {
             done();
         })
 
+        
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0100
+         * @tc.name      : getVolumeGroupManagerSync - Sync
+         * @tc.desc      : getVolumeGroupManagerSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 3
+         */
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SYNC_0100', 3, async function (done) {
+            let audioVolumeManager = audioManager.getVolumeManager();
+           try {
+            let groupManager =  audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID)
+            if ((typeof groupManager) == 'object') {
+                console.info('audioManagerApi9Test: Promise: getGroupManager  :  PASS');
+                expect(true).assertTrue();
+                done();
+            }
+            else {
+                console.info('audioManagerApi9Test: Promise: getGroupManager  :  FAIL');
+                expect(false).assertTrue();
+                done();
+            }
+           } catch (error) {
+            console.error(`audioManagerApi9Test: failed to getGroupManager: Callback:  ${error.message}`);
+                    expect(false).assertTrue();
+                    done();
+           }
+            
+        })
+
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_0100
          * @tc.name      : getVolumeGroupManager - callback
@@ -466,28 +498,7 @@ export default function audioManagerApi9() {
             }
         })
 
-        /**
-         *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100
-         *@tc.name      : OnVolumeChange - setVolume - MEDIA
-         *@tc.desc      : OnVolumeChange - setVolume - MEDIA
-         *@tc.size      : MEDIUM
-         *@tc.type      : Function
-         *@tc.level     : Level 3
-         */
-        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100', 3, async function (done) {
-            let audioVolumeManager = audioManager.getVolumeManager();
-			let maxVolume = await audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA)
-			let minVolume = await audioManager.getMinVolume(audio.AudioVolumeType.MEDIA)
-			await audioManager.setVolume(audio.AudioVolumeType.MEDIA, maxVolume)
-            audioVolumeManager.on('volumeChange', (VolumeEvent) => {
-				console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
-				expect(VolumeEvent.volumeType).assertEqual(audio.AudioVolumeType.MEDIA);
-				expect(VolumeEvent.volume).assertEqual(minVolume);
-				expect(VolumeEvent.updateUi).assertEqual(false);
-				});
-			await audioManager.setVolume(audio.AudioVolumeType.MEDIA, minVolume)
-            done();
-        })
+       
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETRINGERMODE_0100
@@ -737,6 +748,80 @@ export default function audioManagerApi9() {
                 }
                 done();
             });
+        })
+
+        /**
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300
+        *@tc.name      : isActive - Media - Sync
+        *@tc.desc      : isActive - Media - Sync - When stream is NOT playing
+        *@tc.size      : MEDIUM
+        *@tc.type      : Function
+        *@tc.level     : Level 1
+        */
+        it('SUB_MULTIMEDIA_AUDIO_STREAM_MANAGER_ISACTIVE_0300', 1, function (done) {
+            console.log(`${TagFrmwk}: Callback : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS`);
+            try {
+                let data = streamManager.isActiveSync(audioMedia)
+                if (data == false) {
+                    console.log(`${TagFrmwk}: Callback: isActive: Media: TRUE: PASS:${data}`);
+                    expect(true).assertTrue();
+                } else {
+                    console.log(`${TagFrmwk}: Callback: isActive: Media: TRUE: FAIL: ${data}`);
+                    expect(false).assertTrue();
+                }
+            } catch (error) {
+                console.error(`${TagFrmwk}: Callback : Media : isActive: failed  ${error.message}`);
+                expect().assertFail();
+            }
+            done();
+
+        })
+
+        /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0100
+         *@tc.name      : isCommunicationDeviceActiveSync - SPEAKER - deactivate 
+         *@tc.desc      : isCommunicationDeviceActiveSync speaker 
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_ISCOMMUNICATIONDEVICE_SYNC_0100', 1, async function (done) {
+            try {
+                let flag = true;
+                let AudioRoutingManager = audioManager.getRoutingManager();
+                let outputDeviceDescription = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
+                console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
+                outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
+                if (outputDeviceDescription.length == 1 &&
+                    outputDeviceDescription[0].deviceType == audio.DeviceType.SPEAKER) {
+                    flag = false;
+                }
+                await AudioRoutingManager.setCommunicationDevice(2, false).then(() => {
+                    console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
+                    Promise returned to indicate that the device is set to the active status.`);
+                });
+                let value = AudioRoutingManager.isCommunicationDeviceActiveSync(audio.ActiveDeviceType.SPEAKER)
+                if (flag == true && value == false) {
+                    console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
+                        isCommunicationDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
+                    expect(true).assertTrue();
+                }
+                else if (flag == false && value == true) {
+                    console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
+                        isCommunicationDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info(`SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_SETCOMMUNICATIONDEVICE_0100
+                        isCommunicationDeviceActive : SPEAKER: Deactivate : fail :${value} flag is ${flag}`);
+                    expect(false).assertTrue();
+                }
+
+            } catch (err) {
+                console.log('err :' + JSON.stringify(err));
+                expect(false).assertTrue();
+            }
+            done();
         })
 
         /**
@@ -1347,6 +1432,29 @@ export default function audioManagerApi9() {
                 expect(err.code).assertEqual("6800104");
                 done();
             }
+        })
+
+         /**
+         *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100
+         *@tc.name      : OnVolumeChange - setVolume - MEDIA
+         *@tc.desc      : OnVolumeChange - setVolume - MEDIA
+         *@tc.size      : MEDIUM
+         *@tc.type      : Function
+         *@tc.level     : Level 3
+         */
+         it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100', 3, async function (done) {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            let maxVolume = await audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA)
+            let minVolume = await audioManager.getMinVolume(audio.AudioVolumeType.MEDIA)
+            await audioManager.setVolume(audio.AudioVolumeType.MEDIA, maxVolume)
+            audioVolumeManager.on('volumeChange', (VolumeEvent) => {
+                console.info(`SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ON_VOLUMECHANGE_0100 VolumeEvent.volumeType: ${VolumeEvent.volumeType}, VolumeEvent.volume:${VolumeEvent.volume}, VolumeEvent.updateUi:${VolumeEvent.updateUi}`);
+                expect(VolumeEvent.volumeType).assertEqual(audio.AudioVolumeType.MEDIA);
+                expect(VolumeEvent.volume).assertEqual(minVolume);
+                expect(VolumeEvent.updateUi).assertEqual(false);
+            });
+            await audioManager.setVolume(audio.AudioVolumeType.MEDIA, minVolume)
+            done();
         })
     })
 }

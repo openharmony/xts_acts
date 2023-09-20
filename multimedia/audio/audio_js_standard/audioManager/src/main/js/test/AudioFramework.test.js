@@ -24,6 +24,8 @@ describe('audioFramework', function () {
     let TagFrmwk = "AudioFrameworkTest";
     console.info(`${TagFrmwk}: Create AudioManger Object JS Framework`);
     let audioManager = null;
+    let audioVolumeManager = null;
+    let audioVolumeGroupManager = null;
     let dRValue = null;
     let dTValue = null;
     let devId = null;
@@ -40,7 +42,7 @@ describe('audioFramework', function () {
     let highVol = 14;
     let outOfRangeVol = 28;
     let longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
-    function getAudioManager() {
+    async function getAudioManager() {
         audioManager = audio.getAudioManager();
         if (audioManager != null) {
             console.info(`${TagFrmwk}: getAudioManger : PASS`);
@@ -48,6 +50,18 @@ describe('audioFramework', function () {
         else {
             console.info(`${TagFrmwk}: getAudioManger : FAIL`);
         }
+    }
+
+    async function getVolumeGroupManager(){
+        audioVolumeManager = await audioManager.getVolumeManager();
+        audioVolumeGroupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID)
+            if (audioVolumeGroupManager != null) {  
+              console.info(`${TagFrmwk}: getVolumeGroupManager : PASS`);
+            }else{
+                console.info(`${TagFrmwk}: getVolumeGroupManager : FAIL`);
+            }
+            
+          
     }
 
     function sleep(ms) {
@@ -120,6 +134,7 @@ describe('audioFramework', function () {
         await getPermission();
         await driveFn();
         await getAudioManager();
+        await getVolumeGroupManager();
         console.info('TestLog: Start Testing AudioFrameworkTest Interfaces');
     })
 
@@ -137,6 +152,190 @@ describe('audioFramework', function () {
         console.info(`${TagFrmwk}: afterAll: Test suite-level cleanup condition`);
     })
 
+
+     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUMESYNC_0100
+     *@tc.name      : getVolumeSync - Media - Sync
+     *@tc.desc      : getVolumeSync - Media - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETVOLUMESYNC_0100', 1, async function (done) {
+        try {
+            await audioManager.setVolume(audioMedia, lowVol);
+            console.info(`${TagFrmwk}: Media setVolume promise: successful`);
+            let data =  audioVolumeGroupManager.getVolumeSync(audioMedia);
+            // await sleep(100);
+            // if (data != null) {
+            //     console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+            //     expect(true).assertTrue();
+            //     done();
+            // } else {
+            //     console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+            //     expect(false).assertTrue();
+            //     done();
+            // }
+            if (data == lowVol) {
+                console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (err) {
+            console.log('err :' + JSON.stringify(err.message));
+            expect(false).assertTrue();
+            done();
+        }
+        
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUMESYNC_0200
+     *@tc.name      : getMinVolumeSync - Media - Sync
+     *@tc.desc      : getMinVolumeSync - Media - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUMESYNC_0200', 1, async function (done) {
+        try {
+            let data =  audioVolumeGroupManager.getMinVolumeSync(audio.AudioVolumeType.MEDIA);
+            if (data == 0) {
+                console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (err) {
+            console.log('err :' + JSON.stringify(err.message));
+            expect(false).assertTrue();
+            done();
+        }
+        
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUMESYNC_0300
+     *@tc.name      : getMaxVolumeSync - Media - Sync
+     *@tc.desc      : getMaxVolumeSync - Media - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMAXVOLUMESYNC_0300', 1, async function (done) {
+        try {
+            let data =  audioVolumeGroupManager.getMaxVolumeSync(audio.AudioVolumeType.MEDIA);
+            if (data == 15) {
+                console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (err) {
+            console.log('err :' + JSON.stringify(err.message));
+            expect(false).assertTrue();
+            done();
+        }
+        
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMUTESYNC_0400
+     *@tc.name      : isMuteSync - Media - Sync
+     *@tc.desc      : isMuteSync - Media - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMUTESYNC_0400', 1, async function (done) {
+        try {
+            await audioManager.setVolume(audio.AudioVolumeType.MEDIA, 0);
+            let data =  audioVolumeGroupManager.isMuteSync(audio.AudioVolumeType.MEDIA);
+            if (data == true) {
+                console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (err) {
+            console.log('err :' + JSON.stringify(err.message));
+            expect(false).assertTrue();
+            done();
+        }
+        
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETRINGMODESYNC_0500
+     *@tc.name      : isMuteSync - Media - Sync
+     *@tc.desc      : isMuteSync - Media - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETRINGMODESYNC_0500', 1, async function (done) {
+        try {
+            let data =  audioVolumeGroupManager.getRingerModeSync(audio.AudioVolumeType.MEDIA);
+            if (data != null) {
+                console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (err) {
+            console.log('err :' + JSON.stringify(err.message));
+            expect(false).assertTrue();
+            done();
+        }
+        
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMICROPHONEMUTESYNC_0600
+     *@tc.name      : isMuteSync - Media - Sync
+     *@tc.desc      : isMuteSync - Media - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ISMICROPHONEMUTESYNC_0600', 1, async function (done) {
+        try {
+            await audioVolumeGroupManager.setMicrophoneMute(true).then(() => {
+                console.info('Promise returned to indicate that the microphone is muted.');
+              });
+            let data =  audioVolumeGroupManager.isMicrophoneMuteSync();
+            if (data == true) {
+                console.info(`${TagFrmwk}: Media getVolumeSync : PASS :${data}`);
+                expect(true).assertTrue();
+                done();
+            } else {
+                console.info(`${TagFrmwk}: Media getVolumeSync : FAIL :${data}`);
+                expect(false).assertTrue();
+                done();
+            }
+        } catch (err) {
+            console.log('err :' + JSON.stringify(err.message));
+            expect(false).assertTrue();
+            done();
+        }
+        
+    })
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOMANAGER_0200
      *@tc.name      : getAudioManger - Multiple instance
@@ -1053,21 +1252,25 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0400', 2, function (done) {
-        audioManager.getMaxVolume(audioRingtone, (err, value) => {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0400', 2, async function (done) {
+       await audioManager.getMaxVolume(audioRingtone, (err, value) => {
             if (err) {
                 console.error(`${TagFrmwk}: callback : Ringtone : failed to getMaxVolume ${err.message}`);
                 expect(false).assertTrue();
+                done();
             } else if (value == maxVol) {
                 console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : PASS:${value}`);
                 expect(true).assertTrue();
+                done();
             } else {
                 console.info(`${TagFrmwk}: callback : Ringtone:  getMaxVolume : FAIL: ${value}`);
                 expect(false).assertTrue();
+                done();
             }
-            done();
+            
         });
     })
+  
 
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0500
@@ -4912,6 +5115,30 @@ describe('audioFramework', function () {
     it('SUB_MULTIMEDIA_AUDIO_SAMPLE_FORMAT_F32LE_0100', 2, async function (done) {
         expect(audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE).assertEqual(4);
         await sleep(50);
+        done();
+    })
+
+     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_SYNC_0100
+     *@tc.name      : getDevices - OUTPUT device - getDevicesSync - ENAME
+     *@tc.desc      : getDevices - OUTPUT device - getDevicesSync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_SYNC_0100', 2, async function (done) {
+        let AudioRoutingManager = audioManager.getRoutingManager();
+        let value = AudioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
+        console.info(`${TagFrmwk}: Promise: getDevices OUTPUT_DEVICES_FLAG`);
+        value.forEach(displayDeviceProp);
+        if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+            cMask != null) {
+            console.info(`${TagFrmwk}: Promise: getDevices:OUTPUT_DEVICES_FLAG : PASS`);
+            expect(true).assertTrue();
+        } else {
+            console.info(`${TagFrmwk}: Promise: getDevices:OUTPUT_DEVICES_FLAG : FAIL`);
+            expect(false).assertTrue();
+        }
         done();
     })
 })
