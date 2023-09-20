@@ -19,10 +19,12 @@ import * as asyCommon from "./utils/common/publicDoSpec";
 import cryptoFramework from "@ohos.security.cryptoFramework";
 
 export default function SecurityKeyAgreementJsunit() {
-  describe("SecurityKeyAgreementJsunit", function () {
-    console.log("##########start SecurityKeyAgreementJsunit##########");
-    beforeAll(function () {});
-    afterEach(function () {});
+    describe("SecurityKeyAgreementJsunit", function () {
+        console.log("##########start SecurityKeyAgreementJsunit##########");
+        beforeAll(function () {
+        });
+        afterEach(function () {
+        });
 
     /**
      * @tc.number Security_CryptoFramework_KeyAgreement_Func_0100

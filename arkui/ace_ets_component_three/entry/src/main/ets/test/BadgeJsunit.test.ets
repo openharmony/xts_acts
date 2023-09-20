@@ -165,7 +165,7 @@ export default function badgeJsunit() {
       console.info("[testBadge05] component objNew is: " + JSON.stringify(objNew));
       let style = JSON.parse(objNew.$attrs.style);
       console.info("[testBadge05] component style is: " + JSON.stringify(style));
-      expect(style.fontSize).assertEqual('121212121.00fp');
+      expect(style.fontSize).assertEqual('10.00vp');
       done();
     });
 

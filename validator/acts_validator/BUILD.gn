@@ -22,7 +22,7 @@ ohos_js_hap_suite("acts_validator_test") {
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsValidatorTest"
+  hap_name = "validator"
 }
 ohos_app_scope("acts_validator_app_profile") {
   app_profile = "./AppScope/app.json"

@@ -99,7 +99,7 @@ export default function globalStageTest() {
         }
         catch(e){
             console.log('getStringByNameSync_stagetest_0100 2' + e.code);
-            console.log('getStringByNameSync_stagetest_0100 3' + e.code);
+            console.log('getStringByNameSync_stagetest_0100 3' + e.message);
         }
         done();
         })
@@ -120,7 +120,7 @@ export default function globalStageTest() {
         }
         catch(e){
             console.log('getStringByNameSync_stagetest_0200 2' + e.code);
-            console.log('getStringByNameSync_stagetest_0200 3' + e.code);
+            console.log('getStringByNameSync_stagetest_0200 3' + e.message);
         }
         done();
         })
@@ -489,6 +489,380 @@ export default function globalStageTest() {
             console.log('getColorSync_test_0100 ' + value);
             expect(value).assertEqual(4294967295);
             done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETRAWFDSYNC_STAGE_0100
+         * @tc.name      : getRawFdSync with path
+         * @tc.desc      : getRawFdSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getRawFdSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getRawFdSync('rawfiletest.xml');
+            console.log('getRawFdSync_stagetest_0100 1' + value.fd);
+            console.log('getRawFdSync_stagetest_0100 1' + value.offset);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getRawFdSync_stagetest_0100 2' + e.code);
+            console.log('getRawFdSync_stagetest_0100 3' + e.message);
+        }
+        globalThis.yq.resourceManager.closeRawFdSync('rawfiletest.xml');
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETRAWFILELISTSYNC_STAGE_0100
+         * @tc.name      : getRawFileListSync with path
+         * @tc.desc      : getRawFileListSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getRawFileListSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getRawFileListSync('');
+            console.log('getRawFileListSync_stagetest_0100 1' + value);
+            console.log('getRawFileListSync_stagetest_0100 1' + value.length);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getRawFileListSync_stagetest_0100 2' + e.code);
+            console.log('getRawFileListSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETRAWFILECONTENTSYNC_STAGE_0100
+         * @tc.name      : getRawFileContentSync with path
+         * @tc.desc      : getRawFileContentSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getRawFileContentSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getRawFileContentSync('rawfiletest.xml');
+            console.log('getRawFileContentSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getRawFileContentSync_stagetest_0100 2' + e.code);
+            console.log('getRawFileContentSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETMEDIACONTENTSYNC_STAGE_0100
+         * @tc.name      : getMediaContentSync with res id
+         * @tc.desc      : getMediaContentSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getMediaContentSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getMediaContentSync(0x01000012);
+            console.log('getMediaContentSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getMediaContentSync_stagetest_0100 2' + e.code);
+            console.log('getMediaContentSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETMEDIACONTENTSYNC_STAGE_0200
+         * @tc.name      : getMediaContentSync with resource object
+         * @tc.desc      : getMediaContentSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getMediaContentSync_stagetest_0200', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getMediaContentSync({
+            bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x01000012});
+            console.log('getMediaContentSync_stagetest_0200 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getMediaContentSync_stagetest_0200 2' + e.code);
+            console.log('getMediaContentSync_stagetest_0200 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETMEDIACONTENTBASE64SYNC_STAGE_0100
+         * @tc.name      : getMediaContentBase64Sync with res id
+         * @tc.desc      : getMediaContentBase64Sync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getMediaContentBase64Sync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getMediaContentBase64Sync(0x01000012);
+            console.log('getMediaContentBase64Sync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getMediaContentBase64Sync_stagetest_0100 2' + e.code);
+            console.log('getMediaContentBase64Sync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETMEDIACONTENTBASE64SYNC_STAGE_0200
+         * @tc.name      : getMediaContentBase64Sync with resource object
+         * @tc.desc      : getMediaContentBase64Sync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getMediaContentBase64Sync_stagetest_0200', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getMediaContentBase64Sync({
+            bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x01000012});
+            console.log('getMediaContentBase64Sync_stagetest_0200 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getMediaContentBase64Sync_stagetest_0200 2' + e.code);
+            console.log('getMediaContentBase64Sync_stagetest_0200 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETPLURALSTRINGVALUESYNC_STAGE_0100
+         * @tc.name      : getPluralStringValueSync with res id
+         * @tc.desc      : getPluralStringValueSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getPluralStringValueSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getPluralStringValueSync(0x01000011);
+            console.log('getPluralStringValueSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getPluralStringValueSync_stagetest_0100 2' + e.code);
+            console.log('getPluralStringValueSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETPLURALSTRINGVALUESYNC_STAGE_0200
+         * @tc.name      : getPluralStringValueSync with resource object
+         * @tc.desc      : getPluralStringValueSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getPluralStringValueSync_stagetest_0200', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getPluralStringValueSync({
+            bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x01000011});
+            console.log('getPluralStringValueSync_stagetest_0200 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getPluralStringValueSync_stagetest_0200 2' + e.code);
+            console.log('getPluralStringValueSync_stagetest_0200 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETSTRINGARRAYVALUESYNC_STAGE_0100
+         * @tc.name      : getStringArrayValueSync with res id
+         * @tc.desc      : getStringArrayValueSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getStringArrayValueSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getStringArrayValueSync(0x0100000A);
+            console.log('getStringArrayValueSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getStringArrayValueSync_stagetest_0100 2' + e.code);
+            console.log('getStringArrayValueSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETSTRINGARRAYVALUESYNC_STAGE_0200
+         * @tc.name      : getStringArrayValueSync with resource object
+         * @tc.desc      : getStringArrayValueSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getStringArrayValueSync_stagetest_0200', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getStringArrayValueSync({
+            bundleName:"ohos.acts.globalstage",
+            moduleName:"phone",
+            id:0x0100000A});
+            console.log('getStringArrayValueSync_stagetest_0200 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getStringArrayValueSync_stagetest_0200 2' + e.code);
+            console.log('getStringArrayValueSync_stagetest_0200 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETPLURALSTRINGBYNAMESYNC_STAGE_0100
+         * @tc.name      : getPluralStringByNameSync with resource name
+         * @tc.desc      : getPluralStringByNameSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getPluralStringByNameSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getPluralStringByNameSync('plural_name', 2);
+            console.log('getPluralStringByNameSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getPluralStringByNameSync_stagetest_0100 2' + e.code);
+            console.log('getPluralStringByNameSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETMEDIABYNAMESYNC_STAGE_0100
+         * @tc.name      : getMediaByNameSync with resource name
+         * @tc.desc      : getMediaByNameSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getMediaByNameSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getMediaByNameSync('icon');
+            console.log('getMediaByNameSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getMediaByNameSync_stagetest_0100 2' + e.code);
+            console.log('getMediaByNameSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETMEDIABASE64BYNAMESYNC_STAGE_0100
+         * @tc.name      : getMediaBase64ByNameSync with resource name
+         * @tc.desc      : getMediaBase64ByNameSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getMediaBase64ByNameSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getMediaBase64ByNameSync('icon');
+            console.log('getMediaBase64ByNameSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getMediaBase64ByNameSync_stagetest_0100 2' + e.code);
+            console.log('getMediaBase64ByNameSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETSTRINGARRAYBYNAMESYNC_STAGE_0100
+         * @tc.name      : getStringArrayByNameSync with resource name
+         * @tc.desc      : getStringArrayByNameSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getStringArrayByNameSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getStringArrayByNameSync('sizeList');
+            console.log('getStringArrayByNameSync_stagetest_0100 1' + value);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getStringArrayByNameSync_stagetest_0100 2' + e.code);
+            console.log('getStringArrayByNameSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETCONFIGURATIONSYNC_STAGE_0100
+         * @tc.name      : getConfigurationSync
+         * @tc.desc      : getConfigurationSync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getConfigurationSync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getConfigurationSync();
+            console.log('getStringArrayByNameSync_stagetest_0100 1' + value.locale);
+            console.log('getStringArrayByNameSync_stagetest_0100 1' + value.direction);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getConfigurationSync_stagetest_0100 2' + e.code);
+            console.log('getConfigurationSync_stagetest_0100 3' + e.message);
+        }
+        done();
+        })
+
+        /**
+         * @tc.number    : SUB_GLOBAL_GETDEVICECAPABILITYSYNC_STAGE_0100
+         * @tc.name      : getDeviceCapabilitySync
+         * @tc.desc      : getDeviceCapabilitySync
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('getDeviceCapabilitySync_stagetest_0100', 0, async function (done) {
+        try{
+            let value = globalThis.yq.resourceManager.getDeviceCapabilitySync();
+            console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.screenDensity);
+            console.log('getDeviceCapabilitySync_stagetest_0100 1' + value.deviceType);
+            expect(value !== null).assertTrue();
+        }
+        catch(e){
+            console.log('getDeviceCapabilitySync_stagetest_0100 2' + e.code);
+            console.log('getDeviceCapabilitySync_stagetest_0100 3' + e.message);
+        }
+        done();
         })
 
         console.log('*************end globalStageTest*************');

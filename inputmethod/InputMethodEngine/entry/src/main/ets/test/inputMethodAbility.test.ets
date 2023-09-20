@@ -49,7 +49,7 @@ export default function inputMethodAbility() {
     }
     beforeAll(async (done)=>{
       display_info = display.getDefaultDisplaySync()
-      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${display_info.height*0.5}`
+      getFocusCmd = `uinput -T -c ${display_info.width*0.5}  ${ Math.round(display_info.height*0.4) }`
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
       inputServer.packageName = inputM.packageName;
@@ -2703,6 +2703,1107 @@ export default function inputMethodAbility() {
         commonEventManager.publish('test', commonEventPublishData, publishCallback);
       })
     });
+
+    it('Sub_Misc_inputMethod_getForward_sync_0200', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getForward_sync_0200"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0200 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 200
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getForward_sync_0201', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getForward_sync_0201"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getForward_sync_0201 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 201
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getBackward_sync_0210', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getBackward_sync_0210"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0210 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 210
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getBackward_sync_0211', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getBackward_sync_0211"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getBackward_sync_0211 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 211
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 220
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 221
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0230', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getEditorAttribute_sync_0230"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 230
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_getEditorAttribute_sync_0231', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_getEditorAttribute_sync_0231"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 231
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_moveCursor_sync_0240', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_moveCursor_sync_0240"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0240 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 240
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_moveCursor_sync_0241', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_moveCursor_sync_0241"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_moveCursor_sync_0241 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 241
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_deleteForward_sync_0250', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_deleteForward_sync_0250"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0250 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 250
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_deleteForward_sync_0251', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_deleteForward_sync_0251"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_deleteForward_sync_0251 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 251
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_deleteBackward_sync_0260', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_deleteBackward_sync_0260"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0260 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 260
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_deleteBackward_sync_0261', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_deleteBackward_sync_0261"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_deleteBackward_sync_0261 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 261
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_insertText_sync_0270', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_insertText_sync_0270"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0270 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 270
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_insertText_sync_0271', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_insertText_sync_0271"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_insertText_sync_0271 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 271
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_selectByRange_sync_0280', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_selectByRange_sync_0280"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0280 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 280
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_selectByRange_sync_0281', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_selectByRange_sync_0281"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_selectByRange_sync_0281 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 281
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_selectByMovement_sync_0290', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_selectByMovement_sync_0290"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0290 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 290
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
+    it('Sub_Misc_inputMethod_selectByMovement_sync_0291', 0, async function (done) {
+      function unSubscriberCallback (err){
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 unSubscriberCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback (err, data){
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriberCallback data:"
+        + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try{
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 end");
+            clearTimeout(t);
+            done();
+          }catch(err){
+            console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err){
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 publishCallback start");
+        if (err){
+          console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 publishCallback failed:" + JSON.stringify(err));
+        } else {
+          runCmd(getFocusCmd);
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_Misc_inputMethod_selectByMovement_sync_0291"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        subscriber = data;
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriber data:" + JSON.stringify(data));
+        commonEventManager.subscribe(subscriber, subscriberCallback);
+        console.info("====>Sub_Misc_inputMethod_selectByMovement_sync_0291 subscriber finish");
+
+        var commonEventPublishData = {
+          code: 291
+        }
+        commonEventManager.publish('test', commonEventPublishData, publishCallback);
+      })
+    });
+
 
   });
 };

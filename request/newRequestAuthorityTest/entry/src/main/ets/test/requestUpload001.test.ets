@@ -768,7 +768,7 @@ export default function requestUploadOnetJSUnitTest() {
      * @tc.level     : Level 2
      */
     it('SUB_Misc_REQUEST_Off_Upload_Completed_0010', 0, async function (done) {
-      console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Completed_0040 is starting-----------------------");
+      console.info("====>-----------------------SUB_Misc_REQUEST_Off_Upload_Completed_0010 is starting-----------------------");
       let config_ = config
       config_.mode = request.agent.Mode.FOREGROUND;
       try {
@@ -776,11 +776,11 @@ export default function requestUploadOnetJSUnitTest() {
         request.agent.create(globalThis.abilityContext, config_, async (err, task) => {
           let on_offCompletedCallback = (pro) => {
             flag = false;
-            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 on_offCompletedCallback flag: " + flag);
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 on_offCompletedCallback flag: " + flag);
           }
           try {
             if(err){
-              console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 create err: " + JSON.stringify(err));
+              console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 create err: " + JSON.stringify(err));
               expect().assertFail();
             }
             task.on('completed', on_offCompletedCallback);
@@ -789,22 +789,22 @@ export default function requestUploadOnetJSUnitTest() {
             await task.start();
             let t = setTimeout(async () => {
               try {
-                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 offCompleted success flag: " + flag);
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 offCompleted success flag: " + flag);
                 clearTimeout(t);
                 expect(flag).assertTrue();
               } catch (err) {
-                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 offCompleted fail err: " + JSON.stringify(err));
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 offCompleted fail err: " + JSON.stringify(err));
               }
               done();
             }, 100)
           } catch (err) {
-            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 catch err: " + JSON.stringify(err));
+            console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 catch err: " + JSON.stringify(err));
             await sleep(10);
             done();
           }
         });
       } catch (err) {
-        console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0040 create catch err: " + JSON.stringify(err));
+        console.info("====>SUB_Misc_REQUEST_Off_Upload_Completed_0010 create catch err: " + JSON.stringify(err));
         await sleep(10);
         done();
       }

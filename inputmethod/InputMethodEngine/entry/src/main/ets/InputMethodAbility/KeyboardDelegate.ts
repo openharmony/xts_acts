@@ -223,6 +223,86 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0180 event:' + data.event);
                     that.Sub_Misc_inputMethod_sendExtendAction_0180();
                     break;
+                case 200:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getForward_sync_0200 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getForward_sync_0200();
+                    break;
+                case 201:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getForward_sync_0201 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getForward_sync_0201();
+                    break;
+                case 210:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getBackward_sync_0210 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getBackward_sync_0210();
+                    break;
+                case 211:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getBackward_sync_0211 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getBackward_sync_0211();
+                    break;
+                case 220:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220();
+                    break;
+                case 221:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221();
+                    break;
+                case 230:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getEditorAttribute_sync_0230();
+                    break;
+                case 231:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 event:' + data.event);
+                    that.Sub_Misc_inputMethod_getEditorAttribute_sync_0231();
+                    break;
+                case 240:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0240 event:' + data.event);
+                    that.Sub_Misc_inputMethod_moveCursor_sync_0240();
+                    break;
+                case 241:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0241 event:' + data.event);
+                    that.Sub_Misc_inputMethod_moveCursor_sync_0241();
+                    break;
+                case 250:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_deleteForward_sync_0250 event:' + data.event);
+                    that.Sub_Misc_inputMethod_deleteForward_sync_0250();
+                    break;
+                case 251:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_deleteForward_sync_0251 event:' + data.event);
+                    that.Sub_Misc_inputMethod_deleteForward_sync_0251();
+                    break;
+                case 260:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_deleteBackward_sync_0260 event:' + data.event);
+                    that.Sub_Misc_inputMethod_deleteBackward_sync_0260();
+                    break;
+                case 261:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_deleteBackward_sync_0261 event:' + data.event);
+                    that.Sub_Misc_inputMethod_deleteBackward_sync_0261();
+                    break;
+                case 270:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_insertText_sync_0270 event:' + data.event);
+                    that.Sub_Misc_inputMethod_insertText_sync_0270();
+                    break;
+                case 271:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_insertText_sync_0271 event:' + data.event);
+                    that.Sub_Misc_inputMethod_insertText_sync_0271();
+                    break;
+                case 280:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_selectByRange_sync_0280 event:' + data.event);
+                    that.Sub_Misc_inputMethod_selectByRange_sync_0280();
+                    break;
+                case 281:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_selectByRange_sync_0281 event:' + data.event);
+                    that.Sub_Misc_inputMethod_selectByRange_sync_0281();
+                    break;
+                case 290:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0290 event:' + data.event);
+                    that.Sub_Misc_inputMethod_selectByMovement_sync_0290();
+                    break;
+                case 291:
+                    console.debug(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0291 event:' + data.event);
+                    that.Sub_Misc_inputMethod_selectByMovement_sync_0291();
+                    break;
             }
         }
 
@@ -1571,6 +1651,503 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_sendExtendAction_0180 sendExtendAction catch err:');
                 }
                 commoneventmanager.publish("Sub_Misc_inputMethod_sendExtendAction_0180", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getForward_sync_0200(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getForward_sync_0200 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getForward_sync_0200", commonEventPublishData, this.publishCallback);
+            } else {
+                let str =  InputClient.getForwardSync(1);
+                console.info(TAG + '====>Sub_Misc_inputMethod_getForward_sync_0200 getForwardSync str: ' + JSON.stringify(str));
+                if(typeof(str) === "string"){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getForward_sync_0200", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getForward_sync_0201(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getForward_sync_0201 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getForward_sync_0201", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.getForwardSync("1");
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getForward_sync_0201 getForwardSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getForward_sync_0201 getForwardSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getForward_sync_0201", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getBackward_sync_0210(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getBackward_sync_0210 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getBackward_sync_0210", commonEventPublishData, this.publishCallback);
+            } else {
+                let str =  InputClient.getBackwardSync(1);
+                console.info(TAG + '====>Sub_Misc_inputMethod_getBackward_sync_0210 getBackwardSync str: ' + JSON.stringify(str));
+                if(typeof(str) === "string"){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getBackward_sync_0210", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getBackward_sync_0211(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getBackward_sync_0211 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getBackward_sync_0211", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.getBackwardSync("1");
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getBackward_sync_0211 getBackwardSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getBackward_sync_0211 getBackwardSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getBackward_sync_0211", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220", commonEventPublishData, this.publishCallback);
+            } else {
+                let num = InputClient.getTextIndexAtCursorSync();
+                console.info(TAG + '====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220 getTextIndexAtCursorSync num: ' + JSON.stringify(num));
+                if(typeof(num) === "number"){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0220", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.getTextIndexAtCursorSync("1");
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 getTextIndexAtCursorSync success');
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221 getTextIndexAtCursorSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getTextIndexAtCursor_sync_0221", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getEditorAttribute_sync_0230(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_getEditorAttribute_sync_0230 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getEditorAttribute_sync_0230", commonEventPublishData, this.publishCallback);
+            } else {
+                let obj = InputClient.getEditorAttributeSync();
+                console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 getEditorAttributeSync enterKeyType: ' + JSON.stringify(obj.enterKeyType));
+                console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0230 getEditorAttributeSync inputPattern: ' + JSON.stringify(obj.inputPattern));
+                if(typeof(obj.enterKeyType) === "number" && typeof(obj.inputPattern) === "number"){
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getEditorAttribute_sync_0230", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_getEditorAttribute_sync_0231(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_getEditorAttribute_sync_0231 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_getEditorAttribute_sync_0231", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.getEditorAttributeSync(true);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 getEditorAttributeSync success');
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_getEditorAttribute_sync_0231 getEditorAttributeSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_getEditorAttribute_sync_0231", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_moveCursor_sync_0240(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_moveCursor_sync_0240 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_moveCursor_sync_0240", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.moveCursorSync(inputMethodEngine.CURSOR_UP);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0240 moveCursorSync success' );
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0240 moveCursorSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_moveCursor_sync_0240", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_moveCursor_sync_0241(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_moveCursor_sync_0241 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_moveCursor_sync_0241", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.moveCursorSync(true);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0241 moveCursorSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_moveCursor_sync_0241 moveCursorSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_moveCursor_sync_0241", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_deleteForward_sync_0250(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_deleteForward_sync_0250 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteForward_sync_0250", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.deleteForwardSync(1);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteForward_sync_0250 deleteForwardSync success');
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteForward_sync_0250 deleteForwardSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteForward_sync_0250", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_deleteForward_sync_0251(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_deleteForward_sync_0251 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteForward_sync_0251", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.deleteForwardSync(false);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteForward_sync_0251 deleteForwardSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteForward_sync_0251 deleteForwardSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteForward_sync_0251", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_deleteBackward_sync_0260(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_deleteBackward_sync_0260 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteBackward_sync_0260", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.deleteBackwardSync(1);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteBackward_sync_0260 deleteBackwardSync success');
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteBackward_sync_0260 deleteBackwardSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteBackward_sync_0260", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_deleteBackward_sync_0261(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_deleteBackward_sync_0261 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteBackward_sync_0261", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.deleteBackwardSync(false);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteBackward_sync_0261 deleteBackwardSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_deleteBackward_sync_0261 deleteBackwardSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_deleteBackward_sync_0261", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_insertText_sync_0270(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_insertText_sync_0270 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_insertText_sync_0270", commonEventPublishData, this.publishCallback);
+            } else {
+                InputClient.insertTextSync('test');
+                console.info(TAG + '====>Sub_Misc_inputMethod_insertText_sync_0270 insertTextSync');
+                commonEventPublishData = {
+                    data: "SUCCESS"
+                };
+                commoneventmanager.publish("Sub_Misc_inputMethod_insertText_sync_0270", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_insertText_sync_0271(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_insertText_sync_0271 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_insertText_sync_0271", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.insertTextSync(123);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_insertText_sync_0271 insertTextSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_insertText_sync_0271 insertTextSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_insertText_sync_0271", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_selectByRange_sync_0280(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_selectByRange_sync_0280 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let range = { start: 0, end: 1 };
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByRange_sync_0280", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.selectByRangeSync(range);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByRange_sync_0280 selectByRangeSync success' );
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByRange_sync_0280 selectByRangeSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByRange_sync_0280", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_selectByRange_sync_0281(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_selectByRange_sync_0281 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByRange_sync_0281", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.selectByRangeSync(true);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByRange_sync_0281 selectByRangeSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByRange_sync_0281 selectByRangeSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByRange_sync_0281", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_selectByMovement_sync_0290(): void{
+        console.debug(TAG + '====>receive Sub_Misc_inputMethod_selectByMovement_sync_0290 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let movement = { direction: inputMethodEngine.CURSOR_DOWN };
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByMovement_sync_0290", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.selectByMovementSync(movement);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0290 selectByMovementSync success' );
+                    commonEventPublishData = {
+                        data: "SUCCESS"
+                    };
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0290 selectByMovementSync err: ' + JSON.stringify(err));
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByMovement_sync_0290", commonEventPublishData, this.publishCallback);
+            }
+        });
+    }
+
+    private Sub_Misc_inputMethod_selectByMovement_sync_0291(): void{
+        console.info(TAG + '====>receive Sub_Misc_inputMethod_selectByMovement_sync_0291 data');
+        inputMethodAbility.on('inputStart', async(KeyboardDelegate, InputClient) =>{
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData = {
+                data: "FAILED"
+            };
+            if (InputClient == null) {
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByMovement_sync_0291", commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    // @ts-ignore
+                    InputClient.selectByMovementSync(true);
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0291 selectByMovementSync over');
+                } catch (err) {
+                    console.info(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0291 selectByMovementSync err: ' + JSON.stringify(err));
+                    if(err.code === 401){
+                        commonEventPublishData = {
+                            data: "SUCCESS"
+                        };
+                    }
+                }
+                commoneventmanager.publish("Sub_Misc_inputMethod_selectByMovement_sync_0291", commonEventPublishData, this.publishCallback);
             }
         });
     }
