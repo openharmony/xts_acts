@@ -133,6 +133,65 @@ export default function audioRendererTest() {
       }
   }
 
+ /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0100
+     * @tc.name      : AudioRenderer -getUnderflowCountSync
+     * @tc.desc      : AudioRenderer - getUnderflowCountSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+ it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0100', 0, async function (done) {
+  try {
+    let value = audioRen.getUnderflowCountSync();
+    console.info(`${TagFrmwkRender}:getUnderflowCount :SUCCESS ${value}`);
+      expect(value).assertEqual(env.OUTPUT_NUMBER_0);
+      done();
+  } catch (err) {
+    console.log("${TagFrmwkRender}:getUnderflowCount : error = " + err);
+      expect(false).assertTrue();
+      done();
+  }
+
+});
+
+/**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200
+     * @tc.name      : AudioRenderer - getUnderflowCountSync
+     * @tc.desc      : AudioRenderer - getUnderflowCountSync
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+it('SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNTSYNC_0200', 0, async function (done) {
+
+  try {
+    await renderPlay();
+    let value = audioRen.getUnderflowCountSync();
+    console.info(`${TagFrmwkRender}:getUnderflowCount :SUCCESS ${value}`);
+    expect(value).assertLargerOrEqual(env.OUTPUT_NUMBER_1);
+    audioRen.drain().then(() => {
+      audioRen.stop().then(() => {
+        expect(true).assertTrue();
+        done();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+    }).catch((err) => {
+      console.error(`${TagFrmwkRender}: Renderer drain: ERROR : ${err.message}`);
+      expect(false).assertTrue();
+        done();
+    });
+  } catch (err) {
+    console.log("${TagFrmwkRender}:getUnderflowCount : error = " + err);
+      expect(false).assertTrue();
+      done();
+  }
+
+});
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_GETUNDERFLOWCOUNT_PROMISE_0100
      * @tc.name      : AudioRenderer -getUnderflowCount "unit_32" - promise

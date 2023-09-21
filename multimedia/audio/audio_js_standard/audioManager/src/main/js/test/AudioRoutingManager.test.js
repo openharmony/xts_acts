@@ -664,5 +664,65 @@ describe("AudioRoutingManagerJsTest", function () {
     }
   })
 
+  /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0100
+     *@tc.name      : Get preferred output device - Sync
+     *@tc.desc      : Get preferred output device - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDOUTPUTDEVICEFORRENDERERINFOSYNC_0100", 0, async function (done) {
+      let rendererInfo = {
+        content : audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage : audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags : 0 }
+      
+      let routingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = routingManager.getPreferredOutputDeviceForRendererInfoSync(rendererInfo);
+        console.info(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0100 SUCCESS`+JSON.stringify(AudioDeviceDescriptors));
+        expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(2);
+          expect(AudioDeviceDescriptors[0].deviceType).assertEqual(2);
+          expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
+      
+        done();
+      } catch(e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFEROUTPUTDEVICEFORRENDERERINFOTEST_0100 ERROR: ${e.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0100
+     *@tc.name      : Get preferred input device - Sync
+     *@tc.desc      : Get preferred input device - Sync
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+     it("SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOSYNC_0100", 0, async function (done) {
+      let capturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+    }
+      
+      let audioRoutingManager = audio.getAudioManager().getRoutingManager();
+      try {
+        let AudioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(capturerInfo)
+          console.log(`get device descriptor success: `+ JSON.stringify(AudioDeviceDescriptors));
+          expect(AudioDeviceDescriptors[0].deviceRole).assertEqual(1);
+          expect(AudioDeviceDescriptors[0].deviceType).assertEqual(15);
+          expect(AudioDeviceDescriptors[0].networkId).assertEqual('LocalDevice');
+        done();
+        
+      } catch(e) {
+        console.error(`${TAG} SUB_MULTIMEDIA_AUDIO_GETREFERREDINPUTDEVICEFORCAPTURERINFOTEST_0100 ERROR: ${e.message}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
 })
 }
