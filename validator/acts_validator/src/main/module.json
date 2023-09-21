@@ -65,7 +65,7 @@
       },
       {
         "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-      },
+      }
     ]
   }
 }
