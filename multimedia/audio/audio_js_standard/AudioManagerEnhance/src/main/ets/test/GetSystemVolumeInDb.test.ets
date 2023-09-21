@@ -77,6 +77,27 @@ export default function audioManagerTest() {
     }
 
     /**
+         * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0100
+         * @tc.name      : getSystemVolumeInDbSync - Media 
+         * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDBSYNC_0100', 0, async function (done) {
+      try {
+        let data = audioVolumeGroupManager.getSystemVolumeInDbSync(audio.AudioVolumeType.MEDIA, 3, audio.DeviceType.SPEAKER)
+        console.info(`getSystemVolumeInDb :SUCCESS ${data}`);
+        expect(data).assertEqual(env.DEAFULT_MEDIA_DB);
+        done();
+      } catch (error) {
+        console.info(`GETSYSTEMVOLUMEINDB error ${error.message}, code ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0100
      * @tc.name      : getSystemVolumeInDb - Media - Promise
      * @tc.desc      : Gets the volume db value that system calculate by volume type, volume level and device type
@@ -115,7 +136,7 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0200', 0, async function (done) {
       try {
-        var db1 = new ArrayList<Number>();
+        var db1 = new ArrayList < Number > ();
         var db2 = [0.06932847946882248, 0.08370080590248108, 0.08370080590248108, 0.06932847946882248, 0.06932847946882248, 0.06932847946882248];
         for (let index = 0; index < env.AudioVolumeType.length; index++) {
           await audioVolumeGroupManager.getSystemVolumeInDb(env.AudioVolumeType[index], 3, audio.DeviceType.SPEAKER)
@@ -280,9 +301,9 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_PROMISE_0700', 0, async function (done) {
       try {
-        let maxVol =await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA);
+        let maxVol = await audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA);
         let nowVolume = maxVol + 1
-        console.log(`nowVolume type: ${typeof(nowVolume)},${nowVolume}`);
+        console.log(`nowVolume type: ${typeof (nowVolume)},${nowVolume}`);
         await audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, nowVolume, audio.DeviceType.SPEAKER)
           .then((data) => {
             console.info(`getSystemVolumeInDb :SUCCESS ${data}, testcase FAIL!`);
@@ -518,11 +539,11 @@ export default function audioManagerTest() {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETSYSTEMVOLUMEINDB_CALLBACK_1500', 0, async function (done) {
       try {
-        var db1 = new ArrayList<Number>();
-        var db2 = new ArrayList<Number>();
+        var db1 = new ArrayList < Number > ();
+        var db2 = new ArrayList < Number > ();
         var device = [audio.DeviceType.SPEAKER, audio.DeviceType.EARPIECE, audio.DeviceType.WIRED_HEADSET];
         for (var deviceIndex = 0; deviceIndex < device.length; deviceIndex++) {
-            for (let typeIndex = 0; typeIndex < env.AudioVolumeType.length; typeIndex++) {
+          for (let typeIndex = 0; typeIndex < env.AudioVolumeType.length; typeIndex++) {
             let maxVol = await audioVolumeGroupManager.getMaxVolume(env.AudioVolumeType[typeIndex]);
             let minVol = await audioVolumeGroupManager.getMinVolume(env.AudioVolumeType[typeIndex]);
             for (let volIndex = minVol; volIndex <= maxVol; volIndex++) {
