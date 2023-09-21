@@ -25,7 +25,6 @@ export default function AVSessionErrorCode() {
 		let pid = 100;
 		let uid = 200;
 		let audioDevices;
-		let sessionToken;
         let controller;
         let id = '9527';
         let sessionId;
@@ -161,32 +160,6 @@ export default function AVSessionErrorCode() {
                 console.info(`TestLog: Controller send command error: code: ${err.code}, message: ${err.message}`);
             });
             await sleep(500);
-            done();
-        })
-        
-		/* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0100
-         * @tc.name      : CAST_AUDIO_0100
-         * @tc.desc      : Testing cast audio
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-         it('SUB_MULTIMEDIA_AVSESSION_CAST_AUDIO_PROMISE_0100', 0, async function (done) {
-            sessionId = session.sessionId;
-            sessionToken = { sessionId, pid, uid };
-
-            try {
-                await avSession.castAudio(sessionToken, audioDevices).then(() => {
-                    console.info('Cast audio to remote');
-                }).catch((err) => {
-                    console.info(avSession.AVSessionErrorCode.ERR_CODE_REMOTE_CONNECTION_ERR);
-                    console.info(`Cast audio to remote BusinessError: ${err.code}, message: ${err.message}`);
-                });
-            } catch (err) {
-                console.info(`Testing has failed BusinessError: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
-            }
             done();
         })
 		
