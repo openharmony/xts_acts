@@ -29,6 +29,9 @@ struct CustomContainerUser {
   @State Vue: boolean = false;
   @State StartEnable: boolean = true;
   @State Fps: number = 0;
+  @State appName: string = '图库';
+  @State appBundleName: string = 'com.ohos.launcher';
+  @State appAbilityName: string = 'com.ohos.launcher.MainAbility';
   scroller: Scroller = new Scroller();
   async aboutToAppear(){
     await FirstDialog.ChooseDialog(this.StepTips,this.name);
@@ -59,6 +62,7 @@ struct CustomContainerUser {
                   .borderRadius(8)
                   .backgroundColor(0x317aff)
                   .width('30%')
+                  .margin('10vp')
                   .enabled(this.StartEnable)
                   .opacity(this.StartEnable? 1 : 0.4)
                   .onClick(async () => {
@@ -107,11 +111,11 @@ struct CustomContainerUser {
               }
             }
             Row(){
-              Text('\n' + '\n' + '\n' + '\n'+ '\n' + '\n' + '\n' + '\n' + `测试结果：` + this.Fps + '帧' )
+              Text('\n' + '\n' + `测试结果：` + this.Fps + '帧' )
                 .fontColor(Color.White).fontSize('24fp')
             }
           }
-        }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
+        }
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
@@ -126,7 +130,10 @@ struct CustomContainerUser {
         name:$name,
         Vue: $Vue,
         StartEnable: $StartEnable,
-        Fps: $Fps
+        Fps: $Fps,
+        appName: $appName,
+        appBundleName: $appBundleName,
+        appAbilityName: $appAbilityName,
       })
     }.width('100%').height('100%').backgroundColor(Color.Black)
   }
