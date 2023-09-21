@@ -19,6 +19,7 @@ import fileIOCopyDir from './members/copyDir.test'
 import fileIOCopyfile from './members/copyFile.test.js'
 import fileIOCreateRandomAccessFile from './members/createRandomAccessFile.test.js'
 import fileIOCreateStream from './members/createStream.test.js'
+import fileIODup from './members/dup.test.js'
 import fileIOFdatasync from './members/fdatasync.test.js'
 import fileIOFdOpenStream from './members/fdopenStream.test.js'
 import fileIOFileLock from './members/fileLock.test.js'
@@ -57,6 +58,7 @@ export default function testsuite() {
     fileIOCopyfile()
     fileIOCreateRandomAccessFile()
     fileIOCreateStream()
+    fileIODup()
     fileIOFdatasync()
     fileIOFdOpenStream()
     fileIOFileLock()
