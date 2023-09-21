@@ -53,6 +53,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/driver:driver",
   "${ACTS_ROOT}/msdp:msdp",
   "${ACTS_ROOT}/arkcompiler:arkcompiler",
+  "${ACTS_ROOT}/advertising:advertising",
 ]
 
 _all_test_packages_ivi = [
