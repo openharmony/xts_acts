@@ -202,11 +202,11 @@ struct FloatBall {
       if(this.title === 'start'){
         Circle()
           .width('90vp').height('90vp').fill(Color.White).fillOpacity(0).opacity(0.8)
-          .border({radius:'90vp',width:'0.5vp',color:$r('app.color.colorPrimary')})
+          .border({radius:'90vp',width:'0.5vp',color:('#00B2C6')})
           .linearGradient({
             angle: 135,
             direction: GradientDirection.Left,
-            colors: [[$r('app.color.colorPrimary'),1.0],[$r('app.color.colorPrimary'),1.0]]
+            colors: [[('#00B2C6'),1.0],[('#00B2C6'),1.0]]
           })
         Text('start')
           .fontSize(18).textAlign(TextAlign.Center).fontColor($r('app.color.color_fff')).width('100%').height('100%')
