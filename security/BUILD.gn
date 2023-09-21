@@ -26,6 +26,7 @@ group("security") {
       "crossplatform:crossplatform",
       "cryptoFramework/js_api_test_oh40:ActsCryptoFrameworkTwoJSNormalTest",
       "cryptoFramework/js_api_test_one:ActsCryptoFrameworkJSNormalTest",
+      "dlp_permission_service:DlpTest",
       "huks_napi_BasicTest:ActsHuksNAPITest",
       "security_component:ActsSecComponentTest",
       "security_huks_basic",
