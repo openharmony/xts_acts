@@ -600,4 +600,3 @@ export default function requestMethodJsunit() {
     });
   })
 };
-
