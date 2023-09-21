@@ -25,7 +25,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       console.debug("====>afterEach start====");
       var osAccountManager = osaccount.getAccountManager();
       var accounts = await osAccountManager.queryAllCreatedOsAccounts()
-      for (let i = 0;i < accounts.length; i++) {
+      for (let i = 0; i < accounts.length; i++) {
         var localId = accounts[i].localId
         if (localId != 100) {
           await osAccountManager.removeOsAccount(localId)
@@ -444,7 +444,25 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       console.debug("====>ActsOsAccountQueryLocalIdSerial_0500 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.debug("====>get AccountManager finish====");
-      var localId;
+      var localId = 100;
+      let isEnable = await osAccountManager.checkMultiOsAccountEnabled();
+      if (isEnable != true) {
+        console.debug("====>ActsOsAccountQueryLocalIdSerial_0500 not support multiple osaccouts====");
+        osAccountManager.getSerialNumberForOsAccountLocalId(localId, (err, serialNumber) => {
+          console.debug("====>queryOsAccountById err:" + JSON.stringify(err));
+          console.debug("====>get serialNumber:" + serialNumber + " by localId: " + localId);
+          expect(err).assertEqual(null);
+          osAccountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err, getlocalId) => {
+            console.debug("====>ger localId err:" + JSON.stringify(err));
+            console.debug("====>get localId:" + getlocalId + " by serialNumber: " + serialNumber);
+            expect(err).assertEqual(null);
+            expect(getlocalId).assertEqual(localId);
+            console.debug("====>ActsOsAccountQueryLocalIdSerial_0500 end====");
+            done();
+          })
+        })
+        return;
+      }
       osAccountManager.createOsAccount("osAccountNameIdSerialA", osaccount.OsAccountType.NORMAL, (err, data) => {
         console.debug("====>create os account err: " + JSON.stringify(err));
         console.debug("====>create os account OsAccountInfo: " + JSON.stringify(data));
@@ -492,7 +510,19 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       console.debug("====>ActsOsAccountQueryLocalIdSerial_0600 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.debug("====>get AccountManager finish====");
-      var localId;
+      var localId = 100;
+      let isEnable = await osAccountManager.checkMultiOsAccountEnabled();
+      if (isEnable != true) {
+        console.debug("====>ActsOsAccountQueryLocalIdSerial_0600 not support multiple osaccouts====");
+        var serialNumber = await osAccountManager.getSerialNumberForOsAccountLocalId(localId);
+        console.debug("====>get serialNumber:" + serialNumber + " by localId: " + localId);
+        var getlocalId = await osAccountManager.getOsAccountLocalIdForSerialNumber(serialNumber);
+        console.debug("====>get localId:" + getlocalId + " by serialNumber: " + serialNumber);
+        expect(getlocalId).assertEqual(localId);
+        console.debug("====>ActsOsAccountQueryLocalIdSerial_0600 end====");
+        done();
+        return;
+      }
       var OsAccountInfo = await osAccountManager.createOsAccount("accountIdSerialB", osaccount.OsAccountType.GUEST);
       console.debug("====>create os account OsAccountInfo: " + JSON.stringify(OsAccountInfo));
       expect(OsAccountInfo.localName).assertEqual("accountIdSerialB");
@@ -518,7 +548,19 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       console.debug("====>get AccountManager finish====");
       var obtainCount = 0;
       var localIdFir;
-      var localIdSec;
+      let isEnable = await osAccountManager.checkMultiOsAccountEnabled();
+      if (isEnable != true) {
+        console.debug("====>ActsOsAccountQueryCounts_0100 not support multiple osaccouts====");
+        osAccountManager.getOsAccountCount((err, data) => {
+          console.debug("====>obtains the number of all os accounts created err:" + JSON.stringify(err));
+          console.debug("====>obtains the number of all os accounts created data:" + data);
+          expect(err).assertEqual(null);
+          expect(data).assertEqual(1);
+          console.debug("====>ActsOsAccountQueryCounts_0100 end====");
+          done();
+        })
+        return;
+      }
       osAccountManager.getOsAccountCount((err, data) => {
         console.debug("====>obtains the number of all os accounts created err:" + JSON.stringify(err));
         console.debug("====>obtains the number of all os accounts created data:" + data);
@@ -546,11 +588,9 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
                 expect(data).assertEqual(obtainCount);
                 console.debug("====>ActsOsAccountQueryCounts_0100 end====");
                 done();
-                // })
               })
             })
           })
-          // })
         })
       })
     })
@@ -564,6 +604,16 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       console.debug("====>ActsOsAccountQueryCounts_0200 start====");
       var osAccountManager = osaccount.getAccountManager();
       console.debug("====>get AccountManager finish====");
+      let isEnable = await osAccountManager.checkMultiOsAccountEnabled();
+      if (isEnable != true) {
+        console.debug("====>ActsOsAccountQueryCounts_0200 not support multiple osaccouts====");
+        var obtainCount = await osAccountManager.getOsAccountCount();
+        console.debug("====>obtains the number of all os accounts created:" + obtainCount);
+        expect(obtainCount).assertEqual(1);
+        console.debug("====>ActsOsAccountQueryCounts_0200 end====");
+        done();
+        return;
+      }
       var obtainCount = await osAccountManager.getOsAccountCount();
       console.debug("====>obtains the number of all os accounts created:" + obtainCount);
       var osAccountFir = await osAccountManager.createOsAccount("osAccountIdSerialG", osaccount.OsAccountType.NORMAL);
@@ -664,9 +714,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     it('ActsOsAccountQueryDomainTest_0300', 0, async function (done) {
       console.debug("====>ActsOsAccountQueryDomainTest_0100 start====");
       var osAccountManager = osaccount.getAccountManager();
-      osAccountManager.getOsAccountLocalIdForDomain({
-        domain: "", accountName: ""
-      }, (err) => {
+      osAccountManager.getOsAccountLocalIdForDomain({ domain: "", accountName: "" }, (err) => {
         console.debug("====>ActsOsAccountQueryDomainTest_0300 err:" + JSON.stringify(err));
         expect(err.code != 0).assertEqual(true)
         console.debug("====>ActsOsAccountQueryDomainTest_0300 end====");
@@ -682,9 +730,7 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
     it('ActsOsAccountQueryDomainTest_0400', 0, async function (done) {
       console.debug("====>ActsOsAccountQueryDomainTest_0400 start====");
       var osAccountManager = osaccount.getAccountManager();
-      osAccountManager.getOsAccountLocalIdForDomain({
-        domain: "", accountName: ""
-      }).then((accountID) => {
+      osAccountManager.getOsAccountLocalIdForDomain({ domain: "", accountName: "" }).then((accountID) => {
         console.debug("ActsOsAccountQueryDomainTest_0400 accountID:" + JSON.stringify(accountID))
         done();
       }).catch((err) => {
