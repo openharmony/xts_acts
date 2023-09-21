@@ -22,6 +22,7 @@ import btSubscBleTest from './BtSysSubscBle.test.js'
 import btManagerSppTest from './BtManagerSpp.test.js'
 import btSocketTest from './BtSocket.test.js'
 import btConstantTest from './BluetoothConstant.test.js'
+import btGattAdvertTest from './BtGattAdvertiser.test.js'
 
 export default function testsuite() {
     btAccessTest()
@@ -33,4 +34,5 @@ export default function testsuite() {
     btSubscBleTest()
     btManagerSppTest()
     btManagerSwitchTest()
+    btGattAdvertTest()
 }
