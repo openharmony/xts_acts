@@ -73,7 +73,6 @@ export default function lifecycleTest() {
     });
 
     let TAG = "";
-    let listKeyTemp;
     let tempCallbackId;
 
     function sleep(time) {
@@ -897,11 +896,6 @@ export default function lifecycleTest() {
         (error, data) => {
           setTimeout(() => {
             console.log(TAG + ": second Hap1MainAbility2 startAbility success, err: " + JSON.stringify(error) + ",data: " + JSON.stringify(data));
-            for (let i = 0; i < globalThis.mainAbility9ListKey.length; i++) {
-              if (globalThis.mainAbility9ListKey[i].substring(0, 16) == "Hap1MainAbility2") {
-                listKeyTemp.push(globalThis.mainAbility9ListKey[i]);
-              }
-            }
             let listTemp = JSON.stringify(globalThis.mainAbility9ListKey);
             console.log(TAG + "listTemp is :" + listTemp);
             console.log(TAG + "globalThis.mainAbility9CallBackId is :" + globalThis.mainAbility9CallBackId);
