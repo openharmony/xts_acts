@@ -14,11 +14,11 @@
 */
 
 import hilog from '@ohos.hilog';
-import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import TestRunner from '@ohos.application.testRunner';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
+var abilityDelegator = undefined;
+var abilityDelegatorArguments = undefined;
 
 function translateParamsToString(parameters) {
     const keySet = new Set([
@@ -32,7 +32,7 @@ function translateParamsToString(parameters) {
             targetParams = `${targetParams} ${key} ${parameters[key]}`
         }
     }
-    return targetParams.trim()
+    return targetParams.trim();
 }
 
 async function onAbilityCreateCallback() {
@@ -57,15 +57,15 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     async onRun() {
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         var testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility'
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
+        let cmd = 'aa start -d 0 -a MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
         var debug = abilityDelegatorArguments.parameters['-D']
         if (debug == 'true')
