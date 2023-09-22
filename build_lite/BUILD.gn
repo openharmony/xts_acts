@@ -14,6 +14,7 @@
 import("//build/lite/config/subsystem/aafwk/config.gni")
 import("//build/lite/config/test.gni")
 import("//test/xts/tools/lite/build/suite_lite.gni")
+import("//foundation/bundlemanager/bundle_framework_lite/bundle_framework_lite.gni")
 
 lite_component("acts_component") {
   all_features = []
@@ -34,6 +35,7 @@ lite_component("acts_component") {
       all_features += [
         "//test/xts/acts/ability_lite/ability_hal:ActsAbilityMgrTest",
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
+
         #"//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
         "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
         "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
