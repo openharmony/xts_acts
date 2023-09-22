@@ -80,13 +80,13 @@ struct CustomContainerUser {
                       selected: this.select,
                       onAccept: (value: TextPickerResult) => {
                         // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-                        this.select = value.index
+                        this.select = +value.index
                         console.info("TextPickerDialog:onAccept()" + JSON.stringify(value))
-                        globalThis.AppNameCamera = AppNameList[value.index];
+                        globalThis.AppNameCamera = AppNameList[+value.index];
                         this.appName = globalThis.AppNameCamera;
-                        globalThis.AppBundleNameCamera = AppBundleNameList[value.index];
+                        globalThis.AppBundleNameCamera = AppBundleNameList[+value.index];
                         this.appBundleName = globalThis.AppBundleNameCamera;
-                        globalThis.AppAbilityNameCamera = AppAbilityNameList[value.index];
+                        globalThis.AppAbilityNameCamera = AppAbilityNameList[+value.index];
                         this.appAbilityName = globalThis.AppAbilityNameCamera;
                       },
                       onCancel: () => {
