@@ -86,9 +86,9 @@ struct onErrorReceive03 {
             let requestGesture = event.request.isRequestGesture();
             console.log(`requestGesture is: ${requestGesture}`);
             Utils.emitEvent(requestGesture, 7132);
-            let requestHeader = event.request.getRequestHeader().toString();
-            console.log(`requestHeader is: ${requestHeader}`);
-            Utils.emitEvent(requestHeader, 7134);
+            let requestHeader = event.request.getRequestHeader()
+            console.log(`requestHeader is: ${JSON.stringify(requestHeader)}`);
+            Utils.emitEvent(JSON.stringify(requestHeader), 7134);
           }
         })
         .javaScriptAccess(this.javaScriptAccess)
