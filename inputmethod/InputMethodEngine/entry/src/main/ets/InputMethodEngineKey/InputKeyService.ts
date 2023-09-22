@@ -27,6 +27,5 @@ export default class InputKeyService extends InputMethodExtensionAbility {
 
   onDestroy() {
     console.log("onDestroy InputKeyService**");
-    this.context.destroy();
   }
 }

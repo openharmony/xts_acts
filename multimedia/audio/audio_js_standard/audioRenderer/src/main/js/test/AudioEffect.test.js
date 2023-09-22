@@ -404,6 +404,29 @@ describe('AudioEffect', function () {
 	}
 
 	/**
+	 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRYSYNC_0100
+	 * @tc.name      : GET_AUDIOEFFECTINFOARRYSYNC - MEDIA - Sync
+	 * @tc.desc      : GET_AUDIOEFFECTINFOARRYSYNC - MEDIA - Sync
+	 * @tc.size      : MEDIUM
+	 * @tc.type      : Function
+	 * @tc.level     : Level 2
+	 */
+	it('SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRYSYNC_0100', 2, async function (done) {
+		try {
+			let audioEffectInfoArray = audioStreamManager.getAudioEffectInfoArraySync(audio.StreamUsage.STREAM_USAGE_MEDIA)
+				expect(audioEffectInfoArray[0]).assertEqual(0);
+				expect(audioEffectInfoArray[1]).assertEqual(1);
+				console.log(`${TAG} getAudioEffectInfoArray success:${JSON.stringify(audioEffectInfoArray)}`);
+				done();
+		} catch (err) {
+			console.error(`${TAG} getAudioEffectInfoArray :ERROR: ${err}`);
+			expect(false).asserttrue();
+			done();
+		}
+
+	})
+
+	/**
 		 * @tc.number    : SUB_MULTIMEDIA_AUDIO_GET_AUDIOEFFECTINFOARRY_0100
 		 * @tc.name      : GET_AUDIOEFFECTINFOARRY - UNKNOWN - Promise
 		 * @tc.desc      : GET_AUDIOEFFECTINFOARRY - UNKNOWN 

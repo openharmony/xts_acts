@@ -1820,6 +1820,89 @@ describe('audioRendererChange', function () {
         done();
     })
 
+     /**
+     * @tc.number    : SUB_MULTIMEDIA_GET_CURRENT_AUDIORENDERERINFOTARRAY_SYNC_0100
+     * @tc.name      : getCurrentAudioRendererInfoArraySync - GET_STATE_PREPARED
+     * @tc.desc      : getCurrentAudioRendererInfoArraySync - GET_STATE_PREPARED
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_GET_CURRENT_AUDIORENDERERINFOTARRAY_SYNC_0100', 2, async function (done) {
+        let audioCap;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        let resultFlag = false;
+        audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
+            for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
+                for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
+                }
+            }
+        });
+        await sleep(100);
+
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
+            audioCap = data;
+            console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
+        }).catch((err) => {
+            console.info(`${Tag} : AudioRenderer Created : ERROR :   ${err.message}`);
+        });
+
+        await sleep(100);
+        try {
+            let AudioRendererChangeInfoArray = audioStreamManager.getCurrentAudioRendererInfoArraySync()
+            console.info(`${Tag} : [GET_RENDERER_STATE_1_PROMISE] ######### Get Promise is called ##########`);
+            if (AudioRendererChangeInfoArray != null) {
+                for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
+                    console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
+                    let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                    for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
+                        console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
+                    }
+                    if (devDescriptor != null) {
+                        resultFlag = true;
+                        console.info(`${Tag} : State :   ${AudioRendererChangeInfoArray[i].rendererState}`);
+                    }
+                }
+            }
+        } catch (error) {
+            console.log(`${Tag} : getCurrentAudioRendererInfoArray :ERROR:   ${err.message}`);
+            resultFlag = false;
+        }
+
+
+        audioStreamManager.off('audioRendererChange');
+        await sleep(100);
+        console.info(`${Tag} : [GET_RENDERER_STATE_1_PROMISE] ######### RendererChange Off is called #########`);
+
+        await audioCap.release().then(function () {
+            console.info(`${Tag} : Renderer release : SUCCESS`);
+        }).catch((err) => {
+            console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
+        });
+
+        expect(resultFlag).assertTrue();
+        done();
+    })
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0100
      * @tc.name      : AudioRendererChange - GET_STATE_PREPARED

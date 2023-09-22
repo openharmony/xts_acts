@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import systemDateTimeJsunit from './systemDateTimeJsunit.test';
+import systemDateTimeSync from './systemDateTimeSync.test';
 
 export default function testsuite() {
   systemDateTimeJsunit();
+  systemDateTimeSync();
 }

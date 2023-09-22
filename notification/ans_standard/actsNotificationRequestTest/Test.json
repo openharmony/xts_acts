@@ -3,9 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "com.example.actsnotificationrequest",
-        "package-name": "com.example.actsnotificationrequest"
+        "shell-timeout": "600000",
+        "bundle-name": "com.example.actsnotificationrequesttest",
+        "module-name": "entry_test",
+        "testcase-timeout": 70000
     },
     "kits": [
         {

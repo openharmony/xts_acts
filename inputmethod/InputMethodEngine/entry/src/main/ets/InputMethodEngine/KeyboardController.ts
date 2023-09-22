@@ -925,7 +925,7 @@ export class KeyboardController {
             }
             commoneventmanager.publish("inputMethodEngine_test_074", commonEventPublishData, this.publishCallback);
             clearTimeout(t);
-        },500);
+        },700);
     }
 
     private inputMethodEngine_test_076(): void{
