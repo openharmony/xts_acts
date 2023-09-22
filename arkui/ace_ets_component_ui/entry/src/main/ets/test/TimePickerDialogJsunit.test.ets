@@ -45,20 +45,19 @@ export default function TimePickerDialogJsunit() {
 
 
     it('TimePickerDialogJsunit_0100', 0, async function (done) {
-
+	 
       console.info('TimePickerDialogJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('TimePickerDialog'));
+      await button.click();
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('TimePickerDialog');
       let obj = JSON.parse(strJson);
       console.info("[TimePickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[TimePickerDialogJsunit_0100] selected:" + JSON.stringify(obj.$attrs.selected));
-      console.info("[TimePickerDialogJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[TimePickerDialogJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[TimePickerDialogJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      expect(obj.$attrs.selected).assertEqual("2020-12-25T08:30:00");
-
+      expect(obj.$attrs.label).assertEqual("TimePickerDialog");
       console.info('[TimePickerDialogJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 

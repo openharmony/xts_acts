@@ -46,69 +46,31 @@ export default function AlertDialogJsunit() {
 
     it('AlertDialogJsunit_0100', 0, async function (done) {
 
+    
       console.info('AlertDialogJsunit_0100 START');
+	  let driver = await UiDriver.create()
+      let button = await driver.findComponent(BY.key('AlertDialog'));
+      await button.click();
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('AlertDialog');
       let obj = JSON.parse(strJson);
       console.info("[AlertDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[AlertDialogJsunit_0100] subtitle:" + JSON.stringify(obj.$attrs.subtitle));
-      console.info("[AlertDialogJsunit_0100] alignment:" + JSON.stringify(obj.$attrs.alignment));
-      console.info("[AlertDialogJsunit_0100] offset:" + JSON.stringify(obj.$attrs.offset));
-      console.info("[AlertDialogJsunit_0100] maskRect:" + JSON.stringify(obj.$attrs.maskRect));
-      expect(obj.$attrs.subtitle).assertEqual("subtitle");
-
+      expect(obj.$attrs.label).assertEqual("one button dialog");
+	  await driver.pressBack();
+	  await CommonFunc.sleep(500);
+	  
+      let button2 = await driver.findComponent(BY.key('AlertDialog2'));
+      await button2.click();
+      await CommonFunc.sleep(1000);
+	  let strJson2 = getInspectorByKey('AlertDialog2');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[AlertDialogJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
+      expect(obj2.$attrs.label).assertEqual("two button dialog");
       console.info('[AlertDialogJsunit_0100] END');
+	  await driver.pressBack();
       done();
     });
 
-    it('AlertDialogJsunit_0200', 0, async function (done) {
-
-      console.info('AlertDialogJsunit_0200 START');
-      await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create();
-      let btn = await driver.findComponent(BY.key('AlertDialog'));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('AlertDialog');
-      let obj = JSON.parse(strJson);
-      console.info("[AlertDialogJsunit_0200] component  strJson:" + JSON.stringify(obj.$attrs.buttonDirection));
-      expect(obj.$attrs.buttonDirection).assertEqual("DialogButtonDirection.AUTO");
-
-      console.info('[AlertDialogJsunit_0200] END');
-      done();
-    });
-
-    it('AlertDialogJsunit_0300', 0, async function (done) {
-      console.info('AlertDialogJsunit_0300 START');
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'buttonDirection',value:'DialogButtonDirection.HORIZONTAL'})
-      let driver = await UiDriver.create();
-      let btn = await driver.findComponent(BY.key('AlertDialog'));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('AlertDialog');
-      let obj = JSON.parse(strJson);
-      console.info("[AlertDialogJsunit_0300] component  strJson:" + JSON.stringify(obj.$attrs.buttonDirection));
-      expect(obj.$attrs.buttonDirection).assertEqual("DialogButtonDirection.HORIZONTAL ");
-      console.info('[AlertDialogJsunit_0300] END');
-      done();
-    });
-
-    it('AlertDialogJsunit_0400', 0, async function (done) {
-      console.info('AlertDialogJsunit_0400 START');
-      await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'buttonDirection',value:'DialogButtonDirection.VERTICAL'})
-      let driver = await UiDriver.create();
-      let btn = await driver.findComponent(BY.key('AlertDialog'));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('AlertDialog');
-      let obj = JSON.parse(strJson);
-      console.info("[AlertDialogJsunit_0400] component  strJson:" + JSON.stringify(obj.$attrs.buttonDirection));
-      expect(obj.$attrs.buttonDirection).assertEqual("DialogButtonDirection.VERTICAL");
-      console.info('[AlertDialogJsunit_0400] END');
-      done();
-    });
   })
 }

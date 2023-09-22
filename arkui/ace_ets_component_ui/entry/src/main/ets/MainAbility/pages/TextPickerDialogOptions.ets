@@ -40,8 +40,8 @@ struct TextPickerDialogExample {
             onChange: (value: TextPickerResult)=> {
               console.info("TextPickerDialog: onChange()" + JSON.stringify(value))
             }
-          }).key('TextPickerDialog')
-        })
+          })
+        }).key('TextPickerDialog')
     }.width('100%')
   }
 }

@@ -39,8 +39,8 @@ struct TimePickerDialogExample {
             onChange: (value: TimePickerResult)=> {
               console.info("TimePickerDialog: onChange()" + JSON.stringify(value))
             }
-          }).key('TimePickerDialog')
-        })
+          })
+        }).key('TimePickerDialog')
     }.width('100%')
   }
 }
