@@ -13,8 +13,9 @@
 
 import("//build/lite/config/subsystem/aafwk/config.gni")
 import("//build/lite/config/test.gni")
+import(
+    "//foundation/bundlemanager/bundle_framework_lite/bundle_framework_lite.gni")
 import("//test/xts/tools/lite/build/suite_lite.gni")
-import("//foundation/bundlemanager/bundle_framework_lite/bundle_framework_lite.gni")
 
 lite_component("acts_component") {
   all_features = []
@@ -50,7 +51,9 @@ lite_component("acts_component") {
         "//test/xts/acts/xts_lite/device_attest_lite/device_attestStart_hal:ActsDeviceAttestTest",
       ]
       if (enable_ohos_bundle_manager_service == true) {
-        all_features += ["//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",]
+        all_features += [
+          "//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",
+        ]
       }
     } else if (ohos_kernel_type == "uniproton") {
       all_features += [
