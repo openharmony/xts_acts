@@ -124,6 +124,46 @@ describe('AccessibleCheckAbility', function () {
             }
         });
     })
+	/*
+    * @tc.number  CheckAbilityIsOpen_0210
+    * @tc.name    CheckAbilityIsOpen_0210
+    * @tc.desc    The result of isOpenAccessibilitySync() should be boolean type.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('CheckAbilityIsOpen_0210', 0, async function (done) {
+        console.info('CheckAbilityIsOpen_0210');
+        try {
+            let status = accessibility.isOpenAccessibilitySync();
+            console.info(`AccessibilityApi: CheckAbilityIsOpen_0210 result: ${status}`);
+            expect(typeof (status)).assertEqual('boolean');
+            done();
+        } catch (exception) {
+            console.error('CheckAbilityIsOpen_0210 failed to isOpenAccessibilitySync because ' + JSON.stringify(exception));
+            expect(null).assertFail();
+            done();
+        }
+      })
+  
+    /*
+      * @tc.number  CheckTouchGuideIsOpen_0220
+      * @tc.name    CheckTouchGuideIsOpen_0220
+      * @tc.desc    The result of isOpenTouchGuideSync() should be boolean type.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+    it('CheckTouchGuideIsOpen_0220', 0, async function (done) {
+        console.info('CheckTouchGuideIsOpen_0220');
+        try {
+            let status = accessibility.isOpenTouchGuideSync();
+            console.info(`AccessibilityApi: CheckTouchGuideIsOpen_0220 result: ${status}`);
+            expect(typeof (status)).assertEqual('boolean');
+            done();
+        } catch (exception) {
+            console.error('CheckTouchGuideIsOpen_0220 failed to isOpenTouchGuideSync because ' + JSON.stringify(exception));
+        }
+    })
+	
 })
 
 }
