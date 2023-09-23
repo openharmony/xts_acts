@@ -16,6 +16,6 @@ group("applications") {
   deps = [
     "print_fwk:print_fwk",
     "settingsdata:settingsdata",
-    "calendarManager:calendarManager",
+    "calendarManager:calendarManager"
   ]
 }
