@@ -1005,5 +1005,32 @@ export default function abilityTest() {
         done();
       }
     })
+    /*
+    * @tc.number  AccessibilityInjectGesture_0200
+    * @tc.name    AccessibilityInjectGesture_0200
+    * @tc.desc    test AccessibilityInjectGesture
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('AccessibilityInjectGesture_0200', 0, async function (done) {
+      if (axContext != null) {
+        let gesturePath = new GesturePath.GesturePath(100);
+        try {
+          for (let i = 0; i < 10; i++) {
+            let gesturePoint = new GesturePoint.GesturePoint(100, i * 200);
+            gesturePath.points.push(gesturePoint);
+          }
+          axContext.injectGestureSync(gesturePath);
+        } catch (exception) {
+          console.error('AccessibilityInjectGesture_0200  failed to inject gesture, because ' + JSON.stringify(exception));
+          expect(false).assertTrue();
+          done();
+        }
+      } else {
+        console.log('axContext null');
+        done();
+      }
+    })
+
   })
 }
