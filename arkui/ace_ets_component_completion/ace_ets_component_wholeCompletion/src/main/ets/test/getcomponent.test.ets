@@ -55,29 +55,22 @@ export default function ActsgetcomponentTest() {
 
     it('ArkUX_Get_component_0010', 0, async function (done) {
       console.info('ArkUX_Get_component_0010 START');
-      setTimeout(()=>{
-        try{
-          let strJson = getInspectorByKey('ArkUX_Get_component_0010');
-          let obj = JSON.parse(strJson);
-          console.info('ArkUX_Get_component_0010 width: '+ JSON.stringify(obj.width));
-          console.info('ArkUX_Get_component_0010 height: '+ JSON.stringify(obj.height));
-          console.info('ArkUX_Get_component_0010 localOffsetX: '+ JSON.stringify(obj.localOffsetX));
-          console.info('ArkUX_Get_component_0010 localOffsetY: '+ JSON.stringify(obj.localOffsetY));
-          console.info('ArkUX_Get_component_0010 windowOffsetX: '+ JSON.stringify(obj.windowOffsetX));
-          console.info('ArkUX_Get_component_0010 windowOffsetY: '+ JSON.stringify(obj.windowOffsetY));
-          expect(parseInt(obj.$attrs.width)).assertEqual(vp2px(90));
-          expect(parseInt(obj.$attrs.height)).assertEqual(vp2px(90));
-          expect(parseInt(obj.$attrs.offset.x)).assertEqual(0);
-          expect(parseInt(obj.$attrs.offset.y)).assertEqual(0);
-          expect(parseInt(obj.$attrs.shadow.offsetX)).assertEqual(0);
-          expect(parseInt(obj.$attrs.shadow.offsetY)).assertEqual(0);
-          console.info('ArkUX_Get_component_0010 END ');
-        } catch(err) {
-          expect().assertFail()
-          console.info('ArkUX_Get_component_0010 ERR  '+ JSON.stringify(err));
-        }
-        done();
-      },500)
+      let strJson = getInspectorByKey('ArkUX_Get_component_0010');
+      let obj = JSON.parse(strJson);
+      console.info('ArkUX_Get_component_0010 width: '+ JSON.stringify(obj.$attrs.width));
+      console.info('ArkUX_Get_component_0010 height: '+ JSON.stringify(obj.$attrs.height));
+      console.info('ArkUX_Get_component_0010 localOffsetX: '+ JSON.stringify(obj.$attrs.offset.x));
+      console.info('ArkUX_Get_component_0010 localOffsetY: '+ JSON.stringify(obj.$attrs.offset.y));
+      console.info('ArkUX_Get_component_0010 windowOffsetX: '+ JSON.stringify(obj.$attrs.shadow.offsetX));
+      console.info('ArkUX_Get_component_0010 windowOffsetY: '+ JSON.stringify(obj.$attrs.shadow.offsetY));
+      expect(obj.$attrs.width).assertEqual("90.00vp");
+      expect(obj.$attrs.height).assertEqual("90.00vp");
+      expect(obj.$attrs.offset.x).assertEqual("");
+      expect(obj.$attrs.offset.y).assertEqual("");
+      expect(obj.$attrs.shadow.offsetX).assertEqual("0.000000");
+      expect(obj.$attrs.shadow.offsetY).assertEqual("0.000000");
+      console.info('ArkUX_Get_component_0010 END ');
+      done();
     });
   })
 }
