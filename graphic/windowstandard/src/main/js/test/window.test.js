@@ -3637,5 +3637,96 @@ export default function window_test() {
             })
         })
 
+
+    /**
+     * @tc.number		SUB_WMS_ISFOLDABLE_JSAPI_001
+     * @tc.name			Test isFoldable_Test_001
+     * @tc.desc			To test the function of isFoldable
+    */
+    it('isFoldable_Test_001', 0, async function (done) {
+        
+        let tag = 'isFoldable_Test_001 '
+        try {
+            display.isFoldable();
+            expect(true).assertTrue();
+            done();
+        } catch (err) {
+            console.log(tag + 'get isFoldable failed, err : ' + JSON.stringify(err))
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number		SUB_WMS_GETFOLDSTATUS_JSAPI_001
+     * @tc.name			Test getFoldStatus_Test_001
+     * @tc.desc			To test the function of getFoldStatus
+    */
+    it('getFoldStatus_Test_001', 0, async function (done) {
+        
+        let tag = 'getFoldStatus_Test_001 '
+        
+        console.info(tag + ' begin');
+        try {
+            display.getFoldStatus();
+            expect(display.FoldStatus.FOLD_STATUS_EXPANDED != null).assertTrue();
+            expect(display.FoldStatus.FOLD_STATUS_UNKNOWN != null).assertTrue();
+            expect(display.FoldStatus.FOLD_STATUS_FOLDED != null).assertTrue();
+            expect(display.FoldStatus.FOLD_STATUS_HALF_FOLDED != null).assertTrue();
+            done();
+        } catch (err) {
+            console.log(tag + 'getFoldStatus failed, err : ' + JSON.stringify(err))
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number		SUB_WMS_GETFOLDDISPLAYMODE_JSAPI_001
+     * @tc.name			Test getFoldDisplayMode_Test_001
+     * @tc.desc			To test the function of getFoldDisplayMode
+    */
+    it('getFoldDisplayMode_Test_001', 0, async function (done) {
+        
+        let tag = 'getFoldDisplayMode_Test_001 '
+        
+        console.info(tag + ' begin');
+        try {
+            display.getFoldDisplayMode();
+            expect(display.FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN != null).assertTrue();
+            expect(display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL != null).assertTrue();
+            expect(display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN != null).assertTrue();
+            expect(display.FoldDisplayMode.FOLD_DISPLAY_MODE_SUB != null).assertTrue();
+            expect(display.FoldDisplayMode.FOLD_DISPLAY_MODE_COORDINATION != null).assertTrue();
+            done();
+        } catch (err) {
+            console.log(tag + 'getFoldStatus failed, err : ' + JSON.stringify(err))
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number		SUB_WMS_GETCURRENTFOLDCREASEREGION_JSAPI_001
+     * @tc.name			Test getCurrentFoldCreaseRegion_Test_001
+     * @tc.desc			To test the function of getCurrentFoldCreaseRegion
+    */
+    it('getCurrentFoldCreaseRegion_Test_001', 0, async function (done) {
+        
+        let tag = 'getCurrentFoldCreaseRegion_Test_001 '
+        
+        console.info(tag + ' begin');
+        try {
+            let region = display.getCurrentFoldCreaseRegion();
+            console.log(tag + "region : " + JSON.stringify(region))
+            expect(true).assertTrue();
+            done();
+        } catch (err) {
+            console.log(tag + 'getCurrentFoldCreaseRegion failed, err : ' + JSON.stringify(err))
+            expect().assertFail();
+            done();
+        }
+    })
+
     })
 }
