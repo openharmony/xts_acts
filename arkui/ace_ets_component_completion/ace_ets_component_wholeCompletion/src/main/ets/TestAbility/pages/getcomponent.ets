@@ -13,36 +13,12 @@
  * limitations under the License.
  */
 
-import componentUtils from '@ohos.arkui.componentUtils';
 
 @Entry
 @Component
 struct getcomponent {
   @State message: string = 'Hello World'
 
-  getcomponentRect(key){
-    let modePosition = componentUtils.getRectangleById(key)
-    let widthSize = modePosition.size.width
-    let heightSize = modePosition.size.height
-    let localOffsetX = modePosition.localOffset.x
-    let localOffsetY = modePosition.localOffset.y
-    let windowOffsetX = modePosition.windowOffset.x
-    let windowOffsetY = modePosition.windowOffset.y
-    let screenOffsetX = modePosition.screenOffset.x
-    let screenOffsetY = modePosition.screenOffset.y
-    let Matrix4Result1 = modePosition.transform
-    return {
-      "sizeWidth": widthSize,
-      "sizeHeight": heightSize,
-      "localOffsetX": localOffsetX,
-      "localOffsetY": localOffsetY,
-      "windowOffsetX": windowOffsetX,
-      "windowOffsetY": windowOffsetY,
-      "screenOffsetX": screenOffsetX,
-      "screenOffsetY": screenOffsetY,
-      "Matrix4Result1": Matrix4Result1
-    }
-  }
 
   build() {
     Column() {
@@ -57,12 +33,14 @@ struct getcomponent {
 
       Button("返回值").margin(30)
         .onClick(()=>{
-          let Rectangle = this.getcomponentRect("ArkUX_Get_component_0010")
-          this.message = "sizeWidth: " + Rectangle.sizeWidth + "\n sizeHeight: " + Rectangle.sizeHeight
-          + "\n localOffsetX: " + Rectangle.localOffsetX + "\n localOffsetY: " + Rectangle.localOffsetY
-          + "\n windowOffsetX: " + Rectangle.windowOffsetX + "\n windowOffsetY: " + Rectangle.windowOffsetY
-          + "\n screenOffsetX: " + Rectangle.screenOffsetX + "\n screenOffsetY: " + Rectangle.screenOffsetY
-          + "\n Matrix4Result: " + Rectangle.Matrix4Result1.toString()
+          let strJson = getInspectorByKey("ArkUX_Get_component_0010")
+          let Rectangle = JSON.parse(strJson);
+          this.message = "sizeWidth: " + JSON.stringify(Rectangle.$attrs.width)
+          + "\n sizeHeight: " + JSON.stringify(Rectangle.$attrs.height)
+          + "\n offset: " + JSON.stringify(Rectangle.$attrs.offset.x)
+          + "\n offset: " + JSON.stringify(Rectangle.$attrs.offset.y)
+          + "\n offsetX: " + JSON.stringify(Rectangle.$attrs.shadow.offsetX)
+          + "\n offsetY: " + JSON.stringify(Rectangle.$attrs.shadow.offsetY)
         })
 
       Text(this.message).fontSize(25).padding(15).fontWeight(FontWeight.Bold).margin(10)

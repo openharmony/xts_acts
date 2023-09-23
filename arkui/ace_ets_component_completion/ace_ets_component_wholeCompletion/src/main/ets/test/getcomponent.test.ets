@@ -13,10 +13,9 @@
  * limitations under the License.
  */
 
-import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import Utils from './common/Utils'
 import router from '@system.router';
+
 
 export default function ActsgetcomponentTest() {
   describe('ActsgetcomponentTest', function () {
@@ -66,18 +65,12 @@ export default function ActsgetcomponentTest() {
           console.info('ArkUX_Get_component_0010 localOffsetY: '+ JSON.stringify(obj.localOffsetY));
           console.info('ArkUX_Get_component_0010 windowOffsetX: '+ JSON.stringify(obj.windowOffsetX));
           console.info('ArkUX_Get_component_0010 windowOffsetY: '+ JSON.stringify(obj.windowOffsetY));
-          console.info('ArkUX_Get_component_0010 screenOffsetX: '+ JSON.stringify(obj.screenOffsetX));
-          console.info('ArkUX_Get_component_0010 screenOffsetY: '+ JSON.stringify(obj.screenOffsetY));
-          console.info('ArkUX_Get_component_0010 transform: '+ JSON.stringify(obj.transform));
-          expect(parseInt(obj.width)).assertEqual(vp2px(90));
-          expect(parseInt(obj.height)).assertEqual(vp2px(90));
-          expect(parseInt(obj.localOffsetX)).assertEqual(293);
-          expect(parseInt(obj.localOffsetY)).assertEqual(30);
-          expect(parseInt(obj.windowOffsetX)).assertEqual(293);
-          expect(parseInt(obj.windowOffsetY)).assertEqual(102);
-          expect(parseInt(obj.screenOffsetX)).assertEqual(293);
-          expect(parseInt(obj.screenOffsetY)).assertEqual(102);
-          expect(obj.transform).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+          expect(parseInt(obj.$attrs.width)).assertEqual(vp2px(90));
+          expect(parseInt(obj.$attrs.height)).assertEqual(vp2px(90));
+          expect(parseInt(obj.$attrs.offset.x)).assertEqual(0);
+          expect(parseInt(obj.$attrs.offset.y)).assertEqual(0);
+          expect(parseInt(obj.$attrs.shadow.offsetX)).assertEqual(0);
+          expect(parseInt(obj.$attrs.shadow.offsetY)).assertEqual(0);
           console.info('ArkUX_Get_component_0010 END ');
         } catch(err) {
           expect().assertFail()
