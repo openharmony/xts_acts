@@ -13,18 +13,25 @@
  * limitations under the License.
  */
 
-import { describe, expect, it } from '@ohos/hypium';
+import { describe, expect, it, beforeEach, afterEach } from '@ohos/hypium';
 import http from '@ohos.net.http';
 
 export default function httpRequestJsunit() {
   describe("HttpRequestJsunitTest", function () {
+    afterEach(async function () {
+      console.log('Test afterEach start');
+      let httpRequest = http.createHttp();
+      httpRequest.off('headerReceive');
+      httpRequest.destroy();
+    });
+
     /**
      * @tc.number Telephony_http_HttpRequest_request_0100
      * @tc.name httprequest::request
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_request_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_0100"
+      var casename = "Telephony_http_HttpRequest_request_0100"
       console.log("-----------------------HttpRequest_request Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -55,7 +62,7 @@ export default function httpRequestJsunit() {
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_request_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_0100"
+      var casename = "Telephony_http_HttpRequest_request_0200"
       console.log("-----------------------HttpRequest_request_01 Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -79,7 +86,7 @@ export default function httpRequestJsunit() {
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_request_0300", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_0100"
+      var casename = "Telephony_http_HttpRequest_request_0300"
       console.log("-----------------------HttpRequest_request_02 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -114,7 +121,7 @@ export default function httpRequestJsunit() {
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_destroy_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_0200"
+      var casename = "Telephony_http_HttpRequest_destroy_0100"
       console.log("-----------------------HttpRequest_destroy Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -150,20 +157,20 @@ export default function httpRequestJsunit() {
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_on_headerReceive_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_0300"
+      var casename = "Telephony_http_HttpRequest_on_headerReceive_0100"
       console.log("-----------------------HttpRequest_on_headerReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
         httpRequest.on('headerReceive', (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
-          httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headerReceive Test end-----------------------");
           done();
         });
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + " data: " + JSON.stringify(data.responseCode) + " err: " + JSON.stringify(err));
         });
+
       } catch (error) {
         console.log("Telephony_http_HttpRequest_on_headerReceive_0100 : error = " + error);
         expect(false).assertTrue();
@@ -177,17 +184,20 @@ export default function httpRequestJsunit() {
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_off_headerReceive_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequest_0400"
+      var casename = "Telephony_http_HttpRequest_off_headerReceive_0100"
       console.log("-----------------------HttpRequest_off_headerReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
-        httpRequest.off('headerReceive', (data) => {
-          console.log(casename + " data: " + JSON.stringify(data));
-          expect(false).assertTrue();
-          httpRequest.destroy();
-          console.log("-----------------------HttpRequest_off_headerReceive Test end-----------------------");
-          done();
-        });
+        let callbackdata1 = (data) => {
+        console.log(casename + " data: " + JSON.stringify(data));
+        expect(false).assertTrue();
+        httpRequest.destroy();
+        console.log("-----------------------HttpRequest_off_headerReceive Test end-----------------------");
+        done();
+        };
+        httpRequest.on('headerReceive',callbackdata1);
+        httpRequest.off('headerReceive',callbackdata1);
+
         httpRequest.request("https://www.baidu.com/", (err, data) => {
           console.log(casename + " data: " + JSON.stringify(data.responseCode) + " err: " + JSON.stringify(err));
           done();
@@ -207,14 +217,13 @@ export default function httpRequestJsunit() {
      */
 
     it("Telephony_http_HttpRequest_on_headersReceive_0100", 0, function (done) {
-      var casename = "Telephony_http_HttpRequest_0500"
+      var casename = "Telephony_http_HttpRequest_on_headersReceive_0100"
       console.log("-----------------------HttpRequest_on_headersReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
         httpRequest.on("headersReceive", (data) => {
           console.log(casename + " data: " + JSON.stringify(data));
           expect(true).assertTrue();
-          httpRequest.destroy();
           console.log("-----------------------HttpRequest_on_headersReceive Test end-----------------------");
           done();
         });
@@ -234,7 +243,7 @@ export default function httpRequestJsunit() {
      * @tc.desc Test Test httprequest property.
      */
     it("Telephony_http_HttpRequest_off_headersReceive_0100", 0, function (done) {
-      var casename = "Telephony_http_HttpRequest_0600"
+      var casename = "Telephony_http_HttpRequest_off_headersReceive_0100"
       console.log("-----------------------HttpRequest_off_headersReceive Test is starting-----------------------");
       try {
         var httpRequest = http.createHttp();
@@ -305,4 +314,3 @@ export default function httpRequestJsunit() {
     });
   })
 };
-

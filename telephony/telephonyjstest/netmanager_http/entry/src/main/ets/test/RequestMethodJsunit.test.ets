@@ -25,7 +25,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_options_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_0100';
+      var casename = 'Telephony_http_HttpRequestMethod_options_0100';
       console.log("-----------------------HttpRequestMethod_options Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -59,7 +59,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_options_0200", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_0100';
+      var casename = 'Telephony_http_HttpRequestMethod_options_0200';
       console.log("-----------------------HttpRequestMethod_options_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -97,7 +97,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_GET_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0200"
+      var casename = "Telephony_http_HttpRequestMethod_GET_0100"
       console.log("-----------------------HttpRequestMethod_GET Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -131,7 +131,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_GET_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0200"
+      var casename = "Telephony_http_HttpRequestMethod_GET_0200"
       console.log("-----------------------HttpRequestMethod_GET_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -202,13 +202,13 @@ export default function requestMethodJsunit() {
 
 
     /**
-     * @tc.number Telephony_http_HttpRequestMethod_POST_0100
+     * @tc.number Telephony_http_HttpRequestMethod_POST_0200
      * @tc.name HttpRequestMethod::POST
      * @tc.desc Test Test HttpRequestMethod property.
      */
 
     it("Telephony_http_HttpRequestMethod_POST_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0300"
+      var casename = "Telephony_http_HttpRequestMethod_POST_0200"
       console.log("-----------------------HttpRequestMethod_POST_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -254,7 +254,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_TRACE_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0400"
+      var casename = "Telephony_http_HttpRequestMethod_TRACE_0100"
       console.log("-----------------------HttpRequestMethod_TRACE Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -287,7 +287,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_TRACE_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0400"
+      var casename = "Telephony_http_HttpRequestMethod_TRACE_0200"
       console.log("-----------------------HttpRequestMethod_TRACE_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -327,7 +327,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_PUT_0100", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0500"
+      var casename = "Telephony_http_HttpRequestMethod_PUT_0100"
       console.log("-----------------------HttpRequestMethod_PUT Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -365,7 +365,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_PUT_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0500"
+      var casename = "Telephony_http_HttpRequestMethod_PUT_0200"
       console.log("-----------------------HttpRequestMethod_PUT_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -405,7 +405,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_head_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_0600';
+      var casename = 'Telephony_http_HttpRequestMethod_head_0100';
       console.log("-----------------------HttpRequestMethod_head Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -436,7 +436,7 @@ export default function requestMethodJsunit() {
      * @tc.desc Test Test HttpRequestMethod property.
      */
     it("Telephony_http_HttpRequestMethod_HEAD_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0500"
+      var casename = "Telephony_http_HttpRequestMethod_HEAD_0200"
       console.log("-----------------------HttpRequestMethod_HEAD_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -472,7 +472,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_DELETE_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_0600';
+      var casename = 'Telephony_http_HttpRequestMethod_DELETE_0100';
       console.log("-----------------------HttpRequestMethod_DELETE Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -485,7 +485,7 @@ export default function requestMethodJsunit() {
         var httpRequest = http.createHttp();
         httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
-          expect(data.responseCode == 200).assertTrue();
+          expect(data.responseCode == 405).assertTrue();
           httpRequest.destroy();
           console.log("-----------------------HttpRequestMethod_DELETE Test end-----------------------");
           done();
@@ -503,7 +503,7 @@ export default function requestMethodJsunit() {
      * @tc.desc Test Test HttpRequestMethod property.
      */
     it("Telephony_http_HttpRequestMethod_DELETE_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0500"
+      var casename = "Telephony_http_HttpRequestMethod_DELETE_0200"
       console.log("-----------------------HttpRequestMethod_DELETE_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -516,7 +516,7 @@ export default function requestMethodJsunit() {
         var httpRequest = http.createHttp();
         httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
-          expect(data.responseCode == 200).assertTrue();
+          expect(data.responseCode == 405).assertTrue();
           httpRequest.destroy();
           console.log("-----------------------HttpRequestMethod_DELETE_01 Test end-----------------------");
           done();
@@ -539,7 +539,7 @@ export default function requestMethodJsunit() {
      */
 
     it("Telephony_http_HttpRequestMethod_CONNECT_0100", 0, async function (done) {
-      var casename = 'Telephony_http_HttpRequestMethod_0600';
+      var casename = 'Telephony_http_HttpRequestMethod_CONNECT_0100';
       console.log("-----------------------HttpRequestMethod_CONNECT Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -570,7 +570,7 @@ export default function requestMethodJsunit() {
      * @tc.desc Test Test HttpRequestMethod property.
      */
     it("Telephony_http_HttpRequestMethod_CONNECT_0200", 0, async function (done) {
-      var casename = "Telephony_http_HttpRequestMethod_0500"
+      var casename = "Telephony_http_HttpRequestMethod_CONNECT_0200"
       console.log("-----------------------HttpRequestMethod_CONNECT_01 Test is starting-----------------------");
       try {
         let httpRequestOptions = {
@@ -600,4 +600,3 @@ export default function requestMethodJsunit() {
     });
   })
 };
-
