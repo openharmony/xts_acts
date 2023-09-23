@@ -479,7 +479,7 @@ export default function abilityTest() {
     * @tc.desc    Stage model parsing parameters
     * @tc.level   1
     */
-    it('Acts_ParsingParameters_2000', 0, async function (done) {
+    it('Acts_ParsingParameters_2100', 0, async function (done) {
       let res = undefined;
       await abilityDelegator.executeShellCommand(
         'aa start -a EntryAbility -b com.example.actsability -p \'profile jsperf 50000\'').then(data => {
