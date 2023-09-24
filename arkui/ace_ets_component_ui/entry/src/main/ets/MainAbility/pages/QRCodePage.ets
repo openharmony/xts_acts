@@ -60,6 +60,11 @@ struct QRCodePage {
       Text('backgroundColor').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(200).height(200).backgroundColor(this.backColor).key('qr2')
       Text(this.text).fontSize(20).margin(10).key('text')
+
+      QRCode(this.value).width(200).height(200)
+        .color($r('sys.color.ohos_id_color_foreground'))
+        .backgroundColor($r('sys.color.ohos_id_color_background'))
+        .key('qrDefault')
     }.width('100%').margin({ top: 5 })
   }
 }
