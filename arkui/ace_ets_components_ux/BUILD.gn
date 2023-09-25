@@ -31,6 +31,7 @@ group("componentUxTest") {
       "ace_ets_component_progress:ActsAceProgressTest",
       "ace_ets_component_radio:ActsAceRadioTest",
       "ace_ets_component_search:ActsAceSearchTest",
+      "ace_ets_component_segmentbutton:ActsAceSegmentButtonTest",
       "ace_ets_component_select:ActsAceSelectTest",
       "ace_ets_component_sidebar:ActsAceSideBarTest",
       "ace_ets_component_slider:ActsAceSliderTest",
