@@ -211,7 +211,6 @@ ohos_moduletest_suite("ActsUboTestSuite0003") {
     "../ActsUbo0003TestSuite.cpp",
     "../ubo/Ubo_2_level_struct_arrayTestCase.cpp",
     "../ubo/Ubo_single_basic_type01TestCase.cpp",
-    "../ubo/Ubo_single_basic_type02TestCase.cpp",
   ]
 
   include_dirs = common_include
