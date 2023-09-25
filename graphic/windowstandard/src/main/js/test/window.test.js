@@ -3718,9 +3718,15 @@ export default function window_test() {
         console.info(tag + ' begin');
         try {
             let region = display.getCurrentFoldCreaseRegion();
-            console.log(tag + "region : " + JSON.stringify(region))
-            expect(true).assertTrue();
-            done();
+            if (region != null) {
+                expect(region.displayId != null).assertTrue()
+                expect(region.creaseRects != null).assertTrue()
+                done()
+            } else {
+                console.log(tag + "region : " + JSON.stringify(region))
+                expect(true).assertTrue();
+                done();
+            }
         } catch (err) {
             console.log(tag + 'getCurrentFoldCreaseRegion failed, err : ' + JSON.stringify(err))
             expect().assertFail();
