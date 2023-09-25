@@ -63,7 +63,6 @@ struct IndexPage {
   @State ColorTrue2 : Object[] = [];
   aboutToAppear() {
     globalThis.CreateFloatingWindow();
-//    globalThis.HideFloatingWindow();
   }
   async onPageShow(){
     let Test = null;
