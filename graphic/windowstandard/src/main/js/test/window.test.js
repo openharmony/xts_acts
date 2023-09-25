@@ -3711,16 +3711,22 @@ export default function window_test() {
      * @tc.name			Test getCurrentFoldCreaseRegion_Test_001
      * @tc.desc			To test the function of getCurrentFoldCreaseRegion
     */
-     it('getCurrentFoldCreaseRegion_Test_001', 0, async function (done) {
+    it('getCurrentFoldCreaseRegion_Test_001', 0, async function (done) {
         
         let tag = 'getCurrentFoldCreaseRegion_Test_001 '
         
         console.info(tag + ' begin');
         try {
             let region = display.getCurrentFoldCreaseRegion();
-            console.log(tag + "region : " + JSON.stringify(region))
-            expect(true).assertTrue();
-            done();
+            if (region != null) {
+                expect(region.displayId != null).assertTrue()
+                expect(region.creaseRects != null).assertTrue()
+                done()
+            } else {
+                console.log(tag + "region : " + JSON.stringify(region))
+                expect(true).assertTrue();
+                done();
+            }
         } catch (err) {
             console.log(tag + 'getCurrentFoldCreaseRegion failed, err : ' + JSON.stringify(err))
             expect().assertFail();
