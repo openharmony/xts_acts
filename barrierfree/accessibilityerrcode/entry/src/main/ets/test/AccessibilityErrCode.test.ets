@@ -1006,13 +1006,13 @@ export default function abilityTest() {
       }
     })
     /*
-    * @tc.number  AccessibilityInjectGesture_0200
-    * @tc.name    AccessibilityInjectGesture_0200
+    * @tc.number  AccessibilityInjectGesture_0300
+    * @tc.name    AccessibilityInjectGesture_0300
     * @tc.desc    test AccessibilityInjectGesture
     * @tc.size    SmallTest
     * @tc.type    User
     */
-    it('AccessibilityInjectGesture_0200', 0, async function (done) {
+    it('AccessibilityInjectGesture_0300', 0, async function (done) {
       if (axContext != null) {
         let gesturePath = new GesturePath.GesturePath(100);
         try {
@@ -1022,7 +1022,7 @@ export default function abilityTest() {
           }
           axContext.injectGestureSync(gesturePath);
         } catch (exception) {
-          console.error('AccessibilityInjectGesture_0200  failed to inject gesture, because ' + JSON.stringify(exception));
+          console.error('AccessibilityInjectGesture_0300  failed to inject gesture, because ' + JSON.stringify(exception));
           expect(false).assertTrue();
           done();
         }
