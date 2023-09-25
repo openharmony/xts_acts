@@ -133,6 +133,7 @@
         "MainAbility/pages/State/StorageProp21",
         "MainAbility/pages/State/StorageProp22",
         "MainAbility/pages/State/StorageProp25",
-        "MainAbility/pages/State/StorageProp26"
+        "MainAbility/pages/State/StorageProp26",
+	"MainAbility/pages/swiperAnimation"
     ]
 }

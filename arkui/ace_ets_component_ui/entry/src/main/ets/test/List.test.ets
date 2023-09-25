@@ -92,6 +92,7 @@ import StorageProp21Jsunit from './State/StorageProp21Jsunit.test.ets'
 import StorageProp22Jsunit from './State/StorageProp22Jsunit.test.ets'
 import StorageProp25Jsunit from './State/StorageProp25Jsunit.test.ets'
 import StorageProp26Jsunit from './State/StorageProp26Jsunit.test.ets'
+import swiperAnimationJsunit from './swiperAnimationJsunit.test.ets'
 
 
 export default function testsuite() {
@@ -174,4 +175,5 @@ export default function testsuite() {
   StorageProp22Jsunit();
   StorageProp25Jsunit();
   StorageProp26Jsunit();
+  swiperAnimationJsunit();
 }
