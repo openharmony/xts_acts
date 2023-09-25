@@ -289,6 +289,41 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
       }
     })
 
+    //参数异常
+    it("InputDevice_getKeyboardTypeSync_test_04", 0, async function (done) {
+      console.info(`InputDevice_getKeyboardTypeSync_test_04 enter`);
+      try {
+        inputDevice.getKeyboardTypeSync(-1);
+      } catch (error) {
+        expect(error.message).assertEqual("Invalid input device id");
+      }
+      console.info(`InputDevice_getKeyboardTypeSync_test_04 exit`);
+      done();
+    });
+
+    // 参数正常
+    it("InputDevice_getKeyboardTypeSync_test_05", 0, async function (done) {
+      console.info(`InputDevice_getKeyboardTypeSync_test_05 enter`);
+      try {
+        inputDevice.getDeviceIds((err, data) => {
+          if (err) {
+            expect(false).assertTrue();
+          } else {
+            for (let i = 0; i < data.length; ++i) {
+              let keyboardType = inputDevice.getKeyboardTypeSync(data[i]);
+              expect(keyboardType).assertInstanceOf('Number');
+            }
+          }
+          console.info(`InputDevice_getKeyboardTypeSync_test_05 exit`);
+          done();
+        });
+      } catch (error) {
+        console.info(`InputDevice_getKeyboardTypeSync_test_05 error`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
     it('InputDevice_setKeyboardRepeatDelay_test_01', 0, async function (done) {
       console.info(`InputDevice_setKeyboardRepeatDelay_test_01 enter`);
       try {
@@ -649,6 +684,65 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
     })
 
     /**
+     * @tc.number MultimodalInputDevice_js
+     * @tc.name MultimodalInputDevice_GetDeviceInfoSync_test
+     * @tc.desc inputdevice interface getDeviceInfoSync test
+     */
+    it("InputDevice_getDeviceInfoSync_test_01", 0, async function (done) {
+      console.info(`InputDevice_getDeviceInfoSync_test enter`);
+      try {
+        await inputDevice.getDeviceList().then((data) => {
+          console.info(`getDeviceInfo:data assertInstanceOf Array` + typeof (data));
+          expect(data).assertInstanceOf('Array');
+          console.info(`getDeviceInfo:data assertInstanceOf Array end ${data.length}`);
+          if (data.length <= 0) {
+            return;
+          }
+          let InputDeviceData = inputDevice.getDeviceInfoSync(data[0]);
+          expect(InputDeviceData.id).assertInstanceOf('Number');
+          expect(InputDeviceData.name).assertInstanceOf('String');
+          expect(InputDeviceData.sources).assertInstanceOf('Array');
+          expect(InputDeviceData.axisRanges).assertInstanceOf('Array');
+          expect(InputDeviceData.bus).assertInstanceOf('Number');
+          expect(InputDeviceData.product).assertInstanceOf('Number');
+          expect(InputDeviceData.vendor).assertInstanceOf('Number');
+          expect(InputDeviceData.version).assertInstanceOf('Number');
+          expect(InputDeviceData.phys).assertInstanceOf('String');
+          expect(InputDeviceData.uniq).assertInstanceOf('String');
+          expect(InputDeviceData).assertInstanceOf('Object');
+          for (let j = 0; j < InputDeviceData.axisRanges.length; j++) {
+            expect(InputDeviceData.axisRanges[j].source == 'keyboard'
+              || InputDeviceData.axisRanges[j].source == 'mouse'
+              || InputDeviceData.axisRanges[j].source == 'touchpad'
+              || InputDeviceData.axisRanges[j].source == 'touchscreen'
+              || InputDeviceData.axisRanges[j].source == 'joystick'
+              || InputDeviceData.axisRanges[j].source == 'trackball').assertTrue();
+            expect(InputDeviceData.axisRanges[j].axis == 'touchmajor'
+              || InputDeviceData.axisRanges[j].axis == 'touchminor'
+              || InputDeviceData.axisRanges[j].axis == 'orientation'
+              || InputDeviceData.axisRanges[j].axis == 'x'
+              || InputDeviceData.axisRanges[j].axis == 'y'
+              || InputDeviceData.axisRanges[j].axis == 'pInputDeviceDatasure'
+              || InputDeviceData.axisRanges[j].axis == 'toolminor'
+              || InputDeviceData.axisRanges[j].axis == 'toolmajor'
+              || InputDeviceData.axisRanges[j].axis == 'NULL').assertTrue();
+            expect(InputDeviceData.axisRanges[j].max).assertInstanceOf('Number');
+            expect(InputDeviceData.axisRanges[j]).assertInstanceOf('Object');
+            expect(InputDeviceData.axisRanges[j].min).assertInstanceOf('Number');
+            expect(InputDeviceData.axisRanges[j].fuzz).assertInstanceOf('Number');
+            expect(InputDeviceData.axisRanges[j].flat).assertInstanceOf('Number');
+            expect(InputDeviceData.axisRanges[j].InputDeviceDataolution).assertInstanceOf('Number');
+          }
+        })
+      } catch (err) {
+        console.info(`InputDevice_getDeviceInfoSync_test_01 inputDevice.getDeviceList ${JSON.stringify(err)}`);
+        expect(false).assertTrue();
+      }
+      done()
+      console.info(`InputDevice_getDeviceInfoSync_test exit`);
+    })
+
+    /**
      * @tc.number MultimodalInputDevice_js_0140
      * @tc.name MultimodalInputDevice_GetDeviceInfo_test
      * @tc.desc inputdevice interface getDeviceInfo test
@@ -795,6 +889,24 @@ it("InputDevice_getDevice_test_02", 0, async function (done) {
         expect(error.message).assertEqual(errMsg.PARAMETER_DEVICEID_TYPE_MSG);
       }
       console.info("InputDevice_SupportKeys_Exception_test_02 exit");
+      done();
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js
+     * @tc.name MultimodalInputDevice_SupportKeysSync_Exception_test
+     * @tc.desc inputdevice interface supportKeysSync exception test
+     */
+    it("InputDevice_SupportKeysSync_Exception_test", 0, async function (done) {
+      console.info("InputDevice_SupportKeysSync_Exception_test enter");
+      try {
+        let result = inputDevice.supportKeysSync(`id`, [17, 22, 2055]);
+      } catch (result) {
+        console.info(`SupportKeys_Exception_test: ${JSON.stringify(result, [`code`, `message`])}`);
+        expect(result.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(result.message).assertEqual(errMsg.PARAMETER_DEVICEID_TYPE_MSG);
+      }
+      console.info("InputDevice_SupportKeysSync_Exception_test exit");
       done();
     })
 
