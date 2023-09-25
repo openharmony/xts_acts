@@ -11,11 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("applications") {
+group("calendarManager") {
   testonly = true
-  deps = [
-    "calendarManager:calendarManager",
-    "print_fwk:print_fwk",
-    "settingsdata:settingsdata",
-  ]
+  deps = [ "calendarManager:CalendarManagerEtsTest" ]
 }
