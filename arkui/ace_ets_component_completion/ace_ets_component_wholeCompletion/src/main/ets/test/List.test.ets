@@ -39,9 +39,9 @@ import ActsGridTest from './Grid.test';
 import ActsListTest from './Listitem.test';
 import ActsSwiperTest from './Swiper.test';
 import ActsRichEditorTest from './richeditor.test';
-import ActsgetcomponentTest from './getcomponent.test';
+import navigationTypeTest from './navigationType.test';
 import ActsgetcomponentaddTest from './getcomponentadd.test';
-
+import ActsgetcomponentTest from './getcomponent.test';
 
 export default function testsuite() {
   stageFontTest()
@@ -70,6 +70,7 @@ export default function testsuite() {
   ActsListTest()
   ActsSwiperTest()
   ActsRichEditorTest()
-  ActsgetcomponentTest()
+  navigationTypeTest()
   ActsgetcomponentaddTest()
+  ActsgetcomponentTest()
 }
