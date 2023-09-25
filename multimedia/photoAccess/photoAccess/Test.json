@@ -133,7 +133,7 @@
                 "hilog -p off",
                 "hilog -Q pidoff",
                 "hilog -Q domainoff",
-                "hilog -b D -D 0xD002B70",
+                "hilog -b D",
                 "scanner",
                 "sleep 10"
             ],

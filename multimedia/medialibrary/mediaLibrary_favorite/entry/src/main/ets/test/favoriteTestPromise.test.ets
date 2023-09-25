@@ -45,8 +45,8 @@ export default function favoriteTestPromiseTest(abilityContext) {
         const favoriteDefaultState = async function (done, testNum, fetchOp) {
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
@@ -61,8 +61,8 @@ export default function favoriteTestPromiseTest(abilityContext) {
         const favoriteByTrue = async function (done, testNum, fetchOp) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 await asset.favorite(true);
                 let isFavorite = await asset.isFavorite();
@@ -78,8 +78,8 @@ export default function favoriteTestPromiseTest(abilityContext) {
         const favoriteByFalse = async function (done, testNum, fetchOp) {
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 await asset.favorite(true);
                 await asset.favorite(false);
