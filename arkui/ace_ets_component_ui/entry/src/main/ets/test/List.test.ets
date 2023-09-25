@@ -74,6 +74,25 @@ import GridCallbackJsunit from './GridCallbackJsunit.test.ets';
 import aboutToRecycleiamge from './aboutToRecycleiamgeJS.test.ets'
 import ParticlePropertyJsunit from './ParticlePropertyJsunit.test.ets'
 import SwiperNextPrevMarginAddJsunit from './SwiperNextPrevMarginAddJsunit.test.ets'
+import LocalStoageLinkOneJsunit from './State/LocalStoageLinkOneJsunit.test.ets';
+import LocalStoageLinkTwoJsunit from './State/LocalStoageLinkTwoJsunit.test.ets';
+import LocalStoagePropFourJsunit from './State/LocalStoagePropFourJsunit.test.ets';
+import LocalStoagePropTwoJsunit from './State/LocalStoagePropTwoJsunit.test.ets';
+import LocalStorage39Jsunit from './State/LocalStorage39Jsunit.test.ets';
+import PersistentStoragePersistPropJsunit from './State/PersistentStoragePersistPropJsunit.test.ets';
+import ProvideJsunit from './State/ProvideJsunit.test.ets';
+import Storage11Jsunit from './State/Storage11Jsunit.test.ets';
+import Storage35Jsunit from './State/Storage35Jsunit.test.ets';
+import Storage36Jsunit from './State/Storage36Jsunit.test.ets';
+import Storage38Jsunit from './State/Storage38Jsunit.test.ets';
+import StorageLinkJsunit1 from './State/StorageLinkJsunit1.test.ets';
+import StorageProp19Jsunit from './State/StorageProp19Jsunit.test.ets'
+import StorageProp20Jsunit from './State/StorageProp20Jsunit.test.ets'
+import StorageProp21Jsunit from './State/StorageProp21Jsunit.test.ets'
+import StorageProp22Jsunit from './State/StorageProp22Jsunit.test.ets'
+import StorageProp25Jsunit from './State/StorageProp25Jsunit.test.ets'
+import StorageProp26Jsunit from './State/StorageProp26Jsunit.test.ets'
+
 
 export default function testsuite() {
   DialogJsunit();
@@ -137,4 +156,22 @@ export default function testsuite() {
   aboutToRecycleiamge();
   ParticlePropertyJsunit();
   SwiperNextPrevMarginAddJsunit();
+  LocalStoageLinkOneJsunit();
+  LocalStoageLinkTwoJsunit();
+  LocalStoagePropFourJsunit();
+  LocalStoagePropTwoJsunit();
+  LocalStorage39Jsunit();
+  PersistentStoragePersistPropJsunit();
+  ProvideJsunit();
+  Storage11Jsunit();
+  Storage35Jsunit();
+  Storage36Jsunit();
+  Storage38Jsunit();
+  StorageLinkJsunit1();
+  StorageProp19Jsunit();
+  StorageProp20Jsunit();
+  StorageProp21Jsunit();
+  StorageProp22Jsunit();
+  StorageProp25Jsunit();
+  StorageProp26Jsunit();
 }
