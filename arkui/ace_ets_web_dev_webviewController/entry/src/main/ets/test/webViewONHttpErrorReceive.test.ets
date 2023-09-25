@@ -76,7 +76,7 @@ export default function webViewONHttpErrorReceive() {
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent",false,366,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent",false,368,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","GET",370,done);
-      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","",372,done);
+      Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent",'""',372,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","utf-8",374,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent","text/html",376,done);
       Utils.registerEvent("testOnHttpErrorReceiveFixedUserAgent",403,378,done);
