@@ -23,6 +23,7 @@ export default function AVSessionCallback() {
     describe('AVSessionCallback', function () {
         let tag = 'ApplicationA';
         let type = 'audio';
+        let isDestroyed;
         let session;
         let controller;
         let context = featureAbility.getContext();
@@ -47,6 +48,7 @@ export default function AVSessionCallback() {
             console.info('TestLog: Init Session And Controller');
             await avSession.createAVSession(context, tag, type).then((data) => {
                 session = data;
+                isDestroyed = false
             }).catch((err) => {
                 console.info(`TestLog: Session created error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
@@ -64,12 +66,14 @@ export default function AVSessionCallback() {
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
-            await session.destroy().then(() => {
-                console.info('TestLog: Session Destroy SUCCESS');
-            }).catch((err) => {
-                console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            if(!isDestroyed){
+                await session.destroy().then(() => {
+                    console.info('TestLog: Session Destroy SUCCESS');
+                }).catch((err) => {
+                    console.info(`TestLog: Session Destroy error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                });
+            }
             await controller.destroy().then(() => {
                 console.info('TestLog: Controller Destroy SUCCESS');
             }).catch((err) => {
@@ -633,6 +637,7 @@ export default function AVSessionCallback() {
                     console.info('TestLog: session destroy failed');
                     expect(false).assertTrue();
                 } else {
+                    isDestroyed = true;
                     console.info('TestLog: session destroy successfully');
                 }
             });
@@ -1039,6 +1044,8 @@ export default function AVSessionCallback() {
                 if (err) {
                     console.info(`TestLog: session destroy error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
+                } else {
+                    isDestroyed = true;
                 }
             });
             await sleep(500);
@@ -1225,6 +1232,7 @@ export default function AVSessionCallback() {
                     expect(false).assertTrue();
                 } else {
                     console.info('TestLog: Session destroy');
+                    isDestroyed = true;
                 }
             });
 
