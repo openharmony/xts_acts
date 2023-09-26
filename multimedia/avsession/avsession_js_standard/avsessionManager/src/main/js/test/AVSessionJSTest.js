@@ -465,5 +465,22 @@ export default function AVSessionJsTest() {
       }
       done();
     })
+
+    /*
+    * @tc.name: SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100
+    * @tc.desc: Get output device - sync
+    * @tc.type: FUNC
+    * @tc.require: 
+    */
+    it("SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+      try {
+        let outputDeviceInfo = session.getOutputDeviceSync();
+        console.log(`Get output device info: ${outputDeviceInfo}`);
+        expect(outputDeviceInfo.devices[0].deviceId).assertEqual("0");
+      } catch (err) {
+        expect().assertFail();
+      }
+      done();
+    })
   })
 }
