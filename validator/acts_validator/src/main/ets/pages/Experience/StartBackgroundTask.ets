@@ -53,6 +53,7 @@ struct CustomContainerUser {
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
+    globalThis.resultNum = '0';
   }
 
   @Builder specificNoParam() {
@@ -147,9 +148,6 @@ struct CustomContainerUser {
                   .onClick(() => {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
-                    if ( report == undefined ) {
-                      this.time = -1000;
-                    } else {
                       let head = report.indexOf(":");
                       this.time = report.substring(head+1);
                       let time = this.time;
@@ -158,7 +156,6 @@ struct CustomContainerUser {
                       } else if ( isNaN(this.time) ){
                         this.time = -1000;
                       }
-                    }
                     globalThis.HideFloatingWindow();
                   })
               }
@@ -168,7 +165,8 @@ struct CustomContainerUser {
                 .fontColor(Color.White).fontSize('24fp')
             }
           }
-        }
+        }.scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
