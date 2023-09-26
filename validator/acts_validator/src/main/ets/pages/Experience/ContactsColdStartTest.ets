@@ -160,7 +160,6 @@ struct CustomContainerUser {
                               Contacts
                      */
                     let ContactsReport = globalThis.resultNum;
-                  
                       let ContactsHead = ContactsReport.indexOf('time:');
                       let ContactsTime = ContactsReport.substring(ContactsHead+5);
                       this.contactsNum = parseFloat(ContactsTime);
