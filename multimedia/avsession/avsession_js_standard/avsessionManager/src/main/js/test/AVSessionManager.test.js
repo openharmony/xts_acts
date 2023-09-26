@@ -42,13 +42,7 @@ export default function AVSessionManager() {
         })
 
         afterAll(function () {
-            console.info('TestLog: Destroy Session And Controller');
-            session.destroy().then(() => {
-                console.info('TestLog: Session destroy success');
-            }).catch((err) => {
-                console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            console.info('TestLog: enter afterAll');
         })
 
         /* *
@@ -159,6 +153,8 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
+            await sleep(1000);
+            await currentAVSession.destroy();
             done();
         })
 
@@ -194,6 +190,8 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
+            await sleep(1000);
+            await currentAVSession.destroy();
             done();
         })
 
@@ -234,7 +232,7 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
+            await sleep(1000);
             await currentAVSession.destroy();
             done();
         })
@@ -271,7 +269,7 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
+            await sleep(1000);
             await currentAVSession.destroy();
             done();
         })
@@ -319,6 +317,8 @@ export default function AVSessionManager() {
 
                 }
             }
+            await sleep(1000);
+            await currentAVSession.destroy();
             done();
         })
         /* *
@@ -361,7 +361,7 @@ export default function AVSessionManager() {
                     expect(true).assertTrue()
                 }
             }
-            await sleep(10000);
+            await sleep(1000);
             await currentAVSession.destroy();
             done();
         })

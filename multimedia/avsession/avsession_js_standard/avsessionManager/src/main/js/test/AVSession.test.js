@@ -25,6 +25,7 @@ export default function AVSession() {
         let type = 'audio';
         let session;
         let controller;
+        let isDestroyed;
         let OutputDeviceInfo = { isRemote: false, audioDeviceId: [0], deviceName: ['LocalDevice'] };
         let keyItem = { code: 0x49, pressedTime: 123456789, deviceId: 0 };
         let event = { action: 2, key: keyItem, keys: [keyItem] };
@@ -58,6 +59,7 @@ export default function AVSession() {
         beforeEach(async function () {
             console.info('TestLog: Init Session And Controller');
             await avSession.createAVSession(context, tag, type).then((data) => {
+                isDestroyed = false;
                 session = data;
                 session.sessionType = 'audio';
             }).catch((err) => {
@@ -78,12 +80,14 @@ export default function AVSession() {
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
-            await session.destroy().then(() => {
-                console.info('TestLog: Session destroy success');
-            }).catch((err) => {
-                console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            if(!isDestroyed) {
+                await session.destroy().then(() => {
+                    console.info('TestLog: Session destroy success');
+                }).catch((err) => {
+                    console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                });
+            }
             await controller.destroy().then(() => {
                 console.info('TestLog: Controller destroy success');
             }).catch((err) => {
@@ -632,6 +636,7 @@ export default function AVSession() {
                 assetId: '121278',
             };
             await session.destroy();
+            isDestroyed = true;
             await sleep(500);
             await session.setAVMetadata(metadata14).then(() => {
                 console.info('TestLog: Set metadata successfully');
@@ -1017,6 +1022,7 @@ export default function AVSession() {
                 isFavorite: true,
             };
             await session.destroy();
+            isDestroyed = true;
             await sleep(500);
             await session.setAVPlaybackState(PlaybackState10).then(() => {
                 console.info('TestLog: Set playbackState successfully');
