@@ -27,10 +27,6 @@
         {
             "name": "app_name",
             "value": "Demo"
-        },
-        {
-            "name": "actionAreaDistance1",
-            "value": "80vp"
         }
     ]
 }

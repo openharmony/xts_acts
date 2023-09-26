@@ -28,9 +28,16 @@ import grid_RowCol_ItemContentSizeTest from './Grid/GridTemplatesAllSet/GridItem
 import grid_RowCol_ItemColumnStartEnd from './Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemColumnStartEnd.test';
 import grid_RowCol_ItemRowStartEnd from './Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemRowStartEnd.test';
 import grid_GridFrictionTest from './Grid/Grid_attribute/Grid_GridFriction.test';
+import OnlyColumnsTemplate1 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate1.test';
+import OnlyColumnsTemplate2 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate2.test';
+import OnlyColumnsTemplate3 from './Grid/OnlyColumnsTemplate/OnlyColumnsTemplate3.test';
+import OnlyRowsTemplate1 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate1.test';
+import OnlyRowsTemplate2 from './Grid/OnlyRowsTemplate/OnlyRowsTemplate2.test';
+import ColumnsTemplateAndRowsTemplate1 from './Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate1.test';
+import ColumnsTemplateAndRowsTemplate2 from './Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate2.test';
+import ColumnsTemplateAndRowsTemplateNoSet from './Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet.test';
 
 export default function testsuite() {
-
 
   Grid_RowCol_TemplateChange()
   Grid_RowCol_GridSize()
@@ -47,5 +54,14 @@ export default function testsuite() {
   grid_RowCol_ItemColumnStartEnd()
   grid_RowCol_ItemRowStartEnd()
   grid_GridFrictionTest();
+  OnlyColumnsTemplate1();
+  OnlyColumnsTemplate2();
+  OnlyColumnsTemplate3();
+  OnlyRowsTemplate1();
+  OnlyRowsTemplate2();
+  ColumnsTemplateAndRowsTemplate1();
+  ColumnsTemplateAndRowsTemplate2();
+  ColumnsTemplateAndRowsTemplateNoSet();
+
 
 }

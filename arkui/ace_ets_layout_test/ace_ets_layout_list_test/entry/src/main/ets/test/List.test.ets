@@ -37,9 +37,17 @@ import List_Padding from './List/List_Space/ListChange/List_Padding.test';
 import List_PadMar from './List/List_Space/ListChange/List_PadMar.test';
 import list_ListFrictionTest from './List/List_attribute/List_ListFriction.test';
 
+import ListItem_Delete_End from './List/ListItem_Delete/ListItem_Delete_End.test.ets';
+import ListItem_Delete_End_Default from './List/ListItem_Delete/ListItem_Delete_End_Default.test.ets';
+import ListItem_Delete_End_String from './List/ListItem_Delete/ListItem_Delete_End_String.test.ets';
+import ListItem_Delete_End_Resource from './List/ListItem_Delete/ListItem_Delete_End_Resource.test.ets';
+import ListItem_Delete_Start from './List/ListItem_Delete/ListItem_Delete_Start.test.ets';
+import ListItem_Delete_Start_Default from './List/ListItem_Delete/ListItem_Delete_Start_Default.test.ets';
+import ListItem_Delete_Start_String from './List/ListItem_Delete/ListItem_Delete_Start_String.test.ets';
+import ListItem_Delete_Start_Resource from './List/ListItem_Delete/ListItem_Delete_Start_Resource.test.ets';
+
 export default function testsuite() {
-  
-  listItem_SizeChange()
+ listItem_SizeChange()
   listItem_Margin()
   listItem_Padding()
   listItem_PadMar()
@@ -63,5 +71,14 @@ export default function testsuite() {
   List_Padding();
   List_PadMar();
   list_ListFrictionTest();
-  
+
+  ListItem_Delete_End()
+  ListItem_Delete_End_Default()
+  ListItem_Delete_End_String()
+  ListItem_Delete_End_Resource()
+  ListItem_Delete_Start()
+  ListItem_Delete_Start_Default()
+  ListItem_Delete_Start_String()
+  ListItem_Delete_Start_Resource()
+
 }

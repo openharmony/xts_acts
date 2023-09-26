@@ -16,6 +16,15 @@
         "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemRowStartEnd",
         "MainAbility/pages/Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemVisibility",
         "MainAbility/pages/Grid/GridTemplatesAllSet/GridTemplateChange/Grid_RowCol_TemplateChange",
-        "MainAbility/pages/Grid/Grid_attribute/GridFrictionPage"
+        "MainAbility/pages/Grid/Grid_attribute/GridFrictionPage",
+
+        "MainAbility/pages/Grid/OnlyColumnsTemplate/OnlyColumnsTemplate1",
+        "MainAbility/pages/Grid/OnlyColumnsTemplate/OnlyColumnsTemplate2",
+        "MainAbility/pages/Grid/OnlyColumnsTemplate/OnlyColumnsTemplate3",
+        "MainAbility/pages/Grid/OnlyRowsTemplate/OnlyRowsTemplate1",
+        "MainAbility/pages/Grid/OnlyRowsTemplate/OnlyRowsTemplate2",
+        "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate1",
+        "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate2",
+        "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet"
     ]
 }
