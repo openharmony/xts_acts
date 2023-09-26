@@ -1,7 +1,7 @@
 import Ability from '@ohos.app.ability.UIAbility'
 
 export default class MainAbility extends Ability {
-  onCreate(want, launchParam){
+  onCreate(want, launchParam) {
     // Ability is creating, initialize resources for this ability
     console.log('[Demo] MainAbility onCreate');
     globalThis.abilityWant = want;

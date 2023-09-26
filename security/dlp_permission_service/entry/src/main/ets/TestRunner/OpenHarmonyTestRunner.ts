@@ -68,7 +68,7 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     {
       cmd += ' -D';
     }
-    console.info('cmd : '+cmd)
+    console.info('cmd : ' + cmd);
     abilityDelegator.executeShellCommand(cmd,
       (err: any, d: any) => {
         console.info('executeShellCommand : err : ' + JSON.stringify(err));
