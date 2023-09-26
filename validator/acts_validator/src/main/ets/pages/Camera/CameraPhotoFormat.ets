@@ -287,7 +287,8 @@ struct cameraOrientation {
           }.width('100%').justifyContent(FlexAlign.SpaceEvenly)
           .height('10%')
         }
-      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
+      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
 
       CustomContainer({
         title: this.name,
