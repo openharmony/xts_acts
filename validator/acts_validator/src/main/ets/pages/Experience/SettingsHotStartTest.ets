@@ -58,6 +58,7 @@ struct CustomContainerUser {
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
+    globalThis.resultNum = '0';
   }
 
   @Builder specificNoParam() {
@@ -157,9 +158,6 @@ struct CustomContainerUser {
                               settings
                      */
                     let setReport = globalThis.resultNum;
-                    if ( setReport == undefined ){
-                      this.setNum = -1000;
-                    } else {
                       let setHead = setReport.indexOf(':');
                       let setTime = setReport.substring(setHead+1);
                       this.setNum = parseFloat(setTime);
@@ -170,7 +168,6 @@ struct CustomContainerUser {
                       if( this.num === 1 ) {
                         this.Vue = true;
                       }
-                    }
                     globalThis.HideFloatingWindow();
                   })
               }
@@ -180,7 +177,8 @@ struct CustomContainerUser {
                 .fontColor(Color.White).fontSize('24fp')
             }
           }
-        }
+        }.scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
