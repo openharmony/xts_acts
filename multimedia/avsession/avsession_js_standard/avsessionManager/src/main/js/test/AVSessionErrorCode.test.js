@@ -24,7 +24,6 @@ export default function AVSessionErrorCode() {
         let session;
 		let pid = 100;
 		let uid = 200;
-        let isDestroyed;
 		let audioDevices;
 		let sessionToken;
         let controller;
@@ -62,25 +61,26 @@ export default function AVSessionErrorCode() {
             });
 
             controller = await session.getController();
-            isDestroyed = false;
         })
 
         afterEach(async function (done) {
             console.info('TestLog: Destroy Session And Controller');
-            await session.destroy().then(() => {
+            if(session){
+                await session.destroy().then(() => {
                 console.info('TestLog: Session destroy success');
             }).catch((err) => {
                 console.info(`TestLog: Session destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
-            if(!isDestroyed) {
-                await controller.destroy().then(() => {
-                    console.info('TestLog: Controller destroy success');
-                }).catch((err) => {
-                    console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                });
-            }
+        }
+        if(controller){
+            await controller.destroy().then(() => {
+                console.info('TestLog: Controller destroy success');
+            }).catch((err) => {
+                console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+        }
             done();
         })
 
@@ -123,7 +123,6 @@ export default function AVSessionErrorCode() {
          */
         it('SUB_MULTIMEDIA_AVSESSION_DESTROYCONTROLLER_PROMISE_0100', 0, async function (done) {
             await controller.destroy().then(() => {
-                isDestroyed = true;
                 console.info('TestLog: Controller destroy successfully');
                 expect(true).assertTrue();
             }).catch((err) => {
@@ -132,6 +131,8 @@ export default function AVSessionErrorCode() {
                 console.info(`TestLog: Controller destroy error: code: ${err.code}, message: ${err.message}`);
                 expect(false).assertTrue();
             });
+            await sleep(200);
+            controller = await session.getController();
             done();
         })
 
