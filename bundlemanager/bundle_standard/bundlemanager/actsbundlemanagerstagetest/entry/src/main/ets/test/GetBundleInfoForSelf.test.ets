@@ -187,6 +187,36 @@ export default function getBundleInfoForSelf() {
     })
 
     /*
+     * @tc.number: SUB_BMS_APPINFO_QUERY_1121
+     * @tc.name: getBundleInfoForSelfMetadata
+     * @tc.desc: Test getBundleInfoForSelf with application and metadata flag(by callback).
+     */
+    it('getBundleInfoForSelfMetadata', 0, async function (done) {
+      bundle.getBundleInfoForSelf(bundle.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
+        | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA, (err, data) => {
+        console.info("ApplicationInfo" + JSON.stringify(data.appInfo));
+        for (let i in data.appInfo) {
+          console.info("name" + JSON.stringify(i));
+          console.info("name" + JSON.stringify(data.appInfo[i]));
+        }
+        checkCommonBundleInfo(data);
+        expect(data.appInfo.metadata["testModule"].length).assertLarger(0);
+        let metadataArray = data.appInfo.metadataArray;
+        expect(metadataArray.length).assertEqual(1);
+        let moduleMetadata = metadataArray[0];
+        expect(moduleMetadata.moduleName).assertEqual("testModule");
+        expect(moduleMetadata.metadata.length).assertLarger(0);
+
+        expect(data.hapModulesInfo.length).assertEqual(0);
+        expect(data.reqPermissionDetails.length).assertEqual(0);
+        expect(data.permissionGrantStates.length).assertEqual(0);
+        expect(data.signatureInfo).assertEqual(null);
+        expect(err).assertEqual(null);
+        done();
+      })
+    })
+
+    /*
      * @tc.number: SUB_BMS_APPINFO_QUERY_0122
      * @tc.name: getBundleInfoForSelfModulePro
      * @tc.desc: Test getBundleInfoForSelf with hapModuleInfo flag(by promise).
