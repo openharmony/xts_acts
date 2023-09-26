@@ -472,7 +472,7 @@ export default function AVSessionJsTest() {
     * @tc.type: FUNC
     * @tc.require: 
     */
-    it("SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
       try {
         let outputDeviceInfo = session.getOutputDeviceSync();
         console.log(`Get output device info: ${outputDeviceInfo}`);

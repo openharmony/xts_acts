@@ -1536,7 +1536,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_GETAVPLAYBACKSTATESYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_GETAVPLAYBACKSTATESYNC_0100 start");
     try {
       let playbackState = {
@@ -1560,7 +1560,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_GETAVMETADATASYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_GETAVMETADATASYNC_0100 start");
     try {
       let metaData = {
@@ -1584,7 +1584,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_GETAVQUEUETITLESYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLESYNC_0100 start");
     try {
       await session.setAVQueueTitle(QUEUE_TITLE);
@@ -1605,7 +1605,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_GETAVQUEUEITEMSYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMSYNC_0100 start");
     try {
       await session.setAVQueueItems(ITEMS_ARRAY);
@@ -1626,7 +1626,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100 start");
     try {
       let outputDeviceInfo = controller.getOutputDeviceSync();
@@ -1645,7 +1645,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_ISACTIVESYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_ISACTIVESYNC_0100 start");
     try {
       await session.activate();
@@ -1666,7 +1666,7 @@ export default function AVSessionControllerJsTest() {
    * @tc.type: FUNC
    * @tc.require: 
    */
-  it("SUB_MULTIMEDIA_GETVALIDCOMMANDSSYNC_0100", 0, async function (done) {
+  it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100", 0, async function (done) {
     console.info(TAG + "SUB_MULTIMEDIA_GETVALIDCOMMANDSSYNC_0100 start");
     try {
       session.on('play', () => {});
