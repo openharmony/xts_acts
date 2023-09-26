@@ -60,6 +60,7 @@ struct CustomContainerUser {
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
+    globalThis.resultNum = '0';
   }
 
   @Builder specificNoParam() {
@@ -159,9 +160,6 @@ struct CustomContainerUser {
                               Contacts
                      */
                     let ContactsReport = globalThis.resultNum;
-                    if ( ContactsReport == undefined ) {
-                      this.contactsNum = -1000;
-                    } else {
                       let ContactsHead = ContactsReport.indexOf('time:');
                       let ContactsTime = ContactsReport.substring(ContactsHead+5);
                       this.contactsNum = parseFloat(ContactsTime);
@@ -173,7 +171,6 @@ struct CustomContainerUser {
                       if( this.num === 1 ) {
                         this.Vue = true;
                       }
-                    }
                     globalThis.HideFloatingWindow();
                   })
               }
