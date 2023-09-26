@@ -105,6 +105,8 @@
 		"MainAbility/pages/GridCallbackPage",
 		"MainAbility/pages/aboutToRecycleiamge",
 	    "MainAbility/pages/ParticleOptions",
-        "MainAbility/pages/ParticleProperty"
+        "MainAbility/pages/ParticleProperty",
+	"MainAbility/pages/lifecycle"
+	
     ]
 }
