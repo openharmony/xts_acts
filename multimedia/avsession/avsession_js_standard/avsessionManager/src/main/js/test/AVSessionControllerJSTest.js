@@ -1530,5 +1530,156 @@ export default function AVSessionControllerJsTest() {
       await sleep(200);
     })
 
+    /*
+   * @tc.name:SUB_MULTIMEDIA_GETAVPLAYBACKSTATESYNC_0100
+   * @tc.desc:Get av playback state - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVPLAYBACKSTATESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVPLAYBACKSTATESYNC_0100 start");
+    try {
+      let playbackState = {
+        state: 0
+      }
+      await session.setAVPlaybackState(playbackState);
+      sleep(200);
+      let currentPlaybackState = controller.getAVPlaybackStateSync();
+      console.log(`Get playback state: ${playbackState}`);
+      expect(currentPlaybackState.state).assertEqual(0);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVPLAYBACKSTATESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_GETAVMETADATASYNC_0100
+   * @tc.desc:Get av metadata - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVMETADATASYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVMETADATASYNC_0100 start");
+    try {
+      let metaData = {
+        assetId: "0"
+      }
+      await session.setAVMetadata(metaData);
+      sleep(200);
+      let currentMetaData = controller.getAVMetadataSync();
+      console.log(`Get metadata: ${currentMetaData}`);
+      expect(currentMetaData.assetId).assertEqual("0");
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVMETADATASYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_GETAVQUEUETITLESYNC_0100
+   * @tc.desc:Get av queue title - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUETITLESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLESYNC_0100 start");
+    try {
+      await session.setAVQueueTitle(QUEUE_TITLE);
+      sleep(200);
+      let currentQueueTitle = controller.getAVQueueTitleSync();
+      console.log(`Get queue title: ${currentQueueTitle}`);
+      expect(currentQueueTitle).assertEqual(QUEUE_TITLE);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUETITLESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_GETAVQUEUEITEMSYNC_0100
+   * @tc.desc:Get av queue item - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETAVQUEUEITEMSYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMSYNC_0100 start");
+    try {
+      await session.setAVQueueItems(ITEMS_ARRAY);
+      sleep(200);
+      let currentQueueItem = controller.getAVQueueItemsSync();
+      console.log(`Get queue item: ${currentQueueItem}`);
+      expect(currentQueueItem[0].itemId).assertEqual(ITEMS_ARRAY[0].itemId);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_GETAVQUEUEITEMSYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100
+   * @tc.desc:Get output device - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100 start");
+    try {
+      let outputDeviceInfo = controller.getOutputDeviceSync();
+      console.log(`Get output device info: ${outputDeviceInfo}`);
+      expect(outputDeviceInfo.devices[0].deviceId).assertEqual("0");
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_ISACTIVESYNC_0100
+   * @tc.desc:Is session active - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_ISACTIVESYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_ISACTIVESYNC_0100 start");
+    try {
+      await session.activate();
+      sleep(200);
+      let isActive = controller.isActiveSync();
+      console.log(`Get session active state: ${isActive}`);
+      expect(isActive).assertEqual(true);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_ISACTIVESYNC_0100 finished");
+    done();
+  })
+
+  /*
+   * @tc.name:SUB_MULTIMEDIA_GETVALIDCOMMANDSSYNC_0100
+   * @tc.desc:Get valid commands - sync
+   * @tc.type: FUNC
+   * @tc.require: 
+   */
+  it("SUB_MULTIMEDIA_AVSESSION_GETVALIDCOMMANDSSYNC_0100", 0, async function (done) {
+    console.info(TAG + "SUB_MULTIMEDIA_GETVALIDCOMMANDSSYNC_0100 start");
+    try {
+      session.on('play', () => {});
+      sleep(200);
+      let validCommands = controller.getValidCommandsSync();
+      console.log(`Get valid commands: ${validCommands}`);
+      expect(validCommands[0]).assertEqual(0);
+    } catch (err) {
+      expect().assertFail();
+    }
+    console.info(TAG + "SUB_MULTIMEDIA_GETVALIDCOMMANDSSYNC_0100 finished");
+    done();
+  })
+
   })
 }
