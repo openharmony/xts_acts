@@ -83,7 +83,9 @@ describe('btGattManagerTest', function() {
         console.info('beforeAll called')
         await openPhone();
         gattServer = bluetooth.BLE.createGattServer();
+        console.info('bluetooth ble create gattserver result:' + gattServer);
         gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
+        console.info('bluetooth ble create gattclientdevice result:' + gattClient);
         done();
     })
     beforeEach(async function(done) {
@@ -97,9 +99,10 @@ describe('btGattManagerTest', function() {
     afterAll(async function (done) {
         console.info('afterAll called')
         gattServer.close();
+        console.info('bluetooth gattServer close success');
         gattClient.close();
-        done()
-        await sleep(5000);
+        console.info('bluetooth gattClient close success');
+        done();
     })
 
     /**

@@ -100,7 +100,6 @@ describe('btManagerGattServiceTest', function() {
         console.info('afterAll called')
         await gattServer.close();
         console.info('[bluetooth_js]bmgs gattServer close success');
-        await sleep(5000);
         done();
     })
 
