@@ -85,7 +85,7 @@ export default function requestDownloadJSUnit() {
     })
 
     /**
-     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_broken_0010
+     * @tc.number    SUB_MISC_REQUEST_DOWNLOAD_faults_0010
      * @tc.name      T download task
      * @tc.desc      Test requestUploadTest API functionality.
      * @tc.size      : MEDIUM
@@ -93,23 +93,23 @@ export default function requestDownloadJSUnit() {
      * @tc.level     : Level 0
      */
     it('SUB_MISC_REQUEST_DOWNLOAD_faults_0010', 0, async function (done) {
-      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_broken_0010 is starting-----------------------");
+      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_faults_0010 is starting-----------------------");
       try {
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Faults.OTHERS: " + request.agent.Faults.OTHERS);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.OTHERS: " + request.agent.Faults.OTHERS);
         expect(request.agent.Faults.OTHERS).assertEqual(255);
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Faults.DISCONNECTED: " + request.agent.Faults.DISCONNECTED);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.DISCONNECTED: " + request.agent.Faults.DISCONNECTED);
         expect(request.agent.Faults.DISCONNECTED).assertEqual(0);
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Faults.TIMEOUT: " + request.agent.Faults.TIMEOUT);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.TIMEOUT: " + request.agent.Faults.TIMEOUT);
         expect(request.agent.Faults.TIMEOUT).assertEqual(16);
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Faults.PROTOCOL: " + request.agent.Faults.PROTOCOL);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.PROTOCOL: " + request.agent.Faults.PROTOCOL);
         expect(request.agent.Faults.PROTOCOL).assertEqual(32);
-        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 request.agent.Faults.FSIO: " + request.agent.Faults.FSIO);
+        console.info("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 request.agent.Faults.FSIO: " + request.agent.Faults.FSIO);
         expect(request.agent.Faults.FSIO).assertEqual(64);
       } catch (err) {
-        console.error("====>SUB_MISC_REQUEST_DOWNLOAD_broken_0010 error: " + err);
+        console.error("====>SUB_MISC_REQUEST_DOWNLOAD_faults_0010 error: " + err);
         expect().assertFail();
       }
-      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_broken_0010 end-----------------------");
+      console.info("====>-----------------------SUB_MISC_REQUEST_DOWNLOAD_faults_0010 end-----------------------");
       done();
     });
 
