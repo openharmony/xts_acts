@@ -75,6 +75,7 @@ group("multimedia") {
       "medialibrary/mediaLibrary_mediafetchoptions:mediaLibrary_mediafetchoptions_hap",
       "medialibrary/mediaLibrary_trash:mediaLibrary_trash_js_hap",
       "photoAccess/photoAccess:photoAccess_js_hap",
+      "photoAccess/photoAccessNoLocation:photoAccess_nolocation_js_hap",
       "photoAccess/photoAccessSystem:photoAccess_system_js_hap",
     ]
   } else {

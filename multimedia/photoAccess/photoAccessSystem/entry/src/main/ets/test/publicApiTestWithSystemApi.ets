@@ -662,14 +662,13 @@ export default function publicApiTestWithSystemApiTest () {
         await fileio.write(fd, testNum);
         await createAsset.close(fd);
         await sleep(1000);
+        helper.unRegisterChange(uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -699,15 +698,13 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         await asset.setFavorite(true);
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -738,15 +735,13 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         await asset.setFavorite(false);
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -785,15 +780,13 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         await trashAlbum.recoverAssets([trashFileAsset]);
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: $${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -834,15 +827,13 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         await trashAlbum.deleteAssets([trashFileAsset]);
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: $${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -875,14 +866,13 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         await helper.deleteAlbums([album]);
         await sleep(1000);
+        helper.unRegisterChange(uri);
         expect(listenCount).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: $${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -1003,15 +993,13 @@ export default function publicApiTestWithSystemApiTest () {
         console.log(`${testNum}: trashFileAssetUri: ${trashFileAssetUri}`);
         await trashAlbum.deleteAssets([trashFileAsset]);
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(listenCount).assertEqual(testCount);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -1071,15 +1059,13 @@ export default function publicApiTestWithSystemApiTest () {
         await sleep(550);
         await asset.setFavorite(false);
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(listenCount).assertEqual(3);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -1119,13 +1105,12 @@ export default function publicApiTestWithSystemApiTest () {
           await asset.setFavorite(!isFav);
         }
         await sleep(1000);
+        helper.unRegisterChange(uri);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -1164,15 +1149,13 @@ export default function publicApiTestWithSystemApiTest () {
           await sleep(500);
         }
         await sleep(1000);
-
+        helper.unRegisterChange(uri);
         expect(listenCount).assertEqual(10);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: ${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
@@ -1212,14 +1195,13 @@ export default function publicApiTestWithSystemApiTest () {
         await fileio.write(fd, buf);
         await fileAsset.close(fd);
         await sleep(1000);
+        helper.unRegisterChange(uri);
         expect(count).assertEqual(1);
         done();
       } catch (error) {
         console.log(`${testNum}: tryError: $${error}`);
         expect(false).assertTrue();
         done();
-      } finally {
-        helper.unRegisterChange(uri);
       }
     });
 
