@@ -235,12 +235,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0100
         * @tc.name      : 001.test Async createSoundPool test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0100 in`);
       try {
         media.createSoundPool(maxStreams, audioRendererInfo, (error, soundPool_) => {
           if (error) {
@@ -267,12 +267,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0200
         * @tc.name      : 002.test Async createSoundPool test --Optional input maxStream is invalid
         * @tc.desc      : Function test. Error code: 5400101
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0200 in`);
       try {
         media.createSoundPool(-1, audioRendererInfo, (error, soundPool_) => {
           if (error) {
@@ -298,12 +298,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0300
         * @tc.name      : 003.test Async createSoundPool test --Optional input audioRendererInfo is invalid
         * @tc.desc      : Function test. Error code: 5400101
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_CREATE_AYSNC_0300 in`);
       let invalidInfo = {
         content: -1,
         usage: -1,
@@ -663,12 +663,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0100
         * @tc.name      : 001.test Async load(uri) test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0100 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -702,12 +702,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0200
         * @tc.name      : 002.test Async load(uri) test --Optional input uri is invalid
         * @tc.desc      : Function test. Error code: 5400103
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0200 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -740,12 +740,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0300
         * @tc.name      : 003.test Async load(fd, offset, length) test --0 offset
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0300 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -779,12 +779,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0040
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0400
         * @tc.name      : 004.test Async load(fd, offset, length) test --1/3 offset
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0040', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0040 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0400', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0400 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -818,12 +818,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0050
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0500
         * @tc.name      : 005.test Async load(fd, offset, length) test --length < fileSize
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0050', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0050 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0500', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0500 in`);
       try {
         let streamId = -1;
         await createSoundPool();
@@ -875,12 +875,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0060
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0600
         * @tc.name      : 006.test Async load(fd, offset, length) test --length > fileSize
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0060', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0060 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0600', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0600 in`);
       try {
         let streamId = -1;
         await createSoundPool();
@@ -932,12 +932,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0070
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0700
         * @tc.name      : 007.test Async load(fd, offset, length) test --Optional input fd is invalid
         * @tc.desc      : Function test. Error code: 5400103
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0070', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0070 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0700', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0700 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -970,12 +970,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0080
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0800
         * @tc.name      : 008.test Async load(fd, offset, length) test --Optional input offset is invalid
         * @tc.desc      : Function test. Error code: 5400103
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0080', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0080 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0800', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0800 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1008,12 +1008,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0090
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0900
         * @tc.name      : 009.test Async load(fd, offset, length) test --Optional input length is invalid
         * @tc.desc      : Function test. Error code: 5400103
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0090', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0090 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0900', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_LOAD_ASYNC_0900 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1144,12 +1144,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0100
         * @tc.name      : 001.test Async unload test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0100 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1180,12 +1180,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0200
         * @tc.name      : 002.test Async unload test --Optional input soundId is invalid
         * @tc.desc      : Function test. Error code: 5400103
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0200 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1220,12 +1220,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0300
         * @tc.name      : 003.test Async unload test --Optional input soundId is unloaded
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_UNLOAD_ASYNC_0300 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1734,12 +1734,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100
         * @tc.name      : 001.test Async play(soundID) test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1781,12 +1781,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0200
         * @tc.name      : 002.test Async play(soundID) test --Optional input soundId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0200 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1821,12 +1821,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0300
         * @tc.name      : 003.test Async play(soundID) test --Optional input soundId is unloaded
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0300 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1861,12 +1861,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0040
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0400
         * @tc.name      : 004.test Async play(soundID, params) test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0040', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0040 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0400', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0400 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1908,12 +1908,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0050
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0500
         * @tc.name      : 005.test Async play(soundID, params) test --Optional input soundId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0050', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0050 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0500', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0500 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1948,12 +1948,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0060
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0600
         * @tc.name      : 006.test Async play(soundID, params) test --Optional input soundId is unloaded
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0060', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0060 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0600', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0600 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -1988,12 +1988,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0070
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0700
         * @tc.name      : 007.test Async play(soundID, params) test --Optional param.loop
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0070', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0070 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0700', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0700 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -2038,12 +2038,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0080
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0800
         * @tc.name      : 008.test Async play(soundID, params) test --Optional param.rate
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0080', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0080 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0800', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0800 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -2088,12 +2088,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0090
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0900
         * @tc.name      : 009.test Async play(soundID, params) test --Optional param.leftVolume
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0090', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0090 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0900', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0900 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -2138,12 +2138,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1000
         * @tc.name      : 010.test Async play(soundID, params) test --Optional param.rightVolume
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0100 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1000', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1000 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -2188,12 +2188,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0110
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1100
         * @tc.name      : 011.test Async play(soundID, params) test --Optional param.priority
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0110', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0110 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1100 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -2238,12 +2238,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0120
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1200
         * @tc.name      : 012.test Async play(soundID, params) test --Optional param.parallelPlayFlag
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0120', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_0120 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_ASYNC_1200 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -2394,12 +2394,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0100
         * @tc.name      : 001.test Async stop test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0100 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -2432,12 +2432,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0200
         * @tc.name      : 002.test Async stop test --Optional input streamId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0200 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -2475,12 +2475,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0300
         * @tc.name      : 003.test Async stop test --Optional input streamId is unplayed
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_ASYNC_0300 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -2633,12 +2633,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0100
         * @tc.name      : 001.test Async setLoop test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0100 in`);
       try {
         let streamId = 0;
         let loopForever = -1;
@@ -2674,12 +2674,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0200
         * @tc.name      : 002.test Async setLoop test --Optional input streamId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0200 in`);
       try {
         let streamId = 0;
         let loop = 0;
@@ -2720,12 +2720,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0300
         * @tc.name      : 003.test Async setLoop test --Optional input streamId is unplayed
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETLOOP_ASYNC_0300 in`);
       try {
         let streamId = 0;
         let loop = 0;
@@ -2920,12 +2920,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0100
         * @tc.name      : 001.test Async setPriority test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0100 in`);
       try {
         let streamId = 0;
         let lowest = 0;
@@ -2961,12 +2961,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0200
         * @tc.name      : 002.test Async setPriority test --Optional input priority is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0200 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3006,12 +3006,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0300
         * @tc.name      : 003.test Async setPriority test --Optional input streamId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0300 in`);
       try {
         let streamId = 0;
         let lowest = 0;
@@ -3052,12 +3052,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0040
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0400
         * @tc.name      : 004.test Async setPriority test --Optional input streamId is unplayed
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0040', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0040 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0400', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETPRIORITY_ASYNC_0400 in`);
       try {
         let streamId = 0;
         let lowest = 0;
@@ -3312,12 +3312,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100
         * @tc.name      : 001.test Async setRate test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0100 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3352,12 +3352,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200
         * @tc.name      : 002.test Async setRate test --Optional input rate is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0200 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3392,12 +3392,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300
         * @tc.name      : 003.test Async setRate test --Optional input rate is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0300 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3432,12 +3432,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0040
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400
         * @tc.name      : 004.test Async setRate test --Optional input rate is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0040', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0040 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0400 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3472,12 +3472,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0050
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500
         * @tc.name      : 005.test Async setRate test --Optional input streamId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0050', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0050 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0500 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3517,12 +3517,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0060
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600
         * @tc.name      : 006.test Async setRate test --Optional input streamId is unplayed
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0060', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0060 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETRATE_ASYNC_0600 in`);
       try {
         let streamId = 0;
         await createSoundPool();
@@ -3820,12 +3820,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0010
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0100
         * @tc.name      : 001.test Async setVolume test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0010', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0010 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0100 in`);
       try {
         let streamId = 0;
         let left = 0.8;
@@ -3862,12 +3862,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0020
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0200
         * @tc.name      : 002.test Async setVolume test --Optional input left volume is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0020', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0020 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0200', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0200 in`);
       try {
         let streamId = 0;
         let right = 0.2;
@@ -3903,12 +3903,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0030
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0300
         * @tc.name      : 003.test Async setVolume test --Optional input left volume is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0030', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0030 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0300', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0300 in`);
       try {
         let streamId = 0;
         let right = 0.2;
@@ -3944,12 +3944,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0040
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0400
         * @tc.name      : 004.test Async setVolume test --Optional input right volume is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0040', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0040 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0400', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0400 in`);
       try {
         let streamId = 0;
         let left = 0.5;
@@ -3985,12 +3985,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0050
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0500
         * @tc.name      : 005.test Async setVolume test --Optional input right volume is invalid
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0050', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0050 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0500', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0500 in`);
       try {
         let streamId = 0;
         let left = 0.5;
@@ -4026,12 +4026,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0060
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0600
         * @tc.name      : 006.test Async setVolume test --Optional input streamId is invalid
         * @tc.desc      : Function test. Error code: 401
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0060', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0060 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0600', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0600 in`);
       try {
         let streamId = 0;
         let left = 0.8;
@@ -4073,12 +4073,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0070
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0700
         * @tc.name      : 007.test Async setVolume test --Optional input streamId is unplayed
         * @tc.desc      : Function test. Error code: 5400102
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0070', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0070 in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0700', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_SETVOLUME_ASYNC_0700 in`);
       try {
         let streamId = 0;
         let left = 0.8;
@@ -4280,12 +4280,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD_0100
         * @tc.name      : 001.test Promise play without load test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_WITHOUT_LOAD_0100 in`);
       try {
         let soundId_ = 1;
         await createSoundPool();
@@ -4313,12 +4313,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD_0100
         * @tc.name      : 002.test Async play after unload the soundId test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_AFTER_UNLOAD_0100 in`);
       try {
         await createSoundPool();
         soundPool.on('error', (error) => {
@@ -4356,12 +4356,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY_0100
         * @tc.name      : 003.test Promise stop without play test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_STOP_WITHOUT_PLAY_0100 in`);
       try {
         let streamId_ = 1;
         await createSoundPool();
@@ -4391,12 +4391,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY_0100
         * @tc.name      : 004.test Async create-load-play-stop-play-unload-release
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_PLAY_STOP_PLAY_0100 in`);
       try {
         let streamId_ = -1;
         await createSoundPool();
@@ -4436,12 +4436,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_0100
         * @tc.name      : 005.test Promise play three sounds test
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_0100 in`);
       try {
         let streamId_ = [];
         let soundId_ = [];
@@ -4471,12 +4471,12 @@ export default function soundPoolTest() {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS_0100
         * @tc.name      : 006.test Promise play four sounds, but maxstreams = 3
         * @tc.desc      : Function test
         */
-    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS', 0, async function (done) {
-      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS in`);
+    it('SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS_0100', 0, async function (done) {
+      console.info(`${TAG}: SUB_MULTIMEDIA_MEDIA_SOUNDPOOL_FUNCTION_MULTI_PLAY_EXCEEDED_MAXSTREAMS_0100 in`);
       try {
         let streamId_ = [];
         let soundId_ = [];
