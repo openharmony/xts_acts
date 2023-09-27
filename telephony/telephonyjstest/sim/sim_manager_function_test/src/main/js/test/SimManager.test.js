@@ -511,6 +511,10 @@ export default function SimManagerTest() {
           return;
         }
         console.log(`Telephony_Sim_getSimAccountInfo_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+		expect(data.simId != null).assertTrue();
+		expect(data.isEsim != null).assertTrue();
+		expect(data.isActive != null).assertTrue();
+		expect(data.iccId != null).assertTrue();
         sim.hasSimCard(0, (err, data) => {
           console.log(`Telephony_Sim_getSimAccountInfo_CallBack_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
           expect(data).assertTrue();
