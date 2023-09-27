@@ -24,7 +24,16 @@
         "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Position",
         "MainAbility/pages/List/List_Space/ListItemChange/ListItem_SizeChange",
         "MainAbility/pages/List/List_Space/ListItemChange/ListItem_Visibility",
-        "MainAbility/pages/List/List_SpaceChange/List_SpaceChange"
+        "MainAbility/pages/List/List_SpaceChange/List_SpaceChange",
        
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_End",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_End_String",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_End_Default",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_End_Resource",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_Default",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_String",
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_Resource"
+
     ]
 }
