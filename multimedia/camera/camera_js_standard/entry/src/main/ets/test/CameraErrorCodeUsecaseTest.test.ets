@@ -901,6 +901,7 @@ export default function CameraErrorCodeUsecaseTest() {
                 expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
             });
+            sleep(1000);
             done();
         })
 
@@ -2251,6 +2252,7 @@ export default function CameraErrorCodeUsecaseTest() {
                     expect(err.code == cameraObj.CameraErrorCode.SESSION_NOT_RUNNING).assertTrue();
                 }
             })
+            sleep(1000);
             done();
         })
 
