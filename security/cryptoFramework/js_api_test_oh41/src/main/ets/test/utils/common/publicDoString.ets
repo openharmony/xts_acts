@@ -14,7 +14,7 @@
  */
 import crypto from '@ohos.security.cryptoFramework';
 
-function stringToArray(str:string) {
+function stringToArray(str: string) {
   var arr = [];
   for (var i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -92,6 +92,22 @@ function genCcmParamsSpec(): crypto.CcmParamsSpec {
   return ccmParamsSpec;
 }
 
+//分段打印原始字符串
+function sliceAndPrintString(sourceString: string, MaxLength: number) {
+  let count: number;
+  if (MaxLength < 1 || MaxLength > 1023) {
+    throw "MaxLength Value Error , range is: [1, 1023]";
+  }
+  if (sourceString.length <= MaxLength) {
+    console.log(sourceString);
+  } else {
+    count = Math.ceil(sourceString.length / MaxLength);
+    for (let i = 0;i <= count; i++) {
+      console.log(sourceString.substring(i * MaxLength, (i + 1) * MaxLength));
+    }
+  }
+}
+
 export {
   stringToArray,
   uInt8ArrayToString,
@@ -99,4 +115,5 @@ export {
   uInt8ArrayToShowStr,
   genIvParamsSpec,
   genCcmParamsSpec,
+  sliceAndPrintString
 };
