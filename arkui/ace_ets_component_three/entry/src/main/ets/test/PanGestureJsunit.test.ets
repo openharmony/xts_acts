@@ -82,6 +82,7 @@ export default function PanGestureJsunit() {
         x: x_value,
         y: y_value,
         type: TouchType.Move,
+        stopPropagation: () => {}, 
       }
       var callbackTwo = (eventDataOne) => {
         console.info("[testPanGesture02] get event state result is: " + JSON.stringify(eventDataOne));

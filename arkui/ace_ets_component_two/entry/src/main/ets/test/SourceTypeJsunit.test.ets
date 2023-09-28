@@ -54,7 +54,7 @@ export default function sourceTypeJsunit() {
       let y_value = rect.top + (rect.bottom - rect.top) / 2
       console.info("sourceTypeTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
-        id: 1, x: x_value, y: y_value, type: TouchType.Down
+        id: 1, x: x_value, y: y_value, type: TouchType.Down, 
       }
       var callback = (eventData) => {
         console.info("sourceTypeTest_0100 get event state result is: " + JSON.stringify(eventData));
