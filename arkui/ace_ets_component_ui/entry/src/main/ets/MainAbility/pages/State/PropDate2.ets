@@ -79,7 +79,7 @@ struct PropDate2 {
     Column() {
 
       Button('increase the Time by 1'+this.selectedDate.getTime()).margin(1).width("100%").height(20)
-        .id("setTime")
+        .id("setTime002")
         .onClick(() => {
           this.selectedDate.setTime(this.selectedDate.getTime() + 1)
         })
