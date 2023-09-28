@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-enum KFC{A=1,B=2,C=3}
+enum KFC{A11=1,B11=2,C11=3}
 
 @Entry
 @Component
 struct PropEnum {
-  @State enumA: KFC = KFC.A
+  @State enumA: KFC = KFC.A11
 
   build() {
     Column({space:5}) {
@@ -26,7 +26,7 @@ struct PropEnum {
       Text('Father State: ' + this.enumA).margin(10).width("100%")
         .key("PropEnum").backgroundColor(this.enumA)
         .onClick(() => {
-          this.enumA = KFC.B
+          this.enumA = KFC.B11
         })
       Text('父组件: ' + this.enumA).fontSize(30)
       ChildPropEnum({ enumB: this.enumA })
@@ -37,7 +37,7 @@ struct PropEnum {
 
 @Component
 struct ChildPropEnum {
-  @Prop enumB: KFC = KFC.A;
+  @Prop enumB: KFC = KFC.A11;
 
   build() {
     Column({space:5}) {
@@ -46,7 +46,7 @@ struct ChildPropEnum {
       Text('Child Prop: ' + this.enumB).margin(10).width("100%")
         .key("ChildPropEnum").backgroundColor(this.enumB)
         .onClick(() => {
-          this.enumB = KFC.C
+          this.enumB = KFC.C11
         })
     }.width('100%')
     .margin({ top: 50 })
