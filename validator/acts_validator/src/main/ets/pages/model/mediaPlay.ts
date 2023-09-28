@@ -84,11 +84,11 @@ export class mediaPlay {
                     Logger.info(TAG, 'state paused callback')
                     break;
                 case 'completed':
-                    await AVPlayer.stop()
-                    await AVPlayer.release()
 					if (this.handleVideoPlayback) {
                         this.handleVideoPlayback(true)
                     }
+                    await AVPlayer.stop()
+                    await AVPlayer.release()
                 case 'error':
                     Logger.info(TAG, 'state error callback')
                     break;
