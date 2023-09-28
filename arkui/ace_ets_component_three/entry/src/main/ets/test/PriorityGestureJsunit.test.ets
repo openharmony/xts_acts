@@ -53,7 +53,7 @@ export default function priorityGestureJsunit() {
       let y_value = rect.top + (rect.bottom - rect.top) / 2;
       console.info("priorityGestureTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
-        id: 11, x: x_value, y: y_value, type: TouchType.Move
+        id: 11, x: x_value, y: y_value, type: TouchType.Move,
       }
       var callback = (eventData) => {
         console.info("priorityGestureTest_0100 get event state result is: " + JSON.stringify(eventData));
