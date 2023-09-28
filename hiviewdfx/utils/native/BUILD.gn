@@ -29,10 +29,9 @@ ohos_static_library("utilskit") {
   sources = sources_common
   configs = [ ":utils_config" ]
 
-  #external_deps = [ "hilog:libhilog" ]
-  external_deps = [ "c_utils:utils" ]
-  deps = [
-    "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
-    "//base/hiviewdfx/hiview/base:hiviewbase",
+  external_deps = [
+    "c_utils:utils",
+    "hilog:libhilog",
   ]
+  deps = [ "//base/hiviewdfx/hiview/base:hiviewbase" ]
 }
