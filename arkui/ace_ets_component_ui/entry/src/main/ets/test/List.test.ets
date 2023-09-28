@@ -93,6 +93,22 @@ import StorageProp22Jsunit from './State/StorageProp22Jsunit.test.ets'
 import StorageProp25Jsunit from './State/StorageProp25Jsunit.test.ets'
 import StorageProp26Jsunit from './State/StorageProp26Jsunit.test.ets'
 import swiperAnimationJsunit from './swiperAnimationJsunit.test.ets'
+import StateNumberJsunit from './State/StateNumberJsunit.test.ets';
+import StateArrayJsunit from './State/StateArrayJsunit.test.ets';
+import StateClassObjectJsunit from './State/StateClassObjectJsunit.test.ets';
+import StateComponentJsunit from './State/StateComponentJsunit.test.ets';
+import StateDate1Jsunit from './State/StateDate1Jsunit.test.ets';
+import StateDate2Jsunit from './State/StateDate2Jsunit.test.ets';
+import LinkDataJsunit from './State/LinkDataJsunit.test.ets';
+import LinkClassArrJsunit from './State/LinkClassArrJsunit.test.ets';
+import LinkSonJsunit from './State/LinkSonJsunit.test.ets';
+import ObjectLinkFirJsunit from './State/ObjectLinkFirJsunit.test.ets';
+import ObjectLinkSecJsunit from './State/ObjectLinkSecJsunit.test.ets';
+import ObjectLinkFarJsunit from './State/ObjectLinkFarJsunit.test.ets';
+import ObjectLinkSplJsunit from './State/ObjectLinkSplJsunit.test.ets';
+import ObjectLinkCanJsunit from './State/ObjectLinkCanJsunit.test.ets';
+import ObjectLinkNusJsunit from './State/ObjectLinkNusJsunit.test.ets';
+import ObjectLinkArrayJsunit from './State/ObjectLinkArrayJsunit.test.ets'
 
 
 export default function testsuite() {
@@ -176,4 +192,20 @@ export default function testsuite() {
   StorageProp25Jsunit();
   StorageProp26Jsunit();
   swiperAnimationJsunit();
+  StateNumberJsunit();
+  StateArrayJsunit();
+  StateClassObjectJsunit();
+  StateComponentJsunit();
+  StateDate1Jsunit();
+  StateDate2Jsunit();
+  LinkDataJsunit();
+  LinkClassArrJsunit();
+  LinkSonJsunit();
+  ObjectLinkFirJsunit();
+  ObjectLinkSecJsunit();
+  ObjectLinkFarJsunit();
+  ObjectLinkSplJsunit();
+  ObjectLinkCanJsunit();
+  ObjectLinkNusJsunit();
+  ObjectLinkArrayJsunit();
 }
