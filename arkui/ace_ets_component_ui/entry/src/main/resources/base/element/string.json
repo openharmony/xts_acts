@@ -37,7 +37,7 @@
           "value": "footer2"
         },
         {
-            "name": "nexMargin",
+            "name": "nextMargin",
             "value": "20"
         },
         {
@@ -45,7 +45,7 @@
             "value": "20"
         },
         {
-            "name": "nexMarginString",
+            "name": "nextMarginString",
             "value": "20px"
         },
         {

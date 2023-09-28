@@ -29,12 +29,14 @@ config("hilogtest_config") {
 ohos_moduletest_suite("ActsHiAppEventCPPTest") {
   module_out_path = module_output_path
   sources = [ "HiAppEventCPPTest.cpp" ]
-  external_deps = [ "c_utils:utils" ]
+  external_deps = [
+    "c_utils:utils",
+    "hilog:libhilog",
+  ]
   deps = [
     "../../utils/native:utilskit",
     "//base/hiviewdfx/hiappevent/frameworks/native/libhiappevent:libhiappevent_base",
     "//base/hiviewdfx/hiappevent/frameworks/native/ndk:hiappevent_ndk",
-    "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
     "//third_party/googletest:gtest_main",
   ]
   configs = [ ":hilogtest_config" ]
