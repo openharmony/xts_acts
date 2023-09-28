@@ -264,7 +264,7 @@ export default function PropDate2Jsunit() {
     it('PropDate2Jsunit_0170', 0, async function (done) {
 
       console.info('PropDate2Jsunit_0170 START');
-      let strJson = getInspectorByKey('setTime');
+      let strJson = getInspectorByKey('setTime002');
       let obj = JSON.parse(strJson);
       console.info("[PropDate2Jsunit_0170] component obj is: " + JSON.stringify(obj));
       console.info("[PropDate2Jsunit_0170] text: " + JSON.stringify(obj.$attrs.label));
@@ -277,10 +277,10 @@ export default function PropDate2Jsunit() {
 
       console.info('PropDate2Jsunit_0180 START');
       let driver = Driver.create();
-      let button = await driver.findComponent(ON.id('setTime'));
+      let button = await driver.findComponent(ON.id('setTime002'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('setTime');
+      let strJson = getInspectorByKey('setTime002');
       let obj = JSON.parse(strJson);
       console.info("[PropDate2Jsunit_0180] component obj is: " + JSON.stringify(obj));
       console.info("[PropDate2Jsunit_0180] text: " + JSON.stringify(obj.$attrs.label));
