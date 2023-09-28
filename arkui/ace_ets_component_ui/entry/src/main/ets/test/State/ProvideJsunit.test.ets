@@ -18,31 +18,31 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import CommonFunc from '../../MainAbility/utils/Common';
 const waitUiReadyMs = 1000;
 
-export default function RouterPushUrlJsunit() {
-  describe('aboutToRecycleiamge', function () {
+export default function ProvideJsunit() {
+  describe('ProvideJsunit', function () {
     beforeEach(async function (done) {
-      console.info("RouterPushUrlJsunit beforeEach start");
+      console.info("Provide beforeEach start");
       let options = {
         uri: 'MainAbility/pages/State/Provide',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get RouterPushUrlJsunit state pages: " + JSON.stringify(pages));
+        console.info("get Provide state pages: " + JSON.stringify(pages));
         if (!("Provide" == pages.name)) {
-          console.info("get RouterPushUrlJsunit state pages.name:" + JSON.stringify(pages.name));
+          console.info("get Provide state pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
-          console.info("push RouterPushUrlJsunit page result:" + JSON.stringify(result));
+          console.info("push Provide page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push RouterPushUrlJsunit page error:" + err);
+        console.error("push Provide page error:" + err);
       }
       done()
     });
 
     afterEach(async function () {
-      let driver = await UiDriver.create()
       await CommonFunc.sleep(1000);
+      let driver = await UiDriver.create()      
       await driver.pressBack();
     });
 
