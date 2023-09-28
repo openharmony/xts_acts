@@ -16,7 +16,7 @@
 
 @Entry
 @Component
-struct StateArray {
+struct StateArrayNew {
   @State arr_every: Array<number> = [1,2,3,4,5,6,7,]
   @State res_every: boolean = true
   @State arr_some: Array<number> = [1,8,3,4,5,6,7,]
