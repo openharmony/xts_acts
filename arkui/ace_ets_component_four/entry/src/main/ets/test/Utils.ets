@@ -88,7 +88,8 @@ export default class Utils {
         id: 1,
         x: downX + (xStep * i),
         y: downY + (yStep * i),
-        type: TouchType.Move
+        type: TouchType.Move,
+        stopPropagation: () => {},
       }
       console.info('move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)

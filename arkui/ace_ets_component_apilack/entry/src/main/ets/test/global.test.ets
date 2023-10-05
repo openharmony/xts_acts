@@ -68,7 +68,7 @@ export default function globalJsunit() {
     it('testglobal_sendKeyEvent0002', 0, async function (done) {
       console.info('testglobal_sendKeyEvent0002 START');
       await Utils.sleep(2000);
-      let KeyEvent = {type:1,keyCode:2027,keyText:"Unknown",keySource:4,deviceId:7,metaKey:0,timestamp:5284417765376};
+      let KeyEvent = {type:1,keyCode:2027,keyText:"Unknown",keySource:4,deviceId:7,metaKey:0,timestamp:5284417765376,stopPropagation: () => {}};
       let result = sendKeyEvent(KeyEvent);
       console.info("[testglobal_sendKeyEvent0002] result:" + result);
       expect(JSON.stringify(result)).assertEqual("true");
@@ -106,7 +106,8 @@ export default function globalJsunit() {
                 }
               }
             },
-            source: 1
+            source: 1,
+            stopPropagation: () => {},
       }
       let result = sendMouseEvent(mouseEvent);
       console.info("[testglobal_sendMouseEvent0003] result:" + result);

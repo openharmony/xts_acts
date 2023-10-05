@@ -76,6 +76,7 @@ export default class Utils {
       x: downX,
       y: downY,
       type: TouchType.Down,
+      stopPropagation: () => {}, 
     }
     console.info('down touch started: ' + JSON.stringify(downPonit))
     sendTouchEvent(downPonit);
@@ -88,7 +89,8 @@ export default class Utils {
         id: 1,
         x: downX + (xStep * i),
         y: downY + (yStep * i),
-        type: TouchType.Move
+        type: TouchType.Move,
+        stopPropagation: () => {}, 
       }
       console.info('move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)
@@ -106,6 +108,7 @@ export default class Utils {
       x: upX,
       y: upY,
       type: TouchType.Up,
+      stopPropagation: () => {}, 
     }
     console.info('up touch started: ' + JSON.stringify(upPoint))
     sendTouchEvent(upPoint)
