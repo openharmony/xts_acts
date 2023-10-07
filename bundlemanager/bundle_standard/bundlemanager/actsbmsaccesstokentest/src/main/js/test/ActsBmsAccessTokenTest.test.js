@@ -55,7 +55,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0001
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_6200
      * @tc.name: getReqPermissionOfEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
@@ -77,7 +77,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0008
+     * @tc.number: Sub_Bms_Framework_Permission_Query_0300
      * @tc.name: getReqPermissionUpdateEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
@@ -103,7 +103,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0003
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_6240
      * @tc.name: getReqPermissionUpdateEntryAndFeature
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
