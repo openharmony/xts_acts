@@ -14,13 +14,25 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-let msg: any
-let msgcopy: any
-let finishmsg: any
-let finishmsg1: any
+let msg:any;
+let msgcopy:any;
+let finishmsg:any;
+let finishmsg1:any;
+let abilityDelegator;
+let TAG = 'AttachDebugTestTAG';
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 export default function abilityTest() {
     describe('ACTS_AACommand_Test', function () {
+
+        beforeAll(async function (done) {
+          abilityDelegator = await AbilityDelegatorRegistry.getAbilityDelegator();
+          await done();
+        })
 
         afterEach(async (done) => {
             console.log("ActsAACommandTest afterEach called");
@@ -38,6 +50,16 @@ export default function abilityTest() {
                 console.log("ActsAACommandTest afterEach end");
                 done();
             }, 1000);
+        })
+
+        afterAll(async (done) => {
+            let cmd1 = 'pkill -f com.acts.attachdebuguiextensiontest';
+            let cmd2 = 'pkill -f com.acts.attachdebuguiextensiontest:ui';
+            let cmd3 = 'pkill -f com.acts.attachdebugextensiontest';
+            await abilityDelegator.executeShellCommand(cmd1);
+            await abilityDelegator.executeShellCommand(cmd2);
+            await abilityDelegator.executeShellCommand(cmd3);
+            await done();
         })
 
         /**
@@ -387,5 +409,242 @@ export default function abilityTest() {
             expect(globalThis.stdResult34.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
             done()
         })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_0800
+        * @tc.name: Test command which is invalid
+        * @tc.desc: Verify 'aa attach'
+        */
+        it('Acts_AAAttachDebug_0800',0, function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_0800 start!");
+            let cmd = 'aa attach'
+            abilityDelegator.executeShellCommand(cmd, (error, data) => {
+                expect(error).assertEqual(null);
+                console.info(TAG, 'Acts_AAAttachDebug_0800 shell result error: ' + JSON.stringify(error));
+                console.info(TAG, 'Acts_AAAttachDebug_0800 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('aa attach <options>');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_0800 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_0900
+        * @tc.name: Test command which is invalid
+        * @tc.desc: Verify 'aa detach -b'
+        */
+        it('Acts_AAAttachDebug_0900',0, function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_0900 start!");
+            let cmd = 'aa detach -b'
+            abilityDelegator.executeShellCommand(cmd, (error, data) => {
+                expect(error).assertEqual(null);
+                console.info(TAG, 'Acts_AAAttachDebug_0900 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('aa detach <options>');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_0900 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_1000
+        * @tc.name: Test command which is invalid
+        * @tc.desc: Verify 'aa attach -c'
+        */
+        it('Acts_AAAttachDebug_1000',0, function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_1000 start!");
+            let cmd = 'aa attach -c'
+            abilityDelegator.executeShellCommand(cmd, (error, data) => {
+                expect(error).assertEqual(null);
+                console.info(TAG, 'Acts_AAAttachDebug_1000 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('aa attach <options>');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_1000 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_1100
+        * @tc.name: Test command which is invalid
+        * @tc.desc: Verify 'aa detach -c'
+        */
+        it('Acts_AAAttachDebug_1100',0, function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_1100 start!");
+            let cmd = 'aa detach -c'
+            abilityDelegator.executeShellCommand(cmd, (error, data) => {
+                expect(error).assertEqual(null);
+                console.info(TAG, 'Acts_AAAttachDebug_1100 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('aa detach <options>');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_1100 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_1200
+        * @tc.name: Test command which is valid
+        * @tc.desc: Verify 'aa attach -b com.example.attachdebugtest'
+        */
+        it('Acts_AAAttachDebug_1200',0 , function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_1200 start!");
+            let cmd = 'aa attach -b com.example.attachdebugtest'
+            abilityDelegator.executeShellCommand(cmd, (error, data) => {
+                expect(error).assertEqual(null);
+                console.info(TAG, 'Acts_AAAttachDebug_1200 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('attach app debug successfully.');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_1200 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_1300
+        * @tc.name: Test command which is valid
+        * @tc.desc: Verify 'aa detach -b com.example.attachdebugtest'
+        */
+        it('Acts_AAAttachDebug_1300',0, function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_1300 start!");
+            let cmd = 'aa detach -b com.example.attachdebugtest'
+            abilityDelegator.executeShellCommand(cmd, (error, data) => {
+                expect(error).assertEqual(null);
+                console.info(TAG, 'Acts_AAAttachDebug_1300 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('detach app debug successfully.');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_1300 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_0600
+        * @tc.name: Test extension ability after attach whose process will not be killed
+        * @tc.desc: Verify process
+        */
+        it('Acts_AAAttachDebug_0600',0, async function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_0600 start!");
+            let want = {
+                'bundleName': 'com.acts.serviceextensiondemo',
+                'abilityName': 'EntryAbility'
+            };
+            let driver = Driver.create();
+            await globalThis.abilityContext.startAbility(want).then(() => {
+                console.info(TAG, "Acts_AAAttachDebug_0600 start ability sucessfully.");
+            });
+
+            await driver.delayMs(500);
+            let button1 = await driver.findComponent(ON.text('Start Extension'));
+            await expect(button1 != null).assertTrue();
+            let button2 = await driver.findComponent(ON.text('Stop Extension'));
+            await expect(button2 != null).assertTrue();
+            await button1.click();
+            await driver.delayMs(500);
+            let cmd = 'aa attach -b com.acts.attachdebugextensiontest';
+            await abilityDelegator.executeShellCommand(cmd).then((data) => {
+                console.info(TAG, "aa attach sucessfully!");
+            });
+            await button2.click();
+            await driver.delayMs(500);
+            
+            let cmd1 = 'ps -ef | grep com.acts';
+            await abilityDelegator.executeShellCommand(cmd1).then((data) => {
+                console.info(TAG, 'Acts_AAAttachDebug_0600 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('com.acts.attachdebugextensiontest');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_0600 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_1400
+        * @tc.name: Test extension ability abnormally after attach whose process will not be killed
+        * @tc.desc: Verify process
+        */
+        it('Acts_AAAttachDebug_1400',0, async function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_1400 start!");
+            let want = {
+                'bundleName': 'com.acts.serviceextensiondemo',
+                'abilityName': 'EntryAbility'
+            };
+            let driver = Driver.create();
+            await globalThis.abilityContext.startAbility(want).then(() => {
+                console.info(TAG, "Acts_AAAttachDebug_1400 start ability sucessfully.");
+            });
+
+            await driver.delayMs(500);
+            let button1 = await driver.findComponent(ON.text('Start Ability'));
+            await expect(button1 != null).assertTrue();
+            let button2 = await driver.findComponent(ON.text('Start Extension Abnormally'));
+            await expect(button2 != null).assertTrue();
+            await button1.click();
+            await driver.delayMs(500);
+            let cmd = 'aa attach -b com.acts.attachdebugextensiontest';
+            await abilityDelegator.executeShellCommand(cmd).then((data) => {
+                console.info(TAG, "aa attach sucessfully!");
+            });
+            await button2.click();
+            await driver.delayMs(500);        
+            let cmd1 = 'ps -ef | grep com.acts';
+            await abilityDelegator.executeShellCommand(cmd1).then((data) => {
+                console.info(TAG, 'Acts_AAAttachDebug_1400 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('com.acts.attachdebugextensiontest');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_1400 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
+        /**
+        * @tc.number: Acts_AAAttachDebug_1500
+        * @tc.name: Test ui extension ability after attach whose process will not be killed
+        * @tc.desc: Verify process
+        */
+        it('Acts_AAAttachDebug_1500',0, async function (done) {
+            console.debug(TAG, "Acts_AAAttachDebug_1500 start!");
+            let want = {
+                'bundleName': 'com.acts.attachdebuguiextensiontest',
+                'abilityName': 'EntryAbility'
+            };
+            await globalThis.abilityContext.startAbility(want).then(() => {
+                console.info(TAG, "Acts_AAAttachDebug_1500 start ability sucessfully.");
+            });
+            let cmd = 'aa attach -b com.acts.attachdebuguiextensiontest';
+            await abilityDelegator.executeShellCommand(cmd).then((data) => {
+                console.info(TAG, "aa attach sucessfully!");
+            });
+            await sleep(1500)
+            let cmd1 = 'ps -ef | grep com.acts';
+            await abilityDelegator.executeShellCommand(cmd1).then((data) => {
+                console.info(TAG, 'Acts_AAAttachDebug_1500 shell result data: ' + JSON.stringify(data));
+                try {
+                    expect(data.stdResult).assertContain('com.acts.attachdebuguiextensiontest:ui');
+                } catch (error) {
+                    console.info(TAG, 'Acts_AAAttachDebug_1500 assert error: ' + JSON.stringify(error));
+                }
+                done();
+            })
+        })
+
     })
-};
+}

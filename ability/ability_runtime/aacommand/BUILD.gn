@@ -25,6 +25,9 @@ group("aacommand") {
       "AACommandRelyHap:AACommandRelyHap",
       "AACommandpackage:AACommandpackage",
       "AACommandtest:ActsAACommandTest",
+      "ServiceExtensionDemo:ServiceExtensionDemo",
+      "AttachDebugExtensionTest:AttachDebugExtensionTest",
+      "AttachDebugUIExtensionTest:AttachDebugUIExtensionTest",
     ]
   }
 }
