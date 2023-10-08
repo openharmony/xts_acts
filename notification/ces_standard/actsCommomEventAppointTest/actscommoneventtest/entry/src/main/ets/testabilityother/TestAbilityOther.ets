@@ -14,13 +14,13 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import commonEvent from '@ohos.commonEventManager';
 
 export default class TestAbilityOther extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'TestAbilityOther onCreate');
-    if (want.action == 'Acts_CommonEventTest_0100') {
+    if (want.action === 'Acts_CommonEventTest_0100') {
       commonEvent.publish('Acts_CommonEventTest', (err) => {
         console.info('====>Acts_CommonEventTest publish err: ' + JSON.stringify(err));
       })

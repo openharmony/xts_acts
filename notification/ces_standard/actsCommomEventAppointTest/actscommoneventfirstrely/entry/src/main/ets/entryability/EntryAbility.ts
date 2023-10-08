@@ -14,7 +14,7 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import commonEvent from '@ohos.commonEventManager';
 
 export default class EntryAbility extends UIAbility {
@@ -47,10 +47,10 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     console.log('=====> CommonEventFirstRely EntryAbility onForeground =====>');
-    if (globalThis.want.action == 'Acts_CommonEventTest_0100') {
+    if (globalThis.want.action === 'Acts_CommonEventTest_0100') {
       commonEvent.publish('Acts_CommonEvent_Test', (err) => {
         console.info('====>CommonEventFirstRely publish err: ' + JSON.stringify(err));
-      })
+      });
     }
   }
 

@@ -14,7 +14,7 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import commonEvent from '@ohos.commonEventManager';
 
 export default class OtherAbility extends UIAbility {
@@ -47,10 +47,10 @@ export default class OtherAbility extends UIAbility {
   onForeground() {
     // Ability has brought to foreground
     console.log('=====> CommonEventFirstRely OtherAbility onForeground =====>');
-    if (globalThis.want.action == 'Acts_CommonEventTest_0300') {
+    if (globalThis.want.action === 'Acts_CommonEventTest_0300') {
       commonEvent.publish('Acts_CommonEventSame_Test', (err) => {
         console.info('====>Acts_CommonEventTest_0300 OtherAbility publish err: ' + JSON.stringify(err));
-      })
+      });
     }
   }
 

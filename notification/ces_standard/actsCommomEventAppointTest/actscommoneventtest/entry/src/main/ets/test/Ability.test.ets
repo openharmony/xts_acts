@@ -91,37 +91,45 @@ export default function abilityTest() {
 
       commonEvent.createSubscriber(ACTS_Event).then((data) => {
         console.info('====>Acts_CommonEventTest_0100 Create Subscribe');
-        subscriber1 = data;
-        commonEvent.subscribe(subscriber1, subscribeCallBack);
-        let want = {
-          'bundleName': 'com.example.commoneventfirstrely',
-          'abilityName': 'EntryAbility',
-          'action': 'Acts_CommonEventTest_0100'
-        }
-        setTimeout(() => {
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.info('Acts_CommonEventTest_0100 error.code = ' + error.code);
-            expect(error.code).assertEqual(ERROR_CODE_ZERO);
-          })
-        }, TIMEOUT_ONE_SECOND)
+        data.getSubscribeInfo().then((SubscribeInfo) => {
+          console.log('====>publisherFirst_0100====>'+ JSON.stringify(SubscribeInfo.publisherBundleName));
+          expect(SubscribeInfo.publisherBundleName).assertEqual('com.example.commoneventfirstrely');
+          subscriber1 = data;
+          commonEvent.subscribe(subscriber1, subscribeCallBack);
+          let want = {
+            'bundleName': 'com.example.commoneventfirstrely',
+            'abilityName': 'EntryAbility',
+            'action': 'Acts_CommonEventTest_0100'
+          }
+          setTimeout(() => {
+            globalThis.abilityContext.startAbility(want, (error) => {
+              console.info('Acts_CommonEventTest_0100 error.code = ' + error.code);
+              expect(error.code).assertEqual(ERROR_CODE_ZERO);
+            })
+          }, TIMEOUT_ONE_SECOND)
+        })
       })
 
       commonEvent.createSubscriber(ACTS_EventTest).then((data) => {
         console.info('====>Acts_CommonEventTest_0100 ACTS_EventTest Subscribe');
-        subscriber2 = data;
-        commonEvent.subscribe(subscriber2, subscribeTestCallBack);
-        let want = {
-          'bundleName': 'com.example.commoneventtest',
-          'abilityName': 'TestAbilityOther',
-          'moduleName': 'entry_test',
-          'action': 'Acts_CommonEventTest_0100'
-        }
-        setTimeout(() => {
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.info('Acts_CommonEventTest_0100 TestAbilityOther error.code = ' + error.code);
-            expect(error.code).assertEqual(ERROR_CODE_ZERO);
-          })
-        }, TIMEOUT_TWO_SECONDS)
+        data.getSubscribeInfo().then(async (SubscribeInfo) => {
+          console.log('====>publisherSecond_0100====>' + JSON.stringify(SubscribeInfo.publisherBundleName));
+          expect(SubscribeInfo.publisherBundleName).assertEqual('com.example.commoneventtest');
+          subscriber2 = data;
+          commonEvent.subscribe(subscriber2, subscribeTestCallBack);
+          let want = {
+            'bundleName': 'com.example.commoneventtest',
+            'abilityName': 'TestAbilityOther',
+            'moduleName': 'entry_test',
+            'action': 'Acts_CommonEventTest_0100'
+          }
+          setTimeout(() => {
+            globalThis.abilityContext.startAbility(want, (error) => {
+              console.info('Acts_CommonEventTest_0100 TestAbilityOther error.code = ' + error.code);
+              expect(error.code).assertEqual(ERROR_CODE_ZERO);
+            })
+          }, TIMEOUT_TWO_SECONDS)
+        })
       })
 
       setTimeout(() => {
@@ -164,36 +172,44 @@ export default function abilityTest() {
 
       commonEvent.createSubscriber(ACTS_Event).then((data) => {
         console.info('====>Acts_CommonEventTest_0200 ACTS_Event Subscribe');
-        subscriber1 = data;
-        commonEvent.subscribe(subscriber1, subscribeDiffCallBack);
-        let want = {
-          'bundleName': 'com.example.commoneventfirstrely',
-          'abilityName': 'EntryAbility',
-          'action': 'Acts_CommonEventTest_0100'
-        }
-        setTimeout(() => {
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.info('Acts_CommonEventTest_0200 error.code = ' + error.code);
-            expect(error.code).assertEqual(ERROR_CODE_ZERO);
-          })
-        }, TIMEOUT_ONE_SECOND)
+        data.getSubscribeInfo().then((SubscribeInfo) => {
+          console.log('====>publisherFirst_0200====>' + JSON.stringify(SubscribeInfo.publisherBundleName));
+          expect(SubscribeInfo.publisherBundleName).assertEqual('com.example.commoneventfirstrely');
+          subscriber1 = data;
+          commonEvent.subscribe(subscriber1, subscribeDiffCallBack);
+          let want = {
+            'bundleName': 'com.example.commoneventfirstrely',
+            'abilityName': 'EntryAbility',
+            'action': 'Acts_CommonEventTest_0100'
+          }
+          setTimeout(() => {
+            globalThis.abilityContext.startAbility(want, (error) => {
+              console.info('Acts_CommonEventTest_0200 error.code = ' + error.code);
+              expect(error.code).assertEqual(ERROR_CODE_ZERO);
+            })
+          }, TIMEOUT_ONE_SECOND)
+        })
       })
 
       commonEvent.createSubscriber(ACTS_EventInfo).then((data) => {
         console.info('====>Acts_CommonEventTest_0200 ACTS_EventInfo Subscribe');
-        subscriber2 = data;
-        commonEvent.subscribe(subscriber2, subscribeCallBack);
-        let want = {
-          'bundleName': 'com.example.commoneventsecondrely',
-          'abilityName': 'EntryAbility',
-          'action': 'Acts_CommonEventTest_0200'
-        }
-        setTimeout(() => {
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.info('Acts_CommonEventTest_0200 error.code = ' + error.code);
-            expect(error.code).assertEqual(ERROR_CODE_ZERO);
-          })
-        }, TIMEOUT_TWO_SECONDS)
+        data.getSubscribeInfo().then((SubscribeInfo) => {
+          console.log('====>publisherSecond_0200====>' + JSON.stringify(SubscribeInfo.publisherBundleName));
+          expect(SubscribeInfo.publisherBundleName).assertEqual("");
+          subscriber2 = data;
+          commonEvent.subscribe(subscriber2, subscribeCallBack);
+          let want = {
+            'bundleName': 'com.example.commoneventsecondrely',
+            'abilityName': 'EntryAbility',
+            'action': 'Acts_CommonEventTest_0200'
+          }
+          setTimeout(() => {
+            globalThis.abilityContext.startAbility(want, (error) => {
+              console.info('Acts_CommonEventTest_0200 error.code = ' + error.code);
+              expect(error.code).assertEqual(ERROR_CODE_ZERO);
+            })
+          }, TIMEOUT_TWO_SECONDS)
+        })
       })
 
       setTimeout(() => {
@@ -236,36 +252,44 @@ export default function abilityTest() {
 
       commonEvent.createSubscriber(ACTS_EventSame).then((data) => {
         console.info('====>Acts_CommonEventTest_0300 ACTS_EventSame Subscribe');
-        subscriber1 = data;
-        commonEvent.subscribe(subscriber1, subscribeSameCallBack);
-        let want = {
-          'bundleName': 'com.example.commoneventfirstrely',
-          'abilityName': 'OtherAbility',
-          'action': 'Acts_CommonEventTest_0300'
-        }
-        setTimeout(() => {
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.info('Acts_CommonEventTest_0300 same error.code = ' + error.code);
-            expect(error.code).assertEqual(ERROR_CODE_ZERO);
-          })
-        }, TIMEOUT_ONE_SECOND);
+        data.getSubscribeInfo().then((SubscribeInfo) => {
+          console.log('====>publisherFirst_0300====>' + JSON.stringify(SubscribeInfo.publisherBundleName));
+          expect(SubscribeInfo.publisherBundleName).assertEqual('com.example.commoneventfirstrely');
+          subscriber1 = data;
+          commonEvent.subscribe(subscriber1, subscribeSameCallBack);
+          let want = {
+            'bundleName': 'com.example.commoneventfirstrely',
+            'abilityName': 'OtherAbility',
+            'action': 'Acts_CommonEventTest_0300'
+          }
+          setTimeout(() => {
+            globalThis.abilityContext.startAbility(want, (error) => {
+              console.info('Acts_CommonEventTest_0300 same error.code = ' + error.code);
+              expect(error.code).assertEqual(ERROR_CODE_ZERO);
+            })
+          }, TIMEOUT_ONE_SECOND);
+        })
       })
 
       commonEvent.createSubscriber(ACTS_EventInfo).then((data) => {
         console.info('====>Acts_CommonEventTest_0300 ACTS_EventInfo Subscribe');
-        subscriber2 = data;
-        commonEvent.subscribe(subscriber2, subscribeCallBack);
-        let want = {
-          'bundleName': 'com.example.commoneventfirstrely',
-          'abilityName': 'EntryAbility',
-          'action': 'Acts_CommonEventTest_0100'
-        }
-        setTimeout(() => {
-          globalThis.abilityContext.startAbility(want, (error) => {
-            console.info('Acts_CommonEventTest_0300 error.code = ' + error.code);
-            expect(error.code).assertEqual(ERROR_CODE_ZERO);
-          })
-        }, TIMEOUT_THREE_SECONDS)
+        data.getSubscribeInfo().then((SubscribeInfo) => {
+          console.log('====>publisherSecond_0300====>' + JSON.stringify(SubscribeInfo.publisherBundleName));
+          expect(SubscribeInfo.publisherBundleName).assertEqual("");
+          subscriber2 = data;
+          commonEvent.subscribe(subscriber2, subscribeCallBack);
+          let want = {
+            'bundleName': 'com.example.commoneventfirstrely',
+            'abilityName': 'EntryAbility',
+            'action': 'Acts_CommonEventTest_0100'
+          }
+          setTimeout(() => {
+            globalThis.abilityContext.startAbility(want, (error) => {
+              console.info('Acts_CommonEventTest_0300 error.code = ' + error.code);
+              expect(error.code).assertEqual(ERROR_CODE_ZERO);
+            })
+          }, TIMEOUT_THREE_SECONDS)
+        })
       })
 
       setTimeout(() => {

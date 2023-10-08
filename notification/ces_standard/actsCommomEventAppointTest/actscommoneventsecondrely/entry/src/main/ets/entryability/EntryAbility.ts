@@ -14,16 +14,16 @@
  */
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
-import window from '@ohos.window';
+import type window from '@ohos.window';
 import commonEvent from '@ohos.commonEventManager';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     console.log('=====> CommonEventSecondRely EntryAbility onCreate =====>');
-    if (want.action == 'Acts_CommonEventTest_0200') {
+    if (want.action === 'Acts_CommonEventTest_0200') {
       commonEvent.publish('Acts_CommonEvent_Test', (err) => {
         console.info('====>CommonEventSecondRely publish err: ' + JSON.stringify(err));
-      })
+      });
     }
   }
 
