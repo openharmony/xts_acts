@@ -21,7 +21,7 @@ export default function getBundleInfoForSelf() {
   describe('getBundleInfoForSelf', function () {
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0124
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_5680
      * @tc.name: getBundleInfoForSelfAbilityPro
      * @tc.desc: Test getBundleInfoForSelf with ability flag(by promise).
      */

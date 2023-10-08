@@ -17,14 +17,14 @@ import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount';
 
-const TAG_TEST_0100_001 = ' bundle_getAllApplicationInfo_test_0100_001 ';
-const TAG_TEST_0100_002 = ' bundle_getAllApplicationInfo_test_0100_002 ';
-const TAG_TEST_0100_003 = ' bundle_getAllApplicationInfo_test_0100_003 ';
-const TAG_TEST_0200_001 = ' bundle_getAllApplicationInfo_test_0200_004 ';
-const TAG_TEST_0200_002 = ' bundle_getAllApplicationInfo_test_0200_005 ';
-const TAG_TEST_0200_003 = ' bundle_getAllApplicationInfo_test_0200_006 ';
-const TAG_TEST_0300_001 = ' bundle_getAllApplicationInfo_test_0300_007 ';
-const TAG_TEST_0400_001 = ' bundle_getAllApplicationInfo_test_0400_008 ';
+const TAG_TEST_0100_001 = ' Sub_Bms_Framework_Query_AppInfo_3720 ';
+const TAG_TEST_0100_002 = ' Sub_Bms_Framework_Query_AppInfo_3760 ';
+const TAG_TEST_0100_003 = ' Sub_Bms_Framework_Query_AppInfo_3920 ';
+const TAG_TEST_0200_001 = ' Sub_Bms_Framework_Query_AppInfo_3940 ';
+const TAG_TEST_0200_002 = ' Sub_Bms_Framework_Query_AppInfo_3960 ';
+const TAG_TEST_0200_003 = ' Sub_Bms_Framework_Query_AppInfo_3980 ';
+const TAG_TEST_0300_001 = ' Sub_Bms_Framework_Query_AppInfo_4000 ';
+const TAG_TEST_0400_001 = ' Sub_Bms_Framework_Query_AppInfo_4020 ';
 const TAG_TEST_0500_001 = ' bundle_getAllApplicationInfo_test_0500_009 ';
 const TAG_TEST_0500_002 = ' bundle_getAllApplicationInfo_test_0500_0010 ';
 const DEFAULT_FLAG = Bundle.BundleFlag.GET_BUNDLE_DEFAULT;
@@ -48,7 +48,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0100_001
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3720
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
@@ -69,7 +69,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0100_002
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3760
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
@@ -90,7 +90,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0100_003
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3920
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
@@ -112,7 +112,7 @@ export default function getAllApplicationBundleTest() {
 
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0200_004
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3940
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
@@ -133,7 +133,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0200_005
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3960
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
@@ -154,7 +154,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0200_006
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3980
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
@@ -175,7 +175,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0300_007
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_4000
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by callBack)
          * @tc.level   0
@@ -203,7 +203,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0400_008
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_4020
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by callBack)
          * @tc.level   0
@@ -230,11 +230,11 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: getApplicationInfos_1000
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_1020
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfos_1000', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_1020', 0, async function (done) {
             await Bundle.getAllApplicationInfo(DEFAULT_FLAG).then((data) => {
                 expect(data.length).assertLarger(10);
                 let flag = 0;
@@ -264,11 +264,11 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: getApplicationInfos_1200
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_1060
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfos_1200', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_1060', 0, async function (done) {
             await Bundle.getAllApplicationInfo(null).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -289,7 +289,7 @@ export default function getAllApplicationBundleTest() {
         });
 
         /**
-         * @tc.number: SUB_BMS_APPINFO_QUERY_0060
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_8420
          * @tc.name: getAllApplicationInfoNoMetaData
          * @tc.desc: Check the return value of the interface
          */

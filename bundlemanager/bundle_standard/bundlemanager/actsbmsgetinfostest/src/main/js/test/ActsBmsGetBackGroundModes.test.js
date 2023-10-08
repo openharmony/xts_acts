@@ -58,7 +58,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0085
+    * @tc.number: Sub_Bms_BundleTool_Query_Hap_1400
     * @tc.name: getBackgroundModesMultiAbility
     * @tc.desc: Get the information of the background modes from multi-ability application
     */
@@ -100,7 +100,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0086
+    * @tc.number: Sub_Bms_BundleTool_Query_Hap_1500
     * @tc.name: getBackgroundModesAllModes
     * @tc.desc: Get all background modes information, and each ability of the application
     *               contains one of the background mode
@@ -121,7 +121,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0087
+    * @tc.number: Sub_Bms_BundleTool_Query_Hap_1600
     * @tc.name: getBackgroundModesInvalidModes
     * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
     */
@@ -160,7 +160,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0088
+    * @tc.number: Sub_Bms_BundleTool_Query_Hap_1700
     * @tc.name: getBackgroundModesNotModes
     * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
     */
@@ -181,7 +181,7 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_QUERY_0089
+    * @tc.number: Sub_Bms_BundleTool_Query_Hap_1800
     * @tc.name: getBackgroundModesMultiHap
     * @tc.desc: Get the backgroundModes information of the multi-hap package of the application 
     */

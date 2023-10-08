@@ -35,12 +35,12 @@ export default function ActsBmsJsTest() {
 describe('ActsBmsJsTest', function () {
 
     /*
-    * @tc.number: bms_getJsAbility_0100
+    * @tc.number: Sub_Bms_Framework_Query_AppInfo_0140
     * @tc.name: test the multi js ability
     * @tc.desc: 1.install a js hap which has an ability with full domain name
     *           2.check the ability name by the interface of getBundleInfo
     */
-    it('bms_getJsAbility_0100', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0140', 0, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME2, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(NUM_TWO);
         if (result.abilityInfos.length == NUM_TWO) {
@@ -81,12 +81,12 @@ describe('ActsBmsJsTest', function () {
     });
 
     /*
-     * @tc.number: bms_getJsAbility_0200
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_0160
      * @tc.name: test the multi js ability
      * @tc.desc: 1.install a js hap with two ability
      *           2.check the ability name by the interface of getBundleInfo
      */
-    it('bms_getJsAbility_0200', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0160', 0, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME3, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(NUM_FOUR);
         if (result.abilityInfos.length == NUM_FOUR) {
@@ -112,12 +112,12 @@ describe('ActsBmsJsTest', function () {
     });
 
     /*
-     * @tc.number: bms_getJsAbility_0300
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_0180
      * @tc.name: test the multi js ability
      * @tc.desc: 1.install a js hap which has an ability with short domain name
      *           2.check the ability name by the interface of getBundleInfo
      */
-    it('bms_getJsAbility_0300', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0180', 0, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME4, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(1);
         if (result.abilityInfos.length == 1) {
@@ -154,12 +154,12 @@ describe('ActsBmsJsTest', function () {
     });
 
     /*
-    * @tc.number: bms_getJsAbility_0400
+    * @tc.number: Sub_Bms_Framework_Query_AppInfo_0200
     * @tc.name: test the multi js ability
     * @tc.desc: 1.install a c++ hap which has an ability with short domain name
     *           2.check the ability name by the interface of getBundleInfo
     */
-    it('bms_getJsAbility_0400', 0, async function (done) {
+    it('Sub_Bms_Framework_Query_AppInfo_0200', 0, async function (done) {
         let result = await bundle.getBundleInfo(BUNDLE_NAME5, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
         expect(result.abilityInfos.length).assertEqual(1);
         if (result.abilityInfos.length == 1) {

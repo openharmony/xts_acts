@@ -56,22 +56,22 @@ export default function GetabilityInfo() {
         });
 
         /*
-         * @tc.number: bundle_GetabilityInfo_test_0200
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2600
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0200', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2600', 0, async function (done) {
             let mData;
             let timeOldStamp = await Utils.getNowTime();
             bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME1, (err, data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('bundle_GetabilityInfo_test_0200', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('Sub_Bms_Framework_Query_AbilityInfo_2600', timeOldStamp, timeNewStamp);
                 if (err) {
-                    console.error('[bundle_GetabilityInfo_test_0200]Operation failed. Cause: ' + JSON.stringify(err));
+                    console.error('[Sub_Bms_Framework_Query_AbilityInfo_2600]Operation failed. Cause: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 }
-                console.info('[bundle_GetabilityInfo_test_0200] getApplicationInfo callback data is: ' + JSON.stringify(data));
+                console.info('[Sub_Bms_Framework_Query_AbilityInfo_2600] getApplicationInfo callback data is: ' + JSON.stringify(data));
                 mData = data;
                 Utils.sleep(2000);
                 checkAbilityInfo(mData);
@@ -80,12 +80,12 @@ export default function GetabilityInfo() {
         });
 
         /*
-         * @tc.number: testgetAbilityInfoOtherBundle
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2660
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('testgetAbilityInfoOtherBundle', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2660', 0, async function (done) {
             await bundleManager.getAbilityInfo(BUNDLE_NAME4, ABILITY_NAME3).then(res => {
                 checkAbilityInfo_other(res);
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
@@ -108,40 +108,40 @@ export default function GetabilityInfo() {
 
 
         /*
-         * @tc.number: bundle_GetabilityInfo_test_0300
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2460
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0300', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2460', 0, async function (done) {
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME_OTHER, ABILITY_NAME_OTHER).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('bundle_GetabilityInfo_test_0300', timeOldStamp, timeNewStamp);
+                Utils.getDurationTime('Sub_Bms_Framework_Query_AbilityInfo_2460', timeOldStamp, timeNewStamp);
                 expect(data).assertFail();
             }).catch((error) => {
-                console.error('[bundle_GetabilityInfo_test_0300]Operation failed. Cause: ' + JSON.stringify(error));
+                console.error('[Sub_Bms_Framework_Query_AbilityInfo_2460]Operation failed. Cause: ' + JSON.stringify(error));
                 expect(error).assertEqual(1);
             });
             done();
         });
 
         /*
-         * @tc.number: bundle_GetabilityInfo_test_0400
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2620
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0400', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2620', 0, async function (done) {
             let error1;
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME2, ABILITY_NAME1).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('bundle_GetabilityInfo_test_0400', timeOldStamp, timeNewStamp);
-                console.info('[bundle_GetabilityInfo_test_0400] getApplicationInfo data is: ' + JSON.stringify(data));
+                Utils.getDurationTime('Sub_Bms_Framework_Query_AbilityInfo_2620', timeOldStamp, timeNewStamp);
+                console.info('[Sub_Bms_Framework_Query_AbilityInfo_2620] getApplicationInfo data is: ' + JSON.stringify(data));
                 expect(typeof (data)).assertEqual("object");
             }).catch((error) => {
-                console.error('[bundle_GetabilityInfo_test_0400]Operation failed. Cause: ' + JSON.stringify(error));
+                console.error('[Sub_Bms_Framework_Query_AbilityInfo_2620]Operation failed. Cause: ' + JSON.stringify(error));
                 error1 = error;
             });
             await Utils.sleep(1000);
@@ -150,40 +150,40 @@ export default function GetabilityInfo() {
         });
 
         /*
-         * @tc.number: bundle_GetabilityInfo_test_0500
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2480
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0500', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2480', 0, async function (done) {
             let error
             await bundleManager.getAbilityInfo(BUNDLE_NAME1, ABILITY_NAME2).then((data) => {
-                console.info('[bundle_GetabilityInfo_test_0500] START' + JSON.stringify(data));
+                console.info('[Sub_Bms_Framework_Query_AbilityInfo_2480] START' + JSON.stringify(data));
             }).catch((err) => {
-                console.info('[bundle_GetabilityInfo_test_0500] err = ' + JSON.stringify(err));
+                console.info('[Sub_Bms_Framework_Query_AbilityInfo_2480] err = ' + JSON.stringify(err));
                 error = err;
             })
             expect(error).assertEqual(1);
             done();
-            console.info('[bundle_GetabilityInfo_test_0500] END');
+            console.info('[Sub_Bms_Framework_Query_AbilityInfo_2480] END');
         });
 
         /*
-         * @tc.number: bundle_GetabilityInfo_test_0600
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2640
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level   0
          */
-        it('bundle_GetabilityInfo_test_0600', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AbilityInfo_2640', 0, async function (done) {
             let error1;
             let timeOldStamp = await Utils.getNowTime();
             await bundleManager.getAbilityInfo(BUNDLE_NAME3, ABILITY_NAME1).then((data) => {
                 let timeNewStamp = Utils.getNowTime();
-                Utils.getDurationTime('bundle_GetabilityInfo_test_0600', timeOldStamp, timeNewStamp);
-                console.info('[bundle_GetabilityInfo_test_0600] getApplicationInfo data promise is: ' + JSON.stringify(data));
+                Utils.getDurationTime('Sub_Bms_Framework_Query_AbilityInfo_2640', timeOldStamp, timeNewStamp);
+                console.info('[Sub_Bms_Framework_Query_AbilityInfo_2640] getApplicationInfo data promise is: ' + JSON.stringify(data));
                 expect(typeof (data)).assertEqual("object");
             }).catch((error) => {
-                console.error('[bundle_GetabilityInfo_test_0600]Operation failed. Cause: ' + JSON.stringify(error));
+                console.error('[Sub_Bms_Framework_Query_AbilityInfo_2640]Operation failed. Cause: ' + JSON.stringify(error));
                 error1 = error;
             })
             await Utils.sleep(1000);
@@ -192,7 +192,7 @@ export default function GetabilityInfo() {
         });
 
         /*
-         * @tc.number: testgetAbilityInfoOtherBundle
+         * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2660
          * @tc.name: getAbilityInfo : The basic ability is enhanced to obtain the specified Ability information
          * @tc.desc: Check the return value of the interface (by callback)
          * @tc.level   0
