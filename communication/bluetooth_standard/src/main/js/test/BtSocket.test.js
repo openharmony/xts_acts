@@ -323,7 +323,7 @@ describe('btSocketTest', function() {
             bluetooth.sppCloseServerSocket(serverNumber);
         } catch (err) {
             console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(true).assertEqual(error == null);
+            expect(true).assertEqual(err == null);
         }
         done();
     })

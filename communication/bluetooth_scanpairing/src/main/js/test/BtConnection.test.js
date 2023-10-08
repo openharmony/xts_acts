@@ -117,7 +117,7 @@ describe('btConnectionTest', function() {
             bluetooth.on('pinRequired', onReceiveEvent);
             bluetooth.off('pinRequired', onReceiveEvent);
         } catch (error) {
-            console.error(`[bluetooth_js]pinRequired error, code is ${error.code}, 
+            console.info(`[bluetooth_js]pinRequired error, code is ${error.code}, 
             message is ${error.message}`);
             expect(error.code).assertEqual('2900099');
         }
@@ -137,7 +137,7 @@ describe('btConnectionTest', function() {
             console.info('[bluetooth_js] getPairedDevices ret2:' + JSON.stringify(ret));
             expect(true).assertEqual(ret.length >= 0);
         } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
         done();
@@ -155,7 +155,7 @@ describe('btConnectionTest', function() {
             let ret = bluetooth.getRemoteDeviceName("00:00:00:00:00:00");
             console.info('[bluetooth_js] getRemoteDeviceName ret2:' + JSON.stringify(ret));
          } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
         done();
@@ -186,8 +186,8 @@ describe('btConnectionTest', function() {
             expect(bluetooth.BondState.BOND_STATE_BONDING == 1).assertTrue();
             expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
         } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
         }
         bluetooth.off('bondStateChange', BondStateParam);
         done();
@@ -211,7 +211,7 @@ describe('btConnectionTest', function() {
             await sleep(2000);
             bluetooth.off('pinRequired', PinRequiredParam);
         } catch (err) {
-            console.error("setDevicePairingConfirmation errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("setDevicePairingConfirmation errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
         done();
@@ -231,7 +231,7 @@ describe('btConnectionTest', function() {
             console.info('[bluetooth_js]getRemoteDeviceClass majorMinorClass:' + DeviceClass.majorMinorClass);
             console.info('[bluetooth_js]getRemoteDeviceClass classOfDevice:' + DeviceClass.classOfDevice);
         } catch (err) {
-            console.error("getRemoteDeviceClass errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("getRemoteDeviceClass errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
         done();
@@ -250,7 +250,7 @@ describe('btConnectionTest', function() {
                 console.info('setDevicePinCode callback,device name err:' + JSON.stringify(err) + ',device name:' + JSON.stringify(data));
             });
         } catch (err) {
-            console.error("setDevicePinCode callback errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("setDevicePinCode callback errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
         done();
@@ -271,7 +271,7 @@ describe('btConnectionTest', function() {
                 console.info('setDevicePinCode promise: errCode:' + error.code + ',errMessage' + error.message);
             })
         } catch (err) {
-            console.error("setDevicePinCode promise errCode:" + err.code + ",errMessage:" + err.message);
+            console.info("setDevicePinCode promise errCode:" + err.code + ",errMessage:" + err.message);
             expect(err.code).assertEqual('2900099');
         }
         done();
@@ -301,8 +301,8 @@ describe('btConnectionTest', function() {
             expect(bluetooth.BondState.BOND_STATE_BONDING == 1).assertTrue();
             expect(bluetooth.BondState.BOND_STATE_BONDED == 2).assertTrue();
         } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
         }
         bluetooth.off('bondStateChange', BondStateParam);
         done();
@@ -402,7 +402,7 @@ describe('btConnectionTest', function() {
         console.info('[bluetooth_js] stopDiscovery' + result);
         expect(true).assertTrue();
     } catch (error) {
-        console.error(`[bluetooth_js]bluetoothDeviceFin error, code is ${error.code},message is ${error.message}`);
+        console.info(`[bluetooth_js]bluetoothDeviceFin error, code is ${error.code},message is ${error.message}`);
         expect(error.code).assertEqual('2900099');
     }
     bluetooth.off('bluetoothDeviceFind', onReceiveEvent);
@@ -427,8 +427,8 @@ describe('btConnectionTest', function() {
             console.info('[bluetooth_js] LocalName_0100 NewName = '+ JSON.stringify(getNewName));
             expect(true).assertEqual(Btname.LETTERS_TEST == getNewName);
         } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
         }
         done();
     })
@@ -449,8 +449,8 @@ describe('btConnectionTest', function() {
             console.info('[bluetooth_js] LocalName_0200 NewName = '+ JSON.stringify(getNewName));
             expect(true).assertEqual(Btname.CHINESES_TEST2 == getNewName);
         } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
         }
         done();
     })
@@ -467,8 +467,8 @@ describe('btConnectionTest', function() {
             let connectionState = bluetooth.getBtConnectionState();
             expect(true).assertEqual(connectionState == 0 || connectionState == 1 || connectionState == 2 || connectionState == 3);
         } catch (err) {
-            console.error("errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
         }
         done();
     })
@@ -505,8 +505,8 @@ describe('btConnectionTest', function() {
             expect(TRANSPORT_BR_EDR).assertEqual(0);
             expect(TRANSPORT_LE).assertEqual(1);
         } catch (err) {
-            console.error("BluetoothTransport errCode:" + err.code + ",errMessage:" + err.message);
-            expect(error.code).assertEqual('2900099');
+            console.info("BluetoothTransport errCode:" + err.code + ",errMessage:" + err.message);
+            expect(err.code).assertEqual('2900099');
         }
         done();
     })
