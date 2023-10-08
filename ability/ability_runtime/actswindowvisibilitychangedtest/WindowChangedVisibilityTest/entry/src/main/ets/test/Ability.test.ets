@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
@@ -7,33 +22,34 @@ import commonEventManager from '@ohos.commonEventManager';
 let ACTS_VisbilityState = {
   events: ["visibilityState"]
 };
+
 export default function abilityTest() {
   let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
   let TAG = 'ActsWindowVisibilityTestTAG';
   let uiAbilityWantOne = {
     'bundleName': 'com.acts.windowvisibilitytest',
     'abilityName': 'EntryAbility'
-  }
+  };
   let uiAbilityWantTwo = {
     'bundleName': 'com.acts.windowvisibilitytest',
     'abilityName': 'EntryAbility1'
-  }
+  };
   let singleServiceAbilityWantOne = {
     'bundleName': 'com.acts.windowvisibilitytest',
     'abilityName': 'SingleServiceExtAbility'
-  }
+  };
   let singleServiceAbilityWantTwo = {
     'bundleName': 'com.acts.windowvisibilitytest',
     'abilityName': 'SingleServiceExtAbility1'
-  }
+  };
   let singleServiceAbilityWantThree = {
     'bundleName': 'com.acts.windowvisibilitytest',
     'abilityName': 'singleserviceextability2'
-  }
+  };
   let multipleServiceAbilityWant = {
     'bundleName': 'com.acts.windowvisibilitytest',
     'abilityName': 'MultipleServiceExtAbility'
-  }
+  };
   describe('ActsWindowVisibilityTest', function () {
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(function () {
@@ -50,10 +66,11 @@ export default function abilityTest() {
     afterAll(function () {
 
     })
-    it('Acts_WindowVisibility_0100',0, async function (done) {
+    it('Acts_WindowVisibility_0100', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0100_TAG';
       let subscriber;
       let driver = Driver.create();
+
       function unSubscribeCallback() {
         console.info(TAG1, 'unSubscribeCallback');
         done();
@@ -96,10 +113,11 @@ export default function abilityTest() {
       })
     })
 
-    it('Acts_WindowVisibility_0200',0, async function (done) {
+    it('Acts_WindowVisibility_0200', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0200_TAG';
       let driver = Driver.create();
       let subscriber;
+
       function unSubscribeCallback() {
         console.info(TAG1, 'unSubscribeCallback');
         done();
@@ -125,30 +143,31 @@ export default function abilityTest() {
         await driver.delayMs(200);
         await globalThis.abilityContext.startAbility(uiAbilityWantOne).then(() => {
           console.info(TAG1, 'Start uiAbility one : ');
-        })
+        });
         await driver.delayMs(500);
         await globalThis.abilityContext.startAbility(uiAbilityWantTwo).then(() => {
           console.info(TAG1, 'Start uiAbility two : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.pressHome();
         await driver.delayMs(200);
         await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantOne).then(() => {
           console.info(TAG1, 'Start single service ability one : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.click(10, 10);
         await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantTwo).then(() => {
           console.info(TAG1, 'Start single service ability two : ');
-        })
+        });
       })
 
     })
 
-    it('Acts_WindowVisibility_0300',0, async function (done) {
+    it('Acts_WindowVisibility_0300', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0300_TAG';
       let driver = Driver.create();
       let subscriber;
+
       function unSubscribeCallback() {
         console.info(TAG1, 'unSubscribeCallback');
         done();
@@ -174,33 +193,35 @@ export default function abilityTest() {
         await driver.delayMs(200);
         await globalThis.abilityContext.startAbility(uiAbilityWantOne).then(() => {
           console.info(TAG1, 'Start uiAbility one : ');
-        })
+        });
         await driver.delayMs(500);
         await globalThis.abilityContext.startAbility(uiAbilityWantTwo).then(() => {
           console.info(TAG1, 'Start uiAbility two : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.pressHome();
         await driver.delayMs(200);
         await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantThree).then(() => {
           console.info(TAG1, 'Start single service ability one : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.click(10, 10);
         await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantTwo).then(() => {
           console.info(TAG1, 'Start single service ability two : ');
-        })
+        });
       })
     })
 
-    it('Acts_WindowVisibility_0400',0, async function (done) {
+    it('Acts_WindowVisibility_0400', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0400_TAG';
       let driver = Driver.create();
       let subscriber;
+
       function unSubscribeCallback() {
         console.info(TAG1, 'unSubscribeCallback');
         done();
       }
+
       function subscribeCallback(error, data) {
         console.info(TAG1, 'subscribe data' + JSON.stringify(data));
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
@@ -221,27 +242,29 @@ export default function abilityTest() {
         await driver.delayMs(200);
         await globalThis.abilityContext.startAbility(uiAbilityWantOne).then(() => {
           console.info(TAG1, 'Start uiAbility one : ');
-        })
+        });
         await driver.delayMs(500);
         await globalThis.abilityContext.startAbility(uiAbilityWantTwo).then(() => {
           console.info(TAG1, 'Start uiAbility two : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.click(10, 10);
         await globalThis.abilityContext.startServiceExtensionAbility(multipleServiceAbilityWant).then(() => {
           console.info(TAG1, 'Start multiple service ability one : ');
-        })
+        });
       })
     })
 
-    it('Acts_WindowVisibility_0500',0, async function (done) {
+    it('Acts_WindowVisibility_0500', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0500_TAG';
       let driver = Driver.create();
       let subscriber;
+
       function unSubscribeCallback() {
         console.info(TAG1, 'unSubscribeCallback');
         done();
       }
+
       function subscribeCallback(error, data) {
         console.info(TAG1, 'subscribe data' + JSON.stringify(data));
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
@@ -262,29 +285,31 @@ export default function abilityTest() {
         await driver.delayMs(200);
         await globalThis.abilityContext.startAbility(uiAbilityWantOne).then(() => {
           console.info(TAG1, 'Start uiAbility one : ');
-        })
+        });
         await driver.delayMs(500);
         await globalThis.abilityContext.startAbility(uiAbilityWantTwo).then(() => {
           console.info(TAG1, 'Start uiAbility two : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.pressHome();
         await driver.delayMs(200);
         await driver.click(10, 10);
         await globalThis.abilityContext.startServiceExtensionAbility(multipleServiceAbilityWant).then(() => {
           console.info(TAG1, 'Start multiple service ability one : ');
-        })
+        });
       })
     })
 
-    it('Acts_WindowVisibility_0600',0, async function (done) {
+    it('Acts_WindowVisibility_0600', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0600_TAG';
       let subscriber;
       let driver = Driver.create();
+
       function unSubscribeCallback() {
         console.info(TAG1, 'unSubscribeCallback');
         done();
       }
+
       function subscribeCallback(error, data) {
         console.info(TAG1, 'subscribe data' + JSON.stringify(data));
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
@@ -305,11 +330,11 @@ export default function abilityTest() {
         await driver.delayMs(200);
         await globalThis.abilityContext.startAbility(singleServiceAbilityWantOne).then(() => {
           console.info(TAG1, 'Start uiAbility one : ');
-        })
+        });
         await driver.delayMs(500);
         await globalThis.abilityContext.startAbility(singleServiceAbilityWantThree).then(() => {
           console.info(TAG1, 'Start single service ability three : ');
-        })
+        });
         await driver.delayMs(500);
         await driver.click(10, 10);
         await globalThis.abilityContext.startServiceExtensionAbility(multipleServiceAbilityWant).then(() => {
