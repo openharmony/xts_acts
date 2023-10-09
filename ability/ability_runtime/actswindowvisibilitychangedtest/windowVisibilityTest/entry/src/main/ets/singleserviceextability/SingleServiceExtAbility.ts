@@ -57,7 +57,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       globalThis.createWindow('uiPages', window.WindowType.TYPE_FLOAT, navigationBarRect);
-    })
+    });
   }
 
   onConnect(want) {

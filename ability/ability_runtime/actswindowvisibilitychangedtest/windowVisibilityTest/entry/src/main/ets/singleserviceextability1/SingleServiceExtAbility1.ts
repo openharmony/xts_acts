@@ -7,6 +7,7 @@ import commonEventManager from '@ohos.commonEventManager';
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 let applicationState = 0;
 let commonEventData = {
   parameters: {
@@ -72,7 +73,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
       await globalThis.createWindow('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
       await sleep(500);
       await globalThis.GetApplicationState();
-    })
+    });
   }
 
   onConnect(want) {

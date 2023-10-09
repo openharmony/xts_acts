@@ -3,6 +3,7 @@ import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
 
 const TAG: string = "ServiceExtAbilityTAG";
+
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');

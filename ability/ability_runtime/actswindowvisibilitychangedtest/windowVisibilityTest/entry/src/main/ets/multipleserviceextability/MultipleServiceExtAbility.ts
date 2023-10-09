@@ -7,6 +7,7 @@ import commonEventManager from '@ohos.commonEventManager';
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 let applicationState = 0;
 let commonEventData = {
   parameters: {
