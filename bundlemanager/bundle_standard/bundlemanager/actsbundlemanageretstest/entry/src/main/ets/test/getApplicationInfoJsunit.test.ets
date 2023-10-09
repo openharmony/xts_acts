@@ -17,9 +17,9 @@ import Utils from './Utils';
 import Bundle from '@ohos.bundle';
 import account from '@ohos.account.osAccount';
 
-const TAG_TEST_0100_001 = ' bundle_getApplicationInfo_test_0100_001 ';
-const TAG_TEST_0100_002 = ' bundle_getApplicationInfo_test_0100_002 ';
-const TAG_TEST_0100_003 = ' bundle_getApplicationInfo_test_0100_003 ';
+const TAG_TEST_0100_001 = ' Sub_Bms_Framework_Query_AppInfo_3460 ';
+const TAG_TEST_0100_002 = ' Sub_Bms_Framework_Query_AppInfo_3480 ';
+const TAG_TEST_0100_003 = ' Sub_Bms_Framework_Query_AppInfo_3500 ';
 const TAG_TEST_0200_001 = ' bundle_getApplicationInfo_test_0200_004 ';
 const TAG_TEST_0200_002 = ' bundle_getApplicationInfo_test_0200_005 ';
 const TAG_TEST_0200_003 = ' bundle_getApplicationInfo_test_0200_006 ';
@@ -54,7 +54,7 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0100_001
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3460
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
@@ -75,7 +75,7 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0100_002
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3480
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
@@ -96,7 +96,7 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: bundle_getApplicationInfo_test_0100_003
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_3500
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface (by promise)
          * @tc.level 0
@@ -262,11 +262,11 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: getApplicationInfo_1300
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_0440
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfo_1300', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0440', 0, async function (done) {
             let startTime = await Utils.getNowTime();
             await Bundle.getApplicationInfo(BUNDLE_NAME, FLAG_DEFAULT).then((data) => {
                 let endTime = Utils.getNowTime();
@@ -290,11 +290,11 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: getApplicationInfo_1400
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_0460
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfo_1400', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0460', 0, async function (done) {
           await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT).then((data) => {
               console.info('noUserId promise data is: ' + data);
               getApplicationInfoSuccessOther(data);
@@ -310,11 +310,11 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: getApplicationInfo_1500
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_0480
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfo_1500', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0480', 0, async function (done) {
             let startTime = await Utils.getNowTime();
             await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
@@ -334,11 +334,11 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: getApplicationInfo_1700
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_0520
          * @tc.name: getApplicationInfo : Obtains based on a given bundle name.
          * @tc.desc: Check the return value of the interface
          */
-        it('getApplicationInfo_1700', 0, async function (done) {
+        it('Sub_Bms_Framework_Query_AppInfo_0520', 0, async function (done) {
             await Bundle.getApplicationInfo('', FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
@@ -368,7 +368,7 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-        * @tc.number: SUB_BMS_APPINFO_QUERY_0059
+        * @tc.number: Sub_Bms_Framework_Query_AppInfo_8400
         * @tc.name: getApplicationInfoNoMetaData
         * @tc.desc: Check the return value of the interface
         */
@@ -388,7 +388,7 @@ export default function applicationBundleJsunit() {
         });
 
         /**
-         * @tc.number: SUB_BMS_APPINFO_QUERY_0005
+         * @tc.number: Sub_Bms_Framework_Query_AppInfo_8300
          * @tc.name: getApplicationInfoNotExistBundleName
          * @tc.desc: Check the return value of the interface
          */

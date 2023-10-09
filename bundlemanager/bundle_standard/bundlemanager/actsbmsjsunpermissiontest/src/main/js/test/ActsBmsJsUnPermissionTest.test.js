@@ -38,7 +38,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: getApplicationInfo_1900
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_0560
      * @tc.name: getApplicationInfoUnPermissionUserId
      * @tc.desc: test getApplicationInfo
      */
@@ -56,7 +56,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: getApplicationInfos_1500
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_1120
      * @tc.name: getApplicationInfosUnPermissionUserId
      * @tc.desc: test getAllApplicationInfo
      */
@@ -74,7 +74,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: getBundleInfo_2300
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_2400
      * @tc.name: getBundleInfoUnPermissionUserId
      * @tc.desc: test getBundleInfo
      */
@@ -92,7 +92,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: getBundleInfos_1000
+     * @tc.number: Sub_Bms_Framework_Query_AppInfo_2640
      * @tc.name: getAllBundleInfoUnPermission
      * @tc.desc: test getAllBundleInfo
      */
@@ -110,7 +110,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0015
+     * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2780
      * @tc.name: queryAbilityByWantUnPermission
      * @tc.desc: test queryAbilityByWant
      */
@@ -135,7 +135,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERY_0010
+     * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2680
      * @tc.name: getLaunchWantForBundleUnPermission
      * @tc.desc: test getLaunchWantForBundle
      */
@@ -153,7 +153,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-    * @tc.number: SUB_BMS_APPINFO_GETABILITYLABELP_0006
+    * @tc.number: Sub_Bms_Framework_Query_Label_4400
     * @tc.name: getAbilityLabelUnPermission
     * @tc.desc: Check the return value of the interface
     * @tc.level   0
@@ -174,7 +174,7 @@ describe('ActsBmsJsUnPermissionTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_GETABILITYINFO_0006
+     * @tc.number: Sub_Bms_Framework_Query_AbilityInfo_2540
      * @tc.name: getAbilityInfoUnPermission
      * @tc.desc: test getAbilityInfo
      */

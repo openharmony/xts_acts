@@ -36,7 +36,7 @@ const PARAM_ERROR_CODE = 401;
 export default function getProfileByAbility() {
   describe('getProfileByAbility', function () {
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0011
+     * @tc.number: Sub_Bms_Framework_Query_Profile_0900
      * @tc.name: getProfileByAbilityInvalidModulePro
      * @tc.desc: Check the invalid moduleName (by promise)
      * @tc.level   0
@@ -54,7 +54,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0015
+     * @tc.number: Sub_Bms_Framework_Query_Profile_1300
      * @tc.name: getProfileByAbilityEmptyModulePro
      * @tc.desc: Check the empty moduleName (by promise)
      * @tc.level   0
@@ -72,7 +72,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0017
+     * @tc.number: Sub_Bms_Framework_Query_Profile_1500
      * @tc.name: getProfileByAbilityInvalidModuleCall
      * @tc.desc: Check the invalid moduleName (by callback)
      * @tc.level   0
@@ -86,7 +86,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0034
+     * @tc.number: Sub_Bms_Framework_Query_Profile_3200
      * @tc.name: getProfileByAbilityEmptyModuleCall
      * @tc.desc: Check the empty moduleName (by callback)
      * @tc.level   0
@@ -100,7 +100,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0012
+     * @tc.number: Sub_Bms_Framework_Query_Profile_1000
      * @tc.name: getProfileByAbilityInvalidAbilityPro
      * @tc.desc: Check the invalid abilityName (by promise)
      * @tc.level   0
@@ -118,7 +118,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
+     * @tc.number: Sub_Bms_Framework_Query_Profile_2700
      * @tc.name: getProfileByAbilityEmptyAbilityPro
      * @tc.desc: Check the empty abilityName (by promise)
      * @tc.level   0
@@ -136,7 +136,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0022
+     * @tc.number: Sub_Bms_Framework_Query_Profile_2000
      * @tc.name: getProfileByAbilityInvalidAbilityCall
      * @tc.desc: Check the invalid abilityName (by callback)
      * @tc.level   0
@@ -150,7 +150,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
+     * @tc.number: Sub_Bms_Framework_Query_Profile_2700
      * @tc.name: getProfileByAbilityEmptyAbilityCall
      * @tc.desc: Check the empty abilityName (by callback)
      * @tc.level   0
@@ -164,7 +164,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0024
+     * @tc.number: Sub_Bms_Framework_Query_Profile_2200
      * @tc.name: getProfileByAbilityCallback
      * @tc.desc: Check the valid metadataName (by callback)
      * @tc.level   0
@@ -181,7 +181,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0026
+     * @tc.number: Sub_Bms_Framework_Query_Profile_2400
      * @tc.name: getProfileByAbilityInvalidMetaDataCall
      * @tc.desc: Check the invalid metadataName (by callback)
      * @tc.level   0
@@ -195,7 +195,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0036
+     * @tc.number: Sub_Bms_Framework_Query_Profile_3400
      * @tc.name: getProfileByAbilityEmptyMetaDataCall
      * @tc.desc: Check the empty metadataName (by callback)
      * @tc.level   0
@@ -216,7 +216,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0002
+     * @tc.number: Sub_Bms_Framework_Query_Profile_0100
      * @tc.name: getProfileByAbilityPromise
      * @tc.desc: Check the valid metadataName (by promise)
      * @tc.level   0
@@ -237,7 +237,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0004
+     * @tc.number: Sub_Bms_Framework_Query_Profile_0300
      * @tc.name: getProfileByAbilityInvalidMetaDataPro
      * @tc.desc: Check the invalid metadataName (by promise)
      * @tc.level   0
@@ -254,7 +254,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0030
+     * @tc.number: Sub_Bms_Framework_Query_Profile_2800
      * @tc.name: getProfileByAbilityEmptyMetaDataPro
      * @tc.desc: Check the empty metadataName (by promise)
      * @tc.level   0
@@ -279,7 +279,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0009
+     * @tc.number: Sub_Bms_Framework_Query_Profile_0700
      * @tc.name: getProfileByAbilityNoMetaDataPro
      * @tc.desc: without metadataName (by promise)
      * @tc.level   0
@@ -304,7 +304,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0048
+     * @tc.number: Sub_Bms_Framework_Query_Profile_4600
      * @tc.name: getProfileByAbilityNoProfilePro
      * @tc.desc: no profile configured under the ability (by promise)
      * @tc.level   0
@@ -322,7 +322,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0045
+     * @tc.number: Sub_Bms_Framework_Query_Profile_4300
      * @tc.name: getProfileByAbilityNotPrefixPro
      * @tc.desc: resource has no prefix '$profile:' (by promise)
      * @tc.level   0
@@ -340,7 +340,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0044
+     * @tc.number: Sub_Bms_Framework_Query_Profile_4200
      * @tc.name: getProfileByAbilityNotPrefixCall
      * @tc.desc: resource has no prefix '$profile:' (by callback)
      * @tc.level   0
@@ -354,7 +354,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0007
+     * @tc.number: Sub_Bms_Framework_Query_Profile_0500
      * @tc.name: getProfileByAbilityNotSuffixPro
      * @tc.desc: profile is .txt suffix (by promise)
      * @tc.level   0
@@ -374,7 +374,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0040
+     * @tc.number: Sub_Bms_Framework_Query_Profile_3800
      * @tc.name: getProfileByAbilityNotSuffixCall
      * @tc.desc: profile is .txt suffix (by callback)
      * @tc.level   0
@@ -390,7 +390,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0008
+     * @tc.number: Sub_Bms_Framework_Query_Profile_0600
      * @tc.name: getProfileByAbilityNoJsonPro
      * @tc.desc: profile is invalid json format (by promise)
      * @tc.level   0
@@ -408,7 +408,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0046
+     * @tc.number: Sub_Bms_Framework_Query_Profile_4400
      * @tc.name: getProfileByAbilityNoJsonCall
      * @tc.desc: profile is invalid json format (by callback)
      * @tc.level   0
@@ -422,7 +422,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0064
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6200
      * @tc.name: testGetProfileByAbilitySyncSuccess
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
@@ -444,7 +444,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0065
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6300
      * @tc.name: testGetProfileByAbilitySyncWithoutMetaData
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
@@ -470,7 +470,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0066
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6400
      * @tc.name: testGetProfileByAbilitySyncByEmptyModuleName
      * @tc.desc: Check the invalid moduleName (by sync)
      * @tc.level   0
@@ -488,7 +488,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0067
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6500
      * @tc.name: testGetProfileByAbilitySyncByInvalidAbilityName
      * @tc.desc: Check the invalid abilityName (by sync)
      * @tc.level   0
@@ -506,7 +506,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0068
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6600
      * @tc.name: testGetProfileByAbilitySyncInvalidMetaData
      * @tc.desc: Check resource has no prefix (by sync)
      * @tc.level   0
@@ -524,7 +524,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0070
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6800
      * @tc.name: testGetProfileByAbilitySyncByEmptyModuleName
      * @tc.desc: Check the empty moduleName (by sync)
      * @tc.level   0
@@ -542,7 +542,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0071
+     * @tc.number: Sub_Bms_Framework_Query_Profile_6900
      * @tc.name: testGetProfileByAbilitySyncByEmptyAbilityName
      * @tc.desc: Check the empty abilityName (by sync)
      * @tc.level   0
@@ -560,7 +560,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0072
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7000
      * @tc.name: testGetProfileByAbilitySyncSuccessEmptyMetaData
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
@@ -586,7 +586,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0073
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7100
      * @tc.name: testGetProfileByAbilitySyncNullModule
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
@@ -604,7 +604,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0074
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7200
      * @tc.name: testGetProfileByAbilitySyncNullAbility
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
@@ -622,7 +622,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0075
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7300
      * @tc.name: testGetProfileByAbilitySyncSuccessNullMetaData
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
@@ -648,7 +648,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0076
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7400
      * @tc.name: testGetProfileByAbilitySyncUndefinedModule
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
@@ -666,7 +666,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0077
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7500
      * @tc.name: testGetProfileByAbilitySyncUndefinedAbility
      * @tc.desc: Check param number is failed (by sync)
      * @tc.level   0
@@ -684,7 +684,7 @@ export default function getProfileByAbility() {
     })
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0078
+     * @tc.number: Sub_Bms_Framework_Query_Profile_7600
      * @tc.name: testGetProfileByAbilitySyncUndefinedMetaData
      * @tc.desc: profile is json (by sync)
      * @tc.level   0
