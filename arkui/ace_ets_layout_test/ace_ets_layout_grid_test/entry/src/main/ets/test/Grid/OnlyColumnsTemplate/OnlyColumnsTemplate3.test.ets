@@ -44,12 +44,12 @@ export default function OnlyColumnsTemplate3() {
       console.info("OnlyColumnsTemplate3 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_GRID_OnlyColumnsTemplate3_001
+     * @tc.number    SUB_ACE_GRID_OnlyColumnsTemplate3_0100
      * @tc.name      testGrid
      * @tc.desc      GridItem only sets columnStart
      */
-    it('SUB_ACE_GRID_OnlyColumnsTemplate3_001', 0, async function (done) {
-      console.info('[SUB_ACE_GRID_OnlyColumnsTemplate3_001] START');
+    it('SUB_ACE_GRID_OnlyColumnsTemplate3_0100', 0, async function (done) {
+      console.info('[SUB_ACE_GRID_OnlyColumnsTemplate3_0100] START');
       await CommonFunc.sleep(2000);
 
       console.log('get Initial value')
@@ -61,7 +61,7 @@ export default function OnlyColumnsTemplate3() {
       expect(Math.round(GridItem_01.bottom - GridItem_01.top)).assertEqual(Math.round(vp2px(50)));
       console.log('GGridItem_01.bottom - GridItem_01.top' + (GridItem_01.bottom - GridItem_01.top))
 
-      console.info('[SUB_ACE_GRID_OnlyColumnsTemplate3_001] END');
+      console.info('[SUB_ACE_GRID_OnlyColumnsTemplate3_0100] END');
       done();
     });
 
