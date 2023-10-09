@@ -56,8 +56,13 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
+      let rectInfo = JSON.parse('[' + obj.$rect + ']');
+      let left = JSON.parse('[' + rectInfo[0] + ']')[0];
+      let right = JSON.parse('[' + rectInfo[1] + ']')[0]
+      let width =  px2vp(right - left);
+      width = Math.floor(width * 100) / 100;
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.width).assertEqual("-");
+      expect(obj.$attrs.width).assertEqual(width.toFixed(2)+'vp');
       console.info("[testtextPickerDefaultPickerItemHeight0001] width value :" + obj.$attrs.width);
       done();
     });
@@ -73,8 +78,13 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       let strJson = getInspectorByKey('defaultPickerItemHeightText');
       console.info("[testtextPickerDefaultPickerItemHeight0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
+      let rectInfo = JSON.parse('[' + obj.$rect + ']');
+      let top = JSON.parse('[' + rectInfo[0] + ']')[1];
+      let bottom = JSON.parse('[' + rectInfo[1] + ']')[1];
+      let height =  px2vp(bottom - top);
+      height = Math.floor(height * 100) / 100;
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.height).assertEqual("-");
+      expect(obj.$attrs.height).assertEqual(height.toFixed(2)+'vp');
       console.info("[testtextPickerDefaultPickerItemHeight0002] height value :" + obj.$attrs.height);
       done();
     });
