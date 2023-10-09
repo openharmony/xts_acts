@@ -14,8 +14,8 @@
  */
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
-import display from '@ohos.display'
-import type window from '@ohos.window'
+import display from '@ohos.display';
+import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
 globalThis.createWindow = async (name, windowType, rect) => {
@@ -30,9 +30,8 @@ globalThis.createWindow = async (name, windowType, rect) => {
     win = await window.createWindow(configuration);
     await win.moveTo(rect.left, rect.top);
     await win.resetSize(rect.width, rect.height);
-    // await win.setFullScreen(true)
     await win.loadContent('pages/uiPage3');
-    await win.setBackgroundColor('#ffeae6e6')
+    await win.setBackgroundColor('#ffeae6e6');
     await win.show();
     console.info(TAG, 'Start creating window successfully!');
   } catch {

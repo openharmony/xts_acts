@@ -14,8 +14,8 @@
  */
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
-import display from '@ohos.display'
-import type window from '@ohos.window'
+import display from '@ohos.display';
+import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 import commonEventManager from '@ohos.commonEventManager';
 
@@ -39,7 +39,7 @@ globalThis.GetApplicationState = async () => {
   console.info(TAG, `applicationState : ${commonEventData.parameters.applicationState}`);
   commonEventManager.publish('visibilityState', commonEventData, (error) => {
     console.info("publish data : " + JSON.stringify(error));
-  });
+  })
 }
 globalThis.createWindow = async (name, windowType, rect) => {
   let win;

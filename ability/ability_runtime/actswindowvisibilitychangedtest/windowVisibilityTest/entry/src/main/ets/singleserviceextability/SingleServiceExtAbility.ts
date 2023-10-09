@@ -14,12 +14,9 @@
  */
 
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
-import display from '@ohos.display'
-import window from '@ohos.window'
+import display from '@ohos.display';
+import window from '@ohos.window';
 import rpc from '@ohos.rpc';
-import appManager from '@ohos.application.appManager';
-
-import Prompt from '@system.prompt';
 
 globalThis.GetApplicationState = async () => {
   console.info(TAG, "GetApplicationState Start!");
@@ -72,7 +69,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       globalThis.createWindow('uiPages', window.WindowType.TYPE_FLOAT, navigationBarRect);
-    });
+    })
   }
 
   onConnect(want) {
