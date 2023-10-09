@@ -483,7 +483,7 @@ export default function requestMethodJsunit() {
           connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        httpRequest.request("https://www.baidu.com/", httpRequestOptions, (err, data) => {
+        httpRequest.request("https://www.openharmony.cn/", httpRequestOptions, (err, data) => {
           console.log(casename + JSON.stringify(err) + " data: " + JSON.stringify(data));
           expect(data.responseCode == 405).assertTrue();
           httpRequest.destroy();
@@ -514,7 +514,7 @@ export default function requestMethodJsunit() {
           connectTimeout: 60000
         }
         var httpRequest = http.createHttp();
-        httpRequest.request("https://www.baidu.com/", httpRequestOptions).then(data => {
+        httpRequest.request("https://www.openharmony.cn/", httpRequestOptions).then(data => {
           console.log(casename + JSON.stringify(data));
           expect(data.responseCode == 405).assertTrue();
           httpRequest.destroy();
