@@ -16,9 +16,9 @@ import {CustomContainer} from '../common/TimeExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import router from '@ohos.router';
 import { AppInfoItem } from '../model/LocalConfigEntity';
-let AppNameList = [];
-let AppBundleNameList =[];
-let AppAbilityNameList = [];
+let AppNameList = ['图库'];
+let AppBundleNameList =["com.ohos.photos"];
+let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 
 @Entry
 @Component
@@ -36,13 +36,13 @@ struct CustomContainerUser {
   @State appInfoList: Array<AppInfoItem> = globalThis.appList;
   scroller: Scroller = new Scroller();
   onPageShow(){
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppNameList[i] = this.appInfoList[i].appName;
     }
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppBundleNameList[i] = this.appInfoList[i].packageName;
     }
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppAbilityNameList[i] = this.appInfoList[i].abilityName;
     }
   }
