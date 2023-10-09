@@ -109,6 +109,20 @@ import ObjectLinkSplJsunit from './State/ObjectLinkSplJsunit.test.ets';
 import ObjectLinkCanJsunit from './State/ObjectLinkCanJsunit.test.ets';
 import ObjectLinkNusJsunit from './State/ObjectLinkNusJsunit.test.ets';
 import ObjectLinkArrayJsunit from './State/ObjectLinkArrayJsunit.test.ets'
+import CombinationState2Jsunit from './State/CombinationState2Jsunit.test.ets'
+import CombinationState3Jsunit from './State/CombinationState3Jsunit.test.ets'
+import CombinationState6Jsunit from './State/CombinationState6Jsunit.test.ets'
+import CombinationState7Jsunit from './State/CombinationState7Jsunit.test.ets'
+import CombinationState8Jsunit from './State/CombinationState8Jsunit.test.ets'
+import PropArrayJsunit from './State/PropArrayJsunit.test.ets';
+import PropBooleanJsunit from './State/PropBooleanJsunit.test.ets';
+import PropClassObjectJsunit from './State/PropClassObjectJsunit.test.ets';
+import PropDate2Jsunit from './State/PropDate2Jsunit.test.ets';
+import PropEnumJsunit from './State/PropEnumJsunit.test.ets';
+import PropInit1Jsunit from './State/PropInit1Jsunit.test.ets';
+import PropNumberJsunit from './State/PropNumberJsunit.test.ets';
+import PropStringJsunit from './State/PropStringJsunit.test.ets';
+import StateArrayNewJsunit from './State/StateArrayNewJsunit.test.ets'
 
 
 export default function testsuite() {
@@ -208,4 +222,18 @@ export default function testsuite() {
   ObjectLinkCanJsunit();
   ObjectLinkNusJsunit();
   ObjectLinkArrayJsunit();
+  CombinationState2Jsunit();
+  CombinationState3Jsunit();
+  CombinationState6Jsunit();
+  CombinationState7Jsunit();
+  CombinationState8Jsunit();
+  PropArrayJsunit();
+  PropBooleanJsunit();
+  PropClassObjectJsunit();
+  PropDate2Jsunit();
+  PropEnumJsunit();
+  PropInit1Jsunit();
+  PropNumberJsunit();
+  PropStringJsunit();
+  StateArrayNewJsunit();
 }

@@ -43,8 +43,8 @@ export default function Storage36Jsunit() {
     });
 
     afterEach(async function () {
-      let driver = await UiDriver.create()
       await CommonFunc.sleep(1000);
+      let driver = await UiDriver.create() 
       await driver.pressBack();
     });
 
