@@ -86,7 +86,7 @@ export default function multiThreadTest() {
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_MULTI_THREAD_0100
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0100
         * @tc.name      : multiple thread
         * @tc.desc      : 1.create receiver.js
         *                 2.invoked simultaneously by multiple thread
@@ -94,12 +94,12 @@ export default function multiThreadTest() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_RECEIVER_MULTI_THREAD_0100', 0, async function (done) {
-            await doTest(done, "SUB_GRAPHIC_IMAGE_RECEIVER_MULTI_THREAD_0100", "entry/ets/workers/receiver.js");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0100', 0, async function (done) {
+            await doTest(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0100", "entry/ets/workers/receiver.js");
         })
 
         /**
-        * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_MULTI_THREAD_0200
+        * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200
         * @tc.name      : multiple thread
         * @tc.desc      : 1.create creator.js
         *                 2.invoked simultaneously by multiple thread
@@ -107,8 +107,8 @@ export default function multiThreadTest() {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-        it('SUB_GRAPHIC_IMAGE_RECEIVER_MULTI_THREAD_0200', 0, async function (done) {
-            await doTest(done, "SUB_GRAPHIC_IMAGE_RECEIVER_MULTI_THREAD_0200", "entry/ets/workers/creator.js");
+        it('SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200', 0, async function (done) {
+            await doTest(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_MULTI_THREAD_0200", "entry/ets/workers/creator.js");
         })
     })
 }
