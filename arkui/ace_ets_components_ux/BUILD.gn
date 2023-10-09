@@ -15,6 +15,7 @@ group("componentUxTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ace_ets_component_advancedcounter:ActsAceAdvancedCounterTest",
       "ace_ets_component_badge:ActsAcebadgeTest",
       "ace_ets_component_button:ActsAceButtonTest",
       "ace_ets_component_calendarpicker:ActsAceCalendarPickerTest",
