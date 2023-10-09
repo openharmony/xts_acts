@@ -25,6 +25,11 @@
         "MainAbility/pages/Grid/OnlyRowsTemplate/OnlyRowsTemplate2",
         "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate1",
         "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplate2",
-        "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet"
+        "MainAbility/pages/Grid/ColumnsTemplateAndRowsTemplate/ColumnsTemplateAndRowsTemplateNoSet",
+
+        "MainAbility/pages/Grid/Grid_scroll/Grid_ReachStartAndEnd",
+        "MainAbility/pages/Grid/Grid_scroll/Grid_ScrollStartAndStop",
+        "MainAbility/pages/Grid/Grid_scroll/Grid_ScrollAndScrollIndex",
+        "MainAbility/pages/Grid/Grid_scroll/Grid_ScrollFrameBegin"
     ]
 }
