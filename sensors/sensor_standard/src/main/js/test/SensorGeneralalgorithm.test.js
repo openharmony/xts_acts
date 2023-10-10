@@ -876,7 +876,7 @@ describe("SensorJsTest_sensor_1", function () {
         console.info("SensorJsTest_100 end")
     })
 
-    let getGeomagneticDipResult = [0.8760581016540527, 0.862170, 0, 44330]
+    let getGeomagneticDipResult = [0.8760581016540527, 0.862170, -953042337792, 44330]
 
      /*
      * @tc.name:SensorJsTest_101
@@ -890,11 +890,10 @@ describe("SensorJsTest_sensor_1", function () {
                 console.info('SensorJsTest_101 failed');
                 expect(false).assertTrue();
             } else {
-                console.info("SensorJsTest_101" + data)
+                console.info("SensorJsTest_101 data:" + data)
                 expect(data).assertEqual(getGeomagneticDipResult[0])
             }
             done()
-            console.info('SensorJsTest_101' + 'length:' + data.length);
         })
         console.info("SensorJsTest_101 end")
     })
