@@ -871,8 +871,8 @@ export default function CameraErrorCodeUsecaseTest() {
                     console.info(TAG + "ERRORCODE: " + err.code);
                     expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 }
+                done();
             })
-            done();
         })
 
         /**
@@ -893,15 +893,14 @@ export default function CameraErrorCodeUsecaseTest() {
             mCameraSession.addOutput(mPhotoOutput);
             await commitCameraSessionConfig();
             await mCameraSession.start();
-            await mPhotoOutput.capture({}).then((result) => {
-                console.info('SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0400 success :' + result);
-            }).catch((err) => {
+            try {
+                await mPhotoOutput.capture({});
+            } catch (err) {
                 console.info(TAG + "SUB_MULTIMEDIA_CAMERA_ERROR_CODE_USECASE_PHOTOOUTPUT_CAPTURE_0400 FAILED");
                 console.info(TAG + "ERRORCODE: " + err.code);
                 expect(err.code == cameraObj.CameraErrorCode.INVALID_ARGUMENT).assertTrue();
                 expect(true).assertTrue();
-            });
-            sleep(1000);
+            }
             done();
         })
 
