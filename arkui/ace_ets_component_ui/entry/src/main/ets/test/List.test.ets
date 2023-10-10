@@ -123,7 +123,15 @@ import PropInit1Jsunit from './State/PropInit1Jsunit.test.ets';
 import PropNumberJsunit from './State/PropNumberJsunit.test.ets';
 import PropStringJsunit from './State/PropStringJsunit.test.ets';
 import StateArrayNewJsunit from './State/StateArrayNewJsunit.test.ets'
-
+import onMeasureSize1 from './onMeasureSize1.test.ets'
+import onMeasureSize2 from './onMeasureSize2.test.ets'
+import onMeasureSize3 from './onMeasureSize3.test.ets'
+import search_top from './search_top.test.ets'
+import search_center from './search_center.test.ets'
+import search_bottom from './search_bottom.test.ets'
+import textArea_top from './textArea_top.test.ets'
+import textArea_center from './textArea_center.test.ets'
+import textArea_bottom from './textArea_bottom.test.ets'
 
 export default function testsuite() {
   DialogJsunit();
@@ -236,4 +244,13 @@ export default function testsuite() {
   PropNumberJsunit();
   PropStringJsunit();
   StateArrayNewJsunit();
+  onMeasureSize1();
+  onMeasureSize2();
+  onMeasureSize3()
+  search_top()
+  search_center()
+  search_bottom()
+  textArea_top()
+  textArea_center()
+  textArea_bottom()
 }
