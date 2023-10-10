@@ -59,7 +59,8 @@ struct Grid_colSpan {
         .textOverflow({ overflow: TextOverflow.None })
         .key("orderText")
 
-      GridCol({span: 10, offset:50, order: 10}){
+      GridRow(){
+        GridCol({span: 10, offset:50, order: 10}){
         }
         .width(100)
         .height(100)
@@ -67,6 +68,7 @@ struct Grid_colSpan {
         .backgroundColor(0xf1f3f5)
         .margin({ top: 10 })
         .key('gridContainer')
+      }
     }.width("100%").height("100%")
   }
 }

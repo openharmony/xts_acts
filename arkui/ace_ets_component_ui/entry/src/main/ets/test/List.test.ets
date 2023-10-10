@@ -132,6 +132,12 @@ import PopupAJsunit from './Dialog/PopupJsunit.test.ets'
 import TextPickerDialogAJsunit from './Dialog/TextPickerDialogJsunit.test.ets'
 import TimePickerDialogAJsunit from './Dialog/TimePickerDialogJsunit.test.ets'
 import PromptDialogAJsunit from './Dialog/PromptDialogJsunit.test.ets'
+import ListLanes03 from './ListLanes03.test.ets';
+import ListLanes02 from './ListLanes02.test';
+import ListLanes from './ListLanes.test';
+import navigationNavbar02 from './navigationNavbar02.test.ets';
+import GridRowCol from './GridRowCol.test';
+import navigationPosition from './navigationPosition.test.ets';
 
 
 
@@ -255,4 +261,10 @@ export default function testsuite() {
   TextPickerDialogAJsunit()
   TimePickerDialogAJsunit()
   PromptDialogAJsunit()
+  ListLanes02()
+  ListLanes03()
+  ListLanes()
+  GridRowCol()
+  navigationNavbar02()
+  navigationPosition()
 }
