@@ -35,7 +35,7 @@ export default function RdbNdkStoreLevelTest() {
     afterAll(function () {})
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0200
      * @tc.desc: Normal testCase of NDK SecurityLevel is S1
      * @tc.type: FUNC
      */
@@ -47,7 +47,7 @@ export default function RdbNdkStoreLevelTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1200
      * @tc.desc: Normal testCase of NDK SecurityLevel is S2
      * @tc.type: FUNC
      */
@@ -59,7 +59,7 @@ export default function RdbNdkStoreLevelTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0300
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1300
      * @tc.desc: Normal testCase of NDK SecurityLevel is S3
      * @tc.type: FUNC
      */
@@ -71,7 +71,7 @@ export default function RdbNdkStoreLevelTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_LEVEL_0400
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1400
      * @tc.desc: Normal testCase of NDK SecurityLevel is S4
      * @tc.type: FUNC
      */

@@ -85,7 +85,7 @@ describe('relationalStoreResultSetTest', function () {
 
     /**
      * @tc.name resultSet getBlob normal test
-     * @tc.number SUB_DDM_RELATIONALETS_RESULTSET_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_ResultSetJsApiTest_0100
      * @tc.desc resultSet getBlob normal test
      */
     it('SUB_DDM_RELATIONALETS_RESULTSET_0010', 0, async function (done) {

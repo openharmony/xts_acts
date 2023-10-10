@@ -60,7 +60,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Insert_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0100
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStoreInsert0001', 0, async function (done) {
@@ -126,7 +126,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Insert_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0200
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStoreInsert0002', 0, async function (done) {
@@ -154,7 +154,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Insert_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0300
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStoreInsert0003', 0, async function (done) {
@@ -188,7 +188,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Insert_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0400
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStoreInsert0004', 0, async function (done) {
@@ -214,7 +214,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0500
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0001', 0, async function (done) {
@@ -280,7 +280,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0600
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0002', 0, async function (done) {
@@ -345,7 +345,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0700
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0003', 0, async function (done) {
@@ -452,7 +452,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0800
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0004', 0, async function (done) {
@@ -505,7 +505,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0050
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_0900
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0005', 0, async function (done) {
@@ -565,7 +565,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0060
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1000
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0006', 0, async function (done) {
@@ -605,7 +605,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Promise_0070
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1100
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertPromise0007', 0, async function (done) {
@@ -626,7 +626,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0100
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1200
          * @tc.desc RelationalStore insert test
          * zheg s
          */
@@ -716,7 +716,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0200
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1300
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertCallback0002', 0, async function (done) {
@@ -786,7 +786,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0300
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1400
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertCallback0003', 0, async function (done) {
@@ -892,7 +892,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0400
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1500
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertCallback0004', 0, async function (done) {
@@ -945,7 +945,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0500
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1600
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertCallback0005', 0, async function (done) {
@@ -1009,7 +1009,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0600
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1700
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertCallback0006', 0, async function (done) {
@@ -1058,7 +1058,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name RelationalStore batchInsert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_BatchInsert_Callback_0700
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1800
          * @tc.desc RelationalStore insert test
          */
         it('testRdbStorebatchInsertCallback0007', 0, async function (done) {
@@ -1087,7 +1087,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0001
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_1900
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0001', 0, async function (done) {
@@ -1134,7 +1134,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0002
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2000
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0002', 0, async function (done) {
@@ -1181,7 +1181,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0003
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2100
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0003', 0, async function (done) {
@@ -1230,7 +1230,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0004
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2200
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0004', 0, async function (done) {
@@ -1299,7 +1299,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0005
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2300
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0005', 0, async function (done) {
@@ -1328,7 +1328,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0006
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2400
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0006', 0, async function (done) {
@@ -1376,7 +1376,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb inserttWithConflictResolution test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_InsertWithConflictResolution_0007
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2500
          * @tc.desc rdb insertWithConflictResolution test
          */
         it('InsertWithConflictResolution0007', 0, async function (done) {
@@ -1420,7 +1420,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0100
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2600
          * @tc.desc rdb insert test
          */
         it('SUB_DDM_AppDataFWK_JSRDB_Insert_0100', 0, async function (done) {
@@ -1483,7 +1483,7 @@ export default function relationalStoreInsertTest() {
 
         /**
          * @tc.name rdb insert test
-         * @tc.number SUB_DDM_AppDataFWK_JSRDB_Insert_0200
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_InsertJsAPITest_2700
          * @tc.desc rdb insert test
          */
         it('SUB_DDM_AppDataFWK_JSRDB_Insert_0200', 0, async function (done) {

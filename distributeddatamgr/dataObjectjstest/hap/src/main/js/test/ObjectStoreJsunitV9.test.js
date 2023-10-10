@@ -81,7 +81,7 @@ describe('objectStoreTestV9', function () {
     /**
      * @tc.name: V9testsetSessionId001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2900
      * @tc.type: FUNC
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_001', 0, async function (done) {
@@ -121,7 +121,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testsetSessionId002
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3000
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_002 start *************");
@@ -149,7 +149,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testsetSessionId003
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3100
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_003 start *************");
@@ -174,7 +174,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testsetSessionId004
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3200
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_004 start *************");
@@ -197,7 +197,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testsetSessionId005
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_3300
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005', 0, function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_SetSessionId_005 start *************");
@@ -232,7 +232,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testOn001
      * @tc.desc: object join session and on,object can receive callback when data has been changed
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_On_001
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2100
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_On_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_001 start *************");
@@ -278,7 +278,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testOn002
      * @tc.desc: object join session and on,then object change data twice,object can receive two callbacks when data has been changed
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_On_002
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2200
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_On_002', 0, function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_002 start *************");
@@ -314,7 +314,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: testOn003
      * @tc.desc object join session and on,then object do not change data,object can not receive callbacks
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_On_003
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1500
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_On_003', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_On_003 start *************");
@@ -352,7 +352,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name V9testOff001
      * @tc.desc object join session and on&off,object can not receive callback after off
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Off_001
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2000
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Off_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_001 start *************");
@@ -400,7 +400,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name:V9testOff002
      * @tc.desc object join session and off,object can not receive callback
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Off_002
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1000
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Off_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Off_002 start *************");
@@ -433,7 +433,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testOnStatus001
      * @tc.desc: object set a listener to watch another object online/offline
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2300
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_001 start *************");
@@ -461,7 +461,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testOnStatus002
      * @tc.desc: object set several listener and can unWatch all watcher
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2400
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_OnStatus_002 start *************");
@@ -487,7 +487,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testSave001
      * @tc.desc: test save local
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Save_001
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2700
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Save_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_001 start *************");
@@ -529,7 +529,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testSave002
      * @tc.desc: test save local
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_Save_002
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2800
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_Save_002', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_Save_002 start *************");
@@ -569,7 +569,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testRevokeSave001
      * @tc.desc: test RevokeSave
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2500
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001', 0, async function (done) {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_001 start *************");
@@ -617,7 +617,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: V9testRevokeSave002
      * @tc.desc: test RevokeSave
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_2600
      */
     it('SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002', 0, async function () {
         console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_RevokeSave_002 start *************");
@@ -665,7 +665,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: testNumberMax
      * @tc.desc: test NumberMax
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1800
      */
   it('SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100', 0, async function (done) {
     console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberMax_0100 start *************");
@@ -685,7 +685,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: testNumberMin
      * @tc.desc: test NumberMin
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1900
      */
   it('SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100', 0, async function (done) {
     console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberMin_0100 start *************");
@@ -705,7 +705,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: testNumberAbnormal
      * @tc.desc: test NumberAbnormal
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1600
      */
   it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100', 0, async function (done) {
     console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0100 start *************");
@@ -725,7 +725,7 @@ describe('objectStoreTestV9', function () {
      * @tc.name: testNumberAbnormal
      * @tc.desc: test NumberAbnormal
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200
+     * @tc.number: SUB_DistributedData_DataObject_SDK_ObjectJsAPITest_1700
      */
   it('SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200', 0, async function (done) {
     console.info(TAG + "************* SUB_DDM_AppDataFWK_Object_Api9_NumberAbnormal_0200 start *************");
