@@ -33,6 +33,7 @@
         TestSuite::runResult.numFailed += result.numFailed;                       \
         TestSuite::runResult.numNotSupported += result.numNotSupported;           \
         TestSuite::runResult.numWarnings += result.numWarnings;                   \
+        TestSuite::runResult.numPassed += result.numWarnings;                     \
         TestSuite::runResult.numWaived += result.numWaived;                       \
         if (result.numNotSupported == 1) {                                        \
             GTEST_LOG_(INFO) << #TestCase << "notsupport!";                       \
