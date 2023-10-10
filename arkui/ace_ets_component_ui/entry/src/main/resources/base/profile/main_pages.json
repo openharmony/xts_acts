@@ -190,6 +190,15 @@
         "MainAbility/pages/swiper/swiperNextPrevMargin82",
         "MainAbility/pages/swiper/swiperNextPrevMargin83",
         "MainAbility/pages/swiper/swiperNextPrevMargin84",
-        "MainAbility/pages/swiper/swiperNextPrevMargin85"
+        "MainAbility/pages/swiper/swiperNextPrevMargin85",
+        "MainAbility/pages/Dialog/ActionsheetDialog",
+        "MainAbility/pages/Dialog/AlertDialog",
+        "MainAbility/pages/Dialog/CalendarDialog",
+        "MainAbility/pages/Dialog/CustomDialog",
+        "MainAbility/pages/Dialog/DatePickerDialog",
+        "MainAbility/pages/Dialog/Popup",
+        "MainAbility/pages/Dialog/TextPickerDialog",
+        "MainAbility/pages/Dialog/TimePickerDialog",
+        "MainAbility/pages/Dialog/PromptDialog"
     ]
 }
