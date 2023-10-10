@@ -12,16 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import getMax_MinStreamVolume from './GetMaxAndMinStreamVolume.test.ets'
-import getUnderflowCount from './GetUnderflowCount.test.ets'
-import getCurrentOutputDevices from './GetCurrentOutputDevices.test.ets'
-import on_off_outputDeviceChange from './OnOffOutputDeviceChange.test.ets'
-import setChannelBlendMode from './SetChannelBlendMode.test.ets'
+import getCurrentAudioCapturerChangeInfo from'./GetCurrentAudioCapturerChangeInfo.test.ets'
+import getCurrentInputDevices from './GetCurrentInputDevices.test.ets'
+import onOffAudioCapturerChange from './OnOffAudioCapturerChange.test.ets'
+import onOffInputDeviceChange from './OnOffInputDeviceChange.test.ets'
 
 export default function testsuite() {
-  getMax_MinStreamVolume();
-  getUnderflowCount();
-  getCurrentOutputDevices();
-  on_off_outputDeviceChange();
-  setChannelBlendMode();
+  getCurrentInputDevices();
+  getCurrentAudioCapturerChangeInfo();
+  onOffInputDeviceChange();
+  onOffAudioCapturerChange();
 }

@@ -1,0 +1,30 @@
+{
+    "description": "Configuration for audio capturer enhance Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "3000000",
+        "bundle-name":"com.example.xts_audiocapturerenhance",
+        "package-name": "com.example.xts_audiocapturerenhance",
+        "shell-timeout": "600000",
+		"testcase-timeout": 100000
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAudioCapturerEnhanceTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [],
+            "cleanup-apps": true
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": []
+        }
+    ]
+}
