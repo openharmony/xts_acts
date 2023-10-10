@@ -285,14 +285,14 @@ export default function audioRenderCapturerInterrupt() {
 
 
         /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_001
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0100
         *@tc.name      : AudioCapturer  MIC INTERRUPT VOICE_ASSISTANT
         *@tc.desc      : AudioCapturer  MIC INTERRUPT VOICE_ASSISTANT
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_001', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0100', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -321,14 +321,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_002
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0200
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT VOICE_ASSISTANT
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT VOICE_ASSISTANT
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_002', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -359,14 +359,14 @@ export default function audioRenderCapturerInterrupt() {
     
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_004
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0400
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT VOICE_ASSISTANT
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT VOICE_ASSISTANT
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_004', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0400', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -395,14 +395,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_005
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0500
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT VOICE_ASSISTANT
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT VOICE_ASSISTANT
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_005', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0500', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -434,14 +434,14 @@ export default function audioRenderCapturerInterrupt() {
 
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_007
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0700
         *@tc.name      : AudioCapturer  MIC INTERRUPT ALARM
         *@tc.desc      : AudioCapturer  MIC INTERRUPT ALARM
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_007', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0700', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -470,14 +470,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_008
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0800
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT ALARM
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT ALARM
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_008', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_0800', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -508,14 +508,14 @@ export default function audioRenderCapturerInterrupt() {
         
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_010
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_1000
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT ALARM
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT ALARM
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_010', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_1000', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -544,14 +544,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_011
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_1100
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT ALARM
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT ALARM
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_011', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_1100', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -584,14 +584,14 @@ export default function audioRenderCapturerInterrupt() {
 
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_019
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_1900
         *@tc.name      : AudioCapturer  MIC INTERRUPT GAME
         *@tc.desc      : AudioCapturer  MIC INTERRUPT GAME
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_019', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_1900', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -620,14 +620,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_020
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2000
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT GAME
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT GAME
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_020', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2000', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -658,14 +658,14 @@ export default function audioRenderCapturerInterrupt() {
       
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_022
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2200
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT GAME
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT GAME
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_022', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -694,14 +694,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_023
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2300
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT GAME
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT GAME
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_023', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2300', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -735,14 +735,14 @@ export default function audioRenderCapturerInterrupt() {
         
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_025
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2500
         *@tc.name      : AudioCapturer  MIC INTERRUPT MOVIE
         *@tc.desc      : AudioCapturer  MIC INTERRUPT MOVIE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_025', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2500', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -771,14 +771,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_026
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2600
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT MOVIE
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT MOVIE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_026', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2600', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -809,14 +809,14 @@ export default function audioRenderCapturerInterrupt() {
        
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_028
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2800
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT MOVIE
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT MOVIE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_028', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2800', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -845,14 +845,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_029
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2900
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT MOVIE
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT MOVIE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_029', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_2900', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -886,14 +886,14 @@ export default function audioRenderCapturerInterrupt() {
         
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_031
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3100
         *@tc.name      : AudioCapturer  MIC INTERRUPT MUSIC
         *@tc.desc      : AudioCapturer  MIC INTERRUPT MUSIC
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_031', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3100', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -922,14 +922,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_032
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3200
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT MUSIC
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT MUSIC
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_032', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -960,14 +960,14 @@ export default function audioRenderCapturerInterrupt() {
       
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_034
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3400
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT MUSIC
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT MUSIC
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_034', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3400', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -996,14 +996,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_035
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3500
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT MUSIC
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT MUSIC
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_035', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3500', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1037,14 +1037,14 @@ export default function audioRenderCapturerInterrupt() {
         
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_037
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3700
         *@tc.name      : AudioCapturer  MIC INTERRUPT NAVIGATION
         *@tc.desc      : AudioCapturer  MIC INTERRUPT NAVIGATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_037', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3700', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1073,14 +1073,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_038
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3800
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT NAVIGATION
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT NAVIGATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_038', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_3800', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1110,14 +1110,14 @@ export default function audioRenderCapturerInterrupt() {
      
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_040
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4000
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT NAVIGATION
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT NAVIGATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_040', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4000', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1146,14 +1146,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_041
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4100
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT NAVIGATION
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT NAVIGATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_041', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4100', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1186,14 +1186,14 @@ export default function audioRenderCapturerInterrupt() {
         
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_043
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4300
         *@tc.name      : AudioCapturer  MIC INTERRUPT NOTIFICATION
         *@tc.desc      : AudioCapturer  MIC INTERRUPT NOTIFICATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_043', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4300', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1222,14 +1222,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_044
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4400
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT NOTIFICATION
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT NOTIFICATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_044', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4400', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1260,14 +1260,14 @@ export default function audioRenderCapturerInterrupt() {
         
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_046
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4600
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT NOTIFICATION
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT NOTIFICATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_046', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4600', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1296,14 +1296,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_047
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4700
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT NOTIFICATION
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT NOTIFICATION
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_047', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4700', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1336,14 +1336,14 @@ export default function audioRenderCapturerInterrupt() {
         
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_049
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4900
         *@tc.name      : AudioCapturer  MIC INTERRUPT RINGTONE
         *@tc.desc      : AudioCapturer  MIC INTERRUPT RINGTONE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_049', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_4900', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1372,14 +1372,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_050
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5000
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT RINGTONE
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT RINGTONE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_050', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5000', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1410,14 +1410,14 @@ export default function audioRenderCapturerInterrupt() {
 
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_052
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5200
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT RINGTONE
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT RINGTONE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_052', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1446,14 +1446,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_053
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5300
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT RINGTONE
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT RINGTONE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_053', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5300', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1486,14 +1486,14 @@ export default function audioRenderCapturerInterrupt() {
 
         
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_055
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5500
         *@tc.name      : AudioCapturer  MIC INTERRUPT SPEECH
         *@tc.desc      : AudioCapturer  MIC INTERRUPT SPEECH
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_055', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5500', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1522,14 +1522,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_056
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5600
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT SPEECH
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT SPEECH
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_056', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5600', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1560,14 +1560,14 @@ export default function audioRenderCapturerInterrupt() {
 
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_058
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5800
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT SPEECH
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT SPEECH
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_058', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5800', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1596,14 +1596,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_059
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5900
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT SPEECH
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT SPEECH
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_059', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_5900', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1632,14 +1632,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_085
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8500
         *@tc.name      : AudioCapturer  MIC INTERRUPT VOICE_CALL
         *@tc.desc      : AudioCapturer  MIC INTERRUPT VOICE_CALL
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_085', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8500', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1668,14 +1668,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_086
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8600
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT VOICE_CALL
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT VOICE_CALL
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_086', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8600', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1705,14 +1705,14 @@ export default function audioRenderCapturerInterrupt() {
     
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_088
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8800
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT VOICE_CALL
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT VOICE_CALL
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_088', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8800', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1741,14 +1741,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_089
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8900
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT VOICE_CALL
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT VOICE_CALL
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_089', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_8900', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1778,14 +1778,14 @@ export default function audioRenderCapturerInterrupt() {
 
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_091
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9100
         *@tc.name      : AudioCapturer  MIC INTERRUPT VOICE_MESSAGE
         *@tc.desc      : AudioCapturer  MIC INTERRUPT VOICE_MESSAGE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_091', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9100', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1814,14 +1814,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
            /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_092
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9200
         *@tc.name      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT VOICE_MESSAGE
         *@tc.desc      : AudioCapturer  PLAYBACK_CAPTURE INTERRUPT VOICE_MESSAGE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_092', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1852,14 +1852,14 @@ export default function audioRenderCapturerInterrupt() {
     
 
           /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_094
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9400
         *@tc.name      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT VOICE_MESSAGE
         *@tc.desc      : AudioCapturer  VOICE_COMMUNICATION INTERRUPT VOICE_MESSAGE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_094', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9400', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
@@ -1888,14 +1888,14 @@ export default function audioRenderCapturerInterrupt() {
         })
 
          /**
-        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_095
+        *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9500
         *@tc.name      : AudioCapturer  VOICE_RECOGNITION INTERRUPT VOICE_MESSAGE
         *@tc.desc      : AudioCapturer  VOICE_RECOGNITION INTERRUPT VOICE_MESSAGE
         *@tc.size      : MEDIUM
         *@tc.type      : Function
         *@tc.level     : Level 0
         */
-        it('SUB_MULTIMEDIA_AUDIO_RenderCapture__INTERRUPT_TEST_095', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_RENDER_INTERRUPT_9500', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
 
