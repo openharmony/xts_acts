@@ -247,7 +247,7 @@ export default function circleNewJsunit() {
         type: 0
       };
       try {
-        this.context.resourceManager.getStringValue(resource, (error, value) => {
+        globalThis.abilityContext.resourceManager.getStringValue(resource, (error, value) => {
           if (error != null) {
             console.log("error is " + error);
             expect().assertFail();
