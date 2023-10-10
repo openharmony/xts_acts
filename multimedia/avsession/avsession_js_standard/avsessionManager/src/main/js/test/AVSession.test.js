@@ -1407,6 +1407,99 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100
+         * @tc.name      : SESSIONACTIVATE_CALLBACK_0100
+         * @tc.desc      : Testing set session active - callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100', 0, async function (done) {
+            try {
+                session.activate((err) => {
+                    if (err) {
+                        console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Set session active successfully');
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+
+            await sleep(500);
+            await controller.isActive((err, isActive) => {
+                if(err) {
+                    console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    if (isActive) {
+                        console.info('TestLog: session is active');
+                        expect(true).assertTrue();
+                    } else {
+                        console.info('TestLog: session is directive');
+                        expect(false).assertTrue();
+                    }
+                }
+            })
+            done();
+        })
+
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
+        * @tc.name      : SESSIONDEACTIVATE_CALLBACK_0100
+        * @tc.desc      : Testing deactivate session- callback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', 0, async function (done) {
+            await session.activate().then(() => {
+                console.info('TestLog: Set session active');
+            }).catch((err) => {
+                console.info(`TestLog: Set active error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            });
+            await sleep(500);
+
+            try {
+                session.deactivate((err) => {
+                    if (err) {
+                        console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: Deactivate session');
+                    }
+                })
+            } catch (err) {
+                console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
+            }
+            await sleep(500);
+
+            await controller.isActive((err, isActive) => {
+                if(err) {
+                    console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
+                    expect(false).assertTrue();
+                } else {
+                    if (isActive) {
+                        console.info('TestLog: session deactivate failed');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: session deactivate successfully');
+                        expect(true).assertTrue();
+                    }
+                }
+                
+            })
+            done();
+        })
+
+
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_ONPLAY_0100
          * @tc.name      : ONPLAY_0100
          * @tc.desc      : Testing onPlay callback

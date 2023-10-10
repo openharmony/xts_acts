@@ -1146,67 +1146,6 @@ export default function AVSessionCallback() {
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100
-         * @tc.name      : SESSIONACTIVATE_0100
-         * @tc.desc      : Testing set session active - callback
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONACTIVATE_CALLBACK_0100', 0, async function (done) {
-            controller.isActive((err, value) => {
-                if (err) {
-                    console.info(`TestLog: error: code: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                } else if (value) {
-                    console.info('TestLog: session is active');
-                    expect(true).assertTrue();
-                } else {
-                    console.info('TestLog: session is directive');
-                    expect(false).assertTrue();
-                }
-                done();
-            })
-            await sleep(500);
-        })
-
-        /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
-         * @tc.name      : SESSIONDEACTIVATE_0100
-         * @tc.desc      : Testing deactivate session- callback
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
-        it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', 0, async function (done) {
-            session.deactivate((err) => {
-                if (err) {
-                    console.info(`TestLog: Deactivate session error: code: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                } else {
-                    console.info('TestLog: Deactivate session');
-                }
-
-            });
-            await sleep(500);
-
-            await controller.isActive((err, value) => {
-                if (err) {
-                    console.info(`TestLog: error: code: ${err.code}, message: ${err.message}`);
-                    expect(false).assertTrue();
-                } else if (value === false) {
-                    console.info('TestLog: session deactivate successfully');
-                    expect(true).assertTrue();
-                } else {
-                    console.info('TestLog: session deactivate failed');
-                    expect(false).assertTrue();
-                }
-                done();
-            })
-            await sleep(500);
-        })
-
-        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDESTROY_CALLBACK_0100
          * @tc.name      : SESSIONDESTROY_0100
          * @tc.desc      : Testing destroy session - callback
