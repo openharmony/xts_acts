@@ -199,6 +199,15 @@
         "MainAbility/pages/search_bottom",
         "MainAbility/pages/textArea_top",
         "MainAbility/pages/textArea_center",
-        "MainAbility/pages/textArea_bottom"
+        "MainAbility/pages/textArea_bottom",
+        "MainAbility/pages/Dialog/ActionsheetDialog",
+        "MainAbility/pages/Dialog/AlertDialog",
+        "MainAbility/pages/Dialog/CalendarDialog",
+        "MainAbility/pages/Dialog/CustomDialog",
+        "MainAbility/pages/Dialog/DatePickerDialog",
+        "MainAbility/pages/Dialog/Popup",
+        "MainAbility/pages/Dialog/TextPickerDialog",
+        "MainAbility/pages/Dialog/TimePickerDialog",
+        "MainAbility/pages/Dialog/PromptDialog"
     ]
 }

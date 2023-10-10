@@ -132,6 +132,17 @@ import search_bottom from './search_bottom.test.ets'
 import textArea_top from './textArea_top.test.ets'
 import textArea_center from './textArea_center.test.ets'
 import textArea_bottom from './textArea_bottom.test.ets'
+import ActionsheetDialogAJsunit from './Dialog/ActionsheetDialogJsunit.test.ets'
+import AlertDialogAJsunit from './Dialog/AlertDialogJsunit.test.ets'
+import CalendarDialogAJsunit from './Dialog/CalendarDialogJsunit.test.ets'
+import CustomDialogAJsunit from './Dialog/CustomDialogJsunit.test.ets'
+import DatePickerDialogAJsunit from './Dialog/DatePickerDialogJsunit.test.ets'
+import PopupAJsunit from './Dialog/PopupJsunit.test.ets'
+import TextPickerDialogAJsunit from './Dialog/TextPickerDialogJsunit.test.ets'
+import TimePickerDialogAJsunit from './Dialog/TimePickerDialogJsunit.test.ets'
+import PromptDialogAJsunit from './Dialog/PromptDialogJsunit.test.ets'
+
+
 
 export default function testsuite() {
   DialogJsunit();
@@ -253,4 +264,13 @@ export default function testsuite() {
   textArea_top()
   textArea_center()
   textArea_bottom()
+  ActionsheetDialogAJsunit()
+  AlertDialogAJsunit()
+  CalendarDialogAJsunit()
+  CustomDialogAJsunit()
+  DatePickerDialogAJsunit()
+  PopupAJsunit()
+  TextPickerDialogAJsunit()
+  TimePickerDialogAJsunit()
+  PromptDialogAJsunit()
 }
