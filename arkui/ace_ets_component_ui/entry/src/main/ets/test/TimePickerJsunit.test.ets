@@ -52,12 +52,11 @@ export default function TimePickerJsunit() {
       let switchButton = await driver.findComponent(BY.key('button'));
       await switchButton.click();
       await CommonFunc.sleep(1000);
-      let timePickerTop = CommonFunc.getComponentRect('timePicker');
-      let top = timePickerTop.top
-      let timePickerBottom = CommonFunc.getComponentRect('timePicker');
-      let bottom = timePickerBottom.bottom
-      let timePickerRight = CommonFunc.getComponentRect('timePicker');
-      let right = timePickerRight.right
+      let timePicker = CommonFunc.getComponentRect('timePicker');
+      let top = timePicker.top
+      let bottom = timePicker.bottom
+      let left = timePicker.left
+      let right = timePicker.right
       let middle = (top + bottom) / 2
 
       // Verify AM or PM
@@ -72,7 +71,7 @@ export default function TimePickerJsunit() {
       expect(hour2).assertEqual('hour:20');
       
       // Verify hour
-      await driver.swipe(Math.round(right / 2), Math.round(middle + 100), Math.round(right / 2), Math.round(middle - 100));
+      await driver.swipe(Math.round((right + left) / 2), Math.round(middle + 100), Math.round((right + left) / 2), Math.round(middle - 100));
       await CommonFunc.sleep(1000);
       let hour3 = await hour.getText();
       console.info("[TimePickerJsunit_0100] hour3: " + JSON.stringify(hour3));
