@@ -28,6 +28,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   onCreate(want) {
     console.info(TAG, `onCreate, want: ${want.abilityName}`);
     if (want.action == 'abnormal') {
+      console.info(TAG, `abnormal: ${want.abilityName}`);
       globalThis.abnormal(132);
     }
   }
