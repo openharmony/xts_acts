@@ -1200,5 +1200,1193 @@ export default function inputMethodDrawnControlJSUnit() {
       commoneventmanager.publish('test', commonEventPublishData, publishCallback);
     });
 
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText start');
+            inputMethod.getController().on('insertText',async (text) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText success: ' + text);
+                //twice off() success
+                inputMethod.getController().off('insertText');
+                inputMethod.getController().off('insertText');
+                await inputMethod.getController().detach();
+                expect(text).assertEqual('insert');
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText fail: ' + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:270
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            let count = 0;
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText start');
+            inputMethod.getController().on('insertText',async (text) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText first: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText fail: ' + JSON.stringify(err));
+              }
+            });
+
+            inputMethod.getController().on('insertText',async (text) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText second: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText fail: ' + JSON.stringify(err));
+              }
+            });
+            await sleep(850);
+            if(count === 2){
+              console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText count all: ' + count);
+              inputMethod.getController().off('insertText');
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText count: ' + count);
+              inputMethod.getController().off('insertText');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:280
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0300 insertText start');
+        // only call twice off() success
+        inputMethod.getController().off('insertText');
+        inputMethod.getController().off('insertText');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0300 insertText call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0300 insertText catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0700',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0700 insertText start');
+        // @ts-ignore
+        inputMethod.getController().on(async (text) => {
+          try {
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText noType: ' + text);
+            expect().assertFail();
+            done();
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText noType fail: ' + JSON.stringify(err));
+            done();
+          }
+        });
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0700 insertText noType success');
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0700 insertText noType err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        // @ts-ignore
+        inputMethod.getController().off();
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0800 insertText noType success');
+        expect(true).assertTrue();
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0800 insertText noType err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_0900', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 onInsertText start');
+            let insertCallback = async (text) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 onInsertText success: ' + text);
+                inputMethod.getController().off('insertText');
+                expect(text).assertEqual('insert');
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 onInsertText fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('insertText', insertCallback, 'a');
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 onInsertText catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:290
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_insertText_Async_1000',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_1000 insertText start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('insertText', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_1000 insertText invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_insertText_Async_1000 insertText catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 deleteLeft start');
+            inputMethod.getController().on('deleteLeft',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 deleteLeft success: ' + num);
+                //twice off() success
+                inputMethod.getController().off('deleteLeft');
+                inputMethod.getController().off('deleteLeft');
+                await inputMethod.getController().detach();
+                expect(num).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 deleteLeft fail: ' + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 deleteLeft catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:300
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            let count = 0;
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft start');
+            inputMethod.getController().on('deleteLeft',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft first: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft fail: ' + JSON.stringify(err));
+              }
+            });
+
+            inputMethod.getController().on('deleteLeft',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft second: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft fail: ' + JSON.stringify(err));
+              }
+            });
+            await sleep(850);
+            if(count === 2){
+              console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft count all: ' + count);
+              inputMethod.getController().off('deleteLeft');
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft count: ' + count);
+              inputMethod.getController().off('deleteLeft');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteLeft catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:310
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300 deleteLeft start');
+        // only call twice off() success
+        inputMethod.getController().off('deleteLeft');
+        inputMethod.getController().off('deleteLeft');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300 deleteLeft call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0300 deleteLeft catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 deleteLeft start');
+            let deleteLeftCallback = async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 deleteLeft success: ' + num);
+                inputMethod.getController().off('deleteLeft');
+                expect(num).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 deleteLeft fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('deleteLeft', deleteLeftCallback, 'a');
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 deleteLeft catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:320
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800 deleteLeft start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('deleteLeft', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800 deleteLeft invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0800 deleteLeft catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 deleteRight start');
+            inputMethod.getController().on('deleteRight',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 deleteRight success: ' + num);
+                //twice off() success
+                inputMethod.getController().off('deleteRight');
+                inputMethod.getController().off('deleteRight');
+                await inputMethod.getController().detach();
+                expect(num).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 deleteRight fail: ' + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 deleteRight catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:330
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            let count = 0;
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight start');
+            inputMethod.getController().on('deleteRight',async (text) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight first: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight fail: ' + JSON.stringify(err));
+              }
+            });
+
+            inputMethod.getController().on('deleteRight',async (text) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight second: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight fail: ' + JSON.stringify(err));
+              }
+            });
+            await sleep(850);
+            if(count === 2){
+              console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight count all: ' + count);
+              inputMethod.getController().off('deleteRight');
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight count: ' + count);
+              inputMethod.getController().off('deleteRight');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteRight catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:340
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0300 deleteRight start');
+        // only call twice off() success
+        inputMethod.getController().off('deleteRight');
+        inputMethod.getController().off('deleteRight');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0300 deleteRight call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0300 deleteRight catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0700', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 deleteRight start');
+            let deleteRightCallback = async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 deleteRight success: ' + num);
+                inputMethod.getController().off('deleteRight');
+                expect(num).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 deleteRight fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('deleteRight', deleteRightCallback, 'a');
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 deleteRight catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:350
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_deleteRight_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0800 deleteRight start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('deleteRight', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0800 deleteRight invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0800 deleteRight catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 keyBoardStatus start');
+        inputMethod.getController().on('sendKeyboardStatus',async (keyBoardStatus) => {
+          try {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 keyBoardStatus success: ' + keyBoardStatus);
+            //twice off() success
+            inputMethod.getController().off('sendKeyboardStatus');
+            inputMethod.getController().off('sendKeyboardStatus');
+            await inputMethod.getController().detach();
+            expect(keyBoardStatus).assertEqual(1);
+            done();
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 sendKeyboardStatus fail: ' + JSON.stringify(err));
+            done();
+          }
+        });
+        await inputMethod.getController().hideSoftKeyboard();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0100 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        let count = 0;
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus start');
+        inputMethod.getController().on('sendKeyboardStatus',async (keyBoardStatus) => {
+          try {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus first: ' + count);
+            count += 1;
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus fail: ' + JSON.stringify(err));
+          }
+        });
+
+        inputMethod.getController().on('sendKeyboardStatus',async (keyBoardStatus) => {
+          try {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus second: ' + count);
+            count += 1;
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus fail: ' + JSON.stringify(err));
+          }
+        });
+        await inputMethod.getController().showSoftKeyboard();
+        await sleep(850);
+        if(count === 2){
+          console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus count all: ' + count);
+          inputMethod.getController().off('sendKeyboardStatus');
+          expect(true).assertTrue();
+          done();
+        }else{
+          console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus count: ' + count);
+          inputMethod.getController().off('sendKeyboardStatus');
+          expect().assertFail();
+          done();
+        }
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0200 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300 sendKeyboardStatus start');
+        // only call twice off() success
+        inputMethod.getController().off('sendKeyboardStatus');
+        inputMethod.getController().off('sendKeyboardStatus');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300 sendKeyboardStatus call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0300 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus start');
+            let sendKeyboardStatusCallback = async (keyBoardStatus) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus success: ' + keyBoardStatus);
+                inputMethod.getController().off('sendKeyboardStatus')
+                expect(keyBoardStatus).assertEqual(2);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('sendKeyboardStatus', sendKeyboardStatusCallback, 'a');
+            await inputMethod.getController().showSoftKeyboard();
+            await sleep(850);
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0700 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:290
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800 sendKeyboardStatus start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('sendKeyboardStatus', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800 sendKeyboardStatus invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendKeyboardStatus_Async_0800 sendKeyboardStatus catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 sendFunctionKey start');
+            inputMethod.getController().on('sendFunctionKey',async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 sendFunctionKey success: ' + action.enterKeyType);
+                //twice off() success
+                inputMethod.getController().off('sendFunctionKey');
+                inputMethod.getController().off('sendFunctionKey');
+                await inputMethod.getController().detach();
+                expect(action.enterKeyType).assertEqual(0);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 sendFunctionKey fail: ' + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 sendFunctionKey catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:360
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            let count = 0;
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey start');
+            inputMethod.getController().on('sendFunctionKey',async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey first: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey fail: ' + JSON.stringify(err));
+              }
+            });
+
+            inputMethod.getController().on('sendFunctionKey',async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey second: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey fail: ' + JSON.stringify(err));
+              }
+            });
+            await sleep(850);
+            if(count === 2){
+              console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey count all: ' + count);
+              inputMethod.getController().off('sendFunctionKey');
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey count: ' + count);
+              inputMethod.getController().off('sendFunctionKey');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendFunctionKey catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:370
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300 sendFunctionKey start');
+        // only call twice off() success
+        inputMethod.getController().off('sendFunctionKey');
+        inputMethod.getController().off('sendFunctionKey');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300 sendFunctionKey call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0300 sendFunctionKey catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 sendFunctionKey start');
+            let sendFunctionKeyCallback = async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 sendFunctionKey success: ' + action.enterKeyType);
+                inputMethod.getController().off('sendFunctionKey');
+                expect(action.enterKeyType).assertEqual(1);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 sendFunctionKey fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('sendFunctionKey', sendFunctionKeyCallback, 'a');
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 sendFunctionKey catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:380
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800 sendFunctionKey start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('sendFunctionKey', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800 sendFunctionKey invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0800 sendFunctionKey catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 moveCursor start');
+            inputMethod.getController().on('moveCursor',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 moveCursor success: ' + num);
+                //twice off() success
+                inputMethod.getController().off('moveCursor');
+                inputMethod.getController().off('moveCursor');
+                await inputMethod.getController().detach();
+                expect(num).assertEqual(4);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 moveCursor fail: ' + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 moveCursor catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:390
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            let count = 0;
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor start');
+            inputMethod.getController().on('moveCursor',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor first: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor fail: ' + JSON.stringify(err));
+              }
+            });
+
+            inputMethod.getController().on('moveCursor',async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor second: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor fail: ' + JSON.stringify(err));
+              }
+            });
+            await sleep(850);
+            if(count === 2){
+              console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor count all: ' + count);
+              inputMethod.getController().off('moveCursor');
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor count: ' + count);
+              inputMethod.getController().off('moveCursor');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:400
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0300 moveCursor start');
+        // only call twice off() success
+        inputMethod.getController().off('moveCursor');
+        inputMethod.getController().off('moveCursor');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0300 moveCursor call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0300 moveCursor catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0700', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 moveCursor start');
+            let moveCursorCallback = async (num) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 moveCursor success: ' + num);
+                inputMethod.getController().off('moveCursor');
+                expect(num).assertEqual(4);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 moveCursor fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('moveCursor', moveCursorCallback, 'a');
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 moveCursor catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:410
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_moveCursor_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0800 moveCursor start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('moveCursor', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0800 moveCursor invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0800 moveCursor catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 handleExtendAction start');
+            inputMethod.getController().on('handleExtendAction',async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 handleExtendAction success: ' + action);
+                //twice off() success
+                inputMethod.getController().off('handleExtendAction');
+                inputMethod.getController().off('handleExtendAction');
+                await inputMethod.getController().detach();
+                expect(action).assertEqual(0);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 handleExtendAction fail: ' + JSON.stringify(err));
+                done();
+              }
+            });
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 handleExtendAction catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:420
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            let count = 0;
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction start');
+            inputMethod.getController().on('handleExtendAction',async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction first: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction fail: ' + JSON.stringify(err));
+              }
+            });
+
+            inputMethod.getController().on('handleExtendAction',async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction second: ' + count);
+                count += 1;
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction fail: ' + JSON.stringify(err));
+              }
+            });
+            await sleep(850);
+            if(count === 2){
+              console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction count all: ' + count);
+              inputMethod.getController().off('handleExtendAction');
+              expect(true).assertTrue();
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction count: ' + count);
+              inputMethod.getController().off('handleExtendAction');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 handleExtendAction catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:430
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300 handleExtendAction start');
+        // only call twice off() success
+        inputMethod.getController().off('handleExtendAction');
+        inputMethod.getController().off('handleExtendAction');
+        await inputMethod.getController().detach();
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300 handleExtendAction call twice off success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0300 handleExtendAction catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700', 0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      async function publishCallback(err){
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 publishCallback start');
+        if (err){
+          console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 publishCallback failed:' + JSON.stringify(err));
+        } else {
+          try {
+            await inputMethod.getController().attach(true, ATTRIBUTE);
+            console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 handleExtendAction start');
+            let handleExtendActionCallback = async (action) => {
+              try {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 handleExtendAction success: ' + action);
+                inputMethod.getController().off('handleExtendAction');
+                expect(action).assertEqual(0);
+                done();
+              } catch (err) {
+                console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 handleExtendAction fail: ' + JSON.stringify(err));
+                done();
+              }
+            }
+            // @ts-ignore
+            inputMethod.getController().on('handleExtendAction', handleExtendActionCallback, 'a');
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 handleExtendAction catch err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+      }
+
+      var commonEventPublishData = {
+        code:440
+      }
+      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+    });
+
+    it('SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800',0, async function (done) {
+      const ATTRIBUTE:any = {inputAttribute:{textInputType:0,enterKeyType:0}}
+      try {
+        await inputMethod.getController().attach(true, ATTRIBUTE);
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800 handleExtendAction start');
+        // invalids parameter 'a'
+        // @ts-ignore
+        inputMethod.getController().off('handleExtendAction', 'a');
+        expect(true).assertTrue();
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800 handleExtendAction invalids parameter success');
+        done();
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0800 handleExtendAction catch err: ' + JSON.stringify(err));
+        expect().assertFail()
+        done();
+      }
+    });
+
+    it('SUB_Misc_inputMethod_updateAttribute_Async_0600',0, async function (done) {
+      let inputAttribute = {textInputType:0,enterKeyType:0}
+      try {
+        inputMethod.getController().updateAttribute(inputAttribute, err => {
+          try {
+            if(err){
+              console.info('====>SUB_Misc_inputMethod_updateAttribute_Async_0600 fail:' + JSON.stringify(err));
+              expect(err.code).assertEqual(12800009);
+              done();
+            }else{
+              console.info('====>SUB_Misc_inputMethod_updateAttribute_Async_0600 updateAttribute into');
+              expect().assertFail();
+              done();
+            }
+          } catch (err) {
+            console.info('====>SUB_Misc_inputMethod_updateAttribute_Async_0600 fail: ' + JSON.stringify(err));
+            done();
+          }
+        });
+      } catch (err) {
+        console.info('====>SUB_Misc_inputMethod_updateAttribute_Async_0600 err:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
   })
 }
