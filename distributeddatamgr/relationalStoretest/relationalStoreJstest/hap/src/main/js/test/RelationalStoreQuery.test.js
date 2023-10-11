@@ -151,7 +151,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0100
          * @tc.desc RelationalStore remotequery function test
          */
         
@@ -178,7 +178,7 @@ export default function relationalStoreQueryTest(){
         })
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0200
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryPromiseTest0020', 0, async function (done){
@@ -202,7 +202,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0300
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryPromiseTest0030', 0, async function (done){
@@ -226,7 +226,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Promise_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0400
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryPromiseTest0040', 0, async function (done){
@@ -250,7 +250,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0010
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0500
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryCallbackTest0010', 0, async function (done){
@@ -276,7 +276,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0020
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0600
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryCallbackTest0020', 0, async function (done){
@@ -302,7 +302,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0030
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0700
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryCallbackTest0030', 0, async function (done){
@@ -328,7 +328,7 @@ export default function relationalStoreQueryTest(){
 
         /**
          * @tc.name RelationalStore remotequery test
-         * @tc.number SUB_DDM_RelationalStore_JS_RemoteQueryTest_Callback_0040
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_QueryJsAPITest_0800
          * @tc.desc RelationalStore remotequery function test
          */
         it('RdbRemoteQueryCallbackTest0040', 0, async function (done){

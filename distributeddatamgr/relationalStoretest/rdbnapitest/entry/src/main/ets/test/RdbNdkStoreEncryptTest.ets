@@ -35,7 +35,7 @@ export default function RdbNdkStoreEncryptTest() {
     afterAll(function () {})
 
     /**
-     * @tc.name: SUB_DDM_RDB_ENCRYPT_0100
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_0100
      * @tc.desc: Exception testCase of NDK ENCRYPT.
      * @tc.type: FUNC
      */
@@ -47,7 +47,7 @@ export default function RdbNdkStoreEncryptTest() {
     })
 
     /**
-     * @tc.name: SUB_DDM_RDB_ENCRYPT_0200
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_BackupRestoreNdkAPITest_1100
      * @tc.desc: Exception testCase of NDK SecurityLevel.
      * @tc.type: FUNC
      */

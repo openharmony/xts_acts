@@ -53,7 +53,7 @@ describe('relationalStoreDeleteTest', function () {
     
     /**
      * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Delete_0010
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0100
      * @tc.desc RelationalStore delete test
      */
     it('testRdbStoreDelete0001', 0, async function (done) {
@@ -102,7 +102,7 @@ describe('relationalStoreDeleteTest', function () {
 
     /**
      * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Delete_0020
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0200
      * @tc.desc RelationalStore delete test
      */
     it('testRdbStoreDelete0002', 0, async function (done) {
@@ -152,7 +152,7 @@ describe('relationalStoreDeleteTest', function () {
 
     /**
      * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Delete_0030
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0300
      * @tc.desc RelationalStore delete test
      */
     it('testRdbStoreDelete0003', 0, async function (done) {
@@ -206,7 +206,7 @@ describe('relationalStoreDeleteTest', function () {
 
     /**
      * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Delete_0040
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0400
      * @tc.desc RelationalStore delete test
      */
     it('testRdbStoreDelete0004', 0, async function (done) {
@@ -256,7 +256,7 @@ describe('relationalStoreDeleteTest', function () {
 
     /**
      * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Delete_0050
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0500
      * @tc.desc RelationalStore delete test
      */
     it('testRdbStoreDelete0005', 0, async function (done) {
@@ -307,7 +307,7 @@ describe('relationalStoreDeleteTest', function () {
 
     /**
      * @tc.name RelationalStore delete test
-     * @tc.number SUB_DDM_AppDataFWK_JSRelationalStore_Delete_0060
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_DeleteJsAPITest_0600
      * @tc.desc RelationalStore delete test
      */
     it('testRdbStoreDelete0006', 0, async function (done) {
