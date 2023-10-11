@@ -94,50 +94,50 @@ export default function AVSessionJsTest() {
     }
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100
    * @tc.desc:Set session event - callback
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100", 0, async function (done) {
       session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0100 finished");
         expect(true).assertTrue();
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200
    * @tc.desc:Set session event - promise
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200", 0, async function (done) {
       await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0300
    * @tc.desc:Set session event - one param
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0300", 0, async function (done) {
       let errCode = 0;
       await session.dispatchSessionEvent(UPDATE_LYRICS_EVENT).catch((err) => {
-        console.info(TAG + "SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0300 caught error" + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0300 caught error" + err.code);
         errCode = err.code;
       });
       sleep(200).then(() => {
@@ -147,15 +147,15 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0400
    * @tc.desc:Set session event - invalid params
    * @tc.type: FUNC
    * @tc.require: I6C6IN
    */
-    it("SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0400", 0, async function (done) {
       let errCode = 0;
       await session.dispatchSessionEvent(UPDATE_LYRICS_WANT_PARAMS, UPDATE_LYRICS_WANT_PARAMS).catch((err) => {
-        console.info(TAG + "SUB_MULTIMEDIA_DISPATCHSESSIONEVENT_0400 caught error" + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_DISPATCHSESSIONEVENT_0400 caught error" + err.code);
         errCode = err.code;
       });
       sleep(200).then(() => {
@@ -165,98 +165,98 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETEXTRAS_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100
    * @tc.desc:Set extras - callback
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_SETEXTRAS_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100", 0, async function (done) {
       session.setExtras(CUSTOM_EXTRAS, (err) => {
         if (err) {
-          console.error(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0100 error " + JSON.stringify(err));
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100 error " + JSON.stringify(err));
           expect().assertFail();
           done();
         }
-        console.info(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0100 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0100 finished");
         expect(true).assertTrue();
         done();
       });
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETEXTRAS_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200
    * @tc.desc:Set extras - promise
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_SETEXTRAS_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200", 0, async function (done) {
       await session.setExtras(CUSTOM_EXTRAS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0200 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
-      console.info(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0200 finished");
+      console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0200 finished");
       done();
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETEXTRAS_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0300
    * @tc.desc:Set extras - zero param
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_SETEXTRAS_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0300", 0, async function (done) {
       let errCode = 0;
       await session.setExtras().catch((err) => {
-        console.info(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0300 caught error" + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0300 caught error" + err.code);
         errCode = err.code;
       });
       sleep(200).then(() => {
         expect(errCode == 401).assertTrue();
-        console.info(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0300 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0300 finished");
         done();
       })
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETEXTRAS_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0400
    * @tc.desc:Set extras - invalid params
    * @tc.type: FUNC
    * @tc.require: I6TD43
    */
-    it("SUB_MULTIMEDIA_SETEXTRAS_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0400", 0, async function (done) {
       let errCode = 0;
       await session.setExtras(INVALID_STRING).catch((err) => {
-        console.info(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0400 caught error" + err.code);
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0400 caught error" + err.code);
         errCode = err.code;
       });
       sleep(200).then(() => {
         expect(errCode == 401).assertTrue();
-        console.info(TAG + "SUB_MULTIMEDIA_SETEXTRAS_0400 finished");
+        console.info(TAG + "SUB_MULTIMEDIA_AVSESSION_SETEXTRAS_0400 finished");
         done();
       })
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONCOMMONCOMMAND_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100
    * @tc.desc:One on function - common command
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_ONCOMMONCOMMAND_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100", 0, async function (done) {
       session.on('commonCommand', commonCommandCallback1);
       await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONCOMMONCOMMAND_0100 error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100 error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       sleep(200).then(() => {
         if (receivedCallback) {
-          console.log(TAG + "SUB_MULTIMEDIA_ONCOMMONCOMMAND_0100 Received common command");
+          console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100 Received common command");
           expect(receivedString == COMMON_COMMAND_STRING).assertTrue();
           expect(receivedParam.command == COMMON_COMMAND_PARAMS.command).assertTrue();
         } else {
-          console.error(TAG + "SUB_MULTIMEDIA_ONCOMMONCOMMAND_0100 Common command not received");
+          console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0100 Common command not received");
           expect().assertFail();
         }
         receivedCallback = false;
@@ -267,29 +267,29 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONCOMMONCOMMAND_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200
    * @tc.desc:Two on functions - common command
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_ONCOMMONCOMMAND_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200", 0, async function (done) {
       session.on('commonCommand', commonCommandCallback1);
       session.on('commonCommand', commonCommandCallback2);
       await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_ONCOMMONCOMMAND_0200 Send common command error " + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200 Send common command error " + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_ONCOMMONCOMMAND_0200 Received common command");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200 Received common command");
         expect(receivedString == COMMON_COMMAND_STRING).assertTrue();
         expect(receivedParam.command == COMMON_COMMAND_PARAMS.command).assertTrue();
         expect(receivedString2 == COMMON_COMMAND_STRING).assertTrue();
         expect(receivedParam2.command == COMMON_COMMAND_PARAMS.command).assertTrue();
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_ONCOMMONCOMMAND_0200 Common command not received");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0200 Common command not received");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -302,12 +302,12 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONCOMMONCOMMAND_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0300
    * @tc.desc:One on functions - one param
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_ONCOMMONCOMMAND_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0300", 0, async function (done) {
       try {
         session.on('commonCommand');
       } catch (err) {
@@ -317,12 +317,12 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONCOMMONCOMMAND_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0400
    * @tc.desc:One on functions - three params
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_ONCOMMONCOMMAND_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0400", 0, async function (done) {
       try {
         session.on('sessionEventChange', commonCommandCallback1, commonCommandCallback2);
       } catch (err) {
@@ -332,12 +332,12 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_ONCOMMONCOMMAND_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0500
    * @tc.desc:One on functions - invalid type
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_ONCOMMONCOMMAND_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_ONCOMMONCOMMAND_0500", 0, async function (done) {
       try {
         session.on('commonCommand', INVALID_STRING);
       } catch (err) {
@@ -347,28 +347,28 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0100
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100
    * @tc.desc:Two on functions and one off function
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0100", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100", 0, async function (done) {
       session.on('commonCommand', commonCommandCallback1);
       session.on('commonCommand', commonCommandCallback2);
       session.off('commonCommand', commonCommandCallback2);
       await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0100 Send common command error" + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100 Send common command error" + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0100 finished");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100 finished");
         expect(receivedString == COMMON_COMMAND_STRING).assertTrue();
         expect(receivedParam.command == COMMON_COMMAND_PARAMS.command).assertTrue();
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0100 failed");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0100 failed");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -378,27 +378,27 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0200
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200
    * @tc.desc:Two on functions and two off function
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0200", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200", 0, async function (done) {
       session.on('commonCommand', commonCommandCallback1);
       session.on('commonCommand', commonCommandCallback2);
       session.off('commonCommand', commonCommandCallback1);
       session.off('commonCommand', commonCommandCallback2);
       await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0200 Send common command error" + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200 Send common command error" + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0200 finished");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200 finished");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0200 failed");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0200 failed");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -406,27 +406,27 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0300
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300
    * @tc.desc:Two on functions and off all function
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0300", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300", 0, async function (done) {
       session.on('commonCommand', commonCommandCallback1);
       session.on('commonCommand', commonCommandCallback2);
       session.off('commonCommand');
 
       await controller.sendCommonCommand(COMMON_COMMAND_STRING, COMMON_COMMAND_PARAMS).catch((err) => {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0300 Send common command error" + JSON.stringify(err));
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300 Send common command error" + JSON.stringify(err));
         expect().assertFail();
         done();
       });
       await sleep(200);
       if (!receivedCallback && !receivedCallback2) {
-        console.log(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0300 finished");
+        console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300 finished");
         expect(true).assertTrue();
       } else {
-        console.error(TAG + "SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0300 failed");
+        console.error(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300 failed");
         expect().assertFail();
       }
       receivedCallback = false;
@@ -434,12 +434,12 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0400
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0400
    * @tc.desc:Two on functions and off function - three params
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0400", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0400", 0, async function (done) {
       try {
         session.on('commonCommand', commonCommandCallback1);
         session.on('commonCommand', commonCommandCallback2);
@@ -451,12 +451,12 @@ export default function AVSessionJsTest() {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0500
+   * @tc.name:SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0500
    * @tc.desc:One on functions and off all function - invalid type
    * @tc.type: FUNC
    * @tc.require: I6ETY6
    */
-    it("SUB_MULTIMEDIA_OFFCOMMONCOMMAND_0500", 0, async function (done) {
+    it("SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0500", 0, async function (done) {
       try {
         session.on('commonCommand', commonCommandCallback1);
         session.off('commonCommand', INVALID_STRING);
@@ -467,7 +467,7 @@ export default function AVSessionJsTest() {
     })
 
     /*
-    * @tc.name: SUB_MULTIMEDIA_GETOUTPUTDEVICESYNC_0100
+    * @tc.name: SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICESYNC_0100
     * @tc.desc: Get output device - sync
     * @tc.type: FUNC
     * @tc.require: 

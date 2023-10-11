@@ -1430,29 +1430,31 @@ export default function AVSession() {
             }
 
             await sleep(500);
-            await controller.isActive().then((data) => {
-                if (data) {
-                    console.info('TestLog: session is active');
-                    expect(true).assertTrue();
-                } else {
-                    console.info('TestLog: session is directive');
+            await controller.isActive((err, isActive) => {
+                if(err) {
+                    console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
+                } else {
+                    if (isActive) {
+                        console.info('TestLog: session is active');
+                        expect(true).assertTrue();
+                    } else {
+                        console.info('TestLog: session is directive');
+                        expect(false).assertTrue();
+                    }
                 }
-            }).catch((err) => {
-                console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+            })
             done();
         })
 
         /* *
-         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
-         * @tc.name      : SESSIONDEACTIVATE_CALLBACK_0100
-         * @tc.desc      : Testing deactivate session- callback
-         * @tc.size      : MediumTest
-         * @tc.type      : Function
-         * @tc.level     : Level2
-         */
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100
+        * @tc.name      : SESSIONDEACTIVATE_CALLBACK_0100
+        * @tc.desc      : Testing deactivate session- callback
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
         it('SUB_MULTIMEDIA_AVSESSION_SESSIONDEACTIVATE_CALLBACK_0100', 0, async function (done) {
             await session.activate().then(() => {
                 console.info('TestLog: Set session active');
@@ -1477,18 +1479,21 @@ export default function AVSession() {
             }
             await sleep(500);
 
-            await controller.isActive().then((data) => {
-                if (data) {
-                    console.info('TestLog: session deactivate failed');
+            await controller.isActive((err, isActive) => {
+                if(err) {
+                    console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
                     expect(false).assertTrue();
                 } else {
-                    console.info('TestLog: session deactivate successfully');
-                    expect(true).assertTrue();
+                    if (isActive) {
+                        console.info('TestLog: session deactivate failed');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info('TestLog: session deactivate successfully');
+                        expect(true).assertTrue();
+                    }
                 }
-            }).catch((err) => {
-                console.info(`TestLog: AVSessionTest error: code: ${err.code}, message: ${err.message}`);
-                expect(false).assertTrue();
-            });
+                
+            })
             done();
         })
 
@@ -2795,19 +2800,19 @@ export default function AVSession() {
         })
 
         /* *
- * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200
- * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
- * @tc.desc      : Testing get output device
- * @tc.size      : MediumTest
- * @tc.type      : Function
- * @tc.level     : Level2
- */
-        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200', 0, async function (done) {
+        * @tc.number    : SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100
+        * @tc.name      : GETOUTPUTDEVICE_CALLBACK_0100
+        * @tc.desc      : Testing get output device
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100', 0, async function (done) {
             await session.getOutputDevice().then((data) => {
                 if (data.devices.length > 0) {
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].deviceid))
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].deviceName))
-                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_CALLBACK_0200' + JSON.stringify(data.devices[0].castCategory))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].deviceid))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].deviceName))
+                    console.info('SUB_MULTIMEDIA_AVSESSION_GETOUTPUTDEVICE_PROMISE_0100' + JSON.stringify(data.devices[0].castCategory))
                     expect(true).assertTrue();
                 }
             }).catch((err) => {
