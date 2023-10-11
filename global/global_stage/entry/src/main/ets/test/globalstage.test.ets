@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 export default function globalStageTest() {
     describe("globalStageTest", function () {
-        console.log('*************end globalStageTest*************');
+        console.log('*************start globalStageTest*************');
 
         beforeAll(async function () {
             console.info("beforeAll case");
