@@ -108,7 +108,7 @@ export default function channelCallbacktest() {
                                 (err, result) => {
                                     if(err) {
                                         console.info("[NFC_test]09 openBasicChannel data == null" + err.code + "---" + err);
-                                        expect(3300103).assertEqual(err.code);
+                                        reject(err.code);
                                     } else {
                                         console.info("[NFC_test]09 openBasicChannel data != null " + result);
                                         let P2BasicChannel = result;
@@ -117,12 +117,18 @@ export default function channelCallbacktest() {
                                         expect(isBasic).assertTrue();
                                         P2BasicChannel.close();
                                         console.info("[NFC_test]09 Data received by the application select command: " );
+                                        resolve();
                                     }
-                                    resolve();
                                 });
                         });
                     }
-                    await P2BasicChannel_callback();
+                    await P2BasicChannel_callback().then((data) => {
+                        console.info("[NFC_test]09 openBasicChannel done");
+                    })
+                    .catch(e => {
+                        console.info("[NFC_test]09 openBasicChannel failed" + e);
+                        expect(3300103).assertEqual(e);
+                    })
                 }
             } catch (error) {
                 console.info("[NFC_test]09 openBasicChannel_p2_callback occurs exception:" + error.code + "---" + error);
@@ -150,7 +156,7 @@ export default function channelCallbacktest() {
                                 (err, result) => {
                                     if(err) {
                                         console.info("[NFC_test]10 openLogicalChannel data == null" + err);
-                                        expect(3300103).assertEqual(err.code);
+                                        reject(err.code);
                                     } else {
                                         console.info("[NFC_test]10 openLogicalChannel data == null" + result);
                                         let P2LogicalChannel = result;
@@ -158,13 +164,19 @@ export default function channelCallbacktest() {
                                         console.info("[NFC_test]10 Data received by the application select command: " );
                                         let isChannelClosed = P2LogicalChannel.isClosed();
                                         console.info("[NFC_test]10 Check whether the channel is closed: " + isChannelClosed);
-                                        expect(isChannelClosed).assertTrue();                                        
+                                        expect(isChannelClosed).assertTrue();                              
                                     }
                                     resolve();
                                 });
                         });
                     }
-                    await LogicalChannel_callback();
+                    await LogicalChannel_callback().then((data) => {
+                        console.info("[NFC_test]10 openBasicChannel done");
+                    })
+                    .catch(e => {
+                        console.info("[NFC_test]10 openBasicChannel failed" + e);
+                        expect(3300103).assertEqual(e);
+                    })
                 }
             } catch (error) {
                 console.info("[NFC_test]10 openLogicalChannel_P2_callback occurs exception:" + error.code + "---" + error);
@@ -193,7 +205,7 @@ export default function channelCallbacktest() {
                                 (err, result) => {
                                     if(err) {
                                         console.info("[NFC_test]11 to get openBasicChannel:" + JSON.stringify(err));
-                                        expect(3300103).assertEqual(err.code);
+                                        reject(err.code);
                                     } else {
                                         console.info("[NFC_test]11 openBasicChannel data != null " + result);
                                         let nfcBasicChannel = result;
@@ -207,7 +219,13 @@ export default function channelCallbacktest() {
                                 });
                         });
                     }
-                    await BasicChannel_callback();
+                    await BasicChannel_callback().then((data) => {
+                        console.info("[NFC_test]11 openBasicChannel done");
+                    })
+                    .catch(e => {
+                        console.info("[NFC_test]11 openBasicChannel failed" + e);
+                        expect(3300103).assertEqual(e);
+                    })
             }
             } catch (error) {
                 console.info("[NFC_test]11 openBasicChannel_callback occurs exception:" + error.code + "---" + error);
@@ -235,7 +253,7 @@ export default function channelCallbacktest() {
                                 (err, result) => {
                                     if(err) {
                                         console.info("[NFC_test]12 failed to get openLogicalChannel:" + JSON.stringify(err));
-                                        expect(3300103).assertEqual(err.code);
+                                        reject(err.code);
                                     } else {
                                         console.info("[NFC_test]12 openLogicalChannel data != null " + result);
                                         let nfcLogicalChannel = result;
@@ -256,7 +274,13 @@ export default function channelCallbacktest() {
                                 });
                         });
                     }
-                    await LogicalChannel_callback();
+                    await LogicalChannel_callback().then((data) => {
+                        console.info("[NFC_test]12 openBasicChannel done");
+                    })
+                    .catch(e => {
+                        console.info("[NFC_test]12 openBasicChannel failed" + e);
+                        expect(3300103).assertEqual(e);
+                    })
                 }
             } catch (error) {
                 console.info("[NFC_test]12 openLogicalChannel_callback occurs exception:" + error.code + "---" + error);
