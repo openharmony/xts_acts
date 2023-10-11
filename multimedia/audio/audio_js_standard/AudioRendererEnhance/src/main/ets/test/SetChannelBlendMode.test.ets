@@ -229,8 +229,8 @@ export default function audioRendererEnhanceTest() {
      * @tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0800', 0, async function (done) {
-      try{
-        for (let index in audio.StreamUsage) {
+      try {
+        for (let index = 0; index < env.StreamUsage.length; index++) {
           let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -238,8 +238,8 @@ export default function audioRendererEnhanceTest() {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
           }
           let AudioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_SPEECH,
-            usage: Number(audio.StreamUsage[index]),
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: env.StreamUsage[index],
             rendererFlags: 0
           }
           let AudioRendererOptions = {
@@ -247,27 +247,34 @@ export default function audioRendererEnhanceTest() {
             rendererInfo: AudioRendererInfo
           }
           let audioRender;
-          if (Number(audio.StreamUsage[index]) != env.AUDIO_STREAM_USAGE_SYSTEM) {
-            try {
-              await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
-                audioRender = data;
-                console.info(`${Tag}: AudioRender Created : Stream Type: ${index} SUCCESS`);
-              }).catch((err) => {
-                console.info(`${Tag}: AudioRender Created : ${index} ERROR : ${err.message}, ${err.code}`);
-              });
-            } catch (error) {
-              console.info(`${Tag}: AudioRender Created : catch ERROR : ${error.message}, ${error.code}`);
-            }
+          await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+            audioRender = data;
+          }).catch((err) => {
+            console.info(`${Tag}: createAudioRenderer : ${env.StreamUsage[index]} ERROR : ${err.message}, ${err.code}`);
+          });
+          try {
             for (let key in audio.ChannelBlendMode) {
-              await audioRender.setChannelBlendMode(Number(audio.ChannelBlendMode[key]));
+              await audioRender.setChannelBlendMode(Number(audio.ChannelBlendMode[key]))
               await sleep(20);
             }
+          } catch (error) {
+            console.log(`setChannelBlendMode : ${env.StreamUsage[index]} error ${error.message}, ${error.code}`);
+            expect(false).assertTrue();
+            done();
           }
+          if (audioRender != null) {
+            await audioRender.release().then(() => {
+              audioRender = null;
+            }).catch((err) => {
+              console.info(`${Tag}: setChannelBlendMode Renderer release :fail :${err.message}`);
+            });
+          }
+          await sleep(20);
         }
         expect(true).assertTrue();
         done();
-      }catch(error){
-        console.log(`${Tag}  setChannelBlendMode : error ${error.message}, ${error.code}`);
+      } catch (error) {
+        console.log(`${Tag} setChannelBlendMode : error ${error.message}, ${error.code}`);
         expect(false).assertTrue();
         done();
       }
