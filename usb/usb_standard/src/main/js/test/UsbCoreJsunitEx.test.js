@@ -66,13 +66,13 @@ describe('UsbCoreJsFunctionsTestEx', function () {
 
 
   /**
-   * @tc.number: SUB_USB_JS_0100
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0100
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error devAddress
    */
-  it('SUB_USB_JS_0100', 0, function () {
-    console.info('usb SUB_USB_JS_0100 begin');
-    console.info('*****SUB_USB_JS_0100 portCurrentMode**** ret : ' + portCurrentMode)
+  it('SUB_USB_Host_JS_Compatibility_0100', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_0100 begin');
+    console.info('*****SUB_USB_Host_JS_Compatibility_0100 portCurrentMode**** ret : ' + portCurrentMode)
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -87,9 +87,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb JS_0100 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0100 requestRight error:' + error);
       });
-      console.info('usb JS_0100 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0100 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -105,16 +105,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       ' devAddress ' + device.devAddress);
     expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
 
-    console.info('usb SUB_USB_JS_0100 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0100 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0110
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0200
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error busNum
    */
-  it('SUB_USB_JS_0110', 0, function () {
-    console.info('usb SUB_USB_JS_0110 begin');
+  it('SUB_USB_Host_JS_Compatibility_0200', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_0200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -129,9 +129,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb JS_0110 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0200 requestRight error:' + error);
       });
-      console.info('usb JS_0110 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0200 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -146,16 +146,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
       ' busNum ' + device.busNum);
     expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-    console.info('usb SUB_USB_JS_0110 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0200 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0120
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0300
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error serial
    */
-  it('SUB_USB_JS_0120', 0, function () {
-    console.info('usb SUB_USB_JS_0120 begin');
+  it('SUB_USB_Host_JS_Compatibility_0300', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_0300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -170,9 +170,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb JS_0120 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0300 requestRight error:' + error);
       });
-      console.info('usb JS_0120 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0300 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -190,16 +190,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0120 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0300 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0130
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0400
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error name
    */
-  it('SUB_USB_JS_0130', 0, function () {
-    console.info('usb SUB_USB_JS_0130 begin');
+  it('SUB_USB_Host_JS_Compatibility_0400', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_0400 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -214,9 +214,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb JS_0130 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0400 requestRight error:' + error);
       });
-      console.info('usb JS_0130 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0400 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -230,15 +230,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' name ' + device.name);
     expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-    console.info('usb SUB_USB_JS_0130 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0400 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0140
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0500
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error manufacturerName
    */
-  it('SUB_USB_JS_0140', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_0500', 0, function () {
     console.info('usb connect_device_06 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -254,9 +254,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb JS_0140 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0500 requestRight error:' + error);
       });
-      console.info('usb JS_0140 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0500 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -271,16 +271,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
       ' manufacturerName ' + device.manufacturerName);
     expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
-    console.info('usb SUB_USB_JS_0140 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0500 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0150
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0600
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error productName
    */
-  it('SUB_USB_JS_0150', 0, function () {
-    console.info('usb SUB_USB_JS_0150 begin');
+  it('SUB_USB_Host_JS_Compatibility_0600', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_0600 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -295,9 +295,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0150 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0600 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0150 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0600 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -315,15 +315,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0150 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0600 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0160
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0700
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error version
    */
-  it('SUB_USB_JS_0160', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_0700', 0, function () {
     console.info('usb connect_device_08 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -339,9 +339,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0160 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0700 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0160 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0700 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -359,15 +359,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0160 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0700 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0170
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0800
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error vendorId
    */
-  it('SUB_USB_JS_0170', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_0800', 0, function () {
     console.info('usb connect_device_09 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -383,9 +383,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0170 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0800 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0170 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0800 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -403,15 +403,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0170 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0800 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0180
+   * @tc.number: SUB_USB_Host_JS_Compatibility_0900
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error productId
    */
-  it('SUB_USB_JS_0180', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_0900', 0, function () {
     console.info('usb connect_device_10 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -427,9 +427,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0180 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_0900 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0180 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_0900 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -447,15 +447,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0180 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_0900 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0190
+   * @tc.number: SUB_USB_Host_JS_Compatibility_1000
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error clazz
    */
-  it('SUB_USB_JS_0190', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_1000', 0, function () {
     console.info('usb connect_device_11 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -471,9 +471,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0190 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_1000 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0190 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_1000 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -490,15 +490,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0190 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_1000 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0200
+   * @tc.number: SUB_USB_Host_JS_Compatibility_1100
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error subClass
    */
-  it('SUB_USB_JS_0200', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_1100', 0, function () {
     console.info('usb connect_device_12 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -513,11 +513,11 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isRight = usbManager.hasRight(gDeviceList[0].name);
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-        console.info('usb SUB_USB_JS_0200 requestRight hasRight: ' + hasRight);
+        console.info('usb SUB_USB_Host_JS_Compatibility_1100 requestRight hasRight: ' + hasRight);
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0200 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_1100 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0200 requestRight end');
+      console.info('usb SUB_USB_Host_JS_Compatibility_1100 requestRight end');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -534,15 +534,15 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0200 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_1100 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0210
+   * @tc.number: SUB_USB_Host_JS_Compatibility_1200
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error protocol
    */
-  it('SUB_USB_JS_0210', 0, function () {
+  it('SUB_USB_Host_JS_Compatibility_1200', 0, function () {
     console.info('usb connect_device_13 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
@@ -558,9 +558,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
       }).catch(error => {
-        console.info('usb SUB_USB_JS_0210 requestRight error:' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_1200 requestRight error:' + error);
       });
-      console.info('usb SUB_USB_JS_0210 requestRight end:');
+      console.info('usb SUB_USB_Host_JS_Compatibility_1200 requestRight end:');
       CheckEmptyUtils.sleep(5000)
     }
 
@@ -577,16 +577,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isPipClose = usbManager.closePipe(usbDevicePipe);
     console.info('usb case closePipe ret: ' + isPipClose);
     expect(isPipClose).assertEqual(0);
-    console.info('usb SUB_USB_JS_0210 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_1200 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1040
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0400
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, parameter type error
    */
-  it('SUB_USB_JS_1040', 0, function () {
-    console.info('usb SUB_USB_JS_1040 begin');
+  it('SUB_USB_Host_JS_ErrCode_0400', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0400 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -600,30 +600,30 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isRight = usbManager.hasRight(gDeviceList[0].name);
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-        console.info('usb 1040 requestRight hasRight:' + hasRight);
+        console.info('usb Host_JS_ErrCode_0400 requestRight hasRight:' + hasRight);
       }).catch(error => {
-        console.info('usb 1040 requestRight error:' + error);
+        console.info('usb Host_JS_ErrCode_0400 requestRight error:' + error);
       });
       CheckEmptyUtils.sleep(5000)
     }
     try {
       var maskCode = usbManager.connectDevice("invalid");
-      console.info('usb 1040 case connectDevice return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0400 case connectDevice return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1040 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0400 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1040 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0400 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1240
+   * @tc.number: SUB_USB_Host_JS_ErrCode_1700
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, parameter number exception, necessary parameters not input
    */
-  it('SUB_USB_JS_1240', 0, function () {
-    console.info('usb SUB_USB_JS_1240 begin');
+  it('SUB_USB_Host_JS_ErrCode_1700', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_1700 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -637,30 +637,30 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     var isRight = usbManager.hasRight(gDeviceList[0].name);
     if (!isRight) {
       usbManager.requestRight(gDeviceList[0].name).then(hasRight => {
-        console.info('usb 1240 requestRight hasRight:' + hasRight);
+        console.info('usb Host_JS_ErrCode_1700 requestRight hasRight:' + hasRight);
       }).catch(error => {
-        console.info('usb 1240 requestRight error:' + error);
+        console.info('usb Host_JS_ErrCode_1700 requestRight error:' + error);
       });
       CheckEmptyUtils.sleep(5000)
     }
     try {
       var maskCode = usbManager.connectDevice();
-      console.info('usb 1240 case connectDevice return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_1700 case connectDevice return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1240 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_1700 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1240 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_1700 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0720
+   * @tc.number: SUB_USB_Host_JS_Compatibility_3400
    * @tc.name: hasRight
    * @tc.desc: Negative test: parameters exception, error deviceName
    */
-  it('SUB_USB_JS_0720', 0, function () {
-    console.info('usb SUB_USB_JS_0720 begin');
+  it('SUB_USB_Host_JS_Compatibility_3400', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_3400 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -679,16 +679,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       console.info('usb has_right ret :' + hasRight);
       expect(hasRight).assertTrue();
     }
-    console.info('usb SUB_USB_JS_0720 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_3400 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0730
+   * @tc.number: SUB_USB_Host_JS_Compatibility_3500
    * @tc.name: hasRight
    * @tc.desc: Negative test: parameters exception, the device a letter name
    */
-  it('SUB_USB_JS_0730', 0, function () {
-    console.info('usb SUB_USB_JS_0730 begin');
+  it('SUB_USB_Host_JS_Compatibility_3500', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_3500 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -707,16 +707,16 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       console.info('usb hasRight ret :' + hasRight);
       expect(hasRight).assertTrue();
     }
-    console.info('usb SUB_USB_JS_0730 :  PASS');
+    console.info('usb SUB_USB_Host_JS_Compatibility_3500 :  PASS');
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1020
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0200
    * @tc.name: hasRight
    * @tc.desc: Negative test: Permission query, parameter type error
    */
-  it('SUB_USB_JS_1020', 0, function () {
-    console.info('usb SUB_USB_JS_1020 begin');
+  it('SUB_USB_Host_JS_ErrCode_0200', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -729,22 +729,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.hasRight(invalidCode);
-      console.info('usb 1020 case hasRight return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0200 case hasRight return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1020 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0200 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1020 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0200 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1250
+   * @tc.number: SUB_USB_Host_JS_ErrCode_1800
    * @tc.name: hasRight
    * @tc.desc: Negative test: Permission query, parameter number exception, necessary parameters not input
    */
-  it('SUB_USB_JS_1250', 0, function () {
-    console.info('usb SUB_USB_JS_1250 begin');
+  it('SUB_USB_Host_JS_ErrCode_1800', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_1800 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -757,22 +757,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.hasRight();
-      console.info('usb 1250 case hasRight return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_1800 case hasRight return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1250 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_1800 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1250 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_1800 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0690
+   * @tc.number: SUB_USB_Host_JS_Compatibility_3200
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, error diviceName
    */
-  it('SUB_USB_JS_0690', 0, function () {
-    console.info('usb SUB_USB_JS_0690 begin');
+  it('SUB_USB_Host_JS_Compatibility_3200', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_3200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -790,22 +790,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       usbManager.requestRight(diviceName).then(hasRight => {
         console.info('usb request_right ret :' + hasRight);
         expect(hasRight).assertFalse();
-        console.info('usb SUB_USB_JS_0690 :  PASS');
+        console.info('usb SUB_USB_Host_JS_Compatibility_3200 :  PASS');
       }).catch(error => {
         expect(error).assertFalse();
-        console.info('usb SUB_USB_JS_0690 error: ' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_3200 error: ' + error);
       });
       CheckEmptyUtils.sleep(5000);
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_0700
+   * @tc.number: SUB_USB_Host_JS_Compatibility_3300
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, the device name is a number
    */
-  it('SUB_USB_JS_0700', 0, function () {
-    console.info('usb SUB_USB_JS_0700 begin');
+  it('SUB_USB_Host_JS_Compatibility_3300', 0, function () {
+    console.info('usb SUB_USB_Host_JS_Compatibility_3300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -823,22 +823,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       usbManager.requestRight(diviceName).then(hasRight => {
         console.info('usb request_right ret :' + hasRight);
         expect(hasRight).assertFalse();
-        console.info('usb SUB_USB_JS_0700 :  PASS');
+        console.info('usb SUB_USB_Host_JS_Compatibility_3300 :  PASS');
       }).catch(error => {
         expect(error).assertFalse();
-        console.info('usb SUB_USB_JS_0700 error: ' + error);
+        console.info('usb SUB_USB_Host_JS_Compatibility_3300 error: ' + error);
       });
       CheckEmptyUtils.sleep(5000);
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1030
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0300
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, parameter type error
    */
-  it('SUB_USB_JS_1030', 0, function () {
-    console.info('usb SUB_USB_JS_1030 begin');
+  it('SUB_USB_Host_JS_ErrCode_0300', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0300 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -851,23 +851,23 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.requestRight(invalidCode);
-      console.info('usb 1030 case requestRight return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0300 case requestRight return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1030 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0300 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1030 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0300 :  PASS');
     }
     CheckEmptyUtils.sleep(5000);
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1260
+   * @tc.number: SUB_USB_Host_JS_ErrCode_1900
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, parameter number exception, necessary parameters not input
    */
-  it('SUB_USB_JS_1260', 0, function () {
-    console.info('usb SUB_USB_JS_1260 begin');
+  it('SUB_USB_Host_JS_ErrCode_1900', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_1900 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -880,23 +880,23 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.requestRight();
-      console.info('usb 1260 case requestRight return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_1900 case requestRight return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1260 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_1900 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1260 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_1900 :  PASS');
     }
     CheckEmptyUtils.sleep(5000);
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1010
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0100
    * @tc.name: getDevices
    * @tc.desc: Negative test: Get device list, parameters exception(parameter transfer without parameter interface)
    */
-  it('SUB_USB_JS_1010', 0, function () {
-    console.info('usb SUB_USB_JS_1010 begin');
+  it('SUB_USB_Host_JS_ErrCode_0100', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0100 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -904,22 +904,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.getDevices("invalid");
-      console.info('usb 1010 case getDevices return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0100 case getDevices return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1010 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0100 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1010 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0100 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1050
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0500
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, parameter type error
    */
-  it('SUB_USB_JS_1050', 0, function () {
-    console.info('usb SUB_USB_JS_1050 begin');
+  it('SUB_USB_Host_JS_ErrCode_0500', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0500 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -932,22 +932,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.closePipe("invalid");
-      console.info('usb 1050 case closePipe return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0500 case closePipe return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1050 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0500 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1050 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0500 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1270
+   * @tc.number: SUB_USB_Host_JS_ErrCode_2000
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, parameter number exception, necessary parameters not input
    */
-  it('SUB_USB_JS_1270', 0, function () {
-    console.info('usb SUB_USB_JS_1270 begin');
+  it('SUB_USB_Host_JS_ErrCode_2000', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_2000 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -960,22 +960,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.closePipe();
-      console.info('usb 1270 case closePipe return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_2000 case closePipe return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1270 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_2000 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1270 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_2000 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1060
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0600
    * @tc.name: getRawDescriptor
    * @tc.desc: Negative test: Get the original USB descriptor, parameter type error
    */
-  it('SUB_USB_JS_1060', 0, function () {
-    console.info('usb SUB_USB_JS_1060 begin');
+  it('SUB_USB_Host_JS_ErrCode_0600', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0600 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -988,23 +988,23 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.getRawDescriptor("invalid");
-      console.info('usb 1060 case getRawDescriptor return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0600 case getRawDescriptor return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1060 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0600 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1060 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0600 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1280
+   * @tc.number: SUB_USB_Host_JS_ErrCode_2100
    * @tc.name: getRawDescriptor
    * @tc.desc: Negative test: Get the original USB descriptor, parameter number exception,
    * necessary parameters not input
    */
-  it('SUB_USB_JS_1280', 0, function () {
-    console.info('usb SUB_USB_JS_1280 begin');
+  it('SUB_USB_Host_JS_ErrCode_2100', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_2100 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -1017,22 +1017,22 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.getRawDescriptor();
-      console.info('usb 1280 case getRawDescriptor return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_2100 case getRawDescriptor return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1280 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_2100 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1280 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_2100 :  PASS');
     }
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1090
+   * @tc.number: SUB_USB_Host_JS_ErrCode_0800
    * @tc.name: removeRight
    * @tc.desc: Negative test: Remove Permissions, parameter type error
    */
-  it('SUB_USB_JS_1090', 0, function () {
-    console.info('usb SUB_USB_JS_1090 begin');
+  it('SUB_USB_Host_JS_ErrCode_0800', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_0800 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -1045,23 +1045,23 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.removeRight(invalidCode);
-      console.info('usb 1090 case removeRight return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_0800 case removeRight return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1090 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_0800 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1090 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_0800 :  PASS');
     }
     CheckEmptyUtils.sleep(5000);
   })
 
   /**
-   * @tc.number: SUB_USB_JS_1290
+   * @tc.number: SUB_USB_Host_JS_ErrCode_2200
    * @tc.name: removeRight
    * @tc.desc: Negative test: Remove Permissions, parameter number exception, necessary parameters not input
    */
-  it('SUB_USB_JS_1290', 0, function () {
-    console.info('usb SUB_USB_JS_1290 begin');
+  it('SUB_USB_Host_JS_ErrCode_2200', 0, function () {
+    console.info('usb SUB_USB_Host_JS_ErrCode_2200 begin');
     if (portCurrentMode == 1) {
       console.info('usb case get_device port is device')
       expect(false).assertFalse();
@@ -1074,12 +1074,12 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     try {
       var maskCode = usbManager.removeRight();
-      console.info('usb 1290 case removeRight return: ' + maskCode);
+      console.info('usb Host_JS_ErrCode_2200 case removeRight return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('usb 1290 catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb Host_JS_ErrCode_2200 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
-      console.info('usb SUB_USB_JS_1290 :  PASS');
+      console.info('usb SUB_USB_Host_JS_ErrCode_2200 :  PASS');
     }
     CheckEmptyUtils.sleep(5000);
   })
