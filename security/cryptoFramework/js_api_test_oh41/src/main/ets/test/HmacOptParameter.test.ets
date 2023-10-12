@@ -173,7 +173,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
         expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_HmacOptPara_Func_0700 catch error2: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(801);
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -380,7 +380,7 @@ export default function cryptoHmacOptParaJsTestUnit() {
         expect(null).assertFail();
       } catch (err) {
         console.error(`Security_CryptoFramework_HmacOptPara_Func_1700 catch error2: “${err}“, error code: ${err.code}`);
-        expect(err.code).assertEqual(801);
+        expect(err.code).assertEqual(401);
       }
       done();
     });

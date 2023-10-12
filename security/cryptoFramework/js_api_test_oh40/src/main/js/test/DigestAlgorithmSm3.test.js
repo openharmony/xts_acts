@@ -58,7 +58,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.error("CreateMd catch err: " + err);
-        expect(err.code == 801).assertTrue();
+        expect(err.code == 401).assertTrue();
       }
       done();
     });
@@ -319,7 +319,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.error("CreateMac catch 1 err: " + err);
-        expect(err.code == 801).assertTrue();
+        expect(err.code == 401).assertTrue();
       }
 
       try {
