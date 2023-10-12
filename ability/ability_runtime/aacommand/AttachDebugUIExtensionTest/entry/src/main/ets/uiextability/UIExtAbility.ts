@@ -37,7 +37,7 @@ export default class UIExtAbility extends UIExtensionAbility {
   }
 
   onSessionCreate(want, session) {
-    console.info(TAG, `UIExtAbility onSessionCreate, want: ${JSON.stringify(want)}`)
+    console.info(TAG, `UIExtAbility onSessionCreate, want: ${JSON.stringify(want)}`);
     let storage = new LocalStorage({
       'session': session
     });
@@ -48,4 +48,4 @@ export default class UIExtAbility extends UIExtensionAbility {
   onSessionDestroy(session) {
     console.info(TAG, 'UIExtAbility onSessionDestroy');
   }
-};
+}

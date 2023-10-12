@@ -27,7 +27,7 @@ class StubTest extends rpc.RemoteObject {
 export default class ServiceExtAbility extends ServiceExtensionAbility {
   onCreate(want) {
     console.info(TAG, `onCreate, want: ${want.abilityName}`);
-    if (want.action == 'abnormal') {
+    if (want.action === 'abnormal') {
       console.info(TAG, `abnormal: ${want.abilityName}`);
       globalThis.abnormal(REQUEST_CODE);
     }
@@ -47,6 +47,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   }
 
   onDestroy() {
-    console.info(TAG, `onDestroy`);
+    console.info(TAG, 'onDestroy');
   }
 }

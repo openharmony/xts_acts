@@ -24,7 +24,7 @@ globalThis.StartServiceAbility = () => {
     'abilityName': 'ServiceExtAbility'
   };
   globalThis.abilityContext.startServiceExtensionAbility(want, (error) => {
-    console.log('Start service extension ability:  ' + JSON.stringify(error))
+    console.log('Start service extension ability:  ' + JSON.stringify(error));
   });
 };
 
@@ -36,7 +36,7 @@ globalThis.StartServiceAbilityAbnormally = () => {
     'action': 'abnormal'
   };
   globalThis.abilityContext.startServiceExtensionAbility(want, (error) => {
-    console.log('Start service extension ability abnormally:  ' + JSON.stringify(error))
+    console.log('Start service extension ability abnormally:  ' + JSON.stringify(error));
   });
 };
 
@@ -60,7 +60,7 @@ globalThis.StartAbility = () => {
   globalThis.abilityContext.startAbility(want, (error) => {
     console.log('Start UIAbility: ' + JSON.stringify(error));
   });
-}
+};
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
