@@ -44,8 +44,7 @@ export default function ObjectLinkNusJsunit() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
-      await driver.pressBack();
+      router.back();
     });
 
     it('ObjectLinkNusJsunit_0100', 0, async function (done) {

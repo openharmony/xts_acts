@@ -44,8 +44,7 @@ export default function PropEnumJsunit() {
 
     afterEach(async function () {
       let driver = await UiDriver.create()
-      await CommonFunc.sleep(1000);
-      await driver.pressBack();
+      router.back();
     });
 
     it('PropEnumJsunit_0200', 0, async function (done) {
