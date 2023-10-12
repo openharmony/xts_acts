@@ -17,23 +17,23 @@ import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
 
-const TAG: string = '[UIExtAbility]'
+const TAG: string = '[UIExtAbility]';
 
 export default class UIExtAbility extends UIExtensionAbility {
   onCreate() {
-    console.info(TAG, `UIExtAbility onCreate`)
+    console.info(TAG, 'UIExtAbility onCreate');
   }
 
   onForeground() {
-    console.info(TAG, `UIExtAbility onForeground`)
+    console.info(TAG, 'UIExtAbility onForeground');
   }
 
   onBackground() {
-    console.info(TAG, `UIExtAbility onBackground`)
+    console.info(TAG, 'UIExtAbility onBackground');
   }
 
   onDestroy() {
-    console.info(TAG, `UIExtAbility onDestroy`)
+    console.info(TAG, 'UIExtAbility onDestroy');
   }
 
   onSessionCreate(want, session) {
@@ -46,6 +46,6 @@ export default class UIExtAbility extends UIExtensionAbility {
   }
 
   onSessionDestroy(session) {
-    console.info(TAG, `UIExtAbility onSessionDestroy`)
+    console.info(TAG, 'UIExtAbility onSessionDestroy');
   }
 };

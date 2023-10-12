@@ -16,11 +16,11 @@
 @Entry
 @Component
 struct Index {
-  @State message: string = 'ExtensionAbility'
-  @State startExtensionMessage: string = 'Start Extension'
-  @State startExtensionMessageAbnormally: string = 'Start Extension Abnormally'
-  @State stopExtensionMessage: string = 'Stop Extension'
-  @State startUIAbilityMessage: string = 'Start Ability'
+  @State message: string = 'ExtensionAbility';
+  @State startExtensionMessage: string = 'Start Extension';
+  @State startExtensionMessageAbnormally: string = 'Start Extension Abnormally';
+  @State stopExtensionMessage: string = 'Stop Extension';
+  @State startUIAbilityMessage: string = 'Start Ability';
 
   build() {
     Row() {

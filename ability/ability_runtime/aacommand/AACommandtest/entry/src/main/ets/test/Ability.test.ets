@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
@@ -564,7 +564,7 @@ export default function abilityTest() {
             await sleep(500);
             let cmd = 'aa attach -b com.acts.attachdebugextensiontest';
             await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.info(TAG, "aa attach sucessfully!");
+                console.info(TAG, 'aa attach sucessfully!');
             });
             await sleep(500);
             await globalThis.abilityContext.stopServiceExtensionAbility(want);
@@ -595,11 +595,11 @@ export default function abilityTest() {
                 'abilityName': 'EntryAbility'
             };
             await globalThis.abilityContext.startAbility(want).then(() => {
-                console.info(TAG, "SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1500 start ability sucessfully.");
+                console.info(TAG, 'SUB_Ability_AbilityTools_AACommand_AAAttachDebug_1500 start ability sucessfully.');
             });
             let cmd = 'aa attach -b com.acts.attachdebuguiextensiontest';
             await abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.info(TAG, "aa attach sucessfully!");
+                console.info(TAG, 'aa attach sucessfully!');
             });
             await sleep(1500);
             let cmd1 = 'ps -ef | grep com.acts';
@@ -613,6 +613,5 @@ export default function abilityTest() {
                 done();
             });
         })
-
     })
 }

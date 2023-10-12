@@ -24,7 +24,7 @@ globalThis.StartServiceAbility = () => {
     'abilityName': 'ServiceExtAbility'
   };
   globalThis.abilityContext.startServiceExtensionAbility(want, (error) => {
-    console.log("Start service extension ability:  " + JSON.stringify(error))
+    console.log('Start service extension ability:  ' + JSON.stringify(error))
   });
 };
 
@@ -36,9 +36,9 @@ globalThis.StartServiceAbilityAbnormally = () => {
     'action': 'abnormal'
   };
   globalThis.abilityContext.startServiceExtensionAbility(want, (error) => {
-    console.log("Start service extension ability abnormally:  " + JSON.stringify(error))
+    console.log('Start service extension ability abnormally:  ' + JSON.stringify(error))
   });
-}
+};
 
 globalThis.StopServiceAbility = () => {
   let want = {
@@ -47,7 +47,7 @@ globalThis.StopServiceAbility = () => {
     'abilityName': 'ServiceExtAbility'
   };
   globalThis.abilityContext.stopServiceExtensionAbility(want, (error) => {
-    console.log("Stop service extension ability:  " + JSON.stringify(error));
+    console.log('Stop service extension ability:  ' + JSON.stringify(error));
   });
 };
 
@@ -58,7 +58,7 @@ globalThis.StartAbility = () => {
     'abilityName': 'EntryAbility'
   };
   globalThis.abilityContext.startAbility(want, (error) => {
-    console.log("Start UIAbility: " + JSON.stringify(error));
+    console.log('Start UIAbility: ' + JSON.stringify(error));
   });
 }
 

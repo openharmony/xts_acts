@@ -15,7 +15,7 @@
 
 import Want from '@ohos.app.ability.Want';
 import UIExtensionAbility from '@ohos.app.ability.UIExtensionAbility';
-import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession'
+import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession';
 import common from '@ohos.app.ability.common';
 
 let context = getContext(this) as common.UIExtensionContext;
@@ -36,7 +36,7 @@ struct Index {
           .fontSize(20)
           .fontStyle(FontStyle.Italic)
 
-        Button("TerminateSelf")
+        Button('TerminateSelf')
           .type(ButtonType.Capsule)
           .margin({ top: 30 })
           .backgroundColor('#87CEEB')
@@ -44,7 +44,7 @@ struct Index {
           .height('6%')
           .onClick(() => {
             this.session.terminateSelf((err) => {
-              console.info("Terminate service extension: " + JSON.stringify(err));
+              console.info('Terminate service extension: ' + JSON.stringify(err));
             })
             storage.clear();
           })

@@ -16,12 +16,12 @@
 import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
 import rpc from '@ohos.rpc';
 
-const TAG: string = "[Example].[Entry].[ServiceExtAbility]";
+const TAG: string = '[Example].[Entry].[ServiceExtAbility]';
 const REQUEST_CODE = 210;
 
 
 class StubTest extends rpc.RemoteObject {
-  // ...
+
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
@@ -29,7 +29,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     console.info(TAG, `onCreate, want: ${want.abilityName}`);
     if (want.action == 'abnormal') {
       console.info(TAG, `abnormal: ${want.abilityName}`);
-      globalThis.abnormal(132);
+      globalThis.abnormal(REQUEST_CODE);
     }
   }
 
@@ -39,7 +39,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
   onConnect(want) {
     console.info(TAG, `onConnect, want: ${want.abilityName}`);
-    return new StubTest("test");
+    return new StubTest('test');
   }
 
   onDisconnect(want) {

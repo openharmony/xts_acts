@@ -16,8 +16,8 @@
 @Entry
 @Component
 struct Page {
-  @State message: string = 'Hello World'
-  private myProxy: UIExtensionProxy
+  @State message: string = 'Hello World';
+  private myProxy: UIExtensionProxy;
 
   build() {
     Row() {
@@ -28,16 +28,16 @@ struct Page {
           .fontStyle(FontStyle.Italic)
 
         UIExtensionComponent({
-          bundleName: "com.acts.attachdebuguiextensiontest",
-          abilityName: "UIExtAbility"
+          bundleName: 'com.acts.attachdebuguiextensiontest',
+          abilityName: 'UIExtAbility'
         })
           .size({
-            "width": "60%",
-            "height": "60%"
+            'width': '60%',
+            'height': '60%'
           })
           .border({
-            "width": 1,
-            "color": Color.Gray
+            'width': 1,
+            'color': Color.Gray
           })
           .margin(30)
       }
