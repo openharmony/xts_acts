@@ -18,8 +18,8 @@ import {describe, expect, beforeAll, it} from '@ohos/hypium';
 import fileio from '@ohos.fileio';
 import FA from '@ohos.ability.featureAbility';
 var gIRemoteObject = null;
-export default function actsRpcRequestJsTest() {
-    describe('actsRpcRequestJsTest', function(){
+export default function ActsRpcRequestJsTest() {
+    describe('ActsRpcRequestJsTest', function(){
         console.info("-----------------------SUB_DSoftbus_IPC_API_onRemoteMessageRequest_Test is starting-----------------------");
         beforeAll(async function () {
             console.info('beforeAll called');

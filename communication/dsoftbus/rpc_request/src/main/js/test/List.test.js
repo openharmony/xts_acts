@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import actsRpcRequestJsTest from './actsRpcRequestJsTest.test.js';
+import ActsRpcRequestJsTest from './ActsRpcRequestJsTest.test.js';
 
 export default function testsuite() {
-    actsRpcRequestJsTest();
+    ActsRpcRequestJsTest();
 }
