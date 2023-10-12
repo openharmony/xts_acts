@@ -31,7 +31,7 @@ let commonEventData = {
 };
 const TAG: string = "ServiceExtAbilityTAG";
 
-globalThis.GetApplicationState = async () => {
+globalThis.GetApplicationState4 = async () => {
   console.info(TAG, "GetApplicationState Start!");
   let processInfo = await globalThis.multipleExtApplicationContext.getRunningProcessInformation();
   console.info(TAG, processInfo[0].pid + processInfo[0].uid + processInfo[0].processName + processInfo[0].bundleNames + processInfo[0].state);
@@ -41,7 +41,7 @@ globalThis.GetApplicationState = async () => {
     console.info("publish data : " + JSON.stringify(error));
   })
 }
-globalThis.createWindow = async (name, windowType, rect) => {
+globalThis.createWindow4 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
   let configuration = {
@@ -61,7 +61,7 @@ globalThis.createWindow = async (name, windowType, rect) => {
     console.error('Window create failed!');
   }
 }
-globalThis.createWindow1 = async (name, windowType, rect) => {
+globalThis.createWindow5 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
   let configuration = {
@@ -98,24 +98,24 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     globalThis.abilityWant = want;
     await display.getDefaultDisplay().then((dis) => {
       let navigationBarRect = {
-        left: 0,
-        top: 0,
-        width: 720,
-        height: 1280
+        left: 200,
+        top: 200,
+        width: 400,
+        height: 600
       };
-      globalThis.createWindow('uiPages1', window.WindowType.TYPE_FLOAT, navigationBarRect);
+      globalThis.createWindow4('uiPages1', window.WindowType.TYPE_FLOAT, navigationBarRect);
     })
 
     await display.getDefaultDisplay().then(async (dis) => {
       let navigationBarRect = {
-        left: 0,
-        top: 0,
-        width: 720,
-        height: 1280
+        left: 200,
+        top: 200,
+        width: 400,
+        height: 600
       };
-      await globalThis.createWindow1('uiPages2', window.WindowType.TYPE_FLOAT, navigationBarRect);
+      await globalThis.createWindow5('uiPages2', window.WindowType.TYPE_FLOAT, navigationBarRect);
       await sleep(500);
-      await globalThis.GetApplicationState();
+      await globalThis.GetApplicationState4();
 
     })
   }

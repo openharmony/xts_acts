@@ -18,6 +18,7 @@ group("actswindowvisibilitychangedtest") {
   if (is_standard_system) {
     deps = [
       "WindowChangedVisibilityTest:WindowChangedVisibilityTest",
+      "windowVisibilityRely:windowVisibilityRely",
       "windowVisibilityTest:windowVisibilityTest",
     ]
   }

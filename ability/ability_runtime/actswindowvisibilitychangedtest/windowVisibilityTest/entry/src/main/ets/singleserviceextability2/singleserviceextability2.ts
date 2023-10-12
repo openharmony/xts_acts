@@ -18,7 +18,7 @@ import display from '@ohos.display';
 import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
-globalThis.createWindow = async (name, windowType, rect) => {
+globalThis.createWindow3 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
   let configuration = {
@@ -57,12 +57,12 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     globalThis.abilityWant = want;
     display.getDefaultDisplay().then(async (dis) => {
       let navigationBarRect = {
-        left: 400,
+        left: 600,
         top: 850,
         width: 200,
         height: 200
       };
-      await globalThis.createWindow('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
+      await globalThis.createWindow3('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
     })
   }
 

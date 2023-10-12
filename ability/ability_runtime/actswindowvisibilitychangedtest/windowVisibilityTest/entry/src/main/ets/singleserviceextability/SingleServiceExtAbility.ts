@@ -18,13 +18,13 @@ import display from '@ohos.display';
 import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
-globalThis.GetApplicationState = async () => {
+globalThis.GetApplicationState1 = async () => {
   console.info(TAG, "GetApplicationState Start!");
   let processInfo = await globalThis.singleExtApplicationContext.getRunningProcessInformation();
   console.info(TAG, processInfo[0].pid + processInfo[0].uid + processInfo[0].processName + processInfo[0].bundleNames + processInfo[0].state);
 }
 
-globalThis.createWindow = async (name, windowType, rect) => {
+globalThis.createWindow1 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
   let configuration = {
@@ -63,12 +63,12 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     globalThis.abilityWant = want;
     display.getDefaultDisplay().then((dis) => {
       let navigationBarRect = {
-        left: 300,
+        left: 400,
         top: 200,
         width: 200,
         height: 600
       };
-      globalThis.createWindow('uiPages', window.WindowType.TYPE_FLOAT, navigationBarRect);
+      globalThis.createWindow1('uiPages', window.WindowType.TYPE_FLOAT, navigationBarRect);
     })
   }
 

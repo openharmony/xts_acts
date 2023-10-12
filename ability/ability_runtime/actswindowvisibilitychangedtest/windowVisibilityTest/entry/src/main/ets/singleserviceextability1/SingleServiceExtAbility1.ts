@@ -30,7 +30,7 @@ let commonEventData = {
   }
 };
 
-globalThis.GetApplicationState = async () => {
+globalThis.GetApplicationState2 = async () => {
   console.info(TAG, "GetApplicationState Start!");
   let processInfo = await globalThis.singleExtApplicationContext.getRunningProcessInformation();
   console.info(TAG, processInfo[0].pid + processInfo[0].uid + processInfo[0].processName + processInfo[0].bundleNames + processInfo[0].state);
@@ -40,7 +40,7 @@ globalThis.GetApplicationState = async () => {
     console.info(TAG, "publish data : " + JSON.stringify(error));
   })
 }
-globalThis.createWindow = async (name, windowType, rect) => {
+globalThis.createWindow2 = async (name, windowType, rect) => {
   let win;
   console.info(TAG, 'Start creating window.');
   let configuration = {
@@ -84,9 +84,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         width: 200,
         height: 600
       };
-      await globalThis.createWindow('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
+      await globalThis.createWindow2('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
       await sleep(500);
-      await globalThis.GetApplicationState();
+      await globalThis.GetApplicationState2();
     })
   }
 

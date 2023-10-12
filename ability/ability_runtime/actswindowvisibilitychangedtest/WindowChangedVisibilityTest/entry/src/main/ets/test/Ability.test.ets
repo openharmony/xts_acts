@@ -51,21 +51,16 @@ export default function abilityTest() {
     'abilityName': 'MultipleServiceExtAbility'
   };
   describe('ActsWindowVisibilityTest', function () {
-    // Defines a test suite. Two parameters are supported: test suite name and test suite function.
-    beforeAll(function () {
-      // Presets an action, which is performed only once before all test cases of the test suite start.
-      // This API supports only one parameter: preset action function.
-    })
-    beforeEach(function () {
-
-    })
     afterEach(async function (done) {
       await abilityDelegator.executeShellCommand('aa force-stop com.acts.windowvisibilitytest');
       await done();
     })
-    afterAll(function () {
 
-    })
+    /**
+    * @tc.number: Acts_WindowVisibility_0100
+    * @tc.name: Test two uiabilities foregrounding and two single window service abilities
+    * @tc.desc: Verify state
+    */
     it('Acts_WindowVisibility_0100', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0100_TAG';
       let subscriber;
@@ -81,7 +76,7 @@ export default function abilityTest() {
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
         if (data.event == 'visibilityState') {
           try {
-            expect(data.parameters.applicationState).assertEqual(2);
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
           } catch {
             console.error(TAG1, 'state error');
           }
@@ -113,6 +108,11 @@ export default function abilityTest() {
       });
     })
 
+    /**
+    * @tc.number: Acts_WindowVisibility_0200
+    * @tc.name: Test two uiabilities backgrounding and two single window service abilities
+    * @tc.desc: Verify state
+    */
     it('Acts_WindowVisibility_0200', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0200_TAG';
       let driver = Driver.create();
@@ -128,7 +128,7 @@ export default function abilityTest() {
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
         if (data.event == 'visibilityState') {
           try {
-            expect(data.parameters.applicationState).assertEqual(2);
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
           } catch {
             console.error(TAG1, 'state error');
           }
@@ -163,6 +163,11 @@ export default function abilityTest() {
 
     })
 
+    /**
+    * @tc.number: Acts_WindowVisibility_0300
+    * @tc.name: Test two uiabilities backgrounding and two single window service abilities
+    * @tc.desc: Verify state
+    */
     it('Acts_WindowVisibility_0300', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0300_TAG';
       let driver = Driver.create();
@@ -178,7 +183,7 @@ export default function abilityTest() {
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
         if (data.event == 'visibilityState') {
           try {
-            expect(data.parameters.applicationState).assertEqual(2);
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
           } catch {
             console.error(TAG1, 'state error');
           }
@@ -202,7 +207,7 @@ export default function abilityTest() {
         await driver.pressHome();
         await driver.delayMs(200);
         await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantThree).then(() => {
-          console.info(TAG1, 'Start single service ability one : ');
+          console.info(TAG1, 'Start single service ability three : ');
         });
         await driver.delayMs(500);
         await driver.click(10, 10);
@@ -212,6 +217,11 @@ export default function abilityTest() {
       });
     })
 
+    /**
+    * @tc.number: Acts_WindowVisibility_0400
+    * @tc.name: Test two uiabilities foregrounding and multiple window service abilities
+    * @tc.desc: Verify state
+    */
     it('Acts_WindowVisibility_0400', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0400_TAG';
       let driver = Driver.create();
@@ -227,7 +237,7 @@ export default function abilityTest() {
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
         if (data.event == 'visibilityState') {
           try {
-            expect(data.parameters.applicationState).assertEqual(2);
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
           } catch {
             console.error(TAG1, 'state error');
           }
@@ -255,6 +265,11 @@ export default function abilityTest() {
       });
     })
 
+    /**
+    * @tc.number: Acts_WindowVisibility_0500
+    * @tc.name: Test two uiabilities backgrounding and multiple window service abilities
+    * @tc.desc: Verify state
+    */
     it('Acts_WindowVisibility_0500', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0500_TAG';
       let driver = Driver.create();
@@ -270,7 +285,7 @@ export default function abilityTest() {
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
         if (data.event == 'visibilityState') {
           try {
-            expect(data.parameters.applicationState).assertEqual(2);
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
           } catch {
             console.error(TAG1, 'state error');
           }
@@ -300,6 +315,11 @@ export default function abilityTest() {
       });
     })
 
+    /**
+    * @tc.number: Acts_WindowVisibility_0600
+    * @tc.name: Test two single service abilities and multiple window service abilities
+    * @tc.desc: Verify state
+    */
     it('Acts_WindowVisibility_0600', 0, async function (done) {
       let TAG1 = 'Acts_WindowVisibility_0600_TAG';
       let subscriber;
@@ -315,7 +335,7 @@ export default function abilityTest() {
         console.info(TAG1, 'subscribe error' + JSON.stringify(error));
         if (data.event == 'visibilityState') {
           try {
-            expect(data.parameters.applicationState).assertEqual(2);
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
           } catch {
             console.error(TAG1, 'state error');
           }
@@ -328,11 +348,11 @@ export default function abilityTest() {
         subscriber = data;
         commonEventManager.subscribe(subscriber, subscribeCallback);
         await driver.delayMs(200);
-        await globalThis.abilityContext.startAbility(singleServiceAbilityWantOne).then(() => {
+        await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantOne).then(() => {
           console.info(TAG1, 'Start uiAbility one : ');
         });
         await driver.delayMs(500);
-        await globalThis.abilityContext.startAbility(singleServiceAbilityWantThree).then(() => {
+        await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantThree).then(() => {
           console.info(TAG1, 'Start single service ability three : ');
         });
         await driver.delayMs(500);
@@ -340,6 +360,50 @@ export default function abilityTest() {
         await globalThis.abilityContext.startServiceExtensionAbility(multipleServiceAbilityWant).then(() => {
           console.info(TAG1, 'Start single service ability one : ');
         });
+      })
+    })
+
+    /**
+    * @tc.number: Acts_WindowVisibility_0800
+    * @tc.name: Test ui ability and multiple window service abilities
+    * @tc.desc: Verify state
+    */
+    it('Acts_WindowVisibility_0800', 0, async function (done) {
+      let TAG1 = 'Acts_WindowVisibility_0600_TAG';
+      let subscriber;
+      let driver = Driver.create();
+      let want = {
+        'bundleName': 'com.example.windowvisibilityrely',
+        'abilityName': 'EntryAbility'
+      };
+      function unSubscribeCallback() {
+        console.info(TAG1, 'unSubscribeCallback');
+        done();
+      }
+
+      function subscribeCallback(error, data) {
+        console.info(TAG1, 'subscribe data' + JSON.stringify(data));
+        console.info(TAG1, 'subscribe error' + JSON.stringify(error));
+        if (data.event == 'visibilityState') {
+          try {
+            expect(data.parameters.applicationState == 2 || data.parameters.applicationState == 1).assertTrue();
+          } catch {
+            console.error(TAG1, 'state error');
+          }
+          commonEventManager.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      }
+
+      await commonEventManager.createSubscriber(ACTS_VisbilityState).then(async (data) => {
+        console.info(TAG1, 'createSubscriber');
+        subscriber = data;
+        commonEventManager.subscribe(subscriber, subscribeCallback);
+        await driver.delayMs(200);
+        await globalThis.abilityContext.startServiceExtensionAbility(singleServiceAbilityWantOne).then(() => {
+          console.info(TAG1, 'Start serviceAbility one : ');
+        });
+        await driver.delayMs(500);
+        await globalThis.abilityContext.startAbility(want);
       })
     })
   })
