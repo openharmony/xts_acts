@@ -1938,13 +1938,13 @@ export default function actsRpcRequestJsTest() {
         });
         
         /*
-        * @tc.number  SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0100
+        * @tc.number  SUB_DSoftbus_IPC_API_Errorcode_6100
         * @tc.name    registerDeathRecipient is only proxy object permitted Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
         * @tc.level   3   
         */
-        it("SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0100", 0,async function(){
-            console.info("---------------------start SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0100---------------------------");
+        it("SUB_DSoftbus_IPC_API_Errorcode_6100", 0,async function(){
+            console.info("---------------------start SUB_DSoftbus_IPC_API_Errorcode_6100---------------------------");
             try{
                 let recipient = new MyregisterDeathRecipient(gIRemoteObject, null);
                 gIRemoteObject.registerDeathRecipient(recipient, 0)
@@ -1953,17 +1953,17 @@ export default function actsRpcRequestJsTest() {
                 expect(error.code == errCode).assertTrue();
                 expect(error.message != null).assertTrue();
             }
-            console.info("---------------------end SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0100 ---------------------------");
+            console.info("---------------------end SUB_DSoftbus_IPC_API_Errorcode_6100 ---------------------------");
         });
         
         /*
-        * @tc.number  SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0200
+        * @tc.number  SUB_DSoftbus_IPC_API_Errorcode_6200
         * @tc.name    unregisterDeathRecipient is only proxy object permitted Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
         * @tc.level   3   
         */
-        it("SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0200", 0,async function(){
-            console.info("---------------------start SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0200---------------------------");
+        it("SUB_DSoftbus_IPC_API_Errorcode_6200", 0,async function(){
+            console.info("---------------------start SUB_DSoftbus_IPC_API_Errorcode_6200---------------------------");
             try{
                 let recipient = new MyregisterDeathRecipient(gIRemoteObject, null);
                 gIRemoteObject.unregisterDeathRecipient(recipient, 0);
@@ -1972,17 +1972,17 @@ export default function actsRpcRequestJsTest() {
                 expect(error.code == errCode).assertTrue();
                 expect(error.message != null).assertTrue();
             }
-            console.info("---------------------end SUB_DSoftbus_IPC_API_IRemoteObject_Errorcode_0200 ---------------------------");
+            console.info("---------------------end SUB_DSoftbus_IPC_API_Errorcode_6200 ---------------------------");
         });      
         
         /*
-        * @tc.number  SUB_DSoftbus_IPC_API_Ashmem_Errorcode_0100
+        * @tc.number  SUB_DSoftbus_IPC_API_Errorcode_6300
         * @tc.name    writeAshmem is write to ashmem failed Error verification
         * @tc.desc    [G-DISTRIBUTED-0212]禁止修改IPC中定义的数据结构和接口，并提供对应完整实现
         * @tc.level   3   
         */
-        it("SUB_DSoftbus_IPC_API_Ashmem_Errorcode_0100", 0,async function(){
-            console.info("---------------------start SUB_DSoftbus_IPC_API_Ashmem_Errorcode_0100---------------------------");
+        it("SUB_DSoftbus_IPC_API_Errorcode_6300", 0,async function(){
+            console.info("---------------------start SUB_DSoftbus_IPC_API_Errorcode_6300---------------------------");
             try{
                 let ashmem = rpc.Ashmem.create("ashmem", 4);
                 ashmem.mapReadWriteAshmem();
@@ -1995,7 +1995,7 @@ export default function actsRpcRequestJsTest() {
                 expect(error.code == errCode).assertTrue();
                 expect(error.message != null).assertTrue();
             }
-            console.info("---------------------end SUB_DSoftbus_IPC_API_Ashmem_Errorcode_0100 ---------------------------");
+            console.info("---------------------end SUB_DSoftbus_IPC_API_Errorcode_6300 ---------------------------");
         });        
         console.info("-----------------------SUB_DSoftbus_IPC_API_onRemoteMessageRequest_Test is end-----------------------");
     });
