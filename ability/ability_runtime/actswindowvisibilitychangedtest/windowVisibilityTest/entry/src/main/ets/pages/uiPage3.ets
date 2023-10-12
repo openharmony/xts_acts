@@ -18,7 +18,7 @@ import { Font } from '@ohos.arkui.UIContext'
 @Entry
 @Component
 struct UiPage {
-  @State message: string = 'SingleServiceExtension2'
+  @State message: string = 'SingleServiceExtension2';
 
   build() {
     Row() {

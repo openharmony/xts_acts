@@ -39,7 +39,7 @@ globalThis.createWindow3 = async (name, windowType, rect) => {
   }
 }
 
-const TAG: string = "ServiceExtAbilityTAG";
+const TAG: string = 'ServiceExtAbilityTAG';
 
 class StubTest extends rpc.RemoteObject {
   // ...
@@ -68,7 +68,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
   onConnect(want) {
     console.info(TAG, `onConnect, want: ${want.abilityName}`);
-    return new StubTest("test");
+    return new StubTest('test');
   }
 
   onDisconnect(want) {
@@ -76,6 +76,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   }
 
   onDestroy() {
-    console.info(TAG, `onDestroy`);
+    console.info(TAG, 'onDestroy');
   }
 }

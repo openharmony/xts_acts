@@ -19,6 +19,7 @@ import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 import commonEventManager from '@ohos.commonEventManager';
 
+const delay_time = 500;
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -31,13 +32,13 @@ let commonEventData = {
 };
 
 globalThis.GetApplicationState2 = async () => {
-  console.info(TAG, "GetApplicationState Start!");
+  console.info(TAG, 'GetApplicationState Start!');
   let processInfo = await globalThis.singleExtApplicationContext.getRunningProcessInformation();
   console.info(TAG, processInfo[0].pid + processInfo[0].uid + processInfo[0].processName + processInfo[0].bundleNames + processInfo[0].state);
   commonEventData.parameters.applicationState = processInfo[0].state;
   console.info(TAG, `applicationState : ${commonEventData.parameters.applicationState}`);
   commonEventManager.publish('visibilityState', commonEventData, (error) => {
-    console.info(TAG, "publish data : " + JSON.stringify(error));
+    console.info(TAG, 'publish data : ' + JSON.stringify(error));
   })
 }
 globalThis.createWindow2 = async (name, windowType, rect) => {
@@ -61,7 +62,7 @@ globalThis.createWindow2 = async (name, windowType, rect) => {
   }
 }
 
-const TAG: string = "ServiceExtAbilityTAG";
+const TAG: string = 'ServiceExtAbilityTAG';
 
 class StubTest extends rpc.RemoteObject {
   // ...
@@ -85,14 +86,14 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         height: 600
       };
       await globalThis.createWindow2('uiPages3', window.WindowType.TYPE_FLOAT, navigationBarRect);
-      await sleep(500);
+      await sleep(delay_time);
       await globalThis.GetApplicationState2();
     })
   }
 
   onConnect(want) {
     console.info(TAG, `onConnect, want: ${want.abilityName}`);
-    return new StubTest("test");
+    return new StubTest('test');
   }
 
   onDisconnect(want) {
@@ -100,6 +101,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   }
 
   onDestroy() {
-    console.info(TAG, `onDestroy`);
+    console.info(TAG, 'onDestroy');
   }
 }

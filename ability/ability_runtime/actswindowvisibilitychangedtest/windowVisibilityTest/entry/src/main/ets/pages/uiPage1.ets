@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct UiPage1 {
-  @State message: string = 'MultipleServiceExtension1'
+  @State message: string = 'MultipleServiceExtension1';
 
   build() {
     Row() {

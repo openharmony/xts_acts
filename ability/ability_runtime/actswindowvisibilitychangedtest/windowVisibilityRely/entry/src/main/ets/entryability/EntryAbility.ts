@@ -24,6 +24,7 @@ let commonEventData = {
     applicationState: applicationState
   }
 };
+const delay_time = 1000;
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -59,12 +60,12 @@ export default class EntryAbility extends UIAbility {
       globalThis.applicationContext.getRunningProcessInformation().then((data) => {
         commonEventData.parameters.applicationState = data[0].state;
         commonEventManager.publish('visibilityState', commonEventData, (error) => {
-          console.info("publish data : " + JSON.stringify(error));
+          console.info('publish data : ' + JSON.stringify(error));
         })
       }).catch((error) => {
-        console.info("error" + JSON.stringify(error));
+        console.info('error' + JSON.stringify(error));
       });
-    }, 1000)
+    }, delay_time)
   }
 
   onBackground() {

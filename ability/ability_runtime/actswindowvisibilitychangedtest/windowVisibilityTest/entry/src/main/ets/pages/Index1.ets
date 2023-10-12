@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct Index1 {
-  @State message: string = 'UIAbility2'
+  @State message: string = 'UIAbility2';
 
   build() {
     Row() {

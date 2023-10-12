@@ -20,7 +20,7 @@ import { Component, Driver, UiWindow, ON, UiDriver } from '@ohos.UiTest';
 import commonEventManager from '@ohos.commonEventManager';
 
 let ACTS_VisbilityState = {
-  events: ["visibilityState"]
+  events: ['visibilityState']
 };
 
 export default function abilityTest() {

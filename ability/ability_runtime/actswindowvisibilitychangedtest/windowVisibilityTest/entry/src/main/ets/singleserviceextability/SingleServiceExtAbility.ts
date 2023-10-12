@@ -19,7 +19,7 @@ import window from '@ohos.window';
 import rpc from '@ohos.rpc';
 
 globalThis.GetApplicationState1 = async () => {
-  console.info(TAG, "GetApplicationState Start!");
+  console.info(TAG, 'GetApplicationState Start!');
   let processInfo = await globalThis.singleExtApplicationContext.getRunningProcessInformation();
   console.info(TAG, processInfo[0].pid + processInfo[0].uid + processInfo[0].processName + processInfo[0].bundleNames + processInfo[0].state);
 }
@@ -45,7 +45,7 @@ globalThis.createWindow1 = async (name, windowType, rect) => {
   }
 }
 
-const TAG: string = "ServiceExtAbilityTAG";
+const TAG: string = 'ServiceExtAbilityTAG';
 
 class StubTest extends rpc.RemoteObject {
   // ...
@@ -74,7 +74,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
   onConnect(want) {
     console.info(TAG, `onConnect, want: ${want.abilityName}`);
-    return new StubTest("test");
+    return new StubTest('test');
   }
 
   onDisconnect(want) {
@@ -82,6 +82,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   }
 
   onDestroy() {
-    console.info(TAG, `onDestroy`);
+    console.info(TAG, 'onDestroy');
   }
 }

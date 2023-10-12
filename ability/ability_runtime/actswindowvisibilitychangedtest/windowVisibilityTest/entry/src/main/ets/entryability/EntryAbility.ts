@@ -17,7 +17,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import type window from '@ohos.window';
 
-const TAG: string = "ServiceExtAbilityTAG";
+const TAG: string = 'ServiceExtAbilityTAG';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
