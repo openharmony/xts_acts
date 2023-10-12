@@ -42,6 +42,7 @@ export default function ListLanes03() {
       }
       done();
     });
+
     /* *
        * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_034 033
        * @tc.name  : ListLanes03_001
@@ -63,6 +64,7 @@ export default function ListLanes03() {
       console.info('[ListLanes03_001] END');
       done();
     });
+
     /* *
        * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_045
        * @tc.name  : ListLanes03_002
@@ -84,12 +86,13 @@ export default function ListLanes03() {
       console.info('[ListLanes03_002] END');
       done();
     });
+
     /* *
-           * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_036
-           * @tc.name  : ListLanes03_003
-           * @tc.desc  : set gutter to 10lpx and listDirection to Axis.Vertical
-           * @tc.level : Level 3
-           */
+       * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_036
+       * @tc.name  : ListLanes03_003
+       * @tc.desc  : set gutter to 10lpx and listDirection to Axis.Vertical
+       * @tc.level : Level 3
+       */
     it('ListLanes03_003', 0, async function (done) {
 
       console.info('[ListLanes03_003] START');
@@ -105,12 +108,13 @@ export default function ListLanes03() {
       console.info('[ListLanes03_003] END');
       done();
     });
+
     /* *
-         * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_054
-         * @tc.name  : ListLanes03_004
-         * @tc.desc  : set gutter to 10px and listDirection to Axis.Vertical
-         * @tc.level : Level 3
-         */
+       * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_054
+       * @tc.name  : ListLanes03_004
+       * @tc.desc  : set gutter to 10px and listDirection to Axis.Vertical
+       * @tc.level : Level 3
+       */
     it('ListLanes03_004', 0, async function (done) {
 
       console.info('[ListLanes03_004] START');

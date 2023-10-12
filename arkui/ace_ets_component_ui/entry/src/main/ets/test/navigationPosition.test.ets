@@ -42,12 +42,13 @@ export default function navigationPosition() {
       }
       done();
     });
+
     /* *
-              * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_018
-              * @tc.name  : navigationPosition_001
-              * @tc.desc  : Set navBarPosition to Start
-              * @tc.level : Level 2
-              */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_018
+       * @tc.name  : navigationPosition_001
+       * @tc.desc  : Set navBarPosition to Start
+       * @tc.level : Level 2
+       */
     it('navigationPosition_001', 0, async function (done) {
 
       console.info('[navigationPosition_001] START');
@@ -63,12 +64,13 @@ export default function navigationPosition() {
       console.info('[navigationPosition_001] END');
       done();
     });
+
     /* *
-                  * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_017
-                  * @tc.name  : navigationPosition_002
-                  * @tc.desc  : Set navBarPosition to End
-                  * @tc.level : Level 2
-                  */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_017
+       * @tc.name  : navigationPosition_002
+       * @tc.desc  : Set navBarPosition to End
+       * @tc.level : Level 2
+       */
     it('navigationPosition_002', 0, async function (done) {
 
       console.info('[navigationPosition_002] START');
