@@ -598,9 +598,9 @@ export default function audioManagerApi9() {
          *@tc.desc      : Enable mic mute
          *@tc.size      : MEDIUM
          *@tc.type      : Function
-         *@tc.level     : Level 3
+         *@tc.level     : Level 2
          */
-        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100', 3, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100', 2, async function (done) {
             let audioVolumeManager = audioManager.getVolumeManager();
             let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);
             groupManager.setMicrophoneMute(true, (err, data) => {
@@ -635,9 +635,9 @@ export default function audioManagerApi9() {
      *@tc.desc      : Enable mic mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
-     *@tc.level     : Level 3
+     *@tc.level     : Level 2
      */
-        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0200', 3, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0200', 2, async function (done) {
             try {
                 let audioVolumeManager = audioManager.getVolumeManager();
                 let groupManager = await audioVolumeManager.getVolumeGroupManager(audio.DEFAULT_VOLUME_GROUP_ID);

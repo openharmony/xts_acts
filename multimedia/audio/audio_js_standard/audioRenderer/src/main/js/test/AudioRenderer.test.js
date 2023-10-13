@@ -1991,14 +1991,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0100
      * @tc.name      : STREAM_VOICE_CALL AUDIO_INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.desc      : STREAM_VOICE_CALL AUDIO_INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0100', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2089,14 +2089,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0200
      * @tc.name      : STREAM_RING INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.desc      : STREAM_RING INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0200', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2187,14 +2187,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0300
      * @tc.name      : STREAM_MUSIC INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.desc      : STREAM_MUSIC INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0300', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2285,14 +2285,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0400
      * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_ASSISTANT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0400', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2376,21 +2376,21 @@ describe('audioRenderer', function () {
             await audioRen_interrupt.release();
         }
         catch (error) {
-            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0400 : error = " + error);
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0400 : error = " + error);
             expect(false).assertTrue();
         }
         done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0500
      * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_CALL
      * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_CALL
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0500', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2480,14 +2480,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0600
      * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_RING
      * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_RING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0600', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2577,14 +2577,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0700
      * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_MUSIC
      * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_MUSIC
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_AUDIO_INTERUPT_AUDIO_0700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_TEST_0700', 2, async function (done) {
         let interrput_flag = false;
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
