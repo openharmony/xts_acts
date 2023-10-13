@@ -42,8 +42,7 @@ export default function ProvideJsunit() {
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()      
-      await driver.pressBack();
+      router.back();
     });
 
     it('ProvideJsunit_0001', 0, async function (done) {

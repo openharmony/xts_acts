@@ -44,8 +44,7 @@ export default function Storage38Jsunit() {
 
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create() 
-      await driver.pressBack();
+      router.back();
     });
 
     it('Storage38Jsunit_0300', 0, async function (done) {

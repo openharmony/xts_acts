@@ -44,8 +44,7 @@ export default function StateDate1Jsunit() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
-      await driver.pressBack();
+      router.back();
     });
 
     it('StateDate1Jsunit_0100', 0, async function (done) {
