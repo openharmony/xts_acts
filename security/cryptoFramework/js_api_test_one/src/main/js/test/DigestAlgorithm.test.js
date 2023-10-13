@@ -140,7 +140,7 @@ export default function DigestAlgorithmJsunit() {
         cryptoFramework.createMd("SHA5");
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -155,7 +155,7 @@ export default function DigestAlgorithmJsunit() {
         cryptoFramework.createMd(null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });

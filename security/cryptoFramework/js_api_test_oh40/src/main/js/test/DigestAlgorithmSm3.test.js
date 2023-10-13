@@ -58,7 +58,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.error("CreateMd catch err: " + err);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -144,7 +144,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
 
       try {
@@ -163,7 +163,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -319,7 +319,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.error("CreateMac catch 1 err: " + err);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
 
       try {
@@ -327,7 +327,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.error("CreateMac catch 2 err: " + err);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -401,13 +401,13 @@ export default function DigestAlgorithmSm3Jsunit() {
         await signGenerator.init(null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         await signGenerator.init("sroundpriKey");
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       let rsaGenerator = cryptoFramework.createAsyKeyGenerator("RSA1024");
       let rsaKeyPair;
@@ -425,7 +425,7 @@ export default function DigestAlgorithmSm3Jsunit() {
         await signGenerator.init(rsaKeyPair.priKey);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -464,20 +464,20 @@ export default function DigestAlgorithmSm3Jsunit() {
         await globalHMAC.update(ginBlob);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 17630001).assertTrue();
+        expect(err.code).assertEqual(17630001);
       }
       await globalHMAC.init(globalsymKey);
       try {
         await globalHMAC.update(null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         await globalHMAC.update(ginBlob, ginBlob);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
