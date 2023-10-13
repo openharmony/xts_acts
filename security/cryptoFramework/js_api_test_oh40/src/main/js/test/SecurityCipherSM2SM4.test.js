@@ -718,43 +718,43 @@ export default function SecurityCipherSM2SM4Jsunit() {
           await cryptoFramework.createCipher(null);
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cryptoFramework.createCipher("SM2257|SHA256");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM2_256|SHA257");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM2_256|NoHash");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cryptoFramework.createCipher("SM2_256|C1C2C3|SHA512");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM4_192|CFB|PKCS5");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createCipher("SM4_256|CFB|PKCS5");
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         done();
       }
@@ -776,21 +776,21 @@ export default function SecurityCipherSM2SM4Jsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cryptoFramework.createSymKeyGenerator("SM2_256|SHA257");
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         try {
           await cryptoFramework.createSymKeyGenerator("SM2257|SHA256");
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         done();
       }
@@ -818,7 +818,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
             "Security_CryptoFramework_CipherSMX_Func_2900 1 catch err" +
               err.code
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGeneratorEncrypt.init(encryptMode, null, null);
@@ -828,7 +828,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
             "Security_CryptoFramework_CipherSMX_Func_2900 2 catch err" +
               err.code
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGeneratorEncrypt.init(
@@ -843,7 +843,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
             "Security_CryptoFramework_CipherSMX_Func_2900 3 catch err" +
               err.code
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -887,7 +887,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         await cipherGenerator.init(encryptMode, symKeyPairSM4, null);
         try {
@@ -902,19 +902,19 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGenerator.update(null);
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         try {
           await cipherGenerator.update(input, input);
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -955,7 +955,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         await cipherGenerator.init(encryptMode, symKeyPairSM4, null);
         try {
@@ -970,7 +970,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           });
           expect(null).assertFail();
         } catch (err) {
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }
@@ -990,7 +990,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           expect(null).assertFail();
         } catch (err) {
           console.error("createCipherFail catch error: " + err);
-          expect(err.code == 801).assertTrue();
+          expect(err.code).assertEqual(801);
         }
         done();
       }
@@ -1012,7 +1012,7 @@ export default function SecurityCipherSM2SM4Jsunit() {
           console.log(
             "Security_CryptoFramework_CipherSMX_Func_3300 catch err: " + err
           );
-          expect(err.code == 401).assertTrue();
+          expect(err.code).assertEqual(401);
         }
         done();
       }

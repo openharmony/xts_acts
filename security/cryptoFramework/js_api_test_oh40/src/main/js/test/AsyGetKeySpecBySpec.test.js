@@ -373,19 +373,19 @@ export default function AsyGetKeySpecBySpecJsunit() {
                     );
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     rsaKeyPair.pubKey.getAsyKeySpec(1024);
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     rsaKeyPair.pubKey.getAsyKeySpec();
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -417,7 +417,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
                     );
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     rsaKeyPair.priKey.getAsyKeySpec(
@@ -426,19 +426,19 @@ export default function AsyGetKeySpecBySpecJsunit() {
                     );
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     rsaKeyPair.priKey.getAsyKeySpec(1024);
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     rsaKeyPair.priKey.getAsyKeySpec();
                     expect(null).assertFalse();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -489,7 +489,7 @@ export default function AsyGetKeySpecBySpecJsunit() {
                         console.error(
                             "Security_CryptoFramework_AsyKeySpec_Func_1000 catch err " + err
                         );
-                        expect(err.code == undefined).assertTrue();
+                        expect(err.code).assertEqual(undefined);
                     });
                 done();
             }
