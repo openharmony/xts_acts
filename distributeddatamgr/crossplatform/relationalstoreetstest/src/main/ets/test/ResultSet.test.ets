@@ -86,7 +86,7 @@ export default function rdbResultSetTest() {
     }
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_COLUMN_NAMES_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0550
      * @tc.name   : testResultSetColumnNames001
      * @tc.desc   : ResultSet columnNames test
      * @tc.size   : MediumTest
@@ -108,7 +108,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_COLUMN_COUNT_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0530
      * @tc.name   : testResultSetColumnCount001
      * @tc.desc   : ResultSet columnCount test
      * @tc.size   : MediumTest
@@ -130,7 +130,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_COLUMN_COUNT_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0540
      * @tc.name   : testResultSetColumnCount002
      * @tc.desc   : ResultSet columnCount test
      * @tc.size   : MediumTest
@@ -153,7 +153,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_ROW_COUNT_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1070
      * @tc.name   : testResultSetRowCount001
      * @tc.desc   : ResultSet rowCount test
      * @tc.size   : MediumTest
@@ -173,7 +173,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_ROW_COUNT_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0470
      * @tc.name   : testResultSetRowCount002
      * @tc.desc   : ResultSet rowCount test
      * @tc.size   : MediumTest
@@ -194,7 +194,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_ROW_COUNT_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0480
      * @tc.name   : testResultSetRowCount003
      * @tc.desc   : ResultSet rowCount test
      * @tc.size   : MediumTest
@@ -215,7 +215,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_ROW_COUNT_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1090
      * @tc.name   : testResultSetRowCount004
      * @tc.desc   : ResultSet rowCount test
      * @tc.size   : MediumTest
@@ -237,7 +237,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_ROW_INDEX_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0220
      * @tc.name   : testResultSetRowIndex001
      * @tc.desc   : ResultSet rowIndex test
      * @tc.size   : MediumTest
@@ -269,7 +269,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_ROW_INDEX_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0310
      * @tc.name   : testResultSetRowIndex002
      * @tc.desc   : ResultSet rowIndex test
      * @tc.size   : MediumTest
@@ -297,7 +297,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_FIRST_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0940
      * @tc.name   : testResultSetIsAtFirstRow001
      * @tc.desc   : ResultSet isAtFirstRow test
      * @tc.size   : MediumTest
@@ -329,7 +329,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_FIRST_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0450
      * @tc.name   : testResultSetIsAtFirstRow002
      * @tc.desc   : ResultSet isAtFirstRow test
      * @tc.size   : MediumTest
@@ -351,7 +351,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_FIRST_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0160
      * @tc.name   : testResultSetIsAtFirstRow003
      * @tc.desc   : ResultSet isAtFirstRow test
      * @tc.size   : MediumTest
@@ -384,7 +384,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_FIRST_ROW_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0290
      * @tc.name   : testResultSetIsAtFirstRow004
      * @tc.desc   : ResultSet isAtFirstRow test
      * @tc.size   : MediumTest
@@ -412,7 +412,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_FIRST_ROW_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0360
      * @tc.name   : testResultSetIsAtFirstRow005
      * @tc.desc   : ResultSet isAtFirstRow test
      * @tc.size   : MediumTest
@@ -445,7 +445,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_FIRST_ROW_0600
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0340
      * @tc.name   : testResultSetIsAtFirstRow006
      * @tc.desc   : ResultSet isAtFirstRow test
      * @tc.size   : MediumTest
@@ -478,7 +478,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_LAST_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0960
      * @tc.name   : testResultSetIsAtLastRow001
      * @tc.desc   : ResultSet isAtLastRow test
      * @tc.size   : MediumTest
@@ -506,7 +506,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_LAST_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0460
      * @tc.name   : testResultSetIsAtLastRow002
      * @tc.desc   : ResultSet isAtLastRow test
      * @tc.size   : MediumTest
@@ -528,7 +528,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_LAST_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0140
      * @tc.name   : testResultSetIsAtLastRow003
      * @tc.desc   : ResultSet isAtLastRow test
      * @tc.size   : MediumTest
@@ -561,7 +561,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_LAST_ROW_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0200
      * @tc.name   : testResultSetIsAtLastRow004
      * @tc.desc   : ResultSet isAtLastRow test
      * @tc.size   : MediumTest
@@ -593,7 +593,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_LAST_ROW_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0370
      * @tc.name   : testResultSetIsAtLastRow005
      * @tc.desc   : ResultSet isAtLastRow test
      * @tc.size   : MediumTest
@@ -626,7 +626,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_AT_LAST_ROW_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0350
      * @tc.name   : testResultSetIsAtLastRow006
      * @tc.desc   : ResultSet isAtLastRow test
      * @tc.size   : MediumTest
@@ -658,7 +658,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_ENDED_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0210
      * @tc.name   : testResultSetIsEnded001
      * @tc.desc   : ResultSet isEnded test
      * @tc.size   : MediumTest
@@ -693,7 +693,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_ENDED_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0300
      * @tc.name   : testResultSetIsEnded002
      * @tc.desc   : ResultSet isEnded test
      * @tc.size   : MediumTest
@@ -719,7 +719,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_ENDED_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0330
      * @tc.name   : testResultSetIsEnded003
      * @tc.desc   : ResultSet isEnded test
      * @tc.size   : MediumTest
@@ -739,7 +739,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_STARTED_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0500
      * @tc.name   : testResultSetIsStarted001
      * @tc.desc   : ResultSet isStarted test
      * @tc.size   : MediumTest
@@ -758,7 +758,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_STARTED_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0120
      * @tc.name   : testResultSetIsStarted002
      * @tc.desc   : ResultSet isStarted test
      * @tc.size   : MediumTest
@@ -778,7 +778,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_STARTED_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0380
      * @tc.name   : testResultSetIsStarted003
      * @tc.desc   : ResultSet isStarted test
      * @tc.size   : MediumTest
@@ -800,7 +800,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_CLOSED_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0110
      * @tc.name   : testResultSetIsClosed001
      * @tc.desc   : ResultSet isClosed test
      * @tc.size   : MediumTest
@@ -822,7 +822,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_CLOSED_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0490
      * @tc.name   : testResultSetIsClosed002
      * @tc.desc   : ResultSet isClosed test
      * @tc.size   : MediumTest
@@ -842,7 +842,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_CLOSED_0300
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0390
      * @tc.name   : testResultSetIsClosed003
      * @tc.desc   : ResultSet isClosed test
      * @tc.size   : MediumTest
@@ -863,7 +863,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_INDEX_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0660
      * @tc.name   : testResultSetGetColumnIndex001
      * @tc.desc   : ResultSet getColumnIndex test
      * @tc.size   : MediumTest
@@ -886,7 +886,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_INDEX_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0670
      * @tc.name   : testResultSetGetColumnIndex002
      * @tc.desc   : ResultSet getColumnIndex test
      * @tc.size   : MediumTest
@@ -909,7 +909,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_INDEX_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0650
      * @tc.name   : testResultSetGetColumnIndex003
      * @tc.desc   : ResultSet getColumnIndex test
      * @tc.size   : MediumTest
@@ -931,7 +931,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_NAME_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0690
      * @tc.name   : testResultSetGetColumnName001
      * @tc.desc   : ResultSet getColumnName test
      * @tc.size   : MediumTest
@@ -955,7 +955,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_NAME_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0710
      * @tc.name   : testResultSetGetColumnName002
      * @tc.desc   : ResultSet getColumnName test
      * @tc.size   : MediumTest
@@ -980,7 +980,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_NAME_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0680
      * @tc.name   : testResultSetGetColumnName003
      * @tc.desc   : ResultSet getColumnName test
      * @tc.size   : MediumTest
@@ -1003,7 +1003,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_COLUMN_NAME_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0700
      * @tc.name   : testResultSetGetColumnName004
      * @tc.desc   : ResultSet getColumnName test
      * @tc.size   : MediumTest
@@ -1027,7 +1027,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0130
      * @tc.name   : testResultSetGoTo001
      * @tc.desc   : ResultSet goTo test
      * @tc.size   : MediumTest
@@ -1053,7 +1053,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0100
      * @tc.name   : testResultSetGoTo002
      * @tc.desc   : ResultSet goTo test
      * @tc.size   : MediumTest
@@ -1078,7 +1078,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0170
      * @tc.name   : testResultSetGoTo003
      * @tc.desc   : ResultSet goTo test
      * @tc.size   : MediumTest
@@ -1105,7 +1105,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0240
      * @tc.name   : testResultSetGoTo004
      * @tc.desc   : ResultSet goTo test
      * @tc.size   : MediumTest
@@ -1132,7 +1132,7 @@ export default function rdbResultSetTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0190
      * @tc.name   : testResultSetGoToRow001
      * @tc.desc   : ResultSet goToRow test
      * @tc.size   : MediumTest
@@ -1159,7 +1159,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0440
      * @tc.name   : testResultSetGoToRow002
      * @tc.desc   : ResultSet goToRow test
      * @tc.size   : MediumTest
@@ -1186,7 +1186,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0230
      * @tc.name   : testResultSetGoToRow003
      * @tc.desc   : ResultSet goToRow test
      * @tc.size   : MediumTest
@@ -1215,7 +1215,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_ROW_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0280
      * @tc.name   : testResultSetGoToRow004
      * @tc.desc   : ResultSet goToRow test
      * @tc.size   : MediumTest
@@ -1243,7 +1243,7 @@ export default function rdbResultSetTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_FIRST_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0950
      * @tc.name   : testResultSetGoToFirstRow001
      * @tc.desc   : ResultSet goToFirstRow test
      * @tc.size   : MediumTest
@@ -1265,7 +1265,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_FIRST_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0400
      * @tc.name   : testResultSetGoToFirstRow002
      * @tc.desc   : ResultSet goToFirstRow test
      * @tc.size   : MediumTest
@@ -1287,7 +1287,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_FIRST_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0150
      * @tc.name   : testResultSetGoToFirstRow003
      * @tc.desc   : ResultSet goToFirstRow test
      * @tc.size   : MediumTest
@@ -1311,7 +1311,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_LAST_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0970
      * @tc.name   : testResultSetGoToLastRow001
      * @tc.desc   : ResultSet goToLastRow test
      * @tc.size   : MediumTest
@@ -1333,7 +1333,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_Last_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0410
      * @tc.name   : testResultSetGoToLastRow002
      * @tc.desc   : ResultSet goToLastRow test
      * @tc.size   : MediumTest
@@ -1355,7 +1355,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_Last_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0250
      * @tc.name   : testResultSetGoToLastRow003
      * @tc.desc   : ResultSet goToLastRow test
      * @tc.size   : MediumTest
@@ -1379,7 +1379,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_NEXT_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0980
      * @tc.name   : testResultSetGoToNextRow001
      * @tc.desc   : ResultSet goToNextRow test
      * @tc.size   : MediumTest
@@ -1400,7 +1400,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_NEXT_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0420
      * @tc.name   : testResultSetGoToNextRow002
      * @tc.desc   : ResultSet goToNextRow test
      * @tc.size   : MediumTest
@@ -1421,7 +1421,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_NEXT_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1080
      * @tc.name   : testResultSetGoToNextRow003
      * @tc.desc   : ResultSet goToNextRow test
      * @tc.size   : MediumTest
@@ -1445,7 +1445,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_NEXT_ROW_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0260
      * @tc.name   : testResultSetGoToNextRow004
      * @tc.desc   : ResultSet goToNextRow test
      * @tc.size   : MediumTest
@@ -1466,7 +1466,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_PREVIOUS_ROW_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0510
      * @tc.name   : testResultSetGoToPreviousRow001
      * @tc.desc   : ResultSet goToPreviousRow test
      * @tc.size   : MediumTest
@@ -1486,7 +1486,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_PREVIOUS_ROW_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0430
      * @tc.name   : testResultSetGoToPreviousRow002
      * @tc.desc   : ResultSet goToPreviousRow test
      * @tc.size   : MediumTest
@@ -1507,7 +1507,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_PREVIOUS_ROW_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0180
      * @tc.name   : testResultSetGoToPreviousRow003
      * @tc.desc   : ResultSet goToPreviousRow test
      * @tc.size   : MediumTest
@@ -1531,7 +1531,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GO_TO_PREVIOUS_ROW_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0270
      * @tc.name   : testResultSetGoToPreviousRow004
      * @tc.desc   : ResultSet goToPreviousRow test
      * @tc.size   : MediumTest
@@ -1554,7 +1554,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_BLOB_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0600
      * @tc.name   : testResultSetGetBlob001
      * @tc.desc   : ResultSet getBlob test
      * @tc.size   : MediumTest
@@ -1586,7 +1586,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_BLOB_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0610
      * @tc.name   : testResultSetGetBlob002
      * @tc.desc   : ResultSet getBlob test
      * @tc.size   : MediumTest
@@ -1619,7 +1619,7 @@ export default function rdbResultSetTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_STRING_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0850
      * @tc.name   : testResultSetGetString001
      * @tc.desc   : ResultSet getString test
      * @tc.size   : MediumTest
@@ -1647,7 +1647,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_STRING_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0860
      * @tc.name   : testResultSetGetString002
      * @tc.desc   : ResultSet getString test
      * @tc.size   : MediumTest
@@ -1675,7 +1675,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_STRING_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0880
      * @tc.name   : testResultSetGetString003
      * @tc.desc   : ResultSet getString test
      * @tc.size   : MediumTest
@@ -1703,7 +1703,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_STRING_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0870
      * @tc.name   : testResultSetGetString004
      * @tc.desc   : ResultSet getString test
      * @tc.size   : MediumTest
@@ -1735,7 +1735,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0840
      * @tc.name   : testResultSetGetLong001
      * @tc.desc   : ResultSet getLong test
      * @tc.size   : MediumTest
@@ -1765,7 +1765,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0790
      * @tc.name   : testResultSetGetLong002
      * @tc.desc   : ResultSet getLong test
      * @tc.size   : MediumTest
@@ -1794,7 +1794,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0800
      * @tc.name   : testResultSetGetLong003
      * @tc.desc   : ResultSet getLong test
      * @tc.size   : MediumTest
@@ -1823,7 +1823,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0820
      * @tc.name   : testResultSetGetLong004
      * @tc.desc   : ResultSet getLong test null
      * @tc.size   : MediumTest
@@ -1852,7 +1852,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0810
      * @tc.name   : testResultSetGetLong005
      * @tc.desc   : ResultSet getLong test err parameter
      * @tc.size   : MediumTest
@@ -1881,7 +1881,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_LONG_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0830
      * @tc.name   : testResultSetGetLong006
      * @tc.desc   : ResultSet getLong test err typr parameter
      * @tc.size   : MediumTest
@@ -1911,7 +1911,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0730
      * @tc.name   : testResultSetGetDouble001
      * @tc.desc   : ResultSet getDouble test
      * @tc.size   : MediumTest
@@ -1936,7 +1936,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0750
      * @tc.name   : testResultSetGetDouble002
      * @tc.desc   : ResultSet getDouble test
      * @tc.size   : MediumTest
@@ -1961,7 +1961,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0740
      * @tc.name   : testResultSetGetDouble003
      * @tc.desc   : ResultSet getDouble test
      * @tc.size   : MediumTest
@@ -1986,7 +1986,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0720
      * @tc.name   : testResultSetGetDouble004
      * @tc.desc   : ResultSet getDouble test
      * @tc.size   : MediumTest
@@ -2011,7 +2011,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0770
      * @tc.name   : testResultSetGetDouble005
      * @tc.desc   : ResultSet getDouble test null
      * @tc.size   : MediumTest
@@ -2043,7 +2043,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0760
      * @tc.name   : testResultSetGetDouble006 err parameter
      * @tc.desc   : ResultSet getDouble test
      * @tc.size   : MediumTest
@@ -2075,7 +2075,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_GET_DOUBLE_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0780
      * @tc.name   : testResultSetGetDouble007
      * @tc.desc   : ResultSet getDouble test err type parameter
      * @tc.size   : MediumTest
@@ -2107,7 +2107,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1060
      * @tc.name   : testResultSetIsColumnNull001
      * @tc.desc   : ResultSet isColumnNull test
      * @tc.size   : MediumTest
@@ -2134,7 +2134,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1010
      * @tc.name   : testResultSetIsColumnNull002
      * @tc.desc   : ResultSet isColumnNull test
      * @tc.size   : MediumTest
@@ -2159,7 +2159,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1030
      * @tc.name   : testResultSetIsColumnNull003
      * @tc.desc   : ResultSet isColumnNull test
      * @tc.size   : MediumTest
@@ -2185,7 +2185,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1040
      * @tc.name   : testResultSetIsColumnNull003
      * @tc.desc   : ResultSet isColumnNull test null
      * @tc.size   : MediumTest
@@ -2216,7 +2216,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1020
      * @tc.name   : testResultSetIsColumnNull005
      * @tc.desc   : ResultSet isColumnNull test err parameter
      * @tc.size   : MediumTest
@@ -2247,7 +2247,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_IS_COLUMN_NULL_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_1050
      * @tc.name   : testResultSetIsColumnNull006
      * @tc.desc   : ResultSet isColumnNull test err type parameter
      * @tc.size   : MediumTest
@@ -2279,7 +2279,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_CLOSE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0320
      * @tc.name   : testResultSetClose001
      * @tc.desc   : ResultSet close test
      * @tc.size   : MediumTest
@@ -2302,7 +2302,7 @@ export default function rdbResultSetTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RESULT_SET_CLOSE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0520
      * @tc.name   : testResultSetClose002
      * @tc.desc   : ResultSet close test
      * @tc.size   : MediumTest

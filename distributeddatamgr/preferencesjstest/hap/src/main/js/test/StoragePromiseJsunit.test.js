@@ -43,7 +43,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name clear promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Promise_0010
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0400
          * @tc.desc clear promise interface test
          */
         it('testClear0011', 0, async function (done) {
@@ -60,7 +60,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name has string interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0020
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1700
          * @tc.desc has string interface test
          */
         it('testHasKey0031', 0, async function (done) {
@@ -76,7 +76,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name has int interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0140
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1500
          * @tc.desc has int interface test
          */
         it('testHasKey0032', 0, async function (done) {
@@ -92,7 +92,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name has float interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0150
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1400
          * @tc.desc has float interface test
          */
         it('testHasKey0033', 0, async function (done) {
@@ -108,7 +108,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name has boolean interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0160
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1600
          * @tc.desc has boolean interface test
          */
         it('testHasKey0034', 0, async function (done) {
@@ -124,7 +124,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name has long interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0170
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1300
          * @tc.desc has long interface test
          */
         it('testHasKey0035', 0, async function (done) {
@@ -140,7 +140,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name get string promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0030
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0800
          * @tc.desc get string promise interface test
          */
         it('testGetDefValue0061', 0, async function (done) {
@@ -156,7 +156,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name get float promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0040
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0900
          * @tc.desc get float promise interface test
          */
         it('testGetFloat0071', 0, async function (done) {
@@ -173,7 +173,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name get int promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0050
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1000
          * @tc.desc get int promise interface test
          */
         it('testGetInt0081', 0, async function (done) {
@@ -190,7 +190,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name get long promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0060
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1100
          * @tc.desc get long promise interface test
          */
         it('testGetLong0091', 0, async function (done) {
@@ -207,7 +207,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name get String promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0070
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1200
          * @tc.desc get String promise interface test
          */
         it('testGetString101', 0, async function (done) {
@@ -225,7 +225,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name put boolean promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0090
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1900
          * @tc.desc put boolean promise interface test
          */
         it('testPutBoolean0121', 0, async function (done) {
@@ -243,7 +243,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name put float promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0100
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_2000
          * @tc.desc put float promise interface test
          */
         it('testPutFloat0131', 0, async function (done) {
@@ -261,7 +261,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name put int promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0110
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_2100
          * @tc.desc put int promise interface test
          */
         it('testPutInt0141', 0, async function (done) {
@@ -279,7 +279,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name put long promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0120
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_2200
          * @tc.desc put long promise interface test
          */
         it('testPutLong0151', 0, async function (done) {
@@ -298,7 +298,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name put String promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0130
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_2300
          * @tc.desc put String promise interface test
          */
         it('testPutString0161', 0, async function (done) {
@@ -317,7 +317,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name deleteSync promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0180
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_2500
          * @tc.desc deleteSync promise interface test
          */
         it('testPutString0171', 0, async function (done) {
@@ -335,7 +335,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name flush promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0190
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0600
          * @tc.desc flush promise interface test
          */
         it('testFlush00181', 0, async function (done) {
@@ -354,7 +354,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name Maximum length of key test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0200
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_1800
          * @tc.desc Maximum length of key test
          */
         it('testMaxLengthofKey0200', 0, async function (done) {
@@ -370,7 +370,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name Maximum length of value test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0210
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_2400
          * @tc.desc Maximum length of value test
          */
 
@@ -389,7 +389,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name Maximum length of value test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0220
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0300
          * @tc.desc Maximum length of value test
          */
 
@@ -407,7 +407,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name delete promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0230
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0500
          * @tc.desc delete promise interface test
          */
 
@@ -425,7 +425,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name Maximum length of key test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0240
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0200
          * @tc.desc Maximum length of key test
          */
         it('testMaxLengthofKey0240', 0, async function (done) {
@@ -442,7 +442,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name Maximum length of value test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0250
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0100
          * @tc.desc Maximum length of value test
          */
 
@@ -462,7 +462,7 @@ export default function storagePromiseTest() {
 
         /**
          * @tc.name get string promise interface test
-         * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0260
+         * @tc.number SUB_DistributedData_Preference_SDK_StorageJsApiPromiseTest_0700
          * @tc.desc get string promise interface test
          */
         it('testGetDefValue0260', 0, async function (done) {

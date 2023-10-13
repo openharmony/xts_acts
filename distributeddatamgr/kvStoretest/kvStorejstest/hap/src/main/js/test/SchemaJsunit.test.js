@@ -148,7 +148,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_TOJSONSTRING_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2100
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 001
      */
@@ -180,7 +180,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_TOJSONSTRING_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2200
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 002
      */
@@ -216,7 +216,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_TOJSONSTRING_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2300
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 003
      */
@@ -261,7 +261,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_TOJSONSTRING_0400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_2000
      * @tc.name [JS-API8]Schema.ToJsonString()
      * @tc.desc Test Js Api Schema.ToJsonString() testcase 004
      */
@@ -281,7 +281,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_ROOT_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1800
      * @tc.name [JS-API8]Schema.root
      * @tc.desc Test Js Api Schema.root testcase 001
      */
@@ -300,7 +300,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_INDEXES_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1500
      * @tc.name [JS-API8]Schema.indexes
      * @tc.desc Test Js Api Schema.indexes testcase 001
      */
@@ -318,7 +318,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_MODE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1700
      * @tc.name [JS-API8]Schema.mode
      * @tc.desc Test Js Api Schema.mode testcase 001
      */
@@ -337,7 +337,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_MODE_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1600
      * @tc.name [JS-API8]Schema.mode
      * @tc.desc Test Js Api Schema.mode testcase 002
      */
@@ -356,7 +356,7 @@ describe('schemaTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SCHEMA_SKIP_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1900
      * @tc.name [JS-API8]Schema.skip
      * @tc.desc Test Js Api Schema.skip testcase 001
      */

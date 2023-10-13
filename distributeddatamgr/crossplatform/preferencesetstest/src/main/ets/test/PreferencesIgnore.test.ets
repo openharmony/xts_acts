@@ -37,7 +37,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_GET_PREFERENCES_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0600
      * @tc.name   : testPreferencesGetPreferences001
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
@@ -66,7 +66,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0600
      * @tc.name   : testPreferencesDeletePreferences002
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -102,7 +102,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_PREFERENCES_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1500
      * @tc.name   : testPreferencesDeletePreferences003
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -140,7 +140,8 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_1000
+
      * @tc.name   : testRemovePreferencesFromCache002
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -175,7 +176,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0400
      * @tc.name   : testGetPreferencesHelper0003
      * @tc.desc   : GetPreferences interface test
      * @tc.size   : MediumTest
@@ -196,7 +197,8 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_PREFERENCES_HELPER_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1000
+
      * @tc.name   : testGetPreferencesHelper0004
      * @tc.desc   : GetPreferences interface test
      * @tc.size   : MediumTest
@@ -217,7 +219,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_1100
      * @tc.name   : testRemovePreferencesFromCacheHelper0002
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -239,7 +241,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_REMOVE_PREFERENCES_FROM_CACHE_HELPER_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_1200
      * @tc.name   : testRemovePreferencesFromCacheHelper0003
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -261,7 +263,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1700
      * @tc.name   : testPreferencesDeleteHelper0002
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -283,7 +285,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1900
      * @tc.name   : testPreferencesDeleteHelper0003
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -305,7 +307,7 @@ export default function preferencesIgnoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_DELETE_HELPER_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_2000
      * @tc.name   : testPreferencesDeleteHelper0004
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest

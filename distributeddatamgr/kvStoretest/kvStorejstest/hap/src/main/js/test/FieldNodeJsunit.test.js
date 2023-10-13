@@ -19,7 +19,7 @@ export default function fieldNodeTest(){
 describe('fieldNodeTest', function() {
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_APPENDCHILD_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0400
      * @tc.name [JS-API8]FieldNode.AppendChild().
      * @tc.desc Test Js Api FieldNode.AppendChild() testcase 001
      */
@@ -44,7 +44,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_APPENDCHILD_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0100
      * @tc.name [JS-API8]FieldNode.AppendChild().
      * @tc.desc Test Js Api FieldNode.AppendChild() testcase 002
      */
@@ -63,7 +63,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_APPENDCHILD_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0600
      * @tc.name [JS-API8]FieldNode.AppendChild().
      * @tc.desc Test Js Api FieldNode.AppendChild() testcase 003
      */
@@ -80,7 +80,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TOJSON_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0500
      * @tc.name [JS-API8]FieldNode.ToJson().
      * @tc.desc Test Js Api FieldNode.ToJson() testcase 001
      */
@@ -96,7 +96,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TOJSON_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0200
      * @tc.name [JS-API8]FieldNode.ToJson().
      * @tc.desc Test Js Api FieldNode.ToJson() testcase 002
      */
@@ -112,7 +112,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TOJSON_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0300
      * @tc.name [JS-API8]FieldNode.ToJson().
      * @tc.desc Test Js Api FieldNode.ToJson() testcase 003
      */
@@ -129,7 +129,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_DEFAULT_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0700
      * @tc.name [JS-API8]FieldNode.default.
      * @tc.desc Test Js Api FieldNode.default testcase 001
      */
@@ -146,7 +146,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_NULLABLE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0800
      * @tc.name [JS-API8]FieldNode.nullable.
      * @tc.desc Test Js Api FieldNode.nullable testcase 001
      */
@@ -163,7 +163,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TYPE_STRING_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1400
      * @tc.name [JS-API8]FieldNode.type.STRING
      * @tc.desc Test Js Api FieldNode.type testcase 001
      */
@@ -181,7 +181,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TYPE_INTEGER_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1300
      * @tc.name [JS-API8]FieldNode.type.INTEGER
      * @tc.desc Test Js Api FieldNode.type testcase 002
      */
@@ -199,7 +199,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TYPE_FLOAT_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1200
      * @tc.name [JS-API8]FieldNode.type.FLOAT
      * @tc.desc Test Js Api FieldNode.type testcase 003
      */
@@ -217,7 +217,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TYPE_BYTE_ARRAY_0400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1000
      * @tc.name [JS-API8]FieldNode.type.BYTE_ARRAY
      * @tc.desc Test Js Api FieldNode.type testcase 004
      */
@@ -235,7 +235,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TYPE_BOOLEAN_0500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0900
      * @tc.name [JS-API8]FieldNode.type.BOOLEAN
      * @tc.desc Test Js Api FieldNode.type testcase 005
      */
@@ -254,7 +254,7 @@ describe('fieldNodeTest', function() {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_FIELDNODE_TYPE_DOUBLE_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1100
      * @tc.name [JS-API8]FieldNode.type.DOUBLE
      * @tc.desc Test Js Api FieldNode.type testcase 006
      */

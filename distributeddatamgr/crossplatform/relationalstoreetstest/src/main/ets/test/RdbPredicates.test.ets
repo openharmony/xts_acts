@@ -125,7 +125,7 @@ export default function rdbPredicatesTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2800
      * @tc.name   : testRdbPredicatesConstructor001
      * @tc.desc   : Test the constructor method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -143,7 +143,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2770
      * @tc.name   : testRdbPredicatesConstructor002
      * @tc.desc   : Test the constructor() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -161,7 +161,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2780
      * @tc.name   : testRdbPredicatesConstructor003
      * @tc.desc   : Test the constructor() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -183,7 +183,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONSTRUCTOR_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2790
      * @tc.name   : testRdbPredicatesConstructor004
      * @tc.desc   : Test the constructor() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -205,7 +205,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1040
      * @tc.name   : testRdbPredicatesEqualTo001
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -227,7 +227,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1010
      * @tc.name   : testRdbPredicatesEqualTo002
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -249,7 +249,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1030
      * @tc.name   : testRdbPredicatesEqualTo003
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -271,7 +271,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1020
      * @tc.name   : testRdbPredicatesEqualTo004
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -293,7 +293,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1140
      * @tc.name   : testRdbPredicatesEqualTo005
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -315,7 +315,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1050
      * @tc.name   : testRdbPredicatesEqualTo006
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -337,7 +337,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1150
      * @tc.name   : testRdbPredicatesEqualTo007
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -359,7 +359,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1060
      * @tc.name   : testRdbPredicatesEqualTo008
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -382,7 +382,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1120
      * @tc.name   : testRdbPredicatesEqualTo009
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -408,7 +408,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1130
      * @tc.name   : testRdbPredicatesEqualTo010
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -434,7 +434,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1090
      * @tc.name   : testRdbPredicatesEqualTo011
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -456,7 +456,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1080
      * @tc.name   : testRdbPredicatesEqualTo012
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -480,7 +480,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1070
      * @tc.name   : testRdbPredicatesEqualTo013
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -502,7 +502,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_EQUALTO_1500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1110
      * @tc.name   : testRdbPredicatesEqualTo015
      * @tc.desc   : Test the equalTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -524,7 +524,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2520
      * @tc.name   : testRdbPredicatesNotEqualTo001
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -546,7 +546,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2760
      * @tc.name   : testRdbPredicatesNotEqualTo002
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -569,7 +569,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2510
      * @tc.name   : testRdbPredicatesNotEqualTo003
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -591,7 +591,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2500
      * @tc.name   : testRdbPredicatesNotEqualTo004
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -613,7 +613,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2570
      * @tc.name   : testRdbPredicatesNotEqualTo005
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -635,7 +635,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2530
      * @tc.name   : testRdbPredicatesNotEqualTo006
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -657,7 +657,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2630
      * @tc.name   : testRdbPredicatesNotEqualTo007
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -679,7 +679,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2540
      * @tc.name   : testRdbPredicatesNotEqualTo008
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -701,7 +701,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2600
      * @tc.name   : testRdbPredicatesNotEqualTo009
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -727,7 +727,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2610
      * @tc.name   : testRdbPredicatesNotEqualTo010
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -753,7 +753,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2580
      * @tc.name   : testRdbPredicatesNotEqualTo011
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -775,7 +775,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2560
      * @tc.name   : testRdbPredicatesNotEqualTo012
      * @tc.desc   : Test the testRdbPredicatesNotEqualTo012() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -798,7 +798,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2550
      * @tc.name   : testRdbPredicatesNotEqualTo013
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -820,7 +820,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_EQUALTO_1500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2620
      * @tc.name   : testRdbPredicatesNotEqualTo015
      * @tc.desc   : Test the notEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -842,7 +842,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0460
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap001
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -869,7 +869,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0510
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap002
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -891,7 +891,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0470
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap003
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -913,7 +913,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1000
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap004
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -935,7 +935,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0540
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap005
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -957,7 +957,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0500
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap006
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -983,7 +983,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0530
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap007
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1009,7 +1009,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0800
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0490
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap008
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1035,7 +1035,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_0900
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0480
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap009
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1057,7 +1057,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINWRAP_AND_ENDWRAP_1000
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0520
      * @tc.name   : testRdbPredicatesBeginWrapAndEndWrap010
      * @tc.desc   : Test the beginWrap() and endWrap() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1083,7 +1083,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0410
      * @tc.name   : testRdbPredicatesOr001
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1110,7 +1110,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0430
      * @tc.name   : testRdbPredicatesOr002
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1137,7 +1137,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0400
      * @tc.name   : testRdbPredicatesOr003
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1164,7 +1164,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0420
      * @tc.name   : testRdbPredicatesOr004
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1195,7 +1195,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0450
      * @tc.name   : testRdbPredicatesOr005
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1226,7 +1226,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OR_0600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0440
      * @tc.name   : testRdbPredicatesOr006
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1257,7 +1257,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0240
      * @tc.name   : testRdbPredicatesAnd001
      * @tc.desc   : Test the and() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1279,7 +1279,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0360
      * @tc.name   : testRdbPredicatesAnd002
      * @tc.desc   : Test the or() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1305,7 +1305,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0390
      * @tc.name   : testRdbPredicatesAnd003
      * @tc.desc   : Test the and() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1331,7 +1331,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0380
      * @tc.name   : testRdbPredicatesAnd004
      * @tc.desc   : Test the and() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1362,7 +1362,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0230
      * @tc.name   : testRdbPredicatesAnd005
      * @tc.desc   : Test the and() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1393,7 +1393,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_AND_0600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0370
      * @tc.name   : testRdbPredicatesAnd006
      * @tc.desc   : Test the and() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1417,7 +1417,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0860
      * @tc.name   : testRdbPredicatesContains001
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1437,7 +1437,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0780
      * @tc.name   : testRdbPredicatesContains002
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1457,7 +1457,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0790
      * @tc.name   : testRdbPredicatesContains003
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1477,7 +1477,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0800
      * @tc.name   : testRdbPredicatesContains004
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1497,7 +1497,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0830
      * @tc.name   : testRdbPredicatesContains005
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1517,7 +1517,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0810
      * @tc.name   : testRdbPredicatesContains006
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1539,7 +1539,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0700
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0820
      * @tc.name   : testRdbPredicatesContains007
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1561,7 +1561,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0850
      * @tc.name   : testRdbPredicatesContains008
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1585,7 +1585,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0840
      * @tc.name   : testRdbPredicatesContains009
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1606,7 +1606,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0870
      * @tc.name   : testRdbPredicatesContains010
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1630,7 +1630,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_CONTAINS_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0880
      * @tc.name   : testRdbPredicatesContains011
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1654,7 +1654,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0250
      * @tc.name   : testRdbPredicatesBeginsWith001
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1674,7 +1674,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0260
      * @tc.name   : testRdbPredicatesBeginsWith002
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1694,7 +1694,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0270
      * @tc.name   : testRdbPredicatesBeginsWith003
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1714,7 +1714,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0280
      * @tc.name   : testRdbPredicatesBeginsWith004
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1734,7 +1734,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0310
      * @tc.name   : testRdbPredicatesBeginsWith005
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1754,7 +1754,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0290
      * @tc.name   : testRdbPredicatesBeginsWith006
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1776,7 +1776,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0700
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0300
      * @tc.name   : testRdbPredicatesBeginsWith007
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1798,7 +1798,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0800
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0330
      * @tc.name   : testRdbPredicatesBeginsWith008
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1822,7 +1822,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_0900
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0320
      * @tc.name   : testRdbPredicatesBeginsWith009
      * @tc.desc   : Test the contains() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1842,7 +1842,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_1000
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0340
      * @tc.name   : testRdbPredicatesBeginsWith010
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1866,7 +1866,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BEGINSWITH_1100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0350
      * @tc.name   : testRdbPredicatesBeginsWith011
      * @tc.desc   : Test the beginsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1890,7 +1890,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0970
      * @tc.name   : testRdbPredicatesEndsWith001
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1910,7 +1910,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0890
      * @tc.name   : testRdbPredicatesEndsWith002
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1930,7 +1930,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0900
      * @tc.name   : testRdbPredicatesEndsWith003
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1950,7 +1950,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0910
      * @tc.name   : testRdbPredicatesEndsWith004
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1970,7 +1970,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0940
      * @tc.name   : testRdbPredicatesEndsWith005
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -1990,7 +1990,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0920
      * @tc.name   : testRdbPredicatesEndsWith006
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2012,7 +2012,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0930
      * @tc.name   : testRdbPredicatesEndsWith007
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2034,7 +2034,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0960
      * @tc.name   : testRdbPredicatesEndsWith008
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2058,7 +2058,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0950
      * @tc.name   : testRdbPredicatesEndsWith009
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2078,7 +2078,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0980
      * @tc.name   : testRdbPredicatesEndsWith010
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2102,7 +2102,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ENDSWITH_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0990
      * @tc.name   : testRdbPredicatesEndsWith011
      * @tc.desc   : Test the endsWith() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2126,7 +2126,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1810
      * @tc.name   : testRdbPredicatesIsNull001
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2146,7 +2146,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1800
      * @tc.name   : testRdbPredicatesIsNull002
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2166,7 +2166,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1840
      * @tc.name   : testRdbPredicatesIsNull003
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2186,7 +2186,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1830
      * @tc.name   : testRdbPredicatesIsNull004
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2206,7 +2206,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1820
      * @tc.name   : testRdbPredicatesIsNull005
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2226,7 +2226,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1850
      * @tc.name   : testRdbPredicatesIsNull006
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2247,7 +2247,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1780
      * @tc.name   : testRdbPredicatesIsNull007
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2268,7 +2268,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NULL_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1790
      * @tc.name   : testRdbPredicatesIsNull008
      * @tc.desc   : Test the isNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2289,7 +2289,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1710
      * @tc.name   : testRdbPredicatesIsNotNull001
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2309,7 +2309,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1700
      * @tc.name   : testRdbPredicatesIsNotNull002
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2329,7 +2329,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1740
      * @tc.name   : testRdbPredicatesIsNotNull003
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2349,7 +2349,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0400
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1730
      * @tc.name   : testRdbPredicatesIsNotNull004
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2369,7 +2369,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1720
      * @tc.name   : testRdbPredicatesIsNotNull005
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2389,7 +2389,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1750
      * @tc.name   : testRdbPredicatesIsNotNull006
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2413,7 +2413,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1680
      * @tc.name   : testRdbPredicatesIsNotNull007
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2437,7 +2437,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IS_NOT_NULL_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1690
      * @tc.name   : testRdbPredicatesIsNotNull008
      * @tc.desc   : Test the isNotNull() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2461,7 +2461,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2190
      * @tc.name   : testRdbPredicatesLike001
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2481,7 +2481,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2200
      * @tc.name   : testRdbPredicatesLike002
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2501,7 +2501,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0300
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2210
      * @tc.name   : testRdbPredicatesLike003
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2521,7 +2521,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2220
      * @tc.name   : testRdbPredicatesLike004
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2541,7 +2541,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2260
      * @tc.name   : testRdbPredicatesLike005
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2560,7 +2560,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2290
      * @tc.name   : testRdbPredicatesLike006
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2582,7 +2582,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2230
      * @tc.name   : testRdbPredicatesLike007
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2601,7 +2601,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2250
      * @tc.name   : testRdbPredicatesLike008
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2623,7 +2623,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2270
      * @tc.name   : testRdbPredicatesLike009
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2644,7 +2644,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2280
      * @tc.name   : testRdbPredicatesLike010
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2665,7 +2665,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIKE_1100
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2240
      * @tc.name   : testRdbPredicatesLike011
      * @tc.desc   : Test the like() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2685,7 +2685,7 @@ export default function rdbPredicatesTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1190
      * @tc.name   : testRdbPredicatesGlob001
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with ? by glob.
@@ -2708,7 +2708,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1210
      * @tc.name   : testRdbPredicatesGlob002
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin with ? by glob.
@@ -2731,7 +2731,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1230
      * @tc.name   : testRdbPredicatesGlob003
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin and end with ? by glob.
@@ -2754,7 +2754,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1180
      * @tc.name   : testRdbPredicatesGlob004
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with * by glob.
@@ -2777,7 +2777,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1200
      * @tc.name   : testRdbPredicatesGlob005
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin with * by glob.
@@ -2800,7 +2800,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1220
      * @tc.name   : testRdbPredicatesGlob006
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin and end with * by glob.
@@ -2823,7 +2823,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1170
      * @tc.name   : testRdbPredicatesGlob007
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with ? by glob.
@@ -2846,7 +2846,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1240
      * @tc.name   : testRdbPredicatesGlob008
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with ? by glob.
@@ -2869,7 +2869,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1260
      * @tc.name   : testRdbPredicatesGlob009
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with ? by glob.
@@ -2896,7 +2896,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1270
      * @tc.name   : testRdbPredicatesGlob010
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * End with ? by glob.
@@ -2923,7 +2923,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GLOB_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1250
      * @tc.name   : testRdbPredicatesGlob011
      * @tc.desc   : Test the glob() method of class RdbPredicates.
      * Begin and end with * by glob.
@@ -2946,7 +2946,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0700
      * @tc.name   : testRdbPredicatesBetween001
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2968,7 +2968,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0690
      * @tc.name   : testRdbPredicatesBetween002
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -2990,7 +2990,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0710
      * @tc.name   : testRdbPredicatesBetween003
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3012,7 +3012,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0730
      * @tc.name   : testRdbPredicatesBetween004
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3034,7 +3034,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0670
      * @tc.name   : testRdbPredicatesBetween005
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3056,7 +3056,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0660
      * @tc.name   : testRdbPredicatesBetween006
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3078,7 +3078,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0700
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0650
      * @tc.name   : testRdbPredicatesBetween007
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3100,7 +3100,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0800
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0740
      * @tc.name   : testRdbPredicatesBetween008
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3122,7 +3122,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_0900
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0570
      * @tc.name   : testRdbPredicatesBetween009
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3144,7 +3144,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1000
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0680
      * @tc.name   : testRdbPredicatesBetween010
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3167,7 +3167,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0550
      * @tc.name   : testRdbPredicatesBetween011
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3189,7 +3189,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0560
      * @tc.name   : testRdbPredicatesBetween012
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3211,7 +3211,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0590
      * @tc.name   : testRdbPredicatesBetween013
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3233,7 +3233,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0600
      * @tc.name   : testRdbPredicatesBetween014
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3255,7 +3255,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0610
      * @tc.name   : testRdbPredicatesBetween015
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3277,7 +3277,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0620
      * @tc.name   : testRdbPredicatesBetween016
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3299,7 +3299,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1700
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0630
      * @tc.name   : testRdbPredicatesBetween017
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3321,7 +3321,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0640
      * @tc.name   : testRdbPredicatesBetween018
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3343,7 +3343,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_1900
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0750
      * @tc.name   : testRdbPredicatesBetween004
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3365,7 +3365,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_2000
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0760
      * @tc.name   : testRdbPredicatesBetween020
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3387,7 +3387,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_2100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0580
      * @tc.name   : testRdbPredicatesBetween021
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3409,7 +3409,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_BETWEEN_2200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0770
      * @tc.name   : testRdbPredicatesBetween022
      * @tc.desc   : Test the between() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3431,7 +3431,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2330
      * @tc.name   : testRdbPredicatesNotBetween001
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3453,7 +3453,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2300
      * @tc.name   : testRdbPredicatesNotBetween002
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3475,7 +3475,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2360
      * @tc.name   : testRdbPredicatesNotBetween003
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3497,7 +3497,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2470
      * @tc.name   : testRdbPredicatesNotBetween004
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3519,7 +3519,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2340
      * @tc.name   : testRdbPredicatesNotBetween005
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3541,7 +3541,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2430
      * @tc.name   : testRdbPredicatesNotBetween006
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3567,7 +3567,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2320
      * @tc.name   : testRdbPredicatesNotBetween007
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3589,7 +3589,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2310
      * @tc.name   : testRdbPredicatesNotBetween008
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3611,7 +3611,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2420
      * @tc.name   : testRdbPredicatesNotBetween009
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3633,7 +3633,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2370
      * @tc.name   : testRdbPredicatesNotBetween010
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3655,7 +3655,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2380
      * @tc.name   : testRdbPredicatesNotBetween011
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3677,7 +3677,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2390
      * @tc.name   : testRdbPredicatesNotBetween012
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3699,7 +3699,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2400
      * @tc.name   : testRdbPredicatesNotBetween013
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3721,7 +3721,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1400
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2410
      * @tc.name   : testRdbPredicatesNotBetween014
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3743,7 +3743,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2490
      * @tc.name   : testRdbPredicatesNotBetween015
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3765,7 +3765,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2460
      * @tc.name   : testRdbPredicatesNotBetween016
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3787,7 +3787,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2450
      * @tc.name   : testRdbPredicatesNotBetween017
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3809,7 +3809,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2450
      * @tc.name   : testRdbPredicatesNotBetween017
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3831,7 +3831,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_1900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2350
      * @tc.name   : testRdbPredicatesNotBetween019
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3853,7 +3853,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_BETWEEN_2000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2480
      * @tc.name   : testRdbPredicatesNotBetween020
      * @tc.desc   : Test the notBetween() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3876,7 +3876,7 @@ export default function rdbPredicatesTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1310
      * @tc.name   : testRdbPredicatesGreaterThan001
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3898,7 +3898,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1290
      * @tc.name   : testRdbPredicatesGreaterThan002
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3920,7 +3920,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1340
      * @tc.name   : testRdbPredicatesGreaterThan003
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3942,7 +3942,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1440
      * @tc.name   : testRdbPredicatesGreaterThan004
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3964,7 +3964,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1320
      * @tc.name   : testRdbPredicatesGreaterThan005
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -3986,7 +3986,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1300
      * @tc.name   : testRdbPredicatesGreaterThan006
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4008,7 +4008,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1410
      * @tc.name   : testRdbPredicatesGreaterThan007
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4030,7 +4030,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1460
      * @tc.name   : testRdbPredicatesGreaterThan008
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4052,7 +4052,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1330
      * @tc.name   : testRdbPredicatesGreaterThan009
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4074,7 +4074,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1430
      * @tc.name   : testRdbPredicatesGreaterThan010
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4100,7 +4100,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1400
      * @tc.name   : testRdbPredicatesGreaterThan011
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4122,7 +4122,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1350
      * @tc.name   : testRdbPredicatesGreaterThan012
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4144,7 +4144,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1360
      * @tc.name   : testRdbPredicatesGreaterThan013
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4166,7 +4166,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1370
      * @tc.name   : testRdbPredicatesGreaterThan014
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4188,7 +4188,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1380
      * @tc.name   : testRdbPredicatesGreaterThan015
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4210,7 +4210,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1390
      * @tc.name   : testRdbPredicatesGreaterThan016
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4232,7 +4232,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1420
      * @tc.name   : testRdbPredicatesGreaterThan018
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4254,7 +4254,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_1900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1450
      * @tc.name   : testRdbPredicatesGreaterThan019
      * @tc.desc   : Test the greaterThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4276,7 +4276,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1910
      * @tc.name   : testRdbPredicatesLessThan001
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4298,7 +4298,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1870
      * @tc.name   : testRdbPredicatesLessThan002
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4320,7 +4320,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1930
      * @tc.name   : testRdbPredicatesLessThan003
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4342,7 +4342,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1970
      * @tc.name   : testRdbPredicatesLessThan004
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4364,7 +4364,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1880
      * @tc.name   : testRdbPredicatesLessThan005
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4386,7 +4386,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1920
      * @tc.name   : testRdbPredicatesLessThan006
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4408,7 +4408,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1960
      * @tc.name   : testRdbPredicatesLessThan007
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4430,7 +4430,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1900
      * @tc.name   : testRdbPredicatesLessThan008
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4452,7 +4452,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1940
      * @tc.name   : testRdbPredicatesLessThan009
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4478,7 +4478,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1950
      * @tc.name   : testRdbPredicatesLessThan010
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4500,7 +4500,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1890
      * @tc.name   : testRdbPredicatesLessThan012
      * @tc.desc   : Test the lessThan() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4522,7 +4522,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1490
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo001
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4544,7 +4544,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1480
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo002
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4566,7 +4566,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0300
+     * @tc.number : SUB_SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1520
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo003
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4588,7 +4588,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1540
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo004
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4610,7 +4610,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1550
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo005
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4632,7 +4632,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0700
+     * @tc.number :     SSUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1510
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo007
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4654,7 +4654,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2150
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo001
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4676,7 +4676,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1500
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo005
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4698,7 +4698,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GREATER_THAN_OR_EQUALT0_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1530
      * @tc.name   : testRdbPredicatesGreaterThanOrEqualTo006
      * @tc.desc   : Test the greaterThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4724,7 +4724,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2140
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo002
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4746,7 +4746,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1980
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo003
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4768,7 +4768,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2060
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo004
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4790,7 +4790,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2040
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo005
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4812,7 +4812,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1990
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo006
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4834,7 +4834,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2000
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo007
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4856,7 +4856,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2010
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo008
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4878,7 +4878,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2020
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo009
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4900,7 +4900,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2030
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo010
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4922,7 +4922,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2120
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo011
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4944,7 +4944,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2070
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo012
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4966,7 +4966,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2080
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo013
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -4988,7 +4988,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2090
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo014
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5010,7 +5010,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2100
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo015
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5032,7 +5032,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2110
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo016
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5054,7 +5054,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LESS_THAN_OR_EQUALT0_1700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2160
      * @tc.name   : testRdbPredicatesLessThanOrEqualTo017
      * @tc.desc   : Test the lessThanOrEqualTo() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5079,7 +5079,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_ASC_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2710
      * @tc.name   : testRdbPredicatesOrderByAsc001
      * @tc.desc   : Test the orderByAsc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5107,7 +5107,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_ASC_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2700
      * @tc.name   : testRdbPredicatesOrderByAsc002
      * @tc.desc   : Test the orderByAsc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5129,7 +5129,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_DESC_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2750
      * @tc.name   : testRdbPredicatesOrderByDesc001
      * @tc.desc   : Test the orderByDesc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5157,7 +5157,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_ORDER_BY_DESC_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2740
      * @tc.name   : testRdbPredicatesOrderByDesc002
      * @tc.desc   : Test the orderByDesc() and distinct() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5179,7 +5179,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0170
      * @tc.name   : testRdbPredicatesLimitAs001
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5199,7 +5199,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0180
      * @tc.name   : testRdbPredicatesLimitAs002
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5219,7 +5219,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0160
      * @tc.name   : testRdbPredicatesLimitAs003
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5239,7 +5239,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0190
      * @tc.name   : testRdbPredicatesLimitAs004
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5259,7 +5259,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0500
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0150
      * @tc.name   : testRdbPredicatesLimitAs005
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5279,7 +5279,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_LIMIT_AS_0600
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0140
      * @tc.name   : testRdbPredicatesLimitAs006
      * @tc.desc   : Test the limitAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5299,7 +5299,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0130
      * @tc.name   : testRdbPredicatesOffsetAs001
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5319,7 +5319,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0120
      * @tc.name   : testRdbPredicatesOffsetAs002
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5339,7 +5339,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0100
      * @tc.name   : testRdbPredicatesOffsetAs003
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5359,7 +5359,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_OFFSET_AS_0400
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0110
      * @tc.name   : testRdbPredicatesOffsetAs004
      * @tc.desc   : Test the offsetAs() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5380,7 +5380,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GROUP_BY_0100
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0210
      * @tc.name   : testRdbPredicatesGroupBy001
      * @tc.desc   : Test the groupBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5401,7 +5401,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GROUP_BY_0200
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0200
      * @tc.name   : testRdbPredicatesGroupBy002
      * @tc.desc   : Test the groupBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5422,7 +5422,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_GROUP_BY_0300
+     * @tc.number :SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_0220
      * @tc.name   : testRdbPredicatesGroupBy003
      * @tc.desc   : Test the groupBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5447,7 +5447,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_INDEXED_BY_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1650
      * @tc.name   : testRdbPredicatesIndexedBy001
      * @tc.desc   : Test the indexedBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5473,7 +5473,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_INDEXED_BY_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1640
      * @tc.name   : testRdbPredicatesIndexedBy002
      * @tc.desc   : Test the indexedBy() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5496,7 +5496,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1610
      * @tc.name   : testRdbPredicatesIn001
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5517,7 +5517,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1580
      * @tc.name   : testRdbPredicatesIn002
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5538,7 +5538,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1590
      * @tc.name   : testRdbPredicatesIn003
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5559,7 +5559,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1600
      * @tc.name   : testRdbPredicatesIn004
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5580,7 +5580,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0500
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1620
      * @tc.name   : testRdbPredicatesIn005
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5601,7 +5601,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_IN_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_1570
      * @tc.name   : testRdbPredicatesIn006
      * @tc.desc   : Test the in() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5627,7 +5627,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2660
      * @tc.name   : testRdbPredicatesNotIn001
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5648,7 +5648,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2670
      * @tc.name   : testRdbPredicatesNotIn002
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5669,7 +5669,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2650
      * @tc.name   : testRdbPredicatesNotIn003
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5690,7 +5690,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2680
      * @tc.name   : testRdbPredicatesNotIn004
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest
@@ -5711,7 +5711,7 @@ export default function rdbPredicatesTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_PREDICATES_NOT_IN_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_PredicateJsAPITest_2690
      * @tc.name   : testRdbPredicatesNotIn005
      * @tc.desc   : Test the notIn() method of class RdbPredicates.
      * @tc.size   : MediumTest

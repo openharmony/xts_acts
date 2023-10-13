@@ -145,7 +145,7 @@ export default function rdbStoreQuerySqlTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0970
      * @tc.name   : testRdbStoreQuerySql001
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -178,7 +178,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1010
      * @tc.name   : testRdbStoreQuerySql002
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -211,7 +211,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0980   8
      * @tc.name   : testRdbStoreQuerySql003
      * @tc.desc   : RdbStore querySql promise test
      * @tc.size   : MediumTest
@@ -236,7 +236,7 @@ export default function rdbStoreQuerySqlTest() {
       console.info(TAG + "testRdbStoreQuerySql003 end.");
     });
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1020
      * @tc.name   : testRdbStoreQuerySql004
      * @tc.desc   : RdbStore querySql promise test
      * @tc.size   : MediumTest
@@ -262,7 +262,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0990
      * @tc.name   : testRdbStoreQuerySql005
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
@@ -293,7 +293,7 @@ export default function rdbStoreQuerySqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_QUERY_SQL_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1000
      * @tc.name   : testRdbStoreQuerySql006
      * @tc.desc   : RdbStore querySql callback test
      * @tc.size   : MediumTest
