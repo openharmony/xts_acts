@@ -17,7 +17,9 @@ import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
+const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 const photoType = photoAccessHelper.PhotoType;
 const photoKeys = photoAccessHelper.PhotoKeys;
 const albumKeys = photoAccessHelper.AlbumKeys;
@@ -224,6 +226,14 @@ export function checkSystemAlbum(expect, testNum, album, expectedSubType) : void
     console.info(`Failed to delete all user albums! error: ${error}`);
     throw error;
   }
+}
+
+export async function startAbility(bundleName: string, abilityName: string) : Promise<void> {
+  await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
+    console.info(`[picker] start abilityFinished: ${result}`);
+  }).catch(err => {
+    console.error(`[picker] start abilityFailed: ${err}`);
+  });
 }
 
 export {
