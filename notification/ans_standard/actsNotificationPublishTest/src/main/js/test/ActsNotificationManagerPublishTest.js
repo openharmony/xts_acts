@@ -17,11 +17,28 @@ import notificationManager from '@ohos.notificationManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import wantAgent from '@ohos.app.ability.wantAgent'
+import hilog from '@ohos.hilog';
+const TEST_SUITE_NAME = 'testPublishInloveFail'
 
 export default function ActsNotificationManagerPublishTest() {
   describe('SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST', function () {
     let TAG = 'SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST START')
+
+    class Utils {
+      static info(str){
+        hilog.info(0,'bms test',str)
+      }
+      static sleep(time){
+        return new Promise((resolve,reject) => {
+          setTimeout((data) => {
+            resolve(data)
+          },time)
+        }).then(() => {
+          console.info(`sleep ${time} over...`)
+        })
+      }
+    }
 
     /*
      * @tc.number    : Sub_Notification_Ans_Publish_Cancel_3200
@@ -49,7 +66,6 @@ export default function ActsNotificationManagerPublishTest() {
         expect(false).assertTrue()
         done()
       }
-
       console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3200 END`)
     })
 
@@ -599,6 +615,961 @@ export default function ActsNotificationManagerPublishTest() {
       })
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_SUPPORT_TEST_0400 END`)
     })
+
+    /*
+      * @tc.number: Sub_Notification_Ans_Publish_Publish_0110
+      * @tc.name: testPublishTitleForNull
+      * @tc.desc: test publish fail
+   */
+    it('testPublishTitleForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishTitleNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          normal: {
+            title: '',
+            text: 'test_text',
+            additionalText: 'text_additionalText'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :%{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+      * @tc.number: Sub_Notification_Ans_Publish_Publish_0210
+      * @tc.name: testPublishTextForNull
+      * @tc.desc: test publish fail
+   */
+    it('testPublishTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishTextForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          normal: {
+            title: 'text',
+            text: '',
+            additionalText: 'text_additionalText'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+      * @tc.number: Sub_Notification_Ans_Publish_Publish_0310
+      * @tc.name: testPublishadditionalTextForNull
+      * @tc.desc: test publish success
+   */
+    it('testPublishadditionalTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishadditionalTextForNull';
+      function requestEnableNotificationCallback(err) {
+        if (err) {
+          console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info("requestEnableNotification success");
+        }
+      };
+
+      notificationManager.requestEnableNotification(requestEnableNotificationCallback);
+
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          normal: {
+            title: 'text_title',
+            text: 'text_text',
+            additionalText: ''
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (data) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
+          expect(data).assertEqual(null);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect().assertFail();
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_0410
+     * @tc.name: testPublishLongtextTitleForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishLongtextTitleForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextTitleForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: '',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            longText: 'text_longText',
+            briefText: 'text_briefText',
+            expandedTitle: 'text_exoandTitle'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        await Utils.sleep(2500);
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_0510
+     * @tc.name: testPublishLongtextTextForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishLongtextTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextTextForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: 'text_title',
+            text: '',
+            additionalText: 'text_additionalText',
+            longText: 'text_longText',
+            briefText: 'text_briefText',
+            expandedTitle: 'text_exoandTitle'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+    * @tc.number: Sub_Notification_Ans_Publish_Publish_0610
+    * @tc.name: testPublishLongtextadditionalTextForNull
+    * @tc.desc: test publish success
+ */
+    it("testPublishLongtextadditionalTextForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextadditionalTextForNull';
+
+      function requestEnableNotificationCallback(err) {
+        if (err) {
+          console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info("requestEnableNotification success");
+        }
+      };
+
+      notificationManager.requestEnableNotification(requestEnableNotificationCallback);
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: 'text_title',
+            text: 'text_text',
+            additionalText: '',
+            longText: 'text_longText',
+            briefText: 'text_briefText',
+            expandedTitle: 'text_exoandTitle'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        await Utils.sleep(2500);
+        notificationManager.publish(notificationRequest, (data) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
+          expect(data).assertEqual(null);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_0710
+     * @tc.name: testPublishLongtextLongTextForNull
+     * @tc.desc: test publish fail
+  */
+    it(" testPublishLongtextLongTextForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextLongTextForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: 'title',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            longText: '',
+            briefText: 'text_briefText',
+            expandedTitle: 'text_expandedTitle'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_0810
+     * @tc.name: testPublishLongtextBriefTextForNull
+     * @tc.desc: test publish fail
+  */
+    it("testPublishLongtextBriefTextForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextBriefTextForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: 'title',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            longText: 'text_longText',
+            briefText: '',
+            expandedTitle: 'text_expandTitle'
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_0910
+     * @tc.name: testPublishLongtextExpandedTitleForNull
+     * @tc.desc: test publish fail
+  */
+    it("testPublishLongtextExpandedTitleForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextExpandedTitleForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          longText: {
+            title: 'title',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            longText: 'text_longText',
+            briefText: 'text_briefText',
+            expandedTitle: ''
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1010
+     * @tc.name: testPublishmultiLineTitleForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishmultiLineTitleForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishmultiLineTitleForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          multiLine: {
+            title: '',
+            text: 'test_text',
+            additionalText: 'text_additionalText',
+            briefText: 'text_briefText',
+            longTitle: 'text_longtitle',
+            lines: ['text_lines'],
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertEqual(null);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is :', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1110
+     * @tc.name: testPublishmultiLineTextForNull
+     * @tc.desc: test publish fail
+  */
+    it(" testPublishmultiLineTextForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishmultiLineTextForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          multiLine: {
+            title: 'text_title',
+            text: '',
+            additionalText: 'text_additionalText',
+            briefText: 'text_briefText',
+            longTitle: 'text_longtitle',
+            lines: ['text_lines'],
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1210
+     * @tc.name: testPublishmultiLineadditionalTextForNull
+     * @tc.desc: test publish success
+  */
+    it(" testPublishmultiLineadditionalTextForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishLongtextTitleForNull';
+      function requestEnableNotificationCallback(err) {
+        if (err) {
+          console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info("requestEnableNotification success");
+        }
+      };
+
+      notificationManager.requestEnableNotification(requestEnableNotificationCallback);
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          multiLine: {
+            title: 'text_title',
+            text: 'text_text',
+            additionalText: '',
+            briefText: 'text_briefText',
+            longTitle: 'text_longtitle',
+            lines: ['text_lines'],
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        await Utils.sleep(2500);
+        notificationManager.publish(notificationRequest, (data) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
+          expect(data).assertEqual(null);
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1310
+     * @tc.name: testPublishmultiLinebriefTextForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishmultiLinebriefTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishmultiLinebriefTextForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          multiLine: {
+            title: 'text_title',
+            text: 'text_text',
+            additionalText: 'text_additionalText',
+            briefText: '',
+            longTitle: 'text_longTitle',
+            lines: ['text_lines'],
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1410
+     * @tc.name: testPublishmultiLinelongTitleForNull
+     * @tc.desc: test publish fail
+  */
+    it(" testPublishmultiLinelongTitleForNull", 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishmultiLinelongTitleForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          multiLine: {
+            title: 'text_title',
+            text: 'text_text',
+            additionalText: 'text_additionalText',
+            briefText: 'text_briefText',
+            longTitle: '',
+            lines: ['text_lines'],
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{publish}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{publish}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1510
+     * @tc.name: testPublishmultiLineLinesForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishmultiLineLinesForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishmultiLineLinesForNull';
+      let notificationRequest = {
+        id: 1,
+        content: {
+          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          multiLine: {
+            title: 'text_title',
+            text: 'text_text',
+            additionalText: 'text_additionalText',
+            briefText: 'text_briefText',
+            longTitle: 'text_longTitle',
+            lines: null,
+          }
+        }
+      }
+      hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+      try {
+        notificationManager.publish(notificationRequest, (err) => {
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+          expect().assertFail();
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+          done();
+        })
+      } catch (err) {
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+        done();
+      }
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1610
+     * @tc.name: testPublishPictureTitleForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishPictureTitleForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishPictureTitleForNull';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (var i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch(err => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest = {
+            id: 1,
+            content: {
+              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              picture: {
+                title: '',
+                text: 'text_text',
+                additionalText: 'text_additionalText',
+                briefText: 'text_briefText',
+                expandedTitle: 'text_expand',
+                picture: pixelmap
+              }
+            }
+          }
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+          try {
+            notificationManager.publish(notificationRequest, (err) => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+              expect().assertFail();
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+              done();
+            })
+          } catch (err) {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+            done();
+          }
+        })
+    })
+
+    /*
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_1710
+     * @tc.name: testPublishPictureTextForNull
+     * @tc.desc: test publish fail
+  */
+    it('testPublishPictureTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishPictureTextForNull';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (var i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch(err => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest = {
+            id: 1,
+            content: {
+              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              picture: {
+                title: 'text_title',
+                text: '',
+                additionalText: 'text_additionalText',
+                briefText: 'text_briefText',
+                expandedTitle: 'text_expand',
+                picture: pixelmap
+              }
+            }
+          }
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+          try {
+            notificationManager.publish(notificationRequest, (err) => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+              expect().assertFail();
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+              done();
+            })
+          } catch (err) {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+            done();
+          }
+        })
+    });
+
+    /*
+       * @tc.number: Sub_Notification_Ans_Publish_Publish_1810
+       * @tc.name: testPublishPictureadditionalTextForNull
+       * @tc.desc: test publish success
+    */
+    it('testPublishPictureadditionalTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishPictureadditionalTextForNull';
+      function requestEnableNotificationCallback(err) {
+        if (err) {
+          console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info("requestEnableNotification success");
+        }
+      };
+      notificationManager.requestEnableNotification(requestEnableNotificationCallback);
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (var i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch(err => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest = {
+            id: 1,
+            content: {
+              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              picture: {
+                title: 'text_title',
+                text: 'text_text',
+                additionalText: '',
+                briefText: 'text_briefText',
+                expandedTitle: 'text_expand',
+                picture: pixelmap
+              }
+            }
+          }
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+          try {
+            await Utils.sleep(2500);
+            notificationManager.publish(notificationRequest, (data) => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(data));
+              expect(data).assertEqual(null);
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+              done();
+            })
+          } catch (err) {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+            done();
+          }
+        })
+    })
+
+    /*
+    * @tc.number: Sub_Notification_Ans_Publish_Publish_1910
+    * @tc.name: testPublishPicturebriefTextForNull
+    * @tc.desc: test publish fail
+ */
+    it('testPublishPicturebriefTextForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishPicturebriefTextForNull';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (var i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch(err => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest = {
+            id: 1,
+            content: {
+              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              picture: {
+                title: 'text_title',
+                text: 'text_text',
+                additionalText: 'text_additionalText',
+                briefText: '',
+                expandedTitle: 'text_expandedTitle',
+                picture: pixelmap
+              }
+            }
+          }
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+          try {
+            notificationManager.publish(notificationRequest, (err) => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+              expect().assertFail();
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+              done();
+            })
+          } catch (err) {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+            done();
+          }
+        })
+    })
+    /*
+  * @tc.number: Sub_Notification_Ans_Publish_Publish_2010
+  * @tc.name: testPublishPictureExpandedTitleForNull
+  * @tc.desc: test publish fail
+*/
+    it('testPublishPictureExpandedTitleForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishPictureExpandedTitleForNull';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (var i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch(err => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest = {
+            id: 1,
+            content: {
+              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              picture: {
+                title: 'text_title',
+                text: 'text_text',
+                additionalText: 'text_additionalText',
+                briefText: 'text_briefText',
+                expandedTitle: '',
+                picture: pixelmap
+              }
+            }
+          }
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+          try {
+            notificationManager.publish(notificationRequest, (err) => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+              expect().assertFail();
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+              done();
+            })
+          } catch (err) {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+            done();
+          }
+        })
+    })
+
+
+    /*
+         * @tc.number: Sub_Notification_Ans_Publish_Publish_2110
+         * @tc.name: testPublishPicturepictureForNull
+         * @tc.desc: test publish fail
+     */
+    it('testPublishPictureExpandedTitleForNull', 0, async function (done) {
+      const TEST_CASE_NAME = 'testPublishPicturepictureForNull';
+
+      const color = new ArrayBuffer(60000);
+      let bufferArr = new Uint8Array(color);
+      for (var i = 0; i < bufferArr.byteLength; i++) {
+        bufferArr[i++] = 60;
+        bufferArr[i++] = 20;
+        bufferArr[i++] = 220;
+        bufferArr[i] = 100;
+      }
+      let opts = {
+        editable: true, pixelFormat: 2, size: {
+          height: 100, width: 150
+        }
+      };
+      await image
+        .createPixelMap(color, opts)
+        .then(async (pixelmap) => {
+          await pixelmap.getImageInfo().then(imageInfo => {
+            console.log("=====size: ====" + JSON.stringify(imageInfo.size));
+          }).catch(err => {
+            console.error("Failed to obtain the image pixel map information." + JSON.stringify(err));
+            return;
+          })
+          let notificationRequest = {
+            id: 1,
+            content: {
+              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              picture: {
+                title: 'text_title',
+                text: 'text_text',
+                additionalText: 'text_additionalText',
+                briefText: 'text_briefText',
+                expandedTitle: 'text_expandTitle',
+                picture: null
+              }
+            }
+          }
+          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case start`);
+          try {
+            notificationManager.publish(notificationRequest, (err) => {
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+              expect().assertFail();
+              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+              done();
+            })
+          } catch (err) {
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME}` + 'publish fail,result is : %{public}s', JSON.stringify(err));
+            expect(err.code).assertEqual(401);
+            hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} test case end`);
+            done();
+          }
+        })
+    })
+
+
 
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_Publish_TEST END')
   })

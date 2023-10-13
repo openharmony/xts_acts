@@ -31,6 +31,7 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_LOCKED_BOOT_COMPLETED).assertEqual('usual.event.LOCKED_BOOT_COMPLETED')
       expect(commonEventManager.Support.COMMON_EVENT_SHUTDOWN).assertEqual('usual.event.SHUTDOWN')
       expect(commonEventManager.Support.COMMON_EVENT_BATTERY_CHANGED).assertEqual('usual.event.BATTERY_CHANGED')
+      expect(commonEventManager.Support.COMMON_EVENT_CONNECTIVITY_CHANGE).assertEqual('usual.event.CONNECTIVITY_CHANGE')
       console.info(`${TAG} Sub_Notification_Ces_Publish_Support_0100 END`)
     })
 
