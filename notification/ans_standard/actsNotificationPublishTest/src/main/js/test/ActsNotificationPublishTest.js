@@ -105,12 +105,12 @@ export default function ActsNotificationPublishTest() {
 
     
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8300
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8300', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8300 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -145,17 +145,17 @@ export default function ActsNotificationPublishTest() {
         }
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8300 END`)
     })
 
     
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8350
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8350', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8350 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -188,16 +188,16 @@ export default function ActsNotificationPublishTest() {
         done()
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8350 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8400
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8400', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8400 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
@@ -240,16 +240,16 @@ export default function ActsNotificationPublishTest() {
         }
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8400 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8450
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8450', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8450 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
@@ -290,16 +290,16 @@ export default function ActsNotificationPublishTest() {
         done()
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8450 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8500
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8500', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8500 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
@@ -342,16 +342,16 @@ export default function ActsNotificationPublishTest() {
         }
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8500 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8550
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8550', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8550 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
@@ -392,16 +392,16 @@ export default function ActsNotificationPublishTest() {
         done()
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8550 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_8600
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100 START`)
+    it('Sub_Notification_Ans_Publish_Publish_8600', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8600 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -447,16 +447,16 @@ export default function ActsNotificationPublishTest() {
         }
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_8600 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_0150
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : Publishes a notification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200 START`)
+    it('Sub_Notification_Ans_Publish_Publish_0150', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_0150 START`)
       let notificationRequest = {
         content: {
           contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
@@ -500,7 +500,7 @@ export default function ActsNotificationPublishTest() {
         done()
       })
 
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_0150 END`)
     })
 
     /*
@@ -549,12 +549,12 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_2850
      * @tc.name      : function cancel(id: number, label: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0100 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_2850', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2850 START`)
       let id = 1
       let label = "label"
       await notification.cancel(id, label, (err) => {
@@ -568,16 +568,16 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2850 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_2900
      * @tc.name      : function cancel(id: number, label: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified label and ID
      */
-    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0100 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_2900', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2850 START`)
       let id = 1
       let label = "label"
       await notification.cancel(id, label).then(() => {
@@ -589,16 +589,16 @@ export default function ActsNotificationPublishTest() {
         expect(true).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2850 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0300
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_2950
      * @tc.name      : function cancel(id: number, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels a notification with the specified ID
      */
-    it('SUB_NOTIFICATION_ANS_CANCEL_TEST_0300', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0300 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_2950', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2950 START`)
       let id = 1
       await notification.cancel(id, (err) => {
         if (err.code) {
@@ -611,7 +611,7 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_TEST_0300 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2950 END`)
     })
 
     /*
@@ -701,12 +701,12 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCELAll_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_3000
      * @tc.name      : function cancelAll(callback: AsyncCallback<void>): void
      * @tc.desc      : Cancels all notifications of the current application
      */
-    it('SUB_NOTIFICATION_ANS_CANCELAll_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0100 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_3000', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3000 START`)
       await notification.cancelAll((err) => {
         if (err.code) {
           console.info(`${TAG} cancelAll AsyncCallback err: ${err.code}`)
@@ -718,16 +718,16 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3000 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCELAll_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_3050
      * @tc.name      : function cancelAll(): Promise<void>
      * @tc.desc      : Cancels all notifications of the current application
      */
-    it('SUB_NOTIFICATION_ANS_CANCELAll_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0200 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_3050', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3050 START`)
       await notification.cancelAll().then(() => {
         console.info(`${TAG} cancelAll Promise success`)
         expect(true).assertTrue()
@@ -737,7 +737,7 @@ export default function ActsNotificationPublishTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCELAll_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_3050 END`)
     })
 
     /*
@@ -760,12 +760,12 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_2650
      * @tc.name      : function cancelGroup(groupName: string, callback: AsyncCallback<void>): void
      * @tc.desc      : Cancel the notification of a specified group for this application
      */
-    it('SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0100 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_2650', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2650 START`)
       let groupName = "groupName"
       await notification.cancelGroup(groupName, (err) => {
         if (err.code) {
@@ -778,16 +778,16 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2650 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Publish_Cancel_2750
      * @tc.name      : function cancelGroup(groupName: string): Promise<void>
      * @tc.desc      : Cancel the notification of a specified group for this application
      */
-    it('SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0200 START`)
+    it('Sub_Notification_Ans_Publish_Cancel_2750', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2750 START`)
       let groupName = "groupName"
       await notification.cancelGroup(groupName).then(() => {
         console.info(`${TAG} cancelGroup Promise success`)
@@ -798,7 +798,7 @@ export default function ActsNotificationPublishTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_CANCEL_GROUP_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Cancel_2750 END`)
     })
 
     /*
@@ -841,12 +841,12 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Enable_Query_2700
      * @tc.name      : function requestEnableNotification(callback: AsyncCallback<void>): void
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0100 START`)
+    it('Sub_Notification_Ans_Enable_Query_2700', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2700 START`)
       await notification.requestEnableNotification((err) => {
         if (err.code) {
           console.info(`${TAG} requestEnableNotification AsyncCallback err: ${err.code}`)
@@ -858,16 +858,16 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2700 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Enable_Query_2800
      * @tc.name      : function requestEnableNotification(): Promise<void>
      * @tc.desc      : OperationType.UNKNOWN_TYPE & WantAgentFlags.ONE_TIME_FLAG
      */
-    it('SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0200 START`)
+    it('Sub_Notification_Ans_Enable_Query_2800', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 START`)
       await notification.requestEnableNotification().then(() => {
         console.info(`${TAG} requestEnableNotification Promise success`)
         expect(true).assertTrue()
@@ -877,7 +877,7 @@ export default function ActsNotificationPublishTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_ENABLE_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Enable_Query_2800 END`)
     })
 
     /*
@@ -900,11 +900,11 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Distributed_Search_0600
      * @tc.name      : function getActiveNotificationCount(callback: AsyncCallback<number>): void
      * @tc.desc      : Obtains the number of all active notifications
      */
-    it('SUB_NOTIFICATION_ANS_COUNT_TEST_0100', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_0600', 0, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_ACTIVE_COUNT_TEST_0100 START`)
       await notification.getActiveNotificationCount((err, data) => {
         if (err.code) {
@@ -917,15 +917,15 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_0600 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Distributed_Search_0700
      * @tc.name      : function getActiveNotificationCount(): Promise<number>
      * @tc.desc      : Obtains the number of all active notifications
      */
-    it('SUB_NOTIFICATION_ANS_COUNT_TEST_0200', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_0700', 0, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_ACTIVE_COUNT_TEST_0200 START`)
       await notification.getActiveNotificationCount().then((data) => {
         console.info(`${TAG} getActiveNotificationCount Promise success :${JSON.stringify(data)}`)
@@ -936,15 +936,15 @@ export default function ActsNotificationPublishTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_0700 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_0300
+     * @tc.number    : Sub_Notification_Ans_Distributed_Search_0800
      * @tc.name      : function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void
      * @tc.desc      : Obtains an array of active notifications
      */
-    it('SUB_NOTIFICATION_ANS_COUNT_TEST_0300', 0, async function (done) {
+    it('Sub_Notification_Ans_Distributed_Search_0800', 0, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_ACTIVE_COUNT_TEST_0300 START`)
       await notification.getActiveNotifications((err, data) => {
         if (err.code) {
@@ -957,16 +957,16 @@ export default function ActsNotificationPublishTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0300 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_0800 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_COUNT_TEST_0400
+     * @tc.number    : Sub_Notification_Ans_Distributed_Search_0900
      * @tc.name      : function getActiveNotifications(): Promise<Array<NotificationRequest>>
      * @tc.desc      : Obtains an array of active notifications
      */
-    it('SUB_NOTIFICATION_ANS_COUNT_TEST_0400', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0400 START`)
+    it('Sub_Notification_Ans_Distributed_Search_0900', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_0900 START`)
       await notification.getActiveNotifications().then((data) => {
         console.info(`${TAG} getActiveNotifications Promise success :${JSON.stringify(data)}`)
         expect(true).assertTrue()
@@ -976,7 +976,7 @@ export default function ActsNotificationPublishTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_COUNT_TEST_0400 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_Search_0900 END`)
     })
 
     /*
@@ -1040,12 +1040,12 @@ export default function ActsNotificationPublishTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_SUPPORT_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Distributed_template_0600
      * @tc.name      : function isSupportTemplate(templateName: string): Promise<boolean>
      * @tc.desc      : Obtains whether the template is supported by the system
      */
-    it('SUB_NOTIFICATION_ANS_SUPPORT_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0200 START`)
+    it('Sub_Notification_Ans_Distributed_template_0600', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_template_0600 START`)
       let templateName = 'test_templateName'
       await notification.isSupportTemplate(templateName).then((data) => {
         console.info(`${TAG} isSupportTemplate Promise success :${JSON.stringify(data)}`)
@@ -1056,7 +1056,7 @@ export default function ActsNotificationPublishTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_SUPPORT_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Distributed_template_0600 END`)
     })
 
     /*

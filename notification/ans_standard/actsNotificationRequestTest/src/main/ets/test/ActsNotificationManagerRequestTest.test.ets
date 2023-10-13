@@ -22,12 +22,12 @@ export default function ActsNotificationManagerRequestTest() {
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST START')
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_3750
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : publish a notification after requestEnableNotification
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0100 START`)
+    it('Sub_Notification_Ans_Publish_Publish_3750', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3750 START`)
       let notificationRequest = {
         id: 1,
         content: {
@@ -56,16 +56,16 @@ export default function ActsNotificationManagerRequestTest() {
         expect(false).assertTrue()
         done()
       }
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3750 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_3900
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : publish a notification after requestEnableNotification
      */
-    it('SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0200 START`)
+    it('Sub_Notification_Ans_Publish_Publish_3900', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3900 START`)
       let notificationRequest = {
         id: 1,
         content: {
@@ -86,7 +86,7 @@ export default function ActsNotificationManagerRequestTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3900 END`)
     })
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_REQUEST_TEST END')
   })
