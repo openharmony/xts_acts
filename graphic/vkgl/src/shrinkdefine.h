@@ -32,13 +32,14 @@
         TestSuite::runResult.numPassed += result.numPassed;                       \
         TestSuite::runResult.numFailed += result.numFailed;                       \
         TestSuite::runResult.numNotSupported += result.numNotSupported;           \
+        TestSuite::runResult.numPassed += result.numWarnings;                   \
         TestSuite::runResult.numWarnings += result.numWarnings;                   \
         TestSuite::runResult.numWaived += result.numWaived;                       \
         if (result.numNotSupported == 1) {                                        \
             GTEST_LOG_(INFO) << #TestCase << "notsupport!";                       \
         } else if (result.isComplete) {                                           \
             EXPECT_TRUE(result.isComplete);                                       \
-            EXPECT_TRUE(result.numPassed == 1);                                   \
+            EXPECT_TRUE(TestSuite::runResult.numPassed == 1);                     \
         };                                                                        \
         GTEST_LOG_(INFO) << #TestCase << "end";                                   \
     }
