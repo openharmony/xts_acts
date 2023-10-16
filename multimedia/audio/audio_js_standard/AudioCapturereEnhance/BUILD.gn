@@ -14,27 +14,25 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("audio_capturer_enhance_ets_hap") {
-
   hap_profile = "./src/main/config.json"
 
   deps = [
     ":audio_capturer_enhance_ets_assets",
-    ":audio_capturer_enhance_ets_test_assets",
     ":audio_capturer_enhance_ets_resources",
+    ":audio_capturer_enhance_ets_test_assets",
   ]
 
   ets2abc = true
 
   certificate_profile = "./signature/openharmony_sx.p7b"
-  
+
   hap_name = "ActsAudioCapturerEnhanceTest"
-  
+
   subsystem_name = "multimedia"
 
   part_name = "audio_framework"
 }
 ohos_js_assets("audio_capturer_enhance_ets_assets") {
-
   source_dir = "./src/main/ets/MainAbility"
 }
 
@@ -43,7 +41,6 @@ ohos_js_assets("audio_capturer_enhance_ets_test_assets") {
 }
 
 ohos_resources("audio_capturer_enhance_ets_resources") {
-
   sources = [ "./src/main/resources" ]
 
   hap_profile = "./src/main/config.json"
