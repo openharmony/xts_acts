@@ -14,9 +14,9 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
-import * as env from './Const';
+import * as env from './Const.ets';
 
-export default function audioRendererEnhanceTest() {
+export default function audioRendererTest() {
   describe('setChannelBlendMode', function () {
     let Tag = "audioRendererEnhanceTest";
     let audioRen;
