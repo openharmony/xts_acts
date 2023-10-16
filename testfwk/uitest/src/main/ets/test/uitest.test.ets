@@ -39,7 +39,7 @@ async function stopApplication(bundleName: string) {
 
 export default function UiTest() {
     describe('UiTest_API11', function () {        
-        beforEach(async function () {
+        beforeEach(async function () {
             await stopApplication('com.uitestScene.acts')
         })
 
