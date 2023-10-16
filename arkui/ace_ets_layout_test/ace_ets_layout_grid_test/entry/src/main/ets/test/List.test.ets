@@ -43,7 +43,8 @@ import grid_RowCol_ItemContentSizeTest from './Grid/GridTemplatesAllSet/GridItem
 import grid_RowCol_ItemColumnStartEnd from './Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemColumnStartEnd.test';
 import grid_RowCol_ItemRowStartEnd from './Grid/GridTemplatesAllSet/GridItemChange/Grid_RowCol_ItemRowStartEnd.test';
 import grid_GridFrictionTest from './Grid/Grid_attribute/Grid_GridFriction.test';
-
+import Calc01 from './Grid/Calc/Calc01Jsunit.test';
+import Calc02 from './Grid/Calc/Calc02Jsunit.test';
 
 export default function testsuite() {
   OnlyColumnsTemplate1();
@@ -75,7 +76,8 @@ export default function testsuite() {
   grid_RowCol_ItemColumnStartEnd()
   grid_RowCol_ItemRowStartEnd()
   grid_GridFrictionTest();
-
+  Calc01();
+  Calc02();
 
 
 }
