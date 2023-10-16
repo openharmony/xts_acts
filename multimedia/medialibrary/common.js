@@ -201,36 +201,28 @@ const checkPresetsAssets = async function (media, hapName) {
     }
 };
 
-const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {
+const checkAssetsCount = async function (testNum, fetchFileResult, expectCount) {
     if (!fetchFileResult) {
         console.info(`${testNum}:: fetchFileResult error:`);
-        expect(false).assertTrue();
-        done();
         return false;
     }
     let count = await fetchFileResult.getCount();
     if (count != expectCount) {
         console.info(`${testNum}:: count:expectCount - ${count} : ${expectCount}`);
-        expect(count).assertEqual(expectCount);
-        done();
     }
-    return count == expectCount;
+    return count === expectCount;
 };
 
-const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
-    if (!Array.isArray(albumList)) {
+const checkAlbumsCount = function (testNum, albumList, expectCount) {
+    if (!albumList || !Array.isArray(albumList)) {
         console.info(`${testNum}:: albumList error:`);
-        expect(false).assertTrue();
-        done();
         return false;
     }
     let albumsCount = albumList.length;
     if (albumsCount != expectCount) {
         console.info(`${testNum}:: albumsCount: expectCount - ${albumsCount} : ${expectCount}`);
-        expect(albumsCount).assertEqual(expectCount);
-        done();
     }
-    return albumsCount == expectCount;
+    return albumsCount === expectCount;
 };
 
 const getPermission = async function (name, context) {

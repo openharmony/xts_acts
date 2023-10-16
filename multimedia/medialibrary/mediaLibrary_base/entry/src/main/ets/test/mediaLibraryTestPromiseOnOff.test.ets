@@ -53,8 +53,8 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                     count++;
                 });
                 const fetchFileResult = await media.getFileAssets(fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = testNum + asset.title;
                 await asset.commitModify();
@@ -77,8 +77,8 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 });
                 const fetchFileResult = await media.getFileAssets(fetchOps);
                 console.info(`${testNum}:: fetchFileResult :${fetchFileResult.getCount()}`);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = testNum + asset.title;
                 media.off(type);
@@ -173,8 +173,8 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 const currentFetchOp = fileFetchOption(testNum, selections, ['Screenshots']);
                 const albumList = await media.getAlbums(currentFetchOp);
                 console.info(`${testNum} albumList: ${albumList.length}`)
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, 1);
+                expect(albumCountPass).assertTrue();
                 const album = albumList[0];
                 const oldName = album.albumName;
                 console.info(`${testNum} oldName: ${oldName}`)
@@ -338,8 +338,8 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 media.off("albumChange");
                 let currentFetchOps = albumFetchOps(testNum, "Screenshots");
                 const albumList = await media.getAlbums(currentFetchOps);
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, 1);
+                expect(albumCountPass).assertTrue();
                 const album = albumList[0];
                 const oldName = album.albumName;
                 album.albumName = album.albumName + testNum;
