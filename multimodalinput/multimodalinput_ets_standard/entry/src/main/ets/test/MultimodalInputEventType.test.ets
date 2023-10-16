@@ -180,7 +180,7 @@ export default function MultimodalInputEventTypeTest() {
                 windowY: 1, rawDeltaX: 1, rawDeltaY: 1, button: mouseEvent.Button.LEFT,
                 pressedButtons: [mouseEvent.Button.LEFT], axes: [testAxisValue],
                 pressedKeys: [inputkeyCode.KeyCode.KEYCODE_FN], ctrlKey: true, altKey: true, shiftKey: true,
-                logoKey: true, fnKey: true, capsLock: true, numLock: true, scrollLock: true, toolType: 1
+                logoKey: true, fnKey: true, capsLock: true, numLock: true, scrollLock: true, toolType: mouseEvent.ToolType.MOUSE
             };
             expect(testMouseEvent.action == mouseEvent.Action.CANCEL).assertTrue();
             expect(testMouseEvent.screenX == 1).assertTrue();
@@ -201,7 +201,7 @@ export default function MultimodalInputEventTypeTest() {
             expect(testMouseEvent.capsLock).assertTrue();
             expect(testMouseEvent.numLock).assertTrue();
             expect(testMouseEvent.scrollLock).assertTrue();
-            expect(testMouseEvent.toolType).assertTrue();
+            expect(testMouseEvent.toolType == mouseEvent.ToolType.MOUSE).assertTrue();
 
             console.info(`MultimodalInput_MouseEventTypeTest_0050 exit`);
         })
