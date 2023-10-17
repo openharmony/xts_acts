@@ -22,7 +22,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_KEY_LENGTH_0100
      * @tc.desc  Test Js Enum Value Constants.MAX_KEY_LENGTH
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_KEY_LENGTH_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0800
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_KEY_LENGTH_0100', 0, function () {
         var maxKeyLength = factory.Constants.MAX_KEY_LENGTH;
@@ -34,7 +34,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_VALUE_LENGTH_0100
      * @tc.desc  Test Js Enum Value Constants.MAX_VALUE_LENGTH
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_VALUE_LENGTH_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1200
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_VALUE_LENGTH_0100', 0, function () {
         var maxValueLength = factory.Constants.MAX_VALUE_LENGTH;
@@ -47,7 +47,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_VALUE_LENGTH_0200
      * @tc.desc  Test Js Enum Value Constants.MAX_VALUE_LENGTH
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_VALUE_LENGTH_0200
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_2500
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_VALUE_LENGTH_0200', 0, function () {
         try {
@@ -62,7 +62,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_KEY_LENGTH_DEVICE_0100
      * @tc.desc  Test Js Enum Value Constants.MAX_KEY_LENGTH_DEVICE
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_KEY_LENGTH_DEVICE_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0900
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_KEY_LENGTH_DEVICE_0100', 0, function () {
         var maxKeyLengthDevice = factory.Constants.MAX_KEY_LENGTH_DEVICE;
@@ -74,7 +74,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_STORE_ID_LENGTH_0100
      * @tc.desc  Test Js Enum Value Constants.MAX_STORE_ID_LENGTH
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_STORE_ID_LENGTH_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1100
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_STORE_ID_LENGTH_0100', 0, function () {
         var maxStoreIdLength = factory.Constants.MAX_STORE_ID_LENGTH;
@@ -86,7 +86,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_QUERY_LENGTH_0100
      * @tc.desc  Test Js Enum Value Constants.MAX_QUERY_LENGTH
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_QUERY_LENGTH_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1000
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_QUERY_LENGTH_0100', 0, function () {
         var maxQueryLength = factory.Constants.MAX_QUERY_LENGTH;
@@ -98,7 +98,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_BATCH_SIZE_0100
      * @tc.desc  Test Js Enum Value Constants.MAX_BATCH_SIZE
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_BATCH_SIZE_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0700
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_MAX_BATCH_SIZE_0100', 0, function () {
         var maxBatchSize = factory.Constants.MAX_BATCH_SIZE;
@@ -110,7 +110,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_STRING_0100
      * @tc.desc  Test Js Enum Value Valuetype.STRING
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_STRING_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_2100
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_STRING_0100', 0, function () {
         var string = factory.ValueType.STRING;
@@ -122,7 +122,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_INTEGER_0100
      * @tc.desc  Test Js Enum Value Valuetype.INTEGER
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_INTEGER_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0600
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_INTEGER_0100', 0, function () {
         var integer = factory.ValueType.INTEGER;
@@ -134,7 +134,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_FLOAT_0100
      * @tc.desc  Test Js Enum Value Valuetype.FLOAT
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_FLOAT_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0500
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_FLOAT_0100', 0, function () {
         var float = factory.ValueType.FLOAT;
@@ -146,7 +146,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_BYTEARRAY_0100
      * @tc.desc  Test Js Enum Value Valuetype.BYTEARRAY
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_BYTEARRAY_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0200
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_BYTEARRAY_0100', 0, function () {
         var byteArray = factory.ValueType.BYTE_ARRAY;
@@ -158,7 +158,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_BOOLEAN_0100
      * @tc.desc  Test Js Enum Value Valuetype.BOOLEAN
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_BOOLEAN_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0100
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_BOOLEAN_0100', 0, function () {
         var boolean = factory.ValueType.BOOLEAN;
@@ -170,7 +170,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_DOUBLE_0100
      * @tc.desc  Test Js Enum Value Valuetype.DOUBLE
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_DOUBLE_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0400
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_DOUBLE_0100', 0, function () {
         var double = factory.ValueType.DOUBLE;
@@ -182,7 +182,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_PULL_ONLY_0100
      * @tc.desc  Test Js Enum Value Syncmode.PULL_ONLY
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_PULL_ONLY_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1300
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_PULL_ONLY_0100', 0, function () {
         var pullonly = factory.SyncMode.PULL_ONLY;
@@ -194,7 +194,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_PUSH_ONLY_0100
      * @tc.desc  Test Js Enum Value Syncmode.PUSH_ONLY
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_PUSH_ONLY_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1400
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_PUSH_ONLY_0100', 0, function () {
         var pushonly = factory.SyncMode.PUSH_ONLY;
@@ -206,7 +206,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_PUSH_PULL_0100
      * @tc.desc  Test Js Enum Value Syncmode.PUSH_PULL
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_PUSH_PULL_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1500
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_PUSH_PULL_0100', 0, function () {
         var pushpull = factory.SyncMode.PUSH_PULL;
@@ -218,7 +218,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_LOCAL_0100
      * @tc.desc  Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_LOCAL
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_LOCAL_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_2300
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_LOCAL_0100', 0, function () {
         var local = factory.SubscribeType.SUBSCRIBE_TYPE_LOCAL;
@@ -230,7 +230,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_REMOTE_0100
      * @tc.desc  Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_REMOTE
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_REMOTE_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_2400
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_REMOTE_0100', 0, function () {
         var remote = factory.SubscribeType.SUBSCRIBE_TYPE_REMOTE;
@@ -242,7 +242,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_ALL_0100
      * @tc.desc  Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_ALL
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_ALL_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_2200
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_SUBSCRIBE_TYPE_ALL_0100', 0, function () {
         var all = factory.SubscribeType.SUBSCRIBE_TYPE_ALL;
@@ -254,7 +254,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_DEVICE_COLLABORATION_0100
      * @tc.desc  Test Js Enum Value Kvstoretype.DEVICE_COLLABORATION
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_DEVICE_COLLABORATION_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_0300
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_DEVICE_COLLABORATION_0100', 0, function () {
         var collaboration = factory.KVStoreType.DEVICE_COLLABORATION;
@@ -266,7 +266,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_SINGLE_VERSION_0100
      * @tc.desc  Test Js Enum Value Kvstoretype.SINGLE_VERSION
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_SINGLE_VERSION_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_2000
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_SINGLE_VERSION_0100', 0, function () {
         var single = factory.KVStoreType.SINGLE_VERSION;
@@ -278,7 +278,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_S1_0100
      * @tc.desc  Test Js Enum Value Securitylevel.S1
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_S1_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1600
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_S1_0100', 0, function () {
         var s1 = factory.SecurityLevel.S1;
@@ -290,7 +290,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_S2_0100
      * @tc.desc  Test Js Enum Value Securitylevel.S2
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_S2_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1700
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_S2_0100', 0, function () {
         var s2 = factory.SecurityLevel.S2;
@@ -302,7 +302,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_S3_0100
      * @tc.desc  Test Js Enum Value Securitylevel.S3
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_S3_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1800
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_S3_0100', 0, function () {
         var s3 = factory.SecurityLevel.S3;
@@ -314,7 +314,7 @@ describe('singleKvStoreEnumTest', function () {
      * @tc.name SUB_DDM_DKV_SINGLEKVSTOREENUM_S4_0100
      * @tc.desc  Test Js Enum Value Securitylevel.S4
      * @tc.type: FUNC
-     * @tc.number: SUB_DDM_DKV_SINGLEKVSTOREENUM_S4_0100
+     * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVSingleKvStoreEnumJsApiTest_1900
      */
     it('SUB_DDM_DKV_SINGLEKVSTOREENUM_S4_0100', 0, function () {
         var s4 = factory.SecurityLevel.S4;

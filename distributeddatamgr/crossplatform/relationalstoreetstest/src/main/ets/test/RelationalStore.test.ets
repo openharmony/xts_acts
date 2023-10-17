@@ -58,7 +58,7 @@ export default function relationalStoreTest() {
     console.log(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0730
      * @tc.name   : testGetRdbStore001
      * @tc.desc   : getRdbStore callback test
      * @tc.size   : MediumTest
@@ -96,7 +96,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_S2_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0190
      * @tc.name   : testGetRdbStoreS2001
      * @tc.desc   : getRdbStore callback test
      * @tc.size   : MediumTest
@@ -134,7 +134,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_S3_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0200
      * @tc.name   : testGetRdbStoreS3001
      * @tc.desc   : getRdbStore callback test
      * @tc.size   : MediumTest
@@ -172,7 +172,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_S4_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0210
      * @tc.name   : testGetRdbStoreS4001
      * @tc.desc   : getRdbStore callback test
      * @tc.size   : MediumTest
@@ -210,7 +210,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0180
      * @tc.name   : testGetRdbStore002
      * @tc.desc   : getRdbStore promise test
      * @tc.size   : MediumTest
@@ -246,7 +246,7 @@ export default function relationalStoreTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_ERROR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0710
      * @tc.name   : testGetRdbStoreError001
      * @tc.desc   : getRdbStore callback test with error context
      * @tc.size   : MediumTest
@@ -275,7 +275,7 @@ export default function relationalStoreTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_ERROR_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0690
      * @tc.name   : testGetRdbStoreError002
      * @tc.desc   : getRdbStore callback test with error config
      * @tc.size   : MediumTest
@@ -304,7 +304,7 @@ export default function relationalStoreTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_ERROR_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0700
      * @tc.name   : testGetRdbStoreError003
      * @tc.desc   : getRdbStore promise test with error context
      * @tc.size   : MediumTest
@@ -331,7 +331,7 @@ export default function relationalStoreTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_ERROR_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0680
      * @tc.name   : testGetRdbStoreError004
      * @tc.desc   : getRdbStore promise test with error config
      * @tc.size   : MediumTest
@@ -357,7 +357,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_GET_RDB_STORE_ERROR_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0720
      * @tc.name   : testGetRdbStoreError005
      * @tc.desc   : getRdbStore promise test with error config
      * @tc.size   : MediumTest
@@ -378,7 +378,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0620
      * @tc.name   : testDeleteRdbStore001
      * @tc.desc   : deleteRdbStore callback test
      * @tc.size   : MediumTest
@@ -412,7 +412,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0630
      * @tc.name   : testDeleteRdbStore002
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -446,7 +446,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0160
      * @tc.name   : testDeleteRdbStore003
      * @tc.desc   : deleteRdbStore callback test
      * @tc.size   : MediumTest
@@ -485,7 +485,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0170
      * @tc.name   : testDeleteRdbStore004
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -523,7 +523,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0570
      * @tc.name   : testDeleteRdbStoreError001
      * @tc.desc   : deleteRdbStore callback test with error context
      * @tc.size   : MediumTest
@@ -554,7 +554,7 @@ export default function relationalStoreTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0610
      * @tc.name   : testDeleteRdbStoreError002
      * @tc.desc   : deleteRdbStore callback test with error db
      * @tc.size   : MediumTest
@@ -584,7 +584,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0560
      * @tc.name   : testDeleteRdbStoreError003
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -612,7 +612,7 @@ export default function relationalStoreTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0600
      * @tc.name   : testDeleteRdbStoreError004
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -639,7 +639,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0590
      * @tc.name   : testDeleteRdbStoreError005
      * @tc.desc   : deleteRdbStore callback test
      * @tc.size   : MediumTest
@@ -673,7 +673,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0580
      * @tc.name   : testDeleteRdbStoreError006
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -707,7 +707,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0550
      * @tc.name   : testDeleteRdbStoreError007
      * @tc.desc   : deleteRdbStore callback test with error context
      * @tc.size   : MediumTest
@@ -737,7 +737,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_DELETE_RDB_STORE_ERROR_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0540
      * @tc.name   : testDeleteRdbStoreError008
      * @tc.desc   : deleteRdbStore promise test
      * @tc.size   : MediumTest
@@ -764,7 +764,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0760
      * @tc.name   : testConflictResolution001
      * @tc.desc   : ON_CONFLICT_NONE test
      * @tc.size   : MediumTest
@@ -807,7 +807,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1070
      * @tc.name   : testConflictResolution002
      * @tc.desc   : ON_CONFLICT_ROLLBACK test
      * @tc.size   : MediumTest
@@ -901,7 +901,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1030
      * @tc.name   : testConflictResolution003
      * @tc.desc   : ON_CONFLICT_ABORT test
      * @tc.size   : MediumTest
@@ -998,7 +998,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1050
      * @tc.name   : testConflictResolution004
      * @tc.desc   : ON_CONFLICT_FAIL test
      * @tc.size   : MediumTest
@@ -1095,7 +1095,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0500
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0740
      * @tc.name   : testConflictResolution005
      * @tc.desc   : ON_CONFLICT_IGNORE test
      * @tc.size   : MediumTest
@@ -1144,7 +1144,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0780
      * @tc.name   : testConflictResolution006
      * @tc.desc   : ON_CONFLICT_REPLACE test
      * @tc.size   : MediumTest
@@ -1205,7 +1205,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0790    9
      * @tc.name   : testConflictResolution007
      * @tc.desc   : ON_CONFLICT_REPLACE test
      * @tc.size   : MediumTest
@@ -1268,7 +1268,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0750
      * @tc.name   : testConflictResolution008
      * @tc.desc   : ON_CONFLICT_IGNORE test
      * @tc.size   : MediumTest
@@ -1321,7 +1321,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1060
      * @tc.name   : testConflictResolution009
      * @tc.desc   : ON_CONFLICT_FAIL test
      * @tc.size   : MediumTest
@@ -1414,7 +1414,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1040
      * @tc.name   : testConflictResolution010
      * @tc.desc   : ON_CONFLICT_ABORT test
      * @tc.size   : MediumTest
@@ -1504,7 +1504,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_1100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1080
      * @tc.name   : testConflictResolution011
      * @tc.desc   : ON_CONFLICT_ROLLBACK test
      * @tc.size   : MediumTest
@@ -1594,7 +1594,7 @@ export default function relationalStoreTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_CONFLICT_RESOLUTION_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0770
      * @tc.name   : testConflictResolution012
      * @tc.desc   : ON_CONFLICT_NONE test
      * @tc.size   : MediumTest
