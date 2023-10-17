@@ -334,7 +334,7 @@ export default function audioCapturerInterrupt() {
             *@tc.type      : Function
             *@tc.level     : Level 0
            */
-        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0200', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
