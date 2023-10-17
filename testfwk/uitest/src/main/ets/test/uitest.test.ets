@@ -92,8 +92,8 @@ export default function UiTest() {
             let center = await button.getBoundsCenter();
             await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT)
             await driver.delayMs(waitUiReadyMs)
-            let text1 = await driver.findComponent(ON.text('one'))
-            let text2 = await driver.findComponent(ON.text('two'))
+            let text1 = await driver.findComponent(ON.text('two'))
+            let text2 = await driver.findComponent(ON.text('three'))
             let point1 = await text1.getBoundsCenter()
             let point2 = await text2.getBoundsCenter()
             await driver.mouseDrag(point1, point2, 600)
@@ -115,8 +115,8 @@ export default function UiTest() {
             let center = await Button.getBoundsCenter()
             await driver.mouseMoveWithTrack({x:10, y:10}, center, 600)
             await driver.delayMs(waitUiReadyMs)
-            let newButton = await driver.findComponent(ON.text('hover'))
-            expect(newButton != null).assertTrue()
+            let newButton = await driver.findComponent(ON.text('jump'))
+            expect(newButton == null).assertTrue()
         })
 
         /*
