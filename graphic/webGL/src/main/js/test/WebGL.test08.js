@@ -285,7 +285,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0701
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0100
 		 * @tc.name testFramebufferTextureLayer_01
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
@@ -302,7 +302,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0702
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0200
 		 * @tc.name testFramebufferTextureLayer_02
 		 * @tc.desc Test framebufferTextureLayer.
 		 */
@@ -330,7 +330,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0703
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0300
 		 * @tc.name testInvalidateFramebuffer_01
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
@@ -346,7 +346,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0704
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0400
 		 * @tc.name testInvalidateFramebuffer_02
 		 * @tc.desc Test invalidateFramebuffer.
 		 */
@@ -363,7 +363,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0705
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0500
 		 * @tc.name testInvalidateSubFramebuffer_01
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
@@ -382,8 +382,8 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0706
-		 * @tc.name testInvalidateSubFramebuffer_01
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0600
+		 * @tc.name testInvalidateSubFramebuffer_02
 		 * @tc.desc Test invalidateSubFramebuffer.
 		 */
 		it('testInvalidateSubFramebuffer_02', 0, async function (done) {
@@ -400,7 +400,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0707
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0700
 		 * @tc.name testReadBuffer_01
 		 * @tc.desc Test readBuffer.
 		 */
@@ -415,7 +415,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0708
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0800
 		 * @tc.name testReadBuffer_02
 		 * @tc.desc Test readBuffer.
 		 */
@@ -431,7 +431,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0709
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_0900
 		 * @tc.name testGetInternalformatParameter_02
 		 * @tc.desc Test getInternalformatParameter.
 		 */
@@ -447,7 +447,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0710
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1000
 		 * @tc.name testRenderbufferStorageMultisample_01
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
@@ -463,7 +463,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0711
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1100
 		 * @tc.name testRenderbufferStorageMultisample_02
 		 * @tc.desc Test renderbufferStorageMultisample.
 		 */
@@ -479,7 +479,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0712
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1200
 		 * @tc.name testTexStorage2D_01
 		 * @tc.desc Test texStorage2D.
 		 */
@@ -495,7 +495,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0713
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1300
 		 * @tc.name testTexStorage2D_02
 		 * @tc.desc Test texStorage2D.
 		 */
@@ -511,7 +511,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0714
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1400
 		 * @tc.name testTransformFeedbackVaryings_01
 		 * @tc.desc Test transformFeedbackVaryings.
 		 */
@@ -528,7 +528,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0715
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1500
 		 * @tc.name testTransformFeedbackVaryings_02
 		 * @tc.desc Test transformFeedbackVaryings.
 		 */
@@ -545,7 +545,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0716
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1600
 		 * @tc.name testGetTransformFeedbackVarying_01
 		 * @tc.desc Test getTransformFeedbackVarying.
 		 */
@@ -569,7 +569,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0717
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1700
 		 * @tc.name testBindBufferBase_01
 		 * @tc.desc Test bindBufferBase.
 		 */
@@ -591,7 +591,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0718
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1800
 		 * @tc.name testBindBufferBase_02
 		 * @tc.desc Test bindBufferBase.
 		 */
@@ -613,7 +613,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0719
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_1900
 		 * @tc.name testGetTransformFeedbackVarying_02
 		 * @tc.desc Test getTransformFeedbackVarying.
 		 */
@@ -637,7 +637,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0720
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2000
 		 * @tc.name bindBufferRange
 		 * @tc.desc Test bindBufferRange.
 		 */
@@ -660,7 +660,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0721
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2100
 		 * @tc.name bindBufferRange_01
 		 * @tc.desc Test bindBufferRange.
 		 */
@@ -683,7 +683,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0722
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2200
 		 * @tc.name bindBufferRange_02
 		 * @tc.desc Test bindBufferRange.
 		 */
@@ -706,7 +706,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0723
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2300
 		 * @tc.name testIsShader_05
 		 * @tc.desc Test isShader.
 		 */
@@ -721,7 +721,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0724
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2400
 		 * @tc.name testLinkProgram_05
 		 * @tc.desc Test linkProgram.
 		 */
@@ -738,7 +738,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0725
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2500
 		 * @tc.name testPauseTransformFeedback_01
 		 * @tc.desc Test pauseTransformFeedback.
 		 */
@@ -762,7 +762,7 @@ export default function webgl1Test_webgl8() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0726
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2600
 		 * @tc.name testResumeTransformFeedback_01
 		 * @tc.desc Test resumeTransformFeedback.
 		 */
@@ -784,7 +784,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0727
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2700
 		 * @tc.name webgl_test_blendEquation2
 		 * @tc.desc Test blendEquation.
 		 */
@@ -804,7 +804,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0728
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2800
 		 * @tc.name webgl_test_activeTexture_01
 		 * @tc.desc Test activeTexture_01.
 		 */
@@ -821,7 +821,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0729
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_2900
 		 * @tc.name webgl_test_activeTexture_02
 		 * @tc.desc Test activeTexture_02.
 		 */
@@ -838,7 +838,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0730
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3000
 		 * @tc.name webgl_test_bindAttribLocation
 		 * @tc.desc Test bindAttribLocation.
 		 */
@@ -888,7 +888,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0731
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3100
 		 * @tc.name webgl_test_bindBuffer_2
 		 * @tc.desc Test bindBuffer.
 		 */
@@ -911,7 +911,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0732
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3200
 		 * @tc.name webgl_test_bindTexture_2
 		 * @tc.desc Test bindTexture.
 		 */
@@ -937,7 +937,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0733
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3300
 		 * @tc.name webgl_test_blendEquation__2
 		 * @tc.desc Test blendEquation.
 		 */
@@ -957,7 +957,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0734
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3400
 		 * @tc.name webgl_test_blendEquation_3
 		 * @tc.desc Test blendEquation.
 		 */
@@ -977,7 +977,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0735
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3500
 		 * @tc.name webgl_test_blendEquationSeparate_2
 		 * @tc.desc Test blendEquationSeparate.
 		 */
@@ -996,7 +996,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0736
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3600
 		 * @tc.name webgl_test_blendEquationSeparate_3
 		 * @tc.desc Test blendEquationSeparate.
 		 */
@@ -1015,7 +1015,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0737
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3700
 		 * @tc.name webgl_test_blendFunc_2
 		 * @tc.desc Test blendFunc.
 		 */
@@ -1037,7 +1037,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0738
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3800
 		 * @tc.name webgl_test_blendFunc_3
 		 * @tc.desc Test blendFunc.
 		 */
@@ -1059,7 +1059,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0739
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_3900
 		 * @tc.name webgl_test_blendFuncSeparate_2
 		 * @tc.desc Test blendFuncSeparate.
 		 */
@@ -1082,7 +1082,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0740
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4000
 		 * @tc.name webgl_test_blendFuncSeparate_3
 		 * @tc.desc Test blendFuncSeparate.
 		 */
@@ -1105,7 +1105,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0741
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4100
 		 * @tc.name webgl_test_checkFramebufferStatus22
 		 * @tc.desc Test checkFramebufferStatus.
 		 */
@@ -1127,7 +1127,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0742
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4200
 		 * @tc.name webgl_test_clear_2
 		 * @tc.desc Test clear.
 		 */
@@ -1145,7 +1145,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0743
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4300
 		 * @tc.name webgl_test_clear_3
 		 * @tc.desc Test clear.
 		 */
@@ -1163,7 +1163,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0744
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4400
 		 * @tc.name webgl_test_clearColor_2
 		 * @tc.desc Test clearColor.
 		 */
@@ -1184,7 +1184,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0745
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4500
 		 * @tc.name webgl_test_copyTexImage2D_2
 		 * @tc.desc Test copyTexImage2D.
 		 */
@@ -1202,7 +1202,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0746
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4600
 		 * @tc.name webgl_test_copyTexImage2D_3
 		 * @tc.desc Test copyTexImage2D.
 		 */
@@ -1220,7 +1220,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0747
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4700
 		 * @tc.name webgl_test_copyTexSubImage2D_2
 		 * @tc.desc Test copyTexSubImage2D.
 		 */
@@ -1239,7 +1239,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0748
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4800
 		 * @tc.name webgl_test_copyTexSubImage2D_3
 		 * @tc.desc Test copyTexSubImage2D.
 		 */
@@ -1258,7 +1258,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0749
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_4900
 		 * @tc.name webgl_test_copyTexSubImage2D_4
 		 * @tc.desc Test copyTexSubImage2D.
 		 */
@@ -1277,7 +1277,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0750
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5000
 		 * @tc.name webgl_test_createShader_2
 		 * @tc.desc Test createShader.
 		 */
@@ -1296,7 +1296,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0751
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5100
 		 * @tc.name webgl_test_disable_22
 		 * @tc.desc Test disable.
 		 */
@@ -1322,7 +1322,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0752
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5200
 		 * @tc.name webgl_test_disable_23
 		 * @tc.desc Test disable.
 		 */
@@ -1348,7 +1348,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0753
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5300
 		 * @tc.name webgl_test_disable_24
 		 * @tc.desc Test disable.
 		 */
@@ -1374,7 +1374,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0754
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5400
 		 * @tc.name webgl_test_disable_25
 		 * @tc.desc Test disable.
 		 */
@@ -1400,7 +1400,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0755
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5500
 		 * @tc.name webgl_test_disable_26
 		 * @tc.desc Test disable.
 		 */
@@ -1426,7 +1426,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0756
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5600
 		 * @tc.name webgl_test_disableVertexAttribArray_2
 		 * @tc.desc Test disableVertexAttribArray.
 		 */
@@ -1443,7 +1443,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0757
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5700
 		 * @tc.name webgl_test_drawArrays2
 		 * @tc.desc Test drawArrays.
 		 */
@@ -1462,7 +1462,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0758
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5800
 		 * @tc.name webgl_test_drawArrays3
 		 * @tc.desc Test drawArrays.
 		 */
@@ -1481,7 +1481,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0759
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_5900
 		 * @tc.name webgl_test_drawArrays4
 		 * @tc.desc Test drawArrays.
 		 */
@@ -1500,7 +1500,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0760
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6000
 		 * @tc.name webgl_test_drawArrays5
 		 * @tc.desc Test drawArrays.
 		 */
@@ -1519,7 +1519,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0761
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6100
 		 * @tc.name webgl_test_drawArrays6
 		 * @tc.desc Test drawArrays.
 		 */
@@ -1538,7 +1538,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0762
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6200
 		 * @tc.name webgl_test_drawArrays7
 		 * @tc.desc Test drawArrays.
 		 */
@@ -1557,7 +1557,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0763
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6300
 		 * @tc.name webgl_test_drawElements22
 		 * @tc.desc Test drawElements.
 		 */
@@ -1604,7 +1604,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0764
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6400
 		 * @tc.name webgl_test_drawElements23
 		 * @tc.desc Test drawElements.
 		 */
@@ -1651,7 +1651,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0765
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6500
 		 * @tc.name webgl_test_drawElements24
 		 * @tc.desc Test drawElements.
 		 */
@@ -1698,7 +1698,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0766
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6600
 		 * @tc.name webgl_test_enable
 		 * @tc.desc Test enable.
 		 */
@@ -1718,7 +1718,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0767
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6700
 		 * @tc.name webgl_test_enable22
 		 * @tc.desc Test enable.
 		 */
@@ -1738,7 +1738,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0768
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6800
 		 * @tc.name webgl_test_enable23
 		 * @tc.desc Test enable.
 		 */
@@ -1758,7 +1758,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0769
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_6900
 		 * @tc.name webgl_test_enable24
 		 * @tc.desc Test enable.
 		 */
@@ -1778,7 +1778,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0770
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7000
 		 * @tc.name webgl_test_enable25
 		 * @tc.desc Test enable.
 		 */
@@ -1798,7 +1798,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0771
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7100
 		 * @tc.name webgl_test_enable26
 		 * @tc.desc Test enable.
 		 */
@@ -1818,7 +1818,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0772
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7200
 		 * @tc.name webgl_test_enable27
 		 * @tc.desc Test enable.
 		 */
@@ -1838,7 +1838,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0773
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7300
 		 * @tc.name webgl_test_enable28
 		 * @tc.desc Test enable.
 		 */
@@ -1858,7 +1858,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0774
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7400
 		 * @tc.name webgl_test_enable29
 		 * @tc.desc Test enable.
 		 */
@@ -1879,7 +1879,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0775
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7500
 		 * @tc.name webgl_test_framebufferRenderbuffer22
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
@@ -1900,7 +1900,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0776
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7600
 		 * @tc.name webgl_test_framebufferRenderbuffer23
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
@@ -1921,7 +1921,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0777
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7700
 		 * @tc.name webgl_test_framebufferRenderbuffer24
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
@@ -1942,7 +1942,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0778
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7800
 		 * @tc.name webgl_test_framebufferRenderbuffer25
 		 * @tc.desc Test framebufferRenderbuffer.
 		 */
@@ -1963,7 +1963,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0779
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_7900
 		 * @tc.name webgl_test_framebufferTexture2D22
 		 * @tc.desc Test framebufferTexture2D.
 		 */
@@ -1984,7 +1984,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0780
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8000
 		 * @tc.name webgl_test_framebufferTexture2D23
 		 * @tc.desc Test framebufferTexture2D.
 		 */
@@ -2005,7 +2005,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0781
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8100
 		 * @tc.name webgl_test_framebufferTexture2D24
 		 * @tc.desc Test framebufferTexture2D.
 		 */
@@ -2026,7 +2026,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0782
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8200
 		 * @tc.name webgl_test_framebufferTexture2D25
 		 * @tc.desc Test framebufferTexture2D.
 		 */
@@ -2047,7 +2047,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0783
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8300
 		 * @tc.name webgl_test_framebufferTexture2D26
 		 * @tc.desc Test framebufferTexture2D.
 		 */
@@ -2068,7 +2068,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0784
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8400
 		 * @tc.name webgl_test_framebufferTexture2D27
 		 * @tc.desc Test framebufferTexture2D.
 		 */
@@ -2089,7 +2089,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0785
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8500
 		 * @tc.name webgl_test_drawBuffers22
 		 * @tc.desc Test drawBuffers.
 		 */
@@ -2108,7 +2108,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0786
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8600
 		 * @tc.name webgl_test_drawBuffers23
 		 * @tc.desc Test drawBuffers.
 		 */
@@ -2127,7 +2127,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0787
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8700
 		 * @tc.name webgl_test_drawBuffers24
 		 * @tc.desc Test drawBuffers.
 		 */
@@ -2146,7 +2146,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0788
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8800
 		 * @tc.name webgl_test_drawBuffers25
 		 * @tc.desc Test drawBuffers.
 		 */
@@ -2164,7 +2164,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0789
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_8900
 		 * @tc.name webgl_test_drawBuffers26
 		 * @tc.desc Test drawBuffers.
 		 */
@@ -2183,7 +2183,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0790
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9000
 		 * @tc.name webgl_test_clearBufferfv22
 		 * @tc.desc Test clearBufferfv.
 		 */
@@ -2202,7 +2202,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0791
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9100
 		 * @tc.name webgl_test_clearBufferfv_22
 		 * @tc.desc Test clearBufferfv.
 		 */
@@ -2222,7 +2222,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0792
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9200
 		 * @tc.name webgl_test_clearBufferfv23
 		 * @tc.desc Test clearBufferfv.
 		 */
@@ -2242,7 +2242,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0793
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9300
 		 * @tc.name webgl_test_clearBufferiv22
 		 * @tc.desc Test clearBufferiv.
 		 */
@@ -2261,7 +2261,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0794
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9400
 		 * @tc.name webgl_test_clearBufferiv23
 		 * @tc.desc Test clearBufferiv.
 		 */
@@ -2279,7 +2279,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0795
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9500
 		 * @tc.name webgl_test_clearBufferiv24
 		 * @tc.desc Test clearBufferiv.
 		 */
@@ -2297,7 +2297,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0796
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9600
 		 * @tc.name webgl_test_clearBufferuiv23
 		 * @tc.desc Test clearBufferuiv.
 		 */
@@ -2315,7 +2315,7 @@ export default function webgl1Test_webgl8() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0797
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9700
 		 * @tc.name webgl_test_clearBufferuiv24
 		 * @tc.desc Test clearBufferuiv.
 		 */
@@ -2334,7 +2334,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0798
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9800
 		 * @tc.name webgl_test_clearBufferuiv25
 		 * @tc.desc Test clearBufferuiv.
 		 */
@@ -2353,7 +2353,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0799
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9900
 		 * @tc.name webgl_test_clearBufferfi22
 		 * @tc.desc Test clearBufferfi.
 		 */
@@ -2372,7 +2372,7 @@ export default function webgl1Test_webgl8() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0800
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_08_9901
 		 * @tc.name webgl_test_clearBufferfi23
 		 * @tc.desc Test clearBufferfi.
 		 */
