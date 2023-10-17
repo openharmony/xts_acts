@@ -23,7 +23,7 @@ struct SetCircle {
   @State FillColor: string = '#FF000000';
   @State X: number = 0;
   @State name: string = 'CanvasShadowColor';
-  @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：原本默认蓝色的阴影会随点击变化';
+  @State StepTips: string = '操作步骤：点击不同的颜色控件'+'\n'+'预期结果：阴影会随点击变化';
   @State Vue: boolean = false;
   @State num1: number = 0;
   @State num2: number = 0;
