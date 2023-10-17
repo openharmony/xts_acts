@@ -327,14 +327,14 @@ export default function audioCapturerInterrupt() {
         })
 
         /**
-            *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_000
+            *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_0200
             *@tc.name      : AudioCapturer VOICE_RECOGNITION INTERRUPT MIC
             *@tc.desc      : AudioCapturer VOICE_RECOGNITION INTERRUPT MIC 
             *@tc.size      : MEDIUM
             *@tc.type      : Function
             *@tc.level     : Level 0
            */
-        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_002', 0, async function (done) {
+        it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_TEST_0200', 0, async function (done) {
             let flag1 = false;
             let flag2 = false;
             let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
@@ -2514,34 +2514,6 @@ export default function audioCapturerInterrupt() {
             await renderRelease(render, done)
             done()
         })
-
-
-         /**
-          *@tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_15500
-          *@tc.name      : AudioCapturer VOICE_RECOGNITION INTERRUPT MIC
-          *@tc.desc      : AudioCapturer VOICE_RECOGNITION INTERRUPT MIC 
-          *@tc.size      : MEDIUM
-          *@tc.type      : Function
-          *@tc.level     : Level 0
-         */
-          it('SUB_MULTIMEDIA_AUDIO_CAPTURER_INTERRUPT_15500', 0, async function (done) {
-
-            let capture1 = await createAudioCapturer(capturerInfo['MIC'], streamInfo['16000'])
-            await capturerStart(capture1, done)
-            capture1.on("audioInterrupt", async (eventAction) => {
-                console.log("03 capture1.eventAction:" + JSON.stringify(eventAction))
-                expect(eventAction.hintType).assertEqual(audio.InterruptHint.INTERRUPT_HINT_STOP)
-            })
-
-            let capture2 = await createAudioCapturer(capturerInfo['VOICE_RECOGNITION'], streamInfo['16000'])
-            await capturerStart(capture2, done)
-            await sleep(500)
-            await capturerRelease(capture2, done)
-            await capturerRelease(capture1, done)
-            done()
-        })
-
-
 
 
 
