@@ -97,7 +97,7 @@ export default function UiTest() {
             let point1 = await text1.getBoundsCenter()
             let point2 = await text2.getBoundsCenter()
             await driver.mouseDrag(point1, point2, 600)
-            await driver.delayMs(waitUiReadyMs)
+            await driver.delayMs(2000)
             let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
             expect(text == null).assertTrue()
         })
