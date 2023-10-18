@@ -50,7 +50,7 @@ napi_value ImagePackingNDKTest::Init(napi_env env, napi_value exports)
     napi_property_descriptor props[] = {
         STATIC_FUNCTION("create", Create),
         STATIC_FUNCTION("initNative", InitNative),
-        STATIC_FUNCTION("packing", Packing),
+        STATIC_FUNCTION("packingToBuffer", PackingToBuffer),
         STATIC_FUNCTION("packingToFile", PackingToFile),
         STATIC_FUNCTION("release", Release),
     };
@@ -196,7 +196,7 @@ napi_value ImagePackingNDKTest::InitNative(napi_env env, napi_callback_info info
 }
 
 // packing(packer, source, opts:{format, quality, size})<{code, result}>
-napi_value ImagePackingNDKTest::Packing(napi_env env, napi_callback_info info)
+napi_value ImagePackingNDKTest::PackingToBuffer(napi_env env, napi_callback_info info)
 {
     napi_value argValue[SIZE_THREE] = {0};
     size_t argCount = SIZE_THREE;
@@ -214,7 +214,6 @@ napi_value ImagePackingNDKTest::Packing(napi_env env, napi_callback_info info)
     OhosImagePackerOpts packerOpts;
     packerOpts.format = ops.format;
     packerOpts.quality = ops.quality;
-    packerOpts.source = argValue[ARGS_SECOND];
 
     size_t bufferSize = (ops.size > SIZE_ZERO) ? ops.size : DEFAULT_PACKING_SIZE;
     napi_value nValue = nullptr;
@@ -224,7 +223,8 @@ napi_value ImagePackingNDKTest::Packing(napi_env env, napi_callback_info info)
         DEBUG_LOG("packing create buffer failed");
         return createUndefine(env);
     }
-    int32_t res = OH_ImagePacker_Packing(native, &packerOpts, buffer, &bufferSize);
+    int32_t res = OH_ImagePacker_PackingToBuffer(native,
+        argValue[ARGS_SECOND], &packerOpts, buffer, &bufferSize);
     if (ops.format != nullptr) {
         free(ops.format);
         ops.format = nullptr;
@@ -258,9 +258,8 @@ napi_value ImagePackingNDKTest::PackingToFile(napi_env env, napi_callback_info i
     OhosImagePackerOpts packerOpts;
     packerOpts.format = ops.format;
     packerOpts.quality = ops.quality;
-    packerOpts.source = argValue[ARGS_SECOND];
 
-    int32_t res = OH_ImagePacker_PackingToFile(native, &packerOpts, fd);
+    int32_t res = OH_ImagePacker_PackingToFile(native, argValue[ARGS_SECOND], &packerOpts, fd);
     if (ops.format != nullptr) {
         free(ops.format);
         ops.format = nullptr;

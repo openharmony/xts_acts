@@ -172,7 +172,7 @@ export default function ImagePackingNDKTest() {
                     done();
                     return
                 }
-                let packingRes = ndkTest.packing(packer.result, source, packOpts);
+                let packingRes = ndkTest.packingToBuffer(packer.result, source, packOpts);
                 checkNdkRes(packingRes);
                 expect(packingRes.result != undefined).assertTrue();
                 log.log("packer packingRes.result " + JSON.stringify(new Uint8Array(packingRes.result).length));
