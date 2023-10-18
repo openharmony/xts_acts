@@ -34,7 +34,7 @@ export default function SecurityHuksAgreeDHBasicAbort63KBPromiseJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
-    it('testAgreeDH102', 0, async function (done) {
+    it('Security_HUKS_Agree_API8_DH_102', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Abort63KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Abort63KBAgreeKeyAlias_02_101';
       let huksOptionsFinish = {
