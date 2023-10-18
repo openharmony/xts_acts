@@ -1008,7 +1008,7 @@ describe('hiSysEventErrcodeTest', function () {
 	it('testHiSysEventApi57', 3, async function (done) {
 		console.info('testHiSysEventApi57 start')
 		try {
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < 101; i++) {
 				hiSysEvent.query({
 					beginTime: -1,
 					endTime: -1,
