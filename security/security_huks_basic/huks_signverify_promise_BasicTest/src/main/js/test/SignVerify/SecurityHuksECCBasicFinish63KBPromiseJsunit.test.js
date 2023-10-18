@@ -26,7 +26,7 @@ let srcData63AfterSha256 = new Uint8Array([
 ]);
 export default function SecurityHuksECCBasicFinish63KBPromiseJsunit() {
 describe('SecurityHuksECCBasicFinish63KBPromiseJsunit', function () {
-  it('testSignVerifyECC101', 0, async function (done) {
+  it('Security_HUKS_SignVerify_API8_ECC_101', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyECCSize256SIGNNONEKeyAlias101';
     let HuksOptions = {
       properties: new Array(

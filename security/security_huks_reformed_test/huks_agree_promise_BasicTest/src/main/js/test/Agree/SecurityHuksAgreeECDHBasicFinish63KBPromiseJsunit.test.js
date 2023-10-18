@@ -41,19 +41,12 @@ let huksOptionsCipher = {
 
 export default function SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit() {
     describe('SecurityHuksAgreeECDHBasicFinish63KBPromiseJsunit', function () {
-        beforeAll(async function (done) {
-            useSoftware = await checkSoftware();
-            done();
-        });
         beforeEach(function () {
             HuksOptions63kb = {
                 properties: new Array(
                     HuksAgreeECDH.HuksKeyAlgECC,
                     HuksAgreeECDH.HuksKeyPurposeECDH,
                     HuksAgreeECDH.HuksKeyECCSize256,
-                    // HuksAgreeECDH.HuksKeyECCDIGEST,
-                    // HuksAgreeECDH.HuksKeyECCPADDING,
-                    // HuksAgreeECDH.HuksKeyECCBLOCKMODE
                 ),
             };
             console.info('test beforeEach called');
