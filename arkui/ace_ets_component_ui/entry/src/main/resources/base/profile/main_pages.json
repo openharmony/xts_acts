@@ -93,6 +93,7 @@
         "MainAbility/pages/navition3",
         "MainAbility/pages/DragController",
         "MainAbility/pages/richEditor",
+        "MainAbility/pages/video1",
         "MainAbility/pages/richEditorCustomKeyBoard",
         "MainAbility/pages/DialogPage",
 		"MainAbility/pages/ActionSheetOptions",
