@@ -35,15 +35,15 @@ export default function abilityTest() {
         })
     
         /*
-        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100
-        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100
         * @tc.desc    The parameter eventType input is accessibilityFocus, test the sendAccessibilityEvent()
         *             function. The result of sendAccessibilityEvent() should be undefined.
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', 0, async function (done) {
-            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100');
             let eventType = 'accessibilityFocus';
 
             let jsonObj = {
@@ -55,9 +55,9 @@ export default function abilityTest() {
             let event = new accessibility.EventInfo(jsonObj);
 
             accessibility.sendAccessibilityEvent(event, (err, data) => {
-                console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100 SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_null_0010 err : " + JSON.stringify(err));
+                console.log("AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100  err : " + JSON.stringify(err));
                 if (err && err.code != 0) {
-                    console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100 has error: ${err.code}`);
+                    console.error(`AccessibilitySendAccessibilityEvent: SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0100 has error: ${err.code}`);
                     expect(null).assertFail();
                 } else {
                     expect(data).assertEqual(undefined);
@@ -67,7 +67,7 @@ export default function abilityTest() {
         })
 
         /*
-        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200
         * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibilitySendAccessibilityEvent_0200
         * @tc.desc    The parameter input eventType is accessibilityFocus, test the sendAccessibilityEvent() function
         *             The function sendAccessibilityEvent in promise mode and result should be undefined.

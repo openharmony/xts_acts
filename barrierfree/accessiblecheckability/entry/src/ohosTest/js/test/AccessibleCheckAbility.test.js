@@ -29,7 +29,7 @@ describe('AccessibleCheckAbility', function () {
         done();
     })
 
-SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbilityIsOpen_
+
     /******************************************************************************************* */
     /* Cases SUB_BASIC_BARRIERFREE_API_AccessibleCheckAbility_0100-0200 are for accessibility.isOpenAccessibility() API test   */
     /******************************************************************************************* */
