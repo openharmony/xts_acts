@@ -114,7 +114,7 @@ export default function UiTest() {
             let Button1 = await driver.findComponent(ON.text('jump'))
             let Button2 = await driver.findComponent(ON.text('next page'))
             let center1 = await Button1.getBoundsCenter()
-            let center2 = await Button1.getBoundsCenter()
+            let center2 = await Button2.getBoundsCenter()
             await driver.mouseMoveTo(center1)
             await driver.delayMs(waitUiReadyMs)
             await driver.mouseMoveWithTrack(center1, center2, 600)
