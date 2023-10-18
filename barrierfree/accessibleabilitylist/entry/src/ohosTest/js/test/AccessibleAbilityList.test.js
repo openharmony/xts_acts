@@ -36,435 +36,435 @@ export default function AccessibleAbilityList() {
         })
 
         /******************************************************************************** */
-        /* Cases AbilityList_0210-0460 are for accessibility.getAbilityLists() API test   */
+        /* Cases SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100-0460 are for accessibility.getAbilityLists() API test   */
         /******************************************************************************** */
 
         /*
-        * @tc.number  AbilityList_0210
-        * @tc.name    AbilityList_0210
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100
         * @tc.desc    The parameters input are 'audible' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0210', 0, async function (done) {
-            console.info('AbilityList_0210');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100');
             let abilityType = 'audible';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0210 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0210 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0100 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0220
-        * @tc.name    AbilityList_0220
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200
         * @tc.desc    The parameters input are 'generic' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0220', 0, async function (done) {
-            console.info('AbilityList_0220');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200');
             let abilityType = 'generic';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0220 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0220 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0200 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0230
-        * @tc.name    AbilityList_0230
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300
         * @tc.desc    The parameters input are 'haptic' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0230', 0, async function (done) {
-            console.info('AbilityList_0230');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300');
             let abilityType = 'haptic';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0230 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0230 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0300 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0240
-        * @tc.name    AbilityList_0240
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400
         * @tc.desc    The parameters input are 'spoken' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0240', 0, async function (done) {
-            console.info('AbilityList_0240');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400');
             let abilityType = 'spoken';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0240 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0240 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0400 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0250
-        * @tc.name    AbilityList_0250
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500
         * @tc.desc    The parameters input are 'visual' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0250', 0, async function (done) {
-            console.info('AbilityList_0250');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500');
             let abilityType = 'visual';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0250 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0250 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0500 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0260
-        * @tc.name    AbilityList_0260
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600
         * @tc.desc    The parameters input are 'all' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0260', 0, async function (done) {
-            console.info('AbilityList_0260');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600');
             let abilityType = 'all';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0260 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0260 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0600 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0270
-        * @tc.name    AbilityList_0270
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700
         * @tc.desc    The parameters input are '' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0270', 0, async function (done) {
-            console.info('AbilityList_0270');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700');
             let abilityType = '';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0270 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700 has error: ${err.code}`);
                     expect(Array.isArray(data)).assertEqual(true);
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0270 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0700 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0280
-        * @tc.name    AbilityList_0280
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800
         * @tc.desc    The parameters input are null and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0280', 0, async function (done) {
-            console.info('AbilityList_0280');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800');
             let abilityType = null;
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800 has error: ${err.code}`);
                     expect(Array.isArray(data)).assertEqual(true);
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0280 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0800 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0290
-        * @tc.name    AbilityList_0290
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900
         * @tc.desc    The parameters input are 'all' and 'enable', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0290', 0, async function (done) {
-            console.info('AbilityList_0290');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900');
             let abilityState = 'enable';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0290 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0290 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_0900 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0300
-        * @tc.name    AbilityList_0300
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000
         * @tc.desc    The parameters input are 'all' and 'disable', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0300', 0, async function (done) {
-            console.info('AbilityList_0300');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000');
             let abilityState = 'disable';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0300 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0300 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1000 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0310
-        * @tc.name    AbilityList_0310
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100
         * @tc.desc    The parameters input are 'all' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0310', 0, async function (done) {
-            console.info('AbilityList_0310');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100');
             let abilityState = 'install';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0310 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100 has error: ${err.code}`);
                     expect(null).assertFail();
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0310 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1100 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0320
-        * @tc.name    AbilityList_0320
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200
         * @tc.desc    The parameters input are 'all' and '', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0320', 0, async function (done) {
-            console.info('AbilityList_0320');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200');
             let abilityState = '';
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0320 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200 has error: ${err.code}`);
                     expect(Array.isArray(data)).assertEqual(true);
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0320 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1200 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0330
-        * @tc.name    AbilityList_0330
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300
         * @tc.desc    The parameters input are 'all' and null, test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0330', 0, async function (done) {
-            console.info('AbilityList_0330');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300');
             let abilityState = null;
             accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
                 if (err && err.code != 0) {
-                    console.error(`AccessibleAbilityList: AbilityList_0330 has error: ${err.code}`);
+                    console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300 has error: ${err.code}`);
                     expect(Array.isArray(data)).assertEqual(true);
                     done();
                 }
-                console.info(`AccessibleAbilityList: AbilityList_0330 result ${data.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1300 result ${data.length}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0340
-        * @tc.name    AbilityList_0340
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400
         * @tc.desc    The parameters input are 'audible' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0340', 0, async function (done) {
-            console.info('AbilityList_0340');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400');
             let abilityType = 'audible';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0340 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0340 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1400 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-       * @tc.number  AbilityList_0350
-       * @tc.name    AbilityList_0350
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500
        * @tc.desc    The parameters input are 'generic' and 'install', test the getAbilityLists() function,
        *             and the output is the list of AccessibilityAbilityInfo
        * @tc.size    SmallTest
        * @tc.type    User
        */
-        it('AbilityList_0350', 0, async function (done) {
-            console.info('AbilityList_0350');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500');
             let abilityType = 'generic';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0350 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0350 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1500 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0360
-        * @tc.name    AbilityList_0360
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600
         * @tc.desc    The parameters input are 'haptic' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0360', 0, async function (done) {
-            console.info('AbilityList_0360');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600');
             let abilityType = 'haptic';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0360 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0360 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1600 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-       * @tc.number  AbilityList_0370
-       * @tc.name    AbilityList_0370
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700
        * @tc.desc    The parameters input are 'spoken' and 'install', test the getAbilityLists() function,
        *             and the output is the list of AccessibilityAbilityInfo
        * @tc.size    SmallTest
        * @tc.type    User
        */
-        it('AbilityList_0370', 0, async function (done) {
-            console.info('AbilityList_0370');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700');
             let abilityType = 'spoken';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0370 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0370 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1700 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0380
-        * @tc.name    AbilityList_0380
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800
         * @tc.desc    The parameters input are 'visual' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0380', 0, async function (done) {
-            console.info('AbilityList_0380');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800');
             let abilityType = 'visual';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0380 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0380 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1800 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-       * @tc.number  AbilityList_0390
-       * @tc.name    AbilityList_0390
+       * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900
+       * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900
        * @tc.desc    The parameters input are 'all' and 'install', test the getAbilityLists() function,
        *             and the output is the list of AccessibilityAbilityInfo
        * @tc.size    SmallTest
        * @tc.type    User
        */
-        it('AbilityList_0390', 0, async function (done) {
-            console.info('AbilityList_0390');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900');
             let abilityType = 'all';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0390 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0390 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_1900 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
@@ -472,66 +472,66 @@ export default function AccessibleAbilityList() {
 
 
         /*
-        * @tc.number  AbilityList_0420
-        * @tc.name    AbilityList_0420
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200
         * @tc.desc    The parameters input are 'all' and 'enable', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0420', 0, async function (done) {
-            console.info('AbilityList_0420');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200');
             let abilityState = 'enable';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0420 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0420 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2200 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0430
-        * @tc.name    AbilityList_0430
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300
         * @tc.desc    The parameters input are 'all' and 'disable', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0430', 0, async function (done) {
-            console.info('AbilityList_0430');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300');
             let abilityState = 'disable';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0430 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0430 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2300 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
         })
 
         /*
-        * @tc.number  AbilityList_0440
-        * @tc.name    AbilityList_0440
+        * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400
+        * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400
         * @tc.desc    The parameters input are 'all' and 'install', test the getAbilityLists() function,
         *             and the output is the list of AccessibilityAbilityInfo
         * @tc.size    SmallTest
         * @tc.type    User
         */
-        it('AbilityList_0440', 0, async function (done) {
-            console.info('AbilityList_0440');
+        it('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400', 0, async function (done) {
+            console.info('SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400');
             let abilityState = 'install';
             accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-                console.info(`AccessibleAbilityList: AbilityList_0440 result ${result.length}`);
+                console.info(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400 result ${result.length}`);
                 expect(Array.isArray(result)).assertEqual(true);
                 done();
             }).catch((err) => {
-                console.error(`AccessibleAbilityList: AbilityList_0440 has error: ${err}`);
+                console.error(`AccessibleAbilityList: SUB_BASIC_BARRIERFREE_API_AccessibleAbilityList_2400 has error: ${err}`);
                 expect(null).assertFail();
                 done();
             });
