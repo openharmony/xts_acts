@@ -38,17 +38,136 @@ async function stopApplication(bundleName: string) {
 }
 
 export default function UiTest() {
-    
-    describe('UiTest_API10', function () {
-        beforeAll(async function () {
-            let driver = Driver.create()
-            await driver.delayMs(500)
-            let btn = await driver.findComponent(ON.id('ScreenLock-Accounts_Image_userIcon'))
-            if (btn != null) {
-            await btn.click()
-            }
+    describe('UiTest_API11', function () {        
+        beforeEach(async function () {
+            await stopApplication('com.uitestScene.acts')
         })
-        
+
+        /*
+        * @tc.number: uiTest_11001
+        * @tc.name: testMouseDoubleClick
+        * @tc.desc: doubleClick in the specified location on the screen by mouse.
+        */
+        it('testMouseDoubleClick', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Button = await driver.findComponent(ON.text('Click twice'))
+            let center = await Button.getBoundsCenter()
+            await driver.mouseDoubleClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 0);
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('doubleClick'))
+            let text = await button.getText()
+            expect(text == 'doubleClick').assertTrue()
+        })
+
+        /*
+        * @tc.number: uiTest_11002
+        * @tc.name: testMouseLongClick
+        * @tc.desc: longClick in the specified location on the screen by mouse.
+        */
+        it('testMouseLongClick', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Button = await driver.findComponent(ON.text('next page'))
+            let center = await Button.getBoundsCenter()
+            await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT, 0, 0)
+            await driver.delayMs(waitUiReadyMs)
+            let newButton = await driver.findComponent(ON.text('longClick'))
+            let text = await newButton.getText()
+            expect(text == 'longClick').assertTrue()
+        })
+
+        /*
+        * @tc.number: uiTest_11003
+        * @tc.name: testMouseDrag
+        * @tc.desc: drag on the screen between the specified points by mouse.
+        */
+        it('testMouseDrag', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let button = await driver.findComponent(ON.text('jump'))
+            let center = await button.getBoundsCenter();
+            await driver.mouseLongClick(center, MouseButton.MOUSE_BUTTON_LEFT)
+            await driver.delayMs(waitUiReadyMs)
+            let text1 = await driver.findComponent(ON.text('two'))
+            let text2 = await driver.findComponent(ON.text('three'))
+            let point1 = await text1.getBoundsCenter()
+            let point2 = await text2.getBoundsCenter()
+            await driver.mouseDrag(point1, point2, 600)
+            await driver.delayMs(2000)
+            let text = await driver.findComponent(ON.text('one').isBefore(ON.text('two')))
+            expect(text == null).assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_11004
+         * @tc.name: testMouseMoveWithTrack
+         * @tc.desc: swipe on the screen between the specified points with mouse.
+         */
+        it('testMouseMoveWithTrack', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Button1 = await driver.findComponent(ON.text('jump'))
+            let Button2 = await driver.findComponent(ON.text('next page'))
+            let center1 = await Button1.getBoundsCenter()
+            let center2 = await Button2.getBoundsCenter()
+            await driver.mouseMoveTo(center1)
+            await driver.delayMs(waitUiReadyMs)
+            await driver.mouseMoveWithTrack(center1, center2, 600)
+            await driver.delayMs(waitUiReadyMs)
+            let newButton = await driver.findComponent(ON.text('jump'))
+            expect(newButton == null).assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_11005
+         * @tc.name: testDriverInputText
+         * @tc.desc: inject text on the specified location.
+         */
+        it('testDriverInputText', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let input = await driver.findComponent(ON.type('TextInput'))
+            await input.clearText()
+            await driver.delayMs(waitUiReadyMs)
+            let center = await input.getBoundsCenter()
+            await driver.inputText(center, '123')
+            await driver.delayMs(waitUiReadyMs)
+            let input_new = await driver.findComponent(ON.type('TextInput'))                                                                                                                                                                           
+            let text = await input_new.getText()
+            console.info("testInputText result :" + text)
+            expect(text == '123').assertTrue()
+        })
+
+        /*
+         * @tc.number: uiTest_10006
+         * @tc.name: testMouseScroll
+         * @tc.desc: scroll the mouse wheel at the specified location to specify the cell.
+         */
+        it('testMouseScroll', 0, async function () {
+            await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+            let driver = Driver.create()
+            await driver.delayMs(waitUiReadyMs)
+            let Scroll = await driver.findComponent(ON.type('Scroll'))
+            let center = await Scroll.getBoundsCenter()
+            await driver.mouseScroll(center,true,30)
+            await driver.delayMs(waitUiReadyMs)
+            let button1 = await driver.findComponent(ON.text('next page'))
+            expect(button1 == null).assertTrue()
+            await driver.mouseScroll(center,false,30,2072,2048,20)
+            await driver.delayMs(waitUiReadyMs)
+            let button2 = await driver.findComponent(ON.text('next page'))
+            expect(button2 != null).assertTrue()
+            await stopApplication('com.uitestScene.acts')
+        })
+    })
+
+    describe('UiTest_API10', function () {        
         afterEach(async function () {
             await stopApplication('com.uitestScene.acts')
         })
@@ -207,7 +326,6 @@ export default function UiTest() {
         * @tc.name: testMonitor1
         * @tc.desc: monitor toast appearance.
         */
-
         it('testMonitor1', 0, async function () {
         await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
         let driver = Driver.create()
