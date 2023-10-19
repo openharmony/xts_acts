@@ -215,6 +215,12 @@
         "MainAbility/pages/Dialog/Popup",
         "MainAbility/pages/Dialog/TextPickerDialog",
         "MainAbility/pages/Dialog/TimePickerDialog",
-        "MainAbility/pages/Dialog/PromptDialog"
+        "MainAbility/pages/Dialog/PromptDialog",
+        "MainAbility/pages/buttonEnabled",
+        "MainAbility/pages/textEnabled",
+        "MainAbility/pages/textAenEnabled",
+        "MainAbility/pages/textChangeEnabled",
+        "MainAbility/pages/menuEnabled",
+        "MainAbility/pages/gestureEnabled"
     ]
 }
