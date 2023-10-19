@@ -54,7 +54,6 @@
     "pages/Experience/ViewPhotoTest",
     "pages/Experience/KeyboardDisplayTest",
     "pages/Experience/StartTaskManager",
-    "pages/Experience/StartBackgroundTask",
     "pages/Experience/StartNotification",
     "pages/Experience/ScrollPhotosList",
     "pages/Experience/KeyboardInputTest",
