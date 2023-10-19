@@ -382,14 +382,14 @@ export default function SecurityCipherJsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.error("createCipherFail catch  error: " + err.code);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         cryptoFramework.createCipher("ECC128|GCM|PKCS7");
         expect(null).assertFail();
       } catch (err) {
         console.error("createCipherFail catch  error: " + err.code);
-        expect(err.code == 801).assertTrue();
+        expect(err.code).assertEqual(801);
       }
       done();
     });
@@ -412,7 +412,7 @@ export default function SecurityCipherJsunit() {
         await cipherGeneratorEncrypt.init(3, keyPair, null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         await new Promise((resolve, reject) => {
@@ -426,13 +426,13 @@ export default function SecurityCipherJsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         await cipherGeneratorEncrypt.init(encryptMode, null, null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -469,14 +469,14 @@ export default function SecurityCipherJsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       await cipherGenerator.init(encryptMode, symKey, null);
       try {
         await cipherGenerator.update(null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         await new Promise((resolve, reject) => {
@@ -490,7 +490,7 @@ export default function SecurityCipherJsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -527,14 +527,14 @@ export default function SecurityCipherJsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       await cipherGenerator.init(encryptMode, gKeyPairSpec.pubKey, null);
       try {
         await cipherGenerator.doFinal(null);
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       try {
         await new Promise((resolve, reject) => {
@@ -548,7 +548,7 @@ export default function SecurityCipherJsunit() {
         });
         expect(null).assertFail();
       } catch (err) {
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -621,7 +621,7 @@ export default function SecurityCipherJsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.log("Security_CryptoFramework_Cipher_Func_2200 1 err" + err);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
 
       try {
@@ -632,7 +632,7 @@ export default function SecurityCipherJsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.log("Security_CryptoFramework_Cipher_Func_2200 2 err" + err);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
 
       try {
@@ -643,7 +643,7 @@ export default function SecurityCipherJsunit() {
         expect(null).assertFail();
       } catch (err) {
         console.log("Security_CryptoFramework_Cipher_Func_2200 3 err" + err);
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -663,7 +663,7 @@ export default function SecurityCipherJsunit() {
         console.log(
           "Security_CryptoFramework_Cipher_Func_2300 1 catch err" + err
         );
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });
@@ -682,7 +682,7 @@ export default function SecurityCipherJsunit() {
         console.log(
           "Security_CryptoFramework_Cipher_Func_2400 catch err" + err
         );
-        expect(err.code == 401).assertTrue();
+        expect(err.code).assertEqual(401);
       }
       done();
     });

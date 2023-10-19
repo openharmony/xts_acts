@@ -51,8 +51,8 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
                 // one asset type
                 let op: mediaLibrary.MediaFetchOptions = allFetchOp();
                 let count = 0;
@@ -83,8 +83,8 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
 
                 const album = albumList[0];
                 let fetchFileResult = await album.getFileAssets();
@@ -115,8 +115,8 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
                 const album = albumList[0];
                 const fetchFileResult = await album.getFileAssets(abnormalFetchOp);
                 if (fetchFileResult == undefined) {
@@ -321,8 +321,8 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, 1);
+                expect(albumCountPass).assertTrue();
 
                 const album = albumList[0];
 
@@ -360,8 +360,8 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, 1);
+                expect(albumCountPass).assertTrue();
 
                 const album = albumList[0];
 

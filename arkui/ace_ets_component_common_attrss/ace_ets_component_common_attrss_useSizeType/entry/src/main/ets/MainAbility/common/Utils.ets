@@ -195,7 +195,7 @@ export default class Utils {
       screenX: screenX,
       screenY: screenX,
       x: x,
-      y: y
+      y: y,
     })
 
     console.info('performTouch result : ' + result);
@@ -226,7 +226,8 @@ export default class Utils {
       keySource: 1,
       deviceId: 0,
       metaKey: 0,
-      timestamp: new Date().getTime()
+      timestamp: new Date().getTime(),
+      stopPropagation: () => {},
     })
     console.info('performKeyEvent result : ' + result);
     return result
@@ -279,7 +280,8 @@ export default class Utils {
       tiltX: 0,
       tiltY: 0,
       sourceTool: 1,
-      pressure: 0
+      pressure: 0,
+      stopPropagation: () => {},
     })
 
     console.info('performMouseEvent result : ' + result);

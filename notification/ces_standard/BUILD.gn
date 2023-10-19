@@ -17,6 +17,7 @@ group("ces_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsCommomEventAppointTest:ActsCommomEventAppointTest",
       "actsCommonEventManagerSupportTest:ActsCommonEventManagerSupportTest",
       "actsCommonEventManagerTest:ActsCommonEventManagerTest",
       "actsCommonEventSupportTest:ActsCommonEventSupportTest",

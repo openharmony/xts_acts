@@ -22,7 +22,7 @@ export default function pasteBoardJEtsunitTest() {
     console.info('start################################start');
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_0100
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1500
       * @tc.name      Adds PlainTextData
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -86,7 +86,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_0200
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1400
     * @tc.name      Adds PlainTextData = ''
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -133,7 +133,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_0300
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1300
     * @tc.name      Adds PlainTextData = 'Hello 中国!@#$%^&*()_+{}\?.'
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -184,7 +184,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_0400
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1600
       * @tc.name      Adds 300K PlainTextData
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -239,7 +239,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_0500
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1700
       * @tc.name      Adds 301K PlainTextData
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -293,7 +293,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_0600
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0700
     * @tc.name      Adds htmlText
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -345,7 +345,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_0700
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0600
     * @tc.name      Adds htmlText = ''
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -391,7 +391,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_0800
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1100
     * @tc.name      Adds htmlText = 'Hello 中国!@#$%^&*()_+{}\?.'
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -438,7 +438,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_0900
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0900
     * @tc.name      Adds uriText
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -489,7 +489,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_1000
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0800
     * @tc.name      Adds uriText = ''
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -533,7 +533,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_1100
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1200
     * @tc.name      Set uriText = 'Hello //'
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -580,7 +580,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_1200
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1000
     * @tc.name      Adds want
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -643,7 +643,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_1300
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0200
       * @tc.name      Adds one record(s)
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -690,7 +690,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_1400
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0300
       * @tc.name      Adds 2 record(s)
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -737,7 +737,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_1500
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0100
       * @tc.name      Adds 15 record(s)
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -788,7 +788,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_1600
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0400
       * @tc.name      Adds 30 record(s)
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -839,7 +839,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_1700
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_0500
       * @tc.name      Adds 31 record(s)
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -892,7 +892,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_1800
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataAddRead_1800
     * @tc.name      Adds PlainText,HtmlText,UriText
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -951,7 +951,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_1900
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1200
     * @tc.name      Delete one PlainTextData
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -1011,7 +1011,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2000
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_0800
       * @tc.name      Delete one htmlText
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1071,7 +1071,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2100
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_0900
       * @tc.name      Delete one uriText
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1131,7 +1131,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2200
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1000
       * @tc.name      Delete one want
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1194,7 +1194,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2300
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_0700
       * @tc.name      Deletes 300K PlainTextData
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1257,7 +1257,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2400
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_2100
       * @tc.name      Deletes 30 record(s)
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1321,7 +1321,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2500
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1100
       * @tc.name      Deletes replaced record
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1387,7 +1387,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2600
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_2200
       * @tc.name      Deletes 文本、uri、html
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1457,7 +1457,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2700
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1800
       * @tc.name      Replaces 文本 record
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1510,7 +1510,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2800
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1500
       * @tc.name      Replaces htmlText record
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1559,7 +1559,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_2900
+      * @tc.number   SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1600
       * @tc.name      Replaces uri record
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1608,7 +1608,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3000
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1700
       * @tc.name      Replaces want record
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1663,7 +1663,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3100
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataRemoveOrReplace_1400
       * @tc.name      Replaces 300k文本 record
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1719,7 +1719,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3200
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0200
       * @tc.name      Adds one record(s), gets record count
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1762,7 +1762,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_3300
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0300
     * @tc.name      Adds 2 record(s), gets record count
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -1813,7 +1813,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3400
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0100
       * @tc.name      Adds 15 record(s), gets record count
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1864,7 +1864,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_3500
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0400
     * @tc.name      Adds 30 record(s), gets record count
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -1915,7 +1915,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3600
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0700
       * @tc.name      Adds 31 record(s), gets record count
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -1966,7 +1966,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3700
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0500
       * @tc.name      Replaces one record, gets record count
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2022,7 +2022,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3800
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataQuery_0600
       * @tc.name      Clears pasteBoard, gets record count
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2076,7 +2076,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_3900
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataSetQueryProperty_0200
       * @tc.name      Adds Property
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2146,7 +2146,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4000
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataSetQueryProperty_0300
       * @tc.name      Set Property's tags
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2213,7 +2213,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_4100
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataSetQueryProperty_0500
     * @tc.name      Clears pasteBoard and check property
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -2265,7 +2265,7 @@ export default function pasteBoardJEtsunitTest() {
     });
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4200
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0900
       * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等文本数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2314,7 +2314,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4300
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0600
       * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等html数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2363,7 +2363,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4400
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0700
       * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等uri数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2412,7 +2412,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4500
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0800
       * @tc.name      打开内容变化通知功能：向剪贴板数据增加、删除等want数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2464,7 +2464,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4600
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_1000
       * @tc.name      打开内容变化通知功能：清除剪切板内容
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2513,7 +2513,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4700
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0400
       * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等文本数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2562,7 +2562,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4800
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0100
       * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等html数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2611,7 +2611,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_4900
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0200
       * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等uri数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2660,7 +2660,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5000
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0300
       * @tc.name      关闭内容变化通知功能：向剪贴板数据增加、删除等want数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2712,7 +2712,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5100
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ContentChangeEvent_0500
       * @tc.name      关闭内容变化通知功能：清除剪切板内容
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2761,7 +2761,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5200
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2400
       * @tc.name      清除剪切板内的文本数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2815,7 +2815,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5300
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2200
       * @tc.name      清除剪切板内的uri数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2869,7 +2869,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5400
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2100
       * @tc.name      清除剪切板内的html数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2923,7 +2923,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5500
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2300
       * @tc.name      清除剪切板内的want数据项
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -2980,7 +2980,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5600
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0200
       * @tc.name      向剪切板内增加30条数据项，然后清除
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3042,7 +3042,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5700
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0300
       * @tc.name      向剪贴板数据各增加5条文本、uri、html数据，然后清除
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3106,7 +3106,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5800
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0900
       * @tc.name      向剪贴板数据增加文本数据项，查询剪贴板存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3142,7 +3142,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_5900
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0600
       * @tc.name      向剪贴板数据增加uri数据项，查询剪贴板存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3178,7 +3178,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6000
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0500
       * @tc.name      向剪贴板数据增加html数据项，查询剪贴板存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3214,7 +3214,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6100
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0700
       * @tc.name      向剪贴板数据增加want数据项，查询剪贴板存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3253,7 +3253,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6200
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0400
       * @tc.name      向剪贴板数据各增加5条文本、uri、html，查询剪贴板存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3312,7 +3312,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6300
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_1200
       * @tc.name      更新剪贴板数据，查询剪贴板存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3366,7 +3366,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6400
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0100
       * @tc.name      删除所有的剪贴板数据，查询剪贴板不存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3419,7 +3419,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6500
+      * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_2500
       * @tc.name      清除剪贴板数据，查询剪贴板不存在剪贴板数据
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3475,7 +3475,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_6600
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataConvert_0800
     * @tc.name      将文本数据强制转换为文本
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -3524,7 +3524,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_6700
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataConvert_0600
     * @tc.name      将一条含有特殊字符、中英混杂的文本数据强制转换为文本
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -3571,7 +3571,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-      * @tc.number    SUB_pasteBoard_function_JS_API_6800
+      * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataConvert_0700
       * @tc.name      将一条超长文本数据 (大小为301K)强制转换为文本
       * @tc.desc      Test pasteBoard API functionality.
       * @tc.size      : MEDIUM
@@ -3621,7 +3621,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_6900
+    * @tc.number    SUB_Pasteboard_Local_SDK_PasteDataConvert_0400
     * @tc.name      将uri数据强制转换为文本
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM
@@ -3674,7 +3674,7 @@ export default function pasteBoardJEtsunitTest() {
     })
 
     /**
-    * @tc.number    SUB_pasteBoard_function_JS_API_7000
+    * @tc.number    SUB_Pasteboard_Local_SDK_SystemPasteboard_ClearOrHas_0800
     * @tc.name      复制文本、uri格式
     * @tc.desc      Test pasteBoard API functionality.
     * @tc.size      : MEDIUM

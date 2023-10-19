@@ -151,7 +151,7 @@ struct CustomContainerUser {
                       let head = report.indexOf(":");
                       this.time = report.substring(head+1);
                       let time = this.time;
-                      if( 0 < time && time < 1000 ) {
+                      if( 0 < time && time < 600 ) {
                         this.Vue = true;
                       } else if ( isNaN(this.time) ){
                         this.time = -1000;

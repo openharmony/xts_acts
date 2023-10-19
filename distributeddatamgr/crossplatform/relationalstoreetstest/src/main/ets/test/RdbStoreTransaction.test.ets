@@ -55,7 +55,7 @@ export default function rdbstoreTransactionTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0100
      * @tc.name   : testRdbStoreTransaction001
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -87,7 +87,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0110
      * @tc.name   : testRdbStoreTransaction002
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -136,7 +136,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0120
      * @tc.name   : testRdbStoreTransaction003
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -167,7 +167,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_TRANSACTION_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0130
      * @tc.name   : testRdbStoreTransaction004
      * @tc.desc   : RdbStore beginTransaction and commit test
      * @tc.size   : MediumTest
@@ -212,7 +212,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_ROLL_BACK_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0140
      * @tc.name   : testRdbStoreRollBack001
      * @tc.desc   : RdbStore rollBack test
      * @tc.size   : MediumTest
@@ -257,7 +257,7 @@ export default function rdbstoreTransactionTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_ROLL_BACK_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0150
      * @tc.name   : testRdbStoreRollBack002
      * @tc.desc   : RdbStore rollBack test
      * @tc.size   : MediumTest

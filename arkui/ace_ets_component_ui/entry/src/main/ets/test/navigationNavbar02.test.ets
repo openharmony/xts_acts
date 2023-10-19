@@ -42,12 +42,13 @@ export default function navigationNavbar02() {
       }
       done();
     });
+
     /* *
-            * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_023
-            * @tc.name  : navigationNavbar02_001
-            * @tc.desc  : Set navbarWidth to -2
-            * @tc.level : Level 2
-            */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_023
+       * @tc.name  : navigationNavbar02_001
+       * @tc.desc  : Set navbarWidth to -2
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_001', 0, async function (done) {
 
       console.info('[navigationNavbar02_001] START');
@@ -61,12 +62,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_001] END');
       done();
     });
+
     /* *
-                * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_022
-                * @tc.name  : navigationNavbar02_002
-                * @tc.desc  : Set navbarWidth to 0
-                * @tc.level : Level 2
-                */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_022
+       * @tc.name  : navigationNavbar02_002
+       * @tc.desc  : Set navbarWidth to 0
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_002', 0, async function (done) {
 
       console.info('[navigationNavbar02_002] START');
@@ -81,12 +83,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_002] END');
       done();
     });
+
     /* *
-                 * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_021
-                 * @tc.name  : navigationNavbar02_003
-                 * @tc.desc  : Set navbarWidth to 260
-                 * @tc.level : Level 2
-                 */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_021
+       * @tc.name  : navigationNavbar02_003
+       * @tc.desc  : Set navbarWidth to 260
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_003', 0, async function (done) {
 
       console.info('[navigationNavbar02_003] START');
@@ -101,12 +104,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_003] END');
       done();
     });
+
     /* *
-        * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_015 013
-        * @tc.name  : navigationNavbar02_004
-        * @tc.desc  : Set mode to NavigationMode.Stack
-        * @tc.level : Level 2
-        */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_015 013
+       * @tc.name  : navigationNavbar02_004
+       * @tc.desc  : Set mode to NavigationMode.Stack
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_004', 0, async function (done) {
 
       console.info('[navigationNavbar02_004] START');
@@ -121,12 +125,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_004] END');
       done();
     });
+
     /* *
-                      * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_020 019
-                      * @tc.name  : navigationNavbar02_005
-                      * @tc.desc  : Set hideNavBar to true
-                      * @tc.level : Level 2
-                      */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_020 019
+       * @tc.name  : navigationNavbar02_005
+       * @tc.desc  : Set hideNavBar to true
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_005', 0, async function (done) {
 
       console.info('[navigationNavbar02_005] START');
@@ -141,12 +146,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_005] END');
       done();
     });
+
     /* *
-                        * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_011
-                        * @tc.name  : navigationNavbar02_006
-                        * @tc.desc  : Set minContentWidth to -2
-                        * @tc.level : Level 2
-                        */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_011
+       * @tc.name  : navigationNavbar02_006
+       * @tc.desc  : Set minContentWidth to -2
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_006', 0, async function (done) {
 
       console.info('[navigationNavbar02_006] START');
@@ -161,12 +167,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_006] END');
       done();
     });
+
     /* *
-                            * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_010
-                            * @tc.name  : navigationNavbar02_007
-                            * @tc.desc  : Set minContentWidth to 0
-                            * @tc.level : Level 2
-                            */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_010
+       * @tc.name  : navigationNavbar02_007
+       * @tc.desc  : Set minContentWidth to 0
+       * @tc.level : Level 2
+       */
     // it('navigationNavbar02_007', 0, async function (done) {
     //
     //   console.info('[navigationNavbar02_007] START');
@@ -183,11 +190,11 @@ export default function navigationNavbar02() {
     // });
 
     /* *
-                               * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_009
-                               * @tc.name  : navigationNavbar02_008
-                               * @tc.desc  : Set minContentWidth to 360
-                               * @tc.level : Level 2
-                               */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_009
+       * @tc.name  : navigationNavbar02_008
+       * @tc.desc  : Set minContentWidth to 360
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_008', 0, async function (done) {
 
       console.info('[navigationNavbar02_008] START');
@@ -202,12 +209,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_008] END');
       done();
     });
+
     /* *
-                                   * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_014
-                                   * @tc.name  : navigationNavbar02_009
-                                   * @tc.desc  : Set mode to NavigationMode.Split
-                                   * @tc.level : Level 2
-                                   */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_014
+       * @tc.name  : navigationNavbar02_009
+       * @tc.desc  : Set mode to NavigationMode.Split
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_009', 0, async function (done) {
 
       console.info('[navigationNavbar02_011] START');
@@ -222,12 +230,13 @@ export default function navigationNavbar02() {
       console.info('[navigationNavbar02_011] END');
       done();
     });
+
     /* *
-                                       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_012
-                                       * @tc.name  : navigationNavbar02_010
-                                       * @tc.desc  : Set mode to NavigationMode.Auto
-                                       * @tc.level : Level 2
-                                       */
+       * @tc.number: SUB_ACE_COMPONENT_SR000I1RO8_012
+       * @tc.name  : navigationNavbar02_010
+       * @tc.desc  : Set mode to NavigationMode.Auto
+       * @tc.level : Level 2
+       */
     it('navigationNavbar02_010', 0, async function (done) {
 
       console.info('[navigationNavbar02_012] START');

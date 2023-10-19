@@ -44,8 +44,7 @@ export default function LinkSonJsunit() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
-      await driver.pressBack();
+      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('LinkSonJsunit_0100', 0, async function (done) {

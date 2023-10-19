@@ -128,8 +128,8 @@ export default function getThumbnailCallback(abilityContext) {
         async function testGetThumbnailError(done, testNum, dOp, size) {
             try {
                 let fetchFileResult = await media.getFileAssets(dOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 let asset = await fetchFileResult.getFirstObject();
                 asset.getThumbnail(size, async (err, pixelmap) => {
                     if (err) {

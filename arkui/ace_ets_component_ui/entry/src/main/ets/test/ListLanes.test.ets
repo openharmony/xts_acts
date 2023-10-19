@@ -44,11 +44,11 @@ export default function ListLanes() {
     });
 
     /* *
-    * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_039
-    * @tc.name  : ListLanes_001
-    * @tc.desc  : set gutter to -1vp and listDirection to Axis.Vertical
-    * @tc.level : Level 3
-    */
+       * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_039
+       * @tc.name  : ListLanes_001
+       * @tc.desc  : set gutter to -1vp and listDirection to Axis.Vertical
+       * @tc.level : Level 3
+       */
     it('ListLanes_001', 0, async function (done) {
 
       console.info('[ListLanes_001] START');
@@ -64,12 +64,13 @@ export default function ListLanes() {
       console.info('[ListLanes_001] END');
       done();
     });
+
     /* *
-        * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_055
-        * @tc.name  : ListLanes_002
-        * @tc.desc  : set gutter to 10% and space to 20
-        * @tc.level : Level 3
-        */
+       * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_055
+       * @tc.name  : ListLanes_002
+       * @tc.desc  : set gutter to 10% and space to 20
+       * @tc.level : Level 3
+       */
     it('ListLanes_002', 0, async function (done) {
 
       console.info('[ListLanes_002] START');
@@ -111,6 +112,12 @@ export default function ListLanes() {
       done();
     });
 
+    /* *
+      * @tc.number: SUB_ACE_TS_COMPONENT_SR000I46QG_032
+      * @tc.name  : ListLanes_008
+      * @tc.desc  : set gutter to 10px and initialIndex to 8
+      * @tc.level : Level 3
+      */
     it('ListLanes_008', 0, async function (done) {
 
       console.info('[ListLanes_008] START');
@@ -129,12 +136,11 @@ export default function ListLanes() {
     });
 
     /* *
-          * @tc.number: SUB_ACE_FUNCTION_JICHU_SR000HQ76H_059
-          * @tc.name  : ListLanes_009
-          * @tc.desc  : set padding to 20 and gutter to 10
-          * @tc.level : Level 2
-          */
-
+       * @tc.number: SUB_ACE_FUNCTION_JICHU_SR000HQ76H_059
+       * @tc.name  : ListLanes_009
+       * @tc.desc  : set padding to 20 and gutter to 10
+       * @tc.level : Level 2
+       */
     it('ListLanes_009', 0, async function (done) {
 
       console.info('[ListLanes_008] START');
@@ -156,7 +162,6 @@ export default function ListLanes() {
        * @tc.desc  : set margin to 10 and gutter to 10
        * @tc.level : Level 2
        */
-
     it('ListLanes_010', 0, async function (done) {
 
       console.info('[ListLanes_010] START');

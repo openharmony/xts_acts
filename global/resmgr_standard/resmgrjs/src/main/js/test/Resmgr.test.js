@@ -761,6 +761,18 @@ describe('resMgrTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_RESMGR_JS_1601
+    * @tc.name    test getDeviceCapability method in promise mode
+    * @tc.desc    get the device capability in promise mode
+    */
+    it('getDeviceCapability_test_017', 0, async function (done) {
+        console.log('getDeviceCapability_test_017 0');
+        expect(resmgr.DeviceType.DEVICE_TYPE_2IN1).assertEqual(7);
+        console.log('getDeviceCapability_test_017 1');
+        done();
+    })
+
+    /* *
         * @tc.number  SUB_GLOBAL_RESMGR_JS_1500
         * @tc.name    test getDeviceCapability method in callback mode
         * @tc.desc    get the device capability in callback mode

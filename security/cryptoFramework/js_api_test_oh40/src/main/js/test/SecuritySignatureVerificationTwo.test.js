@@ -227,7 +227,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         console.error(
                             "AsyPromise signAndVerifyNormalProcess catch error: " + err
                         );
-                        expect(err.code == 401).assertTrue();
+                        expect(err.code).assertEqual(401);
                     });
                 done();
             }
@@ -253,7 +253,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_2600 1 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -264,7 +264,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_2600 2 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -277,7 +277,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_2600 3 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -315,14 +315,14 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     signGenerator.init(null);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     signGenerator.init(signKeyPair.priKey, signKeyPair.priKey);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 let dsaGenerator = cryptoFramework.createAsyKeyGeneratorBySpec(
@@ -343,14 +343,14 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     await signGenerator.init(dsaKeyPair.pubKey);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
                     signGenerator.init("sroundpriKey");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 done();
@@ -460,7 +460,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3100 1 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -473,7 +473,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3100 2 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -487,7 +487,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3100 5 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -515,7 +515,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3100 1 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -526,7 +526,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3100 4 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -553,7 +553,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3200 1 catch err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -564,7 +564,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3200 2 catch err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -577,7 +577,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3200 3 catch err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -588,7 +588,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3200 5 catch err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -628,13 +628,13 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     verifyGenerator.init(null);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     verifyGenerator.init(verifyKeyPair.pubKey, verifyKeyPair.pubKey);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 let dsaGenerator = cryptoFramework.createAsyKeyGeneratorBySpec(
                     asyCommon.genDsa2048KeyPairSpecBigE()
@@ -654,13 +654,13 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     await verifyGenerator.init(dsaKeyPair.pubKey);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     verifyGenerator.init("sroundpriKey");
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -779,7 +779,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     );
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     verifyGenerator.setVerifySpec(
@@ -788,13 +788,13 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     );
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     verifyGenerator.setVerifySpec(1024, 2);
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 try {
                     verifyGenerator.setVerifySpec(
@@ -803,7 +803,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     );
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -813,7 +813,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                     );
                     expect(null).assertFail();
                 } catch (err) {
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -842,7 +842,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3700 1 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -855,7 +855,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3700 2 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
 
                 try {
@@ -866,7 +866,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3700 4 err" +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }
@@ -897,7 +897,7 @@ export default function SecuritySignatureVerificationTwoJsunit() {
                         "Security_CryptoFramework_SignatureVerification_Func_3800 catch err: " +
                         err
                     );
-                    expect(err.code == 401).assertTrue();
+                    expect(err.code).assertEqual(401);
                 }
                 done();
             }

@@ -146,6 +146,78 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>SUB_Misc_inputMethod_offMoveCursor_0260 event:' + data.event);
                     that.SUB_Misc_inputMethod_offMoveCursor_0260();
                     break;
+                case 270:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_insertText_Async_0100();
+                    break;
+                case 280:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_insertText_Async_0200();
+                    break;
+                case 290:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_insertText_Async_0900();
+                    break;
+                case 300:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100();
+                    break;
+                case 310:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200();
+                    break;
+                case 320:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700();
+                    break;
+                case 330:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_deleteRight_Async_0100();
+                    break;
+                case 340:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_deleteRight_Async_0200();
+                    break;
+                case 350:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_deleteRight_Async_0700();
+                    break;
+                case 360:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100();
+                    break;
+                case 370:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200();
+                    break;
+                case 380:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700();
+                    break;
+                case 390:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_moveCursor_Async_0100();
+                    break;
+                case 400:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_moveCursor_Async_0200();
+                    break;
+                case 410:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_moveCursor_Async_0700();
+                    break;
+                case 420:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100();
+                    break;
+                case 430:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200();
+                    break;
+                case 440:
+                    console.debug(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 event:' + data.event);
+                    that.SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700();
+                    break;
             }
         }
 
@@ -429,7 +501,7 @@ export class KeyboardDelegate {
         }, 100);
     }
 
-    private  SUB_Misc_inputMethod_onInsertText_0170(): void {
+    private SUB_Misc_inputMethod_onInsertText_0170(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_onInsertText_0170 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -454,7 +526,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_offInsertText_0180(): void {
+    private SUB_Misc_inputMethod_offInsertText_0180(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_offInsertText_0180 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -466,10 +538,10 @@ export class KeyboardDelegate {
                     let t = setTimeout(async () => {
                         clearTimeout(t);
                         try {
-                            let bool1 = await InputClient.insertText('insert')
+                            let bool1 = await InputClient.insertText('insert');
                             console.info(TAG + '====>SUB_Misc_inputMethod_offInsertText_0180 bool1: ' + bool1);
                             await this.sleep(100);
-                            let bool2 = await InputClient.insertText('insert')
+                            let bool2 = await InputClient.insertText('insert');
                             console.info(TAG + '====>SUB_Misc_inputMethod_offInsertText_0180 bool2: ' + bool2);
                         } catch (err) {
                             console.debug(TAG + '====>SUB_Misc_inputMethod_offInsertText_0180 insertText catch err:' + JSON.stringify(err));
@@ -482,7 +554,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_onDeleteLeft_0190(): void {
+    private SUB_Misc_inputMethod_onDeleteLeft_0190(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_onDeleteLeft_0190 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -507,7 +579,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_offDeleteLeft_0200(): void {
+    private SUB_Misc_inputMethod_offDeleteLeft_0200(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_offDeleteLeft_0200 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -519,10 +591,10 @@ export class KeyboardDelegate {
                     let t = setTimeout(async () => {
                         clearTimeout(t);
                         try {
-                            let bool1 = await InputClient.deleteForward(1)
+                            let bool1 = await InputClient.deleteForward(1);
                             console.info(TAG + '====>SUB_Misc_inputMethod_offDeleteLeft_0200 bool1: ' + bool1);
                             await this.sleep(100);
-                            let bool2 = await InputClient.deleteForward(1)
+                            let bool2 = await InputClient.deleteForward(1);
                             console.info(TAG + '====>SUB_Misc_inputMethod_offDeleteLeft_0200 bool2: ' + bool2);
                         } catch (err) {
                             console.debug(TAG + '====>SUB_Misc_inputMethod_offDeleteLeft_0200 deleteForward catch err:' + JSON.stringify(err));
@@ -535,7 +607,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_onDeleteRight_0210(): void {
+    private SUB_Misc_inputMethod_onDeleteRight_0210(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_onDeleteRight_0210 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -560,7 +632,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_offDeleteRight_0220(): void {
+    private SUB_Misc_inputMethod_offDeleteRight_0220(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_offDeleteRight_0220 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -572,10 +644,10 @@ export class KeyboardDelegate {
                     let t = setTimeout(async () => {
                         clearTimeout(t);
                         try {
-                            let bool1 = await InputClient.deleteBackward(1)
+                            let bool1 = await InputClient.deleteBackward(1);
                             console.info(TAG + '====>SUB_Misc_inputMethod_offDeleteRight_0220 bool1: ' + bool1);
                             await this.sleep(100);
-                            let bool2 = await InputClient.deleteBackward(1)
+                            let bool2 = await InputClient.deleteBackward(1);
                             console.info(TAG + '====>SUB_Misc_inputMethod_offDeleteRight_0220 bool2: ' + bool2);
                         } catch (err) {
                             console.debug(TAG + '====>SUB_Misc_inputMethod_offDeleteRight_0220 deleteBackward catch err:' + JSON.stringify(err));
@@ -588,7 +660,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_onMoveCursor_0250(): void {
+    private SUB_Misc_inputMethod_onMoveCursor_0250(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_onMoveCursor_0250 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -613,7 +685,7 @@ export class KeyboardDelegate {
         }
     }
 
-    private  SUB_Misc_inputMethod_offMoveCursor_0260(): void {
+    private SUB_Misc_inputMethod_offMoveCursor_0260(): void {
         console.info(TAG + '====>receive SUB_Misc_inputMethod_offMoveCursor_0260 success');
         try{
             inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
@@ -625,10 +697,10 @@ export class KeyboardDelegate {
                     let t = setTimeout(async () => {
                         clearTimeout(t);
                         try {
-                            await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT)
+                            await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT);
                             console.info(TAG + '====>SUB_Misc_inputMethod_offMoveCursor_0260 first' );
                             await this.sleep(100);
-                            await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT)
+                            await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT);
                             console.info(TAG + '====>SUB_Misc_inputMethod_offMoveCursor_0260 second' );
                         } catch (err) {
                             console.debug(TAG + '====>SUB_Misc_inputMethod_offMoveCursor_0260 moveCursor catch err:' + JSON.stringify(err));
@@ -640,5 +712,456 @@ export class KeyboardDelegate {
             console.info(TAG + '====>receive SUB_Misc_inputMethod_offMoveCursor_0260 catch error: ' + JSON.stringify(error));
         }
     }
+
+    private SUB_Misc_inputMethod_on_off_insertText_Async_0100(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0100 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0100 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.insertText('insert');
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 InputClient.insertText: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0100 insertText catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_insertText_Async_0200(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0200 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0200 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.insertText('insert');
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 InputClient.insertText: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0200 insertText catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_insertText_Async_0900(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0900 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0900 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.insertText('insert');
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 InputClient.insertText: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_insertText_Async_0900 insertText catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_insertText_Async_0900 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteForward(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 InputClient.deleteForward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 deleteForward catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteForward(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 InputClient.deleteForward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 deleteForward catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0200 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteForward(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 InputClient.deleteForward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 insertText catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteLeft_Async_0700 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_deleteRight_Async_0100(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteBackward(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 InputClient.deleteBackward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 deleteBackward catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_deleteRight_Async_0200(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteBackward(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 InputClient.deleteBackward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 deleteBackward catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0200 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_deleteRight_Async_0700(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.deleteBackward(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 InputClient.deleteBackward: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 deleteBackward catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_deleteRight_Async_0700 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.sendKeyFunction(0);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 InputClient.sendKeyFunction: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 sendKeyFunction catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.sendKeyFunction(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 InputClient.sendKeyFunction: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 sendKeyFunction catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0200 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.sendKeyFunction(1);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 InputClient.sendKeyFunction: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 sendKeyFunction catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_sendFunctionKey_Async_0700 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_moveCursor_Async_0100(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 InputClient.moveCursor success');
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 moveCursor catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_moveCursor_Async_0200(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 InputClient.moveCursor success');
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 moveCursor catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0200 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_moveCursor_Async_0700(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 InputClient.moveCursor: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 moveCursor catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0700 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_moveCursor_Async_0100 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            await InputClient.sendExtendAction(0);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 InputClient.sendExtendAction success');
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 sendExtendAction catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0100 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200v InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            await InputClient.sendExtendAction(0);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 InputClient.sendExtendAction success');
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 sendExtendAction catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0200 catch error: ' + JSON.stringify(error));
+        }
+    }
+
+    private SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700(): void {
+        console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 success');
+        try{
+            inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+                console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 success inputStart');
+                inputMethodAbility.off('inputStart');
+                if (InputClient == null) {
+                    console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 InputClient is null');
+                } else {
+                    let t = setTimeout(async () => {
+                        clearTimeout(t);
+                        try {
+                            let bool = await InputClient.sendExtendAction(0);
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 InputClient.sendExtendAction: ' + bool);
+                        } catch (err) {
+                            console.info(TAG + '====>SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 sendExtendAction catch err:' + JSON.stringify(err));
+                        }
+                    }, 500);
+                }
+            });
+        }catch(error){
+            console.info(TAG + '====>receive SUB_Misc_inputMethod_on_off_handleExtendAction_Async_0700 catch error: ' + JSON.stringify(error));
+        }
+    }
+
 
 }

@@ -303,6 +303,18 @@ export class KeyboardDelegate {
                     console.debug(TAG + '====>Sub_Misc_inputMethod_selectByMovement_sync_0291 event:' + data.event);
                     that.Sub_Misc_inputMethod_selectByMovement_sync_0291();
                     break;
+                case 300:
+                    console.debug(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0400 event:' + data.event);
+                    that.Sub_Misc_Request_InputMethod_selectContext_0400();
+                    break;
+                case 310:
+                    console.debug(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0500 event:' + data.event);
+                    that.Sub_Misc_Request_InputMethod_selectContext_0500();
+                    break;
+                case 320:
+                    console.debug(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0600 event:' + data.event);
+                    that.Sub_Misc_Request_InputMethod_selectContext_0600();
+                    break;
             }
         }
 
@@ -2152,5 +2164,118 @@ export class KeyboardDelegate {
         });
     }
 
+    private Sub_Misc_Request_InputMethod_selectContext_0400(): void {
+        console.info(TAG + '====>receive Sub_Misc_Request_InputMethod_selectContext_0400 data');
+        inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData;
+            let range = { start: 99, end: 88 };
+            if (InputClient == null) {
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0400', commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.selectByRange(range, (err) => {
+                        if (err) {
+                            console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0400 selectByRange err:' + JSON.stringify(err));
+                            commonEventPublishData = {
+                                data: "FAILED"
+                            };
+                        } else {
+                            commonEventPublishData = {
+                                data: "SUCCESS"
+                            };
+                        }
+                        console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0400 selectByRange success');
+                        commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0400', commonEventPublishData, this.publishCallback);
+                    });
+                } catch (err) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0400 selectByRange throw_err:');
+                    commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0400', commonEventPublishData, this.publishCallback);
+                }
+            }
+        });
+    }
+
+    private Sub_Misc_Request_InputMethod_selectContext_0500(): void {
+        console.info(TAG + '====>receive Sub_Misc_Request_InputMethod_selectContext_0500 data');
+        inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData;
+            let range = { start:168, end: -66 };
+            if (InputClient == null) {
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0500', commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.selectByRange(range, (err) => {
+                        if (err) {
+                            console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0500 selectByRange err:' + JSON.stringify(err));
+                            commonEventPublishData = {
+                                data: "SUCCESS"
+                            };
+                        } else {
+                            commonEventPublishData = {
+                                data: "FAILED"
+                            };
+                            console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0500 selectByRange success');
+                        }
+                        commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0500', commonEventPublishData, this.publishCallback);
+                    });
+                } catch (err) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0500 selectByRange throw_err:');
+                    commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0500', commonEventPublishData, this.publishCallback);
+                }
+            }
+        });
+    }
+
+    private Sub_Misc_Request_InputMethod_selectContext_0600(): void {
+        console.info(TAG + '====>receive Sub_Misc_Request_InputMethod_selectContext_0600 data');
+        inputMethodAbility.on('inputStart', async (KeyboardDelegate, InputClient) => {
+            inputMethodAbility.off('inputStart');
+            let commonEventPublishData;
+            let range = { start: 100, end: 2000 };
+            if (InputClient == null) {
+                commonEventPublishData = {
+                    data: "FAILED"
+                };
+                commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0600', commonEventPublishData, this.publishCallback);
+            } else {
+                try {
+                    InputClient.selectByRange(range, (err) => {
+                        if (err) {
+                            console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0600 selectByRange err:' + JSON.stringify(err));
+                            commonEventPublishData = {
+                                data: "FAILED"
+                            };
+                        } else {
+                            commonEventPublishData = {
+                                data: "SUCCESS"
+                            };
+                            console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0600 selectByRange success');
+                        }
+                        commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0600', commonEventPublishData, this.publishCallback);
+                    });
+                } catch (err) {
+                    commonEventPublishData = {
+                        data: "FAILED"
+                    };
+                    console.info(TAG + '====>Sub_Misc_Request_InputMethod_selectContext_0600 selectByRange throw_err:');
+                    commoneventmanager.publish('Sub_Misc_Request_InputMethod_selectContext_0600', commonEventPublishData, this.publishCallback);
+                }
+            }
+        });
+    }
 
 }

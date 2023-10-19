@@ -44,11 +44,11 @@ export default function ListLanes02() {
     });
 
     /* *
-    * @tc.number: SUB_ACE_FUNCTION_JICHU_SR000HQ76H_038
-    * @tc.name  : ListLanes02_001
-    * @tc.desc  : set gutter to 10 and listDirection to Axis.Vertical
-    * @tc.level : Level 2
-    */
+       * @tc.number: SUB_ACE_FUNCTION_JICHU_SR000HQ76H_038
+       * @tc.name  : ListLanes02_001
+       * @tc.desc  : set gutter to 10 and listDirection to Axis.Vertical
+       * @tc.level : Level 2
+       */
     it('ListLanes02_001', 0, async function (done) {
 
       console.info('[ListLanes02_001] START');

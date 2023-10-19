@@ -209,7 +209,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100
          * @tc.desc Test Js Api SingleKvStore.restore() manal testcase 001
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0200
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0100', 0, async function (done) {
             try {
@@ -236,7 +236,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200
          * @tc.desc Test Js Api SingleKvStore.restore() manal testcase 002
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0100
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALRESTORE_PROMISE_0200', 0, async function (done) {
             try {
@@ -268,7 +268,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 001
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0300
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0100', 0, async function (done) {
             try {
@@ -298,7 +298,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 002
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0400
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0200', 0, async function (done) {
             try {
@@ -328,7 +328,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 003
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0500
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0300', 0, async function (done) {
             try {
@@ -358,7 +358,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 004
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0600
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0400', 0, async function (done) {
             try {
@@ -388,7 +388,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0500
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 005
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0500
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0700
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0500', 0, async function (done) {
             try {
@@ -416,7 +416,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 006
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0800
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0600', 0, async function (done) {
             try {
@@ -475,7 +475,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700
          * @tc.desc Test Js Api SingleKvStore.backup() manal testcase 007
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_0900
          */
         it('SUB_DDM_DKV_KVBACKUP_MANALBACKUP_PROMISE_0700', 0, async function (done) {
             try {
@@ -543,7 +543,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100
          * @tc.desc Test Js Api SingleKvStore.restore() SpecifiedVerision testcase 001
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1000
          */
         it('SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0100', 0, async function (done) {
             try {
@@ -575,7 +575,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200
          * @tc.desc Test Js Api SingleKvStore.restore() SpecifiedVerision testcase 002
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1100
          */
         it('SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0200', 0, async function (done) {
             try {
@@ -607,7 +607,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300
          * @tc.desc Test Js Api SingleKvStore.restore() SpecifiedVerision testcase 003
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1200
          */
         it('SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0300', 0, async function (done) {
             try {
@@ -639,7 +639,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400
          * @tc.desc Test Js Api SingleKvStore.restore() SpecifiedVerision testcase 004
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1300
          */
         it('SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0400', 0, async function (done) {
             try {
@@ -671,7 +671,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0500
          * @tc.desc Test Js Api SingleKvStore.restore() SpecifiedVerision testcase 005
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0500
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1400
          */
         it('SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0500', 0, async function (done) {
             try {
@@ -700,7 +700,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0600
          * @tc.desc Test Js Api SingleKvStore.restore() SpecifiedVerision testcase 006
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0600
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1500
          */
         it('SUB_DDM_DKV_KVBACKUP_RESTORESPECIFIEDVERSION_PROMISE_0600', 0, async function (done) {
             try {
@@ -729,7 +729,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100
          * @tc.desc Test Js Api SingleKvStore.deleteBackup() testcase 001
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1600
          */
         it('SUB_DDM_DKV_KVBACKUP_DELETEBACKUP_PROMISE_0100', 0, async function (done) {
             try {
@@ -756,7 +756,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0100
          * @tc.desc Test Js Api SingleKvStore.put() db testcase 001
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0100
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1700
          */
         it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0100', 0, async function (done) {
             try {
@@ -775,7 +775,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200
          * @tc.desc Test Js Api SingleKvStore.put() db testcase 002
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1800
          */
         it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0200', 0, async function (done) {
             try {
@@ -802,7 +802,7 @@ export default function kvStoreBackupPromiseJsunittest(){
          * @tc.name SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300
          * @tc.desc Test Js Api SingleKvStore.put() db testcase 003
          * @tc.type: FUNC
-         * @tc.number: SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300
+         * @tc.number: SUB_DistributedData_KVStore_SDK_DisKVStoreBackupPromiseJsApiTest_1900
          */
         it('SUB_DDM_DKV_KVBACKUP_PUT_PROMISE_0300', 0, async function (done) {
             try {

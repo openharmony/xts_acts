@@ -242,7 +242,7 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
 
 export function SecurityHuksHmacCallbackJsunit() {
   describe("SecurityHuksHmacCallbackJsunit", function () {
-    it("testHmacSHA1001", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SHA_1001", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA256KeyAlias001";
       let HuksOptions = {
         properties: new Array(
@@ -257,7 +257,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       done();
     });
 
-    it("testHmacSHA1002", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SHA_1002", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA256KeyAlias002";
       let HuksOptions = {
         properties: new Array(
@@ -270,7 +270,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
-    it("testHmacSHA1003", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SHA_1003", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA256KeyAlias003";
       let HuksOptions = {
         properties: new Array(
@@ -283,7 +283,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "finish");
       done();
     });
-    it("testHmacSHA1004", 0, async function (done) {
+    it("Security_HUKS_Hmac_API8_SHA_1004", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA256KeyAlias004";
       let HuksOptions = {
         properties: new Array(

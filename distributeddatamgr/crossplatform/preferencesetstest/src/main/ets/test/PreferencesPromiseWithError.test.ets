@@ -41,7 +41,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_PREFERENCES_PROMISE_WITH_ERROR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_JSAPITest_0100
      * @tc.name   : testPreferencesPromiseWithError0001
      * @tc.desc   : Clear、Delete、Put、Get、Flush promise interface test
      * @tc.size   : MediumTest
@@ -107,7 +107,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0100
      * @tc.name   : testMpreferencesGetPromise0001
      * @tc.desc   : mPreference.get promise test
      * @tc.size   : MediumTest
@@ -136,7 +136,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_PROMISE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1100
      * @tc.name   : testMpreferencesGetPromise0002
      * @tc.desc   : mPreference.get promise test
      * @tc.size   : MediumTest
@@ -167,7 +167,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_PROMISE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1200
      * @tc.name   : testMpreferencesGetPromise0003
      * @tc.desc   : mPreference.get promise test
      * @tc.size   : MediumTest
@@ -197,7 +197,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1800
      * @tc.name   : testMpreferencesGetSyncWithError0001
      * @tc.desc   : mPreference.getSync test
      * @tc.size   : MediumTest
@@ -219,7 +219,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1900
      * @tc.name   : testMpreferencesGetSyncWithError0002
      * @tc.desc   : mPreference.getSync test
      * @tc.size   : MediumTest
@@ -241,7 +241,8 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_SYNC_WITH_ERROR_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2900
+
      * @tc.name   : testMpreferencesGetSyncWithError0003
      * @tc.desc   : mPreference.getSync test
      * @tc.size   : MediumTest
@@ -263,7 +264,8 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_GET_ALL_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1300
+
      * @tc.name   : testMpreferencesGetALLPromise0001
      * @tc.desc   : mPreference.getAll promise test
      * @tc.size   : MediumTest
@@ -291,7 +293,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_HAS_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0600
      * @tc.name   : testMpreferencesHasPromise0001
      * @tc.desc   : mPreference.has promise test
      * @tc.size   : MediumTest
@@ -320,7 +322,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_HAS_PROMISE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0700
      * @tc.name   : testMpreferencesHasPromise0002
      * @tc.desc   : mPreference.has promise test
      * @tc.size   : MediumTest
@@ -347,7 +349,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0100
      * @tc.name   : testMpreferencesPutPromise0001
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -376,7 +378,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0400
      * @tc.name   : testMpreferencesPutPromise0002
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -407,7 +409,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0300
      * @tc.name   : testMpreferencesPutPromise0003
      * @tc.desc   : mPreference.put promise test   space
      * @tc.size   : MediumTest
@@ -439,7 +441,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0200
      * @tc.name   : testMpreferencesPutPromise0004
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -469,7 +471,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_PROMISE_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0500
      * @tc.name   : testMpreferencesPutPromise0005
      * @tc.desc   : mPreference.put promise test
      * @tc.size   : MediumTest
@@ -499,7 +501,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1400
      * @tc.name   : testMpreferencesPutSyncWithError0001
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -521,7 +523,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1700
      * @tc.name   : testMpreferencesPutSyncWithError0002
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -544,7 +546,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1600
      * @tc.name   : testMpreferencesPutSyncWithError0003
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -567,7 +569,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1500
      * @tc.name   : testMpreferencesPutSyncWithError0004
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -588,7 +590,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_PUT_SYNC_WITH_ERROR_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1800
      * @tc.name   : testMpreferencesPutSyncWithError0005
      * @tc.desc   : mPreference.putSync test
      * @tc.size   : MediumTest
@@ -609,7 +611,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_DELETE_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0100
      * @tc.name   : testMpreferencesDeletePromise0001
      * @tc.desc   : mPreference.delete promise test
      * @tc.size   : MediumTest
@@ -638,7 +640,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_DELETE_PROMISE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0200
      * @tc.name   : testMpreferencesDeletePromise0002
      * @tc.desc   : mPreference.delete promise test
      * @tc.size   : MediumTest
@@ -665,7 +667,7 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_CLEAR_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0100
      * @tc.name   : testMpreferencesClearPromise0001
      * @tc.desc   : mPreference.clear promise test
      * @tc.size   : MediumTest
@@ -692,7 +694,8 @@ export default function preferencesPromiseWithErrorTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_MPREFERENCES_FLUSH_PROMISE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_FlushJSAPITest_0100
+
      * @tc.name   : testMpreferencesFlushPromise0001
      * @tc.desc   : mPreference.flush promise test
      * @tc.size   : MediumTest
