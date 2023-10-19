@@ -37,7 +37,12 @@ import pickerViewPropsJsTest4111 from './pickerViewProps4111.test.js'
 import pickerViewPropsJsTest4112 from './pickerViewProps4112.test.js'
 import pickerViewPropsJsTest4113 from './pickerViewProps4113.test.js'
 import pickerViewPropsJsTest412 from './pickerViewProps412.test.js'
+import pickerViewPropsJsTest4121 from './pickerViewProps4121.test.js'
 import pickerViewPropsJsTest42 from './pickerViewProps42.test.js'
+import pickerViewPropsJsTest421 from './pickerViewProps421.test.js'
+import pickerViewPropsJsTest422 from './pickerViewProps422.test.js'
+import pickerViewPropsJsTest423 from './pickerViewProps423.test.js'
+import pickerViewPropsJsTest424 from './pickerViewProps424.test.js'
 import labelPropsJsTest from './labelProps.test.js'
 import stackPropsJsTest from './stackProps.test.js'
 import panelPropsJsTest from './panelProps.test.js'
@@ -60,6 +65,7 @@ import popupPropsJsTest from './popupProps.test.js'
 import imageAnimatorPropsJsTest from './imageAnimatorProps.test.js'
 import marqueePropsJsTest from './marqueeProps.test.js'
 
+
 export default function testsuite() {
     basicabilityapi() 
     mediaqueryTest()
@@ -73,7 +79,7 @@ export default function testsuite() {
     tabsPropsJsTest()
     progressPropsJsTest() 
     dividerPropsJsTest() 
-    pickerPropsJsTest() 
+    pickerPropsJsTest()
     pickerViewPropsJsTest2111() 
     pickerViewPropsJsTest2112() 
     pickerViewPropsJsTest2113() 
@@ -84,8 +90,13 @@ export default function testsuite() {
     pickerViewPropsJsTest4111() 
     pickerViewPropsJsTest4112() 
     pickerViewPropsJsTest4113()
-    pickerViewPropsJsTest412() 
+    pickerViewPropsJsTest412()
+    pickerViewPropsJsTest4121() 
     pickerViewPropsJsTest42() 
+    pickerViewPropsJsTest421()
+    pickerViewPropsJsTest422()
+    pickerViewPropsJsTest423()
+    pickerViewPropsJsTest424()
     labelPropsJsTest() 
     stackPropsJsTest() 
     panelPropsJsTest() 
@@ -107,5 +118,6 @@ export default function testsuite() {
     popupPropsJsTest() 
     imageAnimatorPropsJsTest()
     marqueePropsJsTest() 
+    
 }
 

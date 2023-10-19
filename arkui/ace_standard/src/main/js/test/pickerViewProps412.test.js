@@ -65,7 +65,7 @@
          } catch (err) {
              console.error("push pickerViewProps page error " + JSON.stringify(result));
          }
-         await sleep(4000)
+         await sleep(35000)
          done()
      })
  
@@ -98,25 +98,7 @@
          done();
      });
  
-     /**
-      * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-      * @tc.name      testPickerViewPickerViewTime
-      * @tc.desc      ACE
-      */
-     it('testPickerViewPickerViewTime', 0, async function (done) {
-         console.info('testPickerViewPickerViewTime START');
-         console.info("[pickerViewProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
- 
-         let obj = JSON.parse(globalThis.value.pickerViewTime);
-         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
-         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
- 
-         expect(obj.$type).assertEqual('picker-view')
-         expect(obj.$attrs.id).assertEqual('pickerViewTime')
-         expect(obj.$attrs.type).assertEqual('time')
-         console.info("[pickerViewProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-         done();
-     });
+   
 
  });
 }

@@ -14,21 +14,12 @@
  */
 
 <div class="container">
-    <div class="prop-container">
-        <text class="title">
-            picker-view通用属性
-        </text>
-    </div>
+
 
     <div style="background-color: #000000; width: 2px; height: 100%;">
     </div>
     <div class="specific-container">
-        <text class="title">
-            picker-view特有属性
-        </text>
-        <text  class="sub-title">
-            picker-view特有属性 -- type
-        </text>
+        
 
         <picker-view
                 id="pickerViewDate"
