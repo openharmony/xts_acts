@@ -24,7 +24,7 @@ let srcData65Kb = stringToUint8Array(srcData65);
 let finishOutData;
 export default function SecurityHuksED25519BasicCallbackJsunit() {
 describe('SecurityHuksED25519BasicCallbackJsunit', function () {
-  it('testReformedSignVerifyED25519001', 0, async function (done) {
+  it('Security_HUKS_SignVerify_API9_ED25519_001', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias001';
     let HuksOptions = {
       properties: new Array(
@@ -50,7 +50,7 @@ describe('SecurityHuksED25519BasicCallbackJsunit', function () {
     done();
   });
 
-  it('testReformedSignVerifyED25519002', 0, async function (done) {
+  it('Security_HUKS_SignVerify_API9_ED25519_002', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias002';
     let HuksOptions = {
       properties: new Array(
@@ -65,7 +65,7 @@ describe('SecurityHuksED25519BasicCallbackJsunit', function () {
     done();
   });
 
-  it('testReformedSignVerifyED25519003', 0, async function (done) {
+  it('Security_HUKS_SignVerify_API9_ED25519_003', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias003';
     let HuksOptions = {
       properties: new Array(
@@ -90,7 +90,7 @@ describe('SecurityHuksED25519BasicCallbackJsunit', function () {
     done();
   });
 
-  it('testReformedSignVerifyED25519004', 0, async function (done) {
+  it('Security_HUKS_SignVerify_API9_ED25519_004', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyED25519Size256SIGNKeyAlias004';
     let HuksOptions = {
       properties: new Array(

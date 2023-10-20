@@ -215,7 +215,7 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
-    it('testReformedCipherAES101', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_AES_101', 0, async function (done) {
       const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias101';
       genHuksOptions.properties.splice(2, 1, HuksCipherAES.HuksKeyAESSize128);
       genHuksOptions.properties.splice(3, 1, HuksCipherAES.HuksKeyAESBLOCKMODE);
@@ -249,7 +249,7 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherAES102', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_AES_102', 0, async function (done) {
       const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias102';
       let HuksOptions = {
         properties: new Array(
@@ -267,7 +267,7 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherAES103', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_AES_103', 0, async function (done) {
       const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias103';
       let HuksOptions = {
         properties: new Array(
@@ -298,7 +298,7 @@ export default function SecurityHuksCipherAESBasicPromiseJsunit() {
       done();
     });
 
-    it('testReformedCipherAES104', 0, async function (done) {
+    it('Security_HUKS_Cipher_API9_AES_104', 0, async function (done) {
       const srcKeyAlies = 'testCipherAESSize128PADDINGNONEMODECBCKeyAlias104';
       let HuksOptions = {
         properties: new Array(

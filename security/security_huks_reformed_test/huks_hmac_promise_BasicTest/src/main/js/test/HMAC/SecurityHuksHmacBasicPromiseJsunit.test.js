@@ -218,7 +218,7 @@ async function update(handle, HuksOptions) {
 
 export default function SecurityHuksHmacBasicPromiseJsunit() {
   describe("SecurityHuksHmacBasicPromiseJsunit", function () {
-    it("testReformedHmac101", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_101", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias101";
       let HuksOptions = {
         properties: new Array(
@@ -232,7 +232,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testReformedHmac102", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_102", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias102";
       let HuksOptions = {
         properties: new Array(
@@ -246,7 +246,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testReformedHmac103", 0, async function (done) {
+    it("Security_HUKS_Hmac_API9_103", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA256KeyAlias103";
       let HuksOptions = {
         properties: new Array(
