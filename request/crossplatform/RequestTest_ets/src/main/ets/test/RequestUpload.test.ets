@@ -319,12 +319,12 @@ export default function requestUploadCrossplatformJSUnit() {
           expect(true).assertEqual((uploadTask != undefined));
           uploadTask.on('headerReceive', (header) => {
             console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_PROMISE_0001 header = " + header);
-            expect(true).assertEqual((header != {} || header != undefined));
+            expect(true).assertEqual((JSON.stringify(header) !== '{}' || header !== undefined));
           });
 
           uploadTask.off('headerReceive', (header) => {
             console.info("====>SUB_REQUEST_CROSSPLATFORM_UPLOAD_API_PROMISE_0001 header = " + header);
-            expect(true).assertEqual((header != {} || header != undefined));
+            expect(true).assertEqual((JSON.stringify(header) !== '{}' || header !== undefined));
           });
 
           uploadTask.delete().then((result)=>{
