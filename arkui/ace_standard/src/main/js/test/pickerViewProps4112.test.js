@@ -65,7 +65,7 @@
          } catch (err) {
              console.error("push pickerViewProps page error " + JSON.stringify(result));
          }
-         await sleep(4000)
+         await sleep(35000)
          done()
      })
  

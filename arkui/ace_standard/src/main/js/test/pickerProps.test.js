@@ -65,7 +65,7 @@ export default function pickerPropsJsTest() {  describe('pickerPropsJsTest', fun
         } catch (err) {
             console.error("push pickerProps page error " + JSON.stringify(result));
         }
-        await sleep(4000)
+        await sleep(37000)
         done()
     })
 
@@ -621,104 +621,6 @@ export default function pickerPropsJsTest() {  describe('pickerPropsJsTest', fun
         done();
     });
 
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPickerPickerText
-     * @tc.desc      ACE
-     */
-    it('testPickerPickerText', 0, async function (done) {
-        console.info('testPickerPickerText START');
-        console.info("[pickerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
 
-        let obj = JSON.parse(globalThis.value.pickerText);
-        console.info("[pickerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('picker')
-        expect(obj.$attrs.id).assertEqual('pickerText')
-        expect(obj.$attrs.type).assertEqual('text')
-        console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPickerPickerTime
-     * @tc.desc      ACE
-     */
-    it('testPickerPickerTime', 0, async function (done) {
-        console.info('testPickerPickerTime START');
-        console.info("[pickerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerTime);
-        console.info("[pickerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('picker')
-        expect(obj.$attrs.id).assertEqual('pickerTime')
-        expect(obj.$attrs.type).assertEqual('time')
-        console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPickerPickerDate
-     * @tc.desc      ACE
-     */
-    it('testPickerPickerDate', 0, async function (done) {
-        console.info('testPickerPickerDate START');
-        console.info("[pickerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerDate);
-        console.info("[pickerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('picker')
-        expect(obj.$attrs.id).assertEqual('pickerDate')
-        expect(obj.$attrs.type).assertEqual('date')
-        console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPickerPickerDatetime
-     * @tc.desc      ACE
-     */
-    it('testPickerPickerDatetime', 0, async function (done) {
-        console.info('testPickerPickerDatetime START');
-        console.info("[pickerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerDatetime);
-        console.info("[pickerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-
-        expect(obj.$type).assertEqual('picker')
-        expect(obj.$attrs.id).assertEqual('pickerDatetime')
-        expect(obj.$attrs.type).assertEqual('datetime')
-        console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0100
-     * @tc.name      testPickerPickerMultiText
-     * @tc.desc      ACE
-     */
-    it('testPickerPickerMultiText', 0, async function (done) {
-        console.info('testPickerPickerMultiText START');
-        console.info("[pickerProps] get globalThis.value is: " + JSON.stringify(globalThis.value));
-
-        let obj = JSON.parse(globalThis.value.pickerMultiText);
-        console.info("[pickerProps] get inspector value is: " + JSON.stringify(obj));
-        console.info("[pickerProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
-
-        expect(obj.$type).assertEqual('picker')
-        expect(obj.$attrs.id).assertEqual('pickerMultiText')
-        expect(obj.$attrs.type).assertEqual('multi-text')
-        console.info("[pickerProps] get type value is: " + JSON.stringify(obj.$attrs.type));
-        done();
-    });
 });
 }

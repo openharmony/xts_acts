@@ -34,7 +34,7 @@ export default {
 
     getCommonPropValues(){
         this.pickerViewText = this.$element("pickerViewText").getInspector()
-        this.pickerViewTime = this.$element("pickerViewTime").getInspector()
+
 
     }
 }
