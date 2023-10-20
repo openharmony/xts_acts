@@ -323,24 +323,21 @@ export default function windowRefactorInterfaceTest(context, windowStage, abilit
         name: "alertWindow", windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
       };
       let win;
-      let promise;
       try {
-        promise = ohosWindow.createWindow(config);
-        win = await promise.catch((err) => {
+        win = await ohosWindow.createWindow(config).catch((err) => {
           console.error('Failed to create the Window1. Cause:' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
         expect(win != null);
-        await win.setUIContent('pages/second/second').then(async () => {
+        await win.setUIContent('MainAbility/pages/second/second').then(async () => {
           console.info('setUIContent1 . Cause: success');
-          expect(TRUE_FLAG).assertTrue();
-         await win.destroyWindow();
+          await win.destroyWindow();
           done();
         }).catch(async (err) => {
           console.error('Failed to setUIContent . Cause:' + JSON.stringify(err));
-          expect().assertFail();
           await win.destroyWindow();
+          expect().assertFail();
           done();
         });
       } catch (exception) {

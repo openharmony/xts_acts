@@ -69,10 +69,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     }
 
     function inputClick(buttonText, msgStr) {
-      console.info(msgStr + `case come in buttonClick fun`)
+      console.info(msgStr + `case come in inputClick fun`)
       return new Promise(async (resolve, reject) => {
         let driver = await UiDriver.create()
-        console.info(msgStr + `case come in buttonClick fun 222`)
+        console.info(msgStr + `case come in inputClick fun 222`)
         console.info(msgStr + `driver is ${JSON.stringify(driver)}`)
         await sleep(1000)
         console.info(msgStr + `UiDriver start`)
@@ -91,6 +91,247 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         }
       })
     }
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2360
+     * @tc.name testTouchOutsideBaseTest
+     * @tc.desc Enable listening for click events outside the area of this window
+     */
+    it('testTouchOutsideBaseTest', 0, async function (done) {
+      let caseName = 'testTouchOutsideBaseTest';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let mainWin = null;
+      mainWin = await windowStage.getMainWindow().catch((err) => {
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'getMainWindow success');
+      let callback = function (params) {
+        console.log('windowTest on/off touchOutside callback success');
+      }
+      try {
+        mainWin.on('touchOutside', callback);
+      } catch (err) {
+        console.log(msgStr + 'window on touchOutside failed');
+        expect().assertFail();
+        done();
+      }
+      await sleep(1000);
+      try {
+        mainWin.off('touchOutside', callback);
+        done();
+      } catch (err) {
+        console.log(msgStr + 'window off touchOutside failed');
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2370
+     * @tc.name testWindowOffTouchOutsideCancelAll
+     * @tc.desc Turns off listening for click events outside this window area.
+     */
+    it('testWindowOffTouchOutsideCancelAll', 0, async function (done) {
+      let caseName = 'testWindowOffTouchOutsideCancelAll';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let windowId = 'touchOutside01';
+      let windowId_two = 'touchOutside001';
+      let num = 0
+      let firstListenFlag = false
+      let secondListenFlag = false
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let windowConfig_two = {
+        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let tempWnd = null;
+      let tempWnd_two = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        console.log(msgStr + 'createWindow tempWnd failed');
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
+        console.log(msgStr + 'tempWnd.loadContent failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd.resize(400, 400).catch((err) => {
+        console.log(msgStr + 'tempWnd.resize failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err) => {
+        console.log(msgStr + 'tempWnd.moveWindowTo failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd.showWindow().catch((err) => {
+        console.log(msgStr + 'tempWnd.showWindow failed');
+        expect().assertFail();
+        done();
+      });
+      tempWnd_two = await ohosWindow.createWindow(windowConfig_two).catch((err) => {
+        console.log(msgStr + 'createWindow tempWnd_two failed');
+        expect().assertFail();
+        done();
+      });
+      expect(!!tempWnd_two).assertTrue();
+      await tempWnd_two.loadContent('MainAbility/pages/second/pageOne').catch((err) => {
+        console.log(msgStr + 'tempWnd_two.loadContent failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd_two.resize(500, 500).catch((err) => {
+        console.log(msgStr + 'tempWnd_two.resize failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd_two.moveWindowTo(0, 500).catch((err) => {
+        console.log(msgStr + 'tempWnd_two.moveWindowTo failed');
+        expect().assertFail();
+        done();
+      });
+      await tempWnd_two.showWindow().catch((err) => {
+        console.log(msgStr + 'tempWnd_two.showWindow failed');
+        expect().assertFail();
+        done();
+      });
+      tempWnd.on('touchOutside', (data) => {
+        console.info(msgStr + "first listener trigger");
+        num++
+        firstListenFlag = true
+      });
+      tempWnd.on('touchOutside', (data) => {
+        console.info(msgStr + "second listener trigger");
+        num++
+        secondListenFlag = true
+      });
+      await sleep(3000);
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect().assertFail();
+        done();
+      })
+      tempWnd.off('touchOutside');
+      firstListenFlag = false
+      secondListenFlag = false
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect().assertFail();
+        done();
+      })
+      if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        done();
+      } else {
+        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2380
+     * @tc.name Test testWindowOffTouchOutsideCancelSingle
+     * @tc.desc Turns off listening for click events outside this window area.
+     */
+    it('testWindowOffTouchOutsideCancelSingle', 0, async function (done) {
+      let caseName = 'testWindowOffTouchOutsideCancelSingle';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let firstListenFlag = false
+      let secondListenFlag = false
+
+      function firstCall() {
+        console.log(msgStr + "first listener trigger")
+        firstListenFlag = true
+      }
+
+      function secondCall() {
+        console.log(msgStr + "second listener trigger")
+        secondListenFlag = true
+      }
+
+      let windowId = 'touchOutside02';
+      let windowId_two = 'touchOutside002';
+      let windowConfig = {
+        name: windowId, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let windowConfig_two = {
+        name: windowId_two, windowType: ohosWindow.WindowType.TYPE_SYSTEM_ALERT, ctx: context
+      };
+      let tempWnd = null;
+      let tempWnd_two = null;
+      tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+      });
+      expect(!!tempWnd).assertTrue();
+      await tempWnd.loadContent('MainAbility/pages/second/second').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd.resize(400, 400).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd.moveWindowTo(0, 0).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
+      });
+      await tempWnd.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      tempWnd_two = await ohosWindow.createWindow(windowConfig_two).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.createWindow', done);
+      });
+      expect(!!tempWnd_two).assertTrue();
+      await tempWnd_two.loadContent('MainAbility/pages/second/pageOne').catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd_two.resize(500, 500).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.resetSize', done);
+      });
+      await tempWnd_two.moveWindowTo(0, 500).catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.moveWindowTo ', done);
+      });
+      await tempWnd_two.show().catch((err) => {
+        unexpectedError(err, caseName, 'tempWnd.show', done);
+      });
+      tempWnd.on('touchOutside', firstCall);
+      tempWnd.on('touchOutside', secondCall);
+      await sleep(1000);
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      tempWnd.off('touchOutside', firstCall);
+      firstListenFlag = false
+      secondListenFlag = false
+      await buttonClick('点击pageOne', msgStr).catch(async err => {
+        console.info(msgStr + err);
+        await tempWnd.destroyWindow();
+        await tempWnd_two.destroyWindow();
+        expect(TRUE_FLAG).assertFail();
+        done();
+      })
+      await sleep(1000)
+      await tempWnd.destroyWindow();
+      await tempWnd_two.destroyWindow();
+      if (!firstListenFlag && secondListenFlag) {
+        done();
+      } else {
+        expect(TRUE_FLAG).assertFail();
+        done();
+      }
+    })
+
     /**
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2170
      * @tc.name testWindowStage_loadContent_Test_001
