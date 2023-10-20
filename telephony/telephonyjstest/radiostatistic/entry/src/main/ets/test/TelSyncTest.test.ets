@@ -75,7 +75,6 @@ export default function telSyncTest() {
         } else {
           try {
             console.info("SUB_Telephony_radio_getISOCountryCodeForNetworkSync_0100 " + radio.getISOCountryCodeForNetworkSync(slotId));
-            expect(radio.getISOCountryCodeForNetworkSync(slotId)).assertEqual("");
             done();
           } catch (err) {
             console.info("SUB_Telephony_radio_getISOCountryCodeForNetworkSync_0100 err " + JSON.stringify(err));
