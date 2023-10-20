@@ -147,6 +147,7 @@ import ListLanes from './ListLanes.test';
 import navigationNavbar02 from './navigationNavbar02.test.ets';
 import GridRowCol from './GridRowCol.test';
 import navigationPosition from './navigationPosition.test.ets';
+import textAreaBC1Jsunit from './textAreaBC1Jsunit.test.ets';
 import video1Jsunit from './video1Jsunit.test.ets';
 import buttonEnabledJsunit from './buttonEnabledJsunit.test.ets';
 import textEnabledJsunit from './textEnabledJsunit.test.ets';
@@ -292,6 +293,7 @@ export default function testsuite() {
   GridRowCol()
   navigationNavbar02()
   navigationPosition()
+  textAreaBC1Jsunit()
   video1Jsunit()
   buttonEnabledJsunit();
   textEnabledJsunit();

@@ -9,6 +9,7 @@
         "MainAbility/pages/DatelPanel",
         "MainAbility/pages/dataPicker",
         "MainAbility/pages/divider",
+        "MainAbility/pages/textAreaBC1",
         "MainAbility/pages/loadingprogress",
         "MainAbility/pages/guage",
         "MainAbility/pages/marquee",
