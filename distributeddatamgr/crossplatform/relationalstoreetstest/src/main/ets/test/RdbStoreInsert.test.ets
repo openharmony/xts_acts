@@ -60,7 +60,7 @@ export default function InsertTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_VERSION_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1320
      * @tc.name   : testRdbStoreVersion001
      * @tc.desc   : RdbStore version test
      * @tc.size   : MediumTest
@@ -76,7 +76,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_VERSION_ERROR_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1310
      * @tc.name   : testRdbStoreVersionError001
      * @tc.desc   : RdbStore version Error test
      * @tc.size   : MediumTest
@@ -98,7 +98,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0890
      * @tc.name   : testRdbStoreInsert001
      * @tc.desc   : RdbStore insert callback test
      * @tc.size   : MediumTest
@@ -157,7 +157,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0011
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0840
      * @tc.name   : testRdbStoreInsertError0011
      * @tc.desc   : RdbStore insert error callback test
      * @tc.size   : MediumTest
@@ -185,7 +185,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0012
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0800
      * @tc.name   : testRdbStoreInsertError0012
      * @tc.desc   : RdbStore insert error callback test
      * @tc.size   : MediumTest
@@ -213,7 +213,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0880
      * @tc.name   : testRdbStoreInsert002
      * @tc.desc   : RdbStore insert promise test
      * @tc.size   : MediumTest
@@ -258,7 +258,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0021
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0850
      * @tc.name   : testRdbStoreInsertError0021
      * @tc.desc   : RdbStore insert promise test
      * @tc.size   : MediumTest
@@ -287,7 +287,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0022
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0810
      * @tc.name   : testRdbStoreInsertError0022
      * @tc.desc   : RdbStore insert promise test
      * @tc.size   : MediumTest
@@ -316,7 +316,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0910
      * @tc.name   : testRdbStoreInsert003
      * @tc.desc   : RdbStore insert callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -375,7 +375,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0031
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0870
      * @tc.name   : testRdbStoreInsertError0031
      * @tc.desc   : RdbStore insert error callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -404,7 +404,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0032
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0830
      * @tc.name   : testRdbStoreInsertError0032
      * @tc.desc   : RdbStore insert error callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -434,7 +434,7 @@ export default function InsertTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0900
      * @tc.name   : testRdbStoreInsert004
      * @tc.desc   : RdbStore insert promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -479,7 +479,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0041
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0860
      * @tc.name   : testRdbStoreInsertError0041
      * @tc.desc   : RdbStore insert promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -509,7 +509,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_INSERT_ERROR_0042
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0820
      * @tc.name   : testRdbStoreInsertError0042
      * @tc.desc   : RdbStore insert promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -538,7 +538,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0390
      * @tc.name   : testRdbStoreBatchInsert001
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -609,7 +609,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_Error_0011
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0350
      * @tc.name   : testRdbStoreBatchInsertError0011
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -657,7 +657,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_Error_0012
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0420
      * @tc.name   : testRdbStoreBatchInsertError0012
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -704,7 +704,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_Error_0013
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0430
      * @tc.name   : testRdbStoreBatchInsertError0013
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -751,7 +751,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_Error_0014
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0360
      * @tc.name   : testRdbStoreBatchInsertError0014
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -794,7 +794,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_Error_0015
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0400
      * @tc.name   : testRdbStoreBatchInsertError0015
      * @tc.desc   : RdbStore batchInsert callback test
      * @tc.size   : MediumTest
@@ -841,7 +841,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0380
      * @tc.name   : testRdbStoreBatchInsert002
      * @tc.desc   : RdbStore batchInsert promise test
      * @tc.size   : MediumTest
@@ -895,7 +895,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_ERROR_0021
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0340
      * @tc.name   : testRdbStoreBatchInsertError0021
      * @tc.desc   : RdbStore batchInsert promise test
      * @tc.size   : MediumTest
@@ -942,7 +942,7 @@ export default function InsertTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BATCH_INSERT_ERROR_0022
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0410
      * @tc.name   : testRdbStoreBatchInsertError0022
      * @tc.desc   : RdbStore batchInsert promise test
      * @tc.size   : MediumTest

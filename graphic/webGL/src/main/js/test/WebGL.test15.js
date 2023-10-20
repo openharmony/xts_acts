@@ -284,7 +284,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0220
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0100
 		 * @tc.name testGetParameter3
 		 * @tc.desc Test getParameter.
 		 */
@@ -302,7 +302,7 @@ export default function webgl1Test_webgl5() {
 
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0231
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0200
 		 * @tc.name testGetVertexAttribFirst
 		 * @tc.desc Test getVertexAttrib.
 		 */
@@ -326,7 +326,7 @@ export default function webgl1Test_webgl5() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0370
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0300
 		 * @tc.name testIsRenderbuffer_04
 		 * @tc.desc Test isRenderbuffer.
 		 */
@@ -344,7 +344,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_0991
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0400
 		 * @tc.name testGetBufferParameter3
 		 * @tc.desc Test getBufferParameter.
 		 */
@@ -361,7 +361,7 @@ export default function webgl1Test_webgl5() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1035
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0500
 		 * @tc.name testStencilMaskSeparate1
 		 * @tc.desc Test stencilMaskSeparate.
 		 */
@@ -380,7 +380,7 @@ export default function webgl1Test_webgl5() {
 		});
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1338
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0600
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -395,7 +395,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1339
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0700
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -410,7 +410,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1341
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0800
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -425,7 +425,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1342
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_0900
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -440,7 +440,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1343
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_1000
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -455,7 +455,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1344
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_1100
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -469,7 +469,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1345
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_1200
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -484,7 +484,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1346
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_1300
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -499,7 +499,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1347
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_1400
 		 * @tc.name webgl_test_webglContextAttributes
 		 * @tc.desc Test webglContextAttributes.
 		 */
@@ -514,7 +514,7 @@ export default function webgl1Test_webgl5() {
 		})
 
 		/**
-		 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1348
+		 * @tc.number SUB_BASIC_GRAPHICS_SPECIAL_XTS_WEBGL_15_1500
 		 * @tc.name webgl_test_endTransformFeedback
 		 * @tc.desc Test endTransformFeedback.
 		 */

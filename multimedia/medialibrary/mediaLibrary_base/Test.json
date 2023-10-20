@@ -65,7 +65,7 @@
                 "hilog -Q pidoff",
                 "hilog -p off",
                 "hilog -b I",
-                "hilog -b D -D 0xD002B70",
+                "hilog -b D",
                 "scanner",
                 "sleep 10"
             ],

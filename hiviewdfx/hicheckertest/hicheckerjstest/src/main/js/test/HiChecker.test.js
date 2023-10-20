@@ -263,10 +263,10 @@ describe('HiCheckerTest', function () {
      it('DFX_DFR_Hichecker_Interface_2800', 0, function () {
         console.info('DFX_DFR_Hichecker_Interface_2800 start');
         try {
-            hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_ARKUI_PERFRMANCE);
+            hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_ARKUI_PERFORMANCE);
             console.log('add rule success!');
             expect(hichecker.containsCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
-            expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_ARKUI_PERFRMANCE)).assertTrue();
+            expect(hichecker.containsCheckRule(hichecker.RULE_CHECK_ARKUI_PERFORMANCE)).assertTrue();
         } catch (error) {
             console.info(error.code)
             console.info(error.message)

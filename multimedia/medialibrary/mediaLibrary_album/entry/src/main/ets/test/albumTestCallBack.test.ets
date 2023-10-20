@@ -77,12 +77,8 @@ export default function albumTestCallbackTest(abilityContext) {
                             done();
                             return;
                         }
-                        const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                        if (!albumCountPass) {
-                            expect(false).assertTrue();
-                            done();
-                            return;
-                        }
+                        const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                        expect(albumCountPass).assertTrue();
                         if (expectAlbumCount == 1) {
                             const album = albumList[0];
                             checkProps(done, testNum, album, relativePaths[0], props[0]);
@@ -131,12 +127,8 @@ export default function albumTestCallbackTest(abilityContext) {
         const abnormalAlbumCommitModify = async function (done, testNum, fetchOp, newName, expectAlbumCount) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) {
-                    expect(false).assertTrue();
-                    done();
-                    return;
-                }
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
                 const album = albumList[0];
                 album.albumName = newName;
                 album.commitModify(async (error) => {
@@ -160,12 +152,8 @@ export default function albumTestCallbackTest(abilityContext) {
         const albumCommitModify = async function (done, testNum, fetchOp, newName, expectAlbumCount) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) {
-                    expect(false).assertTrue();
-                    done();
-                    return;
-                }
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
                 const album = albumList[0];
                 const albumId = album.albumId;
                 console.info(`${testNum}, album.albumName(old): ${album.albumName}`);

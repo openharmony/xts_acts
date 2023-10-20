@@ -14,7 +14,7 @@
  */
 
 import request from "@ohos.request";
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function requestUploadJSUnit() {
@@ -24,8 +24,18 @@ export default function requestUploadJSUnit() {
     /**
      * beforeAll: Prerequisites at the test suite level, which are executed before the test suite is executed.
      */
-    beforeAll(function () {
+    beforeAll(async function (done) {
       console.info('====>beforeAll: Prerequisites are executed.');
+      try {
+        let cmd = 'pkill download_server'
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        let ShellCmdResult = await abilityDelegator.executeShellCommand(cmd);
+        console.info('====>beforeAll: pkill download_server: ' + ShellCmdResult.stdResult);
+        done();
+      } catch (err) {
+        console.info('====>beforeAll: abilityDelegator.executeShellCommand err: ' + JSON.stringify(err));
+        done();
+      }
     });
 
     /**
@@ -96,6 +106,93 @@ export default function requestUploadJSUnit() {
       });
     });
 
+    /**
+     * @tc.number SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010', 0, async function (done) {
+      console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 is starting-----------------------");
+      let attachments = [{
+        name: "uploadTest",
+        value: {
+          path: "./test.txt",
+          filename: "test.txt",
+          mimetype: "application/octet-stream"
+        }
+      }];
+
+      let config = {
+        action: request.agent.Action.UPLOAD,
+        url: 'http://192.168.217.58',
+        title: 'uploadTest',
+        description: 'Sample code for event listening',
+        mode: request.agent.Mode.FOREGROUND,
+        overwrite: true,
+        method: "POST",
+        data: attachments,
+      };
+
+      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 downloadTask: " + task);
+        try {
+          if (err) {
+            console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 create err: " + JSON.stringify(err));
+            expect(err.code).assertEqual(201);
+            done();
+          } else {
+            console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 create success: " + task);
+            expect().assertFail();
+            done();
+          }
+        } catch (error) {
+          console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Callback_0010 fail: " + JSON.stringify(error));
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010', 0, async function (done) {
+      console.info("-----------------------SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010 is starting-----------------------");
+      let attachments = [{
+        name: "uploadTest",
+        value: {
+          path: "./test.txt",
+          filename: "test.txt",
+          mimetype: "application/octet-stream"
+        }
+      }];
+
+      let config = {
+        action: request.agent.Action.UPLOAD,
+        url: 'http://192.168.217.58',
+        title: 'uploadTest',
+        description: 'Sample code for event listening',
+        mode: request.agent.Mode.FOREGROUND,
+        overwrite: true,
+        method: "POST",
+        data: attachments,
+      };
+
+      try {
+        var task = await request.agent.create(globalThis.abilityContext, config);
+        expect().assertFail();
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010 create success: " + task);
+      } catch (err) {
+        console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010 catch error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    });
 
   })
 }

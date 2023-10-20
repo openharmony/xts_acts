@@ -112,7 +112,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTSTRING_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1560
      * @tc.name [JS-API8]SingleKvStore.Put(String)
      * @tc.desc Test Js Api SingleKvStore.Put(String) testcase 101
      */
@@ -136,7 +136,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTSTRING_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1570
      * @tc.name [JS-API8]SingleKvStore.Put(String)
      * @tc.desc Test Js Api SingleKvStore.Put(String) testcase 102
      */
@@ -164,7 +164,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSTRING_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1330
      * @tc.name [JS-API8]SingleKvStore.GetString()
      * @tc.desc Test Js Api SingleKvStore.GetString() testcase 101
      */
@@ -188,7 +188,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSTRING_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1340
      * @tc.name [JS-API8]SingleKvStore.GetString()
      * @tc.desc Test Js Api SingleKvStore.GetString() testcase 102
      */
@@ -212,7 +212,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTINT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1520
      * @tc.name [JS-API8]SingleKvStore.Put(Int)
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 101
      */
@@ -236,7 +236,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTINT_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1530
      * @tc.name [JS-API8]SingleKvStore.Put(Int)
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 102
      */
@@ -261,7 +261,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTINT_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1540
      * @tc.name [JS-API8]SingleKvStore.Put(Int)
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 103
      */
@@ -286,7 +286,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTINT_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1550
      * @tc.name [JS-API8]SingleKvStore.Put(Int)
      * @tc.desc Test Js Api SingleKvStore.Put(Int) testcase 104
      */
@@ -311,7 +311,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETINT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1200
      * @tc.name [JS-API8]SingleKvStore.GetInt()
      * @tc.desc Test Js Api SingleKvStore.GetInt() testcase 101
      */
@@ -335,7 +335,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETINT_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1210
      * @tc.name [JS-API8]SingleKvStore.GetInt()
      * @tc.desc Test Js Api SingleKvStore.GetInt() testcase 102
      */
@@ -359,7 +359,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBOOL_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1470
      * @tc.name [JS-API8]SingleKvStore.Put(Bool)
      * @tc.desc Test Js Api SingleKvStore.Put(Bool) testcase 101
      */
@@ -379,7 +379,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETBOOL_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1150
      * @tc.name [JS-API8]SingleKvStore.GetBool()
      * @tc.desc Test Js Api SingleKvStore.GetBool() testcase 101
      */
@@ -403,7 +403,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETBOOL_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1160
      * @tc.name [JS-API8]SingleKvStore.GetBool()
      * @tc.desc Test Js Api SingleKvStore.GetBool() testcase 102
      */
@@ -427,7 +427,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTFLOAT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1480
      * @tc.name [JS-API8]SingleKvStore.Put(Float)
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 101
      */
@@ -447,7 +447,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTFLOAT_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1490
      * @tc.name [JS-API8]SingleKvStore.Put(Float)
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 102
      */
@@ -473,7 +473,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTFLOAT_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1500
      * @tc.name [JS-API8]SingleKvStore.Put(Float)
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 103
      */
@@ -499,7 +499,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTFLOAT_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1510
      * @tc.name [JS-API8]SingleKvStore.Put(Float)
      * @tc.desc Test Js Api SingleKvStore.Put(Float) testcase 104
      */
@@ -525,7 +525,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETFLOAT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1190
      * @tc.name [JS-API8]SingleKvStore.GetFloat()
      * @tc.desc Test Js Api SingleKvStore.GetFloat() testcase 101
      */
@@ -549,7 +549,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETESTRING_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1090
      * @tc.name [JS-API8]SingleKvStore.DeleteString()
      * @tc.desc Test Js Api SingleKvStore.DeleteString() testcase 101
      */
@@ -573,7 +573,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETESTRING_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1100
      * @tc.name [JS-API8]SingleKvStore.DeleteString()
      * @tc.desc Test Js Api SingleKvStore.DeleteString() testcase 102
      */
@@ -597,7 +597,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEINT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1070
      * @tc.name [JS-API8]SingleKvStore.DeleteInt()
      * @tc.desc Test Js Api SingleKvStore.DeleteInt() testcase 101
      */
@@ -621,7 +621,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEINT_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1080
      * @tc.name [JS-API8]SingleKvStore.DeleteInt()
      * @tc.desc Test Js Api SingleKvStore.DeleteInt() testcase 102
      */
@@ -645,7 +645,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEFLOAT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1050
      * @tc.name [JS-API8]SingleKvStore.DeleteFloat()
      * @tc.desc Test Js Api SingleKvStore.DeleteFloat() testcase 101
      */
@@ -669,7 +669,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEFLOAT_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1060
      * @tc.name [JS-API8]SingleKvStore.DeleteFloat()
      * @tc.desc Test Js Api SingleKvStore.DeleteFloat() testcase 102
      */
@@ -693,7 +693,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEBOOL_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1030
      * @tc.name [JS-API8]SingleKvStore.DeleteBool()
      * @tc.desc Test Js Api SingleKvStore.DeleteBool() testcase 101
      */
@@ -717,7 +717,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEBOOL_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1040
      * @tc.name [JS-API8]SingleKvStore.DeleteBool()
      * @tc.desc Test Js Api SingleKvStore.DeleteBool() testcase 102
      */
@@ -741,7 +741,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ONCHANGE_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1350
      * @tc.name [JS-API8]SingleKvStore.OnChange()
      * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 101
      */
@@ -765,7 +765,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ONCHANGE_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1360
      * @tc.name [JS-API8]SingleKvStore.OnChange()
      * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 102
      */
@@ -789,7 +789,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ONCHANGE_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1370
      * @tc.name [JS-API8]SingleKvStore.OnChange()
      * @tc.desc Test Js Api SingleKvStore.OnChange() testcase 103
      */
@@ -813,7 +813,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ONSYNCCOMPLETE_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1380
      * @tc.name [JS-API8]SingleKvStore.OnSyncComplete()
      * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 101
      */
@@ -842,7 +842,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ONSYNCCOMPLETE_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1390
      * @tc.name [JS-API8]SingleKvStore.OnSyncComplete()
      * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 102
      */
@@ -871,7 +871,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ONSYNCCOMPLETE_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1400
      * @tc.name [JS-API8]SingleKvStore.OnSyncComplete()
      * @tc.desc Test Js Api SingleKvStore.OnSyncComplete() testcase 103
      */
@@ -900,7 +900,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCRANGE_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1690
      * @tc.name [JS-API8]SingleKvStore.SetSyncRange()
      * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 101
      */
@@ -922,7 +922,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCRANGE_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1700
      * @tc.name [JS-API8]SingleKvStore.SetSyncRange()
      * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 102
      */
@@ -944,7 +944,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCRANGE_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1710
      * @tc.name [JS-API8]SingleKvStore.SetSyncRange()
      * @tc.desc Test Js Api SingleKvStore.SetSyncRange() testcase 103
      */
@@ -966,7 +966,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBATCH_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1410
      * @tc.name [JS-API8]SingleKvStore.PutBatch()
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 101
      */
@@ -1006,7 +1006,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBATCH_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1420
      * @tc.name [JS-API8]SingleKvStore.PutBatch()
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 102
      */
@@ -1046,7 +1046,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBATCH_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1430
      * @tc.name [JS-API8]SingleKvStore.PutBatch()
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 103
      */
@@ -1086,7 +1086,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBATCH_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1440
      * @tc.name [JS-API8]SingleKvStore.PutBatch()
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 104
      */
@@ -1126,7 +1126,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBATCH_1050
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1450
      * @tc.name [JS-API8]SingleKvStore.PutBatch()
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 105
      */
@@ -1167,7 +1167,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_PUTBATCH_1060
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1460
      * @tc.name [JS-API8]SingleKvStore.PutBatch()
      * @tc.desc Test Js Api SingleKvStore.PutBatch() testcase 106
      */
@@ -1208,7 +1208,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEBATCH_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1000
      * @tc.name [JS-API8]SingleKvStore.DeleteBatch()
      * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 101
      */
@@ -1247,7 +1247,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEBATCH_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1010
      * @tc.name [JS-API8]SingleKvStore.DeleteBatch()
      * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 102
      */
@@ -1268,7 +1268,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_DELETEBATCH_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1020
      * @tc.name [JS-API8]SingleKvStore.DeleteBatch()
      * @tc.desc Test Js Api SingleKvStore.DeleteBatch() testcase 103
      */
@@ -1306,7 +1306,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_STARTTRANSACTION_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1720
      * @tc.name [JS-API8]SingleKvStore.startTransaction()
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 101
      */
@@ -1348,7 +1348,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_STARTTRANSACTION_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1730
      * @tc.name [JS-API8]SingleKvStore.startTransaction()
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 102
      */
@@ -1390,7 +1390,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_STARTTRANSACTION_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1740
      * @tc.name [JS-API8]SingleKvStore.startTransaction()
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 103
      */
@@ -1413,7 +1413,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_STARTTRANSACTION_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1750
      * @tc.name [JS-API8]SingleKvStore.startTransaction()
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 104
      */
@@ -1436,7 +1436,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_STARTTRANSACTION_1050
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1760
      * @tc.name [JS-API8]SingleKvStore.startTransaction()
      * @tc.desc Test Js Api SingleKvStore.startTransaction() testcase 105
      */
@@ -1459,7 +1459,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_COMMIT_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0970
      * @tc.name [JS-API8]SingleKvStore.Commit()
      * @tc.desc Test Js Api SingleKvStore.Commit() testcase 101
      */
@@ -1482,7 +1482,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_COMMIT_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0980
      * @tc.name [JS-API8]SingleKvStore.Commit()
      * @tc.desc Test Js Api SingleKvStore.Commit() testcase 102
      */
@@ -1505,7 +1505,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_COMMIT_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0990
      * @tc.name [JS-API8]SingleKvStore.Commit()
      * @tc.desc Test Js Api SingleKvStore.Commit() testcase 103
      */
@@ -1528,7 +1528,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ROLLBACK_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1620
      * @tc.name [JS-API8]SingleKvStore.Rollback()
      * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 101
      */
@@ -1551,7 +1551,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ROLLBACK_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1630
      * @tc.name [JS-API8]SingleKvStore.Rollback()
      * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 102
      */
@@ -1574,7 +1574,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ROLLBACK_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1640
      * @tc.name [JS-API8]SingleKvStore.Rollback()
      * @tc.desc Test Js Api SingleKvStore.Rollback() testcase 103
      */
@@ -1597,7 +1597,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ENABLESYNC_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1110
      * @tc.name [JS-API8]SingleKvStore.EnableSync()
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 101
      */
@@ -1622,7 +1622,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ENABLESYNC_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1120
      * @tc.name [JS-API8]SingleKvStore.EnableSync()
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 102
      */
@@ -1647,7 +1647,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ENABLESYNC_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1130
      * @tc.name [JS-API8]SingleKvStore.EnableSync()
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 103
      */
@@ -1670,7 +1670,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_ENABLESYNC_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1140
      * @tc.name [JS-API8]SingleKvStore.EnableSync()
      * @tc.desc Test Js Api SingleKvStore.EnableSync() testcase 104
      */
@@ -1693,7 +1693,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_REMOVEDEVICEDATA_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0710
      * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 101
      */
@@ -1727,7 +1727,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_REMOVEDEVICEDATA_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0720
      * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 102
      */
@@ -1750,7 +1750,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_REMOVEDEVICEDATA_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0730
      * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 103
      */
@@ -1773,7 +1773,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_REMOVEDEVICEDATA_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0740
      * @tc.name [JS-API8]SingleKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api SingleKvStore.RemoveDeviceData() testcase 104
      */
@@ -1796,7 +1796,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCPARAM_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0780
      * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 101
      */
@@ -1817,7 +1817,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCPARAM_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0790
      * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 102
      */
@@ -1840,7 +1840,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCPARAM_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0800
      * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 103
      */
@@ -1863,7 +1863,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_SETSYNCPARAM_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0810
      * @tc.name [JS-API8]SingleKvStore.SetSyncParam()
      * @tc.desc Test Js Api SingleKvStore.SetSyncParam() testcase 104
      */
@@ -1906,7 +1906,7 @@ describe('singleKvStoreCallbackTest', function () {
     // })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVEL_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1300
      * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 102
      */
@@ -1930,7 +1930,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVEL_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1310
      * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 103
      */
@@ -1954,7 +1954,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVEL_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1320
      * @tc.name [JS-API8]SingleKvStore.GetSecurityLevel()
      * @tc.desc Test Js Api SingleKvStore.GetSecurityLevel() testcase 104
      */
@@ -1978,7 +1978,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSET_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1220
      * @tc.name [JS-API8]SingleKvStore.GetResultSet()
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 101
      */
@@ -2020,7 +2020,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSET_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1230
      * @tc.name [JS-API8]SingleKvStore.GetResultSet()
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 102
      */
@@ -2046,7 +2046,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSET_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1240
      * @tc.name [JS-API8]SingleKvStore.GetResultSet()
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 103
      */
@@ -2067,7 +2067,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSET_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1250
      * @tc.name [JS-API8]SingleKvStore.GetResultSet()
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 104
      */
@@ -2088,7 +2088,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSET_1050
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1260
      * @tc.name [JS-API8]SingleKvStore.GetResultSet()
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 105
      */
@@ -2132,7 +2132,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSET_1060
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1270
      * @tc.name [JS-API8]SingleKvStore.GetResultSet()
      * @tc.desc Test Js Api SingleKvStore.GetResultSet() testcase 106
      */
@@ -2176,7 +2176,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CLOSERESULTSET_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0930
      * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 101
      */
@@ -2202,7 +2202,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CLOSERESULTSET_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0940
      * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 102
      */
@@ -2232,7 +2232,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CLOSERESULTSET_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0950
      * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 103
      */
@@ -2257,7 +2257,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_CLOSERESULTSET_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_0960
      * @tc.name [JS-API8]SingleKvStore.CloseResultSet()
      * @tc.desc Test Js Api SingleKvStore.CloseResultSet() testcase 104
      */
@@ -2278,7 +2278,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSIZE_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1280
      * @tc.name [JS-API8]SingleKvStore.GetResultSize()
      * @tc.desc Test Js Api SingleKvStore.GetResultSize() testcase 101
      */
@@ -2316,7 +2316,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETRESULTSIZE_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1290
      * @tc.name [JS-API8]SingleKvStore.GetResultSize()
      * @tc.desc Test Js Api SingleKvStore.GetResultSize() testcase 102
      */
@@ -2354,7 +2354,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETENTRIES_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1170
      * @tc.name [JS-API8]SingleKvStore.GetEntries()
      * @tc.desc Test Js Api SingleKvStore.GetEntries() testcase 101
      */
@@ -2398,7 +2398,7 @@ describe('singleKvStoreCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETENTRIES_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreJsApiTest_1180
      * @tc.name [JS-API8]SingleKvStore.GetEntries()
      * @tc.desc Test Js Api SingleKvStore.GetEntries() testcase 102
      */

@@ -19,7 +19,7 @@ import CommonFunc from '../../MainAbility/utils/Common';
 const waitUiReadyMs = 1000;
 
 export default function RouterPushUrlJsunit() {
-  describe('aboutToRecycleiamge', function () {
+  describe('RouterPushUrlJsunit', function () {
     beforeEach(async function (done) {
       console.info("RouterPushUrlJsunit beforeEach start");
       let options = {

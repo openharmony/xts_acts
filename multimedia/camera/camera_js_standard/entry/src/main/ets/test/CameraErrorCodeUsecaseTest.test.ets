@@ -177,8 +177,8 @@ export default function CameraErrorCodeUsecaseTest() {
         return true;
     }
 
-    function releaseCameraSessionInstance() {
-        mCameraSession.release();
+     async function releaseCameraSessionInstance() {
+        await mCameraSession.release();
         mCameraSession = null;
     }
 

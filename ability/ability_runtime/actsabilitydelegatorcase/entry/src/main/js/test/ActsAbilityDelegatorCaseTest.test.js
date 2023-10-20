@@ -398,15 +398,15 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with undefined
         */
-        it('ACTS_SetMockList_0100', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0100====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0100', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0100====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
                 abilityDelegator.setMockList(undefined);
                 expect().assertFail()
                 done()
             } catch (error) {
-                console.log("ACTS_SetMockList_0100, error = " + error);
+                console.log("SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0100, error = " + error);
                 expect(error.code).assertEqual(401);
                 done();
             }
@@ -417,15 +417,15 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with null
         */
-        it('ACTS_SetMockList_0200', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0200====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0200', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0200====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
                 abilityDelegator.setMockList(null);
                 expect().assertFail()
                 done()
             } catch (error) {
-                console.log("ACTS_SetMockList_0200, error = " + error);
+                console.log("SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0200, error = " + error);
                 expect(error.code).assertEqual(401);
                 done();
             }
@@ -436,15 +436,15 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with no param
         */
-        it('ACTS_SetMockList_0300', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0300====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0300', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0300====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
                 abilityDelegator.setMockList();
                 expect().assertFail()
                 done()
             } catch (error) {
-                console.log("ACTS_SetMockList_0300, error = " + error);
+                console.log("SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0300, error = " + error);
                 expect(error.code).assertEqual(401);
                 done();
             }
@@ -455,15 +455,15 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with two param
         */
-        it('ACTS_SetMockList_0400', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0400====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0400', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0400====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
                 abilityDelegator.setMockList(undefined, undefined);
                 expect().assertFail()
                 done()
             } catch (error) {
-                console.log("ACTS_SetMockList_0400, error = " + error);
+                console.log("SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0400, error = " + error);
                 expect(error.code).assertEqual(401);
                 done();
             }
@@ -474,15 +474,15 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with wrong type
         */
-        it('ACTS_SetMockList_0500', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0500====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0500', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0500====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             try {
                 abilityDelegator.setMockList("test1");
                 expect().assertFail()
                 done()
             } catch (error) {
-                console.log("ACTS_SetMockList_0500, error = " + error);
+                console.log("SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0500, error = " + error);
                 expect(error.code).assertEqual(401);
                 done();
             }
@@ -494,8 +494,8 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with mixed data
         */
-        it('ACTS_SetMockList_0600', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0600====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0600', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0600====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
                 1: "1",
@@ -512,8 +512,8 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with empty param
         */
-        it('ACTS_SetMockList_0700', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0700====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0700', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0700====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {};
             abilityDelegator.setMockList(mockList);
@@ -525,8 +525,8 @@ export default function actsStServiceAbilityTest() {
         * @tc.name      : Set mock list
         * @tc.desc      : Set mock list with valid param
         */
-        it('ACTS_SetMockList_0800', 0, async function (done) {
-            console.debug('ACTS_SetMockList_0800====<begin');
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0800', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0800====<begin');
             let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
             let mockList = {
                 "test1": "1",
@@ -537,5 +537,90 @@ export default function actsStServiceAbilityTest() {
             abilityDelegator.setMockList(mockList);
             done();
         })
+
+
+        /*
+        * @tc.number    : ACTS_SetMockList_0900
+        * @tc.name      : Set mock list
+        * @tc.desc      : Set mock list with negative number
+        */
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0900', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_0900====<begin');
+            let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
+            let mockList = {
+                "-1": "1",
+                "test2": "2"
+            };
+            abilityDelegator.setMockList(mockList);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_SetMockList_1000
+        * @tc.name      : Set mock list
+        * @tc.desc      : Set mock list with letter
+        */
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1000', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1000====<begin');
+            let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
+            let mockList = {
+                "zhong": "1",
+                "test2": "3"
+            };
+            abilityDelegator.setMockList(mockList);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_SetMockList_1100
+        * @tc.name      : Set mock list
+        * @tc.desc      : Set mock list with no param
+        */
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1100', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1100====<begin');
+            let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
+            let mockList = {
+                "你好": "1",
+                "test2": "3"
+            };
+            abilityDelegator.setMockList(mockList);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_SetMockList_1200
+        * @tc.name      : Set mock list
+        * @tc.desc      : Set mock list with Special characters
+        */
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1200', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1200====<begin');
+            let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
+            let mockList = {
+                "%￥#": "1",
+                "test2": "3"
+            };
+            abilityDelegator.setMockList(mockList);
+            done();
+        })
+
+        /*
+        * @tc.number    : ACTS_SetMockList_1300
+        * @tc.name      : Set mock list
+        * @tc.desc      : Set mock list with number
+        */
+        it('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1300', 0, async function (done) {
+            console.debug('SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1300====<begin');
+            let abilityDelegator = abilityDelegatorRegistryNew.getAbilityDelegator();
+            try {
+                abilityDelegator.setMockList(1);
+                expect().assertFail();
+                done();
+            } catch (error) {
+                console.log("SUB_Ability_AbilityTools_AbilityDelegator_setMockList_1300, error = " + error);
+                expect(error.code).assertEqual(401);
+                done();
+            }
+        })
+
     })
 }

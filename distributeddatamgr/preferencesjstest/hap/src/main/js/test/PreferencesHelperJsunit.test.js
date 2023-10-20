@@ -35,7 +35,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name getPreferencesSync interface test
-         * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0010
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_3000
          * @tc.desc getPreferencesSync interface test
          */
         it('testGetPreferencesHelper001', 0, async function () {
@@ -48,7 +48,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name getPreferences interface test
-         * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0020
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2300
          * @tc.desc getPreferences interface test
          */
         it('testGetPreferencesHelper002', 0, async function (done) {
@@ -67,7 +67,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name removePreferencesFromCache interface test
-         * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0030
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2100
          * @tc.desc removePreferencesFromCache interface test
          */
         it('testRemovePreferencesFromCache001', 0, async function (done) {
@@ -84,7 +84,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name deletePreferences interface test
-         * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0040
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_2200
          * @tc.desc deletePreferences interface test
          */
         it('testDeletePreferencesHelper002', 0, async function (done) {
@@ -101,7 +101,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name put interface test
-         * @tc.number SUB_DDM_Preferences_Put_Helper_0050
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1000
          * @tc.desc put interface test
          */
         it('testPreferencesRegisterObserver001', 0, async function () {
@@ -116,7 +116,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name repeat on interface test
-         * @tc.number SUB_DDM_Preferences_On_Helper_0060
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_1100
          * @tc.desc repeat on interface test
          */
         it('testPreferencesRegisterObserver002', 0, async function () {
@@ -132,7 +132,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name off interface test
-         * @tc.number SUB_DDM_Preferences_Off_Helper_0070
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_0900
          * @tc.desc off interface test
          */
         it('testPreferencesUnRegisterObserver001', 0, async function () {
@@ -147,7 +147,7 @@ export default function preferencesHelperTest(){
 
         /**
          * @tc.name getPreferencesSync interface test
-         * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0010
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperTest_3100
          * @tc.desc getPreferencesSync interface test
          */
         it('testGetPreferencesSyncinterface001', 0, async function () {

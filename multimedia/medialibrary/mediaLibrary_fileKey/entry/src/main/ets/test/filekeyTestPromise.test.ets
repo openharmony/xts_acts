@@ -71,8 +71,8 @@ export default function filekeyTestPromiseTest(abilityContext) {
                 }
                 console.info(`${testNum} assOp : ${JSON.stringify(assetOp)}`);
                 let fetchFileResult = await media.getFileAssets(assetOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 1);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 const assetType = asset[type];
                 let Op = {

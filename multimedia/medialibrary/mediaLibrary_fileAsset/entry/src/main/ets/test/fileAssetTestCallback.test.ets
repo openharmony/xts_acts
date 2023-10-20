@@ -49,8 +49,8 @@ export default function fileAssetTestCallbackTest(abilityContext) {
             let fd, fd1;
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 const dataList = await fetchFileResult.getAllObject();
                 fetchFileResult.close();
                 asset = dataList[0];
@@ -78,8 +78,8 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                             await asset1.close(fd1);
                             await sleep(50);
                             let newFetchFileResult = await media.getFileAssets(fileIdFetchOps(testNum, asset.id));
-                            let checkAssetCountPass = await checkAssetsCount(done, testNum, newFetchFileResult, 1);
-                            if (!checkAssetCountPass) return;
+                            let checkAssetCountPass = await checkAssetsCount(testNum, newFetchFileResult, 1);
+                            expect(checkAssetCountPass).assertTrue();
                             let newAsset = await newFetchFileResult.getFirstObject();
                             expect(newAsset.dateModified != asset.dateModified).assertTrue();
                             newFetchFileResult.close();
@@ -101,8 +101,8 @@ export default function fileAssetTestCallbackTest(abilityContext) {
             let fd;
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 const dataList = await fetchFileResult.getAllObject();
                 fetchFileResult.close()
                 asset = dataList[0];
@@ -137,8 +137,8 @@ export default function fileAssetTestCallbackTest(abilityContext) {
             let fd, fd1;
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, expectCount);
+                expect(checkAssetCountPass).assertTrue();
                 const dataList = await fetchFileResult.getAllObject();
                 fetchFileResult.close();
                 asset = dataList[0];
@@ -179,8 +179,8 @@ export default function fileAssetTestCallbackTest(abilityContext) {
             let fd;
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 2);
-                if (!checkAssetCountPass) return;
+                let checkAssetCountPass = await checkAssetsCount(testNum, fetchFileResult, 2);
+                expect(checkAssetCountPass).assertTrue();
                 const asset = await fetchFileResult.getFirstObject();
                 fetchFileResult.close();
                 fd = await asset.open("r");

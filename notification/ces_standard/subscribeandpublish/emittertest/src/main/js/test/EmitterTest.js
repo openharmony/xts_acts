@@ -74,12 +74,12 @@ export default function EmitterTest() {
     }
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_0100
+     * @tc.number    : Sub_Notification_Emitter_Subscribe_Once_0100
      * @tc.name      : verify on : on(event: InnerEvent, callback: Callback<EventData>): void
      * @tc.desc      : emitter.EventPriority.IDLE
      */
-    it('SUB_NOTIFICATION_CES_EMITTER_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0100 START`)
+    it('Sub_Notification_Emitter_Subscribe_Once_0100', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0100 START`)
       innerEvent.eventId = 1
       innerEvent.priority = emitter.EventPriority.IDLE
 
@@ -98,17 +98,17 @@ export default function EmitterTest() {
       emitter.on(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
       emitter.off(1)
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0100 END`)
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0100 END`)
       done()
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_0200
+     * @tc.number    : Sub_Notification_Emitter_Subscribe_Once_0200
      * @tc.name      : verify on : once(event: InnerEvent, callback: Callback<EventData>): void
      * @tc.desc      : emitter.EventPriority.LOW
      */
-    it('SUB_NOTIFICATION_CES_EMITTER_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0200 START`)
+    it('Sub_Notification_Emitter_Subscribe_Once_0200', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0200 START`)
       innerEvent.eventId = 2
       innerEvent.priority = emitter.EventPriority.LOW
 
@@ -118,17 +118,17 @@ export default function EmitterTest() {
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
       emitter.off(2)
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0200 END`)
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0200 END`)
       done()
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_0300
+     * @tc.number    : Sub_Notification_Emitter_Subscribe_Once_0300
      * @tc.name      : verify on : emit(event: InnerEvent, data?: EventData): void
      * @tc.desc      : emitter.EventPriority.HIGH
      */
-    it('SUB_NOTIFICATION_CES_EMITTER_TEST_0300', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0300 START`)
+    it('Sub_Notification_Emitter_Subscribe_Once_0300', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0300 START`)
       innerEvent.eventId = 3
       innerEvent.priority = emitter.EventPriority.HIGH
 
@@ -138,17 +138,17 @@ export default function EmitterTest() {
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
       emitter.off(3)
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0300 END`)
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0300 END`)
       done()
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_0400
+     * @tc.number    : Sub_Notification_Emitter_Subscribe_Once_0400
      * @tc.name      : verify on : emit(event: InnerEvent, data?: EventData): void
      * @tc.desc      : emitter.EventPriority.IMMEDIATE
      */
-    it('SUB_NOTIFICATION_CES_EMITTER_TEST_0400', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0400 START`)
+    it('Sub_Notification_Emitter_Subscribe_Once_0400', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0400 START`)
       innerEvent.eventId = 4
       innerEvent.priority = emitter.EventPriority.IMMEDIATE
 
@@ -158,17 +158,17 @@ export default function EmitterTest() {
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
       emitter.off(4)
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0400 END`)
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0400 END`)
       done()
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_EMITTER_TEST_0500
+     * @tc.number    : Sub_Notification_Emitter_Subscribe_Once_0500
      * @tc.name      : verify on : off(eventId: number): void
      * @tc.desc      : emitter.EventPriority.IMMEDIATE
      */
-    it('SUB_NOTIFICATION_CES_EMITTER_TEST_0500', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0500 START`)
+    it('Sub_Notification_Emitter_Subscribe_Once_0500', 0, async function (done) {
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0500 START`)
       innerEvent.eventId = 5
       innerEvent.priority = emitter.EventPriority.IMMEDIATE
 
@@ -178,7 +178,7 @@ export default function EmitterTest() {
       emitter.once(innerEvent, EmitterCallback)
       emitter.emit(innerEvent, eventData)
       emitter.off(5)
-      console.info(`${TAG} SUB_NOTIFICATION_CES_EMITTER_TEST_0500 END`)
+      console.info(`${TAG} Sub_Notification_Emitter_Subscribe_Once_0500 END`)
       done()
     })
 

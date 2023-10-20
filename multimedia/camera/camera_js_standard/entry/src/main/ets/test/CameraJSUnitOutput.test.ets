@@ -423,7 +423,7 @@ export default function cameraJSUnitOutput() {
         console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 camera:" + cameraDevicesArray[0].cameraId);
         expect(isEmpty(cameraOutputCap)).assertFalse();
         mMetadataObjectTypeArray = cameraOutputCap.supportedMetadataObjectTypes;
-        if (isEmpty(mMetadataObjectTypeArray)) {
+        if (isEmpty(mMetadataObjectTypeArray) || mMetadataObjectTypeArray.length < 1) {
           console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 end with mMetadataObjectTypeArray is null");
         } else {
           console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 start createMetadataOutput")

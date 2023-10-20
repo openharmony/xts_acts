@@ -34,7 +34,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_GetPreferencesSync_0100
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1500
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
      */
@@ -55,7 +55,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_GetPreferencesSync_0200
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1600
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
      */
@@ -76,7 +76,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_GetPreferencesSync_0300
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1700
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
      */
@@ -97,7 +97,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_GetPreferencesSync_0400
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1800
      * @tc.name getPreferencesSync interface test
      * @tc.desc getPreferencesSync interface test
      */
@@ -118,7 +118,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_removePreferencesFromCacheSync_0100
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_1900
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
      */
@@ -144,7 +144,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_removePreferencesFromCacheSync_0200
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2000
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
      */
@@ -170,7 +170,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_removePreferencesFromCacheSync_0300
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2100
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
      */
@@ -196,7 +196,7 @@ export default function preferencesDataGroupIdSync() {
     })
 
     /**
-     * @tc.number SUB_DDM_Preferences_removePreferencesFromCacheSync_0400
+     * @tc.number SUB_DistributedData_Preference_SDK_DataGroupIdTest_2200
      * @tc.name removePreferencesFromCacheSync interface test
      * @tc.desc removePreferencesFromCacheSync interface test
      */

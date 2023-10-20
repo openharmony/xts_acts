@@ -87,7 +87,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     console.info(TAG + "*************Unit Test Begin*************");
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_RESTORE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0280
      * @tc.name   : testRdbStoreBackupRestore001
      * @tc.desc   : RdbStore backup and restore callback test
      * @tc.size   : MediumTest
@@ -136,7 +136,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_RESTORE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0270
      * @tc.name   : testRdbStoreBackupRestore002
      * @tc.desc   : RdbStore backup and restore promise test
      * @tc.size   : MediumTest
@@ -190,7 +190,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0330
      * @tc.name   : testRdbStoreBackup001
      * @tc.desc   : RdbStore backup callback test: file name empty
      * @tc.size   : MediumTest
@@ -214,7 +214,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0310
      * @tc.name   : testRdbStoreBackup002
      * @tc.desc   : RdbStore backup callback test
      * @tc.size   : MediumTest
@@ -238,7 +238,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0320
      * @tc.name   : testRdbStoreBackup003
      * @tc.desc   : RdbStore backup promise test: file name empty
      * @tc.size   : MediumTest
@@ -260,7 +260,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0300
      * @tc.name   : testRdbStoreBackup004
      * @tc.desc   : RdbStore backup promise test
      * @tc.size   : MediumTest
@@ -291,7 +291,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_BACKUP_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0290
      * @tc.name   : testRdbStoreBackup005
      * @tc.desc   : RdbStore backup promise test: param type error
      * @tc.size   : MediumTest
@@ -322,7 +322,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0250
      * @tc.name   : testRdbStoreRestore001
      * @tc.desc   : RdbStore retore callback test: file name empty
      * @tc.size   : MediumTest
@@ -348,7 +348,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0230
      * @tc.name   : testRdbStoreRestore002
      * @tc.desc   : RdbStore retore callback test
      * @tc.size   : MediumTest
@@ -374,7 +374,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0240
      * @tc.name   : testRdbStoreRestore003
      * @tc.desc   : RdbStore retore promise test: file name empty
      * @tc.size   : MediumTest
@@ -399,7 +399,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0220
      * @tc.name   : testRdbStoreRestore004
      * @tc.desc   : RdbStore retore promise test
      * @tc.size   : MediumTest
@@ -424,7 +424,7 @@ export default function RdbStoreBackupRestoreCallbackTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_RESTORE_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0260
      * @tc.name   : testRdbStoreRestore005
      * @tc.desc   : RdbStore retore promise test
      * @tc.size   : MediumTest

@@ -84,11 +84,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_GETPROPERTIES_JSAPI_001
-	 * @tc.name       Test getProperties_Test_001
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0280
+	 * @tc.name       testGetProperties_Promise
 	 * @tc.desc       Get the current application main window properties
 	 */
-        it('getProperties_Test_001', 0, async function (done) {
+        it('testGetProperties_Promise', 0, async function (done) {
             let msgStr = 'getProperties_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -125,11 +125,11 @@ export default function window_test() {
         })
 
         /**
-        * @tc.number    SUB_WMS_GETPROPERTIES_JSAPI_002
-        * @tc.name      Test getProperties_Test_002
+        * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0270
+        * @tc.name      testGetProperties_Callback
         * @tc.desc      Get the current application main window properties
         */
-        it('getProperties_Test_002', 0, async function (done) {
+        it('testGetProperties_Callback', 0, async function (done) {
             let msgStr = 'getProperties_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -167,11 +167,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_GETAVOIDAREA_JSAPI_001
-	 * @tc.name       Test getAvoidArea_Test_001
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0170
+	 * @tc.name       testGetAvoidArea_SystemUI_Type_Promise
 	 * @tc.desc       Get SystemUI type avoidance area
 	 */
-        it('getAvoidArea_Test_001', 0, async function (done) {
+        it('testGetAvoidArea_SystemUI_Type_Promise', 0, async function (done) {
             let msgStr = 'getAvoidArea_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -198,11 +198,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_GETAVOIDAREA_JSAPI_002
-	 * @tc.name       Test getAvoidArea_Test_002
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0160
+	 * @tc.name       testGetAvoidArea_Notch_Type_Promise
 	 * @tc.desc       Get Notch type avoidance area
 	 */
-        it('getAvoidArea_Test_002', 0, async function (done) {
+        it('testGetAvoidArea_Notch_Type_Promise', 0, async function (done) {
             let msgStr = 'getAvoidArea_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -229,11 +229,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_GETAVOIDAREA_JSAPI_003
-	 * @tc.name       Test getAvoidArea_Test_003
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0190
+	 * @tc.name       testGetAvoidArea_System_Gesture_Type_Promise
 	 * @tc.desc       Get system gesture type avoidance area
 	 */
-        it('getAvoidArea_Test_003', 0, async function (done) {
+        it('testGetAvoidArea_System_Gesture_Type_Promise', 0, async function (done) {
             let msgStr = 'getAvoidArea_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -260,11 +260,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_GETAVOIDAREA_JSAPI_004
-     * @tc.name      Test getAvoidArea_Test_004
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0210
+     * @tc.name      testGetAvoidArea_System_Type_Promise
      * @tc.desc      Get System type avoidance area
      */
-        it('getAvoidArea_Test_004', 0, async function (done) {
+        it('testGetAvoidArea_System_Type_Promise', 0, async function (done) {
             let msgStr = 'getAvoidArea_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -288,11 +288,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_GETAVOIDAREA_JSAPI_005
-     * @tc.name      Test getAvoidArea_Test_005
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0140
+     * @tc.name      testGetAvoidArea_Cutout_Type_Callback
      * @tc.desc      Get Cutout type avoidance area
      */
-        it('getAvoidArea_Test_005', 0, async function (done) {
+        it('testGetAvoidArea_Cutout_Type_Callback', 0, async function (done) {
             let msgStr = 'getAvoidArea_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -321,11 +321,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_GETAVOIDAREA_JSAPI_006
-     * @tc.name      Test getAvoidArea_Test_006
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0180
+     * @tc.name      testGetAvoidArea_System_Gesture_Type_Callback
      * @tc.desc      Get system gesture type avoidance area
      */
-        it('getAvoidArea_Test_006', 0, async function (done) {
+        it('testGetAvoidArea_System_Gesture_Type_Callback', 0, async function (done) {
             let msgStr = 'getAvoidArea_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -353,11 +353,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_SETFULLSCREEN_JSAPI_001
-	 * @tc.name       Test setFullScreen_Test_001
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0820
+	 * @tc.name       testSetFullScreen_Parameter1_Promise
 	 * @tc.desc       Set the window to be non-fullscreen first and then fullscreen
 	 */
-        it('setFullScreen_Test_001', 0, async function (done) {
+        it('testSetFullScreen_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setFullScreen_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -402,11 +402,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETFULLSCREEN_JSAPI_002
-     * @tc.name      Test setFullScreen_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0830
+     * @tc.name      testSetFullScreen_Parameter2_Callback
      * @tc.desc      Set the window to be non-fullscreen first and then fullscreen.
      */
-        it('setFullScreen_Test_002', 0, async function (done) {
+        it('testSetFullScreen_Parameter2_Callback', 0, async function (done) {
             let msgStr = 'setFullScreen_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -456,11 +456,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_001
-	 * @tc.name       Test setLayoutFullScreen_Test_001
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0880
+	 * @tc.name       testSetLayoutFullScreen_Parameter1_Promise
 	 * @tc.desc       Set window and layout to full screen
 	 */
-        it('setLayoutFullScreen_Test_001', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -503,11 +503,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_002
-     * @tc.name      Test setLayoutFullScreen_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0890
+     * @tc.name      testSetLayoutFullScreen_Parameter2_Callback
      * @tc.desc      Set window and layout to full screen.
      */
-        it('setLayoutFullScreen_Test_002', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter2_Callback', 0, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -559,11 +559,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_003
-	 * @tc.name       Test setLayoutFullScreen_Test_003
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0900
+	 * @tc.name       testSetLayoutFullScreen_Parameter3_Promise
 	 * @tc.desc       Set the window to full screen, the layout is not full screen
 	 */
-        it('setLayoutFullScreen_Test_003', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter3_Promise', 0, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -606,11 +606,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_004
-     * @tc.name      Test setLayoutFullScreen_Test_004
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0910
+     * @tc.name      testSetLayoutFullScreen_Parameter4_Callback
      * @tc.desc      Set the window to full screen, the layout is not full screen
      */
-        it('setLayoutFullScreen_Test_004', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter4_Callback', 0, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -660,11 +660,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_005
-	 * @tc.name       Test setLayoutFullScreen_Test_005
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0920
+	 * @tc.name       testSetLayoutFullScreen_Parameter5_Promise
 	 * @tc.desc       Set the window to be non-full-screen and the layout to be full-screen
 	 */
-        it('setLayoutFullScreen_Test_005', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter5_Promise', 0, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -708,8 +708,8 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_006
-     * @tc.name      Test setLayoutFullScreen_Test_006
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0930
+     * @tc.name      testSetLayoutFullScreen_Parameter6_Callback
      * @tc.desc      Set the window to be non-full-screen and the layout to be full-screen.
      */
         it('setLayoutFullScreen_Test_006', 0, async function (done) {
@@ -761,8 +761,8 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_007
-	 * @tc.name       Test setLayoutFullScreen_Test_007
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0940
+	 * @tc.name       Test testSetLayoutFullScreen_Parameter7_Promise
 	 * @tc.desc       Setting windows and layouts to be non-fullscreen
 	 */
         it('setLayoutFullScreen_Test_007', 0, async function (done) {
@@ -807,11 +807,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETLAYOUTFULLSCREEN_JSAPI_008
-     * @tc.name      Test setLayoutFullScreen_Test_008
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0950
+     * @tc.name      testSetLayoutFullScreen_Parameter8_Callback
      * @tc.desc      Setting window and layouts to be non-fullscreen.
      */
-        it('setLayoutFullScreen_Test_008', 0, async function (done) {
+        it('testSetLayoutFullScreen_Parameter8_Callback', 0, async function (done) {
             let msgStr = 'setLayoutFullScreen_Test_008';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -861,11 +861,11 @@ export default function window_test() {
 
 
         /**
-	 * @tc.number     SUB_WMS_FIND_JSAPI_001
-	 * @tc.name       Test find_Test_001
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0090
+	 * @tc.name       testFindWindow_Main_Window_Promise
 	 * @tc.desc       Query main window
 	 */
-        it('find_Test_001', 0, async function (done) {
+        it('testFindWindow_Main_Window_Promise', 0, async function (done) {
             let msgStr = 'find_Test_001';
             console.log(msgStr + ' begin');
             window.find('window0').then((data) => {
@@ -880,11 +880,11 @@ export default function window_test() {
         })
 
         /**
-	 * @tc.number     SUB_WMS_FIND_JSAPI_002
-	 * @tc.name       Test find_Test_002
+	 * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0110
+	 * @tc.name       testFindWindow_Non_Existing_Window_Promise
 	 * @tc.desc       Query for non-existing windows
 	 */
-        it('find_Test_002', 0, async function (done) {
+        it('testFindWindow_Non_Existing_Window_Promise', 0, async function (done) {
             let msgStr = 'find_Test_002';
             console.log(msgStr + ' begin');
             window.find('window').then((window) => {
@@ -899,11 +899,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_FIND_JSAPI_004
-     * @tc.name      Test find_Test_003
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0080
+     * @tc.name      testFindWindow_Main_Window_Callback
      * @tc.desc      Query main window.
      */
-        it('find_Test_003', 0, async function (done) {
+        it('testFindWindow_Main_Window_Callback', 0, async function (done) {
             let msgStr = 'find_Test_003';
             console.log(msgStr + ' begin');
             window.find('window0', (err, data) => {
@@ -920,11 +920,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_FIND_JSAPI_004
-     * @tc.name      Test find_Test_004
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0100
+     * @tc.name      testFindWindow_Non_Existing_Window_Callback
      * @tc.desc      Query for non-existing windows
      */
-        it('find_Test_004', 0, async function (done) {
+        it('testFindWindow_Non_Existing_Window_Callback', 0, async function (done) {
             let msgStr = 'find_Test_004';
             console.log(msgStr + ' begin');
             window.find('window', (err, data) => {
@@ -942,11 +942,11 @@ export default function window_test() {
 
 
         /**
-     * @tc.number    SUB_WMS_ONOFF_JSAPI_001
-     * @tc.name      Test onOff_Test_001.
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0410
+     * @tc.name      testOnOff_SystemAvoidAreaChange_Callback
      * @tc.desc      To verify the function of enabling and disabling intercepting when the window size changes.
      */
-        it('onOff_Test_001', 0, async function (done) {
+        it('testOnOff_SystemAvoidAreaChange_Callback', 0, async function (done) {
             let msgStr = 'onOff_Test_001';
             console.log(msgStr + ' begin');
             display.getDefaultDisplay().then(dsp => {
@@ -990,11 +990,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_ONOFF_JSAPI_002
-     * @tc.name      Test onOff_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0400
+     * @tc.name      testOnOff_WindowSizeChange_Callback
      * @tc.desc      To verify the function of enabling and disabling lawful interception in the system and window
      */
-        it('onOff_Test_002', 0, async function (done) {
+        it('testOnOff_WindowSizeChange_Callback', 0, async function (done) {
             let msgStr = 'onOff_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow((err, data) => {
@@ -1033,11 +1033,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number      SUB_WMS_ISSHOWING_JSAPI_001
-     * @tc.name        Test isShowing_Test_001.
+     * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0310
+     * @tc.name        testIsShowing_Promise
      * @tc.desc        To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-        it('isShowing_Test_001', 0, async function (done) {
+        it('testIsShowing_Promise', 0, async function (done) {
             let msgStr = 'isShowing_Test_001';
             console.log(msgStr + ' begin');
             window.create('subWindow1', window.WindowType.TYPE_APP).then(wnd => {
@@ -1081,11 +1081,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_ISSHOWING_JSAPI_002
-     * @tc.name      Test isShowing_Test_002.
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0300
+     * @tc.name      testIsShowing_Callback
      * @tc.desc      To verify the function of obtaining the display status when a window is hidden and then displayed.
      */
-        it('isShowing_Test_002', 0, async function (done) {
+        it('testIsShowing_Callback', 0, async function (done) {
             let msgStr = 'isShowing_Test_002';
             console.log(msgStr + ' begin');
             window.create('subWindow2', window.WindowType.TYPE_APP, (err, data) => {
@@ -1138,11 +1138,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number      SUB_WMS_SETCOLORSPACE_JSAPI_001
-     * @tc.name        Test setColorSpace_Test_001
+     * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0710
+     * @tc.name        testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Promise
      * @tc.desc        To verify the setting of the wide color gamut color space
      */
-        it('setColorSpace_Test_001', 0, async function (done) {
+        it('testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Promise', 0, async function (done) {
             let msgStr = 'setColorSpace_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1179,11 +1179,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number      SUB_WMS_SETCOLORSPACE_JSAPI_002
-     * @tc.name        Test setColorSpace_Test_002
+     * @tc.number      SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0730
+     * @tc.name        testSetColorSpace_Parameter_Promise
      * @tc.desc        To verify that the color space of invaild values is set successfully
      */
-        it('setColorSpace_Test_002', 0, async function (done) {
+        it('testSetColorSpace_Parameter_Promise', 0, async function (done) {
             let msgStr = 'setColorSpace_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1206,11 +1206,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETCOLORSPACE_JSAPI_003
-     * @tc.name      Test setColorSpace_Test_003
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0700
+     * @tc.name      testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Callback
      * @tc.desc      To verify the setting of the wide color gamut color space
      */
-        it('setColorSpace_Test_003', 0, async function (done) {
+        it('testSetColorSpace_IsSupportWideGamut_Wide_Gaumt_Callback', 0, async function (done) {
             let msgStr = 'setColorSpace_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1251,11 +1251,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_SETCOLORSPACE_JSAPI_004
-     * @tc.name      Test setColorSpace_Test_004
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0720
+     * @tc.name      testSetColorSpace_Parameter_Callback
      * @tc.desc      To verify that the color space of invalid values is set successfully
      */
-        it('setColorSpace_Test_004', 0, async function (done) {
+        it('testSetColorSpace_Parameter_Callback', 0, async function (done) {
             let msgStr = 'setColorSpace_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1280,11 +1280,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_CREATE_JSAPI_001
-     * @tc.name			Test create_Test_001.
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0020
+     * @tc.name			testCreateWindow_Promise
      * @tc.desc			To verify the function of creating an application subwindow.
      */
-        it('create_Test_001', 0, async function (done) {
+        it('testCreateWindow_Promise', 0, async function (done) {
             let msgStr = 'create_Test_001';
             console.log(msgStr + ' begin');
             window.create('subWindow3', window.WindowType.TYPE_APP).then(wnd => {
@@ -1310,11 +1310,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_CREATE_JSAPI_001
-     * @tc.name      Test create_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0010
+     * @tc.name      testCreateWindow_Callback
      * @tc.desc      To verify the function of creating an application subwindow
      */
-        it('create_Test_002', 0, async function (done) {
+        it('testCreateWindow_Callback', 0, async function (done) {
             let msgStr = 'create_Test_002';
             console.log(msgStr + ' begin');
             window.create('subWindow4', window.WindowType.TYPE_APP, (err, data) => {
@@ -1341,11 +1341,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_DESTROY_JSAPI_001
-     * @tc.name			Test destroy_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0050
+     * @tc.name			testDestroyWiondow_Promise
      * @tc.desc			Verify that a window is destroyed after being created
      */
-        it('destroy_Test_001', 0, async function (done) {
+        it('testDestroyWiondow_Promise', 0, async function (done) {
             let msgStr = 'destroy_Test_001';
             console.log(msgStr + ' begin');
             window.create('subWindow5', window.WindowType.TYPE_APP).then(wnd => {
@@ -1379,11 +1379,11 @@ export default function window_test() {
             })
         })
         /**
-     * @tc.number    SUB_WMS_DESTROY_JSAPI_002
-     * @tc.name      Test destroy_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0040
+     * @tc.name      testDestroyWiondow_Callback
      * @tc.desc      Verify that a window is destroyed after being created
      */
-        it('destroy_Test_002', 0, async function (done) {
+        it('testDestroyWiondow_Callback', 0, async function (done) {
             let msgStr = 'destroy_Test_002';
             console.log(msgStr + ' begin');
             window.create('subWindow6', window.WindowType.TYPE_APP, (err, data) => {
@@ -1424,8 +1424,8 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETSYSTEMBARENABLE_JSAPI_001
-     * @tc.name			Test setSystemBarEnable_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1000
+     * @tc.name			testSetSystemBarEnable_Parameter1_Promise
      * @tc.desc			To verify the function of setting a scenario that is visible to the system bar
      */
         it('setSystemBarEnable_Test_001', 0, async function (done) {
@@ -1458,11 +1458,11 @@ export default function window_test() {
 
 
         /**
-     * @tc.number    SUB_WMS_SETSYSTEMBARENABLE_JSAPI_002
-     * @tc.name      Test setSystemBarEnable_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1010
+     * @tc.name      testSetSystemBarEnable_Parameter2_Callback
      * @tc.desc      To verify the function of setting a scenario that is visible to the system bar
      */
-        it('setSystemBarEnable_Test_002', 0, async function (done) {
+        it('testSetSystemBarEnable_Parameter2_Callback', 0, async function (done) {
             let msgStr = 'setSystemBarEnable_Test_002';
             console.log(msgStr + ' begin');
             var names = ["status", "navigation"];
@@ -1489,11 +1489,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETSYSTEMBARPROPERTIES_JSAPI_001
-     * @tc.name			Test setSystemBarProperties_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1020
+     * @tc.name			testSetSystemBarProperties_Parameter1_Promise
      * @tc.desc			To verify the function of setting system bar attributes
      */
-        it('setSystemBarProperties_Test_001', 0, async function (done) {
+        it('testSetSystemBarProperties_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setSystemBarProperties_Test_001';
             console.log(msgStr + ' begin');
             var SystemBarProperties = {
@@ -1524,11 +1524,11 @@ export default function window_test() {
 
 
         /**
-     * @tc.number    SUB_WMS_SETSYSTEMBARPROPERTIES_JSAPI_002
-     * @tc.name      Test setSystemBarProperties_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_002
+     * @tc.name      testSetSystemBarProperties_Parameter2_Callback
      * @tc.desc      To verify the function of setting system bar attributes
      */
-        it('setSystemBarProperties_Test_002', 0, async function (done) {
+        it('testSetSystemBarProperties_Parameter2_Callback', 0, async function (done) {
             let msgStr = 'setSystemBarProperties_Test_002';
             console.log(msgStr + ' begin');
             var SystemBarProperties = {
@@ -1562,11 +1562,11 @@ export default function window_test() {
 
 
         /**
-     * @tc.number    SUB_WMS_MOVETO_JSAPI_001
-     * @tc.name      Test move_Test_001
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0330
+     * @tc.name      testMoveTo_Parameter1_Callback
      * @tc.desc      Verify the scene where the window moves
      */
-        it('move_Test_001', 0, function (done) {
+        it('testMoveTo_Parameter1_Callback', 0, function (done) {
             let msgStr = 'move_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1586,11 +1586,11 @@ export default function window_test() {
             })
         })
         /**
-    * @tc.number     SUB_WMS_MOVETO_JSAPI_002
-    * @tc.name       Test move_Test_002
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0340
+    * @tc.name       testMoveTo_Parameter2_Promise
     * @tc.desc       Verify the scene where the window moves
     */
-        it('move_Test_002', 0, async function (done) {
+        it('testMoveTo_Parameter2_Promise', 0, async function (done) {
             let msgStr = 'move_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1613,11 +1613,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_MOVETO_JSAPI_003
-    * @tc.name       Test move_Test_003
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0350
+    * @tc.name       testMoveTo_Parameter3_Promise
     * @tc.desc       Verify the scene where the window moves
     */
-        it('move_Test_003', 0, async function (done) {
+        it('testMoveTo_Parameter3_Promise', 0, async function (done) {
             let msgStr = 'move_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1640,11 +1640,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_MOVETO_JSAPI_004
-    * @tc.name       Test move_Test_004
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0360
+    * @tc.name       testMoveTo_Parameter4_Promise
     * @tc.desc       Verify the scene where the window moves
     */
-        it('move_Test_004', 0, async function (done) {
+        it('testMoveTo_Parameter4_Promise', 0, async function (done) {
             let msgStr = 'move_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1667,11 +1667,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_MOVETO_JSAPI_005
-    * @tc.name       Test move_Test_005
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0370
+    * @tc.name       testMoveTo_Parameter5_Promise
     * @tc.desc       Verify that the window is moved into the normal scene
     */
-        it('move_Test_005', 0, async function (done) {
+        it('testMoveTo_Parameter5_Promise', 0, async function (done) {
             let msgStr = 'move_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1695,11 +1695,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_MOVETO_JSAPI_006
-    * @tc.name       Test move_Test_006
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0380
+    * @tc.name       testMoveTo_Parameter6_Callback
     * @tc.desc       Verify the scene where the window moves
     */
-        it('move_Test_006', 0, async function (done) {
+        it('testMoveTo_Parameter6_Callback', 0, async function (done) {
             let msgStr = 'move_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1724,11 +1724,11 @@ export default function window_test() {
         })
 
         /**
-	* @tc.number    SUB_WMS_MOVETO_JSAPI_007
-	* @tc.name      Test move_Test_007
+	* @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0390
+	* @tc.name      testMove_Test_007
 	* @tc.desc      Verify the scene where the window moves
 	*/
-        it('move_Test_007', 0, async function (done) {
+        it('testMove_Test_007', 0, async function (done) {
             let msgStr = 'move_Test_007';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1751,11 +1751,11 @@ export default function window_test() {
         })
 
         /**
-	* @tc.number    SUB_WMS_MOVETO_JSAPI_008
-	* @tc.name      Test move_Test_008
+	* @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0320
+	* @tc.name      testMoveTo_Multi_Parameter1_Promise
 	* @tc.desc      Verify the scene where the window moves
 	*/
-        it('move_Test_008', 0, async function (done) {
+        it('testMoveTo_Multi_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'move_Test_008';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1783,11 +1783,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_RESETSIZE_JSAPI_001
-    * @tc.name       Test resetSize_Test_001
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0420
+    * @tc.name       testResetSize_Parameter1_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('resetSize_Test_001', 0, async function (done) {
+        it('testResetSize_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'resetSize_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1810,11 +1810,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_RESETSIZE_JSAPI_002
-    * @tc.name       Test resetSize_Test_002
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0430
+    * @tc.name       testResetSize_Parameter2_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('resetSize_Test_002', 0, async function (done) {
+        it('testResetSize_Parameter2_Promise', 0, async function (done) {
             let msgStr = 'resetSize_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1837,11 +1837,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_RESETSIZE_JSAPI_003
-    * @tc.name       Test resetSize_Test_003
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0440
+    * @tc.name       testResetSize_Parameter3_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('resetSize_Test_003', 0, async function (done) {
+        it('testResetSize_Parameter3_Promise', 0, async function (done) {
             let msgStr = 'resetSize_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1864,11 +1864,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_RESETSIZE_JSAPI_004
-    * @tc.name       Test resetSize_Test_004
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0450
+    * @tc.name       testResetSize_Parameter4_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('resetSize_Test_004', 0, async function (done) {
+        it('testResetSize_Parameter4_Promise', 0, async function (done) {
             let msgStr = 'resetSize_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1891,11 +1891,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_RESETSIZE_JSAPI_005
-    * @tc.name       Test resetSize_Test_005
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0470
+    * @tc.name       testResetSize_Repeat_5_Times_Parameter5_Promise
     * @tc.desc       Verify the scene where the window resets size
     */
-        it('resetSize_Test_005', 0, async function (done) {
+        it('testResetSize_Repeat_5_Times_Parameter5_Promise', 0, async function (done) {
             let msgStr = 'resetSize_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1920,11 +1920,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_RESETSIZETEST_JSAPI_006
-     * @tc.name      Test resetSize_Test_006
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0460
+     * @tc.name      testResetSize_Parameter6_Callback
      * @tc.desc      Verify the scene where the window resets size
      */
-        it('resetSize_Test_006', 0, function (done) {
+        it('testResetSize_Parameter6_Callback', 0, function (done) {
             let msgStr = 'resetSize_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1945,11 +1945,11 @@ export default function window_test() {
         })
 
         /**
-	* @tc.number    SUB_WMS_RESETSIZE_JSAPI_007
-	* @tc.name      Test resetSize_Test_007
+	* @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0480
+	* @tc.name      testResetSize_Repeat_5_Times_Parameter7_Promise
 	* @tc.desc      Verify the scene where the window resets size
 	*/
-        it('resetSize_Test_007', 0, async function (done) {
+        it('testResetSize_Repeat_5_Times_Parameter7_Promise', 0, async function (done) {
             var width = 100;
             var height = 100;
             let msgStr = 'resetSize_Test_007';
@@ -1978,11 +1978,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number     SUB_WMS_GETTOPWINDOW_JSAPI_001
-    * @tc.name       Test getTopWindow_Test_001
+    * @tc.number     SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0290
+    * @tc.name       testGetTopWindow_Promise
     * @tc.desc       Verify the scene that gets the top window
     */
-        it('getTopWindow_Test_001', 0, async function (done) {
+        it('testGetTopWindow_Promise', 0, async function (done) {
             let msgStr = 'getTopWindow_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -1997,11 +1997,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPE_JSAPI_001
-     * @tc.name			Test enumWindowStageEventType_Test_001.
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1110
+     * @tc.name			testWindowStageEventType_Enum_Value
      * @tc.desc			To test the enum value of WindowStageEventType.
      */
-        it('enumWindowStageEventType_Test_001', 0, async function (done) {
+        it('testWindowStageEventType_Enum_Value', 0, async function (done) {
             let msgStr = 'enumWindowStageEventType_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -2016,11 +2016,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number		SUB_WMS_ENUM_WINDOWCOLORSPACE_JSAPI_001
-    * @tc.name			Test enumWindowCOLORSPACE_Test_001.
+    * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1080
+    * @tc.name			testWindowColorSpace_Enum_Value
     * @tc.desc			To test the enum value of WindowCOLORSPACE.
     */
-        it('enumWindowCOLORSPACE_Test_001', 0, async function (done) {
+        it('testWindowColorSpace_Enum_Value', 0, async function (done) {
             let msgStr = 'enumWindowCOLORSPACE_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -2033,11 +2033,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_ENUM_WINDOWTYPE_JSAPI_001
-     * @tc.name			Test enumWindowType_Test_001.
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1120
+     * @tc.name			testWindowType_Enum_Value
      * @tc.desc			To test the enum value of WindowType.
      */
-        it('enumWindowType_Test_001', 0, async function (done) {
+        it('testWindowType_Enum_Value', 0, async function (done) {
             let msgStr = 'enumWindowType_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -2050,11 +2050,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number	SUB_WMS_ENUM_WINDOWPROTERTIES_JSAPI_001
-     * @tc.name	    Test enumWindowProperties_Test_001.
+     * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1100
+     * @tc.name	    testWindowProperties_Enum_Value
      * @tc.desc		To test the enum value of WindowProperties.
     */
-        it('enumWindowProperties_Test_001', 0, async function (done) {
+        it('testWindowProperties_Enum_Value', 0, async function (done) {
             let msgStr = 'enumWindowProperties_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -2101,11 +2101,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_001
-     * @tc.name			Test setFocusable_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0770
+     * @tc.name			testSetFocusable_Parameter1_Promise
      * @tc.desc			Setting window focus acquisition and defocus
      */
-        it('setFocusable_Test_001', 0, async function (done) {
+        it('testSetFocusable_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setFocusable_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2145,11 +2145,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_002
-     * @tc.name			Test setFocusable_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0780
+     * @tc.name			testSetFocusable_Parameter2_Promise
      * @tc.desc			The setting window loses focus and cannot be touched
      */
-        it('setFocusable_Test_002', 0, async function (done) {
+        it('testSetFocusable_Parameter2_Promise', 0, async function (done) {
             let msgStr = 'setFocusable_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2192,11 +2192,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_003
-     * @tc.name			Test setFocusable_Test_003
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0790
+     * @tc.name			testSetFocusable_Parameter3_Promise
      * @tc.desc			Set the window to lose focus and be touchable
      */
-        it('setFocusable_Test_003', 0, async function (done) {
+        it('testSetFocusable_Parameter3_Promise', 0, async function (done) {
             let msgStr = 'setFocusable_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2239,11 +2239,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_004
-     * @tc.name			Test setFocusable_Test_004
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0800
+     * @tc.name			testSetFocusable_Parameter4_Promise
      * @tc.desc			Setting the window to get focus is not touchable
      */
-        it('setFocusable_Test_004', 0, async function (done) {
+        it('testSetFocusable_Parameter4_Promise', 0, async function (done) {
             let msgStr = 'setFocusable_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2286,11 +2286,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETFOCUSABLE_JSAPI_005
-     * @tc.name			Test setFocusable_Test_005
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0810
+     * @tc.name			testSetFocusable_Parameter5_Promise
      * @tc.desc			Set the window to get focus and touch
      */
-        it('setFocusable_Test_005', 0, async function (done) {
+        it('testSetFocusable_Parameter5_Promise', 0, async function (done) {
             let msgStr = 'setFocusable_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2333,11 +2333,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETTOUCHABLE_JSAPI_001
-     * @tc.name			Test setTouchable_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1050
+     * @tc.name		    testTouchable_Parameter1_Promise
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('setTouchable_Test_001', 0, async function (done) {
+        it('testTouchable_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setTouchable_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2387,11 +2387,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETKEEPSCREENON_JSAPI_001
-     * @tc.name			Test setKeepScreenOn_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0860
+     * @tc.name			testSetKeepScreenOn_Parameter3_Promise
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('setKeepScreenOn_Test_001', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter3_Promise', 0, async function (done) {
             let msgStr = 'setKeepScreenOn_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2441,11 +2441,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETKEEPSCREENON_JSAPI_002
-     * @tc.name			Test setKeepScreenOn_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0870
+     * @tc.name			testSetKeepScreenOn_Parameter4_Promise
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('setKeepScreenOn_Test_002', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter4_Promise', 0, async function (done) {
             let msgStr = 'setKeepScreenOn_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2497,11 +2497,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_001
-     * @tc.name			Test setBackgroundColor_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0560
+     * @tc.name			testSetBackgroundColor_IsTransparent_RGB_Promise
      * @tc.desc			Set the window background color to red and Default opacity
      */
-        it('setBackgroundColor_Test_001', 0, async function (done) {
+        it('testSetBackgroundColor_IsTransparent_RGB_Promise', 0, async function (done) {
             let msgStr = 'setBackgroundColor_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2530,11 +2530,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_002
-     * @tc.name			Test setBackgroundColor_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0550
+     * @tc.name			testSetBackgroundColor_IsTransparent_RGBA_Promise
      * @tc.desc			Set the window background color to red opaque
      */
-        it('setBackgroundColor_Test_002', 0, async function (done) {
+        it('testSetBackgroundColor_IsTransparent_RGBA_Promise', 0, async function (done) {
             let msgStr = 'setBackgroundColor_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2563,11 +2563,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_003
-     * @tc.name			Test setBackgroundColor_Test_003
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0570
+     * @tc.name			testSetBackgroundColor_IsTransparent_Transparent_RGBA_Promise
      * @tc.desc			Set the window background color to red transparent
      */
-        it('setBackgroundColor_Test_003', 0, async function (done) {
+        it('testSetBackgroundColor_IsTransparent_Transparent_RGBA_Promise', 0, async function (done) {
             let msgStr = 'setBackgroundColor_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2596,11 +2596,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_004
-     * @tc.name			Test setBackgroundColor_Test_004
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0540
+     * @tc.name			testSetBackgroundColor_Invalid_Parameter_Promise
      * @tc.desc			Set the background color input parameter as an outlier
      */
-        it('setBackgroundColor_Test_004', 0, async function (done) {
+        it('testSetBackgroundColor_Invalid_Parameter_Promise', 0, async function (done) {
             let msgStr = 'setBackgroundColor_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2623,11 +2623,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_005
-     * @tc.name			Test setBackgroundColor_Test_005
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0500
+     * @tc.name			testSetBackgroundColor_16bit_Invalid_Parameter_Promise
      * @tc.desc			Setting window background color input exception ARGB
      */
-        it('setBackgroundColor_Test_005', 0, async function (done) {
+        it('testSetBackgroundColor_16bit_Invalid_Parameter_Promise', 0, async function (done) {
             let msgStr = 'setBackgroundColor_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2650,11 +2650,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLOR_JSAPI_006
-     * @tc.name			Test setBackgroundColor_Test_006
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0520
+     * @tc.name			testSetBackgroundColor_8bit_Invalid_Parameter_Promise
      * @tc.desc			Setting window background color input exception RGB
      */
-        it('setBackgroundColor_Test_006', 0, async function (done) {
+        it('testSetBackgroundColor_8bit_Invalid_Parameter_Promise', 0, async function (done) {
             let msgStr = 'setBackgroundColor_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2677,11 +2677,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_001
-     * @tc.name			Test setBrightness_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0660
+     * @tc.name			testSetBrightness_Multi_Parameter1_Promise
      * @tc.desc			Setting the brightness bar input parameter is normal
      */
-        it('setBrightness_Test_001', 0, async function (done) {
+        it('testSetBrightness_Multi_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setBrightness_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2742,11 +2742,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_002
-     * @tc.name			Test setBrightness_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0680
+     * @tc.name			testSetBrightness_Parameter1_Promise
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
-        it('setBrightness_Test_002', 0, async function (done) {
+        it('testSetBrightness_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setBrightness_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2776,11 +2776,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_003
-     * @tc.name			Test setBrightness_Test_003
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0630
+     * @tc.name			testSetBrightness_Invalid_Parameter_MAX_Value_Promise
      * @tc.desc			Set the brightness bar input parameter to number max
      */
-        it('setBrightness_Test_003', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MAX_Value_Promise', 0, async function (done) {
             let msgStr = 'setBrightness_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2803,11 +2803,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_004
-     * @tc.name			Test setBrightness_Test_004
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0650
+     * @tc.name			testSetBrightness_Invalid_Parameter_MIN_Value_Promise
      * @tc.desc			Set the brightness bar input parameter to number min
      */
-        it('setBrightness_Test_004', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MIN_Value_Promise', 0, async function (done) {
             let msgStr = 'setBrightness_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2830,11 +2830,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESS_JSAPI_005
-     * @tc.name			Test setBrightness_Test_005
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0610
+     * @tc.name			testSetBrightness_Invalid_Multi_Parameter1_Promise
      * @tc.desc			Setting brightness bar input parameter exception
      */
-        it('setBrightness_Test_005', 0, async function (done) {
+        it('testSetBrightness_Invalid_Multi_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setBrightness_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2865,11 +2865,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_setDimBehind_JSAPI_001
-     * @tc.name			Test setDimBehindDeviceNotSupport_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0750
+     * @tc.name			testSetDimBehind_DeviceNotSupport_Promise
      * @tc.desc			Set the setDimBehind interface invalid
      */
-        it('setDimBehindDeviceNotSupport_Test_001', 0, async function (done) {
+        it('testSetDimBehind_DeviceNotSupport_Promise', 0, async function (done) {
             let msgStr = 'setDimBehindDeviceNotSupport_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2892,11 +2892,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_setDimBehind_JSAPI_002
-     * @tc.name			Test setDimBehindDeviceNotSupport_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0740
+     * @tc.name			testSetDimBehind_DeviceNotSupport_Callback
      * @tc.desc			Set the setDimBehind interface invalid
      */
-        it('setDimBehindDeviceNotSupport_Test_002', 0, async function (done) {
+        it('testSetDimBehind_DeviceNotSupport_Callback', 0, async function (done) {
             let msgStr = 'setDimBehindDeviceNotSupport_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2921,11 +2921,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_setOutsideTouchable_JSAPI_001
-     * @tc.name			Test setOutsideTouchableDeviceNotSupport_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0960
+     * @tc.name			testSetOutsideTouchable_Parameter1_Promise
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-        it('setOutsideTouchable_Test_001', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter1_Promise', 0, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2948,11 +2948,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_setOutsideTouchable__JSAPI_002
-     * @tc.name			Test setOutsideTouchableDeviceNotSupport_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0970
+     * @tc.name			testSetOutsideTouchable_Parameter2_Promise
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-        it('setOutsideTouchable_Test_002', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter2_Promise', 0, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -2975,11 +2975,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_setOutsideTouchable_JSAPI_003
-     * @tc.name			Test setOutsideTouchable_Test_003
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0980
+     * @tc.name			testSetOutsideTouchable_Parameter3_Callback
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-        it('setOutsideTouchable_Test_003', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter3_Callback', 0, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3004,11 +3004,11 @@ export default function window_test() {
         })
 
         /**
-    * @tc.number		SUB_WMS_setOutsideTouchable_JSAPI_004
-    * @tc.name			Test setOutsideTouchable_Test_004
+    * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0990
+    * @tc.name			testSetOutsideTouchable_Parameter4_Callback
     * @tc.desc			Set the setOutsideTouchable interface invalid
     */
-        it('setOutsideTouchable_Test_004', 0, async function (done) {
+        it('testSetOutsideTouchable_Parameter4_Callback', 0, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3033,11 +3033,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_ENUM_ORIENTATION_JSAPI_001
-     * @tc.name			Test enumOrientation_Test_001.
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1090
+     * @tc.name			testWindowOrientation_Enum_Value
      * @tc.desc			To test the enum value of Orientation.
      */
-        it('enumOrientation_Test_001', 0, async function (done) {
+        it('testWindowOrientation_Enum_Value', 0, async function (done) {
             let msgStr = 'setOutsideTouchable_Test_004';
             console.log(msgStr + ' begin');
             try {
@@ -3062,11 +3062,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETKEEPSCREENONCALLBACK_JSAPI_001
-     * @tc.name			Test setKeepScreenOnCallBack_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0840
+     * @tc.name			testSetKeepScreenOn_Parameter1_Callback
     * @tc.desc			Set whether setKeepScreenOn or not
     */
-        it('setKeepScreenOnCallBack_Test_001', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter1_Callback', 0, async function (done) {
             let msgStr = 'setKeepScreenOnCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3104,11 +3104,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETKEEPSCREENON_JSAPI_002
-     * @tc.name			Test setKeepScreenOnCallBack_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0850
+     * @tc.name			testSetKeepScreenOn_Parameter2_Callback
      * @tc.desc			Set whether the window can be touched or not
      */
-        it('setKeepScreenOnCallBack_Test_002', 0, async function (done) {
+        it('testSetKeepScreenOn_Parameter2_Callback', 0, async function (done) {
             let msgStr = 'setKeepScreenOnCallBack_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3149,11 +3149,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCALLBACK_JSAPI_001
-     * @tc.name			Test setBackgroundColorCALLBack_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0590
+     * @tc.name			testSetBackgroundColor_RGB_Callback
      * @tc.desc			Set the window background color to red and Default opacity
      */
-        it('setBackgroundColorCallBack_Test_001', 0, async function (done) {
+        it('testSetBackgroundColor_RGB_Callback', 0, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3184,11 +3184,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCALLBACK_JSAPI_002
-     * @tc.name			Test setBackgroundColorCallBack_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0580
+     * @tc.name			testSetBackgroundColor_RGBA_Callback
     * @tc.desc			Set the window background color to red opaque
     */
-        it('setBackgroundColorCallBack_Test_002', 0, async function (done) {
+        it('testSetBackgroundColor_RGBA_Callback', 0, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3219,11 +3219,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBack_JSAPI_003
-     * @tc.name			Test setBackgroundColorBack_Test_003
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0600
+     * @tc.name			testSetBackgroundColor_Transparent_RGBA_Callback
      * @tc.desc			Set the window background color to red transparent
      */
-        it('setBackgroundColorCallBack_Test_003', 0, async function (done) {
+        it('testSetBackgroundColor_Transparent_RGBA_Callback', 0, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3254,11 +3254,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBACK_JSAPI_004
-     * @tc.name			Test setBackgroundColorCallBack_Test_004
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0530
+     * @tc.name			testSetBackgroundColor_Invalid_Parameter_Callback
      * @tc.desc			Set the background color input parameter as an outlier
      */
-        it('setBackgroundColorCallBack_Test_004', 0, async function (done) {
+        it('testSetBackgroundColor_Invalid_Parameter_Callback', 0, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3283,11 +3283,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBack_JSAPI_005
-     * @tc.name			Test setBackgroundColorCallBack_Test_005
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0510
+     * @tc.name			testSetBackgroundColor_8bit_Invalid_Parameter_Callback
      * @tc.desc			Setting window background color input exception ARGB
      */
-        it('setBackgroundColorCallBack_Test_005', 0, async function (done) {
+        it('testSetBackgroundColor_8bit_Invalid_Parameter_Callback', 0, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_005';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3312,11 +3312,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBack_JSAPI_006
-     * @tc.name			Test setBackgroundColorBack_Test_006
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0490
+     * @tc.name			testSetBackgroundColor_16bit_Invalid_Parameter_Callback
      * @tc.desc			Setting window background color input exception RGB
      */
-        it('setBackgroundColorCallBack_Test_006', 0, async function (done) {
+        it('testSetBackgroundColor_16bit_Invalid_Parameter_Callback', 0, async function (done) {
             let msgStr = 'setBackgroundColorCallBack_Test_006';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3341,11 +3341,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_002
-     * @tc.name			Test setBrightnessCallBack_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0670
+     * @tc.name			testSetBrightness_Parameter1_Callback
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
-        it('setBrightnessCallBack_Test_002', 0, async function (done) {
+        it('testSetBrightness_Parameter1_Callback', 0, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3378,11 +3378,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_003
-     * @tc.name			Test setBrightnessCallBack_Test_003
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0620
+     * @tc.name			testSetBrightness_Invalid_Parameter_MAX_Value_Callback
      * @tc.desc			Set the brightness bar input parameter to number max
      */
-        it('setBrightnessCallBack_Test_003', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MAX_Value_Callback', 0, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_003';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3407,11 +3407,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_004
-     * @tc.name			Test setBrightnessCallBack_Test_004
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0640
+     * @tc.name			testSetBrightness_Invalid_Parameter_MIN_Value_Callback
      * @tc.desc			Set the brightness bar input parameter to number min
      */
-        it('setBrightnessCallBack_Test_004', 0, async function (done) {
+        it('testSetBrightness_Invalid_Parameter_MIN_Value_Callback', 0, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3436,11 +3436,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_005
-     * @tc.name			Test setBrightnessCALLBACK_Test_005
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0690
+     * @tc.name			testSetBrightness_Parameter2_Callback
      * @tc.desc			Setting brightness bar input parameter exception
      */
-        it('setBrightnessCallBack_Test_005', 0, async function (done) {
+        it('testSetBrightness_Parameter2_Callback', 0, async function (done) {
             let msgStr = 'setBrightnessCallBack_Test_004';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3465,11 +3465,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETTOUCHABLECALLBACK_JSAPI_001
-     * @tc.name			Test setTouchableCallBack_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1040
+     * @tc.name			testSetTouchable_Parameter1_Callback
      * @tc.desc			Set whether the window can be touched or not
     */
-        it('setTouchableCallBack_Test_001', 0, async function (done) {
+        it('testSetTouchable_Parameter1_Callback', 0, async function (done) {
             let msgStr = 'setTouchableCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3514,11 +3514,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_SETFOCUSABLECALLBACK_JSAPI_001
-     * @tc.name			Test setFocusable_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0760
+     * @tc.name			testSetFocusable_Callback
      * @tc.desc			Setting window focus acquisition and defocus
      */
-        it('setFocusableCallBack_Test_001', 0, async function (done) {
+        it('testSetFocusable_Callback', 0, async function (done) {
             let msgStr = 'setFocusableCallBack_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3564,11 +3564,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number		SUB_WMS_ENUM_AVOIDAREATYPE_JSAPI_001
-     * @tc.name			Test avoidareatype_Test_001.
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1070
+     * @tc.name			testWindowAvoidAreaType_Enum_Value
      * @tc.desc			To test the enum value of avoidareatype.
     */
-        it('enumAvoidAreaType_Test_001', 0, async function (done) {
+        it('testWindowAvoidAreaType_Enum_Value', 0, async function (done) {
             let msgStr = 'enumAvoidAreaType_Test_001';
             console.log(msgStr + ' begin');
             try {
@@ -3585,11 +3585,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_GETAVOIDAREAADD_JSAPI_001
-     * @tc.name      Test getAvoidAreaAdd_Test_001
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0200
+     * @tc.name      testGetAvoidArea_Sytem_Type_Callback
      * @tc.desc      Get System type avoidance area
     */
-        it('getAvoidAreaAdd_Test_001', 0, async function (done) {
+        it('testGetAvoidArea_Sytem_Type_Callback', 0, async function (done) {
             let msgStr = 'enumAvoidAreaType_Test_001';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3613,11 +3613,11 @@ export default function window_test() {
         })
 
         /**
-     * @tc.number    SUB_WMS_GETAVOIDAREAADD_JSAPI_002
-     * @tc.name      Test getAvoidAreaAdd_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0150
+     * @tc.name      testGetAvoidArea_Invalid_Parameter_Callback
      * @tc.desc      Get invalid parameter avoidarea
      */
-        it('getAvoidAreaAdd_Test_002', 0, async function (done) {
+        it('testGetAvoidArea_Invalid_Parameter_Callback', 0, async function (done) {
             let msgStr = 'getAvoidAreaAdd_Test_002';
             console.log(msgStr + ' begin');
             window.getTopWindow().then(wnd => {
@@ -3639,11 +3639,11 @@ export default function window_test() {
 
 
     /**
-     * @tc.number		SUB_WMS_ISFOLDABLE_JSAPI_001
-     * @tc.name			Test isFoldable_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1130
+     * @tc.name			testIsFoldable_Test
      * @tc.desc			To test the function of isFoldable
     */
-    it('isFoldable_Test_001', 0, async function (done) {
+    it('testIsFoldable_Test', 0, async function (done) {
         
         let tag = 'isFoldable_Test_001 '
         try {
@@ -3658,11 +3658,11 @@ export default function window_test() {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETFOLDSTATUS_JSAPI_001
-     * @tc.name			Test getFoldStatus_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1140
+     * @tc.name			testGetFoldStatus_Test
      * @tc.desc			To test the function of getFoldStatus
     */
-    it('getFoldStatus_Test_001', 0, async function (done) {
+    it('testGetFoldStatus_Test', 0, async function (done) {
         
         let tag = 'getFoldStatus_Test_001 '
         
@@ -3682,11 +3682,11 @@ export default function window_test() {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETFOLDDISPLAYMODE_JSAPI_001
-     * @tc.name			Test getFoldDisplayMode_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1150
+     * @tc.name			testGetFoldDisplayMode_Test
      * @tc.desc			To test the function of getFoldDisplayMode
     */
-    it('getFoldDisplayMode_Test_001', 0, async function (done) {
+    it('testGetFoldDisplayMode_Test', 0, async function (done) {
         
         let tag = 'getFoldDisplayMode_Test_001 '
         
@@ -3707,11 +3707,11 @@ export default function window_test() {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETCURRENTFOLDCREASEREGION_JSAPI_001
-     * @tc.name			Test getCurrentFoldCreaseRegion_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1160
+     * @tc.name			testGetCurrentFoldCreaseRegion_Test
      * @tc.desc			To test the function of getCurrentFoldCreaseRegion
     */
-    it('getCurrentFoldCreaseRegion_Test_001', 0, async function (done) {
+    it('testGetCurrentFoldCreaseRegion_Test', 0, async function (done) {
         
         let tag = 'getCurrentFoldCreaseRegion_Test_001 '
         

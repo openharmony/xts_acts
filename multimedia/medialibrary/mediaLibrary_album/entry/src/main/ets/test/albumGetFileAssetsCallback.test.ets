@@ -54,8 +54,8 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
                 // one asset type
 
                 let count = 0;
@@ -92,12 +92,8 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) {
-                    expect(false).assertTrue();
-                    done();
-                    return;
-                }
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
 
                 const album = albumList[0];
                 album.getFileAssets(async (err, fetchFileResult) => {
@@ -123,8 +119,8 @@ export default function albumGetFileAssetsCallbackTest(abilityContext) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
                 // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
-                if (!albumCountPass) return;
+                const albumCountPass = await checkAlbumsCount(testNum, albumList, expectAlbumCount);
+                expect(albumCountPass).assertTrue();
                 const album = albumList[0];
                 album.getFileAssets(abnormalFetchOp, (error, fetchFileResult) => {
                     if (fetchFileResult == undefined || error) {

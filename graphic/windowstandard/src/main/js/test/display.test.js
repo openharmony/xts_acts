@@ -30,12 +30,12 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETDEFALUTDISPLAY_JSAPI_001
-     * @tc.name			Test getDefaultDisplay_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0260
+     * @tc.name			testGetDefaultDisplay_Function_Promise
      * @tc.desc			To test the function of obtaining the default screen
      */
-    it('getDefaultDisplay_Test_001', 0, async function (done) {
-        console.log('displayTest getDefaultDisplayTest1 begin');
+    it('testGetDefaultDisplay_Function_Promise', 0, async function (done) {
+        console.log('displayTest testGetDefaultDisplay_Function_Promise begin');
         display.getDefaultDisplay().then(dsp => {
             console.log('displayTest getDefaultDisplayTest1 getDefaultDisplay id :' + JSON.stringify(dsp));
             expect(dsp.id != null).assertTrue();
@@ -60,12 +60,12 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number    SUB_WMS_GETDEFALUTDISPLAY_JSAPI_001
-     * @tc.name      Test getDefaultDisplay_Test_002.
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0250
+     * @tc.name      testGetDefaultDisplay_Function_Callback
      * @tc.desc      To test the function if obtaining the default screen.
      */
-    it('getDefaultDisplay_Test_002', 0, async function (done) {
-        console.log('displayTest getDefaultDisplayTest2 begin');
+    it('testGetDefaultDisplay_Function_Callback', 0, async function (done) {
+        console.log('displayTest testGetDefaultDisplay_Function_Callback begin');
         display.getDefaultDisplay((err, data) => {
             if (err.code != 0) {
                 console.log('displayTest getDefaultDisplayTest2 getDefaultDisplay callback fail' + JSON.stringify(err.code));
@@ -92,11 +92,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETALLDISPLAY_JSAPI_001
-     * @tc.name			Test getAllDisplay_Test_001.
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0130
+     * @tc.name			testGetAllDisplay_Promise
      * @tc.desc			To verify the function of obtaining all screens.
      */
-    it('getAllDisplay_Test_001', 0, async function (done) {
+    it('testGetAllDisplay_Promise', 0, async function (done) {
         console.log('displayTest getAllDisplayTest1 begin');
         display.getAllDisplay().then(dsp => {
             console.log('displayTest getAllDisplayTest1 getAllDisplay id :' + JSON.stringify(dsp));
@@ -122,11 +122,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number    SUB_WMS_GETALLDISPLAY_JSAPI_002
-     * @tc.name      Test getAllDisplay_Test_002
+     * @tc.number    SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0120
+     * @tc.name      testGetAllDisplay_Callback
      * @tc.desc      To test the function if obtaining the default screen
      */
-    it('getAllDisplay_Test_002', 0, async function (done) {
+    it('testGetAllDisplay_Callback', 0, async function (done) {
         console.log('displayTest getAllDisplayTest2 begin');
         display.getAllDisplay((err, data) => {
             if (err.code != 0) {
@@ -153,11 +153,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETDEFALUTDISPLAYSYNC_JSAPI_001
-     * @tc.name			Test getDefaultDisplaySYNC_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0240
+     * @tc.name			testGetDefaultDisplaySync_SyncFunction
      * @tc.desc			To test the sync function of obtaining the default display
      */
-    it('getDefaultDisplaySync_Test_001', 0, async function (done) {
+    it('testGetDefaultDisplaySync_SyncFunction', 0, async function (done) {
         console.info('displayTest getDefaultDisplaySyncTest1 begin');
         try {
             var dsp = display.getDefaultDisplaySync();
@@ -184,11 +184,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number	SUB_WMS_ENUM_WINDOWDisplayState_JSAPI_001
-     * @tc.name	    Test enumWindowDisplayState_Test_001.
+     * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0070
+     * @tc.name	    testDisplayState_Enum_Value
      * @tc.desc		To test the enum value of WindowDisplayState.
     */
-    it('enumWindowDisplayState_Test_001', 0, async function (done) {
+    it('testDisplayState_Enum_Value', 0, async function (done) {
         console.info('test the enum value of Window DisplayState begin');
         try {
             expect(0).assertEqual(display.DisplayState.STATE_UNKNOWN);
@@ -207,11 +207,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number	SUB_WMS_WATERFALLDISPLAYAREARECTS_JSAPI_001
-     * @tc.name	    Test waterfallDisplayAreaRects_Test_001.
+     * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_1060
+     * @tc.name	    testWaterfallDisplayAreaRects_Value
      * @tc.desc		To test value of waterfallDisplayAreaRects.
     */
-    it('waterfallDisplayAreaRects_Test_001', 0, async function (done) {
+    it('testWaterfallDisplayAreaRects_Value', 0, async function (done) {
         console.info('test the  value of waterfallDisplayAreaRects begin');
         try {
             var waterfallDisplayAreaRects = {
@@ -254,11 +254,11 @@ describe('display_test', function () {
     })
 
     /**
-    * @tc.number	SUB_WMS_RECT_JSAPI_001
-    * @tc.name	    Test RECT_Test_001.
+    * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0060
+    * @tc.name	    testDisplayAreaRects_Value
     * @tc.desc		To test value of RECT.
     */
-    it('displayAreaRects_Test_001', 0, async function (done) {
+    it('testDisplayAreaRects_Value', 0, async function (done) {
         console.info('test the value of aRect begin');
         try {
             var rect = {
@@ -280,11 +280,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number	SUB_WMS_CutoutInfo_JSAPI_001
-     * @tc.name	    Test CutoutInfo_Test_001.
+     * @tc.number	SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0030
+     * @tc.name	    testCutoutInfo_WaterFailDisplayAreaRects_Value
      * @tc.desc		To test value of CutoutInfo.
     */
-    it('CutoutInfo_Test_001', 0, async function (done) {
+    it('testCutoutInfo_WaterFailDisplayAreaRects_Value', 0, async function (done) {
         console.info('test the CutoutInfo of aRect begin');
         try {
             var cutoutInfo = {
@@ -335,11 +335,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETDISPLAYCUtOUTINFO_JSAPI_001
-     * @tc.name			Test getDisplayCutoutInfo_Test_001
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0230
+     * @tc.name			testGetCutoutInfo_Function_Promise
      * @tc.desc			To test the function of getCutoutInfo
      */
-    it('getDisplayCutoutInfo_Test_001', 0, async function (done) {
+    it('testGetCutoutInfo_Function_Promise', 0, async function (done) {
         console.info('getCutoutInfo begin');
         display.getDefaultDisplay().then(dsp => {
             console.info('displayTest getCutoutInfo getDefaultDisplay id :' + JSON.stringify(dsp));
@@ -364,11 +364,11 @@ describe('display_test', function () {
     })
 
     /**
-     * @tc.number		SUB_WMS_GETDISPLAYCUtOUTINFO_JSAPI_002
-     * @tc.name			Test getDisplayCutoutInfo_Test_002
+     * @tc.number		SUB_BASIC_WMS_SPCIAL_XTS_STANDARD_JS_API_0220
+     * @tc.name			testGetCutoutInfo_Function_Callback
      * @tc.desc			To test the function of getCutoutInfo
     */
-    it('getDisplayCutoutInfo_Test_002', 0, async function (done) {
+    it('testGetCutoutInfo_Function_Callback', 0, async function (done) {
         console.info('getCutoutInfo begin');
         display.getDefaultDisplay().then(dsp => {
             console.info('displayTest getCutoutInfo getDefaultDisplay id2 :' + JSON.stringify(dsp));
@@ -388,7 +388,5 @@ describe('display_test', function () {
             done();
         })
     })
-
-
 })
 }

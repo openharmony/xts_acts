@@ -1554,8 +1554,11 @@ export async function getInputSurfaceTest32(avConfig, avRecorder, recorderTime, 
             case AV_RECORDER_STATE.PREPARED:
                 console.info(`case getInputSurfaceTest32 state is PREPARED`);
                 expect(avRecorder.state).assertEqual('prepared');
-                getInputSurfacePromise(avRecorder)
-                releasePromise(avRecorder)
+                setTimeout(async () => {
+                    await getInputSurfacePromise(avRecorder)
+                    await releasePromise(avRecorder)
+                }, 2000);
+
                 break;
             case AV_RECORDER_STATE.RELEASED:
                 console.info(`case getInputSurfaceTest32 state is released`);

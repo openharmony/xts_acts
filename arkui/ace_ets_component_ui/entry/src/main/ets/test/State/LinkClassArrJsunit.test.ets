@@ -44,8 +44,7 @@ export default function LinkClassArrJsunit() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      let driver = await UiDriver.create()
-      await driver.pressBack();
+      router.back({uri:"MainAbility/pages/index/index"});
     });
 
     it('LinkClassArrJsunit_0100', 0, async function (done) {

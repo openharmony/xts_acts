@@ -54,14 +54,14 @@ export default function ActsNotificationRequestTest() {
     });
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_TEST_0100
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_0900
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : publish a notification after requestEnableNotification
      */
-    it('SUB_NOTIFICATION_ANS_REQUEST_TEST_0100', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Publish_0900', 0, async function (done) {
       let fn = (resolve, reject) => {
         let exit = exitGenerator(TAG, reject);
-        log(`SUB_NOTIFICATION_ANS_REQUEST_TEST_0100 START`);
+        log(`Sub_Notification_Ans_Publish_Publish_0900 START`);
         let notificationRequest = {
           id: 1,
           content: {
@@ -79,7 +79,7 @@ export default function ActsNotificationRequestTest() {
             return;
           }
           log(`notification publish AsyncCallback success: ${JSON.stringify(data)}`);
-          log(`SUB_NOTIFICATION_ANS_REQUEST_TEST_0100 END`);
+          log(`Sub_Notification_Ans_Publish_Publish_0900 END`);
           resolve();
           done();
         });
@@ -88,14 +88,14 @@ export default function ActsNotificationRequestTest() {
     });
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_TEST_0200
+     * @tc.number    : Sub_Notification_Ans_Publish_Publish_4000
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : publish a notification after requestEnableNotification
      */
-    it('SUB_NOTIFICATION_ANS_REQUEST_TEST_0200', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Publish_4000', 0, async function (done) {
       let fn = (resolve, reject) => {
         let exit = exitGenerator(TAG, reject);
-        log(`SUB_NOTIFICATION_ANS_REQUEST_TEST_0200 START`);
+        log(`Sub_Notification_Ans_Publish_Publish_4000 START`);
         let notificationRequest = {
           id: 1,
           content: {
@@ -109,7 +109,7 @@ export default function ActsNotificationRequestTest() {
         };
         notification.publish(notificationRequest).then((data) => {
           log(`notification publish AsyncCallback success: ${JSON.stringify(data)}`);
-          log(`SUB_NOTIFICATION_ANS_REQUEST_TEST_0200 END`);
+          log(`Sub_Notification_Ans_Publish_Publish_4000 END`);
           resolve();
           done();
         }).catch((err) => {

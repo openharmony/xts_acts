@@ -64,7 +64,7 @@ export default function rdbStoreUpdateTest() {
     }
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1240
      * @tc.name   : testRdbStoreUpdate001
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -123,7 +123,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1270
      * @tc.name   : testRdbStoreUpdate002
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -156,7 +156,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1290
      * @tc.name   : testRdbStoreUpdate003
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -195,7 +195,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1210
      * @tc.name   : testRdbStoreUpdate004
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -235,7 +235,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1250
      * @tc.name   : testRdbStoreUpdate005
      * @tc.desc   : RdbStore update callback test
      * @tc.size   : MediumTest
@@ -276,7 +276,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1230
      * @tc.name   : testRdbStoreUpdate006
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -322,7 +322,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1280
      * @tc.name   : testRdbStoreUpdate007
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -357,7 +357,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1300
      * @tc.name   : testRdbStoreUpdate008
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -397,7 +397,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_0900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1220
      * @tc.name   : testRdbStoreUpdate009
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -438,7 +438,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1260
      * @tc.name   : testRdbStoreUpdate010
      * @tc.desc   : RdbStore update promise test
      * @tc.size   : MediumTest
@@ -479,7 +479,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1100
+     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1120
      * @tc.name   : testRdbStoreUpdate011
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -537,7 +537,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1110
      * @tc.name   : testRdbStoreUpdate012
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -583,7 +583,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1160
      * @tc.name   : testRdbStoreUpdate013
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -642,7 +642,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1150
      * @tc.name   : testRdbStoreUpdate014
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -688,7 +688,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1500
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1200
      * @tc.name   : testRdbStoreUpdate015
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -749,7 +749,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1600
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1190
      * @tc.name   : testRdbStoreUpdate016
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -795,7 +795,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1700
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1100
      * @tc.name   : testRdbStoreUpdate017
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -856,7 +856,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1800
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1090
      * @tc.name   : testRdbStoreUpdate018
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -902,7 +902,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_1900
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1140
      * @tc.name   : testRdbStoreUpdate019
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -963,7 +963,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_2000
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1130
      * @tc.name   : testRdbStoreUpdate020
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest
@@ -1009,7 +1009,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_2100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1180
      * @tc.name   : testRdbStoreUpdate021
      * @tc.desc   : RdbStore update callback with ConflictResolution test
      * @tc.size   : MediumTest
@@ -1070,7 +1070,7 @@ export default function rdbStoreUpdateTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_UPDATE_2200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_1170
      * @tc.name   : testRdbStoreUpdate022
      * @tc.desc   : RdbStore update promise with ConflictResolution test
      * @tc.size   : MediumTest

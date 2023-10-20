@@ -93,7 +93,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     }
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0640
      * @tc.name   : testRdbStoreExecuteSql001
      * @tc.desc   : RdbStore executeSql callback test
      * @tc.size   : MediumTest
@@ -118,7 +118,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0660    S
      * @tc.name   : testRdbStoreExecuteSql002
      * @tc.desc   : RdbStore executeSql callback test
      * @tc.size   : MediumTest
@@ -143,7 +143,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0300
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0650
      * @tc.name   : testRdbStoreExecuteSql003
      * @tc.desc   : RdbStore executeSql promise test
      * @tc.size   : MediumTest
@@ -169,7 +169,7 @@ export default function rdbstoreStoreExcuteSqlTest() {
     });
 
     /**
-     * @tc.number : SUB_DDM_TEST_RDB_STORE_EXECUTE_SQL_0400
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_RdbStoreJsAPITest_0670
      * @tc.name   : testRdbStoreExecuteSql004
      * @tc.desc   : RdbStore executeSql promise test
      * @tc.size   : MediumTest

@@ -148,6 +148,14 @@ import navigationNavbar02 from './navigationNavbar02.test.ets';
 import GridRowCol from './GridRowCol.test';
 import navigationPosition from './navigationPosition.test.ets';
 import textAreaBC1Jsunit from './textAreaBC1Jsunit.test.ets';
+import video1Jsunit from './video1Jsunit.test.ets';
+import buttonEnabledJsunit from './buttonEnabledJsunit.test.ets';
+import textEnabledJsunit from './textEnabledJsunit.test.ets';
+import textAenEnabledJsunit from './textAenEnabledJsunit.test.ets';
+import textChangeEnabledJsunit from './textChangeEnabledJsunit.test.ets';
+import menuEnabledJsunit from './menuEnabledJsunit.test.ets';
+import gestureEnabledJsunit from './gestureEnabledJsunit.test.ets'
+
 
 
 export default function testsuite() {
@@ -286,4 +294,11 @@ export default function testsuite() {
   navigationNavbar02()
   navigationPosition()
   textAreaBC1Jsunit()
+  video1Jsunit()
+  buttonEnabledJsunit();
+  textEnabledJsunit();
+  textAenEnabledJsunit();
+  textChangeEnabledJsunit();
+  menuEnabledJsunit();
+  gestureEnabledJsunit();
 }

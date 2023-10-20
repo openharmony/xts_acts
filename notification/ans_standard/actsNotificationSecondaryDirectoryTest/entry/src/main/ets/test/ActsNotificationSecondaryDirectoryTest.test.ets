@@ -45,12 +45,12 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
       })
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_3850
      * @tc.name: NotificationRequest、NotificationContent、NotificationBasicContent
      * @tc.desc: use NotificationRequest type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100 START`);
+    it('Sub_Notification_Ans_Publish_Publish_3850', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 START`);
 
         let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
@@ -67,7 +67,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             id: 1
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 PUBLISH`);
         try{
             await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
@@ -86,16 +86,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             done()
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3850 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0200
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_3950
      * @tc.name: NotificationLongTextContent 
      * @tc.desc: use NotificationLongTextContent type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0200', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0200 START`);
+    it('Sub_Notification_Ans_Publish_Publish_3950', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3950 START`);
 
         let longContentText: notificationManager.NotificationLongTextContent = {
             title: "test_title",
@@ -134,16 +134,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0200 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_3950 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4050
      * @tc.name: NotificationBasicContent
      * @tc.desc: use NotificationBasicContent type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4050', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 START`);
 
         let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
@@ -161,7 +161,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             id: 3
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 PUBLISH`);
         try{
             await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
@@ -179,16 +179,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4050 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4150
      * @tc.name: NotificationMultiLineContent
      * @tc.desc: use NotificationMultiLineContent type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4150', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 START`);
 
         let multiLineContent: notificationManager.NotificationMultiLineContent = {
             title: "test_title",
@@ -208,7 +208,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             id: 4
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 PUBLISH`);
         try{
             await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
@@ -226,16 +226,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4150 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0500
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4250
      * @tc.name: NotificationActionButton、NotificationUserInput
      * @tc.desc: use NotificationActionButton type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0500', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0500 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4250', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4250 START`);
 
         let agentInfo = {
             wants: [
@@ -280,7 +280,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             id: 5
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0500 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4250 PUBLISH`);
         try{
             await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
@@ -298,16 +298,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0500 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4250 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4350
      * @tc.name: NotificationTemplate
      * @tc.desc: use NotificationTemplate type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4350', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4350 START`);
 
         let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
@@ -334,7 +334,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             id: 6
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4350 PUBLISH`);
         try{
             await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
@@ -352,16 +352,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4350 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4450
      * @tc.name: DistributedOptions
      * @tc.desc: use DistributedOptions type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4450', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 START`);
 
         let options: notificationManager.DistributedOptions = {
             isDistributed: false,
@@ -385,7 +385,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             id: 7
         }
 
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700 PUBLISH`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 PUBLISH`);
         try{
             await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
@@ -403,16 +403,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4450 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4550
      * @tc.name: NotificationBasicContent
      * @tc.desc: use NotificationBasicContent type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4550', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 START`);
 
         let picture_opts = {
             size: {
@@ -427,7 +427,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         let notification_picture: image.PixelMap = undefined
         let picture_buffer = new ArrayBuffer(picture_opts.size.height * picture_opts.size.width * 4)
         await image.createPixelMap(picture_buffer, picture_opts, (err, pixelMap)=>{
-            console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800 pixelMap: ${pixelMap}`);
+            console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 pixelMap: ${pixelMap}`);
 
             let longContentPicture: notificationManager.NotificationPictureContent = {
                 title: "test_title",
@@ -448,7 +448,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
                 id: 3
             }
 
-            console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800 PUBLISH`);
+            console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 PUBLISH`);
             try{
                 notificationManager.publish(notificationRequest, (err) => {
                     if (err) {
@@ -467,16 +467,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
                 done()
             }
         })
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4550 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4650
      * @tc.name: NotificationMultiLineContent
      * @tc.desc: use NotificationMultiLineContent type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4650', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4650 START`);
         try{
             await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
                 console.info(`${TAG} addSlot success`)
@@ -508,16 +508,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             expect(false).assertTrue()
             done()
         }
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4650 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4750
      * @tc.name: BundleOption
      * @tc.desc: use BundleOption type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4750', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4750 START`);
 
         let bundleOpt: notificationManager.BundleOption = {
             bundle: "com.example.secondaryDirectory",
@@ -529,16 +529,16 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         expect(bundleOpt.bundle).assertEqual("com.example.secondaryDirectory")
         expect(bundleOpt.uid).assertEqual(101001)
         done()
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4750 END`);
     });
 
     /*
-     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100
+     * @tc.number: Sub_Notification_Ans_Publish_Publish_4850
      * @tc.name: NotificationFlags
      * @tc.desc: use NotificationFlags type
      */
-    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100', 0, async function (done) {
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100 START`);
+    it('Sub_Notification_Ans_Publish_Publish_4850', 0, async function (done) {
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4850 START`);
 
         let flags: notificationManager.NotificationFlags = {
             soundEnabled: 1,
@@ -556,6 +556,6 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         expect(notificationManager.ContentType.NOTIFICATION_CONTENT_CONVERSATION).assertEqual(3)
         expect(notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE).assertEqual(4)
         done()
-        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100 END`);
+        console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_4850 END`);
     });
 }) }

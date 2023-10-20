@@ -104,7 +104,7 @@ export default function relationalStoreAssetResultSetTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_ASSET_RESULT_SET_GETASSET_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0570
      * @tc.name   : testAssetResultSetGetAsset0001
      * @tc.desc   : AssetResultSet getAsset test
      * @tc.size   : MediumTest
@@ -138,7 +138,7 @@ export default function relationalStoreAssetResultSetTest() {
     })
 
     /**
-     * @tc.number : SUB_DDM_TEST_ASSET_RESULT_SET_GETASSET_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0560
      * @tc.name   : testAssetResultSetGetAsset0002
      * @tc.desc   : AssetResultSet getAsset test
      * @tc.size   : MediumTest
@@ -168,7 +168,7 @@ export default function relationalStoreAssetResultSetTest() {
     })
 
     /**
-     * @tc.number : SUB_DDM_TEST_ASSET_RESULT_SET_GETASSETS_0100
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0580
      * @tc.name   : testAssetResultSetGetAssets0001
      * @tc.desc   : AssetResultSet getAssets test
      * @tc.size   : MediumTest
@@ -205,7 +205,7 @@ export default function relationalStoreAssetResultSetTest() {
 
 
     /**
-     * @tc.number : SUB_DDM_TEST_ASSET_RESULT_SET_GETASSETS_0200
+     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_RelationStore_ResultSetJsAPITest_0590
      * @tc.name   : testAssetResultSetGetAssets0002
      * @tc.desc   : AssetResultSet getAssets test: wrong colname
      * @tc.size   : MediumTest
