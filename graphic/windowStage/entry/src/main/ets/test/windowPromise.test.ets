@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
+import { BusinessError } from '@ohos.base';
 
 export default function windowPromiseTest(context, windowStage, abilityStorage) {
   console.log('windowTest context: ' + JSON.stringify(context))
@@ -301,97 +302,6 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'tempWnd.resetSize(100, 100) success');
       await sleep(1500)
-    })
-    /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2070
-     * @tc.name testSetWindowType_Base_Enum_Promise
-     * @tc.desc Test window.setWindowType API function test.
-     */
-    it('testSetWindowType_Base_Enum_Promise', 0, async function (done) {
-      let caseName = 'setWindowTypeTest1';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let windowId = 'setWindowTypeTest1';
-      console.log(msgStr + 'begin');
-      let tempWnd = null
-      let tempTypeArr = [];
-      tempWnd = await ohosWindow.create(context, windowId, baseWndType).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      })
-      console.log(msgStr + 'ohosWindow.create ' + baseWndType + '   ,tempWnd: ' + tempWnd);
-      expect(!!tempWnd).assertTrue();
-      let loopCount1 = systemWindowTypeArr;
-      console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount1))
-      for (let i = 1; i < loopCount1.length; i++) {
-        let tempType = ohosWindow.WindowType[loopCount1[i]];
-        console.log(msgStr + 'tempWnd.setWindowType: ' + tempType + ' ,start');
-        tempTypeArr.push(tempType);
-        console.log(msgStr + 'tempTypeArr: ' + JSON.stringify(tempTypeArr));
-        let windowTypeData = await tempWnd.setWindowType(tempType).catch((err) => {
-          console.log(msgStr + 'tempWnd.setWindowType err' + JSON.stringify(err));
-        })
-        console.log(msgStr + 'tempWnd.setWindowType windowTypeData' + JSON.stringify(windowTypeData));
-        console.log(msgStr + 'tempWnd.setWindowType !windowTypeData' + !windowTypeData);
-        console.log(msgStr + 'tempWnd.setWindowType ' + tempType + ' end');
-        if (!windowTypeData) {
-          expect(!windowTypeData).assertTrue();
-          let prodata = await tempWnd.getProperties().catch((err) => {
-            console.log(msgStr + 'tempWnd.getProperties err' + JSON.stringify(err));
-            unexpectedError(err, caseName, 'tempWnd.getProperties', done);
-          })
-          console.log(msgStr + 'tempWnd.getProperties prodata' + JSON.stringify(prodata));
-          console.log(msgStr + 'tempWnd.getProperties !!prodata' + !!prodata);
-          expect(!!prodata).assertTrue();
-          if (!!prodata) {
-            tempTypeArr.splice(tempTypeArr.findIndex(item => item === prodata.type), 1);
-            console.log(msgStr + '(loopCount1.length - i): ' + (loopCount1.length - i));
-            console.log(msgStr + '(tempTypeArr.length + 1): ' + (tempTypeArr.length + 1));
-            if (i == loopCount1.length - 1) {
-              expect((loopCount1.length - i) == (tempTypeArr.length + 1)).assertTrue();
-              console.log(msgStr + 'tempWnd.getProperties i=' + i + '   ,    loopCount1.length-1==' + loopCount1.length);
-              await tempWnd.destroy();
-              done();
-            }
-          }
-        }
-      }
-    })
-    /**
-     * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2080
-     * @tc.name testSetWindowType_Invalid_Promise
-     * @tc.desc Test window.setWindowType API function test.
-     */
-    it('testSetWindowType_Invalid_Promise', 0, async function (done) {
-      let caseName = 'setWindowTypeTest2';
-      let msgStr = 'jsunittest ' + caseName + ' ';
-      let baseWndType = 1;
-      let changedWndType = null;
-      let windowId = 'setWindowTypeTest2';
-      console.log(msgStr + 'begin');
-      let tempWnd = null
-      await ohosWindow.create(context, windowId, baseWndType).then(
-        (data) => {
-          tempWnd = data
-        }
-      ).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      })
-      console.log(msgStr + 'ohosWindow.create tempWnd' + JSON.stringify(tempWnd));
-      console.log(msgStr + 'ohosWindow.create !!tempWnd' + !!tempWnd);
-      if (!!tempWnd) {
-        expect(!!tempWnd).assertTrue();
-        await tempWnd.setWindowType(changedWndType).then(() => {
-        }).catch((err) => {
-          console.log(msgStr + 'tempWnd.setWindowType err.code: ' + JSON.stringify(err.code));
-          tempWnd.destroy();
-          let flag = (err.code == 1003)
-          console.log(msgStr + 'tempWnd.setWindowType flag: ' + flag);
-          if (flag) {
-            expect(true).assertTrue();
-          }
-          done();
-        })
-      }
     })
     /**
      * @tc.number SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_1310

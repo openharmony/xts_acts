@@ -48,12 +48,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = 'createWindow_Test_001'
       let windowConfig = {
-        name: windowId, windowType: 18, ctx: context
+        name: windowId, windowType: 8888, ctx: context
       };
-      let win;
       try {
-        win = await ohosWindow.createWindow(windowConfig).then((data) => {
+        await ohosWindow.createWindow(windowConfig).then((data) => {
           console.log(msgStr + 'Window createWindow data: ' + JSON.stringify(data));
+          expect().assertFail();
           done();
         })
       } catch (err) {
@@ -73,17 +73,19 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin');
       let windowId = 'createWindow_Test_002'
       let windowConfig = {
-        name: windowId, windowType: 18, ctx: context
+        name: windowId, windowType: 8888, ctx: context
       };
-      let win;
       try {
-        win = await ohosWindow.createWindow(windowConfig, (err, data) => {
-          try {
-            expect().assertFail();
-          } catch (error) {
-            console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+        await ohosWindow.createWindow(windowConfig, (err, data) => {
+          if (err.code) {
+            try {
+              expect().assertFail();
+            } catch (error) {
+              console.log(msgStr + 'expect catch err: ' + JSON.stringify(error))
+            }
+            done();
+            return;
           }
-          done();
         });
       } catch (err) {
         console.log(msgStr + 'Window createWindow catch err: ' + JSON.stringify(err))
@@ -1997,7 +1999,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let windowConfig = {
         name: windowId, windowType: 1, ctx: context
       };
-      let windowClass=null;
+      let windowClass = null;
       windowClass = await ohosWindow.createWindow(windowConfig).catch((err) => {
         console.log(msgStr + 'Window createWindow err: ' + JSON.stringify(err));
         expect().assertFail();
