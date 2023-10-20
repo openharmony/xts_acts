@@ -25,7 +25,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.desc:  Function test
          * @tc.level   1
          */
-        it('SUB_AA_SetColorMode_0100', 0, function (done) {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0100', 0, function (done) {
             console.info('=============ApplicationContext_SetColorMode_0100============')
             let resultTag = -1
             let environmentId:number = -1
@@ -50,7 +50,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.desc:  Function test
          * @tc.level   1
          */
-        it('SUB_AA_SetColorMode_0200', 0, function (done) {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0200', 0, function (done) {
             console.info('=============ApplicationContext_SetColorMode_0200============')
             let resultTag = -1
             let environmentId:number = -1
@@ -75,7 +75,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.desc:  Function test
          * @tc.level   1
          */
-        it('SUB_AA_SetLanguage_0100', 0, function (done) {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0100', 0, function (done) {
             console.info('=============ApplicationContext_SetLanguage_0100============')
             try {
                 applicationContext.setLanguage();
@@ -93,7 +93,7 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.desc:  Function test
          * @tc.level   1
          */
-        it('SUB_AA_SetLanguage_0200', 0, function (done) {
+        it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0200', 0, function (done) {
             console.info('=============ApplicationContext_SetLanguage_0200============')
             let resultTag = -1
             let environmentId:number = -1
