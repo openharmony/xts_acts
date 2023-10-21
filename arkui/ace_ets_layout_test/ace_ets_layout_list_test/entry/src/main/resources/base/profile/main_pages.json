@@ -33,7 +33,12 @@
         "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start",
         "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_Default",
         "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_String",
-        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_Resource"
+        "MainAbility/pages/List/ListItem_Delete/ListItem_Delete_Start_Resource",
+
+        "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex1",
+        "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex2",
+        "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex3"
+
 
     ]
 }

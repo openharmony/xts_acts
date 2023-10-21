@@ -46,6 +46,11 @@ import ListItem_Delete_Start_Default from './List/ListItem_Delete/ListItem_Delet
 import ListItem_Delete_Start_String from './List/ListItem_Delete/ListItem_Delete_Start_String.test.ets';
 import ListItem_Delete_Start_Resource from './List/ListItem_Delete/ListItem_Delete_Start_Resource.test.ets';
 
+import List_scrollToIndex1 from './List/List_scrollToIndex/List_scrollToIndex1.test';
+import List_scrollToIndex2 from './List/List_scrollToIndex/List_scrollToIndex2.test';
+import List_scrollToIndex3 from './List/List_scrollToIndex/List_scrollToIndex3.test';
+
+
 export default function testsuite() {
  listItem_SizeChange()
   listItem_Margin()
@@ -80,5 +85,9 @@ export default function testsuite() {
   ListItem_Delete_Start_Default()
   ListItem_Delete_Start_String()
   ListItem_Delete_Start_Resource()
+
+ List_scrollToIndex1()
+ List_scrollToIndex2()
+ List_scrollToIndex3()
 
 }
