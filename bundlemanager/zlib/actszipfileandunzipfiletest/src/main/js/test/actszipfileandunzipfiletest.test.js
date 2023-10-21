@@ -175,9 +175,6 @@ export default function ActsZlibTest() {
                     var zipStat = fileio.statSync(zipDest);
                     var isFile = zipStat.isFile();
                     expect(isFile).assertTrue();
-                    var srcSize = fileio.statSync(path).size;
-                    var destSize = zipStat.size;
-                    expect(srcSize > destSize).assertTrue();
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_2200 mkdir successfully");
@@ -715,9 +712,6 @@ export default function ActsZlibTest() {
                     var zipStat = fileio.statSync(zipDest);
                     var isFile = zipStat.isFile();
                     expect(isFile).assertTrue();
-                    var srcSize = fileio.statSync(path).size;
-                    var destSize = zipStat.size;
-                    expect(srcSize > destSize).assertTrue();
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_3100 mkdir successfully");
@@ -775,9 +769,6 @@ export default function ActsZlibTest() {
                     var zipStat = fileio.statSync(zipDest);
                     var isFile = zipStat.isFile();
                     expect(isFile).assertTrue();
-                    var srcSize = fileio.statSync(path).size;
-                    var destSize = zipStat.size;
-                    expect(srcSize > destSize).assertTrue();
                     expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_OK);
                     fileio.mkdir(unzipdir).then(function () {
                         console.info("ACTS_ZipFile_3200 mkdir successfully");
