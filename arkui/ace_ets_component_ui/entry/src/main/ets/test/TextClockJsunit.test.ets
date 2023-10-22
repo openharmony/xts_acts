@@ -50,7 +50,7 @@ export default function TextClockJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[TextClock_0100] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.timeZoneOffset).assertEqual('-8');
+      expect(obj.$attrs.timeZoneOffset).assertEqual('-8.000000');
       expect(obj.$attrs.format).assertEqual('hms');
 
       // Get the content of buttons
@@ -77,7 +77,7 @@ export default function TextClockJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[TextClock_0200] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
-      expect(obj.$attrs.timeZoneOffset).assertEqual('8');
+      expect(obj.$attrs.timeZoneOffset).assertEqual('8.000000');
       expect(obj.$attrs.format).assertEqual('yyyyMMddHms');
       console.info('[TextClock_0200] END');
       done();
