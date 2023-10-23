@@ -47,7 +47,7 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'start';
-                this.context.font = '40px sans-serif'
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=start', 250, 160);
                 this.num1 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
@@ -64,6 +64,7 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'end';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=end', 250, 160);
                 this.num2 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
@@ -80,6 +81,7 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'left';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=left', 250, 160);
                 this.num3 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
@@ -96,6 +98,7 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'center';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=center', 250, 160);
                 this.num4 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
@@ -112,6 +115,7 @@ struct SetCircle {
                 this.context.lineTo(250, 310);
                 this.context.stroke();
                 this.context.textAlign = 'right';
+                this.context.font = '40px sans-serif';
                 this.context.fillText('textAlign=right', 250, 160);
                 this.num5 = 1;
                 if ( this.num1 == 1 && this.num2 == 1 && this.num3 == 1 && this.num4 == 1 && this.num5 == 1 ){
