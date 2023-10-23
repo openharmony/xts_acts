@@ -26,7 +26,7 @@ export default function SecurityHuksDSABasicAbort65KBPromiseJsunit() {
       useSoftware = await checkSoftware();
       done();
     })
-    it('testReformedSignVerifyDSA104', 0, async function (done) {
+    it('Security_HUKS_SignVerify_API9_DSA_104', 0, async function (done) {
       const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias104';
       let HuksOptions = {
         properties: new Array(
