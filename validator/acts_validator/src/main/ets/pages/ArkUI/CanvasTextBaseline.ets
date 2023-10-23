@@ -65,6 +65,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'bottom';
             this.context.fillText('Bottom', 160, 120);
             this.num2 = 1;
@@ -82,6 +83,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'middle';
             this.context.fillText('Middle', 160, 120);
             this.num3 = 1;
@@ -99,6 +101,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'alphabetic';
             this.context.fillText('Alphabetic', 160, 120);
             this.num4 = 1;
@@ -116,6 +119,7 @@ struct SetCircle {
             this.context.moveTo(0, 120);
             this.context.lineTo(400, 120);
             this.context.stroke();
+            this.context.font = '60px sans-serif';
             this.context.textBaseline = 'hanging';
             this.context.fillText('Hanging', 160, 120);
             this.num5 = 1;
