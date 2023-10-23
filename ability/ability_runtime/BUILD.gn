@@ -66,6 +66,7 @@ group("ability_runtime") {
       "stopserviceextension:stopserviceextension",
       "want:want",
       "workercontextcover:workercontextcover",
+      "transparentformtest:transparentformtest",
     ]
   }
 }
