@@ -46,6 +46,23 @@ export default function swiperCurveJsunit() {
     });
 
     /*
+    * @tc.number       SUB_ACE_BASIC_ETS_API_0003
+    * @tc.name         testswiperCurve0003
+    * @tc.desic         aceswiperCurveEtsTest0003
+    */
+    it('testswiperCurve0003', 0, async function (done) {
+      console.info('swiperCurve testswiperCurve0003 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('swiper');
+      console.info("[testswiperCurve0003] component index strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Swiper');
+      expect(obj.$attrs.index).assertEqual("1");
+      console.info("[testswiperCurve0003] index value :" + obj.$attrs.index);
+      done();
+    });
+
+    /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0001
      * @tc.name         testswiperCurve0001
      * @tc.desic         aceswiperCurveEtsTest0001
@@ -76,23 +93,6 @@ export default function swiperCurveJsunit() {
       expect(obj.$type).assertEqual('Swiper');
       expect(obj.$attrs.cachedCount).assertEqual(2);
       console.info("[testswiperCurve0002] cachedCount value :" + obj.$attrs.cachedCount);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0003
-     * @tc.name         testswiperCurve0003
-     * @tc.desic         aceswiperCurveEtsTest0003
-     */
-    it('testswiperCurve0003', 0, async function (done) {
-      console.info('swiperCurve testswiperCurve0003 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('swiper');
-      console.info("[testswiperCurve0003] component index strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.index).assertEqual("3");
-      console.info("[testswiperCurve0003] index value :" + obj.$attrs.index);
       done();
     });
 
