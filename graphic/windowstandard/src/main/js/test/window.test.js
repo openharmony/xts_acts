@@ -2457,11 +2457,11 @@ export default function window_test() {
                         wnd.setKeepScreenOn(true).then(() => {
                             console.log(msgStr + ' setKeepScreenOn(true) success ');
                             wnd.getProperties().then(data => {
-                                expect(data.touchable).assertTrue();
+                                expect(data.isKeepScreenOn).assertTrue();
                                 wnd.setKeepScreenOn(false).then(() => {
                                     console.log(msgStr + ' setKeepScreenOn(false) success ');
                                     wnd.getProperties().then(data => {
-                                        expect(!data.touchable).assertTrue();
+                                        expect(!data.isKeepScreenOn).assertTrue();
                                     }, (err) => {
                                         console.log(msgStr + ' getProperties failed: err' + JSON.stringify(err));
                                         expect().assertFail();
@@ -3115,29 +3115,37 @@ export default function window_test() {
                 console.info(msgStr + ' getTopWindow wnd' + wnd);
                 expect(wnd != null).assertTrue();
                 for (let i = 0; i < 5; i++) {
-                    wnd.getProperties().then(data => {
-                        expect(!data.isKeepScreenOn).assertTrue();
-                        wnd.setKeepScreenOn(false, (err, data) => {
-                            if (err.code) {
-                                console.error(msgStr + 'Failed to set the screen to be always on. err: ' + JSON.stringify(err));
+                    wnd.setKeepScreenOn(true, (err, data) => {
+                        if (err.code) {
+                            console.error(msgStr + 'Failed to set the screen to be always on. err: ' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        } else {
+                            wnd.getProperties().then(data => {
+                                expect(data.isKeepScreenOn).assertTrue();
+                                wnd.setKeepScreenOn(false, (err, data) => {
+                                    if (err.code) {
+                                        console.error(msgStr + 'Failed to set the screen to be always on. err: ' + JSON.stringify(err));
+                                        expect().assertFail();
+                                        done();
+                                    } else {
+                                        console.info(msgStr + 'success set the screen to be always on. data: ' + JSON.stringify(data));
+                                        wnd.getProperties().then(data => {
+                                            expect(!data.isKeepScreenOn).assertTrue();
+                                            done();
+                                        }, (err) => {
+                                            console.info(msgStr + ' getProperties failed: err' + JSON.stringify(err));
+                                            expect().assertFail();
+                                            done();
+                                        })
+                                    }
+                                })
+                            }, (err) => {
+                                console.info(msgStr + ' getProperties failed: err' + JSON.stringify(err));
                                 expect().assertFail();
                                 done();
-                            } else {
-                                console.info(msgStr + 'success set the screen to be always on. data: ' + JSON.stringify(data));
-                                wnd.getProperties().then(data => {
-                                    expect(!data.isKeepScreenOn).assertTrue();
-                                    done();
-                                }, (err) => {
-                                    console.info(msgStr + ' getProperties failed: err' + JSON.stringify(err));
-                                    expect().assertFail();
-                                    done();
-                                })
-                            }
-                        })
-                    }, (err) => {
-                        console.info(msgStr + ' getProperties failed: err' + JSON.stringify(err));
-                        expect().assertFail();
-                        done();
+                            })
+                        }
                     })
                 }
                 done();
