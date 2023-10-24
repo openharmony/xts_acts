@@ -23,6 +23,7 @@ group("componentUxTest") {
       "ace_ets_component_clickeffect:ActsAceClickEffectTest",
       "ace_ets_component_datapanel:ActsAceDatapanelTest",
       "ace_ets_component_datepicker:ActsAceDatePickerTest",
+      "ace_ets_component_gauge:ActsAceGaugeTest",
       "ace_ets_component_grid:ActsAceGridTest",
       "ace_ets_component_indexer:ActsAlphabetIndexerTest",
       "ace_ets_component_list:ActsAceListTest",
