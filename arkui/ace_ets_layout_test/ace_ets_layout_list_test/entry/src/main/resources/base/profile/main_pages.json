@@ -37,7 +37,33 @@
 
         "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex1",
         "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex2",
-        "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex3"
+        "MainAbility/pages/List/List_scrollToIndex/List_scrollToIndex3",
+        "MainAbility/pages/List/List_SpaceChange/List_Space_Percentage",
+        "MainAbility/pages/List/List_SpaceChange/listItemGroup_Space_Percentage",
+        "MainAbility/pages/List/List_aspectRatio/List_aspectRatio/List_aspectRatio_width",
+        "MainAbility/pages/List/List_aspectRatio/List_aspectRatio/List_aspectRatio_height",
+        "MainAbility/pages/List/List_aspectRatio/List_aspectRatio/List_aspectRatio_all",
+        "MainAbility/pages/List/List_aspectRatio/List_aspectRatio/List_aspectRatio_neither",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_width",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_height",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_all",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_neither",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_width2",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_height2",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_all2",
+        "MainAbility/pages/List/List_aspectRatio/ListItem_aspectRatio/ListItem_aspectRatio_neither2",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_width",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_height",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_all",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_neither",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_width2",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_height2",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_all2",
+        "MainAbility/pages/List/List_aspectRatio/ListItemGroup_aspectRatio/ListItemGroup_aspectRatio_neither2",
+        "MainAbility/pages/List/List_divider/List_divider_number",
+        "MainAbility/pages/List/List_divider/List_divider_string",
+        "MainAbility/pages/List/List_divider/List_strokeWidth",
+        "MainAbility/pages/List/List_divider/List_divider_resource"
 
 
     ]
