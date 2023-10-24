@@ -113,8 +113,8 @@ class StaticFormInfo {
 export default function abilityTest() {
   describe('ActsAbilityTest', function () {
 
-    it('SUB_AA_TransparentFormTest_0100', 0, async function (done) {
-      let TAG = 'SUB_AA_TransparentFormTest_0100 ';
+    it('SUB_Ability_AbilityForm_GetFormsInfo_TransparentForm_0200', 0, async function (done) {
+      let TAG = 'SUB_Ability_AbilityForm_GetFormsInfo_TransparentForm_0200 ';
       // Dump static-form info
       let cmd = 'hidumper -s FormMgr -a \'-b\'';
       console.log(TAG + " --- cmd: " + cmd);
@@ -141,8 +141,8 @@ export default function abilityTest() {
       done();
     })
 
-    it('SUB_AA_TransparentFormTest_0200', 0, async function (done) {
-      let TAG = 'SUB_AA_TransparentFormTest_0200 ';
+    it('SUB_Ability_AbilityForm_GetFormsInfo_TransparentForm_0100', 0, async function (done) {
+      let TAG = 'SUB_Ability_AbilityForm_GetFormsInfo_TransparentForm_0100 ';
       // Dump static-form info
       let cmd = 'hidumper -s FormMgr -a \'-b\'';
       console.log(TAG + " --- cmd: " + cmd);
@@ -169,8 +169,8 @@ export default function abilityTest() {
       done();
     })
 
-    it('SUB_AA_TransparentFormTest_0300', 0, async function (done) {
-      let TAG = 'SUB_AA_TransparentFormTest_0300 ';
+    it('SUB_Ability_AbilityForm_GetFormsInfo_TransparentForm_0300', 0, async function (done) {
+      let TAG = 'SUB_Ability_AbilityForm_GetFormsInfo_TransparentForm_0300 ';
       // Dump static-form info
       let cmd = 'hidumper -s FormMgr -a \'-b\'';
       console.log(TAG + " --- cmd: " + cmd);
