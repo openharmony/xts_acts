@@ -31,6 +31,10 @@
         {
             "name": "actionAreaDistance1",
             "value": "80vp"
+        },
+        {
+            "name": "strokeWidth",
+            "value": "20"
         }
     ]
 }
