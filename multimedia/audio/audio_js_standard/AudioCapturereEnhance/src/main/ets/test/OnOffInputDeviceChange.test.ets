@@ -86,8 +86,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0100
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>) - callback
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>) - callback
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -133,8 +133,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0200
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>) - callback
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>) - callback
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -180,8 +180,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>) - callback
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>) - callback
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -227,8 +227,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0100
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>) - callback
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>) - callback
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -274,8 +274,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0200
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>) - callback
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>) - callback
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -321,8 +321,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>) - callback
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>) - callback
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0

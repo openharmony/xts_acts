@@ -171,8 +171,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0100
-     * @tc.name      : AudioCapturer -getCurrentInputDevices "struct"
-     * @tc.desc      : AudioCapturer - getCurrentInputDevices "struct"
+     * @tc.name      : AudioCapturer -getCurrentInputDevices-Mic-STATE_PREPARED
+     * @tc.desc      : AudioCapturer - getCurrentInputDevices-Mic-STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -220,8 +220,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0200
-     * @tc.name      : AudioCapturer -getCurrentInputDevices "struct"
-     * @tc.desc      : AudioCapturer - getCurrentInputDevices "struct"
+     * @tc.name      : AudioCapturer -getCurrentInputDevices-mic-STATE_RUNNING
+     * @tc.desc      : AudioCapturer - getCurrentInputDevices-mic-STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
@@ -272,8 +272,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0300
-     * @tc.name      : AudioCapturer -getCurrentInputDevices "struct"
-     * @tc.desc      : AudioCapturer - getCurrentInputDevices "struct"
+     * @tc.name      : AudioCapturer -getCurrentInputDevices-ALL-SourceType
+     * @tc.desc      : AudioCapturer - getCurrentInputDevices-ALL-SourceType
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
