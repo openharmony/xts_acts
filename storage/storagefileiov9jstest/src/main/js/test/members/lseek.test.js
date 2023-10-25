@@ -253,5 +253,89 @@ describe('fileIO_fs_lseek', function () {
       expect(false).assertTrue();
     }
   });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_LSEEK_1000
+   * @tc.name fileIO_test_lseek_010
+   * @tc.desc Test lseek() interface.
+   * Get the file offset pointer position by fd, offset = -1 and whence = 1(SEEK_SET) parameter
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_lseek_010', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_lseek_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+    
+    try {
+      fileIO.lseek(file.fd, -1, fileIO.WhenceType.SEEK_SET);
+      expect(false).assertTrue();
+    } catch (e) {
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+      console.log('fileIO_test_lseek_010 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_LSEEK_1100
+   * @tc.name fileIO_test_lseek_011
+   * @tc.desc Test lseek() interface.
+   * Get the file offset pointer position by fd, offset = -1 and whence = 1(SEEK_CUR) parameter
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_lseek_011', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_lseek_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let pnumber0 = fileIO.lseek(file.fd, 5);
+      expect(pnumber0 == 5).assertTrue();
+      let pnumber =  fileIO.lseek(file.fd, -1, fileIO.WhenceType.SEEK_CUR);
+      expect(pnumber == 4).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+      expect(readLen == FILE_CONTENT.length - 4).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_lseek_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_LSEEK_1200
+   * @tc.name fileIO_test_lseek_012
+   * @tc.desc Test lseek() interface.
+   * Get the file offset pointer position by fd, offset = -2 and whence = 2(SEEK_END) parameter
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_lseek_012', 3, async function () {
+    let fpath = await nextFileName('fileIO_test_lseek_012');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    
+    try {
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let pnumber =  fileIO.lseek(file.fd, -2, fileIO.WhenceType.SEEK_END);
+      expect(pnumber == FILE_CONTENT.length - 2).assertTrue();
+      let readLen = fileIO.readSync(file.fd, new ArrayBuffer(4096));
+      expect(readLen == FILE_CONTENT.length - pnumber).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_lseek_012 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
 })
 }
