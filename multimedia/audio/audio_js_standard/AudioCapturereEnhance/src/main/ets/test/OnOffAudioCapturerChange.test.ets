@@ -24,12 +24,18 @@ export default function audioCapturerEnhanceTest() {
     let Tag = 'AudioCpaturerEnhanceTest: ';
     let dirPath;
     let audioCap = null;
+    let audioVolumeGroupManager = null;
+    let audioManager = audio.getAudioManager();
+    let audioVolumeManager = audioManager.getVolumeManager();
+    let groupid = audio.DEFAULT_VOLUME_GROUP_ID;
+
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
+
     beforeAll(async function () {
       console.info("beforeAll case");
-      let permissions = ["ohos.permission.MICROPHONE"];
+      let permissions = ["ohos.permission.MICROPHONE", "ohos.permission.MANAGE_AUDIO_CONFIG"];
       try {
         featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (err, data) => {
           console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
@@ -42,13 +48,22 @@ export default function audioCapturerEnhanceTest() {
       await sleep(2000);
       let button = await driver.findComponent(uitest.ON.text("允许"));
       await button.click();
-      await sleep(2000);
       let isGranted1 = await featureAbility.getContext().verifyPermission("ohos.permission.MICROPHONE");
       if (!(isGranted1 == 0)) {
         console.error("getpermission failed");
       } else {
         console.info("getpermission success");
       }
+      await sleep(3000);
+      audioVolumeManager.getVolumeGroupManager(groupid, (err, value) => {
+        if (err) {
+          console.log(`getVolumeGroupManager failed.err: ${err.message} ${err.code}`)
+          return;
+        }
+        console.log(`getVolumeGroupManager success`)
+        audioVolumeGroupManager = value;
+      });
+      sleep(1000);
       console.info('TestLog: Start Testing AudioCpaturerEnhanceTest Interfaces');
     });
     beforeEach(async function () {
@@ -60,11 +75,19 @@ export default function audioCapturerEnhanceTest() {
         releaseFun(audioCap);
         audioCap = null;
       }
+      audioVolumeGroupManager.setMicrophoneMute(false, (err) => {
+        if (err) {
+          console.log(`setMicrophoneMute-false err: ${err.message}, ${err.code}`)
+          return;
+        }
+        console.log(`setMicrophoneMute-false success`)
+      });
       console.info(`${Tag} afterEach: Test case-level clearance conditions`);
     })
     afterAll(function () {
       console.info(`${Tag} afterAll: Test suite-level cleanup condition`);
     })
+
     async function getFd(fileName) {
       let context = featureAbility.getContext();
       await context.getFilesDir().then((data) => {
@@ -72,6 +95,7 @@ export default function audioCapturerEnhanceTest() {
         console.info(`${Tag} case2 dirPath is  ${JSON.stringify(dirPath)}`);
       })
     }
+
     async function recordingFun(audioCap) {
       try {
         let audioParamsGet = await audioCap.getStreamInfo();
@@ -121,12 +145,18 @@ export default function audioCapturerEnhanceTest() {
         }
         let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
-          console.info(`${Tag} ---------READ BUFFER---------`);
+          if (numBuffersToCapture % 5 == 0) {
+            console.info(`${Tag} ---------READ BUFFER---------`);
+          }
           let buffer = await audioCap.read(bufferSize, true);
-          console.info(`${Tag} ---------WRITE BUFFER---------`);
+          if (numBuffersToCapture % 5 == 0) {
+            console.info(`${Tag} ---------WRITE BUFFER---------`);
+          }
           let number = fileio.writeSync(fd, buffer);
-          console.info(`${Tag} BufferRecLog: data written:  ${JSON.stringify(number)}`);
-          console.info(`${Tag} numBuffersToCapture: ${numBuffersToCapture}`)
+          if (numBuffersToCapture % 5 == 0) {
+            console.info(`${Tag} BufferRecLog: data written:  ${JSON.stringify(number)}`);
+            console.info(`${Tag} numBuffersToCapture: ${numBuffersToCapture}`)
+          }
           numBuffersToCapture--;
         }
         console.log(`${Tag} read ok`);
@@ -135,6 +165,7 @@ export default function audioCapturerEnhanceTest() {
         expect(false).assertTrue();
       }
     }
+
     async function releaseFun(audioCap) {
       try {
         await audioCap.release();
@@ -143,9 +174,10 @@ export default function audioCapturerEnhanceTest() {
         console.log(`${Tag} release fail,err : ${JSON.stringify(err)}`);
       }
     }
+
     function getCapturerInfo(CapturerChangeInfo) {
       let str = ``;
-      let Info = CapturerChangeInfo;
+      let Info = CapturerChangeInfo[0];
       str += `nStreamId:${Info.streamId}, ClientUid:${Info.clientUid}, State:${Info.capturerState}
               Source:${Info.capturerInfo.source}, Flag:${Info.capturerInfo.capturerFlags},\n`;
       for (let j = 0; j < Info.deviceDescriptors.length; j++) {
@@ -153,7 +185,7 @@ export default function audioCapturerEnhanceTest() {
         str += `__deviceDescriptors_${j}\n`;
         str += `Id:${descriptor.id}, Type:${descriptor.deviceType}, Role:${descriptor.deviceRole},
                 Name:${descriptor.name}, Address:${descriptor.address}, SampleRates:${descriptor.sampleRates[0]},
-                ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks[0]}\n`;
+                ChannelCounts:${descriptor.channelCounts[0]}, ChannelMask:${descriptor.channelMasks}\n`;
       }
       return str;
     }
@@ -182,28 +214,35 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
-        console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+        await getFd("capture_js-44100-2C-16B.pcm");
+      } catch (error) {
+        console.info(`${Tag} AudioCapturer Created and start ERROR! ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
-      await getFd("capture_js-44100-2C-16B.pcm");
       try {
-        console.info(`${Tag}  on-audioCapturerChange in, please change input device to set off it!`);
         await audioCap.on('audioCapturerChange', (data) => {
-          console.info(` audioCapturerChange: Success ${getCapturerInfo(data)}`)
-          if (data.capturerState == audio.AudioState.STATE_RUNNING) {
-            expect(data.capturerState).assertEqual(audio.AudioState.STATE_RUNNING);
+          if (data.capturerState != audio.AudioState.STATE_RUNNING) {
             done();
-            return;
           } else {
+            expect(data.capturerState).assertEqual(audio.AudioState.STATE_RUNNING);
+            expect(data.capturerInfo.source)
+              .assertEqual(Number(AudioCapturerOptions.capturerInfo.source));
+            expect(data.capturerInfo.capturerFlags).assertEqual(env.OUTPUT_NUMBER_0);
+            expect(data.deviceDescriptors[0].id).assertLargerOrEqual(env.OUTPUT_NUMBER_0);
+            expect(data.deviceDescriptors[0].deviceType).assertEqual(audio.DeviceType.MIC);
+            expect(data.deviceDescriptors[0].deviceRole).assertEqual(audio.DeviceRole.INPUT_DEVICE);
             done();
-            return;
           }
         });
         await audioCap.start();
       } catch (error) {
-        console.error(`${Tag}:  on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
+        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
         expect(false).assertTrue();
         done();
       }
@@ -233,24 +272,32 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+        await getFd("capture_js-44100-2C-16B.pcm");
+        await recordingFun(audioCap);
+      } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
-      await getFd("capture_js-44100-2C-16B.pcm");
-      await recordingFun(audioCap);
       try {
-        console.info(`${Tag}  on-audioCapturerChange in, please change input device to set off it!`);
         await audioCap.on('audioCapturerChange', (data) => {
-          console.info(` audioCapturerChange: Success ${getCapturerInfo(data)}`)
-          expect(data.capturerState).assertEqual(audio.AudioState.STATE_STOPPED);
-          done();
+          if (data == null) {
+            console.info(`on audioCapturerChange error!`)
+            expect(false).assertTrue();
+            done();
+          } else {
+            expect(data.capturerState).assertEqual(audio.AudioState.STATE_STOPPED);
+            done();
+          }
         });
         await audioCap.stop();
-        console.log(`${Tag} stop success`);
       } catch (error) {
-        console.error(`${Tag}:  on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
+        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
         expect(false).assertTrue();
         done();
       }
@@ -280,28 +327,27 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+      } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
       try {
-        console.info(`${Tag}  on-audioCapturerChange in, please change input device to set off it!`);
+        console.info(`${Tag} on audioCapturerChange in, please change input device to set off it!`);
         await audioCap.on(env.INPUT_PARAMETER_TYPE_NUMBER, (data) => {
-          console.info(` audioCapturerChange: Success ${getCapturerInfo(data)}`)
+          console.error(`on audioCapturerChange error! test fail!`)
           expect(false).assertTrue();
           done();
         });
       } catch (error) {
-        if (error.code == env.INVALID_INPUT_PARAMETER_401) {
-          console.error(`${Tag}:  on-audioCapturerChange input parameter type -1: ${error.message}, ${error.code}`);
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.error(`${Tag}:  on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.error(`${Tag}: on audioCapturerChange input parameter -1 ${error.message}, ${error.code}`);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_401);
+        done();
       }
     })
 
@@ -329,28 +375,27 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+      } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
       try {
-        console.info(`${Tag}  on-audioCapturerChange in, please change input device to set off it!`);
+        console.info(`${Tag} on-audioCapturerChange in, please change input device to set off it!`);
         await audioCap.on(env.INVALID_PARAMETER_STRING, (data) => {
-          console.info(` audioCapturerChange: Success ${getCapturerInfo(data)}`)
+          console.info(`audioCapturerChange: Success, test fail !`)
           expect(false).assertTrue();
           done();
         });
       } catch (error) {
-        if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
-          console.error(` on-audioCapturerChange invalid parameter type '123': ${error.message}, ${error.code}`);
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.error(`${Tag}:  on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.error(`on-audioCapturerChange invalid parameter '123': ${error.message}, ${error.code}`);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
       }
     })
 
@@ -378,28 +423,26 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+      } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
       try {
-        console.info(`${Tag}  on-audioCapturerChange in, please change input device to set off it!`);
         await audioCap.on((data) => {
-          console.info(` audioCapturerChange: Success ${getCapturerInfo(data)}`)
+          console.info(`audioCapturerChange: Success! test fail!`)
           expect(false).assertTrue();
           done();
         });
       } catch (error) {
-        if (error.code == env.INVALID_INPUT_PARAMETER_401) {
-          console.error(` on-audioCapturerChange no input parameter: ${error.message}, ${error.code}`);
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.error(`${Tag}:  on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.error(`on-audioCapturerChange no input parameter: ${error.message}, ${error.code}`);
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_401);
+        done();
       }
     })
 
@@ -427,28 +470,27 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
-        console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+      } catch (error) {
+        console.info(`${Tag} AudioCapturer Created ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
       try {
-        console.info(`${Tag}  off-audioCapturerChange in, please change input device to set off it!`);
+        console.info(`${Tag}off-audioCapturerChange in, please change input device to set off it!`);
         audioCap.off(env.INPUT_PARAMETER_TYPE_NUMBER, (data) => {
-          console.info(` off-audioCapturerChange: Success ${getCapturerInfo(data)}`)
+          console.info(`off-audioCapturerChange Success, test fail!`)
           expect(false).assertTrue();
           done()
         });
       } catch (error) {
-        if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
-          console.info(` off-audioCapturerChange input parameter type -1: ${error.message}, ${error.code}`)
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.error(`${Tag}:  off-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.info(`off-audioCapturerChange input parameter type -1: ${error.message}, ${error.code}`)
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
       }
     })
 
@@ -476,28 +518,27 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+      } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
       }
       try {
-        console.info(`${Tag}  off-audioCapturerChange in, please change input device to set off it!`);
+        console.info(`${Tag} off-audioCapturerChange in, please change input device to set off it!`);
         audioCap.off(env.INVALID_PARAMETER_STRING, (data) => {
-          console.info(` off-audioCapturerChange: Success ${getCapturerInfo(data)}`)
+          console.info(`off-audioCapturerChange: Success, test fail!`)
           expect(false).assertTrue();
           done()
         });
       } catch (error) {
-        if (error.code == env.UNSUPORTED_OPTION_6800104) {
-          console.info(` off-audioCapturerChange invalid parameter type '123': ${error.message}, ${error.code}`)
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.error(`${Tag}:  off-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.info(`off-audioCapturerChange invalid parameter type '123': ${error.message}, ${error.code}`)
+        expect(Number(error.code)).assertEqual(env.UNSUPORTED_OPTION_6800104);
+        done();
       }
     })
 
@@ -525,30 +566,28 @@ export default function audioCapturerEnhanceTest() {
         capturerInfo: AudioCapturerInfo
       }
       try {
-        audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
-        console.info(`Create audio capturer success\n`);
-      }catch (error){
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+      } catch (error) {
         console.info(`${Tag} AudioCapturer Created : ERROR :  ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done()
       }
       try {
-        console.info(`${Tag}  off-audioCapturerChange in, please change input device to set off it!`);
+        console.info(`${Tag} off-audioCapturerChange in, please change input device to set off it!`);
         audioCap.off((data) => {
-          console.info(` off-audioCapturerChange: Success ${getCapturerInfo(data)}`)
+          console.info(`off-audioCapturerChange: Success, test fail!`)
           expect(false).assertTrue();
           done()
         });
       } catch (error) {
-        if (error.code == env.INVALID_INPUT_PARAMETER_6800101) {
-          console.info(` off-audioCapturerChange no input parameter: ${error.message}, ${error.code}`)
-          expect(true).assertTrue();
-          done();
-        } else {
-          console.error(`${Tag}:  off-audioCapturerChange Fail: ${error.message}, ${error.code}`);
-          expect(false).assertTrue();
-          done();
-        }
+        console.info(`off-audioCapturerChange no input parameter: ${error.message}, ${error.code}`)
+        expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
       }
     })
-
   })
 }
