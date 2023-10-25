@@ -21,7 +21,7 @@
             "run-command": [
                 "aa start -a ohos.acts.multimedia.imageSourceNDK.MainAbility -b ohos.acts.multimedia.imageSourceNDK",
                 "aa force-stop ohos.acts.multimedia.imageSourceNDK",
-				"bm clean -c -d -n ohos.acts.multimedia.imageSourceNDK"
+                "bm clean -c -d -n ohos.acts.multimedia.imageSourceNDK"
             ],
             "teardown-command": []
         },
@@ -39,8 +39,8 @@
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/haps/entry/files/*"
             ],
             "teardown-command": [
-				"rm -rf /data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/*"
-			]
+                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.imageSourceNDK/*"
+            ]
         }
     ]
 }
