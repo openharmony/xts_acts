@@ -162,7 +162,7 @@ export default function ImagePackingNDKTest() {
             }
         }
 
-        async function packingTest(done, testNum, source, packOpts) {
+        async function packToDataTest(done, testNum, source, packOpts) {
             try {
                 let log = logger(testNum);
                 let packer = ndkTest.create()
@@ -172,7 +172,7 @@ export default function ImagePackingNDKTest() {
                     done();
                     return
                 }
-                let packingRes = ndkTest.packingToBuffer(packer.result, source, packOpts);
+                let packingRes = ndkTest.packToData(packer.result, source, packOpts);
                 checkNdkRes(packingRes);
                 expect(packingRes.result != undefined).assertTrue();
                 log.log("packer packingRes.result " + JSON.stringify(new Uint8Array(packingRes.result).length));
@@ -184,7 +184,7 @@ export default function ImagePackingNDKTest() {
             }
         }
 
-        async function packingToFileTest(done, testNum, source, writeFd, packOpts) {
+        async function packToFileTest(done, testNum, source, writeFd, packOpts) {
             try {
                 let log = logger(testNum);
                 let packer = ndkTest.create()
@@ -194,7 +194,7 @@ export default function ImagePackingNDKTest() {
                     done();
                     return
                 }
-                let packingRes = ndkTest.packingToFile(packer.result, source, writeFd, packOpts);
+                let packingRes = ndkTest.packToFile(packer.result, source, writeFd, packOpts);
                 log.log(`packingRes : ${JSON.stringify(packingRes)}`)
                 checkNdkRes(packingRes);
                 ndkTest.release(packer.result);
@@ -230,78 +230,78 @@ export default function ImagePackingNDKTest() {
         }
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_CREAT
-         * @tc.name      : image packingndk create
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_CREATE
+         * @tc.name      : sub_multimedia_image_packerndk_create
          * @tc.desc      : 1.packingtestndk create
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_CREAT', 0, async function (done) {
-            await createTest(done, "IMAGE_PACKINGNDK_CREAT");
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_CREATE', 0, async function (done) {
+            await createTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_CREATE");
             done();
         })
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_INIT_NATIVE
-         * @tc.name      : image packingndk native init
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_INIT_NATIVE
+         * @tc.name      : sub_multimedia_image_packerndk_native_init
          * @tc.desc      : 1.packingtestndk create
          *                 2.packingtestndk native init
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_INIT_NATIVE', 0, async function (done) {
-            await nativeInitTest(done, "IMAGE_PACKINGNDK_INIT_NATIVE");
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_INIT_NATIVE', 0, async function (done) {
+            await nativeInitTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_INIT_NATIVE");
             done();
         })
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE
-         * @tc.name      : image packingndk pack image source to array buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA
+         * @tc.name      : sub_multimedia_image_packerndk_pack_image_source_to_data
          * @tc.desc      : 1.packingtestndk create
          *                 2.packing image source to array buffer
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA', 0, async function (done) {
             let source = await createTestImageSource("test.png")
             expect(source != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingTest(done, "IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE", source, packOpts)
+            await packToDataTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_DATA", source, packOpts)
             await source.release()
             done();
         })
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_PACKING_PIXEL_MAP
-         * @tc.name      : image packingndk pack pixelmap to array buffer
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_DATA
+         * @tc.name      : sub_multimedia_image_packerndk_pack_pixelmap_to_data
          * @tc.desc      : 1.packingtestndk create
          *                 2.packing pixelmap to array buffer
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_PACKING_PIXEL_MAP', 0, async function (done) {
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_DATA', 0, async function (done) {
             let source = await createTestPixelMap()
             expect(source != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingTest(done, "IMAGE_PACKINGNDK_PACKING_PIXEL_MAP", source, packOpts)
+            await packToDataTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_DATA", source, packOpts)
             done();
         })
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE_TO_FILE
-         * @tc.name      : image packingndk pack image source into a writtable file
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE
+         * @tc.name      : sub_multimedia_image_packerndk_pack_image_source_into_writtable_file
          * @tc.desc      : 1.packingtestndk create
          *                 2.packing image source into a writtable file
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE_TO_FILE', 0, async function (done) {
-            let log = logger("IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE");
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE', 0, async function (done) {
+            let log = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE");
             let source = await createTestImageSource("test.png")
             expect(source != undefined).assertTrue();
 
@@ -309,46 +309,46 @@ export default function ImagePackingNDKTest() {
             [path, fd] = await getWriteFd("test_write_image_source.jpg")
             expect(fd != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingToFileTest(done, "IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE", source, fd, packOpts)
+            await packToFileTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_IMAGE_SOURCE_TO_FILE", source, fd, packOpts)
             fileio.closeSync(fd)
             log.log(`${JSON.stringify(fileio.statSync(path).size)}`)
             done();
         })
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_PACKING_PIXEL_MAP_TO_FILE
-         * @tc.name      : image packingndk pack pixelmap into a writtable file
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_FILE
+         * @tc.name      : sub_multimedia_image_packerndk_pack_pixelmap_into_writtable_file
          * @tc.desc      : 1.packingtestndk create
          *                 2.packing pixelmap into a writtable file
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_PACKING_PIXEL_MAP_TO_FILE', 0, async function (done) {
-            let log = logger("IMAGE_PACKINGNDK_PACKING_PIXEL_MAP_TO_FILE");
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_FILE', 0, async function (done) {
+            let log = logger("SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_FILE");
             let source = await createTestPixelMap()
             expect(source != undefined).assertTrue();
             let path, fd;
             [path, fd] = await getWriteFd("test_write_pixel_map.jpg")
             expect(fd != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingToFileTest(done, "IMAGE_PACKINGNDK_PACKING_PIXEL_MAP", source, fd, packOpts)
+            await packToFileTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_PACK_PIXEL_MAP_TO_FILE", source, fd, packOpts)
             fileio.closeSync(fd)
             log.log(`${JSON.stringify(fileio.statSync(path).size)}`)
             done();
         })
 
         /**
-         * @tc.number    : IMAGE_PACKINGNDK_RELEASE
-         * @tc.name      : image packingndk native release
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKERNDK_RELEASE
+         * @tc.name      : sub_multimedia_image_packerndk_native_release
          * @tc.desc      : 1.packingtestndk create
          *                 2.packingtestndk native release
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('IMAGE_PACKINGNDK_RELEASE', 0, async function (done) {
-            await releaseTest(done, "IMAGE_PACKINGNDK_RELEASE");
+        it('SUB_MULTIMEDIA_IMAGE_PACKERNDK_RELEASE', 0, async function (done) {
+            await releaseTest(done, "SUB_MULTIMEDIA_IMAGE_PACKERNDK_RELEASE");
             done();
         })
     })
