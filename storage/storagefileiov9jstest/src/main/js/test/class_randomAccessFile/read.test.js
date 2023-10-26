@@ -541,8 +541,8 @@ describe('fileIO_randomAccessFile_read', function () {
     });
 
     /**
-     * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_READ_ASYNC_0600
-     * @tc.name fileIO_randomaccessfile_read_async_006
+     * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_READ_ASYNC_0500
+     * @tc.name fileIO_randomaccessfile_read_async_005
      * @tc.desc Test read() interface. return in callback mode. When the offset is negative.
      * @tc.size MEDIUM
      * @tc.type Function
@@ -550,7 +550,7 @@ describe('fileIO_randomAccessFile_read', function () {
      * @tc.require
      */
     it('fileIO_randomaccessfile_read_async_005', 3, async function (done) {
-        let fpath = await nextFileName('fileIO_randomaccessfile_read_async_006');
+        let fpath = await nextFileName('fileIO_randomaccessfile_read_async_005');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
         let randomaccessfile = await fileIO.createRandomAccessFile(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE);
 
@@ -559,7 +559,7 @@ describe('fileIO_randomAccessFile_read', function () {
                 expect(false).assertTrue();
             });
         } catch (err) {
-            console.info('fileIO_randomaccessfile_read_async_006 has failed for ' + err);
+            console.info('fileIO_randomaccessfile_read_async_005 has failed for ' + err);
             randomaccessfile.close();
             fileIO.unlinkSync(fpath);
             expect(err.code == 13900020 && err.message == "Invalid argument").assertTrue();

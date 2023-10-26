@@ -133,13 +133,7 @@ lite_component("acts_component") {
 test_suite("acts") {
   deps = [ ":acts_component" ]
   version = "OpenHarmony-ACTS-1.0.1"
-  if (ohos_kernel_type == "liteos_a") {
-    deps += [ "//test/xts/tools/lite/others/query:query" ]
-    copy("query_copy") {
-      sources = [ "$root_out_dir/bin/query.bin" ]
-      outputs = [ "$root_out_dir/suites/acts/resource/tools/query.bin" ]
-    }
-  }
+  deps += [ "//test/xts/tools/lite/others/query:libQuery" ]
 }
 
 generate_notice_file("acts_notice_file") {

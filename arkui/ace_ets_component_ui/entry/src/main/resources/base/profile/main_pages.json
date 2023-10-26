@@ -229,6 +229,16 @@
         "MainAbility/pages/textAenEnabled",
         "MainAbility/pages/textChangeEnabled",
         "MainAbility/pages/menuEnabled",
-        "MainAbility/pages/gestureEnabled"
+        "MainAbility/pages/gestureEnabled",
+        "MainAbility/pages/Zhuang/link1",
+        "MainAbility/pages/Zhuang/link2",
+        "MainAbility/pages/Zhuang/Prop1",
+        "MainAbility/pages/Zhuang/Prop2",
+        "MainAbility/pages/Zhuang/provide1",
+        "MainAbility/pages/Zhuang/provide2",
+        "MainAbility/pages/Zhuang/state1",
+        "MainAbility/pages/Zhuang/state2",
+        "MainAbility/pages/Zhuang/ObjectLink1",
+        "MainAbility/pages/Zhuang/ObjectLink2"
     ]
 }

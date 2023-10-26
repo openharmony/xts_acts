@@ -114,7 +114,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       done();
     })
 
-    it('testReformedAgreeDH101', 0, async function (done) {
+    it('Security_HUKS_Agree_API9_DH_101', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_02_101';
       let HuksOptions63kb = {
@@ -147,7 +147,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
     });
 
     //abort
-    it('testReformedAgreeDH102', 0, async function (done) {
+    it('Security_HUKS_Agree_API9_DH_102', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Abort63KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Abort63KBAgreeKeyAlias_02_101';
       let HuksOptions63kb = {
@@ -177,7 +177,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       done();
     });
 
-    it('testReformedAgreeDH103', 0, async function (done) {
+    it('Security_HUKS_Agree_API9_DH_103', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish65KBAgreeKeyAlias_02_101';
       let huksOptionsFinish = makehuksOptionsFinish(srcKeyAliesFirst);
@@ -187,7 +187,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       done();
     });
 
-    it('testReformedAgreeDH104', 0, async function (done) {
+    it('Security_HUKS_Agree_API9_DH_104', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_02_101';
       let HuksOptions63kb = {
@@ -218,7 +218,7 @@ export default function SecurityHuksAgreeDHBasicFinish65KBPromiseJsunit() {
       done();
     });
 
-    it('testReformedAgreeDH105', 0, async function (done) {
+    it('Security_HUKS_Agree_API9_DH_105', 0, async function (done) {
       const srcKeyAliesFirst = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_01_101';
       const srcKeyAliesSecond = 'testAgreeDHSize2048Finish63KBAgreeKeyAlias_02_101';
       let HuksOptions63kb = {

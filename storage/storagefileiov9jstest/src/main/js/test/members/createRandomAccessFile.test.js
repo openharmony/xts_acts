@@ -674,8 +674,8 @@ describe('fileIO_create_randomAccessFile', function () {
     });
 
     /**
-     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_0900
-     * @tc.name fileIO_create_randomaccessfile_sync_009
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_0900
+     * @tc.name fileIO_create_randomaccessfile_async_009
      * @tc.desc Test createRandomAccessFile() interface. flags=-1. Invalid Mode. return in promise mode
      * @tc.size MEDIUM
      * @tc.type Function
