@@ -68,9 +68,6 @@ export default function stageContextPropertiesTest(abilityContext) {
         function beforeEachLoadmanagement() {
             let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
             abilityDelegator.executeShellCommand("hilog -r", async (err, data) => {});
-            abilityDelegator.executeShellCommand("hilog -Q pidoff", async (err, data) => {});
-            abilityDelegator.executeShellCommand("hilog -Q domainoff", async (err, data) => {});
-            abilityDelegator.executeShellCommand("hilog -b D", async (err, data) => {});
             abilityDelegator.executeShellCommand("hilog -G 20M", async (err, data) => {});
         }
 
