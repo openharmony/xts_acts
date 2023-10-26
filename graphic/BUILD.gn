@@ -27,9 +27,8 @@ group("graphic") {
     if (!(product_name == "ohcore")) {
       deps += [
         "vkgl:cpvkgl",
-
         #"vulkan:cpvktest",
-        "vktest:vulkanTest",
+        "vulkan:vulkanTest"
       ]
     }
   } else {

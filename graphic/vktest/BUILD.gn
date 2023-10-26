@@ -79,6 +79,8 @@ action("cpVulkan") {
   testonly = true
   script = "cpVulkan.sh"
   outputs = [ "${target_out_dir}/cpVulkan.log" ]
+  root_vkgl_path = rebase_path("//")
+  args = [ "$root_vkgl_path" ]
   deps = [
     ":ActsVulkanTests",
     "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",

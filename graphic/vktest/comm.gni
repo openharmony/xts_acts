@@ -13,11 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-common_include = [ 
-    "//test/xts/acts/graphic/vktest/src",
-    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan",
-    "//third_party/vk-gl-cts/build/external/vulkancts/framework/vulkan", 
-   ]
+common_include = [
+  "//test/xts/acts/graphic/vktest/src",
+  "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan",
+  "//third_party/vk-gl-cts/build/external/vulkancts/framework/vulkan",
+]
 
 common_depends = [ "//third_party/libuv:uv_static" ]
-
