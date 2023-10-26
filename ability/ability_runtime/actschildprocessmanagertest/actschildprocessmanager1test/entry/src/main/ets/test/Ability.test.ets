@@ -184,7 +184,7 @@ export default function abilityTest() {
       }
 
       await sleep(200);
-      let lopGrep = NotInheritProcess.LogGrep;
+      let lopGrep = NotInheritProcess.logGrep;
       let cmd = `hilog -x | grep '${lopGrep}'`;
       try {
         let data = await abilityDelegator.executeShellCommand(cmd);
@@ -217,7 +217,7 @@ export default function abilityTest() {
       }
 
       await sleep(200);
-      let lopGrep = AProcess.LogGrep;
+      let lopGrep = AProcess.logGrep;
       let cmd = `hilog -x | grep '${lopGrep}'`;
       try {
         let data = await abilityDelegator.executeShellCommand(cmd);
@@ -250,7 +250,7 @@ export default function abilityTest() {
       }
 
       await sleep(200);
-      let lopGrep = StartInChildProcess.LogGrep;
+      let lopGrep = StartInChildProcess.logGrep;
       let cmd = `hilog -x | grep '${lopGrep}'`;
       try {
         let data = await abilityDelegator.executeShellCommand(cmd);
@@ -284,7 +284,7 @@ export default function abilityTest() {
         }
 
         await sleep(200);
-        let lopGrep = AProcess.LogGrep;
+        let lopGrep = AProcess.logGrep;
         let cmd = `hilog -x | grep '${lopGrep}'`;
         try {
           let data = await abilityDelegator.executeShellCommand(cmd);
@@ -325,7 +325,7 @@ export default function abilityTest() {
       }
 
       await sleep(200);
-      let lopGrep = AProcess.LogGrep;
+      let lopGrep = AProcess.logGrep;
       let cmd = `hilog -x | grep '${lopGrep}'`;
       try {
         let data = await abilityDelegator.executeShellCommand(cmd);

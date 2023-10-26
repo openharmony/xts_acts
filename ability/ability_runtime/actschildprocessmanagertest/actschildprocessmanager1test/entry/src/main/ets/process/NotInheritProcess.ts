@@ -14,9 +14,9 @@
  */
 
 export default class NotInheritProcess {
-  static LogGrep = 'StartChildProcessTest-NotInheritProcess onStart called!';
+  static logGrep = 'StartChildProcessTest-NotInheritProcess onStart called!';
 
-  onStart() {
-    console.log(NotInheritProcess.LogGrep)
+  onStart(): void {
+    console.log(NotInheritProcess.logGrep);
   }
 }

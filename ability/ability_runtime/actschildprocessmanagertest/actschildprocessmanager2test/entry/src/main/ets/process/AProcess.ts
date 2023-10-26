@@ -16,9 +16,9 @@
 import ChildProcess from '@ohos.app.ability.ChildProcess';
 
 export default class AProcess extends ChildProcess {
-  static LogGrep = 'StartChildProcessTest-AProcess onStart called!';
+  static logGrep = 'StartChildProcessTest-AProcess onStart called!';
 
-  onStart() {
-    console.log(AProcess.LogGrep)
+  onStart(): void {
+    console.log(AProcess.logGrep);
   }
 }

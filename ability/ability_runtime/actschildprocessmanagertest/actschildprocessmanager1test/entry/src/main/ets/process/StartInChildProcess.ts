@@ -17,20 +17,20 @@ import ChildProcess from '@ohos.app.ability.ChildProcess';
 import childProcessManager from '@ohos.app.ability.childProcessManager';
 
 export default class StartInChildProcess extends ChildProcess {
-  private static LogGrepPrefix = 'StartChildProcessTest-Start in child error,errorCode:'
-  static LogGrep = `${StartInChildProcess.LogGrepPrefix}16000061`;
+  private static logGrepPrefix = 'StartChildProcessTest-Start in child error,errorCode:';
+  static logGrep = `${StartInChildProcess.logGrepPrefix}16000061`;
 
-  onStart() {
+  onStart(): void {
     try {
-      childProcessManager.startChildProcess("./ets/process/AProcess.ts", childProcessManager.StartMode.SELF_FORK, (err, data) => {
+      childProcessManager.startChildProcess('./ets/process/AProcess.ts', childProcessManager.StartMode.SELF_FORK, (err, data) => {
         if (data) {
           console.log(`startChildProcess success, pid: ${data}`);
         } else {
-          console.error(`${StartInChildProcess.LogGrepPrefix}${err.code}`);
+          console.error(`${StartInChildProcess.logGrepPrefix}${err.code}`);
         }
       });
     } catch (err) {
-      console.error(`${StartInChildProcess.LogGrepPrefix}${err.code}`);
+      console.error(`${StartInChildProcess.logGrepPrefix}${err.code}`);
     }
   }
 }
