@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import imagePackingToFile from './PackingToFile.test.js'
+import imagePackToFile from './PackToFile.test.js'
 export default function testsuite() {
-    imagePackingToFile()
+    imagePackToFile()
 }

@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsImagePackingToFileJsTest.hap"
+                "ActsImagePackToFileJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
@@ -35,7 +35,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "hilog -b D -D",
+                "hilog -Q pidoff",
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.PackingToFile/haps/entry/files/*"
             ],
             "teardown-command": [

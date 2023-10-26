@@ -13,23 +13,23 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("image_packing_to_file_js_hap") {
+ohos_js_hap_suite("image_pack_to_file_js_hap") {
   hap_profile = "./src/main/config.json"
   deps = [
-    ":image_packing_to_file_js_assets",
-    ":image_packing_to_file_resources",
+    ":image_pack_to_file_js_assets",
+    ":image_pack_to_file_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsImagePackingToFileJsTest"
+  hap_name = "ActsImagePackToFileJsTest"
   subsystem_name = "multimedia"
   part_name = "image_framework"
 }
-ohos_js_assets("image_packing_to_file_js_assets") {
+ohos_js_assets("image_pack_to_file_js_assets") {
   js2abc = true
   hap_profile = "./src/main/config.json"
   source_dir = "./src/main/js"
 }
-ohos_resources("image_packing_to_file_resources") {
+ohos_resources("image_pack_to_file_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"
 }
