@@ -13,13 +13,6 @@
  * limitations under the License.
  */
 
-
-
-import marginTest from './margin/MarginTest.test';
-
-export default function testsuite() {
-
-  marginTest();
-  
-
+export class Constants {
+  static readonly EVENT_ID_CHANGE_DATA = 101
 }
