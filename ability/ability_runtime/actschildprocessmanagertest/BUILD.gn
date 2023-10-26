@@ -17,6 +17,6 @@ group("actschildprocessmanager") {
   testonly = true
   if (is_standard_system) {
     deps = [ "actschildprocessmanager1test:ActsChildProcessManager1Test" ]
-    deps = [ "actschildprocessmanager1test:ActsChildProcessManager2Test" ]
+    deps = [ "actschildprocessmanager2test:ActsChildProcessManager2Test" ]
   }
 }
