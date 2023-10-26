@@ -16,7 +16,9 @@ import("//test/xts/tools/build/suite.gni")
 group("actschildprocessmanager") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "actschildprocessmanager1test:ActsChildProcessManager1Test" ]
-    deps = [ "actschildprocessmanager2test:ActsChildProcessManager2Test" ]
+    deps = [
+      "actschildprocessmanager1test:ActsChildProcessManager1Test",
+      "actschildprocessmanager2test:ActsChildProcessManager2Test",
+    ]
   }
 }
