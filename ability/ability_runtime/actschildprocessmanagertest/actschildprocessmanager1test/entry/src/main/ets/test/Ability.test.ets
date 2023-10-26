@@ -265,9 +265,9 @@ export default function abilityTest() {
     });
 
     /*
- * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_StartChildProcess_0800
- * @tc.name   : call startChildProcess to create multi child process
- */
+    * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_StartChildProcess_0800
+    * @tc.name   : call startChildProcess to create multi child process
+    */
     it('StartChildProcess_0800', 0, async (done: Function) => {
       let tag = `StartChildProcess_0800`
       console.log(`${tag}, it begin`);
