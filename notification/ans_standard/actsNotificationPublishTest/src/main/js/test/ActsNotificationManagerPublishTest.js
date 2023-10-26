@@ -14,6 +14,7 @@
 */
 
 import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import image from '@ohos.multimedia.image'
 import wantAgent from '@ohos.app.ability.wantAgent'
@@ -626,7 +627,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
           normal: {
             title: '',
             text: 'test_text',
@@ -660,7 +661,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
           normal: {
             title: 'text',
             text: '',
@@ -704,7 +705,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
           normal: {
             title: 'text_title',
             text: 'text_text',
@@ -738,7 +739,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
             title: '',
             text: 'test_text',
@@ -776,7 +777,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
             title: 'text_title',
             text: '',
@@ -823,7 +824,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
             title: 'text_title',
             text: 'text_text',
@@ -861,7 +862,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
             title: 'title',
             text: 'test_text',
@@ -898,7 +899,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
             title: 'title',
             text: 'test_text',
@@ -935,7 +936,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
           longText: {
             title: 'title',
             text: 'test_text',
@@ -972,7 +973,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
           multiLine: {
             title: '',
             text: 'test_text',
@@ -1009,7 +1010,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
           multiLine: {
             title: 'text_title',
             text: '',
@@ -1055,7 +1056,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
           multiLine: {
             title: 'text_title',
             text: 'text_text',
@@ -1093,7 +1094,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
           multiLine: {
             title: 'text_title',
             text: 'text_text',
@@ -1130,7 +1131,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
           multiLine: {
             title: 'text_title',
             text: 'text_text',
@@ -1167,7 +1168,7 @@ export default function ActsNotificationManagerPublishTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
           multiLine: {
             title: 'text_title',
             text: 'text_text',
@@ -1227,7 +1228,7 @@ export default function ActsNotificationManagerPublishTest() {
           let notificationRequest = {
             id: 1,
             content: {
-              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
               picture: {
                 title: '',
                 text: 'text_text',
@@ -1288,7 +1289,7 @@ export default function ActsNotificationManagerPublishTest() {
           let notificationRequest = {
             id: 1,
             content: {
-              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
               picture: {
                 title: 'text_title',
                 text: '',
@@ -1357,7 +1358,7 @@ export default function ActsNotificationManagerPublishTest() {
           let notificationRequest = {
             id: 1,
             content: {
-              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
               picture: {
                 title: 'text_title',
                 text: 'text_text',
@@ -1419,7 +1420,7 @@ export default function ActsNotificationManagerPublishTest() {
           let notificationRequest = {
             id: 1,
             content: {
-              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
               picture: {
                 title: 'text_title',
                 text: 'text_text',
@@ -1479,7 +1480,7 @@ export default function ActsNotificationManagerPublishTest() {
           let notificationRequest = {
             id: 1,
             content: {
-              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
               picture: {
                 title: 'text_title',
                 text: 'text_text',
@@ -1541,7 +1542,7 @@ export default function ActsNotificationManagerPublishTest() {
           let notificationRequest = {
             id: 1,
             content: {
-              contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+              contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
               picture: {
                 title: 'text_title',
                 text: 'text_text',
