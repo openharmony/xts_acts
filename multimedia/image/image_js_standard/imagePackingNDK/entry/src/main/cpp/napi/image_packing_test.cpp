@@ -50,8 +50,8 @@ napi_value ImagePackingNDKTest::Init(napi_env env, napi_value exports)
     napi_property_descriptor props[] = {
         STATIC_FUNCTION("create", Create),
         STATIC_FUNCTION("initNative", InitNative),
-        STATIC_FUNCTION("packingToBuffer", PackingToBuffer),
-        STATIC_FUNCTION("packingToFile", PackingToFile),
+        STATIC_FUNCTION("packToBuffer", PackToBuffer),
+        STATIC_FUNCTION("packToFile", PackToFile),
         STATIC_FUNCTION("release", Release),
     };
     napi_define_properties(env, exports, sizeof(props) / sizeof(props[ARGS_FIRST]), props);
@@ -195,8 +195,8 @@ napi_value ImagePackingNDKTest::InitNative(napi_env env, napi_callback_info info
     return createResultValue(env, OHOS_IMAGE_RESULT_SUCCESS);
 }
 
-// packing(packer, source, opts:{format, quality, size})<{code, result}>
-napi_value ImagePackingNDKTest::PackingToBuffer(napi_env env, napi_callback_info info)
+// PackToBuffer(packer, source, opts:{format, quality, size})<{code, result}>
+napi_value ImagePackingNDKTest::PackToBuffer(napi_env env, napi_callback_info info)
 {
     napi_value argValue[SIZE_THREE] = {0};
     size_t argCount = SIZE_THREE;
@@ -223,7 +223,7 @@ napi_value ImagePackingNDKTest::PackingToBuffer(napi_env env, napi_callback_info
         DEBUG_LOG("packing create buffer failed");
         return createUndefine(env);
     }
-    int32_t res = OH_ImagePacker_PackingToBuffer(native,
+    int32_t res = OH_ImagePacker_PackToBuffer(native,
         argValue[ARGS_SECOND], &packerOpts, buffer, &bufferSize);
     if (ops.format != nullptr) {
         free(ops.format);
@@ -233,8 +233,8 @@ napi_value ImagePackingNDKTest::PackingToBuffer(napi_env env, napi_callback_info
     return createResultValue(env, res, nValue);
 }
 
-// packingToFile(packer, source, fd, opts:{format, quality})<{code, result}>
-napi_value ImagePackingNDKTest::PackingToFile(napi_env env, napi_callback_info info)
+// packToFile(packer, source, fd, opts:{format, quality})<{code, result}>
+napi_value ImagePackingNDKTest::PackToFile(napi_env env, napi_callback_info info)
 {
     napi_value argValue[SIZE_FOUR] = {0};
     size_t argCount = SIZE_FOUR;
@@ -259,7 +259,7 @@ napi_value ImagePackingNDKTest::PackingToFile(napi_env env, napi_callback_info i
     packerOpts.format = ops.format;
     packerOpts.quality = ops.quality;
 
-    int32_t res = OH_ImagePacker_PackingToFile(native, argValue[ARGS_SECOND], &packerOpts, fd);
+    int32_t res = OH_ImagePacker_PackToFile(native, argValue[ARGS_SECOND], &packerOpts, fd);
     if (ops.format != nullptr) {
         free(ops.format);
         ops.format = nullptr;

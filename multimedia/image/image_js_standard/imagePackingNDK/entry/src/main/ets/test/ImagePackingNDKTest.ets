@@ -162,7 +162,7 @@ export default function ImagePackingNDKTest() {
             }
         }
 
-        async function packingTest(done, testNum, source, packOpts) {
+        async function packToBufferTest(done, testNum, source, packOpts) {
             try {
                 let log = logger(testNum);
                 let packer = ndkTest.create()
@@ -172,7 +172,7 @@ export default function ImagePackingNDKTest() {
                     done();
                     return
                 }
-                let packingRes = ndkTest.packingToBuffer(packer.result, source, packOpts);
+                let packingRes = ndkTest.packToBuffer(packer.result, source, packOpts);
                 checkNdkRes(packingRes);
                 expect(packingRes.result != undefined).assertTrue();
                 log.log("packer packingRes.result " + JSON.stringify(new Uint8Array(packingRes.result).length));
@@ -184,7 +184,7 @@ export default function ImagePackingNDKTest() {
             }
         }
 
-        async function packingToFileTest(done, testNum, source, writeFd, packOpts) {
+        async function packToFileTest(done, testNum, source, writeFd, packOpts) {
             try {
                 let log = logger(testNum);
                 let packer = ndkTest.create()
@@ -194,7 +194,7 @@ export default function ImagePackingNDKTest() {
                     done();
                     return
                 }
-                let packingRes = ndkTest.packingToFile(packer.result, source, writeFd, packOpts);
+                let packingRes = ndkTest.packToFile(packer.result, source, writeFd, packOpts);
                 log.log(`packingRes : ${JSON.stringify(packingRes)}`)
                 checkNdkRes(packingRes);
                 ndkTest.release(packer.result);
@@ -269,7 +269,7 @@ export default function ImagePackingNDKTest() {
             let source = await createTestImageSource("test.png")
             expect(source != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingTest(done, "IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE", source, packOpts)
+            await packToBufferTest(done, "IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE", source, packOpts)
             await source.release()
             done();
         })
@@ -287,7 +287,7 @@ export default function ImagePackingNDKTest() {
             let source = await createTestPixelMap()
             expect(source != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingTest(done, "IMAGE_PACKINGNDK_PACKING_PIXEL_MAP", source, packOpts)
+            await packToBufferTest(done, "IMAGE_PACKINGNDK_PACKING_PIXEL_MAP", source, packOpts)
             done();
         })
 
@@ -309,7 +309,7 @@ export default function ImagePackingNDKTest() {
             [path, fd] = await getWriteFd("test_write_image_source.jpg")
             expect(fd != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingToFileTest(done, "IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE", source, fd, packOpts)
+            await packToFileTest(done, "IMAGE_PACKINGNDK_PACKING_IMAGE_SOURCE", source, fd, packOpts)
             fileio.closeSync(fd)
             log.log(`${JSON.stringify(fileio.statSync(path).size)}`)
             done();
@@ -332,7 +332,7 @@ export default function ImagePackingNDKTest() {
             [path, fd] = await getWriteFd("test_write_pixel_map.jpg")
             expect(fd != undefined).assertTrue();
             let packOpts = { format: "image/jpeg", quality: 100 };
-            await packingToFileTest(done, "IMAGE_PACKINGNDK_PACKING_PIXEL_MAP", source, fd, packOpts)
+            await packToFileTest(done, "IMAGE_PACKINGNDK_PACKING_PIXEL_MAP", source, fd, packOpts)
             fileio.closeSync(fd)
             log.log(`${JSON.stringify(fileio.statSync(path).size)}`)
             done();
