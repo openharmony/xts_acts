@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 import notificationSubscribe from '@ohos.notificationSubscribe';
 
 export default function ActsNotificationSystemAPITest() {
@@ -32,7 +33,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
         let notificationRequest : notificationManager.NotificationRequest = {
             id: 1,
             content: {
-                contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -74,7 +75,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
         let notificationRequest : notificationManager.NotificationRequest = {
             id: 1,
             content: {
-                contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
                 normal: {
                     title: "test_title",
                     text: "test_text",
@@ -130,7 +131,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
         console.info(`${TAG} Sub_Notification_Ans_Slot_CreateSlot_3550 START`);
 
         let slot : notificationManager.NotificationSlot = {
-            type: notificationManager.SlotType.SOCIAL_COMMUNICATION,
+            type: notification.SlotType.SOCIAL_COMMUNICATION,
             level: notificationManager.SlotLevel.LEVEL_HIGH,
             desc: 'xts test'
         }
@@ -316,7 +317,7 @@ describe('SUB_NOTIFICATION_ANS_SYSTEM_API_TEST', function () {
             uid: 0
         }
         let slot : notificationManager.NotificationSlot = {
-            type: notificationManager.SlotType.SOCIAL_COMMUNICATION,
+            type: notification.SlotType.SOCIAL_COMMUNICATION,
             level: notificationManager.SlotLevel.LEVEL_HIGH,
             desc: 'xts test'
         }

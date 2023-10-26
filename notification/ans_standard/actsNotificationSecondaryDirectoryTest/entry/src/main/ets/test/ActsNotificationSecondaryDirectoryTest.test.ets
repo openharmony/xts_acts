@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 import WantAgent from '@ohos.wantAgent'
 import image from '@ohos.multimedia.image'
 
@@ -58,7 +59,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             additionalText: "test_Publish"
         }
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
@@ -107,14 +108,14 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         }
 
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
             longText: longContentText
         }
 
         let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             id: 2,
-            slotType: notificationManager.SlotType.SERVICE_INFORMATION,
+            slotType: notification.SlotType.SERVICE_INFORMATION,
         }
 
         try{
@@ -152,7 +153,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         }
 
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
@@ -199,7 +200,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
         }
 
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
             multiLine: multiLineContent
         }
 
@@ -258,7 +259,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             additionalText: "test_Publish"
         }
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
@@ -315,7 +316,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             additionalText: "test_Publish"
         }
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
@@ -375,7 +376,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             additionalText: "test_Publish"
         }
         let notifyContent: notificationManager.NotificationContent = {
-            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+            contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
@@ -439,7 +440,7 @@ describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
             }
 
             let notifyContent: notificationManager.NotificationContent = {
-                contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
+                contentType: notification.ContentType.NOTIFICATION_CONTENT_PICTURE,
                 picture: longContentPicture
             }
 

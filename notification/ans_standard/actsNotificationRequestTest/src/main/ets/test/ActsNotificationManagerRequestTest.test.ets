@@ -14,6 +14,7 @@
 */
 
 import notificationManager from '@ohos.notificationManager'
+import notification from '@ohos.notification'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function ActsNotificationManagerRequestTest() {
@@ -31,7 +32,7 @@ export default function ActsNotificationManagerRequestTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
           normal: {
             title: "test_title",
             text: "test_text",
@@ -69,7 +70,7 @@ export default function ActsNotificationManagerRequestTest() {
       let notificationRequest = {
         id: 1,
         content: {
-          contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
           normal: {
             title: "test_title",
             text: "test_text",
