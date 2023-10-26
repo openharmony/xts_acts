@@ -258,6 +258,42 @@ export default function stageAppContextTest(abilityContext) {
               expect(typeof data[0].state).assertEqual("number");
           })
           done();
-      });
+        });
+
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_1900
+         * @tc.name: clearUpApplicationData test 1
+         * clearUpApplicationData test
+         * @tc.desc: Function test
+         * @tc.level   1
+         */
+        it('SUB_AA_OpenHarmony_ApplicationContext_1900', 0, async function (done) {
+            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_1900";
+            console.log(TAG + " --- start");
+            let context = globalThis.abilityStageContext.getApplicationContext();
+            context.clearUpApplicationData((err) => {
+                console.log(TAG + "  err.code: " + err.code);
+                expect().assertFail();
+            })
+            done();
+        });
+
+        /**
+         * @tc.number: SUB_AA_OpenHarmony_ApplicationContext_2000
+         * @tc.name: clearUpApplicationData test 2
+         * clearUpApplicationData test
+         * @tc.desc: Function test
+         * @tc.level   1
+         */
+        it('SUB_AA_OpenHarmony_ApplicationContext_2000', 0, async function (done) {
+            let TAG = "SUB_AA_OpenHarmony_ApplicationContext_2000";
+            console.log(TAG + " --- start");
+            let context = globalThis.abilityStageContext.getApplicationContext();
+            context.clearUpApplicationData().then((err) => {
+                console.log(TAG + "  err.code: " + err.code);
+                expect().assertFail();
+            })
+            done();
+        });
     })
 }
