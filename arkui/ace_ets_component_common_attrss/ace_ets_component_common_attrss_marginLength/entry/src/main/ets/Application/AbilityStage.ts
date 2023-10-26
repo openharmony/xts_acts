@@ -13,13 +13,12 @@
  * limitations under the License.
  */
 
+import AbilityStage from '@ohos.app.ability.AbilityStage';
 
-
-import marginTest from './margin/MarginTest.test';
-
-export default function testsuite() {
-
-  marginTest();
-  
-
+export default class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    console.log('[Demo] MyAbilityStage onCreate');
+    globalThis.stageOnCreateRun = 1;
+    globalThis.stageContext = this.context;
+  }
 }

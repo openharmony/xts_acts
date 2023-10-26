@@ -15,11 +15,9 @@
 
 
 
-import marginTest from './margin/MarginTest.test';
+import marginLengthTest from './margin/MarginLengthTest.test';
 
 export default function testsuite() {
-
-  marginTest();
-  
+  marginLengthTest();
 
 }
