@@ -21,12 +21,12 @@ cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/mast
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/src/fraction-mandatory-tests.txt" "suites/acts/testcases/vulkandata/vk-default"
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/src/master.txt" "suites/acts/testcases/vulkandata/vk-default"
 cp -rf "$root_vulkan_path/third_party/vk-gl-cts/external/vulkancts/mustpass/master/src/test-issues.txt" "suites/acts/testcases/vulkandata/vk-default"
+cp -rf "xts/acts/deqp_vk_execute" "suites/acts/testcases/vulkandata"
 cp -rf "xts/acts/deqp_vk_execute" "suites/acts/testcases/vulkandata/vk-default"
 
 tar czvf "vulkandata.tar.gz" -C "suites/acts/testcases/vulkandata" "."
 mv "vulkandata.tar.gz" "suites/acts/testcases/vulkandata"
 
-cp -rf "xts/acts/deqp_vk_execute" "suites/acts/testcases/vulkandata"
 cp -rf "$root_vulkan_path/test/xts/acts/graphic/vktest/genlocal.py" "suites/acts/testcases/vulkandata"
 cp -rf "graphic/graphic_2d/libdeqp_ohos_platform.z.so" "suites/acts/testcases/vulkandata"
 cp -rf "graphic/graphic_2d/librosen_context.z.so" "suites/acts/testcases/vulkandata"
