@@ -20,6 +20,8 @@ import btManagerA2dpConnTest from './BtManagerA2dp.test.js'
 import btA2dpTest from './BtA2dp.test.js'
 import btBaseProfileTest from './BtBaseProfile.test.js'
 import btGattServiceTest from './BtGattService.test.js'
+import btConnectionTest from './BtConnection.test.js'
+
 export default function testsuite() {
     btBaseProfileTest()
     btHfpConnTest()
@@ -27,5 +29,6 @@ export default function testsuite() {
     btManagerHfpConnTest()
     btManagerA2dpConnTest()
     btA2dpTest()
-    btGattServiceTest();
+    btGattServiceTest()
+    btConnectionTest()
 }

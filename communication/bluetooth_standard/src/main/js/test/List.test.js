@@ -23,6 +23,7 @@ import btManagerSppTest from './BtManagerSpp.test.js'
 import btSocketTest from './BtSocket.test.js'
 import btConstantTest from './BluetoothConstant.test.js'
 import btGattAdvertTest from './BtGattAdvertiser.test.js'
+import btScanModeTest from './BtScanMode.test.js'
 
 export default function testsuite() {
     btAccessTest()
@@ -35,4 +36,5 @@ export default function testsuite() {
     btManagerSppTest()
     btManagerSwitchTest()
     btGattAdvertTest()
+    btScanModeTest()
 }

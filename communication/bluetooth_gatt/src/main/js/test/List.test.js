@@ -18,10 +18,13 @@ import btManagerGattManagerTest from './BtManagerGattManager.test.js'
 import btManagerGattServiceTest from './BtManagerGattService.test.js'
 import btBleManagerTest from './BtBleManager.test.js'
 import btBleServiceTest from './BtBleService.test.js'
+import bluetoothBleTest from './BluetoothBle.test.js'
+
 export default function testsuite() {
+    btManagerGattManagerTest()
+    bluetoothBleTest()
     btManagerGattServiceTest()
     btBleManagerTest()
     btBleServiceTest()
     btManagerGattAdvertTest()
-    btManagerGattManagerTest()
 }

@@ -516,45 +516,6 @@ describe('btGattServiceTest', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_REMOVESERVICE_0100
-     * @tc.name testRemoveService
-     * @tc.desc Test RemoveService api.
-     * @tc.type Function
-     * @tc.level Level 3
-     */
-    // it('SUB_COMMUNICATION_BLUETOOTH_REMOVESERVICE_0100', 0, async function (done) {
-    //     let descriptors = [];
-    //     let arrayBuffer = new ArrayBuffer(8);
-    //     let descV = new Uint8Array(arrayBuffer);
-    //     descV[0] = 11;
-    //     let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B89TG',
-    //     characteristicUuid: '00001820-0000-1000-8000-00805F9B89TG',
-    //     descriptorUuid: '00002902-0000-1000-8000-00805F9B89TG', descriptorValue: arrayBuffer};
-    //     descriptors[0] = descriptor;
-    //     let characteristics = [];
-    //     let arrayBufferC = new ArrayBuffer(8);
-    //     let cccV = new Uint8Array(arrayBufferC);
-    //     cccV[0] = 1;
-    //     let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B89TG',
-    //     characteristicUuid: '00001820-0000-1000-8000-00805F9B89TG',
-    //     characteristicValue: arrayBufferC, descriptors:descriptors};
-    //     characteristics[0] = characteristic;
-    //     let gattService = {serviceUuid:'00001810-0000-1000-8000-00805F9B89TG', 
-    //              isPrimary: true,characteristics:characteristics,includeServices:[]};
-    //     let ret = gattServer.addService(gattService);
-    //     console.info('[bluetooth_js] bluetooth addService1 result : ' + ret);
-    //     await sleep(1000);
-    //     try {
-    //         let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B89TG');
-    //         console.info('[bluetooth_js]removeService ret:'+ret1);
-    //     } catch (error) {
-            
-    //     }
-        
-    //     done();
-    // })
-
-    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_REMOVESERVICE_0200
      * @tc.name testRemoveService
      * @tc.desc Test RemoveService api.
