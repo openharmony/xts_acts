@@ -21,7 +21,6 @@ hctest_suite("ActsDeviceAttestTest") {
     "//test/xts/device_attest_lite/interfaces/kit/js/include",
     "//test/xts/device_attest_lite/interfaces/innerkits",
     "//test/xts/device_attest_lite/framework/mini",
-    "//base/startup/init/interfaces/innerkits/include/syspara",
   ]
 
   if (board_toolchain_type != "iccarm") {
