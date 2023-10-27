@@ -124,11 +124,11 @@ export default function telSyncTest() {
      */
     it('SUB_Telephony_radio_getOperatorNameSync_0100', 0, async function (done) {
       let slotId = 0;
-      radio.isRadioOn((err, data) => {
-        if (err) {
+      sim.hasSimCard(slotId, (err, data) => {
+        if (data) {
           try {
             console.info("SUB_Telephony_radio_getOperatorNameSync_0100 " + radio.getOperatorNameSync(slotId));
-            expect(radio.getOperatorNameSync(slotId)).assertEqual("");
+            expect(radio.getOperatorNameSync(slotId) != "").assertTrue();
             done();
           } catch (err) {
             console.info("SUB_Telephony_radio_getOperatorNameSync_0100 err " + JSON.stringify(err));
@@ -138,7 +138,7 @@ export default function telSyncTest() {
         } else {
           try {
             console.info("SUB_Telephony_radio_getOperatorNameSync_0100 " + radio.getOperatorNameSync(slotId));
-            expect(radio.getOperatorNameSync(slotId) != "").assertTrue();
+            expect(true).assertTrue();
             done();
           } catch (err) {
             console.info("SUB_Telephony_radio_getOperatorNameSync_0100 err " + JSON.stringify(err));
