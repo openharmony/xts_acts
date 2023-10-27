@@ -199,10 +199,11 @@ def new_report(bakdir, str):
 
 
 if __name__ == '__main__':
+    suitename = sys.argv[1]
     latestpath = new_report("reports", "")
     tmpfile = "tmptestsuite.xml"
     putfile = "/result/ActsVulkanTest.xml"
-    tasklogfile = "/log/task_log.log"
+    tasklogfile = "/log/"+suitename+".qpa"
     putdir = latestpath+putfile
     tasklogpath = latestpath+tasklogfile
 
@@ -212,42 +213,50 @@ if __name__ == '__main__':
     total = 0
     passcnt = 0
     failcnt = 0
-    suitename = ""
+    unavailablecnt = 0
+
     #读取最近的tasklog文件
     with open(tasklogpath) as tasklogbuf:
         #从tasklog文件中获取运行的testcase的信息
+        casename = ""
+        testbegin = 0
+        testresult = 0
         for tasklogline in tasklogbuf:
-            if "[Start test suite [" in tasklogline:
-                suitelist = tasklogline.split("[Start test suite [")
-                suiteitem = suitelist[1].split("]")
-                suitename = suiteitem[0]
-            if "[ok " in tasklogline:
-                freslist = tasklogline.split("ok")
-                numcase = freslist[1]
-                numcase = numcase.replace(" ","")
-                numcase = numcase.replace("]","")
-                caseline = numcase.split("-")
+            # if "[Start test suite [" in tasklogline:
+            #     suitelist = tasklogline.split("[Start test suite [")
+            #     suiteitem = suitelist[1].split("]")
+            #     suitename = suiteitem[0]
+            if "#beginTestCaseResult " in tasklogline:
+                freslist = tasklogline.split("#beginTestCaseResult ")
+                casename = freslist[1]
+                testbegin = 1
+            if "#endTestCaseResult" in tasklogline:
+                if testbegin == 1 and testresult == 0:
+                    total += 1
+                    unavailablecnt += 1
+                    testcaselist.append(casename+"-unavalible")
+                testbegin = 0
+                testresult = 0
+            if "<Result StatusCode=\"Pass\">" in tasklogline:
                 total +=1
                 passcnt += 1
-                testcaselist.append(caseline[1]+"-true")
-            if "[not ok " in tasklogline:
-                freslist = tasklogline.split("not ok")
-                numcase = freslist[1]
-                numcase = numcase.replace(" ","")
-                numcase = numcase.replace("]","")
-                caseline = numcase.split("-")
+                testresult = 1
+                testcaselist.append(casename+"@@@true")
+            if "<Result StatusCode=\"Fail\">" in tasklogline:
                 total +=1
                 failcnt += 1
-                testcaselist.append(caseline[1]+"-false")
+                testresult = 1
+                testcaselist.append(casename+"@@@false")
                 #print("tasklogfile line:", caseline[0], caseline[1])
     #将testcase信息生成文件
     xmlfile = open(tmpfile, mode='w+')
     xmlfile.write("<?xml version='1.0' encoding='UTF-8'?>\n")
-    xmlfile.write("<testsuites name=\"{}\" timestamp=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" tests=\"{}\" ignored=\"0\" unavailable=\"0\" productinfo=\"{}\">\n".format(suitename, curtime, failcnt, total, "{}"))
+    xmlfile.write("<testsuites name=\"{}\" timestamp=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" tests=\"{}\" ignored=\"0\" unavailable=\"{}\" productinfo=\"{}\">\n".format(suitename, curtime, failcnt, total, unavailablecnt, "{}"))
     xmlfile.write("  <testsuite name=\"{}\" time=\"0.0\" errors=\"0\" disabled=\"0\" failures=\"{}\" ignored=\"0\" tests=\"{}\" message=\"\">\n".format(suitename, failcnt, total))
     for casename in testcaselist:
         casename = casename.replace("\n","")
-        loccasename = casename.split("-")
+        loccasename = casename.split("@@@")
+        print("loccasename : ", loccasename)
         recasename = loccasename[0]
         casestate = loccasename[1]
         xmlfile.write("    <testcase name=\"{}\" status=\"run\" time=\"0.0\" classname=\"{}\" result=\"{}\" level=\"1\" message=\"\" />\n".format(recasename, suitename, casestate))
