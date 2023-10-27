@@ -30,15 +30,15 @@ describe('AccessibleCaptionConfiguration', function () {
 
 
   /*
-   * @tc.number  CaptionConfiguration_0010
-   * @tc.name    CaptionConfiguration_0010
+   * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100
+   * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100
    * @tc.desc    The parameter input is 'enableChange', test the captionManager.on() function,
    *             and return undefined 
    * @tc.size    SmallTest
    * @tc.type    User
    */
-  it('CaptionConfiguration_0010', 0, async function (done) {
-    console.info('CaptionConfiguration_0010');
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100', 0, async function (done) {
+    console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0100');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'enableChange';
     let callbackdata = (data) => {}
@@ -49,15 +49,15 @@ describe('AccessibleCaptionConfiguration', function () {
   })
 
   /*
-   * @tc.number  CaptionConfiguration_0020
-   * @tc.name    CaptionConfiguration_0020
+   * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200
+   * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200
    * @tc.desc    The parameter input is 'styleChange', test the captionManager.on() function,
    *             and return undefined 
    * @tc.size    SmallTest
    * @tc.type    User
    */
-  it('CaptionConfiguration_0020', 0, async function (done) {
-    console.info('CaptionConfiguration_0020');
+  it('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200', 0, async function (done) {
+    console.info('SUB_BASIC_BARRIERFREE_API_AccessibleCaptionConfiguration_0200');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'styleChange';
     let callbackdata = (data) => {}

@@ -1,0 +1,43 @@
+{
+  "forms": [
+    {
+      "name": "normalWidget",
+      "description": "This is a service widget.",
+      "src": "./ets/normalwidget/pages/NormalWidgetCard.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDefault": true,
+      "updateEnabled": false,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "supportDimensions": [
+        "2*2"
+      ]
+    },
+    {
+      "name": "transparentWidget",
+      "description": "This is a service widget.",
+      "src": "./ets/transparentwidget/pages/TransparentWidgetCard.ets",
+      "uiSyntax": "arkts",
+      "window": {
+        "designWidth": 720,
+        "autoDesignWidth": true
+      },
+      "colorMode": "auto",
+      "isDefault": false,
+      "updateEnabled": false,
+      "scheduledUpdateTime": "10:30",
+      "updateDuration": 1,
+      "defaultDimension": "2*2",
+      "transparencyEnabled": true,
+      "supportDimensions": [
+        "2*2"
+      ]
+    }
+  ]
+}

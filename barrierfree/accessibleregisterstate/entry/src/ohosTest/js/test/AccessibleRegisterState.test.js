@@ -32,18 +32,15 @@ describe('AccessibleRegisterState', function () {
         done();
     })
 
-    /******************************************************************************** */
-    /* Cases RegisterStateOnOff_0330-0360 are for accessibility.on() API test         */
-    /******************************************************************************** */
     /*
-    * @tc.number  RegisterStateOnOff_0330
-    * @tc.name    RegisterStateOnOff_0330
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100
     * @tc.desc    on(accessibilityStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
     */
-    it('RegisterStateOnOff_0330', 0, async function (done) {
-      console.info('RegisterStateOnOff_0330');
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0100');
       let callbackdata = (data) => {
       }
       accessibility.on('accessibilityStateChange', callbackdata);
@@ -53,14 +50,14 @@ describe('AccessibleRegisterState', function () {
     })
 
     /*
-    * @tc.number  RegisterStateOnOff_0340
-    * @tc.name    RegisterStateOnOff_0340
+    * @tc.number  SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200
+    * @tc.name    SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200
     * @tc.desc    on(touchGuideStateChange)
     * @tc.size    SmallTest
     * @tc.type    User
     */
-    it('RegisterStateOnOff_0340', 0, async function (done) {
-      console.info('RegisterStateOnOff_0340');
+    it('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200', 0, async function (done) {
+      console.info('SUB_BASIC_BARRIERFREE_API_AccessibleRegisterState_0200');
       let callbackdata = (data) => {
       }
       accessibility.on('touchGuideStateChange', callbackdata);

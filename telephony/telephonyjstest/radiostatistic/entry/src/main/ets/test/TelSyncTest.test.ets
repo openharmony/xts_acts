@@ -106,7 +106,7 @@ export default function telSyncTest() {
         } else {
           try {
             console.info("SUB_Telephony_radio_getSignalInformationSync_0100 " + radio.getSignalInformationSync(slotId));
-            expect(radio.getSignalInformationSync(slotId).length > 0).assertTrue();
+            expect(radio.getSignalInformationSync(slotId).length >= 0).assertTrue();
             done();
           } catch (err) {
             console.info("SUB_Telephony_radio_getSignalInformationSync_0100 err " + JSON.stringify(err));

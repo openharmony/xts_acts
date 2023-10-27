@@ -52,7 +52,11 @@ import fileIOUnlink from './members/unlink.test.js'
 import fileIOWatcher from './members/watcher.test.js'
 import fileIOWrite from './members/write.test.js'
 import fileIORW from './members/filerw.test.js'
+<<<<<<< HEAD
 import fileIOReadLines from './members/readLines.test.js'
+=======
+import fileIOLseek from './members/lseek.test.js'
+>>>>>>> 3b019bd7c9b9a666f01475d8c82d0052e096e873
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -93,5 +97,9 @@ export default function testsuite() {
     fileIOWatcher()
     fileIOWrite()
     fileIORW()
+<<<<<<< HEAD
     fileIOReadLines()
+=======
+    fileIOLseek()
+>>>>>>> 3b019bd7c9b9a666f01475d8c82d0052e096e873
 }

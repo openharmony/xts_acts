@@ -197,6 +197,13 @@
         "MainAbility/pages/ListLanes02",
         "MainAbility/pages/ListLanes",
         "MainAbility/pages/GridRowCol",
+        "MainAbility/pages/ListLanes05",
+        "MainAbility/pages/ListLanes04",
+        "MainAbility/pages/GridRowCol02",
+        "MainAbility/pages/navigationNavbar01",
+        "MainAbility/pages/RichEditor01",
+        "MainAbility/pages/GridLayoutDirection",
+        "MainAbility/pages/SwiperMinSize",
         "MainAbility/pages/navigationNavbar02",
         "MainAbility/pages/navigationPosition",
         "MainAbility/pages/onMeasureSize1",
@@ -222,6 +229,16 @@
         "MainAbility/pages/textAenEnabled",
         "MainAbility/pages/textChangeEnabled",
         "MainAbility/pages/menuEnabled",
-        "MainAbility/pages/gestureEnabled"
+        "MainAbility/pages/gestureEnabled",
+        "MainAbility/pages/Zhuang/link1",
+        "MainAbility/pages/Zhuang/link2",
+        "MainAbility/pages/Zhuang/Prop1",
+        "MainAbility/pages/Zhuang/Prop2",
+        "MainAbility/pages/Zhuang/provide1",
+        "MainAbility/pages/Zhuang/provide2",
+        "MainAbility/pages/Zhuang/state1",
+        "MainAbility/pages/Zhuang/state2",
+        "MainAbility/pages/Zhuang/ObjectLink1",
+        "MainAbility/pages/Zhuang/ObjectLink2"
     ]
 }
