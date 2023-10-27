@@ -155,6 +155,14 @@ import textAenEnabledJsunit from './textAenEnabledJsunit.test.ets';
 import textChangeEnabledJsunit from './textChangeEnabledJsunit.test.ets';
 import menuEnabledJsunit from './menuEnabledJsunit.test.ets';
 import gestureEnabledJsunit from './gestureEnabledJsunit.test.ets'
+import ListLanes04 from './ListLanes04.test.ets';
+import ListLanes05 from './ListLanes05.test.ets';
+import GridRowCol02 from './GridRowCol02.test.ets';
+import navigationNavbar01 from './navigationNavbar01.test.ets';
+import GridLayoutDirection from './GridLayoutDirection.test.ets';
+import RichEditor01 from './RichEditor01.test.ets';
+import SwiperMinSize from './SwiperMinSize.test.ets';
+
 import link1 from './Zhuang/link1.test.ets'
 import link2 from './Zhuang/link2.test.ets'
 import ObjectLink1 from './Zhuang/ObjectLink1.test.ets'
@@ -310,6 +318,13 @@ export default function testsuite() {
   textChangeEnabledJsunit();
   menuEnabledJsunit();
   gestureEnabledJsunit();
+  ListLanes04()
+  navigationNavbar01()
+  ListLanes05()
+  GridLayoutDirection()
+  GridRowCol02()
+  RichEditor01()
+  SwiperMinSize()
   link1()
   link2()
   ObjectLink1()
