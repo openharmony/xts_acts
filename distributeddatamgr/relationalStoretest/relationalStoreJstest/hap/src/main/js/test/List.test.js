@@ -29,6 +29,7 @@ import relationalStorePredicatesComplexFiledTest from './RelationalStorePredicat
 import relationalStoreBackupRestoreWithFAContextTest from './RelationalStoreBackupRestoreWithFAContextJsunit.test.js'
 import relationalStoreBackupRestoreCallbackTest from './RelationalStoreBackupRestoreCallbackJsunit.test.js'
 import relationalStoreAssetResultSetTest from './RelationalStoreAssetResultSetJsunit.test.js'
+import relationalStoreCustomDirTest from './RelationalStoreCustomDir.test'
 export default function testsuite() {
     relationalStoreCloudSyncTest()
     relationalStoreDeleteTest()
@@ -47,4 +48,5 @@ export default function testsuite() {
     relationalStoreBackupRestoreWithFAContextTest()
     relationalStoreBackupRestoreCallbackTest()
     relationalStoreAssetResultSetTest()
+    relationalStoreCustomDirTest()
 }
