@@ -21,6 +21,7 @@ group("ai") {
     deps += [
       "mindspore/mindsporectest:ActsMindSporeTest",
       "mindspore/mindsporejstest:ActsMindsporeJSTest",
+      "mindspore/mindsporendktest:ActsMindSporeNdkTest",
     ]
   }
 }
