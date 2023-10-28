@@ -205,7 +205,7 @@ export default function preferencesCallBackTest() {
      * @tc.level  : Level 2
      */
     it("testPreferencesDeletePreferences003", 0, async function (done) {
-      dataPreferences.getPreferences(context, NAME1, async (err, preferences) => {
+      dataPreferences.getPreferences(context, NAME1, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
@@ -214,10 +214,17 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+              });
             });
+
             dataPreferences.deletePreferences(context, "getPreferencesTest1", (err) => {
               preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
                 expect("test").assertEqual(pre);
@@ -311,7 +318,7 @@ export default function preferencesCallBackTest() {
     it("testPreferencesDeletePreferences006", 0, async function (done) {
       dataPreferences.getPreferences(context, {
         name: NAME1
-      }, async (err, preferences) => {
+      }, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
@@ -320,9 +327,15 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+              });
             });
             dataPreferences.deletePreferences(context, {
               name: "getPreferencesTest1"
@@ -412,7 +425,7 @@ export default function preferencesCallBackTest() {
      * @tc.level  : Level 2
      */
     it("testRemovePreferencesFromCache003", 0, async function (done) {
-      dataPreferences.getPreferences(context, NAME, async (err, preferences) => {
+      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
@@ -421,10 +434,16 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
-              done();
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+                done();
+              });
             });
             dataPreferences.removePreferencesFromCache(context, "getPreferencesTest1", (err) => {
               preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, pre) {
@@ -516,7 +535,7 @@ export default function preferencesCallBackTest() {
      * @tc.level  : Level 2
      */
     it("testRemovePreferencesFromCache006", 0, async function (done) {
-      dataPreferences.getPreferences(context, NAME, async (err, preferences) => {
+      dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
@@ -524,9 +543,15 @@ export default function preferencesCallBackTest() {
           console.info(TAG + "Get preferences success");
           expect(preferences !== null).assertTrue();
           try {
-            await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
-            preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
-              expect("test").assertEqual(ret);
+            preferences.put(KEY_TEST_STRING_ELEMENT, "test", (err) => {
+              if (err) {
+                console.info(TAG + "Put preferences err: " + err);
+                return;
+              }
+              console.info(TAG + "Put preferences success");
+              preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", function (err, ret) {
+                expect("test").assertEqual(ret);
+              });
             });
             dataPreferences.removePreferencesFromCache(context, {
               name: "getPreferencesTest1"
