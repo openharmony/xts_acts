@@ -21,7 +21,6 @@ import formHost from '@ohos.application.formHost';
 import abilityConstant from '@ohos.app.ability.AbilityConstant'
 import appManagerNew from '@ohos.app.ability.appManager'
 import commonEvent from '@ohos.commonEvent';
-import ability from '@ohos.ability.ability';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
@@ -606,7 +605,6 @@ export default function ApiCoverTest() {
      it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
       let subscriber = null
       let formExtensionContext:common.FormExtensionContext
-      let pacMap:ability.PacMap
         let subscribeInfo = {
           events: ["Form_StartAbility"]
         }
