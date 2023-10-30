@@ -197,7 +197,9 @@ describe('fileIO_fs_readLines', function () {
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
 
         try {
-            let readerIterator = fileIO.readLinesSync(fpath, {encoding: 'utf-16'});
+            let readerIterator = fileIO.readLinesSync(fpath, {
+                encoding: 'utf-16'
+            });
             expect(false).assertTrue
         } catch (e) {
             fileIO.unlinkSync(fpath);
