@@ -869,7 +869,7 @@ export default function AVPlayerStabilityTest() {
          */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700 start')
-            AVPlayerTestBase.prepareToResetLoop(videos[0], avPlayer, done);
+            AVPlayerTestBase.prepareToReset(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0700 end')
         })
 
