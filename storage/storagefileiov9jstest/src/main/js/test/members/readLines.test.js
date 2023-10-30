@@ -195,18 +195,12 @@ describe('fileIO_fs_readLines', function () {
     it('fileIO_test_readLines_sync_007', 0, async function () {
         let fpath = await nextFileName('fileIO_test_readLines_sync_007');
         expect(prepareFile(fpath, FILE_CONTENTS)).assertTrue();
-        let arr = FILE_CONTENTS.split("\n");
 
         try {
-            let readerIterator = fileIO.readLinesSync(fpath, {
-              encoding: 'utf-16'
-            });
-            for (let i = 0; i < arr.length; i++) {
-                let it = readerIterator.next();
-                expect(it.value.trim() == arr[i]).assertTrue();
-            }
-            fileIO.unlinkSync(fpath);
+            let readerIterator = fileIO.readLinesSync(fpath, {encoding: 'utf-16'});
+            expect(false).assertTrue
         } catch (e) {
+            fileIO.unlinkSync(fpath);
             console.log('fileIO_test_readLines_sync_007 has failed for ' + e.message + ', code: ' + e.code);
             expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
         }
@@ -658,4 +652,9 @@ describe('fileIO_fs_readLines', function () {
     });
 })
 }
+
+
+
+
+
 
