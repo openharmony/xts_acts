@@ -593,14 +593,14 @@ export default function SimManagerTest() {
       sim.getDefaultVoiceSimId((err, data) => {
         if(err){
           console.info("Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 err = " + JSON.stringify(err));
-          expect(true).assertTrue();
+          expect(false).assertTrue();
           done();
           return;
         }
         console.log(`Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
         sim.hasSimCard(0, (err, data) => {
           console.log(`Telephony_Sim_getDefaultVoiceSimId_CallBack_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          expect(data).assertTrue();
+          expect(data).assertFalse();
           done();
         });
       });
@@ -616,12 +616,12 @@ export default function SimManagerTest() {
         console.info("Telephony_Sim_getDefaultVoiceSimId_Promise_0100 data = " + JSON.stringify(data));
         sim.hasSimCard(0, (err, data) => {
           console.log(`Telephony_Sim_getDefaultVoiceSimId_Promise_0100 hasSimCard callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
-          expect(data).assertTrue();
+          expect(data).assertFalse();
           done();
         });
       }).catch(err => {
         console.info("Telephony_Sim_getDefaultVoiceSimId_Promise_0100 err = " + JSON.stringify(err));
-        expect(true).assertTrue();
+        expect(false).assertTrue();
         done();
       });
     });
