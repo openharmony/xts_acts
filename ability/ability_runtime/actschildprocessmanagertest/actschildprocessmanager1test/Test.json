@@ -27,7 +27,8 @@
                 "hilog -G 5M"
             ],
             "teardown-command": [
-                "param set persist.sys.multi_process_model false"
+                "param set persist.sys.multi_process_model false",
+                "reboot"
             ]
         }
     ]

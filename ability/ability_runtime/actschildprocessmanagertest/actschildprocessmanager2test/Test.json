@@ -25,6 +25,9 @@
                 "hilog -Q pidoff",
                 "hilog -b I -D 0xD001304",
                 "hilog -G 5M"
+            ],
+            "teardown-command": [
+                "reboot"
             ]
         }
     ]
