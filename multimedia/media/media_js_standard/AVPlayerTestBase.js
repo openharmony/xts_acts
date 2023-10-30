@@ -704,42 +704,75 @@ export async function prepareToStopLoop(src, avPlayer, done) {
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 }
 
-export async function prepareToResetLoop(src, avPlayer, done) {
+async function prepareToResetLoop(src, avPlayer, done) {
+    let prepareToResetLoopCount = 0;
+    let surfaceID = globalThis.value;
+    console.info(`case prepareToResetLoop in, surfaceID is ${surfaceID}`);
+    avPlayer.on('stateChange', async (state, reason) => {
+        console.info(`case stateChange called, state is ${state}, reason is ${reason}`);
+        console.info(`case state is ${state}`);
+        switch (state) {
+            // step 1: create-Idle
+            case AV_PLAYER_STATE.IDLE:
+                expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.IDLE);
+                prepareToResetLoopCount++;
+                if(prepareToResetLoopCount == 1001){
+                    // end: release
+                    await avPlayer.release().then(() => {
+                        console.info('prepareToResetLoop avPlayer from stop to release')
+                        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
+                        done();
+                    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                }else{
+            // step 2: idle-INITIALIZED
+                    await setSource(avPlayer, src);
+                    console.info('playToCompletedLoop avPlayer from play to seek,time is :' + prepareToResetLoopCount)
+                }
+                break;
+            case AV_PLAYER_STATE.INITIALIZED:
+                avPlayer.surfaceId = surfaceID;
+                console.info('prepareToResetLoop play state is INITIALIZED')
+            // step 3: INITIALIZED-PREPARED
+                await preparePromise(avPlayer);
+                break;
+            case AV_PLAYER_STATE.PREPARED:
+                expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
+            // step 4: PREPARED-PLAYING
+                avPlayer.play()
+                break;
+            case AV_PLAYER_STATE.PLAYING:
+                console.info('prepareToResetLoop play state is PLAYING')
+                expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PLAYING);
+            // step 5: PLAYING-IDLE
+                avPlayer.reset()
+                break;
+            case AV_PLAYER_STATE.ERROR:
+                expect().assertFail();
+                avPlayer.release().then(() => {
+                }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                break;
+            default:
+                break;
+        }
+    });
+    avPlayer.on('error', async (err) => {
+        console.error(`case error called, errMessage is ${err.message}`);
+        expect().assertFail();
+        await avPlayer.release().then(() => {
+            avPlayer = null;
+            done();
+        });
+    });
+}
+
+
+export async function prepareToReset(src, avPlayer, done) {
     let surfaceID = globalThis.value;
     console.info(`case prepareToResetLoop Initialized in, surfaceID is ${surfaceID}`);
     avPlayer = await idle(src, avPlayer)
     // url -> prepare -> play -> reset loop 1000 times
-    for(var i = 0;i < 1000; i++){
-        await setSource(avPlayer, src);
-        console.info('prepareToResetLoop setSource');
-        console.info('prepareToResetLoop avPlayer state is :' + avPlayer.state)
-        await sleep(20)
-        avPlayer.surfaceId = surfaceID;
-        await avPlayer.prepare().then(() => {
-            expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.PREPARED);
-            console.info('prepareToResetLoop avPlayer state is prepared')
-        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-
-        await avPlayer.play().then(() => {
-            console.info('prepareToResetLoop play success');
-            expect(avPlayer.state).assertEqual('playing');
-        }, (err) => {
-            console.error('prepareToResetLoop play filed,error message is :' + err.message)
-        })
-
-        await avPlayer.reset().then(() => {
-            expect(avPlayer.state).assertEqual('idle');
-            console.info('prepareToResetLoop avPlayer state is reset')
-        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-
-        console.info(`case prepareToReset loop is ${i}`);
-    }
-
-    await avPlayer.release().then(() => {
-        console.info('prepareToResetLoop avPlayer from stop to release')
-        expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-        done();
-    }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+    await prepareToResetLoop(src, avPlayer, done)
+    await setSource(avPlayer, src);
 }
 
 export async function createToReleaseLoop(src, avPlayer, done) {
@@ -747,7 +780,6 @@ export async function createToReleaseLoop(src, avPlayer, done) {
         let surfaceID = globalThis.value;
         console.info(`case createToReleaseLoop Initialized in, surfaceID is ${surfaceID}`);
         avPlayer = await idle(src, avPlayer)
-        // url -> prepare -> play -> reset loop 1000 times
         await setSource(avPlayer, src);
         console.info('createToReleaseLoop setSource');
         await sleep(20)
