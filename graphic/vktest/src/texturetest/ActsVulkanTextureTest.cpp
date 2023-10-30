@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanTextureTest, TestVulkanTextureTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanTextureTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/texture.txt --deqp-log-filename=ActsVulkanTextureTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/texture.txt --deqp-log-filename=ActsVulkanTextureTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanTextureTest------\n");
     }

@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanSparse_resourcesTest, TestVulkanSparse_resourcesTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanSparse_resourcesTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/sparse-resources.txt --deqp-log-filename=ActsVulkanSparse_resourcesTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/sparse-resources.txt --deqp-log-filename=ActsVulkanSparse_resourcesTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanSparse_resourcesTest------\n");
     }

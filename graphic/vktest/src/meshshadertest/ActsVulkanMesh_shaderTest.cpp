@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanMesh_shaderTest, TestVulkanMesh_shaderTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanMesh_shaderTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/mesh-shader.txt --deqp-log-filename=ActsVulkanMesh_shaderTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/mesh-shader.txt --deqp-log-filename=ActsVulkanMesh_shaderTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanMesh_shaderTest------\n");
     }

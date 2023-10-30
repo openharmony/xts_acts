@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanBinding_modelTest, TestVulkanBing_modelTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanBinding_modelTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/binding-model.txt --deqp-log-filename=ActsVulkanBinding_modelTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/binding-model.txt --deqp-log-filename=ActsVulkanBinding_modelTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanBinding_modelTest------\n");
     }

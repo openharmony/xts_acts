@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanRenderpass2Test, TestVulkanRenderpass2TestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanRenderpass2Test------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/renderpass2.txt --deqp-log-filename=ActsVulkanRenderpass2Test.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/renderpass2.txt --deqp-log-filename=ActsVulkanRenderpass2Test.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanRenderpass2Test------\n");
     }

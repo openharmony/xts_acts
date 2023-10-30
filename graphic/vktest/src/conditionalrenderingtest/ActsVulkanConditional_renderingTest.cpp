@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanConditional_renderingTest, TestVulkanConditional_renderingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanConditional_renderingTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/conditional-rendering.txt --deqp-log-filename=ActsVulkanConditional_renderingTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/conditional-rendering.txt --deqp-log-filename=ActsVulkanConditional_renderingTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanConditional_renderingTest------\n");
     }

@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanTransform_feedbackTest, TestVulkanTransform_feedbackTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanTransform_feedbackTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/transform-feedback.txt --deqp-log-filename=ActsVulkanTransform_feedbackTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/transform-feedback.txt --deqp-log-filename=ActsVulkanTransform_feedbackTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanTransform_feedbackTest------\n");
     }

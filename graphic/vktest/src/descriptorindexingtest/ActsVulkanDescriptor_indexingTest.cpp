@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDescriptor_indexingTest, TestVulkanDescriptor_indexingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDescriptor_indexingTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/descriptor-indexing.txt --deqp-log-filename=ActsVulkanDescriptor_indexingTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/descriptor-indexing.txt --deqp-log-filename=ActsVulkanDescriptor_indexingTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDescriptor_indexingTest------\n");
     }

@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDynamic_renderingTest, TestVulkanDynamic_renderingTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDynamic_renderingTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/dynamic-rendering.txt --deqp-log-filename=ActsVulkanDynamic_renderingTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/dynamic-rendering.txt --deqp-log-filename=ActsVulkanDynamic_renderingTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDynamic_renderingTest------\n");
     }

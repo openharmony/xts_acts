@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanReconvergenceTest, TestVulkanReconvergenceTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanReconvergenceTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/reconvergence.txt --deqp-log-filename=ActsVulkanReconvergenceTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/reconvergence.txt --deqp-log-filename=ActsVulkanReconvergenceTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanReconvergenceTest------\n");
     }

@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanTessellationTest, TestVulkanTessellationTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanTessellationTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/tessellation.txt --deqp-log-filename=ActsVulkanTessellationTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/tessellation.txt --deqp-log-filename=ActsVulkanTessellationTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanTessellationTest------\n");
     }

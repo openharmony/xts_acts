@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanSpirv_assemblyTest, TestVulkanSpirv_assemblyTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanSpirv_assemblyTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/spirv-assembly.txt --deqp-log-filename=ActsVulkanSpirv_assemblyTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/spirv-assembly.txt --deqp-log-filename=ActsVulkanSpirv_assemblyTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanSpirv_assemblyTest------\n");
     }

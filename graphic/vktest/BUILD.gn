@@ -91,7 +91,6 @@ group("vulkanTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      ":ActsVulkanTests",
       ":ActsVulkanApiTest",
       ":ActsVulkanBindingmodelTest",
       ":ActsVulkanClippingTest",
@@ -136,6 +135,7 @@ group("vulkanTest") {
       ":ActsVulkanSynchronizationTest",
       ":ActsVulkanTessellationTest",
       ":ActsVulkanTestissuesTest",
+      ":ActsVulkanTests",
       ":ActsVulkanTextureTest",
       ":ActsVulkanTransformfeedbackTest",
       ":ActsVulkanUboTest",

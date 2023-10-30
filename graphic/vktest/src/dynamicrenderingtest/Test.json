@@ -16,8 +16,9 @@
                 "chmod -R 777 /data/local/tmp/*",
                 "mkdir /data/local/tmp/vulkan",
                 "tar zxvf /data/local/tmp/vulkandata.tar.gz -C /data/local/tmp/vulkan",
-                "chmod -R 777 /data/local/tmp/vktest/vk-default/*",
-                "cp -r /data/local/tmp/vktest/vk-default /data/local/tmp",
+                "chmod -R 777 /data/local/tmp/vulkan/vk-default/*",
+                "cp -r /data/local/tmp/vulkan/vk-default /data/local/tmp",
+                "cp -r /data/local/tmp/vulkan/vulkan /data/local/tmp",
                 "cp /data/local/tmp/libdeqp* /system/lib",
                 "cp /data/local/tmp/librosen_context* /system/lib",
                 "cp /data/local/tmp/libskia_canvaskit* /system/lib"

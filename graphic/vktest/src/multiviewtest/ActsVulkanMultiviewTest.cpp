@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanMultiviewTest, TestVulkanMultiviewTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanMultiviewTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/multiview.txt --deqp-log-filename=ActsVulkanMultiviewTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/multiview.txt --deqp-log-filename=ActsVulkanMultiviewTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanMultiviewTest------\n");
     }

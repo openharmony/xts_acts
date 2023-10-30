@@ -41,7 +41,7 @@ namespace OHOS {
     HWTEST_F(ActsVulkanDrm_format_modifiersTest, TestVulkanDrm_format_modifiersTestCase, Function | MediumTest | Level2)
     {
         printf("------start ActsVulkanDrm_format_modifiersTest------\n");
-        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vktest/vk-default/drm-format-modifiers.txt --deqp-log-filename=ActsVulkanDrm_format_modifiersTest.qpa");
+        system("/data/local/tmp/vulkan/vk-default/deqp_vk_execute --deqp-caselist-file=/data/local/tmp/vulkan/vk-default/drm-format-modifiers.txt --deqp-log-filename=ActsVulkanDrm_format_modifiersTest.qpa");
         EXPECT_TRUE(true);
         printf("------end ActsVulkanDrm_format_modifiersTest------\n");
     }
