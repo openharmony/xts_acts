@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 import("//test/xts/acts/graphic/vktest/comm.gni")
 
 ohos_moduletest_suite("ActsVulkanWsiTest") {
-  sources = [ "src/ActsVulkanWsiTest.cpp" ]
+  sources = [ "ActsVulkanWsiTest.cpp" ]
 
   include_dirs = [ "src" ]
   deps = [
