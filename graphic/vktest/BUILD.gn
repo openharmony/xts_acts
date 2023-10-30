@@ -90,6 +90,7 @@ group("vulkanTest") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      ":cpVulkan",
       "src/apitest:ActsVulkanApiTest",
       "src/bindingmodeltest:ActsVulkanBindingmodelTest",
       "src/clippingtest:ActsVulkanClippingTest",
@@ -108,12 +109,12 @@ group("vulkanTest") {
       "src/geometrytest:ActsVulkanGeometryTest",
       "src/glsltest:ActsVulkanGlslTest",
       "src/graphicsfuzztest:ActsVulkanGraphicsfuzzTest",
-      "src/imagetest:ActsVulkanImageTest",
       "src/imagelessframebuffertest:ActsVulkanImagelessframebufferTest",
+      "src/imagetest:ActsVulkanImageTest",
       "src/infotest:ActsVulkanInfoTest",
       "src/mastertest:ActsVulkanMasterTest",
-      "src/memorytest:ActsVulkanMemoryTest",
       "src/memorymodeltest:ActsVulkanMemorymodelTest",
+      "src/memorytest:ActsVulkanMemoryTest",
       "src/meshshadertest:ActsVulkanMeshshaderTest",
       "src/multiviewtest:ActsVulkanMultiviewTest",
       "src/pipelinetest:ActsVulkanPipelineTest",
@@ -139,7 +140,6 @@ group("vulkanTest") {
       "src/ubotest:ActsVulkanUboTest",
       "src/wsitest:ActsVulkanWsiTest",
       "src/ycbcrtest:ActsVulkanYcbcrTest",
-      ":cpVulkan",
       "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan:deqp_vk_execute",
     ]
   }
