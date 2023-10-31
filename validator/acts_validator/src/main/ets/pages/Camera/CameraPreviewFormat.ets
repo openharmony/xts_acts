@@ -218,8 +218,7 @@ struct cameraFormat {
             }.size({ width: '100%', height: '20%' })
           }
 
-        }.scrollBarColor(Color.White) // 滚动条颜色
-        .scrollBarWidth(10)
+        }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
       }.height('80%').width('100%')
 
       CustomContainer({
