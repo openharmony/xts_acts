@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsUserauthnopermissionTest") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsUserauthnopermissionTest"
   subsystem_name = "useriam"
-  part_name = "face_auth"
+  part_name = "user_auth_framework"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true
