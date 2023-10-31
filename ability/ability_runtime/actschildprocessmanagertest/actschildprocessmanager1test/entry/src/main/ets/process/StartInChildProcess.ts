@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import ChildProcess from '@ohos.app.ability.ChildProcess';
+import childProcessManager from '@ohos.app.ability.childProcessManager';
+
+export default class StartInChildProcess extends ChildProcess {
+  private static logGrepPrefix = 'StartChildProcessTest-Start in child error,errorCode:';
+  static logGrep = `${StartInChildProcess.logGrepPrefix}16000061`;
+
+  onStart(): void {
+    try {
+      childProcessManager.startChildProcess('./ets/process/AProcess.ts', childProcessManager.StartMode.SELF_FORK, (err, data) => {
+        if (data) {
+          console.log(`startChildProcess success, pid: ${data}`);
+        } else {
+          console.error(`${StartInChildProcess.logGrepPrefix}${err.code}`);
+        }
+      });
+    } catch (err) {
+      console.error(`${StartInChildProcess.logGrepPrefix}${err.code}`);
+    }
+  }
+}
