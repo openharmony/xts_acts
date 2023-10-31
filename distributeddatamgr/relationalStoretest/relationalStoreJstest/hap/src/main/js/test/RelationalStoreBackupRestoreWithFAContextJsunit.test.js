@@ -157,7 +157,6 @@ export default function relationalStoreBackupRestorePromiseTest() {
                 console.info(TAG + "RdbBackupRestoreTest_0010 restore success")
 
             } catch (err) {
-                // console.info(TAG + "RdbBackupRestoreTest_0010 restore success")
                 expect(false).assertTrue()
             }
 
@@ -244,11 +243,9 @@ export default function relationalStoreBackupRestorePromiseTest() {
             // RelationalStore restore function test, backup file does not exists
             try {
                 fileio.accessSync(DATABASE_DIR + dbName)
-                // expect(false).assertTrue()
                 expect(false == fileio.accessSync(DATABASE_DIR + dbName)).assertTrue()
                 ReStoreTest(dbName)
             } catch(err) {
-                // ReStoreTest(dbName)
                 expect(false).assertTrue()
             }
 
