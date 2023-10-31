@@ -883,7 +883,7 @@ export default function AVPlayerStabilityTest() {
          */
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 start')
-            AVPlayerTestBase.createToReleaseLoop(videos[0], avPlayer, done);
+            AVPlayerTestBase.createToRelease2(videos[0], avPlayer, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVPLAYER_STABILITY_01_0800 end')
         })
 
