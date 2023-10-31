@@ -498,9 +498,7 @@ async function createToReleaseLoop(src, avPlayer, done) {
                 avPlayer.surfaceId = surfaceID;
                 console.info('createToReleaseLoop play state is INITIALIZED')
             // step 1: initialized -> prepared -> play
-                await avPlayer.release().then(() => {
-                    expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
-                }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+                await avPlayer.release()
                 break;
             case AV_PLAYER_STATE.RELEASED:
                 expect(avPlayer.state).assertEqual(AV_PLAYER_STATE.RELEASED);
