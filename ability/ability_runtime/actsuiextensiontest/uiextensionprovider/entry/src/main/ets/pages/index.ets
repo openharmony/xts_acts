@@ -81,6 +81,7 @@ struct Index {
     let differentAppEvent010 = 'ACTS_UIExtension_DifferentApp010';
     let deviceEvent01 = 'ACTS_UIExtension_Device_Event_01';
     let deviceEvent02 = 'ACTS_UIExtension_Device_Event_02';
+    let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
     var subscriber;
     var startresult = false;
     var subscribeInfo = {
@@ -91,7 +92,8 @@ struct Index {
                   sendDataEvent,connectAbilityEvent,connectExceptionEvent,disConnectEvent,
                   sameAppEvent,differentAppEvent,differentAppEvent002,differentAppEvent003,
                   differentAppEvent004,differentAppEvent005,differentAppEvent006,
-                  differentAppEvent008,differentAppEvent010,deviceEvent01,deviceEvent02]
+                  differentAppEvent008,differentAppEvent010,deviceEvent01,deviceEvent02,
+                  startAbilityByTypeEvent001]
     }
     commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
       console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
@@ -369,7 +371,12 @@ struct Index {
             console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
           });
           this.doDeviceEvent02();
-        } 
+        } else if (data.event == startAbilityByTypeEvent001) {
+          commonEventManager.unsubscribe(subscriber, async (err, data) => {
+            console.log(TAG + "UnSubscribeInfoCallback : " + JSON.stringify(data));
+          });
+          this.startAbilityByTypeEvent001();
+        }
       });
     }).catch((error) => {
       console.log(TAG + "createSubscriber error : " + JSON.stringify(error));
@@ -984,6 +991,28 @@ struct Index {
       console.log(TAG + '___successOffTheScreen Event');
       commonEventManager.publish(successOffTheScreen, (err) => { }); 
     }, 2000);
+  }
+
+  async startAbilityByTypeEvent001() {
+    let successStartAbilityByTypeEvent = 'ACTS_UIExtension_SuccessStartAbilityByType';
+    let failStartAbilityByTypeEvent = 'ACTS_UIExtension_FailStartAbilityByType';
+    console.log(TAG + "start startAbilityByTypeEvent001");
+    let wantParam = {}
+    let abilityStartCallback = {
+      onError: (code, name, message) => {
+        commonEventManager.publish(failStartAbilityByTypeEvent, (err) => { });
+        console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+      }
+    }
+    this.session.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+      if (err) {
+        commonEventManager.publish(failStartAbilityByTypeEvent, (err) => { });
+        console.error(TAG + "startAbilityByType001 fail, err:" + JSON.stringify(err));
+      } else {
+        commonEventManager.publish(successStartAbilityByTypeEvent, (err) => { });
+        console.log(TAG + "startAbilityByType001 success");
+      }
+    });
   }
 
   testParamException(want,options){

@@ -17,6 +17,7 @@ import relationalStoreDistributedTest from './relationalStoreDistributedEtsunit.
 import relationalStoreTest from './relationalStoreEtsunit.test.ets'
 import relationalStoreResultSetTest from './relationalStoreTestResultsetEtsunit.test.ets'
 import relationalStoreEmitTest from './relationalStoreEmit.test'
+import relationalStoreDifferenceCustomDirMultipleTest from './relationalStoreDifferenceCustomDirMultiple.test'
 
 export default function testsuite() {
   relationalStoreCloudSyncEtsTest(globalThis.abilityContext)
@@ -24,4 +25,5 @@ export default function testsuite() {
   relationalStoreTest(globalThis.abilityContext)
   relationalStoreResultSetTest(globalThis.abilityContext)
   relationalStoreEmitTest()
+  relationalStoreDifferenceCustomDirMultipleTest()
 }

@@ -36,7 +36,7 @@ export default function userauthTest() {
         it('Security_IAM_Func_0102', 0, async function (done) {
             console.info('testFace GetAvailabeStatusTest0102 start');
             if (productSeriesInfo != "NOH") {
-                let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT]
+                let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
                 let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3, userAuthNorth.AuthTrustLevel.ATL4]
                 for (let idx0 = 0; idx0 < authType.length; idx0++) {
                     for (let idx1 = 0; idx1 < level.length; idx1++) {
@@ -96,7 +96,7 @@ export default function userauthTest() {
                 expect(e.code).assertEqual(401);
             }
 
-            let invalidauthType = [-1, 0, 1, 3, 5]
+            let invalidauthType = [-1, 0, 3, 5]
             for (let idx = 0; idx < invalidauthType.length; idx++) {
                 //authType invalid
                 try {

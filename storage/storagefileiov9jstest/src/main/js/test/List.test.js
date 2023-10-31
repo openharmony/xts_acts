@@ -53,6 +53,7 @@ import fileIOWatcher from './members/watcher.test.js'
 import fileIOWrite from './members/write.test.js'
 import fileIORW from './members/filerw.test.js'
 import fileIOLseek from './members/lseek.test.js'
+import fileIOReadLines from './members/readLines.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -94,4 +95,5 @@ export default function testsuite() {
     fileIOWrite()
     fileIORW()
     fileIOLseek()
+    fileIOReadLines()
 }

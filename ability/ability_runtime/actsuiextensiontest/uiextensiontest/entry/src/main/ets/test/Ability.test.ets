@@ -14,6 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import common from '@ohos.app.ability.common'
 import commonEventManager from '@ohos.commonEventManager'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import router from '@ohos.router'
@@ -22,6 +23,7 @@ import Utils from './Utils'
 export default function abilityTest() {
 
   describe('ACTS_UIExtension', function () {
+    let context = getContext(this) as common.UIAbilityContext;
     let TAG = "";
     let sleepTimeOne = 1000;
     let globalscribe = undefined
@@ -1070,6 +1072,103 @@ export default function abilityTest() {
         done();
       })
     })
+  
+    /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType001
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */      
+    it('ACTS_UIExtension_StartAbilityByType001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType001 == ';
+      console.log(TAG + "begin");
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let failStartAbilityByTypeEvent = 'ACTS_UIExtension_FailStartAbilityByType';
+      let startAbilityByTypeEvent001 = 'ACTS_UIExtension_StartAbilityByType001';
+      var subscriber;
+      var subscribeInfo = {
+        events: [appearEvent, failStartAbilityByTypeEvent]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
 
+          if (data.event == appearEvent) {
+            commonEventManager.publish(startAbilityByTypeEvent001, (err) => {
+              if (err) {
+                console.log(TAG + `publish startAbilityByTypeEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish startAbilityByTypeEvent success');
+              }
+            });
+          } else if (data.event == failStartAbilityByTypeEvent) {
+            done();
+          } 
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType002
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */      
+    it('ACTS_UIExtension_StartAbilityByType002',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType002 == ';
+      console.log(TAG + "begin");
+      try {
+        let wantParam = {}
+        let abilityStartCallback = {
+          onError: (code, name, message) => {
+            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+            expect(code).assertEqual(16000050);
+            done();
+          }
+        }
+        context.startAbilityByType("share", wantParam, abilityStartCallback, (err) => {
+          if (err) {
+            console.error(TAG + "startAbilityByType002 fail, err:" + JSON.stringify(err));
+          } else {
+            console.log(TAG + "startAbilityByType002 success");
+          }
+        });
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_StartAbilityByType003
+     * @tc.name    : test start UIExtensionAbility by type failed
+     * @tc.desc    : start UIExtensionAbility not configured in json
+     */      
+    it('ACTS_UIExtension_StartAbilityByType003',0, async function (done) {
+      TAG = 'ACTS_UIExtension_StartAbilityByType003 == ';
+      console.log(TAG + "begin");
+      try {
+        let wantParam = {}
+        let abilityStartCallback = {
+          onError: (code, name, message) => {
+            console.log(TAG + "code:" + code + "name:" + name + "message:" + message);
+            expect(code).assertEqual(16000050);
+            done();
+          }
+        }
+        context.startAbilityByType("share", wantParam, abilityStartCallback).then(() => {
+            console.log(TAG + "startAbilityByType003 success");
+          }).catch((err)=> {
+            console.error(TAG + "startAbilityByType003 fail, err:" + JSON.stringify(err));
+          })
+      } catch (error) {
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
