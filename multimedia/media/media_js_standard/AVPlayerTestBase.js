@@ -714,9 +714,9 @@ export async function seekLoopWithoutCallback(src, avPlayer, done) {
     let surfaceID = globalThis.value;
     console.info(`case Initialized in, surfaceID is ${surfaceID}`);
     avPlayer = await idle(src, avPlayer)
+    await seekLoopWithoutCallbackLoop(src, avPlayer, done)
     await setSource(avPlayer, src);
     console.info('seekLoopWithoutCallback setSource');
-    await seekLoopWithoutCallbackLoop(src, avPlayer, done)
 }
 
 async function prepareToStopLoop(src, avPlayer, done) {
