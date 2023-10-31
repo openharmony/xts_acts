@@ -800,7 +800,7 @@ async function prepareToResetLoop(src, avPlayer, done) {
                 }else{
             // step 2: idle-INITIALIZED
                     await setSource(avPlayer, src);
-                    console.info('playToCompletedLoop avPlayer from play to seek,time is :' + prepareToResetLoopCount)
+                    console.info('prepareToResetLoop avPlayer from play to seek,time is :' + prepareToResetLoopCount)
                 }
                 break;
             case AV_PLAYER_STATE.INITIALIZED:
@@ -908,7 +908,7 @@ async function createToReleaseLoop2(src, avPlayer, done) {
 export async function createToRelease2(src, avPlayer, done) {
     let surfaceID = globalThis.value;
     avPlayer = await idle(src, avPlayer)
-    await createToReleaseLoop(src, avPlayer, done)
+    await createToReleaseLoop2(src, avPlayer, done)
     await setSource(avPlayer, src);
     console.info('createToRelease2 setSource');
 }
