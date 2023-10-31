@@ -28,27 +28,6 @@ export default function audioCapturerEnhanceTest() {
     }
 
     beforeAll(async function () {
-      console.info("beforeAll case");
-      let permissions = ["ohos.permission.MICROPHONE"];
-      try {
-        featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (err, data) => {
-          console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
-        });
-      } catch (err) {
-        console.log(`get permission catch err -> ${JSON.stringify(err)}`);
-      }
-      await sleep(1000);
-      let driver = uitest.Driver.create();
-      await sleep(2000);
-      let button = await driver.findComponent(uitest.ON.text("允许"));
-      await button.click();
-      await sleep(2000);
-      let isGranted1 = await featureAbility.getContext().verifyPermission("ohos.permission.MICROPHONE");
-      if (!(isGranted1 == 0)) {
-        console.error("getpermission failed");
-      } else {
-        console.info("getpermission success");
-      }
       console.info('TestLog: Start Testing AudioCpaturerEnhanceTest Interfaces');
     });
     beforeEach(async function () {
@@ -86,13 +65,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0100
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0100', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -133,13 +112,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0200
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0200', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -180,13 +159,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0300', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -227,13 +206,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0100
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0100', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -274,13 +253,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0200
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0200', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -321,13 +300,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0300', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
         channels: audio.AudioChannel.CHANNEL_2,

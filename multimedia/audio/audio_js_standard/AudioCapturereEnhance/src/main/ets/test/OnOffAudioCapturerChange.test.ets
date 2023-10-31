@@ -28,33 +28,24 @@ export default function audioCapturerEnhanceTest() {
     let audioManager = audio.getAudioManager();
     let audioVolumeManager = audioManager.getVolumeManager();
     let groupid = audio.DEFAULT_VOLUME_GROUP_ID;
+    let flag1: boolean = false;
+    let flag2: boolean = false;
+
+    function callback1() {
+        console.info(`TestLog: audioCapturerChange command callback1 success`);
+        flag1 = true;
+    }
+
+    function callback2() {
+        console.info(`TestLog: audioCapturerChange command callback2 success`);
+        flag2 = true;
+    }
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     beforeAll(async function () {
-      console.info("beforeAll case");
-      let permissions = ["ohos.permission.MICROPHONE", "ohos.permission.MANAGE_AUDIO_CONFIG"];
-      try {
-        featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (err, data) => {
-          console.info(`getPermission requestPermissionsFromUser ${JSON.stringify(data)}`);
-        });
-      } catch (err) {
-        console.log(`get permission catch err -> ${JSON.stringify(err)}`);
-      }
-      await sleep(1000);
-      let driver = uitest.Driver.create();
-      await sleep(2000);
-      let button = await driver.findComponent(uitest.ON.text("允许"));
-      await button.click();
-      let isGranted1 = await featureAbility.getContext().verifyPermission("ohos.permission.MICROPHONE");
-      if (!(isGranted1 == 0)) {
-        console.error("getpermission failed");
-      } else {
-        console.info("getpermission success");
-      }
-      await sleep(3000);
       audioVolumeManager.getVolumeGroupManager(groupid, (err, value) => {
         if (err) {
           console.log(`getVolumeGroupManager failed.err: ${err.message} ${err.code}`)
@@ -196,9 +187,9 @@ export default function audioCapturerEnhanceTest() {
      * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-MIC-STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0100', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -254,9 +245,9 @@ export default function audioCapturerEnhanceTest() {
      * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-MIC-STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0200', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -305,13 +296,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0300', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -353,13 +344,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0400
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0400', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -401,13 +392,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0500
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NO_PARAMETER
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NO_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0500', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -448,13 +439,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0100
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR_INPUT_NUMBER_PARAMETER
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR_INPUT_NUMBER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0100', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -496,13 +487,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0200
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0200', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -544,13 +535,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0300
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NO_PARAMETER
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NO_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_AUDIOCAPTURERCHANGE_0300', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -586,6 +577,180 @@ export default function audioCapturerEnhanceTest() {
       } catch (error) {
         console.info(`off-audioCapturerChange no input parameter: ${error.message}, ${error.code}`)
         expect(Number(error.code)).assertEqual(env.INVALID_INPUT_PARAMETER_6800101);
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0600
+     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-Two on-function
+     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-Two on-function
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0600', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      try {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+        await getFd("capture_js-44100-2C-16B.pcm");
+      } catch (error) {
+        console.info(`${Tag} AudioCapturer Created and start ERROR! ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      flag1 = false;
+      flag2 = false;
+      try {
+        await audioCap.on('audioCapturerChange', callback1);
+        await audioCap.on('audioCapturerChange', callback2);
+        await audioCap.start();
+        await sleep(1000);
+        console.log(`flag1: ${flag1}, flag2: ${flag2}`)
+        if (flag1 && flag2) {
+          console.log(`callback1 and callback2 on called`);
+          expect(flag1).assertEqual(true);
+          expect(flag2).assertEqual(true);
+          done();
+        }
+      } catch (error) {
+        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0700
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-Two on-function, then off one on-function
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-Two on-function, then off one on-function
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0700', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      try {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+        await getFd("capture_js-44100-2C-16B.pcm");
+      } catch (error) {
+        console.info(`${Tag} AudioCapturer Created and start ERROR! ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        await audioCap.on('audioCapturerChange', callback1);
+        await audioCap.on('audioCapturerChange', callback2);
+        await audioCap.start();
+        await sleep(1000);
+        await audioCap.off('audioCapturerChange', callback1);
+        flag1 = false;
+        flag2 = false;
+        await audioCap.stop();
+        await sleep(1000);
+        console.log(`flag1: ${flag1}, flag2: ${flag2}`)
+        if (!flag1 && flag2) {
+          console.log(`cancel callback1 and callback2 on called`);
+          expect(flag1).assertEqual(false);
+          expect(flag2).assertEqual(true);
+          done();
+        }
+      } catch (error) {
+        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0800
+     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-Two on-function, then off all on-function
+     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-Two on-function, then off all on-function
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_AUDIOCAPTURERCHANGE_0800', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let AudioCapturerInfo = {
+        source: audio.SourceType.SOURCE_TYPE_MIC,
+        capturerFlags: 0
+      }
+      let AudioCapturerOptions = {
+        streamInfo: AudioStreamInfo,
+        capturerInfo: AudioCapturerInfo
+      }
+      try {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data)=>{
+          audioCap = data;
+        }).catch((err)=>{
+          console.info(' AudioCapturer Created catch ERROR' + err.message);
+        });
+        await getFd("capture_js-44100-2C-16B.pcm");
+      } catch (error) {
+        console.info(`${Tag} AudioCapturer Created and start ERROR! ${error.message} ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+      try {
+        await audioCap.on('audioCapturerChange', callback1);
+        await audioCap.on('audioCapturerChange', callback2);
+        await audioCap.start();
+        await sleep(1000);
+        await audioCap.off('audioCapturerChange');
+        flag1 = false;
+        flag2 = false;
+        await audioCap.stop();
+        await sleep(1000);
+        console.log(`flag1: ${flag1}, flag2: ${flag2}`)
+        if (!flag1 && !flag2) {
+          console.log(`cancel callback1 and callback2`);
+          expect(flag1).assertEqual(false);
+          expect(flag2).assertEqual(false);
+          done();
+        }
+      } catch (error) {
+        console.error(`${Tag}: on-audioCapturerChange Fail: ${error.message}, ${error.code}`);
+        expect(false).assertTrue();
         done();
       }
     })

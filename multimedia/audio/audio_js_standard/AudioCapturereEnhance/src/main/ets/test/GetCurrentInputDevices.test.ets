@@ -171,13 +171,13 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0100
-     * @tc.name      : AudioCapturer -getCurrentInputDevices-Mic-STATE_PREPARED
-     * @tc.desc      : AudioCapturer - getCurrentInputDevices-Mic-STATE_PREPARED
+     * @tc.name      : AudioCapturer - getCurrentInputDevices-Mic-SOURCE_TYPE_MIC
+     * @tc.desc      : AudioCapturer - getCurrentInputDevices-Mic-SOURCE_TYPE_MIC
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0100', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -224,9 +224,9 @@ export default function audioCapturerEnhanceTest() {
      * @tc.desc      : AudioCapturer - getCurrentInputDevices-mic-STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0200', 2, async function (done) {
       let AudioStreamInfo = {
         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
         channels: audio.AudioChannel.CHANNEL_2,
@@ -276,9 +276,9 @@ export default function audioCapturerEnhanceTest() {
      * @tc.desc      : AudioCapturer - getCurrentInputDevices-ALL-SourceType
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_CAPTURER_GETCURRENTINPUTDEVICES_0300', 2, async function (done) {
       for (let index in audio.SourceType) {
         let AudioStreamInfo = {
           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,

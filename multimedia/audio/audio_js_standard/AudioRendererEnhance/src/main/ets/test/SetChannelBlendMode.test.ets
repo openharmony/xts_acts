@@ -15,6 +15,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import audio from '@ohos.multimedia.audio';
 import * as env from './Const.ets';
+import featureAbility from '@ohos.ability.featureAbility';
+import fs from '@ohos.file.fs';
 
 export default function audioRendererTest() {
   describe('setChannelBlendMode', function () {
@@ -70,15 +72,78 @@ export default function audioRendererTest() {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    let filePath;
+    async function renderPlay() {
+      let bufferSize
+      try {
+        bufferSize = await audioRen.getBufferSize()
+        console.info( `audioRenderer getBufferSize success,bufferSize:${bufferSize} \n`);
+        await audioRen.start();
+        console.info(`audioRenderer start success\n`);
+      } catch (err) {
+        console.info(`audioRenderer start : Error: ${JSON.stringify(err)}\n`);
+        return;
+      }
+
+      var context = featureAbility.getContext();
+      await context.getFilesDir().then((data) => {
+        console.error('#####app file: '+ data);
+        filePath = data;
+        console.error('#####app filePath: '+ filePath);
+      }).catch((Error) => {
+        console.error('####app file err: ' + Error.message);
+      })
+
+      let path = filePath + '/StarWars10s-1C-8000-2SW.wav';
+      console.info(`path:${path}\n`);
+      try {
+        let len;
+        try {
+          let stat = await fs.stat(path);
+          console.info(`stat:${JSON.stringify(stat)}\n`);
+          console.info(`size:${stat.size}\n`);
+          len = stat.size % bufferSize == 0 ? Math.floor(stat.size / bufferSize) : Math.floor(stat.size / bufferSize + 1);
+          console.info(`len:${len}\n`);
+        }catch (error) {
+          console.info(`#######audioRenderer stat : Error: ${JSON.stringify(error)}\n`);
+        }
+
+        let file = await fs.open(path, 0o0);
+        console.info(`fd:${file.fd}\n`);
+
+        let buf = new ArrayBuffer(bufferSize);
+        console.info(`audioRenderer write start.......... \n`);
+
+        let inputVolume = 0.5;
+        await audioRen.setVolume(inputVolume).then(() => {
+          console.info(`${Tag}: setVolume to 0.5 : Success`);
+        }).catch((err) => {
+          console.info(`${Tag}: setVolume : ERROR : code: ${err.code}, mesage: ${err.message}`);
+        });
+
+        for (let i = 0; i < len; i++) {
+          let options = {
+            offset: i * bufferSize,
+            length: bufferSize
+          }
+          let readsize = await fs.read(file.fd, buf, options);
+          let writeSize = await audioRen.write(buf);
+        }
+        console.info(`audioRenderer write end............ \n`);
+      } catch (err) {
+        console.info(`audioRenderer write : Error: ${JSON.stringify(err)}\n`);
+      }
+    }
+
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0100
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-MDOE_INPUT_DEFAULT
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-MDOE_INPUT_DEFAULT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0100', 2, async function (done) {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_DEFAULT)
         console.info(`${Tag}: setChannelBlendMode :SUCCESS`);
@@ -93,13 +158,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0200
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-MODE_LEFT_RIGHT
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-MODE_LEFT_RIGHT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0200', 2, async function (done) {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_BLEND_LR)
         console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
@@ -114,13 +179,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0300
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-MODE_ALL_LEFT
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-MODE_ALL_LEFT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0300', 2, async function (done) {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_ALL_LEFT)
         console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
@@ -135,13 +200,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0400
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-MODE_ALL_RIGHT
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-MODE_ALL_RIGHT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0400', 2, async function (done) {
       try {
         await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_ALL_RIGHT)
         console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
@@ -156,13 +221,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0500
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-ERROR-INPUT_NUMBER_PARAMETER
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-ERROR-INPUT_NUMBER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0500', 2, async function (done) {
       try{
         //unsupported option, 6800104
         await audioRen.setChannelBlendMode(env.INPUT_PARAMETER_TYPE_NUMBER);
@@ -178,13 +243,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0600
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-ERROR-INPUT_NUMBER_PARAMETER
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-ERROR-INPUT_NUMBER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0600', 2, async function (done) {
       try{
         //unsupported option, 6800104
         await audioRen.setChannelBlendMode(env.INPUT_PARAMETER_TYPE_NUMBER_4);
@@ -200,13 +265,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0700
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0700', 2, async function (done) {
       try{
         //invalid parameter, 6800101
         await audioRen.setChannelBlendMode(env.INVALID_PARAMETER_STRING);
@@ -222,13 +287,13 @@ export default function audioRendererTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0800
-     * @tc.name      : AudioRenderer - setChannelBlendMode
-     * @tc.desc      : AudioRenderer - setChannelBlendMode
+     * @tc.name      : AudioRenderer - setChannelBlendMode - USE_ALL_STREAMTYPE 
+     * @tc.desc      : AudioRenderer - setChannelBlendMode - USE_ALL_STREAMTYPE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0800', 2, async function (done) {
       try {
         for (let index = 0; index < env.StreamUsage.length; index++) {
           let AudioStreamInfo = {
@@ -275,6 +340,28 @@ export default function audioRendererTest() {
         done();
       } catch (error) {
         console.log(`${Tag} setChannelBlendMode : error ${error.message}, ${error.code}`);
+        expect(false).assertTrue();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0900
+     * @tc.name      : AudioRenderer - setChannelBlendMode-RUNNING-STATE-MODE_LR
+     * @tc.desc      : AudioRenderer - setChannelBlendMode-RUNNING-STATE-MODE_LR
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_SETCHANNELBLENMODE_0900', 0, async function (done) {
+      try {
+        await audioRen.setChannelBlendMode(audio.ChannelBlendMode.MODE_BLEND_LR)
+        console.info(`${Tag}:  setChannelBlendMode :SUCCESS`);
+        await renderPlay();
+        expect(true).assertTrue();
+        done();
+      } catch (error) {
+        console.log(`${Tag}  setChannelBlendMode : error ${error.message}, ${error.code}`);
         expect(false).assertTrue();
         done();
       }
