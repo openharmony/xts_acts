@@ -882,7 +882,7 @@ async function createToReleaseLoop2(src, avPlayer, done) {
                     done();
                 }else{
                     avPlayer = await idle(src, avPlayer)
-                    await createToReleaseLoop(src, avPlayer, done)
+                    await createToReleaseLoop2(src, avPlayer, done)
                     await setSource(avPlayer, src);
                 }
                 break;
