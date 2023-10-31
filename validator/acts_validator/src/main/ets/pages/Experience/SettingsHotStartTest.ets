@@ -157,7 +157,7 @@ struct CustomContainerUser {
                               settings
                      */
                     let setReport = globalThis.resultNum;
-                    if ( setReport == undefined ) {
+                    if ( setReport == undefined ){
                       this.setNum = -1000;
                     } else {
                       let setHead = setReport.indexOf(':');
