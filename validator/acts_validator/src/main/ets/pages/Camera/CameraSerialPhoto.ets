@@ -209,8 +209,7 @@ struct cameraOrientation {
               }, 1000)
             })
         }
-      }.height('80%').scrollBarColor(Color.White) // 滚动条颜色
-        .scrollBarWidth(10)
+      }.height('80%').scrollBarWidth('6vp').scrollBarColor('#cccccc')
 
       CustomContainer({
         title: this.name,

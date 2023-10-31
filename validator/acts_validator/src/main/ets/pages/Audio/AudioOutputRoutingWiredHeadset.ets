@@ -157,8 +157,7 @@ struct audioOutputRouting {
                 }
               }
             }
-          }.scrollBarColor(Color.White) // 滚动条颜色
-        .scrollBarWidth(10)
+          }.scrollBarWidth('6vp').scrollBarColor('#cccccc')
         }
       }.width('100%').height('80%').backgroundColor(Color.Black)
       .justifyContent(FlexAlign.SpaceEvenly)

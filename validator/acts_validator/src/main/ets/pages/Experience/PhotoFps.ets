@@ -16,9 +16,9 @@ import router from '@ohos.router';
 import {CustomContainer} from '../common/ExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import { AppInfoItem } from '../model/LocalConfigEntity';
-let AppNameList = ['图库'];
-let AppBundleNameList =["com.ohos.photos"];
-let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
+let AppNameList = [];
+let AppBundleNameList =[];
+let AppAbilityNameList = [];
 @Entry
 @Component
 struct CustomContainerUser {
@@ -36,13 +36,13 @@ struct CustomContainerUser {
   scroller: Scroller = new Scroller();
 
   onPageShow(){
-    for (let i = 1; i < this.appInfoList.length; i++) {
+    for (let i = 0; i < this.appInfoList.length; i++) {
       AppNameList[i] = this.appInfoList[i].appName;
     }
-    for (let i = 1; i < this.appInfoList.length; i++) {
+    for (let i = 0; i < this.appInfoList.length; i++) {
       AppBundleNameList[i] = this.appInfoList[i].packageName;
     }
-    for (let i = 1; i < this.appInfoList.length; i++) {
+    for (let i = 0; i < this.appInfoList.length; i++) {
       AppAbilityNameList[i] = this.appInfoList[i].abilityName;
     }
   }
@@ -52,7 +52,6 @@ struct CustomContainerUser {
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
-    globalThis.resultNum = '0';
   }
 
   @Builder specificNoParam() {
@@ -148,6 +147,9 @@ struct CustomContainerUser {
                   .onClick(() => {
                     this.StartEnable = !this.StartEnable;
                     let report = globalThis.resultNum;
+                    if ( report == undefined ) {
+                      this.Fps = 0;
+                    } else {
                       let reg = /fps:(\d+)/g;
                       let matches = report.match(reg);
                       if (matches == null) {
@@ -161,6 +163,7 @@ struct CustomContainerUser {
                           this.Vue = true;
                         }
                       }
+                    }
                     globalThis.HideFloatingWindow();
                   })
               }
@@ -170,8 +173,7 @@ struct CustomContainerUser {
                 .fontColor(Color.White).fontSize('24fp')
             }
           }
-        }.scrollBarColor(Color.White) // 滚动条颜色
-        .scrollBarWidth(10)
+        }
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
