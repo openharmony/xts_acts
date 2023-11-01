@@ -158,7 +158,7 @@ struct CustomContainerUser {
                               mms
                      */
                     let MmsReport = globalThis.resultNum;
-                    if (MmsReport == undefined ) {
+                    if (MmsReport == undefined ){
                       this.mmsNum = -1000;
                     } else {
                       let MmsHead = MmsReport.indexOf(':');

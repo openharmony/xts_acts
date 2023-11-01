@@ -164,7 +164,7 @@ struct CustomContainerUser {
                     let CameraReport = globalThis.resultNum;
                     if ( CameraReport == undefined ) {
                       this.cameraNum = -1000;
-                    } else {
+                    } else{
                       let CameraHead = CameraReport.indexOf('time:');
                       let CameraTime = CameraReport.substring(CameraHead+5);
                       this.cameraNum = parseFloat(CameraTime);
