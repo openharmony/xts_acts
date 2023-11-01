@@ -16,7 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
-import fileuri from "@ohos.file.fileuri"
+import fileuri from '@ohos.file.fileuri';
 
 export default function fileIOFileGetParent() {
   describe('fileIO_fs_file_getParent', function () {
@@ -216,6 +216,5 @@ export default function fileIOFileGetParent() {
       expect(false).assertTrue();
     }
   });
-
 });
 }
