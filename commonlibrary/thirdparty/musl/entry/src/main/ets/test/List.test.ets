@@ -12,8 +12,51 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import diRentNdkTest from './DirentNdk.test';
 import mathNdkTest from './MathNdk.test';
+import regexNdkTest from './RegexNdk.test';
+import sCheDNdkTest from './SchedNdk.test';
+import semaphoreNdkTest from './SemaphoreNdk.test';
+import stdlibNdkTest from './StdlibNdk.test';
+import wcharNdkTest from './WcharNdk.test';
+import muslIfAddSNdkTest from './IfaddrsNdk.test';
+import muslInetNdkTest from './InetNdk.test';
+import muslInotifyNdkTest from './InotifyNdk.test';
+import muslPThreadNdkTest from './PthreadNdk.test';
+import muslNetDbNdkTest from './NetdbNdk.test';
+import muslResourceNdkTest from './ResourceNdk';
+import muslUnistdNdkTest from './UnistdNdk';
+import muslStringNdkTest from './StringNdk.test';
+import muslStringsNdkTest from './StringsNdk.test';
+import intTypesNdkTest from './InttypesNdk.test';
+import cTypeNdkTest from './CtypeNdk.test';
+import wcTypeNdkTest from './WctypeNdk.test';
+
+import timeNdkTest from './TimeNdk.test';
+import setJmpNdkTest from './SetjmpNdk.test';
+import signalNdkTest from './SignalNdk.test';
 
 export default function testsuite() {
+  stdlibNdkTest();
   mathNdkTest();
+  regexNdkTest();
+  wcharNdkTest();
+  diRentNdkTest();
+  sCheDNdkTest();
+  semaphoreNdkTest();
+  muslUnistdNdkTest()
+  muslInotifyNdkTest()
+  muslInetNdkTest()
+  muslIfAddSNdkTest()
+  muslResourceNdkTest()
+  muslNetDbNdkTest()
+  muslPThreadNdkTest()
+  intTypesNdkTest();
+  timeNdkTest();
+  cTypeNdkTest();
+  wcTypeNdkTest();
+  muslStringNdkTest();
+  muslStringsNdkTest();
+  setJmpNdkTest();
+  signalNdkTest();
 }
