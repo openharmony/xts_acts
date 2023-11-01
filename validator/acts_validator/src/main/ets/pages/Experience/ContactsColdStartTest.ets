@@ -17,9 +17,9 @@ import {CustomContainer} from '../common/StartExperienceCustomContainer';
 import FirstDialog from '../model/FirstDialog';
 import context from '@ohos.app.ability.common';
 import { AppInfoItem } from '../model/LocalConfigEntity';
-let AppNameList = [];
-let AppBundleNameList =[];
-let AppAbilityNameList = [];
+let AppNameList = ['图库'];
+let AppBundleNameList =["com.ohos.photos"];
+let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 let abilityContext = getContext(this) as context.UIAbilityContext;
 
 @Entry
@@ -44,13 +44,13 @@ struct CustomContainerUser {
   scroller: Scroller = new Scroller();
 
   onPageShow(){
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppNameList[i] = this.appInfoList[i].appName;
     }
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppBundleNameList[i] = this.appInfoList[i].packageName;
     }
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppAbilityNameList[i] = this.appInfoList[i].abilityName;
     }
   }
@@ -60,6 +60,7 @@ struct CustomContainerUser {
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
+    globalThis.resultNum = '0';
   }
 
   @Builder specificNoParam() {
@@ -159,9 +160,6 @@ struct CustomContainerUser {
                               Contacts
                      */
                     let ContactsReport = globalThis.resultNum;
-                    if ( ContactsReport == undefined ) {
-                      this.contactsNum = -1000;
-                    } else {
                       let ContactsHead = ContactsReport.indexOf('time:');
                       let ContactsTime = ContactsReport.substring(ContactsHead+5);
                       this.contactsNum = parseFloat(ContactsTime);
@@ -173,7 +171,6 @@ struct CustomContainerUser {
                       if( this.num === 1 ) {
                         this.Vue = true;
                       }
-                    }
                     globalThis.HideFloatingWindow();
                   })
               }
