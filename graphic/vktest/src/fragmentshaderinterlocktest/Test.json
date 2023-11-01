@@ -45,7 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py"
+                "python testcases/vulkandata/genlocal.py ActsVulkanFragment_shader_interlockTest fragment-shader-interlock.txt"
             ]
         },
         {

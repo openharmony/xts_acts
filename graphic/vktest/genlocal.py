@@ -200,22 +200,30 @@ def new_report(bakdir, str):
 
 if __name__ == '__main__':
     suitename = sys.argv[1]
+    mustpassfile = sys.argv[2]
     latestpath = new_report("reports", "")
     tmpfile = "tmptestsuite.xml"
-    putfile = "/result/ActsVulkanTest.xml"
-    tasklogfile = "/log/"+suitename+".qpa"
+    putfile = "/result/"+suitename+".xml"
+    tasklogfile = suitename+".qpa"
     putdir = latestpath+putfile
-    tasklogpath = latestpath+tasklogfile
+    tasklogpath = tasklogfile
+    mustpasspath = "testcases/vulkandata/vk-default/"+mustpassfile
 
     timelist = latestpath.split("/")
     curtime = timelist[1].replace("\n", "")
     testcaselist = []
+    mustpasslist = []
     total = 0
     passcnt = 0
     failcnt = 0
     unavailablecnt = 0
 
+    with open(mustpasspath) as mustpassbuf:
+        for mustpassline in mustpassbuf:
+            mustpasslist.append(mustpassline)
+    print("mustfile line:", len(mustpasslist))
     #读取最近的tasklog文件
+    print("tasklogpath :", tasklogpath)
     with open(tasklogpath) as tasklogbuf:
         #从tasklog文件中获取运行的testcase的信息
         casename = ""
@@ -233,21 +241,38 @@ if __name__ == '__main__':
             if "#endTestCaseResult" in tasklogline:
                 if testbegin == 1 and testresult == 0:
                     total += 1
-                    unavailablecnt += 1
-                    testcaselist.append(casename+"-unavalible")
+                    failcnt += 1
+                    testcaselist.append(casename+"@@@false@@@run")
                 testbegin = 0
                 testresult = 0
             if "<Result StatusCode=\"Pass\">" in tasklogline:
                 total +=1
                 passcnt += 1
                 testresult = 1
-                testcaselist.append(casename+"@@@true")
+                testcaselist.append(casename+"@@@true@@@run")
             if "<Result StatusCode=\"Fail\">" in tasklogline:
                 total +=1
                 failcnt += 1
                 testresult = 1
-                testcaselist.append(casename+"@@@false")
+                testcaselist.append(casename+"@@@false@@@run")
                 #print("tasklogfile line:", caseline[0], caseline[1])
+    
+    i = 0
+    j = 0
+    notfindlist = []
+    while i < len(mustpasslist):
+        isfind = False
+        while j < len(testcaselist):
+            if mustpasslist[i] in testcaselist[j]:
+                isfind = True
+                break
+            j += 1
+        if isfind == False:
+            notfindlist.append(mustpasslist[i]+"@@@false@@@run")
+            failcnt += 1
+            total += 1
+        i += 1
+    testcaselist += notfindlist
     #将testcase信息生成文件
     xmlfile = open(tmpfile, mode='w+')
     xmlfile.write("<?xml version='1.0' encoding='UTF-8'?>\n")
@@ -256,12 +281,14 @@ if __name__ == '__main__':
     for casename in testcaselist:
         casename = casename.replace("\n","")
         loccasename = casename.split("@@@")
-        print("loccasename : ", loccasename)
+        # print("loccasename : ", loccasename)
         recasename = loccasename[0]
-        casestate = loccasename[1]
-        xmlfile.write("    <testcase name=\"{}\" status=\"run\" time=\"0.0\" classname=\"{}\" result=\"{}\" level=\"1\" message=\"\" />\n".format(recasename, suitename, casestate))
+        caseresult = loccasename[1]
+        casestate = loccasename[2]
+        xmlfile.write("    <testcase name=\"{}\" status=\"{}\" time=\"0.0\" classname=\"{}\" result=\"{}\" level=\"1\" message=\"\" />\n".format(recasename, casestate, suitename, caseresult))
     xmlfile.write("  </testsuite>\n")
     xmlfile.write("</testsuites>\n")
     xmlfile.close()
     #将tmp文件替换xts框架的result
+    os.mkdir(latestpath+"/result")
     os.system(r"cp {} {}".format(tmpfile, putdir))

@@ -1,13 +1,13 @@
 {
-    "description": "Config for ActsVulkanTest test cases",
+    "description": "Config for ActsVulkanBindingmodelTest test cases",
     "driver": {
-        "module-name": "ActsVulkanTests",
+        "module-name": "ActsVulkanBindingmodelTest",
         "native-test-timeout": "120000",
         "native-test-device-path": "/data/local/tmp",
         "runtime-hint": "100s",
         "type": "CppTest"
     },
-    "kits": [
+    "kits": [:
         {
             "pre-push" : [
             ],
@@ -25,7 +25,7 @@
             ],
             
             "push": [
-                "ActsVulkanTests->/data/local/tmp/ActsVulkanTests",
+                "ActsVulkanBindingmodelTest->/data/local/tmp/ActsVulkanBindingmodelTest",
                 "vulkandata/deqp_vk_execute->/data/local/tmp/deqp_vk_execute",
                 "vulkandata/libdeqp_ohos_platform.z.so->/data/local/tmp/libdeqp_ohos_platform.z.so",
                 "vulkandata/librosen_context.z.so->/data/local/tmp/librosen_context.z.so",
@@ -45,7 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py"
+                "python testcases/vulkandata/genlocal.py ActsVulkanBinding_modelTest binding-model.txt"
             ]
         },
         {

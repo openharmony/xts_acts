@@ -45,7 +45,7 @@
                 "cd /data/local/tmp"
             ],
             "teardown-localcommand": [
-                "python testcases/vulkandata/genlocal.py"
+                "python testcases/vulkandata/genlocal.py ActsVulkanDrm_format_modifiersTest drm-format-modifiers.txt"
             ]
         },
         {
