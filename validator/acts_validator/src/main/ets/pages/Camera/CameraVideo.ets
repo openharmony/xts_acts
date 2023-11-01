@@ -277,7 +277,6 @@ struct cameraOrientation {
         .scrollBarWidth(10)
 
 
-
       CustomContainer({
         title: this.name,
         Url: 'pages/Camera/Camera_index',
