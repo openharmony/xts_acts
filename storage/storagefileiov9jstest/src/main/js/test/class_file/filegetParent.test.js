@@ -16,6 +16,7 @@
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, describe, it, expect,
 } from '../Common';
+import fileuri from "@ohos.file.fileuri"
 
 export default function fileIOFileGetParent() {
   describe('fileIO_fs_file_getParent', function () {
@@ -50,8 +51,8 @@ export default function fileIOFileGetParent() {
   });
 
   /**
-   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILE_GETPARENT_0200
-   * @tc.name fileIO_test_file_getParent_002
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILEGETPARENT_0200
+   * @tc.name fileIO_test_filegetParent_002
    * @tc.desc Test getParent() interfaces. 
    * Open the file, file getParent(),without content
    * @tc.size MEDIUM
@@ -61,14 +62,12 @@ export default function fileIOFileGetParent() {
    */
   it('fileIO_test_filegetParent_002', 0, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_002');
-    let FILE_CONTENTS = ''
-    expect(prepareFile(fpath,FILE_CONTENTS)).assertTrue();
     let index = fpath.lastIndexOf("\/");
     let str = fpath.substring(0, index+1);
     str = str.slice(0, -1);
   
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE | fileIO.OpenMode.CREATE);
       expect(isIntNum(file.fd)).assertTrue();
       expect(file.getParent() == str).assertTrue();
       fileIO.closeSync(file);
@@ -80,10 +79,10 @@ export default function fileIOFileGetParent() {
   });
 
   /**
-   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILE_GETPARENT_0300
-   * @tc.name fileIO_test_file_getParent_003
-   * @tc.desc Test getParent() interfaces. 
-   * The path point to nothing, no such file
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILEGETPARENT_0300
+   * @tc.name fileIO_test_filegetParent_003
+   * @tc.desc Test getParent() interfaces.argument is : true. 
+   * Open the file, file getParent(true)
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -91,22 +90,26 @@ export default function fileIOFileGetParent() {
    */
   it('fileIO_test_filegetParent_003', 0, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_003');
-  
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
+
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
-      file.getParent();
-      expect(flase).assertTrue();
+      expect(isIntNum(file.fd)).assertTrue();
+      file.getParent(true);
+      expect(false).assertTrue();
     } catch (e) {
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
       console.log('fileIO_test_filegetParent_003 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900002 && e.message == 'No such file or directory').assertTrue();
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 
   /**
    * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILEGETPARENT_0400
    * @tc.name fileIO_test_filegetParent_004
-   * @tc.desc Test getParent() interfaces.argument is : true. 
-   * Open the file, file getParent(true)
+   * @tc.desc Test getParent() interfaces.argument is : false. 
+   * Open the file, file getParent(false)
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -115,16 +118,16 @@ export default function fileIOFileGetParent() {
   it('fileIO_test_filegetParent_004', 0, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      file.getParent(true);
-      expect(true).assertTrue();
+      file.getParent(false);
+      expect(false).assertTrue();
+    } catch (e) {
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
-    } catch (e) {
-      console.log('fileIO_test_filegetParent_005 has failed for ' + e.message + ', code: ' + e.code);
+      console.log('fileIO_test_filegetParent_004 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
@@ -132,8 +135,8 @@ export default function fileIOFileGetParent() {
   /**
    * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILEGETPARENT_0500
    * @tc.name fileIO_test_filegetParent_005
-   * @tc.desc Test getParent() interfaces.argument is : false. 
-   * Open the file, file getParent(false)
+   * @tc.desc Test getParent() interfaces.argument is : -1. 
+   * Open the file, file getParent(-1)
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -142,15 +145,15 @@ export default function fileIOFileGetParent() {
   it('fileIO_test_filegetParent_005', 0, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
 
     try {
-      let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      file.getParent(false);
+      file.getParent(-1);
       expect(false).assertTrue();
+    } catch (e) {
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
-    } catch (e) {
       console.log('fileIO_test_filegetParent_005 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
@@ -159,8 +162,8 @@ export default function fileIOFileGetParent() {
   /**
    * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILEGETPARENT_0600
    * @tc.name fileIO_test_filegetParent_006
-   * @tc.desc Test getParent() interfaces.argument is : -1. 
-   * Open the file, file getParent(-1)
+   * @tc.desc Test getParent() interfaces. 
+   * Open the file, file getParent(),fs.dup
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -173,14 +176,46 @@ export default function fileIOFileGetParent() {
     try {
       let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
       expect(isIntNum(file.fd)).assertTrue();
-      file.getParent(-1);
-      expect(false).assertTrue();
+      let filenew = fileIO.dup(file.fd);
+      expect(file.getParent() == filenew.getParent()).assertTrue();
       fileIO.closeSync(file);
       fileIO.unlinkSync(fpath);
     } catch (e) {
       console.log('fileIO_test_filegetParent_006 has failed for ' + e.message + ', code: ' + e.code);
-      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
+      expect(false).assertTrue();
     }
   });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIOV9_FILEIO_FILEGETPARENT_0700
+   * @tc.name fileIO_test_filegetParent_007
+   * @tc.desc Test getParent() interfaces. 
+   * Open the file, file getParent(),fileuri.getUriFromPath()
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
+  
+  it('fileIO_test_filegetParent_007', 0, async function () {
+    let fpath = await nextFileName('fileIO_test_filegetParent_007');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    let index = fpath.lastIndexOf("\/");
+    let str = fpath.substring(0, index+1);
+    str = str.slice(0, -1);
+
+    try {
+      let uri = fileuri.getUriFromPath(fpath);
+      let file = fileIO.openSync(uri, fileIO.OpenMode.READ_WRITE);
+      expect(isIntNum(file.fd)).assertTrue();
+      expect(file.getParent() == str).assertTrue();
+      fileIO.closeSync(file);
+      fileIO.unlinkSync(fpath);
+    } catch (e) {
+      console.log('fileIO_test_filegetParent_007 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
 });
 }
