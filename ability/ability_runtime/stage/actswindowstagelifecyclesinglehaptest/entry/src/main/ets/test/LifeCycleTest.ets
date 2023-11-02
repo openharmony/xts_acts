@@ -149,7 +149,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -173,7 +173,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_WindowStageLifeCycleTest_0200 END-------------");
           done();
         }, 1000);
-      }, 3000);
+      }, 3500);
     });
 
     /*
@@ -207,7 +207,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -242,7 +242,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_WindowStageLifeCycleTest_0300 END-------------");
           done();
         }, 2000);
-      }, 3000);
+      }, 3500);
     });
 
     /*
@@ -276,7 +276,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list3));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid3));
@@ -316,7 +316,7 @@ export default function lifecycleTest() {
           console.log("------------Singlehap_WindowStageLifeCycleTest_0400 END-------------");
           done();
         }, 1000);
-      }, 3000);
+      }, 3500);
     });
 
     /*
@@ -326,6 +326,7 @@ export default function lifecycleTest() {
      * @tc.level   0
      */
     it("Singlehap_WindowStageLifeCycleTest_0500", 0, async function (done) {
+      await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_0500 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_0500";
       let str = {
@@ -349,7 +350,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start5 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         let str2 = {
           "bundleName": "com.example.windowstagelifecycle_xts",
@@ -361,7 +362,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
         })
-      }, 1100);
+      }, 1400);
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " callbackid1 : " + JSON.stringify(globalThis.callbackid1));
@@ -384,7 +385,7 @@ export default function lifecycleTest() {
                 done();
               })
         },1000)
-      }, 3800);
+      }, 4500);
     });
 
     /*
@@ -417,7 +418,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.windowstagelifecycle_xts",
@@ -463,7 +464,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_WindowStageLifeCycleTest_0600 END-------------");
             done();
           });
-      }, 4950);
+      }, 5500);
     });
 
     /*
@@ -496,7 +497,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         let str1 = {
           "bundleName": "com.example.windowstagelifecycle_xts",
@@ -508,7 +509,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2000);
+      }, 2300);
       setTimeout(function () {
         console.log(TAG + " registerAbilityLifecycleCallback listKey : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " registerAbilityLifecycleCallback callbackid : " + JSON.stringify(globalThis.callbackid1));
@@ -528,7 +529,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_WindowStageLifeCycleTest_0700 END-------------");
             done();
           });
-      }, 4000);
+      }, 4500);
     });
 
     /*
@@ -567,7 +568,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 2000);
+      }, 2500);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list6));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid6));
@@ -581,7 +582,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_WindowStageLifeCycleTest_0800 END-------------");
             done();
           });
-      }, 4500);
+      }, 5500);
     });
 
     /*
@@ -600,7 +601,7 @@ export default function lifecycleTest() {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.windowstagelifecycle_xts",
         abilityName: "Hap1MainAbility1"
@@ -608,7 +609,7 @@ export default function lifecycleTest() {
         console.log(TAG + ":first Hap1MainAbility1 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.windowstagelifecycle_xts",
         abilityName: "Hap1MainAbility1"
@@ -629,7 +630,7 @@ export default function lifecycleTest() {
               ",data: " + JSON.stringify(data));
               done();
             });
-        }, 3000)
+        }, 3500)
       });
       console.log("------------Singlehap_WindowStageLifeCycleTest_0900 end-------------");
     });
@@ -650,7 +651,7 @@ export default function lifecycleTest() {
         console.log(TAG + ": MainAbility9 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.windowstagelifecycle_xts",
         abilityName: "Hap1MainAbility2"
@@ -658,7 +659,7 @@ export default function lifecycleTest() {
         console.log(TAG + ":first Hap1MainAbility2 startAbility success, err: " + JSON.stringify(error) +
         ",data: " + JSON.stringify(data));
       });
-      await sleep(500);
+      await sleep(700);
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.windowstagelifecycle_xts",
         abilityName: "Hap1MainAbility2"
@@ -679,7 +680,7 @@ export default function lifecycleTest() {
               ",data: " + JSON.stringify(data));
               done();
             });
-        }, 3000)
+        }, 3500)
       });
       console.log("------------Singlehap_WindowStageLifeCycleTest_1000 end-------------");
     });
@@ -715,7 +716,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list11));
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid11));
@@ -743,7 +744,7 @@ export default function lifecycleTest() {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
         }, 1000);
-      }, 3000);
+      }, 3200);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list11));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid11));
@@ -763,7 +764,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_WindowStageLifeCycleTest_1100 END-------------");
             done();
           });
-      }, 6000);
+      }, 6400);
     });
 
     /*
@@ -798,7 +799,7 @@ export default function lifecycleTest() {
           }).catch((error) => {
           console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
         })
-      }, 500);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey : " + JSON.stringify(globalThis.list12));
         console.log(TAG + " firstCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
@@ -841,8 +842,8 @@ export default function lifecycleTest() {
             }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
-        }, 500);
-      }, 4500);
+        }, 700);
+      }, 4700);
       setTimeout(function () {
         console.log(TAG + " secondCallback listKey : " + JSON.stringify(globalThis.list12));
         console.log(TAG + " secondCallback callbackid : " + JSON.stringify(globalThis.callbackid12));
@@ -862,7 +863,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_WindowStageLifeCycleTest_1200 END-------------");
             done();
           });
-      }, 7000);
+      }, 7500);
     });
 
     /*
@@ -873,6 +874,7 @@ export default function lifecycleTest() {
     * @tc.level   0
     */
     it("Singlehap_WindowStageLifeCycleTest_1300", 0, async function (done) {
+      await sleep(500);
       console.log("------------Singlehap_WindowStageLifeCycleTest_1300 START-------------");
       TAG = "Singlehap_WindowStageLifeCycleTest_1300";
       let id1;
@@ -911,8 +913,8 @@ export default function lifecycleTest() {
             }).catch((error) => {
             console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
           })
-        }, 500);
-      }, 500);
+        }, 700);
+      }, 700);
       setTimeout(function () {
         console.log(TAG + " firstCallback listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " firstCallback callbackid1 : " + JSON.stringify(globalThis.callbackid1));
@@ -952,7 +954,7 @@ export default function lifecycleTest() {
             console.log(TAG + " terminateSelfwithresult error: " + JSON.stringify(error));
           });
         }, 500);
-      }, 4700);
+      }, 4900);
       setTimeout(function () {
         let str = {
           "bundleName": "com.example.windowstagelifecycle_xts",
@@ -986,9 +988,9 @@ export default function lifecycleTest() {
               }).catch((error) => {
               console.error(TAG + ' start failed. Cause: ' + JSON.stringify(error));
             })
-          }, 500);
-        }, 500);
-      }, 6000);
+          }, 700);
+        }, 700);
+      }, 6300);
       setTimeout(function () {
         console.log(TAG + " secondCallback callbackid1 : " + JSON.stringify(globalThis.callbackid1));
         console.log(TAG + " secondCallback callbackid12 : " + JSON.stringify(globalThis.callbackid12));
@@ -1028,7 +1030,7 @@ export default function lifecycleTest() {
               done();
             });
         }, 100);
-      }, 9700);
+      }, 9900);
     });
 
   })
