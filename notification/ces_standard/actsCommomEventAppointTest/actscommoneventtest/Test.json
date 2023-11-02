@@ -24,9 +24,6 @@
                 "power-shell wakeup",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
                 "power-shell setmode 602",
-                "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D",
                 "setenforce 0"
             ]
         }
