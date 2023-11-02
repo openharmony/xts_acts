@@ -709,8 +709,6 @@ async function seekLoopWithoutCallbackLoop(src, avPlayer, done) {
 }
 
 export async function seekLoopWithoutCallback(src, avPlayer, done) {
-    let surfaceID = globalThis.value;
-    console.info(`case Initialized in, surfaceID is ${surfaceID}`);
     avPlayer = await idle(src, avPlayer)
     await seekLoopWithoutCallbackLoop(src, avPlayer, done)
     await setSource(avPlayer, src);
@@ -770,8 +768,6 @@ async function prepareToStopLoop(src, avPlayer, done) {
 }
 
 export async function prepareToStop(src, avPlayer, done) {
-    let surfaceID = globalThis.value;
-    console.info(`case prepareToStopLoop Initialized in, surfaceID is ${surfaceID}`);
     avPlayer = await idle(src, avPlayer)
     await prepareToStopLoop(src, avPlayer, done)
     setSource(avPlayer, src);
@@ -840,8 +836,6 @@ async function prepareToResetLoop(src, avPlayer, done) {
 }
 
 export async function prepareToReset(src, avPlayer, done) {
-    let surfaceID = globalThis.value;
-    console.info(`case prepareToResetLoop Initialized in, surfaceID is ${surfaceID}`);
     avPlayer = await idle(src, avPlayer)
     // url -> prepare -> play -> reset loop 1000 times
     await prepareToResetLoop(src, avPlayer, done)
@@ -906,7 +900,6 @@ async function createToReleaseLoop2(src, avPlayer, done) {
 }
 
 export async function createToRelease2(src, avPlayer, done) {
-    let surfaceID = globalThis.value;
     avPlayer = await idle(src, avPlayer)
     await createToReleaseLoop2(src, avPlayer, done)
     await setSource(avPlayer, src);
@@ -1572,7 +1565,7 @@ function releaseTimeCallback(src, avPlayer, done) {
                 releaseLoop++;
                 if(releaseLoop == 10){
                     let avg = releaseTotalTime/10;
-                    console.info("createTimeCallback avg time  is :" + avg)
+                    console.info("releaseTimeCallback avg time  is :" + avg)
                     releaseTotalTime = 0;
                     releaseLoop = 0;
                     done();
