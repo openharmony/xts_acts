@@ -369,7 +369,7 @@ export default function abilityTest() {
           ",data: " + JSON.stringify(data));
       });
 
-      await sleep(500);
+      await sleep(700);
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -381,10 +381,10 @@ export default function abilityTest() {
           console.log(TAG + "first globalThis.mainAbility7CallBackId is :" + globalThis.mainAbility7CallBackId);
           firstCallbackId = globalThis.mainAbility7CallBackId;
           console.log(TAG + "firstCallbackId is : " + firstCallbackId);
-        }, 3000)
+        }, 3500)
       });
 
-      await sleep(500);
+      await sleep(1400);
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
@@ -394,7 +394,7 @@ export default function abilityTest() {
           ",data: " + JSON.stringify(data));
       });
 
-      await sleep(1000);
+      await sleep(700);
 
       globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
