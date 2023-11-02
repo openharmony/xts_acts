@@ -50,6 +50,7 @@ export default class OtherAbility extends UIAbility {
     if (globalThis.want.action === 'Acts_CommonEventTest_0300') {
       commonEvent.publish('Acts_CommonEventSame_Test', (err) => {
         console.info('====>Acts_CommonEventTest_0300 OtherAbility publish err: ' + JSON.stringify(err));
+        this.context.terminateSelf();
       });
     }
   }
