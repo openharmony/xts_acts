@@ -19,9 +19,9 @@ import FirstDialog from '../model/FirstDialog';
 import { AppInfoItem } from '../model/LocalConfigEntity';
 import context from '@ohos.app.ability.common';
 let abilityContext = getContext(this) as context.UIAbilityContext;
-let AppNameList = [];
-let AppBundleNameList =[];
-let AppAbilityNameList = [];
+let AppNameList = ['图库'];
+let AppBundleNameList =["com.ohos.photos"];
+let AppAbilityNameList = ["com.ohos.photos.MainAbility"];
 
 @Entry
 @Component
@@ -46,13 +46,13 @@ struct CustomContainerUser {
   scroller: Scroller = new Scroller();
 
   onPageShow(){
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppNameList[i] = this.appInfoList[i].appName;
     }
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppBundleNameList[i] = this.appInfoList[i].packageName;
     }
-    for (let i = 0; i < this.appInfoList.length; i++) {
+    for (let i = 1; i < this.appInfoList.length; i++) {
       AppAbilityNameList[i] = this.appInfoList[i].abilityName;
     }
   }
@@ -62,6 +62,7 @@ struct CustomContainerUser {
     this.Vue = false;
     globalThis.SendMessage = this.toSP_daemon;
     globalThis.HideFloatingWindow();
+    globalThis.resultNum = '0';
   }
   @Builder specificNoParam() {
     Column() {
@@ -162,10 +163,7 @@ struct CustomContainerUser {
                               camera
                      */
                     let CameraReport = globalThis.resultNum;
-                    if ( CameraReport == undefined ) {
-                      this.cameraNum = -1000;
-                    } else{
-                      let CameraHead = CameraReport.indexOf('time:');
+                    let CameraHead = CameraReport.indexOf('time:');
                       let CameraTime = CameraReport.substring(CameraHead+5);
                       this.cameraNum = parseFloat(CameraTime);
                       if( 0 < this.cameraNum && this.cameraNum < 2300 ) {
@@ -176,7 +174,6 @@ struct CustomContainerUser {
                       if( this.num === 1 ) {
                         this.Vue = true;
                       }
-                    }
                     globalThis.HideFloatingWindow();
                   })
               }
@@ -186,7 +183,8 @@ struct CustomContainerUser {
                 .fontColor(Color.White).fontSize('24fp')
             }
           }
-        }
+        }.scrollBarColor(Color.White) // 滚动条颜色
+        .scrollBarWidth(10)
       }
     }.width('100%').height('80%').backgroundColor(Color.Black)
     .justifyContent(FlexAlign.SpaceEvenly)
