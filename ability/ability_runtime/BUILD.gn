@@ -28,7 +28,6 @@ group("ability_runtime") {
       "actsactionextensionability:actsactionextensionability",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
       "actscalltest:actscalltest",
-      "actschildprocessmanagertest:actschildprocessmanager",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
       "actsfwkdataaccessortest:dataability",
