@@ -1922,7 +1922,7 @@ async function setSpeedTimeCallback(avPlayer, done) {
                 break;
         }
     });
-    avPlayer.on('speedDone', (speed) => {
+    avPlayer.on('speedDone', async (speed) => {
         end = Date.now();
         console.info(`setSpeedTimeCallback end time is : ${end}`)
         execution = parseInt(end - start)
