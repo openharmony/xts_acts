@@ -210,7 +210,11 @@ if __name__ == '__main__':
     mustpasspath = "testcases/vulkandata/vk-default/"+mustpassfile
 
     timelist = latestpath.split("/")
-    curtime = timelist[1].replace("\n", "")
+    if len(timelist) > 1:
+        curtime = timelist[1].replace("\n", "")
+    else:
+        timelist = latestpath.split("\\")
+        curtime = timelist[1].replace("\n", "")
     testcaselist = []
     mustpasslist = []
     total = 0
@@ -246,6 +250,11 @@ if __name__ == '__main__':
                 testbegin = 0
                 testresult = 0
             if "<Result StatusCode=\"Pass\">" in tasklogline:
+                total +=1
+                passcnt += 1
+                testresult = 1
+                testcaselist.append(casename+"@@@true@@@run")
+            if "<Result StatusCode=\"NotSupported\">" in tasklogline:
                 total +=1
                 passcnt += 1
                 testresult = 1
