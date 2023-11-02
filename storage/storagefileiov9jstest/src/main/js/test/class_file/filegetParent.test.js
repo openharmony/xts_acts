@@ -85,10 +85,10 @@ export default function fileIOFileGetParent() {
    * Open the file, file getParent(true)
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_filegetParent_003', 0, async function () {
+  it('fileIO_test_filegetParent_003', 3, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_003');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -112,10 +112,10 @@ export default function fileIOFileGetParent() {
    * Open the file, file getParent(false)
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_filegetParent_004', 0, async function () {
+  it('fileIO_test_filegetParent_004', 3, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_004');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -139,10 +139,10 @@ export default function fileIOFileGetParent() {
    * Open the file, file getParent(-1)
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_filegetParent_005', 0, async function () {
+  it('fileIO_test_filegetParent_005', 3, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_005');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let file = fileIO.openSync(fpath, fileIO.OpenMode.READ_WRITE);
@@ -166,10 +166,10 @@ export default function fileIOFileGetParent() {
    * Open the file, file getParent(),fs.dup
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_test_filegetParent_006', 0, async function () {
+  it('fileIO_test_filegetParent_006', 3, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_006');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
 
@@ -193,11 +193,10 @@ export default function fileIOFileGetParent() {
    * Open the file, file getParent(),fileuri.getUriFromPath()
    * @tc.size MEDIUM
    * @tc.type Functoin
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  
-  it('fileIO_test_filegetParent_007', 0, async function () {
+  it('fileIO_test_filegetParent_007', 3, async function () {
     let fpath = await nextFileName('fileIO_test_filegetParent_007');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
     let index = fpath.lastIndexOf("\/");
