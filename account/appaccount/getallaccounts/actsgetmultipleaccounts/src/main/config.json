@@ -31,6 +31,10 @@
     ],
     "reqPermissions": [
       {
+        "name":"ohos.permission.GET_ALL_APP_ACCOUNTS",
+        "reason":"need use ohos.permission.GET_ALL_APP_ACCOUNTS"
+      },
+      {
         "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
         "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
       },
