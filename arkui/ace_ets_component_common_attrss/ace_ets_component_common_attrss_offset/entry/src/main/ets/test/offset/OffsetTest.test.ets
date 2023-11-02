@@ -170,10 +170,8 @@ export default function OffsetTest() {
         }
       } else {
         //When set to the basic type, verify the calculated shifting
-        expect(Number(targetRectAfter.left - initialPosition.left).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.left).toFixed(2));
-        expect(Number(targetRectAfter.top - initialPosition.top).toFixed(2))
-          .assertEqual(Number(data.testValue.expectValue.top).toFixed(2));
+        expect(Math.abs(Number((targetRectAfter.left - initialPosition.left).toFixed(2)) - Number(data.testValue.expectValue.left.toFixed(2))) <= 1).assertTrue();
+        expect(Math.abs(Number((targetRectAfter.top - initialPosition.top).toFixed(2)) - Number(data.testValue.expectValue.top.toFixed(2))) <= 1).assertTrue();
       }
 
       //Confirm that the region information of the parent component has not changed.

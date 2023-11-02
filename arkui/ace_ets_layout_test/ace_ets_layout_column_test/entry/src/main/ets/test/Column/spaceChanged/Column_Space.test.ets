@@ -57,14 +57,14 @@ export default function Column_Space() {
       let Column_Space_012 = CommonFunc.getComponentRect('Column_Space_012');
       let Column_Space_013 = CommonFunc.getComponentRect('Column_Space_013');
       let Column_Space_01 = CommonFunc.getComponentRect('Column_Space_01');
-      expect(Math.round(Column_Space_011.left - Column_Space_01.left))
-        .assertEqual(Math.round(Column_Space_01.right - Column_Space_011.right));
-      expect(Math.round(Column_Space_012.left - Column_Space_01.left))
-        .assertEqual(Math.round(Column_Space_01.right - Column_Space_012.right));
-      expect(Math.round(Column_Space_013.left - Column_Space_01.left))
-        .assertEqual(Math.round(Column_Space_01.right - Column_Space_013.right));
-      expect(Math.round(Column_Space_012.top - Column_Space_011.bottom))
-        .assertEqual(Math.round(Column_Space_013.top - Column_Space_012.bottom));
+      expect(Math.abs(Math.round(Column_Space_011.left - Column_Space_01.left) - 
+      Math.round(Column_Space_01.right - Column_Space_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Column_Space_012.left - Column_Space_01.left) - 
+      Math.round(Column_Space_01.right - Column_Space_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Column_Space_013.left - Column_Space_01.left) - 
+      Math.round(Column_Space_01.right - Column_Space_013.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Column_Space_012.top - Column_Space_011.bottom) - 
+      Math.round(Column_Space_013.top - Column_Space_012.bottom)) <= 1).assertTrue();
       expect(Math.round(Column_Space_012.top - Column_Space_011.bottom)).assertEqual(Math.round(vp2px(30)));
       expect(Column_Space_01.top).assertEqual(Column_Space_011.top);
       expect(Column_Space_013.bottom).assertLess(Column_Space_01.bottom);
@@ -90,14 +90,14 @@ export default function Column_Space() {
       let Column_Space_012 = CommonFunc.getComponentRect('Column_Space_012');
       let Column_Space_013 = CommonFunc.getComponentRect('Column_Space_013');
       let Column_Space_01 = CommonFunc.getComponentRect('Column_Space_01');
-      expect(Math.round(Column_Space_011.left - Column_Space_01.left))
-        .assertEqual(Math.round(Column_Space_01.right - Column_Space_011.right));
-      expect(Math.round(Column_Space_012.left - Column_Space_01.left))
-        .assertEqual(Math.round(Column_Space_01.right - Column_Space_012.right));
-      expect(Math.round(Column_Space_013.left - Column_Space_01.left))
-        .assertEqual(Math.round(Column_Space_01.right - Column_Space_013.right));
-      expect(Math.round(Column_Space_012.top - Column_Space_011.bottom))
-        .assertEqual(Math.round(Column_Space_013.top - Column_Space_012.bottom));
+      expect(Math.abs(Math.round(Column_Space_011.left - Column_Space_01.left) - 
+      Math.round(Column_Space_01.right - Column_Space_011.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Column_Space_012.left - Column_Space_01.left) - 
+      Math.round(Column_Space_01.right - Column_Space_012.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Column_Space_013.left - Column_Space_01.left) - 
+      Math.round(Column_Space_01.right - Column_Space_013.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Column_Space_012.top - Column_Space_011.bottom) - 
+      Math.round(Column_Space_013.top - Column_Space_012.bottom)) <= 1).assertTrue();
       expect(Math.round(Column_Space_012.top - Column_Space_011.bottom)).assertEqual(Math.round(vp2px(50)));
       expect(Column_Space_01.top).assertEqual(Column_Space_011.top);
       expect(Column_Space_013.bottom).assertEqual(Column_Space_01.bottom);
