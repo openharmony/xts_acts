@@ -16,11 +16,9 @@
 
 #include "hctest.h"
 #include "devattest_interface.h"
-#include "parameter.h"
 
-#define DEVATTEST_INIT (-2)
+#define DEVATTEST_INIT -2
 #define DEVATTEST_SUCCESS 0
-#define UDIDSIZE_LEN 64
 
 typedef enum {
     SOFTWARE_RESULT_VERSIONID,
@@ -44,11 +42,6 @@ LITE_TEST_SUIT(device_attest, device_attest_lite, DeviceAttestFuncTestSuite);
  */
 static BOOL DeviceAttestFuncTestSuiteSetUp(void)
 {
-    char udid[UDIDSIZE_LEN + 1] = { 0 };
-    int retUdid = GetDevUdid(udid, UDIDSIZE_LEN + 1);
-    if (retUdid == 0) {
-        printf("DevUdid = %s\n", udid);
-    }
     return TRUE;
 }
 
@@ -73,12 +66,6 @@ BOOL AttestStatusNumberValid(int32_t attestStatusNumber)
 BOOL AttestStatusValid(AttestResultInfo attestResultInfo)
 {
     BOOL result = TRUE;
-    printf("authResult = %d\n",attestResultInfo.authResult);
-    printf("softwareResult = %d\n",attestResultInfo.softwareResult);
-    for (int i = 0; i < 5; i++) {
-        printf("softwareResultDetail[%d] = %d\n",
-            i, attestResultInfo.softwareResultDetail[i]);
-    }
     if (!AttestStatusNumberValid(attestResultInfo.authResult)) {
         result = FALSE;
     }
