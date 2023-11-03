@@ -50,6 +50,8 @@ import getReadOnlyFdTest from './PhotoAsset/getReadOnlyFd'
 import getThumbnailTest from './PhotoAsset/getThumbnail'
 import photoPickerTest from './PhotoAccessHelper/photoPicker'
 import PhotoAccessHelperTest from  './PhotoAccessHelperCases/PhotoAccessHelperTest.test.ets'
+import setAlbumNameChangeRequestTest from './MediaAlbumChangeRequest/setAlbumName'
+import getAlbumChangeRequestTest from './MediaAlbumChangeRequest/getAlbum'
 
 export default function testsuite () {
   getPhotoAccessHelperTest()
@@ -89,4 +91,6 @@ export default function testsuite () {
   getThumbnailTest()
   photoPickerTest()
   PhotoAccessHelperTest()
+  setAlbumNameChangeRequestTest()
+  getAlbumChangeRequestTest()
 }
