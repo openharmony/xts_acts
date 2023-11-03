@@ -617,7 +617,8 @@ export default function pasteBoardSystemPasteBoardTest(){
                 await systemPasteboard.setData(PasteData).then(async () => {
                     try {
                         let string = systemPasteboard.getDataSource()
-                        expect(string != null).assertTrue()
+                        console.info(TAG + "bundle name :" + string )
+                        expect(string == "label").assertTrue()
                         done();
                     } catch (err) {
                         console.error(TAG + "test getDataSource err:" + err)
