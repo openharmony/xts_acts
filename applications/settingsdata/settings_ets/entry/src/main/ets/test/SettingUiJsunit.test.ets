@@ -33,7 +33,7 @@ export default function settingUiJsunit() {
       var name = '';
       var uri = settings.getUriSync(name);
       console.info("[settings_uri_test_002] uri is: " + uri);
-      expect(uri).assertEqual('datashare:///com.ohos.settingsdata/SETTINGSDATA?Proxy=true&key=')
+      expect(uri).assertEqual('datashare:///com.ohos.settingsdata/entry/settingsdata/SETTINGSDATA?Proxy=true&key=')
       done();
     });
 
@@ -55,7 +55,7 @@ export default function settingUiJsunit() {
       var name = 'settings.screen.brightness';
       var uri = settings.getUriSync(name);
       console.info("[settings_uri_test_004] uri is: " + uri);
-      expect(uri).assertEqual('datashare:///com.ohos.settingsdata/SETTINGSDATA?Proxy=true&key=settings.screen.brightness')
+      expect(uri).assertEqual('datashare:///com.ohos.settingsdata/entry/settingsdata/SETTINGSDATA?Proxy=true&key=settings.screen.brightness')
       done();
     });
 
@@ -575,7 +575,7 @@ export default function settingUiJsunit() {
     });
 	
 	it('settings_get_value_033', 0, async function (done){
-        let uri = 'datashare:///com.ohos.settingsdata/SETTINGSDATA?Proxy=true&key=';
+        let uri = 'datashare:///com.ohos.settingsdata/entry/settingsdata/SETTINGSDATA?Proxy=true&key=';
 
         let name = 'settings.screen.brightness33';
         let value = 'brightness33'
@@ -595,7 +595,7 @@ export default function settingUiJsunit() {
     });
 
     it('settings_get_value_034', 0, async function (done){
-        let uri = 'datashare:///com.ohos.settingsdata/SETTINGSDATA?Proxy=true&key=';
+        let uri = 'datashare:///com.ohos.settingsdata/entry/settingsdata/SETTINGSDATA?Proxy=true&key=';
 
         let name = 'settings.screen.brightness34';
         let value = 'brightness34'
@@ -617,7 +617,7 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_035', 0, async function (done){
         var name  = 'settings.screen.brightness35';
-        let uriPrefix = 'datashare:///com.ohos.settingsdata/SETTINGSDATA?Proxy=true&key='
+        let uriPrefix = 'datashare:///com.ohos.settingsdata/entry/settingsdata/SETTINGSDATA?Proxy=true&key='
         let expectValue = uriPrefix + name;
         try{
             settings.getURI(name).then(data => {
@@ -635,7 +635,7 @@ export default function settingUiJsunit() {
 
     it('settings_get_value_036', 0, async function (done){
         var name  = 'settings.screen.brightness36';
-        let uriPrefix = 'datashare:///com.ohos.settingsdata/SETTINGSDATA?Proxy=true&key='
+        let uriPrefix = 'datashare:///com.ohos.settingsdata/entry/settingsdata/SETTINGSDATA?Proxy=true&key='
         let expectValue = uriPrefix + name;
         try{
             settings.getURI(name, (data) =>{
