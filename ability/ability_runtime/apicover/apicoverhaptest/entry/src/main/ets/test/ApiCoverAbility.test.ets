@@ -26,6 +26,7 @@ import common from '@ohos.app.ability.common';
 import contextConstant from "@ohos.app.ability.contextConstant"
 import wantConstant from "@ohos.app.ability.wantConstant"
 import formBindingData from '@ohos.app.form.formBindingData';
+import childProcessManager from '@ohos.app.ability.childProcessManager';
 
 let EXTENSION_INFO_ERR = 16000001;
 let INNER_ERROR = 16000050;
@@ -857,5 +858,35 @@ export default function ApiCoverTest() {
         done();
       })
     })
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ABILITY_StateInfo_StartChildProcess_0900
+     * @tc.name   : call startChildProcess to create a child process
+     * @tc.desc   : Function test
+     * @tc.level  : 3
+     */
+    it('SUB_AA_ChildProcessManager_startChildProcess_0100', 0, async (done: Function) => {
+      let tag = `SUB_AA_ChildProcessManager_startChildProcess_0100`;
+      console.log(`${tag}, it begin`);
+
+      let mode: number;
+      try {
+        mode = childProcessManager.StartMode.SELF_FORK;
+      } catch (err) {
+        console.log(`${tag} convert mode error, manual set 0`);
+        mode = 0;
+      }
+
+      try {
+        let pid = await childProcessManager.startChildProcess('./ets/process/AProcess.ts', mode);
+        console.log(`${tag} startChildProcess success, pid: ${pid}`);
+        expect(pid > 0).assertTrue();
+        done();
+      } catch (err) {
+        console.error(`${tag} startChildProcess error, errorCode: ${err}`);
+        done();
+      }
+    });
+    
   })
 }
