@@ -65,8 +65,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0100
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.name      : AudioCapturer - on-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.desc      : AudioCapturer - on-ERROR-INPUT_NUMDER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -112,8 +112,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0200
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
+     * @tc.name      : AudioCapturer - on-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioCapturer - on-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -159,8 +159,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_ON_INPUTDEVICECHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
+     * @tc.name      : AudioCapturer - on-ERROR-INPUT-NO-PARAMETER
+     * @tc.desc      : AudioCapturer - on-ERROR-INPUT-NO-PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -206,8 +206,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0100
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.name      : AudioCapturer - off-ERROR-INPUT_NUMDER_PARAMETER
+     * @tc.desc      : AudioCapturer - off-ERROR-INPUT_NUMDER_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -253,8 +253,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0200
-     * @tc.name      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
-     * @tc.desc      : AudioCapturer - off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT_STRING_PARAMETER
+     * @tc.name      : AudioCapturer - off-ERROR-INPUT_STRING_PARAMETER
+     * @tc.desc      : AudioCapturer - off-ERROR-INPUT_STRING_PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -300,8 +300,8 @@ export default function audioCapturerEnhanceTest() {
 
     /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_CAPTURER_OFF_INPUTDEVICECHANGE_0300
-     * @tc.name      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
-     * @tc.desc      : AudioCapturer - on(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>)-ERROR-INPUT-NO-PARAMETER
+     * @tc.name      : AudioCapturer - on-ERROR-INPUT-NO-PARAMETER
+     * @tc.desc      : AudioCapturer - on-ERROR-INPUT-NO-PARAMETER
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
