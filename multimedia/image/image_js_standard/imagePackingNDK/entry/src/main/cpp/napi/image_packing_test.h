@@ -26,7 +26,7 @@ public:
     static napi_value Init(napi_env env, napi_value exports);
     static napi_value Create(napi_env env, napi_callback_info info);
     static napi_value InitNative(napi_env env, napi_callback_info info);
-    static napi_value PackToBuffer(napi_env env, napi_callback_info info);
+    static napi_value PackToData(napi_env env, napi_callback_info info);
     static napi_value PackToFile(napi_env env, napi_callback_info info);
     static napi_value Release(napi_env env, napi_callback_info info);
 private:

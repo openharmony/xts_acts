@@ -50,7 +50,7 @@ napi_value ImagePackingNDKTest::Init(napi_env env, napi_value exports)
     napi_property_descriptor props[] = {
         STATIC_FUNCTION("create", Create),
         STATIC_FUNCTION("initNative", InitNative),
-        STATIC_FUNCTION("packToBuffer", PackToBuffer),
+        STATIC_FUNCTION("packToData", PackToData),
         STATIC_FUNCTION("packToFile", PackToFile),
         STATIC_FUNCTION("release", Release),
     };
@@ -195,8 +195,8 @@ napi_value ImagePackingNDKTest::InitNative(napi_env env, napi_callback_info info
     return createResultValue(env, OHOS_IMAGE_RESULT_SUCCESS);
 }
 
-// PackToBuffer(packer, source, opts:{format, quality, size})<{code, result}>
-napi_value ImagePackingNDKTest::PackToBuffer(napi_env env, napi_callback_info info)
+// PackToData(packer, source, opts:{format, quality, size})<{code, result}>
+napi_value ImagePackingNDKTest::PackToData(napi_env env, napi_callback_info info)
 {
     napi_value argValue[SIZE_THREE] = {0};
     size_t argCount = SIZE_THREE;
@@ -215,21 +215,21 @@ napi_value ImagePackingNDKTest::PackToBuffer(napi_env env, napi_callback_info in
     packerOpts.format = ops.format;
     packerOpts.quality = ops.quality;
 
-    size_t bufferSize = (ops.size > SIZE_ZERO) ? ops.size : DEFAULT_PACKING_SIZE;
+    size_t dataSize = (ops.size > SIZE_ZERO) ? ops.size : DEFAULT_PACKING_SIZE;
     napi_value nValue = nullptr;
-    uint8_t *buffer = nullptr;
-    if (napi_create_arraybuffer(env, bufferSize,
-        reinterpret_cast<void**>(&buffer), &nValue) != napi_ok || buffer == nullptr) {
-        DEBUG_LOG("packing create buffer failed");
+    uint8_t *data = nullptr;
+    if (napi_create_arraybuffer(env, dataSize,
+        reinterpret_cast<void**>(&data), &nValue) != napi_ok || data == nullptr) {
+        DEBUG_LOG("packing create data failed");
         return createUndefine(env);
     }
-    int32_t res = OH_ImagePacker_PackToBuffer(native,
-        argValue[ARGS_SECOND], &packerOpts, buffer, &bufferSize);
+    int32_t res = OH_ImagePacker_PackToData(native,
+        argValue[ARGS_SECOND], &packerOpts, data, &dataSize);
     if (ops.format != nullptr) {
         free(ops.format);
         ops.format = nullptr;
     }
-    DEBUG_LOG("packing act size %{public}zu", bufferSize);
+    DEBUG_LOG("packing act size %{public}zu", dataSize);
     return createResultValue(env, res, nValue);
 }
 
