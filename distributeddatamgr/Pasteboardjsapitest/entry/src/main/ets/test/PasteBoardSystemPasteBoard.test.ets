@@ -618,7 +618,7 @@ export default function pasteBoardSystemPasteBoardTest(){
                     try {
                         let string = systemPasteboard.getDataSource()
                         console.info(TAG + "bundle name :" + string )
-                        expect(string !== null).assertTrue()
+                        expect(string != null).assertTrue()
                         done();
                     } catch (err) {
                         console.error(TAG + "test getDataSource err:" + err)
