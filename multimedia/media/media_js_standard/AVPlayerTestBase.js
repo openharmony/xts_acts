@@ -477,7 +477,7 @@ async function idle(src, avPlayer) {
 
 export async function avPlayerWithCallBack(src, avPlayer, playTime, done) {
     avPlayer = await idle(src, avPlayer)
-    setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done);
+    await setAVPlayerPlayAndPauseWithCallBack(src, avPlayer, playTime, done);
     await setSource(avPlayer, src);
 }
 
@@ -1003,7 +1003,7 @@ export async function prepareTimeWithoutCallback(src, avPlayer, done) {
 
 export async function prepareTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    prepareTimeCallback(src, avPlayer, done)
+    await prepareTimeCallback(src, avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -1331,7 +1331,7 @@ export async function stopTimeWithoutCallback(src, avPlayer, done) {
 
 export async function stopTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    stopTimeCallback(src, avPlayer, done)
+    await stopTimeCallback(src, avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -1443,7 +1443,7 @@ export async function resetTimeWithoutCallback(src, avPlayer, done) {
 
 export async function resetTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    resetTimeCallback(src, avPlayer, done)
+    await resetTimeCallback(src, avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -1526,7 +1526,7 @@ let releaseTotalTime = 0;
 let releaseLoop = 0;
 export async function releaseTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    releaseTimeCallback(src, avPlayer, done)
+    await releaseTimeCallback(src, avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -1617,7 +1617,7 @@ export async function seekTimeWithoutCallback(src, avPlayer, done) {
 
 export async function seekTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    seekTimeCallback(avPlayer, done)
+    await seekTimeCallback(avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -1741,7 +1741,7 @@ export async function getTrackDescriptionTimeWithoutCallback(src, avPlayer, done
 
 export async function getTrackDescriptionTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    getTrackDescriptionTimeCallback(avPlayer, done)
+    await getTrackDescriptionTimeCallback(avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -1963,7 +1963,7 @@ export async function setBitrateTimeWithoutCallback(src, avPlayer, done) {
 
 export async function setBitrateTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    playTimeCallback(avPlayer, done)
+    await playTimeCallback(avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -2073,7 +2073,7 @@ export async function setVolumeTimeWithoutCallback(src, avPlayer, done) {
 
 export async function setVolumeTimeWithCallback(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    playTimeCallback(avPlayer, done)
+    await playTimeCallback(avPlayer, done)
     await setSource(avPlayer, src);
 }
 
@@ -2297,7 +2297,7 @@ function setAVPlayerPlay(src, avPlayer, done) {
 
 export async function avPlayerPlay(src, avPlayer, done) {
     avPlayer = await idle(src, avPlayer)
-    setAVPlayerPlay(src, avPlayer, done);
+    await setAVPlayerPlay(src, avPlayer, done);
     await setSource(avPlayer, src);
 }
 
